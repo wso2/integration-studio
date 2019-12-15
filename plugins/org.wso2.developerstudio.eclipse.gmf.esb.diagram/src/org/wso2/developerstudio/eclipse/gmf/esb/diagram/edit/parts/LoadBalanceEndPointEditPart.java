@@ -409,12 +409,14 @@ public class LoadBalanceEndPointEditPart extends ComplexFiguredAbstractEndpoint 
         }
 
     }
-    
+
     public void createDialogBox(ComplexFiguredAbstractEndpoint abstractEP) throws Exception {
 
-        final EObject lbEP = (LoadBalanceEndPoint) ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel()).getElement();
+        final EObject lbEP = (LoadBalanceEndPoint) ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel())
+                .getElement();
 
-        if (((LoadBalanceEndPoint) lbEP).getName() == null || ((LoadBalanceEndPoint) lbEP).getName().trim().equals("")) {
+        if (((LoadBalanceEndPoint) lbEP).getName() == null
+                || ((LoadBalanceEndPoint) lbEP).getName().trim().equals("")) {
             IInputValidator validator = new IInputValidator() {
 
                 public String isValid(String str) {
@@ -428,9 +430,8 @@ public class LoadBalanceEndPointEditPart extends ComplexFiguredAbstractEndpoint 
 
             };
             String defaultName = "loadbalance-endpoint";
-            final InputDialog lbEPNameInput = new InputDialog(Display.getCurrent().getActiveShell(), 
-                    "Enter Loadbalance Endpoint Name", "Endpoint Name",
-                    defaultName, validator) {
+            final InputDialog lbEPNameInput = new InputDialog(Display.getCurrent().getActiveShell(),
+                    "Enter Loadbalance Endpoint Name", "Endpoint Name", defaultName, validator) {
                 protected Control createDialogArea(Composite parent) {
                     Composite composite = (Composite) super.createDialogArea(parent);
                     return composite;
@@ -455,7 +456,7 @@ public class LoadBalanceEndPointEditPart extends ComplexFiguredAbstractEndpoint 
                                 return true;
                             }
                         };
-                        
+
                         getEditDomain().getCommandStack().execute(new ICommandProxy(operation));
                         abstractEP.openPage(lbEPName);
                     }

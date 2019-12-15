@@ -2446,6 +2446,35 @@
           accessor="getFigureForEachMediatorPropertyValue"
           figure="//@figures.0/@descriptors.119/@actualFigure/@children.0"/>
     </descriptors>
+    <descriptors
+        name="JsonTransformMediatorFigure">
+      <actualFigure
+          xsi:type="gmfgraph:CustomFigure"
+          name="JsonTransformMediatorGraphicalFigure"
+          qualifiedClassName="org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShape">
+        <layout
+            xsi:type="gmfgraph:FlowLayout"/>
+        <backgroundColor
+            xsi:type="gmfgraph:RGBColor"
+            red="230"
+            green="230"
+            blue="230"/>
+        <children
+            xsi:type="gmfgraph:Label"
+            name="JsonTransformMediatorPropertyLabel"
+            text="&lt;…>"/>
+        <children
+            xsi:type="gmfgraph:Label"
+            name="JsonTransformMediatorDescriptionFigure"
+            text="&lt;…>"/>
+      </actualFigure>
+      <accessors
+          accessor="getFigureJsonTransformMediatorPropertyLabel"
+          figure="//@figures.0/@descriptors.120/@actualFigure/@children.0"/>
+      <accessors
+          accessor="getFigureJsonTransformMediatorDescriptionFigure"
+          figure="//@figures.0/@descriptors.120/@actualFigure/@children.1"/>
+    </descriptors>
   </figures>
   <nodes
       name="EsbServer"
@@ -3501,6 +3530,17 @@
       name="InboundEndpointOnErrorSequenceInputConnector"
       figure="EastPointerFigure"
       affixedParentSide="EAST"/>
+  <nodes
+      name="JsonTransformMediator"
+      figure="JsonTransformMediatorFigure"/>
+  <nodes
+      name="JsonTransformMediatorInputConnector"
+      figure="EastPointerFigure"
+      affixedParentSide="WEST"/>
+  <nodes
+      name="JsonTransformMediatorOutputConnector"
+      figure="EastPointerFigure"
+      affixedParentSide="EAST"/>
   <connections
       name="EsbLink"
       figure="PlainConnectionFigure"/>
@@ -3989,4 +4029,14 @@
   <labels
       name="PublishEventMediatorDescription2"
       figure="PublishEventMediatorFigure"/>
+  <labels
+      name="JsonTransformMediatorName"
+      figure="JsonTransformMediatorFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.120/@accessors.0"/>
+  <labels
+      name="JsonTransformMediatorDescription"
+      figure="JsonTransformMediatorFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.120/@accessors.1"/>
 </gmfgraph:Canvas>

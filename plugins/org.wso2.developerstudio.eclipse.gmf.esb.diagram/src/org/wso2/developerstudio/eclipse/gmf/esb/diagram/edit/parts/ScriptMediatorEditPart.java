@@ -398,42 +398,42 @@ public class ScriptMediatorEditPart extends FixedSizedAbstractMediator {
         }
 
     }
-    
+
     @Override
-	public void notifyChanged(Notification notification) {
-		// this.getModel() will get EMF datamodel of the script mediator datamodel
-		if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
-			// The following part will check for validation issues with the current data in
-			// the model
-			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-			if (model.getElement() instanceof ScriptMediatorImpl) {
-				ScriptMediatorImpl scriptMediatorDataModel = (ScriptMediatorImpl) model.getElement();
-				boolean hasError = false;
-				try {
-					if (scriptMediatorDataModel.getScriptType() == ScriptType.REGISTRY_REFERENCE) {
-						if (scriptMediatorDataModel.getKeyType() == scriptKeyTypeEnum.DYNAMIC_KEY) {
-							if (scriptMediatorDataModel.getScriptDynamicKey().getPropertyValue().equals("")) {
-								hasError = true;
-							}
-						}
-					} else if (scriptMediatorDataModel.getScriptType() == ScriptType.INLINE) {
-						if (scriptMediatorDataModel.getScriptBody() == null) {
-							hasError = true;
-						}
-					}
-					if (hasError) {
-						GraphicalValidatorUtil.addValidationMark(this);
-					} else {
-						GraphicalValidatorUtil.removeValidationMark(this);
-					}
-				} catch (Exception e) {
-					// Skip error since it's a validation related minor issue
-					log.error("Graphical validation error occured", e);
-				}
-			}
-		}
-		super.notifyChanged(notification);
-	}
+    public void notifyChanged(Notification notification) {
+        // this.getModel() will get EMF datamodel of the script mediator datamodel
+        if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
+            // The following part will check for validation issues with the current data in
+            // the model
+            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+            if (model.getElement() instanceof ScriptMediatorImpl) {
+                ScriptMediatorImpl scriptMediatorDataModel = (ScriptMediatorImpl) model.getElement();
+                boolean hasError = false;
+                try {
+                    if (scriptMediatorDataModel.getScriptType() == ScriptType.REGISTRY_REFERENCE) {
+                        if (scriptMediatorDataModel.getKeyType() == scriptKeyTypeEnum.DYNAMIC_KEY) {
+                            if (scriptMediatorDataModel.getScriptDynamicKey().getPropertyValue().equals("")) {
+                                hasError = true;
+                            }
+                        }
+                    } else if (scriptMediatorDataModel.getScriptType() == ScriptType.INLINE) {
+                        if (scriptMediatorDataModel.getScriptBody() == null) {
+                            hasError = true;
+                        }
+                    }
+                    if (hasError) {
+                        GraphicalValidatorUtil.addValidationMark(this);
+                    } else {
+                        GraphicalValidatorUtil.removeValidationMark(this);
+                    }
+                } catch (Exception e) {
+                    // Skip error since it's a validation related minor issue
+                    log.error("Graphical validation error occured", e);
+                }
+            }
+        }
+        super.notifyChanged(notification);
+    }
 
     /**
      * @generated

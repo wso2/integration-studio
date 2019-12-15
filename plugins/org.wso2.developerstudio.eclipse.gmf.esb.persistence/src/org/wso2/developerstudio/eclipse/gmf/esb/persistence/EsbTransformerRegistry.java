@@ -59,6 +59,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.IterateMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.LogMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageMediator;
@@ -120,6 +121,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.ForEachMedi
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.HTTPEndPointTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.HeaderMediatorTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.IterateMediatorTransformer;
+import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.JsonTransformMediatorTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.LoadBalanceEndPointTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.LogMediatorTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.LoopBackMediatorTransformer;
@@ -240,6 +242,7 @@ public class EsbTransformerRegistry {
         addTransformer(DataMapperMediator.class, new DataMapperMediatorTransformer());
         addTransformer(ForEachMediator.class, new ForEachMediatorTransformer());
         addTransformer(PublishEventMediator.class, new PublishEventMediatorTransformer());
+        addTransformer(JsonTransformMediator.class, new JsonTransformMediatorTransformer());
     }
 
     /**

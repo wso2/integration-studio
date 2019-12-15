@@ -290,6 +290,7 @@ public class AddressingEndpointInputConnectorEditPart extends AbstractEndpointIn
             types.add(EsbElementTypes.LoadBalanceEndPointWestOutputConnector_3659);
             types.add(EsbElementTypes.APIResourceOutputConnector_3671);
             types.add(EsbElementTypes.ComplexEndpointsOutputConnector_3679);
+            types.add(EsbElementTypes.JsonTransformMediatorOutputConnector_3793);
         }
         return types;
     }

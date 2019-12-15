@@ -2597,5 +2597,37 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	public Adapter createCommentMediatorAdapter() {
 		return new CommentMediatorPropertiesEditionProvider();
 	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createJsonTransformMediatorAdapter()
+	 * 
+	 */
+	public Adapter createJsonTransformMediatorAdapter() {
+		return new JsonTransformMediatorPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createJsonTransformMediatorOutputConnectorAdapter()
+	 * 
+	 */
+	public Adapter createJsonTransformMediatorOutputConnectorAdapter() {
+		return new JsonTransformMediatorOutputConnectorPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createJsonTransformMediatorInputConnectorAdapter()
+	 * 
+	 */
+	public Adapter createJsonTransformMediatorInputConnectorAdapter() {
+		return new JsonTransformMediatorInputConnectorPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createJsonTransformMediatorPropertyAdapter()
+	 * 
+	 */
+	public Adapter createJsonTransformMediatorPropertyAdapter() {
+		return new JsonTransformMediatorPropertyPropertiesEditionProvider();
+	}
 
 }

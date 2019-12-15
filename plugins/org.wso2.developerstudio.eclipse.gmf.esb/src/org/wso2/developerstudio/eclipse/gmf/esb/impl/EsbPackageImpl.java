@@ -276,6 +276,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.JMSCacheLevel;
 import org.wso2.developerstudio.eclipse.gmf.esb.JMSConnectionFactoryType;
 import org.wso2.developerstudio.eclipse.gmf.esb.JMSSessionAcknowledgement;
 import org.wso2.developerstudio.eclipse.gmf.esb.JMSSpecVersion;
+import org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediatorInputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediatorOutputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediatorProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.KeyType;
 import org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceAlgorithm;
 import org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPoint;
@@ -2007,6 +2011,34 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * @generated
      */
     private EClass commentMediatorEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass jsonTransformMediatorEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass jsonTransformMediatorOutputConnectorEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass jsonTransformMediatorInputConnectorEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass jsonTransformMediatorPropertyEClass = null;
 
     /**
      * <!-- begin-user-doc -->
@@ -12907,6 +12939,78 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
+    public EClass getJsonTransformMediator() {
+        return jsonTransformMediatorEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getJsonTransformMediator_InputConnector() {
+        return (EReference)jsonTransformMediatorEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getJsonTransformMediator_OutputConnector() {
+        return (EReference)jsonTransformMediatorEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getJsonTransformMediator_JsonTransformProperties() {
+        return (EReference)jsonTransformMediatorEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getJsonTransformMediator_Schema() {
+        return (EReference)jsonTransformMediatorEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getJsonTransformMediatorOutputConnector() {
+        return jsonTransformMediatorOutputConnectorEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getJsonTransformMediatorInputConnector() {
+        return jsonTransformMediatorInputConnectorEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getJsonTransformMediatorProperty() {
+        return jsonTransformMediatorPropertyEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EEnum getArtifactType() {
         return artifactTypeEEnum;
     }
@@ -21625,6 +21729,18 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         commentMediatorEClass = createEClass(COMMENT_MEDIATOR);
         createEAttribute(commentMediatorEClass, COMMENT_MEDIATOR__COMMENT_TEXT);
 
+        jsonTransformMediatorEClass = createEClass(JSON_TRANSFORM_MEDIATOR);
+        createEReference(jsonTransformMediatorEClass, JSON_TRANSFORM_MEDIATOR__INPUT_CONNECTOR);
+        createEReference(jsonTransformMediatorEClass, JSON_TRANSFORM_MEDIATOR__OUTPUT_CONNECTOR);
+        createEReference(jsonTransformMediatorEClass, JSON_TRANSFORM_MEDIATOR__JSON_TRANSFORM_PROPERTIES);
+        createEReference(jsonTransformMediatorEClass, JSON_TRANSFORM_MEDIATOR__SCHEMA);
+
+        jsonTransformMediatorOutputConnectorEClass = createEClass(JSON_TRANSFORM_MEDIATOR_OUTPUT_CONNECTOR);
+
+        jsonTransformMediatorInputConnectorEClass = createEClass(JSON_TRANSFORM_MEDIATOR_INPUT_CONNECTOR);
+
+        jsonTransformMediatorPropertyEClass = createEClass(JSON_TRANSFORM_MEDIATOR_PROPERTY);
+
         // Create enums
         artifactTypeEEnum = createEEnum(ARTIFACT_TYPE);
         callMediatorEndpointTypeEEnum = createEEnum(CALL_MEDIATOR_ENDPOINT_TYPE);
@@ -22133,6 +22249,10 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         inboundEndpointOnErrorSequenceOutputConnectorEClass.getESuperTypes().add(this.getOutputConnector());
         inboundEndpointOnErrorSequenceInputConnectorEClass.getESuperTypes().add(this.getInputConnector());
         commentMediatorEClass.getESuperTypes().add(this.getMediator());
+        jsonTransformMediatorEClass.getESuperTypes().add(this.getMediator());
+        jsonTransformMediatorOutputConnectorEClass.getESuperTypes().add(this.getOutputConnector());
+        jsonTransformMediatorInputConnectorEClass.getESuperTypes().add(this.getInputConnector());
+        jsonTransformMediatorPropertyEClass.getESuperTypes().add(this.getAbstractNameValueExpressionProperty());
 
         // Initialize classes and features; add operations and parameters
         initEClass(esbDiagramEClass, EsbDiagram.class, "EsbDiagram", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -24107,6 +24227,18 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
         initEClass(commentMediatorEClass, CommentMediator.class, "CommentMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getCommentMediator_CommentText(), ecorePackage.getEString(), "commentText", "class_name", 0, 1, CommentMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        initEClass(jsonTransformMediatorEClass, JsonTransformMediator.class, "JsonTransformMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getJsonTransformMediator_InputConnector(), this.getJsonTransformMediatorInputConnector(), null, "inputConnector", null, 0, 1, JsonTransformMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getJsonTransformMediator_OutputConnector(), this.getJsonTransformMediatorOutputConnector(), null, "outputConnector", null, 0, 1, JsonTransformMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getJsonTransformMediator_JsonTransformProperties(), this.getJsonTransformMediatorProperty(), null, "jsonTransformProperties", null, 0, -1, JsonTransformMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getJsonTransformMediator_Schema(), this.getRegistryKeyProperty(), null, "schema", null, 0, 1, JsonTransformMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        initEClass(jsonTransformMediatorOutputConnectorEClass, JsonTransformMediatorOutputConnector.class, "JsonTransformMediatorOutputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+        initEClass(jsonTransformMediatorInputConnectorEClass, JsonTransformMediatorInputConnector.class, "JsonTransformMediatorInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+        initEClass(jsonTransformMediatorPropertyEClass, JsonTransformMediatorProperty.class, "JsonTransformMediatorProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
         // Initialize enums and add enum literals
         initEEnum(artifactTypeEEnum, ArtifactType.class, "ArtifactType");

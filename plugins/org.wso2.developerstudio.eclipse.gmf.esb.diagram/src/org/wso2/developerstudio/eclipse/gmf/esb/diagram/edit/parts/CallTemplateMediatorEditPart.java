@@ -613,41 +613,41 @@ public class CallTemplateMediatorEditPart extends FixedSizedAbstractMediator {
 
     }
 
-	@Override
-	public void notifyChanged(Notification notification) {
-		if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
-			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-			if (model.getElement() instanceof CallTemplateMediatorImpl) {
-				CallTemplateMediatorImpl callTemplateMediatorDataModel = (CallTemplateMediatorImpl) model.getElement();
-				boolean isErrorneous = false;
-				try {
-					if (callTemplateMediatorDataModel.getTargetTemplate() == null
-							|| callTemplateMediatorDataModel.getTargetTemplate().equals("")) {
-						isErrorneous = true;
-					}
-					if (!isErrorneous) {
-						Iterator<CallTemplateParameter> callTemplateParameters = callTemplateMediatorDataModel
-								.getTemplateParameters().iterator();
-						while (!isErrorneous && callTemplateParameters.hasNext()) {
-							CallTemplateParameter callTemplateParameter = callTemplateParameters.next();
-							if (callTemplateParameter.getParameterName().equals("")) {
-								isErrorneous = true;
-							}
-						}
-					}
-					if (isErrorneous) {
-						GraphicalValidatorUtil.addValidationMark(this);
-					} else {
-						GraphicalValidatorUtil.removeValidationMark(this);
-					}
-				} catch (Exception e) {
-					// Skip error since it's a validation related minor issue
-					log.error("Graphical validation error occured", e);
-				}
-			}
-		}
-		super.notifyChanged(notification);
-	}
+    @Override
+    public void notifyChanged(Notification notification) {
+        if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
+            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+            if (model.getElement() instanceof CallTemplateMediatorImpl) {
+                CallTemplateMediatorImpl callTemplateMediatorDataModel = (CallTemplateMediatorImpl) model.getElement();
+                boolean isErrorneous = false;
+                try {
+                    if (callTemplateMediatorDataModel.getTargetTemplate() == null
+                            || callTemplateMediatorDataModel.getTargetTemplate().equals("")) {
+                        isErrorneous = true;
+                    }
+                    if (!isErrorneous) {
+                        Iterator<CallTemplateParameter> callTemplateParameters = callTemplateMediatorDataModel
+                                .getTemplateParameters().iterator();
+                        while (!isErrorneous && callTemplateParameters.hasNext()) {
+                            CallTemplateParameter callTemplateParameter = callTemplateParameters.next();
+                            if (callTemplateParameter.getParameterName().equals("")) {
+                                isErrorneous = true;
+                            }
+                        }
+                    }
+                    if (isErrorneous) {
+                        GraphicalValidatorUtil.addValidationMark(this);
+                    } else {
+                        GraphicalValidatorUtil.removeValidationMark(this);
+                    }
+                } catch (Exception e) {
+                    // Skip error since it's a validation related minor issue
+                    log.error("Graphical validation error occured", e);
+                }
+            }
+        }
+        super.notifyChanged(notification);
+    }
 
     /**
      * @generated

@@ -24,6 +24,7 @@ import org.apache.synapse.config.xml.ForEachMediatorFactory;
 import org.apache.synapse.config.xml.HeaderMediatorFactory;
 import org.apache.synapse.config.xml.InvokeMediatorFactory;
 import org.apache.synapse.config.xml.IterateMediatorFactory;
+import org.apache.synapse.config.xml.JSONTransformMediatorFactory;
 import org.apache.synapse.config.xml.LogMediatorFactory;
 import org.apache.synapse.config.xml.LoopBackMediatorFactory;
 import org.apache.synapse.config.xml.MessageStoreMediatorFactory;
@@ -112,6 +113,7 @@ public class MediatorValidationUtil {
     private static EJBMediatorExtFactory ejbMediatorExtFactory;
     private static BuilderMediatorExtFactory builderMediatorExtFactory;
     private static BamMediatorExtFactory bamMediatorExtFactory;
+    private static JSONTransformMediatorFactory jsonTransformMediatorFactory;
 
     /**
      * Validate esb mediators such as log, send, call, etc.
@@ -504,6 +506,13 @@ public class MediatorValidationUtil {
                 setNamespaceForChildren(omElement);
                 publishEventMediatorFactory.createMediator(omElement, null);
 				break;
+			case "jsontransform":
+			    if (jsonTransformMediatorFactory == null) {
+			        jsonTransformMediatorFactory = new JSONTransformMediatorFactory();
+			    }
+			    setNamespaceForChildren(omElement);
+			    jsonTransformMediatorFactory.createMediator(omElement, null);
+			    break;
 			default:
 				break;
 			}

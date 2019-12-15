@@ -457,7 +457,7 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 
             final RegistryKeyProperty outputSchemaKeyProperty = EsbFactory.eINSTANCE.createRegistryKeyProperty();
             outputSchemaKeyProperty.setKeyValue(outputSchemaPath);
-            
+
             final RegistryKeyProperty xsltStyleSheetKeyProperty = EsbFactory.eINSTANCE.createRegistryKeyProperty();
             xsltStyleSheetKeyProperty.setKeyValue(xsltStyleSheetPath);
 
@@ -535,23 +535,23 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
                         editingDomain.getCommandStack().execute(setCmd2);
                     }
                 }
-                
-    			private void setXSLTStyleSheetKey(
-    					final DataMapperMediatorImpl datamapper,
-    					final RegistryKeyProperty registryKeyProperty,
-    					String localPath,
-    					TransactionalEditingDomain editingDomain) {
-    				
-    				SetCommand setCmd = new SetCommand(editingDomain, datamapper, EsbPackage.Literals.DATA_MAPPER_MEDIATOR__XSLT_STYLE_SHEET, registryKeyProperty);
-    				if (setCmd.canExecute()) {
-    					getEditingDomain().getCommandStack().execute(setCmd);
-    				}
-    				
-    				SetCommand setCmd2 = new SetCommand(editingDomain, datamapper, EsbPackage.Literals.DATA_MAPPER_MEDIATOR__XSLT_STYLE_SHEET_LOCAL_PATH, localPath);
-    				if (setCmd2.canExecute()) {
-    					editingDomain.getCommandStack().execute(setCmd2);
-    				}
-    			}
+
+                private void setXSLTStyleSheetKey(final DataMapperMediatorImpl datamapper,
+                        final RegistryKeyProperty registryKeyProperty, String localPath,
+                        TransactionalEditingDomain editingDomain) {
+
+                    SetCommand setCmd = new SetCommand(editingDomain, datamapper,
+                            EsbPackage.Literals.DATA_MAPPER_MEDIATOR__XSLT_STYLE_SHEET, registryKeyProperty);
+                    if (setCmd.canExecute()) {
+                        getEditingDomain().getCommandStack().execute(setCmd);
+                    }
+
+                    SetCommand setCmd2 = new SetCommand(editingDomain, datamapper,
+                            EsbPackage.Literals.DATA_MAPPER_MEDIATOR__XSLT_STYLE_SHEET_LOCAL_PATH, localPath);
+                    if (setCmd2.canExecute()) {
+                        editingDomain.getCommandStack().execute(setCmd2);
+                    }
+                }
             });
         }
     }
@@ -671,7 +671,7 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
                             isErroneous = true;
                         }
                     }
-                    
+
                     if (isErroneous) {
                         GraphicalValidatorUtil.addValidationMark(this);
                     } else {
@@ -685,6 +685,5 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
         }
         super.notifyChanged(notification);
     }
-
 
 }

@@ -62,6 +62,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.HTTPEndpointD
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.HeaderMediatorDescriptionEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.HeaderMediatorValueLiteralEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.IterateMediatorIterateIDEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.JsonTransformMediatorDescriptionEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.LoadBalanceEndPointDescriptionEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.LoadBalanceEndPointEndPointName2EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.LoadBalanceEndPointEndPointNameEditPart;
@@ -1078,6 +1079,23 @@ public class EsbParserProvider extends AbstractProvider implements IParserProvid
     }
 
     /**
+    * @generated
+    */
+    private IParser jsonTransformMediatorDescription_5216Parser;
+
+    /**
+    * @generated
+    */
+    private IParser getJsonTransformMediatorDescription_5216Parser() {
+        if (jsonTransformMediatorDescription_5216Parser == null) {
+            EAttribute[] features = new EAttribute[] { EsbPackage.eINSTANCE.getEsbElement_Description() };
+            MessageFormatParser parser = new MessageFormatParser(features);
+            jsonTransformMediatorDescription_5216Parser = parser;
+        }
+        return jsonTransformMediatorDescription_5216Parser;
+    }
+
+    /**
      * @generated
      */
     private IParser defaultEndPointEndPointName_5160Parser;
@@ -1282,6 +1300,8 @@ public class EsbParserProvider extends AbstractProvider implements IParserProvid
             return getForEachMediatorForEachID_5213Parser();
         case PublishEventMediatorStreamNameEditPart.VISUAL_ID:
             return getPublishEventMediatorDescription_5214Parser();
+        case JsonTransformMediatorDescriptionEditPart.VISUAL_ID:
+            return getJsonTransformMediatorDescription_5216Parser();
         case DefaultEndPointEndPointName2EditPart.VISUAL_ID:
             return getDefaultEndPointEndPointName_5160Parser();
         case AddressEndPointEndPointName2EditPart.VISUAL_ID:

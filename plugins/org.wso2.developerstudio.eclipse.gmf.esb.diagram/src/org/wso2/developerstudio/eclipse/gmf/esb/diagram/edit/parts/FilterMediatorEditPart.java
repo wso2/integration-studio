@@ -440,43 +440,42 @@ public class FilterMediatorEditPart extends MultipleCompartmentComplexFiguredAbs
         }
 
     }
-    
-	@Override
-	public void notifyChanged(Notification notification) {
-		// this.getModel() will get EMF datamodel of the filter mediator datamodel
-		if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
-			// The following part will check for validation issues with the current data in
-			// the model
-			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-			if (model.getElement() instanceof FilterMediatorImpl) {
-				FilterMediatorImpl filterMediatorDataModel = (FilterMediatorImpl) model.getElement();
-				boolean hasError = false;
-				try {
-					if (filterMediatorDataModel.getConditionType() == FilterMediatorConditionType.SOURCE_REGEX) {
-						if (filterMediatorDataModel.getRegex().equals("")
-								|| filterMediatorDataModel.getSource().getPropertyValue().equals("")) {
-							hasError = true;
-						}
-					} else if (filterMediatorDataModel.getConditionType() == FilterMediatorConditionType.XPATH) {
-						if (filterMediatorDataModel.getXpath().getPropertyValue().equals("")) {
-							hasError = true;
-						}
-					}
 
-					if (hasError) {
-						GraphicalValidatorUtil.addValidationMark(this);
-					} else {
-						GraphicalValidatorUtil.removeValidationMark(this);
-					}
-				} catch (Exception e) {
-					// Skip error since it's a validation related minor issue
-					log.error("Graphical validation error occured", e);
-				}
-			}
-		}
-		super.notifyChanged(notification);
-	}
+    @Override
+    public void notifyChanged(Notification notification) {
+        // this.getModel() will get EMF datamodel of the filter mediator datamodel
+        if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
+            // The following part will check for validation issues with the current data in
+            // the model
+            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+            if (model.getElement() instanceof FilterMediatorImpl) {
+                FilterMediatorImpl filterMediatorDataModel = (FilterMediatorImpl) model.getElement();
+                boolean hasError = false;
+                try {
+                    if (filterMediatorDataModel.getConditionType() == FilterMediatorConditionType.SOURCE_REGEX) {
+                        if (filterMediatorDataModel.getRegex().equals("")
+                                || filterMediatorDataModel.getSource().getPropertyValue().equals("")) {
+                            hasError = true;
+                        }
+                    } else if (filterMediatorDataModel.getConditionType() == FilterMediatorConditionType.XPATH) {
+                        if (filterMediatorDataModel.getXpath().getPropertyValue().equals("")) {
+                            hasError = true;
+                        }
+                    }
 
+                    if (hasError) {
+                        GraphicalValidatorUtil.addValidationMark(this);
+                    } else {
+                        GraphicalValidatorUtil.removeValidationMark(this);
+                    }
+                } catch (Exception e) {
+                    // Skip error since it's a validation related minor issue
+                    log.error("Graphical validation error occured", e);
+                }
+            }
+        }
+        super.notifyChanged(notification);
+    }
 
     /**
      * @generated NOT

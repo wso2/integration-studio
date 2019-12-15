@@ -65,11 +65,11 @@ public class APIResourceEditPart extends AbstractBaseFigureEditPart {
      * @generated
      */
     protected IFigure primaryShape;
-    
+
     private final int HORIZONTAL_OFFSET = 500;
-    
+
     private final int VERTICAL_OFFSET = 200;
-    
+
     /**
      * @generated
      */
@@ -217,11 +217,14 @@ public class APIResourceEditPart extends AbstractBaseFigureEditPart {
                 SynapseAPIEditPart synapseAPIEditpart = (SynapseAPIEditPart) getParent().getParent();
                 DefaultSizeNodeFigure synapseAPIFigure = (DefaultSizeNodeFigure) synapseAPIEditpart.getFigure();
                 IFigure synapseAPIContentPane = synapseAPIEditpart.getContentPane();
-                synapseAPIFigure.setMinimumSize(new Dimension(maxWidth + HORIZONTAL_OFFSET, maxHeight + VERTICAL_OFFSET));
-                synapseAPIContentPane.setPreferredSize(new Dimension(maxWidth + HORIZONTAL_OFFSET, maxHeight + VERTICAL_OFFSET));
+                synapseAPIFigure
+                        .setMinimumSize(new Dimension(maxWidth + HORIZONTAL_OFFSET, maxHeight + VERTICAL_OFFSET));
+                synapseAPIContentPane
+                        .setPreferredSize(new Dimension(maxWidth + HORIZONTAL_OFFSET, maxHeight + VERTICAL_OFFSET));
             }
         }
     }
+
     /**
      * @generated
      */
@@ -257,12 +260,12 @@ public class APIResourceEditPart extends AbstractBaseFigureEditPart {
             inSequenceInputConnectorFigure = ((APIResourceInSequenceInputConnectorEditPart) childEditPart).getFigure();
             IFigure figure = ((GraphicalEditPart) ((GraphicalEditPart) ((GraphicalEditPart) getChildren().get(4))
                     .getChildren().get(0)).getChildren().get(0)).getFigure();
-            BorderItemLocator locator = new FixedBorderItemLocator(
-                    /*
-                     * (IFigure) ((IFigure) ((IFigure) (IFigure) getFigure()
-                     * .getChildren().get(0)).getChildren().get(0))
-                     * .getChildren().get(1)
-                     */figure, inSequenceInputConnectorFigure, PositionConstants.EAST, 0.25);
+            BorderItemLocator locator = new FixedBorderItemLocator(/*
+                                                                    * (IFigure) ((IFigure) ((IFigure) (IFigure) getFigure()
+                                                                    * .getChildren().get(0)).getChildren().get(0))
+                                                                    * .getChildren().get(1)
+                                                                    */figure, inSequenceInputConnectorFigure,
+                    PositionConstants.EAST, 0.25);
             getBorderedFigure().getBorderItemContainer().add(inSequenceInputConnectorFigure, locator);
             return true;
         }

@@ -266,6 +266,7 @@ public class SequenceInputConnectorEditPart extends AbstractMediatorInputConnect
             types.add(EsbElementTypes.LoadBalanceEndPointWestOutputConnector_3098);
             types.add(EsbElementTypes.MessageOutputConnector_3047);
             types.add(EsbElementTypes.MergeNodeOutputConnector_3016);
+            types.add(EsbElementTypes.JsonTransformMediatorOutputConnector_3793);
         }
         return types;
     }

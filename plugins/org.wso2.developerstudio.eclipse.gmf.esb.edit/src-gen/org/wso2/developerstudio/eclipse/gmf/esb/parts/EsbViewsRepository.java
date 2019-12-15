@@ -9610,4 +9610,80 @@ public class EsbViewsRepository {
 	
 	}
 
+	/**
+	 * JsonTransformMediator view descriptor
+	 * 
+	 */
+	public static class JsonTransformMediator {
+		public static class Properties {
+	
+			
+			public static String commentsList = "esb::JsonTransformMediator::properties::commentsList";
+			
+			
+			public static String reverse = "esb::JsonTransformMediator::properties::Reverse";
+			
+			
+			public static String jsonTransformProperties = "esb::JsonTransformMediator::properties::jsonTransformProperties";
+			
+			
+			public static String description = "esb::JsonTransformMediator::properties::description";
+			
+			// Start of user code for schema ElementEditor key
+			public static String schema = "esb::JsonTransformMediator::properties::schema";
+			// End of user code
+			
+	
+		}
+	
+	}
+
+	/**
+	 * JsonTransformMediatorOutputConnector view descriptor
+	 * 
+	 */
+	public static class JsonTransformMediatorOutputConnector {
+		public static class Properties {
+	
+			
+			public static String commentMediators = "esb::JsonTransformMediatorOutputConnector::properties::commentMediators";
+			
+	
+		}
+	
+	}
+
+	/**
+	 * JsonTransformMediatorInputConnector view descriptor
+	 * 
+	 */
+	public static class JsonTransformMediatorInputConnector {
+		public static class Properties {
+	
+			
+			public static String incomingLinks = "esb::JsonTransformMediatorInputConnector::properties::incomingLinks";
+			
+	
+		}
+	
+	}
+
+	/**
+	 * JsonTransformMediatorProperty view descriptor
+	 * 
+	 */
+	public static class JsonTransformMediatorProperty {
+		public static class Properties {
+	
+			
+			public static String propertyName = "esb::JsonTransformMediatorProperty::properties::propertyName";
+			
+			
+			public static String propertyValue = "esb::JsonTransformMediatorProperty::properties::propertyValue";
+			
+	
+		}
+	
+	}
+
 }

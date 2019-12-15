@@ -396,42 +396,43 @@ public class DBReportMediatorEditPart extends FixedSizedAbstractMediator {
 
     }
 
-	@Override
-	public void notifyChanged(Notification notification) {
-		// this.getModel() will get EMF datamodel of the db lookup mediator datamodel
-		if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
-			// The following part will check for validation issues with the current data in
-			// the model
-			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-			if (model.getElement() instanceof DBReportMediatorImpl) {
-				DBReportMediatorImpl dbReportMediatorDataModel = (DBReportMediatorImpl) model.getElement();
-				boolean hasError = false;
-				try {
-					if (dbReportMediatorDataModel.getConnectionType() == SqlExecutorConnectionType.DATA_SOURCE) {
-						if (dbReportMediatorDataModel.getConnectionDsName() == null
-								|| dbReportMediatorDataModel.getConnectionDsName().equals("")) {
-							hasError = true;
-						}
-						if (!hasError && (dbReportMediatorDataModel.getConnectionDsType() == SqlExecutorDatasourceType.EXTERNAL)) {
-							if (dbReportMediatorDataModel.getConnectionDsInitialContext() == null
-									|| dbReportMediatorDataModel.getConnectionDsInitialContext().equals("")) {
-								hasError = true;
-							}
-						}
-					}
-					if (hasError) {
-						GraphicalValidatorUtil.addValidationMark(this);
-					} else {
-						GraphicalValidatorUtil.removeValidationMark(this);
-					}
-				} catch (Exception e) {
-					// Skip error since it's a validation related minor issue
-					log.error("Graphical validation error occured", e);
-				}
-			}
-		}
-		super.notifyChanged(notification);
-	}
+    @Override
+    public void notifyChanged(Notification notification) {
+        // this.getModel() will get EMF datamodel of the db lookup mediator datamodel
+        if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
+            // The following part will check for validation issues with the current data in
+            // the model
+            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+            if (model.getElement() instanceof DBReportMediatorImpl) {
+                DBReportMediatorImpl dbReportMediatorDataModel = (DBReportMediatorImpl) model.getElement();
+                boolean hasError = false;
+                try {
+                    if (dbReportMediatorDataModel.getConnectionType() == SqlExecutorConnectionType.DATA_SOURCE) {
+                        if (dbReportMediatorDataModel.getConnectionDsName() == null
+                                || dbReportMediatorDataModel.getConnectionDsName().equals("")) {
+                            hasError = true;
+                        }
+                        if (!hasError && (dbReportMediatorDataModel
+                                .getConnectionDsType() == SqlExecutorDatasourceType.EXTERNAL)) {
+                            if (dbReportMediatorDataModel.getConnectionDsInitialContext() == null
+                                    || dbReportMediatorDataModel.getConnectionDsInitialContext().equals("")) {
+                                hasError = true;
+                            }
+                        }
+                    }
+                    if (hasError) {
+                        GraphicalValidatorUtil.addValidationMark(this);
+                    } else {
+                        GraphicalValidatorUtil.removeValidationMark(this);
+                    }
+                } catch (Exception e) {
+                    // Skip error since it's a validation related minor issue
+                    log.error("Graphical validation error occured", e);
+                }
+            }
+        }
+        super.notifyChanged(notification);
+    }
 
     /**
      * @generated

@@ -366,43 +366,43 @@ public class BeanMediatorEditPart extends FixedSizedAbstractMediator {
 
     }
 
-	@Override
-	public void notifyChanged(Notification notification) {
-		// this.getModel() will get EMF datamodel of the Bean mediator datamodel
-		if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
-			// The following part will check for validation issues with the current data in
-			// the model
-			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-			if (model.getElement() instanceof BeanMediatorImpl) {
-				BeanMediatorImpl beanMediatorDataModel = (BeanMediatorImpl) model.getElement();
-				boolean hasError = false;
-				try {
-					if (beanMediatorDataModel.getAction() == BeanMediatorAction.SET_PROPERTY) {
-						if (beanMediatorDataModel.getValueType() == PropertyValueType.EXPRESSION) {
-							if (beanMediatorDataModel.getValueExpression().getPropertyValue().equals("")) {
-								hasError = true;
-							}
-						}
-					} else if (beanMediatorDataModel.getAction() == BeanMediatorAction.GET_PROPERTY) {
-						if (beanMediatorDataModel.getTargetType() == PropertyValueType.EXPRESSION) {
-							if (beanMediatorDataModel.getTargetExpression().getPropertyValue().equals("")) {
-								hasError = true;
-							}
-						}
-					}
-					if (hasError) {
-						GraphicalValidatorUtil.addValidationMark(this);
-					} else {
-						GraphicalValidatorUtil.removeValidationMark(this);
-					}
-				} catch (Exception e) {
-					// Skip error since it's a validation related minor issue
-					log.error("Graphical validation error occured", e);
-				}
-			}
-		}
-		super.notifyChanged(notification);
-	}
+    @Override
+    public void notifyChanged(Notification notification) {
+        // this.getModel() will get EMF datamodel of the Bean mediator datamodel
+        if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
+            // The following part will check for validation issues with the current data in
+            // the model
+            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+            if (model.getElement() instanceof BeanMediatorImpl) {
+                BeanMediatorImpl beanMediatorDataModel = (BeanMediatorImpl) model.getElement();
+                boolean hasError = false;
+                try {
+                    if (beanMediatorDataModel.getAction() == BeanMediatorAction.SET_PROPERTY) {
+                        if (beanMediatorDataModel.getValueType() == PropertyValueType.EXPRESSION) {
+                            if (beanMediatorDataModel.getValueExpression().getPropertyValue().equals("")) {
+                                hasError = true;
+                            }
+                        }
+                    } else if (beanMediatorDataModel.getAction() == BeanMediatorAction.GET_PROPERTY) {
+                        if (beanMediatorDataModel.getTargetType() == PropertyValueType.EXPRESSION) {
+                            if (beanMediatorDataModel.getTargetExpression().getPropertyValue().equals("")) {
+                                hasError = true;
+                            }
+                        }
+                    }
+                    if (hasError) {
+                        GraphicalValidatorUtil.addValidationMark(this);
+                    } else {
+                        GraphicalValidatorUtil.removeValidationMark(this);
+                    }
+                } catch (Exception e) {
+                    // Skip error since it's a validation related minor issue
+                    log.error("Graphical validation error occured", e);
+                }
+            }
+        }
+        super.notifyChanged(notification);
+    }
 
     /**
      * @generated

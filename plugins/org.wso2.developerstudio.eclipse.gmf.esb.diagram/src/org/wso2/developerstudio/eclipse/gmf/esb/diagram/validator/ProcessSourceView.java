@@ -89,7 +89,7 @@ public class ProcessSourceView {
             "makefault", "header", "payloadFactory", "smooks", "rewrite", "xquery", "xslt", "datamapper", "fastXSLT",
             "cache", "dbreport", "dblookup", "event", "throttle", "transaction", "aggregate", "callout", "clone",
             "iterate", "foreach", "entitlementService", "oauthService", "builder", "rule", "bam", "publishEvent",
-            "builder"));
+            "builder", "propertyGroup", "jsontransform"));
 
     private static Set<String> artifacts = new HashSet<>(Arrays.asList("api", "proxy", "endpoint", "inboundEndpoint",
             "localEntry", "messageProcessor", "messageStore", "sequence", "task", "template"));
@@ -730,7 +730,7 @@ public class ProcessSourceView {
 
                     if (!intermediary.contains(tempTag.getqName()) && ((tempTag.getTagType() == 3)
                             || (currentMediator != null && currentMediator.getqName().equals(tempTag.getqName()))
-                            || artifacts.contains(tempTag.getqName()))) {
+                            || artifacts.contains(tempTag.getqName()) || (currentMediator.getqName().equals("property") && intermediary.size() > 0))) {
 
                         if (tempTag.getTagType() == 3 && currentMediator != null
                                 && ((currentMediator.getqName().equals("payloadFactory")
@@ -797,7 +797,7 @@ public class ProcessSourceView {
                                     && (currentMediator.getqName().equals("foreach")
                                             || currentMediator.getqName().equals("clone")
                                             || currentMediator.getqName().equals("iterate")
-                                            || currentMediator.getqName().equals("property"))
+                                            || currentMediator.getqName().equals("property") || currentMediator.getqName().equals("jsontransform"))
                                     && !tempTag.getqName().equals(currentMediator.getqName())) {
                                 intermediaryStack.push(currentMediator);
 

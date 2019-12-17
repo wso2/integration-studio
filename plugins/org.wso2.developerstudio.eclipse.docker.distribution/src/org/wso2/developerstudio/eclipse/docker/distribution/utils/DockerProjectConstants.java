@@ -91,6 +91,8 @@ public class DockerProjectConstants extends NLS {
     public static final String K8S_USER_GUIDE_PATH = "resources" + File.separator + "UserGuide" + File.separator + "K8sGuideReadMe.html";
     public static final String DOCKER_USER_GUIDE_FILE = "DockerGuideReadMe.html";
     public static final String K8S_USER_GUIDE_FILE = "K8sGuideReadMe.html";
+    public static final String RESOURCE_PATH = "resources";
+    public static final String DEPLOYMENT_TOML_NAME = "deployment.toml";
     
     public static String KUBERNETES_PROJECT_TYPE;
     public static String DOCKER_PROJECT_TYPE;

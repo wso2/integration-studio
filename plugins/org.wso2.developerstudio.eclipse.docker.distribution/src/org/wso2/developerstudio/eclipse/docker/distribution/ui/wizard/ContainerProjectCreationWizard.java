@@ -174,7 +174,8 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
 				URL fileURL = bundle.getEntry(DockerProjectConstants.DEPLOYMENT_TOML_FILE_PATH);
 				File deploymentFile = null;
 
-				URL resolvedFileURL = FileLocator.toFileURL(fileURL);
+				URL resolvedFileURL  = new URL("platform:/plugin" + File.separator + Activator.PLUGIN_ID
+                        + File.separator + DockerProjectConstants.RESOURCE_PATH + File.separator + "deployment.toml");
 				URI resolvedURI = new URI(resolvedFileURL.getProtocol(), resolvedFileURL.getPath(), null);
 				deploymentFile = new File(resolvedURI);
 				FileUtils.copy(deploymentFile, newFile);

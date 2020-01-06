@@ -125,7 +125,7 @@ public class DependencyProvider extends Dialog {
     public static final String EMPTY_STRING = "";
     public static final String OS_TYPE_LINUX = "linux";
     public static final String OS_TYPE_WINDOWS = "windows";
-    private static final String microesbLibPath = "runtime" + File.separator + "microesb" + File.separator + "lib";
+    private static final String microesbLibPath = "runtime" + File.separator + "wso2mi" + File.separator + "lib";
     public static final String EI_TOOLING_HOME_MACOS = File.separator + "Applications" + File.separator
             + "IntegrationStudio.app" + File.separator + "Contents" + File.separator + "Eclipse";
     public static final String POM_XML = "pom.xml";

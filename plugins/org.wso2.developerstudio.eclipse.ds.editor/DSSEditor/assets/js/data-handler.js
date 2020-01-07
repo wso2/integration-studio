@@ -1,7 +1,8 @@
 $(document).ready(function ($) {
 
     let portValue = resolveGetParam("port");
-    let url = "http://localhost:" + portValue + "/dsseditor/service";
+    // let url = "http://localhost:" + portValue + "/dsseditor/service";
+    let url = "http://localhost:7774/dsseditor/service";
     let root = "";
 
     // Retrieve the XML source from backend.
@@ -13,7 +14,7 @@ $(document).ready(function ($) {
         populateGeneralDetails(root);
         populateTransportSettings(root);
         populateDataSources(root);
-
+        populateQueries(root);
     });
 
     /** Start of Event handlers **/
@@ -71,8 +72,24 @@ s
     });
     // End of Data sources - Add data source
 
+    // Start of queries - Add query
+    $("#q-query-add-btn").click(function() {
+        $("#q-query-add-btn").toggle(false);
+        $("#q-queries-table").toggle(false);
+        $("#q-add-edit-query-section").toggle(true);
+    });
+    // End of queries - Add query
+
     // Start of input event handlers - General details
     $("#dss-description-input, #dss-namespace-input").change(function() {
+        let description = root.getElementsByTagName("description")[0];
+
+        if (description.hasChildNodes()) {
+            description.childNodes[0].nodeValue = $('#dss-description-input').val();
+        } else {
+
+        }
+
         save(root, url);
     });
 
@@ -165,6 +182,16 @@ function populateDataSources(root) {
  */
 function populateDSModal(root, dsId) {
 
+}
+
+function populateQueries(root) {
+    let queryConfigs = root.getElementsByTagName("query2");
+
+    if (queryConfigs.length == 0 || queryConfigs === undefined || queryConfigs === null)  {
+        $("#q-queries-table").hide();
+        showQueriesTableNotification("info", "No queries available. Click 'Add New' to create a new query.", 0);
+        return;
+    }
 }
 
 /**
@@ -288,13 +315,7 @@ function showDSNotification(type, message, interval) {
     $("#ds-notification-alert-holder").html(alertHtml);
     $("#ds-notification-alert").show();
 
-    if (interval > 0) {
-        window.setTimeout(function () {
-            $("#ds-notification-alert").fadeTo(500, 0).slideUp(500, function () {
-                $(this).remove();
-            });
-        }, interval);
-    }
+    showAlert("ds-notification-alert", interval);
 }
 
 /**
@@ -310,9 +331,34 @@ function showDSTableNotification(type, message, interval) {
     $("#ds-table-notification-alert-holder").html(alertHtml);
     $("#ds-table-notification-alert").show();
 
+    showAlert("ds-table-notification-alert", interval);
+}
+
+/**
+ * Shows an alert of a given type in the data sources table.
+ *
+ * @param type Type of the alert: success | info | warning | danger
+ * @param message Message to be displayed.
+ * @param interval Number of milliseconds before the notification disappears. If not provided or '0',
+ * notification will stay forever.
+ */
+function showQueriesTableNotification(type, message, interval) {
+    let alertHtml = "<span><div id='q-table-notification-alert' class=\"alert " + "alert-" + type + "\"" + ">" + message + "</div></span>";
+    $("#q-table-notification-alert-holder").html(alertHtml);
+    $("#q-table-notification-alert").show();
+
+    showAlert("q-table-notification-alert", interval);
+}
+
+/**
+ * Shows a bootstrap alert for a given interval. If the interval is 0, it will be shown infinitely.
+ *
+ * @param selector ID of the alert.
+ */
+function showAlert(selector, interval) {
     if (interval > 0) {
         window.setTimeout(function () {
-            $("#ds-table-notification-alert").fadeTo(500, 0).slideUp(500, function () {
+            $("#" + selector).fadeTo(500, 0).slideUp(500, function () {
                 $(this).remove();
             });
         }, interval);
@@ -361,8 +407,7 @@ function insertAfter(newNode, refNode) {
  *
  * @param root Document object.
  * @param url Back-end URL.
- * @returns {*|{getAllResponseHeaders, abort, setRequestHeader, readyState,
- * getResponseHeader, overrideMimeType, statusCode}} Status code
+ * @returns Status code
  */
 function save(root, url) {
     let serializedData = new XMLSerializer().serializeToString(root);
@@ -371,7 +416,7 @@ function save(root, url) {
     let request = $.ajax({
         url: url,
         type: "post",
-        headers: { OPERATION_TYPE_HEADER: OPERATION_TYPE_HEADER_SAVE_ALL },
+        headers: {"x-operation-type":OPERATION_TYPE_HEADER_SAVE_ALL},
         data: {xmlcontent: serializedData},
         success: function (resData) {
             location.reload();

@@ -16,7 +16,7 @@
             label="CARBON_HOME"
             type="directory"
             context="runtime"
-            default="runtime/microesb" />
+            default="runtime/wso2mi" />
 
     <property
             id="carbon.offset"

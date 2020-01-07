@@ -1564,7 +1564,7 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
         int centerX, centerY;
         centerX = (parentBounds.width - dialogBounds.width) / 2 + parentBounds.x;
         centerY = (parentBounds.height - dialogBounds.height) / 2 + parentBounds.y;
-        dialogShell.setLocation(new Point(centerX, centerY));
+        dialogShell.setLocation(new Point(centerX, centerY + 85)); //adding a constant number of pixels to avoid removing borders
     }
 
     private void setTabOrder() {

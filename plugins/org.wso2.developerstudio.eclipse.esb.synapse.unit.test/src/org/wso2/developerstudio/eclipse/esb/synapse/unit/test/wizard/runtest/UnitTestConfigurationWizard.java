@@ -314,7 +314,7 @@ public class UnitTestConfigurationWizard extends Wizard implements IExportWizard
      * Clear the carbonapps folder of the embedded MI pack.
      */
     private void clearCarbonAppsFolder() {
-        String microesbPath = "runtime" + File.separator + "microesb";
+        String microesbPath = "runtime" + File.separator + "wso2mi";
         String carbonAppsFolderPath = File.separator + "repository" + File.separator + "deployment" + File.separator
                 + "server" + File.separator + "carbonapps";
         String OS = System.getProperty("os.name", "generic").toLowerCase(Locale.ENGLISH);

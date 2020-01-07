@@ -12,12 +12,6 @@ $(document).ready(function(){
     //--- End of Transport Settings param table --/
     
     //--- Start of Data Sources table ---//
-    
-    // $("#ds-datasource-add-btn").click(function() {
-    //     var markup = "<tr><td>Data_Source_Name_Placeholder</td><td class='text-center'><i class='fa fa-edit'></i><i class='fa fa-trash'></i></td></tr>";
-    //     $("#ds-datasources-table tbody").append(markup);
-    // });
-    
     $(document).on('click','#ds-datasources-table .fa-trash',function(){
         $(this).closest("tr").remove();
     });
@@ -46,8 +40,6 @@ $(document).ready(function(){
         $(this).closest("tr").remove();
     });
     //--- End of External Datasource - Properties table ---//
-    
-    //$("#ds-add-ds-modal").modal({ show : true });
         
 });
 

@@ -1,8 +1,7 @@
 $(document).ready(function ($) {
 
     let portValue = resolveGetParam("port");
-    // let url = "http://localhost:" + portValue + "/dsseditor/service";
-    let url = "http://localhost:7774/dsseditor/service";
+    let url = "http://localhost:" + portValue + "/dsseditor/service";
     let root = "";
 
     // Retrieve the XML source from backend.

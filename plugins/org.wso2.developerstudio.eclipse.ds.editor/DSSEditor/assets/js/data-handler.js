@@ -371,7 +371,7 @@ function save(root, url) {
     let request = $.ajax({
         url: url,
         type: "post",
-        headers: { OPERATION_TYPE_HEADER: OPERATION_TYPE_HEADER_SAVE_ALL },
+        headers: {"x-operation-type":OPERATION_TYPE_HEADER_SAVE_ALL},
         data: {xmlcontent: serializedData},
         success: function (resData) {
             location.reload();

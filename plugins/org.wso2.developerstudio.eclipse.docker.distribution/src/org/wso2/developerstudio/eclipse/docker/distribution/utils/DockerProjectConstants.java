@@ -86,13 +86,14 @@ public class DockerProjectConstants extends NLS {
     public static final String WINDOWS = "win";
     public static final String TARGET_REPOSITORY_XPATH = "/project/build/plugins/plugin/executions/execution/configuration/repository";
     public static final String TARGET_TAG_XPATH = "/project/build/plugins/plugin/executions/execution/configuration/tag";
-    public static final String DEPLOYMENT_TOML_FILE_PATH = "resources" + File.separator + "deployment.toml";
-    public static final String DOCKER_USER_GUIDE_PATH = "resources" + File.separator + "UserGuide" + File.separator + "DockerGuideReadMe.html";
-    public static final String K8S_USER_GUIDE_PATH = "resources" + File.separator + "UserGuide" + File.separator + "K8sGuideReadMe.html";
+    public static final String DEPLOYMENT_TOML_FILE_PATH = "resources/deployment.toml";
+    public static final String DOCKER_USER_GUIDE_PATH = "resources/UserGuide/DockerGuideReadMe.html";
+    public static final String K8S_USER_GUIDE_PATH = "resources/UserGuide/K8sGuideReadMe.html";
     public static final String DOCKER_USER_GUIDE_FILE = "DockerGuideReadMe.html";
     public static final String K8S_USER_GUIDE_FILE = "K8sGuideReadMe.html";
     public static final String RESOURCE_PATH = "resources";
     public static final String DEPLOYMENT_TOML_NAME = "deployment.toml";
+    public static final String ESB_GRAPHICAL_PERSPECTIVE = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.perspective";
     
     public static String KUBERNETES_PROJECT_TYPE;
     public static String DOCKER_PROJECT_TYPE;

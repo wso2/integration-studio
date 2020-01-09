@@ -174,8 +174,7 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
 				URL fileURL = bundle.getEntry(DockerProjectConstants.DEPLOYMENT_TOML_FILE_PATH);
 				File deploymentFile = null;
 
-				URL resolvedFileURL  = new URL("platform:/plugin" + File.separator + Activator.PLUGIN_ID
-                        + File.separator + DockerProjectConstants.RESOURCE_PATH + File.separator + "deployment.toml");
+				URL resolvedFileURL = FileLocator.toFileURL(fileURL);
 				URI resolvedURI = new URI(resolvedFileURL.getProtocol(), resolvedFileURL.getPath(), null);
 				deploymentFile = new File(resolvedURI);
 				FileUtils.copy(deploymentFile, newFile);
@@ -296,7 +295,7 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
             
             project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
             MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
-            
+
             // Adding selected composite project if the project creation is based on composite right click
             if (dockerModel.isCompositeOnClickContainerCreation()) {
                 IProject compositeProject = dockerModel.getSelectedCompositeProjectOnCreation();
@@ -385,7 +384,7 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
             MavenUtils.saveMavenProject(mavenProject, pomfile);
             project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
             openEditor();
-
+            setPerspective(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
         } catch (Exception e) {
             log.error("An error occurred generating a project: ", e);
             return false;
@@ -522,6 +521,28 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
             }
         } catch (Exception e) {
             /* ignore */}
+    }
+
+    /**
+     * This method sets the perspective to ESB
+     *
+     * @param shell shell object that should be switched to ESB perspective
+     */
+    public void setPerspective(Shell shell) {
+        shell.getDisplay().asyncExec(new Runnable() {
+            @Override
+            public void run() {
+                IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+                if (!DockerProjectConstants.ESB_GRAPHICAL_PERSPECTIVE.equals(window.getActivePage().getPerspective().getId())) {
+                    try {
+                        PlatformUI.getWorkbench().showPerspective(DockerProjectConstants.ESB_GRAPHICAL_PERSPECTIVE, window);
+                    } catch (Exception e) {
+                        log.error("Cannot switch to ESB Graphical Perspective", e);
+                    }
+                }
+            }
+        });
+
     }
 
 }

@@ -57,7 +57,7 @@ public class MicroIntegratorInstance {
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private IServerWorkingCopy server = null;
 	//static relative path to where micro-ESB is packaged
-	private static final String microesbPath = "runtime" + File.separator + "wso2mi";
+	private static final String microesbPath = "runtime" + File.separator + "microesb";
 	//static path for DeveloperStudio for MAC when it is on Application folder
 	private static final String eiToolingHomeForMac = "/Applications/IntegrationStudio.app/Contents/Eclipse";
 	private static boolean isDebugMode = false;

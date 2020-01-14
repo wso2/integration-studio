@@ -348,7 +348,7 @@ public class UnitTestConfigurationDetailPage extends WizardPage {
 
     private String getLocalServerDefaultPath() {
 
-        String microesbPath = "runtime" + File.separator + "wso2mi";
+        String microesbPath = "runtime" + File.separator + "microesb";
         // static path for DeveloperStudio for MAC when it is on Application folder
         String eiToolingHomeForMac = "/Applications/IntegrationStudio.app/Contents/Eclipse";
 

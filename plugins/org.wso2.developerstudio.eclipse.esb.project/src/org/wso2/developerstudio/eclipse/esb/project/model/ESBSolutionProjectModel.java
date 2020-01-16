@@ -26,19 +26,28 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
     private String connectorExporterProjectName;
     private String compositeApplicationProjectName;
     private String dockerExporterProjectName;
+    private String kubernetesExporterProjectName;
     private boolean registryProjectChecked = false;
     private boolean connectorExporterProjectChecked = false;
-
-    public boolean isConnectorExporterProjectChecked() {
-        return connectorExporterProjectChecked;
-    }
 
     public String getDockerExporterProjectName() {
         return dockerExporterProjectName;
     }
+    
+    public String getKubernetesExporterProjectName() {
+        return kubernetesExporterProjectName;
+    }
 
     public void setDockerExporterProjectName(String dockerExporterProjectName) {
         this.dockerExporterProjectName = dockerExporterProjectName;
+    }
+    
+    public void setKubernetesExporterProjectName(String kubernetesExporterProjectName) {
+        this.kubernetesExporterProjectName = kubernetesExporterProjectName;
+    }
+    
+    public boolean isConnectorExporterProjectChecked() {
+        return connectorExporterProjectChecked;
     }
 
     public void setConnectorExporterProjectChecked(boolean connectorExporterProjectChecked) {
@@ -76,6 +85,8 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
                 modelPropertyValue = getCompositeApplicationProjectName();
             } else if (key.equals(DOCKER_EXPORTER_PROJECT_NAME)) {
                 modelPropertyValue = getDockerExporterProjectName();
+            } else if (key.equals(KUBERNETES_EXPORTER_PROJECT_NAME)) {
+                modelPropertyValue = getKubernetesExporterProjectName();
             } else if (key.equals(SolutionProjectArtifactConstants.REGISTRY_PROJECT_CHECKED)) {
                 modelPropertyValue = isRegistryProjectChecked();
             } else if (key.equals(CONNECTOR_EXPORTER_PROJECT_CHECKED)) {
@@ -83,7 +94,9 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
             } else if (key.equals(CAPP_PROJECT_CHECKED)) {
                 modelPropertyValue = isCappProjectChecked();
             } else if (key.equals(DOCKER_EXPORTER_PROJECT_CHECKED)) {
-                modelPropertyValue = isContainerExporterProjectChecked();
+                modelPropertyValue = isDockerExporterProjectChecked();
+            } else if (key.equals(KUBERNETES_EXPORTER_PROJECT_CHECKED)) {
+                modelPropertyValue = isKubernetesExporterProjectChecked();
             }
         }
         return modelPropertyValue;
@@ -98,7 +111,8 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
                 setRegistryProjectName(data.toString() + "Registry");
                 setConnectorExporterProjectName(data.toString() + "ConnectorExporter");
                 setCompositeApplicationProjectName(data.toString() + "CompositeApplication");
-                setDockerExporterProjectName(data.toString() + "DockerKubernetesExporter");
+                setDockerExporterProjectName(data.toString() + "DockerExporter");
+                setKubernetesExporterProjectName(data.toString() + "KubernetesExporter");
             } else {
                 setRegistryProjectName("");
                 setConnectorExporterProjectName("");
@@ -112,6 +126,8 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
             setCompositeApplicationProjectName(data.toString());
         } else if (key.equals(DOCKER_EXPORTER_PROJECT_NAME)) {
             setDockerExporterProjectName(data.toString());
+        } else if (key.equals(KUBERNETES_EXPORTER_PROJECT_NAME)) {
+            setKubernetesExporterProjectName(data.toString());
         } else if (key.equals(REGISTRY_PROJECT_CHECKED)) {
             setRegistryProjectChecked((boolean) data);
         } else if (key.equals(CONNECTOR_EXPORTER_PROJECT_CHECKED)) {
@@ -119,7 +135,10 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
         } else if (key.equals(CAPP_PROJECT_CHECKED)) {
             setCappProjectChecked((boolean) data);
         } else if (key.equals(DOCKER_EXPORTER_PROJECT_CHECKED)) {
-            setContainerExporterProjectChecked((boolean) data);
+            setDockerExporterProjectChecked((boolean) data);
+            returnResult = (boolean) data;
+        } else if (key.equals(KUBERNETES_EXPORTER_PROJECT_CHECKED)) {
+            setKubernetesExporterProjectChecked((boolean) data);
             returnResult = (boolean) data;
         }
 

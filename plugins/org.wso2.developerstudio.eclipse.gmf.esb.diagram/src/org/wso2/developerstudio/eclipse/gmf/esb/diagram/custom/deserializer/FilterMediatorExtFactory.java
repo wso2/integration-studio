@@ -123,7 +123,6 @@ public class FilterMediatorExtFactory extends FilterMediatorFactory {
             ((FilterMediator) mediator).setThenElementPresent(false);
             addChildren(omElement, (FilterMediator) mediator, null);
         }
-
         addAllCommentChildrenToList(omElement, ((FilterMediator) mediator).getCommentsList());
         
         return mediator;

@@ -359,6 +359,9 @@ public class ValidateMediatorOutputConnectorEditPart extends AbstractMediatorOut
         if (targetEditPart instanceof SequencesInputConnectorEditPart) {
             types.add(EsbElementTypes.EsbLink_4001);
         }
+        if (targetEditPart instanceof JsonTransformMediatorInputConnectorEditPart) {
+            types.add(EsbElementTypes.EsbLink_4001);
+        }
         return types;
     }
 
@@ -418,6 +421,7 @@ public class ValidateMediatorOutputConnectorEditPart extends AbstractMediatorOut
             types.add(EsbElementTypes.MergeNodeFirstInputConnector_3014);
             types.add(EsbElementTypes.MergeNodeSecondInputConnector_3015);
             types.add(EsbElementTypes.SequencesInputConnector_3616);
+            types.add(EsbElementTypes.JsonTransformMediatorInputConnector_3792);
         }
         return types;
     }

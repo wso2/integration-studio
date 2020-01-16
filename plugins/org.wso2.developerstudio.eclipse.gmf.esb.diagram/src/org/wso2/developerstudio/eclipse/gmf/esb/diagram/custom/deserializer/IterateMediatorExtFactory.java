@@ -29,8 +29,6 @@ import org.apache.synapse.config.xml.IterateMediatorFactory;
 import org.apache.synapse.config.xml.OMElementUtils;
 import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.config.xml.SynapsePathFactory;
-import org.apache.synapse.config.xml.SynapseXPathFactory;
-import org.apache.synapse.config.xml.TargetFactory;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.mediators.eip.Target;
 import org.apache.synapse.mediators.eip.splitter.IterateMediator;
@@ -125,7 +123,7 @@ public class IterateMediatorExtFactory extends IterateMediatorFactory {
 
         OMElement targetElement = omElement.getFirstChildWithName(TARGET_Q);
         if (targetElement != null) {
-            Target target = TargetFactory.createTarget(targetElement, null);
+            Target target = TargetExtFactory.createTarget(targetElement, null);
             if (target != null) {
                 target.setAsynchronous(asynchronous);
                 ((IterateMediator) mediator).setTarget(target);

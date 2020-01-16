@@ -5939,6 +5939,45 @@
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CommentMediator"/>
       </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_n8dPmhvTEeqTuPI_egU0_A" name="JsonTransformMediator" views="_n8efvxvTEeqTuPI_egU0_A">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_n8dPnBvTEeqTuPI_egU0_A" name="commentsList" views="_n8efwhvTEeqTuPI_egU0_A">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/commentsList"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_n8dPnRvTEeqTuPI_egU0_A" name="Reverse" views="_n8efwxvTEeqTuPI_egU0_A">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Mediator/Reverse"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_uoAHYBvYEeqTuPI_egU0_A" name="schema" views="_pPgOIBvXEeqTuPI_egU0_A">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//JsonTransformMediator/schema"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_n8dPnhvTEeqTuPI_egU0_A" name="jsonTransformProperties" views="_n8efxBvTEeqTuPI_egU0_A">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//JsonTransformMediator/jsonTransformProperties"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_n8dPmxvTEeqTuPI_egU0_A" name="description" views="_n8efwRvTEeqTuPI_egU0_A">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/description"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//JsonTransformMediator"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_n8dPnxvTEeqTuPI_egU0_A" name="JsonTransformMediatorOutputConnector" views="_n8efxRvTEeqTuPI_egU0_A">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_n8dPoBvTEeqTuPI_egU0_A" name="commentMediators" views="_n8efxxvTEeqTuPI_egU0_A">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//OutputConnector/commentMediators"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//JsonTransformMediatorOutputConnector"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_n8dPoRvTEeqTuPI_egU0_A" name="JsonTransformMediatorInputConnector" views="_n8efyBvTEeqTuPI_egU0_A">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_n8dPohvTEeqTuPI_egU0_A" name="incomingLinks" views="_n8efyhvTEeqTuPI_egU0_A">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//InputConnector/incomingLinks"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//JsonTransformMediatorInputConnector"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_n8dPoxvTEeqTuPI_egU0_A" name="JsonTransformMediatorProperty" views="_n8efyxvTEeqTuPI_egU0_A">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_n8dPpBvTEeqTuPI_egU0_A" name="propertyName" views="_n8efzRvTEeqTuPI_egU0_A">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractNameValueProperty/propertyName"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_n8dPpRvTEeqTuPI_egU0_A" name="propertyValue" views="_n8efzhvTEeqTuPI_egU0_A">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//AbstractNameValueProperty/propertyValue"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//JsonTransformMediatorProperty"/>
+      </bindings>
     </categories>
     <model href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.genmodel#//esb"/>
   </eef-components:PropertiesEditionContext>
@@ -12527,6 +12566,51 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xMrvJnEei6boXzpRIfnA" name="commentText">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_n8efvxvTEeqTuPI_egU0_A" name="JsonTransformMediator">
+        <elements xsi:type="eef-views:Container" xmi:id="_n8efwBvTEeqTuPI_egU0_A" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_n8efwhvTEeqTuPI_egU0_A" name="commentsList">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_n8efwxvTEeqTuPI_egU0_A" name="Reverse">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_n8efxBvTEeqTuPI_egU0_A" name="jsonTransformProperties">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_n8efwRvTEeqTuPI_egU0_A" name="description">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_pPgOIBvXEeqTuPI_egU0_A" name="schema"/>
+        </elements>
+      </views>
+      <views xmi:id="_n8efxRvTEeqTuPI_egU0_A" name="JsonTransformMediatorOutputConnector">
+        <elements xsi:type="eef-views:Container" xmi:id="_n8efxhvTEeqTuPI_egU0_A" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_n8efxxvTEeqTuPI_egU0_A" name="commentMediators">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_n8efyBvTEeqTuPI_egU0_A" name="JsonTransformMediatorInputConnector">
+        <elements xsi:type="eef-views:Container" xmi:id="_n8efyRvTEeqTuPI_egU0_A" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_n8efyhvTEeqTuPI_egU0_A" name="incomingLinks">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_n8efyxvTEeqTuPI_egU0_A" name="JsonTransformMediatorProperty">
+        <elements xsi:type="eef-views:Container" xmi:id="_n8efzBvTEeqTuPI_egU0_A" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_n8efzRvTEeqTuPI_egU0_A" name="propertyName">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_n8efzhvTEeqTuPI_egU0_A" name="propertyValue">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
         </elements>

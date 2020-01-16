@@ -72,6 +72,7 @@
             <xs:attribute name="action" type="xs:string" use="optional"/>
             <xs:attribute name="initAxis2ClientOptions" type="xs:boolean" use="optional"/>
             <xs:attribute name="endpointKey" type="xs:string" use="optional"/>
+            <xs:attribute name="description" type="xs:string" use="optional"/>
         </xs:complexType>
     </xs:element>
 

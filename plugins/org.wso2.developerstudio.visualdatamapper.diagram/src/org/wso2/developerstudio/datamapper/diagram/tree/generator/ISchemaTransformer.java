@@ -50,11 +50,24 @@ public interface ISchemaTransformer {
 	 * 
 	 * @param treeNodeModel
 	 *            treeNodeImpl
-	 * @param schemaFile 
 	 * @param schemaFile
 	 *            file
 	 */
 	public String getSchemaContentFromModel(TreeNodeImpl treeNodeModel, File schemaFile);
+	
+	/**
+	 * Gets the content to the file
+	 * 
+	 * @param treeNodeModel
+	 *            treeNodeImpl
+	 * @param schemaFile
+	 *            file
+	 * @param isInput
+	 *            is this the input schema
+	 * @param type
+	 *            type of input/output
+	 */
+	public String getSchemaContentFromModel(TreeNodeImpl treeNodeModel, File schemaFile, boolean isInput, String type);
 
 	/**
 	 * Updates the schema file

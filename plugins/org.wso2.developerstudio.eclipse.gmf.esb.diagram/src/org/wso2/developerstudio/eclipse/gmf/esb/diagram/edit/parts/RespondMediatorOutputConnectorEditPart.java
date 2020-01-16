@@ -66,6 +66,7 @@ public class RespondMediatorOutputConnectorEditPart extends AbstractMediatorOutp
     public IFigure createNodeShapeForward() {
         return primaryShapeForward = new EastPointerFigure(false);
     }
+
     /**
      * @generated
      */
@@ -76,7 +77,7 @@ public class RespondMediatorOutputConnectorEditPart extends AbstractMediatorOutp
         installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
         // XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable
         // editpolicies
-        // removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
+        removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
     }
 
     /**
@@ -449,6 +450,9 @@ public class RespondMediatorOutputConnectorEditPart extends AbstractMediatorOutp
         if (targetEditPart instanceof APIResourceFaultInputConnectorEditPart) {
             types.add(EsbElementTypes.EsbLink_4001);
         }
+        if (targetEditPart instanceof JsonTransformMediatorInputConnectorEditPart) {
+            types.add(EsbElementTypes.EsbLink_4001);
+        }
         return types;
     }
 
@@ -534,6 +538,7 @@ public class RespondMediatorOutputConnectorEditPart extends AbstractMediatorOutp
             types.add(EsbElementTypes.TemplateEndpointInputConnector_3726);
             types.add(EsbElementTypes.APIResourceInputConnector_3670);
             types.add(EsbElementTypes.APIResourceFaultInputConnector_3672);
+            types.add(EsbElementTypes.JsonTransformMediatorInputConnector_3792);
         }
         return types;
     }

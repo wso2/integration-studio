@@ -18,14 +18,22 @@
 
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
+import java.util.Iterator;
+import java.util.Properties;
+
 import org.apache.axiom.om.OMAttribute;
+import org.apache.axiom.om.OMComment;
 import org.apache.axiom.om.OMElement;
+import org.apache.axiom.om.OMNode;
 import org.apache.synapse.Mediator;
 import org.apache.synapse.SequenceType;
+import org.apache.synapse.SynapseException;
 import org.apache.synapse.config.xml.SequenceMediatorFactory;
 import org.apache.synapse.config.xml.XMLConfigConstants;
+import org.apache.synapse.mediators.ListMediator;
 import org.apache.synapse.mediators.Value;
 import org.apache.synapse.mediators.base.SequenceMediator;
+import org.apache.synapse.mediators.builtin.CommentMediator;
 
 public class SequenceMediatorExtFactory extends SequenceMediatorFactory {
     
@@ -72,9 +80,47 @@ public class SequenceMediatorExtFactory extends SequenceMediatorFactory {
 
             }
         }
-        
         addAllCommentChildrenToList(omElement, ((SequenceMediator) mediator).getCommentsList());
 
         return mediator;
+    }
+    
+    public SequenceMediator createAnonymousSequence(OMElement elem, Properties properties) {
+        SequenceMediator seqMediator = new SequenceMediator();
+        OMAttribute e = elem.getAttribute(ATT_ONERROR);
+        if (e != null) {
+            seqMediator.setErrorHandler(e.getAttributeValue());
+        }
+        processAuditStatus(seqMediator, elem);
+        OMElement descElem = elem.getFirstChildWithName(DESCRIPTION_Q);
+        if (descElem != null) {
+            seqMediator.setDescription(descElem.getText());
+        }
+        addChildren(elem, seqMediator, properties);
+        seqMediator.setSequenceType(SequenceType.ANON);
+        return seqMediator;
+    }
+    
+    protected static void addChildren(OMElement el, ListMediator m, Properties properties) {
+        Iterator it = el.getChildren();
+
+        while (it.hasNext()) {
+            OMNode child = (OMNode) it.next();
+            if (child instanceof OMElement) {
+                if (!DESCRIPTION_Q.equals(((OMElement) child).getQName())) { // neglect the description tag
+                    Mediator med = DummyMediatorFactoryFinder.getInstance().getMediator((OMElement) child, properties);
+                    if (med != null) {
+                        m.addChild(med);
+                    } else {
+                        String msg = "Unknown mediator : " + ((OMElement) child).getLocalName();
+                        throw new SynapseException(msg);
+                    }
+                }
+            } else if (child instanceof OMComment) {
+                CommentMediator commendMediator = new CommentMediator();
+                commendMediator.setCommentText(((OMComment) child).getValue());
+                m.addChild(commendMediator);
+            }
+        }
     }
 }

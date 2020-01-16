@@ -102,6 +102,7 @@
                 </xs:complexType>
             </xs:element>
         </xs:all>
+        <xs:attribute name="description" type="xs:string" use="optional"/>
     </xs:complexType>
 
     <xs:group name="defined-db-connection">

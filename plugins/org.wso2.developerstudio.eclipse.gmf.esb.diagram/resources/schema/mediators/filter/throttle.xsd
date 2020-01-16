@@ -60,6 +60,7 @@
             <xs:attribute name="id" type="xs:string" use="required"/>
             <xs:attribute name="onAccept" type="xs:string" use="optional"/>
             <xs:attribute name="onReject" type="xs:string" use="optional"/>
+            <xs:attribute name="description" type="xs:string" use="optional"/>
         </xs:complexType>
     </xs:element>
 

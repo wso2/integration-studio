@@ -399,37 +399,37 @@ public class PropertyMediatorEditPart extends FixedSizedAbstractMediator {
 
     }
 
-	@Override
-	public void notifyChanged(Notification notification) {
-		// this.getModel() will get EMF datamodel of the property mediator datamodel
-		if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
-			// The following part will check for validation issues with the current data in
-			// the model
-			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-			if (model.getElement() instanceof PropertyMediatorImpl) {
-				PropertyMediatorImpl propertyMediatorDataModel = (PropertyMediatorImpl) model.getElement();
-				boolean hasError = false;
-				try {
-					if (propertyMediatorDataModel.getPropertyName().getValue() == PropertyName.NEW_PROPERTY_NAME
-							.getValue()) {
-						if (propertyMediatorDataModel.getNewPropertyName() == null
-								|| propertyMediatorDataModel.getNewPropertyName().isEmpty()) {
-							hasError = true;
-						}
-					}
+    @Override
+    public void notifyChanged(Notification notification) {
+        // this.getModel() will get EMF datamodel of the property mediator datamodel
+        if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
+            // The following part will check for validation issues with the current data in
+            // the model
+            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+            if (model.getElement() instanceof PropertyMediatorImpl) {
+                PropertyMediatorImpl propertyMediatorDataModel = (PropertyMediatorImpl) model.getElement();
+                boolean hasError = false;
+                try {
+                    if (propertyMediatorDataModel.getPropertyName().getValue() == PropertyName.NEW_PROPERTY_NAME
+                            .getValue()) {
+                        if (propertyMediatorDataModel.getNewPropertyName() == null
+                                || propertyMediatorDataModel.getNewPropertyName().isEmpty()) {
+                            hasError = true;
+                        }
+                    }
 
-					if (hasError) {
-						GraphicalValidatorUtil.addValidationMark(this);
-					} else {
-						GraphicalValidatorUtil.removeValidationMark(this);
-					}
-				} catch (Exception e) {
-					log.error("Graphical validation error occured", e);
-				}
-			}
-		}
-		super.notifyChanged(notification);
-	}
+                    if (hasError) {
+                        GraphicalValidatorUtil.addValidationMark(this);
+                    } else {
+                        GraphicalValidatorUtil.removeValidationMark(this);
+                    }
+                } catch (Exception e) {
+                    log.error("Graphical validation error occured", e);
+                }
+            }
+        }
+        super.notifyChanged(notification);
+    }
 
     /**
      * @generated

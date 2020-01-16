@@ -347,35 +347,35 @@ public class XSLTMediatorEditPart extends FixedSizedAbstractMediator {
 
     }
 
-	@Override
-	public void notifyChanged(Notification notification) {
-		// this.getModel() will get EMF datamodel of the XSLT mediator datamodel
-		if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
-			// The following part will check for validation issues with the current data in
-			// the model
-			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-			if (model.getElement() instanceof XSLTMediatorImpl) {
-				XSLTMediatorImpl xsltMediatorDataModel = (XSLTMediatorImpl) model.getElement();
-				boolean hasError = false;
-				try {
-					if (xsltMediatorDataModel.getXsltSchemaKeyType() == KeyType.DYNAMIC) {
-						if (xsltMediatorDataModel.getXsltDynamicSchemaKey().getPropertyValue().equals("")) {
-							hasError = true;
-						}
-					}
-					if (hasError) {
-						GraphicalValidatorUtil.addValidationMark(this);
-					} else {
-						GraphicalValidatorUtil.removeValidationMark(this);
-					}
-				} catch (Exception e) {
-					// Skip error since it's a validation related minor issue
-					log.error("Graphical validation error occured", e);
-				}
-			}
-		}
-		super.notifyChanged(notification);
-	}
+    @Override
+    public void notifyChanged(Notification notification) {
+        // this.getModel() will get EMF datamodel of the XSLT mediator datamodel
+        if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
+            // The following part will check for validation issues with the current data in
+            // the model
+            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+            if (model.getElement() instanceof XSLTMediatorImpl) {
+                XSLTMediatorImpl xsltMediatorDataModel = (XSLTMediatorImpl) model.getElement();
+                boolean hasError = false;
+                try {
+                    if (xsltMediatorDataModel.getXsltSchemaKeyType() == KeyType.DYNAMIC) {
+                        if (xsltMediatorDataModel.getXsltDynamicSchemaKey().getPropertyValue().equals("")) {
+                            hasError = true;
+                        }
+                    }
+                    if (hasError) {
+                        GraphicalValidatorUtil.addValidationMark(this);
+                    } else {
+                        GraphicalValidatorUtil.removeValidationMark(this);
+                    }
+                } catch (Exception e) {
+                    // Skip error since it's a validation related minor issue
+                    log.error("Graphical validation error occured", e);
+                }
+            }
+        }
+        super.notifyChanged(notification);
+    }
 
     /**
      * @generated

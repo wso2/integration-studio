@@ -1385,6 +1385,24 @@ public class EsbElementTypes {
             "org.wso2.developerstudio.eclipse.gmf.esb.diagram.PublishEventMediatorOutputConnector_3787"); //$NON-NLS-1$
 
     /**
+    * @generated
+    */
+    public static final IElementType JsonTransformMediator_3791 = getElementType(
+            "org.wso2.developerstudio.eclipse.gmf.esb.diagram.JsonTransformMediator_3791"); //$NON-NLS-1$
+
+    /**
+    * @generated
+    */
+    public static final IElementType JsonTransformMediatorInputConnector_3792 = getElementType(
+            "org.wso2.developerstudio.eclipse.gmf.esb.diagram.JsonTransformMediatorInputConnector_3792"); //$NON-NLS-1$
+
+    /**
+    * @generated
+    */
+    public static final IElementType JsonTransformMediatorOutputConnector_3793 = getElementType(
+            "org.wso2.developerstudio.eclipse.gmf.esb.diagram.JsonTransformMediatorOutputConnector_3793"); //$NON-NLS-1$
+
+    /**
      * @generated
      */
     public static final IElementType EntitlementOnAcceptContainer_3755 = getElementType(
@@ -2697,6 +2715,14 @@ public class EsbElementTypes {
             elements.put(PublishEventMediatorOutputConnector_3787,
                     EsbPackage.eINSTANCE.getPublishEventMediatorOutputConnector());
 
+            elements.put(JsonTransformMediator_3791, EsbPackage.eINSTANCE.getJsonTransformMediator());
+
+            elements.put(JsonTransformMediatorInputConnector_3792,
+                    EsbPackage.eINSTANCE.getJsonTransformMediatorInputConnector());
+
+            elements.put(JsonTransformMediatorOutputConnector_3793,
+                    EsbPackage.eINSTANCE.getJsonTransformMediatorOutputConnector());
+
             elements.put(EntitlementOnAcceptContainer_3755, EsbPackage.eINSTANCE.getEntitlementOnAcceptContainer());
 
             elements.put(MediatorFlow_3756, EsbPackage.eINSTANCE.getMediatorFlow());
@@ -3159,6 +3185,9 @@ public class EsbElementTypes {
             KNOWN_ELEMENT_TYPES.add(PublishEventMediator_3785);
             KNOWN_ELEMENT_TYPES.add(PublishEventMediatorInputConnector_3786);
             KNOWN_ELEMENT_TYPES.add(PublishEventMediatorOutputConnector_3787);
+            KNOWN_ELEMENT_TYPES.add(JsonTransformMediator_3791);
+            KNOWN_ELEMENT_TYPES.add(JsonTransformMediatorInputConnector_3792);
+            KNOWN_ELEMENT_TYPES.add(JsonTransformMediatorOutputConnector_3793);
             KNOWN_ELEMENT_TYPES.add(EntitlementOnAcceptContainer_3755);
             KNOWN_ELEMENT_TYPES.add(MediatorFlow_3756);
             KNOWN_ELEMENT_TYPES.add(EntitlementAdviceContainer_3757);
@@ -3761,6 +3790,12 @@ public class EsbElementTypes {
             return PublishEventMediatorInputConnector_3786;
         case PublishEventMediatorOutputConnectorEditPart.VISUAL_ID:
             return PublishEventMediatorOutputConnector_3787;
+        case JsonTransformMediatorEditPart.VISUAL_ID:
+            return JsonTransformMediator_3791;
+        case JsonTransformMediatorInputConnectorEditPart.VISUAL_ID:
+            return JsonTransformMediatorInputConnector_3792;
+        case JsonTransformMediatorOutputConnectorEditPart.VISUAL_ID:
+            return JsonTransformMediatorOutputConnector_3793;
         case EntitlementOnAcceptContainerEditPart.VISUAL_ID:
             return EntitlementOnAcceptContainer_3755;
         case MediatorFlow22EditPart.VISUAL_ID:
@@ -3945,26 +3980,29 @@ public class EsbElementTypes {
     public static final DiagramElementTypes TYPED_INSTANCE = new DiagramElementTypes(elementTypeImages) {
 
         /**
-         * @generated
-         */
+        * @generated
+        */
         @Override
+
         public boolean isKnownElementType(IElementType elementType) {
             return org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes
                     .isKnownElementType(elementType);
         }
 
         /**
-         * @generated
-         */
+        * @generated
+        */
         @Override
+
         public IElementType getElementTypeForVisualId(int visualID) {
             return org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes.getElementType(visualID);
         }
 
         /**
-         * @generated
-         */
+        * @generated
+        */
         @Override
+
         public ENamedElement getDefiningNamedElement(IAdaptable elementTypeAdapter) {
             return org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes
                     .getElement(elementTypeAdapter);

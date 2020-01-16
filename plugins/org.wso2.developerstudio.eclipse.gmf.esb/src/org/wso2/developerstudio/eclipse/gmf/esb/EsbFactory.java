@@ -1795,6 +1795,42 @@ public interface EsbFactory extends EFactory {
     CommentMediator createCommentMediator();
 
     /**
+     * Returns a new object of class '<em>Json Transform Mediator</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Json Transform Mediator</em>'.
+     * @generated
+     */
+    JsonTransformMediator createJsonTransformMediator();
+
+    /**
+     * Returns a new object of class '<em>Json Transform Mediator Output Connector</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Json Transform Mediator Output Connector</em>'.
+     * @generated
+     */
+    JsonTransformMediatorOutputConnector createJsonTransformMediatorOutputConnector();
+
+    /**
+     * Returns a new object of class '<em>Json Transform Mediator Input Connector</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Json Transform Mediator Input Connector</em>'.
+     * @generated
+     */
+    JsonTransformMediatorInputConnector createJsonTransformMediatorInputConnector();
+
+    /**
+     * Returns a new object of class '<em>Json Transform Mediator Property</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Json Transform Mediator Property</em>'.
+     * @generated
+     */
+    JsonTransformMediatorProperty createJsonTransformMediatorProperty();
+
+    /**
      * Returns a new object of class '<em>Script Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

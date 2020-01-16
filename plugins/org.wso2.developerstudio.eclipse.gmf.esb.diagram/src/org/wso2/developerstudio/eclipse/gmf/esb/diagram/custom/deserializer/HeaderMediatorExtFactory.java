@@ -28,7 +28,7 @@ import org.apache.synapse.Mediator;
 import org.apache.synapse.SynapseConstants;
 import org.apache.synapse.config.xml.HeaderMediatorFactory;
 import org.apache.synapse.config.xml.OMElementUtils;
-import org.apache.synapse.config.xml.SynapseXPathFactory;
+import org.apache.synapse.config.xml.SynapsePathFactory;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.mediators.transform.HeaderMediator;
 import org.jaxen.JaxenException;
@@ -102,7 +102,7 @@ public class HeaderMediatorExtFactory extends HeaderMediatorFactory {
 
         } else if (exprn != null && exprn.getAttributeValue() != null) {
             try {
-                ((HeaderMediator) mediator).setExpression(SynapseXPathFactory.getSynapseXPath(omElement, ATT_EXPRN));
+                ((HeaderMediator) mediator).setExpression(SynapsePathFactory.getSynapsePath(omElement, ATT_EXPRN));
             } catch (JaxenException je) {
                 // ignore
             }
@@ -115,7 +115,6 @@ public class HeaderMediatorExtFactory extends HeaderMediatorFactory {
                 }
             }
         }
-        
         addAllCommentChildrenToList(omElement, ((HeaderMediator) mediator).getCommentsList());
 
         return mediator;

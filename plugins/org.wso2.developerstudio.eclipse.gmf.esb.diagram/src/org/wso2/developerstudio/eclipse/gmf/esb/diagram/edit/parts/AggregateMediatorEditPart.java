@@ -72,6 +72,7 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
  */
 public class AggregateMediatorEditPart extends SingleCompartmentComplexFiguredAbstractMediator {
 
+    private static final String JSON_XPATH_START = "json-eval(";
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     public IFigure onCompleteOutputConnector;
 
@@ -419,74 +420,96 @@ public class AggregateMediatorEditPart extends SingleCompartmentComplexFiguredAb
 
     }
 
-	@Override
-	public void notifyChanged(Notification notification) {
-		// this.getModel() will get EMF datamodel of the aggregate mediator
-		// datamodel
-		if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
-			// The following part will check for validation issues with the
-			// current data in the model
-			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-			if (model.getElement() instanceof AggregateMediatorImpl) {
-				AggregateMediatorImpl aggregateMediatorDataModel = (AggregateMediatorImpl) model.getElement();
-				boolean isErrorneous = false;
-				try {
-					String xpathValue = aggregateMediatorDataModel.getAggregationExpression().getPropertyValue();
-					if (xpathValue.equals("")) {
-						isErrorneous = true;
-					} else {
-						try {
-							if (xpathValue.startsWith("json-eval(")) {
-								new SynapseJsonPath(xpathValue);
-							} else {
-								new SynapseXPath(xpathValue);
-							}
-						} catch (JaxenException e) {
-							isErrorneous = true;
-						}
-					}
-					if (!isErrorneous) {
-						String correlationXpathValue = aggregateMediatorDataModel.getCorrelationExpression()
-								.getPropertyValue();
-						if (!correlationXpathValue.equals("")) {
-							try {
-								if (correlationXpathValue.startsWith("json-eval(")) {
-									new SynapseJsonPath(correlationXpathValue);
-								} else {
-									new SynapseXPath(correlationXpathValue);
-								}
-							} catch (JaxenException e) {
-								isErrorneous = true;
-							}
-						}
-					}
-					if (aggregateMediatorDataModel
-							.getCompletionMinMessagesType() == CompletionMessagesType.EXPRESSION) {
-						if (aggregateMediatorDataModel.getCompletionMinMessagesExpression().getPropertyValue()
-								.equals("")) {
-							isErrorneous = true;
-						}
-					}
-					if (aggregateMediatorDataModel
-							.getCompletionMaxMessagesType() == CompletionMessagesType.EXPRESSION) {
-						if (aggregateMediatorDataModel.getCompletionMaxMessagesExpression().getPropertyValue()
-								.equals("")) {
-							isErrorneous = true;
-						}
-					}
-					if (isErrorneous) {
-						GraphicalValidatorUtil.addValidationMark(this);
-					} else {
-						GraphicalValidatorUtil.removeValidationMark(this);
-					}
-				} catch (Exception e) {
-					// Skip error since it's a validation related minor issue
-					log.error("Graphical validation error occured", e);
-				}
-			}
-		}
-		super.notifyChanged(notification);
-	}
+    @Override
+    public void notifyChanged(Notification notification) {
+        // this.getModel() will get EMF datamodel of the aggregate mediator
+        // datamodel
+        if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
+            // The following part will check for validation issues with the
+            // current data in the model
+            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+            if (model.getElement() instanceof AggregateMediatorImpl) {
+                AggregateMediatorImpl aggregateMediatorDataModel = (AggregateMediatorImpl) model.getElement();
+                boolean isErroneous = false;
+                try {
+                    String xpathValue = aggregateMediatorDataModel.getAggregationExpression().getPropertyValue();
+                    if (xpathValue.equals("")) {
+                        isErroneous = true;
+                    } else {
+                        try {
+                            if (xpathValue.startsWith(JSON_XPATH_START)) {
+                                new SynapseJsonPath(xpathValue);
+                            } else {
+                                new SynapseXPath(xpathValue);
+                            }
+                        } catch (JaxenException e) {
+                            isErroneous = true;
+                        }
+                    }
+                    if (!isErroneous) {
+                        String correlationXpathValue = aggregateMediatorDataModel.getCorrelationExpression()
+                                .getPropertyValue();
+                        if (!correlationXpathValue.equals("")) {
+                            try {
+                                if (correlationXpathValue.startsWith("json-eval(")) {
+                                    new SynapseJsonPath(correlationXpathValue);
+                                } else {
+                                    new SynapseXPath(correlationXpathValue);
+                                }
+                            } catch (JaxenException e) {
+                                isErroneous = true;
+                            }
+                        }
+                    }
+                    if (!isErroneous && (aggregateMediatorDataModel
+                            .getCompletionMinMessagesType() == CompletionMessagesType.EXPRESSION)) {
+                        String minExpressionValue = aggregateMediatorDataModel.getCompletionMinMessagesExpression()
+                                .getPropertyValue();
+                        if (minExpressionValue.equals("")) {
+                            isErroneous = true;
+                        } else {
+                            try {
+                                if (minExpressionValue.startsWith(JSON_XPATH_START)) {
+                                    new SynapseJsonPath(minExpressionValue);
+                                } else {
+                                    new SynapseXPath(minExpressionValue);
+                                }
+                            } catch (JaxenException e) {
+                                isErroneous = true;
+                            }
+                        }
+                    }
+                    if (!isErroneous && (aggregateMediatorDataModel
+                            .getCompletionMaxMessagesType() == CompletionMessagesType.EXPRESSION)) {
+                        String maxExpressionValue = aggregateMediatorDataModel.getCompletionMaxMessagesExpression()
+                                .getPropertyValue();
+                        if (maxExpressionValue.equals("")) {
+                            isErroneous = true;
+                        } else {
+                            try {
+                                if (maxExpressionValue.startsWith(JSON_XPATH_START)) {
+                                    new SynapseJsonPath(maxExpressionValue);
+                                } else {
+                                    new SynapseXPath(maxExpressionValue);
+                                }
+                            } catch (JaxenException e) {
+                                isErroneous = true;
+                            }
+                        }
+                    }
+                    if (isErroneous) {
+                        GraphicalValidatorUtil.addValidationMark(this);
+                    } else {
+                        GraphicalValidatorUtil.removeValidationMark(this);
+                    }
+                } catch (Exception e) {
+                    // Skip error since it's a validation related minor issue
+                    log.error("Graphical validation error occured", e);
+                }
+            }
+        }
+        super.notifyChanged(notification);
+    }
 
     /**
      * @generated NOT

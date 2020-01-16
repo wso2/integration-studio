@@ -65,7 +65,6 @@ public class SequenceDeserializer extends AbstractEsbNodeDeserializer<SequenceMe
             } else {
                 executeSetValueCommand(sequenceModel, SEQUENCE__NAME, sequence.getKey().getKeyValue());
             }
-            
             executeAddAllCommand(sequenceModel.getCommentsList(), sequence.getCommentsList());
 
             return sequenceModel;

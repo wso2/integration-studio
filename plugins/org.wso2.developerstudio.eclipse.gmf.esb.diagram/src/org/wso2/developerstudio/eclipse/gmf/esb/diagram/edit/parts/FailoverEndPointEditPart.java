@@ -394,12 +394,14 @@ public class FailoverEndPointEditPart extends ComplexFiguredAbstractEndpoint {
         }
 
     }
-    
+
     public void createDialogBox(ComplexFiguredAbstractEndpoint abstractEP) throws Exception {
 
-        final EObject failOverEP = (FailoverEndPoint) ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel()).getElement();
+        final EObject failOverEP = (FailoverEndPoint) ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel())
+                .getElement();
 
-        if (((FailoverEndPoint) failOverEP).getName() == null || ((FailoverEndPoint) failOverEP).getName().trim().equals("")) {
+        if (((FailoverEndPoint) failOverEP).getName() == null
+                || ((FailoverEndPoint) failOverEP).getName().trim().equals("")) {
             IInputValidator validator = new IInputValidator() {
 
                 public String isValid(String str) {
@@ -413,9 +415,8 @@ public class FailoverEndPointEditPart extends ComplexFiguredAbstractEndpoint {
 
             };
             String defaultName = "failover-endpoint";
-            final InputDialog failOverEPNameInput = new InputDialog(Display.getCurrent().getActiveShell(), 
-                    "Enter FailOver Endpoint Name", "Endpoint Name",
-                    defaultName, validator) {
+            final InputDialog failOverEPNameInput = new InputDialog(Display.getCurrent().getActiveShell(),
+                    "Enter FailOver Endpoint Name", "Endpoint Name", defaultName, validator) {
                 protected Control createDialogArea(Composite parent) {
                     Composite composite = (Composite) super.createDialogArea(parent);
                     return composite;
@@ -440,7 +441,7 @@ public class FailoverEndPointEditPart extends ComplexFiguredAbstractEndpoint {
                                 return true;
                             }
                         };
-                        
+
                         getEditDomain().getCommandStack().execute(new ICommandProxy(operation));
                         abstractEP.openPage(failOverEPName);
                     }

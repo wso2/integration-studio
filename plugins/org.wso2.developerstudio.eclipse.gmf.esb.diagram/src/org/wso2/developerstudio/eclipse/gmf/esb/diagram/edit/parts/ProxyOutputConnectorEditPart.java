@@ -387,7 +387,7 @@ public class ProxyOutputConnectorEditPart extends AbstractOutputConnectorEditPar
                 }
 
                 public void mouseExited(MouseEvent arg0) {
-/*                    if (getEditDomain().getPaletteViewer().getActiveTool().getId()
+                    /*                    if (getEditDomain().getPaletteViewer().getActiveTool().getId()
                             .equals("createEsbLink1CreationTool")) {
                         getEditDomain().getPaletteViewer().setActiveTool(null);
                     }*/
@@ -395,11 +395,11 @@ public class ProxyOutputConnectorEditPart extends AbstractOutputConnectorEditPar
 
                 public void mouseEntered(MouseEvent arg0) {
                     // TODO Auto-generated method stub
-/*                    if (getEditDomain().getPaletteViewer().getActiveTool().getId().equals("selectionTool")) {
+                    /*                    if (getEditDomain().getPaletteViewer().getActiveTool().getId().equals("selectionTool")) {
                         getEditDomain().getPaletteViewer()
                                 .setActiveTool((ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer()
                                         .getPaletteRoot().getChildren().get(4)).getChildren().get(0)));
-
+                    
                     }*/
                 }
 

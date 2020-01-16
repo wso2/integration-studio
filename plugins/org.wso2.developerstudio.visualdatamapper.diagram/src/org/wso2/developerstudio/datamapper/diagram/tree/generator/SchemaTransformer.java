@@ -1130,7 +1130,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
-	public String getSchemaContentFromModel(TreeNodeImpl treeNodeModel, File writeToFile) {
+	public String getSchemaContentFromModel(TreeNodeImpl treeNodeModel, File writeToFile, boolean isInput, String type) {
 
 		JSONObject root = new JSONObject();
 		Map propertiesObject = new LinkedHashMap<>();
@@ -1157,6 +1157,11 @@ public class SchemaTransformer implements ISchemaTransformer {
 					getPropertyKeyValuePairforTreeNodeImpls(treeNodeModel, JSON_SCHEMA_SCHEMA_VALUE));
 			root.put(JSON_SCHEMA_TITLE, treeNodeModel.getName());
 			insetIDAndTypeForJsonObject(treeNodeModel, root);
+			if (isInput) {
+				root.put("inputType", type);
+			} else {
+				root.put("outputType", type);
+			}
 			String schemaType = getPropertyKeyValuePairforTreeNode(treeNodeModel, JSON_SCHEMA_TYPE);
 			if(TRUE.equals(getPropertyKeyValuePairforTreeNodeImpls(treeNodeModel, JSON_SCHEMA_NULLABLE))){
 			root.put(JSON_SCHEMA_NULLABLE,
@@ -1997,6 +2002,12 @@ public class SchemaTransformer implements ISchemaTransformer {
 	 */
 	private void displayUserError(String reason, String message) {
 		MessageDialog.openWarning(Display.getCurrent().getActiveShell(), reason, message);
+	}
+
+	@Override
+	public String getSchemaContentFromModel(TreeNodeImpl treeNodeModel, File schemaFile) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

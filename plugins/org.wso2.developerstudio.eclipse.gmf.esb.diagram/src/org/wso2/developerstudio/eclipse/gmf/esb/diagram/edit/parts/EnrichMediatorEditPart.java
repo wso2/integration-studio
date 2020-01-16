@@ -396,56 +396,58 @@ public class EnrichMediatorEditPart extends FixedSizedAbstractMediator {
 
     }
 
-	@Override
-	public void notifyChanged(Notification notification) {
-		// this.getModel() will get EMF datamodel of the enrich mediator datamodel
-		if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
-			// The following part will check for validation issues with the current data in
-			// the model
-			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-			if (model.getElement() instanceof EnrichMediatorImpl) {
-				EnrichMediatorImpl enrichMediatorDataModel = (EnrichMediatorImpl) model.getElement();
-				try {
-					boolean hasError = false;
-					// Validate Source Properties
-					if (enrichMediatorDataModel.getSourceType() == EnrichSourceType.CUSTOM) {
-						if (enrichMediatorDataModel.getSourceXpath().getPropertyValue().equals("")) {
-							hasError = true;
-						}
-					} else if (enrichMediatorDataModel.getSourceType() == EnrichSourceType.INLINE) {
-						if (enrichMediatorDataModel.getSourceXML() == null
-								|| enrichMediatorDataModel.getSourceXML().equals("")) {
-							hasError = true;
-						}
-					}
-					// Validate Target Properties
-					if (enrichMediatorDataModel.getTargetType() == EnrichTargetType.CUSTOM) {
-						if (enrichMediatorDataModel.getTargetXpath().getPropertyValue().equals("")) {
-							hasError = true;
-						}
-					} else if (enrichMediatorDataModel.getTargetType() == EnrichTargetType.PROPERTY) {
-						if (enrichMediatorDataModel.getTargetProperty().equals("")) {
-							hasError = true;
-						}
-					}
+    @Override
+    public void notifyChanged(Notification notification) {
+        // this.getModel() will get EMF datamodel of the enrich mediator datamodel
+        if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
+            // The following part will check for validation issues with the current data in
+            // the model
+            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+            if (model.getElement() instanceof EnrichMediatorImpl) {
+                EnrichMediatorImpl enrichMediatorDataModel = (EnrichMediatorImpl) model.getElement();
+                try {
+                    boolean hasError = false;
+                    // Validate Source Properties
+                    if (enrichMediatorDataModel.getSourceType() == EnrichSourceType.CUSTOM) {
+                        if (enrichMediatorDataModel.getSourceXpath().getPropertyValue().equals("")) {
+                            hasError = true;
+                        }
+                    } else if (enrichMediatorDataModel.getSourceType() == EnrichSourceType.INLINE) {
+                        if (enrichMediatorDataModel.getSourceXML() == null
+                                || enrichMediatorDataModel.getSourceXML().equals("")) {
+                            hasError = true;
+                        }
+                    }
+                    // Validate Target Properties
+                    if (!hasError) {
+                        if (enrichMediatorDataModel.getTargetType() == EnrichTargetType.CUSTOM) {
+                            if (enrichMediatorDataModel.getTargetXpath().getPropertyValue().equals("")) {
+                                hasError = true;
+                            }
+                        } else if (enrichMediatorDataModel.getTargetType() == EnrichTargetType.PROPERTY) {
+                            if (enrichMediatorDataModel.getTargetProperty().equals("")) {
+                                hasError = true;
+                            }
+                        }
+                    }
 
-					if (hasError) {
-						GraphicalValidatorUtil.addValidationMark(this);
-					} else {
-						GraphicalValidatorUtil.removeValidationMark(this);
-					}
-				} catch (Exception e) {
-					// Skip error since it's a validation related minor issue
-					log.error("Graphical validation error occured", e);
-				}
-			}
-		}
-		super.notifyChanged(notification);
-	}
+                    if (hasError) {
+                        GraphicalValidatorUtil.addValidationMark(this);
+                    } else {
+                        GraphicalValidatorUtil.removeValidationMark(this);
+                    }
+                } catch (Exception e) {
+                    // Skip error since it's a validation related minor issue
+                    log.error("Graphical validation error occured", e);
+                }
+            }
+        }
+        super.notifyChanged(notification);
+    }
 
-	/**
-	 * @generated
-	 */
-	static final Color THIS_BACK = new Color(null, 230, 230, 230);
+    /**
+     * @generated
+     */
+    static final Color THIS_BACK = new Color(null, 230, 230, 230);
 
 }

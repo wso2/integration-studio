@@ -65,7 +65,7 @@ public class SendMediatorOutputConnectorEditPart extends AbstractMediatorOutputC
         installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
         // XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable
         // editpolicies
-        // removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
+        removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
     }
 
     /**
@@ -335,6 +335,9 @@ public class SendMediatorOutputConnectorEditPart extends AbstractMediatorOutputC
         if (targetEditPart instanceof MergeNodeSecondInputConnectorEditPart) {
             types.add(EsbElementTypes.EsbLink_4001);
         }
+        if (targetEditPart instanceof JsonTransformMediatorInputConnectorEditPart) {
+            types.add(EsbElementTypes.EsbLink_4001);
+        }
         return types;
     }
 
@@ -386,6 +389,7 @@ public class SendMediatorOutputConnectorEditPart extends AbstractMediatorOutputC
             types.add(EsbElementTypes.MessageInputConnector_3046);
             types.add(EsbElementTypes.MergeNodeFirstInputConnector_3014);
             types.add(EsbElementTypes.MergeNodeSecondInputConnector_3015);
+            types.add(EsbElementTypes.JsonTransformMediatorInputConnector_3792);
         }
         return types;
     }

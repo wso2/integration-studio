@@ -138,6 +138,7 @@ public class EsbModelingAssistantProviderOfCloudConnectorInputConnectorEditPart 
             types.add(EsbElementTypes.ForEachMediatorOutputConnector_3782);
             types.add(EsbElementTypes.ForEachMediatorTargetOutputConnector_3783);
             types.add(EsbElementTypes.PublishEventMediatorOutputConnector_3787);
+            types.add(EsbElementTypes.JsonTransformMediatorOutputConnector_3793);
             types.add(EsbElementTypes.MessageOutputConnector_3047);
             types.add(EsbElementTypes.MergeNodeOutputConnector_3016);
             types.add(EsbElementTypes.SequencesOutputConnector_3617);

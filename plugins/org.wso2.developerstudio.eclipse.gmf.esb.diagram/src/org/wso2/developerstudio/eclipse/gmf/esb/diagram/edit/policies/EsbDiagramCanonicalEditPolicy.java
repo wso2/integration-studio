@@ -110,18 +110,14 @@ public class EsbDiagramCanonicalEditPolicy extends CanonicalEditPolicy {
         }
         // alternative to #cleanCanonicalSemanticChildren(getViewChildren(), semanticChildren)
         //
-        // iteration happens over list of desired semantic elements, trying to find best matching View, while original
-        // CEP
-        // iterates views, potentially losing view (size/bounds) information - i.e. if there are few views to reference
-        // same EObject, only last one
-        // to answer isOrphaned == true will be used for the domain element representation, see
-        // #cleanCanonicalSemanticChildren()
+        // iteration happens over list of desired semantic elements, trying to find best matching View, while original CEP
+        // iterates views, potentially losing view (size/bounds) information - i.e. if there are few views to reference same EObject, only last one 
+        // to answer isOrphaned == true will be used for the domain element representation, see #cleanCanonicalSemanticChildren()
         for (Iterator<EsbNodeDescriptor> descriptorsIterator = childDescriptors.iterator(); descriptorsIterator
                 .hasNext();) {
             EsbNodeDescriptor next = descriptorsIterator.next();
             String hint = EsbVisualIDRegistry.getType(next.getVisualID());
-            LinkedList<View> perfectMatch = new LinkedList<View>(); // both semanticElement and hint match that of
-                                                                    // NodeDescriptor
+            LinkedList<View> perfectMatch = new LinkedList<View>(); // both semanticElement and hint match that of NodeDescriptor
             for (View childView : getViewChildren()) {
                 EObject semanticElement = childView.getElement();
                 if (next.getModelElement().equals(semanticElement)) {
@@ -139,8 +135,7 @@ public class EsbDiagramCanonicalEditPolicy extends CanonicalEditPolicy {
                 knownViewChildren.remove(perfectMatch.getFirst());
             }
         }
-        // those left in knownViewChildren are subject to removal - they are our diagram elements we didn't find match
-        // to,
+        // those left in knownViewChildren are subject to removal - they are our diagram elements we didn't find match to,
         // or those we have potential matches to, and thus need to be recreated, preserving size/location information.
         orphaned.addAll(knownViewChildren);
         //
@@ -162,6 +157,7 @@ public class EsbDiagramCanonicalEditPolicy extends CanonicalEditPolicy {
             SetViewMutabilityCommand.makeMutable(new EObjectAdapter(host().getNotationView())).execute();
             executeCommand(cmd);
             @SuppressWarnings("unchecked")
+
             List<IAdaptable> nl = (List<IAdaptable>) request.getNewObject();
             createdViews.addAll(nl);
         }
@@ -329,6 +325,27 @@ public class EsbDiagramCanonicalEditPolicy extends CanonicalEditPolicy {
         case PropertyMediatorOutputConnectorEditPart.VISUAL_ID: {
             if (!domain2NotationMap.containsKey(view.getElement())) {
                 result.addAll(EsbDiagramUpdater.getPropertyMediatorOutputConnector_3034ContainedLinks(view));
+            }
+            domain2NotationMap.putView(view.getElement(), view);
+            break;
+        }
+        case PropertyGroupMediatorEditPart.VISUAL_ID: {
+            if (!domain2NotationMap.containsKey(view.getElement())) {
+                result.addAll(EsbDiagramUpdater.getPropertyGroupMediator_3788ContainedLinks(view));
+            }
+            domain2NotationMap.putView(view.getElement(), view);
+            break;
+        }
+        case PropertyGroupMediatorInputConnectorEditPart.VISUAL_ID: {
+            if (!domain2NotationMap.containsKey(view.getElement())) {
+                result.addAll(EsbDiagramUpdater.getPropertyGroupMediatorInputConnector_3789ContainedLinks(view));
+            }
+            domain2NotationMap.putView(view.getElement(), view);
+            break;
+        }
+        case PropertyGroupMediatorOutputConnectorEditPart.VISUAL_ID: {
+            if (!domain2NotationMap.containsKey(view.getElement())) {
+                result.addAll(EsbDiagramUpdater.getPropertyGroupMediatorOutputConnector_3790ContainedLinks(view));
             }
             domain2NotationMap.putView(view.getElement(), view);
             break;
@@ -1976,6 +1993,27 @@ public class EsbDiagramCanonicalEditPolicy extends CanonicalEditPolicy {
         case PublishEventMediatorOutputConnectorEditPart.VISUAL_ID: {
             if (!domain2NotationMap.containsKey(view.getElement())) {
                 result.addAll(EsbDiagramUpdater.getPublishEventMediatorOutputConnector_3787ContainedLinks(view));
+            }
+            domain2NotationMap.putView(view.getElement(), view);
+            break;
+        }
+        case JsonTransformMediatorEditPart.VISUAL_ID: {
+            if (!domain2NotationMap.containsKey(view.getElement())) {
+                result.addAll(EsbDiagramUpdater.getJsonTransformMediator_3791ContainedLinks(view));
+            }
+            domain2NotationMap.putView(view.getElement(), view);
+            break;
+        }
+        case JsonTransformMediatorInputConnectorEditPart.VISUAL_ID: {
+            if (!domain2NotationMap.containsKey(view.getElement())) {
+                result.addAll(EsbDiagramUpdater.getJsonTransformMediatorInputConnector_3792ContainedLinks(view));
+            }
+            domain2NotationMap.putView(view.getElement(), view);
+            break;
+        }
+        case JsonTransformMediatorOutputConnectorEditPart.VISUAL_ID: {
+            if (!domain2NotationMap.containsKey(view.getElement())) {
+                result.addAll(EsbDiagramUpdater.getJsonTransformMediatorOutputConnector_3793ContainedLinks(view));
             }
             domain2NotationMap.putView(view.getElement(), view);
             break;

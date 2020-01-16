@@ -144,11 +144,11 @@ public class CloudConnectorDirectoryTraverser {
                             connector.deserialize(artifactsContent);
 
                             if (!connector.getConnectorName().equals(children[i].getName().split("-")[0])) {
-                                log.error("Connector directory name " + children[i].getName() + ""
-                                        + "doesn't match with the connector name " + connector.getConnectorName());
-                                errorList.add("Connector directory name " + children[i].getName() + ""
-                                        + " doesn't match with the connector name " + connector.getConnectorName()
-                                        + "valid connector should have 'name-connector-1.0.0' format");
+                                log.error("Connector directory name, \'" + children[i].getName() + "\',"
+                                        + " doesn't match with the connector name \'" + connector.getConnectorName() + "\'.");
+                                errorList.add("Connector directory name, \'" + children[i].getName() + "\',"
+                                        + " doesn't match with the connector name \'" + connector.getConnectorName()
+                                        + "\'. Valid connector should have the 'name-connector-1.0.0' format");
                                 FileUtils.deleteDirectories(connectorPath);
                                 continue;
                             }

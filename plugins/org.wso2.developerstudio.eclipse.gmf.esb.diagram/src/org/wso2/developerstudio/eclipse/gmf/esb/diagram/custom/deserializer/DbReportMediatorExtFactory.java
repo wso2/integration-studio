@@ -58,7 +58,6 @@ public class DbReportMediatorExtFactory extends DBReportMediatorFactory {
         }
         buildDataSource(omElement, (DBReportMediator) mediator);
         processStatements(omElement, (DBReportMediator) mediator);
-        
         addAllCommentChildrenToList(omElement, ((DBReportMediator) mediator).getCommentsList());
 
         return mediator;

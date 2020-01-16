@@ -47,6 +47,7 @@
             <xs:attribute name="method" type="xs:string" use="optional"/>
             <xs:attribute name="target" type="xs:string" use="optional"/>
             <xs:attribute name="jndiName" type="xs:string" use="optional"/>
+            <xs:attribute name="description" type="xs:string" use="optional"/>
         </xs:complexType>
     </xs:element>
 

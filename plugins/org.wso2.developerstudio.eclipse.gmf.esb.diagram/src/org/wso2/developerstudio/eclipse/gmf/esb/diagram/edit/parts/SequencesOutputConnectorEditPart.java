@@ -86,7 +86,7 @@ public class SequencesOutputConnectorEditPart extends AbstractOutputConnectorEdi
         installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
         // XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable
         // editpolicies
-        // removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
+        removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
     }
 
     /**
@@ -375,6 +375,9 @@ public class SequencesOutputConnectorEditPart extends AbstractOutputConnectorEdi
         if (targetEditPart instanceof SequencesInputConnectorEditPart) {
             types.add(EsbElementTypes.EsbLink_4001);
         }
+        if (targetEditPart instanceof JsonTransformMediatorInputConnectorEditPart) {
+            types.add(EsbElementTypes.EsbLink_4001);
+        }
         return types;
     }
 
@@ -432,6 +435,7 @@ public class SequencesOutputConnectorEditPart extends AbstractOutputConnectorEdi
             types.add(EsbElementTypes.MergeNodeFirstInputConnector_3014);
             types.add(EsbElementTypes.MergeNodeSecondInputConnector_3015);
             types.add(EsbElementTypes.SequencesInputConnector_3616);
+            types.add(EsbElementTypes.JsonTransformMediatorInputConnector_3792);
         }
         return types;
     }

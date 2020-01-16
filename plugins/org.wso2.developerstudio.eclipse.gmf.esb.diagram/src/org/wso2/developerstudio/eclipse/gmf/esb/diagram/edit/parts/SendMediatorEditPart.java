@@ -106,6 +106,7 @@ public class SendMediatorEditPart extends SingleCompartmentComplexFiguredAbstrac
     }
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+
     /**
      * @generated NOT
      */
@@ -489,44 +490,44 @@ public class SendMediatorEditPart extends SingleCompartmentComplexFiguredAbstrac
 
     }
 
-	@Override
-	public void notifyChanged(Notification notification) {
-		super.notifyChanged(notification);
+    @Override
+    public void notifyChanged(Notification notification) {
+        super.notifyChanged(notification);
 
-		if (notification.getFeature() instanceof EAttribute) {
-			if (EsbPackage.eINSTANCE.getSendMediator_SkipSerialization().equals(notification.getFeature())) {
-				updateEndpointInlineProperty(notification);
-			}
-		}
+        if (notification.getFeature() instanceof EAttribute) {
+            if (EsbPackage.eINSTANCE.getSendMediator_SkipSerialization().equals(notification.getFeature())) {
+                updateEndpointInlineProperty(notification);
+            }
+        }
 
-		// this.getModel() will get EMF datamodel of the send mediator datamodel
-		if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
-			// The following part will check for validation issues with the current data in
-			// the model
-			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-			if (model.getElement() instanceof SendMediatorImpl) {
-				SendMediatorImpl sendMediatorDataModel = (SendMediatorImpl) model.getElement();
-				boolean hasError = false;
-				try {
-					if (sendMediatorDataModel.getReceivingSequenceType().getValue() == ReceivingSequenceType.DYNAMIC
-							.getValue()) {
-						if (sendMediatorDataModel.getDynamicReceivingSequence().getPropertyValue().isEmpty()) {
-							hasError = true;
-						}
-					}
+        // this.getModel() will get EMF datamodel of the send mediator datamodel
+        if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
+            // The following part will check for validation issues with the current data in
+            // the model
+            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+            if (model.getElement() instanceof SendMediatorImpl) {
+                SendMediatorImpl sendMediatorDataModel = (SendMediatorImpl) model.getElement();
+                boolean hasError = false;
+                try {
+                    if (sendMediatorDataModel.getReceivingSequenceType().getValue() == ReceivingSequenceType.DYNAMIC
+                            .getValue()) {
+                        if (sendMediatorDataModel.getDynamicReceivingSequence().getPropertyValue().isEmpty()) {
+                            hasError = true;
+                        }
+                    }
 
-					if (hasError) {
-						GraphicalValidatorUtil.addValidationMark(this);
-					} else {
-						GraphicalValidatorUtil.removeValidationMark(this);
-					}
-				} catch (Exception e) {
-					log.error("Graphical validation error occured", e);
-				}
-			}
-		}
-	}
-    
+                    if (hasError) {
+                        GraphicalValidatorUtil.addValidationMark(this);
+                    } else {
+                        GraphicalValidatorUtil.removeValidationMark(this);
+                    }
+                } catch (Exception e) {
+                    log.error("Graphical validation error occured", e);
+                }
+            }
+        }
+    }
+
     /**
      * @generated NOT
      */

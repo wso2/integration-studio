@@ -181,6 +181,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.IterateMediatorOutpu
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.IterateMediatorPropertiesEditionPartForm;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.IterateMediatorTargetOutputConnectorPropertiesEditionPartForm;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.IterateTargetPropertiesEditionPartForm;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.JsonTransformMediatorInputConnectorPropertiesEditionPartForm;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.JsonTransformMediatorOutputConnectorPropertiesEditionPartForm;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.JsonTransformMediatorPropertiesEditionPartForm;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.JsonTransformMediatorPropertyPropertiesEditionPartForm;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.LoadBalanceEndPointInputConnectorPropertiesEditionPartForm;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.LoadBalanceEndPointOutputConnectorPropertiesEditionPartForm;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.LoadBalanceEndPointPropertiesEditionPartForm;
@@ -531,6 +535,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.IterateMediatorOutput
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.IterateMediatorPropertiesEditionPartImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.IterateMediatorTargetOutputConnectorPropertiesEditionPartImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.IterateTargetPropertiesEditionPartImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.JsonTransformMediatorInputConnectorPropertiesEditionPartImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.JsonTransformMediatorOutputConnectorPropertiesEditionPartImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.JsonTransformMediatorPropertiesEditionPartImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.JsonTransformMediatorPropertyPropertiesEditionPartImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.LoadBalanceEndPointInputConnectorPropertiesEditionPartImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.LoadBalanceEndPointOutputConnectorPropertiesEditionPartImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.LoadBalanceEndPointPropertiesEditionPartImpl;
@@ -2825,6 +2833,30 @@ public class EsbPropertiesEditionPartProvider implements IPropertiesEditionPartP
 				return new CommentMediatorPropertiesEditionPartImpl(component);
 			if (kind == EsbViewsRepository.FORM_KIND)
 				return new CommentMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.JsonTransformMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new JsonTransformMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new JsonTransformMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.JsonTransformMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new JsonTransformMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new JsonTransformMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.JsonTransformMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new JsonTransformMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new JsonTransformMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.JsonTransformMediatorProperty.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new JsonTransformMediatorPropertyPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new JsonTransformMediatorPropertyPropertiesEditionPartForm(component);
 		}
 		return null;
 	}

@@ -65,7 +65,7 @@ public class PayloadFactoryMediatorInputConnectorEditPart extends AbstractMediat
         installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
         // XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable
         // editpolicies
-        // removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
+        removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
     }
 
     /**
@@ -263,6 +263,7 @@ public class PayloadFactoryMediatorInputConnectorEditPart extends AbstractMediat
             types.add(EsbElementTypes.PayloadFactoryMediatorOutputConnector_3599);
             types.add(EsbElementTypes.MessageOutputConnector_3047);
             types.add(EsbElementTypes.MergeNodeOutputConnector_3016);
+            types.add(EsbElementTypes.JsonTransformMediatorOutputConnector_3793);
         }
         return types;
     }

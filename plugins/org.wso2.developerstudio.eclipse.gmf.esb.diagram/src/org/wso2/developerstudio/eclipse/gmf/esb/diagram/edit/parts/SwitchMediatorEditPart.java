@@ -100,6 +100,7 @@ public class SwitchMediatorEditPart extends MultipleCompartmentComplexFiguredAbs
     protected IFigure contentPane;
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+
     /**
      * @generated
      */
@@ -234,42 +235,42 @@ public class SwitchMediatorEditPart extends MultipleCompartmentComplexFiguredAbs
         ++activeCount;
     }
 
-	@Override
-	public void notifyChanged(Notification notification) {
-		super.notifyChanged(notification);
-		// Fixing TOOLS-1786
-		if (notification.getEventType() == Notification.SET && activeCount == 1 && !reorderdOnUndo && !reversed) {
-			EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) (this).getModel()).getElement();
-			if (((SwitchMediator) parentContainer).getCaseBranches().size() > 1) {
-				SwitchMediatorUtils.reorderWhenForward(this);
-				reorderdOnUndo = true;
-			}
-		}
+    @Override
+    public void notifyChanged(Notification notification) {
+        super.notifyChanged(notification);
+        // Fixing TOOLS-1786
+        if (notification.getEventType() == Notification.SET && activeCount == 1 && !reorderdOnUndo && !reversed) {
+            EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) (this).getModel()).getElement();
+            if (((SwitchMediator) parentContainer).getCaseBranches().size() > 1) {
+                SwitchMediatorUtils.reorderWhenForward(this);
+                reorderdOnUndo = true;
+            }
+        }
 
-		// this.getModel() will get EMF datamodel of the switch mediator datamodel
-		if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
-			// The following part will check for validation issues with the current data in
-			// the model
-			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-			if (model.getElement() instanceof SwitchMediatorImpl) {
-				SwitchMediatorImpl switchMediatorDataModel = (SwitchMediatorImpl) model.getElement();
-				boolean hasError = false;
-				try {
-					if (switchMediatorDataModel.getSourceXpath().getPropertyValue().isEmpty()) {
-						hasError = true;
-					}
+        // this.getModel() will get EMF datamodel of the switch mediator datamodel
+        if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
+            // The following part will check for validation issues with the current data in
+            // the model
+            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+            if (model.getElement() instanceof SwitchMediatorImpl) {
+                SwitchMediatorImpl switchMediatorDataModel = (SwitchMediatorImpl) model.getElement();
+                boolean hasError = false;
+                try {
+                    if (switchMediatorDataModel.getSourceXpath().getPropertyValue().isEmpty()) {
+                        hasError = true;
+                    }
 
-					if (hasError) {
-						GraphicalValidatorUtil.addValidationMark(this);
-					} else {
-						GraphicalValidatorUtil.removeValidationMark(this);
-					}
-				} catch (Exception e) {
-					log.error("Graphical validation error occured", e);
-				}
-			}
-		}
-	}
+                    if (hasError) {
+                        GraphicalValidatorUtil.addValidationMark(this);
+                    } else {
+                        GraphicalValidatorUtil.removeValidationMark(this);
+                    }
+                } catch (Exception e) {
+                    log.error("Graphical validation error occured", e);
+                }
+            }
+        }
+    }
 
     /**
      * @generated
@@ -380,7 +381,7 @@ public class SwitchMediatorEditPart extends MultipleCompartmentComplexFiguredAbs
          * @generated NOT
          */
         public SwitchMediatorFigure() {
-            
+
             ToolbarLayout layoutThis = new ToolbarLayout();
             layoutThis.setStretchMinorAxis(true);
             layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_CENTER);

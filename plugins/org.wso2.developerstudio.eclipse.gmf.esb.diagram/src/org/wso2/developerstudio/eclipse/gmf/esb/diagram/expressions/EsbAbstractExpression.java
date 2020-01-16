@@ -31,7 +31,7 @@ public abstract class EsbAbstractExpression {
         String pluginID = EsbDiagramEditorPlugin.ID;
         this.status = new Status(severity, pluginID, -1, (message != null) ? message : "", throwable); //$NON-NLS-1$
         if (!this.status.isOK()) {
-            EsbDiagramEditorPlugin.getInstance().logError("Expression problem:" + message + "body:" + body(), //$NON-NLS-1$ //$NON-NLS-2$
+            EsbDiagramEditorPlugin.getInstance().logError("Expression problem:" + message + "body:" + body(), //$NON-NLS-1$//$NON-NLS-2$
                     throwable);
         }
     }

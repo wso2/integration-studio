@@ -46,8 +46,11 @@ public class ESBSolutionProjectFieldController extends ESBProjectFieldController
                 if (esbSolutionModel.isRegistryProjectChecked()) {
                     updateFields.add(REGISTRY_RESOURCES_PROJECT_NAME);
                 }
-                if (esbSolutionModel.isContainerExporterProjectChecked()) {
+                if (esbSolutionModel.isDockerExporterProjectChecked()) {
                     updateFields.add(DOCKER_EXPORTER_PROJECT_NAME);
+                }
+                if (esbSolutionModel.isKubernetesExporterProjectChecked()) {
+                    updateFields.add(KUBERNETES_EXPORTER_PROJECT_NAME);
                 }
             }
 		} else if (modelProperty.equals(REGISTRY_PROJECT_CHECKED)) {
@@ -58,6 +61,8 @@ public class ESBSolutionProjectFieldController extends ESBProjectFieldController
 			updateFields.add(COMPOSITE_APPLICATION_PROJECT_NAME);
 		} else if (modelProperty.equals(DOCKER_EXPORTER_PROJECT_CHECKED)) {
 			updateFields.add(DOCKER_EXPORTER_PROJECT_NAME);
+		} else if (modelProperty.equals(KUBERNETES_EXPORTER_PROJECT_CHECKED)) {
+			updateFields.add(KUBERNETES_EXPORTER_PROJECT_NAME);
 		}
 		return updateFields;
 	}
@@ -68,7 +73,8 @@ public class ESBSolutionProjectFieldController extends ESBProjectFieldController
 		boolean registryEnabled = ((ESBSolutionProjectModel) model).isRegistryProjectChecked();
 		boolean connectorEnabled = ((ESBSolutionProjectModel) model).isConnectorExporterProjectChecked();
 		boolean cappEnabled = ((ESBSolutionProjectModel) model).isCappProjectChecked();
-		boolean dockerEnabled = ((ESBSolutionProjectModel) model).isContainerExporterProjectChecked();
+		boolean dockerEnabled = ((ESBSolutionProjectModel) model).isDockerExporterProjectChecked();
+		boolean kubernetesEnabled = ((ESBSolutionProjectModel) model).isKubernetesExporterProjectChecked();
 		if (modelProperty.equals(REGISTRY_RESOURCES_PROJECT_NAME)) {
 			enable = registryEnabled;
 		} else if (modelProperty.equals(CONNECTOR_EXPORTER_PROJECT_NAME)) {
@@ -77,6 +83,8 @@ public class ESBSolutionProjectFieldController extends ESBProjectFieldController
 			enable = cappEnabled;
 		} else if (modelProperty.equals(DOCKER_EXPORTER_PROJECT_NAME)) {
 			enable = dockerEnabled;
+		} else if (modelProperty.equals(KUBERNETES_EXPORTER_PROJECT_NAME)) {
+			enable = kubernetesEnabled;
 		}
 		return enable;
 	}

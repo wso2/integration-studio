@@ -390,45 +390,45 @@ public class ClassMediatorEditPart extends FixedSizedAbstractMediator {
 
     }
 
-	@Override
-	public void notifyChanged(Notification notification) {
-		// this.getModel() will get EMF datamodel of the class mediator
-		// datamodel
-		if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
-			// The following part will check for validation issues with the
-			// current data in the model
-			CSSNodeImpl model = (CSSNodeImpl) this.getModel();
-			if (model.getElement() instanceof ClassMediatorImpl) {
-				ClassMediatorImpl classMediatorDataModel = (ClassMediatorImpl) model.getElement();
-				String className = classMediatorDataModel.getClassName();
-				boolean isErrorneous = false;
-				try {
-					if (className == null || className.equals("")) {
-						isErrorneous = true;
-					}
-					if (!isErrorneous) {
-						Iterator<ClassProperty> classPropertyIterator = classMediatorDataModel.getProperties()
-								.iterator();
-						while (!isErrorneous && classPropertyIterator.hasNext()) {
-							ClassProperty classProperty = classPropertyIterator.next();
-							if (classProperty.getPropertyName().equals("")) {
-								isErrorneous = true;
-							}
-						}
-					}
-					if (isErrorneous) {
-						GraphicalValidatorUtil.addValidationMark(this);
-					} else {
-						GraphicalValidatorUtil.removeValidationMark(this);
-					}
-				} catch (Exception e) {
-					// Skip error since it's a validation related minor issue
-					log.error("Graphical validation error occured", e);
-				}
-			}
-		}
-		super.notifyChanged(notification);
-	}
+    @Override
+    public void notifyChanged(Notification notification) {
+        // this.getModel() will get EMF datamodel of the class mediator
+        // datamodel
+        if (notification.getEventType() == Notification.SET && this.getModel() instanceof CSSNodeImpl) {
+            // The following part will check for validation issues with the
+            // current data in the model
+            CSSNodeImpl model = (CSSNodeImpl) this.getModel();
+            if (model.getElement() instanceof ClassMediatorImpl) {
+                ClassMediatorImpl classMediatorDataModel = (ClassMediatorImpl) model.getElement();
+                String className = classMediatorDataModel.getClassName();
+                boolean isErrorneous = false;
+                try {
+                    if (className == null || className.equals("")) {
+                        isErrorneous = true;
+                    }
+                    if (!isErrorneous) {
+                        Iterator<ClassProperty> classPropertyIterator = classMediatorDataModel.getProperties()
+                                .iterator();
+                        while (!isErrorneous && classPropertyIterator.hasNext()) {
+                            ClassProperty classProperty = classPropertyIterator.next();
+                            if (classProperty.getPropertyName().equals("")) {
+                                isErrorneous = true;
+                            }
+                        }
+                    }
+                    if (isErrorneous) {
+                        GraphicalValidatorUtil.addValidationMark(this);
+                    } else {
+                        GraphicalValidatorUtil.removeValidationMark(this);
+                    }
+                } catch (Exception e) {
+                    // Skip error since it's a validation related minor issue
+                    log.error("Graphical validation error occured", e);
+                }
+            }
+        }
+        super.notifyChanged(notification);
+    }
 
     /**
      * @generated

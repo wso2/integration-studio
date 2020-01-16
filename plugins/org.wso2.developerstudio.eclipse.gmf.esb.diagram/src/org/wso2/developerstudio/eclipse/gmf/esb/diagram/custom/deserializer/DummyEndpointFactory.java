@@ -97,7 +97,6 @@ public abstract class DummyEndpointFactory {
         if (onFaultAtt != null) {
             ep.setErrorHandler(onFaultAtt.getAttributeValue());
         }
-        
         CommentListUtil.populateComments(epConfig, ((AbstractEndpoint)ep).getCommentsList());
         
         return ep;

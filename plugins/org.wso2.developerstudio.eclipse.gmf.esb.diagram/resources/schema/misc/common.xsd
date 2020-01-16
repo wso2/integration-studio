@@ -42,7 +42,7 @@
         <xs:annotation>
             <xs:documentation source="description">
                 These are the parameters for various elements in the Synapse Configuration,
-                for example, for proxy services, for registry nad so forth
+                for example, for proxy services, for registry and so forth
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
@@ -98,6 +98,17 @@
         <xs:attributeGroup ref="valueOrExpression"/>
     </xs:attributeGroup>
 
+    <xs:attributeGroup name="nameValue">
+        <xs:annotation>
+            <xs:documentation>
+                This group of attributes are mainly used in header and property mediators
+                to provide the name value pairs as its configuration
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="value" type="xs:string" use="required"/>
+    </xs:attributeGroup>
+    
     <xs:attributeGroup name="valueOrExpression">
         <xs:annotation>
             <xs:documentation>

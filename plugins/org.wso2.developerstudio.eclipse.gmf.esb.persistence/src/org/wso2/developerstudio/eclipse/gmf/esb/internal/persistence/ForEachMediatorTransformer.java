@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.util.xpath.SynapseXPath;
@@ -29,6 +30,7 @@ import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.SynapseXPathExt;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.ValidationConstansts;
@@ -68,12 +70,12 @@ public class ForEachMediatorTransformer extends AbstractEsbNodeTransformer {
 
         NamespacedProperty ForEachExp = visualForEach.getForEachExpression();
         if (ForEachExp != null) {
-            SynapseXPath xpath;
+            SynapsePath xpath;
             if (!isForValidation && StringUtils.isEmpty(ForEachExp.getPropertyValue())) {
                 // Add a default xpath to use the synapse serializer
                 xpath = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
             } else {
-                xpath = new SynapseXPath(ForEachExp.getPropertyValue());
+                xpath = (SynapseXPath) SynapseXPathExt.createSynapsePath(ForEachExp.getPropertyValue());
             }
             Map<String, String> nameSpaceMap = ForEachExp.getNamespaces();
 

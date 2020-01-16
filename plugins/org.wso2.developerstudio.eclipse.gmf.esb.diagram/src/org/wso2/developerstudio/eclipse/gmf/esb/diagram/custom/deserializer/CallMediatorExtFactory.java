@@ -97,7 +97,6 @@ public class CallMediatorExtFactory extends CallMediatorFactory {
                 }
             }
         }
-        
         addAllCommentChildrenToList(omElement, ((CallMediator) mediator).getCommentsList());
 
         return mediator;

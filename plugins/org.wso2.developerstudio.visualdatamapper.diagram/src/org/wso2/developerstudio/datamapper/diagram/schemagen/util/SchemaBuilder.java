@@ -26,7 +26,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
-import org.wso2.developerstudio.datamapper.diagram.schemagen.util.SchemaBuilder.TypeEnum;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;

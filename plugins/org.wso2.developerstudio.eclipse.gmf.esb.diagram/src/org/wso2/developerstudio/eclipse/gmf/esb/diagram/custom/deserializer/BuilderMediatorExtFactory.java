@@ -51,7 +51,6 @@ public class BuilderMediatorExtFactory extends BuilderMediatorFactory {
         }
 
         builderExt.setMessageBuilderList(msgBuilderList);
-
         addAllCommentChildrenToList(elem, builderExt.getCommentsList());
         
         return builderExt;

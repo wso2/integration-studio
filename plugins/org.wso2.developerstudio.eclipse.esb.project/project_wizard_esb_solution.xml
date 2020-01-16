@@ -41,11 +41,19 @@
 				
 			<data modelProperty="solution.docker.choice" type="choice"
 				fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBSolutionProjectFieldController"
-				group="solution.projects.group">Create Docker/Kubernetes Exporter Project</data>
+				group="solution.projects.group">Create Docker Exporter Project</data>
 			
 			<data modelProperty="solution.docker" type="string"
 				fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBSolutionProjectFieldController"
 				group="solution.projects.group">Project Name</data>
+				
+			<data modelProperty="solution.kubernetes.choice" type="choice"
+				fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBSolutionProjectFieldController"
+				group="solution.projects.group">Create Kubernetes Exporter Project</data>
+			
+			<data modelProperty="solution.kubernetes" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBSolutionProjectFieldController"
+				group="solution.projects.group">Project Name</data>	
 			
 			<projectNatures>
 				<nature>org.eclipse.jdt.core.javanature</nature>

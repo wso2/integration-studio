@@ -4610,6 +4610,98 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
+     * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected JsonTransformMediatorItemProvider jsonTransformMediatorItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createJsonTransformMediatorAdapter() {
+        if (jsonTransformMediatorItemProvider == null) {
+            jsonTransformMediatorItemProvider = new JsonTransformMediatorItemProvider(this);
+        }
+
+        return jsonTransformMediatorItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediatorOutputConnector} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected JsonTransformMediatorOutputConnectorItemProvider jsonTransformMediatorOutputConnectorItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediatorOutputConnector}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createJsonTransformMediatorOutputConnectorAdapter() {
+        if (jsonTransformMediatorOutputConnectorItemProvider == null) {
+            jsonTransformMediatorOutputConnectorItemProvider = new JsonTransformMediatorOutputConnectorItemProvider(this);
+        }
+
+        return jsonTransformMediatorOutputConnectorItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediatorInputConnector} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected JsonTransformMediatorInputConnectorItemProvider jsonTransformMediatorInputConnectorItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediatorInputConnector}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createJsonTransformMediatorInputConnectorAdapter() {
+        if (jsonTransformMediatorInputConnectorItemProvider == null) {
+            jsonTransformMediatorInputConnectorItemProvider = new JsonTransformMediatorInputConnectorItemProvider(this);
+        }
+
+        return jsonTransformMediatorInputConnectorItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediatorProperty} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected JsonTransformMediatorPropertyItemProvider jsonTransformMediatorPropertyItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediatorProperty}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createJsonTransformMediatorPropertyAdapter() {
+        if (jsonTransformMediatorPropertyItemProvider == null) {
+            jsonTransformMediatorPropertyItemProvider = new JsonTransformMediatorPropertyItemProvider(this);
+        }
+
+        return jsonTransformMediatorPropertyItemProvider;
+    }
+
+    /**
      * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -8733,6 +8825,10 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
         if (inboundEndpointOnErrorSequenceOutputConnectorItemProvider != null) inboundEndpointOnErrorSequenceOutputConnectorItemProvider.dispose();
         if (inboundEndpointOnErrorSequenceInputConnectorItemProvider != null) inboundEndpointOnErrorSequenceInputConnectorItemProvider.dispose();
         if (commentMediatorItemProvider != null) commentMediatorItemProvider.dispose();
+        if (jsonTransformMediatorItemProvider != null) jsonTransformMediatorItemProvider.dispose();
+        if (jsonTransformMediatorOutputConnectorItemProvider != null) jsonTransformMediatorOutputConnectorItemProvider.dispose();
+        if (jsonTransformMediatorInputConnectorItemProvider != null) jsonTransformMediatorInputConnectorItemProvider.dispose();
+        if (jsonTransformMediatorPropertyItemProvider != null) jsonTransformMediatorPropertyItemProvider.dispose();
     }
 
 }

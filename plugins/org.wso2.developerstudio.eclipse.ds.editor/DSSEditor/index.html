@@ -250,8 +250,8 @@
     </div>
     <div id="operations" class="collapse-custom"><a class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="false" aria-controls="operations-collapse" role="button" href="#operations-collapse">Operations</a>
         <div class="collapse show table-bordered" id="operations-collapse">
-            <div class="table-responsive" id="q-queries-table">
-                <table class="table table-hover table-sm">
+            <div class="table-responsive">
+                <table class="table table-hover table-sm" id="o-operation-table">
                     <thead>
                         <tr>
                             <th>Operation Name</th>
@@ -260,11 +260,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Operation_ID_Placeholder</td>
-                            <td>Query_Placeholder</td>
-                            <td class="text-center"><i class="fa fa-edit"></i><i class="fa fa-trash"></i></td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -493,25 +488,50 @@
                 <div class="modal-header">
                     <h4 class="modal-title">Add Operation</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
                 <div class="modal-body table-bordered">
-                    <form id="operation-form" class="general-form">
+                    <form id="operation-form" class="general-form" name="operation-form">
                         <div class="form-group">
-                            <div id="o-addedit-opname-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="o-addedit-opname-input" name="o-addedit-opname-input"><label class="mb-0" for="q-om-addedit-outputfn-input">Operation Name *</label></div>
+                            <div id="o-addedit-opname-inputgroup" class="field inputgroup"><input class="form-control" type="text" required="" placeholder=" " id="o-addedit-opname-input" name="o-addedit-opname-input"><label class="mb-0" for="o-addedit-opname-input">Operation Name</label></div>
                         </div>
                         <div class="form-group query-common-element">
                             <div id="o-addedit-description-inputgroup" class="field inputgroup"><textarea class="form-control" rows="2" id="o-addedit-description-input"></textarea><label class="mb-0" for="om-json-input">Description</label></div>
                         </div>
                         <div class="form-group form-inline">
-                            <div class="form-group"><label>Query ID *</label><select class="form-control" required="" id="o-addedit-queryid-select" name="o-addedit-queryid-select"><option value="select" selected="">-- Select Query --</option></select></div>
+                            <div class="form-group"><label>Query ID</label><select class="form-control" required="" id="o-addedit-queryid-select" name="o-addedit-queryid-select"><option value="" selected="">-- Select Query --</option></select></div>
                         </div>
-                        <div class="form-group form-inline query-common-element">
+                        <div class="collapse-custom" id="operation-query-param-area"><a class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="true" aria-controls="op-table" role="button" href="#op-table">Operation Parameters</a>
+		                    <div class="collapse" id="op-table">
+		                        <div class="table-responsive" id="operation-query-entries-table">
+		                            <table class="table table-hover table-sm" id="operation-param-table">
+		                                <thead>
+		                                    <tr>
+		                                        <th>Query Parameter Name</th>
+		                                        <th>Operation Parameter Name</th>
+		                                        <th class="text-center"><i class="fa fa-cog"></i></th>
+		                                    </tr>
+		                                </thead>
+		                                <tbody>
+		                                    <tr>
+		                                        <td>Q Param Name</td>
+		                                        <td>O param Name</td>
+		                                        <td class="text-center"><i class="fa fa-edit"></i><i class="fa fa-trash"></i></td>
+		                                    </tr>
+		                                </tbody>
+		                            </table>
+		                        </div>
+		                        <div class="text-right"><button class="btn btn-success btn-sm" type="button" id="op-param-add-btn" data-toggle="modal">Add New</button></div>
+		                    </div>
+		                </div>
+						<div class="form-group form-inline query-common-element">
                             <div class="form-check"><input class="form-check-input" type="checkbox" id="o-addedit-enablestreaming-checkbox"><label class="form-check-label" for="o-addedit-enablestreaming-checkbox">Enable Streaming</label></div>
                         </div>
-                        <div class="form-group form-inline query-common-element">
+                        <div class="form-group form-inline query-common-element" id="returnreqstatus-area">
                             <div class="form-check"><input class="form-check-input" type="checkbox" id="o-addedit-returnreqstatus-checkbox"><label class="form-check-label" for="o-addedit-returnreqstatus-checkbox">Return Request Status</label></div>
                         </div>
                     </form>
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Close</button><button class="btn btn-primary" type="submit" form="input-mapping-form">Save</button></div>
+                <div class="modal-footer justify-content-between">
+           			<div id="operation-notification-alert-holder" class="alert mr-auto"></div><button class="btn btn-light ml-auto" type="button" id="operation-form-close-btn" data-dismiss="modal">Close</button><button class="btn btn-primary" type="submit" id="operation-form-save-btn" form="operation-form">Save</button>
+           		</div>
             </div>
         </div>
     </div>
@@ -551,6 +571,7 @@
     <script src="assets/js/ds-validation.js"></script>
     <script src="assets/js/query-validation.js"></script>
     <script src="assets/js/table-functions.js"></script>
+    <script src="assets/js/operation-validation.js"></script>
 </body>
 
 </html>

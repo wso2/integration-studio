@@ -29,6 +29,10 @@ import java.util.Properties;
 
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.PlatformUI;
+import org.wso2.developerstudio.eclipse.ds.editors.DSSMultiPageEditor;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
@@ -38,11 +42,29 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
  */
 public class DSSEditorUtils {
     
+    private static volatile DSSEditorUtils instance;
+    
     // Path to the properties file where editor-related meta data is saved.
     private static final String PROPERTIES_FILE_PATH = File.separator + ".metadata" + File.separator 
             + "integration-studio.dsseditor.properties";
     
     private static IDeveloperStudioLog log = Logger.getLog("org.wso2.developerstudio.eclipse.ds.editor");
+    
+    public static DSSEditorUtils getInstance() {
+        if (instance != null) {
+            return instance;
+        }
+
+        synchronized (DSSEditorUtils.class) {
+            if (instance == null) {
+                instance = new DSSEditorUtils();
+            }
+        }
+
+        return instance;
+    }
+    
+    private DSSEditorUtils() {};
     
     /**
      * Saves a property to the configured property file.
@@ -51,16 +73,41 @@ public class DSSEditorUtils {
      * @param value Value of the property.
      * @param comments Description of the property.
      * @return  'True' if successfully saved, 'False' otherwise.
+     * @throws IOException 
      */
     public boolean saveProperty(String propertyName, String value, String comments) {
         IWorkspace workspace = ResourcesPlugin.getWorkspace();
         File workspaceDirectory = workspace.getRoot().getLocation().toFile();
         String configFilePath = workspaceDirectory.getAbsolutePath() + PROPERTIES_FILE_PATH;
+        File confFile = new File(configFilePath);
+        OutputStream output = null;
+        InputStream input = null;
         
-        try (OutputStream output = new FileOutputStream(configFilePath)) {
-            Properties prop = new Properties();
-            prop.setProperty(propertyName, value);
-            prop.store(output, comments);
+        // Create properties file if does not exist
+        if (!confFile.exists()) {
+            try {
+                confFile.createNewFile();
+            } catch (IOException e) {
+                log.error("Error occurred while creating the property file.", e);
+                return false;
+            }
+        }
+   
+        try {
+            // Load existing properties
+            input = new FileInputStream(configFilePath);
+            Properties properties = new Properties();
+            properties.load(input);
+            input.close();
+            
+            // Add new property
+            properties.setProperty(propertyName, value);
+            
+            // Write back to file
+            output = new FileOutputStream(configFilePath);
+            properties.store(output, comments);
+            output.close();
+            
             return true;
         } catch (IOException e) {
             log.error("Error occurred while saving the property.", e);
@@ -82,10 +129,10 @@ public class DSSEditorUtils {
 
         if (confFile.exists()) {
             try (InputStream input = new FileInputStream(configFilePath)) {
-                Properties prop = new Properties();
-                prop.load(input);
-                
-                return prop.getProperty(propertyName);
+                Properties properties = new Properties();
+                properties.load(input);
+                input.close();
+                return properties.getProperty(propertyName);
             } catch (IOException e) {
                 log.error("Error occurred while retrieving the property.", e);
                 return null;

@@ -33,6 +33,7 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.ds.editors.DSSMultiPageEditor;
 import org.wso2.developerstudio.eclipse.ds.presentation.util.DSSVisualEditorConstants;
+import org.wso2.developerstudio.eclipse.ds.wizards.util.DSSEditorUtils;
 
 /**
  * The servlet class used to serve requests from the DSS editor.
@@ -43,6 +44,10 @@ public class DSSEditorServlet extends HttpServlet {
     DSSMultiPageEditor editor = null;
     
     static final String PAYLOAD_XML_CONTENT_PARAM_NAME = "xmlcontent";
+    static final String DS_ID_SEPARATOR = "\\?";
+    static final String DS_METADATA_SEPARATOR = "\\,";
+    
+    DSSEditorUtils editorUtils = DSSEditorUtils.getInstance();
     
     /**
      * This method will return the DSS configuration
@@ -68,7 +73,7 @@ public class DSSEditorServlet extends HttpServlet {
             throws ServletException, IOException {
         
         String operationTypeHeader = request.getHeader(DSSVisualEditorConstants.RequestHeaders.HEADER_OPERATION_TYPE);
-        final String xmlContent = request.getParameter(PAYLOAD_XML_CONTENT_PARAM_NAME);
+        final String payload = request.getParameter(PAYLOAD_XML_CONTENT_PARAM_NAME);
         
         // If operation type is save all
         if (DSSVisualEditorConstants.RequestHeaders.HEADER_VALUE_SAVE_ALL.equals(operationTypeHeader)) {
@@ -77,12 +82,27 @@ public class DSSEditorServlet extends HttpServlet {
                     IEditorPart editorPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow().
                             getActivePage().getActiveEditor();
                     editor = (DSSMultiPageEditor) editorPart;
-                    editor.setDsXmlContent(xmlContent);
-                    editor.getTextEditor().getDocumentProvider().getDocument(editor.getEditorInput()).set(xmlContent);
+                    editor.setDsXmlContent(payload);
+                    editor.getTextEditor().getDocumentProvider().getDocument(editor.getEditorInput()).set(payload);
                 }
             });
             
             response.setStatus(HttpServletResponse.SC_OK);
+        } else if (DSSVisualEditorConstants.RequestHeaders.HEADER_VALUE_SAVE_DS_METADATA.equals(operationTypeHeader)) {
+            // If the operation type is save DS metadata. This is to persist additional data of data sources such as
+            // RDBMS type, database engine etc.
+            // The format of the string will be: <datasource_ID>?<data_key>:<data_value>,<data_key>:<data_value>...
+            String[] dsMetadataArr = payload.split(DS_ID_SEPARATOR);
+            editorUtils.saveProperty(dsMetadataArr[0], dsMetadataArr[1], null);
+            
+            response.setStatus(HttpServletResponse.SC_OK);
+        } else if (DSSVisualEditorConstants.RequestHeaders.HEADER_VALUE_RETRIEVE_DS_METADATA.equals(operationTypeHeader)) {
+            // If the operation type is get DS metadata.
+            String metadata = editorUtils.getDSDetails(payload);
+            response.setContentType("text/plain");
+            response.setStatus(HttpServletResponse.SC_OK);
+            PrintWriter out = response.getWriter();
+            out.println(metadata);
         }
         
     }

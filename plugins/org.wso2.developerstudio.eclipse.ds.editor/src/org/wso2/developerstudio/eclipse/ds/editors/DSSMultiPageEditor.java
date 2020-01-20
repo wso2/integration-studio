@@ -47,6 +47,7 @@ import org.eclipse.ui.texteditor.ITextEditor;
 import org.eclipse.wst.sse.ui.StructuredTextEditor;
 import org.wso2.developerstudio.eclipse.ds.presentation.md.DSSVisualEditorPage;
 import org.wso2.developerstudio.eclipse.ds.presentation.util.DSSVisualEditorConstants;
+import org.wso2.developerstudio.eclipse.ds.wizards.util.DSSEditorUtils;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 

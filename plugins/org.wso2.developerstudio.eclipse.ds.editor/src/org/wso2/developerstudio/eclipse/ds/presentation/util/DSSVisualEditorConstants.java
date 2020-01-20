@@ -40,5 +40,7 @@ public class DSSVisualEditorConstants {
     public static class RequestHeaders {
         public static final String HEADER_OPERATION_TYPE = "x-operation-type";
         public static final String HEADER_VALUE_SAVE_ALL = "save-all";
+        public static final String HEADER_VALUE_SAVE_DS_METADATA = "save-ds-metadata";
+        public static final String HEADER_VALUE_RETRIEVE_DS_METADATA = "get-ds-metadata";
     }
 }

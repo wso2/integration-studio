@@ -32,17 +32,11 @@ $(document).ready(function ($) {
     // Start of Data sources - Add data source
     $("#create-ds-form").submit(function (e) {
         e.preventDefault();
-        let status = addDataSource(root);
+        let result = addDataSource(root);
 
-        if (status) {
+        if (result.status) {
             $("#ds-add-edit-ds-modal").modal('hide');
-            save(root, url);
-s
-            $.get(url, function (data, status) {
-                let parser = new DOMParser();
-                console.log("From backend: ");
-                console.log(parser.parseFromString(data, "text/xml"));
-            });
+            saveAll(root, url, saveDSMetadata(result.metadata, url));
         }
 
     });
@@ -62,11 +56,12 @@ s
         let dsId = $(this).closest("tr").data('id');
         deleteDatasource(root, dsId);
         $(this).closest("tr").remove();
-        save(root, url);
+        saveAll(root, url);
     });
 
     $(document).on('click','#ds-datasources-table .fa-edit',function() {
         let dsId = $(this).closest("tr").data('id');
+        console.log(dsId);
         populateDSModal(root, dsId);
         openDSModal(true);
     });
@@ -90,11 +85,11 @@ s
 
         }
 
-        save(root, url);
+        saveAll(root, url);
     });
 
     $("#dss-namespace-input").change(function() {
-        save(root, url);
+        saveAll(root, url);
     });
     // End of input event handlers - General details
 
@@ -219,9 +214,12 @@ function addDataSource(root) {
         dataObj[field.name] = field.value;
     });
 
-    processDSInputData(root, dataObj, true);
+    let metadata = processDSInputData(root, dataObj, true);
 
-    return true;
+    return {
+        status: true,
+        metadata: metadata
+    };
 }
 
 /**
@@ -235,9 +233,10 @@ function processDSInputData(root, data, deleteIfExists) {
     let dataRoot = root.getElementsByTagName("data")[0];
     let dsConfigs = root.getElementsByTagName("config");
 
-    let rdbmsType = $("#ds-dstype-select").val();
+    let dsType = $("#ds-dstype-select").val();
     let dbTypeExt = $("#ds-dstype-2-select").val();
     let dsId = $("#ds-ds-id-input").val();
+    let dbEngine = $("#ds-db-engine-select").val();
 
     // Delete if existing config node exists
     if (deleteIfExists) {
@@ -256,7 +255,7 @@ function processDSInputData(root, data, deleteIfExists) {
 
     let properties = [];
 
-    if (rdbmsType === "rdbms_ds") {
+    if (dsType === "rdbms_ds") {
         if (dbTypeExt === "default_ds") {
             properties.push(createTextNode(root, createPropertyNode(root, "driverClassName"), data['ds-driver-class-input']));
             properties.push(createTextNode(root, createPropertyNode(root, "url"), data['ds-url-input']));
@@ -267,7 +266,7 @@ function processDSInputData(root, data, deleteIfExists) {
         if (dbTypeExt === "external_ds") {
             properties.push(createTextNode(root, createPropertyNode(root, "dataSourceClassName"), data['ds-class-name-input']));
         }
-    } else if (rdbmsType === "carbon_ds") {
+    } else if (dsType === "carbon_ds") {
         properties.push(createTextNode(root, createPropertyNode(root, "carbon_datasource_name"), data['ds-ds-name-input']));
     }
 
@@ -279,12 +278,18 @@ function processDSInputData(root, data, deleteIfExists) {
     // OData enabled
     configElement.setAttribute("enableOData", $('#ds-enable-odata-check').is(":checked"));
 
-    if (dsConfigs.length > 0) {
+    if (root.getElementsByTagName("config").length > 0) {
         insertAfter(configElement, dsConfigs[dsConfigs.length - 1]);
     } else {
         dataRoot.appendChild(configElement);
     }
 
+    // Save data source metadata
+    let dsMetadataStr = dsId + DS_METADATA_ID_SEPARATOR + DS_METADATA_DS_TYPE + DS_METADATA_KEYVALUE_SEPARATOR +
+        dsType + DS_METADATA_SEPARATOR + DS_METADATA_RDBMS_TYPE + DS_METADATA_KEYVALUE_SEPARATOR + dbTypeExt +
+        DS_METADATA_SEPARATOR + DS_METADATA_DB_ENGINE + DS_METADATA_KEYVALUE_SEPARATOR + dbEngine;
+
+    return dsMetadataStr;
 }
 
 /**
@@ -409,7 +414,7 @@ function insertAfter(newNode, refNode) {
  * @param url Back-end URL.
  * @returns Status code
  */
-function save(root, url) {
+function saveAll(root, url, successFunc) {
     let serializedData = new XMLSerializer().serializeToString(root);
     console.log(serializedData);
 
@@ -418,8 +423,44 @@ function save(root, url) {
         type: "post",
         headers: {"x-operation-type":OPERATION_TYPE_HEADER_SAVE_ALL},
         data: {xmlcontent: serializedData},
+        success: successFunc
+    });
+
+    return request;
+}
+
+/**
+ * This function sends the modified source to the back-end and invokes the save operation.
+ *
+ * @param root Document object.
+ * @param url Back-end URL.
+ * @returns Status code
+ */
+function saveDSMetadata(metadata, url) {
+    console.log("Saving metadata...");
+    let request = $.ajax({
+        url: url,
+        type: "post",
+        headers: {"x-operation-type":HEADER_VALUE_SAVE_DS_METADATA},
+        data: {xmlcontent: metadata},
         success: function (resData) {
-            location.reload();
+            // location.reload();
+            retrieveDSMetadata("ahhh3", url);
+        }
+    });
+
+    return request;
+}
+
+function retrieveDSMetadata(datasourceId, url) {
+    console.log("Retrieving metadata...");
+    let request = $.ajax({
+        url: url,
+        type: "post",
+        headers: {"x-operation-type":HEADER_VALUE_RETRIEVE_DS_METADATA},
+        data: {xmlcontent: datasourceId},
+        success: function (resData) {
+            console.log(resData);
         }
     });
 

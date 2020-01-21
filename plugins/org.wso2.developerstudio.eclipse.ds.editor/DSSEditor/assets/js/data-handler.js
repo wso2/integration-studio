@@ -58,13 +58,15 @@ $(document).ready(function ($) {
         let dsId = $(this).closest("tr").data('id');
         deleteDatasource(root, dsId);
         $(this).closest("tr").remove();
-        saveAll(root, url);
+        saveAll(root, url, function() {
+            location.reload();
+        });
     });
 
     $(document).on('click','#ds-datasources-table .fa-edit',function() {
         let dsId = $(this).closest("tr").data('id');
-        console.log(dsId);
-        populateDSModal(root, dsId);
+        let dsMetadata = retrieveDSMetadata(dsId, url);
+        populateDSModal(root, dsId, dsMetadata);
         openDSModal(true);
     });
     // End of Data sources - Add data source
@@ -87,11 +89,15 @@ $(document).ready(function ($) {
 
         }
 
-        saveAll(root, url);
+        saveAll(root, url, function() {
+            location.reload();
+        });
     });
 
     $("#dss-namespace-input").change(function() {
-        saveAll(root, url);
+        saveAll(root, url, function() {
+            location.reload();
+        });
     });
     // End of input event handlers - General details
     /** End of Event handlers **/
@@ -222,8 +228,10 @@ function populateDataSources(root) {
  * Populates the data source modal when editing an existing data source.
  * @param root Document root object.
  * @param dsId Data source ID.
+ * @param metadata Data source metadata.
  */
-function populateDSModal(root, dsId) {
+function populateDSModal(root, dsId, metadata) {
+
 
 }
 
@@ -460,11 +468,10 @@ function insertAfter(newNode, refNode) {
  *
  * @param root Document object.
  * @param url Back-end URL.
- * @returns Status code
+ * @param successFunc Success callback function.
  */
 function saveAll(root, url, successFunc) {
     let serializedData = new XMLSerializer().serializeToString(root);
-    console.log(serializedData);
 
     let request = $.ajax({
         url: url,
@@ -473,8 +480,6 @@ function saveAll(root, url, successFunc) {
         data: {xmlcontent: serializedData},
         success: successFunc
     });
-
-    return request;
 }
 
 /**
@@ -482,37 +487,44 @@ function saveAll(root, url, successFunc) {
  *
  * @param root Document object.
  * @param url Back-end URL.
- * @returns Status code
  */
 function saveDSMetadata(metadata, url) {
-    console.log("Saving metadata...");
     let request = $.ajax({
         url: url,
         type: "post",
         headers: {"x-operation-type":HEADER_VALUE_SAVE_DS_METADATA},
         data: {xmlcontent: metadata},
-        success: function (resData) {
-            // location.reload();
-            retrieveDSMetadata("ahhh3", url);
+        success: function () {
+            location.reload();
         }
     });
-
-    return request;
 }
 
 function retrieveDSMetadata(datasourceId, url) {
-    console.log("Retrieving metadata...");
-    let request = $.ajax({
+    let response = $.ajax({
         url: url,
         type: "post",
+        async: false,
         headers: {"x-operation-type":HEADER_VALUE_RETRIEVE_DS_METADATA},
         data: {xmlcontent: datasourceId},
         success: function (resData) {
-            console.log(resData);
+            return resData;
         }
     });
 
-    return request;
+    return response;
+}
+
+function resolveMetadata(metadata) {
+    let dataPairs = metadata.split(",");
+    let mdMap = new Map();
+
+    for (i = 0; i < dataPairs.length; i++) {
+        let tempArr = dataPairs[i].split(":");
+        mdMap.set(tempArr[0], tempArr[1]);
+    }
+
+    return mdMap;
 }
 
 /**

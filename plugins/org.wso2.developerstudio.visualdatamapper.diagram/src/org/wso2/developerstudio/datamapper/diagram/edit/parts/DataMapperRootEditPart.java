@@ -113,7 +113,7 @@ public class DataMapperRootEditPart extends DiagramEditPart {
             Image img = ImageHolder.getInstance().getMapContentImage();
             ImageFigure iconImageFigure = new ImageFigure(img);
             iconImageFigure.setSize(new Dimension(200, 200));
-            iconImageFigure.setLocation(new Point(750,-150));
+            iconImageFigure.setLocation(new Point(0,-400));
             
             iconImageFigure.addMouseListener(new MouseListener() {
 
@@ -175,21 +175,31 @@ public class DataMapperRootEditPart extends DiagramEditPart {
             TreeNode treeNodeOutFin = null;
             TreeNode treeNodeOut = iterateList(treeNodeOutFin, iteratorOut, attr2, path2);
             
+            try {
+                final EObject source = (EObject) treeNode.getOutNode();
+                final EObject target = (EObject) treeNodeOut.getInNode();
+                final OutNode container = deduceContainer(source, target);
             
-            final EObject source = (EObject) treeNode.getOutNode();
-            final EObject target = (EObject) treeNodeOut.getInNode();
-            final OutNode container = deduceContainer(source, target);
             
-            final DataMapperLink newElement = DataMapperFactory.eINSTANCE.createDataMapperLink();
-            TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(container);
-            domain.getCommandStack().execute(new RecordingCommand(domain) {
-                @Override
-                protected void doExecute() {
-                    container.getOutgoingLink().add(newElement);
-                    newElement.setOutNode((OutNode) source);
-                    newElement.setInNode((InNode) target);
+                final DataMapperLink newElement = DataMapperFactory.eINSTANCE.createDataMapperLink();
+                TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(container);
+                try {
+                    Thread.sleep(2);
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
                 }
-            });
+                domain.getCommandStack().execute(new RecordingCommand(domain) {
+                    @Override
+                    protected void doExecute() {
+                        container.getOutgoingLink().add(newElement);
+                        newElement.setOutNode((OutNode) source);
+                        newElement.setInNode((InNode) target);
+                    }
+                });
+            } catch (Exception e) {
+                continue;
+            }
         }
         
         UpdateDiagramCommand updater = new UpdateDiagramCommand();

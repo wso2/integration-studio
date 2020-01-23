@@ -14,6 +14,8 @@ $("#op-param-add-btn").click(function() {
 	let param_row = "<tr><td><input type='text' placeholder='Query param name' class='form-control' style='width: 100%;' /></td><td><input type='text' " 
 		+ "placeholder='Operation param name' class='form-control' style='width: 100%;'/></td><td class='text-center'><i class='fa fa-trash'></i></td></tr>";
     $("#operation-param-table > tbody").append(param_row);
+    $('#o-addedit-returnreqstatus-checkbox').prop("checked", false);
+    $('#returnreqstatus-area').toggle(true);
 });
 
 /**
@@ -30,6 +32,10 @@ $('#operation-form-close-btn').click(function (e) {
  */
 $(document).on('click', '#operation-param-table .fa-trash', function() {
     $(this).closest("tr").remove();
+    if ($('#operation-param-table').find('tr').length < 2) {
+       $('#o-addedit-returnreqstatus-checkbox').prop("checked", false);
+       $('#returnreqstatus-area').toggle(false);
+    }
 });
 
 /**
@@ -52,7 +58,7 @@ function clearOperationForm() {
 function deleteOperation(root, operationName) {
     let operations = root.getElementsByTagName("operation");
     for (let i = 0, len = operations.length; i < len; i++) {
-        if (operations[i].name == operationName) {
+        if (operations[i].attributes.getNamedItem("name").value == operationName) {
             // Delete the node.
             root.documentElement.removeChild(operations[i]);
         }
@@ -60,36 +66,16 @@ function deleteOperation(root, operationName) {
 }
 
 /**
- * Processes the add operation.
+ * Processes the add operation functionality.
  *
  * @param root Document object
  */
 function addOperation(root) {
-    // Check if operation name already exists
-    let operations = root.getElementsByTagName("operation");
     let new_operation_name = $("#o-addedit-opname-input").val();
-    
-    for (let i = 0, len = operations.length; i < len; i++) {
-        if (operations[i].attributes.getNamedItem("name").value == new_operation_name) {
-        	showOperationNotification("warning", "An operation with the given name will be updated.", 4000);
-        	let trs = $('#o-operation-table').find('tr');
-        	for (let i = 0; i < trs.length; i++) {
-        		if (new_operation_name == trs[i].cells[0].firstChild.textContent) {
-        			trs[i].remove();
-        		}
-        	}
-        }
-    }
 
     // Process operation modal data
-    let formData = $("#operation-form").find(':visible').serializeArray();
-    let dataObj = {};
-
-    $(formData).each(function(i, field){
-        dataObj[field.name] = field.value;
-    });
-
-    processOperationInputData(root, dataObj, true);
+    updateOperationDataInRoot(root, new_operation_name);
+    clearOperationForm();
     return true;
 }
 
@@ -116,42 +102,37 @@ function showOperationNotification(type, message, interval) {
 }
 
 /**
+ * Shows an alert of a given type in the operations table.
+ *
+ * @param type Type of the alert: success | info | warning | danger
+ * @param message Message to be displayed.
+ * @param interval Number of milliseconds before the notification disappears. If not provided or '0',
+ * notification will stay forever.
+ */
+function showOperationsTableNotification(type, message, interval) {
+    let alertHtml = "<span><div id='o-table-notification-alert' class=\"alert " + "alert-" + type + "\"" + ">" + message + "</div></span>";
+    $("#o-table-notification-alert-holder").html(alertHtml);
+    $("#o-table-notification-alert").show();
+
+    showAlert("o-table-notification-alert", interval);
+}
+
+/**
  * Processes form input data of the create/edit operation form.
  *
  * @param root Document root element.
  * @param data Form data in data['field-name'] format.
- * @param deleteIfExists Delete the operation node if exists already.
+ * @param new_operation_name Operation name
  */
-function processOperationInputData(root, data, deleteIfExists) {
+function updateOperationDataInRoot(root, new_operation_name) {
     let dataRoot = root.getElementsByTagName("data")[0];
     let operations = root.getElementsByTagName("operation");
-    let new_operation_name = $("#o-addedit-opname-input").val();
-
-    // Deletes if operation node exists
-    if (deleteIfExists) {
-        for (let i = 0, len = operations.length; i < len; i++) {
-            if (operations[i].name == new_operation_name) {
-                // Delete the node.
-                root.documentElement.removeChild(operations[i]);
-                return;
-            }
-        }
-    }
-
-    // Creates a new operation element
-    let operationElement = root.createElement("operation");
-    operationElement.setAttribute("name", new_operation_name);
-    
-    //Creates description element
+    let query_id = $('#o-addedit-queryid-select').val();
     let description = $('#o-addedit-description-input').val();
-    let descriptionElement = root.createElement("description");
-    let text_node = root.createTextNode(description);
-    descriptionElement.appendChild(text_node);
-    operationElement.appendChild(descriptionElement);
     
     //Creates a new call-query element
     let callqueryElement = root.createElement("call-query");
-    let query_id = $('#o-addedit-queryid-select').val();
+    
     callqueryElement.setAttribute("href", query_id);
     
     //Creates with-param elements
@@ -162,6 +143,18 @@ function processOperationInputData(root, data, deleteIfExists) {
 		withparamElement.setAttribute("query-param", op_parameter.cells[1].firstChild.value);
 		callqueryElement.appendChild(withparamElement);
 	});
+    
+    // Creates a new operation element
+    let operationElement = root.createElement("operation");
+    operationElement.setAttribute("name", new_operation_name);
+    
+    //Creates description element
+    if ($.trim(description) != "") {
+    	let descriptionElement = root.createElement("description");
+        let text_node = root.createTextNode(description);
+        descriptionElement.appendChild(text_node);
+        operationElement.appendChild(descriptionElement);
+    }
     
     //Creates Enable Stream element
     if (!$('#o-addedit-enablestreaming-checkbox').is(":checked")) {
@@ -175,15 +168,45 @@ function processOperationInputData(root, data, deleteIfExists) {
     
     operationElement.appendChild(callqueryElement);
     
-    //Appends to operations table
-    dataRoot.appendChild(operationElement);
+    let exists = false;
+    if (operations.length > 0) {
+    	// Deletes if operation node exists
+        for (let i = 0, len = operations.length; i < len; i++) {
+            if (operations[0].attributes.getNamedItem("name").value == new_operation_name) {
+            	// Delete the node.
+            	exists = true;
+            	dataRoot.removeChild(operations[0]);
+            	dataRoot.appendChild(operationElement);
+            } else {
+            	let current_op = operations[0];
+            	dataRoot.removeChild(operations[0]);
+            	dataRoot.appendChild(current_op);
+            }
+        }
+    } else {
+    	dataRoot.appendChild(operationElement);
+    }
+    
+    if (operations.length > 0 && !exists) {
+    	dataRoot.appendChild(operationElement);
+    }
+
+    if (!exists) {
+    	//Appends to operations table
+    	let op_row = '<tr><td>' + new_operation_name + '</td><td>' + query_id + '</td><td class="text-center"><i class="fa fa-edit"></i><i class="fa fa-trash"></i></td></tr>';
+    	$('#o-operation-table > tbody').append(op_row);
+    	
+    } else {
+	  	let trs = $('#o-operation-table').find('tr');
+	  	for (let i = 0; i < trs.length; i++) {
+	  		if (new_operation_name == trs[i].cells[0].firstChild.textContent) {
+	  			trs[i].cells[1].firstChild.textContent = query_id;
+	  		}
+	  	}
+    }
         
-    //Adds a row to operations table
-    let op_row = '<tr><td>' + new_operation_name + '</td><td>' + query_id + '</td><td class="text-center"><i class="fa fa-edit"></i><i class="fa fa-trash"></i></td></tr>';
-	$('#o-operation-table > tbody').append(op_row);
-	$('#o-operation-addedit-modal').removeClass('show');
+    $('#o-operation-addedit-modal').removeClass('show');
 	$('.modal-backdrop.fade.show').removeClass('show');
-	clearOperationForm();
 }
 
 /**
@@ -241,6 +264,12 @@ function populateOperationForm(root, operation_name, query_name) {
 function populateOperations(root) {
 	$('#o-operation-table').find('tbody').find('tr').detach();
 	let operations = root.getElementsByTagName("operation");
+
+    if (operations.length == 0 || operations === undefined || operations === null)  {
+        $("#o-operation-table").hide();
+        showOperationsTableNotification("info", "No operations available. Click 'Add New' to create a new operation.", 0);
+        return;
+    }
 	
 	$.each(operations, function (index, op) {
 		let op_name = op.attributes.getNamedItem("name").value;

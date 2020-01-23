@@ -118,7 +118,12 @@ $(document).ready(function ($) {
      */
     $("#operation-form-save-btn").click(function (e) {
         e.preventDefault();
-        addOperation(root);
+        let status = addOperation(root);
+        if (status) {
+        	saveAll(root, url, function() {
+                location.reload();
+            });
+        }
     });
     
     /**
@@ -128,6 +133,9 @@ $(document).ready(function ($) {
     	let tds = $(this).closest("tr").find('td');
     	deleteOperation(root, tds[0].innerText);
     	$(this).closest("tr").remove();
+    	saveAll(root, url, function() {
+            location.reload();
+        });
     });
     
     /**

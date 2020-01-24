@@ -96,13 +96,16 @@ public class DSSEditorServlet extends HttpServlet {
             editorUtils.saveProperty(dsMetadataArr[0], dsMetadataArr[1], null);
             
             response.setStatus(HttpServletResponse.SC_OK);
+            PrintWriter writer = response.getWriter();
+            writer.close();
         } else if (DSSVisualEditorConstants.RequestHeaders.HEADER_VALUE_RETRIEVE_DS_METADATA.equals(operationTypeHeader)) {
             // If the operation type is get DS metadata.
             String metadata = editorUtils.getDSDetails(payload);
             response.setContentType("text/plain");
             response.setStatus(HttpServletResponse.SC_OK);
-            PrintWriter out = response.getWriter();
-            out.println(metadata);
+            PrintWriter writer = response.getWriter();
+            writer.println(metadata);
+            writer.close();
         }
         
     }

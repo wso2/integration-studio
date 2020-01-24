@@ -327,7 +327,7 @@
                             </div>
                         </div>
                         <div class="form-group form-inline" id="ds-db-engine-formgroup">
-                            <div class="form-group"><label>Database Engine</label><select class="form-control" id="ds-db-engine-select" name="ds-db-engine-select"><option value="" selected="">- Select Engine -</option><option value="mysql">MySQL</option><option value="apachederby">Apache Derby</option><option value="mssql">Microsoft SQL Server</option><option value="oracle">Oracle</option><option value="ibmdb2">IBM DB2</option><option value="hsqldb">HSQLDB</option><option value="informix">Informix</option><option value="postgresql">PostgreSQL</option><option value="sybasease">Sybase ASE</option><option value="h2">H2</option><option value="generic">Generic</option></select></div>
+                            <div class="form-group"><label>Database Engine</label><select class="form-control" id="ds-db-engine-select" name="ds-db-engine-select" required=""><option value="" selected="">- Select Engine -</option><option value="mysql">MySQL</option><option value="apachederby">Apache Derby</option><option value="mssql">Microsoft SQL Server</option><option value="oracle">Oracle</option><option value="ibmdb2">IBM DB2</option><option value="hsqldb">HSQLDB</option><option value="informix">Informix</option><option value="postgresql">PostgreSQL</option><option value="sybasease">Sybase ASE</option><option value="h2">H2</option><option value="generic">Generic</option></select></div>
                         </div>
                         <div class="form-group">
                             <div id="ds-driver-class-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="ds-driver-class-input" name="ds-driver-class-input"><label class="mb-0" for="ds-driver-class-input">Driver Class</label></div>
@@ -566,11 +566,11 @@
     </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/datasources-util.js"></script>
     <script src="assets/js/constants.js"></script>
     <script src="assets/js/data-handler.js"></script>
     <script src="assets/js/domutils.js"></script>
     <script src="assets/js/ds-validation.js"></script>
-    <script src="assets/js/query-validation.js"></script>
     <script src="assets/js/table-functions.js"></script>
     <script src="assets/js/operation-validation.js"></script>
 </body>

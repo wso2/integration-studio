@@ -100,6 +100,11 @@ public class DSSEditorUtils {
             properties.load(input);
             input.close();
             
+            // If exists, delete
+            if (properties.get(propertyName) != null) {
+                properties.remove(propertyName);
+            }
+            
             // Add new property
             properties.setProperty(propertyName, value);
             

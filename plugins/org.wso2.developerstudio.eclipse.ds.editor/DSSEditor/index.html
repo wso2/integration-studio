@@ -108,8 +108,8 @@
     </div>
     <div id="queries" class="collapse-custom"><a class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="false" aria-controls="queries-collapse" role="button" href="#queries-collapse">Queries</a>
         <div class="collapse show table-bordered" id="queries-collapse">
-            <div class="table-responsive" id="q-queries-table">
-                <table class="table table-hover table-sm">
+            <div class="table-responsive" id="r-queries-table">
+                <table class="table table-hover table-sm"  id="r-queries-item-table">
                     <thead>
                         <tr>
                             <th>Query ID</th>
@@ -139,7 +139,7 @@
                 <div class="collapse-custom"><a class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-1" role="button" href="#collapse-1">Input Mappings</a>
                     <div class="collapse" id="collapse-1">
                         <div class="table-responsive" id="q-im-entries-table">
-                            <table class="table table-hover table-sm">
+                            <table class="table table-hover table-sm" id="inputMappingTable">
                                 <thead>
                                     <tr>
                                         <th>Mapping Name</th>
@@ -269,11 +269,12 @@
     </div>
     <div id="resources" class="collapse-custom"><a class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="false" aria-controls="operations-collapse" role="button" href="#operations-collapse">Resources</a>
         <div class="collapse show table-bordered" id="operations-collapse">
-            <div class="table-responsive" id="q-queries-table">
+            <div class="table-responsive" id="r-resources-table">
                 <table class="table table-hover table-sm">
                     <thead>
                         <tr>
                             <th>Resource Path</th>
+                            <th>Resource Method</th>
                             <th>Query</th>
                             <th class="text-center"><i class="fa fa-cog"></i></th>
                         </tr>
@@ -281,13 +282,15 @@
                     <tbody>
                         <tr>
                             <td>Resource_Path_Placeholder</td>
+                            <td>Resource_Method_Placeholder</td>
                             <td>Query_Placeholder</td>
                             <td class="text-center"><i class="fa fa-edit"></i><i class="fa fa-trash"></i></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <div class="text-right"><button class="btn btn-success btn-sm" type="button" id="o-operation-add-btn" data-toggle="modal" data-target="#r-resource-addedit-modal">Add New</button></div>
+            <div id="resource-table-notification-alert-holder" class="alert mr-auto"></div>
+            <div class="text-right"><button class="btn btn-success btn-sm" type="button" id="r-resource-add-btn" data-toggle="modal">Add New</button></div>
         </div>
     </div>
     <div id="advanced-config-collapse" class="collapse-custom"><a class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="false" aria-controls="advanced-settings-collapse" role="button" href="#advanced-settings-collapse">Advanced Configurations</a>
@@ -419,9 +422,6 @@
                     <h4 class="modal-title">Add Input Mapping</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
                 <div class="modal-body table-bordered">
                     <form id="input-mapping-form" class="general-form">
-                        <div class="form-group">
-                            <div id="q-inmapping-name-inputgroup" class="field inputgroup"><input class="form-control" type="text" required="" placeholder=" " id="q-inmapping-name-input" name="q-inmapping-name-input" style="border: 0; border-bottom: 1px solid #E0E0E0;"><label class="mb-0" for="q-inmapping-name-input">Mapping Name *</label></div>
-                        </div>
                         <div class="form-group form-inline">
                             <div class="form-group"><label>Parameter Type</label><select class="form-control" required="" id="q-im-paramtype-select" name="q-im-paramtype-select"><option value="im_type_scalar" selected="">Scalar</option><option value="im_array">Array</option></select></div>
                         </div>
@@ -540,27 +540,50 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Add Resource</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                    <h4 class="modal-title" id="resource-modal-header">Add Resource</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
                 <div class="modal-body table-bordered">
-                    <form id="operation-form" class="general-form">
+                    <form id="resource-form" class="general-form">
                         <div class="form-group">
-                            <div id="o-addedit-opname-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="o-addedit-opname-input" name="o-addedit-opname-input"><label class="mb-0" for="q-om-addedit-outputfn-input">Resource Path *</label></div>
+                            <div id="r-addedit-opname-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="r-addedit-opname-input" name="r-addedit-opname-input"><label class="mb-0" for="q-om-addedit-outputfn-input">Resource Path *</label></div>
                         </div>
                         <div class="form-group query-common-element">
-                            <div id="o-addedit-description-inputgroup" class="field inputgroup"><textarea class="form-control" rows="2" id="o-addedit-description-input"></textarea><label class="mb-0" for="om-json-input">Description</label></div>
+                            <div id="r-addedit-description-inputgroup" class="field inputgroup"><textarea class="form-control" rows="2" id="r-addedit-description-input"></textarea><label class="mb-0" for="om-json-input">Description</label></div>
                         </div>
                         <div class="form-group form-inline">
-                            <div class="form-group"><label>Resource Method *</label><select class="form-control" required="" id="o-addedit-queryid-select" name="o-addedit-queryid-select"><option value="select" selected="">-- Select --</option><option value="get">GET</option><option value="put">PUT</option><option value="post">POST</option><option value="delete">DELETE</option></select></div>
+                            <div class="form-group"><label>Resource Method *</label><select class="form-control" required="" id="r-addedit-resourcemethod-select" name="r-addedit-resourcemethod-select"><option value="select" selected="">-- Select --</option><option value="get">GET</option><option value="put">PUT</option><option value="post">POST</option><option value="delete">DELETE</option></select> <input type="hidden" id="r-addedit-resourcemethod-select-original" name="r-addedit-resourcemethod-select-original"/></div>
+                        </div>
+                        <div class="form-group form-inline">
+                            <div class="form-group"><label>Query ID *</label><select class="form-control" required="" id="r-addedit-queryid-select" name="r-addedit-queryid-select"><option value="select" selected="">-- Select Query --</option></select></div>
+                        </div>
+							<div class="collapse-custom" id="operation-query-param-area"><a class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="true" aria-controls="op-table" role="button" href="#op-table">Query Parameters</a>
+		                           <div class="collapse" id="op-table">
+		                               <div class="table-responsive" id="operation-query-entries-table">
+		                                   <table class="table table-hover table-sm" id="resource-param-table">
+		                                       <thead>
+		                                           <tr>
+		                                               <th>Query Parameter Name</th>
+		                                               <th>Operation Parameter Name</th>
+		                                           </tr>
+		                                       </thead>
+		                                       <tbody>
+		                                           <tr>
+		                                               <td>Q Param Name</td>
+		                                               <td>O param Name</td>
+		                                           </tr>
+		                                       </tbody>
+		                                   </table>
+		                               </div>
+		                           </div>
+		                       </div>
+						<div class="form-group form-inline query-common-element">
+                            <div class="form-check"><input class="form-check-input" type="checkbox" id="r-addedit-enablestreaming-checkbox"><label class="form-check-label" for="o-addedit-enablestreaming-checkbox">Enable Streaming</label></div>
                         </div>
                         <div class="form-group form-inline query-common-element">
-                            <div class="form-check"><input class="form-check-input" type="checkbox" id="o-addedit-enablestreaming-checkbox"><label class="form-check-label" for="o-addedit-enablestreaming-checkbox">Enable Streaming</label></div>
-                        </div>
-                        <div class="form-group form-inline query-common-element">
-                            <div class="form-check"><input class="form-check-input" type="checkbox" id="o-addedit-returnreqstatus-checkbox"><label class="form-check-label" for="o-addedit-returnreqstatus-checkbox">Return Request Status</label></div>
+                            <div class="form-check"><input class="form-check-input" type="checkbox" id="r-addedit-returnreqstatus-checkbox"><label class="form-check-label" for="o-addedit-returnreqstatus-checkbox">Return Request Status</label></div>
                         </div>
                     </form>
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Close</button><button class="btn btn-primary" type="submit" form="input-mapping-form">Save</button></div>
+                <div class="modal-footer"><div id="resource-notification-alert-holder" class="alert mr-auto"></div><button class="btn btn-light" type="button" data-dismiss="modal">Close</button><button class="btn btn-primary" type="submit" form="resource-form">Save</button></div>
             </div>
         </div>
     </div>

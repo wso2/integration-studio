@@ -141,6 +141,10 @@ function populateDSModal(root, dsId, metadata) {
                 setVisibleDSTypeCarbon(true);
 
                 // datasource name
+                let carbonDSName = getDSConfigPropertyValue(properties, "carbon_datasource_name");
+                if (carbonDSName != null && carbonDSName != undefined) {
+                    $("#ds-ds-name-input").val(carbonDSName);
+                }
             }
         }
     }
@@ -157,7 +161,7 @@ function addDataSource(root) {
     let datasourceId = $("#ds-ds-id-input").val();
 
     for (let i = 0, len = dsConfigs.length; i < len; i++) {
-        if (dsConfigs[i].id == datasourceId) {
+        if (dsConfigs[i].id == datasourceId && !$("#ds-ds-id-input").prop('disabled')) {
             showDSNotification("danger", "A data source with the given name already exists.", 4000);
             return false;
         }
@@ -201,7 +205,6 @@ function processDSInputData(root, data, deleteIfExists) {
             if (dsConfigs[i].id == dsId) {
                 // Delete the node.
                 root.documentElement.removeChild(dsConfigs[i]);
-                return;
             }
         }
     }
@@ -328,4 +331,9 @@ function getDSConfigPropertyValue(propertyArr, propertyName) {
     }
 
     return "";
+}
+
+function resetDSAddEditModal() {
+    setVisibleDSTypeRDBMS(true);
+    setVisibleDSTypeCarbon(false);
 }

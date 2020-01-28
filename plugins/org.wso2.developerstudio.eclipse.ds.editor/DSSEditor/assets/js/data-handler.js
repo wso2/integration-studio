@@ -16,7 +16,7 @@ $(document).ready(function ($) {
         populateDataSources(root);
         populateQueries(root);
         populateOperations(root);
-
+        populateResources(root);
     });
 
     /** Start of Event handlers **/
@@ -39,6 +39,25 @@ $(document).ready(function ($) {
         if (result.status) {
             $("#ds-add-edit-ds-modal").modal('hide');
             saveAll(root, url, saveDSMetadata(result.metadata, url));
+            this.reset();
+        }
+
+    });
+
+    // Start of resource - Add resource
+    $("#resource-form").submit(function (e) {
+        e.preventDefault();
+        let status = addResource(root);
+        if (status) {
+            $("#r-resource-addedit-modal").modal('hide');
+        	saveAll(root, url, function() {
+                location.reload();
+            });
+        	$.get(url, function (data, status) {
+                let parser = new DOMParser();
+                console.log("From backend: ");
+                console.log(parser.parseFromString(data, "text/xml"));
+            });
         }
 
     });
@@ -47,11 +66,30 @@ $(document).ready(function ($) {
         //$(this).removeData();
         $(':input', '#create-ds-form').not(':button, :submit, :reset, :hidden')
             .removeAttr('checked').removeAttr('selected').not(':checkbox, :radio, select').val('');
+        //Reset the resource form on modal hide
+        $("#r-resource-addedit-modal").find('form').trigger('reset');
     });
 
     $("#ds-datasource-add-btn").click(function() {
-        console.log(root);
+        resetDSAddEditModal();
+        $("#create-ds-form").trigger('reset');
         openDSModal(false);
+    });
+
+    $("#ds-test-conn-btn").click(function() {
+        let dbType = $("#ds-db-engine-select").val();
+        let version = $("#ds-db-version-select").val();
+        let username = $("#ds-username-input").val();
+        let password = $("#ds-password-input").val();
+        let host = $("#ds-host-input").val();
+        let port = $("#ds-port-input").val();
+        let dbName = $("#ds-dbname-input").val();
+
+        let connStr = dbType + DS_METADATA_KEYVALUE_SEPARATOR + version + DS_METADATA_KEYVALUE_SEPARATOR + username +
+            DS_METADATA_KEYVALUE_SEPARATOR + password + DS_METADATA_KEYVALUE_SEPARATOR + host +
+            DS_METADATA_KEYVALUE_SEPARATOR + port + DS_METADATA_KEYVALUE_SEPARATOR + dbName;
+
+        testDBConnection(connStr, url);
     });
 
     $(document).on('click','#ds-datasources-table .fa-trash',function() {
@@ -177,9 +215,42 @@ $(document).ready(function ($) {
     
     // End of Operations
 
+    //Resource related event handlers
 
+    /**
+     * Opens modal for adding a new resource
+     */
+    $("#r-resource-add-btn").click(function() {
+    	populateQueriesListForResources("r-queries-item-table", "r-addedit-queryid-select", 1, root);
+        openResourcesModal(false);
+    });
+
+    /**
+     * Deletes specific resource.
+     */
+    $(document).on('click','#r-resources-table .fa-trash',function() {
+    	let tds = $(this).closest("tr").data('id');
+    	let method = $(this).closest("tr").find('td')[1].innerText;
+    	//deleteOperation(root, tds[0].innerText);
+    	deleteResource(root, tds, method);
+    	$(this).closest("tr").remove();
+    	saveAll(root, url, function() {
+            location.reload();
+        });
+    });
+    
+    /**
+     * Opens modal for editing specific resource.
+     */
+    $(document).on('click','#r-resources-table .fa-edit',function() {
+        let resourceId = $(this).closest("tr").data('id');
+        let method = $(this).closest("tr").find('td')[1].innerText;
+        populateResourcesModal(root, resourceId, method);
+        openResourcesModal(true);
+    });
+
+    /** End of Event handlers **/
 });
-
 
 /**
  * Populates the UI with general DSS data.
@@ -228,42 +299,10 @@ function populateTransportSettings(root) {
 }
 
 /**
- * Populates Data sources data.
+ * Populated query details.
  *
  * @param root Document object.
  */
-function populateDataSources(root) {
-    let dsConfigs = root.getElementsByTagName("config");
-
-    if (dsConfigs.length == 0 || dsConfigs === undefined || dsConfigs === null)  {
-        $("#ds-datasources-table").hide();
-        showDSTableNotification("info", "No data sources available. Click 'Add New' to create a new data source.", 0);
-        return;
-    }
-
-    $("#ds-datasources-table").show();
-
-    for (let i = 0, len = dsConfigs.length; i < len; i++) {
-        let dsName = dsConfigs[i].id;
-        let markup = "<tr" + " data-id='" + dsName + "'" + "><td>" + dsName + "</td><td class='text-center'>" +
-            "<i class='fa fa-edit'></i><i class='fa fa-trash'></i></td></tr>";
-
-        $("#ds-datasources-table tbody").append(markup);
-    }
-
-}
-
-/**
- * Populates the data source modal when editing an existing data source.
- * @param root Document root object.
- * @param dsId Data source ID.
- * @param metadata Data source metadata.
- */
-function populateDSModal(root, dsId, metadata) {
-
-
-}
-
 function populateQueries(root) {
     let queryConfigs = root.getElementsByTagName("query");
 
@@ -278,122 +317,20 @@ function populateQueries(root) {
 //    });
 }
 
-/**
- * Processes the add data source view.
- *
- * @param root Document object
- */
-function addDataSource(root) {
-    // Check if data source name already exists
-    let dsConfigs = root.getElementsByTagName("config");
-    let datasourceId = $("#ds-ds-id-input").val();
-
-    for (let i = 0, len = dsConfigs.length; i < len; i++) {
-        if (dsConfigs[i].id == datasourceId) {
-            showDSNotification("danger", "A data source with the given name already exists.", 4000);
-            return false;
-        }
-    }
-
-    // Process the form
-    let formData = $("#create-ds-form").find(':visible').serializeArray();
-    let dataObj = {};
-
-    $(formData).each(function(i, field){
-        dataObj[field.name] = field.value;
-    });
-
-    let metadata = processDSInputData(root, dataObj, true);
-
-    return {
-        status: true,
-        metadata: metadata
-    };
-}
 
 /**
- * Processes form input data of the create/edit data source form.
- *
- * @param root Document root element.
- * @param data Form data in data['field-name'] format.
- * @param deleteIfExists Delete the config node if exists already.
- */
-function processDSInputData(root, data, deleteIfExists) {
-    let dataRoot = root.getElementsByTagName("data")[0];
-    let dsConfigs = root.getElementsByTagName("config");
-
-    let dsType = $("#ds-dstype-select").val();
-    let dbTypeExt = $("#ds-dstype-2-select").val();
-    let dsId = $("#ds-ds-id-input").val();
-    let dbEngine = $("#ds-db-engine-select").val();
-
-    // Delete if existing config node exists
-    if (deleteIfExists) {
-        for (let i = 0, len = dsConfigs.length; i < len; i++) {
-            if (dsConfigs[i].id == dsId) {
-                // Delete the node.
-                root.documentElement.removeChild(dsConfigs[i]);
-                return;
-            }
-        }
-    }
-
-    // Create a new config element
-    let configElement = root.createElement("config");
-    configElement.setAttribute("id", dsId);
-
-    let properties = [];
-
-    if (dsType === "rdbms_ds") {
-        if (dbTypeExt === "default_ds") {
-            properties.push(createTextNode(root, createPropertyNode(root, "driverClassName"), data['ds-driver-class-input']));
-            properties.push(createTextNode(root, createPropertyNode(root, "url"), data['ds-url-input']));
-            properties.push(createTextNode(root, createPropertyNode(root, "username"), data['ds-username-input']));
-            properties.push(createTextNode(root, createPropertyNode(root, "password"), data['ds-password-input']));
-        }
-
-        if (dbTypeExt === "external_ds") {
-            properties.push(createTextNode(root, createPropertyNode(root, "dataSourceClassName"), data['ds-class-name-input']));
-        }
-    } else if (dsType === "carbon_ds") {
-        properties.push(createTextNode(root, createPropertyNode(root, "carbon_datasource_name"), data['ds-ds-name-input']));
-    }
-
-    // Append properties to config node
-    for (let i = 0, len = properties.length; i < len; i++) {
-        configElement.appendChild(properties[i]);
-    }
-
-    // OData enabled
-    configElement.setAttribute("enableOData", $('#ds-enable-odata-check').is(":checked"));
-
-    if (root.getElementsByTagName("config").length > 0) {
-        insertAfter(configElement, dsConfigs[dsConfigs.length - 1]);
-    } else {
-        dataRoot.appendChild(configElement);
-    }
-
-    // Save data source metadata
-    let dsMetadataStr = dsId + DS_METADATA_ID_SEPARATOR + DS_METADATA_DS_TYPE + DS_METADATA_KEYVALUE_SEPARATOR +
-        dsType + DS_METADATA_SEPARATOR + DS_METADATA_RDBMS_TYPE + DS_METADATA_KEYVALUE_SEPARATOR + dbTypeExt +
-        DS_METADATA_SEPARATOR + DS_METADATA_DB_ENGINE + DS_METADATA_KEYVALUE_SEPARATOR + dbEngine;
-
-    return dsMetadataStr;
-}
-
-/**
- * Opens the data sources Add/Edit modal.
+ * Opens the resource Add/Edit modal.
  *
  * @param isEditEnabled 'True' to open a data source in edit mode. 'False' to add a new data source.
  */
-function openDSModal(isEditEnabled) {
+function openResourcesModal(isEditEnabled) {
     if (isEditEnabled) {
-        $("#ds-modal-header").text("Edit Datasource");
+        $("#resource-modal-header").text("Edit Resource");
     } else {
-        $("#ds-modal-header").text("Create Datasource");
+        $("#resource-modal-header").text("Create Resource");
     }
 
-    $("#ds-add-edit-ds-modal").modal('show');
+    $("#r-resource-addedit-modal").modal('show');
 }
 
 /**
@@ -445,6 +382,38 @@ function showQueriesTableNotification(type, message, interval) {
 }
 
 /**
+ * Shows an alert of a given type in the resource table.
+ *
+ * @param type Type of the alert: success | info | warning | danger
+ * @param message Message to be displayed.
+ * @param interval Number of milliseconds before the notification disappears. If not provided or '0',
+ * notification will stay forever.
+ */
+function showResourceTableNotification(type, message, interval) {
+    let alertHtml = "<span><div id='resource-table-notification-alert' class=\"alert " + "alert-" + type + "\"" + ">" + message + "</div></span>";
+    $("#resource-table-notification-alert-holder").html(alertHtml);
+    $("#resource-table-notification-alert").show();
+
+    showAlert("resource-table-notification-alert", interval);
+}
+
+/**
+ * Shows an alert of a given type in the resource editor modal.
+ *
+ * @param type Type of the alert: success | info | warning | danger
+ * @param message Message to be displayed.
+ * @param interval Number of milliseconds before the notification disappears. If not provided or '0',
+ * notification will stay forever.
+ */
+function showResourceNotification(type, message, interval) {
+    let alertHtml = "<div id='resource-notification-alert' class=\"alert " + "alert-" + type + "\"" + ">" + message + "</div>";
+    $("#resource-notification-alert-holder").html(alertHtml);
+    $("#resource-notification-alert").show();
+
+    showAlert("resource-notification-alert", interval);
+}
+
+/**
  * Shows a bootstrap alert for a given interval. If the interval is 0, it will be shown infinitely.
  *
  * @param selector ID of the alert.
@@ -487,6 +456,21 @@ function createTextNode(root, parentNode, textContent) {
 }
 
 /**
+ * Creates and returns a new 'with-param' node.
+ *
+ * @param root Document object.
+ * @param name Name of the with param node.
+ * @param queryParam queryParam property.
+ * @returns {HTMLElement | any | ActiveX.IXMLDOMElement} Created node.
+ */
+function createWithParamNode(root, name, queryParam) {
+    let newNode = root.createElement("with-param");
+    newNode.setAttribute("name", name);
+    newNode.setAttribute("query-param", queryParam);
+    return newNode;
+}
+
+/**
  * Inserts a node after a given reference node.
  *
  * @param newNode New node.
@@ -494,6 +478,16 @@ function createTextNode(root, parentNode, textContent) {
  */
 function insertAfter(newNode, refNode) {
     refNode.parentNode.insertBefore(newNode, refNode.nextSibling);
+}
+
+/**
+ * Replace a node with a given reference node.
+ *
+ * @param newNode New node.
+ * @param refNode Reference node.
+ */
+function replaceNode(newNode, refNode) {
+    refNode.replaceWith(newNode);
 }
 
 /**
@@ -515,38 +509,6 @@ function saveAll(root, url, successFunc) {
     });
 }
 
-/**
- * This function sends the modified source to the back-end and invokes the save operation.
- *
- * @param root Document object.
- * @param url Back-end URL.
- */
-function saveDSMetadata(metadata, url) {
-    let request = $.ajax({
-        url: url,
-        type: "post",
-        headers: {"x-operation-type":HEADER_VALUE_SAVE_DS_METADATA},
-        data: {xmlcontent: metadata},
-        success: function () {
-            location.reload();
-        }
-    });
-}
-
-function retrieveDSMetadata(datasourceId, url) {
-    let response = $.ajax({
-        url: url,
-        type: "post",
-        async: false,
-        headers: {"x-operation-type":HEADER_VALUE_RETRIEVE_DS_METADATA},
-        data: {xmlcontent: datasourceId},
-        success: function (resData) {
-            return resData;
-        }
-    });
-
-    return response;
-}
 
 function resolveMetadata(metadata) {
     let dataPairs = metadata.split(",");
@@ -558,4 +520,295 @@ function resolveMetadata(metadata) {
     }
 
     return mdMap;
+}
+/**
+ * Processes the add resources view.
+ *
+ * @param root Document object
+ * @param editResource whether to edit the resource
+ */
+function addResource(root) {
+    // Check if data source name already exists
+    let resourceConfigs = root.getElementsByTagName("resource");
+    let resourceId = $("#r-addedit-opname-input").val();
+    let methodValue = $("#r-addedit-resourcemethod-select-original").val();
+    let resourceMethod = $("#r-addedit-resourcemethod-select").val();
+    let resourceIndex = -1;
+    let editResource = false;
+    let isValid = validateResourceFields(resourceId, resourceMethod);
+    if (!isValid) {
+    	showResourceNotification("danger",
+		"Please complete all the required fields", 4000);
+		return false;
+    }
+
+    // resource method is used here only to determine the current node
+    // Actual serialized value is fetch in processResourceInputData function
+    if (!(methodValue == null || methodValue.trim() == '')) {
+    	resourceMethod = methodValue;
+    }
+    
+    // Check whether 
+    if ($("#resource-modal-header").text() == "Edit Resource") {
+    	editResource = true;
+    }
+
+	for (let i = 0, len = resourceConfigs.length; i < len; i++) {
+		if ((resourceConfigs[i].getAttribute("path") == resourceId)
+				&& (resourceConfigs[i].getAttribute("method") == resourceMethod)) {
+			if (editResource) {
+				resourceIndex = i;
+			} else {
+				showResourceNotification("danger",
+						"A resource with the given name already exists.", 4000);
+				return false;
+			}
+		}
+	}
+
+    // Process the form
+    let formData = $("#resource-form").find(':visible').serializeArray();
+    let dataObj = {};
+
+    $(formData).each(function(i, field){
+        dataObj[field.name] = field.value;
+    });
+
+    processResourceInputData(root, dataObj, resourceIndex, editResource);
+
+    return true;
+}
+
+/**
+ * Populates the Resource modal when editing an existing resource.
+ *
+ * @param root Document root object.
+ * @param resourceId resource ID.
+ */
+function populateResourcesModal(root, resourceId, method) {
+	let resourceConfigs = root.getElementsByTagName("resource");
+	$('#r-addedit-opname-input').val(resourceId);
+    for (let i = 0, len = resourceConfigs.length; i < len; i++) {
+        if ((resourceConfigs[i].getAttribute("path") == resourceId) && (resourceConfigs[i].getAttribute("method") == method)) {
+			$('#r-addedit-resourcemethod-select').val(
+					resourceConfigs[i].getAttribute("method"));
+			$('#r-addedit-resourcemethod-select-original').val(
+					resourceConfigs[i].getAttribute("method"));
+			let queryName = resourceConfigs[i]
+					.getElementsByTagName("call-query")[0].getAttribute("href");
+			$('#r-addedit-queryid-select').val(queryName).trigger('change');
+			let description = resourceConfigs[i]
+					.getElementsByTagName("description")[0].textContent;
+			$('#r-addedit-description-input').val(description);
+			let returnRequest = resourceConfigs[i]
+					.getAttribute("returnRequestStatus");
+			if (returnRequest == "true") {
+				$('#r-addedit-returnreqstatus-checkbox').prop("checked", true);
+			} else {
+				$('#r-addedit-returnreqstatus-checkbox').prop("checked", false);
+			}
+        }
+    }
+}
+
+/**
+ * Processes form input data of the create/edit resource form.
+ * 
+ * @param root
+ *            Document root element.
+ * @param data
+ *            Form data in data['field-name'] format.
+ * @param index
+ *            index of the resource node
+ */
+function processResourceInputData(root, data, index, editResource) {
+    let dataRoot = root.getElementsByTagName("data")[0];
+    let resourceConfigs = root.getElementsByTagName("resource");
+
+    let resourceMethod = $("#r-addedit-resourcemethod-select").val();
+    let resourcePath = $("#r-addedit-opname-input").val();
+    let queryID = $("#r-addedit-queryid-select").val();
+    let description = $("#r-addedit-description-input").val();
+    let returnRequest = $("#r-addedit-returnreqstatus-checkbox:checked").val() ? true : false;
+
+    // Create a new config element
+    let resourceElement = root.createElement("resource");
+    resourceElement.setAttribute("method", resourceMethod);
+    resourceElement.setAttribute("path", resourcePath);
+    resourceElement.setAttribute("returnRequestStatus",returnRequest);
+
+    let descriptionElement = root.createElement("description");
+    descriptionElement.textContent = description;
+    resourceElement.appendChild(descriptionElement);
+
+    let callQueryElement = root.createElement("call-query");
+    callQueryElement.setAttribute("href", queryID);
+    resourceElement.appendChild(callQueryElement);
+
+    let properties = [];
+
+	var items=[];
+	//Iterate all tr's in second column
+	$('#resource-param-table tbody tr').each( function(){
+	   //add item to array
+	   var $tds = $(this).find('td');
+	      var row = [];
+	      $tds.each(function (i, el){
+	        row.push($(this).text());
+	      });
+	   items.push(row);
+	});
+
+	//restrict array to unique items
+	var items = $.unique( items );
+    // Append properties to config node
+    for (let i = 0, len = items.length; i < len; i++) {
+    	properties.push(createWithParamNode(root, items[i][0], items[i][1]));
+    }
+
+    // Append properties to config node
+    for (let i = 0, len = properties.length; i < len; i++) {
+    	callQueryElement.appendChild(properties[i]);
+    }
+
+    if(editResource && index != -1) {
+    	replaceNode(resourceElement, resourceConfigs[index]);
+    }
+
+    if (resourceConfigs.length > 0) {
+		insertAfter(resourceElement,
+				resourceConfigs[resourceConfigs.length - 1]);
+	} else {
+		dataRoot.appendChild(resourceElement);
+	}
+}
+
+/**
+ * Populate queries list for resources modal
+ * 
+ * @param tableId
+ *            queries table element ID
+ * @param selectId
+ *            select element which should be populated
+ * @param columnNo
+ *            table's column number of the queryID column
+ * @param root
+ *            Document root element.
+ */
+function populateQueriesListForResources(tableId, selectId, columnNo, root) {
+	var items=[], options=[];
+
+	$('#'+selectId).find('option').remove();
+	let option = new Option("-- Select Query --", "", true, "");
+	$('#'+selectId).append(option);
+	let queries = root.getElementsByTagName("query");
+	for (let i = 0, len = queries.length; i < len; i++) {
+		let name = queries[i].getAttribute("id");
+		items.push(name);
+	}
+
+	//restrict array to unique items
+	var items = $.unique( items );
+
+	//iterate unique array and build array of select options
+	$.each( items, function(i, item){
+	    options.push('<option value="' + item + '">' + item + '</option>');
+	})
+
+	//finally empty the select and append the items from the array
+	$('#'+selectId).append( options.join());
+
+    $('#'+selectId).change(function(e) {
+    	e.preventDefault();
+    	let queryid = $('#'+selectId).val();
+    	populateResourceParameterTable(root, queryid);
+    });
+    $('#'+selectId).trigger('change');
+}
+
+/**
+ * Populates Data sources data.
+ *
+ * @param root Document object.
+ */
+function populateResources(root) {
+    var resourceConfigs = root.getElementsByTagName("resource");
+
+    if (resourceConfigs.length == 0 || resourceConfigs === undefined || resourceConfigs === null)  {
+        $("#r-resources-table").hide();
+        showResourceTableNotification("info", "No resources available. Click 'Add New' to create a new resource.", 0);
+        return;
+    }
+
+    $("#r-resources-table").show();
+    $("#r-resources-table tbody").empty();
+    for (let i = 0, len = resourceConfigs.length; i < len; i++) {
+        let resourceName = resourceConfigs[i].getAttribute("path");
+        let method = resourceConfigs[i].getAttribute("method");
+        let queryID = resourceConfigs[i].getElementsByTagName("call-query")[0].getAttribute("href");
+        let markup = "<tr" + " data-id='" + resourceName + "'" + "><td>" + resourceName + "</td><td>" + method + "</td><td>" + queryID + "</td><td class='text-center'>" +
+            "<i class='fa fa-edit'></i><i class='fa fa-trash'></i></td></tr>";
+
+        $("#r-resources-table tbody").append(markup);
+    }
+
+    populateQueriesListForResources("r-queries-item-table", "r-addedit-queryid-select", 1, root);
+}
+
+/**
+ * Function that deletes a specific node from the DOM tree.
+ *
+ * @param root Document root object.
+ * @param resourceName resource name which should be deleted.
+ */
+function deleteResource(root, resourceName, method) {
+    let resources = root.getElementsByTagName("resource");
+    let deletables = [];
+    for (let i = 0, len = resources.length; i < len; i++) {
+        if ((resources[i].getAttribute("path") == resourceName) && (resources[i].getAttribute("method") == method)) {
+            // Delete the node.
+            deletables.push(resources[i]);
+        }
+    }
+
+    for (let i = 0, len = deletables.length; i < len; i++) {
+       root.documentElement.removeChild(deletables[i]);
+    }
+
+}
+
+/**
+ * Populates resource parameter table in resources modal upon query ID selection
+ *
+ * @param root Document root object.
+ * @param queryId query name which should be deleted.
+ */
+function populateResourceParameterTable(root, queryId) {
+    let queries = root.getElementsByTagName("query");
+    let items = [];
+    for (let i = 0, len = queries.length; i < len; i++) {
+		if (queries[i].getAttribute("id") == queryId) {
+			// Delete the node.
+			let params = queries[i].getElementsByTagName("param");
+			for (let j = 0, len = params.length; j < len; j++) {
+				let paramName = params[j].getAttribute("name");
+				items.push(paramName);
+			}
+		}
+    }
+
+    $("#resource-param-table tbody").empty();
+    for (let i = 0, len = items.length; i < len; i++) {
+        let markup = "<tr" + " data-id='" + items[i] + "'" + "><td>" + items[i] + "</td><td>" + items[i] + "</td></tr>";
+        $("#resource-param-table tbody").append(markup);
+    }
+}
+
+function validateResourceFields(resourcePath, methodValue) {
+	if(resourcePath == null || resourcePath.trim() == '') {
+		return false;
+	} else if (methodValue == null || methodValue.trim() == 'select') {
+		return false;
+	}
+	return true;
 }

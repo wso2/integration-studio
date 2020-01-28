@@ -113,10 +113,30 @@ $(document).ready(function ($) {
     $("#q-query-add-btn").click(function() {
         $("#q-query-add-btn").toggle(false);
         $("#q-queries-table").toggle(false);
+        clearAddQueryForm();
         $("#q-add-edit-query-section").toggle(true);
     });
     // End of queries - Add query
 
+    // Start of query output mapping
+    
+    $(document).on('click','#q-output-mapping-table .fa-edit',function() {
+    	let tds = $(this).closest("tr").find('td');
+    	populateQueryOutputMappingModal(root, tds[0].innerText, tds[1].innerText);
+    });
+    
+    $(document).on('click','#q-output-mapping-table .fa-trash',function() {
+    	let tds = $(this).closest("tr").find('td');
+    	// TODO remove from root
+    	deleteQueryOutputMappingFromRoot(root, tds[0].innerText);
+    	$(this).closest("tr").remove();
+    	saveAll(root, url, function() {
+            location.reload();
+        });
+    });
+    
+    // End of query output mapping
+    
     // Start of input event handlers - General details
     $("#dss-description-input, #dss-namespace-input").change(function() {
         let description = root.getElementsByTagName("description")[0];
@@ -284,13 +304,17 @@ function populateTransportSettings(root) {
  * @param root Document object.
  */
 function populateQueries(root) {
-    let queryConfigs = root.getElementsByTagName("query2");
+    let queryConfigs = root.getElementsByTagName("query");
 
     if (queryConfigs.length == 0 || queryConfigs === undefined || queryConfigs === null)  {
         $("#q-queries-table").hide();
         showQueriesTableNotification("info", "No queries available. Click 'Add New' to create a new query.", 0);
         return;
     }
+    
+//    $.each(queryConfigs, function(index, query) {
+//    	populateOueryOutputMappings(query);
+//    });
 }
 
 

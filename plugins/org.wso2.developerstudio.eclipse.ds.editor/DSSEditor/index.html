@@ -194,21 +194,27 @@
                                 <div id="om-json-inputgroup" class="field inputgroup"><textarea class="form-control" rows="10" id="om-json-input"></textarea><label class="mb-0" for="om-json-input">JSON Payload</label></div>
                             </div>
                         </form>
-                        <div class="table-responsive" id="q-queries-table">
-                            <table class="table table-hover table-sm">
+                        <div class="table-responsive" id="q-om-queries-table">
+                            <table class="table table-hover table-sm" id="q-output-mapping-table">
                                 <thead>
                                     <tr>
-                                        <th>Mapping Name</th>
-                                        <th>Parameter Type</th>
-                                        <th>Type</th>
+                                        <th>Element Name</th>
+                                        <th>Datasource Type</th>
+                                        <th>Datasource Column Number</th>
+                                        <th>Mapping Type</th>
+                                        <th>Allowed User Roles</th>
+                                        <th>Schema Type</th>
                                         <th class="text-center"><i class="fa fa-cog"></i></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Mapping_Name_Placeholder</td>
-                                        <td>Param_Type_Placeholder</td>
-                                        <td>Type_Placeholder</td>
+                                        <td>Element_Name_Placeholder</td>
+                                        <td>Datasource_Type_Placeholder</td>
+                                        <td>Datasource_Column_Number_Placeholder</td>
+                                        <td>Mapping_Type_Holder</td>
+                                        <td>Allowed_User_Roles_Placeholder</td>
+                                        <td>Schema_Type_Placeholder</td>
                                         <td class="text-center"><i class="fa fa-edit"></i><i class="fa fa-trash"></i></td>
                                     </tr>
                                 </tbody>
@@ -245,6 +251,9 @@
                         </form>
                     </div>
                 </div>
+                <div class="modal-footer justify-content-between">
+            		<div id="query-notification-alert-holder" class="alert mr-auto"></div><button class="btn btn-light ml-auto" type="button" id="query-add-close-btn">Close</button><button class="btn btn-primary" type="submit" id="query-add-save-btn">Save</button>
+            	</div>
             </div>
         </div>
     </div>
@@ -451,10 +460,10 @@
                 <div class="modal-body table-bordered">
                     <form id="output-mapping-form" class="general-form">
                         <div class="form-group form-inline">
-                            <div class="form-group"><label>Mapping Type *</label><select class="form-control" required="" id="q-om-addedit-mappingtype-select" name="q-om-addedit-mappingtype-select"><option value="" selected="">-- Select --</option><option value="element" selected="">Element</option><option value="attribute">Attribute</option><option value="query">Query</option></select></div>
+                            <div class="form-group"><label>Mapping Type *</label><select class="form-control" required="" id="q-om-addedit-mappingtype-select" name="q-om-addedit-mappingtype-select"><option value="element" selected="">Element</option><option value="attribute">Attribute</option><option value="query">Query</option><option value="complex-element">Complex Element</option></select></div>
                         </div>
                         <div class="form-group form-inline">
-                            <div class="form-group"><label>Datasource Type *</label><select class="form-control" required="" id="q-om-addedit-dsmapping-select" name="q-om-addedit-dsmapping-select"><option value="column" selected="">Column</option><option value="query-param">Query Param</option></select></div>
+                            <div id="q-om-addedit-dsmapping-select-inputgroup" class="form-group"><label>Datasource Type *</label><select class="form-control" required="" id="q-om-addedit-dsmapping-select" name="q-om-addedit-dsmapping-select"><option value="column" selected="">Column</option><option value="query-param">Query Param</option></select></div>
                         </div>
                         <div class="form-group">
                             <div id="q-om-addedit-outputfn-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="q-om-addedit-outputfn-input" name="q-om-addedit-outputfn-input"><label class="mb-0" for="q-om-addedit-outputfn-input">Output Field Name</label></div>
@@ -466,13 +475,13 @@
                             <div id="q-om-addedit-dscolname-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="q-om-addedit-dscolname-input" name="q-om-addedit-dscolname-input"><label class="mb-0" for="im-defaultvalue-input">Datasource Column Name</label></div>
                         </div>
                         <div class="form-group form-inline">
-                            <div class="form-group"><label>Parameter Type</label><select class="form-control" required="" id="q-om-addedit-paramtype-select" name="q-om-addedit-paramtype-select"><option value="scalar" selected="">Scalar</option><option value="array">Array</option></select></div>
+                            <div id="q-om-addedit-paramtype-inputgroup" class="form-group"><label>Parameter Type</label><select class="form-control" required="" id="q-om-addedit-paramtype-select" name="q-om-addedit-paramtype-select"><option value="scalar" selected="">Scalar</option><option value="array">Array</option></select></div>
                         </div>
                         <div class="form-group form-inline">
-                            <div class="form-group"><label>Schema Type</label><select class="form-control" required="" id="q-im-paramtype-select" name="q-im-paramtype-select"><option value="string" selected="">string</option><option value="integer">integer</option><option value="boolean">boolean</option><option value="float">float</option><option value="double">double</option><option value="decimal">decimal</option><option value="datetime">dateTime</option><option value="time">time</option><option value="date">date</option><option value="long">long</option><option value="base64binary">base64Binary</option></select></div>
+                            <div id="q-om-addedit-schematype-inputgroup" class="form-group"><label>Schema Type</label><select class="form-control" required="" id="q-im-paramtype-select" name="q-im-paramtype-select"><option value="string" selected="">string</option><option value="integer">integer</option><option value="boolean">boolean</option><option value="float">float</option><option value="double">double</option><option value="decimal">decimal</option><option value="datetime">dateTime</option><option value="time">time</option><option value="date">date</option><option value="long">long</option><option value="base64binary">base64Binary</option></select></div>
                         </div>
                         <div class="form-group form-inline query-common-element">
-                            <div class="form-check"><input class="form-check-input" type="checkbox" id="q-om-addedit-optional-checkbox"><label class="form-check-label" for="q-om-addedit-optional-checkbox">Optional</label></div>
+                            <div id="q-om-addedit-optional-inputgroup" class="form-check"><input class="form-check-input" type="checkbox" id="q-om-addedit-optional-checkbox"><label class="form-check-label" for="q-om-addedit-optional-checkbox">Optional</label></div>
                         </div>
                         <div class="form-group form-inline">
                             <div class="form-group"><label>Select Query *</label><select class="form-control" required="" id="q-om-addedit-query-select" name="q-om-addedit-query-select"><option value="base64binary">-- Select Query --</option></select></div>
@@ -573,6 +582,8 @@
     <script src="assets/js/query-validation.js"></script>
     <script src="assets/js/table-functions.js"></script>
     <script src="assets/js/operation-validation.js"></script>
+    <script src="assets/js/q-output-mapping-validation.js"></script>
+    <script src="assets/js/query-validation.js"></script>
 </body>
 
 </html>

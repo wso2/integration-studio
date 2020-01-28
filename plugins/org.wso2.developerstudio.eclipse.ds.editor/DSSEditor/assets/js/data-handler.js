@@ -76,6 +76,22 @@ $(document).ready(function ($) {
         openDSModal(false);
     });
 
+    $("#ds-test-conn-btn").click(function() {
+        let dbType = $("#ds-db-engine-select").val();
+        let version = $("#ds-db-version-select").val();
+        let username = $("#ds-username-input").val();
+        let password = $("#ds-password-input").val();
+        let host = $("#ds-host-input").val();
+        let port = $("#ds-port-input").val();
+        let dbName = $("#ds-dbname-input").val();
+
+        let connStr = dbType + DS_METADATA_KEYVALUE_SEPARATOR + version + DS_METADATA_KEYVALUE_SEPARATOR + username +
+            DS_METADATA_KEYVALUE_SEPARATOR + password + DS_METADATA_KEYVALUE_SEPARATOR + host +
+            DS_METADATA_KEYVALUE_SEPARATOR + port + DS_METADATA_KEYVALUE_SEPARATOR + dbName;
+
+        testDBConnection(connStr, url);
+    });
+
     $(document).on('click','#ds-datasources-table .fa-trash',function() {
         let dsId = $(this).closest("tr").data('id');
         deleteDatasource(root, dsId);
@@ -277,125 +293,6 @@ function populateQueries(root) {
     }
 }
 
-/**
-<<<<<<< HEAD
-=======
- * Processes the add data source view.
- *
- * @param root Document object
- */
-function addDataSource(root) {
-    // Check if data source name already exists
-    let dsConfigs = root.getElementsByTagName("config");
-    let datasourceId = $("#ds-ds-id-input").val();
-
-    for (let i = 0, len = dsConfigs.length; i < len; i++) {
-        if (dsConfigs[i].id == datasourceId) {
-            showDSNotification("danger", "A data source with the given name already exists.", 4000);
-            return false;
-        }
-    }
-
-    // Process the form
-    let formData = $("#create-ds-form").find(':visible').serializeArray();
-    let dataObj = {};
-
-    $(formData).each(function(i, field){
-        dataObj[field.name] = field.value;
-    });
-
-    let metadata = processDSInputData(root, dataObj, true);
-
-    return {
-        status: true,
-        metadata: metadata
-    };
-}
-
-/**
- * Processes form input data of the create/edit data source form.
- *
- * @param root Document root element.
- * @param data Form data in data['field-name'] format.
- * @param deleteIfExists Delete the config node if exists already.
- */
-function processDSInputData(root, data, deleteIfExists) {
-    let dataRoot = root.getElementsByTagName("data")[0];
-    let dsConfigs = root.getElementsByTagName("config");
-
-    let dsType = $("#ds-dstype-select").val();
-    let dbTypeExt = $("#ds-dstype-2-select").val();
-    let dsId = $("#ds-ds-id-input").val();
-    let dbEngine = $("#ds-db-engine-select").val();
-
-    // Delete if existing config node exists
-    if (deleteIfExists) {
-        for (let i = 0, len = dsConfigs.length; i < len; i++) {
-            if (dsConfigs[i].id == dsId) {
-                // Delete the node.
-                root.documentElement.removeChild(dsConfigs[i]);
-                return;
-            }
-        }
-    }
-
-    // Create a new config element
-    let configElement = root.createElement("config");
-    configElement.setAttribute("id", dsId);
-
-    let properties = [];
-
-    if (dsType === "rdbms_ds") {
-        if (dbTypeExt === "default_ds") {
-            properties.push(createTextNode(root, createPropertyNode(root, "driverClassName"), data['ds-driver-class-input']));
-            properties.push(createTextNode(root, createPropertyNode(root, "url"), data['ds-url-input']));
-            properties.push(createTextNode(root, createPropertyNode(root, "username"), data['ds-username-input']));
-            properties.push(createTextNode(root, createPropertyNode(root, "password"), data['ds-password-input']));
-        }
-
-        if (dbTypeExt === "external_ds") {
-            properties.push(createTextNode(root, createPropertyNode(root, "dataSourceClassName"), data['ds-class-name-input']));
-        }
-    } else if (dsType === "carbon_ds") {
-        properties.push(createTextNode(root, createPropertyNode(root, "carbon_datasource_name"), data['ds-ds-name-input']));
-    }
-
-    // Append properties to config node
-    for (let i = 0, len = properties.length; i < len; i++) {
-        configElement.appendChild(properties[i]);
-    }
-
-    // OData enabled
-    configElement.setAttribute("enableOData", $('#ds-enable-odata-check').is(":checked"));
-
-    if (root.getElementsByTagName("config").length > 0) {
-        insertAfter(configElement, dsConfigs[dsConfigs.length - 1]);
-    } else {
-        dataRoot.appendChild(configElement);
-    }
-
-    // Save data source metadata
-    let dsMetadataStr = dsId + DS_METADATA_ID_SEPARATOR + DS_METADATA_DS_TYPE + DS_METADATA_KEYVALUE_SEPARATOR +
-        dsType + DS_METADATA_SEPARATOR + DS_METADATA_RDBMS_TYPE + DS_METADATA_KEYVALUE_SEPARATOR + dbTypeExt +
-        DS_METADATA_SEPARATOR + DS_METADATA_DB_ENGINE + DS_METADATA_KEYVALUE_SEPARATOR + dbEngine;
-
-    return dsMetadataStr;
-}
-
-/**
- * Opens the data sources Add/Edit modal.
- *
- * @param isEditEnabled 'True' to open a data source in edit mode. 'False' to add a new data source.
- */
-function openDSModal(isEditEnabled) {
-    if (isEditEnabled) {
-        $("#ds-modal-header").text("Edit Datasource");
-    } else {
-        $("#ds-modal-header").text("Create Datasource");
-    }
-
-    $("#ds-add-edit-ds-modal").modal('show');
-}
 
 /**
  * Opens the resource Add/Edit modal.

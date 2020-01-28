@@ -25,14 +25,26 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.sql.Connection;
+import java.sql.Driver;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Properties;
 
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.ds.editors.DSSMultiPageEditor;
+import org.wso2.developerstudio.eclipse.ds.presentation.DsEditorPlugin;
+import org.wso2.developerstudio.eclipse.ds.presentation.util.DSSVisualEditorConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
@@ -41,15 +53,15 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
  *
  */
 public class DSSEditorUtils {
-    
+
     private static volatile DSSEditorUtils instance;
-    
+
     // Path to the properties file where editor-related meta data is saved.
-    private static final String PROPERTIES_FILE_PATH = File.separator + ".metadata" + File.separator 
+    private static final String PROPERTIES_FILE_PATH = File.separator + ".metadata" + File.separator
             + "integration-studio.dsseditor.properties";
-    
+
     private static IDeveloperStudioLog log = Logger.getLog("org.wso2.developerstudio.eclipse.ds.editor");
-    
+
     public static DSSEditorUtils getInstance() {
         if (instance != null) {
             return instance;
@@ -63,17 +75,18 @@ public class DSSEditorUtils {
 
         return instance;
     }
-    
-    private DSSEditorUtils() {};
-    
+
+    private DSSEditorUtils() {
+    };
+
     /**
      * Saves a property to the configured property file.
      * 
-     * @param propertyName  Name of the property.
+     * @param propertyName Name of the property.
      * @param value Value of the property.
      * @param comments Description of the property.
-     * @return  'True' if successfully saved, 'False' otherwise.
-     * @throws IOException 
+     * @return 'True' if successfully saved, 'False' otherwise.
+     * @throws IOException
      */
     public boolean saveProperty(String propertyName, String value, String comments) {
         IWorkspace workspace = ResourcesPlugin.getWorkspace();
@@ -82,7 +95,7 @@ public class DSSEditorUtils {
         File confFile = new File(configFilePath);
         OutputStream output = null;
         InputStream input = null;
-        
+
         // Create properties file if does not exist
         if (!confFile.exists()) {
             try {
@@ -92,38 +105,38 @@ public class DSSEditorUtils {
                 return false;
             }
         }
-   
+
         try {
             // Load existing properties
             input = new FileInputStream(configFilePath);
             Properties properties = new Properties();
             properties.load(input);
             input.close();
-            
+
             // If exists, delete
             if (properties.get(propertyName) != null) {
                 properties.remove(propertyName);
             }
-            
+
             // Add new property
             properties.setProperty(propertyName, value);
-            
+
             // Write back to file
             output = new FileOutputStream(configFilePath);
             properties.store(output, comments);
             output.close();
-            
+
             return true;
         } catch (IOException e) {
             log.error("Error occurred while saving the property.", e);
             return false;
         }
     }
-    
+
     /**
      * Retrieves a property from the configured property file.
      * 
-     * @param propertyName  Name of the property.
+     * @param propertyName Name of the property.
      * @return Property value | null if does not exist.
      */
     public String getPropertyValue(String propertyName) {
@@ -147,17 +160,17 @@ public class DSSEditorUtils {
             return null;
         }
     }
-    
+
     /**
      * Get data source details from properties.
      * 
-     * @param datasourceId  Data source ID.
+     * @param datasourceId Data source ID.
      * @return Data source details.
      */
     public String getDSDetails(String dataSourceId) {
         return getPropertyValue(dataSourceId);
     }
-    
+
     /**
      * Saves data source details to the configured property file.
      * 
@@ -168,5 +181,108 @@ public class DSSEditorUtils {
     public boolean saveDSDetails(String dataSourceId, String details) {
         return saveProperty(dataSourceId, details, null);
     }
+
+    /**
+     * Tests connection to a database.
+     * 
+     * @param dbType Type of the database (mysql, oracle, etc.)
+     * @param username Login username.
+     * @param password Login password.
+     * @return 'True' if connection is successful, 'False' otherwise.
+     */
+    public boolean testDBConnection(String dbType, String version, String username, String password, String host,
+            String port, String dbName) {
+        
+        String connUriStr = generateConnectionUrl(dbType, username, version, password, host, port, dbName);
+        Connection connection = null;
+        
+        try {
+            String jarName = getDBDriverJarName(dbType, version);
+            String driverUrl = DSSVisualEditorConstants.DBUrlParams.DB_DRIVER_URL_BASE + getLibDirPath() + 
+                    DSSVisualEditorConstants.DBUrlParams.DB_DRIVER_JAR_BASE + jarName + 
+                    DSSVisualEditorConstants.DBUrlParams.DB_URL_JDBC_SUFFIX;
+            
+            URL url = new URL(driverUrl);
+            URLClassLoader classLoader = new URLClassLoader(new URL[] { url });
+
+            Driver driver = (Driver) Class.forName(DSSVisualEditorConstants.DBDrivers.MYSQL_DRIVER, true, classLoader).newInstance();
+            DriverManager.registerDriver(new DriverShim(driver));
+
+            connection = DriverManager.getConnection(connUriStr, username, password);
+                      
+            if (connection != null) {
+                return true;
+            } else {
+                return false;
+            } 
+            
+        } catch (Exception e) {
+            log.error("Could not establish database connection.", e);
+            return false;
+        }
+    }
+
+    private String generateConnectionUrl(String dbType, String version, String username, String password, String host,
+            String port, String dbName) {
+        String connectionUrl = DSSVisualEditorConstants.DBUrlParams.DB_URL_JDBC_BASE;
+
+        switch (dbType) {
+        case DSSVisualEditorConstants.DBTypes.DB_TYPE_MYSQL:
+            // Template: jdbc:mysql://HOST:PORT/DBname
+            connectionUrl += DSSVisualEditorConstants.DBTypes.DB_TYPE_MYSQL + "://" + host + ":" + port + "/"
+                    + dbName;
+            break;
+        case DSSVisualEditorConstants.DBTypes.DB_TYPE_MSSQL:
+            // Template: jdbc:sqlserver://[HOST]:[PORT1433];databaseName=[DB]
+            connectionUrl += ":" + DSSVisualEditorConstants.DBTypes.DB_TYPE_MSSQL + "://" + host + ":" + port
+                    + ";databaseName=" + dbName;
+            break;
+        case DSSVisualEditorConstants.DBTypes.DB_URL_JDBC_BASE:
+            // Template: jdbc:mysql://HOST:PORT/DBname
+            break;
+        }
+
+        return connectionUrl;
+    }
     
+    private String getDBDriverJarName(String dbType, String version) {
+        String jarName = "";
+
+        switch (dbType) {
+        case DSSVisualEditorConstants.DBTypes.DB_TYPE_MYSQL:
+            if (DSSVisualEditorConstants.DBConnectionParams.MYSQL_VERSION_5_1_47.equals(version)) {
+                jarName = DSSVisualEditorConstants.DBConnectionParams.MYSQL_JAR_5_1_47;
+            } else if (DSSVisualEditorConstants.DBConnectionParams.MYSQL_VERSION_8_0_15.equals(version)) {
+                jarName = DSSVisualEditorConstants.DBConnectionParams.MYSQL_JAR_8_0_15;
+            }
+            break;
+        case DSSVisualEditorConstants.DBTypes.DB_TYPE_MSSQL:
+            if (DSSVisualEditorConstants.DBConnectionParams.MSSQL_VERSION_6_4_0.equals(version)) {
+                jarName = DSSVisualEditorConstants.DBConnectionParams.MSSQL_JAR_6_4_0;
+            } else if (DSSVisualEditorConstants.DBConnectionParams.MSSQL_VERSION_7_20_0.equals(version)) {
+                jarName = DSSVisualEditorConstants.DBConnectionParams.MSSQL_JAR_7_20_0;
+            }
+            break;
+        }
+
+        return jarName;
+    }
+
+    /**
+     * Returns the lib folder path of the DSS editor
+     * 
+     * @return lib folder path of the DSS editor
+     * 
+     * @throws URISyntaxException
+     * @throws IOException
+     */
+    public String getLibDirPath() throws URISyntaxException, IOException {
+        URL libURL = DsEditorPlugin.getPlugin().getBundle().getEntry("lib");
+        URL resolvedFolderURL = FileLocator.toFileURL(libURL);
+        URI resolvedFolderURI = new URI(resolvedFolderURL.getProtocol(), resolvedFolderURL.getPath(), null);
+        File resolvedLibFolder = new File(resolvedFolderURI);
+
+        return resolvedLibFolder.getAbsolutePath();
+    }
+
 }

@@ -263,7 +263,7 @@ function saveDSMetadata(metadata, url) {
         url: url,
         type: "post",
         headers: {"x-operation-type":HEADER_VALUE_SAVE_DS_METADATA},
-        data: {xmlcontent: metadata},
+        data: {content: metadata},
         success: function () {
             location.reload();
         }
@@ -286,13 +286,34 @@ function retrieveDSMetadata(datasourceId, url) {
         type: "post",
         async: false,
         headers: {"x-operation-type":HEADER_VALUE_RETRIEVE_DS_METADATA},
-        data: {xmlcontent: datasourceId},
+        data: {content: datasourceId},
         success: function (msg, status, jqXHR) {
             metadata = msg.toString();
         }
     });
 
     return metadata;
+}
+
+/**
+ * Tests connection to a RDBMS server.
+ * @param connectionDetails Connection details as a string.
+ * @param url Back-end URL.
+ */
+function testDBConnection(connectionDetails, url) {
+    // Synchronous request
+    let response = $.ajax({
+        url: url,
+        type: "post",
+        headers: {"x-operation-type":HEADER_VALUE_TEST_DS_CONNECTION},
+        data: {content: connectionDetails},
+        success: function (msg, status, jqXHR) {
+            showDSNotification("success", "Successfully connected to database.", 4000);
+        },
+        error: function (msg, status, jqXHR) {
+            showDSNotification("danger", "Connection failed. Could not connect to database.", 4000);
+        }
+    });
 }
 
 /**

@@ -45,6 +45,7 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.exception.ObserverFailedException;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
+import org.wso2.developerstudio.eclipse.platform.core.utils.SWTResourceManager;
 import org.wso2.developerstudio.eclipse.platform.core.utils.Validator;
 import org.wso2.developerstudio.eclipse.platform.ui.Activator;
 import org.wso2.developerstudio.eclipse.platform.ui.utils.PlatformUIConstants;
@@ -56,6 +57,10 @@ public class KubernetesDetailsPage extends WizardPage {
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	private static final String CONTAINER_PROJECT = "Kubernetes Project - Integration CR Details";
+	private static final String HELP_ICON = "/icons/help.png";
+	private static final String TARGET_REPOSITORY_DESCRIPTION = "This parameter is used to specify a name for the Docker image. "
+			+ "This value should be in convention of {registry-url}/{username}/{repository} or {username}/{repository} pattern";
+	private static final String TARGET_TAG_DESCRIPTION = "This parameter is used to specify a version for the Docker image.";
 	private static final String DEFAULT_REPLICA_COUNT = "1";
 	private static final String IS_NUMBER_EXPRESSION = "-?\\d+(\\.\\d+)?";
 
@@ -214,9 +219,14 @@ public class KubernetesDetailsPage extends WizardPage {
 		data.left = new FormAttachment(lblKubeRemoteRepository, 0);
 		data.right = new FormAttachment(98);
 		txtKubeRemoteRepository.setLayoutData(data);
-		txtKubeRemoteRepository.setEnabled(false);
 		txtKubeRemoteRepository.setText(PlatformUIConstants.DEFAULT_REMOTE_REPOSITORY);
 		dataModel.setKubeRemoteRepository(PlatformUIConstants.DEFAULT_REMOTE_REPOSITORY);
+		txtKubeRemoteRepository.addModifyListener(new ModifyListener() {
+			public void modifyText(ModifyEvent arg0) {
+				dataModel.setKubeRemoteRepository(txtKubeRemoteRepository.getText());
+				updatePageStatus();
+			}
+		});
 
 		Label lblKubeRemoteTag = new Label(kubernetsContainer, SWT.NONE);
 		data = new FormData();
@@ -232,9 +242,14 @@ public class KubernetesDetailsPage extends WizardPage {
 		data.left = new FormAttachment(lblKubeRemoteTag, 0);
 		data.right = new FormAttachment(98);
 		txtKubeRemoteTag.setLayoutData(data);
-		txtKubeRemoteTag.setEnabled(false);
 		txtKubeRemoteTag.setText(PlatformUIConstants.DEFAULT_REMOTE_TAG);
 		dataModel.setKubeRemoteTag(PlatformUIConstants.DEFAULT_REMOTE_TAG);
+		txtKubeRemoteTag.addModifyListener(new ModifyListener() {
+			public void modifyText(ModifyEvent arg0) {
+				dataModel.setKubeRemoteTag(txtKubeRemoteTag.getText());
+				updatePageStatus();
+			}
+		});
 
 		Label lblKubeTargetRepository = new Label(kubernetsContainer, SWT.NONE);
 		data = new FormData();
@@ -248,7 +263,7 @@ public class KubernetesDetailsPage extends WizardPage {
 		data = new FormData();
 		data.top = new FormAttachment(lblKubeRemoteTag, 20);
 		data.left = new FormAttachment(lblKubeTargetRepository, 0);
-		data.right = new FormAttachment(98);
+		data.right = new FormAttachment(90);
 		txtKubeTargetRepository.setLayoutData(data);
 		txtKubeTargetRepository.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent arg0) {
@@ -256,6 +271,15 @@ public class KubernetesDetailsPage extends WizardPage {
 				updatePageStatus();
 			}
 		});
+		
+		Label targetRepoHelpLabel = new Label(kubernetsContainer, SWT.NONE);
+		data = new FormData();
+		targetRepoHelpLabel.setImage(SWTResourceManager.getImage(this.getClass(), HELP_ICON));
+		data.top = new FormAttachment(lblKubeRemoteTag, 22);
+		data.left = new FormAttachment(txtKubeTargetRepository, 0);
+		data.right = new FormAttachment(98);
+		targetRepoHelpLabel.setLayoutData(data);
+		targetRepoHelpLabel.setToolTipText(TARGET_REPOSITORY_DESCRIPTION);
 
 		Label lblKubeTargetTag = new Label(kubernetsContainer, SWT.NONE);
 		data = new FormData();
@@ -269,7 +293,7 @@ public class KubernetesDetailsPage extends WizardPage {
 		data = new FormData();
 		data.top = new FormAttachment(lblKubeTargetRepository, 20);
 		data.left = new FormAttachment(lblKubeTargetTag, 0);
-		data.right = new FormAttachment(98);
+		data.right = new FormAttachment(90);
 		txtKubeTargetTag.setLayoutData(data);
 		txtKubeTargetTag.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent arg0) {
@@ -277,6 +301,15 @@ public class KubernetesDetailsPage extends WizardPage {
 				updatePageStatus();
 			}
 		});
+		
+		Label targetTagHelpLabel = new Label(kubernetsContainer, SWT.NONE);
+		data = new FormData();
+		targetTagHelpLabel.setImage(SWTResourceManager.getImage(this.getClass(), HELP_ICON));
+		data.top = new FormAttachment(lblKubeTargetRepository, 22);
+		data.left = new FormAttachment(txtKubeTargetTag, 0);
+		data.right = new FormAttachment(98);
+		targetTagHelpLabel.setLayoutData(data);
+		targetTagHelpLabel.setToolTipText(TARGET_TAG_DESCRIPTION);
 
 		Label lblExposePorts = new Label(kubernetsContainer, SWT.NONE);
 		data = new FormData();

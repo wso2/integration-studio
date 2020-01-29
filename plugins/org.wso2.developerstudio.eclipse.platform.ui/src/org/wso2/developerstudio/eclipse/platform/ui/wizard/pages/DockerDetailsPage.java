@@ -46,6 +46,7 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.exception.ObserverFailedException;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
+import org.wso2.developerstudio.eclipse.platform.core.utils.SWTResourceManager;
 import org.wso2.developerstudio.eclipse.platform.core.utils.Validator;
 import org.wso2.developerstudio.eclipse.platform.ui.utils.PlatformUIConstants;
 import org.wso2.developerstudio.eclipse.platform.ui.utils.PluginImageUtils;
@@ -56,6 +57,10 @@ public class DockerDetailsPage extends WizardPage {
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	private static final String CONTAINER_PROJECT = "Docker Image Details";
+	private static final String HELP_ICON = "/icons/help.png";
+	private static final String TARGET_REPOSITORY_DESCRIPTION = "This parameter is used to specify a name for the Docker image. "
+			+ "This value should be in convention of {registry-url}/{username}/{repository} or {username}/{repository} pattern";
+	private static final String TARGET_TAG_DESCRIPTION = "This parameter is used to specify a version for the Docker image.";
 
 	private Text txtProjectName;
 	private Text txtRemoteRepository;
@@ -164,9 +169,14 @@ public class DockerDetailsPage extends WizardPage {
 		data.left = new FormAttachment(lblRemoteRepository, 0);
 		data.right = new FormAttachment(97);
 		txtRemoteRepository.setLayoutData(data);
-		txtRemoteRepository.setEnabled(false);
 		txtRemoteRepository.setText(PlatformUIConstants.DEFAULT_REMOTE_REPOSITORY);
 		dataModel.setDockerRemoteRepository(PlatformUIConstants.DEFAULT_REMOTE_REPOSITORY);
+		txtRemoteRepository.addModifyListener(new ModifyListener() {
+			public void modifyText(ModifyEvent arg0) {
+				dataModel.setDockerRemoteRepository(txtRemoteRepository.getText());
+				updatePageStatus();
+			}
+		});
 
 		Label lblRemoteTag = new Label(dockerContainer, SWT.NONE);
 		data = new FormData();
@@ -183,8 +193,13 @@ public class DockerDetailsPage extends WizardPage {
 		data.right = new FormAttachment(97);
 		txtRemoteTag.setLayoutData(data);
 		txtRemoteTag.setText(PlatformUIConstants.DEFAULT_REMOTE_TAG);
-		txtRemoteTag.setEnabled(false);
 		dataModel.setDockerRemoteTag(PlatformUIConstants.DEFAULT_REMOTE_TAG);
+		txtRemoteTag.addModifyListener(new ModifyListener() {
+			public void modifyText(ModifyEvent arg0) {
+				dataModel.setDockerRemoteTag(txtRemoteTag.getText());
+				updatePageStatus();
+			}
+		});
 
 		Label lblTargetRepository = new Label(dockerContainer, SWT.NONE);
 		data = new FormData();
@@ -198,7 +213,7 @@ public class DockerDetailsPage extends WizardPage {
 		data = new FormData();
 		data.top = new FormAttachment(lblRemoteTag, 20);
 		data.left = new FormAttachment(lblTargetRepository, 0);
-		data.right = new FormAttachment(97);
+		data.right = new FormAttachment(90);
 		txtTargetRepository.setLayoutData(data);
 		txtTargetRepository.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent arg0) {
@@ -206,6 +221,15 @@ public class DockerDetailsPage extends WizardPage {
 				updatePageStatus();
 			}
 		});
+		
+		Label targetRepoHelpLabel = new Label(dockerContainer, SWT.NONE);
+		data = new FormData();
+		targetRepoHelpLabel.setImage(SWTResourceManager.getImage(this.getClass(), HELP_ICON));
+		data.top = new FormAttachment(lblRemoteTag, 22);
+		data.left = new FormAttachment(txtTargetRepository, 0);
+		data.right = new FormAttachment(98);
+		targetRepoHelpLabel.setLayoutData(data);
+		targetRepoHelpLabel.setToolTipText(TARGET_REPOSITORY_DESCRIPTION);
 
 		Label lblTargetTag = new Label(dockerContainer, SWT.NONE);
 		data = new FormData();
@@ -219,7 +243,7 @@ public class DockerDetailsPage extends WizardPage {
 		data = new FormData();
 		data.top = new FormAttachment(lblTargetRepository, 20);
 		data.left = new FormAttachment(lblTargetTag, 0);
-		data.right = new FormAttachment(97);
+		data.right = new FormAttachment(90);
 		txtTargetTag.setLayoutData(data);
 		txtTargetTag.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent arg0) {
@@ -227,6 +251,15 @@ public class DockerDetailsPage extends WizardPage {
 				updatePageStatus();
 			}
 		});
+		
+		Label targetTagHelpLabel = new Label(dockerContainer, SWT.NONE);
+		data = new FormData();
+		targetTagHelpLabel.setImage(SWTResourceManager.getImage(this.getClass(), HELP_ICON));
+		data.top = new FormAttachment(lblTargetRepository, 22);
+		data.left = new FormAttachment(txtTargetTag, 0);
+		data.right = new FormAttachment(98);
+		targetTagHelpLabel.setLayoutData(data);
+		targetTagHelpLabel.setToolTipText(TARGET_TAG_DESCRIPTION);
 
 		// Environment variable table
 		Label lblParameters = new Label(dockerContainer, SWT.NONE);

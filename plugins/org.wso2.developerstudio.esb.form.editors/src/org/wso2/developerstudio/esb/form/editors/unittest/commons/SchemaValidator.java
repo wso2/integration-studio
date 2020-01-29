@@ -23,6 +23,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringReader;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
@@ -32,6 +34,10 @@ import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
 
+import org.apache.commons.io.FileUtils;
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.Platform;
+import org.osgi.framework.Bundle;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.esb.form.editors.Activator;
@@ -61,14 +67,18 @@ public class SchemaValidator {
     public static void isValidMockServiceConfigurationXML(String xmlSource) throws RuntimeException {
         try {
             if (mockServiceXsdSource == null) {
-                URL url = new URL("platform:/plugin" + File.separator + Constants.SCHEMA_VALIDATOR_PLUGIN_ID
-                        + File.separator + Constants.SCHEMA_DIR + File.separator + "mockServiceValidation.xsd");
-                InputStream inputStream = url.openConnection().getInputStream();
-                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
-                mockServiceXsdSource = org.apache.commons.io.IOUtils.toString(in);
-                in.close();
+                Bundle bundle = Platform.getBundle(Activator.PLUGIN_ID);
+                URL fileURL = bundle.getEntry(Constants.SCHEMA_DIR + "/mockServiceValidation.xsd");
+                File xsdMockServiceSchema = null;
+
+                URL resolvedFileURL = FileLocator.toFileURL(fileURL);
+                URI resolvedURI = new URI(resolvedFileURL.getProtocol(), resolvedFileURL.getPath(), null);
+                xsdMockServiceSchema = new File(resolvedURI);
+                mockServiceXsdSource = FileUtils.readFileToString(xsdMockServiceSchema);
             }
             validateXML(xmlSource, mockServiceXsdSource);
+        } catch (URISyntaxException e) {
+            log.error("An error occurred while reading unit test xsd schemas", e);
         } catch (IOException e) {
             log.error("IOException while validating mock service xsd", e);
         }
@@ -83,15 +93,18 @@ public class SchemaValidator {
     public static void isValidUnitTestConfigurationXML(String xmlSource) throws RuntimeException {
         try {
             if (synapseUnitTestXsdSource == null) {
-                URL url = new URL("platform:/plugin" + File.separator + Constants.SCHEMA_VALIDATOR_PLUGIN_ID
-                        + File.separator + Constants.SCHEMA_DIR + File.separator + "synapseUnitTestValidation.xsd");
-                InputStream inputStream = url.openConnection().getInputStream();
-                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
-                synapseUnitTestXsdSource = org.apache.commons.io.IOUtils.toString(in);
-                in.close();
-            }
+                Bundle bundle = Platform.getBundle(Activator.PLUGIN_ID);
+                URL fileURL = bundle.getEntry(Constants.SCHEMA_DIR + "/synapseUnitTestValidation.xsd");
+                File xsdUnitTestSchema = null;
 
+                URL resolvedFileURL = FileLocator.toFileURL(fileURL);
+                URI resolvedURI = new URI(resolvedFileURL.getProtocol(), resolvedFileURL.getPath(), null);
+                xsdUnitTestSchema = new File(resolvedURI);
+                synapseUnitTestXsdSource = FileUtils.readFileToString(xsdUnitTestSchema);
+            }
             validateXML(xmlSource, synapseUnitTestXsdSource);
+        } catch (URISyntaxException e) {
+            log.error("An error occurred while reading unit test xsd schemas", e);
         } catch (IOException e) {
             log.error("IOException while validating unit test xsd", e);
         }

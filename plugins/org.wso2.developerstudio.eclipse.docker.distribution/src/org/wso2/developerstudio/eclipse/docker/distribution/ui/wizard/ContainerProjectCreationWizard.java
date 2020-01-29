@@ -269,6 +269,7 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
             // Creating CarbonApps and Libs and CarbonHome folders
             createFolder(DockerProjectConstants.CARBON_APP_FOLDER);
             createFolder(DockerProjectConstants.LIBS_FOLDER);
+            createFolder(DockerProjectConstants.RESOURCES_FOLDER);
             createFolder(DockerProjectConstants.CARBON_HOME_FOLDER);
 
             // Copy docker file
@@ -328,7 +329,7 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
             
             //Add deployment.toml execution plugin
             Plugin deploymentTomlPlugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven",
-                    "mi-container-config-mapper", "5.2.12", true);
+                    "mi-container-config-mapper", "5.2.13", true);
             PluginExecution deploymentTomlPluginExecution = new PluginExecution();
             deploymentTomlPluginExecution.addGoal("config-mapper-parser");
             deploymentTomlPluginExecution.setId("config-mapper-parser");

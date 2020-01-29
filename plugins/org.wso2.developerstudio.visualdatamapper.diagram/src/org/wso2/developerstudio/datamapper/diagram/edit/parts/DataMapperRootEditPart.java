@@ -61,6 +61,7 @@ import org.wso2.developerstudio.datamapper.diagram.custom.util.ImageHolder;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.DataMapperRootCanonicalEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.DataMapperRootItemSemanticEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry;
+import org.wso2.developerstudio.datamapper.diagram.schemagen.json.JSONArray;
 import org.wso2.developerstudio.datamapper.diagram.tree.generator.ISchemaTransformer;
 import org.wso2.developerstudio.datamapper.diagram.tree.generator.SchemaTransformerRegistry;
 import org.wso2.developerstudio.datamapper.impl.DataMapperRootImpl;
@@ -291,20 +292,31 @@ public class DataMapperRootEditPart extends DiagramEditPart {
     public List<String> getMappings(String inputSchema, String outputSchema) {
         HttpURLConnection connection = null;  
 
-        Gson gson = new Gson();
-        String jsonIn = gson.toJson(inputSchema);
-        String jsonOut = gson.toJson(outputSchema);
+//        Gson gson = new Gson();
+//        String jsonIn = gson.toJson(inputSchema);
+//        String jsonOut = gson.toJson(outputSchema);
+        
+        // Create one set of schemas
+        JSONArray schemas = new JSONArray();
+        schemas.put(inputSchema);
+        schemas.put(outputSchema);
+        
+        String schemasToSend = schemas.toString();
         
         final HttpClient httpClient = new HttpClient();
         
         // Send file1
         StringRequestEntity requestEntity;
+        String outString;
+        List<String> myList = null;
         try {
-            requestEntity = new StringRequestEntity(jsonIn,"application/json","UTF-8");
-            PostMethod postMethod = new PostMethod("http://127.0.0.1:5000/uploader1");
+            requestEntity = new StringRequestEntity(schemasToSend,"application/json","UTF-8");
+            PostMethod postMethod = new PostMethod("http://127.0.0.1:5000/uploader");
             postMethod.setRequestEntity(requestEntity);
             try {
                 int statusCode = httpClient.executeMethod(postMethod);
+                outString = postMethod.getResponseBodyAsString();
+                myList = new ArrayList<String>(Arrays.asList(outString.split("#")));
             } catch (HttpException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -315,42 +327,6 @@ public class DataMapperRootEditPart extends DiagramEditPart {
         } catch (UnsupportedEncodingException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-        
-        // send file2
-        StringRequestEntity requestEntity2;
-        try {
-            requestEntity2 = new StringRequestEntity(jsonOut,"application/json","UTF-8");
-            PostMethod postMethod2 = new PostMethod("http://127.0.0.1:5000/uploader2");
-            postMethod2.setRequestEntity(requestEntity2);
-            try {
-                int statusCode = httpClient.executeMethod(postMethod2);
-            } catch (HttpException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        } catch (UnsupportedEncodingException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        
-        // receive answer
-        String out = null;
-        List<String> myList = null;
-        HttpClient httpclient2 = new HttpClient();
-        // Prepare a request object
-        GetMethod httpget = new GetMethod("http://127.0.0.1:5000/answer");
-        try{
-            httpclient2.executeMethod(httpget);
-            out = httpget.getResponseBodyAsString();
-            myList = new ArrayList<String>(Arrays.asList(out.split("#")));
-        }catch(Exception e) { 
-            System.err.println(e); 
-        }finally { 
-            httpget.releaseConnection();
         }
         
         return myList;

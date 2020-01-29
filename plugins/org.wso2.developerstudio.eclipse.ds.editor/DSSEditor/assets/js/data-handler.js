@@ -504,7 +504,7 @@ function saveAll(root, url, successFunc) {
         url: url,
         type: "post",
         headers: {"x-operation-type":OPERATION_TYPE_HEADER_SAVE_ALL},
-        data: {xmlcontent: serializedData},
+        data: {content: serializedData},
         success: successFunc
     });
 }

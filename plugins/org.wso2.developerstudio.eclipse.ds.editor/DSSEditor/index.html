@@ -135,6 +135,9 @@
                         <div class="form-group"><label>Datasource *</label><select class="form-control" required="" id="q-datasource-select" style="margin-left: 10px;"><option value="" selected="">- Select Datasource -</option><option value="">Generic</option></select></div>
                     </div>
                 </form>
+                <div class="modal-footer justify-content-between">
+                	<div id="query-notification-alert-holder" class="alert mr-auto"></div>
+                </div>
                 <div class="collapse-custom"><a class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-1" role="button" href="#collapse-1">Input Mappings</a>
                     <div class="collapse" id="collapse-1">
                         <div class="table-responsive" id="q-im-entries-table">
@@ -474,30 +477,91 @@
                         <div class="form-group form-inline">
                             <div class="form-group"><label>Mapping Type *</label><select class="form-control" required="" id="q-om-addedit-mappingtype-select" name="q-om-addedit-mappingtype-select"><option value="element" selected="">Element</option><option value="attribute">Attribute</option><option value="query">Query</option><option value="complex-element">Complex Element</option></select></div>
                         </div>
-                        <div class="form-group form-inline">
-                            <div id="q-om-addedit-dsmapping-select-inputgroup" class="form-group"><label>Datasource Type *</label><select class="form-control" required="" id="q-om-addedit-dsmapping-select" name="q-om-addedit-dsmapping-select"><option value="column" selected="">Column</option><option value="query-param">Query Param</option></select></div>
+                        <div class="form-group form-inline" id="q-om-addedit-dsmapping-select-inputgroup">
+                            <div class="form-group"><label>Datasource Type *</label><select class="form-control" required="" id="q-om-addedit-dsmapping-select" name="q-om-addedit-dsmapping-select"><option value="column" selected="">Column</option><option value="query-param">Query Param</option></select></div>
                         </div>
-                        <div class="form-group">
-                            <div id="q-om-addedit-outputfn-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="q-om-addedit-outputfn-input" name="q-om-addedit-outputfn-input"><label class="mb-0" for="q-om-addedit-outputfn-input">Output Field Name</label></div>
+                        <div class="form-group" id="q-om-addedit-outputfn-inputgroup">
+                            <div class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="q-om-addedit-outputfn-input" name="q-om-addedit-outputfn-input"><label class="mb-0" for="q-om-addedit-outputfn-input">Output Field Name</label></div>
                         </div>
-                        <div class="form-group">
-                            <div id="q-om-addedit-elens-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="q-om-addedit-elens-input" name="q-om-addedit-elens-input"><label class="mb-0" for="q-om-addedit-elens-input">Element Namespace</label></div>
+                        <div class="form-group" id="q-om-addedit-elename-inputgroup">
+                            <div class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="q-om-addedit-elename-input" name="q-om-addedit-elename-input"><label class="mb-0" for="q-om-addedit-elename-input">Element Name</label></div>
                         </div>
-                        <div class="form-group">
-                            <div id="q-om-addedit-dscolname-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="q-om-addedit-dscolname-input" name="q-om-addedit-dscolname-input"><label class="mb-0" for="im-defaultvalue-input">Datasource Column Name</label></div>
+                        <div class="form-group" id="q-om-addedit-elens-inputgroup">
+                            <div class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="q-om-addedit-elens-input" name="q-om-addedit-elens-input"><label class="mb-0" for="q-om-addedit-elens-input">Element Namespace</label></div>
                         </div>
-                        <div class="form-group form-inline">
-                            <div id="q-om-addedit-paramtype-inputgroup" class="form-group"><label>Parameter Type</label><select class="form-control" required="" id="q-om-addedit-paramtype-select" name="q-om-addedit-paramtype-select"><option value="scalar" selected="">Scalar</option><option value="array">Array</option></select></div>
+                        <div class="form-group" id="q-om-addedit-dscolname-inputgroup">
+                            <div class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="q-om-addedit-dscolname-input" name="q-om-addedit-dscolname-input"><label class="mb-0" for="q-om-addedit-dscolname-input">Datasource Column Name</label></div>
                         </div>
-                        <div class="form-group form-inline">
-                            <div id="q-om-addedit-schematype-inputgroup" class="form-group"><label>Schema Type</label><select class="form-control" required="" id="q-im-paramtype-select" name="q-im-paramtype-select"><option value="string" selected="">string</option><option value="integer">integer</option><option value="boolean">boolean</option><option value="float">float</option><option value="double">double</option><option value="decimal">decimal</option><option value="datetime">dateTime</option><option value="time">time</option><option value="date">date</option><option value="long">long</option><option value="base64binary">base64Binary</option></select></div>
+                        <div class="form-group" id="q-om-addedit-qparamname-inputgroup">
+                            <div class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="q-om-addedit-qparamname-input" name="q-om-addedit-qparamname-input"><label class="mb-0" for="q-om-addedit-qparamname-input">Datasource Query Param Name</label></div>
                         </div>
-                        <div class="form-group form-inline query-common-element">
-                            <div id="q-om-addedit-optional-inputgroup" class="form-check"><input class="form-check-input" type="checkbox" id="q-om-addedit-optional-checkbox"><label class="form-check-label" for="q-om-addedit-optional-checkbox">Optional</label></div>
+                        <div class="form-group form-inline" id="q-om-addedit-paramtype-inputgroup">
+                            <div class="form-group"><label>Parameter Type</label><select class="form-control" required="" id="q-om-addedit-paramtype-select" name="q-om-addedit-paramtype-select"><option value="scalar" selected="">Scalar</option><option value="array">Array</option></select></div>
                         </div>
-                        <div class="form-group form-inline">
-                            <div class="form-group"><label>Select Query *</label><select class="form-control" required="" id="q-om-addedit-query-select" name="q-om-addedit-query-select"><option value="base64binary">-- Select Query --</option></select></div>
+                        <div class="form-group" id="q-om-addedit-arrayname-inputgroup">
+                            <div class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="q-om-addedit-arrayname-input" name="q-om-addedit-arrayname-input"><label class="mb-0" for="q-om-addedit-arrayname-input">Array Name</label></div>
                         </div>
+                        <div class="form-group form-inline" id="q-om-addedit-schematype-inputgroup">
+                            <div class="form-group"><label>Schema Type</label><select class="form-control" required="" id="q-im-paramtype-select" name="q-im-paramtype-select"><option value="string" selected="">string</option><option value="integer">integer</option><option value="boolean">boolean</option><option value="float">float</option><option value="double">double</option><option value="decimal">decimal</option><option value="datetime">dateTime</option><option value="time">time</option><option value="date">date</option><option value="long">long</option><option value="base64binary">base64Binary</option></select></div>
+                        </div>
+                        <div class="form-group form-inline query-common-element" id="q-om-addedit-optional-inputgroup">
+                            <div class="form-check"><input class="form-check-input" type="checkbox" id="q-om-addedit-optional-checkbox"><label class="form-check-label" for="q-om-addedit-optional-checkbox">Optional</label></div>
+                        </div>
+                        <div id="q-om-addedit-export-inputgroup" class="collapse-custom"><a class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="false" aria-controls="q-export-option-collapse" role="button" href="#q-export-option-collapse">Export Options</a>
+		                    <div class="collapse" id="q-export-option-collapse">
+	                            <div class="form-group query-common-element">
+	                                <div id="q-export-name-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="q-export-name-input" name="q-export-name-input" style="border: 0; border-bottom: 1px solid #E0E0E0;"><label class="mb-0" for="q-timeout-input">Export Name</label></div>
+	                            </div>
+	                            <div class="form-group form-inline query-common-element">
+	                                <div class="form-group"><label>Export Type</label><select class="form-control" required="" id="q-export-type-select" style="margin-left: 10px;"><option value="scalar" selected="">Scalar</option><option value="array">Array</option></select></div>
+	                            </div>
+		                    </div>
+                    	</div>
+                        <div class="form-group form-inline" id="q-om-addedit-selectquery-inputgroup">
+                            <div class="form-group"><label>Select Query *</label><select class="form-control" required="" id="q-om-addedit-query-select" name="q-om-addedit-query-select"><option value="">-- Select Query --</option></select></div>
+                        </div>
+                        <div class="table-responsive" id="q-om-query-entries-tbl">
+                            <table class="table table-hover table-sm" id="q-om-query-table">
+                                <thead>
+                                    <tr>
+                                        <th>Query Parameter Name</th>
+                                        <th>Mapping Name</th>
+                                        <th>Mapping Type</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Query_Parameter_Placeholder</td>
+                                        <td>Mapping_Name_Placeholder</td>
+                                        <td>Mappying_Type_Placeholder</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="collapse-custom" id="q-om-roles-entries-tbl"><a class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="true" aria-controls="q-roles-table" role="button" href="#q-roles-table">Allowed User Roles</a>
+                           <div class="collapse" id="q-roles-table">
+                               <div class="table-responsive">
+                                   <table class="table table-hover table-sm">
+                                       <thead>
+                                           <tr>
+                                               <th>User Role</th>
+                                               <th></th>
+                                           </tr>
+                                       </thead>
+                                       <tbody>
+                                           <tr>
+                                               <td>admin</td>
+                                               <td><input class="form-check-input" type="checkbox" id="role-admin-checkbox" name="role-admin-checkbox"></td>
+                                           </tr>
+                                           <tr>
+                                               <td>Internal/everyone</td>
+                                               <td><input class="form-check-input" type="checkbox" id="role-int-checkbox" name="role-int-checkbox"></td>
+                                           </tr>
+                                       </tbody>
+                                   </table>
+                               </div>
+                           </div>
+                       </div>
                     </form>
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Close</button><button class="btn btn-primary" type="submit" form="input-mapping-form">Save</button></div>

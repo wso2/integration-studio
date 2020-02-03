@@ -308,10 +308,10 @@ function testDBConnection(connectionDetails, url) {
         headers: {"x-operation-type":HEADER_VALUE_TEST_DS_CONNECTION},
         data: {content: connectionDetails},
         success: function (msg, status, jqXHR) {
-            showDSNotification("success", "Successfully connected to database.", 4000);
+            showDSNotification("success", "Successfully connected to database.", 6000);
         },
         error: function (msg, status, jqXHR) {
-            showDSNotification("danger", "Connection failed. Could not connect to database.", 4000);
+            showDSNotification("danger", "Connection failed. Could not connect to database.", 6000);
         }
     });
 }
@@ -339,7 +339,7 @@ function resolveMetadata(metadata) {
  *
  * @param propertyArr Property array.
  * @param propertyName  Property name.
- * @returns {string|string | string}    Property value if exists, empty string otherwise.
+ * @returns {string}    Property value if exists, empty string otherwise.
  */
 function getDSConfigPropertyValue(propertyArr, propertyName) {
     for (let i = 0, len = propertyArr.length; i < len; i++) {

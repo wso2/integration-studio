@@ -23,8 +23,8 @@
                 class="field inputgroup"><input type="text" placeholder=" " id="dss-namespace-input" name="dss-namespace-input" style="border: 0; border-bottom: 1px solid #E0E0E0;"><label class="mb-0" for="dss-namespace-input">Namespace</label></div>
         </div>
     </div>
-    <div class="collapse-custom"><a class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="true" aria-controls="transport-settings-collapse" role="button" href="#transport-settings-collapse">Transport Settings</a>
-        <div class="collapse show show" id="transport-settings-collapse">
+    <div class="collapse-custom"><a class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="false" aria-controls="transport-settings-collapse" role="button" href="#transport-settings-collapse">Transport Settings</a>
+        <div class="collapse" id="transport-settings-collapse">
             <div style="margin-bottom: 10px;">
                 <div class="container">
                     <div class="row" id="ts-transport-check-row">
@@ -88,8 +88,8 @@
             </div>
         </div>
     </div>
-    <div id="ds-collapse" class="collapse-custom"><a class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="true" aria-controls="data-sources-collapse" role="button" href="#data-sources-collapse">Data Sources</a>
-        <div class="collapse show table-bordered" id="data-sources-collapse">
+    <div id="ds-collapse" class="collapse-custom"><a class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="false" aria-controls="data-sources-collapse" role="button" href="#data-sources-collapse">Data Sources</a>
+        <div class="collapse table-bordered" id="data-sources-collapse">
             <div class="table-responsive" id="ds-datasources-table">
                 <table class="table table-hover table-sm">
                     <thead>
@@ -106,9 +106,9 @@
         </div>
     </div>
     <div id="queries" class="collapse-custom"><a class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="false" aria-controls="queries-collapse" role="button" href="#queries-collapse">Queries</a>
-        <div class="collapse show table-bordered" id="queries-collapse">
-            <div class="table-responsive" id="r-queries-table">
-                <table class="table table-hover table-sm"  id="r-queries-item-table">
+        <div class="collapse table-bordered" id="queries-collapse">
+            <div class="table-responsive" id="q-queries-table">
+                <table class="table table-hover table-sm"  id="q-queries-item-table">
                     <thead>
                         <tr>
                             <th>Query ID</th>
@@ -116,10 +116,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Query_ID_Placeholder</td>
-                            <td class="text-center"><i class="fa fa-edit"></i><i class="fa fa-trash"></i></td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -135,9 +131,6 @@
                         <div class="form-group"><label>Datasource *</label><select class="form-control" required="" id="q-datasource-select" style="margin-left: 10px;"><option value="" selected="">- Select Datasource -</option><option value="">Generic</option></select></div>
                     </div>
                 </form>
-                <div class="modal-footer justify-content-between">
-                	<div id="query-notification-alert-holder" class="alert mr-auto"></div>
-                </div>
                 <div class="collapse-custom"><a class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-1" role="button" href="#collapse-1">Input Mappings</a>
                     <div class="collapse" id="collapse-1">
                         <div class="table-responsive" id="q-im-entries-table">
@@ -260,7 +253,7 @@
         </div>
     </div>
     <div id="operations" class="collapse-custom"><a class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="false" aria-controls="operations-collapse" role="button" href="#operations-collapse">Operations</a>
-        <div class="collapse show table-bordered" id="operations-collapse">
+        <div class="collapse table-bordered" id="operations-collapse">
             <div class="table-responsive">
                 <table class="table table-hover table-sm" id="o-operation-table">
                     <thead>
@@ -279,7 +272,7 @@
         </div>
     </div>
     <div id="resources" class="collapse-custom"><a class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="false" aria-controls="operations-collapse" role="button" href="#operations-collapse">Resources</a>
-        <div class="collapse show table-bordered" id="operations-collapse">
+        <div class="collapse table-bordered" id="operations-collapse">
             <div class="table-responsive" id="r-resources-table">
                 <table class="table table-hover table-sm">
                     <thead>
@@ -538,7 +531,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="collapse-custom" id="q-om-roles-entries-tbl"><a class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="true" aria-controls="q-roles-table" role="button" href="#q-roles-table">Allowed User Roles</a>
+                        <div class="collapse-custom" id="q-om-roles-entries-tbl"><a class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="false" aria-controls="q-roles-table" role="button" href="#q-roles-table">Allowed User Roles</a>
                            <div class="collapse" id="q-roles-table">
                                <div class="table-responsive">
                                    <table class="table table-hover table-sm">
@@ -584,7 +577,7 @@
                         <div class="form-group form-inline">
                             <div class="form-group"><label>Query ID</label><select class="form-control" required="" id="o-addedit-queryid-select" name="o-addedit-queryid-select"><option value="" selected="">-- Select Query --</option></select></div>
                         </div>
-                        <div class="collapse-custom" id="operation-query-param-area"><a class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="true" aria-controls="op-table" role="button" href="#op-table">Operation Parameters</a>
+                        <div class="collapse-custom" id="operation-query-param-area"><a class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="false" aria-controls="op-table" role="button" href="#op-table">Operation Parameters</a>
 		                    <div class="collapse" id="op-table">
 		                        <div class="table-responsive" id="operation-query-entries-table">
 		                            <table class="table table-hover table-sm" id="operation-param-table">
@@ -675,6 +668,7 @@
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/datasources-util.js"></script>
+    <script src="assets/js/query-util.js"></script>
     <script src="assets/js/constants.js"></script>
     <script src="assets/js/data-handler.js"></script>
     <script src="assets/js/domutils.js"></script>

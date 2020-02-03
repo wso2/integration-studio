@@ -15,6 +15,7 @@ $(document).ready(function ($) {
         populateTransportSettings(root);
         populateDataSources(root);
         populateQueries(root);
+        populateQueryTable(root);
         populateOperations(root);
         populateResources(root);
     });
@@ -311,7 +312,7 @@ function populateQueries(root) {
         showQueriesTableNotification("info", "No queries available. Click 'Add New' to create a new query.", 0);
         return;
     }
-    
+
 //    $.each(queryConfigs, function(index, query) {
 //    	populateOueryOutputMappings(query);
 //    });

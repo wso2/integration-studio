@@ -44,6 +44,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.emf.validation.internal.util.Log;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.notation.View;
@@ -57,6 +58,7 @@ import org.wso2.developerstudio.datamapper.DataMapperRoot;
 import org.wso2.developerstudio.datamapper.InNode;
 import org.wso2.developerstudio.datamapper.OutNode;
 import org.wso2.developerstudio.datamapper.TreeNode;
+import org.wso2.developerstudio.datamapper.diagram.Activator;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.ImageHolder;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.DataMapperRootCanonicalEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.DataMapperRootItemSemanticEditPolicy;
@@ -66,6 +68,8 @@ import org.wso2.developerstudio.datamapper.diagram.tree.generator.ISchemaTransfo
 import org.wso2.developerstudio.datamapper.diagram.tree.generator.SchemaTransformerRegistry;
 import org.wso2.developerstudio.datamapper.impl.DataMapperRootImpl;
 import org.wso2.developerstudio.datamapper.impl.TreeNodeImpl;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 import com.google.gson.Gson;
 
@@ -77,6 +81,8 @@ public class DataMapperRootEditPart extends DiagramEditPart {
     /**
      * @generated
      */
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+
     public final static String MODEL_ID = "DataMapper"; //$NON-NLS-1$
 
     /**
@@ -110,37 +116,27 @@ public class DataMapperRootEditPart extends DiagramEditPart {
             fig.setBackgroundColor(new Color(null, 246,255,255));
             fig.setOpaque(true);
             
-//            Image img = ImageHolder.getInstance().getMapContentImage();
             Image img = ImageHolder.getInstance().getMapContentImage();
             ImageFigure iconImageFigure = new ImageFigure(img);
             iconImageFigure.setSize(new Dimension(200, 200));
             iconImageFigure.setLocation(new Point(0,-400));
-            
             iconImageFigure.addMouseListener(new MouseListener() {
 
                 @Override
                 public void mouseReleased(MouseEvent me) {
-                // TODO Auto-generated method stub
-
                 }
 
                 @Override
                 public void mousePressed(MouseEvent me) {
-                // TODO Auto-generated method stub
                     drawMappings();
-                    
-
                 }
 
                 @Override
                 public void mouseDoubleClicked(MouseEvent me) {
-                // TODO Auto-generated method stub
-
                 }
                 });
             
             fig.add(iconImageFigure);
-             
             return fig;
             }
     
@@ -150,10 +146,8 @@ public class DataMapperRootEditPart extends DiagramEditPart {
         // Get input and output schemas
         String inputContent = getSchema(datamapperRoot, "input");
         String outputContent = getSchema(datamapperRoot, "output");
-        writeUsingFiles(inputContent);
         
         List<String> mappings = getMappings(inputContent, outputContent);
-        
         
         EList<TreeNode> inputTreeNodesList = ((DataMapperRoot) datamapperRoot).getInput().getTreeNode();
         EList<TreeNode> outputTreeNodesList = ((DataMapperRoot) datamapperRoot).getOutput().getTreeNode();
@@ -170,7 +164,6 @@ public class DataMapperRootEditPart extends DiagramEditPart {
             TreeNode treeNodeFin = null; 
             TreeNode treeNode = iterateList(treeNodeFin, iterator, attr1, path1);
             
-            
             Iterator iteratorOut = outputTreeNodesList.iterator();
             nodeName = "";
             TreeNode treeNodeOutFin = null;
@@ -180,15 +173,12 @@ public class DataMapperRootEditPart extends DiagramEditPart {
                 final EObject source = (EObject) treeNode.getOutNode();
                 final EObject target = (EObject) treeNodeOut.getInNode();
                 final OutNode container = deduceContainer(source, target);
-            
-            
                 final DataMapperLink newElement = DataMapperFactory.eINSTANCE.createDataMapperLink();
                 TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(container);
                 try {
                     Thread.sleep(2);
                 } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
+                    log.error(e);
                 }
                 domain.getCommandStack().execute(new RecordingCommand(domain) {
                     @Override
@@ -207,8 +197,7 @@ public class DataMapperRootEditPart extends DiagramEditPart {
         try {
             updater.execute(null);
         } catch (ExecutionException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            log.error(e);
         }
     }
 
@@ -221,12 +210,9 @@ public class DataMapperRootEditPart extends DiagramEditPart {
             if (attributeName.equals(nodeName)) {
                 treeNodeFinal = treeNode;
             }
-            ////////////////////////
             if ( attributePath.indexOf(nodeName) !=-1) {
                 treeNodeFinal = traverseNode(treeNodeFinal, treeNode, attributeName, attributePath);
             }
-            ///////////////////////////
-//          treeNodeFinal = traverseNode(treeNodeFinal, treeNode, attributeName);
         }
         return treeNodeFinal;
     }
@@ -239,9 +225,6 @@ public class DataMapperRootEditPart extends DiagramEditPart {
     }
     
     private static OutNode deduceContainer(EObject source, EObject target) {
-        // Find container element for the new link.
-        // Climb up by containment hierarchy starting from the source
-        // and return the first element that is instance of the container class.
         for (EObject element = source; element != null; element = element.eContainer()) {
             if (element instanceof OutNode) {
                 return (OutNode) element;
@@ -255,7 +238,7 @@ public class DataMapperRootEditPart extends DiagramEditPart {
         try {
             schemaTransformer = SchemaTransformerRegistry.getInstance().getSchemaTransformer().newInstance();
         } catch (InstantiationException | IllegalAccessException e) {
-//          log.error(e);
+          log.error(e);
         }
         // Model root of input schema tree
         EList<TreeNode> TreeNodesList = null;
@@ -267,11 +250,9 @@ public class DataMapperRootEditPart extends DiagramEditPart {
         }
         File schemaFile = null;
         String content = null;
-        
         // If a tree node is found, continue saving
         if (null != TreeNodesList && !TreeNodesList.isEmpty()) {
             TreeNodeImpl inputTreeNode = (TreeNodeImpl) TreeNodesList.get(0);
-//            content = schemaTransformer.getSchemaContentFromModel(inputTreeNode, schemaFile);
             content = schemaTransformer.getSchemaContentFromModel(inputTreeNode, schemaFile, true, content);  //.getSchemaContentFromModel(inputTreeNode, schemaFile);
         }
         // Empty tree node, clear the file
@@ -281,20 +262,8 @@ public class DataMapperRootEditPart extends DiagramEditPart {
         return content;
     }
     
-    private static void writeUsingFiles(String data) {
-        try {
-            Files.write(Paths.get("/Users/ayodhya/PycharmProjects/Data_mapping/files_java.json"), data.getBytes());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    
     public List<String> getMappings(String inputSchema, String outputSchema) {
         HttpURLConnection connection = null;  
-
-//        Gson gson = new Gson();
-//        String jsonIn = gson.toJson(inputSchema);
-//        String jsonOut = gson.toJson(outputSchema);
         
         // Create one set of schemas
         JSONArray schemas = new JSONArray();
@@ -305,7 +274,7 @@ public class DataMapperRootEditPart extends DiagramEditPart {
         
         final HttpClient httpClient = new HttpClient();
         
-        // Send file1
+        // Send file
         StringRequestEntity requestEntity;
         String outString;
         List<String> myList = null;
@@ -318,15 +287,12 @@ public class DataMapperRootEditPart extends DiagramEditPart {
                 outString = postMethod.getResponseBodyAsString();
                 myList = new ArrayList<String>(Arrays.asList(outString.split("#")));
             } catch (HttpException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+                log.error(e);
             } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+                log.error(e);
             }
         } catch (UnsupportedEncodingException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            log.error(e);
         }
         
         return myList;

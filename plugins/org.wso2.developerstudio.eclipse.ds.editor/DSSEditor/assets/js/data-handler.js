@@ -116,8 +116,26 @@ $(document).ready(function ($) {
         $("#q-queries-table").toggle(false);
         clearAddQueryForm();
         $("#q-add-edit-query-section").toggle(true);
+        populateDSListForQueries(root);
+        $("#q-im-entries-table").toggle(false);
+        showInputMappingsTableNotification("info", "No input mappings available. Click 'Add New' to create a new mapping.", 0);
     });
     // End of queries - Add query
+
+    // Start of query general
+    $("#q-query-id-input").change(function() {
+        // Check if data source name already exists
+        let queries = root.getElementsByTagName("query");
+        let queryId = $("#q-query-id-input").val();
+
+        for (let i = 0, len = queries.length; i < len; i++) {
+            if (queries[i].id == queryId && !$("#ds-ds-id-input").prop('disabled')) {
+                showNotificationAlertModal("Error", "A query with ID " + queryId + " already exists.");
+                $("#q-query-id-input").val("");
+                return false;
+            }
+        }
+    });
 
     // Start of query output mapping
     
@@ -250,6 +268,37 @@ $(document).ready(function ($) {
         openResourcesModal(true);
     });
 
+    $("#input-mapping-form").submit(function (e) {
+        e.preventDefault();
+
+        let result = addInputMapping(root);
+
+        // let result = addDataSource(root);
+        //
+        // if (result.status) {
+        //     $("#ds-add-edit-ds-modal").modal('hide');
+        //     saveAll(root, url, saveDSMetadata(result.metadata, url));
+        //     this.reset();
+        // }
+
+    });
+
+    $("#q-input-mapping-add-btn").click(function (e) {
+        e.preventDefault();
+
+        if (!$("#q-query-id-input").val()) {
+            showNotificationAlertModal("Error", "Please provide a query ID.");
+            return false;
+        }
+
+        if ($("#q-datasource-select").val() == "") {
+            showNotificationAlertModal("Error", "Please select a datasource.");
+            return false;
+        }
+
+        $("#q-input-mapping-modal").modal("show");
+    });
+
     /** End of Event handlers **/
 });
 
@@ -332,38 +381,6 @@ function openResourcesModal(isEditEnabled) {
     }
 
     $("#r-resource-addedit-modal").modal('show');
-}
-
-/**
- * Shows an alert of a given type in the data source editor modal.
- *
- * @param type Type of the alert: success | info | warning | danger
- * @param message Message to be displayed.
- * @param interval Number of milliseconds before the notification disappears. If not provided or '0',
- * notification will stay forever.
- */
-function showDSNotification(type, message, interval) {
-    let alertHtml = "<div id='ds-notification-alert' class=\"alert " + "alert-" + type + "\"" + ">" + message + "</div>";
-    $("#ds-notification-alert-holder").html(alertHtml);
-    $("#ds-notification-alert").show();
-
-    showAlert("ds-notification-alert", interval);
-}
-
-/**
- * Shows an alert of a given type in the data sources table.
- *
- * @param type Type of the alert: success | info | warning | danger
- * @param message Message to be displayed.
- * @param interval Number of milliseconds before the notification disappears. If not provided or '0',
- * notification will stay forever.
- */
-function showDSTableNotification(type, message, interval) {
-    let alertHtml = "<span><div id='ds-table-notification-alert' class=\"alert " + "alert-" + type + "\"" + ">" + message + "</div></span>";
-    $("#ds-table-notification-alert-holder").html(alertHtml);
-    $("#ds-table-notification-alert").show();
-
-    showAlert("ds-table-notification-alert", interval);
 }
 
 /**
@@ -813,3 +830,11 @@ function validateResourceFields(resourcePath, methodValue) {
 	}
 	return true;
 }
+
+function showNotificationAlertModal(title, content) {
+    $("#alert-modal-title").text(title);
+    $("#alert-modal-content").text(content);
+
+    $("#alert-modal").modal('show');
+}
+

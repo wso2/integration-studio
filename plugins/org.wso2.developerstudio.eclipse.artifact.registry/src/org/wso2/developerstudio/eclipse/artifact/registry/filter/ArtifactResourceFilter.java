@@ -25,7 +25,7 @@ public class ArtifactResourceFilter extends ViewerFilter {
             IFolder fodler = (IFolder) element;
             try {
                 if ((fodler.getName().equals("CarbonHome") || fodler.getName().equals("CompositeApps")
-                        || fodler.getName().equals("resources") || fodler.getName().equals("target"))
+                        || fodler.getName().equals("ConfigMapResources") || fodler.getName().equals("target"))
                         && fodler.getParent() instanceof IProject
                         && (((IProject) fodler.getParent()).hasNature(DOCKER_PROJECT_NATURE)
                                 || ((IProject) fodler.getParent()).hasNature(K8S_PROJECT_NATURE))) {

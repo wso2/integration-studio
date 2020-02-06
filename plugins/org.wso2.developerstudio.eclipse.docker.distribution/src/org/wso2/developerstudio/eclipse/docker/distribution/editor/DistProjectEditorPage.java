@@ -30,6 +30,8 @@ import java.util.TreeMap;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
@@ -56,6 +58,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.TreeEditor;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.GridData;
@@ -81,7 +84,7 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.w3c.dom.Document;
-
+import org.w3c.dom.Node;
 import org.wso2.developerstudio.eclipse.distribution.project.model.DependencyData;
 import org.wso2.developerstudio.eclipse.distribution.project.model.NodeData;
 import org.wso2.developerstudio.eclipse.distribution.project.util.DistProjectUtils;
@@ -143,6 +146,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
     private String description = "";
     private String targetRepository = "";
     private String targetTag = "";
+    private boolean isDeploymentConfigEnabled = false;
 
     private Action exportAction;
     private Action refreshAction;
@@ -217,6 +221,15 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
             XPathExpression xpTag = XPathFactory.newInstance().newXPath().compile(DockerProjectConstants.TARGET_TAG_XPATH);
             String tag = xpTag.evaluate(doc);
             setTargetTag(tag);
+            
+			XPathExpression xPathConfigMapEnabled = XPathFactory.newInstance().newXPath()
+					.compile(DockerProjectConstants.CONFIGMAP_PLUGIN_XPATH);
+			String configMapEnable = xPathConfigMapEnabled.evaluate(doc);
+			if (configMapEnable.equals("package")) {
+				setDeploymentConfigEnabled(true);
+			} else {
+				setDeploymentConfigEnabled(false);
+			}
 
         } catch (XPathExpressionException e) {
             log.error("XPathExpressionException while reading pomfile", e);
@@ -249,7 +262,8 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
                 dockerFieldValidator();
             }
             
-            DockerBuildActionUtil.changeDockerImageDataInPOMPlugin(pomFile, getTargetRepository(), getTargetTag());
+            DockerBuildActionUtil.changeDockerImageDataInPOMPlugin(pomFile, getTargetRepository(), getTargetTag(),
+                    isDeploymentConfigEnabled, pomFileRes);
             setPageDirty(false);
             updateDirtyState();
             pomFileRes.getProject().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
@@ -280,7 +294,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
         txtGroupId = managedForm.getToolkit().createText(managedForm.getForm().getBody(), "", SWT.NONE);
         txtGroupId.setText(getGroupId());
         GridData gd_txtGroupId = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
-        gd_txtGroupId.widthHint = 180;
+        gd_txtGroupId.widthHint = 350;
         txtGroupId.setLayoutData(gd_txtGroupId);
         txtGroupId.addModifyListener(new ModifyListener() {
 
@@ -297,7 +311,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
                 SWT.NONE | SWT.READ_ONLY);
         txtArtifactId.setText(getArtifactId());
         GridData gd_txtArtifactId = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
-        gd_txtArtifactId.widthHint = 180;
+        gd_txtArtifactId.widthHint = 350;
         txtArtifactId.setLayoutData(gd_txtArtifactId);
 
         managedForm.getToolkit().createLabel(managedForm.getForm().getBody(), "Version", SWT.NONE);
@@ -305,7 +319,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
         txtVersion = managedForm.getToolkit().createText(managedForm.getForm().getBody(), "", SWT.NONE);
         txtVersion.setText(getVersion());
         GridData gd_txtVersion = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
-        gd_txtVersion.widthHint = 180;
+        gd_txtVersion.widthHint = 350;
         txtVersion.setLayoutData(gd_txtVersion);
         txtVersion.addModifyListener(new ModifyListener() {
 
@@ -359,14 +373,33 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
         gd_txtTargetTag.widthHint = 350;
         txtTargetTag.setLayoutData(gd_txtTargetTag);
         txtTargetTag.addModifyListener(new ModifyListener() {
-
             public void modifyText(ModifyEvent evt) {
                 setPageDirty(true);
                 setTargetTag(txtTargetTag.getText().trim());
                 updateDirtyState();
             }
         });
-
+        
+        managedForm.getToolkit().createLabel(managedForm.getForm().getBody(), "Deployment Configurations", SWT.NONE);
+        Button btnDeploymentTomlEnableChecker = managedForm.getToolkit().createButton(managedForm.getForm().getBody(),
+                "Automatically deploy configurations (supports Micro-Integrator-1.1.0 upwards)", SWT.CHECK);
+        btnDeploymentTomlEnableChecker.setSelection(isDeploymentConfigEnabled());
+        GridData gdBtnDeploymentTomlEnableChecker = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
+        btnDeploymentTomlEnableChecker.setLayoutData(gdBtnDeploymentTomlEnableChecker);
+        
+        btnDeploymentTomlEnableChecker.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                setPageDirty(true);
+                if (btnDeploymentTomlEnableChecker.getSelection()) {
+                    setDeploymentConfigEnabled(true);
+                } else {
+                    setDeploymentConfigEnabled(false);
+                }
+                updateDirtyState();
+            }
+        });
+        
         Section sctnDependencies = managedForm.getToolkit().createSection(managedForm.getForm().getBody(),
                 Section.TWISTIE | Section.TITLE_BAR);
         GridData gd_sctnNewSection = new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1);
@@ -1057,6 +1090,14 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 
     public void setTargetTag(String targetTag) {
         this.targetTag = targetTag;
+    }
+    
+    public void setDeploymentConfigEnabled(boolean isEnabled) {
+        this.isDeploymentConfigEnabled = isEnabled;
+    }
+    
+    public boolean isDeploymentConfigEnabled() {
+        return isDeploymentConfigEnabled;
     }
 
     public static String[] combine(String[] a, String[] b) {

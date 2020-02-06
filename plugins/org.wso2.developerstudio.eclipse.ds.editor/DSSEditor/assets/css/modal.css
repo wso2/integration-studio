@@ -1,9 +1,9 @@
-.modal-dialog {
+.modal-custom-dialog {
   overflow-y: initial !important;
   max-width: 800px !important;
 }
 
-.modal-body {
+.modal-custom-body {
   height: 70vh;
   overflow-y: auto;
   overflow-x: auto;

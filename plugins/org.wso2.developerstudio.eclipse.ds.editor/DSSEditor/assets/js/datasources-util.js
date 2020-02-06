@@ -104,10 +104,11 @@ function populateDSModal(root, dsId, metadata) {
                 if (rdbmsType == RDBMS_TYPE_DEFAULT) {
                     $("#ds-dstype-2-select").val(RDBMS_TYPE_DEFAULT);
                     setVisibleDSType2Default(true);
+                    setVisibleDSType2Ext(false);
 
                     // driver class
                     let driverClass = getDSConfigPropertyValue(properties, "driverClassName");
-                    if (driverClass != null && driverClass != undefined) {
+                    if (driverClass) {
                         $("#ds-driver-class-input").val(driverClass);
                     }
                     // url
@@ -132,8 +133,13 @@ function populateDSModal(root, dsId, metadata) {
                         $("#ds-db-engine-select").val(DB_ENGINE_MYSQL);
                     }
                     setVisibleDSType2Ext(true);
+                    setVisibleDSType2Default(false);
 
                     // datasource class name
+                    let dsClassName = getDSConfigPropertyValue(properties, "dataSourceClassName");
+                    if (dsClassName != null && dsClassName != undefined) {
+                        $("#ds-class-name-input").val(dsClassName);
+                    }
                 }
             } else if (dsType == DS_TYPE_CARBONDS) {
                 $("#ds-dstype-select").val(DS_TYPE_CARBONDS);
@@ -354,6 +360,9 @@ function getDSConfigPropertyValue(propertyArr, propertyName) {
     return "";
 }
 
+/**
+ * Resets data source add/edit wizard.
+ */
 function resetDSAddEditModal() {
     setVisibleDSTypeRDBMS(true);
     setVisibleDSTypeCarbon(false);

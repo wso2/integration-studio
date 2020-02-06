@@ -70,6 +70,7 @@ public class DockerDetailsPage extends WizardPage {
 	private Table tblParameters;
 	private Button btnRemove;
 	private Button btnAdd;
+	private Button btnDeploymentTomlEnableChecker;
 
 	private final ProjectDataModel dataModel;
 	private Group dockerContainer;
@@ -227,7 +228,7 @@ public class DockerDetailsPage extends WizardPage {
 		targetRepoHelpLabel.setImage(SWTResourceManager.getImage(this.getClass(), HELP_ICON));
 		data.top = new FormAttachment(lblRemoteTag, 22);
 		data.left = new FormAttachment(txtTargetRepository, 0);
-		data.right = new FormAttachment(98);
+		data.right = new FormAttachment(99);
 		targetRepoHelpLabel.setLayoutData(data);
 		targetRepoHelpLabel.setToolTipText(TARGET_REPOSITORY_DESCRIPTION);
 
@@ -257,15 +258,38 @@ public class DockerDetailsPage extends WizardPage {
 		targetTagHelpLabel.setImage(SWTResourceManager.getImage(this.getClass(), HELP_ICON));
 		data.top = new FormAttachment(lblTargetRepository, 22);
 		data.left = new FormAttachment(txtTargetTag, 0);
-		data.right = new FormAttachment(98);
+		data.right = new FormAttachment(99);
 		targetTagHelpLabel.setLayoutData(data);
 		targetTagHelpLabel.setToolTipText(TARGET_TAG_DESCRIPTION);
+
+		btnDeploymentTomlEnableChecker = new Button(dockerContainer, SWT.CHECK);
+		data = new FormData();
+		btnDeploymentTomlEnableChecker
+				.setText("Automatically deploy configurations (supports Micro-Integrator-1.1.0 upwards)");
+		data.top = new FormAttachment(lblTargetTag, 20);
+		data.left = new FormAttachment(2);
+		data.right = new FormAttachment(95);
+		btnDeploymentTomlEnableChecker.setSelection(true);
+		dataModel.setDeploymentTomlEnabled(true);
+		btnDeploymentTomlEnableChecker.setLayoutData(data);
+
+		btnDeploymentTomlEnableChecker.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				if (btnDeploymentTomlEnableChecker.getSelection()) {
+					dataModel.setDeploymentTomlEnabled(true);
+				} else {
+					dataModel.setDeploymentTomlEnabled(false);
+				}
+				updatePageStatus();
+			}
+		});
 
 		// Environment variable table
 		Label lblParameters = new Label(dockerContainer, SWT.NONE);
 		lblParameters.setText("Environment Variables");
 		data = new FormData();
-		data.top = new FormAttachment(lblTargetTag, 20);
+		data.top = new FormAttachment(btnDeploymentTomlEnableChecker, 20);
 		data.left = new FormAttachment(2);
 		lblParameters.setLayoutData(data);
 

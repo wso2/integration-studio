@@ -274,6 +274,7 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
 
             // Copy docker file
             copyDockerFile();
+            
             // Copy deployment.toml file
             copyDeploymentTomlFile();
             
@@ -327,20 +328,25 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
             dependencyPluginExecution.setConfiguration(dom);
             dependencyPlugin.addExecution(dependencyPluginExecution);
             
-            //Add deployment.toml execution plugin
+            // Add deployment.toml execution plugin
             Plugin deploymentTomlPlugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven",
-                    "mi-container-config-mapper", "5.2.13", true);
+                    "mi-container-config-mapper", "5.2.15", true);
             PluginExecution deploymentTomlPluginExecution = new PluginExecution();
             deploymentTomlPluginExecution.addGoal("config-mapper-parser");
             deploymentTomlPluginExecution.setId("config-mapper-parser");
-            deploymentTomlPluginExecution.setPhase("package");
-
-            String deploymentTomlPluginConfig = "<configuration>\n"
-                    + "                <miVersion>" + PlatformUIConstants.DEFAULT_REMOTE_TAG + "</miVersion>\n" 
-            		+ "            </configuration>";
-            Xpp3Dom tomlDom = Xpp3DomBuilder.build(new ByteArrayInputStream(deploymentTomlPluginConfig.getBytes()), "UTF-8");
+            
+            // Check base image contains deployment.toml and apply config-map plugin and other resources
+            if (dockerModel.isDeploymentTomlEnabled()) {
+                deploymentTomlPluginExecution.setPhase("package");          
+            } else {
+            	deploymentTomlPluginExecution.setPhase("none");  
+            }
+            String deploymentTomlPluginConfig = "<configuration>\n" + "                <miVersion>"
+                    + PlatformUIConstants.DEFAULT_REMOTE_TAG + "</miVersion>\n" + "            </configuration>";
+            Xpp3Dom tomlDom = Xpp3DomBuilder.build(new ByteArrayInputStream(deploymentTomlPluginConfig.getBytes()),
+                    "UTF-8");
             deploymentTomlPluginExecution.setConfiguration(tomlDom);
-            deploymentTomlPlugin.addExecution(deploymentTomlPluginExecution);        
+            deploymentTomlPlugin.addExecution(deploymentTomlPluginExecution);
 
             // Adding spotify docker plugin
             Plugin spotifyPlugin = MavenUtils.createPluginEntry(mavenProject, "com.spotify", "dockerfile-maven-plugin",

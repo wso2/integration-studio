@@ -16,8 +16,15 @@
 
 package org.wso2.developerstudio.eclipse.docker.distribution.action;
 
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,6 +49,7 @@ import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.apache.maven.model.Dependency;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
@@ -293,20 +301,36 @@ public class DockerBuildActionUtil {
      * Save docker image details to the POM file.
      * 
      * @param pomFile pom file
+     * @param targetRepository value for target repository
+     * @param targetTag pom value for target tag
+     * @param isConfigMapEnabaled value for config map enabled or disabled
      */
-    public static void changeDockerImageDataInPOMPlugin(File pomFile, String targetRepository, String targetTag) {
+    public static void changeDockerImageDataInPOMPlugin(File pomFile, String targetRepository, String targetTag,
+            boolean isConfigMapEnabaled, IFile pomIFile ) {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document doc = builder.parse(pomFile);
 
             XPath xPathRepo = XPathFactory.newInstance().newXPath();
-            Node repositoryNode = (Node) xPathRepo.compile(DockerProjectConstants.TARGET_REPOSITORY_XPATH).evaluate(doc, XPathConstants.NODE);
+            Node repositoryNode = (Node) xPathRepo.compile(DockerProjectConstants.TARGET_REPOSITORY_XPATH).evaluate(doc,
+                    XPathConstants.NODE);
             repositoryNode.setTextContent(targetRepository);
 
             XPath xPathTag = XPathFactory.newInstance().newXPath();
-            Node tagNode = (Node) xPathTag.compile(DockerProjectConstants.TARGET_TAG_XPATH).evaluate(doc, XPathConstants.NODE);
+            Node tagNode = (Node) xPathTag.compile(DockerProjectConstants.TARGET_TAG_XPATH).evaluate(doc,
+                    XPathConstants.NODE);
             tagNode.setTextContent(targetTag);
+
+            XPath xPathConfigMapPlugin = XPathFactory.newInstance().newXPath();
+            Node configMapPluginNode = (Node) xPathConfigMapPlugin
+                    .compile(DockerProjectConstants.CONFIGMAP_PLUGIN_XPATH).evaluate(doc, XPathConstants.NODE);
+            if (isConfigMapEnabaled) {
+                configMapPluginNode.setTextContent("package");
+            } else {
+                configMapPluginNode.setTextContent("none");
+                getBaseImageInDockerfileWhenDisableConfigMapper(pomIFile);
+            }
 
             Transformer tf = TransformerFactory.newInstance().newTransformer();
             tf.setOutputProperty(OutputKeys.INDENT, "yes");
@@ -369,6 +393,46 @@ public class DockerBuildActionUtil {
             log.error("IOException while reading pomfile", e);
         }
     }
+    
+    /**
+     * Get default/initial lines from Dockerfile.
+     *
+     * @param pomIFile pom
+     * @return default Dockerfile entries
+     */
+    private static void getBaseImageInDockerfileWhenDisableConfigMapper(IFile pomIFile) {
+        StringBuilder builder = new StringBuilder();
+        IFile dockerIFile = pomIFile.getProject().getFile(DockerProjectConstants.DOCKER_FILE);
+        File dockerFile = dockerIFile.getLocation().toFile();
+        
+        try (BufferedReader bufferReader = new BufferedReader(new FileReader(dockerFile))) {
+            String currentLine;
+            while ((currentLine = bufferReader.readLine()) != null) {
+                if (currentLine.contains(DockerProjectConstants.DOCKER_FILE_AUTO_GENERATION_BEGIN)) {
+                    String autoGenerateCommandLine;
+                    while ((autoGenerateCommandLine = bufferReader.readLine()) != null) {
+                        if (autoGenerateCommandLine.contains(DockerProjectConstants.DOCKER_FILE_AUTO_GENERATION_END)) {
+                            break;
+                        }
+                    }
+                } else {
+                    builder.append(currentLine).append(System.lineSeparator());
+                }
+            }
+        } catch (IOException e) {
+            log.error("Exception while writing to the Dockerfile", e);
+        }
+        
+        //save to the Dockerfile without auto generated codes
+        try (InputStream inputStream = new ByteArrayInputStream(builder.toString()
+                .getBytes(StandardCharsets.UTF_8));
+             OutputStream outputStream = new FileOutputStream(dockerFile)) {
+             IOUtils.copy(inputStream, outputStream);
+        } catch (IOException e) {
+            log.error("Exception while writing to the Dockerfile", e);
+        }
+    }
+        
     
     /**
      * Read docker image details from the POM file.

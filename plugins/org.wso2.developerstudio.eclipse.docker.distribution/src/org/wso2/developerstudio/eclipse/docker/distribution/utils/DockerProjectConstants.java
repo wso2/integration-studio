@@ -87,6 +87,7 @@ public class DockerProjectConstants extends NLS {
     public static final String WINDOWS = "win";
     public static final String TARGET_REPOSITORY_XPATH = "/project/build/plugins/plugin/executions/execution/configuration/repository";
     public static final String TARGET_TAG_XPATH = "/project/build/plugins/plugin/executions/execution/configuration/tag";
+    public static final String CONFIGMAP_PLUGIN_XPATH = "/project/build/plugins/plugin[artifactId='mi-container-config-mapper']/executions/execution/phase";
     public static final String DEPLOYMENT_TOML_FILE_PATH = "resources/deployment.toml";
     public static final String DOCKER_USER_GUIDE_PATH = "resources/UserGuide/DockerGuideReadMe.html";
     public static final String K8S_USER_GUIDE_PATH = "resources/UserGuide/K8sGuideReadMe.html";
@@ -95,6 +96,9 @@ public class DockerProjectConstants extends NLS {
     public static final String RESOURCE_PATH = "resources";
     public static final String DEPLOYMENT_TOML_NAME = "deployment.toml";
     public static final String ESB_GRAPHICAL_PERSPECTIVE = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.perspective";
+    public static final String DOCKER_FILE = "Dockerfile";
+    public static final String DOCKER_FILE_AUTO_GENERATION_BEGIN = "#[DO NOT REMOVE] Auto generated Docker commands for config-map parser";
+    public static final String DOCKER_FILE_AUTO_GENERATION_END = "#[DO NOT REMOVE] End of auto generated Docker commands for config-map parser";
     
     public static String KUBERNETES_PROJECT_TYPE;
     public static String DOCKER_PROJECT_TYPE;

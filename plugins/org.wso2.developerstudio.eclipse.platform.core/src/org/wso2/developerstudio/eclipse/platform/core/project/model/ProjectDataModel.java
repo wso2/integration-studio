@@ -48,6 +48,7 @@ public abstract class ProjectDataModel extends Observable {
 	private boolean isKubernetesExporterProjectChecked = false;
 	private boolean isDirectContainerProjectCreation = false;
 	private boolean isCompositeOnClickContainerCreation = false;
+	private boolean isDeploymentTomlEnabled = true;
 	private String dockerRemoteRepository;
 	private IProject selectedCompositeProjectOnCreation;
 	private String dockerRemoteTag;
@@ -253,6 +254,14 @@ public abstract class ProjectDataModel extends Observable {
 			this.selectedOption = selectedOption;
 			trigger();
 		}
+	}
+
+	public boolean isDeploymentTomlEnabled() {
+		return isDeploymentTomlEnabled;
+	}
+
+	public void setDeploymentTomlEnabled(boolean isDeploymentTomlEnabled) {
+		this.isDeploymentTomlEnabled = isDeploymentTomlEnabled;
 	}
 
 	protected void trigger() throws ObserverFailedException {

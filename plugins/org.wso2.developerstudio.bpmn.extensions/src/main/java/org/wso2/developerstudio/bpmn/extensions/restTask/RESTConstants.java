@@ -104,4 +104,13 @@ public interface RESTConstants {
     public static final String ERROR_MESSAGE_VARIABLE_HELP = "Error message Variable";
     public static final String ERROR_MESSAGE_VARIABLE_LONG = "Error message variable which saves the error message "
             + "of the rest call if there is any";
+
+    public static final String ENABLE_DEFAULT_VARIABLE_LABEL = "Enable Default Variable";
+    public static final String ENABLE_DEFAULT_VARIABLE_HELP = "Enable default variable";
+    public static final String ENABLE_DEFAULT_VARIABLE_LONG = "Enable Default variable specifies a variable to set "
+            + "if an unexpected response(Which doesn't comply to the specified json path) is recieved from rest backend";
+    public static final String ENABLE_DEFAULT_VARIABLE_TRUE_LABEL = "true";
+    public static final String ENABLE_DEFAULT_VARIABLE_TRUE_VALUE = "true";
+    public static final String ENABLE_DEFAULT_VARIABLE_FALSE_LABEL = "false";
+    public static final String ENABLE_DEFAULT_VARIABLE_FALSE_VALUE = "false";
 }

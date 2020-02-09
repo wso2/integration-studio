@@ -133,5 +133,16 @@ public class RESTTask extends AbstractCustomServiceTask {
             displayHelpLong = RESTConstants.ERROR_MESSAGE_VARIABLE_LONG)
     private String errorMessageVariable;
 
+    /**
+     * @See RESTConstants.ENABLE_DEFAULT_VARIABLE_LONG
+     */
+    @Property(type = PropertyType.COMBOBOX_CHOICE, displayName = RESTConstants.ENABLE_DEFAULT_VARIABLE_LABEL, required = false)
+    @Help(displayHelpShort = RESTConstants.ENABLE_DEFAULT_VARIABLE_HELP,
+            displayHelpLong = RESTConstants.ENABLE_DEFAULT_VARIABLE_LONG)
+    @PropertyItems(
+            {RESTConstants.ENABLE_DEFAULT_VARIABLE_TRUE_LABEL, RESTConstants.ENABLE_DEFAULT_VARIABLE_TRUE_VALUE,
+                RESTConstants.ENABLE_DEFAULT_VARIABLE_FALSE_LABEL, RESTConstants.ENABLE_DEFAULT_VARIABLE_FALSE_VALUE})
+    private String enableDefaultVariable;
+
 
 }

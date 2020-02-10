@@ -284,22 +284,23 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 		 * proceed that's why this exception handled and logged
 		 */
 		try {
-
 			File parentFile = location.getParentFile();
 			String parentName = parentFile.getName();
 			parentProject = root.getProject(parentName);
 
 			if (parentProject != null && !parentProject.hasNature(Constants.MAVEN_MULTI_MODULE_PROJECT_NATURE)) {
-
-				String newlocation = parentFile.getParent() + File.separator + name;
-				location = new File(newlocation);
+				String newLocation = parentFile.getParent() + File.separator + name;
+				location = new File(newLocation);
 				getModel().setLocation(location);
 				isParentMMM = false;
+			} else if (parentProject != null && parentProject.hasNature(Constants.MAVEN_MULTI_MODULE_PROJECT_NATURE)) {
+				String newLocation = parentFile.getAbsolutePath() + File.separator + name;
+				location = new File(newLocation);
+				getModel().setLocation(location);
 			}
 		} catch (CoreException e) {
 			log.warn("Cannot create project in selected location ", e);
 			return createProjectInDefaultWorkspace(name);
-
 		}
 
 		IProjectDescription newProjectDescription = project.getWorkspace().newProjectDescription(name);

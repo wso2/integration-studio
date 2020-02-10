@@ -84,7 +84,7 @@
 }
 
 #ds-table-notification-alert-holder .alert {
-  padding: 0 !important;
+  /*padding: 0 !important;*/
   margin-bottom: 0 !important;
   margin-right: 0 !important;
 }
@@ -95,6 +95,17 @@
 }
 
 #q-im-table-notification-alert-holder .alert {
+  /*padding: 0 !important;*/
+  margin-bottom: 0 !important;
+  margin-right: 0 !important;
+}
+
+#ds-table-notification-alert-holder {
+  padding: 0 !important;
+  /*margin-bottom: 0 !important;*/
+}
+
+#ds-table-notification-alert-holder .alert {
   /*padding: 0 !important;*/
   margin-bottom: 0 !important;
   margin-right: 0 !important;

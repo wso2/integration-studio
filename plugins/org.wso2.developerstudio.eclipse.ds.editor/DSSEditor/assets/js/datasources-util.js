@@ -367,3 +367,43 @@ function resetDSAddEditModal() {
     setVisibleDSTypeRDBMS(true);
     setVisibleDSTypeCarbon(false);
 }
+
+/**
+ * Loads default parameters for DB engine types.
+ *
+ * @param root Document root object.
+ * @param dbEngineType Database engine type.
+ */
+function populateDBEngineDefaults(root, dbEngineType) {
+    if (dbEngineType === DB_ENGINE_MYSQL) {
+        $("#ds-driver-class-input").val(DEFAULT_MYSQL_DRIVER_CLASS);
+        $("#ds-url-input").val(DEFAULT_MYSQL_URL);
+    } else if (dbEngineType === DB_ENGINE_MSSQL) {
+        $("#ds-driver-class-input").val(DEFAULT_MSSQL_DRIVER_CLASS);
+        $("#ds-url-input").val(DEFAULT_MSSQL_URL);
+    } else if (dbEngineType === DB_ENGINE_ORACLE) {
+        $("#ds-driver-class-input").val(DEFAULT_ORACLE_DRIVER_CLASS);
+        $("#ds-url-input").val(DEFAULT_ORACLE_URL);
+    } else if (dbEngineType === DB_ENGINE_H2) {
+        $("#ds-driver-class-input").val(DEFAULT_H2_DRIVER_CLASS);
+        $("#ds-url-input").val(DEFAULT_H2_URL);
+    } else if (dbEngineType === DB_ENGINE_POSTGRESQL) {
+        $("#ds-driver-class-input").val(DEFAULT_POSTGRESQL_DRIVER_CLASS);
+        $("#ds-url-input").val(DEFAULT_POSTGRESQL_URL);
+    } else if (dbEngineType === DB_ENGINE_INFORMIX) {
+        $("#ds-driver-class-input").val(DEFAULT_INFORMIX_DRIVER_CLASS);
+        $("#ds-url-input").val(DEFAULT_INFORMIX_URL);
+    } else if (dbEngineType === DB_ENGINE_HSQLDB) {
+        $("#ds-driver-class-input").val(DEFAULT_HSQL_DRIVER_CLASS);
+        $("#ds-url-input").val(DEFAULT_HSQL_URL);
+    } else if (dbEngineType === DB_ENGINE_SYBASE) {
+        $("#ds-driver-class-input").val(DEFAULT_SYBASE_DRIVER_CLASS);
+        $("#ds-url-input").val(DEFAULT_SYBASE_URL);
+    } else if (dbEngineType === DB_ENGINE_APACHEDERBY) {
+        $("#ds-driver-class-input").val(DEFAULT_DERBY_DRIVER_CLASS);
+        $("#ds-url-input").val(DEFAULT_DERBY_URL);
+    } else if (dbEngineType === DB_ENGINE_IBMDB2) {
+        $("#ds-driver-class-input").val(DEFAULT_IBMDB2_DRIVER_CLASS);
+        $("#ds-url-input").val(DEFAULT_IBMDB2_URL);
+    }
+}

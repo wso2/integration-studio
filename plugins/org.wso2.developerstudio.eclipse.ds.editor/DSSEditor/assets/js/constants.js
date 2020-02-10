@@ -24,3 +24,43 @@ const RDBMS_TYPE_EXTERNAL = "external_ds";
 // DB Engines
 const DB_ENGINE_MYSQL = "mysql";
 const DB_ENGINE_ORACLE = "oracle";
+const DB_ENGINE_MSSQL = "mssql";
+const DB_ENGINE_H2 = "h2";
+const DB_ENGINE_POSTGRESQL = "postgresql";
+const DB_ENGINE_APACHEDERBY = "apachederby";
+const DB_ENGINE_IBMDB2 = "ibmdb2";
+const DB_ENGINE_HSQLDB = "hsqldb";
+const DB_ENGINE_INFORMIX = "informix";
+const DB_ENGINE_SYBASE = "sybasease";
+
+// Default values for DB engines
+//// MySQL
+const DEFAULT_MYSQL_DRIVER_CLASS = "com.mysql.jdbc.Driver";
+const DEFAULT_MYSQL_URL = "jdbc:mysql://[machine-name/ip]:[port]/[database-name]";
+//// MSSQL
+const DEFAULT_MSSQL_DRIVER_CLASS = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+const DEFAULT_MSSQL_URL = "jdbc:sqlserver://[HOST]:[PORT1433];databaseName=[DB]";
+//// Oracle
+const DEFAULT_ORACLE_DRIVER_CLASS = "oracle.jdbc.driver.OracleDriver";
+const DEFAULT_ORACLE_URL = "jdbc:oracle:[drivertype]:[username/password]@[host]:[port]/[database]";
+//// H2
+const DEFAULT_H2_DRIVER_CLASS = "org.h2.Driver";
+const DEFAULT_H2_URL = "jdbc:h2:tcp:[HOST]:[PORT]/[database]";
+//// PostgreSQL
+const DEFAULT_POSTGRESQL_DRIVER_CLASS = "org.postgresql.Driver";
+const DEFAULT_POSTGRESQL_URL = "jdbc:postgresql://[HOST]:[PORT5432]/[database]";
+//// Apache Derby
+const DEFAULT_DERBY_DRIVER_CLASS = "org.apache.derby.jdbc.EmbeddedDriver";
+const DEFAULT_DERBY_URL = "jdbc:derby:[path-to-data-file]";
+//// IBM DB2
+const DEFAULT_IBMDB2_DRIVER_CLASS = "com.ibm.db2.jcc.DB2Driver";
+const DEFAULT_IBMDB2_URL = "jdbc:db2:[database]";
+//// HSQL
+const DEFAULT_HSQL_DRIVER_CLASS = "org.hsqldb.jdbcDriver";
+const DEFAULT_HSQL_URL = "jdbc:hsqldb:[path]";
+//// Informix
+const DEFAULT_INFORMIX_DRIVER_CLASS = "com.informix.jdbc.IfxDriver";
+const DEFAULT_INFORMIX_URL = "jdbc:informix-sqli://[HOST]:[PORT]/[database]:INFORMIXSERVER=[server-name]";
+//// Sybase
+const DEFAULT_SYBASE_DRIVER_CLASS = "com.sybase.jdbc3.jdbc.SybDriver";
+const DEFAULT_SYBASE_URL = "jdbc:sybase:Tds:[HOST]:[PORT2048]/[database]";

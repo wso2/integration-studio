@@ -108,6 +108,12 @@ $(document).ready(function ($) {
         populateDSModal(root, dsId, dsMetadata);
         openDSModal(true);
     });
+
+    $('#ds-db-engine-select').change(function(e) {
+        e.preventDefault();
+        let dbEngineType = $("#ds-db-engine-select").val();
+        populateDBEngineDefaults(root, dbEngineType);
+    });
     // End of Data sources - Add data source
 
     // Start of queries - Add query

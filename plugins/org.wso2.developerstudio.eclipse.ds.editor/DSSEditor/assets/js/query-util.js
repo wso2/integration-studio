@@ -123,5 +123,8 @@ function addInputMapping(root) {
     paramElement.setAttribute("type", dataObj["q-im-inout-select"]);
     paramElement.setAttribute("ordinal", dataObj["im-ordinal-input"]);
 
+    window.params = [];
+    window.params.push(paramElement);
+
     return true;
 }

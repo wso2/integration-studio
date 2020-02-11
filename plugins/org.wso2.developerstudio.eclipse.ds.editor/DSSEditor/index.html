@@ -132,7 +132,7 @@
                         <div id="q-query-id-inputgroup" class="field inputgroup"><input class="form-control" type="text" required="" placeholder=" " id="q-query-id-input" name="q-query-id-input" style="border: 0; border-bottom: 1px solid #E0E0E0;"><label class="mb-0" for="q-query-id-input">Query ID *</label></div>
                     </div>
                     <div class="form-group form-inline query-common-element">
-                        <div class="form-group"><label>Datasource *</label><select class="form-control" required="" id="q-datasource-select" style="margin-left: 10px;"><option value="" selected="">- Select Datasource -</option><option value="">Generic</option></select></div>
+                        <div class="form-group"><label>Datasource *</label><select class="form-control" required="" id="q-datasource-select" style="margin-left: 10px;"><option value="" selected="">- Select Datasource -</option><option value="generic">Generic</option></select></div>
                     </div>
                 </form>
                 <div class="modal-footer justify-content-between">
@@ -222,7 +222,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="text-right"><button class="btn btn-success btn-sm" type="button" id="q-input_mapping-add-btn" data-toggle="modal" data-target="#q-output-mapping-modal">Add New</button></div>
+                        <div class="text-right"><button class="btn btn-success btn-sm" type="button" id="q-output_mapping-gen-btn" >Generate</button><button class="btn btn-success btn-sm" type="button" id="q-output_mapping-add-btn" data-toggle="modal" data-target="#q-output-mapping-modal">Add New</button></div>
                     </div>
                 </div>
                 <div class="collapse-custom"><a class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="false" aria-controls="om-advanced-properties-collapse" role="button" href="#om-advanced-properties-collapse">Advanced Properties</a>
@@ -502,7 +502,7 @@
                             <div class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="q-om-addedit-arrayname-input" name="q-om-addedit-arrayname-input"><label class="mb-0" for="q-om-addedit-arrayname-input">Array Name</label></div>
                         </div>
                         <div class="form-group form-inline" id="q-om-addedit-schematype-inputgroup">
-                            <div class="form-group"><label>Schema Type</label><select class="form-control" required="" id="q-im-paramtype-select" name="q-im-paramtype-select"><option value="string" selected="">string</option><option value="integer">integer</option><option value="boolean">boolean</option><option value="float">float</option><option value="double">double</option><option value="decimal">decimal</option><option value="datetime">dateTime</option><option value="time">time</option><option value="date">date</option><option value="long">long</option><option value="base64binary">base64Binary</option></select></div>
+                            <div class="form-group"><label>Schema Type</label><select class="form-control" required="" id="q-om-paramtype-select" name="q-om-paramtype-select"><option value="string" selected="">string</option><option value="integer">integer</option><option value="boolean">boolean</option><option value="float">float</option><option value="double">double</option><option value="decimal">decimal</option><option value="datetime">dateTime</option><option value="time">time</option><option value="date">date</option><option value="long">long</option><option value="base64binary">base64Binary</option></select></div>
                         </div>
                         <div class="form-group form-inline query-common-element" id="q-om-addedit-optional-inputgroup">
                             <div class="form-check"><input class="form-check-input" type="checkbox" id="q-om-addedit-optional-checkbox"><label class="form-check-label" for="q-om-addedit-optional-checkbox">Optional</label></div>
@@ -532,8 +532,8 @@
                                 <tbody>
                                     <tr>
                                         <td>Query_Parameter_Placeholder</td>
-                                        <td>Mapping_Name_Placeholder</td>
-                                        <td>Mappying_Type_Placeholder</td>
+                                        <td><input class="form-control" type="text" placeholder="Mapping_Name_Placeholder" style="width: 100%;"></td>
+                                        <td><select class="form-control" required="" id="q-om-mapping-type-select" style="margin-left: 10px;"><option value="column" selected="">Column</option><option value="query-param">Query Param</option></select></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -564,7 +564,7 @@
                        </div>
                     </form>
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Close</button><button class="btn btn-primary" type="submit" form="input-mapping-form">Save</button></div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Close</button><button class="btn btn-primary" type="submit" id="input-mapping-modal-save" form="input-mapping-form">Save</button></div>
             </div>
         </div>
     </div>

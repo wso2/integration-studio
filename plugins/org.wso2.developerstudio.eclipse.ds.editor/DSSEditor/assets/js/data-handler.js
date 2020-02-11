@@ -4,6 +4,7 @@ $(document).ready(function ($) {
     // let url = "http://localhost:" + portValue + "/dsseditor/service";
     let url = "http://localhost:7774/dsseditor/service";
     let root = "";
+    let resultElement;
 
     // Retrieve the XML source from backend.
     $.get(url, function (data, status) {
@@ -116,6 +117,13 @@ $(document).ready(function ($) {
         clearAddQueryForm();
         $("#q-add-edit-query-section").toggle(true);
     });
+    
+    $('#query-add-save-btn').click(function() {
+    	let parser = new DOMParser();
+    	let q = '<query id="UpdateStudents" useConfig="StudentsDatasource"><sql>UPDATE students SET name = :name, school = :school, grade = :grade WHERE id = :id</sql> <param name="name" paramType="SCALAR" sqlType="STRING"/> <param name="school" paramType="SCALAR" sqlType="STRING"/> <param name="grade" paramType="SCALAR" sqlType="INTEGER"/></query>';
+    	let queryElement = parser.parseFromString(q, "text/xml");
+    	saveResultToQueryElement(resultElement, queryElement.children[0]);
+    });
     // End of queries - Add query
 
     // Start of query output mapping
@@ -133,6 +141,48 @@ $(document).ready(function ($) {
     	saveAll(root, url, function() {
             location.reload();
         });
+    });
+    
+    $('#q-om-addedit-mappingtype-select').change(function(e) {
+    	e.preventDefault();
+    	populateOutputMappingModal(root);
+    });
+    
+    $('#q-input_mapping-add-btn').click(function (e) {
+    	e.preventDefault();
+    	let query_id = $('#q-query-id-input').val();
+    	if (query_id == undefined || query_id == null || $.trim(query_id) == "") {
+    		showQueryNotification("danger", "Query ID cannot be empty.", 1000);
+    		return;
+    	}
+    	
+    	let datasource = $('#q-datasource-select').val();
+    	
+    	if (datasource == "") {
+    		showQueryNotification("danger", "Select a datasource.", 1000);
+    		return;
+    	}
+    	
+    	clearOutputMappingModal();
+    	populateOutputMappingModal(root);
+    	
+    });
+    
+    //generate output mapping
+    $('#q-output_mapping-gen-btn').click(function (e) {
+    	resultElement = generateOutputMapping();
+    });
+    
+    $('#q-om-addedit-query-select').change(function(e) {
+    	let queryid = $("#q-om-addedit-query-select").val(); 
+    	populateQueryOutputMappingParamaterTable(root, queryid);
+    });
+    
+    $('#input-mapping-modal-save').click(function(e) {
+    	e.preventDefault();
+    	let element = processOutputMappingModal(root);
+    	resultElement = updateResultElement(root, resultElement, element);
+    	$("#q-output-mapping-modal").modal('hide');
     });
     
     // End of query output mapping

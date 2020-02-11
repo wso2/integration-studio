@@ -373,6 +373,7 @@ Please visit : http://wso2.com/products/developer-studio/
       <feature id="org.wso2.developerstudio.eclipse.ei.project.feature" installMode="root"/>
       <feature id="org.wso2.developerstudio.eclipse.docker.distribution.feature" installMode="root"/>
       <feature id="org.wso2.developerstudio.carbon.server-44microei.feature" installMode="root"/>
+      <feature id="org.roussev.http4e.feature" version="5.0.12"/>
    </features>
 
    <configurations>

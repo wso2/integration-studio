@@ -92,7 +92,7 @@ public class DSSEditorServlet extends HttpServlet {
         } else if (DSSVisualEditorConstants.RequestHeaders.HEADER_VALUE_SAVE_DS_METADATA.equals(operationTypeHeader)) {
             // If the operation type is 'save DS metadata'. This is to persist additional data of data sources such as
             // RDBMS type, database engine etc.
-            // The format of the string will be: <datasource_ID>?<data_key>:<data_value>,<data_key>:<data_value>...
+            // The format of the string will be: <datasource_ID>?<data_key>:<data_value>,<data_key>:<data_value>... 
             String[] dsMetadataArr = payload.split(DS_ID_SEPARATOR);
             editorUtils.saveProperty(dsMetadataArr[0], dsMetadataArr[1], null);
             

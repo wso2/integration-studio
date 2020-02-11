@@ -36,7 +36,7 @@
 		<repository>
 			<id>maven-central</id>
 			<name>Maven central repository</name>
-			<url>http://repo1.maven.org/maven2/</url>
+			<url>https://repo1.maven.org/maven2/</url>
 		</repository>
 		<repository>
 			<releases>
@@ -46,7 +46,7 @@
 			</releases>
 			<id>wso2-nexus</id>
 			<name>WSO2 internal Repository</name>
-			<url>http://maven.wso2.org/nexus/content/groups/wso2-public/</url>
+			<url>https://maven.wso2.org/nexus/content/groups/wso2-public/</url>
 		</repository>
 	</repositories>
 	<build>

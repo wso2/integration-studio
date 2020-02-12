@@ -111,3 +111,14 @@
   margin-right: 0 !important;
 }
 
+#q-im-notification-alert-holder {
+  padding: 0 !important;
+  /*margin-bottom: 0 !important;*/
+}
+
+#q-im-notification-alert-holder .alert {
+  /*padding: 0 !important;*/
+  margin-bottom: 0 !important;
+  margin-right: 0 !important;
+}
+

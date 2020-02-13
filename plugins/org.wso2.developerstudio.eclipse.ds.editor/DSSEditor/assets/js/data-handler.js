@@ -214,29 +214,12 @@ $(document).ready(function ($) {
     	populateOutputMappingModal(root, true);
     });
     
-    $('#q-input_mapping-add-btn').click(function (e) {
-    	e.preventDefault();
-    	let query_id = $('#q-query-id-input').val();
-    	if (query_id == undefined || query_id == null || $.trim(query_id) == "") {
-    		showQueryNotification("danger", "Query ID cannot be empty.", 1000);
-    		return;
-    	}
-    	
-    	let datasource = $('#q-datasource-select').val();
-    	
-    	if (datasource == "") {
-    		showQueryNotification("danger", "Select a datasource.", 1000);
-    		return;
-    	}
-    	
-    	clearOutputMappingModal();
-    	populateOutputMappingModal(root, true);
-    	
-    });
-    
     //generate output mapping
     $('#q-output_mapping-gen-btn').click(function (e) {
-    	resultElement = generateOutputMapping();
+    	let rslt = generateOutputMapping(root);
+    	if (rslt != null) {
+    		resultElement = rslt;
+    	}
     });
     
     $('#q-om-addedit-query-select').change(function(e) {
@@ -271,6 +254,13 @@ $(document).ready(function ($) {
     	resultElement = updateResultElement(root, resultElement, element);
     	$("#q-output-mapping-modal").modal('hide');
     });
+    
+    function populateOutputMappingAtEdit(root) {
+//    	let queryConfigs = root.getElementsByTagName("query");
+//    	window.queryElement = queryConfigs[queryConfigs.length -1];
+    	//call this within edit on query
+    	resultElement = populateOueryOutputMappings(window.queryElement);
+    }
     
     // End of query output mapping
     
@@ -484,10 +474,6 @@ function populateQueries(root) {
         showQueriesTableNotification("info", "No queries available. Click 'Add New' to create a new query.", 0);
         return;
     }
-
-//    $.each(queryConfigs, function(index, query) {
-//    	populateOueryOutputMappings(query);
-//    });
 }
 
 

@@ -37,6 +37,19 @@ $('#q-om-addedit-dsmapping-select').change(function(e) {
 });
 
 $('#q-output_mapping-add-btn').click(function(e) {
+	
+	let query_id = $('#q-query-id-input').val();
+	if (query_id == undefined || query_id == null || $.trim(query_id) == "") {
+		showQueryNotification("danger", "Query ID cannot be empty.", 1000);
+		return false;
+	}
+	
+	let datasource = $('#q-datasource-select').val();
+	if (datasource == "") {
+		showQueryNotification("danger", "Select a datasource.", 1000);
+		return false;
+	}
+	
 	clearOutputMappingModal();
 	
 	$('#q-om-addedit-dsmapping-select-inputgroup').toggle(true);
@@ -156,57 +169,106 @@ function populateOueryOutputMappings(queryElement) {
 		}
 		
 		$('#q-output-mapping-table').find('tbody').find('tr').detach();
-		let elements = resultElement[0].getElementsByTagName('element');
-		$.each(elements, function(index, el) {
-			let nameVal, columnVal, xsdTypeVal, requiredRolesVal, datasourceTypeVal = "";
-			let mappingTypeVal = "element";
-			
-			let column = el.attributes.getNamedItem("column");
-			if (column != undefined) {
-				columnVal = column.value;
-			}
-			
-			let name = el.attributes.getNamedItem("name");
-			if (name != undefined) {
-				nameVal = name.value;
-			}
-			
-			let xsdType = el.attributes.getNamedItem("xsdType");
-			if (xsdType != undefined) {
-				xsdTypeVal = xsdType.value;
-			}
-			
-//			let arrayName = el.attributes.getNamedItem("arrayName");
-//			if (arrayName != undefined) {
-//				
-//			}
-//			
-//			let exportAttribute = el.attributes.getNamedItem("export");
-//			
-//			let exportType = el.attributes.getNamedItem("exportType");
-//			
-//			let namespace = el.attributes.getNamedItem("namespace");
-//			
-//			let optional = el.attributes.getNamedItem("optional");
-			
-			let query_param = el.attributes.getNamedItem("query-param");
-			if (query_param != undefined && query_param != null) {
-				datasourceTypeVal = "query-param";
-			} else {
-				datasourceTypeVal = "column";
-			}
-			
-			let requiredRoles = el.attributes.getNamedItem("requiredRoles");
-			if (requiredRoles != undefined) {
-				requiredRolesVal = requiredRoles.value;
-			} else {
-				requiredRolesVal = "N/A";
-			}
-			
-			let row = "<tr><td>" + nameVal + "</td><td>" + datasourceTypeVal + "</td><td>" + columnVal + "</td><td>" + mappingTypeVal + "</td><td>" + requiredRolesVal + "</td><td>" + xsdTypeVal + "</td><td class=\"text-center\"><i class=\"fa fa-edit\"></i><i class=\"fa fa-trash\"></i></td></tr>";
-			$('#q-output-mapping-table > tbody').append(row);
 		
-		});
+		//populate elements into the table		
+		if ($('#om-outputtype-select').val() != "json") {
+			let childNodes = resultElement[0].children;
+			$.each(childNodes, function(index, ele) {
+				let nameVal;
+				let columnVal = "";
+				let xsdTypeVal = "";
+				let requiredRolesVal = "";
+				let datasourceTypeVal = "";
+				let mappingTypeVal = "";
+				
+				if (ele.localName == "attribute") {
+					mappingTypeVal = "attribute";
+					nameVal = getElementNameColumnValue(ele);
+					datasourceTypeVal = getDSTypeColumnValue(ele);
+					columnVal = getColumnNameColumnValue(ele);
+					xsdTypeVal = getSchemaTypeColumnValue(ele);
+					
+				} else if (ele.localName == "call-query") {
+					mappingTypeVal = "query";
+					nameVal = getElementNameColumnValueForQuery(ele);
+					
+				} else if (ele.localName == "element") {
+
+					if (ele.children.length > 0) {
+						mappingTypeVal = "complex-element";
+					} else {
+						mappingTypeVal = "element";
+						datasourceTypeVal = getDSTypeColumnValue(ele);
+						columnVal = getColumnNameColumnValue(ele);
+						xsdTypeVal = getSchemaTypeColumnValue(ele);
+					}
+					
+					nameVal = getElementNameColumnValue(ele);
+				}
+				
+				let requiredRoles = ele.attributes.getNamedItem("requiredRoles");
+				if (requiredRoles != undefined) {
+					requiredRolesVal = requiredRoles.value;
+				} else {
+					requiredRolesVal = "N/A";
+				}
+				
+				let row = "<tr><td>" + nameVal + "</td><td>" + datasourceTypeVal + "</td><td>" + columnVal + "</td><td>" + mappingTypeVal + "</td><td>" + requiredRolesVal + "</td><td>" + xsdTypeVal + "</td><td class=\"text-center\"><i class=\"fa fa-edit\"></i><i class=\"fa fa-trash\"></i></td></tr>";
+				$('#q-output-mapping-table > tbody').append(row);
+			
+			});
+		}
+		
+		return resultElement[0];
+		
+	} else {
+		clearOutputMappingForm();
+		return null;
+	}
+}
+
+function getElementNameColumnValue(el) {
+	let name = el.attributes.getNamedItem("name");
+	if (name != undefined) {
+		return name.value;
+	} else {
+		return "";
+	}
+}
+
+function getElementNameColumnValueForQuery(el) {
+	let name = el.attributes.getNamedItem("href");
+	if (name != undefined) {
+		return name.value;
+	} else {
+		return "";
+	}
+}
+
+function getDSTypeColumnValue(el) {
+	let query_param = el.attributes.getNamedItem("query-param");
+	if (query_param != undefined && query_param != null) {
+		return "query-param";
+	} else {
+		return "column";
+	}
+}
+
+function getColumnNameColumnValue(el) {
+	let column = el.attributes.getNamedItem("column");
+	if (column != undefined) {
+		return column.value;
+	} else {
+		return "";
+	}
+}
+
+function getSchemaTypeColumnValue(el) {
+	let xsdType = el.attributes.getNamedItem("xsdType");
+	if (xsdType != undefined) {
+		return xsdType.value;
+	} else {
+		return "";
 	}
 }
 
@@ -240,7 +302,8 @@ function populateElementModal(result, tds) {
 				 $('#q-om-addedit-mappingtype-select').val('element');
 				 $('#q-om-addedit-dsmapping-select').val('column');
 				 $('#q-om-addedit-outputfn-input').val(name);
-				 $('#q-om-addedit-elens-input').val(ele.attributes.getNamedItem("namespace").value);
+				 setNamespaceValues(ele);
+				 
 				 $('#q-om-addedit-dscolname-input').val(ele.attributes.getNamedItem("column").value);
 				 setParamaterTypeValues(ele);
 				 $('#q-om-paramtype-select').val(tds[5].innerText);
@@ -254,7 +317,7 @@ function populateElementModal(result, tds) {
 				 $('#q-om-addedit-mappingtype-select').val('element');
 				 $('#q-om-addedit-dsmapping-select').val('query-param');
 				 $('#q-om-addedit-outputfn-input').val(name);
-				 $('#q-om-addedit-elens-input').val(ele.attributes.getNamedItem("namespace").value);
+				 setNamespaceValues(ele);
 				 $('#q-om-addedit-qparamname-input').val(ele.attributes.getNamedItem("query-param").value);
 				 setParamaterTypeValues(ele);
 				 $('#q-om-paramtype-select').val(tds[5].innerText);
@@ -268,7 +331,7 @@ function populateElementModal(result, tds) {
 				 //complex element
 				 $('#q-om-addedit-mappingtype-select').val('complex-element');
 				 $('#q-om-addedit-elename-input').val(name);
-				 $('#q-om-addedit-elens-input').val(ele.attributes.getNamedItem("namespace").value);
+				 setNamespaceValues(ele);
 				 setParamaterTypeValues(ele);
 				 
 				 let childValue = "";
@@ -282,6 +345,13 @@ function populateElementModal(result, tds) {
 				 break;
 			 }
 		}
+	}
+}
+
+function setNamespaceValues(ele) {
+	let ns = ele.attributes.getNamedItem("namespace");
+	if (ns != null && ns != undefined) {
+		$('#q-om-addedit-elens-input').val(ns.value);
 	}
 }
 
@@ -936,8 +1006,43 @@ function saveResultToQueryElement(result, query) {
 	return query;
 }
 
-function generateOutputMapping() {
+function generateOutputMapping(root) {
+	let result = null;
+	let query = $('#q-sql-query-input').val();
+	if ($.trim(query) == "") {
+		showQueryNotification("danger", "Please enter the query before generating the output mapping.", 1000);
+		return false;
+	}
 	
+	let mappings = query.substring(query.toLowerCase().lastIndexOf("select") + 6, query.toLowerCase().lastIndexOf("from"));
+	let mappingValues = mappings.split(",");
+	
+	$('#q-output-mapping-table').find('tbody').find('tr').detach();
+	
+	if (mappingValues.length == 1) {
+		if ($.trim(mappingValues[0]) == "*") {
+			return null;
+		}
+	}
+	
+	if (mappingValues.length > 0) {
+		result = root.createElement("result");
+		
+		$.each(mappingValues, function (i, val) {
+			let name = $.trim(val);
+			
+			let element = root.createElement("element");
+			element.setAttribute("name", name);
+			element.setAttribute("column", name);
+			element.setAttribute("xsdType", "string");
+			result.appendChild(element);
+			
+			let row = "<tr><td>" + name + "</td><td>column</td><td>" + name + "</td><td>element</td><td>N/A</td><td>string</td><td class=\"text-center\"><i class=\"fa fa-edit\"></i><i class=\"fa fa-trash\"></i></td></tr>";
+			$('#q-output-mapping-table > tbody').append(row);
+		});
+	}
+	
+	return result;
 }
 
 /**

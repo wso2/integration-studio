@@ -64,3 +64,13 @@ const DEFAULT_INFORMIX_URL = "jdbc:informix-sqli://[HOST]:[PORT]/[database]:INFO
 //// Sybase
 const DEFAULT_SYBASE_DRIVER_CLASS = "com.sybase.jdbc3.jdbc.SybDriver";
 const DEFAULT_SYBASE_URL = "jdbc:sybase:Tds:[HOST]:[PORT2048]/[database]";
+
+// Queries
+//// Input Mappings
+////// Validators
+const VALIDATOR_LONGRANGE = "validateLongRange";
+const VALIDATOR_DOUBLERANGE = "validateDoubleRange";
+const VALIDATOR_LENGTH = "validateLength";
+const VALIDATOR_PATTERN = "validatePattern";
+const VALIDATOR_TYPE_RANGE = "range";
+const VALIDATOR_TYPE_PATTERN = "pattern";

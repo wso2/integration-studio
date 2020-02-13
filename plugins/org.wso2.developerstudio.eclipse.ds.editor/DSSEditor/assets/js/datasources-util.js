@@ -332,7 +332,7 @@ function resolveMetadata(metadata) {
     let dataPairs = metadata.split(",");
     let mdMap = new Map();
 
-    for (i = 0; i < dataPairs.length; i++) {
+    for (let i = 0; i < dataPairs.length; i++) {
         let tempArr = dataPairs[i].split(":");
         mdMap.set(tempArr[0], tempArr[1]);
     }

@@ -6,6 +6,9 @@ $(document).ready(function ($) {
     let root = "";
     let resultElement;
 
+    window.query = [];
+    window.validators = [];
+
     // Retrieve the XML source from backend.
     $.get(url, function (data, status) {
 
@@ -151,6 +154,47 @@ $(document).ready(function ($) {
             }
         }
     });
+
+    // Start of query input mapping
+    $("#q-im-validators-add-btn").click(function() {
+        if ($("#im-mappingname-input").val().trim() === "") {
+            showInputMappingNotification("danger", "Please enter a mapping name.", 4000);
+            return false;
+        }
+        $("#q-im-validators-add-btn").toggle(false);
+        $("#q-im-validators-table").toggle(false);
+        $("#add-edit-validator-section").toggle(true);
+
+        resetValidatorsForm();
+    });
+
+    $("#validator-close-btn").click(function() {
+        $("#q-im-validators-add-btn").toggle(true);
+        $("#q-im-validators-table").toggle(true);
+        $("#add-edit-validator-section").toggle(false);
+
+        resetValidatorsForm();
+    });
+
+    $("#q-im-validators-form").submit(function (e) {
+        e.preventDefault();
+        let selectedValidator = $("#q-im-validator-select").val();
+        addValidator(root, selectedValidator);
+    });
+
+    $("#q-im-validator-select").change(function() {
+        validateValidatorsForm();
+    });
+
+    $("#im-mappingname-input").change(function() {
+        // let mappingName = $("#im-mappingname-input").val();
+        // if(checkIfIMappingExists(root, mappingName)) {
+        //     showInputMappingNotification("danger", "A mapping with the name " + mappingName +
+        //         " already exists.", 4000);
+        //     $("#im-mappingname-input").val("");
+        // }
+    });
+    // End of query input mapping
 
     // Start of query output mapping
     
@@ -369,6 +413,11 @@ $(document).ready(function ($) {
             showNotificationAlertModal("Error", "Please select a datasource.");
             return false;
         }
+
+        $("#input-mapping-form").trigger('reset');
+
+        resetValidatorsForm();
+        resetValidatorsSection();
 
         $("#q-input-mapping-modal").modal("show");
     });

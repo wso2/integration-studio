@@ -52,6 +52,7 @@ $('#q-output_mapping-add-btn').click(function(e) {
 	$('#q-om-addedit-export-inputgroup').toggle(true);
 	$('#q-om-addedit-selectquery-inputgroup').toggle(false);
 	$('#q-om-query-entries-tbl').toggle(false);
+	$('#q-om-complex-child-inputgroup').toggle(false);
 });
 
 function populateOutputTypeElements() {
@@ -209,12 +210,233 @@ function populateOueryOutputMappings(queryElement) {
 	}
 }
 
-function populateQueryOutputMappingModal(root, firstCol, secondCol) {
+function populateQueryOutputMappingModal(result, tds, root) {
+	
+	let mappingType = tds[3].innerText;
+	if (mappingType == "element" || mappingType == "complex-element") {
+		populateElementModal(result, tds);
+		populateOutputMappingModal(root, true);
+		
+	} else if (mappingType == "attribute") {
+		populateAttributeModal(result, tds);
+		populateOutputMappingModal(root, true);
+		
+	} else if (mappingType == "query") {
+		populateQueryModal(result, tds, root);
+		populateOutputMappingModal(root, false);
+	}
+	
 	$("#q-output-mapping-modal").modal('show');
 }
 
-function deleteQueryOutputMappingFromRoot(root, firstCol) {
+function populateElementModal(result, tds) {
+	 let eles = result.getElementsByTagName("element");
+	 for (let i = 0, len = eles.length; i < len; i++) {
+		 let ele = eles[i];
+		 let name = ele.attributes.getNamedItem("name").value;
+		 if (name == tds[0].innerText) {
+			 let dsType = tds[1].innerText;
+			 if (dsType == "column" && ele.attributes.getNamedItem("column") != null) {
+				 $('#q-om-addedit-mappingtype-select').val('element');
+				 $('#q-om-addedit-dsmapping-select').val('column');
+				 $('#q-om-addedit-outputfn-input').val(name);
+				 $('#q-om-addedit-elens-input').val(ele.attributes.getNamedItem("namespace").value);
+				 $('#q-om-addedit-dscolname-input').val(ele.attributes.getNamedItem("column").value);
+				 setParamaterTypeValues(ele);
+				 $('#q-om-paramtype-select').val(tds[5].innerText);
+				 setOptionalValue(ele);
+				 setExportValues(ele);
+				 setRoleValues(ele);
+				 
+				 break;
+				 
+			 } else if (dsType == "query-param" && ele.attributes.getNamedItem("query-param") != null) {
+				 $('#q-om-addedit-mappingtype-select').val('element');
+				 $('#q-om-addedit-dsmapping-select').val('query-param');
+				 $('#q-om-addedit-outputfn-input').val(name);
+				 $('#q-om-addedit-elens-input').val(ele.attributes.getNamedItem("namespace").value);
+				 $('#q-om-addedit-qparamname-input').val(ele.attributes.getNamedItem("query-param").value);
+				 setParamaterTypeValues(ele);
+				 $('#q-om-paramtype-select').val(tds[5].innerText);
+				 setOptionalValue(ele);
+				 setExportValues(ele);
+				 setRoleValues(ele);
+				 
+				 break;
+				 
+			 } else if (dsType == "" && tds[5].innerText == "") {
+				 //complex element
+				 $('#q-om-addedit-mappingtype-select').val('complex-element');
+				 $('#q-om-addedit-elename-input').val(name);
+				 $('#q-om-addedit-elens-input').val(ele.attributes.getNamedItem("namespace").value);
+				 setParamaterTypeValues(ele);
+				 
+				 let childValue = "";
+				 $.each(ele.children, function(index, child) {
+					 childValue = childValue + child.outerHTML;
+				 });
+				 $('#om-complex-child-input').val(childValue);
+				 
+				 setRoleValues(ele);
+				 
+				 break;
+			 }
+		}
+	}
+}
+
+function setRoleValues(ele) {
+	if (ele.attributes.getNamedItem("requiredRoles") != null) {
+		let roles = ele.attributes.getNamedItem("requiredRoles").value;
+		if (roles.includes("admin")) {
+			$('#role-admin-checkbox').prop("checked", true);
+			
+		} else {
+			$('#role-admin-checkbox').prop("checked", false);
+		}
+		
+		if (roles.includes("Internal/everyone")) {
+			$('#role-int-checkbox').prop("checked", true);
+		} else {
+			$('#role-int-checkbox').prop("checked", false);
+		}
+	}
+}
+
+function setExportValues(ele) {
+	if (ele.attributes.getNamedItem("export") != null) {
+		$('#q-export-name-input').val(ele.attributes.getNamedItem("export").value);
+	} else {
+		$('#q-export-name-input').val("");
+	}
 	
+	if (ele.attributes.getNamedItem("exportType") != null && ele.attributes.getNamedItem("exportType").value.toLowerCase() == "array") {
+		$('#q-export-type-select').val("array");
+	} else {
+		$('#q-export-type-select').val("scalar");
+	}
+}
+
+function setParamaterTypeValues(ele) {
+	if (ele.attributes.getNamedItem("arrayName") != null) {
+		 $('#q-om-addedit-paramtype-select').val("array");
+		 $('#q-om-addedit-arrayname-input').val(ele.attributes.getNamedItem("arrayName").value);
+		 
+	 } else {
+		 $('#q-om-addedit-paramtype-select').val("scalar");
+		 
+	 }
+}
+
+function setOptionalValue(ele) {
+	if (ele.attributes.getNamedItem("optional") != null && ele.attributes.getNamedItem("optional").value == "true") {
+		$('#q-om-addedit-optional-checkbox').prop("checked", true);
+	} else {
+		$('#q-om-addedit-optional-checkbox').prop("checked", false);
+	}
+}
+
+function populateAttributeModal(result, tds) {
+	let attributes = result.getElementsByTagName("attribute");
+	$('#q-om-addedit-mappingtype-select').val('attribute');
+	 for (let i = 0, len = attributes.length; i < len; i++) {
+		 let attribute = attributes[i];
+		 let name = attribute.attributes.getNamedItem("name").value;
+		 if (name == tds[0].innerText) {
+			 $('#q-om-addedit-outputfn-input').val(name);
+			 setParamaterTypeValues(attribute);
+			 setOptionalValue(attribute);
+			 setExportValues(attribute);
+			 setRoleValues(attribute);
+			 $('#q-om-paramtype-select').val(tds[5].innerText);
+			 
+			 let dsType = tds[1].innerText;
+			 if (dsType == "column" && attribute.attributes.getNamedItem("column") != null) {
+				 $('#q-om-addedit-dsmapping-select').val('column');
+				 $('#q-om-addedit-dscolname-input').val(attribute.attributes.getNamedItem("column").value);
+				 
+				 break;
+				 
+			 } else if (dsType == "query-param" && attribute.attributes.getNamedItem("query-param") != null) {
+				 $('#q-om-addedit-dsmapping-select').val('query-param');
+				 $('#q-om-addedit-qparamname-input').val(attribute.attributes.getNamedItem("query-param").value);
+				 
+				 break;
+				 
+			 }
+		}
+	}
+}
+
+function populateQueryModal(result, tds, root) {
+	let queries = result.getElementsByTagName("call-query");
+	$('#q-om-addedit-mappingtype-select').val('query');
+	 for (let i = 0, len = queries.length; i < len; i++) {
+		 let query = queries[i];
+		 let href = query.attributes.getNamedItem("href").value;
+		 
+		 if (href == tds[0].innerText) {
+			 populateQueriesForOutputMappingParamForm(root);
+			 $('#q-om-addedit-query-select').val(href);
+			 let params = query.getElementsByTagName("with-param");
+			 
+			 $('#q-om-query-table').find('tbody').find('tr').detach();
+			 $.each(params, function(index, param) {
+				 let row = "";
+				 if (param.attributes.getNamedItem("column") != null) {
+					 row = "<tr><td>" + param.attributes.getNamedItem("name").value + "</td><td><input class=\"form-control\" type=\"text\" value=\"" + param.attributes.getNamedItem("column").value + "\" placeholder=\"Mapping_Name_Placeholder\" " 
+				       + " style=\"width: 100%;\"></td><td><select class=\"form-control\" required=\"\" id=\"q-om-mapping-type-select\" style=\"margin-left: 10px;\"><option " 
+				       + "value=\"column\" selected=\"\">Column</option><option value=\"query-param\">Query Param</option></select></td></tr>";
+				 } else if (param.attributes.getNamedItem("query-param") != null) {
+					 row = "<tr><td>" + param.attributes.getNamedItem("name").value + "</td><td><input class=\"form-control\" type=\"text\" value=\"" + param.attributes.getNamedItem("query-param").value + "\" placeholder=\"Mapping_Name_Placeholder\" " 
+				       + " style=\"width: 100%;\"></td><td><select class=\"form-control\" required=\"\" id=\"q-om-mapping-type-select\" style=\"margin-left: 10px;\"><option " 
+				       + "value=\"column\">Column</option><option value=\"query-param\" selected=\"\">Query Param</option></select></td></tr>";
+				 }
+				 
+				 $('#q-om-query-table > tbody').append(row);
+			 });
+			 
+			 if (params.length > 0) {
+				 $('#q-om-query-entries-tbl').toggle(true);
+			 } else {
+				 $('#q-om-query-entries-tbl').toggle(false);
+			 }
+			 setRoleValues(query);
+			 break;
+		}
+	}
+}
+
+function deleteQueryOutputMappingFromResult(result, tds) {
+	let name = tds[0].innerText;
+	let mappingType = tds[3].innerText;
+	if (mappingType == "element" || mappingType == "complex-element") {
+		let eles = result.getElementsByTagName("element");
+		for (let i = 0, len = eles.length; i < len; i++) {
+			if (name == eles[i].attributes.getNamedItem("name").value) {
+				 result.removeChild(eles[i]);
+				 break;
+			 }
+		}
+		
+	} else if (mappingType == "attribute") {
+		let attributes = result.getElementsByTagName("attribute");
+		for (let i = 0, len = attributes.length; i < len; i++) {
+			if (name == attributes[i].attributes.getNamedItem("name").value) {
+				 result.removeChild(attributes[i]);
+				 break;
+			 }
+		}
+		
+	} else if (mappingType == "query") {
+		let queries = result.getElementsByTagName("call-query");
+		for (let i = 0, len = queries.length; i < len; i++) {
+			 if (name == queries[i].attributes.getNamedItem("href").value) {
+				 result.removeChild(queries[i]);
+				 break;
+			 }
+		}
+	}
 }
 
 function clearOutputMappingForm() {
@@ -231,7 +453,7 @@ function clearOutputMappingForm() {
 	$('#q-output-mapping-table').find('tbody').find('tr').detach();
 }
 
-function populateOutputMappingModal(root) {
+function populateOutputMappingModal(root, populateQueries) {
 	let mappingType = $('#q-om-addedit-mappingtype-select').val();
 	if (mappingType == "element") {
 		$('#q-om-addedit-dsmapping-select-inputgroup').toggle(true);
@@ -247,6 +469,7 @@ function populateOutputMappingModal(root) {
 		$('#q-om-addedit-export-inputgroup').toggle(true);
 		$('#q-om-addedit-selectquery-inputgroup').toggle(false);
 		$('#q-om-query-entries-tbl').toggle(false);
+		$('#q-om-complex-child-inputgroup').toggle(false);
 		
 	} else if (mappingType == "attribute") {
 		$('#q-om-addedit-dsmapping-select-inputgroup').toggle(true);
@@ -262,9 +485,13 @@ function populateOutputMappingModal(root) {
 		$('#q-om-addedit-export-inputgroup').toggle(true);
 		$('#q-om-addedit-selectquery-inputgroup').toggle(false);
 		$('#q-om-query-entries-tbl').toggle(false);
+		$('#q-om-complex-child-inputgroup').toggle(false);
 		
 	} else if (mappingType == "query") {
-		populateQueriesForOutputMappingParamForm(root);
+		if (populateQueries) {
+			$('#q-om-query-entries-tbl').toggle(false);
+			populateQueriesForOutputMappingParamForm(root);
+		}
 		
 		$('#q-om-addedit-dsmapping-select-inputgroup').toggle(false);
 		$('#q-om-addedit-outputfn-inputgroup').toggle(false);
@@ -278,7 +505,7 @@ function populateOutputMappingModal(root) {
 		$('#q-om-addedit-optional-inputgroup').toggle(false);
 		$('#q-om-addedit-export-inputgroup').toggle(false);
 		$('#q-om-addedit-selectquery-inputgroup').toggle(true);
-		$('#q-om-query-entries-tbl').toggle(false);
+		$('#q-om-complex-child-inputgroup').toggle(false);
 		
 	} else if (mappingType == "complex-element") {
 		$('#q-om-addedit-dsmapping-select-inputgroup').toggle(false);
@@ -294,6 +521,7 @@ function populateOutputMappingModal(root) {
 		$('#q-om-addedit-export-inputgroup').toggle(false);
 		$('#q-om-addedit-selectquery-inputgroup').toggle(false);
 		$('#q-om-query-entries-tbl').toggle(false);
+		$('#q-om-complex-child-inputgroup').toggle(true);
 	}
 }
 
@@ -315,10 +543,10 @@ function clearOutputMappingModal() {
 	$('#q-om-query-table').find('tbody').find('tr').detach();
 	$('#role-admin-checkbox').prop("checked", false);
 	$('#role-int-checkbox').prop("checked", false);
+	$('#om-complex-child-input').val("");
 }
 
 function processOutputMappingModal(root) {
-	//TODO add to table
 	let dataRoot = root.getElementsByTagName("data")[0];
 	let eleName = '';
 	let dsType = '';
@@ -371,10 +599,12 @@ function processOutputMappingModal(root) {
 		
 	} else if (mappingType == "query") {
 		mapType = "query";
+		dsType = "";
 		
 		let call_query = root.createElement("call-query");
 		
 		let query_id = $('#q-om-addedit-query-select').val();
+		eleName = query_id;
 		call_query.setAttribute("href", query_id);
 		
 		let op_parameters = $('#q-om-query-table > tbody').find('tr');
@@ -399,27 +629,57 @@ function processOutputMappingModal(root) {
 	} else if (mappingType == "complex-element") {
 		
 		mapType = "complex-element";
-//		$('#q-om-addedit-dsmapping-select-inputgroup').toggle(false);
-//		$('#q-om-addedit-outputfn-inputgroup').toggle(false);
-//		$('#q-om-addedit-elename-inputgroup').toggle(true);
-//		$('#q-om-addedit-elens-inputgroup').toggle(true);
-//		$('#q-om-addedit-dscolname-inputgroup').toggle(false);
-//		$('#q-om-addedit-paramtype-inputgroup').toggle(true);
-//		$('#q-om-addedit-arrayname-inputgroup').toggle(false);
-//		$('#q-om-addedit-schematype-inputgroup').toggle(false);
-//		$('#q-om-addedit-optional-inputgroup').toggle(false);
-//		$('#q-om-addedit-export-inputgroup').toggle(false);
-//		$('#q-om-addedit-selectquery-inputgroup').toggle(false);
-//		$('#q-om-query-entries-tbl').toggle(false);
+		
+		let cElement = root.createElement("element");
+		eleName = appendElementNameAttribute(cElement);
+		dsType = "";
+		appendElementNS(cElement);
+		appendParameterTypeAttribute(cElement);
+		let childText = $('#om-complex-child-input').val();
+		let childObjects = $(childText);
+		
+		$.each(childObjects, function(index, child) {
+			cElement.appendChild(child);
+		});
+		
+		uRoles = appendUserRolesAttribute(cElement);
+		
+		appendToOutMappingTable(eleName, dsType, colNumber, mapType, uRoles, schType);
+		
+		return cElement;
 	}
-	
-	
 	
 }
 
 function appendToOutMappingTable(eleName, dsType, colNumber, mapType, uRoles, schType) {
-	let om_row = '<tr><td>' + eleName + '</td><td>' + dsType + '</td><td>' + colNumber + '</td><td>' + mapType + '</td><td>' + uRoles + '</td><td>' + schType + '</td><td class="text-center"><i class="fa fa-edit"></i><i class="fa fa-trash"></i></td></tr>';
-	$('#q-output-mapping-table > tbody').append(om_row);
+	
+	let exists = false;
+	let trs = $('#q-output-mapping-table').find('tr');
+  	for (let i = 0; i < trs.length; i++) {
+  		if (eleName == trs[i].cells[0].firstChild.textContent) {
+  			exists = true;
+  			trs[i].cells[1].firstChild.textContent = dsType;
+  			trs[i].cells[2].firstChild.textContent = colNumber;
+  			trs[i].cells[3].firstChild.textContent = mapType;
+  			trs[i].cells[4].firstChild.textContent = uRoles;
+  			trs[i].cells[5].firstChild.textContent = schType;
+  		}
+  	}
+  	
+  	if (!exists) {
+  		let om_row = '<tr><td>' + eleName + '</td><td>' + dsType + '</td><td>' + colNumber + '</td><td>' + mapType + '</td><td>' + uRoles + '</td><td>' + schType + '</td><td class="text-center"><i class="fa fa-edit"></i><i class="fa fa-trash"></i></td></tr>';
+  		$('#q-output-mapping-table > tbody').append(om_row);
+  	}
+}
+
+function appendElementNameAttribute(element) {
+	let elementName = $('#q-om-addedit-elename-input').val();
+	if ($.trim(elementName) != "") {
+		element.setAttribute("name", elementName);
+	} else {
+		return "";
+	}
+	return elementName;
 }
 
 function appendUserRolesAttribute(element) {
@@ -579,7 +839,7 @@ function updateResultElement(root, result, element) {
 		result = root.createElement("result");
 	}
 	if (element.localName == "element" || element.localName == "attribute" || element.localName == "call-query") {
-		appendElementsToResult(result, element);
+		result = appendElementsToResult(result, element);
 	}
 	
 	return result;
@@ -593,7 +853,7 @@ function appendElementsToResult(result, element) {
 			if (existingElements[0].localName == element.localName && 
 					((element.localName == "call-query" && existingElements[0].attributes.getNamedItem("href") != undefined && element.attributes.getNamedItem("href").value == existingElements[0].attributes.getNamedItem("href").value) 
 					|| (existingElements[0].attributes.getNamedItem("name") != undefined && element.attributes.getNamedItem("name").value == existingElements[0].attributes.getNamedItem("name").value))) {
-				exists = false;
+				exists = true;
 				result.removeChild(existingElements[0]);
 				result.appendChild(element);
 			} else {
@@ -609,19 +869,89 @@ function appendElementsToResult(result, element) {
 	if (result.children.length > 0 && !exists) {
 		result.appendChild(element);
 	}
+	
+	return result;
 }
 
 function saveResultToQueryElement(result, query) {
+	if ($('#om-use-column-nums-checkbox').is(":checked")) {
+		result.setAttribute("useColumnNumbers", "true");
+	} else {
+		result.removeAttribute("useColumnNumbers");
+	}
+	
+	if ($('#om-escapse-npc-checkbox').is(":checked")) {
+		result.setAttribute("escapeNonPrintableChar", "true");
+	} else {
+		result.removeAttribute("escapeNonPrintableChar");
+	}
+	
+	let outputType = $("#om-outputtype-select").val(); 
+	
+	if (outputType == 'xml') {
+		let elementName = $('#om-grouped-by-element-input').val();
+		result.setAttribute("element", elementName);
+		
+		let rowName = $('#om-row-name-input').val();
+		result.setAttribute("rowName", rowName);
+		
+		let defaultNamespace = $('#om-row-namespace-input').val();
+		result.setAttribute("defaultNamespace", defaultNamespace);
+		
+		let xsltPath = $('#om-xslt-path-input').val();
+		result.setAttribute("xsltPath", xsltPath);
+		
+		result.removeAttribute("rdfBaseURI");
+		
+	} else if (outputType == 'rdf') {
+		result.removeAttribute("element");
+		result.removeAttribute("rowName");
+		
+		let defaultNamespace = $('#om-row-namespace-input').val();
+		result.setAttribute("defaultNamespace", defaultNamespace);
+		
+		let xsltPath = $('#om-xslt-path-input').val();
+		result.setAttribute("xsltPath", xsltPath);
+		
+		let rdfBaseURI = $('#om-rdf-baseuri-input').val();
+		result.setAttribute("rdfBaseURI", rdfBaseURI);
+		
+	} else if (outputType == 'json') {
+		result.removeAttribute("element");
+		result.removeAttribute("rowName");
+		result.removeAttribute("defaultNamespace");
+		result.removeAttribute("xsltPath");
+		result.removeAttribute("rdfBaseURI");
+		
+		let jsonInput = $('#om-json-input').val();
+		let text_node = result.createTextNode(jsonInput);
+		result.appendChild(text_node);
+	}
 	//remove result if exists already
 	let rslt = query.getElementsByTagName("result");
 	if (rslt.length == 1) {
 		query.removeChild(rslt[0]);
 	}
 	query.appendChild(result);
-	console.log(query);
 	return query;
 }
 
 function generateOutputMapping() {
 	
+}
+
+/**
+ * Shows an alert of a given type in the output mapping editor modal.
+ *
+ * @param type Type of the alert: success | info | warning | danger
+ * @param message Message to be displayed.
+ * @param interval Number of milliseconds before the notification disappears. If not provided or '0',
+ * notification will stay forever.
+ */
+function showOutputMappingNotification(type, message, interval) {
+    let alertHtml = "<div id='q-om-notification-alert' class=\"alert " + "alert-" + type + "\"" + ">" + message + "</div>";
+    $("#q-om-notification-alert-holder").html(alertHtml);
+    $("#q-om-notification-alert").show();
+
+    showAlert("q-om-notification-alert", interval);
 }

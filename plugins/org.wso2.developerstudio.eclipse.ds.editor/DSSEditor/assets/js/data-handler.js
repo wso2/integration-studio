@@ -129,6 +129,7 @@ $(document).ready(function ($) {
     });
     
     $('#query-add-save-btn').click(function() {
+    	//TODO updte according to current query element
     	let parser = new DOMParser();
     	let q = '<query id="UpdateStudents" useConfig="StudentsDatasource"><sql>UPDATE students SET name = :name, school = :school, grade = :grade WHERE id = :id</sql> <param name="name" paramType="SCALAR" sqlType="STRING"/> <param name="school" paramType="SCALAR" sqlType="STRING"/> <param name="grade" paramType="SCALAR" sqlType="INTEGER"/></query>';
     	let queryElement = parser.parseFromString(q, "text/xml");
@@ -155,22 +156,18 @@ $(document).ready(function ($) {
     
     $(document).on('click','#q-output-mapping-table .fa-edit',function() {
     	let tds = $(this).closest("tr").find('td');
-    	populateQueryOutputMappingModal(root, tds[0].innerText, tds[1].innerText);
+    	populateQueryOutputMappingModal(resultElement, tds, root);
     });
     
     $(document).on('click','#q-output-mapping-table .fa-trash',function() {
     	let tds = $(this).closest("tr").find('td');
-    	// TODO remove from root
-    	deleteQueryOutputMappingFromRoot(root, tds[0].innerText);
+    	deleteQueryOutputMappingFromResult(resultElement, tds);
     	$(this).closest("tr").remove();
-    	saveAll(root, url, function() {
-            location.reload();
-        });
     });
     
     $('#q-om-addedit-mappingtype-select').change(function(e) {
     	e.preventDefault();
-    	populateOutputMappingModal(root);
+    	populateOutputMappingModal(root, true);
     });
     
     $('#q-input_mapping-add-btn').click(function (e) {
@@ -189,7 +186,7 @@ $(document).ready(function ($) {
     	}
     	
     	clearOutputMappingModal();
-    	populateOutputMappingModal(root);
+    	populateOutputMappingModal(root, true);
     	
     });
     
@@ -205,6 +202,27 @@ $(document).ready(function ($) {
     
     $('#input-mapping-modal-save').click(function(e) {
     	e.preventDefault();
+    	
+    	let mappingType = $('#q-om-addedit-mappingtype-select').val();
+    	if (mappingType == "element" || mappingType == "attribute") {
+    		if ($('#q-om-addedit-outputfn-input').val() == "") {
+    			showOutputMappingNotification("danger", "Output field name cannot be empty.", 4000);
+    			return false;
+    		}
+    		
+    	} else if (mappingType == "query") {
+    		if ($('#q-om-addedit-query-select').val() == "") {
+    			showOutputMappingNotification("danger", "Select a query.", 4000);
+    			return false;
+    		}
+    		
+    	} else if (mappingType == "complex-element") {
+    		if ($('#q-om-addedit-elename-input').val() == "") {
+    			showOutputMappingNotification("danger", "Element name cannot be empty.", 4000);
+    			return false;
+    		}
+    	}	
+    			
     	let element = processOutputMappingModal(root);
     	resultElement = updateResultElement(root, resultElement, element);
     	$("#q-output-mapping-modal").modal('hide');

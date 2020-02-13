@@ -555,7 +555,7 @@
                         <div id="q-om-addedit-export-inputgroup" class="collapse-custom"><a class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="false" aria-controls="q-export-option-collapse" role="button" href="#q-export-option-collapse">Export Options</a>
 		                    <div class="collapse" id="q-export-option-collapse">
 	                            <div class="form-group query-common-element">
-	                                <div id="q-export-name-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="q-export-name-input" name="q-export-name-input" style="border: 0; border-bottom: 1px solid #E0E0E0;"><label class="mb-0" for="q-timeout-input">Export Name</label></div>
+	                                <div id="q-export-name-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="q-export-name-input" name="q-export-name-input" style="border: 0; border-bottom: 1px solid #E0E0E0;"><label class="mb-0" for="q-export-name-input">Export Name</label></div>
 	                            </div>
 	                            <div class="form-group form-inline query-common-element">
 	                                <div class="form-group"><label>Export Type</label><select class="form-control" required="" id="q-export-type-select" style="margin-left: 10px;"><option value="scalar" selected="">Scalar</option><option value="array">Array</option></select></div>
@@ -583,6 +583,9 @@
                                 </tbody>
                             </table>
                         </div>
+                        <div class="form-group query-common-element" id="q-om-complex-child-inputgroup">
+                           <div class="field inputgroup"><textarea class="form-control" rows="2" id="om-complex-child-input"></textarea><label class="mb-0">Child Elements</label></div>
+                        </div>
                         <div class="collapse-custom" id="q-om-roles-entries-tbl"><a class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="false" aria-controls="q-roles-table" role="button" href="#q-roles-table">Allowed User Roles</a>
                            <div class="collapse" id="q-roles-table">
                                <div class="table-responsive">
@@ -609,7 +612,9 @@
                        </div>
                     </form>
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Close</button><button class="btn btn-primary" type="submit" id="input-mapping-modal-save" form="input-mapping-form">Save</button></div>
+                <div class="modal-footer justify-content-between">
+                    <div id="q-om-notification-alert-holder" class="alert mr-auto"></div><button class="btn btn-light" type="button" data-dismiss="modal">Close</button><button class="btn btn-primary" type="submit" id="input-mapping-modal-save" form="input-mapping-form">Save</button>
+                    </div>
             </div>
         </div>
     </div>

@@ -24,6 +24,14 @@
          <selection class="org.eclipse.core.resources.IResource"/>
       </wizard>
    </extension>
+   
+   	<extension point="org.eclipse.ui.perspectives">
+		<perspective
+			class="org.wso2.developerstudio.eclipse.ds.presentation.custom.perspective.DataServiceEditorPerspective"
+			icon="icons/wso2/wso2ESBview.png" id="org.wso2.developerstudio.eclipse.ds.presentation.custom.perspective"
+			name="WSO2 DSS Graphical">
+		</perspective>
+	</extension>
 
    <extension point="org.eclipse.ui.editors">
 	 <editor id="org.wso2.developerstudio.eclipse.ds.presentation.DsEditorID"

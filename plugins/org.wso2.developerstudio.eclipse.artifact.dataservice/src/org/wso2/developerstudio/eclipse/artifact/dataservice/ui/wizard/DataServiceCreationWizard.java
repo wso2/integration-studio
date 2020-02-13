@@ -84,7 +84,7 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 	private static final String DATASERVICE_TEMPLATE = "templates/Dataservice1.dbs";
 	private static final String DATASERVICE_TEMPLATE_SECRETALIAS = "templates/Dataservice2.dbs";
 	private String version = "1.0.0";
-	private static final String JAVAEE_PERSPECTIVE = "org.eclipse.jst.j2ee.J2EEPerspective";
+	private static final String DSS_PERSPECTIVE = "org.wso2.developerstudio.eclipse.ds.presentation.custom.perspective";
 
 
 	private final DataServiceModel dsModel;
@@ -160,7 +160,7 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 			}
             try {
                 IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-                PlatformUI.getWorkbench().showPerspective(JAVAEE_PERSPECTIVE, window);
+                PlatformUI.getWorkbench().showPerspective(DSS_PERSPECTIVE, window);
             } catch (Exception e) {
                 log.error(DataServiceArtifactConstants.ERROR_MESSAGE_FILE_OPEN, e);
             }

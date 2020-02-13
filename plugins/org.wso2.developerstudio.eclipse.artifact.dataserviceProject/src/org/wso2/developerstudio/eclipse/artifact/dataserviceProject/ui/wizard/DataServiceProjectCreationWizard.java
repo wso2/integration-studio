@@ -55,7 +55,7 @@ public class DataServiceProjectCreationWizard extends AbstractWSO2ProjectCreatio
 	private static final String ARTIFACT_ID = "maven-dataservice-plugin";
 	private static final String CAPP_TYPE = "bpel/workflow=zip,lib/registry/filter=jar,webapp/jaxws=war,lib/library/bundle=jar,service/dataservice=dbs,synapse/local-entry=xml,synapse/proxy-service=xml,carbon/application=car,registry/resource=zip,lib/dataservice/validator=jar,synapse/endpoint=xml,web/application=war,lib/carbon/ui=jar,service/axis2=aar,synapse/sequence=xml,synapse/configuration=xml,wso2/gadget=dar,lib/registry/handlers=jar,lib/synapse/mediator=jar,synapse/task=xml,synapse/api=xml,synapse/template=xml,synapse/message-store=xml,synapse/message-processors=xml,synapse/inbound-endpoint=xml";
 
-	private static final String JAVAEE_PERSPECTIVE = "org.eclipse.jst.j2ee.J2EEPerspective";
+	private static final String DSS_PERSPECTIVE = "org.wso2.developerstudio.eclipse.ds.presentation.custom.perspective";
 
 	private final DataServiceModel dsModel;
 	private IProject project;
@@ -95,7 +95,7 @@ public class DataServiceProjectCreationWizard extends AbstractWSO2ProjectCreatio
 			createArtifactXMLFile();
             try {
                 IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-                PlatformUI.getWorkbench().showPerspective(JAVAEE_PERSPECTIVE, window);
+                PlatformUI.getWorkbench().showPerspective(DSS_PERSPECTIVE, window);
             } catch (Exception e) {
                 log.error(DataServiceProjectConstants.ERROR_MESSAGE_CORE_EXCEPTION, e);
             }

@@ -6,8 +6,9 @@ $(document).ready(function ($) {
     let root = "";
     let resultElement;
 
-    window.query = [];
+    window.queryElement = [];
     window.validators = [];
+    window.params = [];
 
     // Retrieve the XML source from backend.
     $.get(url, function (data, status) {
@@ -163,7 +164,7 @@ $(document).ready(function ($) {
         }
         $("#q-im-validators-add-btn").toggle(false);
         $("#q-im-validators-table").toggle(false);
-        $("#add-edit-validator-section").toggle(true);
+        $("#q-im-addedit-validator-section").toggle(true);
 
         resetValidatorsForm();
     });
@@ -171,7 +172,7 @@ $(document).ready(function ($) {
     $("#validator-close-btn").click(function() {
         $("#q-im-validators-add-btn").toggle(true);
         $("#q-im-validators-table").toggle(true);
-        $("#add-edit-validator-section").toggle(false);
+        $("#q-im-addedit-validator-section").toggle(false);
 
         resetValidatorsForm();
     });
@@ -187,12 +188,28 @@ $(document).ready(function ($) {
     });
 
     $("#im-mappingname-input").change(function() {
-        // let mappingName = $("#im-mappingname-input").val();
-        // if(checkIfIMappingExists(root, mappingName)) {
-        //     showInputMappingNotification("danger", "A mapping with the name " + mappingName +
-        //         " already exists.", 4000);
-        //     $("#im-mappingname-input").val("");
-        // }
+        let mappingName = $("#im-mappingname-input").val();
+        if(checkIfIMappingExists(root, mappingName)) {
+            showInputMappingNotification("danger", "A mapping with the name " + mappingName +
+                " already exists.", 4000);
+            $("#im-mappingname-input").val("");
+        }
+    });
+
+    $(document).on('click','#q-im-validators-table .fa-edit',function() {
+        let validatorName = $(this).closest("tr").attr('name');
+        editValidator(root, validatorName);
+    });
+
+    $(document).on('click','#q-im-validators-table .fa-trash',function() {
+        let validatorName = $(this).closest("tr").attr('name');
+        removeIfValidatorExists(validatorName);
+        $(this).closest("tr").remove();
+    });
+
+    $(document).on('click','#q-im-entries-table .fa-edit',function() {
+        let mappingName = $(this).closest("tr").attr('name');
+        editInputMapping(root, mappingName);
     });
     // End of query input mapping
 
@@ -383,11 +400,10 @@ $(document).ready(function ($) {
 
         // let result = addDataSource(root);
         //
-        // if (result.status) {
-        //     $("#ds-add-edit-ds-modal").modal('hide');
-        //     saveAll(root, url, saveDSMetadata(result.metadata, url));
-        //     this.reset();
-        // }
+        if (result) {
+            $("#q-input-mapping-modal").modal('hide');
+            this.reset();
+        }
 
     });
 

@@ -132,13 +132,31 @@ function addInputMapping(root) {
         dataObj[field.name] = field.value;
     });
 
-    paramElement.setAttribute("name", dataObj["im-mappingname-input"]);
-    paramElement.setAttribute("paramType", dataObj["q-im-paramtype-select"]);
-    paramElement.setAttribute("sqlType", dataObj["q-im-sqltype-select"]);
-    paramElement.setAttribute("defaultValue", dataObj["im-defaultvalue-input"]);
-    paramElement.setAttribute("type", dataObj["q-im-inout-select"]);
-    paramElement.setAttribute("ordinal", dataObj["im-ordinal-input"]);
+    paramElement.setAttribute("name", $("#im-mappingname-input").val());
+    paramElement.setAttribute("paramType", $("#q-im-paramtype-select").val());
+    paramElement.setAttribute("sqlType", $("#q-im-sqltype-select").val());
+    paramElement.setAttribute("defaultValue", $("#im-defaultvalue-input").val());
+    paramElement.setAttribute("type", $("#q-im-inout-select").val());
+    paramElement.setAttribute("ordinal", $("#im-ordinal-input").val());
 
+    window.params.push(paramElement);
+
+    $("#q-im-table-notification-alert-holder").toggle(false);
+    $("#q-im-entries-table").toggle(true);
+
+    $("#q-im-entries-table tbody tr").remove();
+    for (let i = 0, len = window.params.length; i < len; i++) {
+        let paramElement = window.params[i];
+        let paramName = paramElement.getAttribute("name");
+        let paramParameterType = paramElement.getAttribute("paramType");
+        let paramType = paramElement.getAttribute("sqlType");
+
+        let markup = "<tr name=\"" + paramName  + "\"><td>" + paramName + "</td><td>" + paramParameterType +
+            "</td><td>" + paramType + "</td><td class=\"text-center\"><i class=\"fa fa-edit\"></i>" +
+            "<i class=\"fa fa-trash\"></i></td></tr>";
+
+        $("#q-im-entries-table tbody").append(markup);
+    }
     return true;
 }
 
@@ -146,6 +164,7 @@ function addInputMapping(root) {
  * Resets the add/edit validator form.
  */
 function resetValidatorsForm() {
+    $("#q-im-addedit-validator-section-header").text("Add Validator");
     $("#q-im-validator-select").val("default");
     $("#im-val-maxvalue-input").val("");
     $("#im-val-minvalue-input").val("");
@@ -159,7 +178,7 @@ function resetValidatorsForm() {
 function resetValidatorsSection() {
     $("#q-im-validators-add-btn").toggle(true);
     $("#q-im-validators-table").toggle(true);
-    $("#add-edit-validator-section").toggle(false);
+    $("#q-im-addedit-validator-section").toggle(false);
 
     resetValidatorsForm();
 }
@@ -209,11 +228,9 @@ function validateValidatorsForm() {
 }
 
 function checkIfIMappingExists(root, paramName) {
-    let existingParams = window.queryElement.getElementsByTagName("param");
-
-    if (existingParams.length == 0 || existingParams === undefined || existingParams === null)  {
-        for (let i = 0, len = existingParams.length; i < len; i++) {
-            let paramNameCurr = existingParams[i].name;
+    if (window.params.length !== 0 || window.params !== undefined || window.params !== null)  {
+        for (let i = 0, len = window.params.length; i < len; i++) {
+            let paramNameCurr = window.params[i].getAttribute("name");
             if (paramNameCurr === paramName) {
                 return true;
             }
@@ -282,7 +299,7 @@ function addValidator(root, selectedValidator) {
         let validatorName = getValidatorDetails(validatorElement).validatorName;
         let validation = getValidatorDetails(validatorElement).validation;
 
-        let markup = "<tr><td>" + validatorName + "</td><td>" + validation + "</td><td class=\"text-center\">" +
+        let markup = "<tr name=\"" + validatorElement.tagName + "\"><td>" + validatorName + "</td><td>" + validation + "</td><td class=\"text-center\">" +
             "<i class=\"fa fa-edit\"></i><i class=\"fa fa-trash\"></i></td></tr>";
 
         $("#q-im-validators-table tbody").append(markup);
@@ -316,4 +333,61 @@ function getValidatorDetails(validatorElement) {
         validatorName: validatorName,
         validation: validation
     }
+}
+
+function editValidator(root, validatorName) {
+    resetValidatorsSection();
+    $("#q-im-addedit-validator-section-header").text("Edit Validator");
+    $("#q-im-addedit-validator-section").toggle(true);
+
+    for (let i = 0, len = window.validators.length; i < len; i++) {
+        let validatorElement = window.validators[i];
+
+        if (validatorElement.tagName === validatorName) {
+            if (validatorElement.tagName === VALIDATOR_LONGRANGE) {
+                $("#q-im-validator-select").val(VALIDATOR_LONGRANGE);
+                validateValidatorsForm();
+                $("#im-val-maxvalue-input").val(validatorElement.attributes.getNamedItem("maximum").value);
+                $("#im-val-minvalue-input").val(validatorElement.attributes.getNamedItem("minimum").value);
+            } else if (validatorElement.tagName === VALIDATOR_DOUBLERANGE) {
+                $("#q-im-validator-select").val(VALIDATOR_DOUBLERANGE);
+                validateValidatorsForm();
+                $("#im-val-maxvalue-input").val(validatorElement.attributes.getNamedItem("maximum").value);
+                $("#im-val-minvalue-input").val(validatorElement.attributes.getNamedItem("minimum").value);
+            } else if (validatorElement.tagName === VALIDATOR_LENGTH) {
+                $("#q-im-validator-select").val(VALIDATOR_LENGTH);
+                validateValidatorsForm();
+                $("#im-val-maxvalue-input").val(validatorElement.attributes.getNamedItem("maximum").value);
+                $("#im-val-minvalue-input").val(validatorElement.attributes.getNamedItem("minimum").value);
+            } else if (validatorElement.tagName === VALIDATOR_PATTERN) {
+                validateValidatorsForm();
+                $("#q-im-validator-select").val(VALIDATOR_PATTERN);
+                validateValidatorsForm();
+                $("#im-val-pattern-input").val(validatorElement.attributes.getNamedItem("pattern").value);
+            }
+        }
+    }
+
+    $("#q-im-validators-table").toggle(false);
+    $("#q-im-validators-add-btn").toggle(false);
+}
+
+function editInputMapping(root, mappingName) {
+    resetValidatorsSection();
+    $("#q-im-addedit-title").text("Edit Input Mapping");
+
+    for (let i = 0, len = window.params.length; i < len; i++) {
+        let paramElement = window.params[i];
+
+        if (paramElement.getAttribute("name") === mappingName) {
+            $("#im-mappingname-input").val(paramElement.attributes.getNamedItem("name").value);
+            $("#q-im-paramtype-select").val(paramElement.attributes.getNamedItem("paramType").value);
+            $("#q-im-sqltype-select").val(paramElement.attributes.getNamedItem("sqlType").value);
+            $("#im-defaultvalue-input").val(paramElement.attributes.getNamedItem("defaultValue").value);
+            $("#q-im-inout-select").val(paramElement.attributes.getNamedItem("type").value);
+            $("#im-ordinal-input").val(paramElement.attributes.getNamedItem("ordinal").value);
+        }
+    }
+
+    $("#q-input-mapping-modal").modal("show");
 }

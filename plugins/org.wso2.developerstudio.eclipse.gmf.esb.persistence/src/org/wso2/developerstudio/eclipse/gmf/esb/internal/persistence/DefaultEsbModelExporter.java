@@ -585,7 +585,7 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
         return null;
     }
 
-    public String format(String unformattedXml) {
+    public static String format(String unformattedXml) {
         try {
             final Document document = parseXmlFile(unformattedXml);
 
@@ -603,7 +603,7 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
         }
     }
 
-    private Document parseXmlFile(String in) {
+    private static Document parseXmlFile(String in) {
         try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();

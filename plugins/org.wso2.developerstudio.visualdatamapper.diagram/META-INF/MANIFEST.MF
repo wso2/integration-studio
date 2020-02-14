@@ -227,7 +227,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.wso2.developerstudio.eclipse.esb.libraries;bundle-version="[7.0.0,8.0.0)",
  org.eclipse.jetty.server;bundle-version="9.4.8",
  org.eclipse.jetty.servlet;bundle-version="9.4.8",
- org.eclipse.jetty.util;bundle-version="9.4.8"
+ org.eclipse.jetty.util;bundle-version="9.4.8",
+ org.wso2.developerstudio.eclipse.templates.dashboard
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: com.fasterxml.jackson.annotation;version="2.7.2",

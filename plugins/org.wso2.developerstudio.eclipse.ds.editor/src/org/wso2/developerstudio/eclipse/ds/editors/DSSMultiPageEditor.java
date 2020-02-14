@@ -18,9 +18,19 @@
 
 package org.wso2.developerstudio.eclipse.ds.editors;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.StringReader;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Scanner;
+
+import javax.xml.XMLConstants;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
@@ -28,7 +38,9 @@ import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.swt.widgets.Display;
@@ -44,12 +56,14 @@ import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.MultiPageEditorPart;
 import org.eclipse.ui.texteditor.IDocumentProvider;
 import org.eclipse.ui.texteditor.ITextEditor;
+import org.eclipse.ui.texteditor.MarkerUtilities;
 import org.eclipse.wst.sse.ui.StructuredTextEditor;
+import org.osgi.framework.Bundle;
 import org.wso2.developerstudio.eclipse.ds.presentation.md.DSSVisualEditorPage;
 import org.wso2.developerstudio.eclipse.ds.presentation.util.DSSVisualEditorConstants;
-import org.wso2.developerstudio.eclipse.ds.wizards.util.DSSEditorUtils;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.xml.sax.SAXException;
 
 /**
  * Represents the multi-page editor of the DSS
@@ -72,6 +86,8 @@ public class DSSMultiPageEditor extends MultiPageEditorPart implements IResource
     private String dsXmlContent;
     
     public static final String PLUGIN_ID = "org.wso2.developerstudio.eclipse.ds.editor";
+    private static final String DSS_XSD_PATH = "resources/schema/dss_schema.xsd";
+    private static final String DSS_ERROR = "org.wso2.developerstudio.eclipse.ds.editor.dsserror";
     
     public static final int VISUAL_EDITOR_PAGE_INDEX = 0;
     public static final int SOURCE_EDITOR_PAGE_INDEX = 1;
@@ -155,10 +171,71 @@ public class DSSMultiPageEditor extends MultiPageEditorPart implements IResource
         ITextEditor editor = (ITextEditor) getEditor(SOURCE_EDITOR_PAGE_INDEX);
         IDocumentProvider dp = editor.getDocumentProvider();
         IDocument doc = dp.getDocument(editor.getEditorInput());
-        setDsXmlContent(doc.get());
-        getEditor(1).doSave(monitor);
+        String sourceContent = doc.get();
+        String validationMsg = validateDSSConfig(sourceContent);
+        if (validationMsg.equals("valid")) {
+            deleteMarkers();
+            setDsXmlContent(sourceContent);
+            getEditor(1).doSave(monitor);
+            
+            ((DSSVisualEditorPage) getEditor(VISUAL_EDITOR_PAGE_INDEX)).getBrowser().refresh();
+        } else {
+            addMarker(validationMsg);
+        }
+    }
+    
+    private void deleteMarkers() {
+        // remove markers from temporary xml files
+        try {
+            IFile file = getFile();
+            if (file != null) {
+                file.deleteMarkers(DSS_ERROR, false, 1);
+            }
+        } catch (CoreException e) {
+            // ignore
+        }
+    }
+    
+    private void addMarker(String error) {
+        deleteMarkers();
+        try {
+            IFile file = getFile();
+            if (file != null) {
+                IMarker marker = file.createMarker(DSS_ERROR);
+                marker.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_ERROR);
+                marker.setAttribute(IMarker.MESSAGE, error);
+                MarkerUtilities.setLineNumber(marker, 0);
+                marker.setAttribute(IMarker.CHAR_START, 0);
+                marker.setAttribute(IMarker.CHAR_END, 2);
+            }
+        } catch (Exception e) {
+            // ignore
+        }
+    }
+    
+    private IFile getFile() {
+        IEditorInput editorInput = getEditorInput();
+        if (editorInput instanceof FileEditorInput) {
+            return ((FileEditorInput) editorInput).getFile();
+        }
+        return null;
+    }
+    
+    public static String validateDSSConfig(String dssContent){
         
-        ((DSSVisualEditorPage) getEditor(VISUAL_EDITOR_PAGE_INDEX)).getBrowser().refresh();
+        try {
+            SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+            Bundle bundle = Platform.getBundle(PLUGIN_ID);
+            URL resolvedFileURL = FileLocator.toFileURL(bundle.getEntry(DSS_XSD_PATH));
+            URI resolvedURI = new URI(resolvedFileURL.getProtocol(), resolvedFileURL.getPath(), null);
+            Schema schema = factory.newSchema(new File(resolvedURI));
+            schema.newValidator().validate(new StreamSource(new StringReader(dssContent)));
+        } catch (IOException | SAXException e) {
+            return e.getMessage();
+        } catch (URISyntaxException e) {
+            //ignore the error which occurs when runtime cannot locate the schema files
+        }
+        return "valid";
     }
 
     /**

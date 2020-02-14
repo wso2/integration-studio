@@ -57,7 +57,7 @@ import java.util.Properties;
  */
 public class StudentDataServiceTemplate extends Wizard implements INewWizard {
 
-    private static final String J2EE_PERSPECTIVE = "org.eclipse.jst.j2ee.J2EEPerspective";
+    private static final String DSS_PERSPECTIVE = "org.wso2.developerstudio.eclipse.ds.presentation.custom.perspective";
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     String sampleName = "StudentDataService";
@@ -239,9 +239,9 @@ public class StudentDataServiceTemplate extends Wizard implements INewWizard {
             @Override
             public void run() {
                 IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-                if (!J2EE_PERSPECTIVE.equals(window.getActivePage().getPerspective().getId())) {
+                if (!DSS_PERSPECTIVE.equals(window.getActivePage().getPerspective().getId())) {
                     try {
-                        PlatformUI.getWorkbench().showPerspective(J2EE_PERSPECTIVE, window);
+                        PlatformUI.getWorkbench().showPerspective(DSS_PERSPECTIVE, window);
                     } catch (Exception e) {
                         log.error("Cannot switch to J2EE Perspective", e);
                     }

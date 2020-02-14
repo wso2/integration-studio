@@ -18,11 +18,11 @@
         	class="org.wso2.developerstudio.eclipse.ds.editor.contentassistant.DataserviceQuickAssistantProcessor"
         	target="org.wso2.developerstudio.eclipse.ds.dataserviceDefinitionContent"/>        	
 	</extension>
-	<extension point="org.eclipse.wst.xml.core.catalogContributions">
+	<!--extension point="org.eclipse.wst.xml.core.catalogContributions">
 		<catalogContribution>
 			<uri name="http://www.wso2.com/DataService/2010/XMLSchema"
 				uri="schema/DataService.xsd">
 			</uri>
 		</catalogContribution>
-	</extension>
+	</extension-->
 </plugin>

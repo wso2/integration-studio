@@ -87,6 +87,20 @@
           class="org.wso2.developerstudio.eclipse.ds.DSSEarlyStartupHandler">
     </startup>
  </extension> 
+ 
+	<extension point="org.eclipse.wst.xml.core.catalogContributions"> 
+		<catalogContribution id="org.wso2.developerstudio.eclipse.ds.presentation.DsEditor"> 
+			<uri name="http://ws.apache.org/ns/synapse"	uri="platform:/plugin/org.wso2.developerstudio.eclipse.ds.editor/resources/schema/dss_schema.xsd"/>
+			<system systemId="http://ws.apache.org/ns/synapse" uri="platform:/plugin/org.wso2.developerstudio.eclipse.ds.editor/resources/schema/dss_schema.xsd"> 
+			</system>
+		</catalogContribution>
+	</extension>
+
+	<extension id="dsserror" point="org.eclipse.core.resources.markers">
+		<super type="org.eclipse.core.resources.problemmarker" />
+		<super type="org.eclipse.core.resources.textmarker" />
+		<persistent value="false" />
+	</extension>
 	<!--Extention points for delete command ended. -->
 	
  <!--extension point="org.eclipse.ui.newWizards">

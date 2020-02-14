@@ -18,13 +18,11 @@ Require-Bundle: org.eclipse.ui,
  org.wso2.developerstudio.eclipse.distribution.project,
  org.wso2.developerstudio.eclipse.platform.core,
  org.eclipse.ui.navigator,
- org.eclipse.wb.core.lib,
  org.objectweb.asm;bundle-version="6.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: 
  org.eclipse.debug.core,
  org.eclipse.debug.core.model,
- org.eclipse.gmf.runtime.diagram.ui.resources.editor.document,
  org.eclipse.jdt.core,
  org.eclipse.m2e.core,
  org.eclipse.m2e.core.embedder,

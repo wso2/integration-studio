@@ -96,7 +96,7 @@
 	
 	<extension point="org.eclipse.ui.exportWizards">
 		<category id="org.wso2.developerstudio.eclipse.distribution.export"
-			name="WSO2 Platform Distribution" />
+			name="WSO2" />
 	</extension>
 		<extension point="org.eclipse.ui.exportWizards">
 		<wizard id="org.wso2.developerstudio.eclipse.distribution.exportAsCar" name="Composite Application Archive [CAR]"
@@ -104,6 +104,28 @@
 			category="org.wso2.developerstudio.eclipse.distribution.export">
 			<description>
 				Create a carbon application archive from a carbon application project 
+			</description>
+			<selection class="org.eclipse.core.resources.IProject" />
+		</wizard>
+	</extension>
+	
+	<extension point="org.eclipse.ui.exportWizards">
+		<wizard id="org.wso2.developerstudio.eclipse.distribution.exportAsArchiveFile" name="Projects Export as File System"
+			class="org.wso2.developerstudio.eclipse.distribution.project.ui.wizard.ProjectExportAsFileSystemWizard" icon="icons/car.png"
+			category="org.wso2.developerstudio.eclipse.distribution.export">
+			<description>
+				Create a folder from existing projects
+			</description>
+			<selection class="org.eclipse.core.resources.IProject" />
+		</wizard>
+	</extension>
+	
+	<extension point="org.eclipse.ui.exportWizards">
+		<wizard id="org.wso2.developerstudio.eclipse.distribution.exportAsArchiveFile" name="Projects Export as Archive File"
+			class="org.wso2.developerstudio.eclipse.distribution.project.ui.wizard.ProjectExportAsArchiveFileWizard" icon="icons/car.png"
+			category="org.wso2.developerstudio.eclipse.distribution.export">
+			<description>
+				Create a archive file from existing projects
 			</description>
 			<selection class="org.eclipse.core.resources.IProject" />
 		</wizard>

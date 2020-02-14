@@ -8,6 +8,7 @@ $('#query-add-close-btn').click(function() {
 function clearAddQueryForm() {
 	$('#q-query-id-input').val("");
 	$('#q-datasource-select').val("");
+	$('#q-sql-query-input').val("");
 }
 
 /**

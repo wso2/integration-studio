@@ -9,6 +9,8 @@ $(document).ready(function ($) {
     window.queryElement = [];
     window.validators = [];
     window.params = [];
+    window.isInputMappingEdit = false;
+    window.mappingToBeDeleted = "";
 
     // Retrieve the XML source from backend.
     $.get(url, function (data, status) {
@@ -129,16 +131,33 @@ $(document).ready(function ($) {
         $("#q-add-edit-query-section").toggle(true);
         populateDSListForQueries(root);
         $("#q-im-entries-table").toggle(false);
-        showInputMappingsTableNotification("info", "No input mappings available. Click 'Add New' to create a new mapping.", 0);
+        $("#q-addedit-title").text("Add Query");
+        $("#q-query-id-input").prop('disabled', false);
+
+        resetInputMappingSection();
     });
-    
-    $('#query-add-save-btn').click(function() {
-    	//TODO updte according to current query element
-    	let parser = new DOMParser();
-    	let q = '<query id="UpdateStudents" useConfig="StudentsDatasource"><sql>UPDATE students SET name = :name, school = :school, grade = :grade WHERE id = :id</sql> <param name="name" paramType="SCALAR" sqlType="STRING"/> <param name="school" paramType="SCALAR" sqlType="STRING"/> <param name="grade" paramType="SCALAR" sqlType="INTEGER"/></query>';
-    	let queryElement = parser.parseFromString(q, "text/xml");
-    	saveResultToQueryElement(resultElement, queryElement.children[0]);
+
+    $("#query-form").submit(function (e) {
+        e.preventDefault();
+        window.queryElement = root.createElement("query");
+        processQueryDetails(root, window.queryElement);
+        saveInputMappingsToQueryElement(window.queryElement);
+        //saveResultToQueryElement(resultElement, window.queryElement);
+
+        let result = addQuery(root, queryElement);
+
+        if (result) {
+            saveAll(root, url, function() {
+                $("#q-add-edit-query-section").toggle(false);
+                $("#q-query-add-btn").toggle(true);
+                populateQueryTable(root);
+
+                window.params = [];
+                window.validators = [];
+            });
+        }
     });
+
     // End of queries - Add query
 
     // Start of query general
@@ -148,7 +167,7 @@ $(document).ready(function ($) {
         let queryId = $("#q-query-id-input").val();
 
         for (let i = 0, len = queries.length; i < len; i++) {
-            if (queries[i].id == queryId && !$("#ds-ds-id-input").prop('disabled')) {
+            if (queries[i].id == queryId && !$("#q-query-id-input").prop('disabled')) {
                 showNotificationAlertModal("Error", "A query with ID " + queryId + " already exists.");
                 $("#q-query-id-input").val("");
                 return false;
@@ -211,6 +230,11 @@ $(document).ready(function ($) {
         let mappingName = $(this).closest("tr").attr('name');
         editInputMapping(root, mappingName);
     });
+
+    $(document).on('click','#q-im-entries-table .fa-trash',function() {
+        let mappingName = $(this).closest("tr").attr('name');
+        deleteInputMapping(mappingName);
+    });
     // End of query input mapping
 
     // Start of query output mapping
@@ -224,6 +248,22 @@ $(document).ready(function ($) {
     	let tds = $(this).closest("tr").find('td');
     	deleteQueryOutputMappingFromResult(resultElement, tds);
     	$(this).closest("tr").remove();
+    });
+
+    $(document).on('click','#q-queries-table .fa-edit',function() {
+        let queryId = $(this).closest("tr").attr('data-id');
+        resultElement = editQuery(root, queryId);
+    });
+
+    $(document).on('click','#q-queries-table .fa-trash',function() {
+        let queryId = $(this).closest("tr").attr('data-id');
+        let result = deleteQuery(root, queryId);
+
+        if (result) {
+            saveAll(root, url, function() {
+                populateQueryTable(root);
+            });
+        }
     });
     
     $('#q-om-addedit-mappingtype-select').change(function(e) {
@@ -271,13 +311,6 @@ $(document).ready(function ($) {
     	resultElement = updateResultElement(root, resultElement, element);
     	$("#q-output-mapping-modal").modal('hide');
     });
-    
-    function populateOutputMappingAtEdit(root) {
-//    	let queryConfigs = root.getElementsByTagName("query");
-//    	window.queryElement = queryConfigs[queryConfigs.length -1];
-    	//call this within edit on query
-    	resultElement = populateOueryOutputMappings(window.queryElement);
-    }
     
     // End of query output mapping
     
@@ -398,8 +431,6 @@ $(document).ready(function ($) {
 
         let result = addInputMapping(root);
 
-        // let result = addDataSource(root);
-        //
         if (result) {
             $("#q-input-mapping-modal").modal('hide');
             this.reset();
@@ -420,11 +451,17 @@ $(document).ready(function ($) {
             return false;
         }
 
+        if ($("#q-sql-query-input").val() == "") {
+            showNotificationAlertModal("Error", "Please provide a SQL query.");
+            return false;
+        }
+
         $("#input-mapping-form").trigger('reset');
 
         resetValidatorsForm();
         resetValidatorsSection();
 
+        $("#q-im-addedit-title").text("Add Input Mapping");
         $("#q-input-mapping-modal").modal("show");
     });
 

@@ -81,7 +81,7 @@
         </xs:annotation>
         <xs:choice>
             <xs:element name="description" minOccurs="0" maxOccurs="1" />
-			<xs:element ref="config" minOccurs="0" maxOccurs="1" />
+			<xs:element ref="config" minOccurs="0" maxOccurs="unbounded" />
 			<xs:element ref="query" minOccurs="0"
 				maxOccurs="unbounded" />
 			<xs:element ref="operation" minOccurs="0"

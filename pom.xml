@@ -247,14 +247,14 @@
             <layout>default</layout>
         </repository>
         <repository>
-            <snapshots>
+            <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
                 <checksumPolicy>ignore</checksumPolicy>
-            </snapshots>
+            </releases>
             <id>WSO2-HTTP4e-p2-Repository</id>
             <url>http://product-dist.wso2.com/p2/developer-studio-kernel/dependencies/Http4e/</url>
-            <layout>default</layout>
+            <layout>p2</layout>
         </repository>
     </repositories>
     <pluginRepositories>

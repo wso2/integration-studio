@@ -61,6 +61,7 @@ public class APIArtifactModel extends ProjectDataModel {
 	private List<OMElement> availableAPIslist;
 	private List<OMElement> selectedAPIsList;
 	private String publishSwagger = "";
+	private File importSwaggerFile;
 	
 	public APIArtifactModel() {
 		availableAPIslist = new ArrayList<OMElement>();
@@ -131,6 +132,14 @@ public class APIArtifactModel extends ProjectDataModel {
 		this.publishSwagger = publishSwagger;
 	}
 	
+	public File getSwaggerFile() {
+		return importSwaggerFile;
+	}
+
+	public void setSwaggerFile(File importedSwaggerFile) {
+		this.importSwaggerFile = importedSwaggerFile;
+	}
+	
 	@Override
 	public Object getModelPropertyValue(String key) {
 		Object modelPropertyValue = super.getModelPropertyValue(key);
@@ -197,7 +206,7 @@ public class APIArtifactModel extends ProjectDataModel {
 					log.error("An unexpected error has occurred", e);
 				}
 			}
-		}else if(key.equals("available.apis")){
+		} else if(key.equals("available.apis")){
 			selectedAPIsList.clear();
 			Object[] selectedAPIs = (Object[])data;
 			for (Object object : selectedAPIs) {
@@ -237,6 +246,8 @@ public class APIArtifactModel extends ProjectDataModel {
 			setVersionType(data.toString());
 		} else if (key.equals(ArtifactConstants.ID_API_VERSION)) {
 			setVersion(data.toString());
+		} else if (key.equals(ArtifactConstants.ID_API_SWAGGER_FILE)) {
+			setSwaggerFile((File) data);
 		}
 		
 		return result;

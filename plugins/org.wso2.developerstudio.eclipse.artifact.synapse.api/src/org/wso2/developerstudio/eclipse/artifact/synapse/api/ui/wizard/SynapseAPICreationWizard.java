@@ -18,6 +18,8 @@ package org.wso2.developerstudio.eclipse.artifact.synapse.api.ui.wizard;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -25,9 +27,12 @@ import java.util.regex.Pattern;
 import javax.xml.namespace.QName;
 
 import org.apache.axiom.om.OMElement;
+import org.apache.commons.io.FilenameUtils;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.core.resources.IContainer;
@@ -39,6 +44,8 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.wso2.carbon.rest.api.APIException;
+import org.wso2.carbon.rest.api.service.RestApiAdmin;
 import org.wso2.developerstudio.eclipse.artifact.synapse.api.Activator;
 import org.wso2.developerstudio.eclipse.artifact.synapse.api.model.APIArtifactModel;
 import org.wso2.developerstudio.eclipse.artifact.synapse.api.util.APIImageUtils;
@@ -54,6 +61,9 @@ import org.wso2.developerstudio.eclipse.platform.ui.editor.Openable;
 import org.wso2.developerstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
 
 /**
@@ -108,7 +118,19 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
 					isNewArtifact = false;
 				} 	
 				copyImportFile(location,isNewArtifact,groupId);
-			} else {			
+			} else if (getModel().getSelectedOption().equals("create.swagger")) {
+				String apiName = getAPINameFromSwagger(artifactModel.getSwaggerFile());
+				artifactFile = location.getFile(new Path(apiName + ".xml"));
+				File destFile = artifactFile.getLocation().toFile();
+				FileUtils.createFile(destFile, getSynapseAPIFromSwagger(artifactModel.getSwaggerFile()));
+				fileLst.add(destFile);
+				String relativePath = FileUtils
+						.getRelativePath(esbProject.getLocation().toFile(),
+								new File(location.getLocation().toFile(), apiName + ".xml"))
+						.replaceAll(Pattern.quote(File.separator), "/");
+				esbProjectArtifact.addESBArtifact(createArtifact(apiName, groupId, version, relativePath));
+				esbProjectArtifact.toFile();
+			} else {
 				artifactFile = location.getFile(new Path(artifactModel.getName() + ".xml"));
 				File destFile = artifactFile.getLocation().toFile();
 				FileUtils.createFile(destFile, getTemplateContent());
@@ -176,7 +198,31 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
 		return content.toString();
 	}
 	
-	
+	private String getSynapseAPIFromSwagger(File swaggerFile) {
+		RestApiAdmin restAPIAdmin = new RestApiAdmin();
+		String swaggerJson = getSwaggerFileAsJSON(swaggerFile);
+		String generatedAPI = "";
+		try {
+			generatedAPI = restAPIAdmin.generateAPIFromSwagger(swaggerJson);
+		} catch (APIException e) {
+			log.error("Exception occured while generating API using swagger file", e);
+		}
+		return generatedAPI;
+	}
+
+	private String getAPINameFromSwagger(File swaggerFile) {
+		String apiName = "";
+		try {
+			String swaggerJson = getSwaggerFileAsJSON(swaggerFile);
+			JSONObject fullSwaggerJSON = new JSONObject(swaggerJson);
+			JSONObject swaggerInfo = (JSONObject) fullSwaggerJSON.get("info");
+			apiName = swaggerInfo.get("title").toString();
+		} catch (Exception e) {
+			log.error("Exception occured while extracting API name from the swagger file", e);
+		}
+		return apiName;
+	}
+
 	public void copyImportFile(IContainer importLocation,boolean isNewAritfact, String groupId) throws IOException {
 		File importFile = getModel().getImportFile();
 		File destFile = null;
@@ -226,6 +272,39 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
 		artifact.setFile(path);
 		return artifact;
 	}
+
+	public static String convertYamlToJson(String yaml) {
+		YAMLFactory yamlFactory = new YAMLFactory();
+		ObjectMapper yamlReader = new ObjectMapper(yamlFactory);
+		String convertedJSON = "";
+		try {
+			Object tmpYamlValueObject = yamlReader.readValue(yaml, Object.class);
+			ObjectMapper jsonWriter = new ObjectMapper();
+			convertedJSON = jsonWriter.writeValueAsString(tmpYamlValueObject);
+		} catch (IOException e) {
+			log.error("Error occured while trying to read yaml file", e);
+		} catch (Exception e) {
+			log.error("Error occured while trying to convert yaml file to json file", e);
+		}
+		return convertedJSON;
+	}
+
+	private String getSwaggerFileAsJSON(File swaggerFile) {
+		String swaggerJson = "";
+		String fileContent = "";
+		try {
+			fileContent = new String(Files.readAllBytes(Paths.get(swaggerFile.getAbsolutePath())));
+			if (FilenameUtils.getExtension((swaggerFile).getAbsolutePath()).equals("yaml")) {
+				// Convert to JSON if the file extension is yaml
+				swaggerJson = convertYamlToJson(fileContent);
+			} else if (FilenameUtils.getExtension(swaggerFile.getAbsolutePath()).equals("json")) {
+				swaggerJson = fileContent;
+			}
+		} catch (IOException e) {
+			log.error("Exception occured while reading swagger file", e);
+		}
+		return swaggerJson;
+	}
 	
 	public void updatePom() throws IOException, XmlPullParserException {
 		File mavenProjectPomLocation = esbProject.getFile("pom.xml").getLocation().toFile();
@@ -253,6 +332,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
 		plugin.addExecution(pluginExecution);
 		MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
 	}
+
 
 	@Override
 	public void openEditor(File file) {

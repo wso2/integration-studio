@@ -6784,6 +6784,13 @@
 			pattern="org.eclipse.team.ui/org.eclipse.team.sync.views.SynchronizeView">
 		</activityPatternBinding>
 	</extension>
+	<extension
+		point="org.eclipse.ui.startup">
+		<startup
+			class="org.wso2.developerstudio.eclipse.gmf.esb.diagram.swagger.SwaggerEditorEarlyStartup">
+		</startup>
+	</extension>
+
 </plugin>
 
 

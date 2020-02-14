@@ -28,7 +28,7 @@
             runtimeTypeIds="org.wso2.developerstudio.eclipse.carbon.*">
       </runtimeClasspathProvider>
    </extension>
-   <extension point="org.eclipse.ui.exportWizards">
+   <!--<extension point="org.eclipse.ui.exportWizards">
 		<wizard id="org.wso2.developerstudio.eclipse.carbonserver44microei11.exportAsArtifactAndRun" name="Deployable WSO2 Micro EI Archive"
 			class="org.wso2.developerstudio.eclipse.carbonserver44microei11.wizard.DistributionProjectExportAndRunWizard" icon="icons/car.png"
 			category="org.wso2.developerstudio.eclipse.distribution.export">
@@ -37,7 +37,7 @@
 			</description>
 			<selection class="org.eclipse.core.resources.IProject" />
 		</wizard>
-	</extension>
+	</extension>-->
 	
 	
 	

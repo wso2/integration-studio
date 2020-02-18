@@ -18,12 +18,6 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	elementFormDefault="qualified">
 
-	<xs:include schemaLocation="config.xsd" />
-	<xs:include schemaLocation="query.xsd" />
-	<xs:include schemaLocation="operation.xsd" />
-	<xs:include schemaLocation="resource.xsd" />
-	<xs:include schemaLocation="event-trigger.xsd" />
-
 	<xs:element name="data" type="Data">
 		<xs:annotation>
 			<xs:documentation source="description">
@@ -99,5 +93,444 @@
 			<xs:element name="enableSec" minOccurs="0" maxOccurs="1" />
         </xs:choice>
     </xs:group>
+    
+    <xs:element name="property">
+		<xs:annotation>
+			<xs:documentation source="description">
+				This represents the
+				property attribute
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="name" type="xs:string"
+						use="required" />
+					<xs:attribute name="secretAlias" type="xs:string"
+						xmlns:svns="http://org.wso2.securevault/configuration" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="param">
+		<xs:annotation>
+			<xs:documentation source="description">
+				This represents the
+				parameter element
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:group ref="paramElements" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string"
+				use="required" />
+			<xs:attribute name="sqlType" type="xs:string" />
+			<xs:attribute name="paramType" type="scalarArray" />
+			<xs:attribute name="type" type="inOut" />
+			<xs:attribute name="ordinal" type="xs:integer" />
+			<xs:attribute name="defaultValue" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:group name="paramElements">
+		<xs:annotation>
+			<xs:documentation source="description">
+				This group denotes all the param elements
+			</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="validateCustom" minOccurs="0"
+				maxOccurs="1">
+				<xs:complexType>
+					<xs:attribute name="class" type="xs:string" />
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="validateLength" minOccurs="0"
+				maxOccurs="1">
+				<xs:complexType>
+					<xs:attribute name="minimum" type="xs:integer" />
+					<xs:attribute name="maximum" type="xs:integer" />
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="validatePattern" minOccurs="0"
+				maxOccurs="1">
+				<xs:complexType>
+					<xs:attribute name="pattern" type="xs:string" />
+				</xs:complexType>
+			</xs:element>
+		</xs:choice>
+	</xs:group>
+
+	<xs:element name="call-query">
+		<xs:annotation>
+			<xs:documentation source="description">
+				This represents the
+				call-query element
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="with-param" minOccurs="0"
+					maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:attribute name="name" type="xs:string"
+							use="required" />
+						<xs:attribute name="query-param" type="xs:string" />
+						<xs:attribute name="column" type="xs:string" />
+						<xs:attribute name="param" type="xs:string" />
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="href" type="xs:string"
+				use="required" />
+			<xs:attribute name="requiredRoles" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:simpleType name="scalarArray">
+		<xs:annotation>
+			<xs:documentation source="description">
+				This simple type represents
+				the possible values for
+				parameter type
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="scalar" />
+			<xs:enumeration value="array" />
+			<xs:enumeration value="SCALAR" />
+			<xs:enumeration value="ARRAY" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="inOut">
+		<xs:annotation>
+			<xs:documentation source="description">
+				This simple type represents
+				the possible values for
+				type
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="in" />
+			<xs:enumeration value="IN" />
+			<xs:enumeration value="out" />
+			<xs:enumeration value="OUT" />
+			<xs:enumeration value="in-out" />
+			<xs:enumeration value="IN-OUT" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:element name="config" type="Config">
+		<xs:annotation>
+			<xs:documentation source="description">
+				Data service configuration
+				element
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:complexType name="Config">
+		<xs:annotation>
+			<xs:documentation source="description">
+				This is the element type
+				that represents a data service configuration
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="property" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string" use="required" />
+		<xs:attribute name="enableOData" type="xs:boolean" />
+	</xs:complexType>
+	
+	<xs:element name="event-trigger" type="Event-trigger">
+		<xs:annotation>
+			<xs:documentation source="description">
+				Data service event-trigger
+				element
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:complexType name="Event-trigger">
+		<xs:annotation>
+			<xs:documentation source="description">
+				This is the element type
+				that represents an event-trigger in data
+				service configuration
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="eventTriggerElements" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string" use="required" />
+		<xs:attribute name="language" type="xs:string" />
+	</xs:complexType>
+
+	<xs:group name="eventTriggerElements">
+        <xs:annotation>
+            <xs:documentation source="description">
+                This group denotes all the event trigger elements
+            </xs:documentation>
+        </xs:annotation>
+        <xs:choice>
+            <xs:element name="expression" minOccurs="0" maxOccurs="1" />
+			<xs:element name="target-topic" minOccurs="0"
+				maxOccurs="1" />
+			<xs:element name="subscriptions" minOccurs="0"
+				maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="subscription" minOccurs="0"
+							maxOccurs="1" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+        </xs:choice>
+    </xs:group>
+    
+    <xs:element name="operation" type="Operation">
+		<xs:annotation>
+			<xs:documentation source="description">
+				Data service operation
+				element
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:complexType name="Operation">
+		<xs:annotation>
+			<xs:documentation source="description">
+				This is the element type
+				that represents an operation in data service
+				configuration
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="operationElements" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="required" />
+		<xs:attribute name="disableStreaming" type="xs:boolean" />
+	</xs:complexType>
+	
+	<xs:group name="operationElements">
+        <xs:annotation>
+            <xs:documentation source="description">
+                This group denotes all the operation elements
+            </xs:documentation>
+        </xs:annotation>
+        <xs:choice>
+            <xs:element name="description" minOccurs="0" maxOccurs="1" />
+			<xs:element ref="call-query" minOccurs="0" maxOccurs="1" />
+        </xs:choice>
+    </xs:group>
+    
+    <xs:element name="query" type="Query">
+		<xs:annotation>
+			<xs:documentation source="description">
+				Query element configuration
+				element
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:complexType name="Query">
+		<xs:annotation>
+			<xs:documentation source="description">
+				This is the element type
+				that represents a query in data service
+				configuration
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="queryElements" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string" use="required" />
+		<xs:attribute name="useConfig" type="xs:string" />
+		<xs:attribute name="returnGeneratedKeys"
+			type="xs:boolean" />
+		<xs:attribute name="input-event-trigger" type="xs:string" />
+	</xs:complexType>
+
+	<xs:group name="queryElements">
+		<xs:annotation>
+			<xs:documentation source="description">
+				This group denotes all the query elements
+			</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element ref="sql" minOccurs="0" maxOccurs="1" />
+			<xs:element ref="sparql" minOccurs="0" maxOccurs="1" />
+			<xs:element name="properties" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation source="description">
+						This represents the
+						properties element
+					</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="property" minOccurs="1"
+							maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="result" minOccurs="0" maxOccurs="1" />
+			<xs:element ref="param" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:choice>
+	</xs:group>
+
+	<xs:element name="sql">
+		<xs:annotation>
+			<xs:documentation source="description">
+				This represents the sql
+				element
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="dialect" type="xs:string" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="sparql">
+		<xs:annotation>
+			<xs:documentation source="description">
+				This represents the sparql
+				element
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string" />
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="result">
+		<xs:annotation>
+			<xs:documentation source="description">
+				This represents the result
+				element
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:group ref="resultElements" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attribute name="element" type="xs:string" />
+			<xs:attribute name="rowName" type="xs:string" />
+			<xs:attribute name="defaultNamespace" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:group name="resultElements">
+		<xs:annotation>
+			<xs:documentation source="description">
+				This group denotes all the result elements
+			</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element ref="element" minOccurs="0"
+				maxOccurs="unbounded" />
+			<xs:element ref="attribute" minOccurs="0"
+				maxOccurs="unbounded" />
+			<xs:element ref="call-query" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:choice>
+	</xs:group>
+    
+	<xs:element name="element">
+		<xs:annotation>
+			<xs:documentation source="description">
+				This represents the element
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:group ref="resultElements" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attributeGroup ref="elementAttributes" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="attribute">
+		<xs:annotation>
+			<xs:documentation source="description">
+				This represents the
+				attribute element
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attributeGroup ref="elementAttributes" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:attributeGroup name="elementAttributes">
+		<xs:annotation>
+			<xs:documentation>
+				This group of attributes are mainly used for
+				elements and attributes
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="column" type="xs:string" />
+		<xs:attribute name="requiredRoles" type="xs:string" />
+		<xs:attribute name="export" type="xs:string" />
+		<xs:attribute name="exportType" type="scalarArray" />
+		<xs:attribute name="xsdType" type="xs:string" />
+		<xs:attribute name="namespace" type="xs:string" />
+		<xs:attribute name="optional" type="xs:boolean" />
+		<xs:attribute name="arrayName" type="xs:string" />
+	</xs:attributeGroup>
+	
+	<xs:element name="resource" type="Resource">
+		<xs:annotation>
+			<xs:documentation source="description">
+				Data service resource
+				element
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:complexType name="Resource">
+		<xs:annotation>
+			<xs:documentation source="description">
+				This is the element type
+				that represents a resource in data service
+				configuration
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" minOccurs="0" maxOccurs="1" />
+			<xs:element ref="call-query" minOccurs="0" maxOccurs="1" />
+		</xs:sequence>
+		<xs:attribute name="path" type="xs:string" />
+		<xs:attribute name="method" type="methods" />
+		<xs:attribute name="disableStreaming" type="xs:boolean" />
+	</xs:complexType>
+
+	<xs:simpleType name="methods">
+		<xs:annotation>
+			<xs:documentation source="description">
+				This simple type represents
+				the possible values for http methods
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="GET" />
+			<xs:enumeration value="POST" />
+			<xs:enumeration value="PUT" />
+			<xs:enumeration value="DELETE" />
+		</xs:restriction>
+	</xs:simpleType>
 
 </xs:schema>

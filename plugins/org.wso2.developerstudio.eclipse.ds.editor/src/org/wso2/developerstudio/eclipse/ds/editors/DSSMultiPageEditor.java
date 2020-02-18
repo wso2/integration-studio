@@ -172,16 +172,16 @@ public class DSSMultiPageEditor extends MultiPageEditorPart implements IResource
         IDocumentProvider dp = editor.getDocumentProvider();
         IDocument doc = dp.getDocument(editor.getEditorInput());
         String sourceContent = doc.get();
-        String validationMsg = validateDSSConfig(sourceContent);
-        if (validationMsg.equals("valid")) {
-            deleteMarkers();
+//        String validationMsg = validateDSSConfig(sourceContent);
+//        if (validationMsg.equals("valid")) {
+//            deleteMarkers();
             setDsXmlContent(sourceContent);
             getEditor(1).doSave(monitor);
             
             ((DSSVisualEditorPage) getEditor(VISUAL_EDITOR_PAGE_INDEX)).getBrowser().refresh();
-        } else {
-            addMarker(validationMsg);
-        }
+//        } else {
+//            addMarker(validationMsg);
+//        }
     }
     
     private void deleteMarkers() {

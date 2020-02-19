@@ -474,12 +474,18 @@ $(document).ready(function ($) {
         	$('#ac-disable-legacy-boxcarring-group').toggle(true);
         	
         } else {
+        	$('#ac-disable-legacy-boxcarring-check').prop("checked", false);
         	$('#ac-disable-legacy-boxcarring-group').toggle(false);
-        	let enableBatchRequests = root.getElementsByTagName("data")[0].attributes.getNamedItem("enableBoxcarring");
-        	if (enableBatchRequests != null && enableBatchRequests != undefined) {
+        	let enableBoxcarring = root.getElementsByTagName("data")[0].attributes.getNamedItem("enableBoxcarring");
+        	if (enableBoxcarring != null && enableBoxcarring != undefined) {
         		root.getElementsByTagName("data")[0].removeAttribute("enableBoxcarring");
         	}
+        	let disableLegacyBoxcarringMode = root.getElementsByTagName("data")[0].attributes.getNamedItem("disableLegacyBoxcarringMode");
+        	if (disableLegacyBoxcarringMode != null && disableLegacyBoxcarringMode != undefined) {
+        		root.getElementsByTagName("data")[0].removeAttribute("disableLegacyBoxcarringMode");
+        	}
         }
+        saveAll(root, url, function() { });
     });
 
     $("#ac-enable-streaming-check").change(function() {
@@ -491,6 +497,7 @@ $(document).ready(function ($) {
         } else {
         	root.getElementsByTagName("data")[0].setAttribute("disableStreaming", "true");
         }
+        saveAll(root, url, function() { });
     });
 
     $("#ac-enable-batch-check").change(function() {
@@ -502,6 +509,7 @@ $(document).ready(function ($) {
         		root.getElementsByTagName("data")[0].removeAttribute("enableBatchRequests");
         	}
         }
+        saveAll(root, url, function() { });
     });
 
     $("#ac-disable-legacy-boxcarring-check").change(function() {
@@ -513,6 +521,7 @@ $(document).ready(function ($) {
         		root.getElementsByTagName("data")[0].removeAttribute("disableLegacyBoxcarringMode");
         	}
         }
+        saveAll(root, url, function() { });
     });
     
     /** End of advanced properties **/

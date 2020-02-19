@@ -126,12 +126,14 @@ $(document).ready(function ($) {
     $("#q-query-add-btn").click(function() {
         $("#q-query-add-btn").toggle(false);
         $("#q-queries-table").toggle(false);
+        $("#q-table-notification-alert-holder").toggle(false);
         clearAddQueryForm();
         $("#q-add-edit-query-section").toggle(true);
         populateDSListForQueries(root);
         $("#q-im-entries-table").toggle(false);
         $("#q-addedit-title").text("Add Query");
         $("#q-query-id-input").prop('disabled', false);
+
 
         resetInputMappingSection();
     });
@@ -263,6 +265,15 @@ $(document).ready(function ($) {
                 populateQueryTable(root);
             });
         }
+    });
+
+    $('#query-add-close-btn').click(function() {
+        clearAddQueryForm();
+        $("#q-query-add-btn").toggle(true);
+        $("#q-queries-table").toggle(true);
+        $("#q-add-edit-query-section").toggle(false);
+
+        populateQueryTable(root);
     });
     
     $('#q-om-addedit-mappingtype-select').change(function(e) {
@@ -602,22 +613,6 @@ function openResourcesModal(isEditEnabled) {
     }
 
     $("#r-resource-addedit-modal").modal('show');
-}
-
-/**
- * Shows an alert of a given type in the data sources table.
- *
- * @param type Type of the alert: success | info | warning | danger
- * @param message Message to be displayed.
- * @param interval Number of milliseconds before the notification disappears. If not provided or '0',
- * notification will stay forever.
- */
-function showQueriesTableNotification(type, message, interval) {
-    let alertHtml = "<span><div id='q-table-notification-alert' class=\"alert " + "alert-" + type + "\"" + ">" + message + "</div></span>";
-    $("#q-table-notification-alert-holder").html(alertHtml);
-    $("#q-table-notification-alert").show();
-
-    showAlert("q-table-notification-alert", interval);
 }
 
 /**

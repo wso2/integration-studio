@@ -9,6 +9,7 @@ function populateQueryTable(root) {
 
     if (queryConfigs.length == 0 || queryConfigs === undefined || queryConfigs === null)  {
         $("#q-queries-table").hide();
+        $("#q-table-notification-alert-holder").toggle(true);
         showQueriesTableNotification("info", "No queries available. Click 'Add New' to create a new query.", 0);
         return;
     }
@@ -555,4 +556,20 @@ function deleteQuery(root, queryId) {
     }
 
     return true;
+}
+
+/**
+ * Shows an alert of a given type in the data sources table.
+ *
+ * @param type Type of the alert: success | info | warning | danger
+ * @param message Message to be displayed.
+ * @param interval Number of milliseconds before the notification disappears. If not provided or '0',
+ * notification will stay forever.
+ */
+function showQueriesTableNotification(type, message, interval) {
+    let alertHtml = "<span><div id='q-table-notification-alert' class=\"alert " + "alert-" + type + "\"" + ">" + message + "</div></span>";
+    $("#q-table-notification-alert-holder").html(alertHtml);
+    $("#q-table-notification-alert").show();
+
+    showAlert("q-table-notification-alert", interval);
 }

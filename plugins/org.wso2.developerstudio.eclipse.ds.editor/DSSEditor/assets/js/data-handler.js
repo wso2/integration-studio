@@ -136,6 +136,7 @@ $(document).ready(function ($) {
 
 
         resetInputMappingSection();
+        clearQueryAdvancedProperties();
     });
 
     $("#query-form").submit(function (e) {
@@ -143,8 +144,8 @@ $(document).ready(function ($) {
         window.queryElement = root.createElement("query");
         processQueryDetails(root, window.queryElement);
         saveInputMappingsToQueryElement(window.queryElement);
-        //saveResultToQueryElement(resultElement, window.queryElement);
-
+        let queryElement = replaceResultInQuery(resultElement);
+        queryElement = replacePropertiesInQuery(root, queryElement);
         let result = addQuery(root, queryElement);
 
         if (result) {
@@ -549,11 +550,11 @@ function populateGeneralDetails(root) {
     let description = root.getElementsByTagName("description")[0];
     let namespace = root.getElementsByTagName("data")[0];
 
-    if (description.hasChildNodes()) {
+    if (description != undefined && description.hasChildNodes()) {
         $('#dss-description-input').val(description.childNodes[0].nodeValue);
     }
 
-    if (namespace.hasChildNodes()) {
+    if (namespace != undefined && namespace.hasChildNodes()) {
         $('#dss-namespace-input').val(namespace.attributes.getNamedItem("serviceNamespace").value);
     }
 }
@@ -591,7 +592,6 @@ function populateTransportSettings(root) {
  */
 function populateQueries(root) {
     let queryConfigs = root.getElementsByTagName("query");
-
     if (queryConfigs.length == 0 || queryConfigs === undefined || queryConfigs === null)  {
         $("#q-queries-table").hide();
         showQueriesTableNotification("info", "No queries available. Click 'Add New' to create a new query.", 0);
@@ -733,12 +733,14 @@ function replaceNode(newNode, refNode) {
  */
 function saveAll(root, url, successFunc) {
     let serializedData = new XMLSerializer().serializeToString(root);
+    let prettyXmlText = new XmlBeautify().beautify(serializedData, 
+            {indent: "  ",useSelfClosingElement: true});
 
     let request = $.ajax({
         url: url,
         type: "post",
         headers: {"x-operation-type":OPERATION_TYPE_HEADER_SAVE_ALL},
-        data: {content: serializedData},
+        data: {content: prettyXmlText},
         success: successFunc
     });
 }

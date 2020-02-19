@@ -215,10 +215,10 @@
                                 <div id="q-adv-timeout-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="q-timeout-input" name="q-timeout-input" style="border: 0; border-bottom: 1px solid #E0E0E0;"><label class="mb-0" for="q-timeout-input">Timeout in seconds</label></div>
                             </div>
                             <div class="form-group form-inline query-common-element">
-                                <div class="form-group"><label>Fetch Direction</label><select class="form-control" required="" id="q-fetchdir-select" style="margin-left: 10px;"><option value="forward" selected="">Forward</option><option value="reverse">Reverse</option></select></div>
+                                <div class="form-group"><label>Fetch Direction</label><select class="form-control" id="q-fetchdir-select" style="margin-left: 10px;"><option value="" selected="">--Select--</option><option value="forward">Forward</option><option value="reverse">Reverse</option></select></div>
                             </div>
                             <div class="form-group query-common-element">
-                                <div id="q-fetchsize-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="q-adv-fetchsize-input" name="q-adv-fetchsize-input" style="border: 0; border-bottom: 1px solid #E0E0E0;"><label class="mb-0" for="q-adv-query-id-input">Fetch Size</label></div>
+                                <div id="q-fetchsize-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="q-adv-fetchsize-input" name="q-adv-fetchsize-input" style="border: 0; border-bottom: 1px solid #E0E0E0;"><label class="mb-0" for="q-adv-fetchsize-input">Fetch Size</label></div>
                             </div>
                             <div class="form-group query-common-element">
                                 <div id="q-adv-max-field-size-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="q-adv-max-field-size-input" name="q-adv-max-field-size-input" style="border: 0; border-bottom: 1px solid #E0E0E0;"><label class="mb-0" for="q-adv-max-field-size-input">Max Field Size</label></div>
@@ -227,10 +227,10 @@
                                 <div id="q-adv-maxrows-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="q-adv-maxrows-input" name="q-adv-maxrows-input" style="border: 0; border-bottom: 1px solid #E0E0E0;"><label class="mb-0" for="q-adv-maxrows-input">Max Rows</label></div>
                             </div>
                             <div class="form-group form-inline query-common-element">
-                                <div class="form-group"><label>Force Stored Procedure</label><select class="form-control" required="" id="q-adv-forcestoredproc-select" style="margin-left: 10px;"><option value="yes" selected="">Yes</option><option value="no">No</option></select></div>
+                                <div class="form-group"><label>Force Stored Procedure</label><select class="form-control" id="q-adv-forcestoredproc-select" style="margin-left: 10px;"><option value="" selected="">--Select--</option><option value="true">True</option><option value="false">False</option></select></div>
                             </div>
                             <div class="form-group form-inline query-common-element">
-                                <div class="form-group"><label>Force JDBC Batch Requests</label><select class="form-control" required="" id="q-adv-forcejdbcbatchreq-select" style="margin-left: 10px;"><option value="yes" selected="">Yes</option><option value="no">No</option></select></div>
+                                <div class="form-group"><label>Force JDBC Batch Requests</label><select class="form-control" id="q-adv-forcejdbcbatchreq-select" style="margin-left: 10px;"><option value="" selected="">--Select--</option><option value="true">True</option><option value="false">False</option></select></div>
                             </div>
                         </form>
                     </div>
@@ -734,6 +734,7 @@
     <script src="assets/js/q-output-mapping-validation.js"></script>
     <script src="assets/js/query-validation.js"></script>
     <script src="assets/js/advanced-validation.js"></script>
+    <script src="assets/js/q-advanced-validation.js"></script>
 </body>
 
 </html>

@@ -306,7 +306,14 @@ function populateElementModal(result, tds) {
 				 
 				 $('#q-om-addedit-dscolname-input').val(ele.attributes.getNamedItem("column").value);
 				 setParamaterTypeValues(ele);
-				 $('#q-om-paramtype-select').val(tds[5].innerText);
+				 let paramTypeVal = tds[5].innerText;
+				 if (paramTypeVal.includes(":")) {
+					 let values = paramTypeVal.split(":");
+					 $('#q-om-paramtype-select').val(values[1]);
+				 } else {
+					 $('#q-om-paramtype-select').val(paramTypeVal);
+				 }
+				 
 				 setOptionalValue(ele);
 				 setExportValues(ele);
 				 setRoleValues(ele);
@@ -1059,4 +1066,16 @@ function showOutputMappingNotification(type, message, interval) {
     $("#q-om-notification-alert").show();
 
     showAlert("q-om-notification-alert", interval);
+}
+
+function replaceResultInQuery(resultElement) {
+	let rslt = window.queryElement.getElementsByTagName("result");
+	if (rslt.length == 1) {
+		query.removeChild(rslt[0]);
+	}
+	if (resultElement != null && resultElement != undefined) {
+		window.queryElement.appendChild(resultElement);
+	}
+	
+	return window.queryElement;
 }

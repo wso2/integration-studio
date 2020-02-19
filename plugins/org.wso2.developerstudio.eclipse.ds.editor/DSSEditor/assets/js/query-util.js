@@ -538,9 +538,12 @@ function editQuery(root, queryId) {
             $("#q-add-edit-query-section").toggle(true);
             $("#q-queries-table").toggle(false);
             $("#q-query-add-btn").toggle(false);
+            
+            populateQueryAdvancedProperties();
         }
     }
-
+    clearQueryAdvancedProperties();
+    populateQueryAdvancedProperties();
     return populateOueryOutputMappings(window.queryElement);
 }
 

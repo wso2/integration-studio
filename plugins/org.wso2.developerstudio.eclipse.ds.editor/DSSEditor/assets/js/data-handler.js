@@ -16,7 +16,6 @@ $(document).ready(function ($) {
 
         let parser = new DOMParser();
         root = parser.parseFromString(data, "text/xml");
-
         populateGeneralDetails(root);
         populateTransportSettings(root);
         populateDataSources(root);
@@ -24,6 +23,7 @@ $(document).ready(function ($) {
         populateQueryTable(root);
         populateOperations(root);
         populateResources(root);
+        populateAdvancedProperties(root);
     });
 
     /** Start of Event handlers **/
@@ -465,6 +465,57 @@ $(document).ready(function ($) {
     });
 
     /** End of Event handlers **/
+    
+    /** Start of advanced properties **/
+    
+    $("#ac-enable-boxcarring-check").change(function() {
+        if (this.checked) {
+        	root.getElementsByTagName("data")[0].setAttribute("enableBoxcarring", "true");
+        	$('#ac-disable-legacy-boxcarring-group').toggle(true);
+        	
+        } else {
+        	$('#ac-disable-legacy-boxcarring-group').toggle(false);
+        	let enableBatchRequests = root.getElementsByTagName("data")[0].attributes.getNamedItem("enableBoxcarring");
+        	if (enableBatchRequests != null && enableBatchRequests != undefined) {
+        		root.getElementsByTagName("data")[0].removeAttribute("enableBoxcarring");
+        	}
+        }
+    });
+
+    $("#ac-enable-streaming-check").change(function() {
+        if (this.checked) {
+        	let disableStreaming = root.getElementsByTagName("data")[0].attributes.getNamedItem("disableStreaming");
+        	if (disableStreaming != null && disableStreaming != undefined) {
+        		root.getElementsByTagName("data")[0].removeAttribute("disableStreaming");
+        	}
+        } else {
+        	root.getElementsByTagName("data")[0].setAttribute("disableStreaming", "true");
+        }
+    });
+
+    $("#ac-enable-batch-check").change(function() {
+        if (this.checked) {
+        	root.getElementsByTagName("data")[0].setAttribute("enableBatchRequests", "true");
+        } else {
+        	let enableBatchRequests = root.getElementsByTagName("data")[0].attributes.getNamedItem("enableBatchRequests");
+        	if (enableBatchRequests != null && enableBatchRequests != undefined) {
+        		root.getElementsByTagName("data")[0].removeAttribute("enableBatchRequests");
+        	}
+        }
+    });
+
+    $("#ac-disable-legacy-boxcarring-check").change(function() {
+        if (this.checked) {
+        	root.getElementsByTagName("data")[0].setAttribute("disableLegacyBoxcarringMode", "true");
+        } else {
+        	let disableLegacyBoxcarringMode = root.getElementsByTagName("data")[0].attributes.getNamedItem("disableLegacyBoxcarringMode");
+        	if (disableLegacyBoxcarringMode != null && disableLegacyBoxcarringMode != undefined) {
+        		root.getElementsByTagName("data")[0].removeAttribute("disableLegacyBoxcarringMode");
+        	}
+        }
+    });
+    
+    /** End of advanced properties **/
 });
 
 /**

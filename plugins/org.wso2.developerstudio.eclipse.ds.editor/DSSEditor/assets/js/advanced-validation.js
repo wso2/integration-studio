@@ -22,6 +22,7 @@ function populateAdvancedProperties(root) {
 	let enableBoxcarring = data.attributes.getNamedItem("enableBoxcarring");
 	if (enableBoxcarring != null && enableBoxcarring != undefined && enableBoxcarring.value == "true") {
 		$('#ac-enable-boxcarring-check').prop("checked", true);
+		$('#ac-disable-legacy-boxcarring-group').toggle(true);
 		
 		let disableLegacyBoxcarringMode = data.attributes.getNamedItem("disableLegacyBoxcarringMode");
 		if (disableLegacyBoxcarringMode != null && disableLegacyBoxcarringMode != undefined && disableLegacyBoxcarringMode.value == "true") {

@@ -47,6 +47,8 @@
 		<xs:attribute name="enableBatchRequests"
 			type="xs:boolean" />
 		<xs:attribute name="enableBoxcarring" type="xs:boolean" />
+		<xs:attribute name="disableLegacyBoxcarringMode" type="xs:boolean" />
+		<xs:attribute name="disableStreaming" type="xs:boolean" />
 		<xs:attribute name="txManagerJNDIName" type="xs:string" />
 		<xs:attribute name="serviceNamespace" type="xs:string" />
 		<xs:attribute name="serviceGroup" type="xs:string" />

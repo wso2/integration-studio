@@ -70,7 +70,6 @@ function populateDataSources(root) {
 
         $("#ds-datasources-table tbody").append(markup);
     }
-
 }
 
 /**
@@ -94,14 +93,14 @@ function populateDSModal(root, dsId, metadata) {
             let properties = config.getElementsByTagName("property");
 
             // Populate data source ID
-            $("#ds-ds-id-input").val(dsId);
+            $("#ds-ds-id-input").val(dsId.trim());
             $("#ds-ds-id-input").prop('disabled', true);
 
-            if (dsType == DS_TYPE_RDBMS) {
+            if (dsType === DS_TYPE_RDBMS) {
                 $("#ds-dstype-select").val(DS_TYPE_RDBMS);
                 setVisibleDSTypeRDBMS(true);
 
-                if (rdbmsType == RDBMS_TYPE_DEFAULT) {
+                if (rdbmsType === RDBMS_TYPE_DEFAULT) {
                     $("#ds-dstype-2-select").val(RDBMS_TYPE_DEFAULT);
                     setVisibleDSType2Default(true);
                     setVisibleDSType2Ext(false);
@@ -109,39 +108,45 @@ function populateDSModal(root, dsId, metadata) {
                     // driver class
                     let driverClass = getDSConfigPropertyValue(properties, "driverClassName");
                     if (driverClass) {
-                        $("#ds-driver-class-input").val(driverClass);
+                        $("#ds-driver-class-input").val(driverClass.trim());
                     }
                     // url
                     let url = getDSConfigPropertyValue(properties, "url");
                     if (url != null && url != undefined) {
-                        $("#ds-url-input").val(url);
+                        $("#ds-url-input").val(url.trim());
                     }
                     // username
                     let username = getDSConfigPropertyValue(properties, "username");
                     if (username != null && username != undefined) {
-                        $("#ds-username-input").val(username);
+                        $("#ds-username-input").val(username.trim());
                     }
                     // password
                     let password = getDSConfigPropertyValue(properties, "password");
                     if (password != null && password != undefined) {
-                        $("#ds-password-input").val(password);
+                        $("#ds-password-input").val(password.trim());
                     }
 
-                } else if (rdbmsType == RDBMS_TYPE_EXTERNAL) {
-                    $("#ds-dstype-2-select").val(RDBMS_TYPE_EXTERNAL);
-                    if (dbEngine == DB_ENGINE_MYSQL) {
-                        $("#ds-db-engine-select").val(DB_ENGINE_MYSQL);
+                    if (dbEngine != null && dbEngine != undefined) {
+                        $("#ds-db-engine-select").val(dbEngine.trim());
                     }
+
+                } else if (rdbmsType === RDBMS_TYPE_EXTERNAL) {
+                    $("#ds-dstype-2-select").val(RDBMS_TYPE_EXTERNAL);
+
+                    if (dbEngine != null && dbEngine != undefined) {
+                        $("#ds-db-engine-select").val(dbEngine.trim());
+                    }
+
                     setVisibleDSType2Ext(true);
                     setVisibleDSType2Default(false);
 
                     // datasource class name
                     let dsClassName = getDSConfigPropertyValue(properties, "dataSourceClassName");
                     if (dsClassName != null && dsClassName != undefined) {
-                        $("#ds-class-name-input").val(dsClassName);
+                        $("#ds-class-name-input").val(dsClassName.trim());
                     }
                 }
-            } else if (dsType == DS_TYPE_CARBONDS) {
+            } else if (dsType === DS_TYPE_CARBONDS) {
                 $("#ds-dstype-select").val(DS_TYPE_CARBONDS);
                 setVisibleDSTypeRDBMS(false);
                 setVisibleDSTypeCarbon(true);
@@ -149,7 +154,7 @@ function populateDSModal(root, dsId, metadata) {
                 // datasource name
                 let carbonDSName = getDSConfigPropertyValue(properties, "carbon_datasource_name");
                 if (carbonDSName != null && carbonDSName != undefined) {
-                    $("#ds-ds-name-input").val(carbonDSName);
+                    $("#ds-ds-name-input").val(carbonDSName.trim());
                 }
             }
         }
@@ -407,3 +412,4 @@ function populateDBEngineDefaults(root, dbEngineType) {
         $("#ds-url-input").val(DEFAULT_IBMDB2_URL);
     }
 }
+

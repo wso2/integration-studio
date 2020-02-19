@@ -738,12 +738,14 @@ function replaceNode(newNode, refNode) {
  */
 function saveAll(root, url, successFunc) {
     let serializedData = new XMLSerializer().serializeToString(root);
+    let prettyXmlText = new XmlBeautify().beautify(serializedData, 
+            {indent: "  ",useSelfClosingElement: true});
 
     let request = $.ajax({
         url: url,
         type: "post",
         headers: {"x-operation-type":OPERATION_TYPE_HEADER_SAVE_ALL},
-        data: {content: serializedData},
+        data: {content: prettyXmlText},
         success: successFunc
     });
 }

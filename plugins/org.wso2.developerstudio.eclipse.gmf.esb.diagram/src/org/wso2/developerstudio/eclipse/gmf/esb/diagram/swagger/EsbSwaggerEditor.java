@@ -27,9 +27,15 @@ import java.net.URL;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
+import org.eclipse.swt.browser.Browser;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.MultiPageEditorPart;
 import org.osgi.framework.Bundle;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
+import org.wso2.developerstudio.eclipse.templates.dashboard.web.function.server.FunctionServerConstants;
+import org.wso2.developerstudio.eclipse.templates.dashboard.web.view.WebEngineUtils;
 import org.wso2.developerstudio.eclipse.webui.core.editor.AbstractWebBasedEditor;
 import org.wso2.developerstudio.eclipse.webui.core.exception.WebUIException;
 
@@ -81,4 +87,37 @@ public class EsbSwaggerEditor extends AbstractWebBasedEditor {
 		return rootNode.get("portDetails", String.valueOf(EMBEDDED_JETTY_SERVER_PORT));
 	}
 
-}
+	@Override
+	public void createPartControl(Composite parent) {
+		browser = createBrowser(parent);
+		String port = getPortValueForJS();
+		browser.setUrl("http://127.0.0.1:" + port + "/swagger-editor");
+	}
+
+	private Browser createBrowser(Composite parent) {
+		GridLayout gridLayout = new GridLayout();
+		gridLayout.numColumns = 1;
+		parent.setLayout(gridLayout);
+		Browser browser = new Browser(parent, WebEngineUtils.getBrowserType());
+		GridData data = new GridData();
+		data.horizontalAlignment = GridData.FILL;
+		data.verticalAlignment = GridData.FILL;
+		data.horizontalSpan = 1;
+		data.grabExcessHorizontalSpace = true;
+		data.grabExcessVerticalSpace = true;
+		browser.setLayoutData(data);
+		return browser;
+	}
+
+	/**
+	 * This method gets port value retrieved from preferences
+	 * 
+	 * @param browser
+	 *            started browser instance
+	 */
+	private String getPortValueForJS() {
+		IEclipsePreferences rootNode = Platform.getPreferencesService().getRootNode();
+		return rootNode.get("portDetails", String.valueOf(FunctionServerConstants.EMBEDDED_SERVER_PORT));
+	}
+
+} 

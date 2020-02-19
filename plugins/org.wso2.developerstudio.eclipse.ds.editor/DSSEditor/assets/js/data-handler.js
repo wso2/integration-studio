@@ -1,7 +1,7 @@
 $(document).ready(function ($) {
 
     let portValue = resolveGetParam("port");
-    let url = "http://localhost:" + portValue + "/dsseditor/service";
+    let url = "http://127.0.0.1:" + portValue + "/dsseditor/service";
     let root = "";
     let resultElement;
 

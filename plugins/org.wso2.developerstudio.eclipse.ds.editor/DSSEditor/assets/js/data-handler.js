@@ -24,6 +24,7 @@ $(document).ready(function ($) {
         populateOperations(root);
         populateResources(root);
         populateAdvancedProperties(root);
+        verifyDSMetadata(root, url);
     });
 
     /** Start of Event handlers **/

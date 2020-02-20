@@ -107,21 +107,39 @@ function populateDSModal(root, dsId, metadata) {
 
                     // driver class
                     let driverClass = getDSConfigPropertyValue(properties, "driverClassName");
+                    if (driverClass === "") {
+                        driverClass = getDSConfigPropertyValue(properties, "org.wso2.ws.dataservice.driver");
+                    }
+
                     if (driverClass) {
                         $("#ds-driver-class-input").val(driverClass.trim());
                     }
+
                     // url
                     let url = getDSConfigPropertyValue(properties, "url");
+                    if (url === "") {
+                        url = getDSConfigPropertyValue(properties, "org.wso2.ws.dataservice.protocol");
+                    }
+
                     if (url != null && url != undefined) {
                         $("#ds-url-input").val(url.trim());
                     }
+
                     // username
                     let username = getDSConfigPropertyValue(properties, "username");
+                    if (username === "") {
+                        username = getDSConfigPropertyValue(properties, "org.wso2.ws.dataservice.user");
+                    }
+
                     if (username != null && username != undefined) {
                         $("#ds-username-input").val(username.trim());
                     }
+
                     // password
                     let password = getDSConfigPropertyValue(properties, "password");
+                    if (password === "") {
+                        password = getDSConfigPropertyValue(properties, "org.wso2.ws.dataservice.password");
+                    }
                     if (password != null && password != undefined) {
                         $("#ds-password-input").val(password.trim());
                     }
@@ -303,7 +321,7 @@ function retrieveDSMetadata(datasourceId, url) {
         }
     });
 
-    return metadata;
+    return metadata.trim();
 }
 
 /**
@@ -413,3 +431,80 @@ function populateDBEngineDefaults(root, dbEngineType) {
     }
 }
 
+/**
+ * This function is used to verify metadata of existing datasources.
+ *
+ * @param root Document root object.
+ */
+function verifyDSMetadata(root, url) {
+    // Iterate through configs
+    let dsConfigs = root.getElementsByTagName("config");
+
+    for (let i = 0, len = dsConfigs.length; i < len; i++) {
+        let configElement = dsConfigs[i];
+        let dsId = configElement.attributes.getNamedItem("id").value
+        let metadata = retrieveDSMetadata(dsId, url);
+
+        if (metadata === "" || metadata === "null" || metadata === null || metadata === undefined) {
+            extractMetadata(configElement, url);
+        }
+    }
+}
+
+function extractMetadata(configElement, url) {
+    let dsId = configElement.attributes.getNamedItem("id").value;
+    let propertyElements = configElement.getElementsByTagName("property");
+    let metadata = dsId + DS_METADATA_ID_SEPARATOR;
+
+    for (let i = 0, len = propertyElements.length; i < len; i++) {
+        let propertyName = propertyElements[i].attributes.getNamedItem("name").value;
+
+        if (propertyName === "driverClassName" || propertyName === "org.wso2.ws.dataservice.driver") {
+            metadata += DS_METADATA_DS_TYPE + DS_METADATA_KEYVALUE_SEPARATOR + DS_TYPE_RDBMS + DS_METADATA_SEPARATOR +
+                DS_METADATA_RDBMS_TYPE + DS_METADATA_KEYVALUE_SEPARATOR + RDBMS_TYPE_DEFAULT + DS_METADATA_SEPARATOR +
+                DS_METADATA_DB_ENGINE + DS_METADATA_KEYVALUE_SEPARATOR + extractDBEngineTypeFromURL(configElement);
+        } else if (propertyName === "dataSourceClassName" || propertyName === "org.wso2.ws.dataservice.dataSourceClassName") {
+            metadata += DS_METADATA_DS_TYPE + DS_METADATA_KEYVALUE_SEPARATOR + DS_TYPE_RDBMS + DS_METADATA_SEPARATOR +
+                DS_METADATA_RDBMS_TYPE + DS_METADATA_KEYVALUE_SEPARATOR + RDBMS_TYPE_EXTERNAL + DS_METADATA_SEPARATOR +
+                DS_METADATA_DB_ENGINE + DS_METADATA_KEYVALUE_SEPARATOR + extractDBEngineTypeFromURL(configElement);
+        } else if (propertyName === "carbon_datasource_name") {
+            metadata += DS_METADATA_DS_TYPE + DS_METADATA_KEYVALUE_SEPARATOR + DS_TYPE_CARBONDS;
+        }
+    }
+
+    saveDSMetadata(metadata, url);
+
+}
+
+function extractDBEngineTypeFromURL(configElement) {
+    let propertyElements = configElement.getElementsByTagName("property");
+
+    for (let i = 0, len = propertyElements.length; i < len; i++) {
+        let propertyName = propertyElements[i].attributes.getNamedItem("name").value;
+
+        if (propertyName === "url" || propertyName === "org.wso2.ws.dataservice.protocol") {
+            let url = propertyElements[i].textContent;
+            if (url.includes("mysql")) {
+                return DB_ENGINE_MYSQL;
+            } else if (url.includes("oracle")) {
+                return DB_ENGINE_ORACLE;
+            } else if (url.includes("sqlserver")) {
+                return DB_ENGINE_MSSQL;
+            } else if (url.includes("h2")) {
+                return DB_ENGINE_H2;
+            } else if (url.includes("derby")) {
+                return DB_ENGINE_APACHEDERBY;
+            } else if (url.includes("db2")) {
+                return DB_ENGINE_IBMDB2;
+            } else if (url.includes("hsqldb")) {
+                return DB_ENGINE_HSQLDB;
+            } else if (url.includes("informix")) {
+                return DB_ENGINE_INFORMIX;
+            } else if (url.includes("postgresql")) {
+                return DB_ENGINE_POSTGRESQL;
+            } else if (url.includes("sybase")) {
+                return DB_ENGINE_SYBASE;
+            }
+        }
+    }
+}

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>DSS-Dashboard</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/pageguide.min.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/color-theme.css">
     <link rel="stylesheet" href="assets/css/input.css">
@@ -24,7 +25,7 @@
                 class="field inputgroup"><input type="text" placeholder=" " id="dss-namespace-input" name="dss-namespace-input" style="border: 0; border-bottom: 1px solid #E0E0E0;"><label class="mb-0" for="dss-namespace-input">Namespace</label></div>
         </div>
     </div>
-    <div class="collapse-custom"><a class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="false" aria-controls="transport-settings-collapse" role="button" href="#transport-settings-collapse">Transport Settings</a>
+    <div id="transport-collapse" class="collapse-custom"><a class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="false" aria-controls="transport-settings-collapse" role="button" href="#transport-settings-collapse">Transport Settings</a>
         <div class="collapse" id="transport-settings-collapse">
             <div style="margin-bottom: 10px;">
                 <div class="container">
@@ -89,7 +90,7 @@
             </div>
         </div>
     </div>
-    <div id="ds-collapse" class="collapse-custom"><a class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="false" aria-controls="data-sources-collapse" role="button" href="#data-sources-collapse">Data Sources</a>
+    <div id="ds-collapse" class="collapse-custom"><a id="ds-collapse-header" class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="false" aria-controls="data-sources-collapse" role="button" href="#data-sources-collapse">Data Sources</a>
         <div class="collapse table-bordered" id="data-sources-collapse">
             <div class="table-responsive" id="ds-datasources-table">
                 <table class="table table-hover table-sm">
@@ -283,7 +284,7 @@
                     </tbody>
                 </table>
             </div>
-            <div id="resource-table-notification-alert-holder" class="alert mr-auto"></div>
+            <div id="resource-table-notification-alert-holder" class="alert mr-auto" style="padding-right: 0;padding-left: 0;margin-bottom: 0;padding-bottom: 0;"></div>
             <div class="text-right"><button class="btn btn-success btn-sm" type="button" id="r-resource-add-btn" data-toggle="modal">Add New</button></div>
         </div>
     </div>
@@ -722,8 +723,49 @@
             </div>
         </div>
     </div>
+
+    <ul id="tlyPageGuide" data-tourtitle="Let us guide you through the editor">
+        <li class="tlypageguide_top" data-tourtarget="#ds-collapse">
+            <div>
+                Data sources description should go here.
+            </div>
+        </li>
+        <li class="tlypageguide_top" data-tourtarget="#queries">
+            <div>
+                Queries description should go here.
+            </div>
+        </li>
+        <li class="tlypageguide_top" data-tourtarget="#operations">
+            <div>
+                Operations description should go here.
+            </div>
+        </li>
+        <li class="tlypageguide_top" data-tourtarget="#resources">
+            <div>
+                Resources description should go here.
+            </div>
+        </li>
+    </ul>
+
+    <div class="tlyPageGuideWelcome">
+        <p>Sample popup</p>
+        <p>
+            Page Guide:
+            <button class="tlypageguide_start">let's go</button>
+        </p>
+        <p>
+            Close modal:
+            <button class="tlypageguide_ignore">not now</button>
+        </p>
+        <p>
+            Close and never open again:
+            <button class="tlypageguide_dismiss">got it, thanks</button>
+        </p>
+    </div>
+
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/pageguide.min.js"></script>
     <script src="assets/js/datasources-util.js"></script>
     <script src="assets/js/query-util.js"></script>
     <script src="assets/js/constants.js"></script>

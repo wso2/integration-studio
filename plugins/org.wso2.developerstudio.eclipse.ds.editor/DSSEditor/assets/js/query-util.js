@@ -469,7 +469,11 @@ function processQueryDetails(root, queryElement) {
     queryElement.setAttribute("useConfig", $("#q-datasource-select").val());
 
     let sqlQueryElement = root.createElement("sql");
-    sqlQueryElement.appendChild(root.createTextNode($("#q-sql-query-input").val()));
+    let sqlQuery = $("#q-sql-query-input").val();
+    if (sqlQuery.includes("<") || sqlQuery.includes(">")) {
+    	sqlQuery = "<![CDATA[" + sqlQuery + "]]>";
+    }
+    sqlQueryElement.appendChild(root.createTextNode(sqlQuery));
 
     queryElement.appendChild(sqlQueryElement);
 }
@@ -534,6 +538,9 @@ function editQuery(root, queryId) {
 
             $("#q-query-id-input").val(queryElement.attributes.getNamedItem("id").value);
             $("#q-datasource-select").val(queryElement.attributes.getNamedItem("useConfig").value);
+            if (sql.includes("<![CDATA[") && sql.includes("]]>")) {
+            	sql = sql.substring(sql.lastIndexOf("<![CDATA[") + 9, sql.lastIndexOf("]]>"));
+            }
             $("#q-sql-query-input").val(sql);
 
             $("#q-add-edit-query-section").toggle(true);

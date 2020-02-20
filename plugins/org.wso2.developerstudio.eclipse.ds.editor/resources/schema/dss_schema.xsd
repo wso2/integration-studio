@@ -317,6 +317,7 @@
 		</xs:sequence>
 		<xs:attribute name="name" type="xs:string" use="required" />
 		<xs:attribute name="disableStreaming" type="xs:boolean" />
+		<xs:attribute name="returnRequestStatus" type="xs:boolean" />
 	</xs:complexType>
 	
 	<xs:group name="operationElements">

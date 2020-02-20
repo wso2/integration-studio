@@ -49,7 +49,7 @@ $(document).ready(function ($) {
 
         if (result.status) {
             $("#ds-add-edit-ds-modal").modal('hide');
-            saveAll(root, url, saveDSMetadata(result.metadata, url));
+            saveAll(root, url, saveDSMetadata(root, result.metadata, url));
             this.reset();
         }
 
@@ -103,7 +103,7 @@ $(document).ready(function ($) {
         deleteDatasource(root, dsId);
         $(this).closest("tr").remove();
         saveAll(root, url, function() {
-            location.reload();
+            populateDataSources(root);
         });
     });
 
@@ -420,7 +420,7 @@ $(document).ready(function ($) {
     	deleteResource(root, tds, method);
     	$(this).closest("tr").remove();
     	saveAll(root, url, function() {
-            location.reload();
+            populateResources(root);
         });
     });
     
@@ -969,11 +969,13 @@ function populateResources(root) {
 
     if (resourceConfigs.length == 0 || resourceConfigs === undefined || resourceConfigs === null)  {
         $("#r-resources-table").hide();
+        $("#resource-table-notification-alert-holder").show();
         showResourceTableNotification("info", "No resources available. Click 'Add New' to create a new resource.", 0);
         return;
     }
 
     $("#r-resources-table").show();
+    $("#resource-table-notification-alert-holder").hide();
     $("#r-resources-table tbody").empty();
     for (let i = 0, len = resourceConfigs.length; i < len; i++) {
         let resourceName = resourceConfigs[i].getAttribute("path");

@@ -57,12 +57,13 @@ function populateDataSources(root) {
 
     if (dsConfigs.length == 0 || dsConfigs === undefined || dsConfigs === null)  {
         $("#ds-datasources-table").hide();
+        $("#ds-table-notification-alert-holder").show();
         showDSTableNotification("info", "No data sources available. Click 'Add New' to create a new data source.", 0);
         return;
     }
 
     $("#ds-datasources-table").show();
-
+    $("#ds-table-notification-alert-holder").hide();
     for (let i = 0, len = dsConfigs.length; i < len; i++) {
         let dsName = dsConfigs[i].id;
         let markup = "<tr" + " data-id='" + dsName + "'" + "><td>" + dsName + "</td><td class='text-center'>" +
@@ -287,14 +288,14 @@ function processDSInputData(root, data, deleteIfExists) {
  * @param root Document object.
  * @param url Back-end URL.
  */
-function saveDSMetadata(metadata, url) {
+function saveDSMetadata(root, metadata, url) {
     let request = $.ajax({
         url: url,
         type: "post",
         headers: {"x-operation-type":HEADER_VALUE_SAVE_DS_METADATA},
         data: {content: metadata},
         success: function () {
-            location.reload();
+            populateDataSources(root);
         }
     });
 }

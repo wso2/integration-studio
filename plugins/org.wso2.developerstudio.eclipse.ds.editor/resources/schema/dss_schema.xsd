@@ -519,6 +519,7 @@
 		<xs:attribute name="path" type="xs:string" />
 		<xs:attribute name="method" type="methods" />
 		<xs:attribute name="disableStreaming" type="xs:boolean" />
+		<xs:attribute name="returnRequestStatus" type="xs:boolean" />
 	</xs:complexType>
 
 	<xs:simpleType name="methods">
@@ -530,9 +531,13 @@
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="GET" />
+			<xs:enumeration value="get" />
 			<xs:enumeration value="POST" />
+			<xs:enumeration value="post" />
 			<xs:enumeration value="PUT" />
+			<xs:enumeration value="put" />
 			<xs:enumeration value="DELETE" />
+			<xs:enumeration value="delete" />
 		</xs:restriction>
 	</xs:simpleType>
 

@@ -39,6 +39,7 @@ $(document).ready(function ($) {
         }).get().join(' ');
 
         root.getElementsByTagName("data")[0].attributes.getNamedItem("transports").value = transportsStr;
+        saveAll(root, url, function() { });
     });
     // End of Transport settings - Transports
 
@@ -325,7 +326,7 @@ $(document).ready(function ($) {
     // End of query output mapping
     
     // Start of input event handlers - General details
-    $("#dss-description-input, #dss-namespace-input").change(function() {
+    $("#dss-description-input").change(function() {
         let description = root.getElementsByTagName("description")[0];
 
         if (description.hasChildNodes()) {
@@ -340,9 +341,8 @@ $(document).ready(function ($) {
     });
 
     $("#dss-namespace-input").change(function() {
-        saveAll(root, url, function() {
-            location.reload();
-        });
+    	root.getElementsByTagName("data")[0].setAttribute("serviceNamespace", $('#dss-namespace-input').val());
+    	saveAll(root, url, function() { });
     });
     // End of input event handlers - General details
     /** End of Event handlers **/
@@ -569,13 +569,13 @@ function populateTransportSettings(root) {
         transportValues = transports.value.split(" ");
         transportValues.forEach(function (item, index) {
             item = item.trim();
-            if (item == "http") {
+            if (item.toLowerCase() == "http") {
                 $('#ts-http-check').prop('checked', true);
-            } else if (item == "https") {
+            } else if (item.toLowerCase() == "https") {
                 $('#ts-https-check').prop('checked', true);
-            } else if (item == "local") {
+            } else if (item.toLowerCase() == "local") {
                 $('#ts-local-check').prop('checked', true);
-            } else if (item == "jms") {
+            } else if (item.toLowerCase() == "jms") {
                 $('#ts-jms-check').prop('checked', true);
             }
         });

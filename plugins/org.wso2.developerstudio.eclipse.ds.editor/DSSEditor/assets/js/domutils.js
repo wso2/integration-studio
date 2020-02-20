@@ -206,8 +206,11 @@ var XmlBeautify =
             if (elementHasItsValue) {
 
 
-                valueOfElement = elementTextContent;
-
+            	if (element.innerHTML.includes("<![CDATA[") && element.innerHTML.includes("]]>")) {
+            		valueOfElement = "<![CDATA[" + elementTextContent + "]]>";
+            	} else {
+            		valueOfElement = elementTextContent;
+            	}
 
             }
 

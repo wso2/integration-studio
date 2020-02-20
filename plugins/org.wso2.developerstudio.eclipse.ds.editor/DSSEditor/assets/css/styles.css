@@ -49,7 +49,6 @@
 
 .table .fa-trash {
   cursor: pointer;
-  color: red;
 }
 
 .table .fa {
@@ -121,4 +120,17 @@
   margin-bottom: 0 !important;
   margin-right: 0 !important;
 }
+
+#resource-notification-alert-holder {
+  padding: 0 !important;
+  /*margin-bottom: 0 !important;*/
+}
+
+#resource-notification-alert-holder .alert {
+  /*padding: 0 !important;*/
+  margin-bottom: 0 !important;
+  margin-right: 0 !important;
+}
+
+
 

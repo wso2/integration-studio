@@ -368,8 +368,16 @@ function populateWithParams(callQuery) {
             	
 	$.each(params, function (i, param) {
 		let param_name = param.attributes.getNamedItem("name").value;
+		let query_param_value = "";
+		let queryParam = param.attributes.getNamedItem("query-param");
+		if (queryParam != undefined && queryParam != null) {
+			query_param_value = queryParam.value;
+		} else {
+			query_param_value = param_name;
+		}
+		
 		let row = "<tr><td><input type='text' placeholder='Query param name' class='form-control' value='" + param_name 
-			+ "' style='width: 100%;' /></td><td><input type='text' placeholder='Operation param name' value='" + param_name 
+			+ "' style='width: 100%;' /></td><td><input type='text' placeholder='Operation param name' value='" + query_param_value 
 			+ "' class='form-control' style='width: 100%;'/></td><td class='text-center'><i class='fa fa-trash'></i></td></tr>";
 		$('#operation-param-table > tbody').append(row);
 	});

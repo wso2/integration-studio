@@ -14,7 +14,7 @@ $("#op-param-add-btn").click(function() {
 	let param_row = "<tr><td><input type='text' placeholder='Query param name' class='form-control' style='width: 100%;' /></td><td><input type='text' " 
 		+ "placeholder='Operation param name' class='form-control' style='width: 100%;'/></td><td class='text-center'><i class='fa fa-trash'></i></td></tr>";
     $("#operation-param-table > tbody").append(param_row);
-    $('#o-addedit-returnreqstatus-checkbox').prop("checked", false);
+    $('#op-addedit-returnreqstatus-checkbox').prop("checked", false);
     $('#returnreqstatus-area').toggle(true);
 });
 
@@ -33,7 +33,7 @@ $('#operation-form-close-btn').click(function (e) {
 $(document).on('click', '#operation-param-table .fa-trash', function() {
     $(this).closest("tr").remove();
     if ($('#operation-param-table').find('tr').length < 2) {
-       $('#o-addedit-returnreqstatus-checkbox').prop("checked", false);
+       $('#op-addedit-returnreqstatus-checkbox').prop("checked", false);
        $('#returnreqstatus-area').toggle(false);
     }
 });
@@ -162,7 +162,7 @@ function updateOperationDataInRoot(root, new_operation_name) {
     }
     
     //Creates Return request status element
-    if ($('#o-addedit-returnreqstatus-checkbox').is(":checked")) {
+    if ($('#op-addedit-returnreqstatus-checkbox').is(":checked")) {
     	operationElement.setAttribute("returnRequestStatus", true);
     }
     
@@ -244,10 +244,10 @@ function populateOperationForm(root, operation_name, query_name) {
 				}
 				
 				let returnRequestStatus = op.attributes.getNamedItem("returnRequestStatus");
-				if (returnRequestStatus != null && returnRequestStatus == "true") {
-					$('#o-addedit-returnreqstatus-checkbox').prop("checked", true);
+				if (returnRequestStatus != null && returnRequestStatus.value == "true") {
+					$('#op-addedit-returnreqstatus-checkbox').prop("checked", true);
 				} else {
-					$('#o-addedit-returnreqstatus-checkbox').prop("checked", false);
+					$('#op-addedit-returnreqstatus-checkbox').prop("checked", false);
 				}
 				
 				$("#o-operation-addedit-modal").modal('show');
@@ -307,7 +307,7 @@ function populateQueriesForOperationForm(root) {
 function populateOperationParamaterTable(root, queryid) {
 		
 	$('#operation-param-table').find('tbody').find('tr').detach();
-	$('#o-addedit-returnreqstatus-checkbox').prop("checked", false);
+	$('#op-addedit-returnreqstatus-checkbox').prop("checked", false);
 	
 	if (queryid != "") {
 		$('#operation-query-param-area').toggle(true);
@@ -324,7 +324,7 @@ function populateOperationParamaterTable(root, queryid) {
             		$('#returnreqstatus-area').toggle(true);
             	} else {
             		$('#returnreqstatus-area').toggle(false);
-            		$('#o-addedit-returnreqstatus-checkbox').prop("checked", false);
+            		$('#op-addedit-returnreqstatus-checkbox').prop("checked", false);
             	}
             	
         		$.each(params, function (i, param) {
@@ -351,7 +351,7 @@ function populateOperationParamaterTable(root, queryid) {
 function populateWithParams(callQuery) {
 		
 	$('#operation-param-table').find('tbody').find('tr').detach();
-	$('#o-addedit-returnreqstatus-checkbox').prop("checked", false);
+	$('#op-addedit-returnreqstatus-checkbox').prop("checked", false);
 	
 	$('#operation-query-param-area').toggle(true);
 	$('#op-table').collapse("show");
@@ -363,7 +363,7 @@ function populateWithParams(callQuery) {
     	
     } else {
     	$('#returnreqstatus-area').toggle(false);
-    	$('#o-addedit-returnreqstatus-checkbox').prop("checked", false);
+    	$('#op-addedit-returnreqstatus-checkbox').prop("checked", false);
     }
             	
 	$.each(params, function (i, param) {

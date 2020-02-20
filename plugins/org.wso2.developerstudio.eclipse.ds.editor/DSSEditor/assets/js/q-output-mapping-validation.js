@@ -1021,6 +1021,10 @@ function generateOutputMapping(root) {
 		return false;
 	}
 	
+	if ((query.toLowerCase().includes("insert") && query.toLowerCase().includes("into")) || (query.toLowerCase().startsWith("update"))) {
+		return false;
+	}
+	
 	let mappings = query.substring(query.toLowerCase().lastIndexOf("select") + 6, query.toLowerCase().lastIndexOf("from"));
 	let mappingValues = mappings.split(",");
 	

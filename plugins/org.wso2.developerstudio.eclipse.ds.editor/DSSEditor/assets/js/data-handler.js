@@ -1,7 +1,8 @@
 $(document).ready(function ($) {
 
     let portValue = resolveGetParam("port");
-    let url = "http://127.0.0.1:" + portValue + "/dsseditor/service";
+    // let url = "http://127.0.0.1:" + portValue + "/dsseditor/service";
+    let url = "http://127.0.0.1:7774/dsseditor/service";
     let root = "";
     let resultElement;
 
@@ -24,6 +25,7 @@ $(document).ready(function ($) {
         populateOperations(root);
         populateResources(root);
         populateAdvancedProperties(root);
+        verifyDSMetadata(root, url);
     });
 
     /** Start of Event handlers **/

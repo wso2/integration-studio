@@ -3,6 +3,7 @@
     text-align: center;
     background: #607D8B;
     color: white;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
 }
 
 body {
@@ -17,6 +18,7 @@ thead {
 .collapse-custom .btn-collapse-header {
     background-color: #757575 !important;
     color: white !important;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
 }
 
 .collapse-custom .collapse {
@@ -60,4 +62,36 @@ tbody tr:nth-child(even) {
 
 .modal-footer {
     background-color: #EEEEEE;
+}
+
+.tlypageguide-open #tlyPageGuideWrapper .tlypageguide_toggle.tlyPageGuideToggleActive {
+    background: rgba(211,47,47,0.95);
+}
+
+.tlyPageGuideStepIndex {
+    background: rgba(211,47,47,0.3);
+}
+
+.tlypageguide-active .tlyPageGuideStepIndex {
+    background: rgba(211,47,47,0.95);
+}
+
+.tlypageguide-active .tlyPageGuideStepIndex.tlypageguide_right::after, .tlypageguide-active .tlyPageGuideStepIndex.tlypageguide_left::after, .tlypageguide-active .tlyPageGuideStepIndex.tlypageguide_top::after {
+    border-top: 15px solid rgba(211,47,47,0.95);
+}
+
+.tlyPageGuideStepIndex.tlypageguide_bottom::after {
+    border-bottom: 15px solid rgba(211,47,47,0.3);
+}
+
+.tlypageguide-active .tlyPageGuideStepIndex.tlypageguide_bottom::after {
+    border-bottom: 15px solid rgba(211,47,47,0.95);
+}
+
+.tlyPageGuideStepIndex.tlypageguide_top::after {
+    border-top: 15px solid rgba(211,47,47,0.3);
+}
+
+#tlyPageGuideWrapper #tlyPageGuideMessages .tlypageguide_close {
+    background: rgba(211,47,47,1);
 }

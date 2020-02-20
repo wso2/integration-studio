@@ -26,6 +26,8 @@ $(document).ready(function ($) {
         populateResources(root);
         populateAdvancedProperties(root);
         verifyDSMetadata(root, url);
+
+        tl.pg.init({ pg_caption: "Open Help" });
     });
 
     /** Start of Event handlers **/
@@ -60,12 +62,7 @@ $(document).ready(function ($) {
         if (status) {
             $("#r-resource-addedit-modal").modal('hide');
         	saveAll(root, url, function() {
-                location.reload();
-            });
-        	$.get(url, function (data, status) {
-                let parser = new DOMParser();
-                console.log("From backend: ");
-                console.log(parser.parseFromString(data, "text/xml"));
+                populateResources(root);
             });
         }
 
@@ -1055,4 +1052,3 @@ function showNotificationAlertModal(title, content) {
 
     $("#alert-modal").modal('show');
 }
-

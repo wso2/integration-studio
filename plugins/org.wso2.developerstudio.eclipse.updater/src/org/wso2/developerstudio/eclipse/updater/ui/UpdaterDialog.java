@@ -78,6 +78,7 @@ public class UpdaterDialog extends Dialog {
 	private Button installBtn;
 	private Dialog dialog;
 	private TabFolder tabFolder;
+	private ArrayList<SelectableFeatureButton> featureButtons;
 
 	protected static IDeveloperStudioLog log = Logger.getLog(UpdaterPlugin.PLUGIN_ID);
 
@@ -98,8 +99,28 @@ public class UpdaterDialog extends Dialog {
 	protected Control createDialogArea(Composite parent) {
 		final Composite topContainer = createTopContainer(parent);
 		Composite leftContainer = createSubColumnContainer(topContainer);
-		tabFolder = createLeftContainerTabFolder(leftContainer);
+		
+		// Add select all button
+		Button selectAllButton = new Button(topContainer, SWT.CHECK);
+		selectAllButton.setText("Select All Updates");
 
+		SelectionListener selectionListener = new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent event) {
+				Button button = ((Button) event.widget);
+				if (button.getSelection()) {
+					for (SelectableFeatureButton tempButton : featureButtons) {
+						tempButton.getCheckBox().setSelection(true);
+					}
+				} else {
+					for (SelectableFeatureButton tempButton : featureButtons) {
+						tempButton.getCheckBox().setSelection(false);
+					}
+				}
+			};
+		};
+		selectAllButton.addSelectionListener(selectionListener);
+		
+		tabFolder = createLeftContainerTabFolder(leftContainer);
 		createFeatureItemsInTabFolder(tabFolder);
 		if (activeTab == ActiveTab.ALL_FEATURES) {
 			tabFolder.setSelection(0);
@@ -319,6 +340,7 @@ public class UpdaterDialog extends Dialog {
 				}
 			}
 		});
+		featureButtons.add(btn);
 	}
 
 	private Group createFeatureRepresentationGroup(Group group, GridData gridData) {

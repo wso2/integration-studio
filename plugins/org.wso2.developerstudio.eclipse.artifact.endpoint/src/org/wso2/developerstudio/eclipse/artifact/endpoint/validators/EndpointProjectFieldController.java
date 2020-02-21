@@ -92,10 +92,13 @@ public class EndpointProjectFieldController extends AbstractFieldController {
 				if(resource==null || !resource.exists()){	
 					throw new FieldValidationException("Specified project or path doesn't exist");
 				}						
-		}else if (modelProperty.equals("templ.address.ep.uri") && isAddressEP) {	
+		} else if (modelProperty.equals("templ.address.ep.uri") && isAddressEP) {
 			if (value == null || value.toString().trim().isEmpty()) {
-				throw new FieldValidationException("Address url cannot be empty");				
-			} else{
+				throw new FieldValidationException("Address url cannot be empty");
+			} else if (value.toString().trim().startsWith("$")) {
+				// Skip system variables starting with $ sign
+				return;
+			} else {
 				CommonFieldValidator.isValidUrl(value.toString().trim(), "Address url");
 			}
 		} else if (modelProperty.equals("templ.http.ep.uritemplate") && isHttpEP) {	

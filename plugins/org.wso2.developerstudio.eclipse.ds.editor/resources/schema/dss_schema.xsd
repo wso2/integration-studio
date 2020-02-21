@@ -93,8 +93,35 @@
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="enableSec" minOccurs="0" maxOccurs="1" />
+			<xs:element ref="authorization_provider" minOccurs="0" maxOccurs="1" />
         </xs:choice>
     </xs:group>
+
+	<xs:element name="authorization_provider">
+		<xs:annotation>
+			<xs:documentation source="description">
+				Authorization provider
+				configuration
+				element of a data service
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="property" minOccurs="0"
+					maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:simpleContent>
+							<xs:extension base="xs:string">
+								<xs:attribute name="name" type="xs:string" />
+							</xs:extension>
+						</xs:simpleContent>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="class" type="xs:string"
+				use="required" />
+		</xs:complexType>
+	</xs:element>
     
     <xs:element name="property">
 		<xs:annotation>

@@ -38,7 +38,37 @@ $(document).ready(function ($) {
             return this.name;
         }).get().join(' ');
 
-        root.getElementsByTagName("data")[0].attributes.getNamedItem("transports").value = transportsStr;
+        root.getElementsByTagName("data")[0].setAttribute("transports", transportsStr);
+        saveAll(root, url, function() { });
+    });
+    
+    $('#ts-txmjndi-name-input').change(function () {
+        let txJndiName = $('#ts-txmjndi-name-input').val();
+        if (txJndiName.trim() != "") {
+        	root.getElementsByTagName("data")[0].setAttribute("txManagerJNDIName", txJndiName);
+        } else {
+        	root.getElementsByTagName("data")[0].removeAttribute("txManagerJNDIName");
+        }
+        saveAll(root, url, function() { });
+    });
+    
+    $('#ts-auth-prov-class-input').change(function () {
+        let providerClass = $('#ts-auth-prov-class-input').val();
+        if (providerClass.trim() != "") {
+        	let authProvider = root.getElementsByTagName("data")[0].getElementsByTagName("authorization_provider");
+        	if (authProvider.length > 0) {
+        		authProvider[0].setAttribute("class", providerClass);
+        	} else {
+        		let provider = root.createElement("authorization_provider");
+        		provider.setAttribute("class", providerClass);
+        		root.getElementsByTagName("data")[0].appendChild(provider);
+        	}
+        } else {
+        	let authProvider = root.getElementsByTagName("data")[0].getElementsByTagName("authorization_provider");
+        	if (authProvider.length > 0) {
+        		root.getElementsByTagName("data")[0].appendChild(authProvider[0]);
+        	}
+        }
         saveAll(root, url, function() { });
     });
     // End of Transport settings - Transports
@@ -344,6 +374,47 @@ $(document).ready(function ($) {
     	root.getElementsByTagName("data")[0].setAttribute("serviceNamespace", $('#dss-namespace-input').val());
     	saveAll(root, url, function() { });
     });
+    
+    $(document).on('click','#auth-provider-param-table .fa-trash',function() {
+    	let tds = $(this).closest("tr").find('td');
+    	let authProvider = root.getElementsByTagName("data")[0].getElementsByTagName("authorization_provider");
+    	if (authProvider.length > 0) {
+    		let props = authProvider[0].getElementsByTagName("property");
+    		for (let i = 0, len = props.length; i < len; i++) {
+    			if (props[i].attributes.getNamedItem("name").value == tds[0].firstChild.value) {
+    				authProvider[0].removeChild(props[i]);
+    				break;
+    			}
+    		}
+    	}
+    	$(this).closest("tr").remove();
+    	saveAll(root, url, function() { });
+    });
+    
+    $("#auth-provider-param-table").focusout(function() {
+    	let authProvider;
+    	let authProviders = root.getElementsByTagName("data")[0].getElementsByTagName("authorization_provider");
+        if (authProviders.length == 0) {
+        	authProvider = root.createElement("authorization_provider");
+        } else {
+        	authProvider = authProviders[0];
+        	let props = authProvider.children;
+    		for (let i = 0, len = props.length; i < len; i++) {
+    			authProvider.children[0].remove();
+        	}
+        }
+        
+        let trs = $('#auth-provider-param-table').find('tr');
+        for (let i = 1, len = trs.length; i < len; i++) {
+        	let prop = root.createElement("property");
+        	prop.setAttribute("name", trs[i].cells[0].firstChild.value);
+        	prop.textContent = trs[i].cells[1].firstChild.value;
+        	authProvider.appendChild(prop);
+    	}
+        
+        saveAll(root, url, function() { });
+    });
+    
     // End of input event handlers - General details
     /** End of Event handlers **/
     
@@ -579,6 +650,23 @@ function populateTransportSettings(root) {
                 $('#ts-jms-check').prop('checked', true);
             }
         });
+    }
+    
+    let txManagerJNDIName = root.getElementsByTagName("data")[0].attributes.getNamedItem("txManagerJNDIName");
+    if (txManagerJNDIName != null && txManagerJNDIName != undefined) {
+    	$('#ts-txmjndi-name-input').val(txManagerJNDIName.value);
+    }
+    let authProvider = root.getElementsByTagName("data")[0].getElementsByTagName("authorization_provider");
+    if (authProvider.length > 0) {
+    	let className = authProvider[0].attributes.getNamedItem("class");
+    	$('#ts-auth-prov-class-input').val(className.value);
+    	$('#auth-provider-param-table').find('tbody').find('tr').detach();
+    	let props = authProvider[0].getElementsByTagName("property");
+    	$.each(props, function (index, prop) {
+    		let prop_row = "<tr><td><input type=\"text\" placeholder=\"Name\" style=\"width: 100%;\" value='" + prop.attributes.getNamedItem("name").value + "' /></td><td>" 
+    			+ "<input type=\"text\" placeholder=\"Value\" style=\"width: 100%;\" value='" + prop.innerHTML + "' /></td><td class=\"text-center\"><i class=\"fa fa-trash\"></i></td></tr>";
+    		$('#auth-provider-param-table > tbody').append(prop_row);
+    	});
     }
 }
 

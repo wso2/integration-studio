@@ -18,9 +18,9 @@ $(document).ready(function(){
     //     $("#ds-datasources-table tbody").append(markup);
     // });
     
-    $(document).on('click','#ds-datasources-table .fa-trash',function(){
-        $(this).closest("tr").remove();
-    });
+    // $(document).on('click','#ds-datasources-table .fa-trash',function(){
+    //     $(this).closest("tr").remove();
+    // });
     //--- End of Data Sources table ---//
     
     //--- Start of Data Sources - Dynamic Auth table ---//

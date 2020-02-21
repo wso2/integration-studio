@@ -131,11 +131,18 @@ $(document).ready(function ($) {
 
     $(document).on('click','#ds-datasources-table .fa-trash',function() {
         let dsId = $(this).closest("tr").data('id');
-        deleteDatasource(root, dsId);
-        $(this).closest("tr").remove();
-        saveAll(root, url, function() {
-            populateDataSources(root);
+
+        $("#ds-delete-confirm-btn").click(function(event) {
+            deleteDatasource(root, dsId);
+            $(this).closest("tr").remove();
+            saveAll(root, url, function() {
+                populateDataSources(root);
+                $("#ds-delete-confirm-modal").modal("hide");
+            });
         });
+
+        $("#ds-delete-confirm-modal").modal("show");
+
     });
 
     $(document).on('click','#ds-datasources-table .fa-edit',function() {
@@ -289,13 +296,18 @@ $(document).ready(function ($) {
 
     $(document).on('click','#q-queries-table .fa-trash',function() {
         let queryId = $(this).closest("tr").attr('data-id');
-        let result = deleteQuery(root, queryId);
 
-        if (result) {
-            saveAll(root, url, function() {
-                populateQueryTable(root);
-            });
-        }
+        $("#q-delete-confirm-btn").click(function(event) {
+            let result = deleteQuery(root, queryId);
+            if (result) {
+                saveAll(root, url, function() {
+                    populateQueryTable(root);
+                    $("#q-delete-confirm-modal").modal("hide");
+                });
+            }
+        });
+
+        $("#q-delete-confirm-modal").modal("show");
     });
 
     $('#query-add-close-btn').click(function() {
@@ -436,7 +448,9 @@ $(document).ready(function ($) {
         e.preventDefault();
         let status = addOperation(root);
         if (status) {
-        	saveAll(root, url, function() { });
+        	saveAll(root, url, function() {
+        	    populateOperations(root);
+            });
         }
     });
     
@@ -445,11 +459,17 @@ $(document).ready(function ($) {
      */
     $(document).on('click','#o-operation-table .fa-trash',function() {
     	let tds = $(this).closest("tr").find('td');
-    	deleteOperation(root, tds[0].innerText);
-    	$(this).closest("tr").remove();
-    	saveAll(root, url, function() {
-            location.reload();
+
+        $("#o-delete-confirm-btn").click(function(event) {
+            deleteOperation(root, tds[0].innerText);
+            $(this).closest("tr").remove();
+            saveAll(root, url, function() {
+                populateOperations(root);
+                $("#o-delete-confirm-modal").modal("hide");
+            });
         });
+
+        $("#o-delete-confirm-modal").modal("show");
     });
     
     /**
@@ -487,12 +507,20 @@ $(document).ready(function ($) {
     $(document).on('click','#r-resources-table .fa-trash',function() {
     	let tds = $(this).closest("tr").data('id');
     	let method = $(this).closest("tr").find('td')[1].innerText;
-    	//deleteOperation(root, tds[0].innerText);
-    	deleteResource(root, tds, method);
-    	$(this).closest("tr").remove();
-    	saveAll(root, url, function() {
-            populateResources(root);
+
+        $("#r-delete-confirm-btn").click(function(event) {
+            //deleteOperation(root, tds[0].innerText);
+            deleteResource(root, tds, method);
+            $(this).closest("tr").remove();
+            saveAll(root, url, function() {
+                populateResources(root);
+                $("#r-delete-confirm-modal").modal("hide");
+            });
         });
+
+        $("#r-delete-confirm-modal").modal("show");
+
+
     });
     
     /**

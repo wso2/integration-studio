@@ -64,6 +64,7 @@ function populateDataSources(root) {
 
     $("#ds-datasources-table").show();
     $("#ds-table-notification-alert-holder").hide();
+    $("#ds-datasources-table tbody tr").remove();
     for (let i = 0, len = dsConfigs.length; i < len; i++) {
         let dsName = dsConfigs[i].id;
         let markup = "<tr" + " data-id='" + dsName + "'" + "><td>" + dsName + "</td><td class='text-center'>" +
@@ -137,7 +138,15 @@ function populateDSModal(root, dsId, metadata) {
                     }
 
                     // password
-                    let password = getDSConfigPropertyValue(properties, "password");
+                    let password = "";
+                    let secretAlias = checkForSecretAlias(properties);
+                    if (secretAlias.status) {
+                        password = secretAlias.value;
+                        $("#ds-secret-alias-check").prop('checked', true);
+                    } else {
+                        password = getDSConfigPropertyValue(properties, "password");
+                    }
+
                     if (password === "") {
                         password = getDSConfigPropertyValue(properties, "org.wso2.ws.dataservice.password");
                     }
@@ -250,7 +259,17 @@ function processDSInputData(root, data, deleteIfExists) {
             properties.push(createTextNode(root, createPropertyNode(root, "driverClassName"), data['ds-driver-class-input']));
             properties.push(createTextNode(root, createPropertyNode(root, "url"), data['ds-url-input']));
             properties.push(createTextNode(root, createPropertyNode(root, "username"), data['ds-username-input']));
-            properties.push(createTextNode(root, createPropertyNode(root, "password"), data['ds-password-input']));
+
+            // check if secret alias is enabled
+            if ($("#ds-secret-alias-check").is(":checked")) {
+                let propertyNode = createPropertyNode(root, "password");
+                propertyNode.setAttribute(SECRET_ALIAS_NAMESPACE_ATTRIBUTE, SECRET_ALIAS_NAMESPACE);
+                propertyNode.setAttribute(SECRET_ALIAS_ATTRIBUTE, data['ds-password-input']);
+
+                properties.push(propertyNode);
+            } else {
+                properties.push(createTextNode(root, createPropertyNode(root, "password"), data['ds-password-input']));
+            }
         }
 
         if (dbTypeExt === "external_ds") {
@@ -507,5 +526,27 @@ function extractDBEngineTypeFromURL(configElement) {
                 return DB_ENGINE_SYBASE;
             }
         }
+    }
+}
+
+function checkForSecretAlias(propertyArr) {
+    for (let i = 0, len = propertyArr.length; i < len; i++) {
+        let property = propertyArr[i];
+        let propName = property.attributes.getNamedItem("name").value;
+
+        if (propName == "password") {
+            if (property.hasAttribute(SECRET_ALIAS_ATTRIBUTE)) {
+                let passwordValue = property.attributes.getNamedItem(SECRET_ALIAS_ATTRIBUTE).value;
+
+                return {
+                    status: true,
+                    value: passwordValue
+                }
+            }
+        }
+    }
+
+    return {
+        status: false
     }
 }

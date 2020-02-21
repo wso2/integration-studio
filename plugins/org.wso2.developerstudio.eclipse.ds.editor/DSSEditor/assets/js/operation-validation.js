@@ -61,6 +61,7 @@ function deleteOperation(root, operationName) {
         if (operations[i].attributes.getNamedItem("name").value == operationName) {
             // Delete the node.
             root.documentElement.removeChild(operations[i]);
+            break;
         }
     }
 }

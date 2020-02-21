@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="assets/css/panel-table-styles.css">
     <link rel="stylesheet" href="assets/css/query.css">
     <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/validation.css">
 </head>
 
 <body style="padding-top: 10px;padding-bottom: 10px;padding-right: 20px;padding-left: 20px;">
@@ -761,6 +760,82 @@
             Close and never open again:
             <button class="tlypageguide_dismiss">got it, thanks</button>
         </p>
+    </div>
+
+    <!-- DS Delete confirmation Modal -->
+    <div id="ds-delete-confirm-modal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Are you sure?</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Do you really want to delete this data source? This cannot be undone.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                    <button id="ds-delete-confirm-btn" type="button" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Query Delete confirmation Modal -->
+    <div id="q-delete-confirm-modal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Are you sure?</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Do you really want to delete this query? This cannot be undone.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                    <button id="q-delete-confirm-btn" type="button" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Operation Delete confirmation Modal -->
+    <div id="o-delete-confirm-modal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Are you sure?</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Do you really want to delete this operation? This cannot be undone.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                    <button id="o-delete-confirm-btn" type="button" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Resource Delete confirmation Modal -->
+    <div id="r-delete-confirm-modal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Are you sure?</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Do you really want to delete this resource? This cannot be undone.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                    <button id="r-delete-confirm-btn" type="button" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="assets/js/jquery.min.js"></script>

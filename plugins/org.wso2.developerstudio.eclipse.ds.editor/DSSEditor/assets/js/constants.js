@@ -33,6 +33,11 @@ const DB_ENGINE_HSQLDB = "hsqldb";
 const DB_ENGINE_INFORMIX = "informix";
 const DB_ENGINE_SYBASE = "sybasease";
 
+// Secret alias
+const SECRET_ALIAS_NAMESPACE = "http://org.wso2.securevault/configuration";
+const SECRET_ALIAS_NAMESPACE_ATTRIBUTE = "xmlns:svns";
+const SECRET_ALIAS_ATTRIBUTE = "svns:secretAlias";
+
 // Default values for DB engines
 //// MySQL
 const DEFAULT_MYSQL_DRIVER_CLASS = "com.mysql.jdbc.Driver";

@@ -78,6 +78,7 @@ function deleteDatasource(root, datasourceId) {
         if (dsConfigs[i].id == datasourceId) {
             // Delete the node.
             root.documentElement.removeChild(dsConfigs[i]);
+            break;
         }
     }
 }

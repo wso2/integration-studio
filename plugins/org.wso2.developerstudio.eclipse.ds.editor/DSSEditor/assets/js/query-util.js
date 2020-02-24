@@ -592,3 +592,10 @@ function showQueriesTableNotification(type, message, interval) {
 
     showAlert("q-table-notification-alert", interval);
 }
+
+function resetInputMappingsTable() {
+    window.params = [];
+    $("#q-im-entries-table").toggle(false);
+    $("#q-im-table-notification-alert-holder").toggle(true);
+    showInputMappingsTableNotification("info", "No input mappings available. Click 'Add New' to create a new mapping.", 0);
+}

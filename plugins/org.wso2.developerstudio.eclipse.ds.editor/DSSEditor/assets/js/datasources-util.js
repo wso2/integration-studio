@@ -550,3 +550,10 @@ function checkForSecretAlias(propertyArr) {
         status: false
     }
 }
+
+function populateDSTestConDetails(urlStr) {
+    const url = new URL(urlStr);
+    $("#ds-host-input").val(url.host);
+    $("#ds-port-input").val(url.port);
+    $("#ds-dbname-input").val(url.pathname);
+}

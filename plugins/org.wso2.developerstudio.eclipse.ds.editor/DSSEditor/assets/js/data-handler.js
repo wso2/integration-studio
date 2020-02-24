@@ -1,8 +1,7 @@
 $(document).ready(function ($) {
 
     let portValue = resolveGetParam("port");
-    // let url = "http://127.0.0.1:" + portValue + "/dsseditor/service";
-    let url = "http://127.0.0.1:7774/dsseditor/service";
+    let url = "http://127.0.0.1:" + portValue + "/dsseditor/service";
     let root = "";
     let resultElement;
 
@@ -315,6 +314,7 @@ $(document).ready(function ($) {
         $("#q-query-add-btn").toggle(true);
         $("#q-queries-table").toggle(true);
         $("#q-add-edit-query-section").toggle(false);
+        resetInputMappingsTable();
 
         populateQueryTable(root);
     });
@@ -639,6 +639,10 @@ $(document).ready(function ($) {
         	}
         }
         saveAll(root, url, function() { });
+    });
+
+    $("#ds-url-input").change(function () {
+        // populateDSTestConDetails($("#ds-url-input").val().substring(5));
     });
     
     /** End of advanced properties **/

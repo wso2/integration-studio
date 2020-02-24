@@ -482,20 +482,29 @@ function addQuery(root, queryElement) {
     let queries = root.getElementsByTagName("query");
     let queryId = $("#q-query-id-input").val();
 
-    for (let i = 0, len = queries.length; i < len; i++) {
-        if (queries[i].id == queryId && !$("#q-query-id-input").prop('disabled')) {
-            root.documentElement.removeChild(queries[i]);
-            break;
-        }
-    }
-
     let dataRoot = root.getElementsByTagName("data")[0];
-    let queryElements = root.getElementsByTagName("query");
 
-    if (queryElements.length > 0) {
-        insertAfter(queryElement, queryElements[queryElements.length - 1]);
+    let exists = false;
+    if (queries.length > 0) {
+    	// Deletes if query node exists
+        for (let i = 0, len = queries.length; i < len; i++) {
+            if (queries[0].id == queryId && !$("#q-query-id-input").prop('disabled')) {
+            	// Delete the node.
+            	exists = true;
+            	dataRoot.removeChild(queries[0]);
+            	dataRoot.appendChild(queryElement);
+            } else {
+            	let current_q = queries[0];
+            	dataRoot.removeChild(queries[0]);
+            	dataRoot.appendChild(current_q);
+            }
+        }
     } else {
-        dataRoot.appendChild(queryElement);
+    	dataRoot.appendChild(queryElement);
+    }
+    
+    if (queries.length > 0 && !exists) {
+    	dataRoot.appendChild(queryElement);
     }
 
     return true;

@@ -735,11 +735,11 @@ function appendToOutMappingTable(eleName, dsType, colNumber, mapType, uRoles, sc
   	for (let i = 0; i < trs.length; i++) {
   		if (eleName == trs[i].cells[0].firstChild.textContent) {
   			exists = true;
-  			trs[i].cells[1].firstChild.textContent = dsType;
-  			trs[i].cells[2].firstChild.textContent = colNumber;
-  			trs[i].cells[3].firstChild.textContent = mapType;
-  			trs[i].cells[4].firstChild.textContent = uRoles;
-  			trs[i].cells[5].firstChild.textContent = schType;
+  			trs[i].cells[1].textContent = dsType;
+  			trs[i].cells[2].textContent = colNumber;
+  			trs[i].cells[3].textContent = mapType;
+  			trs[i].cells[4].textContent = uRoles;
+  			trs[i].cells[5].textContent = schType;
   		}
   	}
   	

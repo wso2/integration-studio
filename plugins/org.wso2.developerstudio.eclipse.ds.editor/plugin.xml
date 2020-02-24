@@ -28,7 +28,7 @@
    	<extension point="org.eclipse.ui.perspectives">
 		<perspective
 			class="org.wso2.developerstudio.eclipse.ds.presentation.custom.perspective.DataServiceEditorPerspective"
-			icon="icons/wso2/wso2ESBview.png" id="org.wso2.developerstudio.eclipse.ds.presentation.custom.perspective"
+			icon="icons/wso2/wso2DSSview.png" id="org.wso2.developerstudio.eclipse.ds.presentation.custom.perspective"
 			name="WSO2 DSS Graphical">
 		</perspective>
 	</extension>

@@ -88,6 +88,8 @@ public class DSSMultiPageEditor extends MultiPageEditorPart implements IResource
     public static final String PLUGIN_ID = "org.wso2.developerstudio.eclipse.ds.editor";
     private static final String DSS_XSD_PATH = "resources/schema/dss_schema.xsd";
     private static final String DSS_ERROR = "org.wso2.developerstudio.eclipse.ds.editor.dsserror";
+    private static final String SECRET_ALIAS = "secretAlias";
+    private static final String SECRET_ALIAS_ERROR = "is not allowed to appear in element 'property'";
     
     public static final int VISUAL_EDITOR_PAGE_INDEX = 0;
     public static final int SOURCE_EDITOR_PAGE_INDEX = 1;
@@ -231,7 +233,11 @@ public class DSSMultiPageEditor extends MultiPageEditorPart implements IResource
             Schema schema = factory.newSchema(new File(resolvedURI));
             schema.newValidator().validate(new StreamSource(new StringReader(dssContent)));
         } catch (IOException | SAXException e) {
-            return e.getMessage();
+            String errorMsg = e.getMessage();
+            if (errorMsg.contains(SECRET_ALIAS) && errorMsg.contains(SECRET_ALIAS_ERROR)) {
+                return "valid";
+            }
+            return errorMsg;
         } catch (URISyntaxException e) {
             //ignore the error which occurs when runtime cannot locate the schema files
         }

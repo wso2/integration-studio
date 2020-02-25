@@ -19,15 +19,6 @@ $("#op-param-add-btn").click(function() {
 });
 
 /**
- * Clears operation modal upon cancel.
- * 
- * @param e Error
- */
-$('#operation-form-close-btn').click(function (e) {
-	clearOperationForm();
-});
-
-/**
  * Removes operation parameter row upon delete.
  */
 $(document).on('click', '#operation-param-table .fa-trash', function() {
@@ -76,7 +67,6 @@ function addOperation(root) {
 
     // Process operation modal data
     updateOperationDataInRoot(root, new_operation_name);
-    clearOperationForm();
     return true;
 }
 

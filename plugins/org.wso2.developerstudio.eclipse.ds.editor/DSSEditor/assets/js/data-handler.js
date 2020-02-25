@@ -458,9 +458,7 @@ $(document).ready(function ($) {
         e.preventDefault();
         let status = addOperation(root);
         if (status) {
-        	saveAll(root, url, function() {
-        	    populateOperations(root);
-            });
+        	saveAll(root, url, function() { });
         }
     });
     

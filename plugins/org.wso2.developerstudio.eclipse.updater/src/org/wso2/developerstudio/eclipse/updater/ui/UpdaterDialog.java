@@ -78,7 +78,7 @@ public class UpdaterDialog extends Dialog {
 	private Button installBtn;
 	private Dialog dialog;
 	private TabFolder tabFolder;
-	private ArrayList<SelectableFeatureButton> featureButtons;
+	private ArrayList<SelectableFeatureButton> featureButtons = new ArrayList<SelectableFeatureButton>();
 
 	protected static IDeveloperStudioLog log = Logger.getLog(UpdaterPlugin.PLUGIN_ID);
 
@@ -110,10 +110,24 @@ public class UpdaterDialog extends Dialog {
 				if (button.getSelection()) {
 					for (SelectableFeatureButton tempButton : featureButtons) {
 						tempButton.getCheckBox().setSelection(true);
+						if (tabFolder.getSelection()[0].getText().equals(ALL_FEATURES_TAB_TITLE)) {
+							selectedFeatures.add(tempButton.getFeature());
+							installBtn.setEnabled(!selectedFeatures.isEmpty());
+						} else {
+							selectedUpdates.add(tempButton.getFeature());
+							installBtn.setEnabled(!selectedUpdates.isEmpty());
+						}
 					}
 				} else {
 					for (SelectableFeatureButton tempButton : featureButtons) {
 						tempButton.getCheckBox().setSelection(false);
+						if (tabFolder.getSelection()[0].getText().equals(ALL_FEATURES_TAB_TITLE)) {
+							selectedFeatures.remove(tempButton.getFeature());
+							installBtn.setEnabled(!selectedFeatures.isEmpty());
+						} else {
+							selectedUpdates.remove(tempButton.getFeature());
+							installBtn.setEnabled(!selectedUpdates.isEmpty());
+						}
 					}
 				}
 			};

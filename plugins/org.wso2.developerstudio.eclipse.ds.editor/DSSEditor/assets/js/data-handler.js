@@ -497,6 +497,7 @@ $(document).ready(function ($) {
      * Opens modal for adding a new resource
      */
     $("#r-resource-add-btn").click(function() {
+    	$('#r-addedit-enablestreaming-checkbox').prop("checked", true);
     	populateQueriesListForResources("r-queries-item-table", "r-addedit-queryid-select", 1, root);
         openResourcesModal(false);
     });
@@ -724,7 +725,6 @@ function openResourcesModal(isEditEnabled) {
     } else {
         $("#resource-modal-header").text("Create Resource");
     }
-
     $("#r-resource-addedit-modal").modal('show');
 }
 
@@ -956,6 +956,13 @@ function populateResourcesModal(root, resourceId, method) {
 			} else {
 				$('#r-addedit-returnreqstatus-checkbox').prop("checked", false);
 			}
+			
+			let disableStreaming = resourceConfigs[i].getAttribute("disableStreaming");
+			if (disableStreaming == "true") {
+				$('#r-addedit-enablestreaming-checkbox').prop("checked", false);
+			} else {
+				$('#r-addedit-enablestreaming-checkbox').prop("checked", true);
+			}
         }
     }
 }
@@ -979,12 +986,19 @@ function processResourceInputData(root, data, index, editResource) {
     let queryID = $("#r-addedit-queryid-select").val();
     let description = $("#r-addedit-description-input").val();
     let returnRequest = $("#r-addedit-returnreqstatus-checkbox:checked").val() ? true : false;
+    let disableStreaming = $("#r-addedit-enablestreaming-checkbox:checked").val() ? true : false;
 
     // Create a new config element
     let resourceElement = root.createElement("resource");
     resourceElement.setAttribute("method", resourceMethod);
     resourceElement.setAttribute("path", resourcePath);
-    resourceElement.setAttribute("returnRequestStatus",returnRequest);
+    if (returnRequest) {
+    	resourceElement.setAttribute("returnRequestStatus", true);
+    }
+    
+    if (!disableStreaming) {
+    	resourceElement.setAttribute("disableStreaming", true);
+    }
 
     let descriptionElement = root.createElement("description");
     descriptionElement.textContent = description;

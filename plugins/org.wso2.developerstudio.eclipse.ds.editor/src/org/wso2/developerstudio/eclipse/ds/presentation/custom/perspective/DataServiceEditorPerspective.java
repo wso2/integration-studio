@@ -27,6 +27,8 @@ import org.eclipse.ui.IPerspectiveFactory;
  *
  */
 public class DataServiceEditorPerspective implements IPerspectiveFactory {
+    
+    private static final String TEMPLATE_GUIDE_VIEW = "org.wso2.developerstudio.eclipse.esb.templates.view";
 
     public void createInitialLayout(IPageLayout perspectiveLayout) {
         defineAction(perspectiveLayout);
@@ -44,5 +46,8 @@ public class DataServiceEditorPerspective implements IPerspectiveFactory {
         // Top left: Project Explorer
         IFolderLayout topLeft = layout.createFolder("topLeft", IPageLayout.LEFT, 0.15f, editorArea);
         topLeft.addView(IPageLayout.ID_PROJECT_EXPLORER);
+        
+        IFolderLayout rightPane = layout.createFolder("right", IPageLayout.RIGHT, 0.75f, editorArea);
+        rightPane.addView(TEMPLATE_GUIDE_VIEW);
     }
 }

@@ -170,7 +170,7 @@ $(document).ready(function ($) {
         $("#q-addedit-title").text("Add Query");
         $("#q-query-id-input").prop('disabled', false);
 
-
+        window.params = [];
         resetInputMappingSection();
         clearQueryAdvancedProperties();
     });
@@ -314,7 +314,6 @@ $(document).ready(function ($) {
         $("#q-query-add-btn").toggle(true);
         $("#q-queries-table").toggle(true);
         $("#q-add-edit-query-section").toggle(false);
-        resetInputMappingsTable();
 
         populateQueryTable(root);
     });
@@ -576,6 +575,7 @@ $(document).ready(function ($) {
 
         resetValidatorsForm();
         resetValidatorsSection();
+        updateInputMappingTable();
 
         $("#q-im-addedit-title").text("Add Input Mapping");
         $("#q-input-mapping-modal").modal("show");

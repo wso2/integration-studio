@@ -369,17 +369,27 @@ $(document).ready(function ($) {
     
     // Start of input event handlers - General details
     $("#dss-description-input").change(function() {
-        let description = root.getElementsByTagName("description")[0];
-
-        if (description.hasChildNodes()) {
-            description.childNodes[0].nodeValue = $('#dss-description-input').val();
-        } else {
-
+    	
+    	let exists = false;
+    	let description = root.getElementsByTagName("description");
+        if (description.length > 0) {
+        	for (let i = 0, len = description.length; i < len; i++) {
+        		if (description[i].parentElement.localName == "data") {
+        			exists = true;
+        			description[i].textContent = $('#dss-description-input').val();
+        			break;
+        		}
+        	}
+        }
+        
+        if (!exists && $('#dss-description-input').val().trim() != "") {
+        	let descriptionElement = root.createElement("description");
+            let text_node = root.createTextNode($('#dss-description-input').val());
+            descriptionElement.appendChild(text_node);
+            root.getElementsByTagName("data")[0].appendChild(descriptionElement);
         }
 
-        saveAll(root, url, function() {
-            location.reload();
-        });
+        saveAll(root, url, function() { });
     });
 
     $("#dss-namespace-input").change(function() {
@@ -644,13 +654,18 @@ $(document).ready(function ($) {
 function populateGeneralDetails(root) {
     $('#dss-name-header').text(root.getElementsByTagName("data")[0].attributes.getNamedItem("name").value);
 
-    let description = root.getElementsByTagName("description")[0];
-    let namespace = root.getElementsByTagName("data")[0];
-
-    if (description != undefined && description.hasChildNodes()) {
-        $('#dss-description-input').val(description.childNodes[0].nodeValue);
+    $('#dss-description-input').val("");
+    let description = root.getElementsByTagName("description");
+    if (description.length > 0) {
+    	for (let i = 0, len = description.length; i < len; i++) {
+    		if (description[i].parentElement.localName == "data") {
+    			$('#dss-description-input').val(description[i].textContent);
+    			break;
+    		}
+    	}
     }
 
+    let namespace = root.getElementsByTagName("data")[0];
     if (namespace != undefined && namespace.hasChildNodes()) {
         $('#dss-namespace-input').val(namespace.attributes.getNamedItem("serviceNamespace").value);
     }

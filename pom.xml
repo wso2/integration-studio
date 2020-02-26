@@ -31,7 +31,7 @@
 		<repository>
 			<id>nexus-releases</id>
 			<name>WSO2 Release Distribution Repository</name>
-			<url>http://maven.wso2.org/nexus/service/local/staging/deploy/maven2/</url>
+			<url>https://maven.wso2.org/nexus/service/local/staging/deploy/maven2/</url>
 		</repository>
 	</distributionManagement>
 	<properties>
@@ -49,7 +49,7 @@
 				<checksumPolicy>ignore</checksumPolicy>
 			</releases>
 			<id>Eclipse-p2-repo</id>
-			<url>http://download.eclipse.org/releases/oxygen/</url>
+			<url>https://download.eclipse.org/releases/oxygen/</url>
 			<layout>p2</layout>
 		</repository>
 		<repository>
@@ -59,7 +59,7 @@
 				<checksumPolicy>ignore</checksumPolicy>
 			</releases>
 			<id>WSO2-Nexus-Maven-Repository</id>
-			<url>http://maven.wso2.org/nexus/content/groups/wso2-public/</url>
+			<url>https://maven.wso2.org/nexus/content/groups/wso2-public/</url>
 			<layout>default</layout>
 		</repository>
 		<repository>
@@ -69,7 +69,7 @@
 				<checksumPolicy>ignore</checksumPolicy>
 			</snapshots>
 			<id>WSO2-Nexus-Maven-SNAPSHOT-Repository</id>
-			<url>http://maven.wso2.org/nexus/content/repositories/wso2.maven2.snapshot/</url>
+			<url>https://maven.wso2.org/nexus/content/repositories/wso2.maven2.snapshot/</url>
 			<layout>default</layout>
 		</repository>
 	</repositories>
@@ -77,18 +77,18 @@
 		<pluginRepository>
 			<id>repository.dev.java.net-maven2</id>
 			<name>Java.net Repository for Maven</name>
-			<url>http://download.java.net/maven/2/</url>
+			<url>https://download.java.net/maven/2/</url>
 			<layout>default</layout>
 		</pluginRepository>
 		<pluginRepository>
 			<id>repository.org.eclipse.bpel</id>
 			<name>eclipse bpel Repository for Maven</name>
-			<url>http://download.eclipse.org/bpel/site/</url>
+			<url>https://download.eclipse.org/bpel/site/</url>
 			<layout>default</layout>
 		</pluginRepository>
 		<pluginRepository>
 			<id>wso2-maven2-repository</id>
-			<url>http://dist.wso2.org/maven2</url>
+			<url>https://dist.wso2.org/maven2</url>
 		</pluginRepository>
 	</pluginRepositories>
 	<build>

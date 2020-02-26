@@ -40,17 +40,17 @@
         <repository>
             <id>wso2-maven2-repo</id>
             <name>WSO2 Maven2 Repo</name>
-            <url>http://dist.wso2.org/maven2/</url>
+            <url>https://dist.wso2.org/maven2/</url>
         </repository>
     </repositories>
     <pluginRepositories>
         <pluginRepository>
             <id>wso2-maven2-repository</id>
-            <url>http://dist.wso2.org/maven2</url>
+            <url>https://dist.wso2.org/maven2</url>
         </pluginRepository>
         <pluginRepository>
             <id>wso2-maven2-snapshot-repository</id>
-            <url>http://dist.wso2.org/snapshots/maven2</url>
+            <url>https://dist.wso2.org/snapshots/maven2</url>
         </pluginRepository>
     </pluginRepositories>
     <profiles>

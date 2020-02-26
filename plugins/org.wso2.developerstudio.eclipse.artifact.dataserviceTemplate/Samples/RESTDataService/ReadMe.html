@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Students Data Service Template</title>
+    <title>REST Data Service Template</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
     <style>
         body,h1,p{font-weight:300}html{line-height:1.15;-webkit-text-size-adjust:100%}body{font-family:Roboto,sans-serif;margin:0;font-size:15px;color:#373D3F;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}#content{margin:15px;padding-top:4em}.header{z-index:9999;background:#efecec;border-top:2px solid #ff7437;padding:5px 15px;transition:background-color .25s,color .25s,box-shadow .25s;box-shadow:0 0 .4rem rgba(0,0,0,.1),0 .4rem .8rem rgba(0,0,0,.2);position:fixed;top:0;width:100%}h1{font-size:2em;margin:.3em 0;letter-spacing:-.01em;color:rgba(0,0,0,.54)}h3,li{font-size:16px}
@@ -24,7 +24,7 @@
 </head>
 <body>
 	<div class="header">
-	    <h1>Students Data Service Template</h1>
+	    <h1>REST Data Service Template</h1>
 	</div>
 	<div id="content">
 		<div class="about-template">
@@ -52,7 +52,7 @@
 		('Peter', 'Burnley High School', 10);
 		</code></pre>
 		
-		<p>Update database URL and credentials in the StudentDataService.dbs file.</p>
+		<p>Update database URL and credentials in the RESTDataService.dbs file.</p>
 		
 		<h3>Executing the sample</h3>
 		<ol>
@@ -70,6 +70,17 @@
 				<p>Review the default port details for the ESB profile of WSO2 EI. Typically, you can leave 
 				these unchanged, but if you are already running another server on these ports, specify unused
 				 ports here. Click <strong>Next</strong>.</p>
+			</li>
+			<li>
+				<h3>Update the data source configuration with the user and password to connect to the database</h3>
+				<pre><code class="language-xml">
+				&#x3C;config id=&#x22;default&#x22;&#x3E;
+				&#x9;      &#x3C;property name=&#x22;driverClassName&#x22;&#x3E;com.mysql.jdbc.Driver&#x3C;/property&#x3E;
+				&#x9;      &#x3C;property name=&#x22;url&#x22;&#x3E;jdbc:mysql://localhost:3306/school_db&#x3C;/property&#x3E;
+				&#x9;      &#x3C;property name=&#x22;org.wso2.ws.dataservice.user&#x22;&#x3E;user&#x3C;/property&#x3E;
+				&#x9;      &#x3C;property name=&#x22;org.wso2.ws.dataservice.password&#x22;&#x3E;password&#x3C;/property&#x3E;
+				&#x3C;/config&#x3E;
+				</code></pre>
 			</li>
 			<li>
 				<h3>Deploy the CApp project</h3>
@@ -92,62 +103,45 @@
 				<h3>Invoke the service</h3>
 				<p>Use an HTTP client like cURL to invoke the service.</p>
 				<h3>Create Students</h3>
-				<pre><code class="language-bash">curl -X POST -d @request.xml http://localhost:8280/services/StudentDataService &nbsp;-H "Content-Type: text/xml" -H "SOAPAction: urn:CreateStudents"</code></pre>
-				<p>The request.xml can be a file which has following content.</p>
-				<pre><code class="language-xml">
-				&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dat="http://ws.wso2.org/dataservice"&gt;
-					&lt;soapenv:Header/&gt;
-					&lt;soapenv:Body&gt;
-						&lt;dat:CreateStudents&gt;
-							&lt;dat:name&gt;Sam&lt;/dat:name&gt;
-							&lt;dat:school&gt;Mary College&lt;/dat:school&gt;
-							&lt;dat:grade&gt;8&lt;/dat:grade&gt;
-						&lt;/dat:CreateStudents&gt;
-					&lt;/soapenv:Body&gt; 
-				&lt;/soapenv:Envelope&gt;</code></pre>
+				<pre><code class="language-bash">curl -X POST -d @request.json http://localhost:8280/services/RESTDataService/student &nbsp;-H 'Accept: application/json' -H 'Content-Type: application/json'</code></pre>
+				<p>The request.json can be a file which has following content.</p>
+				<pre><code class="language-json">
+				{
+				  "_poststudent": {
+				    "name" : "Will Smith",
+				    "school": "Beverly Hills School",
+				    "grade": 10
+				  }
+				}</code></pre>
 				
 				<h3>Read students</h3>
 				
-				<pre><code class="language-bash">curl -X POST -d @request.xml http://localhost:8280/services/StudentDataService &nbsp;-H "Content-Type: text/xml" -H "SOAPAction: urn:ReadStudents"</code></pre>
-				<p>The request.xml can be a file which has following content.</p>
-				<pre><code class="language-xml">
-				&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dat="http://ws.wso2.org/dataservice"&gt;
-					&lt;soapenv:Header/&gt;
-					&lt;soapenv:Body&gt;
-						&lt;dat:ReadStudents/&gt;
-					&lt;/soapenv:Body&gt;
-				&lt;/soapenv:Envelope&gt;</code></pre>
+				<pre><code class="language-bash">curl -X GET http://localhost:8280/services/RESTDataService/student &nbsp;-H 'Accept: application/json'</code></pre>
 				
 				<h3>Update students</h3>
 				
-				<pre><code class="language-bash">curl -X POST -d @request.xml http://localhost:8280/services/StudentDataService &nbsp;-H "Content-Type: text/xml" -H "SOAPAction: urn:UpdateStudents"</code></pre>
-				<p>The request.xml can be a file which has following content.</p>
-				<pre><code class="language-xml">
-				&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dat="http://ws.wso2.org/dataservice"&gt;
-					&lt;soapenv:Header/&gt;
-					&lt;soapenv:Body&gt;
-						&lt;dat:UpdateStudents&gt;
-							&lt;dat:name&gt;Sam&lt;/dat:name&gt;
-							&lt;dat:school&gt;Mary College&lt;/dat:school&gt;
-							&lt;dat:grade&gt;6&lt;/dat:grade&gt;
-							&lt;dat:id&gt;3&lt;/dat:id&gt;
-						&lt;/dat:UpdateStudents&gt;
-					&lt;/soapenv:Body&gt;
-				&lt;/soapenv:Envelope&gt;</code></pre>
+				<pre><code class="language-bash">curl -X PUT -d @request.json http://localhost:8280/services/RESTDataService/student &nbsp;-H 'Accept: application/json' -H 'Content-Type: application/json'</code></pre>
+				<p>The request.json can be a file which has following content.</p>
+				<pre><code class="language-json">
+				{
+				  "_putstudent": {
+				  	"id" : 1,
+				    "name" : "Will Smith",
+				    "school": "Beverly Hills School",
+				    "grade": 11
+				  }
+				}</code></pre>
 				
 				<h3>Delete students</h3>
 				
-				<pre><code class="language-bash">curl -X POST -d @request.xml http://localhost:8280/services/StudentDataService &nbsp;-H "Content-Type: text/xml" -H "SOAPAction: urn:DeleteStudents"</code></pre>
-				<p>The request.xml can be a file which has following content.</p>
-				<pre><code class="language-xml">
-				&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dat="http://ws.wso2.org/dataservice"&gt;
-					&lt;soapenv:Header/&gt;
-					&lt;soapenv:Body&gt;
-						&lt;dat:DeleteStudents&gt;
-							&lt;dat:id&gt;3&lt;/dat:id&gt;
-						&lt;/dat:DeleteStudents&gt;
-					&lt;/soapenv:Body&gt;
-				&lt;/soapenv:Envelope&gt;</code></pre>
+				<pre><code class="language-bash">curl -X DELETE -d @request.json http://localhost:8280/services/RESTDataService/student &nbsp;-H 'Accept: application/json' -H 'Content-Type: application/json'</code></pre>
+				<p>The request.json can be a file which has following content.</p>
+				<pre><code class="language-json">
+				{
+				  "_deletestudent": {
+				  	"id" : 1
+				  }
+				}</code></pre>
 			</li>
 		</ol>		
 	</div>

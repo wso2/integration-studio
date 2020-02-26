@@ -381,6 +381,8 @@ function editInputMapping(root, mappingName) {
     resetValidatorsSection();
     $("#q-im-addedit-title").text("Edit Input Mapping");
 
+    let params = root.getElementsByTagName
+
     for (let i = 0, len = window.params.length; i < len; i++) {
         let paramElement = window.params[i];
 
@@ -420,15 +422,11 @@ function deleteInputMapping(mappingName) {
         }
     }
     updateInputMappingTable();
-
-    if (window.params.length === 0) {
-        $("#q-im-entries-table").toggle(false);
-        $("#q-im-table-notification-alert-holder").toggle(true);
-        showInputMappingsTableNotification("info", "No input mappings available. Click 'Add New' to create a new mapping.", 0);
-    }
 }
 
 function updateInputMappingTable() {
+    $("#q-im-entries-table").toggle(true);
+    $("#q-im-table-notification-alert-holder").toggle(false);
     $("#q-im-entries-table tbody tr").remove();
     for (let i = 0, len = window.params.length; i < len; i++) {
         let paramElement = window.params[i];
@@ -441,6 +439,12 @@ function updateInputMappingTable() {
             "<i class=\"fa fa-trash\"></i></td></tr>";
 
         $("#q-im-entries-table tbody").append(markup);
+    }
+
+    if (window.params.length === 0) {
+        $("#q-im-entries-table").toggle(false);
+        $("#q-im-table-notification-alert-holder").toggle(true);
+        showInputMappingsTableNotification("info", "No input mappings available. Click 'Add New' to create a new mapping.", 0);
     }
 }
 
@@ -591,4 +595,20 @@ function showQueriesTableNotification(type, message, interval) {
     $("#q-table-notification-alert").show();
 
     showAlert("q-table-notification-alert", interval);
+}
+
+function resetInputMappingsTable() {
+    window.params = [];
+}
+
+function generateInputMappings(root) {
+    let query = $('#q-sql-query-input').val();
+    if ($.trim(query) == "") {
+        showQueryNotification("danger", "Please enter the query before generating the output mapping.", 1000);
+        return false;
+    }
+
+    if ((query.toLowerCase().includes("select") && query.toLowerCase().includes("from")) || (query.toLowerCase().startsWith("update"))) {
+        return false;
+    }
 }

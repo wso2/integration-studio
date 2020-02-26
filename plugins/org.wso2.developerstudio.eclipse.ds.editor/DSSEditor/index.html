@@ -151,10 +151,13 @@
                             </table>
                         </div>
                         <div id="q-im-table-notification-alert-holder" class="alert mr-auto"></div>
-                        <div class="text-right"><button class="btn btn-success btn-sm" type="button" id="q-input-mapping-add-btn">Add New</button></div>
+                        <div class="text-right">
+                            <button class="btn btn-secondary btn-sm" type="button" id="q-input-mapping-generate-btn">Generate</button>
+                            <button class="btn btn-success btn-sm" type="button" id="q-input-mapping-add-btn">Add New</button>
+                        </div>
                         <div class="form-group form-inline query-common-element">
                             <div class="form-check"><input class="form-check-input" type="checkbox" id="q-return-gk-checkbox"><label class="form-check-label" for="q-return-gk-checkbox">Return Generated Keys</label></div>
-                            <div class="form-check" style="margin-left: 20px;"><input class="form-check-input" type="checkbox" id="q-return-ukc-checkbox"><label class="form-check-label" for="q-return-urc-checkbox">Return Updated Key Count</label></div>
+                            <div class="form-check" style="margin-left: 20px;"><input class="form-check-input" type="checkbox" id="q-return-ukc-checkbox"><label class="form-check-label" for="q-return-ukc-checkbox">Return Updated Key Count</label></div>
                         </div>
                     </div>
                 </div>
@@ -204,7 +207,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="text-right"><button class="btn btn-success btn-sm" type="button" id="q-output_mapping-gen-btn" >Generate</button><button class="btn btn-success btn-sm" type="button" id="q-output_mapping-add-btn" data-toggle="modal" data-target="#q-output-mapping-modal">Add New</button></div>
+                        <div class="text-right"><button class="btn btn-secondary btn-sm" type="button" id="q-output_mapping-gen-btn" >Generate</button><button class="btn btn-success btn-sm" type="button" id="q-output_mapping-add-btn" data-toggle="modal" data-target="#q-output-mapping-modal">Add New</button></div>
                     </div>
                 </div>
                 <div class="collapse-custom"><a class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="false" aria-controls="om-advanced-properties-collapse" role="button" href="#om-advanced-properties-collapse">Advanced Properties</a>
@@ -725,41 +728,41 @@
     <ul id="tlyPageGuide" data-tourtitle="Let us guide you through the editor">
         <li class="tlypageguide_top" data-tourtarget="#ds-collapse">
             <div>
-                Data sources description should go here.
+                When you create data services and resources using WSO2 Data Services Server, you have the flexibility of service enabling data stored in various types of data storages. This is done by creating datasources for each of the data storage types used by your data service.
             </div>
         </li>
         <li class="tlypageguide_top" data-tourtarget="#queries">
             <div>
-                Queries description should go here.
+                Data service queries are created after creating a data source at the time a data service is created. Through data service queries, you can define different ways of extracting data in the data sources and presenting the results.
             </div>
         </li>
         <li class="tlypageguide_top" data-tourtarget="#operations">
             <div>
-                Operations description should go here.
+                Data service operations are written to invoke queries. Therefore, defining operations is the 4th step in the process of creating a data service.
             </div>
         </li>
         <li class="tlypageguide_top" data-tourtarget="#resources">
             <div>
-                Resources description should go here.
+                The WSO2 Data Services feature supports exposing data as a set of REST style resources in addition to the SOAP services.
             </div>
         </li>
     </ul>
 
-    <div class="tlyPageGuideWelcome">
-        <p>Sample popup</p>
-        <p>
-            Page Guide:
-            <button class="tlypageguide_start">let's go</button>
-        </p>
-        <p>
-            Close modal:
-            <button class="tlypageguide_ignore">not now</button>
-        </p>
-        <p>
-            Close and never open again:
-            <button class="tlypageguide_dismiss">got it, thanks</button>
-        </p>
-    </div>
+<!--    <div class="tlyPageGuideWelcome">-->
+<!--        <p>Sample popup</p>-->
+<!--        <p>-->
+<!--            Page Guide:-->
+<!--            <button class="tlypageguide_start">let's go</button>-->
+<!--        </p>-->
+<!--        <p>-->
+<!--            Close modal:-->
+<!--            <button class="tlypageguide_ignore">not now</button>-->
+<!--        </p>-->
+<!--        <p>-->
+<!--            Close and never open again:-->
+<!--            <button class="tlypageguide_dismiss">got it, thanks</button>-->
+<!--        </p>-->
+<!--    </div>-->
 
     <!-- DS Delete confirmation Modal -->
     <div id="ds-delete-confirm-modal" class="modal fade">

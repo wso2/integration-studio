@@ -185,6 +185,63 @@ function populateDSModal(root, dsId, metadata) {
                     $("#ds-ds-name-input").val(carbonDSName.trim());
                 }
             }
+
+            // dynamic auth details
+            //// auth class
+            let dynamicAuthClass = getDSConfigPropertyValue(properties, "dynamicUserAuthClass");
+            if (dynamicAuthClass === "") {
+                dynamicAuthClass = getDSConfigPropertyValue(properties, "org.wso2.ws.dataservice.driver");
+            }
+
+            if (dynamicAuthClass) {
+                $("#ds-dynamic-auth-class-input").val(dynamicAuthClass.trim());
+            }
+
+            //// auth mappings
+            $("#ds-dynamic-auth-usermapping-table tbody tr").remove();
+
+            for (let i = 0, len = properties.length; i < len; i++) {
+                if (properties[i].attributes.getNamedItem("name").value == "dynamicUserAuthMapping") {
+                    let configurationElement = properties[i].getElementsByTagName("configuration")[0];
+
+                    if (configurationElement) {
+                        let entries = configurationElement.getElementsByTagName("entry");
+
+                        if (entries) {
+                            $.each(entries, function (index, entry) {
+                                let name, username, password = "";
+
+                                if (entry.attributes.getNamedItem("request")) {
+                                    if (entry.attributes.getNamedItem("request").value != undefined) {
+                                        name = entry.attributes.getNamedItem("request").value;
+                                    }
+                                }
+
+                                let usernameElement = entry.getElementsByTagName("username")[0];
+                                if (usernameElement && usernameElement.textContent != undefined) {
+                                    username = usernameElement.textContent;
+                                }
+
+                                let passwordElement = entry.getElementsByTagName("password")[0];
+                                if (passwordElement && passwordElement.textContent != undefined) {
+                                    password = passwordElement.textContent;
+                                }
+
+                                let tableRow = "<tr><td><input class=\"form-control\" type=\"text\" " +
+                                    "placeholder=\"Carbon Username\" style=\"width: 100%;\" value='" + name + "'></td>" +
+                                    "<td><input class=\"form-control\" type=\"text\" placeholder=\"DB Username\" " +
+                                    "style=\"width: 100%;\" value='" + username + "'></td><td><input " +
+                                    "class=\"form-control\" type=\"password\" placeholder=\"DB Password\" " +
+                                    "style=\"width: 100%;\" value='" + password + "'></td><td class=\"text-center\">" +
+                                    "<i class=\"fa fa-trash\"></i></td></tr>";
+
+                                $('#ds-dynamic-auth-usermapping-table > tbody').append(tableRow);
+                            });
+                        }
+                    }
+                }
+            }
+
         }
     }
 }
@@ -238,6 +295,8 @@ function processDSInputData(root, data, deleteIfExists) {
     let dsId = $("#ds-ds-id-input").val();
     let dbEngine = $("#ds-db-engine-select").val();
 
+    let dynamicAuthClass = $("#ds-dynamic-auth-class-input").val();
+
     // Delete if existing config node exists
     if (deleteIfExists) {
         for (let i = 0, len = dsConfigs.length; i < len; i++) {
@@ -279,10 +338,38 @@ function processDSInputData(root, data, deleteIfExists) {
         properties.push(createTextNode(root, createPropertyNode(root, "carbon_datasource_name"), data['ds-ds-name-input']));
     }
 
+    if (dynamicAuthClass !== "" || dynamicAuthClass !== undefined) {
+        properties.push(createTextNode(root, createPropertyNode(root, "dynamicUserAuthClass"), dynamicAuthClass));
+    }
+
     // Append properties to config node
     for (let i = 0, len = properties.length; i < len; i++) {
         configElement.appendChild(properties[i]);
     }
+
+    // Process dynamic auth mappings
+    let dynamicAuthMappingElement = createPropertyNode(root, "dynamicUserAuthMapping");
+    let configurationElement = root.createElement("configuration");
+
+    let rows = $('#ds-dynamic-auth-usermapping-table').find('tr');
+    for (let i = 1, len = rows.length; i < len; i++) {
+        let entryElement = root.createElement("entry");
+        entryElement.setAttribute("request", rows[i].cells[0].firstChild.value);
+
+        let usernameElement = root.createElement("username");
+        createTextNode(root, usernameElement, rows[i].cells[1].firstChild.value);
+
+        let passwordElement = root.createElement("password");
+        createTextNode(root, passwordElement, rows[i].cells[2].firstChild.value);
+
+        entryElement.appendChild(usernameElement);
+        entryElement.appendChild(passwordElement);
+
+        configurationElement.appendChild(entryElement);
+    }
+
+    dynamicAuthMappingElement.appendChild(configurationElement);
+    configElement.appendChild(dynamicAuthMappingElement);
 
     // OData enabled
     configElement.setAttribute("enableOData", $('#ds-enable-odata-check').is(":checked"));
@@ -425,6 +512,7 @@ function getDSConfigPropertyValue(propertyArr, propertyName) {
 function resetDSAddEditModal() {
     setVisibleDSTypeRDBMS(true);
     setVisibleDSTypeCarbon(false);
+    clearDynamicAuthTable();
 }
 
 /**
@@ -572,4 +660,8 @@ function populateDSTestConDetails(urlStr) {
     $("#ds-host-input").val(url.host);
     $("#ds-port-input").val(url.port);
     $("#ds-dbname-input").val(url.pathname);
+}
+
+function clearDynamicAuthTable() {
+    $("#ds-dynamic-auth-usermapping-table tbody tr").remove();
 }

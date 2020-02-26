@@ -156,6 +156,7 @@ $(document).ready(function ($) {
         let dbEngineType = $("#ds-db-engine-select").val();
         populateDBEngineDefaults(root, dbEngineType);
     });
+    
     // End of Data sources - Add data source
 
     // Start of queries - Add query

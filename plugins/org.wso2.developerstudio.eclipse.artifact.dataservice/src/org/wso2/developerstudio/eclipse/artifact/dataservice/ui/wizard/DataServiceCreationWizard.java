@@ -19,7 +19,6 @@ package org.wso2.developerstudio.eclipse.artifact.dataservice.ui.wizard;
 import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -59,8 +58,8 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.platform.core.utils.XMLUtil;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
-import org.wso2.developerstudio.eclipse.platform.ui.wizard.pages.MavenDetailsPage;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.pages.ProjectOptionsDataPage;
+import org.wso2.developerstudio.eclipse.platform.ui.wizard.pages.ProjectOptionsPage;
 import org.wso2.developerstudio.eclipse.utils.data.ITemporaryFileTag;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 import org.wso2.developerstudio.eclipse.utils.ide.FileExtensionResourcevisitor;
@@ -84,13 +83,12 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 	private static final String DATASERVICE_TEMPLATE = "templates/Dataservice1.dbs";
 	private static final String DATASERVICE_TEMPLATE_SECRETALIAS = "templates/Dataservice2.dbs";
 	private String version = "1.0.0";
-	private static final String JAVAEE_PERSPECTIVE = "org.eclipse.jst.j2ee.J2EEPerspective";
+	private static final String DSS_PERSPECTIVE = "org.wso2.developerstudio.eclipse.ds.presentation.custom.perspective";
 
 
 	private final DataServiceModel dsModel;
 	private DSSProjectArtifact dssProjectArtifact;
 	private IProject project;
-	private NewDataSourceWizardPage newDataSourcepage;
 	private IWizardPage[] pages;
 
 	public DataServiceCreationWizard() {
@@ -160,7 +158,7 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 			}
             try {
                 IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-                PlatformUI.getWorkbench().showPerspective(JAVAEE_PERSPECTIVE, window);
+                PlatformUI.getWorkbench().showPerspective(DSS_PERSPECTIVE, window);
             } catch (Exception e) {
                 log.error(DataServiceArtifactConstants.ERROR_MESSAGE_FILE_OPEN, e);
             }
@@ -460,19 +458,6 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 		templateContent = templateContent.replaceAll("<service.group>", dsModel.getServiceGroup());
 		templateContent = templateContent.replaceAll("<service.NS>", dsModel.getServiceNS());
 		templateContent = templateContent.replaceAll("<service.description>", dsModel.getServiceDescription());
-		templateContent = templateContent.replaceAll("<config.id>", dsModel.getDataSourceId());
-		LinkedHashMap<String, String> config = dsModel.getDataSourceConfig().getConfig();
-		Iterator<String> iterator = config.keySet().iterator();
-		while (iterator.hasNext()) {
-			String key = (String) iterator.next();
-			if (isSecretAliasEnabled && (key.equals("org.wso2.ws.dataservice.password") || key.equals("password") || key.equals("jndi_password"))) {
-			    sb.append("<property name=\"").append(key).append("\" svns:secretAlias=\"").append(config.get(key)).append("\"/>");
-			} else {
-			    sb.append("<property name=\"").append(key).append("\">").append(config.get(key)).append("</property>\n");
-			}
-		}
-		templateContent = templateContent.replaceAll("<config.properties>", sb.toString());
-
 		IFolder dsfolder = project.getFolder(DataServiceArtifactConstants.DS_PROJECT_DATASERVICE_FOLDER);
 		File template = new File(dsfolder.getLocation().toFile(), dsModel.getServiceName() + DBS_EXTENSION);
 		templateContent = XMLUtil.prettify(templateContent);
@@ -492,52 +477,45 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 	}
 
 	public void addPages() {
-		newDataSourcepage = new NewDataSourceWizardPage();
 		super.addPages();
-		addPage(newDataSourcepage);
 		pages = getPages();
 	}
 
 	public IWizardPage getNextPage(IWizardPage page) {
 		IWizardPage nextPage = super.getNextPage(page);
-		newDataSourcepage.setProjectLocation(getModel().getLocation());
 		if (page instanceof ProjectOptionsDataPage) {
 			if (getModel().getSelectedOption().equalsIgnoreCase(NEW_OPTION)) {
-				nextPage = newDataSourcepage;
+				nextPage = null;
 			} else {
 				nextPage = null;
 			}
-		}
-		if (page instanceof NewDataSourceWizardPage) {
-			nextPage = null;
 		}
 		return nextPage;
 	}
 
 	public IWizardPage getPreviousPage(IWizardPage page) {
 		IWizardPage previousPage = super.getNextPage(page);
-		if (page instanceof MavenDetailsPage) {
-			if (getModel().getSelectedOption().equalsIgnoreCase(NEW_OPTION)) {
-				previousPage = newDataSourcepage;
-			}
-		}
-		if (page instanceof NewDataSourceWizardPage) {
-			previousPage = pages[1];
+		if (page instanceof ProjectOptionsPage) {
+		    return null;
 		}
 		return previousPage;
 	}
 
 	public boolean canFinish() {
-		if (getContainer().getCurrentPage() instanceof ProjectOptionsDataPage) {
+	    IWizardPage page = getContainer().getCurrentPage();
+		if (page instanceof ProjectOptionsDataPage) {
 			if (getModel().getSelectedOption().equalsIgnoreCase(NEW_OPTION)) {
-				return false;
+			    if (getModel() instanceof DataServiceModel && !((DataServiceModel)getModel()).getServiceName().isEmpty()) {
+			        return true;
+			    }
+			    return false;
 			} else {
 				return dsModel.getImportFile().exists();
 			}
-		} else if (getContainer().getCurrentPage() instanceof NewDataSourceWizardPage) {
-			return getContainer().getCurrentPage().isPageComplete();
+		} else if (page instanceof ProjectOptionsPage) {
+		    return false;
 		}
-		return super.canFinish();
+	    return true;
 	}
 
 }

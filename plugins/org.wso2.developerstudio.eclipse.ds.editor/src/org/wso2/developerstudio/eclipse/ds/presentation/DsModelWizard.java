@@ -173,7 +173,7 @@ public class DsModelWizard extends Wizard implements INewWizard {
 	 */
 	protected List<String> initialObjectNames;
 
-	private static final String JAVAEE_PERSPECTIVE = "org.eclipse.jst.j2ee.J2EEPerspective";
+	private static final String DSS_PERSPECTIVE = "org.wso2.developerstudio.eclipse.ds.presentation.custom.perspective";
 
 	/**
 	 * This just records the information.
@@ -312,7 +312,7 @@ public class DsModelWizard extends Wizard implements INewWizard {
 			}
             try {
                 IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-                PlatformUI.getWorkbench().showPerspective(JAVAEE_PERSPECTIVE, window);
+                PlatformUI.getWorkbench().showPerspective(DSS_PERSPECTIVE, window);
             } catch (Exception e) {
                 MessageDialog.openError(workbenchWindow.getShell(), DsEditorPlugin.INSTANCE.getString("_UI_OpenEditorError_label"), e.getMessage());
             }

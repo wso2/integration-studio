@@ -24,12 +24,19 @@
          <selection class="org.eclipse.core.resources.IResource"/>
       </wizard>
    </extension>
+   
+   	<extension point="org.eclipse.ui.perspectives">
+		<perspective
+			class="org.wso2.developerstudio.eclipse.ds.presentation.custom.perspective.DataServiceEditorPerspective"
+			icon="icons/wso2/wso2DSSview.png" id="org.wso2.developerstudio.eclipse.ds.presentation.custom.perspective"
+			name="WSO2 DSS Graphical">
+		</perspective>
+	</extension>
 
    <extension point="org.eclipse.ui.editors">
 	 <editor id="org.wso2.developerstudio.eclipse.ds.presentation.DsEditorID"
 			name="%_UI_DsEditor_label" icon="icons/wso2/dbsIcon.gif"
-			extensions="dbs" class="org.wso2.developerstudio.eclipse.ds.presentation.DsEditor"
-			contributorClass="org.wso2.developerstudio.eclipse.ds.presentation.DsActionBarContributor">
+			extensions="dbs" class="org.wso2.developerstudio.eclipse.ds.editors.DSSMultiPageEditor">
 			<contentTypeBinding
 				contentTypeId="org.wso2.developerstudio.eclipse.ds.contenttype.dsconfxml">
 			</contentTypeBinding>
@@ -73,7 +80,27 @@
                tooltip="Delete this tree item">
           </command>
     </menuContribution>
+ </extension>
+ <extension
+       point="org.eclipse.ui.startup">
+    <startup
+          class="org.wso2.developerstudio.eclipse.ds.DSSEarlyStartupHandler">
+    </startup>
  </extension> 
+ 
+	<extension point="org.eclipse.wst.xml.core.catalogContributions"> 
+		<catalogContribution id="org.wso2.developerstudio.eclipse.ds.presentation.DsEditor"> 
+			<uri name="http://ws.apache.org/ns/synapse"	uri="platform:/plugin/org.wso2.developerstudio.eclipse.ds.editor/resources/schema/dss_schema.xsd"/>
+			<system systemId="http://ws.apache.org/ns/synapse" uri="platform:/plugin/org.wso2.developerstudio.eclipse.ds.editor/resources/schema/dss_schema.xsd"> 
+			</system>
+		</catalogContribution>
+	</extension>
+
+	<extension id="dsserror" point="org.eclipse.core.resources.markers">
+		<super type="org.eclipse.core.resources.problemmarker" />
+		<super type="org.eclipse.core.resources.textmarker" />
+		<persistent value="false" />
+	</extension>
 	<!--Extention points for delete command ended. -->
 	
  <!--extension point="org.eclipse.ui.newWizards">

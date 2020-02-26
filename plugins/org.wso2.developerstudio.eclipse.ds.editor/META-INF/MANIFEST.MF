@@ -24,9 +24,16 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.expressions,
  org.eclipse.emf.transaction,
  org.wso2.developerstudio.eclipse.ds,
- org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="[4.1.0,8.0.0)"
+ org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="[4.1.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.platform.core;bundle-version="4.3.0",
+ org.wso2.developerstudio.eclipse.platform.ui;bundle-version="4.3.0",
+ org.eclipse.jetty.server;bundle-version="9.4.8",
+ org.eclipse.jetty.servlet;bundle-version="9.4.8",
+ org.eclipse.jetty.util;bundle-version="9.4.8"
 Bundle-ActivationPolicy: lazy
-Import-Package: org.apache.commons.lang,
+Import-Package: javax.servlet;version="3.1.0",
+ javax.servlet.http;version="3.1.0",
+ org.apache.commons.lang,
  org.eclipse.datatools.connectivity,
  org.eclipse.datatools.connectivity.internal.ui.wizards,
  org.eclipse.datatools.connectivity.ui,
@@ -48,14 +55,18 @@ Import-Package: org.apache.commons.lang,
  org.eclipse.wst.xml.xpath.core.util,
  org.wso2.developerstudio.eclipse.capp.core.artifacts.manager;version="[7.0.0,8.0.0)",
  org.wso2.developerstudio.eclipse.capp.core.model;version="[7.0.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.dashboard.handlers;version="7.0.0",
  org.wso2.developerstudio.eclipse.ds.dbseditor,
  org.wso2.developerstudio.eclipse.general.project.dialogs;version="[7.0.0,8.0.0)",
  org.wso2.developerstudio.eclipse.platform.ui.dialogs;version="[4.1.0,8.0.0)",
  org.wso2.developerstudio.eclipse.registry.core;version="[7.0.0,8.0.0)",
  org.wso2.developerstudio.eclipse.registry.core.interfaces;version="[7.0.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.templates.dashboard.handlers;version="7.0.0",
  org.wso2.developerstudio.eclipse.usermgt.remote;version="[4.1.0,8.0.0)",
  org.wso2.developerstudio.eclipse.utils.data;version="[4.1.0,8.0.0)",
- org.wso2.developerstudio.eclipse.utils.file;version="[4.1.0,8.0.0)"
+ org.wso2.developerstudio.eclipse.utils.file;version="[4.1.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.webui.core.editor;version="7.0.0",
+ org.wso2.developerstudio.eclipse.webui.core.exception;version="7.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.wso2.developerstudio.eclipse.ds.presentation,
  org.wso2.developerstudio.eclipse.ds.presentation.ui

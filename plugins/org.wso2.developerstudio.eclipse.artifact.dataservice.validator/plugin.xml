@@ -53,7 +53,7 @@
 		</navigatorContent>
 	</extension>-->
 			<extension point="org.eclipse.ui.navigator.navigatorContent">    
-            <commonWizard type="new"
+            <!--commonWizard type="new"
                 menuGroupId="1org.wso2.developerstudio.eclipse.artifact.webservice"
                 wizardId="org.wso2.developerstudio.eclipse.artifact.newvalidiatorartifact">
                 <enablement>
@@ -68,7 +68,7 @@
 						</adapt>
                     </or>
                 </enablement>
-            </commonWizard>
+            </commonWizard-->
     </extension>
    	 <extension
          point="org.wso2.developerstudio.eclipse.project.export.handler">

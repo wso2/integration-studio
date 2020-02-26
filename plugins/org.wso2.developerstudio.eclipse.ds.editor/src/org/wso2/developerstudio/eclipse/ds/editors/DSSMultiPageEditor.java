@@ -294,6 +294,18 @@ public class DSSMultiPageEditor extends MultiPageEditorPart implements IResource
     protected void pageChange(int newPageIndex) {
         super.pageChange(newPageIndex);
         ((DSSVisualEditorPage) getEditor(VISUAL_EDITOR_PAGE_INDEX)).getBrowser().refresh();
+        if (newPageIndex == 0) {
+            ITextEditor editor = (ITextEditor) getEditor(SOURCE_EDITOR_PAGE_INDEX);
+            IDocumentProvider dp = editor.getDocumentProvider();
+            String sourceContent = dp.getDocument(editor.getEditorInput()).get();
+            String validationMsg = validateDSSConfig(sourceContent);
+            if (!validationMsg.equals("valid")) {
+                setActivePage(SOURCE_EDITOR_PAGE_INDEX);
+                addMarker(validationMsg);
+            } else {
+                deleteMarkers();
+            }
+        }
     }
 
     /**

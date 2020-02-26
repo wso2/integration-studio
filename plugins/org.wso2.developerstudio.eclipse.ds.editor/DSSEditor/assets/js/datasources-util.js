@@ -365,6 +365,22 @@ function testDBConnection(connectionDetails, url) {
     });
 }
 
+function getMappings(connectionUrl, sqlQuery, credentials, url) {
+    // Synchronous request
+    let response = $.ajax({
+        url: url,
+        type: "post",
+        headers: {"x-operation-type":HEADER_VALUE_GENERATE_MAPPINGS},
+        data: {conurl: connectionUrl, query: sqlQuery, credentials: credentials},
+        success: function (msg, status, jqXHR) {
+
+        },
+        error: function (msg, status, jqXHR) {
+
+        }
+    });
+}
+
 /**
  * This function resolved metadata into a key-value map.
  *

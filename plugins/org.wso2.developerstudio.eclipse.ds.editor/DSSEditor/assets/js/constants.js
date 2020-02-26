@@ -4,6 +4,7 @@ const OPERATION_TYPE_HEADER_SAVE_ALL = "save-all";
 const HEADER_VALUE_SAVE_DS_METADATA = "save-ds-metadata";
 const HEADER_VALUE_RETRIEVE_DS_METADATA = "get-ds-metadata";
 const HEADER_VALUE_TEST_DS_CONNECTION = "test-ds-connection";
+const HEADER_VALUE_GENERATE_MAPPINGS = "generate-mappings";
 
 // Metadata related constants
 const DS_METADATA_ID_SEPARATOR = "?";

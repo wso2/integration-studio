@@ -43,6 +43,7 @@ public class DSSVisualEditorConstants {
         public static final String HEADER_VALUE_SAVE_DS_METADATA = "save-ds-metadata";
         public static final String HEADER_VALUE_RETRIEVE_DS_METADATA = "get-ds-metadata";
         public static final String HEADER_VALUE_TEST_DS_CONNECTION = "test-ds-connection";
+        public static final String HEADER_VALUE_GENERATE_MAPPINGS = "generate-mappings";
     }
 
     public static class DBTypes {

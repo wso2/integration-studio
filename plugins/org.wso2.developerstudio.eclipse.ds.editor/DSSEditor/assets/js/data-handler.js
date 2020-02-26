@@ -196,6 +196,10 @@ $(document).ready(function ($) {
         }
     });
 
+    $("#q-input-mapping-generate-btn").click(function() {
+        generateInputMappings(root);
+    });
+
     // End of queries - Add query
 
     // Start of query general

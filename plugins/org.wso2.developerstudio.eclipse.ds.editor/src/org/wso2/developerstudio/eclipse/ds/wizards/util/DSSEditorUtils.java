@@ -32,7 +32,11 @@ import java.net.URLClassLoader;
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import org.eclipse.core.resources.IWorkspace;
@@ -194,32 +198,63 @@ public class DSSEditorUtils {
             String port, String dbName) {
         
         String connUriStr = generateConnectionUrl(dbType, username, version, password, host, port, dbName);
-        Connection connection = null;
+        Connection connection = getConnection(dbType, version, username, password, host, port, dbName);
         
-        try {
-            String jarName = getDBDriverJarName(dbType, version);
-            String driverUrl = DSSVisualEditorConstants.DBUrlParams.DB_DRIVER_URL_BASE + getLibDirPath() + 
-                    DSSVisualEditorConstants.DBUrlParams.DB_DRIVER_JAR_BASE + jarName + 
-                    DSSVisualEditorConstants.DBUrlParams.DB_URL_JDBC_SUFFIX;
-            
-            URL url = new URL(driverUrl);
-            URLClassLoader classLoader = new URLClassLoader(new URL[] { url });
-
-            Driver driver = (Driver) Class.forName(DSSVisualEditorConstants.DBDrivers.MYSQL_DRIVER, true, classLoader).newInstance();
-            DriverManager.registerDriver(new DriverShim(driver));
-
-            connection = DriverManager.getConnection(connUriStr, username, password);
-                      
-            if (connection != null) {
-                return true;
-            } else {
-                return false;
-            } 
-            
-        } catch (Exception e) {
-            log.error("Could not establish database connection.", e);
+        if (connection != null) {
+            return true;
+        } else {
             return false;
         }
+    }
+    
+    /**
+     * Returns a string which consists of column names retrieved from the DB.
+     * 
+     * @param sqlStr SQL query.
+     * @param dbEngine Database engine.
+     * @return A comma-separated string of column names.
+     */
+    public String generateMappings(String sqlStr, String conUrl, String username, String password) {
+        List<String> mappings = new ArrayList<>();
+        String columnListStr = "";
+        Connection connection = getConnectionFromUrl(conUrl, username, password);
+        
+        if (connection != null) {
+            PreparedStatement pstmt;
+            ResultSetMetaData metaData;
+            try {
+                pstmt = connection.prepareStatement(sqlStr);
+                metaData = pstmt.getMetaData();
+                // Column indexes start from 1
+                
+                if (metaData == null) {
+                    return "";
+                }
+                
+                for (int i = 1; i < metaData.getColumnCount() + 1; i++) {
+                    mappings.add(metaData.getColumnName(i));
+                }
+                
+            } catch (SQLException e) {
+                log.error("Could not retrieve SQL metadata.", e);
+            } finally {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    log.error("Could not close connection.", e);
+                }
+            }
+        }
+        
+        StringBuilder sbQueryStr = new StringBuilder("");
+        
+        for (String column : mappings) {
+            sbQueryStr.append(column).append(",");
+        }
+        
+        columnListStr = sbQueryStr.toString();
+        
+        return columnListStr;
     }
 
     private String generateConnectionUrl(String dbType, String version, String username, String password, String host,
@@ -266,6 +301,68 @@ public class DSSEditorUtils {
         }
 
         return jarName;
+    }
+    
+    private Connection getConnection(String dbType, String version, String username, String password, String host,
+            String port, String dbName) {
+
+        String connUriStr = generateConnectionUrl(dbType, username, version, password, host, port, dbName);
+        Connection connection = null;
+        
+        try {
+            String jarName = getDBDriverJarName(dbType, version);
+            String driverUrl = DSSVisualEditorConstants.DBUrlParams.DB_DRIVER_URL_BASE + getLibDirPath() + 
+                    DSSVisualEditorConstants.DBUrlParams.DB_DRIVER_JAR_BASE + jarName + 
+                    DSSVisualEditorConstants.DBUrlParams.DB_URL_JDBC_SUFFIX;
+            
+            URL url = new URL(driverUrl);
+            URLClassLoader classLoader = new URLClassLoader(new URL[] { url });
+
+            Driver driver = (Driver) Class.forName(DSSVisualEditorConstants.DBDrivers.MYSQL_DRIVER, true, classLoader).newInstance();
+            DriverManager.registerDriver(new DriverShim(driver));
+
+            connection = DriverManager.getConnection(connUriStr, username, password); 
+            
+        } catch (Exception e) {
+            log.error("Could not establish database connection.", e);
+        }
+        
+        return connection;
+    }
+    
+    private Connection getConnectionFromUrl(String conUrl, String username, String password) {
+
+        Connection connection = null;
+        String dbType = "";
+        String version = "";
+        
+        if (conUrl.contains("mysql")) {
+            dbType = "mysql";
+            version = DSSVisualEditorConstants.DBConnectionParams.MYSQL_VERSION_8_0_15;
+        } else if (conUrl.contains("sqlserver")) {
+            dbType = "mssql";
+            version = DSSVisualEditorConstants.DBConnectionParams.MSSQL_VERSION_6_4_0;
+        }
+        
+        try {
+            String jarName = getDBDriverJarName(dbType, version);
+            String driverUrl = DSSVisualEditorConstants.DBUrlParams.DB_DRIVER_URL_BASE + getLibDirPath() + 
+                    DSSVisualEditorConstants.DBUrlParams.DB_DRIVER_JAR_BASE + jarName + 
+                    DSSVisualEditorConstants.DBUrlParams.DB_URL_JDBC_SUFFIX;
+            
+            URL url = new URL(driverUrl);
+            URLClassLoader classLoader = new URLClassLoader(new URL[] { url });
+
+            Driver driver = (Driver) Class.forName(DSSVisualEditorConstants.DBDrivers.MYSQL_DRIVER, true, classLoader).newInstance();
+            DriverManager.registerDriver(new DriverShim(driver));
+
+            connection = DriverManager.getConnection(conUrl, username, password);
+            
+        } catch (Exception e) {
+            log.error("Could not establish database connection.", e);
+        }
+        
+        return connection;
     }
 
     /**

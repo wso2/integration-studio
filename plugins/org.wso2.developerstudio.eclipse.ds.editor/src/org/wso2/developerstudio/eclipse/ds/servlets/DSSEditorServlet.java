@@ -44,6 +44,9 @@ public class DSSEditorServlet extends HttpServlet {
     DSSMultiPageEditor editor = null;
     
     static final String PAYLOAD_CONTENT_PARAM_NAME = "content";
+    static final String PAYLOAD_CONTENT_QUERY_PARAM_NAME = "query";
+    static final String PAYLOAD_CONTENT_DB_CON_URL = "conurl";
+    static final String PAYLOAD_CONTENT_DB_CREDENTIALS = "credentials";
     static final String DS_ID_SEPARATOR = "\\?";
     static final String DS_METADATA_SEPARATOR = "\\,";
     static final String DS_KEY_VALUE_SEPARATOR = "\\:";
@@ -123,6 +126,27 @@ public class DSSEditorServlet extends HttpServlet {
             
             PrintWriter writer = response.getWriter();
             writer.close();
+        } else if (DSSVisualEditorConstants.RequestHeaders.HEADER_VALUE_GENERATE_MAPPINGS.equals(operationTypeHeader)) {
+            // If the operation type is 'generate-mappings'. This is to generate mappings using
+            // a provided SQL query.
+            // The format of the payload will be: <username>:<password>
+            String credentials = request.getParameter(PAYLOAD_CONTENT_DB_CREDENTIALS);
+            String sqlQuery = request.getParameter(PAYLOAD_CONTENT_QUERY_PARAM_NAME);
+            String conUrl = request.getParameter(PAYLOAD_CONTENT_DB_CON_URL);
+            String[] credentialsArr = credentials.split(DS_KEY_VALUE_SEPARATOR);
+
+            String inputMappingsStr = editorUtils.generateMappings(sqlQuery, conUrl, credentialsArr[0], credentialsArr[1]);
+
+            if (inputMappingsStr != null && !"".equals(inputMappingsStr)) {
+                response.setContentType("text/plain");
+                response.setStatus(HttpServletResponse.SC_OK);
+                PrintWriter writer = response.getWriter();
+                writer.println(inputMappingsStr);
+                writer.close();
+            } else {
+                response.setContentType("text/plain");
+                response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            }
         }
         
     }

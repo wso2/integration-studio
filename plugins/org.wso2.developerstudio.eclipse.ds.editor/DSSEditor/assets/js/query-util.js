@@ -603,12 +603,75 @@ function resetInputMappingsTable() {
 
 function generateInputMappings(root) {
     let query = $('#q-sql-query-input').val();
+    let regExp = /\(([^)]+)\)/;
+    let mappingsArr = [];
+
     if ($.trim(query) == "") {
         showQueryNotification("danger", "Please enter the query before generating the output mapping.", 1000);
         return false;
     }
 
-    if ((query.toLowerCase().includes("select") && query.toLowerCase().includes("from")) || (query.toLowerCase().startsWith("update"))) {
+    if ((query.toLowerCase().includes("select") && query.toLowerCase().includes("from"))) {
         return false;
     }
+
+    if (query.toLowerCase().includes("insert") && query.toLowerCase().includes("into")) {
+        let mappingsStr = query.substring(query.toLowerCase().lastIndexOf("into"), query.toLowerCase().indexOf("values"));
+        if (mappingsStr) {
+            let paramStr = regExp.exec(mappingsStr.trim());
+
+            if (paramStr[1]) {
+                mappingsArr = paramStr[1].split(",");
+            }
+        }
+    } else if (query.toLowerCase().includes("update") && query.toLowerCase().includes("set")) {
+        let mappingsStr = query.substring(query.toLowerCase().lastIndexOf("set"));
+        mappingsStr = mappingsStr.toLowerCase().replace("where", ",");
+        mappingsStr = mappingsStr.toLowerCase().replace("set", "");
+
+        let mappings = mappingsStr.split(",");
+
+        for (let i = 0, len = mappings.length; i < len; i++) {
+            if (mappings[i]) {
+                mappingsArr.push(mappings[i].split("=")[0].trim());
+            }
+        }
+    } else if (query.toLowerCase().includes("delete") && query.toLowerCase().includes("from")) {
+        let mappingsStr = query.substring(query.toLowerCase().lastIndexOf("where"));
+        mappingsStr = mappingsStr.toLowerCase().replace("where", ",");
+
+        let mappings = mappingsStr.split(",");
+
+        for (let i = 0, len = mappings.length; i < len; i++) {
+            if (mappings[i]) {
+                mappingsArr.push(mappings[i].split("=")[0].trim());
+            }
+        }
+    }
+
+    populateWithMappings(root, mappingsArr);
+}
+
+function populateWithMappings(root, mappings) {
+    window.params = [];
+    for (let i = 0, len = mappings.length; i < len; i++) {
+        if (mappings[0]) {
+            let paramElement = root.createElement("param");
+
+            paramElement.setAttribute("name", mappings[i]);
+            paramElement.setAttribute("paramType", "scalar");
+            paramElement.setAttribute("sqlType", "string");
+
+            window.params.push(paramElement);
+        }
+    }
+
+    window.validators = [];
+
+    $("#q-im-table-notification-alert-holder").toggle(false);
+    $("#q-im-entries-table").toggle(true);
+
+    updateInputMappingTable();
+
+    window.isInputMappingEdit = false;
 }

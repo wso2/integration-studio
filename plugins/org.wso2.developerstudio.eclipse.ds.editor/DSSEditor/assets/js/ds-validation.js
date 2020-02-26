@@ -39,6 +39,7 @@ function setVisibleDSTypeRDBMS(isVisible) {
     $('#ds-dynamic-auth-collapse').toggle(isVisible);
     $('#ds-test-conn-btn-formgroup').toggle(isVisible);
     $('#ds-dstype-2-select').toggle(isVisible);
+    $('#ds-test-con-collapse-group').toggle(isVisible);
 
     $('#ds-db-engine-select').attr('required', isVisible);
     

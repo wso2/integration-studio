@@ -218,11 +218,12 @@ function populateOueryOutputMappings(queryElement) {
 			
 			});
 		}
-		
+		populateOutputTypeElements();
 		return resultElement[0];
 		
 	} else {
 		clearOutputMappingForm();
+		populateOutputTypeElements();
 		return null;
 	}
 }
@@ -950,7 +951,8 @@ function appendElementsToResult(result, element) {
 	return result;
 }
 
-function saveResultToQueryElement(result, query) {
+function saveResultToQueryElement(result, root) {
+	
 	if ($('#om-use-column-nums-checkbox').is(":checked")) {
 		result.setAttribute("useColumnNumbers", "true");
 	} else {
@@ -993,6 +995,8 @@ function saveResultToQueryElement(result, query) {
 		let rdfBaseURI = $('#om-rdf-baseuri-input').val();
 		result.setAttribute("rdfBaseURI", rdfBaseURI);
 		
+		result.setAttribute("outputType", "rdf");
+		
 	} else if (outputType == 'json') {
 		result.removeAttribute("element");
 		result.removeAttribute("rowName");
@@ -1000,17 +1004,19 @@ function saveResultToQueryElement(result, query) {
 		result.removeAttribute("xsltPath");
 		result.removeAttribute("rdfBaseURI");
 		
+		result.setAttribute("outputType", "json");
+		
+		if (result.children.length > 0) {
+			while (result.hasChildNodes()) {
+				result.removeChild(result.firstChild);
+			}
+		}
 		let jsonInput = $('#om-json-input').val();
-		let text_node = result.createTextNode(jsonInput);
+		let text_node = root.createTextNode(jsonInput);
 		result.appendChild(text_node);
 	}
-	//remove result if exists already
-	let rslt = query.getElementsByTagName("result");
-	if (rslt.length == 1) {
-		query.removeChild(rslt[0]);
-	}
-	query.appendChild(result);
-	return query;
+
+	return result;
 }
 
 function generateOutputMapping(root) {

@@ -174,6 +174,8 @@ $(document).ready(function ($) {
 
         resetInputMappingSection();
         clearQueryAdvancedProperties();
+        clearOutputMappingForm();
+        populateOutputTypeElements();
     });
 
     $("#query-form").submit(function (e) {
@@ -181,6 +183,10 @@ $(document).ready(function ($) {
         window.queryElement = root.createElement("query");
         processQueryDetails(root, window.queryElement);
         saveInputMappingsToQueryElement(window.queryElement);
+        if (resultElement == undefined) {
+        	resultElement = root.createElement("result");
+        }
+        resultElement = saveResultToQueryElement(resultElement, root);
         let queryElement = replaceResultInQuery(resultElement);
         queryElement = replacePropertiesInQuery(root, queryElement);
         let result = addQuery(root, queryElement);

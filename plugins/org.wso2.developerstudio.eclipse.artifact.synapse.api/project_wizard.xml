@@ -69,8 +69,10 @@
 			<data modelProperty="swagger.file" type="file" filter="*.yaml;*.json"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController">Swagger Definition File</data>
 			<group id ="location"/>
-			<data modelProperty="api.publishswagger" type="string"
-				fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController">Path to Swagger File</data>
+			<data modelProperty="swagger.reg.location" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController" 
+			controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.RegistryProjectFilter" >Swagger Registry Path </data>
+			<data modelProperty="create.reg.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController" 
+			controlData="align=right" >&lt;a&gt;Create new Project...&lt;/a&gt;</data>
 			<data modelProperty="save.location" type="workspacefolder"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController"
 				group="location"
@@ -79,7 +81,6 @@
 				fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController"
 				group="location"
 				controlData="align=right">&lt;a&gt;Create a new ESB project...&lt;/a&gt;</data>
-
 		</settings>
 	</projectOptionSettings>
 </wizard>

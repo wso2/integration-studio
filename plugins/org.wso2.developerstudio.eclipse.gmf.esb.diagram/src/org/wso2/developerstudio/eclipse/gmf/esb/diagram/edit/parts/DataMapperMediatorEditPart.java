@@ -108,7 +108,7 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
     private static final String DATAMAPPER_PERSPECTIVE = "org.wso2.developerstudio.datamapper.diagram.custom.perspective";
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     private Class<?>[] type;
-    private Map<String, IDeveloperStudioElement> importListMap;
+    private static Map<String, IDeveloperStudioElement> importListMap;
 
     /**
      * @generated
@@ -406,9 +406,7 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
         filters.put(mediaTypeKey, types);
 
         if (datamapper.getConfiguration().getKeyValue().isEmpty()) {
-
             getCreateConfigurationDialog(datamapper, filters, null);
-
         } else {
             // Open the DataMapper Editor while double clicking on the DataMapperMediator
             String configName = getconfigName(datamapper);
@@ -422,9 +420,7 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
                         WARNING_MESSAGE_1 + "\"" + configName + "\"" + WARNING_MESSAGE_2);
                 getCreateConfigurationDialog(datamapper, filters, configName);
             }
-
         }
-
     }
 
     /**
@@ -579,7 +575,7 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
      * @param configName configuration name
      * @return configuration local path
      */
-    private String getConfigurationLocalPath(IDeveloperStudioProviderData[] providerProjectsList,
+    public static String getConfigurationLocalPath(IDeveloperStudioProviderData[] providerProjectsList,
             Map<String, List<String>> filters, String configName) {
 
         String configPath = null;

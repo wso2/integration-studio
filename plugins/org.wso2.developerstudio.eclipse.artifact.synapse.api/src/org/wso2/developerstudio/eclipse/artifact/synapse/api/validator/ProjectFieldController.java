@@ -89,6 +89,8 @@ public class ProjectFieldController extends AbstractFieldController {
 			updateFields.add("save.location");
 		} else if (modelProperty.equals("api.versiontype")) {
 			updateFields.add("api.version");
+		} else if (modelProperty.equals("create.reg.prj")) {
+			updateFields.add("swagger.reg.location");
 		}
 		return updateFields;
 	}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2020, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,17 +26,16 @@ import org.eclipse.jface.viewers.ViewerFilter;
 public class RegistryProjectFilter extends ViewerFilter {
 	private static final String REGISTRY_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.general.project.nature";
 
-	
 	public boolean select(Viewer viewer, Object parentElement, Object element) {
 		if (element instanceof IProject) {
 			try {
-				if (((IProject) element)
-						.hasNature(REGISTRY_PROJECT_NATURE)) {
+				if (((IProject) element).hasNature(REGISTRY_PROJECT_NATURE)) {
 					return true;
 				}
-			} catch (Exception e) {/*ignore*/}
+			} catch (Exception e) {
+				/* ignore */}
 		}
 		return false;
 	}
-	
+
 }

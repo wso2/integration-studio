@@ -22,7 +22,9 @@ import java.io.StringReader;
 import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.UUID;
 import java.util.Scanner;
@@ -111,6 +113,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.cloudconnector.Cl
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.AbstractEsbNodeDeserializer;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.Deserializer;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.Deserializer.DeserializeStatus;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.dialogs.RegistryResourcesUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DeserializerException;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyAPIFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.MediatorFactoryUtils;
@@ -128,6 +131,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.event.EsbEditorEvent;
+import org.wso2.developerstudio.eclipse.platform.core.interfaces.IDeveloperStudioProviderData;
+import org.wso2.developerstudio.eclipse.platform.core.utils.CSProviderConstants;
+import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryFile;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.ESBFormEditor;
 import org.wso2.developerstudio.esb.form.editors.mockservice.MockServiceFormToSourceTransformer;
 import org.wso2.developerstudio.esb.form.editors.mockservice.MockServiceSourceToFormDeserializer;
@@ -136,6 +142,7 @@ import org.wso2.developerstudio.esb.form.editors.unittest.SynapseUnitTestSourceT
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.DefaultEsbModelExporter;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.DataMapperMediatorEditPart;
 
 /**
  * The main editor class which contains design view and source view
@@ -1499,4 +1506,54 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 	public void setSwaggerSource(String source) {
 		swaggerSource = source;
 	}
+
+	/*
+	 * This method will get the swagger resource path from the given api and return
+	 * the swagger file as a string
+	 * 
+	 * @param api Synapse API
+	 * 
+	 * @return Swagger File content as a String
+	 */
+	public static String getSwaggerJsonFromRegistry(API api) {
+		String swaggerJsonFile = null;
+
+		try {
+			String swaggerRegistryPath = api.getSwaggerResourcePath();
+			IDeveloperStudioProviderData[] providerProjectsList = RegistryResourcesUtils
+					.loadProviderProjectsList(new Class[] { IRegistryFile.class });
+			Map<String, List<String>> filters = new HashMap<String, List<String>>();
+			String mediaTypeKey = CSProviderConstants.FILTER_MEDIA_TYPE;
+			List<String> types = new ArrayList<String>();
+			types.add("application/yaml");
+			types.add("application/json");
+			filters.put(mediaTypeKey, types);
+
+			String swaggerName = swaggerRegistryPath.substring(swaggerRegistryPath.lastIndexOf("/") + 1,
+					swaggerRegistryPath.length());
+
+			String pathForSwagger = DataMapperMediatorEditPart.getConfigurationLocalPath(providerProjectsList, filters,
+					swaggerName);
+
+			// Copy to string, use the file's encoding
+			Path path = new Path(pathForSwagger);
+			IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(path);
+			InputStream inputStream = file.getContents();
+			StringWriter writer = new StringWriter();
+
+			IOUtils.copy(inputStream, writer, file.getCharset());
+			inputStream.close();
+			swaggerJsonFile = writer.toString();
+
+		} catch (IOException e) {
+			log.error("IO Exceprion occured while trying to retrieve swagger file", e);
+		} catch (CoreException e) {
+			log.error("Eclipse Core exception occured while trying to retrieve swagger file", e);
+		} catch (Exception e) {
+			log.error("Error occured while trying to retrieve swagger file", e);
+		}
+
+		return swaggerJsonFile;
+	}
+
 }

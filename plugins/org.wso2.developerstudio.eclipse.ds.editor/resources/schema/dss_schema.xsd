@@ -399,6 +399,8 @@
 		<xs:attribute name="returnGeneratedKeys"
 			type="xs:boolean" />
 		<xs:attribute name="input-event-trigger" type="xs:string" />
+		<xs:attribute name="keyColumns" type="xs:string" />
+		<xs:attribute name="returnUpdatedRowCount" type="xs:string" />
 	</xs:complexType>
 
 	<xs:group name="queryElements">

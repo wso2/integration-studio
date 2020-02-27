@@ -488,6 +488,15 @@ function addQuery(root, queryElement) {
 
     let dataRoot = root.getElementsByTagName("data")[0];
 
+    if ($("#q-im-return-gk-checkbox").is(":checked")) {
+        queryElement.setAttribute("returnGeneratedKeys", "true");
+        queryElement.setAttribute("keyColumns", $("#q-im-keycolumns-input").val());
+    }
+
+    if ($("#q-im-return-ukc-checkbox").is(":checked")) {
+        queryElement.setAttribute("returnUpdatedRowCount", "true");
+    }
+
     let exists = false;
     if (queries.length > 0) {
     	// Deletes if query node exists
@@ -559,7 +568,23 @@ function editQuery(root, queryId) {
             $("#q-add-edit-query-section").toggle(true);
             $("#q-queries-table").toggle(false);
             $("#q-query-add-btn").toggle(false);
-            
+
+            if (queryElement.hasAttribute("returnGeneratedKeys")) {
+                $("#q-im-return-gk-checkbox").prop('checked', true);
+                $("#q-im-keycolumns-inputgroup").toggle(true);
+                $("#q-im-keycolumns-input").val(queryElement.attributes.getNamedItem("keyColumns").value);
+            } else {
+                $("#q-im-return-gk-checkbox").prop('checked', false);
+                $("#q-im-keycolumns-inputgroup").toggle(false);
+                $("#q-im-keycolumns-input").val("");
+            }
+
+            if (queryElement.hasAttribute("returnUpdatedRowCount")) {
+                $("#q-im-return-ukc-checkbox").prop('checked', true);
+            } else {
+                $("#q-im-return-ukc-checkbox").prop('checked', false);
+            }
+
             populateQueryAdvancedProperties();
         }
     }

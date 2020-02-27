@@ -21,6 +21,7 @@ Export-Package: org.wso2.developerstudio.datamapper,
  org.wso2.developerstudio.datamapper.views
 Import-Package: javax.servlet;version="3.1.0",
  javax.servlet.http;version="3.1.0",
+ org.eclipse.draw2d,
  org.eclipse.swt,
  org.eclipse.swt.browser,
  org.eclipse.swt.widgets

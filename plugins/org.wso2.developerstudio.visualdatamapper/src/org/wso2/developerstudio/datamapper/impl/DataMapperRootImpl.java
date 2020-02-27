@@ -4,6 +4,9 @@ package org.wso2.developerstudio.datamapper.impl;
 
 import java.util.Collection;
 
+import org.eclipse.draw2d.Button;
+import org.eclipse.draw2d.Label;
+import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -62,6 +65,59 @@ public class DataMapperRootImpl extends EObjectImpl implements DataMapperRoot {
 	 * @ordered
 	 */
 	protected EList<Operator> operators;
+	
+	private Button aiDataMapperButton;
+	private Label aiDataMapperLabel;
+	private RoundedRectangle aiDataMapperLabelBox;
+
+	/**
+	 * Setting reference for the AI DataMapper Button.
+	 * 
+	 * @param aiDataMapperButton
+	 *            reference to the AI Datamapper Button
+	 */
+	public void setAiDataMapperButton(Button aiDataMapperButton) {
+		this.aiDataMapperButton = aiDataMapperButton;
+	}
+
+	/**
+	 * Setting reference for the AI DataMapper Label.
+	 * 
+	 * @param aiDataMapperLabel
+	 *            reference to the AI Datamapper description
+	 */
+	public void setAiDataMapperLabel(Label aiDataMapperLabel) {
+		this.aiDataMapperLabel = aiDataMapperLabel;
+	}
+
+	/**
+	 * Setting reference for the AI DataMapper bar.
+	 * 
+	 * @param aiDataMapperLabelBox
+	 *            reference to the AI Datamapper bar
+	 */
+	public void setAiDataMapperLabelBox(RoundedRectangle aiDataMapperLabelBox) {
+		this.aiDataMapperLabelBox = aiDataMapperLabelBox;
+	}
+
+	/**
+	 * This method set AI DataMapper functionality visible only if both input and
+	 * output trees are available.
+	 */
+	private void setAiButtonVisibility() {
+		if (aiDataMapperButton != null) {
+			if ((input.getTreeNode().size() == 0) || (output.getTreeNode().size() == 0)) {
+				aiDataMapperButton.setVisible(false);
+				aiDataMapperLabel.setVisible(false);
+				aiDataMapperLabelBox.setVisible(false);
+			} else {
+				aiDataMapperButton.setVisible(true);
+				aiDataMapperLabel.setVisible(true);
+				aiDataMapperLabelBox.setVisible(true);
+			}
+		}
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -84,9 +140,10 @@ public class DataMapperRootImpl extends EObjectImpl implements DataMapperRoot {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Input getInput() {
+		setAiButtonVisibility();
 		return input;
 	}
 
@@ -127,9 +184,10 @@ public class DataMapperRootImpl extends EObjectImpl implements DataMapperRoot {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Output getOutput() {
+		setAiButtonVisibility();
 		return output;
 	}
 

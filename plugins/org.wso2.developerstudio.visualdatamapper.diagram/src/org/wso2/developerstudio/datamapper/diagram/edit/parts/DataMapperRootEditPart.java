@@ -18,25 +18,29 @@ package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.commons.httpclient.ConnectTimeoutException;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpException;
-import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.StringRequestEntity;
+
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.draw2d.ActionEvent;
+import org.eclipse.draw2d.ActionListener;
+import org.eclipse.draw2d.Button;
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.ImageFigure;
-import org.eclipse.draw2d.MouseEvent;
-import org.eclipse.draw2d.MouseListener;
+import org.eclipse.draw2d.Label;
+import org.eclipse.draw2d.LineBorder;
+import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.common.util.EList;
@@ -44,14 +48,15 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.eclipse.emf.validation.internal.util.Log;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 import org.eclipse.gmf.tooling.runtime.update.UpdateDiagramCommand;
+import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.widgets.Display;
+
 import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.DataMapperLink;
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
@@ -59,7 +64,6 @@ import org.wso2.developerstudio.datamapper.InNode;
 import org.wso2.developerstudio.datamapper.OutNode;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.Activator;
-import org.wso2.developerstudio.datamapper.diagram.custom.util.ImageHolder;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.DataMapperRootCanonicalEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.DataMapperRootItemSemanticEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry;
@@ -70,8 +74,6 @@ import org.wso2.developerstudio.datamapper.impl.DataMapperRootImpl;
 import org.wso2.developerstudio.datamapper.impl.TreeNodeImpl;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
-
-import com.google.gson.Gson;
 
 /**
  * @generated
@@ -84,6 +86,17 @@ public class DataMapperRootEditPart extends DiagramEditPart {
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     public final static String MODEL_ID = "DataMapper"; //$NON-NLS-1$
+    
+    private Label aiDataMapperLabel;
+
+    private Button aiDataMapperLabelBtn;
+
+    private RoundedRectangle aiDataMapperLabelBox;
+    
+    private static final String URL_OF_AI_DATA_MAPPER_SERVER = "https://ai-data-mapper.wso2.com/uploader";
+    
+    private static final String EMPTY_STRING = "";
+    
 
     /**
      * @generated
@@ -108,39 +121,78 @@ public class DataMapperRootEditPart extends DiagramEditPart {
                 new CreationEditPolicyWithCustomReparent(DataMapperVisualIDRegistry.TYPED_INSTANCE));
         removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
     }
-
-      
-//  Set color theme from preference store colors
+  
+    /** 
+     * This method creates the figure to be used as datamapper editpart's visuals.
+     * Set color theme of the figure and append figures related to AI data mapping. 
+     */
     protected IFigure createFigure() {
-            IFigure fig = super.createFigure();
-            fig.setBackgroundColor(new Color(null, 246,255,255));
-            fig.setOpaque(true);
-            
-            Image img = ImageHolder.getInstance().getMapContentImage();
-            ImageFigure iconImageFigure = new ImageFigure(img);
-            iconImageFigure.setSize(new Dimension(200, 200));
-            iconImageFigure.setLocation(new Point(0,-400));
-            iconImageFigure.addMouseListener(new MouseListener() {
+        IFigure figure = super.createFigure();
+        figure.setBackgroundColor(new Color(null, 246, 255, 255));
+        figure.setOpaque(true);
 
-                @Override
-                public void mouseReleased(MouseEvent me) {
-                }
+        aiDataMapperLabelBox = new RoundedRectangle();
+        aiDataMapperLabelBox.setBackgroundColor(new Color(null, 232, 234, 237));
+        aiDataMapperLabelBox.setLocation(new Point(0, -400));
+        aiDataMapperLabelBox.setSize(new Dimension(480, 40));
+        LineBorder border = new LineBorder();
+        border.setColor(new Color(null, 245, 246, 247));
+        aiDataMapperLabelBox.setBorder(border);
 
-                @Override
-                public void mousePressed(MouseEvent me) {
+        aiDataMapperLabel = new Label("AI generated mappings available.");
+        aiDataMapperLabel.setSize(new Dimension(600, 40));
+        aiDataMapperLabel.setLocation(new Point(-130, -400));
+
+        aiDataMapperLabelBtn = new Button("Apply");
+        aiDataMapperLabelBtn.setSize(new Dimension(100, 30));
+        aiDataMapperLabelBtn.setBackgroundColor(new Color(null, 11, 164, 226));
+        aiDataMapperLabelBtn.setLocation(new Point(360, -398));
+        aiDataMapperLabelBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event) {
+
+                try {
                     drawMappings();
+                } catch (ConnectTimeoutException e) {
+                    log.error("Connecting to the service timed out", e);
+                    popupDialogBox(IStatus.ERROR, "Cannot connect to the service.");
+                } catch (SocketTimeoutException e) {
+                    log.error("Generation of AI Mapping timed out", e);
+                    popupDialogBox(IStatus.ERROR, "Mapping generation takes too long.");
+                } catch (IOException e) {
+                    log.error("Error getting mapping suggestions from the server", e);
+                    popupDialogBox(IStatus.ERROR, e.getMessage());
                 }
 
-                @Override
-                public void mouseDoubleClicked(MouseEvent me) {
-                }
-                });
-            
-            fig.add(iconImageFigure);
-            return fig;
             }
+        });
+
+        figure.add(aiDataMapperLabelBox);
+        figure.add(aiDataMapperLabel);
+        figure.add(aiDataMapperLabelBtn);
+
+        DataMapperRootImpl datamapperRoot = (DataMapperRootImpl) this.getDiagramView().getDiagram().getElement();
+        int inputSize = datamapperRoot.getInput().getTreeNode().size();
+        int outputSize = datamapperRoot.getOutput().getTreeNode().size();
+        datamapperRoot.setAiDataMapperButton(aiDataMapperLabelBtn);
+        datamapperRoot.setAiDataMapperLabel(aiDataMapperLabel);
+        datamapperRoot.setAiDataMapperLabelBox(aiDataMapperLabelBox);
+
+        if ((inputSize == 0) || (outputSize == 0)) {
+            aiDataMapperLabelBtn.setVisible(false);
+            aiDataMapperLabel.setVisible(false);
+            aiDataMapperLabelBox.setVisible(false);
+        }
+        return figure;            
+    }
     
-    public void drawMappings() {
+    /**
+     * This method draws datamapper configurations automatically.
+     * 
+     * @throws HttpException exceptions from getMappings method
+     * @throws IOException exceptions from getMappings method
+     */
+    public void drawMappings() throws HttpException, IOException {
         DataMapperRootImpl datamapperRoot = (DataMapperRootImpl) this.getDiagramView().getDiagram().getElement();
         
         // Get input and output schemas
@@ -151,48 +203,49 @@ public class DataMapperRootEditPart extends DiagramEditPart {
         
         EList<TreeNode> inputTreeNodesList = ((DataMapperRoot) datamapperRoot).getInput().getTreeNode();
         EList<TreeNode> outputTreeNodesList = ((DataMapperRoot) datamapperRoot).getOutput().getTreeNode();
-        
-        int size = mappings.size()/4;
-        for (int i = 0; i < size; i++) {
-            String attr1 = mappings.get(i*4);
-            String path1 = mappings.get(i*4 + 1);
-            String attr2 = mappings.get(i*4 + 2);
-            String path2 = mappings.get(i*4 + 3);
-            
-            Iterator iterator = inputTreeNodesList.iterator();
-            String nodeName = "";
-            TreeNode treeNodeFin = null; 
-            TreeNode treeNode = iterateList(treeNodeFin, iterator, attr1, path1);
-            
-            Iterator iteratorOut = outputTreeNodesList.iterator();
-            nodeName = "";
-            TreeNode treeNodeOutFin = null;
-            TreeNode treeNodeOut = iterateList(treeNodeOutFin, iteratorOut, attr2, path2);
-            
-            try {
-                final EObject source = (EObject) treeNode.getOutNode();
-                final EObject target = (EObject) treeNodeOut.getInNode();
-                final OutNode container = deduceContainer(source, target);
-                final DataMapperLink newElement = DataMapperFactory.eINSTANCE.createDataMapperLink();
-                TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(container);
-                try {
-                    Thread.sleep(2);
-                } catch (InterruptedException e) {
-                    log.error(e);
-                }
-                domain.getCommandStack().execute(new RecordingCommand(domain) {
-                    @Override
-                    protected void doExecute() {
-                        container.getOutgoingLink().add(newElement);
-                        newElement.setOutNode((OutNode) source);
-                        newElement.setInNode((InNode) target);
+        int numberOfMappingSuggestions = mappings.size() / 4;
+
+        // Checking whether any mapping suggestions exists 
+        if (numberOfMappingSuggestions > 0) {
+            for (int i = 0; i < numberOfMappingSuggestions; i++) {
+                final String attributeNameOfInputNode = mappings.get(i * 4);
+                String pathOfInputNode = mappings.get(i * 4 + 1);
+                final String attributeNameOfOutputNode = mappings.get(i * 4 + 2);
+                String pathOfOutputNode = mappings.get(i * 4 + 3);
+
+                Iterator iterator = inputTreeNodesList.iterator();
+                String nodeName = EMPTY_STRING;
+                TreeNode treeNodeInFinal = null;
+                TreeNode treeNode = iterateList(treeNodeInFinal, iterator, attributeNameOfInputNode, pathOfInputNode);
+
+                Iterator iteratorOut = outputTreeNodesList.iterator();
+                nodeName = EMPTY_STRING;
+                TreeNode treeNodeOutFinal = null;
+                TreeNode treeNodeOut = iterateList(treeNodeOutFinal, iteratorOut, attributeNameOfOutputNode,
+                        pathOfOutputNode);
+                if ((treeNodeOut != null) && (treeNodeOut.getInNode().getIncomingLink().size() == 0)) {
+                    try {
+                        final EObject source = (EObject) treeNode.getOutNode();
+                        final EObject target = (EObject) treeNodeOut.getInNode();
+                        final OutNode container = deduceContainer(source, target);
+                        final DataMapperLink newElement = DataMapperFactory.eINSTANCE.createDataMapperLink();
+                        TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(container);
+                        domain.getCommandStack().execute(new RecordingCommand(domain) {
+                            @Override
+                            protected void doExecute() {
+                                container.getOutgoingLink().add(newElement);
+                                newElement.setOutNode((OutNode) source);
+                                newElement.setInNode((InNode) target);
+                            }
+                        });
+                    } catch (Exception e) {
+                        continue;
                     }
-                });
-            } catch (Exception e) {
-                continue;
+                }
             }
+        } else {
+            popupDialogBox(IStatus.INFO, "No suggessions from AI Mapping");
         }
-        
         UpdateDiagramCommand updater = new UpdateDiagramCommand();
         try {
             updater.execute(null);
@@ -257,12 +310,21 @@ public class DataMapperRootEditPart extends DiagramEditPart {
         }
         // Empty tree node, clear the file
         else {
-            content = "";
+            content = EMPTY_STRING;
         }
         return content;
     }
     
-    public List<String> getMappings(String inputSchema, String outputSchema) {
+    /**
+     * This method gets AI generated mapping suggestions from the server.
+     * 
+     * @param inputSchema schema of the input message
+     * @param outputSchema schema of the output message
+     * @return arrayList with mapping suggestions
+     * @throws HttpException exception related to connecting to the service
+     * @throws IOException exceptions related getting/sending data to the service.
+     */
+    public List<String> getMappings(String inputSchema, String outputSchema) throws HttpException, IOException {
         HttpURLConnection connection = null;  
         
         // Create one set of schemas
@@ -271,30 +333,31 @@ public class DataMapperRootEditPart extends DiagramEditPart {
         schemas.put(outputSchema);
         
         String schemasToSend = schemas.toString();
-        
+        StringRequestEntity requestEntity = new StringRequestEntity(schemasToSend, "application/json", "UTF-8");
         final HttpClient httpClient = new HttpClient();
-        
-        // Send file
-        StringRequestEntity requestEntity;
-        String outString;
-        List<String> myList = null;
-        try {
-            requestEntity = new StringRequestEntity(schemasToSend,"application/json","UTF-8");
-            PostMethod postMethod = new PostMethod("http://127.0.0.1:5000/uploader");
-            postMethod.setRequestEntity(requestEntity);
-            try {
-                int statusCode = httpClient.executeMethod(postMethod);
-                outString = postMethod.getResponseBodyAsString();
-                myList = new ArrayList<String>(Arrays.asList(outString.split("#")));
-            } catch (HttpException e) {
-                log.error(e);
-            } catch (IOException e) {
-                log.error(e);
+        httpClient.getHttpConnectionManager().getParams().setConnectionTimeout(2000);
+        httpClient.getHttpConnectionManager().getParams().setSoTimeout(4000);
+        PostMethod postMethod = new PostMethod(URL_OF_AI_DATA_MAPPER_SERVER);
+        postMethod.setRequestEntity(requestEntity);
+        int statusCode = httpClient.executeMethod(postMethod);
+        String outString = postMethod.getResponseBodyAsString();
+        return new ArrayList<String>(Arrays.asList(outString.split("#")));
+    }    
+    
+    /**
+     * This method shows a pop up dialog box.
+     * 
+     * @param type Type of the message
+     * @param message message to be displayed
+     */
+    private void popupDialogBox(int type, String message) {
+        final IStatus editorStatus = new Status(type, Activator.PLUGIN_ID, message);
+        Display.getDefault().syncExec(new Runnable() {
+            @Override
+            public void run() {
+                ErrorDialog.openError(Display.getDefault().getActiveShell(), "AI Data Mapper is not working", EMPTY_STRING,
+                        editorStatus);
             }
-        } catch (UnsupportedEncodingException e) {
-            log.error(e);
-        }
-        
-        return myList;
+        });
     }
 }

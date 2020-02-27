@@ -17,6 +17,7 @@
 package org.wso2.developerstudio.eclipse.distribution.project.ui.wizard;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
@@ -49,6 +50,7 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
+import org.apache.commons.io.FileUtils;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
@@ -121,6 +123,9 @@ import org.eclipse.ui.internal.wizards.datatransfer.ZipLeveledStructureProvider;
 import org.eclipse.ui.statushandlers.StatusManager;
 import org.eclipse.ui.wizards.datatransfer.FileSystemStructureProvider;
 import org.eclipse.ui.wizards.datatransfer.ImportOperation;
+import org.rauschig.jarchivelib.ArchiveFormat;
+import org.rauschig.jarchivelib.Archiver;
+import org.rauschig.jarchivelib.ArchiverFactory;
 import org.w3c.dom.Document;
 import org.wso2.developerstudio.eclipse.distribution.project.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -339,6 +344,8 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 	private IStructuredSelection currentSelection;
 
 	private ZipFile sourceFile;
+	
+	private TarFile sourceTarFile;
 
 	/**
 	 * Creates a new project creation wizard page.
@@ -759,7 +766,7 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 					Collection files = new ArrayList();
 					monitor.worked(10);
 					if (!dirSelected && ArchiveFileManipulations.isTarFile(path)) {
-						TarFile sourceTarFile = getSpecifiedTarSourceFile(path);
+						sourceTarFile = getSpecifiedTarSourceFile(path);
 						if (sourceTarFile == null) {
 							return;
 						}
@@ -1112,13 +1119,20 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 						records.add((ProjectRecord) selected[i]);
 					}
 					Collections.sort(records, new FilePathComparator());
+					
+					if (sourceFile != null || sourceTarFile != null) {
+					    boolean isMMMArchived = convertMMMProjectArchivetoFileSystem(monitor);
+					    if (isMMMArchived) {
+					        return;
+					    }
+					}
 
 					Map<String, String> mavenMultiModuleChildren = new HashMap<String, String>();
 					for (int j = 0; j < records.size(); j++) {
 						ProjectRecord project = (ProjectRecord) records.get(j);
 						String[] natureIds = project.description.getNatureIds();
 						List<String> natures = Arrays.asList(natureIds);
-						if (natures.contains("org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature")) {
+						if (natures.contains(MAVEN_MULTI_MODULE_NATURE)) {
 							if (project.description.getLocation() != null) {
 								String projectPath = project.description.getLocation().toOSString();
 								File mavenProject = new File(projectPath);
@@ -1178,6 +1192,146 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 		// Adds the projects to the working sets
 		addToWorkingSets();
 		return true;
+	}
+
+	private boolean convertMMMProjectArchivetoFileSystem(IProgressMonitor monitor) {
+		boolean isMMMArchive = false;
+
+		IWorkspace workspace = ResourcesPlugin.getWorkspace();
+		String destDirectory = workspace.getRoot().getLocation().toString() + File.separator + ".tmp" + File.separator
+				+ "ArchiveImport";
+		File archiveImportDestDir = new File(destDirectory);
+		if (!archiveImportDestDir.exists()) {
+			archiveImportDestDir.mkdir();
+		}
+
+		// Check the input archive file is a zip or tar.gz
+		try {
+			if (sourceFile != null) {
+				Archiver archiver = ArchiverFactory.createArchiver(ArchiveFormat.ZIP);
+				archiver.extract(new File(sourceFile.getName()), new File(destDirectory));
+			} else {
+				Archiver archiver = ArchiverFactory.createArchiver("tar", "gz");
+				archiver.extract(new File(sourceTarFile.getName()), new File(destDirectory));
+			}
+		} catch (IOException e) {
+			log.error("IOException exception while extracting the archived file to the destination", e);
+		}
+
+		File[] extractedDirectories = archiveImportDestDir.listFiles(File::isDirectory);
+		// Check extracted archive file contains MMM project
+		for (File directory : extractedDirectories) {
+			if (directory.getParentFile().getAbsolutePath().equals(archiveImportDestDir.getAbsolutePath())) {
+				File projectFile = new File(directory.getAbsolutePath() + File.separator + ".project");
+				if (projectFile.exists()) {
+					String projectNature = readProjectNatureFromProjectFile(projectFile);
+					if (projectNature != null && projectNature.equals(MAVEN_MULTI_MODULE_NATURE)) {
+						isMMMArchive = true;
+						break;
+					}
+				}
+			}
+		}
+
+		// Return the method if there is no any MMM project inside the archive
+		if (!isMMMArchive) {
+			return isMMMArchive;
+		}
+
+		// Loop the extracted archive directory and create IProject in workspace
+		for (File directory : extractedDirectories) {
+			if (directory.getParentFile().getAbsolutePath().equals(archiveImportDestDir.getAbsolutePath())) {
+				// read nature of the directory
+				File projectFile = new File(directory.getAbsolutePath() + File.separator + ".project");
+				if (projectFile.exists()) {
+					String projectNature = readProjectNatureFromProjectFile(projectFile);
+					IProject mainProject = workspace.getRoot().getProject(directory.getName());
+					try {
+						IProjectDescription newProjectDescription = workspace
+								.newProjectDescription(directory.getName());
+						String[] natureIds = { projectNature };
+						newProjectDescription.setNatureIds(natureIds);
+						URI mmmProjectPath = new URI(
+								workspace.getRoot().getLocationURI() + File.separator + directory.getName());
+						newProjectDescription.setLocationURI(mmmProjectPath);
+
+						mainProject.create(newProjectDescription, new NullProgressMonitor());
+						mainProject.open(IResource.BACKGROUND_REFRESH, new NullProgressMonitor());
+						mainProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+
+						// create sub projects/directories under the created parent project
+						createProjectsInWorkspaceReadingNature(directory, mainProject, monitor);
+					} catch (URISyntaxException e) {
+						log.error("URISyntaxException exception while importing", e);
+					} catch (CoreException e) {
+						log.error("CoreException exception while importing", e);
+					}
+				}
+			}
+		}
+
+		// Deleting extracted archived file from the {workspace/.tmp} directory
+		try {
+			FileUtils.deleteDirectory(archiveImportDestDir);
+		} catch (IOException e) {
+			log.error("IOException exception while deleting archived directory in {workspace/.temp}", e);
+		}
+
+		return isMMMArchive;
+	}
+
+	private void createProjectsInWorkspaceReadingNature(File sourceDirectory, IProject projectWhichWantToCopy,
+			IProgressMonitor monitor) {
+		try {
+			List filesToImport = FileSystemStructureProvider.INSTANCE.getChildren(sourceDirectory);
+			for (Object resource : filesToImport) {
+				File resourceFile = (File) resource;
+
+				if (resourceFile.isDirectory()) {
+					IProjectDescription newSubProjectDescription = projectWhichWantToCopy.getWorkspace()
+							.newProjectDescription(resourceFile.getName());
+					String subProject = projectWhichWantToCopy.getLocation().toOSString() + File.separator
+							+ resourceFile.getName();
+					URI subProjectURI = new URI(subProject);
+					newSubProjectDescription.setLocationURI(subProjectURI);
+					File[] subProjectList = resourceFile.listFiles();
+					for (File file : subProjectList) {
+						if (file.getName().equals(".project")) {
+							String[] subNatureIds = { readProjectNatureFromProjectFile(file) };
+							newSubProjectDescription.setNatureIds(subNatureIds);
+							break;
+						}
+					}
+					IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
+					IProject subIProject = root.getProject(resourceFile.getName());
+					subIProject.create(newSubProjectDescription, new NullProgressMonitor());
+					subIProject.open(new NullProgressMonitor());
+
+					List subImportFiles = FileSystemStructureProvider.INSTANCE.getChildren(resourceFile);
+					ImportOperation operation = new ImportOperation(subIProject.getFullPath(), resourceFile,
+							FileSystemStructureProvider.INSTANCE, this, subImportFiles);
+					operation.setContext(getShell());
+					operation.setOverwriteResources(true);
+					operation.setCreateContainerStructure(false);
+					operation.run(monitor);
+				} else {
+					Files.copy(
+							resourceFile.toPath(), (new File(projectWhichWantToCopy.getLocation().toOSString()
+									+ File.separator + resourceFile.getName())).toPath(),
+							StandardCopyOption.REPLACE_EXISTING);
+				}
+			}
+		} catch (InvocationTargetException e) {
+			log.error("InvocationTargetException exception while importing", e);
+		} catch (InterruptedException e) {
+			log.error("InterruptedException exception while importing", e);
+		} catch (URISyntaxException e) {
+			log.error("URISyntaxException exception while importing", e);
+		} catch (CoreException e) {
+			log.error("CoreException exception while importing", e);
+		} catch (IOException e) {
+			log.error("IOException exception while importing", e);
+		}
 	}
 
 	class FilePathComparator implements Comparator {
@@ -1289,51 +1443,10 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 				operation.setCreateContainerStructure(false);
 				operation.run(monitor);
 			} else if (copyFiles && importSource != null && project.hasNature(MAVEN_MULTI_MODULE_NATURE)) {
-				List filesToImport = FileSystemStructureProvider.INSTANCE.getChildren(importSource);
-				for (Object resource : filesToImport) {
-					File resourceFile = (File) resource;
-
-					if (resourceFile.isDirectory()) {
-						IProjectDescription newProjectDescription = project.getWorkspace()
-								.newProjectDescription(resourceFile.getName());
-						String subProject = project.getLocation().toOSString() + File.separator
-								+ resourceFile.getName();
-						URI subProjectURI = new URI(subProject);
-						newProjectDescription.setLocationURI(subProjectURI);
-						File[] subProjectList = resourceFile.listFiles();
-						for (File file : subProjectList) {
-							if (file.getName().equals(".project")) {
-								String[] natureIds = { readProjectNatureFromProjectFile(file) };
-								newProjectDescription.setNatureIds(natureIds);
-								break;
-							}
-						}
-						IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
-						IProject subIProject = root.getProject(resourceFile.getName());
-						subIProject.create(newProjectDescription, new NullProgressMonitor());
-						subIProject.open(new NullProgressMonitor());
-
-						List subImportFiles = FileSystemStructureProvider.INSTANCE.getChildren(resourceFile);
-						ImportOperation operation = new ImportOperation(subIProject.getFullPath(), resourceFile,
-								FileSystemStructureProvider.INSTANCE, this, subImportFiles);
-						operation.setContext(getShell());
-						operation.setOverwriteResources(true);
-						operation.setCreateContainerStructure(false);
-						operation.run(monitor);
-					} else {
-						Files.copy(resourceFile.toPath(),
-								(new File(project.getLocation().toOSString() + File.separator + resourceFile.getName()))
-										.toPath(),
-								StandardCopyOption.REPLACE_EXISTING);
-					}
-				}
+				createProjectsInWorkspaceReadingNature(importSource, project, monitor);
 			}
-		} catch (URISyntaxException e) {
-			log.error("URISyntaxException exception while importing", e);
 		} catch (CoreException e) {
 			log.error("CoreException exception while importing", e);
-		} catch (IOException e) {
-			log.error("IOException exception while importing", e);
 		}
 
 		return true;

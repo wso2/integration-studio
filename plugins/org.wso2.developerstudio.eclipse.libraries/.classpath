@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="lib/jarchivelib-0.3.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/slf4j-api-1.7.25.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/slf4j-simple-1.7.25.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/json-path-2.4.0.jar"/>

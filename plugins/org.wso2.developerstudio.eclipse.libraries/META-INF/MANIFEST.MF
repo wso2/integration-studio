@@ -531,6 +531,7 @@ Export-Package: com.damnhandy.uri.template;version="1.1.7.wso2v1",
  org.milyn.scribe.register;version="1.4.0.wso2v1";uses:="new org.milyn.scribe.register",
  org.osgi.framework;version="1.3.0",
  org.quartz;version="2.1.1";uses:="org.quartz.utils,org.quartz.spi,org.quartz.impl.matchers",
+ org.rauschig.jarchivelib,
  org.slf4j,
  org.slf4j.impl,
  org.springframework.beans.factory.support;version="3.2.9.wso2v1";
@@ -792,7 +793,8 @@ Bundle-ClassPath: .,
  lib/commons-lang_2.6.0.wso2v1.jar,
  lib/json-path-2.4.0.jar,
  lib/slf4j-simple-1.7.25.jar,
- lib/slf4j-api-1.7.25.jar
+ lib/slf4j-api-1.7.25.jar,
+ lib/jarchivelib-0.3.0.jar
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.jdt.ui,

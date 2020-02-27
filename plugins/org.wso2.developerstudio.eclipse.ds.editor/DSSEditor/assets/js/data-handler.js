@@ -171,6 +171,11 @@ $(document).ready(function ($) {
         $("#q-addedit-title").text("Add Query");
         $("#q-query-id-input").prop('disabled', false);
 
+        $("#q-im-return-gk-checkbox").prop('checked', false);
+        $("#q-im-return-ukc-checkbox").prop('checked', false);
+        $("#q-im-keycolumns-inputgroup").toggle(false);
+        $("#q-im-keycolumns-input").val("");
+
         window.params = [];
         resetInputMappingSection();
         clearQueryAdvancedProperties();
@@ -590,6 +595,14 @@ $(document).ready(function ($) {
 
         $("#q-im-addedit-title").text("Add Input Mapping");
         $("#q-input-mapping-modal").modal("show");
+    });
+
+    $('#q-im-return-gk-checkbox').change(function () {
+        if (this.checked) {
+            $("#q-im-keycolumns-inputgroup").toggle(true);
+        } else {
+            $("#q-im-keycolumns-inputgroup").toggle(false);
+        }
     });
 
     /** End of Event handlers **/

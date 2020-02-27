@@ -1,5 +1,5 @@
 <data name="RESTDataService" serviceNamespace="http://ws.wso2.org/dataservice/samples/json_sample" transports="http https">
-   <description/>
+   <description>Exposing the data service as a REST service.</description>
    <config id="default">
       <property name="driverClassName">com.mysql.jdbc.Driver</property>
       <property name="url">jdbc:mysql://localhost:3306/school_db</property>

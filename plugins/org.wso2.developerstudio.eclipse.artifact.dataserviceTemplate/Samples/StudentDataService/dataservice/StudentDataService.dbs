@@ -1,5 +1,5 @@
 <data name="StudentDataService" serviceGroup="" serviceNamespace="">
-    <description/>
+    <description>Exposing the data service as a SOAP service.</description>
     <config id="StudentsDatasource">
         <property name="org.wso2.ws.dataservice.user">user</property>
         <property name="org.wso2.ws.dataservice.password">password</property>

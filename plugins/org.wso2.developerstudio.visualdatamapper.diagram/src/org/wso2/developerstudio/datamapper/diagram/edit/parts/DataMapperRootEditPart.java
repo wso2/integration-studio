@@ -18,6 +18,7 @@ package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
@@ -32,15 +33,16 @@ import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.StringRequestEntity;
 
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.draw2d.ActionEvent;
-import org.eclipse.draw2d.ActionListener;
-import org.eclipse.draw2d.Button;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.ImageFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.LineBorder;
-import org.eclipse.draw2d.RoundedRectangle;
+import org.eclipse.draw2d.MouseEvent;
+import org.eclipse.draw2d.MouseListener;
+import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.common.util.EList;
@@ -54,9 +56,11 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 import org.eclipse.gmf.tooling.runtime.update.UpdateDiagramCommand;
 import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.jface.dialogs.ProgressMonitorDialog;
+import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
-
 import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.DataMapperLink;
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
@@ -64,6 +68,7 @@ import org.wso2.developerstudio.datamapper.InNode;
 import org.wso2.developerstudio.datamapper.OutNode;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.Activator;
+import org.wso2.developerstudio.datamapper.diagram.custom.util.ImageHolder;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.DataMapperRootCanonicalEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.DataMapperRootItemSemanticEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry;
@@ -86,12 +91,6 @@ public class DataMapperRootEditPart extends DiagramEditPart {
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     public final static String MODEL_ID = "DataMapper"; //$NON-NLS-1$
-    
-    private Label aiDataMapperLabel;
-
-    private Button aiDataMapperLabelBtn;
-
-    private RoundedRectangle aiDataMapperLabelBox;
     
     private static final String URL_OF_AI_DATA_MAPPER_SERVER = "https://ai-data-mapper.wso2.com/uploader";
     
@@ -131,7 +130,7 @@ public class DataMapperRootEditPart extends DiagramEditPart {
         figure.setBackgroundColor(new Color(null, 246, 255, 255));
         figure.setOpaque(true);
 
-        aiDataMapperLabelBox = new RoundedRectangle();
+        RectangleFigure aiDataMapperLabelBox = new RectangleFigure();
         aiDataMapperLabelBox.setBackgroundColor(new Color(null, 232, 234, 237));
         aiDataMapperLabelBox.setLocation(new Point(0, -400));
         aiDataMapperLabelBox.setSize(new Dimension(480, 40));
@@ -139,18 +138,21 @@ public class DataMapperRootEditPart extends DiagramEditPart {
         border.setColor(new Color(null, 245, 246, 247));
         aiDataMapperLabelBox.setBorder(border);
 
-        aiDataMapperLabel = new Label("AI generated mappings available.");
+        Label aiDataMapperLabel = new Label("AI generated data mappings available.");
         aiDataMapperLabel.setSize(new Dimension(600, 40));
         aiDataMapperLabel.setLocation(new Point(-130, -400));
 
-        aiDataMapperLabelBtn = new Button("Apply");
-        aiDataMapperLabelBtn.setSize(new Dimension(100, 30));
-        aiDataMapperLabelBtn.setBackgroundColor(new Color(null, 11, 164, 226));
-        aiDataMapperLabelBtn.setLocation(new Point(360, -398));
-        aiDataMapperLabelBtn.addActionListener(new ActionListener() {
+        Image applyBtnImage = ImageHolder.getInstance().getAddAIDataMappingImage();
+        ImageFigure aiDataMapperLabelBtn = new ImageFigure(applyBtnImage);
+        aiDataMapperLabelBtn.setSize(new Dimension(200, 30));
+        aiDataMapperLabelBtn.setLocation(new Point(300, -395));
+        aiDataMapperLabelBtn.addMouseListener(new MouseListener() {
             @Override
-            public void actionPerformed(ActionEvent event) {
+            public void mouseReleased(MouseEvent me) {
+            }
 
+            @Override
+            public void mousePressed(MouseEvent me) {
                 try {
                     drawMappings();
                 } catch (ConnectTimeoutException e) {
@@ -159,11 +161,14 @@ public class DataMapperRootEditPart extends DiagramEditPart {
                 } catch (SocketTimeoutException e) {
                     log.error("Generation of AI Mapping timed out", e);
                     popupDialogBox(IStatus.ERROR, "Mapping generation takes too long.");
-                } catch (IOException e) {
+                } catch (IOException | InvocationTargetException | InterruptedException e) {
                     log.error("Error getting mapping suggestions from the server", e);
                     popupDialogBox(IStatus.ERROR, e.getMessage());
                 }
+            }
 
+            @Override
+            public void mouseDoubleClicked(MouseEvent me) {
             }
         });
 
@@ -171,6 +176,7 @@ public class DataMapperRootEditPart extends DiagramEditPart {
         figure.add(aiDataMapperLabel);
         figure.add(aiDataMapperLabelBtn);
 
+        // This block checks whether the input and output empty and make ai data mapping visible accordingly
         DataMapperRootImpl datamapperRoot = (DataMapperRootImpl) this.getDiagramView().getDiagram().getElement();
         int inputSize = datamapperRoot.getInput().getTreeNode().size();
         int outputSize = datamapperRoot.getOutput().getTreeNode().size();
@@ -183,29 +189,136 @@ public class DataMapperRootEditPart extends DiagramEditPart {
             aiDataMapperLabel.setVisible(false);
             aiDataMapperLabelBox.setVisible(false);
         }
-        return figure;            
+        return figure;
+    }
+    
+    /**
+     * This class connects to the ai datamapper server to obtain generated mappings.
+     */
+    class DataMapperServiceCaller implements IRunnableWithProgress {
+        List<String> mappings;
+        String inputContent;
+        String outputContent;
+        IOException error = null;
+        IProgressMonitor monitor;
+
+        /**
+         * This is the constructor of the DataMapperServiceCaller class.
+         * 
+         * @param inputContent the input message to be mapped
+         * @param outputContent the output message to be mapped
+         */
+        public DataMapperServiceCaller(String inputContent, String outputContent) {
+            this.inputContent = inputContent;
+            this.outputContent = outputContent;
+        }
+        
+        /**
+         * This is the getter method of IOException.
+         * 
+         * @return exception caused while connecting to the server
+         */
+        public IOException getError() {
+            return error;
+        }
+
+        /**
+         * This is the getter method of mappings.
+         * 
+         * @return mappings received from the server.
+         */
+        public List<String> getMappings() {
+            return mappings;
+        }
+
+        /**
+         * This method gets AI generated mapping suggestions from the server.
+         * 
+         * @param inputSchema schema of the input message
+         * @param outputSchema schema of the output message
+         * @return arrayList with mapping suggestions
+         * @throws HttpException exception related to connecting to the service
+         * @throws IOException exceptions related getting/sending data to the service.
+         */
+        public List<String> getMappingsFromTheServer(String inputSchema, String outputSchema)
+                throws HttpException, IOException {
+            HttpURLConnection connection = null;
+
+            // Create one set of schemas
+            JSONArray schemas = new JSONArray();
+            schemas.put(inputSchema);
+            schemas.put(outputSchema);
+
+            String schemasToSend = schemas.toString();
+            StringRequestEntity requestEntity = new StringRequestEntity(schemasToSend, "application/json", "UTF-8");
+            final HttpClient httpClient = new HttpClient();
+            httpClient.getHttpConnectionManager().getParams().setConnectionTimeout(2000);
+            httpClient.getHttpConnectionManager().getParams().setSoTimeout(4000);
+            PostMethod postMethod = new PostMethod(URL_OF_AI_DATA_MAPPER_SERVER);
+            postMethod.setRequestEntity(requestEntity);
+            int statusCode = httpClient.executeMethod(postMethod);
+            String outString = postMethod.getResponseBodyAsString();
+            return new ArrayList<String>(Arrays.asList(outString.split("#")));
+        }
+
+        @Override
+        public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+            monitor.beginTask("Generating AI based mappings", 4);
+            monitor.worked(3);
+            this.monitor = monitor;
+            try {
+                mappings = getMappingsFromTheServer(inputContent, outputContent);
+            } catch (IOException e) {
+                error = e;
+            }
+            monitor.done();
+        }
+
+        /**
+         * This is the getter method of monitor.
+         * 
+         * @return progress monitor worked during the execution of operation
+         */
+        public IProgressMonitor getMonitor() {
+            return monitor;
+        }
     }
     
     /**
      * This method draws datamapper configurations automatically.
      * 
-     * @throws HttpException exceptions from getMappings method
-     * @throws IOException exceptions from getMappings method
+     * @throws InterruptedException 
+     * @throws InvocationTargetException 
+     * @throws IOException 
+     * @throws Exception 
      */
-    public void drawMappings() throws HttpException, IOException {
+    public void drawMappings() throws InvocationTargetException, InterruptedException, IOException {
         DataMapperRootImpl datamapperRoot = (DataMapperRootImpl) this.getDiagramView().getDiagram().getElement();
-        
+
         // Get input and output schemas
-        String inputContent = getSchema(datamapperRoot, "input");
-        String outputContent = getSchema(datamapperRoot, "output");
+        final String inputContent = getSchema(datamapperRoot, "input");
+        final String outputContent = getSchema(datamapperRoot, "output");
+
+        DataMapperServiceCaller dataMapperServiceCaller = new DataMapperServiceCaller(inputContent, outputContent);
+        ProgressMonitorDialog progressDialog = new ProgressMonitorDialog(Display.getDefault().getActiveShell());
+        progressDialog.run(true, true, dataMapperServiceCaller);
         
-        List<String> mappings = getMappings(inputContent, outputContent);
+        // Throws any error while connecting to the ai datamapper server. 
+        if (dataMapperServiceCaller.getError() != null) {
+            throw dataMapperServiceCaller.getError();
+        }
+
+        // Check if user has canceled mapping generation.
+        if (dataMapperServiceCaller.getMonitor().isCanceled()) {
+            return;
+        }
         
+        List<String> mappings = dataMapperServiceCaller.getMappings();
         EList<TreeNode> inputTreeNodesList = ((DataMapperRoot) datamapperRoot).getInput().getTreeNode();
         EList<TreeNode> outputTreeNodesList = ((DataMapperRoot) datamapperRoot).getOutput().getTreeNode();
         int numberOfMappingSuggestions = mappings.size() / 4;
 
-        // Checking whether any mapping suggestions exists 
+        // Checking whether any mapping suggestions exists
         if (numberOfMappingSuggestions > 0) {
             for (int i = 0; i < numberOfMappingSuggestions; i++) {
                 final String attributeNameOfInputNode = mappings.get(i * 4);
@@ -313,36 +426,7 @@ public class DataMapperRootEditPart extends DiagramEditPart {
             content = EMPTY_STRING;
         }
         return content;
-    }
-    
-    /**
-     * This method gets AI generated mapping suggestions from the server.
-     * 
-     * @param inputSchema schema of the input message
-     * @param outputSchema schema of the output message
-     * @return arrayList with mapping suggestions
-     * @throws HttpException exception related to connecting to the service
-     * @throws IOException exceptions related getting/sending data to the service.
-     */
-    public List<String> getMappings(String inputSchema, String outputSchema) throws HttpException, IOException {
-        HttpURLConnection connection = null;  
-        
-        // Create one set of schemas
-        JSONArray schemas = new JSONArray();
-        schemas.put(inputSchema);
-        schemas.put(outputSchema);
-        
-        String schemasToSend = schemas.toString();
-        StringRequestEntity requestEntity = new StringRequestEntity(schemasToSend, "application/json", "UTF-8");
-        final HttpClient httpClient = new HttpClient();
-        httpClient.getHttpConnectionManager().getParams().setConnectionTimeout(2000);
-        httpClient.getHttpConnectionManager().getParams().setSoTimeout(4000);
-        PostMethod postMethod = new PostMethod(URL_OF_AI_DATA_MAPPER_SERVER);
-        postMethod.setRequestEntity(requestEntity);
-        int statusCode = httpClient.executeMethod(postMethod);
-        String outString = postMethod.getResponseBodyAsString();
-        return new ArrayList<String>(Arrays.asList(outString.split("#")));
-    }    
+    } 
     
     /**
      * This method shows a pop up dialog box.

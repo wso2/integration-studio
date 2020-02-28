@@ -36,6 +36,10 @@ JDK_DISTRIBUTION_PATH_LINUX=$JDK_DISTRIBUTION_PATH/jdk-linux
 JDK_DISTRIBUTION_PATH_WINDOWS=$JDK_DISTRIBUTION_PATH/jdk-windows
 JDK_DISTRIBUTION_PATH_MACOS=$JDK_DISTRIBUTION_PATH/jdk-macos
 
+# Micro Integrator configurations 
+DEPLOYMENT_FILE=deployment.toml
+DEPLOYMENT_FILE_PATH=resources/$DEPLOYMENT_FILE
+
 # Create temp directory and unzip created packages
 mkdir -p $PRODUCT_PATH_LINUX_86
 mkdir -p $PRODUCT_PATH_LINUX_64
@@ -62,6 +66,13 @@ mv $PRODUCT_PATH_LINUX_64/runtime/wso2mi-$PRODUCT_VERSION $PRODUCT_PATH_LINUX_64
 mv $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse/runtime/wso2mi-$PRODUCT_VERSION $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse/runtime/microesb
 mv $PRODUCT_PATH_WIN_86/runtime/wso2mi-$PRODUCT_VERSION $PRODUCT_PATH_WIN_86/runtime/microesb
 mv $PRODUCT_PATH_WIN_64/runtime/wso2mi-$PRODUCT_VERSION $PRODUCT_PATH_WIN_64/runtime/microesb
+
+# Replace "deployment.toml" in Micro Integrator
+cp -f $DEPLOYMENT_FILE_PATH $PRODUCT_PATH_LINUX_86/runtime/microesb/conf
+cp -f $DEPLOYMENT_FILE_PATH $PRODUCT_PATH_LINUX_64/runtime/microesb/conf
+cp -f $DEPLOYMENT_FILE_PATH $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse/runtime/microesb/conf
+cp -f $DEPLOYMENT_FILE_PATH $PRODUCT_PATH_WIN_86/runtime/microesb/conf
+cp -f $DEPLOYMENT_FILE_PATH $PRODUCT_PATH_WIN_64/runtime/microesb/conf
 
 # Clean up existing packages
 rm -rf $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-linux.gtk.x86.tar.gz

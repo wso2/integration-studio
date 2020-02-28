@@ -4,9 +4,9 @@ package org.wso2.developerstudio.datamapper.impl;
 
 import java.util.Collection;
 
-import org.eclipse.draw2d.Button;
+import org.eclipse.draw2d.ImageFigure;
 import org.eclipse.draw2d.Label;
-import org.eclipse.draw2d.RoundedRectangle;
+import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -66,9 +66,9 @@ public class DataMapperRootImpl extends EObjectImpl implements DataMapperRoot {
 	 */
 	protected EList<Operator> operators;
 	
-	private Button aiDataMapperButton;
+	private ImageFigure aiDataMapperButton;
 	private Label aiDataMapperLabel;
-	private RoundedRectangle aiDataMapperLabelBox;
+	private RectangleFigure aiDataMapperLabelBox;
 
 	/**
 	 * Setting reference for the AI DataMapper Button.
@@ -76,7 +76,7 @@ public class DataMapperRootImpl extends EObjectImpl implements DataMapperRoot {
 	 * @param aiDataMapperButton
 	 *            reference to the AI Datamapper Button
 	 */
-	public void setAiDataMapperButton(Button aiDataMapperButton) {
+	public void setAiDataMapperButton(ImageFigure aiDataMapperButton) {
 		this.aiDataMapperButton = aiDataMapperButton;
 	}
 
@@ -96,7 +96,7 @@ public class DataMapperRootImpl extends EObjectImpl implements DataMapperRoot {
 	 * @param aiDataMapperLabelBox
 	 *            reference to the AI Datamapper bar
 	 */
-	public void setAiDataMapperLabelBox(RoundedRectangle aiDataMapperLabelBox) {
+	public void setAiDataMapperLabelBox(RectangleFigure aiDataMapperLabelBox) {
 		this.aiDataMapperLabelBox = aiDataMapperLabelBox;
 	}
 

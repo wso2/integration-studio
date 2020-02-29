@@ -141,9 +141,15 @@ function addInputMapping(root) {
     paramElement.setAttribute("name", $("#im-mappingname-input").val());
     paramElement.setAttribute("paramType", $("#q-im-paramtype-select").val());
     paramElement.setAttribute("sqlType", $("#q-im-sqltype-select").val());
-    paramElement.setAttribute("defaultValue", $("#im-defaultvalue-input").val());
+    let defaultValueVal = $("#im-defaultvalue-input").val();
+    if ($.trim(defaultValueVal) != "") {
+    	paramElement.setAttribute("defaultValue", defaultValueVal);
+    }
     paramElement.setAttribute("type", $("#q-im-inout-select").val());
-    paramElement.setAttribute("ordinal", $("#im-ordinal-input").val());
+    let ordinalVal = $("#im-ordinal-input").val();
+    if ($.trim(ordinalVal) != "") {
+    	paramElement.setAttribute("ordinal", ordinalVal);
+    }
 
     // Append validators
     if (window.validators.length !== 0 || window.validators !== undefined || window.validators !== null) {

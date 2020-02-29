@@ -969,16 +969,24 @@ function saveResultToQueryElement(result, root) {
 	
 	if (outputType == 'xml') {
 		let elementName = $('#om-grouped-by-element-input').val();
-		result.setAttribute("element", elementName);
+		if ($.trim(elementName) != "") {
+			result.setAttribute("element", elementName);
+		}
 		
 		let rowName = $('#om-row-name-input').val();
-		result.setAttribute("rowName", rowName);
+		if ($.trim(rowName) != "") {
+			result.setAttribute("rowName", rowName);
+		}
 		
 		let defaultNamespace = $('#om-row-namespace-input').val();
-		result.setAttribute("defaultNamespace", defaultNamespace);
+		if ($.trim(defaultNamespace) != "") {
+			result.setAttribute("defaultNamespace", defaultNamespace);
+		}
 		
 		let xsltPath = $('#om-xslt-path-input').val();
-		result.setAttribute("xsltPath", xsltPath);
+		if ($.trim(xsltPath) != "") {
+			result.setAttribute("xsltPath", xsltPath);
+		}
 		
 		result.removeAttribute("rdfBaseURI");
 		
@@ -987,13 +995,19 @@ function saveResultToQueryElement(result, root) {
 		result.removeAttribute("rowName");
 		
 		let defaultNamespace = $('#om-row-namespace-input').val();
-		result.setAttribute("defaultNamespace", defaultNamespace);
+		if ($.trim(defaultNamespace) != "") {
+			result.setAttribute("defaultNamespace", defaultNamespace);
+		}
 		
 		let xsltPath = $('#om-xslt-path-input').val();
-		result.setAttribute("xsltPath", xsltPath);
+		if ($.trim(xsltPath) != "") {
+			result.setAttribute("xsltPath", xsltPath);
+		}
 		
 		let rdfBaseURI = $('#om-rdf-baseuri-input').val();
-		result.setAttribute("rdfBaseURI", rdfBaseURI);
+		if ($.trim(rdfBaseURI) != "") {
+			result.setAttribute("rdfBaseURI", rdfBaseURI);
+		}
 		
 		result.setAttribute("outputType", "rdf");
 		
@@ -1019,7 +1033,7 @@ function saveResultToQueryElement(result, root) {
 	return result;
 }
 
-function generateOutputMapping(root) {
+function generateOutputMapping(root, portValue) {
 	let result = null;
 	let query = $('#q-sql-query-input').val();
 	if ($.trim(query) == "") {
@@ -1036,30 +1050,72 @@ function generateOutputMapping(root) {
 	
 	$('#q-output-mapping-table').find('tbody').find('tr').detach();
 	
+	let generated = false;
+	
 	if (mappingValues.length == 1) {
 		if ($.trim(mappingValues[0]) == "*") {
-			return null;
+			generated = true;
+			let datasourceName = $('#q-datasource-select').val();
+			let configs = root.getElementsByTagName("config");
+			let connectionUrl = "";
+			let username = "";
+			let password = "";
+			
+			if (configs.length > 0) {
+				for (let i = 0, len = configs.length; i < len; i++) {
+					let identifier = configs[i].attributes.getNamedItem("id").value;
+					if (identifier == datasourceName) {
+						let properties = configs[i].getElementsByTagName("property");
+						$.each(properties, function (j, property) {
+							let name = property.attributes.getNamedItem("name").value.toLowerCase();
+							if ($.trim(name).includes("user")) {
+								username = property.textContent;
+							} else if ($.trim(name).includes("password")) {
+								password = property.textContent;
+							} else if ($.trim(name).includes("protocol") || $.trim(name).includes("url")) {
+								connectionUrl = property.textContent;
+							}
+						});
+						break;
+					}
+				}
+			}
+			let credentials = username + ":" + password;
+			if (portValue == null || portValue == undefined) {
+				portValue = "7774";
+			}
+			url = "http://127.0.0.1:" + portValue + "/dsseditor/service";
+			result =  getMappings(connectionUrl, query, credentials, url, root);
 		}
 	}
 	
-	if (mappingValues.length > 0) {
+	if (!generated && mappingValues.length > 0) {
 		result = root.createElement("result");
 		
 		$.each(mappingValues, function (i, val) {
 			let name = $.trim(val);
-			
-			let element = root.createElement("element");
-			element.setAttribute("name", name);
-			element.setAttribute("column", name);
-			element.setAttribute("xsdType", "string");
-			result.appendChild(element);
-			
-			let row = "<tr><td>" + name + "</td><td>column</td><td>" + name + "</td><td>element</td><td>N/A</td><td>string</td><td class=\"text-center\"><i class=\"fa fa-edit\"></i><i class=\"fa fa-trash\"></i></td></tr>";
-			$('#q-output-mapping-table > tbody').append(row);
+			result = addGeneratedMappingsToRoot(root, result, name);
 		});
 	}
 	
 	return result;
+}
+
+function addGeneratedMappingsToRoot(root, result, name) {
+	let element = root.createElement("element");
+	element.setAttribute("name", name);
+	element.setAttribute("column", name);
+	element.setAttribute("xsdType", "string");
+	result.appendChild(element);
+	
+	addGeneratedMappingsToTable(name);
+	
+	return result;
+}
+
+function addGeneratedMappingsToTable(name) {
+	let row = "<tr><td>" + name + "</td><td>column</td><td>" + name + "</td><td>element</td><td>N/A</td><td>string</td><td class=\"text-center\"><i class=\"fa fa-edit\"></i><i class=\"fa fa-trash\"></i></td></tr>";
+	$('#q-output-mapping-table > tbody').append(row);
 }
 
 /**

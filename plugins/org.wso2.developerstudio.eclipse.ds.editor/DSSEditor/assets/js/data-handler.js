@@ -183,6 +183,9 @@ $(document).ready(function ($) {
         window.queryElement = root.createElement("query");
         processQueryDetails(root, window.queryElement);
         saveInputMappingsToQueryElement(window.queryElement);
+        if (window.ResultElement != null && window.ResultElement != undefined) {
+        	resultElement = window.ResultElement;
+        }
         if (resultElement == undefined) {
         	resultElement = root.createElement("result");
         }
@@ -321,6 +324,7 @@ $(document).ready(function ($) {
     });
 
     $('#query-add-close-btn').click(function() {
+        window.ResultElement = null;
         clearAddQueryForm();
         $("#q-query-add-btn").toggle(true);
         $("#q-queries-table").toggle(true);
@@ -336,7 +340,7 @@ $(document).ready(function ($) {
     
     //generate output mapping
     $('#q-output_mapping-gen-btn').click(function (e) {
-    	let rslt = generateOutputMapping(root);
+    	let rslt = generateOutputMapping(root, portValue);
     	if (rslt != null) {
     		resultElement = rslt;
     	}

@@ -53,25 +53,27 @@ function showDSTableNotification(type, message, interval) {
  * @param root Document object.
  */
 function populateDataSources(root) {
-    let dsConfigs = root.getElementsByTagName("config");
+	if (typeof root == "object") {
+		let dsConfigs = root.getElementsByTagName("config");
 
-    if (dsConfigs.length == 0 || dsConfigs === undefined || dsConfigs === null)  {
-        $("#ds-datasources-table").hide();
-        $("#ds-table-notification-alert-holder").show();
-        showDSTableNotification("info", "No data sources available. Click 'Add New' to create a new data source.", 0);
-        return;
-    }
+	    if (dsConfigs.length == 0 || dsConfigs === undefined || dsConfigs === null)  {
+	        $("#ds-datasources-table").hide();
+	        $("#ds-table-notification-alert-holder").show();
+	        showDSTableNotification("info", "No data sources available. Click 'Add New' to create a new data source.", 0);
+	        return;
+	    }
 
-    $("#ds-datasources-table").show();
-    $("#ds-table-notification-alert-holder").hide();
-    $("#ds-datasources-table tbody tr").remove();
-    for (let i = 0, len = dsConfigs.length; i < len; i++) {
-        let dsName = dsConfigs[i].id;
-        let markup = "<tr" + " data-id='" + dsName + "'" + "><td>" + dsName + "</td><td class='text-center'>" +
-            "<i class='fa fa-edit'></i><i class='fa fa-trash'></i></td></tr>";
+	    $("#ds-datasources-table").show();
+	    $("#ds-table-notification-alert-holder").hide();
+	    $("#ds-datasources-table tbody tr").remove();
+	    for (let i = 0, len = dsConfigs.length; i < len; i++) {
+	        let dsName = dsConfigs[i].id;
+	        let markup = "<tr" + " data-id='" + dsName + "'" + "><td>" + dsName + "</td><td class='text-center'>" +
+	            "<i class='fa fa-edit'></i><i class='fa fa-trash'></i></td></tr>";
 
-        $("#ds-datasources-table tbody").append(markup);
-    }
+	        $("#ds-datasources-table tbody").append(markup);
+	    }
+	}
 }
 
 /**
@@ -338,7 +340,7 @@ function processDSInputData(root, data, deleteIfExists) {
         properties.push(createTextNode(root, createPropertyNode(root, "carbon_datasource_name"), data['ds-ds-name-input']));
     }
 
-    if (dynamicAuthClass !== "" || dynamicAuthClass !== undefined) {
+    if (dynamicAuthClass !== "" && dynamicAuthClass !== undefined) {
         properties.push(createTextNode(root, createPropertyNode(root, "dynamicUserAuthClass"), dynamicAuthClass));
     }
 
@@ -347,29 +349,32 @@ function processDSInputData(root, data, deleteIfExists) {
         configElement.appendChild(properties[i]);
     }
 
-    // Process dynamic auth mappings
-    let dynamicAuthMappingElement = createPropertyNode(root, "dynamicUserAuthMapping");
-    let configurationElement = root.createElement("configuration");
-
     let rows = $('#ds-dynamic-auth-usermapping-table').find('tr');
-    for (let i = 1, len = rows.length; i < len; i++) {
-        let entryElement = root.createElement("entry");
-        entryElement.setAttribute("request", rows[i].cells[0].firstChild.value);
+    
+    if (rows.length > 1) {
+    	// Process dynamic auth mappings
+        let dynamicAuthMappingElement = createPropertyNode(root, "dynamicUserAuthMapping");
+        let configurationElement = root.createElement("configuration");
 
-        let usernameElement = root.createElement("username");
-        createTextNode(root, usernameElement, rows[i].cells[1].firstChild.value);
+        for (let i = 1, len = rows.length; i < len; i++) {
+            let entryElement = root.createElement("entry");
+            entryElement.setAttribute("request", rows[i].cells[0].firstChild.value);
 
-        let passwordElement = root.createElement("password");
-        createTextNode(root, passwordElement, rows[i].cells[2].firstChild.value);
+            let usernameElement = root.createElement("username");
+            createTextNode(root, usernameElement, rows[i].cells[1].firstChild.value);
 
-        entryElement.appendChild(usernameElement);
-        entryElement.appendChild(passwordElement);
+            let passwordElement = root.createElement("password");
+            createTextNode(root, passwordElement, rows[i].cells[2].firstChild.value);
 
-        configurationElement.appendChild(entryElement);
+            entryElement.appendChild(usernameElement);
+            entryElement.appendChild(passwordElement);
+
+            configurationElement.appendChild(entryElement);
+        }
+
+        dynamicAuthMappingElement.appendChild(configurationElement);
+        configElement.appendChild(dynamicAuthMappingElement);
     }
-
-    dynamicAuthMappingElement.appendChild(configurationElement);
-    configElement.appendChild(dynamicAuthMappingElement);
 
     // OData enabled
     configElement.setAttribute("enableOData", $('#ds-enable-odata-check').is(":checked"));
@@ -452,7 +457,7 @@ function testDBConnection(connectionDetails, url) {
     });
 }
 
-function getMappings(connectionUrl, sqlQuery, credentials, url) {
+function getMappings(connectionUrl, sqlQuery, credentials, url, root, result) {
     // Synchronous request
     let response = $.ajax({
         url: url,
@@ -460,10 +465,21 @@ function getMappings(connectionUrl, sqlQuery, credentials, url) {
         headers: {"x-operation-type":HEADER_VALUE_GENERATE_MAPPINGS},
         data: {conurl: connectionUrl, query: sqlQuery, credentials: credentials},
         success: function (msg, status, jqXHR) {
-
+        	msg = msg.replace("\n", " ");
+        	let mappings = msg.split(",");
+        	if (mappings.length > 0) {
+        		result = root.createElement("result");
+        		
+        		$.each(mappings, function (i, val) {
+        			let name = $.trim(val);
+        			if (name != "") {
+        				result = addGeneratedMappingsToRoot(root, result, name);
+        			}
+        		});
+        		window.ResultElement = result;
+        	}
         },
         error: function (msg, status, jqXHR) {
-
         }
     });
 }

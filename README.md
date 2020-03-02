@@ -1,7 +1,10 @@
+![WSO2 Integration Studio](gh-docs/images/integration-studio-logo.png?raw=true)
+
 [![Build Status](https://travis-ci.org/wso2/devstudio-tooling-ei.svg?branch=master)](https://travis-ci.org/wso2/devstudio-tooling-ei)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/wso2/devstudio-tooling-ei/blob/master/LICENSE)
 [<img src="https://img.shields.io/badge/Slack-@wso2--ei-blue">](https://ei-slack.wso2.com/)
 [![Twitter](https://img.shields.io/twitter/follow/wso2.svg?style=social&label=Follow)](https://twitter.com/intent/follow?screen_name=wso2)
+
 
 # WSO2 Integration Studio
 

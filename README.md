@@ -1,3 +1,5 @@
+![WSO2 Integration Studio](gh-docs/images/integration-studio-logo.png?raw=true)
+
 # Devstudio-tooling-ei
 
 WSO2 EI tooling provides capabilities of a complete eclipse-based development environment for the EI projects and artifact creation.

@@ -8,7 +8,8 @@
 
 # WSO2 Integration Studio
 
-WSO2 Integration Studio is a development environment used to design your integration scenarios and develop them. It can be used to develop services, features and artifacts as well as manage their links and dependencies through a simplified graphical editor. 
+
+WSO2 Integration Studio is a development environment used to design your integration scenarios and develop them. It can be used to develop services, features, and artifacts as well as manage their links and dependencies through a simplified graphical editor. 
 It provides inbuilt debugging and testing capabilities to troubleshoot and identify the integration aspects while creating the artifacts.
 Furthermore, WSO2 Integration Studio offers different deployment approaches, including CAR (Carbon Application Archive) deployment, docker deployment, kubernetes deployment, WSO2 integration cloud deployment, etc., to cater your CI/CD (Continuous Integration/Continuous Development) requirements.
 
@@ -35,6 +36,25 @@ Furthermore, WSO2 Integration Studio offers different deployment approaches, inc
 
 ## Why WSO2 Integration Studio
 
+**Run the complete Development Lifecycle**
+You can use WSO2 Integration Studio to execute the complete development lifecycle of your integration solutions:
+1. **Create** the integration artifacts.
+2. **Build** and **test** the artifacts.
+3. **Debug** and **iterate** (improve the artifacts).
+4. **Publish** to production.
+
+**Graphical integration designing**
+Once you have created your integration project, you can simply drag-and-drop the required artifacts to the design canvas and update the configuration parameters for your environment.
+
+**Use Templates**
+WSO2 Integration Studio contains templates for the most common integration use cases, assisted by embedded help. You can reuse these templates for your own integration scenarios to reduce the development time.
+
+**Develop for both VMs and Containers**
+WSO2 Integration Studio is shipped with an embedded Micro Integrator server, which allows you to immediately deploy and test artifacts. Also, the tool contains comprehensive container support: You can create Kubernetes and Docker projects, which automatically generates the required container artifacts for your solution.
+
+**Continuous Integration and Continuous Deployment (CICD)**
+If you are deploying in a Kubernetes environment, the Kubernetes projects generated from WSO2 Integration Studio can be directly applied to your CICD workflow. The **EI-Kubernetes Operator** will then push the deployment into your Kubernetes environment.
+If you are deploying in a VM, you can generate a **CAR** file (with your integration artifacts) from WSO2 Integration Studio and push it to your CICD pipeline.
 
 ## Features
 

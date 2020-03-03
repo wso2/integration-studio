@@ -8,7 +8,13 @@
 
 # WSO2 Integration Studio
 
-WSO2 Integration Studio is a development environment used to design your integration scenarios and develop them. This can be used to develop services, features, and artifacts as well as manage their links and dependencies through a simplified graphical editor.
+
+WSO2 Integration Studio is a development environment used to design your integration scenarios and develop them. It can be used to develop services, features, and artifacts as well as manage their links and dependencies through a simplified graphical editor. 
+It provides inbuilt debugging and testing capabilities to troubleshoot and identify the integration aspects while creating the artifacts.
+Furthermore, WSO2 Integration Studio offers different deployment approaches, including CAR (Carbon Application Archive) deployment, docker deployment, kubernetes deployment, WSO2 integration cloud deployment, etc., to cater your CI/CD (Continuous Integration/Continuous Development) requirements.
+
+[![WSO2 Integration Studio](gh-docs/images/design-view-image.png?raw=true "WSO2 Integration Studio")](https://ei.docs.wso2.com/en/latest/micro-integrator/develop/WSO2-Integration-Studio/)
+
 
 [Installation](https://ei.docs.wso2.com/en/latest/micro-integrator/develop/installing-WSO2-Integration-Studio/) | 
 [Documentation](https://ei.docs.wso2.com/en/latest/micro-integrator/develop/intro-integration-development/) | 
@@ -52,19 +58,25 @@ If you are deploying in a VM, you can generate a **CAR** file (with your integra
 
 ## Features
 
-- **Graphical view**: Supports designing and development of the integration flow 
-- **Source view**: Represents the Synapse configuration of the integration flow
-- **Connector support**: Supports working with WSO2 connectors at [WSO2 Store](https://store.wso2.com/store/assets/esbconnector/list)
-- **Visual data mapping**: Maps input data formats to output data formats visually
-- **Data integration support**: Supports data service and data source artifact generation
-- **Business process support** : Supports BPEL workflow, human task, BPMN artifact generation
-- **Docker support**: Supports Docker image generation
-- **Kubernetes support**: Supports kubernetes deployment using [WSO2 EI Operator](https://github.com/wso2/k8s-ei-operator)
+- **Graphical View**: Supports designing and development of the integration flow 
+- **Source View**: Represents the Synapse configuration of the integration flow
+- **Properties View**: Allows configuring and customizing artifacts
+- **Pre-defined Projects**: Facilitates structuring integration artifacts
+- **Updater Tool**: Provides bug fixes and improvements as updates
+- **Connector Support**: Supports working with WSO2 connectors at [WSO2 Store](https://store.wso2.com/store/assets/esbconnector/list)
+- **Visual Data Mapping**: Maps input data formats to output data formats visually
+- **Data Integration Support**: Supports data service and data source artifact generation
+- **Business Process Support** : Supports BPEL workflow, human task, BPMN artifact generation
+- **Docker Support**: Supports Docker image generation
+- **Kubernetes Support**: Supports kubernetes deployment using [WSO2 EI Operator](https://github.com/wso2/k8s-ei-operator)
+- **WSO2 Integration Cloud Support**: Supports deploying artifacts to the integration cloud
 - **Synapse Testing Framework**: Allows testing the integration scenario with the Synapse Testing Framework
 - **Debugger**: Allows debugging the mediation flow
-- **WSO2 Server support**: Supports adding WSO2 ESB/EI servers as remote servers and WSO2 MI as the embedded server
+- **WSO2 Server Support**: Supports adding WSO2 ESB/EI servers as remote servers and WSO2 MI as the embedded server
 - **Embedded JDK**: Contains with an embedded JDK
 - **Embedded WSO2 Micro Integrator**: Contains with an embedded WSO2 Micro Integrator for testing the integration flow
+- **Integration Templates**: Pre-built integration templates to guide on boarding users
+- **REST Client**: Allows testing the integration scenarios
 
 
 ## Distributions

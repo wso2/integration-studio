@@ -173,6 +173,9 @@ function populateOueryOutputMappings(queryElement) {
 		//populate elements into the table		
 		if ($('#om-outputtype-select').val() != "json") {
 			let childNodes = resultElement[0].children;
+			if (childNodes == undefined) {
+				childNodes = resultElement[0].childNodes;
+			}
 			$.each(childNodes, function(index, ele) {
 				let nameVal;
 				let columnVal = "";
@@ -194,7 +197,7 @@ function populateOueryOutputMappings(queryElement) {
 					
 				} else if (ele.localName == "element") {
 
-					if (ele.children.length > 0) {
+					if ((ele.children != undefined && ele.children.length > 0) || (ele.childNodes != undefined && ele.childNodes.length > 0)) {
 						mappingTypeVal = "complex-element";
 					} else {
 						mappingTypeVal = "element";
@@ -343,7 +346,11 @@ function populateElementModal(result, tds) {
 				 setParamaterTypeValues(ele);
 				 
 				 let childValue = "";
-				 $.each(ele.children, function(index, child) {
+				 let childs = ele.children;
+				 if (childs == undefined) {
+					 childs = ele.childNodes;
+				 }
+				 $.each(childs, function(index, child) {
 					 childValue = childValue + child.outerHTML;
 				 });
 				 $('#om-complex-child-input').val(childValue);
@@ -925,6 +932,9 @@ function updateResultElement(root, result, element) {
 
 function appendElementsToResult(result, element) {
 	let existingElements = result.children;
+	if (existingElements == undefined) {
+		existingElements = result.childNodes;
+	}
 	let exists = false;
 	if (existingElements != undefined && existingElements.length > 0) {
 		for (let i = 0, len = existingElements.length; i < len; i++) {
@@ -944,7 +954,7 @@ function appendElementsToResult(result, element) {
 		result.appendChild(element);
 	}
 	
-	if (result.children.length > 0 && !exists) {
+	if (((result.children != null && result.children.length > 0) || (result.childNodes != null && result.childNodes.length > 0)) && !exists) {
 		result.appendChild(element);
 	}
 	
@@ -1020,7 +1030,11 @@ function saveResultToQueryElement(result, root) {
 		
 		result.setAttribute("outputType", "json");
 		
-		if (result.children.length > 0) {
+		let childElements = result.children;
+		if (childElements == undefined) {
+			childElements = result.childNodes;
+		}
+		if (childElements.length > 0) {
 			while (result.hasChildNodes()) {
 				result.removeChild(result.firstChild);
 			}

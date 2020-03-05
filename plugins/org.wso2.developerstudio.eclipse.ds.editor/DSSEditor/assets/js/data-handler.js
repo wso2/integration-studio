@@ -420,7 +420,8 @@ $(document).ready(function ($) {
     	let description = root.getElementsByTagName("description");
         if (description.length > 0) {
         	for (let i = 0, len = description.length; i < len; i++) {
-        		if (description[i].parentElement.localName == "data") {
+        		if ((description[i].parentElement != undefined && description[i].parentElement != null && description[i].parentElement.localName == "data") 
+        				|| (description[i].parentNode != undefined && description[i].parentNode != null && description[i].parentNode.localName == "data")) {
         			exists = true;
         			description[i].textContent = $('#dss-description-input').val();
         			break;
@@ -467,8 +468,16 @@ $(document).ready(function ($) {
         } else {
         	authProvider = authProviders[0];
         	let props = authProvider.children;
+        	if (props == undefined) {
+        		props = authProvider.childNodes;
+        	}
     		for (let i = 0, len = props.length; i < len; i++) {
-    			authProvider.children[0].remove();
+    			if (authProvider.children != undefined) {
+    				authProvider.children[0].remove();
+    			} else if (authProvider.childNodes != undefined) {
+    				authProvider.childNodes[0].remove();
+    			}
+    			
         	}
         }
         
@@ -765,8 +774,12 @@ function populateTransportSettings(root) {
     	$('#auth-provider-param-table').find('tbody').find('tr').detach();
     	let props = authProvider[0].getElementsByTagName("property");
     	$.each(props, function (index, prop) {
+    		let propVal = prop.innerHTML;
+    		if (propVal == undefined) {
+    			propVal = prop.textContent;
+    		}
     		let prop_row = "<tr><td><input type=\"text\" placeholder=\"Name\" style=\"width: 100%;\" value='" + prop.attributes.getNamedItem("name").value + "' /></td><td>" 
-    			+ "<input type=\"text\" placeholder=\"Value\" style=\"width: 100%;\" value='" + prop.innerHTML + "' /></td><td class=\"text-center\"><i class=\"fa fa-trash\"></i></td></tr>";
+    			+ "<input type=\"text\" placeholder=\"Value\" style=\"width: 100%;\" value='" + propVal + "' /></td><td class=\"text-center\"><i class=\"fa fa-trash\"></i></td></tr>";
     		$('#auth-provider-param-table > tbody').append(prop_row);
     	});
     }

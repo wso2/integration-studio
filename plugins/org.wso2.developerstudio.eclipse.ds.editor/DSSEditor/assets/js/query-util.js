@@ -412,7 +412,7 @@ function editInputMapping(root, mappingName) {
                 $("#im-ordinal-input").val(paramElement.attributes.getNamedItem("ordinal").value);
             }
 
-            window.validators = Array.from(paramElement.childNodes);
+            window.validators = paramElement.childNodes;
             updateValidatorsTable();
         }
     }
@@ -556,12 +556,15 @@ function editQuery(root, queryId) {
             window.queryElement = queryElement;
             window.params = [];
 
-            let queryChildren = Array.from(queryElement.childNodes);
+            let queryChildren = queryElement.childNodes;
             for (let i = 0, len = queryChildren.length; i < len; i++) {
                 if (queryChildren[i].tagName === "param") {
                     window.params.push(queryChildren[i]);
                 } else if (queryChildren[i].tagName === "sql") {
                     sql = queryChildren[i].innerHTML;
+                    if (sql == undefined) {
+                    	sql = queryChildren[i].textContent;
+                    }
                 }
             }
 

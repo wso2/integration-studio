@@ -168,7 +168,12 @@ var XmlBeautify =
             }
 
 
-            me._parseInternally(doc.children[0], buildInfo);
+            if (doc.children != undefined) {
+            	me._parseInternally(doc.children[0], buildInfo);
+            } else {
+            	me._parseInternally(doc.childNodes[0], buildInfo);
+            }
+            
 
             var resultXml = "";
 
@@ -193,7 +198,7 @@ var XmlBeautify =
                 elementTextContent = "";
             }
 
-            var elementHasNoChildren = !(element.children.length > 0);
+            var elementHasNoChildren = !(element.children != undefined && element.children.length > 0) || !(element.childNodes != undefined && element.childNodes.length > 0);
             var elementHasValueOrChildren = (elementTextContent && elementTextContent.length > 0);
             var elementHasItsValue = elementHasNoChildren && elementHasValueOrChildren;
             var isEmptyElement = elementHasNoChildren && !elementHasValueOrChildren;
@@ -210,8 +215,11 @@ var XmlBeautify =
 
             if (elementHasItsValue) {
 
-
-            	if (element.innerHTML.indexOf("<![CDATA[") != -1 && element.innerHTML.indexOf("]]>") != -1) {
+            	let val = element.innerHTML;
+            	if (val == undefined) {
+            		val = element.textContent;
+            	}
+            	if (val.indexOf("<![CDATA[") != -1 && val.indexOf("]]>") != -1) {
             		valueOfElement = "<![CDATA[" + elementTextContent + "]]>";
             	} else {
             		valueOfElement = elementTextContent;
@@ -227,60 +235,69 @@ var XmlBeautify =
                 indentText += buildInfo.indentText;
             }
             buildInfo.xmlText += indentText;
-            buildInfo.xmlText += startTagPrefix + element.tagName
+            if (element.tagName != undefined) {
+            	buildInfo.xmlText += startTagPrefix + element.tagName
 
-            //add attributes
-            for (var i = 0; i < element.attributes.length; i++) {
-                var attr = element.attributes[i];
-                buildInfo.xmlText += ' ' + attr.name + '=' + '"' + attr.textContent + '"';
-            }
-
-            if (isEmptyElement && useSelfClosingElement) {
-                buildInfo.xmlText += startTagSuffixEmpty;
-
-            } else {
-                buildInfo.xmlText += startTagSuffix;
-            }
-
-            if (elementHasItsValue) {
-                buildInfo.xmlText += valueOfElement;
-            } else {
-
-                if (isEmptyElement && !useSelfClosingElement) {
-                } else {
-                    buildInfo.xmlText += '\n';
+                //add attributes
+                if (element.attributes != undefined) {
+                	for (var i = 0; i < element.attributes.length; i++) {
+                        var attr = element.attributes[i];
+                        buildInfo.xmlText += ' ' + attr.name + '=' + '"' + attr.textContent + '"';
+                    }
                 }
 
-            }
-
-            buildInfo.indentLevel++;
-
-            for (var i = 0; i < element.children.length; i++) {
-                var child = element.children[i];
-
-                me._parseInternally(child, buildInfo);
-            }
-            buildInfo.indentLevel--;
-
-            if (isEmptyElement) {
-
-                if (useSelfClosingElement) {
+                if (isEmptyElement && useSelfClosingElement) {
+                    buildInfo.xmlText += startTagSuffixEmpty;
 
                 } else {
+                    buildInfo.xmlText += startTagSuffix;
+                }
+
+                if (elementHasItsValue) {
+                    buildInfo.xmlText += valueOfElement;
+                } else {
+
+                    if (isEmptyElement && !useSelfClosingElement) {
+                    } else {
+                        buildInfo.xmlText += '\n';
+                    }
+
+                }
+
+                buildInfo.indentLevel++;
+
+                var chElements = element.children;
+                if (chElements == undefined) {
+                	chElements = element.childNodes;
+                }
+                for (var i = 0; i < chElements.length; i++) {
+                    var child = chElements[i];
+
+                    me._parseInternally(child, buildInfo);
+                }
+
+                buildInfo.indentLevel--;
+
+                if (isEmptyElement) {
+
+                    if (useSelfClosingElement) {
+
+                    } else {
+                        var endTag = endTagPrefix + element.tagName + endTagSuffix;
+                        buildInfo.xmlText += endTag;
+                        buildInfo.xmlText += '\n';
+                    }
+                } else {
                     var endTag = endTagPrefix + element.tagName + endTagSuffix;
+
+                    if (!(elementHasNoChildren && elementHasValueOrChildren)) {
+                        buildInfo.xmlText += indentText;
+                    }
                     buildInfo.xmlText += endTag;
                     buildInfo.xmlText += '\n';
                 }
-            } else {
-                var endTag = endTagPrefix + element.tagName + endTagSuffix;
-
-                if (!(elementHasNoChildren && elementHasValueOrChildren)) {
-                    buildInfo.xmlText += indentText;
-                }
-                buildInfo.xmlText += endTag;
-                buildInfo.xmlText += '\n';
             }
-
+                
         };
 
         return XmlBeautify;

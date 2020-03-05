@@ -932,8 +932,14 @@ function replaceNode(newNode, refNode) {
  */
 function saveAll(root, url, successFunc) {
     let serializedData = new XMLSerializer().serializeToString(root);
-    let prettyXmlText = new XmlBeautify().beautify(serializedData, 
-            {indent: "  ",useSelfClosingElement: true});
+    let prettyXmlText;
+    let isIE = false || !!document.documentMode;
+    if (isIE) {
+    	prettyXmlText = serializedData;
+    } else {
+    	prettyXmlText = new XmlBeautify().beautify(serializedData, 
+                {indent: "  ",useSelfClosingElement: true});
+    }
 
     let request = $.ajax({
         url: url,

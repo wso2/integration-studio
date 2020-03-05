@@ -186,6 +186,8 @@ function updateOperationDataInRoot(root, new_operation_name) {
     	//Appends to operations table
     	let op_row = '<tr><td>' + new_operation_name + '</td><td>' + query_id + '</td><td class="text-center"><i class="fa fa-edit"></i><i class="fa fa-trash"></i></td></tr>';
     	$('#o-operation-table > tbody').append(op_row);
+    	$('#o-operation-table').show();
+    	$('#o-table-notification-alert').hide();
     	
     } else {
 	  	let trs = $('#o-operation-table').find('tr');

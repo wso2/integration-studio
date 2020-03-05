@@ -235,7 +235,7 @@ var XmlBeautify =
                 indentText += buildInfo.indentText;
             }
             buildInfo.xmlText += indentText;
-            if (element.tagName != undefined) {
+//            if (element.tagName != "undefined" && element.tagName != undefined) {
             	buildInfo.xmlText += startTagPrefix + element.tagName
 
                 //add attributes
@@ -296,7 +296,7 @@ var XmlBeautify =
                     buildInfo.xmlText += endTag;
                     buildInfo.xmlText += '\n';
                 }
-            }
+//            }
                 
         };
 

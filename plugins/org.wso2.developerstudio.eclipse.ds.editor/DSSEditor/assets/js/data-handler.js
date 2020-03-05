@@ -100,20 +100,20 @@ $(document).ready(function ($) {
     // End of Transport settings - Transports
 
     // Start of Data sources - Add data source
-    $("#create-ds-form").submit(function (e) {
+    $("#ds-add-save-btn").click(function (e) {
         e.preventDefault();
         let result = addDataSource(root);
 
         if (result.status) {
             $("#ds-add-edit-ds-modal").modal('hide');
             saveAll(root, url, saveDSMetadata(root, result.metadata, url));
-            this.reset();
+//            this.reset();
         }
 
     });
 
     // Start of resource - Add resource
-    $("#resource-form").submit(function (e) {
+    $("#resource-save-btn").click(function (e) {
         e.preventDefault();
         let status = addResource(root);
         if (status) {
@@ -210,7 +210,7 @@ $(document).ready(function ($) {
         populateOutputTypeElements();
     });
 
-    $("#query-form").submit(function (e) {
+    $("#query-add-save-btn").click(function (e) {
         e.preventDefault();
         window.queryElement = root.createElement("query");
         processQueryDetails(root, window.queryElement);
@@ -280,7 +280,7 @@ $(document).ready(function ($) {
         resetValidatorsForm();
     });
 
-    $("#q-im-validators-form").submit(function (e) {
+    $("#q-im-validators-save-btn").click(function (e) {
         e.preventDefault();
         let selectedValidator = $("#q-im-validator-select").val();
         addValidator(root, selectedValidator);
@@ -475,7 +475,7 @@ $(document).ready(function ($) {
     			if (authProvider.children != undefined) {
     				authProvider.children[0].remove();
     			} else if (authProvider.childNodes != undefined) {
-    				authProvider.childNodes[0].remove();
+    				authProvider.childNodes[0].parentNode.removeChild(authProvider.childNodes[0]);
     			}
     			
         	}
@@ -597,14 +597,14 @@ $(document).ready(function ($) {
         openResourcesModal(true);
     });
 
-    $("#input-mapping-form").submit(function (e) {
+    $("#input-mapping-save-btn").click(function (e) {
         e.preventDefault();
 
         let result = addInputMapping(root);
 
         if (result) {
             $("#q-input-mapping-modal").modal('hide');
-            this.reset();
+//            this.reset();
         }
 
     });
@@ -1275,4 +1275,8 @@ function showNotificationAlertModal(title, content) {
     $("#alert-modal-content").text(content);
 
     $("#alert-modal").modal('show');
+}
+
+function isIE() {
+	return false || !!document.documentMode;
 }

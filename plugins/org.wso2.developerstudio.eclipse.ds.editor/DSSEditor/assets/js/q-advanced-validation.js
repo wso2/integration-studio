@@ -134,7 +134,7 @@ function createPropertiesObject(root) {
 		propertiesElement.appendChild(getProperty(root, "forceJDBCBatchRequests", forceJDBCBatchRequests));
 	}
 	
-	if (propertiesElement.children.length > 0) {
+	if ((propertiesElement.children != undefined && propertiesElement.children.length > 0) || (propertiesElement.childNodes != undefined && propertiesElement.childNodes.length > 0)) {
 		return propertiesElement;
 	} else {
 		return null;

@@ -415,7 +415,8 @@ $(document).ready(function ($) {
     	let description = root.getElementsByTagName("description");
         if (description.length > 0) {
         	for (let i = 0, len = description.length; i < len; i++) {
-        		if (description[i].parentElement.localName == "data") {
+        		if ((description[i].parentElement != undefined && description[i].parentElement != null && description[i].parentElement.localName == "data") 
+        				|| (description[i].parentNode != undefined && description[i].parentNode != null && description[i].parentNode.localName == "data")) {
         			exists = true;
         			description[i].textContent = $('#dss-description-input').val();
         			break;
@@ -462,8 +463,16 @@ $(document).ready(function ($) {
         } else {
         	authProvider = authProviders[0];
         	let props = authProvider.children;
+        	if (props == undefined) {
+        		props = authProvider.childNodes;
+        	}
     		for (let i = 0, len = props.length; i < len; i++) {
-    			authProvider.children[0].remove();
+    			if (authProvider.children != undefined) {
+    				authProvider.children[0].remove();
+    			} else if (authProvider.childNodes != undefined) {
+    				authProvider.childNodes[0].remove();
+    			}
+    			
         	}
         }
         

@@ -1,7 +1,7 @@
 $(document).ready(function ($) {
 
     let portValue = resolveGetParam("port");
-    let url = "http://127.0.0.1:" + portValue + "/dsseditor/service";
+    let url = "http://127.0.0.1:" + "7774" + "/dsseditor/service";
     let root = "";
     let resultElement;
 
@@ -12,23 +12,50 @@ $(document).ready(function ($) {
     window.mappingToBeDeleted = "";
 
     // Retrieve the XML source from backend.
-    $.get(url, function (data, status) {
+//    $.get(url, {}, function (data, status) {
+//
+//        let parser = new DOMParser();
+//        root = parser.parseFromString(data, "text/xml");
+//        populateGeneralDetails(root);
+//        populateTransportSettings(root);
+//        populateDataSources(root);
+//        populateQueries(root);
+//        populateQueryTable(root);
+//        populateOperations(root);
+//        populateResources(root);
+//        populateAdvancedProperties(root);
+//        verifyDSMetadata(root, url);
+//
+//        tl.pg.init({ pg_caption: "Open Help" });
+//    });
 
-        let parser = new DOMParser();
-        root = parser.parseFromString(data, "text/xml");
-        populateGeneralDetails(root);
-        populateTransportSettings(root);
-        populateDataSources(root);
-        populateQueries(root);
-        populateQueryTable(root);
-        populateOperations(root);
-        populateResources(root);
-        populateAdvancedProperties(root);
-        verifyDSMetadata(root, url);
 
-        tl.pg.init({ pg_caption: "Open Help" });
-    });
 
+    $.ajax({
+                url: url,
+                type: 'GET',
+                dataType: 'text',
+                cache: false,
+                success: function (result) {
+                   let parser = new DOMParser();
+                   root = parser.parseFromString(result, "text/xml");
+                   populateGeneralDetails(root);
+                   populateTransportSettings(root);
+                   populateDataSources(root);
+                   populateQueries(root);
+                   populateQueryTable(root);
+                   populateOperations(root);
+                   populateResources(root);
+                   populateAdvancedProperties(root);
+                   verifyDSMetadata(root, url);
+           
+                   tl.pg.init({ pg_caption: "Open Help" });
+                },
+                error: function (error) {
+                	
+                }
+            });
+    
     /** Start of Event handlers **/
 
     // Start of Transport settings - Transports
@@ -675,7 +702,8 @@ function populateGeneralDetails(root) {
     let description = root.getElementsByTagName("description");
     if (description.length > 0) {
     	for (let i = 0, len = description.length; i < len; i++) {
-    		if (description[i].parentElement.localName == "data") {
+    		if ((description[i].parentElement != undefined && description[i].parentElement != null && description[i].parentElement.localName == "data")
+    				|| (description[i].parentNode != undefined && description[i].parentNode != null && description[i].parentNode.localName == "data")) {
     			$('#dss-description-input').val(description[i].textContent);
     			break;
     		}

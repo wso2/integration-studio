@@ -305,7 +305,7 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 	private Text directoryPathField;
 	private CheckboxTreeViewer projectsList;
 	private Button copyCheckbox;
-	private boolean copyFiles = false;
+	private boolean copyFiles = true;
 	private ProjectRecord[] selectedProjects = new ProjectRecord[0];
 	// Keep track of the directory that we browsed to last time
 	// the wizard was invoked.
@@ -429,6 +429,8 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 		copyCheckbox = new Button(optionsGroup, SWT.CHECK);
 		copyCheckbox.setText(DataTransferMessages.WizardProjectsImportPage_CopyProjectsIntoWorkspace);
 		copyCheckbox.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+		copyCheckbox.setSelection(true);
+		copyCheckbox.setEnabled(false);
 		copyCheckbox.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				copyFiles = copyCheckbox.getSelection();
@@ -705,7 +707,7 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 			browseArchivesButton.setEnabled(false);
 			updateProjectsList(directoryPathField.getText());
 			directoryPathField.setFocus();
-			copyCheckbox.setEnabled(true);
+			copyCheckbox.setEnabled(false);
 			copyCheckbox.setSelection(copyFiles);
 		}
 	}
@@ -1442,7 +1444,7 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 				operation.setOverwriteResources(true);
 				operation.setCreateContainerStructure(false);
 				operation.run(monitor);
-			} else if (copyFiles && importSource != null && project.hasNature(MAVEN_MULTI_MODULE_NATURE)) {
+			} else if (importSource != null && project.hasNature(MAVEN_MULTI_MODULE_NATURE)) {
 				createProjectsInWorkspaceReadingNature(importSource, project, monitor);
 			}
 		} catch (CoreException e) {
@@ -1602,7 +1604,7 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 		IDialogSettings settings = getDialogSettings();
 		if (settings != null) {
 			// checkbox
-			copyFiles = settings.getBoolean(STORE_COPY_PROJECT_ID);
+			//copyFiles = settings.getBoolean(STORE_COPY_PROJECT_ID);
 			copyCheckbox.setSelection(copyFiles);
 		}
 

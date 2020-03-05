@@ -562,6 +562,9 @@ function editQuery(root, queryId) {
                     window.params.push(queryChildren[i]);
                 } else if (queryChildren[i].tagName === "sql") {
                     sql = queryChildren[i].innerHTML;
+                    if (sql == undefined) {
+                    	sql = queryChildren[i].textContent;
+                    }
                 }
             }
 

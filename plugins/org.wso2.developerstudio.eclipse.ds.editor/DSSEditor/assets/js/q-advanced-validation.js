@@ -22,6 +22,9 @@ function populateQueryAdvancedProperties() {
 		$.each(propertyChildren, function (index, child) {
 			let name = child.attributes.getNamedItem("name").value;
 			let value = child.innerHTML;
+			if (value == undefined) {
+				value = child.textContent;
+			}
 			if (name == "queryTimeout") {
 				setQueryTimeout(value);
 				
@@ -141,7 +144,11 @@ function createPropertiesObject(root) {
 function getProperty(root, name, value) {
 	let propertyElement = root.createElement("property");
 	propertyElement.setAttribute("name", name);
-	propertyElement.innerHTML = value;
+	if (propertyElement.innerHTML != undefined) {
+		propertyElement.innerHTML = value;
+	} else if (propertyElement.textContent != undefined) {
+		propertyElement.textContent = value;
+	}
 	return propertyElement;
 }
 

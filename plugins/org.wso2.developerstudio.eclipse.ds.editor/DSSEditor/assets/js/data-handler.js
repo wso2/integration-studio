@@ -774,8 +774,12 @@ function populateTransportSettings(root) {
     	$('#auth-provider-param-table').find('tbody').find('tr').detach();
     	let props = authProvider[0].getElementsByTagName("property");
     	$.each(props, function (index, prop) {
+    		let propVal = prop.innerHTML;
+    		if (propVal == undefined) {
+    			propVal = prop.textContent;
+    		}
     		let prop_row = "<tr><td><input type=\"text\" placeholder=\"Name\" style=\"width: 100%;\" value='" + prop.attributes.getNamedItem("name").value + "' /></td><td>" 
-    			+ "<input type=\"text\" placeholder=\"Value\" style=\"width: 100%;\" value='" + prop.innerHTML + "' /></td><td class=\"text-center\"><i class=\"fa fa-trash\"></i></td></tr>";
+    			+ "<input type=\"text\" placeholder=\"Value\" style=\"width: 100%;\" value='" + propVal + "' /></td><td class=\"text-center\"><i class=\"fa fa-trash\"></i></td></tr>";
     		$('#auth-provider-param-table > tbody').append(prop_row);
     	});
     }

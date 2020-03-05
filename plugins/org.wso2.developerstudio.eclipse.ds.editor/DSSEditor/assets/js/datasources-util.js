@@ -305,7 +305,11 @@ function processDSInputData(root, data, deleteIfExists) {
     // Delete if existing config node exists
     if (deleteIfExists) {
         for (let i = 0, len = dsConfigs.length; i < len; i++) {
-            if (dsConfigs[i].id == dsId) {
+        	let dsID = dsConfigs[i].id;
+        	if (dsID == undefined) {
+        		dsID = dsConfigs[i].attributes.getNamedItem("id").value;
+        	}
+            if (dsID == dsId) {
                 // Delete the node.
                 root.documentElement.removeChild(dsConfigs[i]);
             }

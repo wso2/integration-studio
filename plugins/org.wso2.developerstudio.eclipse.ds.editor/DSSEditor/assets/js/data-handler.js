@@ -107,7 +107,7 @@ $(document).ready(function ($) {
         if (result.status) {
             $("#ds-add-edit-ds-modal").modal('hide');
             saveAll(root, url, saveDSMetadata(root, result.metadata, url));
-//            this.reset();
+//            $("#create-ds-form").reset();
         }
 
     });
@@ -604,7 +604,7 @@ $(document).ready(function ($) {
 
         if (result) {
             $("#q-input-mapping-modal").modal('hide');
-//            this.reset();
+//            $("#input-mapping-form").reset();
         }
 
     });

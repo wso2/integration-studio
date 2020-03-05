@@ -609,7 +609,11 @@ function deleteQuery(root, queryId) {
     let queries = root.getElementsByTagName("query");
 
     for (let i = 0, len = queries.length; i < len; i++) {
-        if (queries[i].id == queryId) {
+    	let qID = queries[i].id ;
+    	if (qID == undefined)     {
+    		qID = queries[i].attributes.getNamedItem("id").value;
+    	}	
+        if (qID == queryId) {
             root.documentElement.removeChild(queries[i]);
             break;
         }

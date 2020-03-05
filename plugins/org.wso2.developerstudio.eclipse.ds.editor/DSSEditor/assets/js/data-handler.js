@@ -1012,16 +1012,16 @@ function populateResourcesModal(root, resourceId, method) {
 	$('#r-addedit-opname-input').val(resourceId);
     for (let i = 0, len = resourceConfigs.length; i < len; i++) {
         if ((resourceConfigs[i].getAttribute("path") == resourceId) && (resourceConfigs[i].getAttribute("method") == method)) {
-			$('#r-addedit-resourcemethod-select').val(
-					resourceConfigs[i].getAttribute("method"));
-			$('#r-addedit-resourcemethod-select-original').val(
-					resourceConfigs[i].getAttribute("method"));
+			let resourceMethod = resourceConfigs[i].getAttribute("method").toLowerCase();
+			$('#r-addedit-resourcemethod-select').val(resourceMethod);
+			$('#r-addedit-resourcemethod-select-original').val(resourceMethod);
 			let queryName = resourceConfigs[i]
 					.getElementsByTagName("call-query")[0].getAttribute("href");
 			$('#r-addedit-queryid-select').val(queryName).trigger('change');
-			let description = resourceConfigs[i]
-					.getElementsByTagName("description")[0].textContent;
-			$('#r-addedit-description-input').val(description);
+			if (resourceConfigs[i].getElementsByTagName("description")[0] != undefined) {
+				$('#r-addedit-description-input').val(resourceConfigs[i]
+				.getElementsByTagName("description")[0].textContent);
+			}
 			let returnRequest = resourceConfigs[i]
 					.getAttribute("returnRequestStatus");
 			if (returnRequest == "true") {

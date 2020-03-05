@@ -198,6 +198,11 @@ $(document).ready(function ($) {
         $("#q-addedit-title").text("Add Query");
         $("#q-query-id-input").prop('disabled', false);
 
+        $("#q-im-return-gk-checkbox").prop('checked', false);
+        $("#q-im-return-ukc-checkbox").prop('checked', false);
+        $("#q-im-keycolumns-inputgroup").toggle(false);
+        $("#q-im-keycolumns-input").val("");
+
         window.params = [];
         resetInputMappingSection();
         clearQueryAdvancedProperties();
@@ -632,6 +637,14 @@ $(document).ready(function ($) {
         $("#q-input-mapping-modal").modal("show");
     });
 
+    $('#q-im-return-gk-checkbox').change(function () {
+        if (this.checked) {
+            $("#q-im-keycolumns-inputgroup").toggle(true);
+        } else {
+            $("#q-im-keycolumns-inputgroup").toggle(false);
+        }
+    });
+
     /** End of Event handlers **/
     
     /** Start of advanced properties **/
@@ -1008,16 +1021,16 @@ function populateResourcesModal(root, resourceId, method) {
 	$('#r-addedit-opname-input').val(resourceId);
     for (let i = 0, len = resourceConfigs.length; i < len; i++) {
         if ((resourceConfigs[i].getAttribute("path") == resourceId) && (resourceConfigs[i].getAttribute("method") == method)) {
-			$('#r-addedit-resourcemethod-select').val(
-					resourceConfigs[i].getAttribute("method"));
-			$('#r-addedit-resourcemethod-select-original').val(
-					resourceConfigs[i].getAttribute("method"));
+			let resourceMethod = resourceConfigs[i].getAttribute("method").toLowerCase();
+			$('#r-addedit-resourcemethod-select').val(resourceMethod);
+			$('#r-addedit-resourcemethod-select-original').val(resourceMethod);
 			let queryName = resourceConfigs[i]
 					.getElementsByTagName("call-query")[0].getAttribute("href");
 			$('#r-addedit-queryid-select').val(queryName).trigger('change');
-			let description = resourceConfigs[i]
-					.getElementsByTagName("description")[0].textContent;
-			$('#r-addedit-description-input').val(description);
+			if (resourceConfigs[i].getElementsByTagName("description")[0] != undefined) {
+				$('#r-addedit-description-input').val(resourceConfigs[i]
+				.getElementsByTagName("description")[0].textContent);
+			}
 			let returnRequest = resourceConfigs[i]
 					.getAttribute("returnRequestStatus");
 			if (returnRequest == "true") {

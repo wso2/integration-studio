@@ -62,7 +62,11 @@ function parseXmlTextContent(xmlTextContent) {
  * @returns {string[]} Array of strings.
  */
 function splitAndTrim(str, delimiter) {
-    return str.split(delimiter).map((item)=>item.trim());
+	let array = str.split(delimiter);
+	 for (let i = 0, len = array.length; i < len; i++) {
+		 array[i] = array[i].trim();
+	 }
+    return array;
 }
 
 /**
@@ -207,7 +211,7 @@ var XmlBeautify =
             if (elementHasItsValue) {
 
 
-            	if (element.innerHTML.includes("<![CDATA[") && element.innerHTML.includes("]]>")) {
+            	if (element.innerHTML.indexOf("<![CDATA[") != -1 && element.innerHTML.indexOf("]]>") != -1) {
             		valueOfElement = "<![CDATA[" + elementTextContent + "]]>";
             	} else {
             		valueOfElement = elementTextContent;

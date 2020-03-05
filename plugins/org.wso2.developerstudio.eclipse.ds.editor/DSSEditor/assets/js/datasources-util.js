@@ -68,6 +68,9 @@ function populateDataSources(root) {
 	    $("#ds-datasources-table tbody tr").remove();
 	    for (let i = 0, len = dsConfigs.length; i < len; i++) {
 	        let dsName = dsConfigs[i].id;
+	        if (dsName == undefined) {
+	        	dsName = dsConfigs[i].attributes.getNamedItem("id").value;
+	        }
 	        let markup = "<tr" + " data-id='" + dsName + "'" + "><td>" + dsName + "</td><td class='text-center'>" +
 	            "<i class='fa fa-edit'></i><i class='fa fa-trash'></i></td></tr>";
 
@@ -624,25 +627,25 @@ function extractDBEngineTypeFromURL(configElement) {
 
         if (propertyName === "url" || propertyName === "org.wso2.ws.dataservice.protocol") {
             let url = propertyElements[i].textContent;
-            if (url.includes("mysql")) {
+            if (url.indexOf("mysql") != -1) {
                 return DB_ENGINE_MYSQL;
-            } else if (url.includes("oracle")) {
+            } else if (url.indexOf("oracle") != -1) {
                 return DB_ENGINE_ORACLE;
-            } else if (url.includes("sqlserver")) {
+            } else if (url.indexOf("sqlserver") != -1) {
                 return DB_ENGINE_MSSQL;
-            } else if (url.includes("h2")) {
+            } else if (url.indexOf("h2") != -1) {
                 return DB_ENGINE_H2;
-            } else if (url.includes("derby")) {
+            } else if (url.indexOf("derby") != -1) {
                 return DB_ENGINE_APACHEDERBY;
-            } else if (url.includes("db2")) {
+            } else if (url.indexOf("db2") != -1) {
                 return DB_ENGINE_IBMDB2;
-            } else if (url.includes("hsqldb")) {
+            } else if (url.indexOf("hsqldb") != -1) {
                 return DB_ENGINE_HSQLDB;
-            } else if (url.includes("informix")) {
+            } else if (url.indexOf("informix") != -1) {
                 return DB_ENGINE_INFORMIX;
-            } else if (url.includes("postgresql")) {
+            } else if (url.indexOf("postgresql") != -1) {
                 return DB_ENGINE_POSTGRESQL;
-            } else if (url.includes("sybase")) {
+            } else if (url.indexOf("sybase") != -1) {
                 return DB_ENGINE_SYBASE;
             }
         }

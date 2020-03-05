@@ -308,7 +308,7 @@ function populateElementModal(result, tds) {
 				 $('#q-om-addedit-dscolname-input').val(ele.attributes.getNamedItem("column").value);
 				 setParamaterTypeValues(ele);
 				 let paramTypeVal = tds[5].innerText;
-				 if (paramTypeVal.includes(":")) {
+				 if (paramTypeVal.indexOf(":") != -1) {
 					 let values = paramTypeVal.split(":");
 					 $('#q-om-paramtype-select').val(values[1]);
 				 } else {
@@ -366,14 +366,14 @@ function setNamespaceValues(ele) {
 function setRoleValues(ele) {
 	if (ele.attributes.getNamedItem("requiredRoles") != null) {
 		let roles = ele.attributes.getNamedItem("requiredRoles").value;
-		if (roles.includes("admin")) {
+		if (roles.indexOf("admin") != -1) {
 			$('#role-admin-checkbox').prop("checked", true);
 			
 		} else {
 			$('#role-admin-checkbox').prop("checked", false);
 		}
 		
-		if (roles.includes("Internal/everyone")) {
+		if (roles.indexOf("Internal/everyone") != -1) {
 			$('#role-int-checkbox').prop("checked", true);
 		} else {
 			$('#role-int-checkbox').prop("checked", false);
@@ -1041,7 +1041,7 @@ function generateOutputMapping(root, portValue) {
 		return false;
 	}
 	
-	if ((query.toLowerCase().includes("insert") && query.toLowerCase().includes("into")) || (query.toLowerCase().startsWith("update"))) {
+	if ((query.toLowerCase().indexOf("insert") != -1 && query.toLowerCase().indexOf("into") != -1) || (query.toLowerCase().startsWith("update"))) {
 		return false;
 	}
 	
@@ -1068,11 +1068,11 @@ function generateOutputMapping(root, portValue) {
 						let properties = configs[i].getElementsByTagName("property");
 						$.each(properties, function (j, property) {
 							let name = property.attributes.getNamedItem("name").value.toLowerCase();
-							if ($.trim(name).includes("user")) {
+							if ($.trim(name).indexOf("user") != -1) {
 								username = property.textContent;
-							} else if ($.trim(name).includes("password")) {
+							} else if ($.trim(name).indexOf("password") != -1) {
 								password = property.textContent;
-							} else if ($.trim(name).includes("protocol") || $.trim(name).includes("url")) {
+							} else if ($.trim(name).indexOf("protocol") != -1 || $.trim(name).indexOf("url") != -1) {
 								connectionUrl = property.textContent;
 							}
 						});

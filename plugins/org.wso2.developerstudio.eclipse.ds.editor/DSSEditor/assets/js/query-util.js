@@ -19,6 +19,9 @@ function populateQueryTable(root) {
     for (let i = 0, len = queryConfigs.length; i < len; i++) {
         let queryId = queryConfigs[i].id;
 
+        if (queryId == undefined) {
+        	queryId = queryConfigs[i].attributes.getNamedItem("id").value;
+        }
         let markup = "<tr" + " data-id='" + queryId + "'" + "><td>" + queryId + "</td>" +
             "<td class=\"text-center\"><i class=\"fa fa-edit\"></i><i class=\"fa fa-trash\"></i></td>" + "</tr>";
 
@@ -480,7 +483,7 @@ function processQueryDetails(root, queryElement) {
 
     let sqlQueryElement = root.createElement("sql");
     let sqlQuery = $("#q-sql-query-input").val();
-    if (sqlQuery.includes("<") || sqlQuery.includes(">")) {
+    if (sqlQuery.indexOf("<") != -1 || sqlQuery.indexOf(">") != -1) {
     	sqlQuery = "<![CDATA[" + sqlQuery + "]]>";
     }
     sqlQueryElement.appendChild(root.createTextNode(sqlQuery));
@@ -566,7 +569,7 @@ function editQuery(root, queryId) {
 
             $("#q-query-id-input").val(queryElement.attributes.getNamedItem("id").value);
             $("#q-datasource-select").val(queryElement.attributes.getNamedItem("useConfig").value);
-            if (sql.includes("<![CDATA[") && sql.includes("]]>")) {
+            if (sql.indexOf("<![CDATA[") != -1 && sql.indexOf("]]>") != -1) {
             	sql = sql.substring(sql.lastIndexOf("<![CDATA[") + 9, sql.lastIndexOf("]]>"));
             }
             $("#q-sql-query-input").val(sql);
@@ -642,11 +645,11 @@ function generateInputMappings(root) {
         return false;
     }
 
-    if ((query.toLowerCase().includes("select") && query.toLowerCase().includes("from"))) {
+    if ((query.toLowerCase().indexOf("select") != -1 && query.toLowerCase().indexOf("from") != -1)) {
         return false;
     }
 
-    if (query.toLowerCase().includes("insert") && query.toLowerCase().includes("into")) {
+    if (query.toLowerCase().indexOf("insert") != -1 && query.toLowerCase().indexOf("into") != -1) {
         let mappingsStr = query.substring(query.toLowerCase().lastIndexOf("into"), query.toLowerCase().indexOf("values"));
         if (mappingsStr) {
             let paramStr = regExp.exec(mappingsStr.trim());
@@ -655,7 +658,7 @@ function generateInputMappings(root) {
                 mappingsArr = paramStr[1].split(",");
             }
         }
-    } else if (query.toLowerCase().includes("update") && query.toLowerCase().includes("set")) {
+    } else if (query.toLowerCase().indexOf("update") != -1 && query.toLowerCase().indexOf("set") != -1) {
         let mappingsStr = query.substring(query.toLowerCase().lastIndexOf("set"));
         mappingsStr = mappingsStr.toLowerCase().replace("where", ",");
         mappingsStr = mappingsStr.toLowerCase().replace("set", "");
@@ -667,7 +670,7 @@ function generateInputMappings(root) {
                 mappingsArr.push(mappings[i].split("=")[0].trim());
             }
         }
-    } else if (query.toLowerCase().includes("delete") && query.toLowerCase().includes("from")) {
+    } else if (query.toLowerCase().indexOf("delete") != -1 && query.toLowerCase().indexOf("from") != -1) {
         let mappingsStr = query.substring(query.toLowerCase().lastIndexOf("where"));
         mappingsStr = mappingsStr.toLowerCase().replace("where", ",");
 

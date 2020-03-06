@@ -100,20 +100,19 @@ $(document).ready(function ($) {
     // End of Transport settings - Transports
 
     // Start of Data sources - Add data source
-    $("#ds-add-save-btn").click(function (e) {
+    document.getElementById("create-ds-form").onsubmit = function(e) {
         e.preventDefault();
         let result = addDataSource(root);
 
         if (result.status) {
             $("#ds-add-edit-ds-modal").modal('hide');
             saveAll(root, url, saveDSMetadata(root, result.metadata, url));
-//            $("#create-ds-form").reset();
+            this.reset();
         }
-
-    });
+    }
 
     // Start of resource - Add resource
-    $("#resource-save-btn").click(function (e) {
+	document.getElementById("resource-form").onsubmit = function(e) {
         e.preventDefault();
         let status = addResource(root);
         if (status) {
@@ -123,7 +122,7 @@ $(document).ready(function ($) {
             });
         }
 
-    });
+    }
 
     $(".modal").on("hidden.bs.modal", function() {
         //$(this).removeData();
@@ -210,7 +209,7 @@ $(document).ready(function ($) {
         populateOutputTypeElements();
     });
 
-    $("#query-add-save-btn").click(function (e) {
+    document.getElementById("query-form").onsubmit = function(e) {
         e.preventDefault();
         window.queryElement = root.createElement("query");
         processQueryDetails(root, window.queryElement);
@@ -236,7 +235,7 @@ $(document).ready(function ($) {
                 window.validators = [];
             });
         }
-    });
+    }
 
     $("#q-input-mapping-generate-btn").click(function() {
         generateInputMappings(root);
@@ -280,11 +279,11 @@ $(document).ready(function ($) {
         resetValidatorsForm();
     });
 
-    $("#q-im-validators-save-btn").click(function (e) {
+    document.getElementById("q-im-validators-form").onsubmit = function(e) {
         e.preventDefault();
         let selectedValidator = $("#q-im-validator-select").val();
         addValidator(root, selectedValidator);
-    });
+    }
 
     $("#q-im-validator-select").change(function() {
         validateValidatorsForm();
@@ -509,13 +508,13 @@ $(document).ready(function ($) {
     /**
      * Updates root content with operation details upon modal save.
      */
-    $("#operation-form-save-btn").click(function (e) {
+    document.getElementById("operation-form").onsubmit = function(e) {
         e.preventDefault();
         let status = addOperation(root);
         if (status) {
         	saveAll(root, url, function() { });
         }
-    });
+    }
     
     /**
      * Deletes operation table entry and root entry upon delete.
@@ -597,17 +596,16 @@ $(document).ready(function ($) {
         openResourcesModal(true);
     });
 
-    $("#input-mapping-save-btn").click(function (e) {
+    document.getElementById("input-mapping-form").onsubmit = function(e) {
         e.preventDefault();
 
         let result = addInputMapping(root);
 
         if (result) {
             $("#q-input-mapping-modal").modal('hide');
-//            $("#input-mapping-form").reset();
+            this.reset();
         }
-
-    });
+    }
 
     $("#q-input-mapping-add-btn").click(function (e) {
         e.preventDefault();

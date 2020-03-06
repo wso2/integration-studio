@@ -1,7 +1,7 @@
 $(document).ready(function ($) {
 
     let portValue = resolveGetParam("port");
-    let url = "http://127.0.0.1:" + "7774" + "/dsseditor/service";
+    let url = "http://127.0.0.1:" + portValue + "/dsseditor/service";
     let root = "";
     let resultElement;
 
@@ -107,7 +107,7 @@ $(document).ready(function ($) {
         if (result.status) {
             $("#ds-add-edit-ds-modal").modal('hide');
             saveAll(root, url, saveDSMetadata(root, result.metadata, url));
-//            this.reset();
+//            $("#create-ds-form").reset();
         }
 
     });
@@ -604,7 +604,7 @@ $(document).ready(function ($) {
 
         if (result) {
             $("#q-input-mapping-modal").modal('hide');
-//            this.reset();
+//            $("#input-mapping-form").reset();
         }
 
     });
@@ -996,9 +996,10 @@ function addResource(root) {
 
 	for (let i = 0, len = resourceConfigs.length; i < len; i++) {
 		if ((resourceConfigs[i].getAttribute("path") == resourceId)
-				&& (resourceConfigs[i].getAttribute("method") == resourceMethod)) {
+				&& (resourceConfigs[i].getAttribute("method").toLowerCase() == resourceMethod.toLowerCase())) {
 			if (editResource) {
 				resourceIndex = i;
+				break;
 			} else {
 				showResourceNotification("danger",
 						"A resource with the given name already exists.", 4000);
@@ -1126,16 +1127,40 @@ function processResourceInputData(root, data, index, editResource) {
     	callQueryElement.appendChild(properties[i]);
     }
 
-    if(editResource && index != -1) {
-    	replaceNode(resourceElement, resourceConfigs[index]);
+//    if (editResource && index != -1) {
+//    	replaceNode(resourceElement, resourceConfigs[index]);
+//    }
+    
+    let exists = editResource && index != -1;
+    if (resourceConfigs.length > 0 && exists) {
+    	// Deletes if operation node exists
+        for (let i = 0, len = resourceConfigs.length; i < len; i++) {
+            if (index == i) {
+            	// Delete the node.
+            	dataRoot.removeChild(resourceConfigs[0]);
+            	dataRoot.appendChild(resourceElement);
+            } else {
+            	let current_op = resourceConfigs[0];
+            	dataRoot.removeChild(resourceConfigs[0]);
+            	dataRoot.appendChild(current_op);
+            }
+        }
+    } else {
+    	dataRoot.appendChild(resourceElement);
     }
+    
+    if (resourceConfigs.length > 0 && !exists) {
+    	dataRoot.appendChild(resourceElement);
+    }
+    
+    
 
-    if (resourceConfigs.length > 0) {
-		insertAfter(resourceElement,
-				resourceConfigs[resourceConfigs.length - 1]);
-	} else {
-		dataRoot.appendChild(resourceElement);
-	}
+//    if (resourceConfigs.length > 0) {
+//		insertAfter(resourceElement,
+//				resourceConfigs[resourceConfigs.length - 1]);
+//	} else {
+//		dataRoot.appendChild(resourceElement);
+//	}
 }
 
 /**

@@ -17,34 +17,43 @@ function clearQueryAdvancedProperties() {
 
 function populateQueryAdvancedProperties() {
 	let properties = window.queryElement.getElementsByTagName("properties");
-	if (properties != null && properties != undefined && properties[0] != undefined && properties[0].children.length > 0) {
+	if (properties != null && properties != undefined && properties[0] != undefined && ((properties[0].children != undefined && properties[0].children.length > 0) 
+			|| (properties[0].childNodes != undefined && properties[0].childNodes.length > 0))) {
 		let propertyChildren = properties[0].children;
+		if (propertyChildren == undefined) {
+			propertyChildren = properties[0].childNodes;
+		}
 		$.each(propertyChildren, function (index, child) {
-			let name = child.attributes.getNamedItem("name").value;
-			let value = child.innerHTML;
-			if (value == undefined) {
-				value = child.textContent;
-			}
-			if (name == "queryTimeout") {
-				setQueryTimeout(value);
-				
-			} else if (name == "fetchDirection") {
-				setFetchDirection(value);
-				
-			} else if (name == "forceStoredProc") {
-				setForceStoredProc(value);
-				
-			} else if (name == "forceJDBCBatchRequests") {
-				setForceJDBCBatchRequests(value);
-				
-			} else if (name == "fetchSize") {
-				setFetchSize(value);
-				
-			} else if (name == "maxFieldSize") {
-				setMaxFieldSize(value);
-				
-			} else if (name == "maxRows") {
-				setMaxRows(value);
+			if (child.attributes != null && child.attributes != undefined) {
+				let name = child.attributes.getNamedItem("name").value;
+				let value = child.innerHTML;
+				if (value == undefined) {
+					value = child.textContent;
+				}
+				if (value == undefined) {
+					value = child.textContent;
+				}
+				if (name == "queryTimeout") {
+					setQueryTimeout(value);
+					
+				} else if (name == "fetchDirection") {
+					setFetchDirection(value);
+					
+				} else if (name == "forceStoredProc") {
+					setForceStoredProc(value);
+					
+				} else if (name == "forceJDBCBatchRequests") {
+					setForceJDBCBatchRequests(value);
+					
+				} else if (name == "fetchSize") {
+					setFetchSize(value);
+					
+				} else if (name == "maxFieldSize") {
+					setMaxFieldSize(value);
+					
+				} else if (name == "maxRows") {
+					setMaxRows(value);
+				}
 			}
 		});
 	}

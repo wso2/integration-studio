@@ -184,40 +184,42 @@ function populateOueryOutputMappings(queryElement) {
 				let datasourceTypeVal = "";
 				let mappingTypeVal = "";
 				
-				if (ele.localName == "attribute") {
-					mappingTypeVal = "attribute";
-					nameVal = getElementNameColumnValue(ele);
-					datasourceTypeVal = getDSTypeColumnValue(ele);
-					columnVal = getColumnNameColumnValue(ele);
-					xsdTypeVal = getSchemaTypeColumnValue(ele);
-					
-				} else if (ele.localName == "call-query") {
-					mappingTypeVal = "query";
-					nameVal = getElementNameColumnValueForQuery(ele);
-					
-				} else if (ele.localName == "element") {
-
-					if ((ele.children != undefined && ele.children.length > 0) || (ele.childNodes != undefined && ele.childNodes.length > 0)) {
-						mappingTypeVal = "complex-element";
-					} else {
-						mappingTypeVal = "element";
+				if (ele.localName != null && ele.localName != undefined) {
+					if (ele.localName == "attribute") {
+						mappingTypeVal = "attribute";
+						nameVal = getElementNameColumnValue(ele);
 						datasourceTypeVal = getDSTypeColumnValue(ele);
 						columnVal = getColumnNameColumnValue(ele);
 						xsdTypeVal = getSchemaTypeColumnValue(ele);
+						
+					} else if (ele.localName == "call-query") {
+						mappingTypeVal = "query";
+						nameVal = getElementNameColumnValueForQuery(ele);
+						
+					} else if (ele.localName == "element") {
+
+						if ((ele.children != undefined && ele.children.length > 0) || (ele.childNodes != undefined && ele.childNodes.length > 0)) {
+							mappingTypeVal = "complex-element";
+						} else {
+							mappingTypeVal = "element";
+							datasourceTypeVal = getDSTypeColumnValue(ele);
+							columnVal = getColumnNameColumnValue(ele);
+							xsdTypeVal = getSchemaTypeColumnValue(ele);
+						}
+						
+						nameVal = getElementNameColumnValue(ele);
 					}
 					
-					nameVal = getElementNameColumnValue(ele);
+					let requiredRoles = ele.attributes.getNamedItem("requiredRoles");
+					if (requiredRoles != undefined) {
+						requiredRolesVal = requiredRoles.value;
+					} else {
+						requiredRolesVal = "N/A";
+					}
+					
+					let row = "<tr><td>" + nameVal + "</td><td>" + datasourceTypeVal + "</td><td>" + columnVal + "</td><td>" + mappingTypeVal + "</td><td>" + requiredRolesVal + "</td><td>" + xsdTypeVal + "</td><td class=\"text-center\"><i class=\"fa fa-edit\"></i><i class=\"fa fa-trash\"></i></td></tr>";
+					$('#q-output-mapping-table > tbody').append(row);
 				}
-				
-				let requiredRoles = ele.attributes.getNamedItem("requiredRoles");
-				if (requiredRoles != undefined) {
-					requiredRolesVal = requiredRoles.value;
-				} else {
-					requiredRolesVal = "N/A";
-				}
-				
-				let row = "<tr><td>" + nameVal + "</td><td>" + datasourceTypeVal + "</td><td>" + columnVal + "</td><td>" + mappingTypeVal + "</td><td>" + requiredRolesVal + "</td><td>" + xsdTypeVal + "</td><td class=\"text-center\"><i class=\"fa fa-edit\"></i><i class=\"fa fa-trash\"></i></td></tr>";
-				$('#q-output-mapping-table > tbody').append(row);
 			
 			});
 		}

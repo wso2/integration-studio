@@ -510,7 +510,11 @@ function addQuery(root, queryElement) {
     if (queries.length > 0) {
     	// Deletes if query node exists
         for (let i = 0, len = queries.length; i < len; i++) {
-            if (queries[0].id == queryId && !$("#q-query-id-input").prop('disabled')) {
+        	let qId = queries[0].id;
+        	if (qId == undefined) {
+        		qId = queries[0].attributes.getNamedItem("id").value;
+        	}
+            if (qId == queryId && !$("#q-query-id-input").prop('disabled')) {
             	// Delete the node.
             	exists = true;
             	dataRoot.removeChild(queries[0]);

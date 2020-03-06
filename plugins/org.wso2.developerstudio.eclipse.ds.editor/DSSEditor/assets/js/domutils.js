@@ -79,7 +79,11 @@ function deleteDatasource(root, datasourceId) {
     let dsConfigs = root.getElementsByTagName("config");
 
     for (let i = 0, len = dsConfigs.length; i < len; i++) {
-        if (dsConfigs[i].id == datasourceId) {
+    	let dsConfigID = dsConfigs[i].id;
+    	if (dsConfigID == undefined) {
+    		dsConfigID = dsConfigs[i].attributes.getNamedItem("id").value;
+    	}
+        if (dsConfigID == datasourceId) {
             // Delete the node.
             root.documentElement.removeChild(dsConfigs[i]);
             break;

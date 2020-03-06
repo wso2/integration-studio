@@ -464,10 +464,12 @@ function updateValidatorsTable() {
         let validatorName = getValidatorDetails(validatorElement).validatorName;
         let validation = getValidatorDetails(validatorElement).validation;
 
-        let markup = "<tr name=\"" + validatorElement.tagName + "\"><td>" + validatorName + "</td><td>" + validation + "</td><td class=\"text-center\">" +
+        if (validatorName.trim() != "") {
+        	let markup = "<tr name=\"" + validatorElement.tagName + "\"><td>" + validatorName + "</td><td>" + validation + "</td><td class=\"text-center\">" +
             "<i class=\"fa fa-edit\"></i><i class=\"fa fa-trash\"></i></td></tr>";
 
-        $("#q-im-validators-table tbody").append(markup);
+        	$("#q-im-validators-table tbody").append(markup);
+        }
     }
 }
 

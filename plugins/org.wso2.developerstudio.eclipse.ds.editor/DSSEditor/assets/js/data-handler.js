@@ -212,6 +212,22 @@ $(document).ready(function ($) {
 
     $("#query-add-save-btn").click(function (e) {
         e.preventDefault();
+        
+        if (!$("#q-query-id-input").val()) {
+            showNotificationAlertModal("Error", "Please provide a query ID.");
+            return false;
+        }
+
+        if ($("#q-datasource-select").val().trim() == "") {
+            showNotificationAlertModal("Error", "Please select a datasource.");
+            return false;
+        }
+
+        if ($("#q-sql-query-input").val().trim() == "") {
+            showNotificationAlertModal("Error", "Please provide a SQL query.");
+            return false;
+        }
+        
         window.queryElement = root.createElement("query");
         processQueryDetails(root, window.queryElement);
         saveInputMappingsToQueryElement(window.queryElement);
@@ -282,6 +298,25 @@ $(document).ready(function ($) {
 
     $("#q-im-validators-save-btn").click(function (e) {
         e.preventDefault();
+        
+        let validator = $('#q-im-validator-select').val().trim();
+        if (validator == "default") {
+        	showNotificationAlertModal("Error", "Please select a validator type.");
+        	return false;
+        }
+        
+        let min = $('#im-val-minvalue-input').val().trim();
+        if (min == "") {
+        	showNotificationAlertModal("Error", "Please define a minimum value.");
+        	return false;
+        }
+        
+        let max = $('#im-val-maxvalue-input').val().trim();
+        if (max == "") {
+        	showNotificationAlertModal("Error", "Please define a maximum value.");
+        	return false;
+        }
+        
         let selectedValidator = $("#q-im-validator-select").val();
         addValidator(root, selectedValidator);
     });
@@ -511,6 +546,19 @@ $(document).ready(function ($) {
      */
     $("#operation-form-save-btn").click(function (e) {
         e.preventDefault();
+        
+        let opName = $('#o-addedit-opname-input').val().trim();
+        if (opName == "") {
+        	showNotificationAlertModal("Error", "Please define an operation name.");
+        	return false;
+        }
+        
+        let qId = $('#o-addedit-queryid-select').val().trim();
+        if (qId == "") {
+        	showNotificationAlertModal("Error", "Please provide a query ID.");
+        	return false;
+        }
+        
         let status = addOperation(root);
         if (status) {
         	saveAll(root, url, function() { });
@@ -600,6 +648,12 @@ $(document).ready(function ($) {
     $("#input-mapping-save-btn").click(function (e) {
         e.preventDefault();
 
+        let inMappingName = $('#im-mappingname-input').val();
+        if (inMappingName.trim() == "") {
+        	showNotificationAlertModal("Error", "Please define a mapping name.");
+        	return false;
+        }
+        
         let result = addInputMapping(root);
 
         if (result) {
@@ -617,12 +671,12 @@ $(document).ready(function ($) {
             return false;
         }
 
-        if ($("#q-datasource-select").val() == "") {
+        if ($("#q-datasource-select").val().trim() == "") {
             showNotificationAlertModal("Error", "Please select a datasource.");
             return false;
         }
 
-        if ($("#q-sql-query-input").val() == "") {
+        if ($("#q-sql-query-input").val().trim() == "") {
             showNotificationAlertModal("Error", "Please provide a SQL query.");
             return false;
         }

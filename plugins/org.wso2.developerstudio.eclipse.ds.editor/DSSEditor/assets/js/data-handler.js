@@ -101,6 +101,27 @@ $(document).ready(function ($) {
 
     // Start of Data sources - Add data source
     $("#ds-add-save-btn").click(function (e) {
+    	//check validation
+    	if ($("#ds-ds-id-input").val().trim() == "") {
+    		showNotificationAlertModal("Error", "Please enter a datasource id");
+            return false;
+    	}
+    	
+    	if ($("#ds-db-engine-select").val().trim() == "") {
+    		showNotificationAlertModal("Error", "Please select a database engine");
+            return false;
+    	}
+    	
+    	if ($("#ds-driver-class-input").val().trim() == "") {
+    		showNotificationAlertModal("Error", "Please enter a driver class");
+            return false;
+    	}
+    	
+    	if ($("#ds-url-input").val().trim() == "") {
+    		showNotificationAlertModal("Error", "Please enter a url");
+            return false;
+    	}
+    	
         e.preventDefault();
         let result = addDataSource(root);
 
@@ -114,6 +135,22 @@ $(document).ready(function ($) {
 
     // Start of resource - Add resource
     $("#resource-save-btn").click(function (e) {
+    	//check validations
+    	if ($("#r-addedit-opname-input").val().trim() == "") {
+    		showNotificationAlertModal("Error", "Please enter a resource path");
+            return false;
+    	}
+    	
+    	if ($("#r-addedit-resourcemethod-select").val().trim() == "") {
+    		showNotificationAlertModal("Error", "Please enter a resource method");
+            return false;
+    	}
+    	
+    	if ($("#r-addedit-queryid-select").val().trim() == "") {
+    		showNotificationAlertModal("Error", "Please enter a query id");
+            return false;
+    	}
+    	
         e.preventDefault();
         let status = addResource(root);
         if (status) {

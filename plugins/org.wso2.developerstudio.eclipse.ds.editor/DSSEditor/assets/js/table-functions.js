@@ -2,6 +2,12 @@ $(document).ready(function(){
     
     //--- Start of Transport Settings param table ---//
     $("#ts-params-add-btn").click(function() {
+    	let authProviderClass = $('#ts-auth-prov-class-input').val().trim();
+    	if (authProviderClass == "") {
+    		showNotificationAlertModal("Error", "Please specify an authorization provider class.");
+            return false;
+    	}
+    	
         var markup = "<tr><td><input type='text' placeholder='Name' style='width: 100%;'/></td><td><input type='text' placeholder='Value' style='width: 100%;'/></td><td class='text-center'><i class='fa fa-trash delete-row'></i></td></tr>";
         $("#ts-parameter-table tbody").append(markup);
     });

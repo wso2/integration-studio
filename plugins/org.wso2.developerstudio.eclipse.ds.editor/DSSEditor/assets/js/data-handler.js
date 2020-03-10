@@ -4,6 +4,7 @@ $(document).ready(function ($) {
     let url = "http://127.0.0.1:" + portValue + "/dsseditor/service";
     let root = "";
     let resultElement;
+    var onKeyChangeTimer;
 
     window.queryElement = [];
     window.validators = [];
@@ -68,34 +69,40 @@ $(document).ready(function ($) {
         saveAll(root, url, function() { });
     });
     
-    $('#ts-txmjndi-name-input').change(function () {
-        let txJndiName = $('#ts-txmjndi-name-input').val();
-        if (txJndiName.trim() != "") {
-        	root.getElementsByTagName("data")[0].setAttribute("txManagerJNDIName", txJndiName);
-        } else {
-        	root.getElementsByTagName("data")[0].removeAttribute("txManagerJNDIName");
-        }
-        saveAll(root, url, function() { });
+    $("#ts-txmjndi-name-input").on("keyup", function(){
+        clearInterval(onKeyChangeTimer);
+        onKeyChangeTimer = setTimeout(function() {
+        	let txJndiName = $('#ts-txmjndi-name-input').val();
+            if (txJndiName.trim() != "") {
+            	root.getElementsByTagName("data")[0].setAttribute("txManagerJNDIName", txJndiName);
+            } else {
+            	root.getElementsByTagName("data")[0].removeAttribute("txManagerJNDIName");
+            }
+            saveAll(root, url, function() { });
+        }, 200);
     });
     
-    $('#ts-auth-prov-class-input').change(function () {
-        let providerClass = $('#ts-auth-prov-class-input').val();
-        if (providerClass.trim() != "") {
-        	let authProvider = root.getElementsByTagName("data")[0].getElementsByTagName("authorization_provider");
-        	if (authProvider.length > 0) {
-        		authProvider[0].setAttribute("class", providerClass);
-        	} else {
-        		let provider = root.createElement("authorization_provider");
-        		provider.setAttribute("class", providerClass);
-        		root.getElementsByTagName("data")[0].appendChild(provider);
-        	}
-        } else {
-        	let authProvider = root.getElementsByTagName("data")[0].getElementsByTagName("authorization_provider");
-        	if (authProvider.length > 0) {
-        		root.getElementsByTagName("data")[0].appendChild(authProvider[0]);
-        	}
-        }
-        saveAll(root, url, function() { });
+    $("#ts-auth-prov-class-input").on("keyup", function(){
+        clearInterval(onKeyChangeTimer);
+        onKeyChangeTimer = setTimeout(function() {
+        	let providerClass = $('#ts-auth-prov-class-input').val();
+            if (providerClass.trim() != "") {
+            	let authProvider = root.getElementsByTagName("data")[0].getElementsByTagName("authorization_provider");
+            	if (authProvider.length > 0) {
+            		authProvider[0].setAttribute("class", providerClass);
+            	} else {
+            		let provider = root.createElement("authorization_provider");
+            		provider.setAttribute("class", providerClass);
+            		root.getElementsByTagName("data")[0].appendChild(provider);
+            	}
+            } else {
+            	let authProvider = root.getElementsByTagName("data")[0].getElementsByTagName("authorization_provider");
+            	if (authProvider.length > 0) {
+            		root.getElementsByTagName("data")[0].appendChild(authProvider[0]);
+            	}
+            }
+            saveAll(root, url, function() { });
+        }, 200);
     });
     // End of Transport settings - Transports
 
@@ -486,34 +493,39 @@ $(document).ready(function ($) {
     // End of query output mapping
     
     // Start of input event handlers - General details
-    $("#dss-description-input").change(function() {
-    	
-    	let exists = false;
-    	let description = root.getElementsByTagName("description");
-        if (description.length > 0) {
-        	for (let i = 0, len = description.length; i < len; i++) {
-        		if ((description[i].parentElement != undefined && description[i].parentElement != null && description[i].parentElement.localName == "data") 
-        				|| (description[i].parentNode != undefined && description[i].parentNode != null && description[i].parentNode.localName == "data")) {
-        			exists = true;
-        			description[i].textContent = $('#dss-description-input').val();
-        			break;
-        		}
-        	}
-        }
-        
-        if (!exists && $('#dss-description-input').val().trim() != "") {
-        	let descriptionElement = root.createElement("description");
-            let text_node = root.createTextNode($('#dss-description-input').val());
-            descriptionElement.appendChild(text_node);
-            root.getElementsByTagName("data")[0].appendChild(descriptionElement);
-        }
+    $("#dss-description-input").on("keyup", function(){
+        clearInterval(onKeyChangeTimer);
+        onKeyChangeTimer = setTimeout(function() {
+        	let exists = false;
+        	let description = root.getElementsByTagName("description");
+            if (description.length > 0) {
+            	for (let i = 0, len = description.length; i < len; i++) {
+            		if ((description[i].parentElement != undefined && description[i].parentElement != null && description[i].parentElement.localName == "data") 
+            				|| (description[i].parentNode != undefined && description[i].parentNode != null && description[i].parentNode.localName == "data")) {
+            			exists = true;
+            			description[i].textContent = $('#dss-description-input').val();
+            			break;
+            		}
+            	}
+            }
+            
+            if (!exists && $('#dss-description-input').val().trim() != "") {
+            	let descriptionElement = root.createElement("description");
+                let text_node = root.createTextNode($('#dss-description-input').val());
+                descriptionElement.appendChild(text_node);
+                root.getElementsByTagName("data")[0].appendChild(descriptionElement);
+            }
 
-        saveAll(root, url, function() { });
+            saveAll(root, url, function() { });
+        }, 200);
     });
 
-    $("#dss-namespace-input").change(function() {
-    	root.getElementsByTagName("data")[0].setAttribute("serviceNamespace", $('#dss-namespace-input').val());
-    	saveAll(root, url, function() { });
+    $("#dss-namespace-input").on("keyup", function(){
+        clearInterval(onKeyChangeTimer);
+        onKeyChangeTimer = setTimeout(function() {
+            root.getElementsByTagName("data")[0].setAttribute("serviceNamespace", $('#dss-namespace-input').val());
+            saveAll(root, url, function() { });
+        }, 200);
     });
     
     $(document).on('click','#auth-provider-param-table .fa-trash',function() {
@@ -532,36 +544,39 @@ $(document).ready(function ($) {
     	saveAll(root, url, function() { });
     });
     
-    $("#auth-provider-param-table").focusout(function() {
-    	let authProvider;
-    	let authProviders = root.getElementsByTagName("data")[0].getElementsByTagName("authorization_provider");
-        if (authProviders.length == 0) {
-        	authProvider = root.createElement("authorization_provider");
-        } else {
-        	authProvider = authProviders[0];
-        	let props = authProvider.children;
-        	if (props == undefined) {
-        		props = authProvider.childNodes;
+    $("#auth-provider-param-table > tbody").on("keyup", function(){
+        clearInterval(onKeyChangeTimer);
+        onKeyChangeTimer = setTimeout(function() {
+        	let authProvider;
+        	let authProviders = root.getElementsByTagName("data")[0].getElementsByTagName("authorization_provider");
+            if (authProviders.length == 0) {
+            	authProvider = root.createElement("authorization_provider");
+            } else {
+            	authProvider = authProviders[0];
+            	let props = authProvider.children;
+            	if (props == undefined) {
+            		props = authProvider.childNodes;
+            	}
+        		for (let i = 0, len = props.length; i < len; i++) {
+        			if (authProvider.children != undefined) {
+        				authProvider.children[0].remove();
+        			} else if (authProvider.childNodes != undefined) {
+        				authProvider.childNodes[0].parentNode.removeChild(authProvider.childNodes[0]);
+        			}
+        			
+            	}
+            }
+            
+            let trs = $('#auth-provider-param-table').find('tr');
+            for (let i = 1, len = trs.length; i < len; i++) {
+            	let prop = root.createElement("property");
+            	prop.setAttribute("name", trs[i].cells[0].firstChild.value);
+            	prop.textContent = trs[i].cells[1].firstChild.value;
+            	authProvider.appendChild(prop);
         	}
-    		for (let i = 0, len = props.length; i < len; i++) {
-    			if (authProvider.children != undefined) {
-    				authProvider.children[0].remove();
-    			} else if (authProvider.childNodes != undefined) {
-    				authProvider.childNodes[0].parentNode.removeChild(authProvider.childNodes[0]);
-    			}
-    			
-        	}
-        }
-        
-        let trs = $('#auth-provider-param-table').find('tr');
-        for (let i = 1, len = trs.length; i < len; i++) {
-        	let prop = root.createElement("property");
-        	prop.setAttribute("name", trs[i].cells[0].firstChild.value);
-        	prop.textContent = trs[i].cells[1].firstChild.value;
-        	authProvider.appendChild(prop);
-    	}
-        
-        saveAll(root, url, function() { });
+            
+            saveAll(root, url, function() { });
+        }, 200);
     });
     
     // End of input event handlers - General details

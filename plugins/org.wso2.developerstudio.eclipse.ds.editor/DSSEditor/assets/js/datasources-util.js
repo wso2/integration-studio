@@ -11,6 +11,7 @@ function openDSModal(isEditEnabled) {
         $("#ds-ds-id-input").prop('disabled', false);
     }
 
+    $('#ds-add-edit-ds-modal').modal({backdrop: 'static', show: false});  
     $("#ds-add-edit-ds-modal").modal('show');
 }
 

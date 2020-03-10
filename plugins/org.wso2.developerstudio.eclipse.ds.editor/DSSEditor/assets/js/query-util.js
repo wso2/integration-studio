@@ -397,8 +397,8 @@ function editInputMapping(root, mappingName) {
 
         if (paramElement.getAttribute("name") === mappingName) {
             $("#im-mappingname-input").val(paramElement.attributes.getNamedItem("name").value);
-            $("#q-im-paramtype-select").val(paramElement.attributes.getNamedItem("paramType").value.toLowerCase());
-            $("#q-im-sqltype-select").val(paramElement.attributes.getNamedItem("sqlType").value.toLowerCase());
+            $("#q-im-paramtype-select").val(paramElement.attributes.getNamedItem("paramType").value.toUpperCase());
+            $("#q-im-sqltype-select").val(paramElement.attributes.getNamedItem("sqlType").value.toUpperCase());
 
             if (paramElement.attributes.getNamedItem("defaultValue") !== null) {
                 $("#im-defaultvalue-input").val(paramElement.attributes.getNamedItem("defaultValue").value);
@@ -419,6 +419,7 @@ function editInputMapping(root, mappingName) {
 
     window.isInputMappingEdit = true;
     window.mappingToBeDeleted = mappingName;
+    $('#q-input-mapping-modal').modal({backdrop: 'static', show: false});
     $("#q-input-mapping-modal").modal("show");
 }
 

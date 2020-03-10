@@ -294,6 +294,7 @@ function populateQueryOutputMappingModal(result, tds, root) {
 		populateOutputMappingModal(root, false);
 	}
 	
+	$("#q-output-mapping-modal").modal({backdrop: 'static', show: false});
 	$("#q-output-mapping-modal").modal('show');
 }
 

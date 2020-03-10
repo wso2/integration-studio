@@ -132,7 +132,7 @@
 				<xs:element name="configuration">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="entry">
+							<xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
 								<xs:complexType>
 									<xs:sequence>
 										<xs:element name="username" type="xs:string" />
@@ -198,6 +198,20 @@
 				maxOccurs="1">
 				<xs:complexType>
 					<xs:attribute name="pattern" type="xs:string" />
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="validateLongRange" minOccurs="0"
+				maxOccurs="1">
+				<xs:complexType>
+					<xs:attribute name="minimum" type="xs:integer" />
+					<xs:attribute name="maximum" type="xs:integer" />
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="validateDoubleRange" minOccurs="0"
+				maxOccurs="1">
+				<xs:complexType>
+					<xs:attribute name="minimum" type="xs:integer" />
+					<xs:attribute name="maximum" type="xs:integer" />
 				</xs:complexType>
 			</xs:element>
 		</xs:choice>

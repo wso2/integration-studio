@@ -94,6 +94,10 @@ function populateDSModal(root, dsId, metadata) {
     let dbEngine = dataMap.get(DS_METADATA_DB_ENGINE);
 
     let dsConfigs = root.getElementsByTagName("config");
+    
+    $("#ds-secret-alias-check").prop('checked', false);
+    $('#ds-password-inputgroup').toggle(true);
+    $('#ds-password-sa-inputgroup').toggle(false);
 
     for (let i = 0, len = dsConfigs.length; i < len; i++) {
         let config = dsConfigs[i];
@@ -149,15 +153,25 @@ function populateDSModal(root, dsId, metadata) {
                     if (secretAlias.status) {
                         password = secretAlias.value;
                         $("#ds-secret-alias-check").prop('checked', true);
+                        $('#ds-password-inputgroup').toggle(false);
+                        $('#ds-password-sa-inputgroup').toggle(true);
+                        
                     } else {
                         password = getDSConfigPropertyValue(properties, "password");
+                        
                     }
 
                     if (password === "") {
                         password = getDSConfigPropertyValue(properties, "org.wso2.ws.dataservice.password");
                     }
-                    if (password != null && password != undefined) {
-                        $("#ds-password-input").val(password.trim());
+                    if (secretAlias.status) {
+                    	if (password != null && password != undefined) {
+                            $("#ds-password-sa-input").val(password.trim());
+                        }
+                    } else {
+                    	if (password != null && password != undefined) {
+                            $("#ds-password-input").val(password.trim());
+                        }
                     }
 
                     if (dbEngine != null && dbEngine != undefined) {
@@ -303,20 +317,6 @@ function processDSInputData(root, data, deleteIfExists) {
 
     let dynamicAuthClass = $("#ds-dynamic-auth-class-input").val();
 
-    // Delete if existing config node exists
-    if (deleteIfExists) {
-        for (let i = 0, len = dsConfigs.length; i < len; i++) {
-        	let dsID = dsConfigs[i].id;
-        	if (dsID == undefined) {
-        		dsID = dsConfigs[i].attributes.getNamedItem("id").value;
-        	}
-            if (dsID == dsId) {
-                // Delete the node.
-                root.documentElement.removeChild(dsConfigs[i]);
-            }
-        }
-    }
-
     // Create a new config element
     let configElement = root.createElement("config");
     configElement.setAttribute("id", dsId);
@@ -333,7 +333,7 @@ function processDSInputData(root, data, deleteIfExists) {
             if ($("#ds-secret-alias-check").is(":checked")) {
                 let propertyNode = createPropertyNode(root, "password");
                 propertyNode.setAttribute(SECRET_ALIAS_NAMESPACE_ATTRIBUTE, SECRET_ALIAS_NAMESPACE);
-                propertyNode.setAttribute(SECRET_ALIAS_ATTRIBUTE, data['ds-password-input']);
+                propertyNode.setAttribute(SECRET_ALIAS_ATTRIBUTE, data['ds-password-sa-input']);
 
                 properties.push(propertyNode);
             } else {
@@ -385,12 +385,36 @@ function processDSInputData(root, data, deleteIfExists) {
     }
 
     // OData enabled
-    configElement.setAttribute("enableOData", $('#ds-enable-odata-check').is(":checked"));
-
-    if (root.getElementsByTagName("config").length > 0) {
-        insertAfter(configElement, dsConfigs[dsConfigs.length - 1]);
+    let enableOData = $('#ds-enable-odata-check').is(":checked");
+    if (enableOData) {
+    	configElement.setAttribute("enableOData", true);
+    }
+    
+    let exists = false;
+    if (dsConfigs.length > 0) {
+    	// Deletes if query node exists
+        for (let i = 0, len = dsConfigs.length; i < len; i++) {
+        	let dsID = dsConfigs[0].id;
+        	if (dsID == undefined) {
+        		dsID = dsConfigs[0].attributes.getNamedItem("id").value;
+        	}
+            if (dsID == dsId) {
+            	// Delete the node.
+            	exists = true;
+            	dataRoot.removeChild(dsConfigs[0]);
+            	dataRoot.appendChild(configElement);
+            } else {
+            	let current_ds = dsConfigs[0];
+            	dataRoot.removeChild(dsConfigs[0]);
+            	dataRoot.appendChild(current_ds);
+            }
+        }
     } else {
-        dataRoot.appendChild(configElement);
+    	dataRoot.appendChild(configElement);
+    }
+    
+    if (dsConfigs.length > 0 && !exists) {
+    	dataRoot.appendChild(configElement);
     }
 
     // Save data source metadata
@@ -535,6 +559,7 @@ function getDSConfigPropertyValue(propertyArr, propertyName) {
  */
 function resetDSAddEditModal() {
     setVisibleDSTypeRDBMS(true);
+    $('#ds-password-sa-inputgroup').toggle(false);
     setVisibleDSTypeCarbon(false);
     clearDynamicAuthTable();
 }

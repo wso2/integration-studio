@@ -53,7 +53,6 @@ $(document).ready(function ($) {
                    tl.pg.init({ pg_caption: "Open Help" });
                 },
                 error: function (error) {
-                	
                 }
             });
     
@@ -107,6 +106,16 @@ $(document).ready(function ($) {
     // End of Transport settings - Transports
 
     // Start of Data sources - Add data source
+    $('#ds-secret-alias-check').change(function() {
+        if (this.checked) {
+        	$('#ds-password-inputgroup').toggle(false);
+        	$('#ds-password-sa-inputgroup').toggle(true);
+        } else {
+        	$('#ds-password-inputgroup').toggle(true);
+        	$('#ds-password-sa-inputgroup').toggle(false);
+        }
+    });
+    
     $("#ds-add-save-btn").click(function (e) {
     	//check validation
     	if ($("#ds-ds-id-input").val().trim() == "") {
@@ -185,6 +194,11 @@ $(document).ready(function ($) {
 
     $("#ds-test-conn-btn").click(function() {
         let dbType = $("#ds-db-engine-select").val();
+        if (dbType == "") {
+        	showDSNotification("danger", "Please select the database engine.", 6000);
+        	return false;
+        }
+        
         let version = $("#ds-db-version-select").val();
         let username = $("#ds-username-input").val();
         let password = $("#ds-password-input").val();
@@ -349,16 +363,25 @@ $(document).ready(function ($) {
         	return false;
         }
         
-        let min = $('#im-val-minvalue-input').val().trim();
-        if (min == "") {
-        	showNotificationAlertModal("Error", "Please define a minimum value.");
-        	return false;
-        }
-        
-        let max = $('#im-val-maxvalue-input').val().trim();
-        if (max == "") {
-        	showNotificationAlertModal("Error", "Please define a maximum value.");
-        	return false;
+        if (validator != "validatePattern") {
+        	let min = $('#im-val-minvalue-input').val().trim();
+            if (min == "") {
+            	showNotificationAlertModal("Error", "Please define a minimum value.");
+            	return false;
+            }
+            
+            let max = $('#im-val-maxvalue-input').val().trim();
+            if (max == "") {
+            	showNotificationAlertModal("Error", "Please define a maximum value.");
+            	return false;
+            }
+            
+        } else {
+        	let pattern = $('#im-val-pattern-input').val().trim();
+        	if (pattern == "") {
+        		showNotificationAlertModal("Error", "Please define a pattern.");
+        		return false;
+        	}
         }
         
         let selectedValidator = $("#q-im-validator-select").val();
@@ -841,7 +864,12 @@ function populateGeneralDetails(root) {
 
     let namespace = root.getElementsByTagName("data")[0];
     if (namespace != undefined && namespace.hasChildNodes()) {
-        $('#dss-namespace-input').val(namespace.attributes.getNamedItem("serviceNamespace").value);
+    	let serviceNamespace = namespace.attributes.getNamedItem("serviceNamespace");
+    	if (serviceNamespace != undefined && serviceNamespace != null) {
+    		$('#dss-namespace-input').val(serviceNamespace.value);
+    	} else {
+    		$('#dss-namespace-input').val("");
+    	}
     }
 }
 

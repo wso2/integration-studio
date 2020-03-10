@@ -243,6 +243,7 @@ function populateOperationForm(root, operation_name, query_name) {
 					$('#op-addedit-returnreqstatus-checkbox').prop("checked", false);
 				}
 				
+				$('#o-operation-addedit-modal').modal({backdrop: 'static', show: false});
 				$("#o-operation-addedit-modal").modal('show');
 			}
 		}

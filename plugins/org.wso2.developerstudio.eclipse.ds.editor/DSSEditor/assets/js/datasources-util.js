@@ -93,6 +93,10 @@ function populateDSModal(root, dsId, metadata) {
     let dbEngine = dataMap.get(DS_METADATA_DB_ENGINE);
 
     let dsConfigs = root.getElementsByTagName("config");
+    
+    $("#ds-secret-alias-check").prop('checked', false);
+    $('#ds-password-inputgroup').toggle(true);
+    $('#ds-password-sa-inputgroup').toggle(false);
 
     for (let i = 0, len = dsConfigs.length; i < len; i++) {
         let config = dsConfigs[i];
@@ -148,15 +152,25 @@ function populateDSModal(root, dsId, metadata) {
                     if (secretAlias.status) {
                         password = secretAlias.value;
                         $("#ds-secret-alias-check").prop('checked', true);
+                        $('#ds-password-inputgroup').toggle(false);
+                        $('#ds-password-sa-inputgroup').toggle(true);
+                        
                     } else {
                         password = getDSConfigPropertyValue(properties, "password");
+                        
                     }
 
                     if (password === "") {
                         password = getDSConfigPropertyValue(properties, "org.wso2.ws.dataservice.password");
                     }
-                    if (password != null && password != undefined) {
-                        $("#ds-password-input").val(password.trim());
+                    if (secretAlias.status) {
+                    	if (password != null && password != undefined) {
+                            $("#ds-password-sa-input").val(password.trim());
+                        }
+                    } else {
+                    	if (password != null && password != undefined) {
+                            $("#ds-password-input").val(password.trim());
+                        }
                     }
 
                     if (dbEngine != null && dbEngine != undefined) {
@@ -332,7 +346,7 @@ function processDSInputData(root, data, deleteIfExists) {
             if ($("#ds-secret-alias-check").is(":checked")) {
                 let propertyNode = createPropertyNode(root, "password");
                 propertyNode.setAttribute(SECRET_ALIAS_NAMESPACE_ATTRIBUTE, SECRET_ALIAS_NAMESPACE);
-                propertyNode.setAttribute(SECRET_ALIAS_ATTRIBUTE, data['ds-password-input']);
+                propertyNode.setAttribute(SECRET_ALIAS_ATTRIBUTE, data['ds-password-sa-input']);
 
                 properties.push(propertyNode);
             } else {
@@ -534,6 +548,7 @@ function getDSConfigPropertyValue(propertyArr, propertyName) {
  */
 function resetDSAddEditModal() {
     setVisibleDSTypeRDBMS(true);
+    $('#ds-password-sa-inputgroup').toggle(false);
     setVisibleDSTypeCarbon(false);
     clearDynamicAuthTable();
 }

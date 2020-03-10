@@ -52,7 +52,6 @@ $(document).ready(function ($) {
                    tl.pg.init({ pg_caption: "Open Help" });
                 },
                 error: function (error) {
-                	
                 }
             });
     
@@ -825,7 +824,12 @@ function populateGeneralDetails(root) {
 
     let namespace = root.getElementsByTagName("data")[0];
     if (namespace != undefined && namespace.hasChildNodes()) {
-        $('#dss-namespace-input').val(namespace.attributes.getNamedItem("serviceNamespace").value);
+    	let serviceNamespace = namespace.attributes.getNamedItem("serviceNamespace");
+    	if (serviceNamespace != undefined && serviceNamespace != null) {
+    		$('#dss-namespace-input').val(serviceNamespace.value);
+    	} else {
+    		$('#dss-namespace-input').val("");
+    	}
     }
 }
 

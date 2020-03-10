@@ -419,6 +419,7 @@ function editInputMapping(root, mappingName) {
 
     window.isInputMappingEdit = true;
     window.mappingToBeDeleted = mappingName;
+    $('#q-input-mapping-modal').modal({backdrop: 'static', show: false});
     $("#q-input-mapping-modal").modal("show");
 }
 

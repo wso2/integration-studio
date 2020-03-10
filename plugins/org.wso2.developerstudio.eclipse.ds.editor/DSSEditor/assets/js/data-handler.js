@@ -725,6 +725,7 @@ $(document).ready(function ($) {
         updateInputMappingTable();
 
         $("#q-im-addedit-title").text("Add Input Mapping");
+        $('#q-input-mapping-modal').modal({backdrop: 'static', show: false});
         $("#q-input-mapping-modal").modal("show");
     });
 
@@ -902,6 +903,7 @@ function openResourcesModal(isEditEnabled) {
     } else {
         $("#resource-modal-header").text("Create Resource");
     }
+    $('#r-resource-addedit-modal').modal({backdrop: 'static', show: false});
     $("#r-resource-addedit-modal").modal('show');
 }
 
@@ -1390,6 +1392,7 @@ function showNotificationAlertModal(title, content) {
     $("#alert-modal-title").text(title);
     $("#alert-modal-content").text(content);
 
+    $('#alert-modal').modal({backdrop: 'static', show: false});
     $("#alert-modal").modal('show');
 }
 

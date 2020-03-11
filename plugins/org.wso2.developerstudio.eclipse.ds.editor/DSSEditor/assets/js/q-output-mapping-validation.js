@@ -1058,7 +1058,7 @@ function generateOutputMapping(root, portValue) {
 		return false;
 	}
 	
-	if ((query.toLowerCase().indexOf("insert") != -1 && query.toLowerCase().indexOf("into") != -1) || (query.toLowerCase().startsWith("update"))) {
+	if ((query.toLowerCase().indexOf("insert") != -1 && query.toLowerCase().indexOf("into") != -1) || (query.toLowerCase().indexOf("update", 0) != -1)) {
 		return false;
 	}
 	

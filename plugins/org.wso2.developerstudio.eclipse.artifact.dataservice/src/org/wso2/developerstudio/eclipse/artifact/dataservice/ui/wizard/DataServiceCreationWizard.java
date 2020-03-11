@@ -458,6 +458,13 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 		templateContent = templateContent.replaceAll("<service.group>", dsModel.getServiceGroup());
 		templateContent = templateContent.replaceAll("<service.NS>", dsModel.getServiceNS());
 		templateContent = templateContent.replaceAll("<service.description>", dsModel.getServiceDescription());
+
+		//Set transport property values
+		List<String> selectedTransports = dsModel.getTransports();
+		String delimeter = " ";
+		String transports = String.join(delimeter, selectedTransports);
+		templateContent = templateContent.replaceAll("<service.transports>", transports);
+
 		IFolder dsfolder = project.getFolder(DataServiceArtifactConstants.DS_PROJECT_DATASERVICE_FOLDER);
 		File template = new File(dsfolder.getLocation().toFile(), dsModel.getServiceName() + DBS_EXTENSION);
 		templateContent = XMLUtil.prettify(templateContent);

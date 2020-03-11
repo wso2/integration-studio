@@ -24,7 +24,11 @@
 				fieldController="org.wso2.developerstudio.eclipse.artifact.dataservice.validators.DataServiceFieldController"
 				controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.dataservice.validators.DSSProjectFilter">Save Data Service in:</data>
 			<data modelProperty="create.ds.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.dataservice.validators.DataServiceFieldController" controlData="align=right">&lt;a&gt;Create new DSS Project...&lt;/a&gt;</data>
-			
+			<data modelProperty="transports" type="link">Select the transports:</data>
+			<data modelProperty="transport.http.choice" type="choice">http</data>
+			<data modelProperty="transport.https.choice" type="choice">https</data>
+			<data modelProperty="transport.jms.choice" type="choice">jms</data>
+			<data modelProperty="transport.local.choice" type="choice">local</data>
 			<projectNatures>
 				<nature>org.eclipse.jdt.core.javanature</nature>
 			</projectNatures>

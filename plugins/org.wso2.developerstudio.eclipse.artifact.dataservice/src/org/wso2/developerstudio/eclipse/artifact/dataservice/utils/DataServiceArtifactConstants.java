@@ -24,6 +24,10 @@ public class DataServiceArtifactConstants extends NLS {
 	
 	//project wizard page properties
 	public static String WIZARD_OPTION_PROJECT_NAME;
+	public static String WIZARD_OPTION_DS_TRANSPORT_HTTP;
+	public static String WIZARD_OPTION_DS_TRANSPORT_HTTPS;
+	public static String WIZARD_OPTION_DS_TRANSPORT_JMS;
+	public static String WIZARD_OPTION_DS_TRANSPORT_LOCAL;
 	public static String WIZARD_OPTION_SERVICE_NAME;
 	public static String WIZARD_OPTION_SERVICE_GROUP;
 	public static String WIZARD_OPTION_SERVICE_NS;

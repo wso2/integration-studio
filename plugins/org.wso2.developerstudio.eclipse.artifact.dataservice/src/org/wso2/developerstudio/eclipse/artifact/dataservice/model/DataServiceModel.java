@@ -16,7 +16,9 @@
 package org.wso2.developerstudio.eclipse.artifact.dataservice.model;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFolder;
@@ -53,6 +55,7 @@ public class DataServiceModel extends ProjectDataModel {
 	private String secPolicy = "";
 	private IContainer dataServiceSaveLocation;
 	private static boolean enableSecretAlias = false;
+	private List<String> transports = new ArrayList<String>();
 
 	// configuration
 	private RdbmsConfig rdbmsConfig;
@@ -76,6 +79,22 @@ public class DataServiceModel extends ProjectDataModel {
 		excelConfig = new ExcelConfig();
 		rdfConfig = new RdfConfig();
 		carbonDataConfig = new CarbonDataConfig();
+	}
+
+	/**
+	 * Get method for defined transport protocols
+	 * @return transports
+	 */
+	public List<String> getTransports() {
+		return transports;
+	}
+
+	/**
+	 * Method add a new transport protocol
+	 * @param transport
+	 */
+	public void setTransports(String transport) {
+		this.transports.add(transport);
 	}
 
 	public Object getModelPropertyValue(String key) {
@@ -119,6 +138,17 @@ public class DataServiceModel extends ProjectDataModel {
 			setServiceDescription(data.toString());
 		} else if (key.equals(DataServiceArtifactConstants.WIZARD_OPTION_SERVICE_SECPOLICY)) {
 			setSecPolicy(data.toString());
+		} else if (key.equals(DataServiceArtifactConstants.WIZARD_OPTION_DS_TRANSPORT_HTTP)
+				|| key.equals(DataServiceArtifactConstants.WIZARD_OPTION_DS_TRANSPORT_HTTPS)
+				|| key.equals(DataServiceArtifactConstants.WIZARD_OPTION_DS_TRANSPORT_JMS)
+				|| key.equals(DataServiceArtifactConstants.WIZARD_OPTION_DS_TRANSPORT_LOCAL)) {
+			List<String> selectedTransports = getTransports();
+			String transport = key.substring(10, key.lastIndexOf("."));
+			if (selectedTransports.contains(transport)) {
+				selectedTransports.remove(transport);
+			} else {
+				setTransports(transport);
+			}
 		} else if (key.equals(DataServiceArtifactConstants.WIZARD_OPTION_SAVE_FILE)) {
 			IContainer container = (IContainer) data;
 			if (container != null && container instanceof IFolder) {

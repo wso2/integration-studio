@@ -624,12 +624,12 @@ function verifyDSMetadata(root, url) {
         let metadata = retrieveDSMetadata(dsId, url);
 
         if (metadata === "" || metadata === "null" || metadata === null || metadata === undefined) {
-            extractMetadata(configElement, url);
+            extractMetadata(root, configElement, url);
         }
     }
 }
 
-function extractMetadata(configElement, url) {
+function extractMetadata(root, configElement, url) {
     let dsId = configElement.attributes.getNamedItem("id").value;
     let propertyElements = configElement.getElementsByTagName("property");
     let metadata = dsId + DS_METADATA_ID_SEPARATOR;
@@ -650,7 +650,7 @@ function extractMetadata(configElement, url) {
         }
     }
 
-    saveDSMetadata(metadata, url);
+    saveDSMetadata(root, metadata, url);
 
 }
 

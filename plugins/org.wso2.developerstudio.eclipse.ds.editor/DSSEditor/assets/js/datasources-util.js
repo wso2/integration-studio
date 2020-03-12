@@ -124,6 +124,11 @@ function populateDSModal(root, dsId, metadata) {
 
                     // url
                     let url = getDSConfigPropertyValue(properties, "url");
+
+                    // populate data source test connection details from url
+                    if ((url != null && url != "") && url != undefined){
+                        populateDSTestConDetails(url);
+                    }
                     if (url === "") {
                         url = getDSConfigPropertyValue(properties, "org.wso2.ws.dataservice.protocol");
                     }
@@ -679,10 +684,73 @@ function checkForSecretAlias(propertyArr) {
 }
 
 function populateDSTestConDetails(urlStr) {
-    const url = new URL(urlStr);
-    $("#ds-host-input").val(url.host);
-    $("#ds-port-input").val(url.port);
-    $("#ds-dbname-input").val(url.pathname);
+    // Auto setting test connection only for jdbc
+    if (urlStr.substring(0, 4) == "jdbc") {
+        let host = "";
+        let port = "";
+        let dbname = "";
+        let delimiterSlash = "/";
+        let delimiterColon = ":";
+        let delimiterUrl = "://";
+        let url;
+        dbEngine = urlStr.split(delimiterColon)[1];
+        switch (dbEngine) {
+        case "mysql":
+        case "postgresql":
+            if (urlStr.match(/.+\/\/.*:.+/)) {
+                url = urlStr.split(delimiterUrl)[1].split(delimiterColon);
+                host = url[0];
+                port = url[1].split(delimiterSlash)[0];
+                dbname = url[1].split(delimiterSlash)[1];
+            }
+            break;
+        case "sqlserver":
+            if (urlStr.match(/.+\/\/.+:.+;.+=.+/)) {
+                url = urlStr.split(delimiterUrl)[1].split(delimiterColon);
+                host = url[0];
+                port = url[1].split(";")[0];
+                dbname = url[1].split("=")[1];
+            }
+            break;
+        case "oracle":
+            if (urlStr.match(/.+:.+:.+:.+@.+:.+\/.+/)) {
+                url = urlStr.split("@")[1].split(delimiterColon);
+                host = url[0];
+                port = url[1].split(delimiterSlash)[0];
+                dbname = url[1].split(delimiterSlash)[1];
+            }
+            break;
+        case "derby":
+        case "hsqldb":
+        case "db2":
+            url = urlStr.split(delimiterColon);
+            if (url.length >= 3) {
+                dbname = urlStr.split(delimiterColon)[2];
+            }
+            break;
+        case "informix-sqli":
+            if (urlStr.match(/.+\/\/.+:/)) {
+                url = urlStr.split(delimiterUrl)[1].split(delimiterColon);
+                host = url[0];
+                port = url[1].split(delimiterSlash)[0];
+                dbname = url[1].split(delimiterSlash)[1];
+            }
+            break;
+        case "h2":
+        case "sybase":
+            if (urlStr.match(/.+:.+:.+:.+:.+\/.+/)) {
+                url = urlStr.split(delimiterColon);
+                host = url[3];
+                port = url[4].split(delimiterSlash)[0];
+                dbname = url[4].split(delimiterSlash)[1];
+            }
+            break;
+        }
+        $("#ds-host-input").val(host);
+        $("#ds-port-input").val(port);
+        $("#ds-dbname-input").val(dbname);
+    }
+
 }
 
 function clearDynamicAuthTable() {

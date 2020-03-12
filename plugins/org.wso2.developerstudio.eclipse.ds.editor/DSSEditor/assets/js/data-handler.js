@@ -118,23 +118,29 @@ $(document).ready(function ($) {
     
     $("#ds-add-save-btn").click(function (e) {
     	//check validation
+    	let RDBMS_DS_TYPE = "rdbms_ds";
     	if ($("#ds-ds-id-input").val().trim() == "") {
-    		showNotificationAlertModal("Error", "Please enter a datasource id");
+    		showErrorNotification("danger", "Please provide a datasource id", 3000, "ds-notification-alert-holder");
             return false;
     	}
     	
-    	if ($("#ds-db-engine-select").val().trim() == "") {
-    		showNotificationAlertModal("Error", "Please select a database engine");
+    	if ($("#ds-dstype-select").val() == RDBMS_DS_TYPE && $("#ds-db-engine-select").val().trim() == "") {
+    		showErrorNotification("danger", "Please provide a database engine", 3000, "ds-notification-alert-holder");
             return false;
     	}
     	
-    	if ($("#ds-driver-class-input").val().trim() == "") {
-    		showNotificationAlertModal("Error", "Please enter a driver class");
+    	if ($("#ds-dstype-select").val() == RDBMS_DS_TYPE && $("#ds-driver-class-input").val().trim() == "") {
+    		showErrorNotification("danger", "Please provide a driver class", 3000, "ds-notification-alert-holder");
             return false;
     	}
     	
-    	if ($("#ds-url-input").val().trim() == "") {
-    		showNotificationAlertModal("Error", "Please enter a url");
+    	if ($("#ds-dstype-select").val() == RDBMS_DS_TYPE && $("#ds-url-input").val().trim() == "") {
+    		showErrorNotification("danger", "Please provide a url", 3000, "ds-notification-alert-holder");
+            return false;
+    	}
+    	
+    	if ($("#ds-dstype-select").val() == "carbon_ds" && $("#ds-ds-name-input").val().trim() == "") {
+    		showErrorNotification("danger", "Please provide a datasource name", 3000, "ds-notification-alert-holder");
             return false;
     	}
     	
@@ -153,17 +159,17 @@ $(document).ready(function ($) {
     $("#resource-save-btn").click(function (e) {
     	//check validations
     	if ($("#r-addedit-opname-input").val().trim() == "") {
-    		showNotificationAlertModal("Error", "Please enter a resource path");
+    		showErrorNotification("danger", "Please provide a resource path", 3000, "resource-notification-alert-holder");
             return false;
     	}
     	
     	if ($("#r-addedit-resourcemethod-select").val().trim() == "") {
-    		showNotificationAlertModal("Error", "Please enter a resource method");
+    		showErrorNotification("danger", "Please provide a resource method", 3000, "resource-notification-alert-holder");
             return false;
     	}
     	
     	if ($("#r-addedit-queryid-select").val().trim() == "") {
-    		showNotificationAlertModal("Error", "Please enter a query id");
+    		showErrorNotification("danger", "Please provide a query id", 3000, "resource-notification-alert-holder");
             return false;
     	}
     	
@@ -272,17 +278,17 @@ $(document).ready(function ($) {
         e.preventDefault();
         
         if (!$("#q-query-id-input").val()) {
-            showNotificationAlertModal("Error", "Please provide a query ID.");
+        	showErrorNotification("danger", "Please provide a query ID", 3000, "query-notification-alert-holder");
             return false;
         }
 
         if ($("#q-datasource-select").val().trim() == "") {
-            showNotificationAlertModal("Error", "Please select a datasource.");
+        	showErrorNotification("danger", "Please select a datasource", 3000, "query-notification-alert-holder");
             return false;
         }
 
         if ($("#q-sql-query-input").val().trim() == "") {
-            showNotificationAlertModal("Error", "Please provide a SQL query.");
+        	showErrorNotification("danger", "Please provide a SQL query", 3000, "query-notification-alert-holder");
             return false;
         }
         
@@ -624,13 +630,13 @@ $(document).ready(function ($) {
         
         let opName = $('#o-addedit-opname-input').val().trim();
         if (opName == "") {
-        	showNotificationAlertModal("Error", "Please define an operation name.");
+        	showErrorNotification("danger", "Please define an operation name", 3000, "operation-notification-alert-holder");
         	return false;
         }
         
         let qId = $('#o-addedit-queryid-select').val().trim();
         if (qId == "") {
-        	showNotificationAlertModal("Error", "Please provide a query ID.");
+        	showErrorNotification("danger", "Please provide a query ID", 3000, "operation-notification-alert-holder");
         	return false;
         }
         
@@ -725,7 +731,7 @@ $(document).ready(function ($) {
 
         let inMappingName = $('#im-mappingname-input').val();
         if (inMappingName.trim() == "") {
-        	showNotificationAlertModal("Error", "Please define a mapping name.");
+        	showInputMappingNotification("danger", "Please enter a mapping name.", 4000);
         	return false;
         }
         
@@ -1437,6 +1443,15 @@ function showNotificationAlertModal(title, content) {
 
     $('#alert-modal').modal({backdrop: 'static', show: false});
     $("#alert-modal").modal('show');
+}
+
+function showErrorNotification(type, message, interval, modalId) {
+	let errorTagId = "error-notification-alert-" + message.replace(/\s/g, "").toLowerCase();
+    let alertHtml = "<div id='" + errorTagId + "' class=\"alert " + "alert-" + type + "\"" + ">" + message + "</div>";
+    $("#" + modalId).html(alertHtml);
+    $("#" + errorTagId).show();
+
+    showAlert(errorTagId, interval);
 }
 
 function isIE() {

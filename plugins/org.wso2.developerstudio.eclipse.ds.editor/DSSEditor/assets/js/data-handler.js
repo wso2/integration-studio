@@ -842,7 +842,7 @@ $(document).ready(function ($) {
     });
 
     $("#ds-url-input").change(function () {
-        // populateDSTestConDetails($("#ds-url-input").val().substring(5));
+        populateDSTestConDetails($("#ds-url-input").val());
     });
     
     /** End of advanced properties **/

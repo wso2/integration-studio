@@ -105,7 +105,7 @@ function populateDSModal(root, dsId, metadata) {
             let properties = config.getElementsByTagName("property");
 
             // Populate data source ID
-            $("#ds-ds-id-input").val(dsId.trim());
+            $("#ds-ds-id-input").val(dsId.toString().trim());
             $("#ds-ds-id-input").prop('disabled', true);
 
             if (dsType === DS_TYPE_RDBMS) {

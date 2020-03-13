@@ -40,6 +40,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.text.IDocument;
@@ -304,6 +305,11 @@ public class DSSMultiPageEditor extends MultiPageEditorPart implements IResource
                 addMarker(validationMsg);
             } else {
                 deleteMarkers();
+                if (isDirty()) {
+                    setDsXmlContent(sourceContent);
+                    getEditor(1).doSave(new NullProgressMonitor());
+                    ((DSSVisualEditorPage) getEditor(VISUAL_EDITOR_PAGE_INDEX)).getBrowser().refresh();
+                }
             }
         }
     }

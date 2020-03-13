@@ -425,7 +425,14 @@ $(document).ready(function ($) {
 
     $(document).on('click','#q-im-entries-table .fa-trash',function() {
         let mappingName = $(this).closest("tr").attr('name');
-        deleteInputMapping(mappingName);
+        
+        $("#q-im-delete-confirm-btn").click(function(event) {
+        	deleteInputMapping(mappingName);
+        	$("#q-im-delete-confirm-modal").modal("hide");
+        });
+
+        $("#q-im-delete-confirm-modal").modal("show");
+        
     });
     // End of query input mapping
 
@@ -438,8 +445,16 @@ $(document).ready(function ($) {
     
     $(document).on('click','#q-output-mapping-table .fa-trash',function() {
     	let tds = $(this).closest("tr").find('td');
-    	deleteQueryOutputMappingFromResult(resultElement, tds);
-    	$(this).closest("tr").remove();
+    	let row = $(this);
+    	
+    	$("#q-om-delete-confirm-btn").click(function(event) {
+    		deleteQueryOutputMappingFromResult(resultElement, tds);
+        	row.closest("tr").remove();
+        	$("#q-om-delete-confirm-modal").modal("hide");
+        });
+
+        $("#q-om-delete-confirm-modal").modal("show");
+    	
     });
 
     $(document).on('click','#q-queries-table .fa-edit',function() {

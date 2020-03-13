@@ -28,9 +28,15 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.wizard.IWizardPage;
+import org.eclipse.ui.IPageLayout;
+import org.eclipse.ui.IViewPart;
+import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.ide.IDE;
+import org.eclipse.ui.part.ISetSelectionTarget;
 import org.wso2.developerstudio.eclipse.artifact.dataserviceProject.Activator;
 import org.wso2.developerstudio.eclipse.artifact.dataserviceProject.artifact.DSSProjectArtifact;
 import org.wso2.developerstudio.eclipse.artifact.dataserviceProject.model.DataServiceModel;
@@ -47,6 +53,7 @@ import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 public class DataServiceProjectCreationWizard extends AbstractWSO2ProjectCreationWizard {
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+	private static final String MAVEN_POM_EDITOR_ID = "org.eclipse.m2e.editor.MavenPomEditor";
 	private static final String DS_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.ds.project.nature";
 	private static final String POM_FILE = "pom.xml";
 	private static final String ARTIFACT_FILE = "artifact.xml";
@@ -93,12 +100,20 @@ public class DataServiceProjectCreationWizard extends AbstractWSO2ProjectCreatio
 
 			// creates the artifact.xml file
 			createArtifactXMLFile();
+			
             try {
                 IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
                 PlatformUI.getWorkbench().showPerspective(DSS_PERSPECTIVE, window);
+                IWorkbenchPage page = window.getActivePage();
+                IDE.openEditor(page, project.getFile(POM_FILE).getLocationURI(), MAVEN_POM_EDITOR_ID, true);
+                IViewPart view = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+                        .findView(IPageLayout.ID_PROJECT_EXPLORER);
+                ((ISetSelectionTarget) view).selectReveal(new StructuredSelection(pomfile));
             } catch (Exception e) {
                 log.error(DataServiceProjectConstants.ERROR_MESSAGE_CORE_EXCEPTION, e);
             }
+            
+            
 		} catch (CoreException e) {
 			log.error(DataServiceProjectConstants.ERROR_MESSAGE_CORE_EXCEPTION, e);
 		} catch (Exception e) {

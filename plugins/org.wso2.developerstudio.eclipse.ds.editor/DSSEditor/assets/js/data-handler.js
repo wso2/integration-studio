@@ -1175,7 +1175,7 @@ function populateResourcesModal(root, resourceId, method) {
     for (let i = 0, len = resourceConfigs.length; i < len; i++) {
         if ((resourceConfigs[i].getAttribute("path") == resourceId) && (resourceConfigs[i].getAttribute("method") == method)) {
 			let resourceMethod = resourceConfigs[i].getAttribute("method").toLowerCase();
-			$('#r-addedit-resourcemethod-select').val(resourceMethod);
+			$('#r-addedit-resourcemethod-select').val(resourceMethod.toUpperCase());
 			$('#r-addedit-resourcemethod-select-original').val(resourceMethod);
 			let queryName = resourceConfigs[i]
 					.getElementsByTagName("call-query")[0].getAttribute("href");

@@ -890,18 +890,10 @@ function populateTransportSettings(root) {
 
     if (transports !== undefined && transports !== null) {
         transportValues = transports.value.split(" ");
-        transportValues.forEach(function (item, index) {
-            item = item.trim();
-            if (item.toLowerCase() == "http") {
-                $('#ts-http-check').prop('checked', true);
-            } else if (item.toLowerCase() == "https") {
-                $('#ts-https-check').prop('checked', true);
-            } else if (item.toLowerCase() == "local") {
-                $('#ts-local-check').prop('checked', true);
-            } else if (item.toLowerCase() == "jms") {
-                $('#ts-jms-check').prop('checked', true);
-            }
-        });
+        $('#ts-http-check').prop('checked', (transportValues.indexOf("http") >= 0));
+        $('#ts-https-check').prop('checked', (transportValues.indexOf("https") >= 0));
+        $('#ts-local-check').prop('checked', (transportValues.indexOf("local") >= 0));
+        $('#ts-jms-check').prop('checked', (transportValues.indexOf("jms") >=0 ));
     }
     
     let txManagerJNDIName = root.getElementsByTagName("data")[0].attributes.getNamedItem("txManagerJNDIName");

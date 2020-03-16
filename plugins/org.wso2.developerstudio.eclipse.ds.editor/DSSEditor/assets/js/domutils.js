@@ -193,16 +193,43 @@ var XmlBeautify =
 
         XmlBeautify.prototype._parseInternally = function (element, buildInfo) {
             var me = this;
+            
+            let isIE = false || !!document.documentMode;
+            var elementTextContent = "";
+            var hasElementsAsChildren = false;
+            if (isIE) {
+            	let elementChildren = element.childNodes;
+            	if (elementChildren != undefined && elementChildren != null) {
+            		for (let k = 0; k < elementChildren.length; k++) {
+                        let ch = elementChildren[k];
+                        if (ch.nodeName == "#text" && ch.textContent.trim() != "") {
+                        	elementTextContent = elementTextContent + ch.textContent;
+                        } else {
+                        	hasElementsAsChildren = true;
+                        }
+                    }
+            	}
+            	
+            } else {
+            	elementTextContent = element.textContent;
+            }
 
-            var elementTextContent = element.textContent;
-
-            var blankReplacedElementContent = elementTextContent.replace(/ /g, '').replace(/\r?\n/g, '').replace(/\n/g, '').replace(/\t/g, '');
-
+            var blankReplacedElementContent = "";
+            if (elementTextContent != undefined) {
+            	blankReplacedElementContent = elementTextContent.replace(/ /g, '').replace(/\r?\n/g, '').replace(/\n/g, '').replace(/\t/g, '');
+            }
+            
             if (blankReplacedElementContent.length == 0) {
                 elementTextContent = "";
             }
 
-            var elementHasNoChildren = !(element.children != undefined && element.children.length > 0) || !(element.childNodes != undefined && element.childNodes.length > 0);
+            var elementHasNoChildren;
+            if (isIE) {
+            	elementHasNoChildren = !hasElementsAsChildren;
+            } else {
+            	elementHasNoChildren = !(element.children != undefined && element.children.length > 0);
+            }
+
             var elementHasValueOrChildren = (elementTextContent && elementTextContent.length > 0);
             var elementHasItsValue = elementHasNoChildren && elementHasValueOrChildren;
             var isEmptyElement = elementHasNoChildren && !elementHasValueOrChildren;
@@ -239,9 +266,11 @@ var XmlBeautify =
                 indentText += buildInfo.indentText;
             }
             buildInfo.xmlText += indentText;
-//            if (element.tagName != "undefined" && element.tagName != undefined) {
+            
+            if (element.tagName != "undefined" && element.tagName != undefined) {
+            	
             	buildInfo.xmlText += startTagPrefix + element.tagName
-
+            
                 //add attributes
                 if (element.attributes != undefined) {
                 	for (var i = 0; i < element.attributes.length; i++) {
@@ -300,7 +329,7 @@ var XmlBeautify =
                     buildInfo.xmlText += endTag;
                     buildInfo.xmlText += '\n';
                 }
-//            }
+            }
                 
         };
 

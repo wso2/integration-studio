@@ -527,7 +527,14 @@ $(document).ready(function ($) {
     			showOutputMappingNotification("danger", "Element name cannot be empty.", 4000);
     			return false;
     		}
-    	}	
+    		
+    		let childElementString = $('#om-complex-child-input').val();
+    		
+    		if (childElementString == "") {
+    			showOutputMappingNotification("danger", "Child elements cannot be empty.", 4000);
+    			return false;
+    		}
+    	}
     			
     	let element = processOutputMappingModal(root);
     	resultElement = updateResultElement(root, resultElement, element);
@@ -1083,12 +1090,9 @@ function saveAll(root, url, successFunc) {
     let serializedData = new XMLSerializer().serializeToString(root);
     let prettyXmlText;
     let isIE = false || !!document.documentMode;
-    if (isIE) {
-    	prettyXmlText = serializedData;
-    } else {
-    	prettyXmlText = new XmlBeautify().beautify(serializedData, 
-                {indent: "  ",useSelfClosingElement: true});
-    }
+
+    prettyXmlText = new XmlBeautify().beautify(serializedData, 
+         {indent: "  ",useSelfClosingElement: true});
 
     let request = $.ajax({
         url: url,

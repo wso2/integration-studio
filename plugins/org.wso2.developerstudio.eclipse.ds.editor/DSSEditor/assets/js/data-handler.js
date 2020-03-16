@@ -193,8 +193,8 @@ $(document).ready(function ($) {
     });
 
     $("#ds-datasource-add-btn").click(function() {
-        resetDSAddEditModal();
         $("#create-ds-form").trigger('reset');
+        resetDSAddEditModal();
         openDSModal(false);
     });
 

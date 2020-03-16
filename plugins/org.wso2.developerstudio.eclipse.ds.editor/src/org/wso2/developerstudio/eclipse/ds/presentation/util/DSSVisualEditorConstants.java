@@ -50,6 +50,7 @@ public class DSSVisualEditorConstants {
         public static final String DB_TYPE_MYSQL = "mysql";
         public static final String DB_TYPE_ORACLE = "oracle";
         public static final String DB_TYPE_MSSQL = "mssql";
+        public static final String DB_TYPE_MSSQL_CONN = "sqlserver";
         public static final String DB_URL_JDBC_BASE = "jdbc:";
     }
 

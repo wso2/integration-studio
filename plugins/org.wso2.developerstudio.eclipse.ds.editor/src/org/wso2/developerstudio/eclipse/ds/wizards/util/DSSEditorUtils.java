@@ -269,7 +269,7 @@ public class DSSEditorUtils {
             break;
         case DSSVisualEditorConstants.DBTypes.DB_TYPE_MSSQL:
             // Template: jdbc:sqlserver://[HOST]:[PORT1433];databaseName=[DB]
-            connectionUrl += ":" + DSSVisualEditorConstants.DBTypes.DB_TYPE_MSSQL + "://" + host + ":" + port
+            connectionUrl += DSSVisualEditorConstants.DBTypes.DB_TYPE_MSSQL_CONN + "://" + host + ":" + port
                     + ";databaseName=" + dbName;
             break;
         case DSSVisualEditorConstants.DBTypes.DB_URL_JDBC_BASE:
@@ -318,7 +318,15 @@ public class DSSEditorUtils {
             URL url = new URL(driverUrl);
             URLClassLoader classLoader = new URLClassLoader(new URL[] { url });
 
-            Driver driver = (Driver) Class.forName(DSSVisualEditorConstants.DBDrivers.MYSQL_DRIVER, true, classLoader).newInstance();
+            Driver driver = null;
+            switch (dbType) {
+            	case DSSVisualEditorConstants.DBTypes.DB_TYPE_MYSQL:
+            		driver = (Driver) Class.forName(DSSVisualEditorConstants.DBDrivers.MYSQL_DRIVER, true, classLoader).newInstance();
+            		break;
+            	case DSSVisualEditorConstants.DBTypes.DB_TYPE_MSSQL:
+            		driver = (Driver) Class.forName(DSSVisualEditorConstants.DBDrivers.MS_SQL_DRIVER, true, classLoader).newInstance();
+            		break;
+            }
             DriverManager.registerDriver(new DriverShim(driver));
 
             connection = DriverManager.getConnection(connUriStr, username, password); 

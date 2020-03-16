@@ -200,14 +200,26 @@ $(document).ready(function ($) {
 
     $("#ds-test-conn-btn").click(function() {
         let dbType = $("#ds-db-engine-select").val();
+        let username = $("#ds-username-input").val();
+        let password = $("#ds-password-input").val();
+        
         if (dbType == "") {
         	showDSNotification("danger", "Please select the database engine.", 6000);
         	return false;
         }
         
+        if (username == "") {
+        	showDSNotification("danger", "Please provide the username of the connection.", 6000);
+        	return false;
+        } 
+        
+        if (password == "") {
+        	showDSNotification("danger", "Please provide the password of the connection.", 6000);
+        	return false;
+        }
+        
         let version = $("#ds-db-version-select").val();
-        let username = $("#ds-username-input").val();
-        let password = $("#ds-password-input").val();
+        
         let host = $("#ds-host-input").val();
         let port = $("#ds-port-input").val();
         let dbName = $("#ds-dbname-input").val();

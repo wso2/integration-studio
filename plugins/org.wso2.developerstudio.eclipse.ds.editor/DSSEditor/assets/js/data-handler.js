@@ -264,6 +264,7 @@ $(document).ready(function ($) {
         e.preventDefault();
         let dbEngineType = $("#ds-db-engine-select").val();
         populateDBEngineDefaults(root, dbEngineType);
+        setTestConnectionRDBMSVersion(dbEngineType);
     });
     
     // End of Data sources - Add data source

@@ -610,6 +610,36 @@ function populateDBEngineDefaults(root, dbEngineType) {
 }
 
 /**
+ * This function is used to set the test connection RDBMS Version once the Database Engine is selected.
+ *
+ * @param dbEngineType Database Engine type.
+ */
+function setTestConnectionRDBMSVersion(dbEngineType) {
+    let testRDBMSversion;
+    let testRDBMSVersionSelector = $("#ds-db-version-select");
+    switch (dbEngineType) {
+    case DB_ENGINE_MYSQL:
+        testRDBMSversion = testRDBMSVersionSelector.find("[label='MySQL']").children()[0].value;
+        break;
+    case DB_ENGINE_MSSQL:
+        testRDBMSversion = testRDBMSVersionSelector.find("[label='MSSQL']").children()[0].value;
+        break;
+    case DB_ENGINE_POSTGRESQL:
+        testRDBMSversion = testRDBMSVersionSelector.find("[label='PostgreSQL']").children()[0].value;
+        break;
+    case DB_ENGINE_APACHEDERBY:
+        testRDBMSversion = testRDBMSVersionSelector.find("[label='Derby']").children()[0].value;
+        break;
+    case "generic":
+        testRDBMSversion = testRDBMSVersionSelector.find("[label='Generic']").children()[0].value;
+        break;
+    }
+    if (testRDBMSversion != null && testRDBMSversion != undefined){
+        $("#ds-db-version-select").val(testRDBMSversion);
+    }
+}
+
+/**
  * This function is used to verify metadata of existing datasources.
  *
  * @param root Document root object.

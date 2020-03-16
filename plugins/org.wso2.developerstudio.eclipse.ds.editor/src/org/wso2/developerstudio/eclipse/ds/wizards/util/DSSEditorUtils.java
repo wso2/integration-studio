@@ -275,6 +275,11 @@ public class DSSEditorUtils {
         case DSSVisualEditorConstants.DBTypes.DB_URL_JDBC_BASE:
             // Template: jdbc:mysql://HOST:PORT/DBname
             break;
+        case DSSVisualEditorConstants.DBTypes.DB_TYPE_POSTGRESSQL:
+            // Template: jdbc:postgresql://HOST:PORT/DBname
+            connectionUrl += DSSVisualEditorConstants.DBTypes.DB_TYPE_POSTGRESSQL + "://" + host + ":" + port + "/"
+                    + dbName;
+            break;
         }
 
         return connectionUrl;
@@ -296,6 +301,11 @@ public class DSSEditorUtils {
                 jarName = DSSVisualEditorConstants.DBConnectionParams.MSSQL_JAR_6_4_0;
             } else if (DSSVisualEditorConstants.DBConnectionParams.MSSQL_VERSION_7_20_0.equals(version)) {
                 jarName = DSSVisualEditorConstants.DBConnectionParams.MSSQL_JAR_7_20_0;
+            }
+            break;
+        case DSSVisualEditorConstants.DBTypes.DB_TYPE_POSTGRESSQL:
+            if (DSSVisualEditorConstants.DBConnectionParams.POSTGRESSQL_VERSION_42_2_11.equals(version)) {
+                jarName = DSSVisualEditorConstants.DBConnectionParams.POSTGRESSQL_JAR_42_2_11;
             }
             break;
         }
@@ -325,6 +335,9 @@ public class DSSEditorUtils {
             		break;
             	case DSSVisualEditorConstants.DBTypes.DB_TYPE_MSSQL:
             		driver = (Driver) Class.forName(DSSVisualEditorConstants.DBDrivers.MS_SQL_DRIVER, true, classLoader).newInstance();
+            		break;
+            	case DSSVisualEditorConstants.DBTypes.DB_TYPE_POSTGRESSQL:
+            		driver = (Driver) Class.forName(DSSVisualEditorConstants.DBDrivers.POSTGRESQL_DRIVER, true, classLoader).newInstance();
             		break;
             }
             DriverManager.registerDriver(new DriverShim(driver));

@@ -1100,6 +1100,7 @@ function replaceNode(newNode, refNode) {
  */
 function saveAll(root, url, successFunc) {
     let serializedData = new XMLSerializer().serializeToString(root);
+    serializedData = serializedData.split(/xmlns\:NS[0-9]+=\"\" NS[0-9]+\:/).join("");
     let prettyXmlText;
     let isIE = false || !!document.documentMode;
 

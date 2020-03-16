@@ -197,9 +197,8 @@ function updateOperationDataInRoot(root, new_operation_name) {
 	  		}
 	  	}
     }
-        
-    $('#o-operation-addedit-modal').removeClass('show');
-	$('.modal-backdrop.fade.show').removeClass('show');
+      
+    $("#o-operation-addedit-modal").modal('hide');
 }
 
 /**

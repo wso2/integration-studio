@@ -5,6 +5,7 @@ $(document).ready(function ($) {
     let root = "";
     let resultElement;
     var onKeyChangeTimer;
+    var checkSpecialCharacterRegex = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
 
     window.queryElement = [];
     window.validators = [];
@@ -120,8 +121,13 @@ $(document).ready(function ($) {
     	//check validation
     	let RDBMS_DS_TYPE = "rdbms_ds";
     	if ($("#ds-ds-id-input").val().trim() == "") {
-    		showErrorNotification("danger", "Please provide a datasource id", 3000, "ds-notification-alert-holder");
-            return false;
+    		showErrorNotification("danger", "Please provide a datasource identifier", 3000, "ds-notification-alert-holder");
+    		return false;
+    	}
+    	
+    	if (checkSpecialCharacterRegex.test($("#ds-ds-id-input").val().trim())) {
+    		showErrorNotification("danger", "Datasource identifier can not contain special characters", 3000, "ds-notification-alert-holder");
+    		return false;
     	}
     	
     	if ($("#ds-dstype-select").val() == RDBMS_DS_TYPE && $("#ds-db-engine-select").val().trim() == "") {
@@ -290,9 +296,14 @@ $(document).ready(function ($) {
         e.preventDefault();
         
         if (!$("#q-query-id-input").val()) {
-        	showErrorNotification("danger", "Please provide a query ID", 3000, "query-notification-alert-holder");
-            return false;
+        	showErrorNotification("danger", "Please provide a Query ID", 3000, "query-notification-alert-holder");
+        	return false;
         }
+        
+        if (checkSpecialCharacterRegex.test($("#q-query-id-input").val().trim())) {
+        	showErrorNotification("danger", "Query ID can not contain special characters", 3000, "query-notification-alert-holder");
+        	return false;
+    	}
 
         if ($("#q-datasource-select").val().trim() == "") {
         	showErrorNotification("danger", "Please select a datasource", 3000, "query-notification-alert-holder");
@@ -664,9 +675,15 @@ $(document).ready(function ($) {
         
         let opName = $('#o-addedit-opname-input').val().trim();
         if (opName == "") {
-        	showErrorNotification("danger", "Please define an operation name", 3000, "operation-notification-alert-holder");
+        	showErrorNotification("danger", "Please define an Operation Name", 3000, "operation-notification-alert-holder");
         	return false;
         }
+        
+        if (checkSpecialCharacterRegex.test(opName)) {
+        	showErrorNotification("danger", "Operation Name can not contain special characters", 3000, "operation-notification-alert-holder");
+        	return false;
+        }
+
         
         let qId = $('#o-addedit-queryid-select').val().trim();
         if (qId == "") {

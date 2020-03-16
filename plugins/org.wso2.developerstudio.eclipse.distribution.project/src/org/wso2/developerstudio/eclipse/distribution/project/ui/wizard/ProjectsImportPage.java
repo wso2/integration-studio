@@ -1292,8 +1292,9 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 				if (resourceFile.isDirectory()) {
 					IProjectDescription newSubProjectDescription = projectWhichWantToCopy.getWorkspace()
 							.newProjectDescription(resourceFile.getName());
-					String subProject = projectWhichWantToCopy.getLocation().toOSString() + "/" + resourceFile.getName();
-					URI subProjectURI = new URI(subProject);
+					String subProject = projectWhichWantToCopy.getLocation().toOSString() + File.separator + resourceFile.getName();
+					File subProjectFile = new File(subProject);
+					URI subProjectURI = subProjectFile.toURI();
 					newSubProjectDescription.setLocationURI(subProjectURI);
 					File[] subProjectList = resourceFile.listFiles();
 					for (File file : subProjectList) {
@@ -1318,7 +1319,7 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 				} else {
 					Files.copy(
 							resourceFile.toPath(), (new File(projectWhichWantToCopy.getLocation().toOSString()
-									+ "/" + resourceFile.getName())).toPath(),
+									+ File.separator + resourceFile.getName())).toPath(),
 							StandardCopyOption.REPLACE_EXISTING);
 				}
 			}
@@ -1326,8 +1327,6 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 			log.error("InvocationTargetException exception while importing", e);
 		} catch (InterruptedException e) {
 			log.error("InterruptedException exception while importing", e);
-		} catch (URISyntaxException e) {
-			log.error("URISyntaxException exception while importing", e);
 		} catch (CoreException e) {
 			log.error("CoreException exception while importing", e);
 		} catch (IOException e) {

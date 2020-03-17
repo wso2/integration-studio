@@ -598,7 +598,28 @@ $(document).ready(function ($) {
     $("#dss-namespace-input").on("keyup", function(){
         clearInterval(onKeyChangeTimer);
         onKeyChangeTimer = setTimeout(function() {
-            root.getElementsByTagName("data")[0].setAttribute("serviceNamespace", $('#dss-namespace-input').val());
+        	let namespaceValue = $('#dss-namespace-input').val();
+        	if (namespaceValue != undefined && namespaceValue != "") {
+        		root.getElementsByTagName("data")[0].setAttribute("serviceNamespace", namespaceValue);
+        	} else {
+        		root.getElementsByTagName("data")[0].removeAttribute("serviceNamespace");
+        	}
+            
+            saveAll(root, url, function() { });
+        }, 200);
+    });
+    
+    $("#dss-service-group-input").on("keyup", function(){
+        clearInterval(onKeyChangeTimer);
+        onKeyChangeTimer = setTimeout(function() {
+        	
+        	let serviceGroupValue = $('#dss-service-group-input').val();
+        	if (serviceGroupValue != undefined && serviceGroupValue != "") {
+        		root.getElementsByTagName("data")[0].setAttribute("serviceGroup", serviceGroupValue);
+        	} else {
+        		root.getElementsByTagName("data")[0].removeAttribute("serviceGroup");
+        	}
+            
             saveAll(root, url, function() { });
         }, 200);
     });
@@ -919,14 +940,21 @@ function populateGeneralDetails(root) {
     		}
     	}
     }
-
-    let namespace = root.getElementsByTagName("data")[0];
-    if (namespace != undefined && namespace.hasChildNodes()) {
-    	let serviceNamespace = namespace.attributes.getNamedItem("serviceNamespace");
+    
+    let dataObject = root.getElementsByTagName("data")[0];
+    if (dataObject != undefined && dataObject.hasChildNodes()) {
+    	let serviceNamespace = dataObject.attributes.getNamedItem("serviceNamespace");
     	if (serviceNamespace != undefined && serviceNamespace != null) {
     		$('#dss-namespace-input').val(serviceNamespace.value);
     	} else {
     		$('#dss-namespace-input').val("");
+    	}
+    	
+    	let serviceGroup = dataObject.attributes.getNamedItem("serviceGroup");
+    	if (serviceGroup != undefined && serviceGroup != null) {
+    		$('#dss-service-group-input').val(serviceGroup.value);
+    	} else {
+    		$('#dss-service-group-input').val("");
     	}
     }
 }

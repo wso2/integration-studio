@@ -214,15 +214,15 @@ $(document).ready(function ($) {
         	return false;
         }
         
-        if (username == "") {
-        	showDSNotification("danger", "Please provide the username of the connection.", 6000);
-        	return false;
-        } 
-        
-        if (password == "") {
-        	showDSNotification("danger", "Please provide the password of the connection.", 6000);
-        	return false;
-        }
+//        if (username == "") {
+//        	showDSNotification("danger", "Please provide the username of the connection.", 6000);
+//        	return false;
+//        } 
+//        
+//        if (password == "") {
+//        	showDSNotification("danger", "Please provide the password of the connection.", 6000);
+//        	return false;
+//        }
         
         let version = $("#ds-db-version-select").val();
         

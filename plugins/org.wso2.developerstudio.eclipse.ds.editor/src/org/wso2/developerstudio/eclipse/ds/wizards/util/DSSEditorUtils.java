@@ -196,8 +196,6 @@ public class DSSEditorUtils {
      */
     public boolean testDBConnection(String dbType, String version, String username, String password, String host,
             String port, String dbName) {
-        
-        String connUriStr = generateConnectionUrl(dbType, username, version, password, host, port, dbName);
         Connection connection = getConnection(dbType, version, username, password, host, port, dbName);
         
         if (connection != null) {
@@ -280,6 +278,11 @@ public class DSSEditorUtils {
             connectionUrl += DSSVisualEditorConstants.DBTypes.DB_TYPE_POSTGRESSQL + "://" + host + ":" + port + "/"
                     + dbName;
             break;
+        case DSSVisualEditorConstants.DBTypes.DB_TYPE_DERBY:
+            // Template: jdbc:derby://HOST:PORT/DBname
+            connectionUrl += DSSVisualEditorConstants.DBTypes.DB_TYPE_DERBY_CONN + "://" + host + ":" + port + "/"
+                    + dbName;
+            break;
         }
 
         return connectionUrl;
@@ -308,6 +311,11 @@ public class DSSEditorUtils {
                 jarName = DSSVisualEditorConstants.DBConnectionParams.POSTGRESSQL_JAR_42_2_11;
             }
             break;
+        case DSSVisualEditorConstants.DBTypes.DB_TYPE_DERBY:
+            if (DSSVisualEditorConstants.DBConnectionParams.DERBY_VERSION_10_14_2_0.equals(version)) {
+                jarName = DSSVisualEditorConstants.DBConnectionParams.DERBY_JAR_10_14_2_0;
+            }
+            break;
         }
 
         return jarName;
@@ -330,19 +338,34 @@ public class DSSEditorUtils {
 
             Driver driver = null;
             switch (dbType) {
-            	case DSSVisualEditorConstants.DBTypes.DB_TYPE_MYSQL:
-            		driver = (Driver) Class.forName(DSSVisualEditorConstants.DBDrivers.MYSQL_DRIVER, true, classLoader).newInstance();
-            		break;
-            	case DSSVisualEditorConstants.DBTypes.DB_TYPE_MSSQL:
-            		driver = (Driver) Class.forName(DSSVisualEditorConstants.DBDrivers.MS_SQL_DRIVER, true, classLoader).newInstance();
-            		break;
-            	case DSSVisualEditorConstants.DBTypes.DB_TYPE_POSTGRESSQL:
-            		driver = (Driver) Class.forName(DSSVisualEditorConstants.DBDrivers.POSTGRESQL_DRIVER, true, classLoader).newInstance();
-            		break;
+            case DSSVisualEditorConstants.DBTypes.DB_TYPE_MYSQL:
+                driver = (Driver) Class.forName(DSSVisualEditorConstants.DBDrivers.MYSQL_DRIVER, true, classLoader)
+                        .newInstance();
+                break;
+            case DSSVisualEditorConstants.DBTypes.DB_TYPE_MSSQL:
+                driver = (Driver) Class.forName(DSSVisualEditorConstants.DBDrivers.MS_SQL_DRIVER, true, classLoader)
+                        .newInstance();
+                break;
+            case DSSVisualEditorConstants.DBTypes.DB_TYPE_POSTGRESSQL:
+                driver = (Driver) Class.forName(DSSVisualEditorConstants.DBDrivers.POSTGRESQL_DRIVER, true, classLoader)
+                        .newInstance();
+                break;
+            case DSSVisualEditorConstants.DBTypes.DB_TYPE_DERBY:
+                driver = (Driver) Class
+                        .forName(DSSVisualEditorConstants.DBDrivers.DERBY_CLIENT_DRIVER, true, classLoader)
+                        .newInstance();
+                break;
             }
-            DriverManager.registerDriver(new DriverShim(driver));
 
-            connection = DriverManager.getConnection(connUriStr, username, password); 
+            DriverManager.registerDriver(new DriverShim(driver));
+            // Check username and password are empty due to Derby db can connect without username and password
+            if (dbType.equals(DSSVisualEditorConstants.DBTypes.DB_TYPE_DERBY)
+                    && username.equals(DSSVisualEditorConstants.General.EMPTY_INPUT)
+                    && password.equals(DSSVisualEditorConstants.General.EMPTY_INPUT)) {
+                connection = DriverManager.getConnection(connUriStr);
+            } else {
+                connection = DriverManager.getConnection(connUriStr, username, password);
+            }
             
         } catch (Exception e) {
             log.error("Could not establish database connection.", e);

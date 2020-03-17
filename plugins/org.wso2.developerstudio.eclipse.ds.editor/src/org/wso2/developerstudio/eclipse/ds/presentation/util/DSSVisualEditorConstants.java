@@ -25,6 +25,7 @@ public class DSSVisualEditorConstants {
         public static final String DSS_EDITOR = "DSS Editor";
         public static final String GUI_EDITOR_NAME = "Design";
         public static final String SOURCE_EDITOR_NAME = "Source";
+        public static final String EMPTY_INPUT = "";
     }
 
     public static class WebApp {
@@ -51,6 +52,8 @@ public class DSSVisualEditorConstants {
         public static final String DB_TYPE_ORACLE = "oracle";
         public static final String DB_TYPE_MSSQL = "mssql";
         public static final String DB_TYPE_POSTGRESSQL = "postgresql";
+        public static final String DB_TYPE_DERBY = "apachederby";
+        public static final String DB_TYPE_DERBY_CONN = "derby";
         public static final String DB_TYPE_MSSQL_CONN = "sqlserver";
         public static final String DB_URL_JDBC_BASE = "jdbc:";
     }
@@ -64,7 +67,7 @@ public class DSSVisualEditorConstants {
 
     public static class DBDrivers {
         public static final String MYSQL_DRIVER = "com.mysql.jdbc.Driver";
-        public static final String DERBY_DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
+        public static final String DERBY_CLIENT_DRIVER = "org.apache.derby.jdbc.ClientDriver";
         public static final String MS_SQL_DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
         public static final String ORACLE_DRIVER = "oracle.jdbc.driver.OracleDriver";
         public static final String DB2_DRIVER = "com.ibm.db2.jcc.DB2Driver";
@@ -79,11 +82,13 @@ public class DSSVisualEditorConstants {
         public static final String MSSQL_JAR_6_4_0 = "mssql-jdbc-6.4.0.jre8.jar";
         public static final String MSSQL_JAR_7_20_0 = "mssql-jdbc-7.2.0.jre8.jar";
         public static final String POSTGRESSQL_JAR_42_2_11 = "postgresql-42.2.11.jar";
+        public static final String DERBY_JAR_10_14_2_0 = "derbyclient-10.14.2.0.jar";
         
         public static final String MYSQL_VERSION_5_1_47 = "5_1_47";
         public static final String MYSQL_VERSION_8_0_15 = "8_0_15";
         public static final String MSSQL_VERSION_6_4_0 = "6_4_0";
         public static final String MSSQL_VERSION_7_20_0 = "7_20_0";
         public static final String POSTGRESSQL_VERSION_42_2_11 = "42_2_11";
+        public static final String DERBY_VERSION_10_14_2_0 = "10_14_2_0";
     }
 }

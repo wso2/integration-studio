@@ -77,7 +77,7 @@ public class DependencyTree {
 
     private String[] acceptTestArtifactFolders = { "api", "sequences", "proxy-services" };
     private String[] acceptSupportiveArtifactFolders = { "api", "proxy-services", "sequences", "endpoints",
-            "local-entries" };
+            "local-entries", "templates" };
     private String childTreeItemIcon = "/icons/artifact.png";
     private String parentTreeItemIcon = "/icons/root-folder.png";
     private String parentRegistryTreeItemIcon = "/icons/registry_project.png";

@@ -123,24 +123,42 @@
 				  </triggerPoints>
 		</navigatorContent>
 	</extension>-->
-		<extension point="org.eclipse.ui.navigator.navigatorContent">    
+	<extension point="org.eclipse.ui.navigator.navigatorContent">    
             <commonWizard type="new"
                 menuGroupId="1org.wso2.developerstudio.eclipse.artifact.webservice"
                 wizardId="org.wso2.developerstudio.eclipse.artifact.newesbproject">
                 <enablement>
                     <or>
-                        <adapt type="org.eclipse.core.resources.IProject">
+                       <adapt type="org.eclipse.core.resources.IProject">
                             <test property="org.eclipse.core.resources.projectNature"
                                 value="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" />
-                                </adapt>
+                       </adapt>
                        <adapt type="org.eclipse.jdt.core.IPackageFragment">
 							<test property="org.wso2.developerstudio.projectNature"
 								value="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" />
-						</adapt>
+					   </adapt>
                     </or>
                 </enablement>
             </commonWizard>
     </extension>
+    <extension point="org.eclipse.ui.navigator.navigatorContent">    
+            <commonWizard type="new"
+                menuGroupId="1org.wso2.developerstudio.eclipse.artifact.webservice"
+                wizardId="org.wso2.developerstudio.eclipse.artifact.newesbsolutionproject">
+                <enablement>
+                    <or>
+                       <adapt type="org.eclipse.core.resources.IProject">
+                            <test property="org.eclipse.core.resources.projectNature"
+                                value="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" />
+                       </adapt>
+                       <adapt type="org.eclipse.jdt.core.IPackageFragment">
+							<test property="org.wso2.developerstudio.projectNature"
+								value="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" />
+					   </adapt>
+                    </or>
+                </enablement>
+            </commonWizard>
+   </extension>
    <extension
        point="org.eclipse.ltk.core.refactoring.renameParticipants">
        <renameParticipant
@@ -424,14 +442,14 @@
   
   <extension
       point="org.eclipse.ui.newWizards">
-         <wizard name="ESB Solution Project"
+         <wizard name="Integration Project"
                        category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.message.mediation/org.wso2.developerstudio.eclipse.message.mediation.project.types"
                        class="org.wso2.developerstudio.eclipse.esb.project.ui.wizard.ESBSolutionProjectCreationWizard"
                        id="org.wso2.developerstudio.eclipse.artifact.newesbsolutionproject"
                        wizardManifest="project_wizard_esb_solution.xml"
                        icon="icons/esb-project-12.png"
                        project="true">
-                       <description>ESB Solution Project</description>
+                       <description>Integration Project</description>
          </wizard>
    </extension>
    

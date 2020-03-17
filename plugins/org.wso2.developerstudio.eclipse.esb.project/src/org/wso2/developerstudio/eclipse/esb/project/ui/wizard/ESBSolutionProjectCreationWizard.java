@@ -61,7 +61,7 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 	private String DOCKER_ARTIFACT_ID = "DockerExporter";
 	private String KUBERNETES_ARTIFACT_ID = "KubernetsExporter";
 	private String REGISTRY_ARTIFACT_ID = "Registry";
-	private String PROJECT_WIZARD_TITLE = "New ESB Solution Project";
+	private String PROJECT_WIZARD_TITLE = "New Integration Project";
 	private DockerDetailsPage dockerDetailPage;
 	private KubernetesDetailsPage kubernetesDetailPage;
 

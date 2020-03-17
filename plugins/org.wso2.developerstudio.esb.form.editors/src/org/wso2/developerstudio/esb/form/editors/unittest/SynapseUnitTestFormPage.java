@@ -17,6 +17,7 @@
  */
 package org.wso2.developerstudio.esb.form.editors.unittest;
 
+import java.io.File;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -39,6 +40,7 @@ import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.FormLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
@@ -130,7 +132,7 @@ public class SynapseUnitTestFormPage extends AbstractEsbFormPage {
         referenceTable = new ReferenceTable();
         refreshMockServicesButton = referenceTable.createRefreshButton(body, "", SWT.PUSH);
         FormData data = new FormData();
-        data.top = new FormAttachment(1);
+        data.top = new FormAttachment(2);
         data.right = new FormAttachment(97);
         refreshMockServicesButton.setLayoutData(data);
 
@@ -183,10 +185,21 @@ public class SynapseUnitTestFormPage extends AbstractEsbFormPage {
         data.right = new FormAttachment(98);
         artifactsDetailSection.setLayoutData(data);
         artifactsDetailSection.setClient(artifactSectionClient);
+        
+        //Specific for the release 7.0.2 
+        Label templateNotice = new Label(artifactSectionClient, SWT.NONE);
+        final Color myColor = new Color(Display.getCurrent(), 244, 41, 65);
+        templateNotice.setText("Notice : Take the WSO2 Micro-Integrator latest WUM updated pack to work with template testing in Unit Test Suite.");
+        templateNotice.setForeground(myColor);
+        FormData fd = new FormData();
+        fd.top = new FormAttachment(artifactSectionClient, 5);
+        fd.left = new FormAttachment(1);
+        templateNotice.setLayoutData(fd);
+        templateNotice.setVisible(false);
 
         Label supportiveArtifactlblName = new Label(artifactSectionClient, SWT.NONE);
         data = new FormData();
-        data.top = new FormAttachment(artifactSectionClient, 10);
+        data.top = new FormAttachment(templateNotice, 7);
         data.left = new FormAttachment(1);
         data.right = new FormAttachment(99);
         supportiveArtifactlblName.setLayoutData(data);
@@ -212,6 +225,10 @@ public class SynapseUnitTestFormPage extends AbstractEsbFormPage {
                     setSave(true);
                     updateDirtyState();
                     resourceTree.handleTreeItemChecked(item);
+                    if (item.getText(1).contains("src" + File.separator + "main" + File.separator + "synapse-config"
+                            + File.separator + "templates")) {
+                        templateNotice.setVisible(true);
+                    }
                 }
             }
 

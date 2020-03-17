@@ -45,6 +45,7 @@ public class ImageHolder {
 	private static final String ADD_INPUT_CONTENT = "icons/gmf/add-input-content.png";
 	private static final String ADD_OUTPUT_CONTENT = "icons/gmf/add-output-content.png";
 	private static final String ADD_ROOT = "icons/gmf/add-root.png";
+	private static final String AI_DATA_MAP_BTN = "icons/gmf/apply-btn.png";
 	
 	private Image elementImage;
 	private Image attributeImage;
@@ -64,7 +65,8 @@ public class ImageHolder {
 	private Image addInputContentImage;
 	private Image addOutputContentImage;
 	private Image addRootImage;
-	
+	private Image addAIDataMappingImage;
+
 	private ImageHolder() {
 		
 		ImageDescriptor elementImgDescCollapse = AbstractUIPlugin
@@ -105,6 +107,8 @@ public class ImageHolder {
 				.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ADD_OUTPUT_CONTENT);
 		ImageDescriptor addRootDesc = AbstractUIPlugin
 				.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ADD_ROOT);
+		ImageDescriptor addAIDataMapBtnDesc = AbstractUIPlugin
+                .imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, AI_DATA_MAP_BTN);
 		
 		elementImage = elementImgDescCollapse.createImage();
 		attributeImage = attributeImgDesc.createImage();
@@ -124,8 +128,13 @@ public class ImageHolder {
 		addInputContentImage = addInputContentDesc.createImage();
 		addOutputContentImage = addOutputContentDesc.createImage();
 		addRootImage = addRootDesc.createImage();
+		addAIDataMappingImage = addAIDataMapBtnDesc.createImage();
 	}
 	
+	public Image getAddAIDataMappingImage() {
+		return addAIDataMappingImage;
+	}
+
 	public Image getElementImage() {
 		return elementImage;
 	}

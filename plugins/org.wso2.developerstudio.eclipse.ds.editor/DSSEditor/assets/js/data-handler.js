@@ -98,7 +98,7 @@ $(document).ready(function ($) {
             } else {
             	let authProvider = root.getElementsByTagName("data")[0].getElementsByTagName("authorization_provider");
             	if (authProvider.length > 0) {
-            		root.getElementsByTagName("data")[0].appendChild(authProvider[0]);
+            		root.getElementsByTagName("data")[0].removeChild(authProvider[0]);
             	}
             }
             saveAll(root, url, function() { });

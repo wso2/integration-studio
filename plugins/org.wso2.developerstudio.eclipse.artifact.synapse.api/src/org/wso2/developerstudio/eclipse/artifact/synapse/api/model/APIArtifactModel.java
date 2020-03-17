@@ -37,6 +37,7 @@ import org.wso2.developerstudio.eclipse.artifact.synapse.api.util.ArtifactConsta
 import org.wso2.developerstudio.eclipse.esb.core.utils.SynapseEntryType;
 import org.wso2.developerstudio.eclipse.esb.core.utils.SynapseFileUtils;
 import org.wso2.developerstudio.eclipse.esb.project.utils.ESBProjectUtils;
+import org.wso2.developerstudio.eclipse.general.project.utils.GeneralProjectUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.APIVersionType;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -58,6 +59,7 @@ public class APIArtifactModel extends ProjectDataModel {
 	private String versionType = APIVersionType.NONE.getLiteral();
 	private String version = "";
 	private IContainer saveLocation;
+	private IContainer swaggerRegistryLocation;
 	private List<OMElement> availableAPIslist;
 	private List<OMElement> selectedAPIsList;
 	private String publishSwagger = "";
@@ -140,6 +142,14 @@ public class APIArtifactModel extends ProjectDataModel {
 		this.importSwaggerFile = importedSwaggerFile;
 	}
 	
+	public IContainer getSwaggerRegistryLocation() {
+		return swaggerRegistryLocation;
+	}
+	
+	public void setSwaggerRegistryLocation(IContainer swaggerRegistryLocation) {
+		this.swaggerRegistryLocation = swaggerRegistryLocation;
+	}
+	
 	@Override
 	public Object getModelPropertyValue(String key) {
 		Object modelPropertyValue = super.getModelPropertyValue(key);
@@ -171,6 +181,8 @@ public class APIArtifactModel extends ProjectDataModel {
 				modelPropertyValue = getVersionType();
 			} else if (key.equals(ArtifactConstants.ID_API_VERSION)) {
 				modelPropertyValue = getVersion();
+			} else if (key.equals(ArtifactConstants.ID_SWAGGER_FILE_REGISTRY_LOCATION)) {
+				modelPropertyValue = getSwaggerRegistryLocation();
 			}
 		}
 	 
@@ -242,12 +254,20 @@ public class APIArtifactModel extends ProjectDataModel {
 			if(esbProject!=null){
 				setSaveLocation(esbProject);
 			}
+		} else if (key.contains(ArtifactConstants.ID_CREATE_REG_PRJ)) {
+			Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+			IProject regProject = GeneralProjectUtils.createGeneralProject(shell, getLocation());
+			if (regProject != null) {
+				setSwaggerRegistryLocation(regProject);
+			}
 		} else if (key.equals(ArtifactConstants.ID_API_VERSIONTYPE)) {
 			setVersionType(data.toString());
 		} else if (key.equals(ArtifactConstants.ID_API_VERSION)) {
 			setVersion(data.toString());
 		} else if (key.equals(ArtifactConstants.ID_API_SWAGGER_FILE)) {
 			setSwaggerFile((File) data);
+		} else if (key.equals(ArtifactConstants.ID_SWAGGER_FILE_REGISTRY_LOCATION)) {
+			setSwaggerRegistryLocation((IProject)data);
 		}
 		
 		return result;
@@ -261,7 +281,7 @@ public class APIArtifactModel extends ProjectDataModel {
 			IContainer newSaveLocation =
 			        getContainer(absolutionPath, ESB_PROJECT_NATURE);
 			setSaveLocation(newSaveLocation);
-		}	
+		}
 	}
 	
 	public static IContainer getContainer(File absolutionPath, String projectNature) {

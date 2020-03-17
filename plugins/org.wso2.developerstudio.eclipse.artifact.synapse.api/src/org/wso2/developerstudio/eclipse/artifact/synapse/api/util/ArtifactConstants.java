@@ -27,7 +27,9 @@ public class ArtifactConstants extends NLS {
 	public static String ID_API_HOSTNAME;
 	public static String ID_API_PORT;
 	public static String ID_CREATE_PRJ;
+	public static String ID_CREATE_REG_PRJ;
 	public static String ID_SAVE_LOCATION;
+	public static String ID_SWAGGER_FILE_REGISTRY_LOCATION;
 	public static String ID_API_VERSIONTYPE;
 	public static String ID_API_VERSION;
 	public static String ID_API_PUBLISHSWAGGER;

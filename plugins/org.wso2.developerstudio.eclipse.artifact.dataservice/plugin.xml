@@ -39,9 +39,23 @@
 							<test property="org.wso2.developerstudio.projectNature"
 								value="org.wso2.developerstudio.eclipse.ds.project.nature" />
 						</adapt>
+						<adapt type="org.eclipse.core.resources.IResource">
+								<test property="org.wso2.developerstudio.eclipse.esb.dss.propertytester.checkResourceType"
+                            		value="true" forcePluginActivation="true" />
+                        </adapt>
                     </or>
                 </enablement>
             </commonWizard>
+    </extension>
+    <extension
+            point="org.eclipse.core.expressions.propertyTesters">
+        <propertyTester
+                class="org.wso2.developerstudio.eclipse.artifact.dataservice.validators.DataServiceResourceTester"
+                id="ResourceDSSTester"
+                namespace="org.wso2.developerstudio.eclipse.esb.dss.propertytester"
+                properties="checkResourceType"
+                type="org.eclipse.core.resources.IResource">
+        </propertyTester>
     </extension>
   <extension
        point="org.wso2.developerstudio.eclipse.project.export.handler">

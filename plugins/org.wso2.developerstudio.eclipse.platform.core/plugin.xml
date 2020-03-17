@@ -298,6 +298,11 @@
                 id="org.wso2.developerstudio.eclipse.platform.core.bulkFileNameExtensionResolver"
                 mediaType="org.wso2.developerstudio.eclipse.platform.core.bulkFileNameExtensionResolver"
                 name="Bulk Media Type resolver"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.YAMLMediaTypeResolver"
+                extensions="yaml"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.yaml"
+                mediaType="application/yaml" name="YAML Media type" priority="2"/>
     </extension>
     <!--
     <extension point="org.eclipse.ui.editors">

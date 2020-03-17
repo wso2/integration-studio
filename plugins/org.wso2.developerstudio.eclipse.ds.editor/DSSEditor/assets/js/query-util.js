@@ -598,7 +598,7 @@ function editQuery(root, queryId) {
                 $("#q-im-keycolumns-input").val("");
             }
 
-            if (queryElement.hasAttribute("returnUpdatedRowCount")) {
+            if (queryElement.hasAttribute("returnUpdatedRowCount") && queryElement.getAttribute("returnUpdatedRowCount") == "true") {
                 $("#q-im-return-ukc-checkbox").prop('checked', true);
             } else {
                 $("#q-im-return-ukc-checkbox").prop('checked', false);

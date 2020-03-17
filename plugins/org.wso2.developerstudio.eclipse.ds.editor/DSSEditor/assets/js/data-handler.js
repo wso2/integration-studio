@@ -995,6 +995,9 @@ function populateTransportSettings(root) {
     			+ "<input type=\"text\" placeholder=\"Value\" style=\"width: 100%;\" value='" + propVal + "' /></td><td class=\"text-center\"><i class=\"fa fa-trash\"></i></td></tr>";
     		$('#auth-provider-param-table > tbody').append(prop_row);
     	});
+    } else {
+    	$('#ts-auth-prov-class-input').val("");
+    	$('#auth-provider-param-table').find('tbody').find('tr').detach();
     }
 }
 

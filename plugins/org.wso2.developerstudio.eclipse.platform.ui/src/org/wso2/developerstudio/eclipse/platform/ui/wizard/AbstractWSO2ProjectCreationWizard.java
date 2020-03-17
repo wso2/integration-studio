@@ -275,7 +275,6 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 
 		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
 		IProject project = root.getProject(name);
-		boolean isParentMMM = true;
 		IProject parentProject = null;
 
 		/*
@@ -288,54 +287,39 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 			String parentName = parentFile.getName();
 			parentProject = root.getProject(parentName);
 
-			if (parentProject != null && !parentProject.hasNature(Constants.MAVEN_MULTI_MODULE_PROJECT_NATURE)) {
-				String newLocation = parentFile.getParent() + File.separator + name;
-				location = new File(newLocation);
-				getModel().setLocation(location);
-				isParentMMM = false;
-			} else if (parentProject != null && parentProject.hasNature(Constants.MAVEN_MULTI_MODULE_PROJECT_NATURE)) {
+			// Check the selected project is MMM or not
+			if (parentProject != null && parentProject.hasNature(Constants.MAVEN_MULTI_MODULE_PROJECT_NATURE)) {
 				String newLocation = parentFile.getAbsolutePath() + File.separator + name;
 				location = new File(newLocation);
 				getModel().setLocation(location);
+			} else {
+				// Create the project in default workspace ignoring the selected parent project
+				// type (not a MMM)
+				return createProjectInDefaultWorkspace(name);
 			}
 		} catch (CoreException e) {
-			log.warn("Cannot create project in selected location ", e);
+			// Create any kind of project in default workspace
+			if (parentProject != null && !parentProject.getLocation().equals(root.getLocation())) {
+				log.warn("Cannot create project in selected location ", e);
+			}
 			return createProjectInDefaultWorkspace(name);
 		}
 
+		//Proceed for the MMM Project Creation
 		IProjectDescription newProjectDescription = project.getWorkspace().newProjectDescription(name);
 		newProjectDescription.setLocationURI(location.toURI());
 		project.create(newProjectDescription, new NullProgressMonitor());
 		project.open(new NullProgressMonitor());
 
-		if (isParentMMM) {
-			try {
-				updateMMMPModuleList(name, parentProject);
-			} catch (IOException e) {
-				log.error("Error occured while adding " + name + "  to  module list.", e);
-			} catch (XmlPullParserException e) {
-				log.error("Error occured while adding " + name +
-				          "  to  module list. due to parent pom file parser issue", e);
-			}
-
-		} else {
-			while (!rootWorkspaceLocation.equals(location.getPath())) {
-				File parentFile = location.getParentFile();
-				String parentName = parentFile.getName();
-				parentProject = root.getProject(parentName);
-				if (parentProject != null && parentProject.hasNature(Constants.MAVEN_MULTI_MODULE_PROJECT_NATURE)) {
-					try {
-						updateMMMPModuleList(name, parentProject);
-					} catch (IOException e) {
-						log.error("Error occured while adding " + name + "  to  module list.", e);
-					} catch (XmlPullParserException e) {
-						log.error("Error occured while adding " + name +
-						          "  to  module list. due to parent pom file parser issue", e);
-					}
-					break;
-				}
-			}
+		try {
+			updateMMMPModuleList(name, parentProject);
+		} catch (IOException e) {
+			log.error("Error occured while adding " + name + "  to  module list.", e);
+		} catch (XmlPullParserException e) {
+			log.error("Error occured while adding " + name + "  to  module list. due to parent pom file parser issue",
+					e);
 		}
+		
 		return project;
 	}
 

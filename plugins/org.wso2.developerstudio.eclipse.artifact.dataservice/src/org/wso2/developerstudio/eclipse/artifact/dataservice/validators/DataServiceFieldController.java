@@ -15,7 +15,9 @@
  */
 package org.wso2.developerstudio.eclipse.artifact.dataservice.validators;
 
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.wso2.developerstudio.eclipse.artifact.dataservice.utils.DataServiceArtifactConstants;
 import org.wso2.developerstudio.eclipse.platform.core.exception.FieldValidationException;
 import org.wso2.developerstudio.eclipse.platform.core.model.AbstractFieldController;
@@ -39,11 +41,28 @@ public class DataServiceFieldController extends AbstractFieldController {
 			if (!warFile.exists()) {
 				throw new FieldValidationException(DataServiceArtifactConstants.ERROR_DBS_FILE);
 			}
-		} else if (modelProperty.equals(DataServiceArtifactConstants.WIZARD_OPTION_SERVICE_NAME)) {
-			if (value == null || value.equals("")) {
-				throw new FieldValidationException(DataServiceArtifactConstants.ERROR_DS_NAME);
-			}
-		}else if (modelProperty.equals(DataServiceArtifactConstants.WIZARD_OPTION_SAVE_FILE)) {
+        } else if (modelProperty.equals(DataServiceArtifactConstants.WIZARD_OPTION_SERVICE_NAME)) {
+            if (value == null) {
+                throw new FieldValidationException("Data service name cannot be empty");
+            }
+            String dataServiceName = value.toString();
+            if (dataServiceName.trim().equals("")) {
+                throw new FieldValidationException("Data service name cannot be empty");
+            } else {
+                if (dataServiceName.indexOf(0x20) != -1) {
+                    throw new FieldValidationException("Data service name cannot contain spaces");
+                } else {
+                    if (!CommonFieldValidator.isValidArtifactName(dataServiceName)) {
+                        throw new FieldValidationException(
+                                "Data service name cannot contain invalid characters(^/ : ; * # $ ? \" <> + $)");
+                    }
+                }
+            }
+            File dataService = new File(model.getLocation().getAbsolutePath() + File.separator + dataServiceName + ".dbs");
+            if (dataService.exists()) {
+                throw new FieldValidationException("Data service with the name '" + dataServiceName + "' already exists");
+            }
+        } else if (modelProperty.equals(DataServiceArtifactConstants.WIZARD_OPTION_SAVE_FILE)) {
 			if (value == null || value.equals("")) {
 				throw new FieldValidationException(DataServiceArtifactConstants.ERROR_DS_PROJECT);
 			}

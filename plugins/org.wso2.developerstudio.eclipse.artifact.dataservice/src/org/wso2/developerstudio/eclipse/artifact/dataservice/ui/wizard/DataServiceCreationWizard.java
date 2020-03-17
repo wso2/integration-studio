@@ -56,7 +56,9 @@ import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
+import org.wso2.developerstudio.eclipse.platform.core.exception.FieldValidationException;
 import org.wso2.developerstudio.eclipse.platform.core.utils.XMLUtil;
+import org.wso2.developerstudio.eclipse.platform.ui.validator.CommonFieldValidator;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.pages.ProjectOptionsDataPage;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.pages.ProjectOptionsPage;
@@ -512,10 +514,16 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 	    IWizardPage page = getContainer().getCurrentPage();
 		if (page instanceof ProjectOptionsDataPage) {
 			if (getModel().getSelectedOption().equalsIgnoreCase(NEW_OPTION)) {
-			    if (getModel() instanceof DataServiceModel && !((DataServiceModel)getModel()).getServiceName().isEmpty()) {
-			        return true;
-			    }
-			    return false;
+                if (getModel() instanceof DataServiceModel
+                        && !((DataServiceModel) getModel()).getServiceName().isEmpty()
+                        && ((DataServiceModel) getModel()).getServiceName() != null
+                        && !(((DataServiceModel) getModel()).getServiceName().indexOf(0x20) != -1)
+                        && CommonFieldValidator.isValidArtifactName(((DataServiceModel) getModel()).getServiceName())
+                        && !(new File(getModel().getLocation().getAbsolutePath() + File.separator
+                                + ((DataServiceModel) getModel()).getServiceName() + ".dbs").exists())) {
+                    return true;
+                }
+                return false;
 			} else {
 				return dsModel.getImportFile().exists();
 			}

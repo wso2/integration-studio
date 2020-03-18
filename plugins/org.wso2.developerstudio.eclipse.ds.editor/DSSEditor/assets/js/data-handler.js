@@ -120,6 +120,8 @@ $(document).ready(function ($) {
     $("#ds-add-save-btn").click(function (e) {
     	//check validation
     	let RDBMS_DS_TYPE = "rdbms_ds";
+    	let MONGO_DB_TYPE = "mongodb_ds";
+    	
     	if ($("#ds-ds-id-input").val().trim() == "") {
     		showErrorNotification("danger", "Please provide a datasource identifier", 3000, "ds-notification-alert-holder");
     		return false;
@@ -147,6 +149,16 @@ $(document).ready(function ($) {
     	
     	if ($("#ds-dstype-select").val() == "carbon_ds" && $("#ds-ds-name-input").val().trim() == "") {
     		showErrorNotification("danger", "Please provide a datasource name", 3000, "ds-notification-alert-holder");
+            return false;
+    	}
+    	
+    	if ($("#ds-dstype-select").val() == MONGO_DB_TYPE && $("#ds-server-input").val().trim() == "") {
+    		showErrorNotification("danger", "Please define servers.", 3000, "ds-notification-alert-holder");
+            return false;
+    	}
+    	
+    	if ($("#ds-dstype-select").val() == MONGO_DB_TYPE && $("#ds-mongo-dbname-input").val().trim() == "") {
+    		showErrorNotification("danger", "Please provide a datbase name.", 3000, "ds-notification-alert-holder");
             return false;
     	}
     	

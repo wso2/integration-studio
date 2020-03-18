@@ -102,6 +102,14 @@ function populateDSModal(root, dsId, metadata) {
     for (let i = 0, len = dsConfigs.length; i < len; i++) {
         let config = dsConfigs[i];
         if (config.attributes.getNamedItem("id").value == dsId) {
+        	
+        	let oDataEnabled = config.attributes.getNamedItem("enableOData");
+        	if (oDataEnabled != null && oDataEnabled != undefined && oDataEnabled.value == "true") {
+        		$('#ds-enable-odata-check').prop("checked", true);
+        	} else {
+        		$('#ds-enable-odata-check').prop("checked", false);
+        	}
+        		
             let properties = config.getElementsByTagName("property");
 
             // Populate data source ID
@@ -110,6 +118,7 @@ function populateDSModal(root, dsId, metadata) {
 
             if (dsType === DS_TYPE_RDBMS) {
                 $("#ds-dstype-select").val(DS_TYPE_RDBMS);
+                setVisibleDSTypeMongo(false);
                 setVisibleDSTypeRDBMS(true);
 
                 if (rdbmsType === RDBMS_TYPE_DEFAULT) {
@@ -201,6 +210,7 @@ function populateDSModal(root, dsId, metadata) {
                 }
             } else if (dsType === DS_TYPE_CARBONDS) {
                 $("#ds-dstype-select").val(DS_TYPE_CARBONDS);
+                setVisibleDSTypeMongo(false);
                 setVisibleDSTypeRDBMS(false);
                 setVisibleDSTypeCarbon(true);
 
@@ -209,6 +219,91 @@ function populateDSModal(root, dsId, metadata) {
                 if (carbonDSName != null && carbonDSName != undefined) {
                     $("#ds-ds-name-input").val(carbonDSName.trim());
                 }
+            } else if (dsType === DS_TYPE_MONGODB) {
+            	$("#ds-dstype-select").val(DS_TYPE_MONGODB);
+            	
+            	let servers = getDSConfigPropertyValue(properties, "mongoDB_servers");
+            	$('#ds-server-input').val(servers);
+            	
+            	let mongoDbName = getDSConfigPropertyValue(properties, "mongoDB_database");
+            	$('#ds-mongo-dbname-input').val(mongoDbName);
+            	
+            	let authMethod = getDSConfigPropertyValue(properties, "mongoDB_authentication_type");
+            	if (authMethod != null && authMethod != "") {
+            		$('#ds-auth-method-select').val(authMethod);
+            	} else {
+            		$('#ds-auth-method-select').val("NONE");
+            	}
+            	
+            	// username
+                let username = getDSConfigPropertyValue(properties, "username");
+                if (username === "") {
+                    username = getDSConfigPropertyValue(properties, "org.wso2.ws.dataservice.user");
+                }
+
+                if (username != null && username != undefined) {
+                    $("#ds-username-input").val(username.trim());
+                }
+
+                // password
+                let password = "";
+                let secretAlias = checkForSecretAlias(properties);
+                if (secretAlias.status) {
+                    password = secretAlias.value;
+                    $("#ds-secret-alias-check").prop('checked', true);
+                    $('#ds-password-inputgroup').toggle(false);
+                    $('#ds-password-sa-inputgroup').toggle(true);
+                    
+                } else {
+                    password = getDSConfigPropertyValue(properties, "password");
+                    
+                }
+
+                if (password === "") {
+                    password = getDSConfigPropertyValue(properties, "org.wso2.ws.dataservice.password");
+                }
+                if (secretAlias.status) {
+                	if (password != null && password != undefined) {
+                        $("#ds-password-sa-input").val(password.trim());
+                    }
+                } else {
+                	if (password != null && password != undefined) {
+                        $("#ds-password-input").val(password.trim());
+                    }
+                }
+                
+                let writeConcern = getDSConfigPropertyValue(properties, "mongoDB_write_concern");
+                if (writeConcern != null && writeConcern != "") {
+                	$('#ds-write-concern-select').val(writeConcern);
+                } else {
+                	$('#ds-write-concern-select').val("");
+                }
+                
+                let readPerf = getDSConfigPropertyValue(properties, "mongoDB_read_preference");
+                if (readPerf != null && readPerf != "") {
+                	$('#ds-read-pref-select').val(readPerf);
+                } else {
+                	$('#ds-read-pref-select').val("");
+                }
+                
+                let connectTimeout = getDSConfigPropertyValue(properties, "mongoDB_connectTimeout");
+                $('#ds-con-timeout-input').val(connectTimeout);
+                
+                let maxWait = getDSConfigPropertyValue(properties, "mongoDB_maxWaitTime");
+                $('#ds-max-wait-input').val(maxWait);
+                
+                let socketTimeout = getDSConfigPropertyValue(properties, "mongoDB_socketTimeout");
+                $('#ds-socket-timeout-input').val(socketTimeout);
+                
+                let conPerHost = getDSConfigPropertyValue(properties, "mongoDB_connectionsPerHost");
+                $('#ds-connections-input').val(conPerHost);
+                
+                let threadsForBlock = getDSConfigPropertyValue(properties, "mongoDB_threadsAllowedToBlockForConnectionMultiplier");
+                $('#ds-threads-for-mul-input').val(threadsForBlock);
+
+                setVisibleDSTypeRDBMS(false);
+                setVisibleDSTypeCarbon(false);
+                setVisibleDSTypeMongo(true);
             }
 
             // dynamic auth details
@@ -351,6 +446,73 @@ function processDSInputData(root, data, deleteIfExists) {
         }
     } else if (dsType === "carbon_ds") {
         properties.push(createTextNode(root, createPropertyNode(root, "carbon_datasource_name"), data['ds-ds-name-input']));
+    } else if (dsType === "mongodb_ds") {
+    	
+    	properties.push(createTextNode(root, createPropertyNode(root, "mongoDB_servers"), data['ds-server-input']));
+    	properties.push(createTextNode(root, createPropertyNode(root, "mongoDB_database"), data['ds-mongo-dbname-input']));
+    	
+    	let authMethod = data['ds-auth-method-select'];
+    	if (authMethod != "" && authMethod != "NONE") {
+    		properties.push(createTextNode(root, createPropertyNode(root, "mongoDB_authentication_type"), authMethod));
+    	}
+    	
+    	let user = data['ds-username-input'];
+    	if (user != "") {
+    		properties.push(createTextNode(root, createPropertyNode(root, "username"), user));
+    	}
+
+        // check if secret alias is enabled
+        if ($("#ds-secret-alias-check").is(":checked")) {
+        	let passwordSA = data['ds-password-sa-input'];
+        	if (passwordSA != "") {
+        		let propertyNode = createPropertyNode(root, "password");
+                propertyNode.setAttribute(SECRET_ALIAS_NAMESPACE_ATTRIBUTE, SECRET_ALIAS_NAMESPACE);
+                propertyNode.setAttribute(SECRET_ALIAS_ATTRIBUTE, passwordSA);
+                properties.push(propertyNode);
+        	}
+            
+        } else {
+        	let pw = data['ds-password-input'];
+        	if (pw != "") {
+        		properties.push(createTextNode(root, createPropertyNode(root, "password"), pw));
+        	}
+        }
+    	
+        let writeConcern = data['ds-write-concern-select'];
+        if (writeConcern != "") {
+        	properties.push(createTextNode(root, createPropertyNode(root, "mongoDB_write_concern"), writeConcern));
+        }
+        
+        let readPref = data['ds-read-pref-select'];
+        if (readPref != "") {
+        	properties.push(createTextNode(root, createPropertyNode(root, "mongoDB_read_preference"), readPref));
+        }
+        
+        let conTimeout = data['ds-con-timeout-input'];
+        if (conTimeout != "") {
+        	properties.push(createTextNode(root, createPropertyNode(root, "mongoDB_connectTimeout"), conTimeout));
+        }
+        
+        let maxWait = data['ds-max-wait-input'];
+        if (maxWait != "") {
+        	properties.push(createTextNode(root, createPropertyNode(root, "mongoDB_maxWaitTime"), maxWait));
+        }
+        
+        let socketTimeout = data['ds-socket-timeout-input'];
+        if (socketTimeout != "") {
+        	properties.push(createTextNode(root, createPropertyNode(root, "mongoDB_socketTimeout"), socketTimeout));
+        }
+        
+        let connections = data['ds-connections-input'];
+        if (connections != "") {
+        	properties.push(createTextNode(root, createPropertyNode(root, "mongoDB_connectionsPerHost"), connections));
+        }
+        
+        let threads = data['ds-threads-for-mul-input'];
+        if (threads != "") {
+        	properties.push(createTextNode(root, createPropertyNode(root, "mongoDB_threadsAllowedToBlockForConnectionMultiplier"), threads));
+        }
+        
     }
 
     if (dynamicAuthClass !== "" && dynamicAuthClass !== undefined) {

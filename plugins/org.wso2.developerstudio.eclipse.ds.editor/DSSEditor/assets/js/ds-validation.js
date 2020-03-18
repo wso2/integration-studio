@@ -2,15 +2,25 @@ $(document).ready(function(){
 
     setVisibleDSTypeRDBMS(true);
     setVisibleDSTypeCarbon(false);
+    setVisibleDSTypeMongo(false);
     
     //--- Start of Data Source Type ---//
     $("#ds-dstype-select").change(function() {
         if ($(this).val() == "carbon_ds") {
+        	setVisibleDSTypeRDBMS(false);
+        	setVisibleDSTypeMongo(false);
             setVisibleDSTypeCarbon(true);
-            setVisibleDSTypeRDBMS(false);
+            
         } else if ($(this).val() == "rdbms_ds") {
-            setVisibleDSTypeRDBMS(true);
+            setVisibleDSTypeMongo(false);
             setVisibleDSTypeCarbon(false);
+            setVisibleDSTypeRDBMS(true);
+            
+        } else if ($(this).val() == "mongodb_ds") {
+            setVisibleDSTypeRDBMS(false);
+            setVisibleDSTypeCarbon(false);
+            setVisibleDSTypeMongo(true);
+            
         }
     });
 
@@ -32,6 +42,22 @@ $(document).ready(function(){
     //--- End of Data Source Type 2 ---//
         
 });
+
+function setVisibleDSTypeMongo(isVisible) {
+	$('#ds-server-inputgroup').toggle(isVisible);
+	$('#ds-mongo-dbname-inputgroup').toggle(isVisible);
+	$('#ds-auth-method-input').toggle(isVisible);
+	$('#ds-username-inputgroup').toggle(isVisible);
+	$('#ds-password-formgroup').toggle(isVisible);
+	$('#ds-write-concern-input').toggle(isVisible);
+	$('#ds-read-pref-input').toggle(isVisible);
+	$('#ds-con-timeout-inputgroup').toggle(isVisible);
+	$('#ds-max-wait-inputgroup').toggle(isVisible);
+	$('#ds-socket-timeout-inputgroup').toggle(isVisible);
+	$('#ds-connections-inputgroup').toggle(isVisible);
+	$('#ds-threads-for-mul-inputgroup').toggle(isVisible);
+//	$('#').toggle(isVisible);
+}
 
 function setVisibleDSTypeRDBMS(isVisible) {
     $('#ds-db-engine-formgroup').toggle(isVisible);

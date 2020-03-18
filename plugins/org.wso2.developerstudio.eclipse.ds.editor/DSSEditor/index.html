@@ -319,7 +319,7 @@
                             <div id="ds-ds-id-input-inputgroup" class="field inputgroup"><input class="form-control" type="text" required="" placeholder=" " id="ds-ds-id-input" name="ds-ds-id-input"><label class="mb-0" for="ds-ds-id-input">Datasource Identifier</label></div>
                         </div>
                         <div class="form-group form-inline">
-                            <div class="form-group"><label>Datasource Type</label><select class="form-control" required="" id="ds-dstype-select" name="ds-dstype-select"><option value="rdbms_ds" selected="">RDBMS</option><option value="carbon_ds">Carbon Datasource</option></select>
+                            <div class="form-group"><label>Datasource Type</label><select class="form-control" required="" id="ds-dstype-select" name="ds-dstype-select"><option value="rdbms_ds" selected="">RDBMS</option><option value="mongodb_ds">MongoDB</option><option value="carbon_ds">Carbon Datasource</option></select>
                                 <select
                                     class="form-control" value="default" required="" id="ds-dstype-2-select" name="ds-dstype-2-select">
                                     <option value="default_ds">Default</option>
@@ -363,14 +363,68 @@
                             <div id="ds-url-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="ds-url-input" name="ds-url-input"><label class="mb-0" for="ds-url-input">URL</label></div>
                         </div>
                         <div class="form-group">
+                            <div id="ds-server-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="ds-server-input" name="ds-server-input" required=""><label class="mb-0" for="ds-server-input">Servers</label></div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-mongo-dbname-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="ds-mongo-dbname-input" name="ds-mongo-dbname-input" required=""><label class="mb-0" for="ds-server-input">Database Name</label></div>
+                        </div>
+                        <div class="form-group form-inline" id="ds-auth-method-input">
+	                        <div class="form-group"><label>Authentication Method</label>
+	                            <select class="form-control" value="NONE" id="ds-auth-method-select" name="ds-auth-method-select">
+	                                <option value="NONE">NONE</option>
+	                                <option value="SCRAM-SHA-1">SCRAM-SHA-1</option>
+	                                <option value="MONGODB-CR">MONGODB-CR</option>
+	                                <option value="MONGODB-X509">MONGODB-X509</option>
+	                                <option value="GSSAPI">GSSAPI</option>
+	                                <option value="PLAIN">PLAIN</option>
+	                            </select>
+	                        </div>
+                        </div>
+                        <div class="form-group">
                             <div id="ds-username-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="ds-username-input" name="ds-username-input"><label class="mb-0" for="ds-username-input">Username</label></div>
                         </div>
                         <div class="form-group form-inline" id="ds-password-formgroup">
                             <div id="ds-password-inputgroup" class="field inputgroup" style="width: 70%;"><input class="form-control" type="password" placeholder=" " id="ds-password-input" name="ds-password-input"><label class="d-lg-flex justify-content-lg-start mb-0 justify-content-md-start justify-content-sm-start" for="ds-password-input">Password</label></div>
                             <div id="ds-password-sa-inputgroup" class="field inputgroup" style="width: 70%;"><input class="form-control" type="text" placeholder=" " id="ds-password-sa-input" name="ds-password-sa-input"><label class="d-lg-flex justify-content-lg-start mb-0 justify-content-md-start justify-content-sm-start" for="ds-password-input">Secret Alias</label></div>
-                            <div class="form-check"><input class="form-check-input" type="checkbox" id="ds-secret-alias-check" name="ds-secret-alias-check"><label class="form-check-label" for="ds-secret-alias-check">Use as Secret Alias</label>
+                            <div class="form-check"><input class="form-check-input" type="checkbox" id="ds-secret-alias-check" name="ds-secret-alias-check"><label class="form-check-label" for="ds-secret-alias-check">Use as Secret Alias</label></div>
+		                </div>
+		                <div class="form-group form-inline" id="ds-write-concern-input">
+			                <div class="form-group"><label>Write Concern</label>
+			                    <select class="form-control" value="" id="ds-write-concern-select" name="ds-write-concern-select">
+			                        <option value="">-- Select --</option>
+			                        <option value="FSYNC_SAFE">FSYNC_SAFE</option>
+			                        <option value="NONE">NONE</option>
+			                        <option value="NORMAL">NORMAL</option>
+			                        <option value="REPLICAS_SAFE">REPLICAS_SAFE</option>
+			                        <option value="SAFE">SAFE</option>
+			                        <option value="STRICT">STRICT</option>
+			                    </select>
+			                </div>
+		                </div>
+		                <div class="form-group form-inline" id="ds-read-pref-input">
+			                <div class="form-group"><label>Read Preference</label>
+			                    <select class="form-control" value="" id="ds-read-pref-select" name="ds-read-pref-select">
+			                        <option value="">-- Select --</option>
+			                        <option value="PRIMARY">PRIMARY</option>
+			                        <option value="SECONDARY">SECONDARY</option>
+			                    </select>
+			                </div>
+		                </div>
+		                <div class="form-group">
+                            <div id="ds-con-timeout-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="ds-con-timeout-input" name="ds-con-timeout-input"><label class="mb-0" for="ds-con-timeout-input">Connection Timeout</label></div>
                         </div>
-                </div>
+                        <div class="form-group">
+                            <div id="ds-max-wait-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="ds-max-wait-input" name="ds-max-wait-input"><label class="mb-0" for="ds-max-wait-input">Max Wait Time</label></div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-socket-timeout-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="ds-socket-timeout-input" name="ds-socket-timeout-input"><label class="mb-0" for="ds-socket-timeout-input">Socket Timeout</label></div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-connections-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="ds-connections-input" name="ds-connections-input"><label class="mb-0" for="ds-connections-input">Connections per Host</label></div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-threads-for-mul-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="ds-threads-for-mul-input" name="ds-threads-for-mul-input"><label class="mb-0" for="ds-threads-for-mul-input">Threads Allowed to Block For Connection Multiplier</label></div>
+                        </div>
                 <div class="form-group">
                     <div class="form-check"><input class="form-check-input" type="checkbox" id="ds-enable-odata-check" name="ds-enable-odata-check"><label class="form-check-label" for="ds-enable-odata-check">Enable OData</label></div>
                 </div>

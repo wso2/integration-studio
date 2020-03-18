@@ -455,9 +455,16 @@ $(document).ready(function ($) {
     });
 
     $(document).on('click','#q-im-validators-table .fa-trash',function() {
-        let validatorName = $(this).closest("tr").attr('name');
-        removeIfValidatorExists(validatorName);
-        $(this).closest("tr").remove();
+    	let validatorName = $(this).closest("tr").attr('name');
+    	let row = $(this);
+    	
+    	$("#q-input-mapping-validator-delete-confirm-btn").click(function(event) {
+    		removeIfValidatorExists(validatorName);
+    		row.closest("tr").remove();
+        	$("#q-input-mapping-validator-delete-confirm-modal").modal("hide");
+        });
+    	
+    	$("#q-input-mapping-validator-delete-confirm-modal").modal("show");
     });
 
     $(document).on('click','#q-im-entries-table .fa-edit',function() {
@@ -645,6 +652,11 @@ $(document).ready(function ($) {
     $(document).on('click','#auth-provider-param-table .fa-trash',function() {
     	let tds = $(this).closest("tr").find('td');
     	let row = $(this);
+    	if (tds[0].firstChild.value === "" && tds[1].firstChild.value === "") {
+    		row.closest("tr").remove();
+    		return;
+    	}
+    	
     	$("#transport-auth-param-delete-confirm-btn").click(function(event) {
         	let authProvider = root.getElementsByTagName("data")[0].getElementsByTagName("authorization_provider");
         	if (authProvider.length > 0) {

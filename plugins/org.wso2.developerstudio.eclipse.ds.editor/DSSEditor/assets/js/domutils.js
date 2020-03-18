@@ -258,18 +258,17 @@ var XmlBeautify =
 
             }
 
-            var indentText = "";
-
-            var idx;
-
-            for (idx = 0; idx < buildInfo.indentLevel; idx++) {
-                indentText += buildInfo.indentText;
-            }
-            buildInfo.xmlText += indentText;
-            
             if (element.tagName != "undefined" && element.tagName != undefined) {
-            	
-            	buildInfo.xmlText += startTagPrefix + element.tagName
+                var indentText = "";
+		
+                var idx;
+		
+                for (idx = 0; idx < buildInfo.indentLevel; idx++) {
+                    indentText += buildInfo.indentText;
+	          }
+                buildInfo.xmlText += indentText;
+            
+                buildInfo.xmlText += startTagPrefix + element.tagName
             
                 //add attributes
                 if (element.attributes != undefined) {

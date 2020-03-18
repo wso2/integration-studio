@@ -915,6 +915,7 @@ function populateDSTestConDetails(urlStr) {
         switch (dbEngine) {
         case "mysql":
         case "postgresql":
+        case "derby":
             if (urlStr.match(/.+\/\/.*:.+/)) {
                 url = urlStr.split(delimiterUrl)[1].split(delimiterColon);
                 host = url[0];
@@ -938,7 +939,6 @@ function populateDSTestConDetails(urlStr) {
                 dbname = url[1].split(delimiterSlash)[1];
             }
             break;
-        case "derby":
         case "hsqldb":
         case "db2":
             url = urlStr.split(delimiterColon);

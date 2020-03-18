@@ -913,6 +913,18 @@ $(document).ready(function ($) {
         }
         saveAll(root, url, function() { });
     });
+    
+    $("#ac-active-service-status").change(function() {
+        if (this.checked) {
+        	root.getElementsByTagName("data")[0].setAttribute("serviceStatus", "active");
+        } else {
+        	let activeServiceStatus = root.getElementsByTagName("data")[0].attributes.getNamedItem("serviceStatus");
+        	if (activeServiceStatus != null && activeServiceStatus != undefined) {
+        		root.getElementsByTagName("data")[0].removeAttribute("serviceStatus");
+        	}
+        }
+        saveAll(root, url, function() { });
+    });
 
     $("#ac-disable-legacy-boxcarring-check").change(function() {
         if (this.checked) {

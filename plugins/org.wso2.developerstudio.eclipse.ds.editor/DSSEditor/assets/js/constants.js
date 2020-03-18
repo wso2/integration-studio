@@ -58,7 +58,7 @@ const DEFAULT_POSTGRESQL_DRIVER_CLASS = "org.postgresql.Driver";
 const DEFAULT_POSTGRESQL_URL = "jdbc:postgresql://[HOST]:[PORT5432]/[database]";
 //// Apache Derby
 const DEFAULT_DERBY_DRIVER_CLASS = "org.apache.derby.jdbc.EmbeddedDriver";
-const DEFAULT_DERBY_URL = "jdbc:derby:[path-to-data-file]";
+const DEFAULT_DERBY_URL = "jdbc:derby://[HOST]:[PORT]/[database]";
 //// IBM DB2
 const DEFAULT_IBMDB2_DRIVER_CLASS = "com.ibm.db2.jcc.DB2Driver";
 const DEFAULT_IBMDB2_URL = "jdbc:db2:[database]";

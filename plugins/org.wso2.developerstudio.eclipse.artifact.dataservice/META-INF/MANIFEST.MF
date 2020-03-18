@@ -23,7 +23,8 @@ DynamicImport-Package: com.mysql.jdbc,
  com.informix.jdbc.IfxDriver,
  org.h2.Driver
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Import-Package: org.eclipse.jdt.core,
+Import-Package: org.eclipse.core.expressions,
+ org.eclipse.jdt.core,
  org.eclipse.jdt.internal.ui.wizards.dialogfields,
  org.eclipse.m2e.core,
  org.eclipse.m2e.core.embedder,

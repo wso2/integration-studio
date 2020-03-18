@@ -98,6 +98,7 @@ function populateDSModal(root, dsId, metadata) {
     $("#ds-secret-alias-check").prop('checked', false);
     $('#ds-password-inputgroup').toggle(true);
     $('#ds-password-sa-inputgroup').toggle(false);
+    $('#ds-test-password-sa-inputgroup').toggle(false);
 
     for (let i = 0, len = dsConfigs.length; i < len; i++) {
         let config = dsConfigs[i];
@@ -169,6 +170,7 @@ function populateDSModal(root, dsId, metadata) {
                         $("#ds-secret-alias-check").prop('checked', true);
                         $('#ds-password-inputgroup').toggle(false);
                         $('#ds-password-sa-inputgroup').toggle(true);
+                        $('#ds-test-password-sa-inputgroup').toggle(true);
                         
                     } else {
                         password = getDSConfigPropertyValue(properties, "password");
@@ -727,6 +729,7 @@ function getDSConfigPropertyValue(propertyArr, propertyName) {
 function resetDSAddEditModal() {
     setVisibleDSTypeRDBMS(true);
     $('#ds-password-sa-inputgroup').toggle(false);
+    $('#ds-test-password-sa-inputgroup').toggle(false);
     setVisibleDSTypeCarbon(false);
     clearDynamicAuthTable();
 }

@@ -111,9 +111,11 @@ $(document).ready(function ($) {
         if (this.checked) {
         	$('#ds-password-inputgroup').toggle(false);
         	$('#ds-password-sa-inputgroup').toggle(true);
+        	$('#ds-test-password-sa-inputgroup').toggle(true);
         } else {
         	$('#ds-password-inputgroup').toggle(true);
         	$('#ds-password-sa-inputgroup').toggle(false);
+        	$('#ds-test-password-sa-inputgroup').toggle(false);
         }
     });
     
@@ -221,6 +223,10 @@ $(document).ready(function ($) {
         let username = $("#ds-username-input").val();
         let password = $("#ds-password-input").val();
         
+        if ($("#ds-secret-alias-check").is(":checked")) {
+            password = $("#ds-test-password-sa").val();
+        }
+
         if (dbType == "") {
         	showDSNotification("danger", "Please select the database engine.", 6000);
         	return false;

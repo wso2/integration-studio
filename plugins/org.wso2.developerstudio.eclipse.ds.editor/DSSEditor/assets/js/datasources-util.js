@@ -120,6 +120,7 @@ function populateDSModal(root, dsId, metadata) {
             if (dsType === DS_TYPE_RDBMS) {
                 $("#ds-dstype-select").val(DS_TYPE_RDBMS);
                 setVisibleDSTypeMongo(false);
+                setVisibleDSTypeCSV(false);
                 setVisibleDSTypeRDBMS(true);
 
                 if (rdbmsType === RDBMS_TYPE_DEFAULT) {
@@ -214,6 +215,7 @@ function populateDSModal(root, dsId, metadata) {
                 $("#ds-dstype-select").val(DS_TYPE_CARBONDS);
                 setVisibleDSTypeMongo(false);
                 setVisibleDSTypeRDBMS(false);
+                setVisibleDSTypeCSV(false);
                 setVisibleDSTypeCarbon(true);
 
                 // datasource name
@@ -305,7 +307,46 @@ function populateDSModal(root, dsId, metadata) {
 
                 setVisibleDSTypeRDBMS(false);
                 setVisibleDSTypeCarbon(false);
+                setVisibleDSTypeCSV(false);
                 setVisibleDSTypeMongo(true);
+                
+            } else if (dsType === DS_TYPE_CSV) {
+            	
+                $("#ds-dstype-select").val(DS_TYPE_CSV);
+                
+                $('#ds-csv-file-location-input').val(getDSConfigPropertyValue(properties, "csv_datasource"));
+                
+                let colSeparator = getDSConfigPropertyValue(properties, "csv_columnseperator");
+                if (colSeparator != null && colSeparator != "") {
+                	$('#ds-col-separator-input').val(colSeparator);
+                }
+            	
+                let startRow = getDSConfigPropertyValue(properties, "csv_startingrow");
+                if (startRow != null && startRow != "") {
+                	$('#ds-start-row-input').val(startRow);
+                }
+                
+                let maxReadRows = getDSConfigPropertyValue(properties, "csv_maxrowcount");
+                if (maxReadRows != null && maxReadRows != "") {
+                	$('#ds-max-read-rows-input').val(maxReadRows);
+                }
+                
+                let colHeader = getDSConfigPropertyValue(properties, "csv_hasheader");
+                if (colHeader != null && colHeader != "" && (colHeader == "true" || colHeader == true)) {
+                	$('#ds-col-header-select').val("true");
+                } else {
+                	$('#ds-col-header-select').val("false");
+                }
+                
+                let headerRow = getDSConfigPropertyValue(properties, "csv_headerrow");
+                if (headerRow != null && headerRow != "") {
+                	$('#ds-header-row-input').val(headerRow);
+                }
+                
+                setVisibleDSTypeRDBMS(false);
+                setVisibleDSTypeCarbon(false);
+                setVisibleDSTypeMongo(false);
+                setVisibleDSTypeCSV(true);
             }
 
             // dynamic auth details
@@ -515,6 +556,30 @@ function processDSInputData(root, data, deleteIfExists) {
         	properties.push(createTextNode(root, createPropertyNode(root, "mongoDB_threadsAllowedToBlockForConnectionMultiplier"), threads));
         }
         
+    } else if (dsType === "csv") {
+    	
+    	properties.push(createTextNode(root, createPropertyNode(root, "csv_datasource"), data['ds-csv-file-location-input']));
+    	properties.push(createTextNode(root, createPropertyNode(root, "csv_hasheader"), data['ds-col-header-select']));
+    	
+    	let colSeparator = data['ds-col-separator-input'];
+    	if (colSeparator != "") {
+    		properties.push(createTextNode(root, createPropertyNode(root, "csv_columnseperator"), colSeparator));
+    	}
+    	
+    	let startRow = data['ds-start-row-input'];
+    	if (startRow != "") {
+    		properties.push(createTextNode(root, createPropertyNode(root, "csv_startingrow"), startRow));
+    	}
+    	
+    	let maxReadRows = data['ds-max-read-rows-input'];
+    	if (maxReadRows != "") {
+    		properties.push(createTextNode(root, createPropertyNode(root, "csv_maxrowcount"), maxReadRows));
+    	}
+    	
+    	let headerRow = data['ds-header-row-input'];
+    	if (headerRow != "") {
+    		properties.push(createTextNode(root, createPropertyNode(root, "csv_headerrow"), headerRow));
+    	}
     }
 
     if (dynamicAuthClass !== "" && dynamicAuthClass !== undefined) {

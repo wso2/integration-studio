@@ -322,7 +322,7 @@
                             <div id="ds-ds-id-input-inputgroup" class="field inputgroup"><input class="form-control" type="text" required="" placeholder=" " id="ds-ds-id-input" name="ds-ds-id-input"><label class="mb-0" for="ds-ds-id-input">Datasource Identifier</label></div>
                         </div>
                         <div class="form-group form-inline">
-                            <div class="form-group"><label>Datasource Type</label><select class="form-control" required="" id="ds-dstype-select" name="ds-dstype-select"><option value="rdbms_ds" selected="">RDBMS</option><option value="mongodb_ds">MongoDB</option><option value="carbon_ds">Carbon Datasource</option></select>
+                            <div class="form-group"><label>Datasource Type</label><select class="form-control" required="" id="ds-dstype-select" name="ds-dstype-select"><option value="rdbms_ds" selected="">RDBMS</option><option value="mongodb_ds">MongoDB</option><option value="csv">CSV</option><option value="carbon_ds">Carbon Datasource</option></select>
                                 <select
                                     class="form-control" value="default" required="" id="ds-dstype-2-select" name="ds-dstype-2-select">
                                     <option value="default_ds">Default</option>
@@ -428,8 +428,32 @@
                         <div class="form-group">
                             <div id="ds-threads-for-mul-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="ds-threads-for-mul-input" name="ds-threads-for-mul-input"><label class="mb-0" for="ds-threads-for-mul-input">Threads Allowed to Block For Connection Multiplier</label></div>
                         </div>
+                        <div class="form-group">
+                            <div id="ds-csv-file-location-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="ds-csv-file-location-input" name="ds-csv-file-location-input" required=""><label class="mb-0" for="ds-csv-file-location-input">CSV File Location</label></div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-col-separator-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="ds-col-separator-input" name="ds-col-separator-input"><label class="mb-0" for="ds-col-separator-input">Column Separator</label></div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-start-row-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="ds-start-row-input" name="ds-start-row-input"><label class="mb-0" for="ds-start-row-input">Start Reading from Row</label></div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-max-read-rows-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="ds-max-read-rows-input" name="ds-max-read-rows-input"><label class="mb-0" for="ds-max-read-rows-input">Maximum number of Rows to Read</label></div>
+                        </div>
+                        <div class="form-group form-inline" id="ds-col-header-input">
+			                <div class="form-group"><label>Contains Column Header Row</label>
+			                    <select class="form-control" value="" id="ds-col-header-select" name="ds-col-header-select" required="">
+			                        <option value="">-- Select --</option>
+			                        <option value="true">TRUE</option>
+			                        <option value="false">FALSE</option>
+			                    </select>
+			                </div>
+		                </div>
+                        <div class="form-group">
+                            <div id="ds-header-row-inputgroup" class="field inputgroup"><input class="form-control" type="text" placeholder=" " id="ds-header-row-input" name="ds-header-row-input"><label class="mb-0" for="ds-header-row-input">Header Row</label></div>
+                        </div>
                 <div class="form-group">
-                    <div class="form-check"><input class="form-check-input" type="checkbox" id="ds-enable-odata-check" name="ds-enable-odata-check"><label class="form-check-label" for="ds-enable-odata-check">Enable OData</label></div>
+                    <div class="form-check" id="ds-enable-odata-check-inputgroup"><input class="form-check-input" type="checkbox" id="ds-enable-odata-check" name="ds-enable-odata-check"><label class="form-check-label" for="ds-enable-odata-check">Enable OData</label></div>
                 </div>
                 <div id="ds-test-con-collapse-group" class="collapse-custom"><a class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="true" aria-controls="ds-conf-params-collapse" role="button" href="#ds-conf-params-collapse">Test Connection</a>
                     <div class="collapse" id="ds-conf-params-collapse">

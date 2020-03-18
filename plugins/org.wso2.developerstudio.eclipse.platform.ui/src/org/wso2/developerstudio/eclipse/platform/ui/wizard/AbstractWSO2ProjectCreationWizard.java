@@ -299,9 +299,7 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 			}
 		} catch (CoreException e) {
 			// Create any kind of project in default workspace
-			if (parentProject != null && !parentProject.getLocation().equals(root.getLocation())) {
-				log.warn("Cannot create project in selected location ", e);
-			}
+			log.warn("Create the project in default workspace location ", e);
 			return createProjectInDefaultWorkspace(name);
 		}
 

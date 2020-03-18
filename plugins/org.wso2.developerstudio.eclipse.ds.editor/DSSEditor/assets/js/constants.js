@@ -18,6 +18,7 @@ const DS_METADATA_DB_ENGINE = "dbengine";
 const DS_TYPE_RDBMS = "rdbms_ds";
 const DS_TYPE_CARBONDS = "carbon_ds";
 const DS_TYPE_MONGODB = "mongodb_ds";
+const DS_TYPE_CSV = "csv";
 
 //// RDBMS Types
 const RDBMS_TYPE_DEFAULT = "default_ds";

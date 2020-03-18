@@ -1,25 +1,35 @@
 $(document).ready(function(){
 
-    setVisibleDSTypeRDBMS(true);
     setVisibleDSTypeCarbon(false);
     setVisibleDSTypeMongo(false);
+    setVisibleDSTypeCSV(false);
+    setVisibleDSTypeRDBMS(true);
     
     //--- Start of Data Source Type ---//
     $("#ds-dstype-select").change(function() {
         if ($(this).val() == "carbon_ds") {
         	setVisibleDSTypeRDBMS(false);
         	setVisibleDSTypeMongo(false);
+        	setVisibleDSTypeCSV(false);
             setVisibleDSTypeCarbon(true);
             
         } else if ($(this).val() == "rdbms_ds") {
             setVisibleDSTypeMongo(false);
             setVisibleDSTypeCarbon(false);
+            setVisibleDSTypeCSV(false);
             setVisibleDSTypeRDBMS(true);
             
         } else if ($(this).val() == "mongodb_ds") {
             setVisibleDSTypeRDBMS(false);
             setVisibleDSTypeCarbon(false);
+            setVisibleDSTypeCSV(false);
             setVisibleDSTypeMongo(true);
+            
+        } else if ($(this).val() == "csv") {
+            setVisibleDSTypeRDBMS(false);
+            setVisibleDSTypeCarbon(false);
+            setVisibleDSTypeMongo(false);
+            setVisibleDSTypeCSV(true);
             
         }
     });
@@ -43,6 +53,15 @@ $(document).ready(function(){
         
 });
 
+function setVisibleDSTypeCSV(isVisible) {
+	$('#ds-csv-file-location-inputgroup').toggle(isVisible);
+	$('#ds-col-separator-inputgroup').toggle(isVisible);
+	$('#ds-start-row-inputgroup').toggle(isVisible);
+	$('#ds-max-read-rows-inputgroup').toggle(isVisible);
+	$('#ds-col-header-input').toggle(isVisible);
+	$('#ds-header-row-inputgroup').toggle(isVisible);
+}
+
 function setVisibleDSTypeMongo(isVisible) {
 	$('#ds-server-inputgroup').toggle(isVisible);
 	$('#ds-mongo-dbname-inputgroup').toggle(isVisible);
@@ -56,7 +75,6 @@ function setVisibleDSTypeMongo(isVisible) {
 	$('#ds-socket-timeout-inputgroup').toggle(isVisible);
 	$('#ds-connections-inputgroup').toggle(isVisible);
 	$('#ds-threads-for-mul-inputgroup').toggle(isVisible);
-//	$('#').toggle(isVisible);
 }
 
 function setVisibleDSTypeRDBMS(isVisible) {

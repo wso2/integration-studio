@@ -12,9 +12,9 @@ $(document).ready(function(){
         $("#ts-parameter-table tbody").append(markup);
     });
     
-    $(document).on('click','#ts-parameter-table .fa-trash',function(){
-        $(this).closest("tr").remove();
-    });
+//    $(document).on('click','#ts-parameter-table .fa-trash',function(){
+//        $(this).closest("tr").remove();
+//    });
     //--- End of Transport Settings param table --/
     
     //--- Start of Data Sources table ---//

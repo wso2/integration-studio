@@ -644,18 +644,24 @@ $(document).ready(function ($) {
     
     $(document).on('click','#auth-provider-param-table .fa-trash',function() {
     	let tds = $(this).closest("tr").find('td');
-    	let authProvider = root.getElementsByTagName("data")[0].getElementsByTagName("authorization_provider");
-    	if (authProvider.length > 0) {
-    		let props = authProvider[0].getElementsByTagName("property");
-    		for (let i = 0, len = props.length; i < len; i++) {
-    			if (props[i].attributes.getNamedItem("name").value == tds[0].firstChild.value) {
-    				authProvider[0].removeChild(props[i]);
-    				break;
-    			}
-    		}
-    	}
-    	$(this).closest("tr").remove();
-    	saveAll(root, url, function() { });
+    	let row = $(this);
+    	$("#transport-auth-param-delete-confirm-btn").click(function(event) {
+        	let authProvider = root.getElementsByTagName("data")[0].getElementsByTagName("authorization_provider");
+        	if (authProvider.length > 0) {
+        		let props = authProvider[0].getElementsByTagName("property");
+        		for (let i = 0, len = props.length; i < len; i++) {
+        			if (props[i].attributes.getNamedItem("name").value == tds[0].firstChild.value) {
+        				authProvider[0].removeChild(props[i]);
+        				break;
+        			}
+        		}
+        	}
+        	row.closest("tr").remove();
+        	saveAll(root, url, function() { });
+        	$("#transport-auth-param-delete-confirm-modal").modal("hide");
+        });
+    	
+    	$("#transport-auth-param-delete-confirm-modal").modal("show");
     });
     
     $("#auth-provider-param-table > tbody").on("keyup", function(){

@@ -225,7 +225,7 @@ public class MediatorValidationUtil {
 				if (propertyGroupMediatorFactory == null) {
                     propertyGroupMediatorFactory = new PropertyGroupMediatorFactory();
                 }
-                propertyMediatorFactory.createMediator(omElement, null);
+				propertyGroupMediatorFactory.createMediator(omElement, null);
 				break;
 			case "filter":
 				if (filterMediatorFactory == null) {

@@ -64,6 +64,7 @@ public class CarExportDetailsWizardPage extends WizardPage {
 	protected CarExportDetailsWizardPage(IWorkbench wb, IStructuredSelection selection) {
 		super("WSO2 Platform Distribution");
 		setTitle("WSO2 Platform Distribution");
+		setDescription("Details of the deployable CAR file");
 		try {
 			IProject project = getProject(selection);
 			if(project!=null){
@@ -105,11 +106,11 @@ public class CarExportDetailsWizardPage extends WizardPage {
 		GridData gd_lblName = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
 		gd_lblName.widthHint = 79;
 		lblName.setLayoutData(gd_lblName);
-		lblName.setText("Name");
+		lblName.setText("CAR Name:");
 		
 		txtName = new Text(container, SWT.BORDER);
 		GridData gd_text = new GridData(SWT.LEFT, SWT.CENTER, true, false, 2, 1);
-		gd_text.widthHint = 253;
+		gd_text.widthHint = 505;
 		txtName.setLayoutData(gd_text);
 		initialName = getName();
 		txtName.setText(initialName);
@@ -122,11 +123,11 @@ public class CarExportDetailsWizardPage extends WizardPage {
 		});
 		
 		Label lblVersion = new Label(container, SWT.NONE);
-		lblVersion.setText("Version");
+		lblVersion.setText("CAR Version:");
 		
 		txtVersion = new Text(container, SWT.BORDER);
 		GridData gd_txtVersion = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
-		gd_txtVersion.widthHint = 253;
+		gd_txtVersion.widthHint = 505;
 		initialVersion = getVersion();
 		txtVersion.setText(initialVersion);
 		txtVersion.setLayoutData(gd_txtVersion);
@@ -140,7 +141,7 @@ public class CarExportDetailsWizardPage extends WizardPage {
 		new Label(container, SWT.NONE);
 		
 		Label lblExportDestination = new Label(container, SWT.NONE);
-		lblExportDestination.setText("Export Destination");
+		lblExportDestination.setText("Export Destination:");
 		
 		txtExportPath = new Text(container, SWT.BORDER);
 		GridData gd_txtExportPath = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);

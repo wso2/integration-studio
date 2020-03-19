@@ -214,7 +214,10 @@ public class DistributionProjectExportWizard extends Wizard implements IExportWi
 			}
 			IResource carbonArchive = ExportUtil.buildCAppProject(selectedProject);
 			FileUtils.copy(carbonArchive.getLocation().toFile(), destFileName);
-				 
+			
+			openMessageBox(getShell(),"WSO2 Platform Distribution",
+		               "Carbon archive file successfully created in the given destination",
+		               SWT.ICON_WORKING);
 		} catch (Exception e) {
 			log.error("An error occured while creating the carbon archive file", e);
 			openMessageBox(getShell(),"WSO2 Platform Distribution",

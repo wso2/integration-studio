@@ -36,6 +36,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
+import org.eclipse.ui.navigator.CommonNavigator;
 import org.eclipse.ui.part.ISetSelectionTarget;
 import org.wso2.developerstudio.eclipse.artifact.dataserviceProject.Activator;
 import org.wso2.developerstudio.eclipse.artifact.dataserviceProject.artifact.DSSProjectArtifact;
@@ -105,6 +106,7 @@ public class DataServiceProjectCreationWizard extends AbstractWSO2ProjectCreatio
                 IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
                 PlatformUI.getWorkbench().showPerspective(DSS_PERSPECTIVE, window);
                 IWorkbenchPage page = window.getActivePage();
+                ((CommonNavigator) page.findViewReference(IPageLayout.ID_PROJECT_EXPLORER, null).getView(true)).setLinkingEnabled(true);
                 IDE.openEditor(page, project.getFile(POM_FILE).getLocationURI(), MAVEN_POM_EDITOR_ID, true);
                 IViewPart view = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
                         .findView(IPageLayout.ID_PROJECT_EXPLORER);

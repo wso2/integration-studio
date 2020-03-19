@@ -1023,6 +1023,30 @@ function populateDSTestConDetails(urlStr) {
             }
             break;
         case "h2":
+        	url = urlStr.split(delimiterColon);
+        	if (urlStr.match(/.+:.+:.+:.+\~\/.+/)) {
+        		let context = url[3];
+        		if (context.substring(0, 2) == "//") {
+        			context = context.substring(2);
+        		}
+        		hostAndDb = context.split(delimiterSlash);
+        		port = "8082";
+        		host = hostAndDb[0];
+                dbname = hostAndDb[2];
+        	} else if (urlStr.match(/.+:.+:\~\/.+/)) {
+        		port = "8082";
+        		host = "localhost";
+                dbname = url[2].split(delimiterSlash)[1];
+        	} else if (urlStr.match(/.+:.+:.+:.+:.+\/.+/)) {
+        		let hostname = url[3];
+        		if (hostname.substring(0, 2) == "//") {
+        			hostname = hostname.substring(2);
+        		}
+                host = hostname;
+                port = url[4].split(delimiterSlash)[0];
+                dbname = url[4].split(delimiterSlash)[1];
+        	}
+        	break;
         case "sybase":
             if (urlStr.match(/.+:.+:.+:.+:.+\/.+/)) {
                 url = urlStr.split(delimiterColon);

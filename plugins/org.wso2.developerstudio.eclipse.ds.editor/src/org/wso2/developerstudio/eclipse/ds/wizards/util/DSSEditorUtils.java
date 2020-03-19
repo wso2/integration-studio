@@ -283,6 +283,11 @@ public class DSSEditorUtils {
             connectionUrl += DSSVisualEditorConstants.DBTypes.DB_TYPE_DERBY_CONN + "://" + host + ":" + port + "/"
                     + dbName;
             break;
+         case DSSVisualEditorConstants.DBTypes.DB_TYPE_H2:
+            // Template: jdbc:h2:tcp://HOST/~/DBname
+            connectionUrl += DSSVisualEditorConstants.DBTypes.DB_TYPE_H2 + ":tcp://" + host + "/~/" + dbName;
+            break;
+            
         }
 
         return connectionUrl;
@@ -314,6 +319,11 @@ public class DSSEditorUtils {
         case DSSVisualEditorConstants.DBTypes.DB_TYPE_DERBY:
             if (DSSVisualEditorConstants.DBConnectionParams.DERBY_VERSION_10_14_2_0.equals(version)) {
                 jarName = DSSVisualEditorConstants.DBConnectionParams.DERBY_JAR_10_14_2_0;
+            }
+            break;
+        case DSSVisualEditorConstants.DBTypes.DB_TYPE_H2:
+            if (DSSVisualEditorConstants.DBConnectionParams.H2_VERSION_1_4_200.equals(version)) {
+                jarName = DSSVisualEditorConstants.DBConnectionParams.H2_JAR_1_4_200;
             }
             break;
         }
@@ -353,6 +363,11 @@ public class DSSEditorUtils {
             case DSSVisualEditorConstants.DBTypes.DB_TYPE_DERBY:
                 driver = (Driver) Class
                         .forName(DSSVisualEditorConstants.DBDrivers.DERBY_CLIENT_DRIVER, true, classLoader)
+                        .newInstance();
+                break;
+            case DSSVisualEditorConstants.DBTypes.DB_TYPE_H2:
+                driver = (Driver) Class
+                        .forName(DSSVisualEditorConstants.DBDrivers.H2_DRIVER, true, classLoader)
                         .newInstance();
                 break;
             }

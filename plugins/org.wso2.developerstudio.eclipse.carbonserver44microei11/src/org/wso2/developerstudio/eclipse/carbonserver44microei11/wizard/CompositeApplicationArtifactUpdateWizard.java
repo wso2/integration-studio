@@ -43,6 +43,7 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.carbonserver44microei11.Activator;
 import org.wso2.developerstudio.eclipse.carbonserver44microei11.register.product.servers.MicroIntegratorInstance;
+import org.wso2.developerstudio.eclipse.distribution.project.model.DataTransferObject;
 import org.wso2.developerstudio.eclipse.distribution.project.model.DependencyData;
 import org.wso2.developerstudio.eclipse.distribution.project.ui.wizard.DistributionProjectExportWizardPage;
 import org.wso2.developerstudio.eclipse.distribution.project.util.ArtifactTypeMapping;
@@ -64,6 +65,7 @@ import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 public class CompositeApplicationArtifactUpdateWizard extends Wizard implements IExportWizard {
 
 	DistributionProjectExportWizardPage mainPage;
+	private CompositeProjectSelectionPage compositeProjectSelectionPage;
 	private IFile pomFileRes;
 	private File pomFile;
 	private IProject selectedProject;
@@ -74,6 +76,7 @@ public class CompositeApplicationArtifactUpdateWizard extends Wizard implements 
 	private Map<String, Dependency> dependencyMap = new HashMap<String, Dependency>();
 	private Map<String, String> serverRoleList = new HashMap<String, String>();
 	private ArtifactTypeMapping artifactTypeMapping = new ArtifactTypeMapping();
+	private boolean isCompositeSelectionPageNeeded = false;
 
 	// The CAR file name is made constant since we allow only one carbon application
 	// to be
@@ -92,6 +95,17 @@ public class CompositeApplicationArtifactUpdateWizard extends Wizard implements 
 
 	public void init(IWorkbench workbench, IResource selection) {
 		initializeWizard(selection);
+	}
+	
+	public void init() {
+		initializeWizard(null);
+	}
+
+	public CompositeApplicationArtifactUpdateWizard() {
+	}
+
+	public CompositeApplicationArtifactUpdateWizard(boolean isCompositeSelectionPageNeeded) {
+		this.isCompositeSelectionPageNeeded = isCompositeSelectionPageNeeded;
 	}
 
 	public void savePOM() throws Exception {
@@ -145,6 +159,9 @@ public class CompositeApplicationArtifactUpdateWizard extends Wizard implements 
 
 	public void addPages() {
 		if (!initError) {
+			if (isCompositeSelectionPageNeeded) {
+				addPage(compositeProjectSelectionPage);
+			}
 			addPage(mainPage);
 			super.addPages();
 		} else {
@@ -154,13 +171,20 @@ public class CompositeApplicationArtifactUpdateWizard extends Wizard implements 
 
 	@Override
 	public boolean canFinish() {
-		if (dependencyMap.size() == 0) {
+		if (isCompositeSelectionPageNeeded && getContainer().getCurrentPage() == compositeProjectSelectionPage
+				&& compositeProjectSelectionPage.isPageDirty()) {
+			return false;
+		}
+
+		if (getContainer().getCurrentPage() == mainPage && mainPage.getDependencyList().size() == 0) {
 			return false;
 		}
 		return super.canFinish();
 	}
 
 	public boolean performFinish() {
+		checkAndUpdateSelectedCompositeDetails();
+	    
 		String finalFileName = String.format("%s_%s.car", CARFileName.replaceAll(".car$", ""), CARFileVersion);
 		try {
 			File destFileName = new File(deploymentFolderPath, finalFileName);
@@ -181,6 +205,25 @@ public class CompositeApplicationArtifactUpdateWizard extends Wizard implements 
 		}
 		return true;
 	}
+	
+	private void checkAndUpdateSelectedCompositeDetails() {
+		if (parentPrj == null) {
+			parentPrj = mainPage.getMavenProject();
+		}
+
+		if (serverRoleList.size() == 0) {
+			serverRoleList = mainPage.getServerRoleList();
+		}
+
+		if (pomFileRes == null) {
+			pomFileRes = mainPage.getSelectedProjectPomIFile();
+			pomFile = pomFileRes.getLocation().toFile();
+		}
+
+		if (selectedProject == null) {
+			selectedProject = mainPage.getSelectedCompositeProject();
+		}
+	}
 
 	protected int openMessageBox(Shell shell, String title, String message, int style) {
 		MessageBox exportMsg = new MessageBox(shell, style);
@@ -191,32 +234,45 @@ public class CompositeApplicationArtifactUpdateWizard extends Wizard implements 
 
 	private void initializeWizard(Object selection) {
 		try {
-			selectedProject = getSelectedProject(selection);
+			DataTransferObject dataObject = new DataTransferObject();
+			if (isCompositeSelectionPageNeeded) {
+				compositeProjectSelectionPage = new CompositeProjectSelectionPage(dataObject);
+			}
+
 			deploymentFolderPath = MicroIntegratorInstance.getInstance().getServerHome() + File.separator
 					+ DEPLOYMENT_DIR;
-			pomFileRes = selectedProject.getFile("pom.xml");
-			pomFile = pomFileRes.getLocation().toFile();
 
-			if (!selectedProject.hasNature(Constants.DISTRIBUTION_PROJECT_NATURE)) {
-				throw new Exception();
+			if (selection != null) {
+				selectedProject = getSelectedProject(selection);
+
+				pomFileRes = selectedProject.getFile("pom.xml");
+				pomFile = pomFileRes.getLocation().toFile();
+
+				if (!selectedProject.hasNature(Constants.DISTRIBUTION_PROJECT_NATURE)) {
+					throw new Exception();
+				}
+
+				ProjectList projectListProvider = new ProjectList();
+				List<ListData> projectListData = projectListProvider.getListData(null, null);
+
+				for (ListData data : projectListData) {
+					DependencyData dependencyData = (DependencyData) data.getData();
+					projectList.put(data.getCaption(), dependencyData);
+				}
+
+				parentPrj = MavenUtils.getMavenProject(pomFile);
+
+				for (Dependency dependency : (List<Dependency>) parentPrj.getDependencies()) {
+					dependencyMap.put(DistProjectUtils.getArtifactInfoAsString(dependency), dependency);
+					serverRoleList.put(DistProjectUtils.getArtifactInfoAsString(dependency),
+							DistProjectUtils.getServerRole(parentPrj, dependency));
+				}
+
+				mainPage = new DistributionProjectExportWizardPage(parentPrj);
+			} else {
+				mainPage = new DistributionProjectExportWizardPage(parentPrj, dataObject);
 			}
 
-			ProjectList projectListProvider = new ProjectList();
-			List<ListData> projectListData = projectListProvider.getListData(null, null);
-
-			for (ListData data : projectListData) {
-				DependencyData dependencyData = (DependencyData) data.getData();
-				projectList.put(data.getCaption(), dependencyData);
-			}
-
-			parentPrj = MavenUtils.getMavenProject(pomFile);
-
-			for (Dependency dependency : (List<Dependency>) parentPrj.getDependencies()) {
-				dependencyMap.put(DistProjectUtils.getArtifactInfoAsString(dependency), dependency);
-				serverRoleList.put(DistProjectUtils.getArtifactInfoAsString(dependency),
-						DistProjectUtils.getServerRole(parentPrj, dependency));
-			}
-			mainPage = new DistributionProjectExportWizardPage(parentPrj);
 			mainPage.setProjectList(projectList);
 			mainPage.setDependencyList(dependencyMap);
 			mainPage.setMissingDependencyList(
@@ -234,5 +290,4 @@ public class CompositeApplicationArtifactUpdateWizard extends Wizard implements 
 		}
 
 	}
-
 }

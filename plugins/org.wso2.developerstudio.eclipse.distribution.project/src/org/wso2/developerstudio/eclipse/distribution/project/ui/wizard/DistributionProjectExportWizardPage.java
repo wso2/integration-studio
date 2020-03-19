@@ -16,12 +16,18 @@
 
 package org.wso2.developerstudio.eclipse.distribution.project.ui.wizard;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.maven.model.Dependency;
 import org.apache.maven.project.MavenProject;
+import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
@@ -41,12 +47,22 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.swt.widgets.TreeItem;
+import org.wso2.developerstudio.eclipse.distribution.project.Activator;
+import org.wso2.developerstudio.eclipse.distribution.project.model.DataTransferObject;
 import org.wso2.developerstudio.eclipse.distribution.project.model.DependencyData;
 import org.wso2.developerstudio.eclipse.distribution.project.model.NodeData;
 import org.wso2.developerstudio.eclipse.distribution.project.util.DistProjectUtils;
+import org.wso2.developerstudio.eclipse.distribution.project.validator.ProjectList;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
+import org.wso2.developerstudio.eclipse.platform.core.model.AbstractListDataProvider.ListData;
+import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 import org.wso2.developerstudio.eclipse.platform.core.utils.SWTResourceManager;
 
 public class DistributionProjectExportWizardPage extends WizardPage {
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    
 	private MavenProject mavenProject;
 	private Map<String,Dependency> dependencyList;
 	private Map<String,DependencyData> projectList;
@@ -57,11 +73,28 @@ public class DistributionProjectExportWizardPage extends WizardPage {
 	private Map<String,TreeItem>  nodesWithSubNodes = new HashMap<String,TreeItem>();
 	private boolean pageDirty = false;
 	private boolean controlCreated = false;
+	private DataTransferObject dataTransferObject;
+	private Composite container;
+	private IFile selectedProjectPomFileRes;
+	private IProject selectedCompositeProject;
+
 	// need to get the server roles via an extension point without hard-coding
 	private final String[] serverRoles = new String[] { "BusinessProcessServer",
 	                "EnterpriseServiceBus", "DataServicesServer",
 	                "EnterpriseIntegrator" };
+	
+	public IProject getSelectedCompositeProject() {
+		return selectedCompositeProject;
+	}
 
+	public IFile getSelectedProjectPomIFile() {
+		return selectedProjectPomFileRes;
+	}
+
+	public MavenProject getMavenProject() {
+		return mavenProject;
+	}
+	
 	public Map<String, Dependency> getDependencyList() {
 		return dependencyList;
 	}
@@ -104,13 +137,20 @@ public class DistributionProjectExportWizardPage extends WizardPage {
 		setTitle("WSO2 Platform Distribution");
 		setDescription("Create a deployable CAR file");
 	}
+	
+	public DistributionProjectExportWizardPage(MavenProject project, DataTransferObject dataObject) {
+		super("WSO2 Platform Distribution");
+		this.dataTransferObject = dataObject;
+		setTitle("WSO2 Platform Distribution");
+		setDescription("Create a deployable CAR file");
+	}
 
 	/**
 	 * Create contents of the wizard.
 	 * @param parent
 	 */
 	public void createControl(Composite parent) {
-		Composite container = new Composite(parent, SWT.NULL);
+		container = new Composite(parent, SWT.NULL);
 		container.setLayout(new GridLayout(3, false));
 		
 		Label lblstaticText1 = new Label(container, SWT.NONE);
@@ -202,6 +242,43 @@ public class DistributionProjectExportWizardPage extends WizardPage {
 		setControl(container);
 		controlCreated = true;
 		validate();
+	}
+	
+	private void loadMavenProjectDetails() {
+		selectedCompositeProject = ResourcesPlugin.getWorkspace().getRoot()
+				.getProject(dataTransferObject.getCompositeName());
+		selectedProjectPomFileRes = selectedCompositeProject.getFile("pom.xml");
+		File selectedProjectPomFile = selectedProjectPomFileRes.getLocation().toFile();
+
+		ProjectList projectListProvider = new ProjectList();
+		List<ListData> projectListData = projectListProvider.getListData(null, null);
+
+		for (ListData data : projectListData) {
+			DependencyData dependencyData = (DependencyData) data.getData();
+			projectList.put(data.getCaption(), dependencyData);
+		}
+
+		try {
+			mavenProject = MavenUtils.getMavenProject(selectedProjectPomFile);
+			Map<String, Dependency> dependencyMap = new HashMap<String, Dependency>();
+			Map<String, String> serverRoleList = new HashMap<String, String>();
+			for (Dependency dependency : (List<Dependency>) mavenProject.getDependencies()) {
+				dependencyMap.put(DistProjectUtils.getArtifactInfoAsString(dependency), dependency);
+				serverRoleList.put(DistProjectUtils.getArtifactInfoAsString(dependency),
+						DistProjectUtils.getServerRole(mavenProject, dependency));
+			}
+
+			setProjectList(projectList);
+			setDependencyList(dependencyMap);
+			setMissingDependencyList(
+					(Map<String, Dependency>) ((HashMap<String, Dependency>) getDependencyList()).clone());
+			setServerRoleList(serverRoleList);
+		} catch (IOException e) {
+			log.error("IOException and unable to load artifact details for user selected composite project", e);
+		} catch (XmlPullParserException e) {
+			log.error("XmlPullParserException and unable to load artifact details for user selected composite project",
+					e);
+		}
 	}
 	
 	/**
@@ -559,5 +636,16 @@ public class DistributionProjectExportWizardPage extends WizardPage {
 		setErrorMessage(null);
 		setPageComplete(true);
 	}
-
+	
+	@Override
+	public void setVisible(boolean visible) {
+		if (visible) {
+			container.setVisible(visible);
+			if (dataTransferObject != null && dataTransferObject.getCompositeName() != null) {
+				loadMavenProjectDetails();
+				createTreeContent();
+				validate();
+			}
+		}
+	}
 }

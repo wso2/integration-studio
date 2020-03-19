@@ -339,11 +339,6 @@ $(document).ready(function ($) {
         	showErrorNotification("danger", "Please select a datasource", 3000, "query-notification-alert-holder");
             return false;
         }
-
-        if ($("#q-sql-query-input").val().trim() == "") {
-        	showErrorNotification("danger", "Please provide a SQL query", 3000, "query-notification-alert-holder");
-            return false;
-        }
         
         window.queryElement = root.createElement("query");
         processQueryDetails(root, window.queryElement);
@@ -929,11 +924,6 @@ $(document).ready(function ($) {
 
         if ($("#q-datasource-select").val().trim() == "") {
             showNotificationAlertModal("Error", "Please select a datasource.");
-            return false;
-        }
-
-        if ($("#q-sql-query-input").val().trim() == "") {
-            showNotificationAlertModal("Error", "Please provide a SQL query.");
             return false;
         }
 

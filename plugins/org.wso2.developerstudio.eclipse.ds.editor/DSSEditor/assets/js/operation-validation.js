@@ -220,6 +220,7 @@ function populateOperationForm(root, operation_name, query_name) {
 			
 			if (q_id == query_name) {
 				$('#o-addedit-opname-input').val(op_name);
+				$("#o-addedit-opname-input").prop('disabled', true);
 				if (op.getElementsByTagName('description')[0] != null && op.getElementsByTagName('description')[0] != undefined) {
 					$('#o-addedit-description-input').val(op.getElementsByTagName('description')[0].textContent);
 				}

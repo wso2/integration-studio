@@ -128,6 +128,18 @@ function showOperationsTableNotification(type, message, interval) {
 function updateOperationDataInRoot(root, new_operation_name) {
     let dataRoot = root.getElementsByTagName("data")[0];
     let operations = root.getElementsByTagName("operation");
+    
+    if (operations.length > 0) {
+    	// Deletes if operation node exists
+        for (let i = 0, len = operations.length; i < len; i++) {
+            if (operations[0].attributes.getNamedItem("name").value == new_operation_name && !$("#o-addedit-opname-input").prop('disabled')) {
+            	// Delete the node.
+            	showNotificationAlertModal("Error", "Operation name already exists.");
+            	return false;
+            }
+        }
+    }
+    
     let query_id = $('#o-addedit-queryid-select').val();
     let description = $('#o-addedit-description-input').val();
     

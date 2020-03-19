@@ -499,6 +499,7 @@ $(document).ready(function ($) {
     // Start of query output mapping
     
     $(document).on('click','#q-output-mapping-table .fa-edit',function() {
+    	$('#output-mapping-modal-header').text("Edit Output Mapping");
     	let tds = $(this).closest("tr").find('td');
     	populateQueryOutputMappingModal(resultElement, tds, root);
     });
@@ -598,7 +599,7 @@ $(document).ready(function ($) {
     			
     	let element = processOutputMappingModal(root);
     	resultElement = updateResultElement(root, resultElement, element);
-    	$("#q-output-mapping-modal").modal('hide');
+    	
     });
     
     // End of query output mapping

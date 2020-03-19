@@ -22,11 +22,21 @@ $("#op-param-add-btn").click(function() {
  * Removes operation parameter row upon delete.
  */
 $(document).on('click', '#operation-param-table .fa-trash', function() {
-    $(this).closest("tr").remove();
-    if ($('#operation-param-table').find('tr').length < 2) {
-       $('#op-addedit-returnreqstatus-checkbox').prop("checked", false);
-       $('#returnreqstatus-area').toggle(false);
-    }
+	let row = $(this);
+	let tds = $(this).closest("tr").find('td');
+	if (tds[0].firstChild.value === "" && tds[1].firstChild.value === "") {
+		row.closest("tr").remove();
+		return;
+	}
+	$("#operation-parameters-validator-delete-confirm-btn").click(function(event) {
+		row.closest("tr").remove();
+		if ($('#operation-param-table').find('tr').length < 2) {
+		       $('#op-addedit-returnreqstatus-checkbox').prop("checked", false);
+		       $('#returnreqstatus-area').toggle(false);
+		}
+    	$("#operation-parameters-validator-delete-confirm-modal").modal("hide");
+    	});
+	$("#operation-parameters-validator-delete-confirm-modal").modal("show");
 });
 
 /**

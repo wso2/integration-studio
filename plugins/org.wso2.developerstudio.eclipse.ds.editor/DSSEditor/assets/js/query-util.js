@@ -517,7 +517,7 @@ function addQuery(root, queryElement) {
         	if (qId == undefined) {
         		qId = queries[0].attributes.getNamedItem("id").value;
         	}
-            if (qId == queryId && !$("#q-query-id-input").prop('disabled')) {
+            if (qId == queryId) {
             	// Delete the node.
             	exists = true;
             	dataRoot.removeChild(queries[0]);

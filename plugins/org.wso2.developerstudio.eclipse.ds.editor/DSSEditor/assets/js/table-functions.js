@@ -37,7 +37,17 @@ $(document).ready(function(){
     });
     
     $(document).on('click','#ds-dynamic-auth-usermapping-table .fa-trash',function(){
-        $(this).closest("tr").remove();
+    	let row = $(this);
+    	let tds = $(this).closest("tr").find('td');
+    	if (tds[0].firstChild.value === "" && tds[1].firstChild.value === "" && tds[2].firstChild.value === "") {
+    		row.closest("tr").remove();
+    		return;
+    	}
+    	$("#ds-dynamic-auth-usermapping-validator-delete-confirm-btn").click(function(event) {
+    		row.closest("tr").remove();
+        	$("#ds-dynamic-auth-usermapping-validator-delete-confirm-modal").modal("hide");
+        	});
+    	$("#ds-dynamic-auth-usermapping-validator-delete-confirm-modal").modal("show");
     });
     //--- End of Data Sources - Dynamic Auth table ---//
     
@@ -49,7 +59,17 @@ $(document).ready(function(){
     });
     
     $(document).on('click','#ds-ext-properties-table .fa-trash',function(){
-        $(this).closest("tr").remove();
+    	let row = $(this);
+    	let tds = $(this).closest("tr").find('td');
+    	if (tds[0].firstChild.value === "" && tds[1].firstChild.value === "") {
+    		row.closest("tr").remove();
+    		return;
+    	}
+    	$("#ds-ext-properties-table-validator-delete-confirm-btn").click(function(event) {
+    		row.closest("tr").remove();
+        	$("#ds-ext-properties-table-validator-delete-confirm-modal").modal("hide");
+        	});
+    	$("#ds-ext-properties-table-validator-delete-confirm-modal").modal("show");
     });
     //--- End of External Datasource - Properties table ---//
     

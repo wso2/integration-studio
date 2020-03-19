@@ -379,7 +379,7 @@ $(document).ready(function ($) {
         let queryId = $("#q-query-id-input").val();
 
         for (let i = 0, len = queries.length; i < len; i++) {
-            if (queries[i].id == queryId && !$("#q-query-id-input").prop('disabled')) {
+            if (queries[i].getAttribute("id") == queryId && !$("#q-query-id-input").prop('disabled')) {
                 showNotificationAlertModal("Error", "A query with ID " + queryId + " already exists.");
                 $("#q-query-id-input").val("");
                 return false;

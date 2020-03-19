@@ -420,7 +420,7 @@ function addDataSource(root) {
     let datasourceId = $("#ds-ds-id-input").val();
 
     for (let i = 0, len = dsConfigs.length; i < len; i++) {
-        if (dsConfigs[i].id == datasourceId && !$("#ds-ds-id-input").prop('disabled')) {
+        if (dsConfigs[i].getAttribute("id") == datasourceId && !$("#ds-ds-id-input").prop('disabled')) {
             showDSNotification("danger", "A data source with the given name already exists.", 4000);
             return false;
         }

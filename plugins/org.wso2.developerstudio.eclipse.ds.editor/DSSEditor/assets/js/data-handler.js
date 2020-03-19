@@ -760,6 +760,20 @@ $(document).ready(function ($) {
         	return false;
         }
         
+        // Check for empty values in parameters
+        let op_parameters = $('#operation-param-table > tbody')[0].rows;
+        for (let i = 0, len = op_parameters.length; i < len; i++) {
+        	if (op_parameters.item(i).cells[0].firstChild.value != EMPTY_STRING || op_parameters.item(i).cells[1].firstChild.value != EMPTY_STRING) {
+	    		if (op_parameters.item(i).cells[0].firstChild.value == EMPTY_STRING) {
+	    			showErrorNotification("danger", "Please provide a query parameter name", 3000, "operation-notification-alert-holder");
+	    			return false;
+	    		}else if (op_parameters.item(i).cells[1].firstChild.value == EMPTY_STRING) {
+	    			showErrorNotification("danger", "Please provide an operation parameter name", 3000, "operation-notification-alert-holder");
+	    			return false;
+	    		}
+        	}
+    	}
+
         let status = addOperation(root);
         if (status) {
         	saveAll(root, url, function() { });

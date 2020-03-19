@@ -130,9 +130,12 @@ function updateOperationDataInRoot(root, new_operation_name) {
     let op_parameters = $('#operation-param-table > tbody').find('tr');
     $.each(op_parameters, function(index, op_parameter) {
 		let withparamElement = root.createElement("with-param");
-		withparamElement.setAttribute("name", op_parameter.cells[0].firstChild.value);
-		withparamElement.setAttribute("query-param", op_parameter.cells[1].firstChild.value);
-		callqueryElement.appendChild(withparamElement);
+		// Discard the entry if both query and operation parameters are empty
+		if (op_parameter.cells[0].firstChild.value != EMPTY_STRING && op_parameter.cells[1].firstChild.value != EMPTY_STRING) {
+			withparamElement.setAttribute("name", op_parameter.cells[0].firstChild.value);
+			withparamElement.setAttribute("query-param", op_parameter.cells[1].firstChild.value);
+			callqueryElement.appendChild(withparamElement);
+		}
 	});
     
     // Creates a new operation element

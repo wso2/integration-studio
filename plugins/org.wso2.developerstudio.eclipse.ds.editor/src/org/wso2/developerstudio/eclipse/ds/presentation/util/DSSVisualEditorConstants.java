@@ -56,6 +56,7 @@ public class DSSVisualEditorConstants {
         public static final String DB_TYPE_DERBY_CONN = "derby";
         public static final String DB_TYPE_MSSQL_CONN = "sqlserver";
         public static final String DB_URL_JDBC_BASE = "jdbc:";
+        public static final String DB_TYPE_H2 = "h2";
     }
 
     public static class DBUrlParams {
@@ -74,6 +75,7 @@ public class DSSVisualEditorConstants {
         public static final String HSQL_DRIVER = "org.hsqldb.jdbcDriver";
         public static final String INFORMIX_DRIVER = "com.informix.jdbc.IfxDriver";
         public static final String POSTGRESQL_DRIVER = "org.postgresql.Driver";
+        public static final String H2_DRIVER = "org.h2.Driver";
     }
     
     public static class DBConnectionParams {
@@ -83,6 +85,7 @@ public class DSSVisualEditorConstants {
         public static final String MSSQL_JAR_7_20_0 = "mssql-jdbc-7.2.0.jre8.jar";
         public static final String POSTGRESSQL_JAR_42_2_11 = "postgresql-42.2.11.jar";
         public static final String DERBY_JAR_10_14_2_0 = "derbyclient-10.14.2.0.jar";
+        public static final String H2_JAR_1_4_200 = "h2-1.4.200.jar";
         
         public static final String MYSQL_VERSION_5_1_47 = "5_1_47";
         public static final String MYSQL_VERSION_8_0_15 = "8_0_15";
@@ -90,5 +93,6 @@ public class DSSVisualEditorConstants {
         public static final String MSSQL_VERSION_7_20_0 = "7_20_0";
         public static final String POSTGRESSQL_VERSION_42_2_11 = "42_2_11";
         public static final String DERBY_VERSION_10_14_2_0 = "10_14_2_0";
+        public static final String H2_VERSION_1_4_200 = "1_4_200";
     }
 }

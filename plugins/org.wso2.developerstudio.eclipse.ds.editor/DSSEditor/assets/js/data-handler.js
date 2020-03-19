@@ -448,6 +448,8 @@ $(document).ready(function ($) {
     });
 
     $("#q-im-validator-select").change(function() {
+    	$("#im-val-maxvalue-input").val(EMPTY_STRING);
+    	$("#im-val-minvalue-input").val(EMPTY_STRING);
         validateValidatorsForm();
     });
 
@@ -494,6 +496,23 @@ $(document).ready(function ($) {
         $("#q-im-delete-confirm-modal").modal("show");
         
     });
+
+    $("#im-val-maxvalue-input").keypress(function(e){
+    	let validatorType = $("#q-im-validator-select").val();
+    	if (validatorType == "validateLength") {
+    		return isInputEventAllowedForNonNegativeIntegerField(e);
+    	}
+    	return isInputEventAllowedForNumericField(e,"#im-val-maxvalue-input");
+    });
+
+    $("#im-val-minvalue-input").keypress(function(e){
+    	let validatorType = $("#q-im-validator-select").val();
+    	if (validatorType == "validateLength") {
+    		return isInputEventAllowedForNonNegativeIntegerField(e);
+    	}
+    	return isInputEventAllowedForNumericField(e,"#im-val-minvalue-input");
+    });
+
     // End of query input mapping
 
     // Start of query output mapping
@@ -603,6 +622,25 @@ $(document).ready(function ($) {
     
     // End of query output mapping
     
+    // Start of query advanced properties
+    $("#q-timeout-input").keypress(function(e){
+        return isInputEventAllowedForNonNegativeIntegerField(e);
+    });
+
+    $("#q-adv-fetchsize-input").keypress(function(e){
+        return isInputEventAllowedForNonNegativeIntegerField(e);
+    });
+
+    $("#q-adv-max-field-size-input").keypress(function(e){
+        return isInputEventAllowedForNonNegativeIntegerField(e);
+    });
+
+    $("#q-adv-maxrows-input").keypress(function(e){
+        return isInputEventAllowedForNonNegativeIntegerField(e);
+    });
+
+    // End of query advanced properties
+
     // Start of input event handlers - General details
     $("#dss-description-input").on("keyup", function(){
         clearInterval(onKeyChangeTimer);
@@ -1598,6 +1636,35 @@ function showErrorNotification(type, message, interval, modalId) {
     $("#" + errorTagId).show();
 
     showAlert(errorTagId, interval);
+}
+
+/**
+ * Given an input event of a field which should allow only non negative integers,
+ * the method decide whether the event is allowed or not.
+ *
+ * @param event On key press event.
+ * @param isInputEventAllowedForNonNegativeIntegerField event validity.
+ */
+function isInputEventAllowedForNonNegativeIntegerField(event) {
+	 return !isNaN(String.fromCharCode(event.keyCode));
+}
+
+/**
+ * Given an input event of a numeric field the method decide whether the event is allowed or not.
+ *
+ * @param event On key press event.
+ * @param inputFieldName name of the input field.
+ * @param isInputEventAllowedForNumericField event validity.
+ */
+function isInputEventAllowedForNumericField(event,inputFieldName) {
+	let oldValue = $(inputFieldName).val();
+	let characterPosition = $(inputFieldName).prop('selectionStart');
+	// Allow negative sign or . as the first character
+	if (oldValue == EMPTY_STRING && (event.keyCode == 45 || event.keyCode == 46)) {
+		return true;
+	}
+	let newValue = oldValue.slice(0, characterPosition) + String.fromCharCode(event.keyCode) + oldValue.slice(characterPosition);
+	return !isNaN(newValue);
 }
 
 function isIE() {

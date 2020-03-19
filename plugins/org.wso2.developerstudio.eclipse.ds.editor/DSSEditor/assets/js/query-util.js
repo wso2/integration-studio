@@ -578,6 +578,7 @@ function editQuery(root, queryId) {
             updateInputMappingTable();
 
             $("#q-query-id-input").val(queryElement.attributes.getNamedItem("id").value);
+            $("#q-query-id-input").prop('disabled', true);
             $("#q-datasource-select").val(queryElement.attributes.getNamedItem("useConfig").value);
             if (sql.indexOf("<![CDATA[") != -1 && sql.indexOf("]]>") != -1) {
             	sql = sql.substring(sql.lastIndexOf("<![CDATA[") + 9, sql.lastIndexOf("]]>"));

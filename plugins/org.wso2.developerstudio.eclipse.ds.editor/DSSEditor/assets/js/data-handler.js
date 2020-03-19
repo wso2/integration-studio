@@ -734,6 +734,7 @@ $(document).ready(function ($) {
     	clearOperationForm();
     	populateQueriesForOperationForm(root);
     	$('#o-addedit-enablestreaming-checkbox').prop("checked", true);
+    	$("#o-addedit-opname-input").prop('disabled', false);
     });
     
     /**
@@ -810,6 +811,7 @@ $(document).ready(function ($) {
      */
     $("#r-resource-add-btn").click(function() {
     	$('#r-addedit-enablestreaming-checkbox').prop("checked", true);
+    	$('#r-addedit-opname-input').prop('disabled', false);
     	populateQueriesListForResources("r-queries-item-table", "r-addedit-queryid-select", 1, root);
         openResourcesModal(false);
     });
@@ -1304,6 +1306,7 @@ function addResource(root) {
 function populateResourcesModal(root, resourceId, method) {
 	let resourceConfigs = root.getElementsByTagName("resource");
 	$('#r-addedit-opname-input').val(resourceId);
+	$("#r-addedit-opname-input").prop('disabled', true);
     for (let i = 0, len = resourceConfigs.length; i < len; i++) {
         if ((resourceConfigs[i].getAttribute("path") == resourceId) && (resourceConfigs[i].getAttribute("method") == method)) {
 			let resourceMethod = resourceConfigs[i].getAttribute("method").toLowerCase();

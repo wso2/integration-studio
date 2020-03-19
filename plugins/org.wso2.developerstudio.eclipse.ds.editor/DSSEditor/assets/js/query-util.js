@@ -656,7 +656,7 @@ function generateInputMappings(root) {
     let mappingsArr = [];
 
     if ($.trim(query) == "") {
-        showQueryNotification("danger", "Please enter the query before generating the output mapping.", 1000);
+        showQueryNotification("danger", "Please enter the query before generating the output mapping.", 3000);
         return false;
     }
 

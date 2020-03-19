@@ -38,6 +38,7 @@ $('#q-om-addedit-dsmapping-select').change(function(e) {
 
 $('#q-output_mapping-add-btn').click(function(e) {
 	
+	$('#output-mapping-modal-header').text("Add Output Mapping");
 	let query_id = $('#q-query-id-input').val();
 	if (query_id == undefined || query_id == null || $.trim(query_id) == "") {
 		showQueryNotification("danger", "Query ID cannot be empty.", 1000);
@@ -934,6 +935,10 @@ function updateResultElement(root, result, element) {
 }
 
 function appendElementsToResult(result, element) {
+	
+	let isEdit = $('#output-mapping-modal-header').text() == "Edit Output Mapping";
+	let originalResult = result;
+	
 	let existingElements = result.children;
 	if (existingElements == undefined) {
 		existingElements = result.childNodes;
@@ -945,6 +950,10 @@ function appendElementsToResult(result, element) {
 					((element.localName == "call-query" && existingElements[0].attributes.getNamedItem("href") != undefined && element.attributes.getNamedItem("href").value == existingElements[0].attributes.getNamedItem("href").value) 
 					|| (existingElements[0].attributes.getNamedItem("name") != undefined && element.attributes.getNamedItem("name").value == existingElements[0].attributes.getNamedItem("name").value))) {
 				exists = true;
+				if (!isEdit) {
+					showOutputMappingNotification("danger", "Output mapping with this identifier already exists.", 4000);
+					return originalResult;
+				}
 				result.removeChild(existingElements[0]);
 				result.appendChild(element);
 			} else {
@@ -961,6 +970,7 @@ function appendElementsToResult(result, element) {
 		result.appendChild(element);
 	}
 	
+	$("#q-output-mapping-modal").modal('hide');
 	return result;
 }
 

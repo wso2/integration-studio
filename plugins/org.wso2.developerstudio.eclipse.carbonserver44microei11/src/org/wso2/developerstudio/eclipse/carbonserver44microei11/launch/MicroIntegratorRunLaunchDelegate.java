@@ -100,9 +100,17 @@ public class MicroIntegratorRunLaunchDelegate implements ILaunchConfigurationDel
         // project explorer
         IResource selectedCARAppResource = selectedProject.getParent()
                 .findMember(currentProjectName + "CompositeApplication");
+        
+        boolean isCompositeSelectionPageNeeded = false;
+        if (selectedCARAppResource == null && currentProjectName != null
+                && !currentProjectName.contains("CompositeApplication")
+                        && !selectedProject.hasNature(Constants.DISTRIBUTION_PROJECT_NATURE)) {
+            isCompositeSelectionPageNeeded = true;
+        }
 
         // Create the wizard for creating CAPP with the user selected artifacts
-        CompositeApplicationArtifactUpdateWizard wizard = new CompositeApplicationArtifactUpdateWizard();
+        CompositeApplicationArtifactUpdateWizard wizard = new CompositeApplicationArtifactUpdateWizard(
+                isCompositeSelectionPageNeeded);
 
         if (currentProjectName != null && (currentProjectName.contains("CompositeApplication")
                 || selectedProject.hasNature(Constants.DISTRIBUTION_PROJECT_NATURE))) {
@@ -114,9 +122,9 @@ public class MicroIntegratorRunLaunchDelegate implements ILaunchConfigurationDel
             // selected project
             wizard.init(null, selectedCARAppResource);
         } else {
-            // Throw an error if debug launcher cannot find a carbon application for the
-            // user selected name from the project explorer
-            popUpErrorDialogAndLogException("Cannot find the Composite Application for the name : " + currentProjectName);
+            //Open CompositeProjectSelectionPage in CompositeApplicationArtifactUpdateWizard
+            //to select or create a composite application project
+            wizard.init();
         }
 
         final WizardDialog exportWizardDialog = new WizardDialog(activeWorkBenchWindow.getShell(), wizard);

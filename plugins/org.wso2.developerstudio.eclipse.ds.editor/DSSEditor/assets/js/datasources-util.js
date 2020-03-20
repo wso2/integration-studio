@@ -863,6 +863,9 @@ function setTestConnectionRDBMSVersion(dbEngineType) {
     case "generic":
         testRDBMSversion = testRDBMSVersionSelector.find("[label='Generic']").children()[0].value;
         break;
+    case DB_ENGINE_H2:
+        testRDBMSversion = testRDBMSVersionSelector.find("[label='H2']").children()[0].value;
+        break;
     }
     if (testRDBMSversion != null && testRDBMSversion != undefined){
         $("#ds-db-version-select").val(testRDBMSversion);

@@ -1253,9 +1253,10 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 								.newProjectDescription(directory.getName());
 						String[] natureIds = { projectNature };
 						newProjectDescription.setNatureIds(natureIds);
-						URI mmmProjectPath = new URI(
-								workspace.getRoot().getLocationURI() + File.separator + directory.getName());
-						newProjectDescription.setLocationURI(mmmProjectPath);
+						String mmmProject = workspace.getRoot().getLocation().toOSString() + File.separator + directory.getName();
+						File mmmProjectFile = new File(mmmProject);
+						URI mmmProjectURI = mmmProjectFile.toURI();
+						newProjectDescription.setLocationURI(mmmProjectURI);
 
 						mainProject.create(newProjectDescription, new NullProgressMonitor());
 						mainProject.open(IResource.BACKGROUND_REFRESH, new NullProgressMonitor());
@@ -1263,8 +1264,6 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 
 						// create sub projects/directories under the created parent project
 						createProjectsInWorkspaceReadingNature(directory, mainProject, monitor);
-					} catch (URISyntaxException e) {
-						log.error("URISyntaxException exception while importing", e);
 					} catch (CoreException e) {
 						log.error("CoreException exception while importing", e);
 					}

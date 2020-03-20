@@ -586,6 +586,7 @@ function editQuery(root, queryId) {
             $("#q-sql-query-input").val(sql);
 
             $("#q-add-edit-query-section").toggle(true);
+            $("#q-addedit-title").text("Edit Query");
             $("#q-queries-table").toggle(false);
             $("#q-query-add-btn").toggle(false);
 

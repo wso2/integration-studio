@@ -426,6 +426,7 @@
 		</xs:annotation>
 		<xs:choice>
 			<xs:element ref="sql" minOccurs="0" maxOccurs="1" />
+			<xs:element ref="expression" minOccurs="0" maxOccurs="1" />
 			<xs:element ref="sparql" minOccurs="0" maxOccurs="1" />
 			<xs:element name="properties" minOccurs="0" maxOccurs="1">
 				<xs:annotation>
@@ -451,6 +452,22 @@
 		<xs:annotation>
 			<xs:documentation source="description">
 				This represents the sql
+				element
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="dialect" type="xs:string" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="expression">
+		<xs:annotation>
+			<xs:documentation source="description">
+				This represents the expression
 				element
 			</xs:documentation>
 		</xs:annotation>

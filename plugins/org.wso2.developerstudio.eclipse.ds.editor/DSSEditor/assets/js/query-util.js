@@ -54,6 +54,15 @@ function populateDSListForQueries(root) {
     })
 
     $('#q-datasource-select').append(options.join());
+    
+    $("#q-datasource-select").change(function () {
+    	if (isMongoDB($("#q-datasource-select").val())) {
+    		$("#sql-query-label").text("Expression");
+    	} else {
+    		$("#sql-query-label").text("SQL Query");
+    	}
+    });
+    
 }
 
 /**
@@ -483,8 +492,14 @@ function saveInputMappingsToQueryElement(queryElement) {
 function processQueryDetails(root, queryElement) {
     queryElement.setAttribute("id", $("#q-query-id-input").val());
     queryElement.setAttribute("useConfig", $("#q-datasource-select").val());
+    let sqlQueryElement;
+    
 
-    let sqlQueryElement = root.createElement("sql");
+	if (isMongoDB($("#q-datasource-select").val())) {
+		sqlQueryElement = root.createElement("expression");
+	} else {
+		sqlQueryElement = root.createElement("sql");
+	}
     let sqlQuery = $("#q-sql-query-input").val();
     if (sqlQuery.indexOf("<") != -1 || sqlQuery.indexOf(">") != -1) {
     	sqlQuery = "<![CDATA[" + sqlQuery + "]]>";
@@ -492,6 +507,14 @@ function processQueryDetails(root, queryElement) {
     sqlQueryElement.appendChild(root.createTextNode(sqlQuery));
 
     queryElement.appendChild(sqlQueryElement);
+}
+
+function isMongoDB(datasourceConfig) {
+	let portValue = resolveGetParam("port");
+	let url = "http://127.0.0.1:" + portValue + "/dsseditor/service";
+	let db_type = retrieveDSMetadata(datasourceConfig, url)
+
+	return db_type.includes("mongodb_ds");
 }
 
 function addQuery(root, queryElement) {
@@ -567,11 +590,18 @@ function editQuery(root, queryId) {
             for (let i = 0, len = queryChildren.length; i < len; i++) {
                 if (queryChildren[i].tagName === "param") {
                     window.params.push(queryChildren[i]);
-                } else if (queryChildren[i].tagName === "sql") {
+                } else if (queryChildren[i].tagName === "sql" ) {
                     sql = queryChildren[i].innerHTML;
                     if (sql == undefined) {
                     	sql = queryChildren[i].textContent;
                     }
+                	$("#sql-query-label").text("SQL Query");
+                } else if (queryChildren[i].tagName === "expression" ) {
+                    sql = queryChildren[i].innerHTML;
+                    if (sql == undefined) {
+                    	sql = queryChildren[i].textContent;
+                    }
+                	$("#sql-query-label").text("Expression");
                 }
             }
 

@@ -379,7 +379,7 @@ public abstract class WizardExportResourcesCustomPage extends WizardDataTransfer
 					}
 					if ((resource.getType() & resourceType) > 0) {
 						try {
-							if (resource.getParent().getProject()
+							if (resource.getParent().getProject() != null && resource.getParent().getProject()
 									.hasNature("org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature")) {
 								if (resource instanceof IFolder) {
 									for (int i = 0; i < allProjects.length; i++) {

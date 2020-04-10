@@ -640,12 +640,13 @@ public class DistributionProjectExportWizardPage extends WizardPage {
 	@Override
 	public void setVisible(boolean visible) {
 		if (visible) {
-			container.setVisible(visible);
 			if (dataTransferObject != null && dataTransferObject.getCompositeName() != null) {
 				loadMavenProjectDetails();
 				createTreeContent();
 				validate();
 			}
 		}
+		
+		container.setVisible(visible);
 	}
 }

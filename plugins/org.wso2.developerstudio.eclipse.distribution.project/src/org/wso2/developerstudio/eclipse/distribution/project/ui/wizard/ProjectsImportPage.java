@@ -429,8 +429,8 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 		copyCheckbox = new Button(optionsGroup, SWT.CHECK);
 		copyCheckbox.setText(DataTransferMessages.WizardProjectsImportPage_CopyProjectsIntoWorkspace);
 		copyCheckbox.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		copyCheckbox.setSelection(true);
-		copyCheckbox.setEnabled(false);
+		//copyCheckbox.setSelection(true);
+		//copyCheckbox.setEnabled(false);
 		copyCheckbox.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				copyFiles = copyCheckbox.getSelection();
@@ -707,7 +707,7 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 			browseArchivesButton.setEnabled(false);
 			updateProjectsList(directoryPathField.getText());
 			directoryPathField.setFocus();
-			copyCheckbox.setEnabled(false);
+			copyCheckbox.setEnabled(true);
 			copyCheckbox.setSelection(copyFiles);
 		}
 	}
@@ -1121,15 +1121,10 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 						records.add((ProjectRecord) selected[i]);
 					}
 					Collections.sort(records, new FilePathComparator());
-					
-					if (sourceFile != null || sourceTarFile != null) {
-					    boolean isMMMArchived = convertMMMProjectArchivetoFileSystem(monitor);
-					    if (isMMMArchived) {
-					        return;
-					    }
-					}
 
 					Map<String, String> mavenMultiModuleChildren = new HashMap<String, String>();
+					Map<String, String> selectedProjectsWithoutMMM = new HashMap<String, String>();
+					Map<String, String> selectedProjectsInArchiveWithoutMMM = new HashMap<String, String>();
 					for (int j = 0; j < records.size(); j++) {
 						ProjectRecord project = (ProjectRecord) records.get(j);
 						String[] natureIds = project.description.getNatureIds();
@@ -1145,7 +1140,23 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 									}
 								}
 							}
+						} else {
+							//Archive project import this getLocation set as null
+							if (project.description.getLocation() != null) {
+								String projectPath = project.description.getLocation().toOSString();
+								File otherProject = new File(projectPath);
+								selectedProjectsWithoutMMM.put(otherProject.getAbsolutePath(), otherProject.getName());
+							} else {
+								selectedProjectsInArchiveWithoutMMM.put(((ZipEntry)project.parent).getName(), project.description.getName());
+							}
 						}
+					}
+					
+					if (sourceFile != null || sourceTarFile != null) {
+					    boolean isMMMArchived = convertMMMProjectArchivetoFileSystem(selectedProjectsInArchiveWithoutMMM, monitor);
+					    if (isMMMArchived) {
+					        return;
+					    }
 					}
 
 					// for(int i=0;i<paths.size();++i){
@@ -1155,12 +1166,15 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 							String projectPath = ((ProjectRecord) records.get(j)).description.getLocation()
 									.toOSString();
 							File project = new File(projectPath);
-							if (!mavenMultiModuleChildren.containsKey(project.getAbsolutePath())) {
-								createExistingProject((ProjectRecord) records.get(j),
+							if (!copyFiles) {
+								createExistingProject(selectedProjectsWithoutMMM, (ProjectRecord) records.get(j),
+										new SubProgressMonitor(monitor, 1));
+							} else if (!mavenMultiModuleChildren.containsKey(project.getAbsolutePath())) {
+								createExistingProject(selectedProjectsWithoutMMM, (ProjectRecord) records.get(j),
 										new SubProgressMonitor(monitor, 1));
 							}
 						} else {
-							createExistingProject((ProjectRecord) records.get(j), new SubProgressMonitor(monitor, 1));
+							createExistingProject(selectedProjectsWithoutMMM, (ProjectRecord) records.get(j), new SubProgressMonitor(monitor, 1));
 						}
 
 						// }
@@ -1196,7 +1210,7 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 		return true;
 	}
 
-	private boolean convertMMMProjectArchivetoFileSystem(IProgressMonitor monitor) {
+	private boolean convertMMMProjectArchivetoFileSystem(Map<String, String> selectedProjectsWithoutMMM, IProgressMonitor monitor) {
 		boolean isMMMArchive = false;
 
 		IWorkspace workspace = ResourcesPlugin.getWorkspace();
@@ -1263,7 +1277,7 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 						mainProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 
 						// create sub projects/directories under the created parent project
-						createProjectsInWorkspaceReadingNature(directory, mainProject, monitor);
+						createProjectsInWorkspaceReadingNature(selectedProjectsWithoutMMM, directory, mainProject, monitor);
 					} catch (CoreException e) {
 						log.error("CoreException exception while importing", e);
 					}
@@ -1281,7 +1295,7 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 		return isMMMArchive;
 	}
 
-	private void createProjectsInWorkspaceReadingNature(File sourceDirectory, IProject projectWhichWantToCopy,
+	private void createProjectsInWorkspaceReadingNature(Map<String, String> selectedAllProjects, File sourceDirectory, IProject projectWhichWantToCopy, 
 			IProgressMonitor monitor) {
 		try {
 			List filesToImport = FileSystemStructureProvider.INSTANCE.getChildren(sourceDirectory);
@@ -1289,6 +1303,16 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 				File resourceFile = (File) resource;
 
 				if (resourceFile.isDirectory()) {
+					if (sourceFile != null || sourceTarFile != null) {
+						String resourcePathInArchive = resourceFile.getParentFile().getName() + File.separator
+								+ resourceFile.getName() + File.separator;
+						if (!selectedAllProjects.containsKey(resourcePathInArchive)) {
+							continue;
+						}
+					} else if (!selectedAllProjects.containsKey(resourceFile.getAbsolutePath())) {
+						continue;
+					}
+					
 					IProjectDescription newSubProjectDescription = projectWhichWantToCopy.getWorkspace()
 							.newProjectDescription(resourceFile.getName());
 					String subProject = projectWhichWantToCopy.getLocation().toOSString() + File.separator + resourceFile.getName();
@@ -1370,7 +1394,7 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 	 * @return boolean <code>true</code> if successful
 	 * @throws InterruptedException
 	 */
-	private boolean createExistingProject(final ProjectRecord record, IProgressMonitor monitor)
+	private boolean createExistingProject(Map<String, String> selectedAllProjects, final ProjectRecord record, IProgressMonitor monitor)
 			throws InvocationTargetException, InterruptedException {
 		String projectName = record.getProjectName();
 		final IWorkspace workspace = ResourcesPlugin.getWorkspace();
@@ -1441,8 +1465,8 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 				operation.setOverwriteResources(true);
 				operation.setCreateContainerStructure(false);
 				operation.run(monitor);
-			} else if (importSource != null && project.hasNature(MAVEN_MULTI_MODULE_NATURE)) {
-				createProjectsInWorkspaceReadingNature(importSource, project, monitor);
+			} else if (copyFiles && importSource != null && project.hasNature(MAVEN_MULTI_MODULE_NATURE)) {
+				createProjectsInWorkspaceReadingNature(selectedAllProjects, importSource, project, monitor);
 			}
 		} catch (CoreException e) {
 			log.error("CoreException exception while importing", e);

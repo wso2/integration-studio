@@ -362,8 +362,11 @@ public class XSLTGenerator {
                         } else if (node.getInNode().getOutNodes().size() > 0) {
                             Element valueOfElement = outputXMLFile.getDocument().createElement(XSL_VALUE_OF);
                             currentElement.appendChild(valueOfElement);
-                            valueOfElement.setAttribute(SELECT,
-                                    getValueFromMapping(node.getInNode().getOutNodes().get(0)));
+                            String path = getValueFromMapping(node.getInNode().getOutNodes().get(0));
+                            if (path.equals(EMPTY_STRING)) {
+                                path = ".";
+                            }
+                            valueOfElement.setAttribute(SELECT, path);
                         }
                     }
                 } else if (!node.getInNode().getOutNodes().isEmpty()) {

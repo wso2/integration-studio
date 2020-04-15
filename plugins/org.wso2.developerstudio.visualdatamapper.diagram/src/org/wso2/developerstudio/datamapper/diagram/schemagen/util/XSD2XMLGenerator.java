@@ -57,6 +57,7 @@ import org.eclipse.xsd.XSDSchema;
 import org.eclipse.xsd.XSDSimpleTypeDefinition;
 import org.eclipse.xsd.XSDTypeDefinition;
 import org.eclipse.xsd.impl.XSDElementDeclarationImpl;
+import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -535,6 +536,27 @@ public class XSD2XMLGenerator extends NewXMLGenerator {
 			return document.createTextNode(value);
 		}
 		
+		/* (non-Javadoc)
+		 * Method in the super class create an attribute element.
+		 * If type of the attribute is string, it sets attribute element value to "".
+		 * Then, attribute element type will be refer to as NULL when generating json schema.
+		 * To avoid that, this method set value to attribute name if value is empty.
+		 *
+		 * @see org.eclipse.wst.xml.core.internal.contentmodel.util.DOMContentBuilderImpl#visitCMAttributeDeclaration(org.eclipse.wst.xml.core.internal.contentmodel.CMAttributeDeclaration)
+		 */
+		@Override
+		public void visitCMAttributeDeclaration(CMAttributeDeclaration ad) {
+			super.visitCMAttributeDeclaration(ad);
+			int size = currentParent.getAttributes().getLength();
+			if (size > 0) {
+				Attr attr = (Attr) currentParent.getAttributes()
+						.item(currentParent.getAttributes().getLength() - 1);
+				if (attr.getValue().isEmpty()) {
+					attr.setValue(attr.getName());
+				}
+			}
+		}
+
 		/**
 		 * This was stolen directly from XSDImpl. It builds a list of the enumeration
 		 * values for the given XSD type definition.

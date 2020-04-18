@@ -87,9 +87,10 @@ public class DockerNavigatorActionProvider extends CommonActionProvider {
                 if (selection.getWorkspace().getRoot().getFile(new Path(diagramFilePath)).exists()) {
                     fileTobeOpen = selection.getWorkspace().getRoot().getFile(new Path(diagramFilePath));
 					if (fileTobeOpen.getName().equals(DockerProjectConstants.DOCKER_FILE_NAME)
-							|| fileTobeOpen.getName().equals(DockerProjectConstants.KUBE_YAML_FILE_NAME)
 							|| fileTobeOpen.getName().equals(DockerProjectConstants.DEPLOYMENT_TOML_FILE_NAME)) {
 						page.openEditor(new FileEditorInput(fileTobeOpen), DockerProjectConstants.DOCKER_FILE_EDITOR);
+                    } else if (fileTobeOpen.getName().equals(DockerProjectConstants.KUBE_YAML_FILE_NAME)) {
+                        page.openEditor(new FileEditorInput(fileTobeOpen), DockerProjectConstants.YAML_FILE_EDITOR);
 					} else {
                         page.openEditor(new FileEditorInput(fileTobeOpen), DockerProjectConstants.DOCKER_EDITOR);
                     }

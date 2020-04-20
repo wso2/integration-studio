@@ -694,6 +694,21 @@ $(document).ready(function ($) {
         }, 200);
     });
     
+    $("#dss-publish-swagger-input").on("keyup", function(){
+        clearInterval(onKeyChangeTimer);
+        onKeyChangeTimer = setTimeout(function() {
+        	
+        	let publishSwaggerValue = $('#dss-publish-swagger-input').val();
+        	if (publishSwaggerValue != undefined && publishSwaggerValue != "") {
+        		root.getElementsByTagName("data")[0].setAttribute("publishSwagger", publishSwaggerValue);
+        	} else {
+        		root.getElementsByTagName("data")[0].removeAttribute("publishSwagger");
+        	}
+            
+            saveAll(root, url, function() { });
+        }, 200);
+    });
+    
     $(document).on('click','#auth-provider-param-table .fa-trash',function() {
     	let tds = $(this).closest("tr").find('td');
     	let row = $(this);
@@ -1059,6 +1074,13 @@ function populateGeneralDetails(root) {
     		$('#dss-service-group-input').val(serviceGroup.value);
     	} else {
     		$('#dss-service-group-input').val("");
+    	}
+    	
+    	let publishSwagger = dataObject.attributes.getNamedItem("publishSwagger");
+    	if (publishSwagger != undefined && publishSwagger != null) {
+    		$('#dss-publish-swagger-input').val(publishSwagger.value);
+    	} else {
+    		$('#dss-publish-swagger-input').val("");
     	}
     }
 }

@@ -120,6 +120,7 @@ public final class XSLTGeneratorConstants {
     public static final String LEFT_CONNECTORS = "leftConnectors";
     public static final String LEFT_CONTAINER = "leftContainer";
     public static final String BASIC_CONTAINER = "basicContainer";
+    public static final String DELIMITER = "delimiter";
 
     public static final String XMLNS_XSL = "xmlns:xsl";
     public static final String XMLNS_XS = "xmlns:xs";
@@ -155,4 +156,6 @@ public final class XSLTGeneratorConstants {
     public static final String NAMESPACE_GENERAL_PREFIX = "xmlns:";
     public static final String NAMESPACE_ATTRIBUTE_VALUE = "value";
 
+    public static final String APOSTROPHE = "'";
+    public static final String COMMA = ",";
 }

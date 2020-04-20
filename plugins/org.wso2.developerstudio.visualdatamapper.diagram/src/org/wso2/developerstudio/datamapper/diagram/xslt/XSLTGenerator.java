@@ -39,11 +39,13 @@ import javax.xml.xpath.XPathFactory;
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.ABSOLUTE;
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.ADD;
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.AND;
+import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.APOSTROPHE;
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.ARRAY_TYPE;
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.AT_NODE;
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.AT_OPERATORS;
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.BOOLEAN_TYPE;
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.CEILING;
+import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.COMMA;
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.COMPARE;
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.CONCAT;
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.CONSTANT;
@@ -51,6 +53,7 @@ import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGenera
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.DEFAULT_NAME;
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.DEFAULT_SCOPE;
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.DEFAULT_VALUE;
+import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.DELIMITER;
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.DIVIDE;
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.DOT_SYMBOL;
 import static org.wso2.developerstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.EMPTY_STRING;
@@ -458,9 +461,16 @@ public class XSLTGenerator {
                 }
                 return "'" + operatorNode.getProperty("constantValue") + "'";
             case CONCAT:
-                if (operatorNode.getLeftContainer().getInNodes().size() == 2) {
-                    return "concat(" + getValueFromMapping(operatorNode.getLeftContainer().getInNodes().get(0)) + ","
-                            + getValueFromMapping(operatorNode.getLeftContainer().getInNodes().get(1)) + ")";
+                if (operatorNode.getLeftContainer().getInNodes().size() >= 2) {
+                    String delimiter = operatorNode.getProperty(DELIMITER) != null ? operatorNode.getProperty(DELIMITER)
+                            : " ";
+                    delimiter = APOSTROPHE + delimiter + APOSTROPHE;
+                    String value = "concat(" + getValueFromMapping(operatorNode.getLeftContainer().getInNodes().get(0));
+                    for (int i = 1; i < operatorNode.getLeftContainer().getInNodes().size(); i++) {
+                        value += COMMA + delimiter + COMMA
+                                + getValueFromMapping(operatorNode.getLeftContainer().getInNodes().get(i));
+                    }
+                    return value + ")";
                 }
                 break;
             case LOWERCASE:

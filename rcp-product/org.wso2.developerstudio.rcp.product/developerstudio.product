@@ -22,12 +22,8 @@ Please visit : http://wso2.com/products/developer-studio/
 -XX:MaxPermSize=512m
 -Dosgi.instance.area.default=@user.home/IntegrationStudio/workspace
       </vmArgs>
-      <vmArgsLin>-Dswt.autoScale=100
-      </vmArgsLin>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
       </vmArgsMac>
-      <vmArgsWin>-Dswt.autoScale=100
-      </vmArgsWin>
    </launcherArgs>
 
    <windowImages i16="/org.wso2.developerstudio.rcp.plugin/icons/icon-16.gif" i32="/org.wso2.developerstudio.rcp.plugin/icons/icon-32.gif" i48="/org.wso2.developerstudio.rcp.plugin/icons/icon-48.gif" i64="/org.wso2.developerstudio.rcp.plugin/icons/icon-64.gif" i128="/org.wso2.developerstudio.rcp.plugin/icons/icon-128.gif" i256="/org.wso2.developerstudio.rcp.plugin/icons/icon-256.gif"/>

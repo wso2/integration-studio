@@ -16,7 +16,6 @@
 
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.editpolicy;
 
-import java.awt.MouseInfo;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -25,7 +24,7 @@ import java.util.List;
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
-import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.swt.graphics.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.Request;
@@ -40,6 +39,7 @@ import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Display;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractBaseFigureEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpoint;
@@ -70,7 +70,6 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.SWTResourceManager;
 public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
 
     private static IFigure feedbackFigureRed;
-    private static Image feedbackImageRed;
     private static IFigure feedbackFigureGreen;
     private static Image feedbackImageGreen;
     private static IFigure feedBackFigureCurrent;
@@ -156,7 +155,6 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
         if (feedbackFigureRed == null) {
             Image feedbackImage = SWTResourceManager.getImage(this.getClass(), NOT_ALLOW_DROP_ICON_PATH);
             IFigure figure = new ImageFigure(feedbackImage);
-            this.feedbackImageRed = feedbackImage;
             feedbackFigureRed = figure;
         }
 
@@ -171,27 +169,17 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
      * @param allowDrop
      *            true if, host is acceptable area for a certain node.
      */
-    private void showFeedBackFigure(boolean allowDrop) {
-        java.awt.Point pointer = MouseInfo.getPointerInfo().getLocation();
-        IFigure feedbackFigure = getFeedbackFigure(allowDrop);
-        int x = (int) pointer.getX();
-        int y = (int) pointer.getY();
-        Control ctrl = getHost().getViewer().getControl();
-        FigureCanvas canvas = (FigureCanvas) ctrl;
-        int horizontal = canvas.getHorizontalBar().getSelection();
-        int vertical = canvas.getVerticalBar().getSelection();
-        horizontal += 15;
-        vertical -= 15;
+	private void showFeedBackFigure(boolean allowDrop) {
+		int FEEDBACK_IMAGE_OFFSET = 15;
+		IFigure feedbackFigure = getFeedbackFigure(allowDrop);
+		Control ctrl = getHost().getViewer().getControl();
+		org.eclipse.swt.graphics.Point cursorPoint = getRelativeMousePointer(ctrl);
+		int x = cursorPoint.x + FEEDBACK_IMAGE_OFFSET;
+		int y = cursorPoint.y - FEEDBACK_IMAGE_OFFSET;
 
-        org.eclipse.swt.graphics.Point p = canvas.toDisplay(0, 0);
-        if (allowDrop) {
-            feedbackFigure.setBounds(new Rectangle((x - p.x) + horizontal, (y - p.y) + vertical,
-                    feedbackImageGreen.getBounds().width, feedbackImageGreen.getBounds().height));
-        } else {
-            feedbackFigure.setBounds(new Rectangle((x - p.x) + horizontal, (y - p.y) + vertical,
-                    feedbackImageRed.getBounds().width, feedbackImageRed.getBounds().height));
-        }
-    }
+		feedbackFigure.setBounds(new Rectangle(x, y, feedbackImageGreen.getBounds().width,
+				feedbackImageGreen.getBounds().height));
+	}
 
     /**
      * This will update the 'currentFigureLocation' variable to the given EditPart
@@ -201,34 +189,30 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
      * @param childEditPart
      *            EditPart that contains the canvas information.
      */
-    private static void updateCurrentStatesForConnectors(EditPart childEditPart) {
+	private void updateCurrentStatesForConnectors(EditPart childEditPart) {
 
-        int x = MouseInfo.getPointerInfo().getLocation().x;
-        int y = MouseInfo.getPointerInfo().getLocation().y;
-        int offSetX = 0;
-        int offSetY = 0;
+		int offSetX = 0;
+		int offSetY = 0;
 
-        // MediatorFlowMediatorFlowCompartmentEditPart logic is written to use relative coordinates for calculations
-        // So, the offset values are needed for mimic the locaion in the drag and drop policy
-        if (childEditPart instanceof MediatorFlowMediatorFlowCompartmentEditPart) {
-            offSetX = ((MediatorFlowMediatorFlowCompartmentEditPart) childEditPart).getBorderedNodeFigure()
-                    .getLocation().x;
-            offSetY = ((MediatorFlowMediatorFlowCompartmentEditPart) childEditPart).getBorderedNodeFigure()
-                    .getLocation().y;
-        }
+		// MediatorFlowMediatorFlowCompartmentEditPart logic is written to use relative
+		// coordinates for calculations
+		// So, the offset values are needed for mimic the locaion in the drag and drop
+		// policy
+		if (childEditPart instanceof MediatorFlowMediatorFlowCompartmentEditPart) {
+			offSetX = ((MediatorFlowMediatorFlowCompartmentEditPart) childEditPart).getBorderedNodeFigure()
+					.getLocation().x;
+			offSetY = ((MediatorFlowMediatorFlowCompartmentEditPart) childEditPart).getBorderedNodeFigure()
+					.getLocation().y;
+		}
+		EsbMultiPageEditor esbMultiPageEditor = (EsbMultiPageEditor) EditorUtils.getActiveEditor();
+		double zoom = esbMultiPageEditor.getZoom();
+		Control ctrl = getHost().getViewer().getControl();
+		Point cursorPoint = getRelativeMousePointer(ctrl);
+		int x = (int) ((cursorPoint.x - (offSetX * zoom)) / zoom);
+		int y = (int) ((cursorPoint.y - (offSetY * zoom)) / zoom);
 
-        Control ctrl = (childEditPart.getViewer().getControl());
-        FigureCanvas canvas = (FigureCanvas) ctrl;
-        int horizontal = canvas.getHorizontalBar().getSelection();
-        int vertical = canvas.getVerticalBar().getSelection();
-
-        EsbMultiPageEditor esbMultiPageEditor = (EsbMultiPageEditor) EditorUtils.getActiveEditor();
-        double zoom = esbMultiPageEditor.getZoom();
-        org.eclipse.swt.graphics.Point p = canvas.toDisplay(0, 0);
-
-        currentFigureLocation = new Point((x + horizontal - p.x - (offSetX * zoom)) / zoom,
-                (y + vertical - p.y - (offSetY * zoom)) / zoom);
-    }
+		currentFigureLocation = new Point(x, y);
+	}
 
     /**
      * This will update the 'currentFigureLocation' variable to the given EditPart
@@ -238,22 +222,30 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
      * @param childEditPart
      *            EditPart that contains the canvas information.
      */
-    private static void updateCurrentStatesForLinks(EditPart childEditPart) {
-        int x = MouseInfo.getPointerInfo().getLocation().x;
-        int y = MouseInfo.getPointerInfo().getLocation().y;
+	private void updateCurrentStatesForLinks(EditPart childEditPart) {
+		EsbMultiPageEditor esbMultiPageEditor = (EsbMultiPageEditor) EditorUtils.getActiveEditor();
+		double zoom = esbMultiPageEditor.getZoom();
+		Control ctrl = getHost().getViewer().getControl();
+		Point cursorPoint = getRelativeMousePointer(ctrl);
+		currentFigureLocation = new Point((int) (cursorPoint.x / zoom), (int) (cursorPoint.y / zoom));
+	}
 
-        Control ctrl = childEditPart.getViewer().getControl();
-        FigureCanvas canvas = (FigureCanvas) ctrl;
-        int horizontal = canvas.getHorizontalBar().getSelection();
-        int vertical = canvas.getVerticalBar().getSelection();
-
-        EsbMultiPageEditor esbMultiPageEditor = (EsbMultiPageEditor) EditorUtils.getActiveEditor();
-        double zoom = esbMultiPageEditor.getZoom();
-
-        org.eclipse.swt.graphics.Point p = canvas.toDisplay(0, 0);
-        currentFigureLocation = new Point((((x - p.x) + horizontal) / zoom), (((y - p.y) + vertical) / zoom));
-    }
-
+	/**
+	 * This will update get the mouse cursor location relative to the canvas
+	 * 
+	 * @param ctrl
+	 *            EditPart that contains the canvas information.
+	 * @return The cursor pointer location
+	 */
+	public static Point getRelativeMousePointer(Control ctrl) {
+		FigureCanvas canvas = (FigureCanvas) ctrl;
+		Display display = Display.getDefault();
+		Point point = ctrl.toControl(display.getCursorLocation());
+		org.eclipse.draw2d.geometry.Point location = canvas.getViewport().getViewLocation();
+		point = new Point(point.x + location.x , point.y + location.y );
+		return point;
+	}
+	
     /**
      * This will update the 'connectorFigureLocation' variable to the EditPart's
      * location.
@@ -279,7 +271,7 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
      *         available for given connectors and the childEdit parts
      * 
      */
-    public static boolean isNearestConnectorAvailable(ArrayList<AbstractConnectorEditPart> connectors,
+    public boolean isNearestConnectorAvailable(ArrayList<AbstractConnectorEditPart> connectors,
             EditPart childEditPart) {
         AbstractConnectorEditPart nearForwardConnector = null;
         AbstractConnectorEditPart nearReverseConnector = null;
@@ -459,7 +451,7 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
      * @return Boolean value indicating whether there are any near ESB links
      *         available for given links list
      */
-    public static boolean isNearestEsbLinkAvailable(ArrayList<EsbLinkEditPart> links, EditPart childEditPart) {
+    public boolean isNearestEsbLinkAvailable(ArrayList<EsbLinkEditPart> links, EditPart childEditPart) {
 
         double current = 0.0;
         ArrayList<EsbLinkEditPart> nearLinks = new ArrayList<EsbLinkEditPart>();
@@ -586,13 +578,6 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
                 }
             }
         }
-
-        Control ctrl = getHost().getViewer().getControl();
-        FigureCanvas canvas = (FigureCanvas) ctrl;
-        int horizontal = canvas.getHorizontalBar().getSelection();
-        int vertical = canvas.getVerticalBar().getSelection();
-        canvas.getCursor();
-        org.eclipse.swt.graphics.Point p = canvas.toDisplay(0, 0);
 
         // Check whether there is a near EsbLink available for the current mediator flow
         boolean isNearlinkAvailable = isNearestEsbLinkAvailable(esbLinkEditpartList, getHost());

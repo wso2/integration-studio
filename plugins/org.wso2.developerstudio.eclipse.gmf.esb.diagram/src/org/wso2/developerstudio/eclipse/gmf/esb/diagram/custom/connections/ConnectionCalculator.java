@@ -1,11 +1,9 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.connections;
 
-import java.awt.MouseInfo;
 import java.util.ArrayList;
 
-import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.swt.graphics.Point;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
@@ -19,6 +17,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorO
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractOutputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AdditionalOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.editpolicy.FeedbackIndicateDragDropEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.DropMediatorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EsbLinkEditPart;
@@ -277,28 +276,21 @@ public class ConnectionCalculator {
         return nearConnector;
     }
 
-    private static void updateCurrentStatesForLinks(ShapeNodeEditPart childEditPart) {
-        int x = MouseInfo.getPointerInfo().getLocation().x;
-        int y = MouseInfo.getPointerInfo().getLocation().y;
-
-        Control ctrl = childEditPart.getViewer().getControl();
-        FigureCanvas canvas = (FigureCanvas) ctrl;
-        int horizontal = canvas.getHorizontalBar().getSelection();
-        int vertical = canvas.getVerticalBar().getSelection();
-
-        EsbMultiPageEditor esbMultiPageEditor = (EsbMultiPageEditor) EditorUtils.getActiveEditor();
-        double zoom = esbMultiPageEditor.getZoom();
-        /*
-         * Commented following two line of codes to get rid of the issue - When
-         * element is dropped inside the compartment of a complex
-         * mediator(Aggregate etc.) at the border of it, it is connected to
-         * outer mediator flow but resides inside the compartment.
-         */
-        // horizontal += 20;
-        // vertical += 30;
-        org.eclipse.swt.graphics.Point p = canvas.toDisplay(0, 0);
-        currentFigureLocation = new Point((((x - p.x) + horizontal) / zoom), (((y - p.y) + vertical) / zoom));
-    }
+	private static void updateCurrentStatesForLinks(ShapeNodeEditPart childEditPart) {
+		Control ctrl = childEditPart.getViewer().getControl();
+		Point currentPoint = FeedbackIndicateDragDropEditPolicy.getRelativeMousePointer(ctrl);
+		EsbMultiPageEditor esbMultiPageEditor = (EsbMultiPageEditor) EditorUtils.getActiveEditor();
+		double zoom = esbMultiPageEditor.getZoom();
+		/*
+		 * Commented following two line of codes to get rid of the issue - When element
+		 * is dropped inside the compartment of a complex mediator(Aggregate etc.) at
+		 * the border of it, it is connected to outer mediator flow but resides inside
+		 * the compartment.
+		 */
+		// horizontal += 20;
+		// vertical += 30;
+		currentFigureLocation = new Point((int) (currentPoint.x / zoom), (int) (currentPoint.y / zoom));
+	}
 
     private static void updateCurrentStatesForGivenFigure(ShapeNodeEditPart childEditPart) {
         connectorFigureLocation = new Point(childEditPart.getLocation().x, childEditPart.getLocation().y);

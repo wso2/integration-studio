@@ -223,7 +223,7 @@ public class CloudConnectorDirectoryTraverser {
             Component subComponent = new Component();
             subComponent.deserialize(artifactContent);
             for (SubComponents subComponents : subComponent.getSubComponents()) {
-                operationFileNamesMap.put(subComponents.getFileName(), dependency.getComponent());
+                operationFileNamesMap.put(subComponents.getName(), dependency.getComponent());
             }
         }
         return operationFileNamesMap;

@@ -19,6 +19,7 @@
 package org.wso2.developerstudio.eclipse.carbonserver44microei11.register.product.servers;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Locale;
 import java.util.Map;
@@ -32,6 +33,10 @@ import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.debug.internal.ui.DebugUIPlugin;
 import org.eclipse.debug.internal.ui.launchConfigurations.LaunchHistory;
 import org.eclipse.jst.server.generic.core.internal.GenericServer;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IViewPart;
+import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.wst.server.core.IRuntime;
 import org.eclipse.wst.server.core.IRuntimeType;
 import org.eclipse.wst.server.core.IRuntimeWorkingCopy;
@@ -321,6 +326,12 @@ public class MicroIntegratorInstance {
                                 }
                             }
                             isHistoryCleard = true;
+                            System.out.println(microIntegratorServer.getRuntime().getLocation());
+                            try {
+                                getDeployedServices();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         } else {
                             Thread.sleep(1000);
                         }
@@ -330,6 +341,23 @@ public class MicroIntegratorInstance {
                 }
             }
         }.start();
+    }
+    
+    private void getDeployedServices() throws IOException {
+        Display.getDefault().asyncExec(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    IViewPart view = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView("org.wso2.developerstudio.eclipse.esb.project.deployed.endpoint.view");
+                    PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().hideView(view);
+                    PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView("org.wso2.developerstudio.eclipse.esb.project.deployed.endpoint.view");
+                    
+                } catch (PartInitException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
     
     /**

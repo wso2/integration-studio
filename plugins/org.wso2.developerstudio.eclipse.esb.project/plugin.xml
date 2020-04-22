@@ -538,5 +538,13 @@
    
    <extension point="org.eclipse.ui.startup">
    	<startup class="org.wso2.developerstudio.eclipse.esb.project.store.handlers.ConnectorStoreEarlyStartupHandler"/>
+   	<startup class="org.wso2.developerstudio.eclipse.esb.project.store.handlers.DeployedServicesEarlyStartupHandler"/>
 </extension>
+
+    <extension point="org.eclipse.ui.views">
+        <view id="org.wso2.developerstudio.eclipse.esb.project.deployed.endpoint.view"
+              name="Deployed Endpoints"
+              class="org.wso2.developerstudio.eclipse.esb.project.ui.view.DeployedServicesView"
+              icon="icons/synapse-16x16png.png"/>
+    </extension>
 </plugin>

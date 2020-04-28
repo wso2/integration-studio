@@ -97,6 +97,7 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.platform.core.model.AbstractListDataProvider.ListData;
+import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProviderUtils;
 import org.wso2.developerstudio.eclipse.platform.core.utils.SWTResourceManager;
 import org.wso2.developerstudio.eclipse.platform.ui.utils.PlatformUIConstants;
@@ -986,7 +987,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
         IProject project = ((IFileEditorInput) (getEditor().getEditorInput())).getFile().getProject();
       
         try {
-            if (project.hasNature(DockerProjectConstants.KUBERNETES_NATURE)) {
+            if (project.hasNature(Constants.KUBERNETES_EXPORTER_PROJECT_NATURE)) {
                 setContainerType(DockerProjectConstants.KUBERNETES_CONTAINER);
             } else {
                 setContainerType(DockerProjectConstants.DOCKER_CONTAINER);

@@ -223,12 +223,27 @@ public class MvnMultiModuleWizard extends AbstractWSO2ProjectCreationWizard {
     private void addMavenModules(IProject selectedProject, MavenProject mavenProject, List modules,
             List<IProject> selectedProjects, IFile pomFile) {
         modules.clear();
-        for (IProject iProject : selectedProjects) {
+        addMavenProfiles(mavenProject, Constants.getAllMavenMultiModuleProfiles());
+        for (IProject iProject : sortProjects(selectedProjects)) {
             String relativePath = FileUtils
                     .getRelativePath(selectedProject.getLocation().toFile(), iProject.getLocation().toFile())
                     .replaceAll(Pattern.quote(File.separator), "/");
-            if (!modules.contains(relativePath)) {
-                modules.add(relativePath);
+            try {
+                if (iProject.hasNature(Constants.DOCKER_EXPORTER_PROJECT_NATURE)) {
+                    MavenUtils.addModuleToProfile(getMavenProfile(mavenProject, Constants.DOCKER_PROFILE),
+                            relativePath);
+                    MavenUtils.addModuleToProfile(getMavenProfile(mavenProject, Constants.DEFAULT_PROFILE),
+                            relativePath);
+                } else if (iProject.hasNature(Constants.KUBERNETES_EXPORTER_PROJECT_NATURE)) {
+                    MavenUtils.addModuleToProfile(getMavenProfile(mavenProject, Constants.KUBERNETES_PROFILE),
+                            relativePath);
+                    MavenUtils.addModuleToProfile(getMavenProfile(mavenProject, Constants.DEFAULT_PROFILE),
+                            relativePath);
+                } else if (!modules.contains(relativePath)) {
+                    modules.add(relativePath);
+                }
+            } catch (CoreException e) {
+                log.warn("Project list cannot be sorted", e);
             }
         }
 
@@ -244,7 +259,8 @@ public class MvnMultiModuleWizard extends AbstractWSO2ProjectCreationWizard {
             List<Plugin> buildPlugins = mproject.getBuildPlugins();
             if (buildPlugins.isEmpty()) {
                 MavenUtils.updateWithMavenEclipsePlugin(pomFile.getLocation().toFile(), new String[] {},
-                        new String[] { Constants.MAVEN_MULTI_MODULE_PROJECT_NATURE });
+                        new String[] { Constants.MAVEN_MULTI_MODULE_PROJECT_NATURE },
+                        Constants.getAllMavenMultiModuleProfiles());
             } else {
                 for (Plugin plugin : buildPlugins) {
                     if (MAVEN_ECLIPSE_PLUGIN.equals(plugin.getId())) {
@@ -252,13 +268,33 @@ public class MvnMultiModuleWizard extends AbstractWSO2ProjectCreationWizard {
                               // add it again
                     } else {
                         MavenUtils.updateWithMavenEclipsePlugin(pomFile.getLocation().toFile(), new String[] {},
-                                new String[] { Constants.MAVEN_MULTI_MODULE_PROJECT_NATURE });
+                                new String[] { Constants.MAVEN_MULTI_MODULE_PROJECT_NATURE },
+                                Constants.getAllMavenMultiModuleProfiles());
                     }
                 }
             }
+            mproject = MavenUtils.getMavenProject(pomFile.getLocation().toFile());
+            mproject.setBuild(null);
+            MavenUtils.saveMavenProject(mproject, pomFile.getLocation().toFile());
             selectedProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
         } catch (Exception e) {
             log.error("Error occured while trying to update the maven project with Eclipse Maven plugin.", e);
+        }
+    }
+    
+    /**
+     * This method adds given maven profile to the given project.
+     * 
+     * @param project project to which profiles should be added
+     * @param profileNames names of the maven profiles to be added
+     */
+    private void addMavenProfiles(MavenProject project, List<String> profileNames) {
+        for (String profileName : profileNames) {
+            if (profileName.equals(Constants.DEFAULT_PROFILE)) {
+                MavenUtils.createProfileEntry(project, profileName, true);
+            } else {
+                MavenUtils.createProfileEntry(project, profileName, false);
+            }
         }
     }
 

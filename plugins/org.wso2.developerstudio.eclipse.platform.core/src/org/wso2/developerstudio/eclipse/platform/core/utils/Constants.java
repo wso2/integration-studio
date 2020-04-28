@@ -46,6 +46,12 @@ public class Constants extends NLS {
 	public static final String JAVA_PROJECT_NATURE = "org.eclipse.jdt.core.javanature";
 
 	public static final double MINIMUM_REQUIRED_JAVA_VERSION = 1.7;
+	   
+	// Names of maven profiles
+	public static final String SOLUTION_PROFILE = "Solution";
+	public static final String DOCKER_PROFILE = "Docker";
+	public static final String KUBERNETES_PROFILE = "Kubernetes";
+	public static final String DEFAULT_PROFILE = "default";
 
 	// String constant value declaration, these values loaded from
 	// constants.properties file at run time
@@ -76,6 +82,8 @@ public class Constants extends NLS {
 	public static String JAVA_VERSION_CONTINUE_MESSAGE;
 	public static String MAVEN_MULTI_MODULE_PROJECT_NATURE;
 	public static String CONNECTOR_PROJECT_NATURE;
+	public static String DOCKER_EXPORTER_PROJECT_NATURE;
+	public static String KUBERNETES_EXPORTER_PROJECT_NATURE;
 
 	static {
 		// initialize resource bundle, this will load all constants from
@@ -110,6 +118,15 @@ public class Constants extends NLS {
 		list.add(MAVEN_MULTI_MODULE_PROJECT_NATURE);
 		list.add(CONNECTOR_PROJECT_NATURE);
 
+		return list;
+	}
+    
+	public static List<String> getAllMavenMultiModuleProfiles() {
+		List<String> list = new ArrayList<String>();
+		list.add(SOLUTION_PROFILE);
+		list.add(DOCKER_PROFILE);
+		list.add(KUBERNETES_PROFILE);
+		list.add(DEFAULT_PROFILE);
 		return list;
 	}
 }

@@ -94,7 +94,7 @@ public class SchemaGeneratorForXML extends SchemaGeneratorForJSON implements ISc
 		return getSchemaContent(entireFileText, type, null);
 	}
 
-	private String replaceAttributesWithElements(String entireFileText) throws IOException {
+	protected String replaceAttributesWithElements(String entireFileText) throws IOException {
 		try {
 			OMElement element = AXIOMUtil.stringToOM(entireFileText);
 			OMFactory factory = OMAbstractFactory.getOMFactory();

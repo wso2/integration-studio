@@ -57,6 +57,8 @@ public class SchemaGeneratorForXSD extends AbstractSchemaGenerator implements IS
 				if (generatedXMLContent != null) {
 					String xmlSchemaContent = XML_VERSION_1_0_ENCODING_UTF_8 + generatedXMLContent;
 					SchemaGeneratorForXML schemaGeneratorForXML = new SchemaGeneratorForXML();
+					// Replacing attributes with elements because SchemaGeneratorForXML requires so.
+					xmlSchemaContent = schemaGeneratorForXML.replaceAttributesWithElements(xmlSchemaContent);
 					schemaContent = schemaGeneratorForXML.getSchemaContent(xmlSchemaContent, FileType.XML, null);
 				}
 				deleteRegResourcesCreated(xsdRegResource);

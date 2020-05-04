@@ -181,7 +181,7 @@ public class CompositeProjectSelectionPage extends WizardPage {
 			IProject[] projects = workspaceRoot.getProjects();
 
 			for (IProject project : projects) {
-				if (project.hasNature(Constants.DISTRIBUTION_PROJECT_NATURE)) {
+				if (project.isOpen() && project.hasNature(Constants.DISTRIBUTION_PROJECT_NATURE)) {
 					createParentNode(trDependencies, project);
 				}
 

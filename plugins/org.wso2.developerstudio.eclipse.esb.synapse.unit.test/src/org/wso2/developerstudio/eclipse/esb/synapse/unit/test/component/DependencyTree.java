@@ -151,10 +151,10 @@ public class DependencyTree {
             connectorElements.clear();
 
             try {
-                if (project instanceof IProject
+                if (project.isOpen() && project instanceof IProject
                         && (project.hasNature(Constants.ESB_PROJECT_NATURE)
-                                || project.hasNature(Constants.REGISTRY_PROJECT_NATURE))
-                        || project.hasNature(Constants.CONNECTOR_PROJECT_NATURE)) {
+                                || project.hasNature(Constants.REGISTRY_PROJECT_NATURE)
+                        || project.hasNature(Constants.CONNECTOR_PROJECT_NATURE))) {
                     if (treeType.equals(Constants.SUPPORTIVE_ARTIFACT_TYPE)) {
                         processContainerChilds(project);
                     } else if (treeType.equals(Constants.MOCK_SERVICE_TYPE)) {

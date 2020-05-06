@@ -1,6 +1,7 @@
 #! /bin/bash
 BASE_DIR=$(pwd)
 PRODUCT_VERSION=$1
+APACHE_MAVEN_VERSION=$2
 
 echo BASE_DIR $BASE_DIR and PRODUCT_VERSION $PRODUCT_VERSION
 
@@ -66,6 +67,20 @@ mv $PRODUCT_PATH_LINUX_64/runtime/wso2mi-$PRODUCT_VERSION $PRODUCT_PATH_LINUX_64
 mv $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse/runtime/wso2mi-$PRODUCT_VERSION $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse/runtime/microesb
 mv $PRODUCT_PATH_WIN_86/runtime/wso2mi-$PRODUCT_VERSION $PRODUCT_PATH_WIN_86/runtime/microesb
 mv $PRODUCT_PATH_WIN_64/runtime/wso2mi-$PRODUCT_VERSION $PRODUCT_PATH_WIN_64/runtime/microesb
+
+# Unzip apche maven to relevant packages
+unzip $PRODUCT_PATH_ROOT/apache-maven-${APACHE_MAVEN_VERSION}-bin.zip -d $PRODUCT_PATH_LINUX_86/
+unzip $PRODUCT_PATH_ROOT/apache-maven-${APACHE_MAVEN_VERSION}-bin.zip -d $PRODUCT_PATH_LINUX_64/
+unzip $PRODUCT_PATH_ROOT/apache-maven-${APACHE_MAVEN_VERSION}-bin.zip -d $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse/
+unzip $PRODUCT_PATH_ROOT/apache-maven-${APACHE_MAVEN_VERSION}-bin.zip -d $PRODUCT_PATH_WIN_86/
+unzip $PRODUCT_PATH_ROOT/apache-maven-${APACHE_MAVEN_VERSION}-bin.zip -d $PRODUCT_PATH_WIN_64/
+
+# Rename as "apche-maven" (this is the static name used in EI Tooling code)
+mv $PRODUCT_PATH_LINUX_86/apache-maven-$APACHE_MAVEN_VERSION $PRODUCT_PATH_LINUX_86/apache-maven
+mv $PRODUCT_PATH_LINUX_64/apache-maven-$APACHE_MAVEN_VERSION $PRODUCT_PATH_LINUX_64/apache-maven
+mv $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse/apache-maven-${APACHE_MAVEN_VERSION} $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse/apache-maven
+mv $PRODUCT_PATH_WIN_86/apache-maven-${APACHE_MAVEN_VERSION} $PRODUCT_PATH_WIN_86/apache-maven
+mv $PRODUCT_PATH_WIN_64/apache-maven-${APACHE_MAVEN_VERSION} $PRODUCT_PATH_WIN_64/apache-maven
 
 # Replace "deployment.toml" in Micro Integrator
 cp -f $DEPLOYMENT_FILE_PATH $PRODUCT_PATH_LINUX_86/runtime/microesb/conf
@@ -194,6 +209,7 @@ popd
 
 # Cleanup
 rm $PRODUCT_PATH_ROOT/wso2mi-$PRODUCT_VERSION.zip
+rm $PRODUCT_PATH_ROOT/apache-maven-${APACHE_MAVEN_VERSION}-bin.zip
 rm -rf $PRODUCT_PATH_ROOT/temp
 rm -rf $PRODUCT_PATH_ROOT/IntegrationStudio
 rm -rf $JDK_DISTRIBUTION_PATH

@@ -377,11 +377,49 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 				mappingOperation.setOptionalElementList(operationNullableVariableList);
 			}
 			if (unassignedOperationCount == unassignedMappingOperations.size()) {
-				assignUnresolvableOperationsToRoot(unassignedMappingOperations);
+				// If there are unassigned Constant operations, declare their output arrays.
+				boolean changed = declareArraysForUnassignedConstantOperators(
+						unassignedMappingOperations, variableMap);
+				// If changed, some operations will be able to be assigned.
+				if (!changed) {
+					assignUnresolvableOperationsToRoot(
+							unassignedMappingOperations);
+				}
 			}
 		} while (!unassignedMappingOperations.isEmpty());
 		populateOutputArrayRootVariableMap(model);
 		return mappingOperationListTemp;
+	}
+	
+	/**
+	 * Checks for unassigned constant operators and declare their output arrays.
+	 * 
+	 * @param unassignedMappingOperations operation list to be checked
+	 * @param variableMap map with all variables and their types
+	 * @return whether any changed were made to OutputVariableForLoopMaps
+	 * @throws DataMapperException throws when encountered an invalid elements
+	 */
+	private boolean declareArraysForUnassignedConstantOperators(
+			List<MappingOperation> unassignedMappingOperations,
+			Map<String, List<SchemaDataType>> variableMap)
+			throws DataMapperException {
+		boolean changed = false;
+		for (MappingOperation mappingOperation : unassignedMappingOperations) {
+			if (DataMapperOperatorType.CONSTANT.equals(
+					mappingOperation.getOperation().getOperatorType())) {
+				List<DMVariable> outputVariables = mappingOperation
+						.getOutputVariables();
+				for (DMVariable outputVariable : outputVariables) {
+					if (DMVariableType.OUTPUT
+							.equals(outputVariable.getType())) {
+						boolean updated = updateOutputVariableForLoopMap(
+								outputVariable, variableMap);
+						changed = changed || updated;
+					}
+				}
+			}
+		}
+		return changed;
 	}
 
 	private void assignUnresolvableOperationsToRoot(List<MappingOperation> unassignedMappingOperations) {
@@ -456,6 +494,79 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 			operationForLoopBeansList.add(previousForLoopIndex);
 		}
 		return lastArrayVariable;
+	}
+	
+	/**
+	 * Given an outputvariable, if not exist, add its parents to OutputVariableForLoopMaps.
+	 * 
+	 * @param outputVariable variable to process
+	 * @param variableMap map with all variables and their types
+	 * @return whether any changed were made to OutputVariableForLoopMaps
+	 * @throws DataMapperException throws when encountered an invalid elements
+	 */
+	private boolean updateOutputVariableForLoopMap(DMVariable outputVariable,
+			Map<String, List<SchemaDataType>> variableMap)
+			throws DataMapperException {
+		boolean updated = false;
+		String outputVariableName = outputVariable.getName();
+		String[] variableNameArray = outputVariableName.split("\\.");
+		String variableName = "";
+		int previousForLoopIndex = 0;
+		int previousObjectForLoopIndex = 0;
+		for (String nextName : variableNameArray) {
+			variableName += nextName;
+			if (variableMap.containsKey(variableName)) {
+				SchemaDataType variableType = variableMap.get(variableName)
+						.get(VARIABLE_TYPE_INDEX);
+				if (SchemaDataType.ARRAY.equals(variableType)) {
+					if (!outputArrayVariableForLoopMap
+							.containsKey(variableName)) {
+						int targetForLoopIndex = getParentForLoopBeanIndex(
+								previousForLoopIndex,
+								previousObjectForLoopIndex);
+						if (targetForLoopIndex < 0) {
+							targetForLoopIndex = previousForLoopIndex;
+						}
+						outputArrayVariableForLoopMap.put(variableName,
+								targetForLoopIndex);
+						getForLoopBeanList().get(targetForLoopIndex)
+								.getArrayVariableListToInstantiate()
+								.add(variableName);
+						previousForLoopIndex = targetForLoopIndex;
+						updated = true;
+					} else {
+						previousForLoopIndex = outputArrayVariableForLoopMap
+								.get(variableName);
+					}
+				} else if (SchemaDataType.OBJECT.equals(variableType)) {
+					if (!outputObjectVariableForLoopMap
+							.containsKey(variableName)) {
+						int targetForLoopIndex = previousForLoopIndex;
+						outputObjectVariableForLoopMap.put(variableName,
+								targetForLoopIndex);
+						getForLoopBeanList().get(targetForLoopIndex)
+								.getObjectVariableListToInstantiate()
+								.add(variableName);
+						previousObjectForLoopIndex = targetForLoopIndex;
+						updated = true;
+					} else {
+						previousObjectForLoopIndex = outputObjectVariableForLoopMap
+								.get(variableName);
+					}
+				} else if (!ScriptGenerationUtil
+						.isVariableTypePrimitive(variableType)) {
+					// not even leaf variable element
+					throw new DataMapperException(
+							"Unsupported schemaDataType found : "
+									+ variableType);
+				}
+			} else {
+				throw new IllegalArgumentException(
+						"Unknown variable name found : " + variableName);
+			}
+			variableName += ".";
+		}
+		return updated;
 	}
 
 	/**

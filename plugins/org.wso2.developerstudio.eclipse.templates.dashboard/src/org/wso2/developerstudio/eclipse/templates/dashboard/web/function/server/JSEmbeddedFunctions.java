@@ -87,6 +87,15 @@ public class JSEmbeddedFunctions {
     }
     
     /**
+     * This method returns the path to properties file.
+     * 
+     * @return path of properties file
+     */
+    public static String getPropertiesFilePath() {
+        return PROPERTIES_FILE_PATH;
+    }
+
+    /**
      * Get wizard link contributions json
      * @return json of the wizard links along with categories
      */
@@ -210,15 +219,34 @@ public class JSEmbeddedFunctions {
 	}
 
 	private void setDisableWelcomePrameterValue(String configFilePath, boolean disableWelcomePage) {
+		
+        InputStream input = null;
+        OutputStream output = null;
 
-		try (OutputStream output = new FileOutputStream(configFilePath)) {
-			Properties prop = new Properties();
-			prop.setProperty(DISABLE_WELCOME_PAGE, String.valueOf(disableWelcomePage));
-			prop.store(output, null);
+        try {
+            input = new FileInputStream(configFilePath);
+            Properties prop = new Properties();
+            prop.load(input);
+            input.close();
+            prop.setProperty(DISABLE_WELCOME_PAGE, String.valueOf(disableWelcomePage));
+            output = new FileOutputStream(configFilePath);
+            prop.store(output, null);
+            output.close();
 
-		} catch (IOException e) {
-			log.error("Error ocuured while saving the DISABLE_WELCOME_PAGE property.", e);
-		}
+        } catch (IOException e) {
+            log.error("Error ocuured while saving the ENABLE_AI_DATAMAPPER property.", e);
+        } finally {
+            try {
+                if (input != null) {
+                    input.close();
+                }
+                if (output != null) {
+                    output.close();
+                }
+            } catch (IOException e) {
+                log.error("Error ocuured while saving the ENABLE_AI_DATAMAPPER property.", e);
+            }
+        }
 	}
 
 	public static String getDisableWelcomePrameterValue() {

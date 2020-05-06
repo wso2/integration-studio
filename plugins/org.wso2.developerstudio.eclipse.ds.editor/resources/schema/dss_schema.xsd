@@ -47,6 +47,7 @@
 		<xs:attribute name="txManagerJNDIName" type="xs:string" />
 		<xs:attribute name="serviceNamespace" type="xs:string" />
 		<xs:attribute name="serviceGroup" type="xs:string" />
+		<xs:attribute name="publishSwagger" type="xs:string" />
 		<xs:attribute name="transports" type="xs:string" />
 		<xs:attribute name="serviceStatus" type="activeInactive" />
 	</xs:complexType>

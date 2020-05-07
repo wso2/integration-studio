@@ -214,11 +214,11 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document doc = builder.parse(pomFile);
 
-            XPathExpression xpRepo = XPathFactory.newInstance().newXPath().compile(DockerProjectConstants.TARGET_REPOSITORY_XPATH);
+            XPathExpression xpRepo = XPathFactory.newInstance().newXPath().compile(DockerProjectConstants.TARGET_REPOSITORY_XPATH_BUILD);
             String repository = xpRepo.evaluate(doc);
             setTargetRepository(repository);
 
-            XPathExpression xpTag = XPathFactory.newInstance().newXPath().compile(DockerProjectConstants.TARGET_TAG_XPATH);
+            XPathExpression xpTag = XPathFactory.newInstance().newXPath().compile(DockerProjectConstants.TARGET_TAG_XPATH_BUILD);
             String tag = xpTag.evaluate(doc);
             setTargetTag(tag);
             

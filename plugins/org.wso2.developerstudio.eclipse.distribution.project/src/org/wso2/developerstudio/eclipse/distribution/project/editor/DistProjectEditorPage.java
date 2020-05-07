@@ -105,6 +105,8 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 	                                                      "org.wso2.developerstudio.register.server.role";
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+	
+	private static final int TEXT_BOX_WIDTH = 350;
 
 	private IFile pomFileRes;
 	private File pomFile;
@@ -262,7 +264,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 		                                                 SWT.NONE);
 		txtGroupId.setText(getGroupId());
 		GridData gd_txtGroupId = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
-		gd_txtGroupId.widthHint = 180;
+		gd_txtGroupId.widthHint = TEXT_BOX_WIDTH;
 		txtGroupId.setLayoutData(gd_txtGroupId);
 		txtGroupId.addModifyListener(new ModifyListener() {
 
@@ -281,7 +283,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 		                                                    SWT.NONE | SWT.READ_ONLY);
 		txtArtifactId.setText(getArtifactId());
 		GridData gd_txtArtifactId = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
-		gd_txtArtifactId.widthHint = 180;
+		gd_txtArtifactId.widthHint = TEXT_BOX_WIDTH;
 		txtArtifactId.setLayoutData(gd_txtArtifactId);
 
 		managedForm.getToolkit().createLabel(managedForm.getForm().getBody(), "Version", SWT.NONE);
@@ -291,7 +293,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 		                                                 SWT.NONE);
 		txtVersion.setText(getVersion());
 		GridData gd_txtVersion = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
-		gd_txtVersion.widthHint = 180;
+		gd_txtVersion.widthHint = TEXT_BOX_WIDTH;
 		txtVersion.setLayoutData(gd_txtVersion);
 		txtVersion.addModifyListener(new ModifyListener() {
 

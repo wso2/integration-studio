@@ -43,6 +43,7 @@ import org.wso2.developerstudio.eclipse.docker.distribution.Activator;
 import org.wso2.developerstudio.eclipse.docker.distribution.utils.DockerProjectConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 
 public class KubernetesArtifactsGenerationWizardPage extends WizardPage {
 
@@ -166,7 +167,7 @@ public class KubernetesArtifactsGenerationWizardPage extends WizardPage {
         String workspacePath = wroot.getLocation().toString() + File.separator;
         for (IProject project : allProjects) {
             try {
-                if (project.hasNature(DockerProjectConstants.KUBERNETES_NATURE)) {
+                if (project.hasNature(Constants.KUBERNETES_EXPORTER_PROJECT_NATURE)) {
                     k8sProjects.add(project.getLocation().toString().replaceAll(workspacePath, ""));
                 }
             } catch (CoreException e) {

@@ -42,6 +42,7 @@ import org.wso2.developerstudio.eclipse.docker.distribution.model.DockerHubAuth;
 import org.wso2.developerstudio.eclipse.docker.distribution.utils.DockerProjectConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 
 /**
  * Class responsible for handle generating Docker image from plugin.xml.
@@ -140,7 +141,7 @@ public class DockerRunMavenAction implements IActionDelegate {
      */
     private void readContainerProjectNature(IProject project) {
         try {
-            if (project.hasNature(DockerProjectConstants.KUBERNETES_NATURE)) {
+            if (project.hasNature(Constants.KUBERNETES_EXPORTER_PROJECT_NATURE)) {
                 setContainerType(DockerProjectConstants.KUBERNETES_CONTAINER);
             } else {
                 setContainerType(DockerProjectConstants.DOCKER_CONTAINER);

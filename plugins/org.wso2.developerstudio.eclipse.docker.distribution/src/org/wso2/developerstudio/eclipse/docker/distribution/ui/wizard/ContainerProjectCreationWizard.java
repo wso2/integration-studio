@@ -67,6 +67,7 @@ import org.wso2.developerstudio.eclipse.docker.distribution.utils.DockerProjectC
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
+import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 import org.wso2.developerstudio.eclipse.platform.ui.utils.PlatformUIConstants;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.pages.MavenDetailsPage;
@@ -245,6 +246,16 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
                 dockerModel.setKubernetesExporterProjectChecked(false);
             }
         	
+            // To make sure that the createNewProject will go through createProjectInSelectionSpace method in
+            // AbstractWSO2ProjectCreationWizard, isUserDefined is set to false and location is changed accordingly.
+            // Method createProjectInSelectionSpace, adds the project to the maven multi module project if it is the
+            // parent project
+            if (this.getModel().isUserSet()) {
+                String name = this.getModel().getProjectName();
+                File projectLocation = new File(this.getModel().getLocation().getPath() + File.separator + name);
+                this.getModel().setLocation(projectLocation);
+                this.getModel().setIsUserDefine(false);
+            }
             project = createNewProject();
 
             // Creating CarbonApps and Libs and CarbonHome folders
@@ -266,14 +277,14 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
                 // Copy integration CR yml file and properties file to the project
                 copyKubeYamlFile();
                 
-                ProjectUtils.addNatureToProject(project, false, DockerProjectConstants.KUBERNETES_NATURE);
+                ProjectUtils.addNatureToProject(project, false, Constants.KUBERNETES_EXPORTER_PROJECT_NATURE);
                 MavenUtils.updateWithMavenEclipsePlugin(pomfile, new String[] {},
-                        new String[] { DockerProjectConstants.KUBERNETES_NATURE });
+                        new String[] { Constants.KUBERNETES_EXPORTER_PROJECT_NATURE });
                 
             } else if (dockerModel.isDockerExporterProjectChecked()) {
-                ProjectUtils.addNatureToProject(project, false, DockerProjectConstants.DOCKER_NATURE);
+                ProjectUtils.addNatureToProject(project, false, Constants.DOCKER_EXPORTER_PROJECT_NATURE);
                 MavenUtils.updateWithMavenEclipsePlugin(pomfile, new String[] {},
-                        new String[] { DockerProjectConstants.DOCKER_NATURE });
+                        new String[] { Constants.DOCKER_EXPORTER_PROJECT_NATURE });
             }
             
             project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());

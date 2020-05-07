@@ -43,6 +43,7 @@ import org.wso2.developerstudio.eclipse.docker.distribution.utils.DockerProjectC
 import org.wso2.developerstudio.eclipse.docker.distribution.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 
 public class DockerGenerationWizardPage extends WizardPage {
 
@@ -211,7 +212,7 @@ public class DockerGenerationWizardPage extends WizardPage {
         String workspacePath = wroot.getLocation().toString() + File.separator;
         for (IProject project : allProjects) {
             try {
-                if (project.hasNature(DockerProjectConstants.DOCKER_NATURE)) {
+                if (project.hasNature(Constants.DOCKER_EXPORTER_PROJECT_NATURE)) {
                     dockerProjects.add(project.getLocation().toString().replaceAll(workspacePath, ""));
                 }
             } catch (CoreException e) {

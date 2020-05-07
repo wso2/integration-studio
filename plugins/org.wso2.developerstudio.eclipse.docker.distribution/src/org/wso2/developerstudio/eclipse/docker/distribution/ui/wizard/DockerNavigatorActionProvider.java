@@ -33,6 +33,7 @@ import org.wso2.developerstudio.eclipse.docker.distribution.Activator;
 import org.wso2.developerstudio.eclipse.docker.distribution.utils.DockerProjectConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 
 /**
  * Navigation action for docker projects in the workspace.
@@ -52,8 +53,10 @@ public class DockerNavigatorActionProvider extends CommonActionProvider {
 				IFile file = (IFile) firstElement;
 
 				try {
-					if (file.getProject().getDescription().hasNature(DockerProjectConstants.DOCKER_NATURE)
-							|| file.getProject().getDescription().hasNature(DockerProjectConstants.KUBERNETES_NATURE)) {
+					if (file.getProject().getDescription()
+							.hasNature(Constants.DOCKER_EXPORTER_PROJECT_NATURE)
+							|| file.getProject().getDescription().hasNature(
+									Constants.KUBERNETES_EXPORTER_PROJECT_NATURE)) {
 						openEditorAction.setSelection(file);
 						actionBars.setGlobalActionHandler(ICommonActionConstants.OPEN, openEditorAction);
 					}

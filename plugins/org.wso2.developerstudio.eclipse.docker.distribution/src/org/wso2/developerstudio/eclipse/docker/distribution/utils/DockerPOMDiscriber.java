@@ -29,6 +29,7 @@ import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.docker.distribution.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 
 /**
  * Describer class to recognize docker project pom files
@@ -48,8 +49,8 @@ public class DockerPOMDiscriber extends XMLContentDescriber {
 					IProject project = ((File) firstElement).getProject();
 					String[] natureIDs = project.getDescription().getNatureIds();
 					for (String natureID : natureIDs) {
-						if (natureID.equals(DockerProjectConstants.DOCKER_NATURE)
-								|| natureID.equals(DockerProjectConstants.KUBERNETES_NATURE)) {
+						if (natureID.equals(Constants.DOCKER_EXPORTER_PROJECT_NATURE)
+								|| natureID.equals(Constants.KUBERNETES_EXPORTER_PROJECT_NATURE)) {
 							return VALID;
 						} 
 					}

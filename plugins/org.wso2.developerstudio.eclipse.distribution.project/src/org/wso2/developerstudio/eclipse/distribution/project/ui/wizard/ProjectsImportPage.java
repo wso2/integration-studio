@@ -39,6 +39,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
@@ -69,6 +70,7 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubProgressMonitor;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
@@ -130,6 +132,7 @@ import org.w3c.dom.Document;
 import org.wso2.developerstudio.eclipse.distribution.project.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 import org.xml.sax.SAXException;
 
 public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
@@ -139,6 +142,12 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 	public static final String METADATA_FOLDER = ".metadata"; //$NON-NLS-1$
 
 	private static final String MAVEN_MULTI_MODULE_NATURE = "org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature";
+	
+	private static final String DIR_DOT_METADATA = ".metadata";
+	
+	private static final String DIR_CONNECTORS = ".Connectors";
+	
+	private static final String ZIP_FILE_EXTENSION = ".zip";
 
 	private ILeveledImportStructureProvider structureProvider;
 
@@ -1276,6 +1285,8 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 						mainProject.open(IResource.BACKGROUND_REFRESH, new NullProgressMonitor());
 						mainProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 
+						// If this is not a maven project, try to import connectors
+						importConnectorsFromConnectorExporterProject(mainProject);
 						// create sub projects/directories under the created parent project
 						createProjectsInWorkspaceReadingNature(selectedProjectsWithoutMMM, directory, mainProject, monitor);
 					} catch (CoreException e) {
@@ -1339,6 +1350,9 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 					operation.setOverwriteResources(true);
 					operation.setCreateContainerStructure(false);
 					operation.run(monitor);
+					
+					// If this is a connector exporter project, import connectors.
+					importConnectorsFromConnectorExporterProject(subIProject);
 				} else {
 					Files.copy(
 							resourceFile.toPath(), (new File(projectWhichWantToCopy.getLocation().toOSString()
@@ -1354,6 +1368,53 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 			log.error("CoreException exception while importing", e);
 		} catch (IOException e) {
 			log.error("IOException exception while importing", e);
+		}
+	}
+	
+	/**
+	 * This method import connectors inside a given connector project.
+	 * 
+	 * @param project project to import connectors
+	 */
+	private void importConnectorsFromConnectorExporterProject(
+			IProject project) {
+		try {
+			if (project.hasNature(Constants.CONNECTOR_PROJECT_NATURE)) {
+				List fileList = FileSystemStructureProvider.INSTANCE.getChildren(new File(project.getLocationURI()));
+				String parentDirectoryPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString()
+						+ File.separator + DIR_DOT_METADATA + File.separator + DIR_CONNECTORS;
+				File parentDirectory = new File(parentDirectoryPath);
+				if (!parentDirectory.exists()) {
+					parentDirectory.mkdir();
+				}
+				for (Object resource : fileList) {
+					File resourceFile = (File) resource;
+					String source = resourceFile.getAbsolutePath();
+					// Check if the file is a connector.
+					if ((source.length() > 4) && source.substring(source.length() - 4).equals(ZIP_FILE_EXTENSION)) {
+						// Copy zip file.
+						FileUtils.copyFileToDirectory(resourceFile, parentDirectory);
+
+						// Extract the zip file.
+						String[] segments = source.split(Pattern.quote(File.separator));
+						String zipFileName = segments[segments.length - 1].split(ZIP_FILE_EXTENSION)[0];
+						String zipDestination = parentDirectoryPath + File.separator + zipFileName;
+						Archiver archiver = ArchiverFactory.createArchiver(ArchiveFormat.ZIP);
+						archiver.extract(resourceFile, new File(zipDestination));
+
+						// Refresh the project.
+						project.refreshLocal(IResource.DEPTH_INFINITE, null);
+						
+						// Set ConnectorAdded flag to true.
+						IEclipsePreferences rootNode = Platform.getPreferencesService().getRootNode();
+						rootNode.put("ConnectorAdded", String.valueOf(true));
+					}
+				}
+			}
+		} catch (CoreException e) {
+			log.error("Connector import : Failed to check project nature : ", e);
+		} catch (IOException e) {
+			log.error("Error while copying the connector file : ", e);
 		}
 	}
 
@@ -1422,6 +1483,8 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 					structureProvider, this, fileSystemObjects);
 			operation.setContext(getShell());
 			operation.run(monitor);
+			// If this is a connector exporter project, import connectors.
+			importConnectorsFromConnectorExporterProject(project);
 			return true;
 		}
 		// import from file system
@@ -1465,6 +1528,8 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 				operation.setOverwriteResources(true);
 				operation.setCreateContainerStructure(false);
 				operation.run(monitor);
+				// If this is a connector exporter project, import connectors.
+				importConnectorsFromConnectorExporterProject(project);
 			} else if (copyFiles && importSource != null && project.hasNature(MAVEN_MULTI_MODULE_NATURE)) {
 				createProjectsInWorkspaceReadingNature(selectedAllProjects, importSource, project, monitor);
 			}

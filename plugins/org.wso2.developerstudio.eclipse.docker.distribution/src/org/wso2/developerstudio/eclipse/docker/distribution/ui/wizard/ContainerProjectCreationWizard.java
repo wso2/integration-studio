@@ -112,27 +112,8 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
         if (!newFile.exists()) {
             // Creating the new docker file
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append("FROM ");
-            
-            String remoteRepository;
-            String remoteTag;
-            if (dockerModel.isDockerExporterProjectChecked()) {
-                remoteRepository = dockerModel.getDockerRemoteRepository();
-                remoteTag = dockerModel.getDockerRemoteTag();
-            } else {
-                remoteRepository = dockerModel.getKubeRemoteRepository();
-                remoteTag = dockerModel.getKubeRemoteTag();
-            }
-            if (remoteRepository == null || remoteRepository.isEmpty()) {
-                stringBuilder.append(DockerProjectConstants.DOCKER_DEFAULT_REPOSITORY + ":");
-            } else {
-                stringBuilder.append(remoteRepository + ":");
-            }
-            if (remoteTag == null || remoteTag.isEmpty()) {
-                stringBuilder.append(DockerProjectConstants.DOCKER_DEFAULT_TAG);
-            } else {
-                stringBuilder.append(remoteTag);
-            }
+            stringBuilder.append("ARG BASE_IMAGE").append(System.lineSeparator());
+            stringBuilder.append("FROM ${BASE_IMAGE}");
             stringBuilder.append(System.lineSeparator());
             stringBuilder.append("COPY " + DockerProjectConstants.CARBON_APP_FOLDER + "/*.car "
                     + DockerProjectConstants.CARBON_APP_FOLDER_LOCATION);
@@ -308,9 +289,10 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
                         parentPrj.getVersion(), null, "car"));
                 MavenUtils.addMavenDependency(mavenProject, dependencies);
             }
-
+            
             // Adding maven-dependency plugin
             // This will copy the CAR files from .m2 to CarbonApps folder
+            
             Plugin dependencyPlugin = MavenUtils.createPluginEntry(mavenProject, "org.apache.maven.plugins",
                     "maven-dependency-plugin", DockerProjectConstants.MAVEN_DEPENDENCY_PLUGIN_VERSION, true);
             PluginExecution dependencyPluginExecution = new PluginExecution();
@@ -348,35 +330,59 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
             deploymentTomlPluginExecution.setConfiguration(tomlDom);
             deploymentTomlPlugin.addExecution(deploymentTomlPluginExecution);
 
-            // Adding spotify docker plugin
+            // Adding spotify docker plugin - two executions for Docker build and push
             Plugin spotifyPlugin = MavenUtils.createPluginEntry(mavenProject, "com.spotify", "dockerfile-maven-plugin",
                     DockerProjectConstants.SPOTIFY_DOCKER_PLUGIN_VERSION, true);
-            PluginExecution spotifyPluginExecution = new PluginExecution();
-            spotifyPluginExecution.addGoal("build");
-            spotifyPluginExecution.addGoal("push");
-            spotifyPluginExecution.setId("default");
-
-            String repository;
-            String tag;
-            String spotifyPluginConfig;
             
+            //Docker build execution section
+            PluginExecution spotifyPluginDockerBuildExecution = new PluginExecution();
+            spotifyPluginDockerBuildExecution.addGoal("build");
+            spotifyPluginDockerBuildExecution.setId("docker-build");
+            spotifyPluginDockerBuildExecution.setPhase("install");
+
+            String repository = dockerModel.getDockerTargetRepository();
+            String tag = dockerModel.getDockerTargetTag();
+            String remoteRepository;
+            String remoteTag;
             if (dockerModel.isDockerExporterProjectChecked()) {
-                repository = dockerModel.getDockerTargetRepository();
-                tag = dockerModel.getDockerTargetTag();
-                spotifyPluginConfig = "<configuration>\n" + "<repository>" + repository + "</repository>\n" + "<tag>"
-                        + tag + "</tag>\n" + "</configuration>";
+                remoteRepository = dockerModel.getDockerRemoteRepository();
+                remoteTag = dockerModel.getDockerRemoteTag();
             } else {
-                repository = dockerModel.getKubeTargetRepository();
-                tag = dockerModel.getKubeTargetTag();
-                spotifyPluginConfig = "<configuration>\n" + "<username>${username}</username>\n"
-                        + "<password>${password}</password>\n" + "<repository>" + repository + "</repository>\n"
-                        + "<tag>" + tag + "</tag>\n" + "</configuration>";
+                remoteRepository = dockerModel.getKubeRemoteRepository();
+                remoteTag = dockerModel.getKubeRemoteTag();
             }
+            if (remoteRepository == null || remoteRepository.isEmpty()) {
+                remoteRepository = DockerProjectConstants.DOCKER_DEFAULT_REPOSITORY;
+            } 
+            if (remoteTag == null || remoteTag.isEmpty()) {
+                remoteTag = DockerProjectConstants.DOCKER_DEFAULT_TAG;
+            } 
+            
+            mavenProject.getProperties().put("base.image", repository);
+            mavenProject.getProperties().put("target.repository", repository);
+            mavenProject.getProperties().put("target.tag", tag);
+            String spotifyPluginDockerBuildConfig = "<configuration>\n" + "<repository>${target.repository}</repository>\n" 
+            + "<tag>${target.tag}</tag>\n" + "</configuration>";
 			
-			Xpp3Dom spotifyDom = Xpp3DomBuilder.build(new ByteArrayInputStream(spotifyPluginConfig.getBytes()),
+			Xpp3Dom spotifyDockerBuildDom = Xpp3DomBuilder.build(new ByteArrayInputStream(spotifyPluginDockerBuildConfig.getBytes()),
 					"UTF-8");
-            spotifyPluginExecution.setConfiguration(spotifyDom);
-            spotifyPlugin.addExecution(spotifyPluginExecution);
+			spotifyPluginDockerBuildExecution.setConfiguration(spotifyDockerBuildDom);
+            spotifyPlugin.addExecution(spotifyPluginDockerBuildExecution);
+            
+            //Docker build execution section
+            PluginExecution spotifyPluginDockerPushExecution = new PluginExecution();
+            spotifyPluginDockerPushExecution.addGoal("push");
+            spotifyPluginDockerPushExecution.setId("docker-push");
+            spotifyPluginDockerPushExecution.setPhase("install");
+            
+            String spotifyPluginDockerPushConfig = "<configuration>\n" + "<username>${username}</username>\n"
+                    + "<password>${password}</password>\n" + "<repository>${target.repository}</repository>\n"
+                    + "<tag>${target.tag}</tag>\n" + "<buildArgs><BASE_IMAGE>${base.image}</BASE_IMAGE></buildArgs></configuration>";
+            
+            Xpp3Dom spotifyDockerPushDom = Xpp3DomBuilder.build(new ByteArrayInputStream(spotifyPluginDockerPushConfig.getBytes()),
+					"UTF-8");
+            spotifyPluginDockerPushExecution.setConfiguration(spotifyDockerPushDom);
+            spotifyPlugin.addExecution(spotifyPluginDockerPushExecution);
 
             // Adding dependencies
             List<Dependency> dependencyList = new ArrayList<Dependency>();

@@ -312,13 +312,13 @@ public class DockerBuildActionUtil {
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document doc = builder.parse(pomFile);
 
-            XPath xPathRepo = XPathFactory.newInstance().newXPath();
-            Node repositoryNode = (Node) xPathRepo.compile(DockerProjectConstants.TARGET_REPOSITORY_XPATH).evaluate(doc,
+            XPath xPathBuildRepo = XPathFactory.newInstance().newXPath();
+            Node repositoryNode = (Node) xPathBuildRepo.compile(DockerProjectConstants.TARGET_REPOSITORY_XPATH_BUILD).evaluate(doc,
                     XPathConstants.NODE);
             repositoryNode.setTextContent(targetRepository);
 
-            XPath xPathTag = XPathFactory.newInstance().newXPath();
-            Node tagNode = (Node) xPathTag.compile(DockerProjectConstants.TARGET_TAG_XPATH).evaluate(doc,
+            XPath xPathBuildTag = XPathFactory.newInstance().newXPath();
+            Node tagNode = (Node) xPathBuildTag.compile(DockerProjectConstants.TARGET_TAG_XPATH_BUILD).evaluate(doc,
                     XPathConstants.NODE);
             tagNode.setTextContent(targetTag);
 
@@ -368,7 +368,8 @@ public class DockerBuildActionUtil {
             Document doc = builder.parse(pomFile);
 
             XPath xPathRepo = XPathFactory.newInstance().newXPath();
-            Node repositoryNode = (Node) xPathRepo.compile(DockerProjectConstants.TARGET_REPOSITORY_XPATH).evaluate(doc, XPathConstants.NODE);
+            Node repositoryNode = (Node) xPathRepo.compile(DockerProjectConstants.TARGET_REPOSITORY_XPATH_BUILD)
+                    .evaluate(doc, XPathConstants.NODE);
             repositoryNode.setTextContent(targetRepository);
 
             Transformer tf = TransformerFactory.newInstance().newTransformer();
@@ -447,7 +448,8 @@ public class DockerBuildActionUtil {
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document doc = builder.parse(pomFile);
 
-            XPathExpression xpRepo = XPathFactory.newInstance().newXPath().compile(DockerProjectConstants.TARGET_REPOSITORY_XPATH);
+            XPathExpression xpRepo = XPathFactory.newInstance().newXPath()
+                    .compile(DockerProjectConstants.TARGET_REPOSITORY_XPATH_BUILD);
             repository = xpRepo.evaluate(doc);
         } catch (XPathExpressionException e) {
             log.error("XPathExpressionException while reading pomfile", e);

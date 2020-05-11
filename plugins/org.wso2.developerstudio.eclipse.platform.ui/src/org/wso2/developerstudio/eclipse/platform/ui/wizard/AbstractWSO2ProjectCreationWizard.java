@@ -26,6 +26,8 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 import org.apache.maven.model.Parent;
+import org.apache.maven.model.Plugin;
+import org.apache.maven.model.Profile;
 import org.apache.maven.model.Repository;
 import org.apache.maven.model.RepositoryPolicy;
 import org.apache.maven.project.MavenProject;
@@ -90,6 +92,7 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 
 	protected final static String DIST_EDITOR_ID =
 	                                               "org.wso2.developerstudio.eclipse.distribution.project.editor.DistProjectEditor";
+	protected final static String MMM_EDITOR_ID = "org.wso2.developerstudio.eclipse.maven.multi.module.editor.DistProjectEditor";
 	protected final static String JDT_BUILD_COMMAND = "org.eclipse.jdt.core.javabuilder";
 	protected final static String JDT_PROJECT_NATURE = "org.eclipse.jdt.core.javanature";
 	private Map<String, Text> map = new HashMap<String, Text>();
@@ -349,12 +352,100 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 		if (pomFile.exists()) {
 			MavenProject mavenProject = MavenUtils.getMavenProject(pomFile.getLocation().toFile());
 			mavenProject.getModules().add(name);
-			List<String> modules = mavenProject.getModules();
-			List<String> sortedModuleList = getSortedModuleList(modules, parentProject);
+			List<String> modules = new ArrayList<>();
+			for (String module : mavenProject.getModules()) {
+				modules.add(module);
+			}
+			for (Profile profile : mavenProject.getModel().getProfiles()) {
+				for (String module : profile.getModules()) {
+					if (!modules.contains(module)) {
+						modules.add(module);
+					}
+				}
+			}
+
+			// Add profile to POM if not exits
+			updatePOMToProfiles(mavenProject);
+
+			Profile dockerProfile = getMavenProfile(mavenProject,
+					Constants.DOCKER_PROFILE);
+			Profile kubernetesProfile = getMavenProfile(mavenProject,
+					Constants.KUBERNETES_PROFILE);
+			Profile defaultProfile = getMavenProfile(mavenProject,
+					Constants.DEFAULT_PROFILE);
+
 			mavenProject.getModules().clear();
+			dockerProfile.getModules().clear();
+			kubernetesProfile.getModules().clear();
+			defaultProfile.getModules().clear();
+
+			List<IProject> projectList = new ArrayList<IProject>();
+			List<String> nonProjectModuleList = new ArrayList<String>();
+			List<String> sortedModuleList = new ArrayList<String>();
+			for (String string : modules) {
+				IProject projectFromModule = getProjectFromModule(string);
+				if (projectFromModule != null) {
+					projectList.add(projectFromModule);
+				} else {
+					nonProjectModuleList.add(string);
+				}
+			}
+
+			// Add projects to Docker and K8S profile according to nature
+			for (IProject iProject : sortProjects(projectList)) {
+				String relativePath = FileUtils
+						.getRelativePath(parentProject.getLocation().toFile(),
+								iProject.getLocation().toFile())
+						.replaceAll(Pattern.quote(File.separator), "/");
+				if (iProject
+						.hasNature(Constants.DOCKER_EXPORTER_PROJECT_NATURE)) {
+					dockerProfile.getModules().add(relativePath);
+					defaultProfile.getModules().add(relativePath);
+				} else if (iProject.hasNature(
+						Constants.KUBERNETES_EXPORTER_PROJECT_NATURE)) {
+					kubernetesProfile.getModules().add(relativePath);
+					defaultProfile.getModules().add(relativePath);
+				} else {
+					sortedModuleList.add(relativePath);
+				}
+			}
+
+			sortedModuleList.addAll(nonProjectModuleList);
 			mavenProject.getModules().addAll(sortedModuleList);
+			
 			MavenUtils.saveMavenProject(mavenProject, pomFile.getLocation().toFile());
 			parentProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+		}
+	}
+
+	/**
+	 * This method adds profile to the POM file if not exits.
+	 * 
+	 * @param mavenProject project to which profiles to be added
+	 */
+	private void updatePOMToProfiles(MavenProject mavenProject) {
+		// Checking if profiles exits
+		if (mavenProject.getModel().getProfiles().size() != Constants
+				.getAllMavenMultiModuleProfiles().size()) {
+			for (String profileName : Constants
+					.getAllMavenMultiModuleProfiles()) {
+				if (profileName.equals(Constants.DEFAULT_PROFILE)) {
+					MavenUtils.createProfileEntry(mavenProject, profileName,
+							true);
+				} else {
+					MavenUtils.createProfileEntry(mavenProject, profileName,
+							false);
+				}
+			}
+		}
+		
+		// Moving existing build sections from root to inside the profiles.
+		while (!mavenProject.getBuild().getPlugins().isEmpty()) {
+			Plugin plugin = mavenProject.getBuild().getPlugins().get(0);
+			for (Profile profile : mavenProject.getModel().getProfiles()) {
+				profile.getBuild().addPlugin(plugin);
+			}
+			mavenProject.getBuild().getPlugins().remove(plugin);
 		}
 	}
 
@@ -389,7 +480,7 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 		String[] split = moduleName.split(Pattern.quote("/"));
 		return ResourcesPlugin.getWorkspace().getRoot().getProject(split[split.length - 1]);
 	}
-
+	
 	public void createPOM(File pomLocation) throws Exception {
 		MavenInfo mavenInfo = getModel().getMavenInfo();
 
@@ -477,7 +568,8 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 			IEditorReference[] editorReferences = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
 			                                                .getEditorReferences();
 			for (IEditorReference reference : editorReferences) {
-				if (DIST_EDITOR_ID.equals(reference.getId())) {
+				// Update referred Maven Multi module project editors and Composite project editors
+				if (DIST_EDITOR_ID.equals(reference.getId()) || MMM_EDITOR_ID.equals(reference.getId())) {
 					IEditorPart editor = reference.getEditor(false);
 					if (editor instanceof Refreshable) {
 						Refreshable refreshable = (Refreshable) editor;
@@ -514,26 +606,74 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 
 	public abstract IResource getCreatedResource();
 
+	/**
+	 * This method sort given projects according to their order in which they
+	 * should be built.
+	 * 
+	 * @param projects projects to be sorted
+	 * @return sorted projects
+	 */
 	protected List<IProject> sortProjects(List<IProject> projects) {
 		try {
-			List<IProject> distributionProjects = new ArrayList<IProject>();
-			List<IProject> projectList = new ArrayList<IProject>();
+			List<List<IProject>> projectMap = new ArrayList<>();
+
+			for (int i = 0; i < 9; i++) {
+				projectMap.add(new ArrayList<IProject>());
+			}
 
 			for (IProject iProject : projects) {
-				if (iProject.hasNature(Constants.DISTRIBUTION_PROJECT_NATURE)) {
-					distributionProjects.add(iProject);
+				if (iProject.hasNature(Constants.GENERAL_PROJECT_NATURE)) {
+					projectMap.get(1).add(iProject);
+				} else if (iProject
+						.hasNature(Constants.CONNECTOR_PROJECT_NATURE)) {
+					projectMap.get(2).add(iProject);
+				} else if (iProject
+						.hasNature(Constants.DATASOURCE_PROJECT_NATURE)) {
+					projectMap.get(3).add(iProject);
+				} else if (iProject.hasNature(Constants.DS_PROJECT_NATURE)) {
+					projectMap.get(4).add(iProject);
+				} else if (iProject
+						.hasNature(Constants.MEDIATOR_PROJECT_NATURE)) {
+					projectMap.get(5).add(iProject);
+				} else if (iProject
+						.hasNature(Constants.CARBON_UI_PROJECT_NATURE)) {
+					projectMap.get(6).add(iProject);
+				} else if (iProject.hasNature(Constants.ESB_PROJECT_NATURE)) {
+					projectMap.get(7).add(iProject);
+				} else if (iProject
+						.hasNature(Constants.DISTRIBUTION_PROJECT_NATURE)) {
+					projectMap.get(8).add(iProject);
 				} else {
-					projectList.add(iProject);
+					projectMap.get(0).add(iProject);
 				}
 			}
-			projects = projectList;
-			for (IProject iProject : distributionProjects) {
-				projectList.add(iProject);
+
+			List<IProject> sortedProjects = new ArrayList<>();
+			for (List<IProject> list : projectMap) {
+				sortedProjects.addAll(list);
 			}
+			return sortedProjects;
+		    
 		} catch (CoreException e) {
 			log.warn("Project list cannot be sorted", e);
 		}
 		return projects;
+	}
+	
+	/**
+	 * The method find and return a required maven profile.
+	 * 
+	 * @param project projects in which the profile resides
+	 * @param id Id of the profile to be found
+	 * @return
+	 */
+	protected Profile getMavenProfile(MavenProject project, String id) {
+		for (Profile profile : project.getModel().getProfiles()) {
+			if (profile.getId().equals(id)) {
+				return profile;
+			}
+		}
+		return null;
 	}
 	
 	public MavenDetailsPage getMavenDetailPage() {

@@ -1,10 +1,12 @@
 package org.wso2.developerstudio.eclipse.maven.util;
 
+import org.apache.maven.model.Activation;
 import org.apache.maven.model.Build;
 import org.apache.maven.model.Dependency;
 import org.apache.maven.model.Model;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
+import org.apache.maven.model.Profile;
 import org.apache.maven.model.Repository;
 import org.apache.maven.model.RepositoryPolicy;
 import org.apache.maven.model.io.xpp3.MavenXpp3Reader;
@@ -147,6 +149,89 @@ public class MavenUtils {
 		}
 		MavenUtils.createMainConfigurationNode(plugin);
 		project.getBuild().addPlugin(plugin);
+		return plugin;
+	}
+	
+	/**
+	 * This method add a new profile to given maven project if not exists.
+	 * 
+	 * @param project project to which profile should be added
+	 * @param id name of the profile to be added
+	 * @param activationByDefault should the profile be activated by default
+	 * @return
+	 */
+	public static Profile createProfileEntry(MavenProject project, String id,
+			boolean activationByDefault) {
+		// Check if profile already exists
+		for (Profile profile : project.getModel().getProfiles()) {
+			if (profile.getId().equals(id)) {
+				return profile;
+			}
+		}
+		
+		//Create a new one because profile does not exist
+		Profile profile = new Profile();
+		profile.setId(id);
+		if (activationByDefault) {
+			if (profile.getActivation() == null) {
+				profile.setActivation(new Activation());
+			}
+			profile.getActivation().setActiveByDefault(true);
+		}
+		profile.setBuild(new Build());
+		project.getModel().getProfiles().add(profile);
+		return profile;
+	}
+
+	/**
+	 * This method add a module to a given profile.
+	 * 
+	 * @param profile profile to which module should be added
+	 * @param module name of the module
+	 */
+	public static void addModuleToProfile(Profile profile, String module) {
+		if (!profile.getModules().contains(module)) {
+			profile.getModules().add(module);
+		}
+	}
+
+	/**
+	 * This method creates a plugin inside a given maven profile.
+	 * 
+	 * @param project project to which plugin should be added
+	 * @param groupId group Id of the plugin
+	 * @param artifactId artifact Id of the plugin
+	 * @param version version of the plugin
+	 * @param isExtension is the plugin an extension
+	 * @param profileId name of the profile to which plugin should be added
+	 * @return
+	 */
+	public static Plugin createPluginEntry(MavenProject project, String groupId,
+			String artifactId, String version, boolean isExtension,
+			String profileId) {
+		Plugin plugin = new Plugin();
+		plugin.setGroupId(groupId);
+		plugin.setArtifactId(artifactId);
+		plugin.setVersion(version);
+		if (isExtension) {
+			plugin.setExtensions(true);
+		}
+		MavenUtils.createMainConfigurationNode(plugin);
+		
+		// Retrieve the profile with given Id
+		Profile selectedProfile = null;
+		for (Profile profile : project.getModel().getProfiles()) {
+			if (profile.getId().equals(profileId)) {
+				selectedProfile = profile;
+				break;
+			}
+		}
+		
+		// Create a profile if there is no profile with given Id
+		if (selectedProfile == null) {
+			selectedProfile = createProfileEntry(project, profileId, false);
+		}
+		selectedProfile.getBuild().addPlugin(plugin);
 		return plugin;
 	}
 	
@@ -475,6 +560,49 @@ public class MavenUtils {
 		MavenUtils.saveMavenProject(mavenProject, pomLocation);
 	}
 	
+	/**
+	 * This method update the maven project with eclipse plugin.
+	 * 
+	 * @param pomLocation
+	 *            location of the POM file of the project
+	 * @param buildCommands
+	 *            build commands to be added to the plugin
+	 * @param projectNatures
+	 *            natures to be added to the plugin
+	 * @param profiles
+	 *            list of profile to which plugin should be added
+	 * @throws Exception
+	 *             exceptions occurs during getting and saving the maven project
+	 */
+	public static void updateWithMavenEclipsePlugin(File pomLocation,
+			String[] buildCommands, String[] projectNatures,
+			List<String> profiles) throws Exception {
+		Plugin plugin;
+		MavenProject mavenProject = MavenUtils.getMavenProject(pomLocation);
+		for (String profileId : profiles) {
+			plugin = MavenUtils.createPluginEntry(mavenProject,
+					"org.apache.maven.plugins", "maven-eclipse-plugin", "2.9",
+					false, profileId);
+			Xpp3Dom configurationNode = createMainConfigurationNode();
+			Xpp3Dom buildCommandsNode = createXpp3Node(configurationNode,
+					"buildcommands");
+			for (String string : buildCommands) {
+				Xpp3Dom buildCommand = createXpp3Node(buildCommandsNode,
+						"buildcommand");
+				buildCommand.setValue(string);
+			}
+			Xpp3Dom projectNaturesNode = createXpp3Node(configurationNode,
+					"projectnatures");
+			for (String string : projectNatures) {
+				Xpp3Dom projectNature = createXpp3Node(projectNaturesNode,
+						"projectnature");
+				projectNature.setValue(string);
+			}
+			plugin.setConfiguration(configurationNode);
+		}
+		MavenUtils.saveMavenProject(mavenProject, pomLocation);
+	}
+	
 	public static void addMavenBundlePluginForCarbonUI(MavenProject mavenProject, IProject eclipseProject){
 //		Plugin plugin;
 //		PluginExecution pluginExecution;
@@ -668,4 +796,5 @@ public class MavenUtils {
 			}
 		}
 	}
+	
 }

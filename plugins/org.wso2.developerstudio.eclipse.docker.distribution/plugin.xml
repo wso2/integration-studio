@@ -155,6 +155,24 @@
         </objectContribution>
     </extension>
     
+     <extension point="org.eclipse.ui.popupMenus">
+        <objectContribution objectClass="org.eclipse.core.resources.IProject" 
+        	id="org.wso2.developerstudio.eclipse.docker.distribution.exportandpushdocker">
+            <action
+                label="Push Docker Image"
+                icon="icons/docker.png"
+                class="org.wso2.developerstudio.eclipse.docker.distribution.action.DockerRunMavenAction"
+                id="org.wso2.developerstudio.eclipse.docker.distribution.exportandpushdocker">
+            </action>
+            <enablement>
+                <adapt type="org.eclipse.core.resources.IProject">
+                    <test property="org.eclipse.core.resources.projectNature" 
+                    value="org.wso2.developerstudio.eclipse.docker.distribution.project.nature" />
+                </adapt>
+            </enablement>
+        </objectContribution>
+    </extension>
+    
     <extension point="org.eclipse.ui.popupMenus">
         <objectContribution objectClass="org.eclipse.core.resources.IProject" 
         	id="org.wso2.developerstudio.eclipse.docker.distribution.exportbuildandgeneratedocker">

@@ -96,7 +96,7 @@ public class DockerBuildActionUtil {
     public static final String MAVEN_WORKING_DIR_KEY = "org.eclipse.jdt.launching.WORKING_DIRECTORY";
     public static final String MAVEN_ENVIRONMENT_KEY = "org.eclipse.debug.core.environmentVariables";
     public static final String JAVA_HOME_KEY = "JAVA_HOME";
-    public static final String MAVEN_BUILD_GOAL = "install";
+    public static final String MAVEN_BUILD_GOAL = "clean install -Ddockerfile.push.skip";
     public static final String JDK_PATH = "jdk-home";
     public static final String TOOLING_PATH_MAC = "/Applications/IntegrationStudio.app/Contents/Eclipse";
     public static final String JDK_PATH_MAC = "jdk-home/Contents/Home";
@@ -210,8 +210,8 @@ public class DockerBuildActionUtil {
      * @param project selected IProject
      * @throws CoreException Error occurred while running the maven job
      */
-    public static void runDockerBuildWithMavenProfile(IProject project, String mavenGoal, DockerHubAuth configuration)
-            throws CoreException {
+    public static void runDockerBuildWithMavenProfile(IProject project, String mavenGoal, DockerHubAuth configuration,
+            boolean isThisOldContainerProject) throws CoreException {
         ILaunchManager launchManager = DebugPlugin.getDefault().getLaunchManager();
 
         // remove existing maven launcher for docker build
@@ -244,13 +244,29 @@ public class DockerBuildActionUtil {
                 boolean isBuildOver = false;
 
                 // execute build and push maven jobs using a another java thread
-                MavenJobThread mvnTread = new MavenJobThread(isBuildOver, launch, project, configuration);
+                MavenJobThread mvnTread = new MavenJobThread(isBuildOver, launch, project, configuration,
+                        isThisOldContainerProject);
                 Thread newThread = new Thread(mvnTread);
                 newThread.start();
 
                 break;
             }
         }
+    }
+    
+    /**
+     * Method of creating maven launcher profile in ILaunchManager.
+     * 
+     * @param project selected IProject
+     * @param configuration dockerHub credentials
+     * @param isThisOldContainerProject
+     * @throws CoreException Error occurred while running the maven job
+     */
+    public static void runDockerPushWithMavenProfile(IProject project, DockerHubAuth configuration,
+            boolean isThisOldContainerProject) throws CoreException {
+        MavenJobThread mvnTread = new MavenJobThread(true, null, project, configuration, isThisOldContainerProject);
+        Thread newThread = new Thread(mvnTread);
+        newThread.start();
     }
 
     /**
@@ -304,23 +320,41 @@ public class DockerBuildActionUtil {
      * @param targetRepository value for target repository
      * @param targetTag pom value for target tag
      * @param isConfigMapEnabaled value for config map enabled or disabled
+     * @param isThisOldContainerProject
      */
-    public static void changeDockerImageDataInPOMPlugin(File pomFile, String targetRepository, String targetTag,
-            boolean isConfigMapEnabaled, IFile pomIFile ) {
+    public static void changeDockerImageDataInPOMPlugin(File pomFile, String baseImage, String targetRepository, String targetTag,
+            boolean isConfigMapEnabaled, IFile pomIFile, boolean isThisOldContainerProject) {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document doc = builder.parse(pomFile);
 
-            XPath xPathBuildRepo = XPathFactory.newInstance().newXPath();
-            Node repositoryNode = (Node) xPathBuildRepo.compile(DockerProjectConstants.TARGET_REPOSITORY_XPATH_BUILD).evaluate(doc,
-                    XPathConstants.NODE);
-            repositoryNode.setTextContent(targetRepository);
+            if (isThisOldContainerProject) {
+                XPath xPathBuildRepo = XPathFactory.newInstance().newXPath();
+                Node repositoryNode = (Node) xPathBuildRepo.compile(DockerProjectConstants.TARGET_REPOSITORY_XPATH_OLD).evaluate(doc,
+                        XPathConstants.NODE);
+                repositoryNode.setTextContent(targetRepository);
 
-            XPath xPathBuildTag = XPathFactory.newInstance().newXPath();
-            Node tagNode = (Node) xPathBuildTag.compile(DockerProjectConstants.TARGET_TAG_XPATH_BUILD).evaluate(doc,
-                    XPathConstants.NODE);
-            tagNode.setTextContent(targetTag);
+                XPath xPathBuildTag = XPathFactory.newInstance().newXPath();
+                Node tagNode = (Node) xPathBuildTag.compile(DockerProjectConstants.TARGET_TAG_XPATH_OLD).evaluate(doc,
+                        XPathConstants.NODE);
+                tagNode.setTextContent(targetTag);
+            } else {
+                XPath xPathBaseImage = XPathFactory.newInstance().newXPath();
+                Node baseImageNode = (Node) xPathBaseImage.compile(DockerProjectConstants.BASE_IMAGE_XPATH).evaluate(doc,
+                        XPathConstants.NODE);
+                baseImageNode.setTextContent(baseImage);
+                
+                XPath xPathBuildRepo = XPathFactory.newInstance().newXPath();
+                Node repositoryNode = (Node) xPathBuildRepo.compile(DockerProjectConstants.TARGET_REPOSITORY_XPATH).evaluate(doc,
+                        XPathConstants.NODE);
+                repositoryNode.setTextContent(targetRepository);
+
+                XPath xPathBuildTag = XPathFactory.newInstance().newXPath();
+                Node tagNode = (Node) xPathBuildTag.compile(DockerProjectConstants.TARGET_TAG_XPATH).evaluate(doc,
+                        XPathConstants.NODE);
+                tagNode.setTextContent(targetTag);
+            }
 
             XPath xPathConfigMapPlugin = XPathFactory.newInstance().newXPath();
             Node configMapPluginNode = (Node) xPathConfigMapPlugin
@@ -360,18 +394,27 @@ public class DockerBuildActionUtil {
      * 
      * @param pomFile pom file
      * @param targetRepository updated repository URL
+     * @param isThisOldContainerProject
      */
-    public static void changeDockerImageDataInPOMPlugin(File pomFile, String targetRepository) {
+    public static void changeDockerImageDataInPOMPlugin(File pomFile, String targetRepository,
+            boolean isThisOldContainerProject) {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document doc = builder.parse(pomFile);
 
-            XPath xPathRepo = XPathFactory.newInstance().newXPath();
-            Node repositoryNode = (Node) xPathRepo.compile(DockerProjectConstants.TARGET_REPOSITORY_XPATH_BUILD)
-                    .evaluate(doc, XPathConstants.NODE);
-            repositoryNode.setTextContent(targetRepository);
-
+            if (isThisOldContainerProject) {
+                XPath xPathRepo = XPathFactory.newInstance().newXPath();
+                Node repositoryNode = (Node) xPathRepo.compile(DockerProjectConstants.TARGET_REPOSITORY_XPATH_OLD)
+                        .evaluate(doc, XPathConstants.NODE);
+                repositoryNode.setTextContent(targetRepository);
+            } else {
+                XPath xPathRepo = XPathFactory.newInstance().newXPath();
+                Node repositoryNode = (Node) xPathRepo.compile(DockerProjectConstants.TARGET_REPOSITORY_XPATH)
+                        .evaluate(doc, XPathConstants.NODE);
+                repositoryNode.setTextContent(targetRepository);
+            }
+            
             Transformer tf = TransformerFactory.newInstance().newTransformer();
             tf.setOutputProperty(OutputKeys.INDENT, "yes");
             tf.setOutputProperty(OutputKeys.METHOD, "xml");
@@ -439,18 +482,26 @@ public class DockerBuildActionUtil {
      * Read docker image details from the POM file.
      * 
      * @param pomFile pom file
+     * @param isThisOldContainerProject
      * @return value of the target repository
      */
-    public static String readDockerImageDetailsFromPomPlugin(File pomFile) {
+    public static String readDockerImageDetailsFromPomPlugin(File pomFile, boolean isThisOldContainerProject) {
         String repository = null;
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document doc = builder.parse(pomFile);
 
-            XPathExpression xpRepo = XPathFactory.newInstance().newXPath()
-                    .compile(DockerProjectConstants.TARGET_REPOSITORY_XPATH_BUILD);
-            repository = xpRepo.evaluate(doc);
+            if (isThisOldContainerProject) {
+                XPathExpression xpRepo = XPathFactory.newInstance().newXPath()
+                        .compile(DockerProjectConstants.TARGET_REPOSITORY_XPATH_OLD);
+                repository = xpRepo.evaluate(doc);
+            } else {
+                XPathExpression xpRepo = XPathFactory.newInstance().newXPath()
+                        .compile(DockerProjectConstants.TARGET_REPOSITORY_XPATH);
+                repository = xpRepo.evaluate(doc);
+            }
+            
         } catch (XPathExpressionException e) {
             log.error("XPathExpressionException while reading pomfile", e);
         } catch (ParserConfigurationException e) {

@@ -30,8 +30,6 @@ import java.util.TreeMap;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
@@ -84,7 +82,6 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.w3c.dom.Document;
-import org.w3c.dom.Node;
 import org.wso2.developerstudio.eclipse.distribution.project.model.DependencyData;
 import org.wso2.developerstudio.eclipse.distribution.project.model.NodeData;
 import org.wso2.developerstudio.eclipse.distribution.project.util.DistProjectUtils;
@@ -122,9 +119,11 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
     private Text txtGroupId;
     private Text txtArtifactId;
     private Text txtVersion;
+    private Text txtBaseImage;
     private Text txtTargetRepository;
     private Text txtTargetTag;
     private Text txtDescription;
+    private Button btnDeploymentTomlEnableChecker;
     private boolean pageDirty;
 
     IStatus editorStatus = new Status(IStatus.OK, Activator.PLUGIN_ID, "");
@@ -145,11 +144,14 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
     private String artifactId = "";
     private String version = "";
     private String description = "";
+    private String baseImage = "";
     private String targetRepository = "";
     private String targetTag = "";
     private boolean isDeploymentConfigEnabled = false;
+    private boolean isThisOldContainerProject = false;
 
-    private Action exportAction;
+    private Action dockerBuildAction;
+    private Action dockerPushAction;
     private Action refreshAction;
 
     public DistProjectEditorPage(String id, String title) {
@@ -214,14 +216,35 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document doc = builder.parse(pomFile);
+            
+            //check pom is an old project or not
+            //it checks buildArg parameter is there in docker plugin to verify whether this pom is a new one or not
+            XPathExpression xpBuildArgs = XPathFactory.newInstance().newXPath().compile(DockerProjectConstants.DOCKER_SPOTIFY_PLUGIN_BUILD_ARG);
+            if (xpBuildArgs.evaluate(doc).isEmpty()) {
+                isThisOldContainerProject = true;
+                
+                //Read target repository name and the tag from the pom spotify plugin tags
+                XPathExpression xpRepo = XPathFactory.newInstance().newXPath().compile(DockerProjectConstants.TARGET_REPOSITORY_XPATH_OLD);
+                String repository = xpRepo.evaluate(doc);
+                setTargetRepository(repository);
 
-            XPathExpression xpRepo = XPathFactory.newInstance().newXPath().compile(DockerProjectConstants.TARGET_REPOSITORY_XPATH_BUILD);
-            String repository = xpRepo.evaluate(doc);
-            setTargetRepository(repository);
+                XPathExpression xpTag = XPathFactory.newInstance().newXPath().compile(DockerProjectConstants.TARGET_TAG_XPATH_OLD);
+                String tag = xpTag.evaluate(doc);
+                setTargetTag(tag);
+            } else {
+                //Read target repository name and the tag from the pom properties tags
+                XPathExpression xpBaseImage = XPathFactory.newInstance().newXPath().compile(DockerProjectConstants.BASE_IMAGE_XPATH);
+                String baseImage = xpBaseImage.evaluate(doc);
+                setBaseImage(baseImage);
+                
+                XPathExpression xpRepo = XPathFactory.newInstance().newXPath().compile(DockerProjectConstants.TARGET_REPOSITORY_XPATH);
+                String repository = xpRepo.evaluate(doc);
+                setTargetRepository(repository);
 
-            XPathExpression xpTag = XPathFactory.newInstance().newXPath().compile(DockerProjectConstants.TARGET_TAG_XPATH_BUILD);
-            String tag = xpTag.evaluate(doc);
-            setTargetTag(tag);
+                XPathExpression xpTag = XPathFactory.newInstance().newXPath().compile(DockerProjectConstants.TARGET_TAG_XPATH);
+                String tag = xpTag.evaluate(doc);
+                setTargetTag(tag);
+            }
             
 			XPathExpression xPathConfigMapEnabled = XPathFactory.newInstance().newXPath()
 					.compile(DockerProjectConstants.CONFIGMAP_PLUGIN_XPATH);
@@ -263,8 +286,8 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
                 dockerFieldValidator();
             }
             
-            DockerBuildActionUtil.changeDockerImageDataInPOMPlugin(pomFile, getTargetRepository(), getTargetTag(),
-                    isDeploymentConfigEnabled, pomFileRes);
+            DockerBuildActionUtil.changeDockerImageDataInPOMPlugin(pomFile, getBaseImage(), getTargetRepository(), getTargetTag(),
+                    isDeploymentConfigEnabled, pomFileRes, isThisOldContainerProject);
             setPageDirty(false);
             updateDirtyState();
             pomFileRes.getProject().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
@@ -284,7 +307,10 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
         form = managedForm.getForm();
         form.setText(getProjectName());
         form.getToolBarManager().add(getRefreshAction());
-        form.getToolBarManager().add(getExportAction());
+        form.getToolBarManager().add(getDockerBuildAction());
+        if (getContainerType().equals(DockerProjectConstants.DOCKER_CONTAINER)) {
+            form.getToolBarManager().add(getDockerPushAction());
+        }
         body = form.getBody();
         toolkit.decorateFormHeading(form.getForm());
         toolkit.paintBordersFor(body);
@@ -350,6 +376,24 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
             }
         });
         
+        if (!isThisOldContainerProject) {
+            managedForm.getToolkit().createLabel(managedForm.getForm().getBody(), "Base Image", SWT.NONE);
+            
+            txtBaseImage = managedForm.getToolkit().createText(managedForm.getForm().getBody(), "", SWT.NONE);
+            txtBaseImage.setText(getBaseImage());
+            GridData gd_txtBaseImage = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
+            gd_txtBaseImage.widthHint = 350;
+            txtBaseImage.setLayoutData(gd_txtBaseImage);
+            txtBaseImage.addModifyListener(new ModifyListener() {
+
+                public void modifyText(ModifyEvent evt) {
+                    setPageDirty(true);
+                    setBaseImage(txtBaseImage.getText().trim());
+                    updateDirtyState();
+                }
+            });
+        }
+        
         managedForm.getToolkit().createLabel(managedForm.getForm().getBody(), "Target Repository", SWT.NONE);
 
         txtTargetRepository = managedForm.getToolkit().createText(managedForm.getForm().getBody(), "", SWT.NONE);
@@ -382,7 +426,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
         });
         
         managedForm.getToolkit().createLabel(managedForm.getForm().getBody(), "Deployment Configurations", SWT.NONE);
-        Button btnDeploymentTomlEnableChecker = managedForm.getToolkit().createButton(managedForm.getForm().getBody(),
+        btnDeploymentTomlEnableChecker = managedForm.getToolkit().createButton(managedForm.getForm().getBody(),
                 "Automatically deploy configurations (supports Micro-Integrator-1.1.0 upwards)", SWT.CHECK);
         btnDeploymentTomlEnableChecker.setSelection(isDeploymentConfigEnabled());
         GridData gdBtnDeploymentTomlEnableChecker = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
@@ -844,12 +888,12 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
     }
 
     /**
-     * Trigger the build action from the UI.
+     * Trigger the docker build action from the UI.
      * 
      * @return triggered action
      */
-    public Action getExportAction() {
-        if (exportAction == null) {
+    public Action getDockerBuildAction() {
+        if (dockerBuildAction == null) {
             IProject project = ((IFileEditorInput) (getEditor().getEditorInput())).getFile().getProject();
             String actionIconType;
             if (getContainerType().equals(DockerProjectConstants.KUBERNETES_CONTAINER)) {
@@ -858,7 +902,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
                 actionIconType = "/icons/build.png";
             }
 
-            exportAction = new Action("Generate Docker Image",
+            dockerBuildAction = new Action("Generate Docker Image",
                     ImageDescriptor.createFromImage(SWTResourceManager.getImage(this.getClass(), actionIconType))) {
                 public void run() {
 
@@ -886,9 +930,9 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
                         }
                         
                         newConfiguration.setKubernetesProject(true);
-                        exportAction.setToolTipText("Build & Push Docker Image");
+                        dockerBuildAction.setToolTipText("Build & Push Docker Image");
                     } else {
-                        exportAction.setToolTipText("Build Docker Image");
+                        dockerBuildAction.setToolTipText("Build Docker Image");
                     }
 
                     //execute maven build and push jobs using project POM
@@ -896,7 +940,43 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
                 };
             };
         }
-        return exportAction;
+        return dockerBuildAction;
+    }
+    
+    /**
+     * Trigger the docker push action from the UI.
+     * 
+     * @return triggered action
+     */
+    public Action getDockerPushAction() {
+        if (dockerPushAction == null) {
+            IProject project = ((IFileEditorInput) (getEditor().getEditorInput())).getFile().getProject();
+            String actionIconType = "/icons/push.png";
+            
+            dockerPushAction = new Action("Push Docker Image",
+                    ImageDescriptor.createFromImage(SWTResourceManager.getImage(this.getClass(), actionIconType))) {
+                public void run() {
+
+                    DockerHubAuth newConfiguration = new DockerHubAuth();
+                    DockerHubLoginWizard wizard = new DockerHubLoginWizard(newConfiguration, pomFileRes);
+                    IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+                    wizard.init(PlatformUI.getWorkbench(), null);
+                    CustomWizardDialog headerWizardDialog = new CustomWizardDialog(window.getShell(), wizard);
+                    headerWizardDialog.setHelpAvailable(false);
+                    headerWizardDialog.setPageSize(580, 200);
+                    headerWizardDialog.open();
+                    
+                    if (newConfiguration.getAuthUsername() == null || newConfiguration.getAuthPassword() == null) {
+                        return;
+                    }
+                    
+                    dockerPushAction.setToolTipText("Push Docker Image");
+                    //execute maven push jobs using project POM
+                    executeDockerPushOnlyProcess(project, dependencyProjectNames, newConfiguration);
+                };
+            };
+        }
+        return dockerPushAction;
     }
     
     /**
@@ -915,7 +995,8 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
             DockerBuildActionUtil.exportCarbonAppsToTargetFolder(m2Directory, dependencyProjectNames);
 
             // check docker registry URL has changed, if yes append the private remote url to the target repository
-            String targetRepository = DockerBuildActionUtil.readDockerImageDetailsFromPomPlugin(pomFile);
+            String targetRepository = DockerBuildActionUtil.readDockerImageDetailsFromPomPlugin(pomFile,
+                    isThisOldContainerProject);
             String[] reposirotyTags = targetRepository.split(DockerProjectConstants.REPOSITORY_SEPERATOR);
             if (reposirotyTags.length == 3) {
                 targetRepository = reposirotyTags[1] + DockerProjectConstants.REPOSITORY_SEPERATOR + reposirotyTags[2];
@@ -926,11 +1007,43 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
                         + targetRepository;
             }
 
-            DockerBuildActionUtil.changeDockerImageDataInPOMPlugin(pomFile, targetRepository);
+            DockerBuildActionUtil.changeDockerImageDataInPOMPlugin(pomFile, targetRepository, isThisOldContainerProject);
+            project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
             DockerBuildActionUtil.runDockerBuildWithMavenProfile(project, DockerBuildActionUtil.MAVEN_BUILD_GOAL,
-                    configuration);
+                    configuration, isThisOldContainerProject);
         } catch (CoreException e) {
             log.error("CoreException in while executing the docker build process", e);
+        }
+    }
+    
+    /**
+     * Execute docker push maven jobs in UI thread.
+     * 
+     * @param project container project
+     * @param dependencyProjectNames CApp project name list in POM file
+     * @param configuration auth connection data for docker push
+     */
+    private void executeDockerPushOnlyProcess(IProject project, List<String> dependencyProjectNames,
+            DockerHubAuth configuration) {
+
+        try {
+            // check docker registry URL has changed, if yes append the private remote url to the target repository
+            String targetRepository = DockerBuildActionUtil.readDockerImageDetailsFromPomPlugin(pomFile, isThisOldContainerProject);
+            String[] reposirotyTags = targetRepository.split(DockerProjectConstants.REPOSITORY_SEPERATOR);
+            if (reposirotyTags.length == 3) {
+                targetRepository = reposirotyTags[1] + DockerProjectConstants.REPOSITORY_SEPERATOR + reposirotyTags[2];
+            }
+
+            if (configuration != null && !configuration.isDockerRegistry()) {
+                targetRepository = configuration.getRemoteRegistryURL() + DockerProjectConstants.REPOSITORY_SEPERATOR
+                        + targetRepository;
+            }
+
+            DockerBuildActionUtil.changeDockerImageDataInPOMPlugin(pomFile, targetRepository, isThisOldContainerProject);
+            project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+            DockerBuildActionUtil.runDockerPushWithMavenProfile(project, configuration, isThisOldContainerProject);
+        } catch (CoreException e) {
+            log.error("CoreException in while executing the docker push process", e);
         }
     }
 
@@ -973,6 +1086,10 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
                         txtGroupId.setText(getGroupId());
                         txtTargetRepository.setText(getTargetRepository());
                         txtTargetTag.setText(getTargetTag());
+                        btnDeploymentTomlEnableChecker.setSelection(isDeploymentConfigEnabled());
+                        if (!isThisOldContainerProject) {
+                            txtBaseImage.setText(getBaseImage());
+                        }
                     }
                 });
             }
@@ -1077,6 +1194,14 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
         return isPageDirty();
     }
     
+    public String getBaseImage() {
+        return baseImage;
+    }
+
+    public void setBaseImage(String baseImage) {
+        this.baseImage = baseImage;
+    }
+
     public String getTargetRepository() {
         return targetRepository;
     }

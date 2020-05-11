@@ -349,10 +349,18 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
             PluginExecution spotifyPluginDockerBuildExecution = new PluginExecution();
             spotifyPluginDockerBuildExecution.addGoal("build");
             spotifyPluginDockerBuildExecution.setId("docker-build");
-            spotifyPluginDockerBuildExecution.setPhase("install");
+            spotifyPluginDockerBuildExecution.setPhase("package");
 
-            String repository = dockerModel.getDockerTargetRepository();
-            String tag = dockerModel.getDockerTargetTag();
+            String repository;
+            String tag;
+            if (dockerModel.isDockerExporterProjectChecked()) {
+                repository = dockerModel.getDockerTargetRepository();
+                tag = dockerModel.getDockerTargetTag();
+            } else {
+                repository = dockerModel.getKubeTargetRepository();
+                tag = dockerModel.getKubeTargetTag();
+            }
+            
             String remoteRepository;
             String remoteTag;
             if (dockerModel.isDockerExporterProjectChecked()) {
@@ -369,11 +377,13 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
                 remoteTag = DockerProjectConstants.DOCKER_DEFAULT_TAG;
             } 
             
-            mavenProject.getProperties().put("base.image", repository);
-            mavenProject.getProperties().put("target.repository", repository);
-            mavenProject.getProperties().put("target.tag", tag);
-            String spotifyPluginDockerBuildConfig = "<configuration>\n" + "<repository>${target.repository}</repository>\n" 
-            + "<tag>${target.tag}</tag>\n" + "</configuration>";
+            mavenProject.getProperties().put("base.image", remoteRepository + ":" + remoteTag);
+            mavenProject.getProperties().put("dockerfile.repository", repository);
+            mavenProject.getProperties().put("dockerfile.tag", tag);
+            String spotifyPluginDockerBuildConfig = "<configuration>\n"
+                    + "<dockerfile.repository>${dockerfile.repository}</dockerfile.repository>\n"
+                    + "<dockerfile.tag>${dockerfile.tag}</dockerfile.tag>\n" 
+                    + "<buildArgs><BASE_IMAGE>${base.image}</BASE_IMAGE></buildArgs></configuration>";
 			
 			Xpp3Dom spotifyDockerBuildDom = Xpp3DomBuilder.build(new ByteArrayInputStream(spotifyPluginDockerBuildConfig.getBytes()),
 					"UTF-8");
@@ -386,9 +396,11 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
             spotifyPluginDockerPushExecution.setId("docker-push");
             spotifyPluginDockerPushExecution.setPhase("install");
             
-            String spotifyPluginDockerPushConfig = "<configuration>\n" + "<username>${username}</username>\n"
-                    + "<password>${password}</password>\n" + "<repository>${target.repository}</repository>\n"
-                    + "<tag>${target.tag}</tag>\n" + "<buildArgs><BASE_IMAGE>${base.image}</BASE_IMAGE></buildArgs></configuration>";
+            String spotifyPluginDockerPushConfig = "<configuration>\n"
+                    + "<dockerfile.username>${dockerfile.username}</dockerfile.username>\n"
+                    + "<dockerfile.password>${dockerfile.password}</dockerfile.password>\n"
+                    + "<dockerfile.repository>${dockerfile.repository}</dockerfile.repository>\n"
+                    + "<dockerfile.tag>${dockerfile.tag}</dockerfile.tag></configuration>";
             
             Xpp3Dom spotifyDockerPushDom = Xpp3DomBuilder.build(new ByteArrayInputStream(spotifyPluginDockerPushConfig.getBytes()),
 					"UTF-8");

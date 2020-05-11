@@ -867,6 +867,8 @@ public class EditorUtils {
                                 addCloudConnectorOperations(((EsbMultiPageEditor) editor).getGraphicalEditor(),
                                         esbPaletteFactory);
                             }
+                            removeNonExistingCloudConnectorOperations(
+                                    ((EsbMultiPageEditor) editor).getGraphicalEditor(), esbPaletteFactory);
                         } catch (Exception e) {
                             MessageDialog.openError(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
                                     "Developer Studio Error Dialog",
@@ -907,6 +909,32 @@ public class EditorUtils {
             }
         }
 
+    }
+
+    /**
+     * This method removes connector palettes from editor if the connector is not in the workspace.
+     * 
+     * @param editorPart editor from which palettes should be removed
+     * @param esbPaletteFactory PaletteFactory of the editor
+     */
+    private static void removeNonExistingCloudConnectorOperations(EsbDiagramEditor editorPart,
+            EsbPaletteFactory esbPaletteFactory) {
+        EsbEditorInput input = (EsbEditorInput) editorPart.getEditorInput();
+        IFile file = input.getXmlResource();
+        IProject activeProject = file.getProject();
+        String connectorDirectory = activeProject.getWorkspace().getRoot().getLocation().toOSString() + File.separator
+                + CloudConnectorDirectoryTraverser.connectorPathFromWorkspace;
+        File directory = new File(connectorDirectory);
+        List<String> connectorDirectoryNames = new ArrayList<>();
+        if (directory.isDirectory()) {
+            File[] children = directory.listFiles();
+            for (int childIndex = 0; childIndex < children.length; ++childIndex) {
+                if (children[childIndex].isDirectory()) {
+                    connectorDirectoryNames.add(children[childIndex].getName());
+                }
+            }
+        }
+        esbPaletteFactory.removeNonExistingCloudConnectorOperations(editorPart, connectorDirectoryNames);
     }
 
     /**

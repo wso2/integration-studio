@@ -125,6 +125,10 @@ public class CloudConnectorImportWizard extends AbstractWSO2ProjectCreationWizar
                         .getData()).getConnectorFilePath();
                 try {
                     FileUtils.deleteDirectory(new File(filePath));
+                    
+                    // Remove the archived connector.
+                    File zipFile = new File(filePath + ".zip");
+                    zipFile.delete();
                 } catch (IOException e) {
                     log.error("Error while deleting the connector : " + filePath, e);
                 }

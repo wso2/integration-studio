@@ -377,13 +377,13 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
                 remoteTag = DockerProjectConstants.DOCKER_DEFAULT_TAG;
             } 
             
-            mavenProject.getProperties().put("base.image", remoteRepository + ":" + remoteTag);
+            mavenProject.getProperties().put("dockerfile.base.image", remoteRepository + ":" + remoteTag);
             mavenProject.getProperties().put("dockerfile.repository", repository);
             mavenProject.getProperties().put("dockerfile.tag", tag);
             String spotifyPluginDockerBuildConfig = "<configuration>\n"
                     + "<dockerfile.repository>${dockerfile.repository}</dockerfile.repository>\n"
                     + "<dockerfile.tag>${dockerfile.tag}</dockerfile.tag>\n" 
-                    + "<buildArgs><BASE_IMAGE>${base.image}</BASE_IMAGE></buildArgs></configuration>";
+                    + "<buildArgs><BASE_IMAGE>${dockerfile.base.image}</BASE_IMAGE></buildArgs></configuration>";
 			
 			Xpp3Dom spotifyDockerBuildDom = Xpp3DomBuilder.build(new ByteArrayInputStream(spotifyPluginDockerBuildConfig.getBytes()),
 					"UTF-8");

@@ -20,6 +20,7 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.StringReader;
 import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -47,6 +48,11 @@ import java.util.zip.ZipFile;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
@@ -133,6 +139,7 @@ import org.wso2.developerstudio.eclipse.distribution.project.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
+import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
@@ -148,6 +155,9 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 	private static final String DIR_CONNECTORS = ".Connectors";
 	
 	private static final String ZIP_FILE_EXTENSION = ".zip";
+
+	private static final String IMPORT_ARCHIVE_LOCATION = File.separator + ".tmp" + File.separator
+			+ "APIMArchiveImport";
 
 	private ILeveledImportStructureProvider structureProvider;
 
@@ -785,6 +795,7 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 						structureProvider = new TarLeveledStructureProvider(sourceTarFile);
 						Object child = structureProvider.getRoot();
 
+						child = checkSelectedTarArchiveIsAPIMProject(child, sourceTarFile);
 						if (!collectProjectFilesFromProvider(files, child, 0, monitor)) {
 							return;
 						}
@@ -804,6 +815,7 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 						structureProvider = new ZipLeveledStructureProvider(sourceFile);
 						Object child = structureProvider.getRoot();
 
+						child = checkSelectedZipArchiveIsAPIMProject(child, sourceFile);
 						if (!collectProjectFilesFromProvider(files, child, 0, monitor)) {
 							return;
 						}
@@ -865,6 +877,120 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 		setPageComplete(projectsList.getCheckedElements().length > 0);
 		if (selectedProjects.length == 0) {
 			setMessage(DataTransferMessages.WizardProjectsImportPage_noProjectsToImport, WARNING);
+		}
+	}
+	
+	/**
+	 * Check selected Zip archive includes APIM project. If exists create .project
+	 * file. This operation will execute by copying the zip file to the .tmp
+	 * location in workspace After adding the .project file it recreates a zip
+	 * archive and proceed the flow
+	 * 
+	 * @param child
+	 *            current zip entries
+	 * @param zipFile
+	 *            selected zip file
+	 * @return updated zip entries
+	 */
+	private Object checkSelectedZipArchiveIsAPIMProject(Object child, ZipFile zipFile) {
+		IWorkspace workspace = ResourcesPlugin.getWorkspace();
+		String extractDestDirectory = workspace.getRoot().getLocation().toString() + IMPORT_ARCHIVE_LOCATION
+				+ File.separator + "importProject";
+		String compressDestDirectory = workspace.getRoot().getLocation().toString() + IMPORT_ARCHIVE_LOCATION;
+		File archiveImportDestDir = new File(extractDestDirectory);
+		if (!archiveImportDestDir.exists()) {
+			archiveImportDestDir.mkdirs();
+		}
+
+		// Check the input archive file is a zip or tar.gz
+		Archiver archiver;
+		try {
+			archiver = ArchiverFactory.createArchiver(ArchiveFormat.ZIP);
+			archiver.extract(new File(zipFile.getName()), new File(extractDestDirectory));
+
+			resurseArchiveProjectToCheckAPIM(archiveImportDestDir);
+
+			// create archive file
+			String archiveName = "importProject";
+			File destination = new File(compressDestDirectory);
+			File source = new File(extractDestDirectory);
+
+			File archive = archiver.create(archiveName, destination, source);
+			ZipFile updatedZipFile = new ZipFile(archive.getAbsolutePath());
+
+			structureProvider = new ZipLeveledStructureProvider(updatedZipFile);
+			return structureProvider.getRoot();
+		} catch (IOException e) {
+			log.error("IOException exception while extracting the archived file to the destination or recreatee", e);
+			return child;
+		}
+	}
+
+	/**
+	 * Check selected Tar archive includes APIM project. If exists create .project
+	 * file. This operation will execute by copying the Tar file to the .tmp
+	 * location in workspace After adding the .project file it recreates a Tar
+	 * archive and proceed the flow
+	 * 
+	 * @param child
+	 *            current Tar entries
+	 * @param zipFile
+	 *            selected Tar file
+	 * @return updated Tar entries
+	 */
+	private Object checkSelectedTarArchiveIsAPIMProject(Object child, TarFile tarFile) {
+		IWorkspace workspace = ResourcesPlugin.getWorkspace();
+		String extractDestDirectory = workspace.getRoot().getLocation().toString() + IMPORT_ARCHIVE_LOCATION
+				+ File.separator + "importProject";
+		String compressDestDirectory = workspace.getRoot().getLocation().toString() + IMPORT_ARCHIVE_LOCATION;
+		File archiveImportDestDir = new File(extractDestDirectory);
+		if (!archiveImportDestDir.exists()) {
+			archiveImportDestDir.mkdirs();
+		}
+
+		// Check the input archive file is a zip or tar.gz
+		Archiver archiver;
+		try {
+			archiver = ArchiverFactory.createArchiver("tar", "gz");
+			archiver.extract(new File(tarFile.getName()), new File(extractDestDirectory));
+
+			resurseArchiveProjectToCheckAPIM(archiveImportDestDir);
+
+			// create archive file
+			String archiveName = "importProject";
+			File destination = new File(compressDestDirectory);
+			File source = new File(extractDestDirectory);
+
+			File archive = archiver.create(archiveName, destination, source);
+			TarFile updatedTarFile = new TarFile(archive.getAbsolutePath());
+			structureProvider = new TarLeveledStructureProvider(updatedTarFile);
+
+			return structureProvider.getRoot();
+		} catch (TarException e) {
+			log.error("IOException exception while extracting the archived file to the destination or recreatee", e);
+			return child;
+		} catch (IOException e) {
+			log.error("IOException exception while extracting the archived file to the destination or recreatee", e);
+			return child;
+		}
+	}
+
+	/**
+	 * Checks content has APIM project and creates a .project file in it.
+	 * 
+	 * @param directory
+	 *            directory to check
+	 */
+	private void resurseArchiveProjectToCheckAPIM(File directory) {
+		if (checkSelectProjectIsAPIM(directory.listFiles())) {
+			createDotProjectFileGivenLocation(directory);
+		}
+
+		// recursively check projects inside projects
+		if (directory.listFiles() != null) {
+			for (File file : directory.listFiles()) {
+				resurseArchiveProjectToCheckAPIM(file);
+			}
 		}
 	}
 
@@ -959,6 +1085,12 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 						.handle(StatusUtil.newStatus(IStatus.ERROR, exception.getLocalizedMessage(), exception));
 			}
 		}
+		
+		// check selected project is a APIM project
+		if (checkSelectProjectIsAPIM(contents)) {
+			createDotProjectFileGivenLocation(directory);
+			contents = directory.listFiles();
+		}
 
 		// first look for project description files
 		final String dotProject = IProjectDescription.DESCRIPTION_FILE_NAME;
@@ -973,6 +1105,7 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 				// return true;
 			}
 		}
+		
 		// no project description found, so recurse into sub-directories
 		for (int i = 0; i < contents.length; i++) {
 			if (contents[i].isDirectory()) {
@@ -993,6 +1126,84 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 			}
 		}
 		return true;
+	}
+	
+	/**
+	 * Create .project file with APIM project nature.
+	 * 
+	 * @param directory
+	 *            directory location
+	 */
+	private void createDotProjectFileGivenLocation(File directory) {
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" + "<projectDescription>\n" + "    <name>"
+				+ directory.getName() + "</name>\n" + "    <comment></comment>\n" + "    <projects>\n"
+				+ "    </projects>\n" + "    <buildSpec>\n" + "    </buildSpec>\n" + "    <natures>\n"
+				+ "        <nature>org.wso2.developerstudio.eclipse.apim.project.nature</nature>\n" + "    </natures>\n"
+				+ "</projectDescription>");
+
+		try {
+			// Parse the given input
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder builder = factory.newDocumentBuilder();
+			Document doc = builder.parse(new InputSource(new StringReader(stringBuilder.toString())));
+
+			// Write the parsed document to an .project file
+			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			Transformer transformer = transformerFactory.newTransformer();
+			DOMSource source = new DOMSource(doc);
+
+			StreamResult result = new StreamResult(
+					new File(directory.getAbsoluteFile() + File.separator + IProjectDescription.DESCRIPTION_FILE_NAME));
+			transformer.transform(source, result);
+		} catch (SAXException e) {
+			log.error("SAXException while creating .project file inside APIM project", e);
+		} catch (ParserConfigurationException e) {
+			log.error("ParserConfigurationException while creating .project file inside APIM project", e);
+		} catch (TransformerException e) {
+			log.error("TransformerException while creating .project file inside APIM project", e);
+		} catch (IOException e) {
+			log.error("IOException while creating .project file inside APIM project", e);
+		}
+	}
+
+	/**
+	 * Check selected imported directory is a APIM project.
+	 * 
+	 * @param contents
+	 *            contents of the directory
+	 * @return boolean result of the check
+	 */
+	private boolean checkSelectProjectIsAPIM(File[] contents) {
+		boolean hasMetaInformationDirectory = false;
+		boolean hasSequencesDirectory = false;
+		boolean hasApiParamYAML = false;
+		boolean hasNotDotProjectFile = true;
+
+		if (contents == null) {
+			return false;
+		}
+
+		for (File file : contents) {
+			if (file.isDirectory() && file.getName().equals("Meta-information")) {
+				hasMetaInformationDirectory = true;
+			}
+
+			if (file.isDirectory() && file.getName().equals("Sequences")) {
+				hasSequencesDirectory = true;
+			}
+
+			if (file.isFile()
+					&& (file.getName().equals("api_params.yaml") || file.getName().equals("api_params.yml"))) {
+				hasApiParamYAML = true;
+			}
+
+			if (file.isFile() && (file.getName().equals(IProjectDescription.DESCRIPTION_FILE_NAME))) {
+				hasNotDotProjectFile = false;
+			}
+		}
+
+		return hasMetaInformationDirectory && hasSequencesDirectory && hasApiParamYAML && hasNotDotProjectFile;
 	}
 
 	/**
@@ -1156,7 +1367,13 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 								File otherProject = new File(projectPath);
 								selectedProjectsWithoutMMM.put(otherProject.getAbsolutePath(), otherProject.getName());
 							} else {
-								selectedProjectsInArchiveWithoutMMM.put(((ZipEntry)project.parent).getName(), project.description.getName());
+								if (sourceFile != null) {
+									selectedProjectsInArchiveWithoutMMM.put(((ZipEntry) project.parent).getName(),
+											project.description.getName());
+								} else if (sourceTarFile != null) {
+									selectedProjectsInArchiveWithoutMMM.put(((TarEntry) project.parent).getName(),
+											project.description.getName());
+								}
 							}
 						}
 					}
@@ -1216,6 +1433,17 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 
 		// Adds the projects to the working sets
 		addToWorkingSets();
+		
+		// remove created archive directories in .tmp
+		try {
+			File apimImportDirectory = new File(
+					ResourcesPlugin.getWorkspace().getRoot().getLocation().toString() + IMPORT_ARCHIVE_LOCATION);
+			if (apimImportDirectory.exists()) {
+				FileUtils.deleteDirectory(apimImportDirectory);
+			}
+		} catch (IOException e) {
+			log.error("IOException exception while deleting APIM archived directory in {workspace/.temp}", e);
+		}
 		return true;
 	}
 
@@ -1260,6 +1488,12 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 
 		// Return the method if there is no any MMM project inside the archive
 		if (!isMMMArchive) {
+			// Deleting extracted archived file from the {workspace/.tmp} directory
+			try {
+				FileUtils.deleteDirectory(archiveImportDestDir);
+			} catch (IOException e) {
+				log.error("IOException exception while deleting archived directory in {workspace/.temp}", e);
+			}
 			return isMMMArchive;
 		}
 

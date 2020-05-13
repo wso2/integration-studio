@@ -84,6 +84,7 @@ public class Constants extends NLS {
 	public static String CONNECTOR_PROJECT_NATURE;
 	public static String DOCKER_EXPORTER_PROJECT_NATURE;
 	public static String KUBERNETES_EXPORTER_PROJECT_NATURE;
+	public static String APIM_PROJECT_NATURE;
 
 	static {
 		// initialize resource bundle, this will load all constants from

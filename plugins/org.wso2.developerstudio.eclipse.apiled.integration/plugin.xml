@@ -18,5 +18,16 @@
   -->
 <?eclipse version="3.4"?>
 <plugin>
-    
+    <!-- APIM project nature -->
+    <extension point="org.eclipse.core.resources.natures"
+		id="org.wso2.developerstudio.eclipse.apim.project.nature" name="APIM Project Nature">
+        <runtime>
+            <run class="org.wso2.developerstudio.eclipse.apiled.integration.project.export.ApimProjectNature"/>
+        </runtime>
+    </extension>
+	
+    <extension point="org.eclipse.ui.ide.projectNatureImages">
+        <image id="org.wso2.developerstudio.eclipse.apim.project.natureImage" 
+		natureId="org.wso2.developerstudio.eclipse.apim.project.nature" icon="icons/apim_project.png" />
+    </extension>
 </plugin>

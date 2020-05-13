@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.developerstudio.eclipse.apiled.integration.project.export;
+package org.wso2.developerstudio.eclipse.apim.project.export;
 
 import org.eclipse.core.runtime.CoreException;
 import org.wso2.developerstudio.eclipse.platform.core.nature.AbstractWSO2ProjectNature;

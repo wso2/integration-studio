@@ -22,7 +22,7 @@
     <extension point="org.eclipse.core.resources.natures"
 		id="org.wso2.developerstudio.eclipse.apim.project.nature" name="APIM Project Nature">
         <runtime>
-            <run class="org.wso2.developerstudio.eclipse.apiled.integration.project.export.ApimProjectNature"/>
+            <run class="org.wso2.developerstudio.eclipse.apim.project.export.ApimProjectNature"/>
         </runtime>
     </extension>
 	

@@ -59,7 +59,7 @@
 		<module>org.wso2.developerstudio.eclipse.esb.docker</module>
 		<module>org.wso2.developerstudio.eclipse.esb.cloud</module>
 		<module>org.wso2.developerstudio.eclipse.esb.synapse.unit.test</module>
-		<module>org.wso2.developerstudio.eclipse.apiled.integration</module>
+		<module>org.wso2.developerstudio.eclipse.apim.project</module>
 	</modules>
 	<build>
 		<plugins>

@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: API led Integration
-Bundle-SymbolicName: org.wso2.developerstudio.eclipse.apiled.integration;singleton:=true
+Bundle-SymbolicName: org.wso2.developerstudio.eclipse.apim.project;singleton:=true
 Bundle-Version: 7.0.0.qualifier
-Bundle-Activator: org.wso2.developerstudio.eclipse.apiled.integration.Activator
+Bundle-Activator: org.wso2.developerstudio.eclipse.apim.project.Activator
 Bundle-Vendor: WSO2 Inc
 Require-Bundle: org.eclipse.ui,
  org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="[4.1.0,5.0.0)",

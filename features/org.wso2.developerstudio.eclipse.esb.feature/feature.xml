@@ -188,7 +188,7 @@
          version="0.0.0"
          unpack="false"/>
    <plugin
-         id="org.wso2.developerstudio.eclipse.apiled.integration"
+         id="org.wso2.developerstudio.eclipse.apim.project"
          download-size="0"
          install-size="0"
          version="0.0.0"

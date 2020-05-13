@@ -17,15 +17,15 @@
 package org.wso2.developerstudio.eclipse.docker.distribution.editor;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.maven.model.Plugin;
-import org.apache.maven.model.PluginExecution;
-import org.apache.maven.project.MavenProject;
-import org.codehaus.plexus.util.xml.Xpp3Dom;
-import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.xpath.XPathExpression;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.WizardPage;
@@ -42,11 +42,12 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IWorkbench;
+import org.w3c.dom.Document;
 import org.wso2.developerstudio.eclipse.docker.distribution.Activator;
 import org.wso2.developerstudio.eclipse.docker.distribution.utils.DockerProjectConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
-import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
+import org.xml.sax.SAXException;
 
 public class DockerHubLoginPage extends WizardPage {
 
@@ -336,35 +337,43 @@ public class DockerHubLoginPage extends WizardPage {
     }
     
     private void setRegistryURLValues(IFile containerPomFile) {
-     // take repository and tag from the pom file
-        String repository = "";
-        MavenProject mavenProject;
-        try {
-            mavenProject = MavenUtils.getMavenProject(containerPomFile.getLocation().toFile());
-            List<Plugin> pluginList = mavenProject.getBuildPlugins();
-            for (Plugin plugin : pluginList) {
-                if (plugin.getGroupId().equals("com.spotify")) {
-                    PluginExecution pluginExecution = plugin.getExecutions().get(0);
-                    Xpp3Dom[] childs = ((Xpp3Dom) pluginExecution.getConfiguration()).getChildren();
-                    for (Xpp3Dom child : childs) {
-                        if (child.getName().equals(DockerProjectConstants.DOCKER_REPOSITORY)) {
-                            repository = child.getValue();
-                        } 
-                    }
-                }
-            }
-        } catch (IOException e) {
-            log.error("IOException while reading the pom file in auth wizard", e);
-        } catch (XmlPullParserException e) {
-            log.error("XmlPullParserException while reading the pom file in auth wizard", e);
-        }
+        // take repository and tag from the pom file
+        String repository;
         
-        String[] repositoryTags = repository.split("/");
-        if (repositoryTags.length == 3) {
-            setSelectedRegistryType(OTHER_REGISTRY);
-            setDockerHubOtherRegistryURL(repositoryTags[0]);
-        } else {
-            setSelectedRegistryType(DOCKERHUB_REGISTRY);
+        try {
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            Document doc = builder.parse(containerPomFile.getLocation().toFile());
+            
+            //checks pom is an old project or not
+            //it checks buildArg parameter is there in docker plugin to verify whether this pom is a new one or not
+            XPathExpression xpBuildArgs = XPathFactory.newInstance().newXPath().compile(DockerProjectConstants.DOCKER_SPOTIFY_PLUGIN_BUILD_ARG);
+            if (xpBuildArgs.evaluate(doc).isEmpty()) {
+                
+                //Read target repository name and the tag from the pom spotify plugin tags
+                XPathExpression xpRepo = XPathFactory.newInstance().newXPath().compile(DockerProjectConstants.TARGET_REPOSITORY_XPATH_OLD);
+                repository = xpRepo.evaluate(doc);
+            } else {
+                //Read target repository name and the tag from the pom properties tags
+                XPathExpression xpRepo = XPathFactory.newInstance().newXPath().compile(DockerProjectConstants.TARGET_REPOSITORY_XPATH);
+                repository = xpRepo.evaluate(doc);
+            }
+            
+            String[] repositoryTags = repository.split("/");
+            if (repositoryTags.length == 3) {
+                setSelectedRegistryType(OTHER_REGISTRY);
+                setDockerHubOtherRegistryURL(repositoryTags[0]);
+            } else {
+                setSelectedRegistryType(DOCKERHUB_REGISTRY);
+            }
+        } catch (XPathExpressionException e) {
+            log.error("XPathExpressionException while reading pomfile", e);
+        } catch (ParserConfigurationException e) {
+            log.error("ParserConfigurationException while reading pomfile", e);
+        } catch (SAXException e) {
+            log.error("SAXException while reading pomfile", e);
+        } catch (IOException e) {
+            log.error("IOException while reading pomfile", e);
         }
     }
 

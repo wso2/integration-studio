@@ -86,8 +86,12 @@ public class DockerProjectConstants extends NLS {
     public static final String SUFFCIENT_DEPENDENCY_NOT_FOUND = "Cannot export an empty docker image. please tick/check atleast one carbon application from the dependencies";
     public static final String OS_NAME = "os.name";
     public static final String WINDOWS = "win";
-    public static final String TARGET_REPOSITORY_XPATH_BUILD = "/project/properties/target.repository";
-    public static final String TARGET_TAG_XPATH_BUILD = "/project/properties/target.tag";
+    public static final String BASE_IMAGE_XPATH = "/project/properties/base.image";
+    public static final String TARGET_REPOSITORY_XPATH = "/project/properties/dockerfile.repository";
+    public static final String TARGET_TAG_XPATH = "/project/properties/dockerfile.tag";
+    public static final String TARGET_REPOSITORY_XPATH_OLD = "/project/build/plugins/plugin/executions/execution/configuration/repository";
+    public static final String TARGET_TAG_XPATH_OLD = "/project/build/plugins/plugin/executions/execution/configuration/tag";
+    public static final String DOCKER_SPOTIFY_PLUGIN_BUILD_ARG = "/project/build/plugins/plugin/executions/execution/configuration/buildArgs";
     public static final String CONFIGMAP_PLUGIN_XPATH = "/project/build/plugins/plugin[artifactId='mi-container-config-mapper']/executions/execution/phase";
     public static final String DEPLOYMENT_TOML_FILE_PATH = "resources/deployment.toml";
     public static final String DOCKER_USER_GUIDE_PATH = "resources/UserGuide/DockerGuideReadMe.html";

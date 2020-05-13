@@ -45,6 +45,7 @@ public class MavenJobThread implements Runnable {
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     private boolean isMavenBuildDone;
+    private boolean isThisOldContainerProject;
     private int isBuildSuccess = 1;
     private ILaunch launcher;
     private IProject project;
@@ -57,12 +58,15 @@ public class MavenJobThread implements Runnable {
      * @param launch launch maven profile
      * @param project currently selecting project
      * @param configuration docker registry credentials
+     * @param isThisOldContainerProject
      */
-    public MavenJobThread(boolean isBuild, ILaunch launch, IProject project, DockerHubAuth configuration) {
+    public MavenJobThread(boolean isBuild, ILaunch launch, IProject project, DockerHubAuth configuration,
+            boolean isThisOldContainerProject) {
         this.isMavenBuildDone = isBuild;
         this.launcher = launch;
         this.project = project;
         this.authConfiguration = configuration;
+        this.isThisOldContainerProject = isThisOldContainerProject;
     }
 
     /**
@@ -78,8 +82,13 @@ public class MavenJobThread implements Runnable {
      * If not, breaks the launcher process after 120 seconds
      * If project is an kubernetes, run maven push job for maven build successors
      */
-    private void executeMavenBuildJob() {
+    private void executeMavenBuildJob() {        
         try {
+            if (launcher == null) {
+                executeMavenPushJob();
+                return;
+            }
+            
             int loopCount = 0;
             while (!isMavenBuildDone) {
                 List<Boolean> listOfProcessTermination = new ArrayList<>();
@@ -158,7 +167,8 @@ public class MavenJobThread implements Runnable {
                 DebugPlugin.getDefault().getLaunchManager().generateLaunchConfigurationName(MAVEN_DOCKER_PUSH));
 
         // set maven properties for the created launcher
-        mavenTestLaunchConfig.setAttribute(DockerBuildActionUtil.MAVEN_GOAL_KEY, mavenDockerBuildGoal());
+        mavenTestLaunchConfig.setAttribute(DockerBuildActionUtil.MAVEN_GOAL_KEY,
+                mavenDockerBuildGoal(isThisOldContainerProject));
         mavenTestLaunchConfig.setAttribute(DockerBuildActionUtil.MAVEN_WORKING_DIR_KEY,
                 "${workspace_loc:/" + project.getName() + "}");
         String javaHomePath = DockerBuildActionUtil.getJavaHomePath();
@@ -216,13 +226,11 @@ public class MavenJobThread implements Runnable {
      * @param unitTestConfigDetailPage  object of unit test config detail page
      * @return string of maven goal
      */
-    private String mavenDockerBuildGoal() {
-        String mavenGoal = "dockerfile:push";
-        StringBuilder builder = new StringBuilder(mavenGoal);
-        
-        builder.append(" -Ddockerfile.username=" + authConfiguration.getAuthUsername());
-        builder.append(" -Ddockerfile.password=" + authConfiguration.getAuthPassword());
-
+    private String mavenDockerBuildGoal(boolean isThisOldContainerProject) {
+        StringBuilder builder = new StringBuilder();
+        builder.append("dockerfile:push")
+        .append(" -Ddockerfile.username=" + authConfiguration.getAuthUsername())
+        .append(" -Ddockerfile.password=" + authConfiguration.getAuthPassword());
         return builder.toString();
     }
 

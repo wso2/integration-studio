@@ -21,6 +21,9 @@
    <feature id="org.wso2.developerstudio.eclipse.smooks.editor.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.esb.feature.category"/>
    </feature>
+   <feature id="org.wso2.developerstudio.eclipse.apim.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
+   </feature>
    <feature id="org.wso2.developerstudio.eclipse.apim.endpoint.central.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.esb.feature.category"/>
    </feature>

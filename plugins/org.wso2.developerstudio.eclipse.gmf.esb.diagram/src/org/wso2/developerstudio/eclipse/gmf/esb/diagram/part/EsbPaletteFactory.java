@@ -93,6 +93,8 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 public class EsbPaletteFactory {
 
     public static final int INITIAL_STATE_OPEN = 0, INITIAL_STATE_CLOSED = 1, INITIAL_STATE_PINNED_OPEN = 2;
+    
+    private static final String CLOUD_CONNECTOR_PREFIX = "CloudConnector-";
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -1516,6 +1518,33 @@ public class EsbPaletteFactory {
                 container.add(createCloudConnector1CreationTool(names[i].split("-")[0],
                         names[i].split("-")[0] + "-cloudConnector", connectorPath + File.separator + names[i]
                                 + File.separator + "icon" + File.separator + icon_exsists));
+            }
+        }
+    }
+    
+    /**
+     * This method removes connector palettes from editor if the connector is not in the given list.
+     * 
+     * @param editor editor from which palettes should be removed
+     * @param connectorDirectoryNames list to be checked against
+     */
+    public void removeNonExistingCloudConnectorOperations(IEditorPart editor, List<String> connectorDirectoryNames) {
+        List<String> connectorNames = new ArrayList<>();
+        for (String connectorDirectoryName : connectorDirectoryNames) {
+            String connectorName = connectorDirectoryName.split("-")[0];
+            connectorNames.add(CLOUD_CONNECTOR_PREFIX + connectorName);
+        }
+
+        List<?> list = ((DiagramEditDomain) ((EsbDiagramEditor) editor).getDiagramEditDomain()).getPaletteViewer()
+                .getPaletteRoot().getChildren();
+        for (int palleteIndex = 0; palleteIndex < list.size(); ++palleteIndex) {
+            if (list.get(palleteIndex) instanceof PaletteDrawer) {
+                String peletteId = ((PaletteDrawer) list.get(palleteIndex)).getId();
+                if (peletteId.startsWith(CLOUD_CONNECTOR_PREFIX) && !connectorNames.contains(peletteId)) {
+                    ((DiagramEditDomain) ((EsbDiagramEditor) editor).getDiagramEditDomain()).getPaletteViewer()
+                            .getPaletteRoot().remove((PaletteDrawer) list.get(palleteIndex));
+                    palleteIndex--;
+                }
             }
         }
     }

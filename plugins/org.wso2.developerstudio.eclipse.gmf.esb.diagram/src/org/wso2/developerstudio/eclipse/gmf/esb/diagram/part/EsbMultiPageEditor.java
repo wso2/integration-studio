@@ -53,7 +53,9 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
@@ -99,6 +101,7 @@ import org.wso2.carbon.mediator.service.MediatorException;
 import org.wso2.carbon.rest.api.service.RestApiAdmin;
 import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbEditorInput;
 import org.wso2.developerstudio.eclipse.esb.project.control.graphicalproject.GMFPluginDetails;
+import org.wso2.developerstudio.eclipse.esb.project.control.graphicalproject.IUpdateGMFPlugin;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbDiagram;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbElement;
@@ -198,6 +201,8 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
     private static final String CONFIG_ERROR = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.synapseerror";
 
     private static final String ESB_GRAPHICAL_PERSPECTIVE_ID = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.perspective";
+    
+    private static final String CONNECTOR_ADDED_KEY = "ConnectorAdded";
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -1496,6 +1501,16 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                     PlatformUI.getWorkbench().getActiveWorkbenchWindow());
         } catch (WorkbenchException e) {
             log.error("Error occurred while switching to ESB perspective " + e.getMessage());
+        }
+        
+        // If CONNECTOR_ADDED_KEY is set to true, update all editors.
+        IEclipsePreferences rootNode = Platform.getPreferencesService().getRootNode();
+        if (rootNode.get(CONNECTOR_ADDED_KEY, String.valueOf(false)).equals(String.valueOf(true))) {
+        	IUpdateGMFPlugin updateGMFPlugin = GMFPluginDetails.getiUpdateGMFPlugin();
+        	if (updateGMFPlugin != null) {
+        		updateGMFPlugin.updateOpenedEditors();
+        	}
+        	rootNode.put(CONNECTOR_ADDED_KEY, String.valueOf(false));
         }
     }
 

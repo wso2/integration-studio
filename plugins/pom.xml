@@ -60,6 +60,7 @@
 		<module>org.wso2.developerstudio.eclipse.esb.cloud</module>
 		<module>org.wso2.developerstudio.eclipse.esb.synapse.unit.test</module>
 		<module>org.wso2.developerstudio.eclipse.apim.project</module>
+		<module>org.wso2.developerstudio.eclipse.apim.endpoint.central</module>
 	</modules>
 	<build>
 		<plugins>

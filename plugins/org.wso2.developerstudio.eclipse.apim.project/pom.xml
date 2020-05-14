@@ -25,7 +25,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.developerstudio.eclipse.apim.project</artifactId>
     <packaging>eclipse-plugin</packaging>
-    <name>API led Integration</name>
+    <name>Developer Studio APIM Project</name>
     <build>
         <plugins>
             <plugin>

@@ -16,12 +16,19 @@
 
 package org.wso2.developerstudio.eclipse.templates.dashboard.handlers;
 
+import java.io.File;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.m2e.core.internal.MavenPluginActivator;
+import org.eclipse.m2e.core.internal.launch.AbstractMavenRuntime;
+import org.eclipse.m2e.core.internal.launch.MavenExternalRuntime;
+import org.eclipse.m2e.core.internal.launch.MavenRuntimeManagerImpl;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IPersistableElement;
 import org.eclipse.ui.IStartup;
@@ -50,6 +57,10 @@ public class PlatformEarlyStartUpHandler implements IStartup {
     
     private static final String YAML_EDITOR = "de.jcup.yamleditor.YamlEditor";
 
+    private static final String EMPTY_STRING = "";
+    private static final String MAVEN_HOME = "apache-maven";
+    private static final String TOOLING_PATH_MAC = "/Applications/IntegrationStudio.app/Contents/Eclipse";
+    
     @Override
     public void earlyStartup() {
         // This method fires before startup and we use this to start embedded jetty
@@ -62,6 +73,7 @@ public class PlatformEarlyStartUpHandler implements IStartup {
         }
         removeWizardEntries();
         setFileAssociations();
+        setDefaultMavenInstallation();
     }
 
     /**
@@ -72,6 +84,44 @@ public class PlatformEarlyStartUpHandler implements IStartup {
         PlatformUI.getWorkbench().getEditorRegistry().setDefaultEditor("*.html", "org.eclipse.ui.browser.editorSupport");
         PlatformUI.getWorkbench().getEditorRegistry().setDefaultEditor("*.yaml", YAML_EDITOR);
         PlatformUI.getWorkbench().getEditorRegistry().setDefaultEditor("*.yml", YAML_EDITOR);
+    }
+    
+    /**
+     * This method sets the apache maven packed with Integration Studio as the default maven installation.
+     */
+    @SuppressWarnings("restriction")
+    private void setDefaultMavenInstallation() {
+        final MavenRuntimeManagerImpl runtimeManager = MavenPluginActivator.getDefault().getMavenRuntimeManager();
+        List<AbstractMavenRuntime> runtimes = runtimeManager.getMavenRuntimes(false);
+        AbstractMavenRuntime newRuntime = new MavenExternalRuntime("IntegrationStudioEmbedded", getMavenHomePath());
+        runtimes.add(newRuntime);
+        runtimeManager.setRuntimes(runtimes);
+        runtimeManager.setDefaultRuntime(newRuntime);
+    }
+    
+    /**
+     * Method of getting MAVEN_HOME path based on the OS type.
+     * 
+     * @return MAVEN_HOME path
+     */
+    private String getMavenHomePath() {
+        String OS = System.getProperty("os.name", "generic").toLowerCase(Locale.ENGLISH);
+        String microInteratorPath;
+
+        if ((OS.indexOf("mac") >= 0) || (OS.indexOf("darwin") >= 0)) {
+            // check if EI Tooling is in Application folder for MAC
+            File macOSEIToolingAppFile = new File(TOOLING_PATH_MAC);
+            if (macOSEIToolingAppFile.exists()) {
+                microInteratorPath = TOOLING_PATH_MAC + File.separator + MAVEN_HOME;
+            } else {
+                java.nio.file.Path path = Paths.get(EMPTY_STRING);
+                microInteratorPath = (path).toAbsolutePath().toString() + File.separator + MAVEN_HOME;
+            }
+        } else {
+            java.nio.file.Path path = Paths.get(EMPTY_STRING);
+            microInteratorPath = (path).toAbsolutePath().toString() + File.separator + MAVEN_HOME;
+        }
+        return microInteratorPath;
     }
 
     /**

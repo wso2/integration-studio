@@ -2,6 +2,7 @@
 BASE_DIR=$(pwd)
 PRODUCT_VERSION=$1
 APACHE_MAVEN_VERSION=$2
+APIM_CTL_VERSION=$3
 
 echo BASE_DIR $BASE_DIR and PRODUCT_VERSION $PRODUCT_VERSION
 
@@ -36,6 +37,14 @@ MACOS_JDK_LIB_PATH="$PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse/$JD
 JDK_DISTRIBUTION_PATH_LINUX=$JDK_DISTRIBUTION_PATH/jdk-linux
 JDK_DISTRIBUTION_PATH_WINDOWS=$JDK_DISTRIBUTION_PATH/jdk-windows
 JDK_DISTRIBUTION_PATH_MACOS=$JDK_DISTRIBUTION_PATH/jdk-macos
+
+# Location of apictl distributions
+APICTL_DISTRIBUTION_PATH=$BASE_DIR/target/apictl
+APICTL_DISTRIBUTION_PATH_LINUX_86=$APICTL_DISTRIBUTION_PATH/apictl-linux-i586
+APICTL_DISTRIBUTION_PATH_LINUX_64=$APICTL_DISTRIBUTION_PATH/apictl-linux-x64
+APICTL_DISTRIBUTION_PATH_WINDOWS_86=$APICTL_DISTRIBUTION_PATH/apictl-windows-i586
+APICTL_DISTRIBUTION_PATH_WINDOWS_64=$APICTL_DISTRIBUTION_PATH/apictl-windows-x64
+APICTL_DISTRIBUTION_PATH_MACOSX_64=$APICTL_DISTRIBUTION_PATH/apictl-macosx-x64
 
 # Micro Integrator configurations 
 DEPLOYMENT_FILE=deployment.toml
@@ -95,6 +104,27 @@ rm -rf $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-linux.gtk.x86_64.tar.gz
 rm -rf $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-win32.win32.x86.zip
 rm -rf $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-win32.win32.x86_64.zip
 rm -rf $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-macosx.cocoa.x86_64.tar.gz
+
+# Extract api-ctl to relevant packages
+pushd ${APICTL_DISTRIBUTION_PATH_LINUX_86}
+tar xzf apictl-$APIM_CTL_VERSION-linux-i586.tar.gz -C $PRODUCT_PATH_LINUX_86
+popd
+
+pushd ${APICTL_DISTRIBUTION_PATH_LINUX_64}
+tar xzf apictl-$APIM_CTL_VERSION-linux-x64.tar.gz -C $PRODUCT_PATH_LINUX_64
+popd
+
+pushd ${APICTL_DISTRIBUTION_PATH_WINDOWS_86}
+unzip apictl-$APIM_CTL_VERSION-windows-i586.zip -d $PRODUCT_PATH_WIN_86
+popd
+
+pushd ${APICTL_DISTRIBUTION_PATH_WINDOWS_64}
+unzip apictl-$APIM_CTL_VERSION-windows-x64.zip -d $PRODUCT_PATH_WIN_64
+popd
+
+pushd ${APICTL_DISTRIBUTION_PATH_MACOSX_64}
+tar xzf apictl-$APIM_CTL_VERSION-macosx-x64.tar.gz -C $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse
+popd
 
 # Extract JDK distributions
 pushd ${JDK_DISTRIBUTION_PATH_LINUX}
@@ -210,6 +240,7 @@ popd
 # Cleanup
 rm $PRODUCT_PATH_ROOT/wso2mi-$PRODUCT_VERSION.zip
 rm $PRODUCT_PATH_ROOT/apache-maven-${APACHE_MAVEN_VERSION}-bin.zip
+rm -rf $APICTL_DISTRIBUTION_PATH
 rm -rf $PRODUCT_PATH_ROOT/temp
 rm -rf $PRODUCT_PATH_ROOT/IntegrationStudio
 rm -rf $JDK_DISTRIBUTION_PATH

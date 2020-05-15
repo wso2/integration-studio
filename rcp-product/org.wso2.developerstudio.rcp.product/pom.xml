@@ -85,6 +85,73 @@
                 <version>1.3.0</version>
                 <executions>
                     <execution>
+                        <id>download-apictl-linux-i586</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>wget</goal>
+                        </goals>
+                        <configuration>
+                            <url>https://github.com/wso2/product-apim-tooling/releases/download/v${apim.ctl.version}/apictl-${apim.ctl.version}-linux-i586.tar.gz</url>
+                            <unpack>false</unpack>
+                            <outputDirectory>${project.build.directory}/apictl/apictl-linux-i586</outputDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>download-apictl-linux-x64</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>wget</goal>
+                        </goals>
+                        <configuration>
+                            <url>https://github.com/wso2/product-apim-tooling/releases/download/v${apim.ctl.version}/apictl-${apim.ctl.version}-linux-x64.tar.gz</url>
+                            <unpack>false</unpack>
+                            <outputDirectory>${project.build.directory}/apictl/apictl-linux-x64</outputDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>download-apictl-windows-i586</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>wget</goal>
+                        </goals>
+                        <configuration>
+                            <url>https://github.com/wso2/product-apim-tooling/releases/download/v${apim.ctl.version}/apictl-${apim.ctl.version}-windows-i586.zip</url>
+                            <unpack>false</unpack>
+                            <outputDirectory>${project.build.directory}/apictl/apictl-windows-i586</outputDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>download-apictl-windows-x64</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>wget</goal>
+                        </goals>
+                        <configuration>
+                            <url>https://github.com/wso2/product-apim-tooling/releases/download/v${apim.ctl.version}/apictl-${apim.ctl.version}-windows-x64.zip</url>
+                            <unpack>false</unpack>
+                            <outputDirectory>${project.build.directory}/apictl/apictl-windows-x64</outputDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>download-apictl-macosx-x64</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>wget</goal>
+                        </goals>
+                        <configuration>
+                            <url>https://github.com/wso2/product-apim-tooling/releases/download/v${apim.ctl.version}/apictl-${apim.ctl.version}-macosx-x64.tar.gz</url>
+                            <unpack>false</unpack>
+                            <outputDirectory>${project.build.directory}/apictl/apictl-macosx-x64</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.googlecode.maven-download-plugin</groupId>
+                <artifactId>download-maven-plugin</artifactId>
+                <version>1.3.0</version>
+                <executions>
+                    <execution>
                         <id>download-jdk-linux</id>
                         <phase>prepare-package</phase>
                         <goals>
@@ -177,7 +244,7 @@
                             <goal>exec</goal>
                         </goals>
                         <configuration>
-                            <commandlineArgs>${mi.product.version} ${apache.maven.version}</commandlineArgs>
+                            <commandlineArgs>${mi.product.version} ${apache.maven.version} ${apim.ctl.version}</commandlineArgs>
                             <executable>${project.basedir}/scripts/installer-script-oxygen.sh</executable>
                         </configuration>
                     </execution>

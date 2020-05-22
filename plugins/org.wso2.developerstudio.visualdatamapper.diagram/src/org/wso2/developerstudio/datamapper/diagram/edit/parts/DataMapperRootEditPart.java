@@ -43,6 +43,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
 import org.eclipse.draw2d.Label;
@@ -59,6 +60,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
+import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 import org.eclipse.gmf.tooling.runtime.update.UpdateDiagramCommand;
@@ -66,6 +68,7 @@ import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.papyrus.infra.gmfdiag.css.CSSShapeImpl;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -214,9 +217,10 @@ public class DataMapperRootEditPart extends DiagramEditPart {
         figure.setBackgroundColor(new Color(null, 246, 255, 255));
         figure.setOpaque(true);
 
+        // Add AI based datamapper button to the canvas.
         RectangleFigure aiDataMapperLabelBox = new RectangleFigure();
         aiDataMapperLabelBox.setBackgroundColor(new Color(null, 232, 234, 237));
-        aiDataMapperLabelBox.setLocation(new Point(0, -400));
+        aiDataMapperLabelBox.setLocation(new Point(90, 0));
         aiDataMapperLabelBox.setSize(new Dimension(480, 40));
         LineBorder border = new LineBorder();
         border.setColor(new Color(null, 245, 246, 247));
@@ -224,12 +228,31 @@ public class DataMapperRootEditPart extends DiagramEditPart {
 
         Label aiDataMapperLabel = new Label("AI generated data mappings available.");
         aiDataMapperLabel.setSize(new Dimension(600, 40));
-        aiDataMapperLabel.setLocation(new Point(-130, -400));
+        aiDataMapperLabel.setLocation(new Point(-30, 0));
 
         Image applyBtnImage = ImageHolder.getInstance().getAddAIDataMappingImage();
         ImageFigure aiDataMapperLabelBtn = new ImageFigure(applyBtnImage);
         aiDataMapperLabelBtn.setSize(new Dimension(200, 30));
-        aiDataMapperLabelBtn.setLocation(new Point(300, -395));
+        aiDataMapperLabelBtn.setLocation(new Point(360, 5));
+
+        // This block checks whether the input and output empty and make ai data mapping visible accordingly
+        DataMapperRootImpl datamapperRoot = (DataMapperRootImpl) this.getDiagramView().getDiagram().getElement();
+
+        int inputSize = datamapperRoot.getInput().getTreeNode().size();
+        int outputSize = datamapperRoot.getOutput().getTreeNode().size();
+        datamapperRoot.setAiDataMapperButton(aiDataMapperLabelBtn);
+        datamapperRoot.setAiDataMapperLabel(aiDataMapperLabel);
+        datamapperRoot.setAiDataMapperLabelBox(aiDataMapperLabelBox);
+        FigureCanvas canvas = (FigureCanvas) getViewer().getControl();
+        datamapperRoot.setCanvas(canvas);
+        datamapperRoot.setFigure(figure);
+
+        if ((inputSize == 0) || (outputSize == 0)) {
+            aiDataMapperLabelBtn.setVisible(false);
+            aiDataMapperLabel.setVisible(false);
+            aiDataMapperLabelBox.setVisible(false);
+        }
+
         aiDataMapperLabelBtn.addMouseListener(new MouseListener() {
             @Override
             public void mouseReleased(MouseEvent me) {
@@ -258,23 +281,6 @@ public class DataMapperRootEditPart extends DiagramEditPart {
             }
         });
 
-        figure.add(aiDataMapperLabelBox);
-        figure.add(aiDataMapperLabel);
-        figure.add(aiDataMapperLabelBtn);
-
-        // This block checks whether the input and output empty and make ai data mapping visible accordingly
-        DataMapperRootImpl datamapperRoot = (DataMapperRootImpl) this.getDiagramView().getDiagram().getElement();
-        int inputSize = datamapperRoot.getInput().getTreeNode().size();
-        int outputSize = datamapperRoot.getOutput().getTreeNode().size();
-        datamapperRoot.setAiDataMapperButton(aiDataMapperLabelBtn);
-        datamapperRoot.setAiDataMapperLabel(aiDataMapperLabel);
-        datamapperRoot.setAiDataMapperLabelBox(aiDataMapperLabelBox);
-
-        if ((inputSize == 0) || (outputSize == 0)) {
-            aiDataMapperLabelBtn.setVisible(false);
-            aiDataMapperLabel.setVisible(false);
-            aiDataMapperLabelBox.setVisible(false);
-        }
         return figure;
     }
     
@@ -472,7 +478,8 @@ public class DataMapperRootEditPart extends DiagramEditPart {
      */
     public void drawMappings() throws InvocationTargetException, InterruptedException, IOException {
         DataMapperRootImpl datamapperRoot = (DataMapperRootImpl) this.getDiagramView().getDiagram().getElement();
-
+        final Diagram datamapperDiagram = (Diagram) this.getDiagramView().getDiagram();
+        
         // Get input and output schemas
         final String inputContent = getSchema(datamapperRoot, "input");
         final String outputContent = getSchema(datamapperRoot, "output");
@@ -527,13 +534,24 @@ public class DataMapperRootEditPart extends DiagramEditPart {
                                 container.getOutgoingLink().add(newElement);
                                 newElement.setOutNode((OutNode) source);
                                 newElement.setInNode((InNode) target);
+                                
+                                final EList transientChildern = datamapperDiagram.getTransientChildren();
+                                recursivePersistance(transientChildern);
+                                final EList persistantChildern = datamapperDiagram.getPersistedChildren();
+                                recursivePersistance(persistantChildern);
+                                datamapperDiagram.getDiagram().persistChildren();
+                                datamapperDiagram.getDiagram().persistEdges();
                             }
                         });
+                        
                     } catch (Exception e) {
                         continue;
                     }
                 }
             }
+            
+            FigureCanvas canvas = (FigureCanvas) getViewer().getControl();
+            canvas.getViewport().repaint();
         } else {
             popupDialogBox(IStatus.INFO, "No suggessions from AI Mapping");
         }
@@ -542,6 +560,23 @@ public class DataMapperRootEditPart extends DiagramEditPart {
             updater.execute(null);
         } catch (ExecutionException e) {
             log.error(e);
+        }
+    }
+    
+    private void recursivePersistance(EList childern) {
+        for (Object child : childern) {
+            if (child instanceof CSSShapeImpl) {
+                EList childTransientSet = ((CSSShapeImpl) child).getTransientChildren();
+                if (childTransientSet != null && childTransientSet.size() > 0) {
+                    recursivePersistance(childTransientSet);
+                }
+
+                EList childPersistedSet = ((CSSShapeImpl) child).getPersistedChildren();
+                if (childPersistedSet != null && childPersistedSet.size() > 0) {
+                    recursivePersistance(childPersistedSet);
+                }
+                ((CSSShapeImpl) child).persistChildren();
+            }
         }
     }
 

@@ -4,6 +4,8 @@ package org.wso2.developerstudio.datamapper.impl;
 
 import java.util.Collection;
 
+import org.eclipse.draw2d.FigureCanvas;
+import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.RectangleFigure;
@@ -69,6 +71,17 @@ public class DataMapperRootImpl extends EObjectImpl implements DataMapperRoot {
 	private ImageFigure aiDataMapperButton;
 	private Label aiDataMapperLabel;
 	private RectangleFigure aiDataMapperLabelBox;
+	private IFigure figure;
+	private boolean canAIBasedDataMappingButtonLoadToCanvas = true;
+	private FigureCanvas canvas;
+	
+	public void setFigure(IFigure figure) {
+		this.figure = figure;
+	}
+
+	public void setCanvas(FigureCanvas canvas) {
+		this.canvas = canvas;
+	}
 
 	/**
 	 * Setting reference for the AI DataMapper Button.
@@ -105,12 +118,21 @@ public class DataMapperRootImpl extends EObjectImpl implements DataMapperRoot {
 	 * output trees are available.
 	 */
 	private void setAiButtonVisibility() {
-		if (aiDataMapperButton != null) {
-			if ((input.getTreeNode().size() == 0) || (output.getTreeNode().size() == 0)) {
-				aiDataMapperButton.setVisible(false);
-				aiDataMapperLabel.setVisible(false);
-				aiDataMapperLabelBox.setVisible(false);
-			} else {
+		if (!canAIBasedDataMappingButtonLoadToCanvas && figure != null
+				&& ((input.getTreeNode().size() == 0) || (output.getTreeNode().size() == 0))) {
+			aiDataMapperButton.setVisible(false);
+			aiDataMapperLabel.setVisible(false);
+			aiDataMapperLabelBox.setVisible(false);
+		} else if (figure != null && ((input.getTreeNode().size() > 0) && (output.getTreeNode().size() > 0))) {
+			if (canAIBasedDataMappingButtonLoadToCanvas) {
+				figure.add(aiDataMapperLabelBox);
+				figure.add(aiDataMapperLabel);
+				figure.add(aiDataMapperButton);
+				canvas.scrollToY(0);
+				canAIBasedDataMappingButtonLoadToCanvas = false;
+			}
+			if (!canAIBasedDataMappingButtonLoadToCanvas) {
+				canvas.scrollToY(0);
 				aiDataMapperButton.setVisible(true);
 				aiDataMapperLabel.setVisible(true);
 				aiDataMapperLabelBox.setVisible(true);

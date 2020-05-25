@@ -3,6 +3,7 @@ BASE_DIR=$(pwd)
 PRODUCT_VERSION=$1
 APACHE_MAVEN_VERSION=$2
 APIM_CTL_VERSION=$3
+PRODUCT_DIRECTORY=$4
 
 echo BASE_DIR $BASE_DIR and PRODUCT_VERSION $PRODUCT_VERSION
 
@@ -71,11 +72,11 @@ unzip $PRODUCT_PATH_ROOT/wso2mi-${PRODUCT_VERSION}.zip -d $PRODUCT_PATH_WIN_86/r
 unzip $PRODUCT_PATH_ROOT/wso2mi-${PRODUCT_VERSION}.zip -d $PRODUCT_PATH_WIN_64/runtime
 
 # Rename as "microesb" (this is the static name used in EI Tooling code)
-mv $PRODUCT_PATH_LINUX_86/runtime/wso2mi-$PRODUCT_VERSION $PRODUCT_PATH_LINUX_86/runtime/microesb
-mv $PRODUCT_PATH_LINUX_64/runtime/wso2mi-$PRODUCT_VERSION $PRODUCT_PATH_LINUX_64/runtime/microesb
-mv $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse/runtime/wso2mi-$PRODUCT_VERSION $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse/runtime/microesb
-mv $PRODUCT_PATH_WIN_86/runtime/wso2mi-$PRODUCT_VERSION $PRODUCT_PATH_WIN_86/runtime/microesb
-mv $PRODUCT_PATH_WIN_64/runtime/wso2mi-$PRODUCT_VERSION $PRODUCT_PATH_WIN_64/runtime/microesb
+mv $PRODUCT_PATH_LINUX_86/runtime/wso2mi-$PRODUCT_DIRECTORY $PRODUCT_PATH_LINUX_86/runtime/microesb
+mv $PRODUCT_PATH_LINUX_64/runtime/wso2mi-$PRODUCT_DIRECTORY $PRODUCT_PATH_LINUX_64/runtime/microesb
+mv $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse/runtime/wso2mi-$PRODUCT_DIRECTORY $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse/runtime/microesb
+mv $PRODUCT_PATH_WIN_86/runtime/wso2mi-$PRODUCT_DIRECTORY $PRODUCT_PATH_WIN_86/runtime/microesb
+mv $PRODUCT_PATH_WIN_64/runtime/wso2mi-$PRODUCT_DIRECTORY $PRODUCT_PATH_WIN_64/runtime/microesb
 
 # Unzip apche maven to relevant packages
 unzip $PRODUCT_PATH_ROOT/apache-maven-${APACHE_MAVEN_VERSION}-bin.zip -d $PRODUCT_PATH_LINUX_86/

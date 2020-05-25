@@ -18,6 +18,7 @@ import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
@@ -178,6 +179,22 @@ public class EEFPropertyViewUtil {
         subsectionGroup.setLayout(propertiesGroupLayout);
         propertiesSection.setClient(subsectionGroup);
         return subsectionGroup;
+    }
+    
+    
+    public static Composite createNewGroup(FormToolkit widgetFactory, final Composite parent, String name) {
+        Group propertiesSection = new Group(parent, SWT.FILL);
+        propertiesSection.setText(name);
+        GridLayout propertiesGroupLayout = new GridLayout();
+        propertiesGroupLayout.numColumns = 3;
+        propertiesGroupLayout.marginLeft = 15;
+        propertiesGroupLayout.horizontalSpacing = 20;
+        propertiesGroupLayout.verticalSpacing = 10;
+        propertiesSection.setLayout(propertiesGroupLayout);
+        GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
+        propertiesSectionData.horizontalSpan = 3;
+        propertiesSection.setLayoutData(propertiesSectionData);
+        return propertiesSection;
     }
     
     /**

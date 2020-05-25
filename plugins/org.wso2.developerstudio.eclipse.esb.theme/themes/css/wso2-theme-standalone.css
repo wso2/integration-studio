@@ -78,11 +78,49 @@
     color: #EDEDED;
 }
 
-Form,
-FormHeading {
-    background: #F4F5F6;
+CTabFolder[style~='SWT.BOTTOM']{
+	swt-tab-renderer: url('bundleclass://org.wso2.developerstudio.eclipse.esb.theme/org.wso2.developerstudio.eclipse.esb.theme.TabTopRenderer');
+	swt-simple:true;
+	border-visible: false;
+	swt-corner-radius:10px;
+	swt-tab-outline: #ffffff;
+	swt-outer-keyline-color:#ffffff;
+	swt-tab-height: 30px;
+}
+
+.PropertiesEditor *{
+	background-color:#ffffff;
+	background:#ffffff;
+	    swt-outer-keyline-color: #ffffff;
+    swt-inner-keyline-color: #ffffff;
+    swt-tab-outline: #ffffff;
+}
+
+
+
+TabbedPropertyList Form {
+    background: #FFFFFF;
     background-color: #F4F5F6;
     background-image: #F4F5F6;
+    color: #000000;
+    padding: 0px 0px 0px 0px;
+}
+
+TabbedPropertyList {
+	swt-tab-renderer: url('bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.CTabRendering');
+	swt-tabBackground-color: #258712;
+	swt-tabNormalShadow-color: #e8e8e8;
+	swt-tabDarkShadow-color: #e8e8e8;
+	swt-unselected-tabs-color: #FFFFFF;
+	color: #FFFFFF;
+}
+
+
+Form,
+FormHeading {
+    background: #FFFFFF;
+    background-color: #FFFFFF;
+    background-image: #FFFFFF;
     color: #000000;
     padding: 0px 0px 0px 0px;
 }
@@ -113,4 +151,13 @@ Section Label{
 CTabFolder#org-eclipse-e4-primaryDataStack,
 CTabFolder#topLeft,CTabFolder#right ,CTabFolder#bottomLeft,CTabFolder#bottom {
   swt-outer-keyline-color: rgb(189, 195, 199);
+}
+
+* {
+    font-size: 10;
+}
+
+Composite Label {
+    background-color: white;
+    color: black;
 }

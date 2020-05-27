@@ -49,6 +49,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.json.simple.JSONValue;
 import org.wso2.carbon.rest.api.APIException;
 import org.wso2.carbon.rest.api.service.RestApiAdmin;
 import org.wso2.developerstudio.eclipse.artifact.synapse.api.Activator;
@@ -77,9 +78,7 @@ import org.wso2.developerstudio.eclipse.registry.core.utils.RegistryResourceInfo
 import org.wso2.developerstudio.eclipse.registry.core.utils.RegistryResourceUtils;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+import org.yaml.snakeyaml.Yaml;
 
 
 /**
@@ -307,20 +306,16 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
 		return artifact;
 	}
 
-	public static String convertYamlToJson(String yaml) {
-		YAMLFactory yamlFactory = new YAMLFactory();
-		ObjectMapper yamlReader = new ObjectMapper(yamlFactory);
-		String convertedJSON = "";
-		try {
-			Object tmpYamlValueObject = yamlReader.readValue(yaml, Object.class);
-			ObjectMapper jsonWriter = new ObjectMapper();
-			convertedJSON = jsonWriter.writeValueAsString(tmpYamlValueObject);
-		} catch (IOException e) {
-			log.error("Error occured while trying to read yaml file", e);
-		} catch (Exception e) {
-			log.error("Error occured while trying to convert yaml file to json file", e);
-		}
-		return convertedJSON;
+	/**
+	 * Converts a given YAML content to JSON.
+	 * 
+	 * @param yamlSource yaml content
+	 * @return converted JSON content
+	 */
+	public static String convertYamlToJson(String yamlSource) {
+		Yaml yaml = new Yaml();
+		Object object = yaml.load(yamlSource);
+		return JSONValue.toJSONString(object);
 	}
 
 	private String getSwaggerFileAsJSON(File swaggerFile) {

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<!--
+  ~ Copyright (c) 2020, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+  ~
+  ~ WSO2 Inc. licenses this file to you under the Apache License,
+  ~ Version 2.0 (the "License"); you may not use this file except
+  ~ in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing,
+  ~ software distributed under the License is distributed on an
+  ~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~ KIND, either express or implied. See the License for the
+  ~ specific language governing permissions and limitations
+  ~ under the License.
+  -->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Getting Started</title>
+
+    <!-- Bootstrap -->
+    <link href="libs/bootstrap_3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="libs/jquery.scrollbar_0.2.11/jquery.scrollbar.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="libs/list_grid_view/table_style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="row">
+        <div class="column col-lg-12">
+            <nav class="navbar navbar-light bg-light">
+                <div class="column col-lg-5"></div>
+                <h2 class="navbar-text" id="registry-name">Service Catalog</h2>
+                <div class="text-right">
+                    <form class="form-inline">
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="user-name"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <a>User Name</a>
+                                <span class="glyphicon glyphicon-user"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="user-name">
+                                <li><a href="#" id="log-out-button">Logout</a></li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="modal fade" id="exportConfirmModal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Export API</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Do you want to export the API?
+                </div>
+                <div class="modal-footer">
+                    <div class="alert alert-success" role="alert" id="export-success-alert" hidden="true">
+                        Successfully exported.</div>
+                    <div class="alert alert-danger" role="alert" id="export-failed-alert" hidden="true">
+                        Export failed.</div>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="export-api-modal-button">Export</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="importSpecification" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Select the destination Project?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="import-specification-body">
+                    <div class="alert alert-info" role="alert" id="no-project-alert"> No config projects in the
+                        workspace. Please create a new config project following <span>Help -> Getting Started ->
+                            Miscellaneous -> Create config ptoject</span>.
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="alert alert-success" role="alert" id="import-success-alert" hidden="true">
+                        Successfully imported.</div>
+                    <div class="alert alert-danger" role="alert" id="import-failed-alert" hidden="true">
+                        Import failed.</div>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="import-specification-modal-button"
+                        disabled="">Import
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid container-main scrollbar-macosx">
+        <!-- <div>
+            <h1 class="header">Service Catalog</h1>
+        </div> -->
+        <div class="row container-body">
+            <ul class="nav nav-pills nav-stacked col-xs-3 col-sm-2 col-md-2 col-lg-2">
+                <li class="active" data-toggle="tooltip" title="Enterprise Service Bus Project">
+                    <a href="#1" data-toggle="tab">Import from registry</a>
+                </li>
+                <li data-toggle="tooltip" title="Data Service Project">
+                    <a href="#2" data-toggle="tab">Export to registry</a>
+                </li>
+            </ul>
+            <div class="tab-content col-xs-9 col-sm-10 col-md-10 col-lg-10">
+                <div class="tab-pane active" id="1">
+                    <div class="section-two col-md-12 col-lg-12">
+                        <h2>Specifications</h2>
+                        <div class="form-group row">
+                            <div class="col-md-6">
+
+                                <div class="input-group temp-input-group">
+                                    <input type="text" class="form-control" placeholder="Search Specifications"
+                                        id="specifications-search">
+                                    <span class="input-group-addon">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                                            enable-background="new 0 0 129 129">
+                                            <g>
+                                                <path style="fill: #7f8c8d" d="M51.6,96.7c11,0,21-3.9,28.8-10.5l35,
+                                            35c0.8,0.8,1.8,1.2,2.9,1.2s2.1-0.4,2.9-1.2c1.6-1.6,1.6-4.2,
+                                            0-5.8l-35-35   
+                                            c6.5-7.8,10.5-17.9,10.5-28.8c0-24.9-20.2-45.1-45.1-45.1C26.8,
+                                            6.5,6.5,26.8,6.5,51.6C6.5,76.5,26.8,96.7,51.6,96.7z M51.6,
+                                            14.7   c20.4,0,36.9,16.6,36.9,36.9C88.5,72,72,88.5,51.6,88.5c-20.4,
+                                            0-36.9-16.6-36.9-36.9C14.7,31.3,31.3,14.7,51.6,14.7z" />
+                                            </g>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+
+                                <div class="input-group temp-input-group">
+                                    <select type="form-control" class="form-control" placeholder="Category"
+                                        id="spec-category-select">
+                                        <option value="Select a category">Select a category</option>
+                                        <option value="UTILITY">Utility</option>
+                                        <option value="EDGE">EDGE</option>
+                                        <option value="DOMAIN">DOMAIN</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="wrapper">
+                            <div class="alert alert-info" role="alert" id="no-spec-alert" hidden="true">Thera are no
+                                specifications available.</div>
+                            <div class="alert alert-danger" role="alert" id="failed-spec-alert" hidden="true"> Failed
+                                obtain specifications.</div>
+                            <div class="view" id="spec-parent-div">
+                                <p>View as:</p>
+                                <a href="#" class="icon-list"></a>
+                                <a href="#" class="icon-grid"></a>
+                            </div>
+                            <div class="products category">
+                                <ul class="" id="specifications">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="2">
+                    <div class="section-two col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <h2>API Artifacts</h2>
+                        <div class="form-group">
+                            <div class="input-group temp-input-group">
+                                <input type="text" class="form-control" placeholder="Search API Artifacts"
+                                    id="api-artifacts-search">
+                                <span class="input-group-addon">
+                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" 
+                                        enable-background="new 0 0 129 129">
+                                        <g>
+                                            <path style="fill: #7f8c8d" d="M51.6,96.7c11,0,21-3.9,28.8-10.5l35,35c0.8,
+                                            0.8,1.8,1.2,2.9,1.2s2.1-0.4,2.9-1.2c1.6-1.6,1.6-4.2,
+                                            0-5.8l-35-35   c6.5-7.8,
+                                            10.5-17.9,10.5-28.8c0-24.9-20.2-45.1-45.1-45.1C26.8,
+                                            6.5,6.5,26.8,6.5,51.6C6.5,76.5,26.8,96.7,51.6,96.7z M51.6,
+                                            14.7   c20.4,0,36.9,16.6,36.9,36.9C88.5,72,72,88.5,51.6,88.5c-20.4,
+                                            0-36.9-16.6-36.9-36.9C14.7,31.3,31.3,14.7,51.6,14.7z" />
+                                        </g>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="wrapper">
+                            <div class="alert alert-info" role="alert" id="no-api-alert" hidden="true"> 
+                                No API artifacts in the workspace.</div>
+                            <div class="alert alert-danger" role="alert" id="failed-api-alert" hidden="true"> 
+                                Failed obtain API artifacts.</div>
+                            <div class="view" id="projects-parent-div">
+                                <p>View as:</p>
+                                <a href="#" class="icon-list"></a>
+                                <a href="#" class="icon-grid"></a>
+                            </div>
+                            <div class="products category">
+                                <ul class="" id="api-artifacts">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="libs/jquery_1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="libs/bootstrap_3.3.6/js/bootstrap.min.js"></script>
+    <script src="libs/jquery.scrollbar_0.2.11/jquery.scrollbar.min.js"></script>
+    <script src="js/constants.js"></script>
+    <script src="serverproperties.js"></script>
+    <script src="js/service_catalog.js"></script>
+</body>
+
+</html>

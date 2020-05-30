@@ -34,17 +34,7 @@ import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationType;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.debug.core.ILaunchManager;
-import org.eclipse.jface.action.IContributionItem;
-import org.eclipse.jface.action.IMenuManager;
-import org.eclipse.jface.action.MenuManager;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.IPerspectiveDescriptor;
 import org.eclipse.ui.IStartup;
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.PerspectiveAdapter;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.internal.WorkbenchWindow;
 import org.wso2.developerstudio.eclipse.carbonserver44microei11.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -72,96 +62,6 @@ public class PlatformEarlyStartUpHandler implements IStartup {
 		} catch (CoreException e) {
 			log.error("Exception occured while creating micro-integrator debug profile", e);
 		}
-
-        // The following section will remove the unwanted
-        Display.getDefault().asyncExec(new Runnable() {
-            public void run() {
-
-                try {
-                    @SuppressWarnings("restriction")
-                    WorkbenchWindow workbenchWin = (WorkbenchWindow) PlatformUI.getWorkbench()
-                            .getActiveWorkbenchWindow();
-                    @SuppressWarnings("restriction")
-                    MenuManager menuManager = workbenchWin.getMenuManager();
-                    IContributionItem[] items = menuManager.getItems();
-
-                    // The following code will delete selected entries under the Help menu
-                    for (int i = 0; i < items.length; i++) {
-                        if (items[i] instanceof IMenuManager) {
-                            IMenuManager submenu = (IMenuManager) items[i];
-                            // This removes Welcome
-                            IContributionItem welcomeItem = submenu.find("intro");
-                            if (welcomeItem != null) {
-                                submenu.remove(welcomeItem);
-                            }
-                            // This removes Key Binding
-                            IContributionItem keyBindingItem = submenu.find("org.eclipse.ui.actions.showKeyAssistHandler");
-                            if (keyBindingItem != null) {
-                                submenu.remove(keyBindingItem);
-                            }
-                            // This removes Update
-                            IContributionItem updateItem = submenu.find("org.eclipse.equinox.p2.ui.sdk.update");
-                            if (updateItem != null) {
-                                submenu.remove(updateItem);
-                            }
-                            // This removes Update
-                            IContributionItem v8CrhomeRunItem = submenu.find(
-                                    "org.eclipse.wst.jsdt.chromium.debug.ui.actions.AddExceptionBreakpointAction");
-                            if (v8CrhomeRunItem != null) {
-                                submenu.remove(v8CrhomeRunItem);
-                            }
-                            // This removes Help Contents
-                            IContributionItem helpContentItem = submenu.find("helpContents");
-                            if (helpContentItem != null) {
-                                submenu.remove(helpContentItem);
-                            }
-                            // This removes Help Search
-                            IContributionItem helpSearchItem = submenu.find("helpSearch");
-                            if (helpSearchItem != null) {
-                                submenu.remove(helpSearchItem);
-                            }           
-                            // This removes Dynamic Help
-                            IContributionItem dynamicHelpItem = submenu.find("dynamicHelp");
-                            if (dynamicHelpItem != null) {
-                                submenu.remove(dynamicHelpItem);
-                            }             
-                            // This removes Tip and Tricks
-                            IContributionItem TipsAndTricksItem = submenu.find("tipsAndTricks");
-                            if (TipsAndTricksItem != null) {
-                                submenu.remove(TipsAndTricksItem);
-                            }             
-                            // This removes Cheet Sheet
-                            IContributionItem cheatSheetItem = submenu
-                                    .find("org.eclipse.ui.cheatsheets.actions.CheatSheetHelpMenuAction");
-                            if (cheatSheetItem != null) {
-                                submenu.remove(cheatSheetItem);
-                            } 
-
-
-                        }
-                    }
-
-                    final IWorkbenchWindow workbenchWindow = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-                    if (workbenchWindow != null) {
-
-                        workbenchWindow.addPerspectiveListener(new PerspectiveAdapter() {
-                            @Override
-                            public void perspectiveActivated(IWorkbenchPage page,
-                                    IPerspectiveDescriptor perspectiveDescriptor) {
-                                super.perspectiveActivated(page, perspectiveDescriptor);
-                                PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-                                        .hideActionSet("org.eclipse.ui.externaltools.ExternalToolsSet");
-                            }
-                        });
-
-                        PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-                                .hideActionSet("org.eclipse.ui.externaltools.ExternalToolsSet");
-                    }
-                } catch (Exception e) {
-                    log.error(e);
-                }
-            }
-        });
 
         // The following resource listener will remove the modules from the maven multi-module pom file when the child
         // projects are deleted

@@ -19,7 +19,6 @@
 package org.wso2.developerstudio.eclipse.carbonserver44microei11.register.product.servers;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Locale;
 import java.util.Map;
@@ -33,10 +32,6 @@ import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.debug.internal.ui.DebugUIPlugin;
 import org.eclipse.debug.internal.ui.launchConfigurations.LaunchHistory;
 import org.eclipse.jst.server.generic.core.internal.GenericServer;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.IViewPart;
-import org.eclipse.ui.PartInitException;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.wst.server.core.IRuntime;
 import org.eclipse.wst.server.core.IRuntimeType;
 import org.eclipse.wst.server.core.IRuntimeWorkingCopy;
@@ -91,36 +86,7 @@ public class MicroIntegratorInstance {
 
         IRuntimeType runtimeType = ServerCore
                 .findRuntimeType("org.wso2.developerstudio.eclipse.carbon.runtime44microei11");
-        IServerType serverType = ServerCore.findServerType("org.wso2.developerstudio.eclipse.carbon.server44microei11");
-		IRuntimeType runtimeType100 = ServerCore
-				.findRuntimeType("org.wso2.developerstudio.eclipse.carbon.runtime44microei");
-		IServerType serverType100 = ServerCore
-				.findServerType("org.wso2.developerstudio.eclipse.carbon.server44microei");
-
-        // Remove the already existing servers and runtime of micro-ei
-        try {
-            IRuntime[] availableRuntimes = ServerCore.getRuntimes();
-            for (IRuntime temRuntime : availableRuntimes) {
-                if (temRuntime.getRuntimeType().equals(runtimeType)) {
-                    temRuntime.delete();
-                }
-                if (temRuntime.getRuntimeType().equals(runtimeType100) && temRuntime.getName().equals("Micro Integrator Runtime")) {
-                    temRuntime.delete();
-                }
-            }
-
-            IServer[] availableServers = ServerCore.getServers();
-            for (IServer tempServers : availableServers) {
-                if (tempServers.getServerType().equals(serverType)) {
-                    tempServers.delete();
-                }
-                if (tempServers.getServerType().equals(serverType100) && tempServers.getName().equals("Micro Integrator Server")) {
-                	tempServers.delete();
-                }
-            }
-        } catch (CoreException e1) {
-            log.error("Exception occured while trying to delete the old runtime", e1);
-        }	    
+        IServerType serverType = ServerCore.findServerType("org.wso2.developerstudio.eclipse.carbon.server44microei11");    
 
 		try {
 
@@ -128,7 +94,7 @@ public class MicroIntegratorInstance {
 
 			IRuntimeWorkingCopy runtime = runtimeType.createRuntime("org.wso2.micro.integrator.runtime11",
 					progressMonitor);
-			runtime.setName("Micro Integrator Runtime 1.0.0");
+			runtime.setName("Micro Integrator Runtime 1.1.0");
 			
 			// on mac MacOS folder is considered as eclipse_home
 			runtime.setLocation(new Path(getServerHome()));
@@ -326,12 +292,6 @@ public class MicroIntegratorInstance {
                                 }
                             }
                             isHistoryCleard = true;
-                            System.out.println(microIntegratorServer.getRuntime().getLocation());
-                            try {
-                                getDeployedServices();
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
                         } else {
                             Thread.sleep(1000);
                         }
@@ -341,23 +301,6 @@ public class MicroIntegratorInstance {
                 }
             }
         }.start();
-    }
-    
-    private void getDeployedServices() throws IOException {
-        Display.getDefault().asyncExec(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    IViewPart view = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView("org.wso2.developerstudio.eclipse.esb.project.deployed.endpoint.view");
-                    PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().hideView(view);
-                    PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView("org.wso2.developerstudio.eclipse.esb.project.deployed.endpoint.view");
-                    
-                } catch (PartInitException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
     }
     
     /**

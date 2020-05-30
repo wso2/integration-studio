@@ -18,6 +18,7 @@ package org.wso2.developerstudio.eclipse.distribution.project.publisher;
 
 import java.io.File;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -43,116 +44,196 @@ import org.wso2.developerstudio.eclipse.distribution.project.Activator;
 import org.wso2.developerstudio.eclipse.utils.data.ITemporaryFileTag;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
+import net.consensys.cava.toml.Toml;
+import net.consensys.cava.toml.TomlParseResult;
+
 public class CAppProjectPublisher implements ICarbonServerModulePublisher {
-    
-	private static final String MI_PLUGIN_ID = "org.wso2.developerstudio.eclipse.carbon.server44microei";
-	private static final String MI_110_PLUGIN_ID = "org.wso2.developerstudio.eclipse.carbon.server44microei11";
-	private static final String MI_CAPP_PATH = File.separator + "repository" + File.separator + "deployment"
-			+ File.separator + "server" + File.separator + "carbonapps";
-    
-	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-    
-	private final class CarPublisher implements Runnable {
-	    private final File deployLocation;
-	    private final IProject project;
-	    private boolean done=false;
-	    private Exception exception;
-		private IServer server;
-	    
-	    private CarPublisher(File deployLocation, IProject project, IServer server) {
-		    this.deployLocation = deployLocation;
-		    this.project = project;
-		    this.server=server;
-	    }
 
-	    public void run() {
-	    	File repoLocation=deployLocation;
-	    	String[] repoPath=new String[]{"carbonapps"};
-	    	for (String path : repoPath) {
-	            repoLocation=new File(repoLocation,path);
-	        }
-	    	try {
-	    		//when server is running inside eclipse, it is on stand-alone mode, since stratosEnabled should be false.
-	    		ITemporaryFileTag tag = FileUtils.createNewTempTag();
-//	            CAppUtils.generateCAR(repoLocation.toString(), project, false);
-//	    		IResource cAppFile = ExportUtil.BuildCAppProject(project);
-//	    		File carfile = cAppFile.getLocation().toFile();
-//	    		CarExportHandler handler=new CarExportHandler();
-//	    		List<IResource> exportArtifact = handler.exportArtifact(project);
-//	    		File file = exportArtifact.get(0).getLocation().toFile();
-//	    		FileUtils.copy(file, new File(repoLocation+File.separator+file.getName()));
-	    		
-	    		URL serverURL = CarbonServerManager.getServerURL(server);
-	    		ICredentials serverCredentials = CarbonServerManager.getServerCredentials(server);
-	    		File tempDir = FileUtils.createTempDirectory();
-	    		CAppDeployer cappDeployer = new CAppDeployer();
-//	            File carFile = CAppUtils.generateCAR(tempDir.getPath(), project, false);
-	    		CarExportHandler handler=new CarExportHandler();
-	    		List<IResource> exportArtifact = handler.exportArtifact(project);
-	    		cappDeployer.deployCApp(serverCredentials.getUsername(), serverCredentials.getPassword(), serverURL.toString(), ((IFile)exportArtifact.get(0)).getLocation().toFile());
-	    		
-	            tag.clearAndEnd();
-	        } catch (Exception e) {
-	        	setException(e);
-	        }
-	        setDone(true);
-	    }
+    private static final String MI_PLUGIN_ID = "org.wso2.developerstudio.eclipse.carbon.server44microei";
+    private static final String MI_110_PLUGIN_ID = "org.wso2.developerstudio.eclipse.carbon.server44microei11";
+    private static final String MI_120_PLUGIN_ID = "org.wso2.developerstudio.eclipse.carbon.server44microei12";
+    private static final String MI_CAPP_PATH = File.separator + "repository" + File.separator + "deployment"
+            + File.separator + "server" + File.separator + "carbonapps";
 
-	    private void setDone(boolean done) {
-	        this.done = done;
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+
+    private final class CarPublisher implements Runnable {
+        private final File deployLocation;
+        private final IProject project;
+        private boolean done = false;
+        private Exception exception;
+        private IServer server;
+
+        private CarPublisher(File deployLocation, IProject project, IServer server) {
+            this.deployLocation = deployLocation;
+            this.project = project;
+            this.server = server;
         }
 
-		public boolean isDone() {
-	        return done;
+        public void run() {
+            File repoLocation = deployLocation;
+            String[] repoPath = new String[] { "carbonapps" };
+            for (String path : repoPath) {
+                repoLocation = new File(repoLocation, path);
+            }
+            try {
+                // when server is running inside eclipse, it is on stand-alone mode, since stratosEnabled should be
+                // false.
+                ITemporaryFileTag tag = FileUtils.createNewTempTag();
+
+                URL serverURL = CarbonServerManager.getServerURL(server);
+                ICredentials serverCredentials = CarbonServerManager.getServerCredentials(server);
+                File tempDir = FileUtils.createTempDirectory();
+                CAppDeployer cappDeployer = new CAppDeployer();
+                CarExportHandler handler = new CarExportHandler();
+                List<IResource> exportArtifact = handler.exportArtifact(project);
+                cappDeployer.deployCApp(serverCredentials.getUsername(), serverCredentials.getPassword(),
+                        serverURL.toString(), ((IFile) exportArtifact.get(0)).getLocation().toFile());
+
+                tag.clearAndEnd();
+            } catch (Exception e) {
+                setException(e);
+            }
+            setDone(true);
         }
 
-		private void setException(Exception exception) {
-	        this.exception = exception;
+        private void setDone(boolean done) {
+            this.done = done;
         }
 
-		public Exception getException() {
-	        return exception;
+        public boolean isDone() {
+            return done;
+        }
+
+        private void setException(Exception exception) {
+            this.exception = exception;
+        }
+
+        public Exception getException() {
+            return exception;
         }
     }
 
-	private static Map<IServer,List<IProject>> inQueueList;
-    public void publish(final IProject project, IServer server, File serverHome,final File deployLocation) throws Exception {
-	    if (project.hasNature("org.wso2.developerstudio.eclipse.distribution.project.nature")){
-	    	List<IProject> list = getProjectListForServer(server);
-    		synchronized (list) {
-    	        if (list.contains(project)){
-    	        	return;
-    	        }else{
-    	        	list.add(project);
-    	        }
-    		}
+    private final class MICarPublisher implements Runnable {
+        private final File deployLocation;
+        private final IProject project;
+        private boolean done = false;
+        private Exception exception;
+        private IServer server;
 
-			if (server.getServerType().getId().equals(MI_PLUGIN_ID) || server.getServerType().getId().equals(MI_110_PLUGIN_ID)) {
-				IPath iPath = CarbonServerManager.getServerHome(server);
-				File file = iPath.toFile();
-				copyCApp(file.getAbsolutePath(), project);
-				server.restart("run", new NullProgressMonitor());
+        private MICarPublisher(File deployLocation, IProject project, IServer server) {
+            this.deployLocation = deployLocation;
+            this.project = project;
+            this.server = server;
+        }
 
-			} else {
-				final CarPublisher runnable = new CarPublisher(deployLocation, project, server);
-				runnable.run();
-				if (runnable.getException() != null) {
-					Display.getDefault().asyncExec(new Runnable() {
-						public void run() {
-							MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error while creating CAR",
-									"An error occured while creating or publishing the car for more details view the log. \n"
-											+ runnable.getException().getMessage());
-						}
+        public void run() {
+            File repoLocation = deployLocation;
+            String[] repoPath = new String[] { "carbonapps" };
+            for (String path : repoPath) {
+                repoLocation = new File(repoLocation, path);
+            }
+            try {
+                CarExportHandler handler = new CarExportHandler();
+                List<IResource> exportArtifact = handler.exportArtifact(project);
+                File file = exportArtifact.get(0).getLocation().toFile();
+                FileUtils.copy(file, new File(repoLocation + File.separator + file.getName()));
 
-					});
-				}
-			}
-    		synchronized (list) {
-    	        if (list.contains(project)){
-    	        	list.remove(project);
-    	        }
-    		}
-	    }
+            } catch (Exception e) {
+                setException(e);
+            }
+            setDone(true);
+        }
+
+        private void setDone(boolean done) {
+            this.done = done;
+        }
+
+        public boolean isDone() {
+            return done;
+        }
+
+        private void setException(Exception exception) {
+            this.exception = exception;
+        }
+
+        public Exception getException() {
+            return exception;
+        }
+    }
+
+    private static Map<IServer, List<IProject>> inQueueList;
+
+    public void publish(final IProject project, IServer server, File serverHome, final File deployLocation)
+            throws Exception {
+        if (project.hasNature("org.wso2.developerstudio.eclipse.distribution.project.nature")) {
+            List<IProject> list = getProjectListForServer(server);
+            synchronized (list) {
+                if (list.contains(project)) {
+                    return;
+                } else {
+                    list.add(project);
+                }
+            }
+
+            boolean hotDeploymentDisabled = true;
+            boolean isMI120Server = server.getServerType().getId().equals(MI_120_PLUGIN_ID);
+
+            if (isMI120Server) {
+                String carbonHomePath = CarbonServerManager.getServerHome(server).toOSString();
+                String tomlFilePath = FileUtils.addNodesToPath(carbonHomePath,
+                        new String[] { "conf", "deployment.toml" });
+                TomlParseResult tomlResults = Toml.parse(Paths.get(tomlFilePath));
+                Object hotDeploymentObject = tomlResults.get("server.hot_deployment");
+                if ((hotDeploymentObject instanceof String && ((String) hotDeploymentObject).equals("true"))
+                        || (hotDeploymentObject instanceof Boolean && ((Boolean) hotDeploymentObject))) {
+                    hotDeploymentDisabled = false;
+                }
+            }
+
+            if (server.getServerType().getId().equals(MI_PLUGIN_ID)
+                    || server.getServerType().getId().equals(MI_110_PLUGIN_ID)
+                    || (isMI120Server && hotDeploymentDisabled)) {
+                IPath iPath = CarbonServerManager.getServerHome(server);
+                File file = iPath.toFile();
+                copyCApp(file.getAbsolutePath(), project);
+                server.restart("run", new NullProgressMonitor());
+
+            } else if (isMI120Server) {
+                final MICarPublisher runnable = new MICarPublisher(deployLocation, project, server);
+                runnable.run();
+                if (runnable.getException() != null) {
+                    Display.getDefault().asyncExec(new Runnable() {
+                        public void run() {
+                            MessageDialog.openError(Display.getCurrent().getActiveShell(),
+                                    "Error while deploying the car file into Micro Integrator",
+                                    "An error occured while creating or publishing the car file. \n Please refer the error for more details."
+                                            + runnable.getException().getMessage());
+                        }
+
+                    });
+                }
+
+            } else {
+                final CarPublisher runnable = new CarPublisher(deployLocation, project, server);
+                runnable.run();
+                if (runnable.getException() != null) {
+                    Display.getDefault().asyncExec(new Runnable() {
+                        public void run() {
+                            MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error while creating CAR",
+                                    "An error occured while creating or publishing the car for more details view the log. \n"
+                                            + runnable.getException().getMessage());
+                        }
+
+                    });
+                }
+            }
+            synchronized (list) {
+                if (list.contains(project)) {
+                    list.remove(project);
+                }
+            }
+        }
     }
 
     public void unpublish(IProject project, IServer server, File serverHome, File deployLocation)throws Exception {
@@ -190,7 +271,8 @@ public class CAppProjectPublisher implements ICarbonServerModulePublisher {
 //			}else{
 //				cappName = carFile.getName().substring(0, carFile.getName().length()-4);
 //			}
-			if (server.getServerType().getId().equals(MI_PLUGIN_ID) || server.getServerType().getId().equals(MI_110_PLUGIN_ID)) {
+			if (server.getServerType().getId().equals(MI_PLUGIN_ID) || server.getServerType().getId().equals(MI_110_PLUGIN_ID) 
+			        || server.getServerType().getId().equals(MI_120_PLUGIN_ID)) {
 				IPath iPath = CarbonServerManager.getServerHome(server);
 				File file = iPath.toFile();
 				deleteCApp(file.getAbsolutePath(), project);

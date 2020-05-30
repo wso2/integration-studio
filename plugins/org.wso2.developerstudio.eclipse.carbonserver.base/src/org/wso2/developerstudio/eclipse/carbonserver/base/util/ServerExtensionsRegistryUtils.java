@@ -29,17 +29,14 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
 public class ServerExtensionsRegistryUtils {
 	
 	private static final String ORG_WSO2_DEVELOPERSTUDIO_CARBON_PRODUCT_SERVER_REGISTRY = "org.wso2.developerstudio.carbon.product.server.registry";
-
+	private static final String ENCODING_UTF8 = "UTF-8";
 	
 	public InputStream generateInputStream(String displayName, Bundle bundle, String streamLoc)
 			throws IOException, UnsupportedEncodingException {
 		InputStream inputStream = bundle.getEntry(streamLoc).openStream();
-		String encoding = "UTF-8";
-		String inputString = IOUtils.toString(inputStream, encoding);
-		inputString = inputString.replace("\"descr\"", "\"" + displayName + "\"");
-		inputString = inputString.replace("\"name\"", "\"" + displayName + "\"");
-		inputStream = new ByteArrayInputStream(inputString.getBytes("UTF-8"));
-		return inputStream;
+		String inputString = IOUtils.toString(inputStream, ENCODING_UTF8);
+		inputString = inputString.replace("\"descr\"", "\"" + displayName + "\"").replace("\"name\"", "\"" + displayName + "\"");
+		return new ByteArrayInputStream(inputString.getBytes(ENCODING_UTF8));
 	}
 	
 	public IConfigurationElement[] retrieveRegisteredProductServers() {

@@ -28,38 +28,6 @@
             runtimeTypeIds="org.wso2.developerstudio.eclipse.carbon.*">
       </runtimeClasspathProvider>
    </extension>
-   <!--<extension point="org.eclipse.ui.exportWizards">
-		<wizard id="org.wso2.developerstudio.eclipse.carbonserver44microei11.exportAsArtifactAndRun" name="Deployable WSO2 Micro EI Archive"
-			class="org.wso2.developerstudio.eclipse.carbonserver44microei11.wizard.DistributionProjectExportAndRunWizard" icon="icons/car.png"
-			category="org.wso2.developerstudio.eclipse.distribution.export">
-			<description>
-				Create a deployable archive from an artifact project and Run
-			</description>
-			<selection class="org.eclipse.core.resources.IProject" />
-		</wizard>
-	</extension>-->
-	
-	
-	
-   <extension point="org.eclipse.ui.popupMenus">
-            <objectContribution
-          objectClass="org.eclipse.core.resources.IProject"
-                id="org.wso2.developerstudio.eclipse.carbonserver44microei11.exportandrun">
-           <action
-                    label="Export Project Artifacts and Run"
-                    icon="icons/exportnrun.png"
-               class="org.wso2.developerstudio.eclipse.carbonserver44microei11.wizard.ExportDistributionAndRunAction"
-                    id="org.wso2.developerstudio.eclipse.carbonserver44microei11.exportandrun">
-           </action>
-           <enablement>
-					<adapt type="org.eclipse.core.resources.IProject">
-						<test property="org.eclipse.core.resources.projectNature"
-							value="org.wso2.developerstudio.eclipse.distribution.project.nature" />
-					</adapt>
-			</enablement>
-           </objectContribution>
-    </extension>
-        
         
    <extension
          point="org.eclipse.wst.common.project.facet.core.runtimes">
@@ -182,13 +150,6 @@
          typeIds="org.wso2.developerstudio.eclipse.carbon.server44microei11"
          class="org.wso2.developerstudio.eclipse.carbonserver44microei11.configuration.ConfigurationOtherEditorSection">
       </section>
-      <!--section
-         id="org.wso2.developerstudio.eclipse.server.carbon.v40.configuration.editor.credentials"
-         order="10"
-         insertionId="org.eclipse.wst.server.editor.overview.right"
-         typeIds="org.wso2.developerstudio.eclipse.carbon.server40"
-         class="org.wso2.developerstudio.eclipse.carbonserver40.configuration.ConfigurationCredentialsEditorSection">
-  	</section-->
    </extension>
   <extension
         point="org.wso2.developerstudio.eclipse.carbonserver.base.serverProperties">
@@ -200,80 +161,5 @@
   <extension point="org.eclipse.ui.startup">
      <startup class="org.wso2.developerstudio.eclipse.carbonserver44microei11.handlers.PlatformEarlyStartUpHandler"/>
    </extension>
-   
-	<extension
-	    point="org.eclipse.debug.ui.launchShortcuts">
-	    <shortcut
-	        class="org.wso2.developerstudio.eclipse.carbonserver44microei11.debug.DebugShortcut"
-	        icon="icons/debug.png"
-	        id="org.wso2.developerstudio.eclipse.microei11.debug.shortcut"
-	        label="Mediation Debug"
-	        description="Mediation debugger that enables you to debug the ESB profile message mediation flow in the server"
-	        modes="debug">
-	        <contextualLaunch>
-	            <enablement>
-	                <with
-	                    variable="selection">
-	                    <count
-	                        value="+">
-	                    </count>
-	                </with>
-	            </enablement>
-	        </contextualLaunch>
-	    </shortcut>
-	</extension>
-	
-   <extension
-         point="org.eclipse.debug.core.launchConfigurationTypes">
-      <launchConfigurationType
-            delegate="org.wso2.developerstudio.eclipse.carbonserver44microei11.launch.MicroIntegratorRunLaunchDelegate"
-            id="org.wso2.developerstudio.eclipse.carbonserver44microei11.launch"
-            modes="run"
-            name="Micro Integrator Runtime">
-      </launchConfigurationType>
-   </extension>
-   
-   <extension
-         point="org.eclipse.debug.ui.launchConfigurationTypeImages">
-      <launchConfigurationTypeImage
-            configTypeID="org.wso2.developerstudio.eclipse.carbonserver44microei11.launch"
-            icon="icons/exportnrun.png"
-            id="org.wso2.developerstudio.eclipse.carbonserver44microei11.launch.image">
-      </launchConfigurationTypeImage>
-   </extension>
-   
-   <extension
-         point="org.eclipse.debug.ui.launchConfigurationTabGroups">
-      <launchConfigurationTabGroup
-            class="org.wso2.developerstudio.eclipse.carbonserver44microei11.launch.tabs.MicroIntegratorLaunchConfigurationTabGroup"
-            id="org.wso2.developerstudio.eclipse.carbonserver44microei11.launch.tabgroup"
-            type="org.wso2.developerstudio.eclipse.carbonserver44microei11.launch">
-         <launchMode
-               mode="run">
-         </launchMode>
-      </launchConfigurationTabGroup>
-   </extension>
-   
-	<extension
-	    point="org.eclipse.debug.ui.launchShortcuts">
-	    <shortcut
-	        class="org.wso2.developerstudio.eclipse.carbonserver44microei11.debug.RunShortcut"
-	        icon="icons/exportnrun.png"
-	        id="org.wso2.developerstudio.eclipse.microei11.run.shortcut"
-	        label="Run on Micro Integrator"
-	        description="Run the Carbon Application with embedded WSO2 Micro Integrator Server"
-	        modes="run">
-	        <contextualLaunch>
-	            <enablement>
-	                <with
-	                    variable="selection">
-	                    <count
-	                        value="+">
-	                    </count>
-	                </with>
-	            </enablement>
-	        </contextualLaunch>
-	    </shortcut>
-	</extension>
 	
 </plugin>

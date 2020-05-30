@@ -147,13 +147,14 @@ public class CarbonServerCommonUtils {
 	}
 
 	public static String getServerConfigMapValue(IServer server, String key) {
-		String loaded = "loaded";
 		GenericServer gserver = (GenericServer) server.getAdapter(GenericServer.class);
-		if (gserver == null || gserver.getServerInstanceProperties() == null)
+		if (gserver == null || gserver.getServerInstanceProperties() == null) {
 			return null;
+		}
 		Object object = gserver.getServerInstanceProperties().get(key);
-		if (object != null)
+		if (object != null) {
 			return object.toString();
+		}
 		return null;
 	}
 

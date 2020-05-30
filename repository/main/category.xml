@@ -27,6 +27,9 @@
  <feature id="org.wso2.developerstudio.carbon.server-44microei11.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.kernel.platform.bundles"/>
    </feature>
+ <feature id="org.wso2.developerstudio.carbon.server-44microei12.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.kernel.platform.bundles"/>
+ </feature>
  <feature id="org.wso2.developerstudio.dashboard.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.kernel.platform.bundles"/>
    </feature>

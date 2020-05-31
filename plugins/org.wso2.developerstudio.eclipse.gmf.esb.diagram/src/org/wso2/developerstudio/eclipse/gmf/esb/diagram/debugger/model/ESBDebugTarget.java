@@ -38,7 +38,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.WorkbenchException;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventHandler;
-import org.wso2.developerstudio.eclipse.carbonserver44microei11.register.product.servers.MicroIntegratorInstance;
+import org.wso2.developerstudio.eclipse.carbonserver44microei12.register.product.servers.MicroIntegratorInstance;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.impl.ESBDebugPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.DebugPointMarkerNotFoundException;

@@ -137,7 +137,6 @@ public class PlatformEarlyStartUpHandler implements IStartup {
                             if (cheatSheetItem != null) {
                                 submenu.remove(cheatSheetItem);
                             }
-
                         }
                     }
 

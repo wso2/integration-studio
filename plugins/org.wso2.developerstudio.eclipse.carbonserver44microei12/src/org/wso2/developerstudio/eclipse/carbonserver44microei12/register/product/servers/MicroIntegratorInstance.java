@@ -47,6 +47,7 @@ import org.eclipse.wst.server.core.IServerWorkingCopy;
 import org.eclipse.wst.server.core.ServerCore;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.Activator;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.ServerProperties;
+import org.wso2.developerstudio.eclipse.carbonserver44microei12.util.CarbonServer44eiUtils;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.util.ServerConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -380,4 +381,17 @@ public class MicroIntegratorInstance {
         return microIntegratorServer.getServerState();
     }
 
+    public boolean isServerStarted() {
+        return (microIntegratorServer.getServerState() == 2) ? true : false;
+    }
+
+    public boolean isHotDeploymentEnabled() {
+        CarbonServer44eiUtils carbonServer44eiUtils = new CarbonServer44eiUtils();
+        String hotDeploymentEnabled = carbonServer44eiUtils.resolveProperties(microIntegratorServer,
+                ServerConstants.PROP_HOT_DEPLOYMENT);
+        if ("false".equals(hotDeploymentEnabled)) {
+            return false;
+        }
+        return true;
+    }
 }

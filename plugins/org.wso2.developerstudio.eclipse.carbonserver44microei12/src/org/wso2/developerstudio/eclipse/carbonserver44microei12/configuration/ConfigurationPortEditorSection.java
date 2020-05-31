@@ -27,13 +27,10 @@ import org.wso2.developerstudio.eclipse.carbon.server.model.util.CarbonServerCom
 import org.wso2.developerstudio.eclipse.carbon.server.model.util.CarbonServerCommonUtils;
 import org.wso2.developerstudio.eclipse.carbonfeatures.Activator;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.util.CarbonServer44eiUtils;
-import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
-import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.server.base.core.ServerController;
 
 public class ConfigurationPortEditorSection extends ConfigurationPortCommonEditorSection {
 
-	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private CarbonServer44eiUtils carbonServer44eiUtils = new CarbonServer44eiUtils();
 
 	protected void changePortNumber(String name, int port) {

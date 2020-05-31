@@ -22,12 +22,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.ObjectInputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.nio.file.Paths;
 
@@ -35,17 +31,8 @@ import javax.xml.namespace.NamespaceContext;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Result;
-import javax.xml.transform.Source;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.TransformerFactoryConfigurationError;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
@@ -54,7 +41,6 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jst.server.generic.core.internal.GenericServer;
-import org.eclipse.jst.server.generic.internal.servertype.definition.ServerTypePackage;
 import org.eclipse.jst.server.generic.servertype.definition.ServerRuntime;
 import org.eclipse.wst.server.core.IServer;
 import org.eclipse.wst.server.core.ServerPort;
@@ -67,7 +53,6 @@ import org.wso2.developerstudio.eclipse.carbon.server.model.util.CarbonServerCom
 import org.wso2.developerstudio.eclipse.carbon.server.model.util.CarbonServerXUtils;
 import org.wso2.developerstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.Activator;
-import org.wso2.developerstudio.eclipse.carbonserver44microei12.internal.CarbonServer44microei12;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
@@ -77,10 +62,6 @@ import org.xml.sax.SAXException;
 import net.consensys.cava.toml.Toml;
 
 import net.consensys.cava.toml.TomlParseResult;
-
-import org.eclipse.jst.server.generic.servertype.definition.Property;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.util.FeatureMap;
 
 @SuppressWarnings("restriction")
 public class CarbonServer44eiUtils implements CarbonServerXUtils {
@@ -293,7 +274,6 @@ public class CarbonServer44eiUtils implements CarbonServerXUtils {
                 }
             }
         }
-
     }
 
     @Override
@@ -308,10 +288,8 @@ public class CarbonServer44eiUtils implements CarbonServerXUtils {
     }
 
     public TomlParseResult getTomlResults(String carbonHomePath) throws IOException {
-
         String tomlFilePath = FileUtils.addNodesToPath(getConfPathFromLocalWorkspaceRepo(carbonHomePath),
                 new String[] { "deployment.toml" });
-        // TODO if file exists
         return Toml.parse(Paths.get(tomlFilePath));
     }
 
@@ -342,7 +320,6 @@ public class CarbonServer44eiUtils implements CarbonServerXUtils {
         if (tomlValue.equals("")) {
             return defaultValue;
         }
-
         return tomlValue;
     }
 }

@@ -35,7 +35,6 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
-import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.Activator;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.register.product.servers.MicroIntegratorInstance;
@@ -77,7 +76,6 @@ public class MicroIntegratorRunLaunchDelegate implements ILaunchConfigurationDel
 
     private IWorkbenchWindow activeWorkBenchWindow;
     private int statusCode = Window.CANCEL;
-    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     @Override
     public void launch(final ILaunchConfiguration configuration, final String mode, final ILaunch launch,

@@ -39,14 +39,13 @@ import org.eclipse.osgi.util.NLS;
 import org.eclipse.wst.server.core.IModule;
 import org.eclipse.wst.server.core.IServer;
 import org.eclipse.wst.server.core.internal.DeletedModule;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
 import org.wso2.developerstudio.eclipse.carbon.server.model.util.CarbonServerCommonUtils;
 import org.wso2.developerstudio.eclipse.carbonserver.base.impl.CarbonServerBehaviour;
 import org.wso2.developerstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.Activator;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.operations.CommonOperations;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.util.CarbonServer44eiUtils;
+import org.wso2.developerstudio.eclipse.carbonserver44microei12.util.ServerConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.server.base.core.ServerController;
@@ -200,10 +199,10 @@ public class CarbonServerBehavior44microei12 extends CarbonServerBehaviour {
             TomlParseResult tomlResults = carbonServer44eiUtils.getTomlResults(carbonHome);
 
             String passthroughHttpPort = carbonServer44eiUtils.readTomlValue(tomlResults,
-                    "transport.http.listener.port", "8280");
+                    ServerConstants.TOML_HTTP_LISTENER, "8280");
 
             String passthroughHttpsPort = carbonServer44eiUtils.readTomlValue(tomlResults,
-                    "transport.http.listener.secured_port", "8243");
+                    ServerConstants.TOML_HTTPS_LISTENER, "8243");
 
             ports.add(Integer.parseInt(passthroughHttpPort));
             ports.add(Integer.parseInt(passthroughHttpsPort));

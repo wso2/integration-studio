@@ -26,6 +26,7 @@ import org.wso2.developerstudio.eclipse.carbon.server.model.operations.CommonCar
 import org.wso2.developerstudio.eclipse.carbon.server.model.util.CarbonServerCommonConstants;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.Activator;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.util.CarbonServer44eiUtils;
+import org.wso2.developerstudio.eclipse.carbonserver44microei12.util.ServerConstants;
 import org.wso2.developerstudio.eclipse.server.base.core.ServerController;
 
 public class CommonOperations extends CommonCarbonServerOperations {
@@ -66,6 +67,6 @@ public class CommonOperations extends CommonCarbonServerOperations {
     }
 
     public IPath getWSASHome(IServer server) {
-        return new Path(carbonServer44eiUtils.resolveProperties(server, "carbon.home"));
+        return new Path(carbonServer44eiUtils.resolveProperties(server, ServerConstants.PROP_CARBON_HOME));
     }
 }

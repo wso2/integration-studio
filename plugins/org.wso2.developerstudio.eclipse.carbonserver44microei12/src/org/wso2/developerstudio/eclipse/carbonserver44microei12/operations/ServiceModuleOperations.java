@@ -39,7 +39,6 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.jdt.core.IClasspathEntry;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
-import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jst.ws.internal.common.J2EEUtils;
 import org.eclipse.jst.ws.internal.common.ResourceUtils;
 import org.eclipse.wst.server.core.IModule;
@@ -334,8 +333,6 @@ public class ServiceModuleOperations {
                 } catch (CoreException e) {
                     log.error(e);
                 }
-            } catch (JavaModelException e) {
-                log.error(e);
             } catch (CoreException e) {
                 log.error(e);
             }
@@ -442,6 +439,5 @@ public class ServiceModuleOperations {
         }
         if (!found)
             CarbonServerCommonUtils.setServerConfigMapValue(server, DEPLOYED + projectName, deployed);
-
     }
 }

@@ -33,31 +33,35 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public class ExportDistributionAndRunAction implements IActionDelegate {
 
-	IStructuredSelection selection;
-	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    IStructuredSelection selection;
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-	public void run(IAction action) {
-		if (selection != null) {
-			CompositeApplicationArtifactUpdateWizard wizard = new CompositeApplicationArtifactUpdateWizard();
-			wizard.init(PlatformUI.getWorkbench(), selection);
-			WizardDialog exportWizardDialog = new WizardDialog(
-					PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);
+    public void run(IAction action) {
+        if (selection != null) {
+            CompositeApplicationArtifactUpdateWizard wizard = new CompositeApplicationArtifactUpdateWizard();
+            wizard.init(PlatformUI.getWorkbench(), selection);
+            WizardDialog exportWizardDialog = new WizardDialog(
+                    PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);
 
-			int returnCode = exportWizardDialog.open();
-			if (returnCode == Window.OK) {
-				// restart embedded micro-integrator profile
-				try {
-					MicroIntegratorInstance.getInstance().restart();
-				} catch (CoreException e) {
-					log.error("Error occured while restarting the micro-integrator", e);
-				}
-			}
-		}
-	}
+            int returnCode = exportWizardDialog.open();
+            if (returnCode == Window.OK) {
+                // restart embedded micro-integrator profile if it is not started already
+                try {
+                    MicroIntegratorInstance microIntegratorInstance = MicroIntegratorInstance.getInstance();
+                    if (!microIntegratorInstance.isHotDeploymentEnabled()
+                            || !microIntegratorInstance.isServerStarted()) {
+                        microIntegratorInstance.restart();
+                    }
+                } catch (CoreException e) {
+                    log.error("Error occured while restarting the micro-integrator", e);
+                }
+            }
+        }
+    }
 
-	public void selectionChanged(IAction action, ISelection selection) {
-		if (selection instanceof IStructuredSelection) {
-			this.selection = (IStructuredSelection) selection;
-		}
-	}
+    public void selectionChanged(IAction action, ISelection selection) {
+        if (selection instanceof IStructuredSelection) {
+            this.selection = (IStructuredSelection) selection;
+        }
+    }
 }

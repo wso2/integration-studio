@@ -39,6 +39,7 @@ import org.wso2.developerstudio.eclipse.carbonserver44microei12.Activator;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.monitor.CarbonServerListener;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.operations.ServiceModuleOperations;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.util.CarbonServer44eiUtils;
+import org.wso2.developerstudio.eclipse.carbonserver44microei12.util.ServerConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.server.base.core.ServerController;
@@ -134,7 +135,6 @@ public class CarbonOperationsManager44ei implements ICarbonOperationManager {
                     if (server != null)
                         if (operation.containsKey(ICarbonOperationManager.PARAMETER_PROJECT)) {
                             IProject project = (IProject) operation.get(ICarbonOperationManager.PARAMETER_PROJECT);
-                            // TODO hot deployment check
                             ServiceModuleOperations serviceModuleOperations = new ServiceModuleOperations(project,
                                     server);
                             String path = null;
@@ -421,30 +421,22 @@ public class CarbonOperationsManager44ei implements ICarbonOperationManager {
     }
 
     private static Boolean isServerHotUpdate(IServer server) {
-        return isHotUpdateEnabled(server);
-    }
-
-    private static boolean setHotUpdateEnabled(IServer server, boolean enabled) {
-        if (isHotUpdateEnabled(server) == enabled) {
-            return true;
+        String hotDeploymentEnabled = carbonServer44eiUtils.resolveProperties(server,
+                ServerConstants.PROP_HOT_DEPLOYMENT);
+        if (hotDeploymentEnabled == null) {
+            try {
+                TomlParseResult tomlResults = carbonServer44eiUtils
+                        .getTomlResults(CarbonServerManager.getServerHome(server).toOSString());
+                hotDeploymentEnabled = carbonServer44eiUtils.readTomlValue(tomlResults,
+                        ServerConstants.TOML_HOT_DEPLOYMENT, "true");
+            } catch (IOException e) {
+                log.error("Error while reading the deployment toml file.", e);
+            }
         }
-        return false;
-    }
-
-    private static boolean isHotUpdateEnabled(IServer server) {
-        TomlParseResult tomlResults;
-        String hotDeploymentEnabled = "false";
-        try {
-            tomlResults = carbonServer44eiUtils.getTomlResults(CarbonServerManager.getServerHome(server).toOSString());
-            hotDeploymentEnabled = carbonServer44eiUtils.readTomlValue(tomlResults, "server.hot_deployment", "false");
-        } catch (IOException e) {
-            log.error("Error while reading the deployment toml file.", e);
+        if (hotDeploymentEnabled.equals("false")) {
+            return false;
         }
-
-        if (hotDeploymentEnabled.equals("true")) {
-            return true;
-        }
-        return false;
+        return true;
     }
 
     public static String getAxis2FilePath(IServer server) {

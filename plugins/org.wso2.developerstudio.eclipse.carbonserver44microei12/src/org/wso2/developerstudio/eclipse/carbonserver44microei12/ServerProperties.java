@@ -22,6 +22,7 @@ import net.consensys.cava.toml.TomlParseResult;
 import org.wso2.developerstudio.eclipse.carbonserver.base.manager.IProperties;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.Activator;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.util.CarbonServer44eiUtils;
+import org.wso2.developerstudio.eclipse.carbonserver44microei12.util.ServerConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
@@ -44,16 +45,19 @@ public class ServerProperties implements IProperties {
             serverInstanceProperties = new HashMap<String, String>();
             TomlParseResult tomlResults = carbonServer44eiUtils.getTomlResults(serverPath);
 
-            String offset = carbonServer44eiUtils.readTomlValue(tomlResults, "server.offset", "10");
-            String passthroughHttpPort = carbonServer44eiUtils.readTomlValue(tomlResults, 
-					"transport.http.listener.port", "8280");
-            String passthroughHttpsPort = carbonServer44eiUtils.readTomlValue(tomlResults, 
-					"transport.http.listener.secured_port", "8243");
+            String offset = carbonServer44eiUtils.readTomlValue(tomlResults, ServerConstants.TOML_PORTOFFSET, "10");
+            String passthroughHttpPort = carbonServer44eiUtils.readTomlValue(tomlResults,
+                    ServerConstants.TOML_HTTP_LISTENER, "8280");
+            String passthroughHttpsPort = carbonServer44eiUtils.readTomlValue(tomlResults,
+                    ServerConstants.TOML_HTTPS_LISTENER, "8243");
+            String hotDeplymentEnabled = carbonServer44eiUtils.readTomlValue(tomlResults,
+                    ServerConstants.TOML_HOT_DEPLOYMENT, "true");
 
-            serverInstanceProperties.put("carbon.offset", offset);
-            serverInstanceProperties.put("synapse.transport.http", passthroughHttpPort);
-            serverInstanceProperties.put("synapse.transport.https", passthroughHttpsPort);
-            serverInstanceProperties.put("carbon.home", serverPath);
+            serverInstanceProperties.put(ServerConstants.PROP_OFFSET, offset);
+            serverInstanceProperties.put(ServerConstants.PROP_HTTP_PORT, passthroughHttpPort);
+            serverInstanceProperties.put(ServerConstants.PROP_HTTPS_PORT, passthroughHttpsPort);
+            serverInstanceProperties.put(ServerConstants.PROP_CARBON_HOME, serverPath);
+            serverInstanceProperties.put(ServerConstants.PROP_HOT_DEPLOYMENT, hotDeplymentEnabled);
         } catch (Exception e) {
             log.error("Error occured while setting the server properties.", e);
         }

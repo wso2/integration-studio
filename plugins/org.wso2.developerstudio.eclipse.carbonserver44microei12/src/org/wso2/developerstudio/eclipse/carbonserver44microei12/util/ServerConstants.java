@@ -48,4 +48,22 @@ public class ServerConstants {
     
     //debug
     public static final String ESB_DEBUG_ATTRIBUTE = "esb.debug";
+    
+    //toml keys
+    public static final String TOML_PORTOFFSET = "server.offset";
+    public static final String TOML_HTTP_LISTENER = "transport.http.listener.port";
+    public static final String TOML_HTTPS_LISTENER = "transport.http.listener.secured_port";
+    public static final String TOML_HOT_DEPLOYMENT = "server.hot_deployment";
+    
+    //server properties
+    public static final String PROP_OFFSET = "carbon.offset";
+    public static final String PROP_HTTP_PORT = "synapse.transport.http";
+    public static final String PROP_HTTPS_PORT = "synapse.transport.https";
+    public static final String PROP_CARBON_HOME = "carbon.home";
+    public static final String PROP_HOT_DEPLOYMENT = "hot.deployment";
+    
+    //launchers
+    public static final String DEBUG = "debug";
+    public static final String RUN = "run";
+    
 }

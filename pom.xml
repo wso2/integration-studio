@@ -70,8 +70,8 @@
         <version.sortpom.plugin>2.3.0</version.sortpom.plugin>
         <webeditor.version>4.0.0-SNAPSHOT</webeditor.version>
         <wso2.tomcat.version>7.0.59.wso2v3</wso2.tomcat.version>
-        <mi.product.version>1.1.0-rc1</mi.product.version>
-        <mi.product.directory>1.1.0</mi.product.directory>
+        <mi.product.version>1.2.0-alpha</mi.product.version>
+        <mi.product.directory>1.2.0-alpha</mi.product.directory>
         <apache.maven.version>3.6.3</apache.maven.version>
         <apim.ctl.version>3.1.1</apim.ctl.version>
     </properties>

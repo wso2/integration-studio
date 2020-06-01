@@ -56,7 +56,9 @@ import org.eclipse.core.runtime.Path;
 import org.wso2.carbon.rest.api.APIException;
 import org.wso2.carbon.rest.api.service.RestApiAdmin;
 import org.wso2.developerstudio.eclipse.apim.endpoint.central.Activator;
+import org.wso2.developerstudio.eclipse.apim.endpoint.central.client.APIMCTLClient;
 import org.wso2.developerstudio.eclipse.apim.endpoint.central.client.APIMServiceClient;
+import org.wso2.developerstudio.eclipse.apim.endpoint.central.exceptions.APIMCTLException;
 import org.wso2.developerstudio.eclipse.apim.endpoint.central.exceptions.EndpointRegistryConnectException;
 import org.wso2.developerstudio.eclipse.apim.endpoint.central.exceptions.HttpClientException;
 import org.wso2.developerstudio.eclipse.apim.endpoint.central.exceptions.InvalidTokenException;
@@ -288,13 +290,11 @@ public class EndpointCentralServletRequestHandler {
      */
     public static void getProjects(HttpServletRequest request, HttpServletResponse response) {
         try {
-            UserSessionManager.getCurrentSession();
             List<ProjectData> projectList = getProjectList();
             String payload = JsonUtils.getJsonArrayFromProjectList(projectList);
             setPayload(payload, response);
             response.setStatus(HttpServletResponse.SC_OK);
-        } catch (CoreException | HttpClientException | URISyntaxException | EndpointRegistryConnectException
-                | InvalidTokenException e) {
+        } catch (CoreException e) {
             setErrorMessage(e.getMessage(), response);
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
@@ -309,6 +309,51 @@ public class EndpointCentralServletRequestHandler {
     public static void logOutUser(HttpServletRequest request, HttpServletResponse response) {
         UserSessionManager.removeSession();
         response.setStatus(HttpServletResponse.SC_OK);
+    }
+
+    /**
+     * Handle login to APIM CTL requests.
+     * 
+     * @param request servlet request
+     * @param response servlet response
+     */
+    public static void loginToCTL(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            String payload = IOUtils.toString(request.getReader());
+            LoginPayload loginPayload = JsonUtils.getLoginPayloadFromJson(payload);
+            String username = loginPayload.getUsername();
+            String password = loginPayload.getPassword();
+            String hostUrl = loginPayload.getHost();
+
+            // Payload validation
+            if (username.isEmpty() || password.isEmpty() || hostUrl.isEmpty()) {
+                throw new APIMCTLException(EndpointCentralServletConstants.ResponseMessages.LOGIN_DETAILS_MISSING);
+            }
+            APIMCTLClient.getInstance().login(username, password, hostUrl);
+            response.setStatus(HttpServletResponse.SC_OK);
+        } catch (IOException | APIMCTLException e) {
+            setErrorMessage(e.getMessage(), response);
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        }
+    }
+
+    /**
+     * Handle push API requests.
+     * 
+     * @param request servlet request
+     * @param response servlet response
+     */
+    public static void pushAPIThroughCTL(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            String payload = IOUtils.toString(request.getReader());
+            APIArtifact apiArtifact = JsonUtils.getAPIArtifactFromJson(payload);
+            String definitionFile = getSwaggerDefinitionFromAPIArtifact(apiArtifact);
+            APIMCTLClient.getInstance().pushAPI(definitionFile);
+            response.setStatus(HttpServletResponse.SC_OK);
+        } catch (IOException | CoreException | XMLStreamException | APIException e) {
+            setErrorMessage(e.getMessage(), response);
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        }
     }
 
     /**

@@ -50,6 +50,10 @@ public class EndpointCentralServlet extends HttpServlet {
             EndpointCentralServletRequestHandler.createRegistryEntry(request, response);
         } else if (EndpointCentralServletConstants.RequestHeaders.IMPORT_API.equals(operationTypeHeader)) {
             EndpointCentralServletRequestHandler.importAPI(request, response);
+        } else if (EndpointCentralServletConstants.APIMCTLRequestHeaders.LOGIN.equals(operationTypeHeader)) {
+            EndpointCentralServletRequestHandler.loginToCTL(request, response);
+        } else if (EndpointCentralServletConstants.APIMCTLRequestHeaders.PUSH_API.equals(operationTypeHeader)) {
+            EndpointCentralServletRequestHandler.pushAPIThroughCTL(request, response);
         }
     }
 

@@ -45,7 +45,8 @@ public class EndpointCentralPage extends WizardPage {
         browser = createBrowser(parent);
         String port = getPortValueForJS();
         browser.setUrl(EndpointCentralServletConstants.SERVLET_HOST + port
-                + EndpointCentralServletConstants.Startup.ENDPOINT_CENTRAL_CONTEXT_PATH + "?port=" + port);
+                + EndpointCentralServletConstants.Startup.ENDPOINT_CENTRAL_CONTEXT_PATH 
+                + EndpointCentralServletConstants.Startup.APIM_CTL_LOGIN_PATH + "?port=" + port);
     }
 
     /**

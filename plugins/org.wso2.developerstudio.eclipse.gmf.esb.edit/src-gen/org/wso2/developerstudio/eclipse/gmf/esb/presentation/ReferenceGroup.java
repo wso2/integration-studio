@@ -17,35 +17,47 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.presentation;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashMap;
 
+import org.codehaus.jettison.json.JSONException;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloudConnectorOperation;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorDescriptorParser;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorRoot;
 
 public class ReferenceGroup extends ReferencesTable {
     
     private FormToolkit widgetFactory;
     private Object input;
     private PropertyParameterRenderer propertyRenderer;
+    private String schemaName;
     
 
     public ReferenceGroup(String labeltoDisplay, PropertyParameterRenderer propertyRenderer) {
         super(labeltoDisplay, null);
         this.propertyRenderer = propertyRenderer;
-        // TODO Auto-generated constructor stub
+    }
+    
+    public ReferenceGroup(String labeltoDisplay, PropertyParameterRenderer propertyRenderer, String schemaName) {
+        super(labeltoDisplay, null);
+        this.propertyRenderer = propertyRenderer;
+        this.schemaName = schemaName;
     }
     
     @Override
     public void createControls(Composite parent) {
         
-        
-        //ppo.getSource();
-        propertyRenderer.generate(widgetFactory, parent.getParent(), null);
+        ConnectorRoot connectorRoot = ConnectorSchemaHolder.getInstance().getConnectorSchema(getSchemaName());
+        propertyRenderer.generate(widgetFactory, parent.getParent(), connectorRoot);
         
     }
     
@@ -55,14 +67,22 @@ public class ReferenceGroup extends ReferencesTable {
         createControls(parent);
     }
     
+    public void setSchemaName(String schemaName) {
+        this.schemaName = schemaName;
+    }
+    
+    public String getSchemaName() {
+        return this.schemaName;
+    }
+    
     /**
      * input of viewer
      * 
      * @param input
      */
-    public void setInput(Object input, HashMap<String,String> paramValues, EList parameterList) {
+    public void setInput(Object input, EObject dataObject) {
         this.input = input;
-        propertyRenderer.fillData(paramValues, parameterList);
+        propertyRenderer.fillData(dataObject);
     }
 
 

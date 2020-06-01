@@ -48,7 +48,6 @@
         </menuContribution>
     </extension>
     
-    
     <extension point="org.eclipse.ui.menus">
     	<menuContribution locationURI="menu:help?after=org.wso2.developerstudio.eclipse.dashboard.gettingStarted">
 			<command
@@ -60,7 +59,17 @@
 			</command>
     	</menuContribution>
     </extension>
-    
+    <extension point="org.eclipse.ui.menus">
+    	<menuContribution locationURI="menu:help?after=org.wso2.developerstudio.eclipse.dashboard.gettingStarted">
+			<command
+            	commandId="org.wso2.developerstudio.eclipse.platform.ui.commands.openfeedbackviewer"
+                icon="icons/feedback.png"
+                id="org.wso2.developerstudio.eclipse.platform.ui.toolbars.openfeedbackviewer"
+                label="Share Feedback"
+                tooltip="Share your ideas, suggestions or issues about Integration Studio">
+			</command>
+    	</menuContribution>
+    </extension>
                  
     <extension point="org.eclipse.ui.newWizards">
   <category name="WSO2BASS" id="org.wso2.developerstudio.eclipse.capp.projectBASS">

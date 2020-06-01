@@ -21,6 +21,10 @@
                org.eclipse.emf.edit.provider.IItemLabelProvider
                org.eclipse.emf.edit.provider.IItemPropertySource"/>
    </extension>
+   <extension point="org.eclipse.ui.startup">
+     <startup class="org.wso2.developerstudio.eclipse.gmf.esb.presentation.DiagramEarlyStartupHandler"/>
+   </extension> 
+   
   <!-- EEF extensions -->
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory

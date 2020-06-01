@@ -17,6 +17,10 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser;
 
+import org.codehaus.jettison.json.JSONArray;
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
+
 public class ConnectorDescriptorParser {
     
     public static ConnectorRoot parse(String jsonString) {
@@ -25,9 +29,120 @@ public class ConnectorDescriptorParser {
     
     public static ConnectorRoot demoValue() {
         ConnectorRoot connectorRoot = new ConnectorRoot();
-        connectorRoot.setConnectorName("email");
+        connectorRoot.setConnectorName("file");
+        connectorRoot.setDisplayName("File Append");
+        connectorRoot.setHelp("<h1>File Append</h1>");
+        Element l1element = new Element();
+        l1element.setType("attributeGroup");
+        AttributeGroupValue agv = new AttributeGroupValue();
+        agv.setGroupName("General");
+        Element l2element = new Element();
+        l2element.setType("attribute");
+        AttributeValue agvl2 = new AttributeValue();
+        agvl2.setName("description");
+        agvl2.setDefaultValue("");
+        
+        agv.addElement(l2element);
+        l1element.setValue(agv);
+        connectorRoot.addElement(l1element);
+        return connectorRoot;
+    }
+    
+    public ConnectorRoot createObject(String jsonString) throws JSONException {
+        ConnectorRoot connectorRoot = new ConnectorRoot();
+        JSONObject rootObject = new JSONObject(jsonString);
+        connectorRoot.setConnectorName(rootObject.getString("connectorName"));
+        connectorRoot.setDisplayName(rootObject.getString("displayName"));
+        connectorRoot.setHelp(rootObject.getString("help"));
+        JSONArray elementsArray = rootObject.getJSONArray("elements");
+        for(int i=0;i<elementsArray.length();i++) {
+            Element element = new Element();
+            JSONObject obj = elementsArray.getJSONObject(i);
+            element.setType(obj.getString("type"));
+            if(element.getType().equalsIgnoreCase("attribute")) {
+                AttributeValue value = new AttributeValue();
+                JSONObject attrObj = obj.getJSONObject("value");
+                value.setName(attrObj.getString("name"));
+                value.setDefaultValue(attrObj.getString("defaultValue"));
+                value.setRequired(Boolean.parseBoolean(attrObj.getString("required")));
+                value.setHelpTip(attrObj.getString("helpTip"));
+                value.setDisplayName(attrObj.getString("displayName"));
+                 // HardCoded
+                if(attrObj.getString("inputType").equalsIgnoreCase("stringOrExpression")) {
+                    value.setType(AttributeValueType.STRING); 
+                } else if (attrObj.getString("inputType").equalsIgnoreCase("textOrExpression")) {
+                    value.setType(AttributeValueType.STRING); 
+                } else if (attrObj.getString("inputType").equalsIgnoreCase("comboOrExpression")) {
+                    value.setType(AttributeValueType.COMBO); 
+                    JSONArray comboArray = attrObj.getJSONArray("comboValues");
+                    for(int j=0;j<comboArray.length();j++) {
+                        value.addComboValue(comboArray.getString(j));
+                    }
+                } else if (attrObj.getString("inputType").equalsIgnoreCase("booleanOrExpression")) {
+                    value.setType(AttributeValueType.BOOLEANOREXPRESSION); 
+                } else if (attrObj.getString("inputType").equalsIgnoreCase("connection")) {
+                    value.setType(AttributeValueType.CONNECTION); 
+                } else {
+                    value.setType(AttributeValueType.STRING);
+                }
+                element.setValue(value);
+            } else {
+                AttributeGroupValue groupValue = new AttributeGroupValue();
+                JSONObject attrGroupObj = obj.getJSONObject("value");
+                groupValue.setGroupName(attrGroupObj.getString("groupName"));
+                recursive(attrGroupObj.getJSONArray("elements"), groupValue);
+                element.setValue(groupValue);
+            }
+            connectorRoot.addElement(element);
+        }
         
         return connectorRoot;
+    }
+    
+    public void recursive(JSONArray elementsArray, Value rootValue) throws JSONException {
+        for(int i=0;i<elementsArray.length();i++) {
+            Element element = new Element();
+            JSONObject obj = elementsArray.getJSONObject(i);
+            element.setType(obj.getString("type"));
+            if(element.getType().equalsIgnoreCase("attribute")) {
+                AttributeValue value = new AttributeValue();
+                JSONObject attrObj = obj.getJSONObject("value");
+                value.setName(attrObj.getString("name"));
+                value.setDefaultValue(attrObj.getString("defaultValue"));
+                value.setRequired(Boolean.parseBoolean(attrObj.getString("required")));
+                value.setHelpTip(attrObj.getString("helpTip"));
+                value.setDisplayName(attrObj.getString("displayName"));
+                if(attrObj.getString("inputType").equalsIgnoreCase("stringOrExpression")) {
+                    value.setType(AttributeValueType.STRING); 
+                } else if (attrObj.getString("inputType").equalsIgnoreCase("textOrExpression")) {
+                    value.setType(AttributeValueType.STRING); 
+                } else if (attrObj.getString("inputType").equalsIgnoreCase("comboOrExpression")) {
+                    value.setType(AttributeValueType.COMBO); 
+                    JSONArray comboArray = attrObj.getJSONArray("comboValues");
+                    for(int j=0;j<comboArray.length();j++) {
+                        value.addComboValue(comboArray.getString(j));
+                    }
+                } else if (attrObj.getString("inputType").equalsIgnoreCase("booleanOrExpression")) {
+                    value.setType(AttributeValueType.BOOLEANOREXPRESSION); 
+                } else if (attrObj.getString("inputType").equalsIgnoreCase("connection")) {
+                    value.setType(AttributeValueType.CONNECTION); 
+                } else {
+                    value.setType(AttributeValueType.STRING);
+                }
+                element.setValue(value);
+                element.setValue(value);
+            } else {
+                AttributeGroupValue groupValue = new AttributeGroupValue();
+                JSONObject attrGroupObj = obj.getJSONObject("value");
+                groupValue.setGroupName(attrGroupObj.getString("groupName"));
+                recursive(attrGroupObj.getJSONArray("elements"), groupValue);
+                element.setValue(groupValue);
+                
+            }
+            if(rootValue instanceof AttributeGroupValue) {
+                ((AttributeGroupValue)rootValue).addElement(element);
+            }
+        }
     }
 
 }

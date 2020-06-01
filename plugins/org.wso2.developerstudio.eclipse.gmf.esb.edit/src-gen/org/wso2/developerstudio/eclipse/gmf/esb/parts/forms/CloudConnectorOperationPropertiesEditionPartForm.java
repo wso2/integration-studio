@@ -3,6 +3,8 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.parts.forms;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
 // Start of user code for imports
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -49,6 +51,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableCon
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 
 import org.eclipse.jface.viewers.ArrayContentProvider;
+import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -58,13 +61,14 @@ import org.eclipse.jface.window.Window;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.browser.Browser;
+import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 
@@ -76,7 +80,7 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
-
+import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
@@ -84,10 +88,11 @@ import org.eclipse.ui.forms.widgets.Section;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloudConnectorOperation;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.CloudConnectorOperationImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.ConnectorParameterRenderer;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.ConnectorSchemaHolder;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.ReferenceGroup;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
@@ -106,7 +111,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	protected Button editCommentsList;
 	protected EList commentsListList;
 	protected Button reverse;
-	protected ReferenceGroup connectorParameters;
+	protected ReferencesTable connectorParameters;
 	protected List<ViewerFilter> connectorParametersBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> connectorParametersFilters = new ArrayList<ViewerFilter>();
 	protected Text configRef;
@@ -118,12 +123,14 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	protected Browser browser;
 
     // Start of user code
-    protected Group propertiesGroup;
+    protected Composite propertiesGroup;
     protected Control[] reverseElements;
     protected Control[] commentsElements;
     protected Control[] configRefElements;
     protected Control[] availableConfigsElements;
     protected Composite filterConfigSubPropertiesGroup;
+    private boolean hasConnectorSchema;
+    protected CLabel infoLabel;
     // End of user code
 
 	/**
@@ -149,24 +156,19 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	 * @generated NOT
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
+	    CloudConnectorOperationImpl connectorObject = (CloudConnectorOperationImpl)propertiesEditionComponent.getEditingContext().getEObject();
+	    String schemaName = connectorObject.getConnectorName().split("connector")[0] + "-" + connectorObject.getOperationName();
+	    if(ConnectorSchemaHolder.getInstance().hasConnectorSchema(schemaName)) {
+	        hasConnectorSchema = true;
+	    } else {
+	        hasConnectorSchema = false;
+	    }
 	    Form form = widgetFactory.createForm(parent);
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 1;
 		view.setLayout(layout);
 		createControls(widgetFactory, view);
-//		FXCanvas fxCanvas = new FXCanvas(parent.getShell(), SWT.NONE) {
-//            public Point computeSize(int wHint, int hHint, boolean changed) {
-//                getScene().getWindow().sizeToScene();
-//                int width = (int) getScene().getWidth();
-//                int height = (int) getScene().getHeight();
-//                return new Point(width, height);
-//            }
-//        };
-//        Browser browser = new Browser(parent, SWT.BORDER);
-//      browser.setUrl("http://www.google.com");
-//      browser.setSize(400, 1000);
-//      widgetFactory.adapt(browser);
 		return form;
 	}
 
@@ -180,17 +182,29 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence cloudConnectorOperationStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = cloudConnectorOperationStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.commentsList);
-		propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.reverse);
+		if(hasConnectorSchema) {
+		    propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters);
+		} else {
+//	        propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.connectorName);
+//	      propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.operationName);
+//	      propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.cloudConnectorName);
+	      propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.parameterEditorType);
+	      propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.configRef);
+	      propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.availableConfigs);
+	      propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters);
+	      propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.description);
+		}
+		//propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.commentsList);
+		//propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.reverse);
 //		propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.connectorName);
 //		propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.operationName);
 //		propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.cloudConnectorName);
-		propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.parameterEditorType);
-		propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.configRef);
-		propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.availableConfigs);
-		propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters);
-		propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.description);
-		
+//		propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.parameterEditorType);
+//		propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.configRef);
+//		propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.availableConfigs);
+//		propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters);
+//		propertiesStep.addStep(EsbViewsRepository.CloudConnectorOperation.Properties.description);
+
 		composer = new PartComposer(cloudConnectorOperationStep) {
 
 			@Override
@@ -244,18 +258,33 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 //		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
 //		propertiesSectionData.horizontalSpan = 3;
 //		propertiesSection.setLayoutData(propertiesSectionData);
-		propertiesGroup = new Group(parent, SWT.FILL);
-		propertiesGroup.setLocation(0, 0);
-		propertiesGroup.setText("Basic Properties");
-		GridLayout propertiesGroupLayout = new GridLayout();
-		propertiesGroupLayout.numColumns = 3;
-		propertiesGroupLayout.marginLeft = 15;
-		propertiesGroupLayout.horizontalSpacing = 20;
-		propertiesGroupLayout.verticalSpacing = 10;
-		propertiesGroup.setLayout(propertiesGroupLayout);
-		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesSectionData.horizontalSpan = 3;
-		propertiesGroup.setLayoutData(propertiesSectionData);
+		
+//		propertiesGroupLayout.numColumns = 3;
+//		propertiesGroupLayout.marginLeft = 15;
+//		propertiesGroupLayout.horizontalSpacing = 20;
+//		propertiesGroupLayout.verticalSpacing = 10;
+	    if(hasConnectorSchema) {
+    	    propertiesGroup = new Composite(parent, SWT.NO_BACKGROUND);
+            propertiesGroup.setLocation(0, 0);
+            GridLayout propertiesGroupLayout = new GridLayout();
+            propertiesGroupLayout.numColumns = 1;
+            propertiesGroupLayout.horizontalSpacing = 0;
+    		propertiesGroup.setLayout(propertiesGroupLayout);
+    		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
+    		propertiesSectionData.horizontalSpan = 3;
+    		propertiesGroup.setLayoutData(propertiesSectionData);
+	    } else {
+	        Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+	        propertiesSection.setText(EsbMessages.CloudConnectorOperationPropertiesEditionPart_PropertiesGroupLabel);
+	        GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
+	        propertiesSectionData.horizontalSpan = 3;
+	        propertiesSection.setLayoutData(propertiesSectionData);
+	        propertiesGroup = widgetFactory.createComposite(propertiesSection);
+	        GridLayout propertiesGroupLayout = new GridLayout();
+	        propertiesGroupLayout.numColumns = 3;
+	        propertiesGroup.setLayout(propertiesGroupLayout);
+	        propertiesSection.setClient(propertiesGroup);
+	    }
 		//propertiesSection.setClient(propertiesGroup);
 		return propertiesGroup;
 	}
@@ -414,32 +443,70 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	 * 
 	 */
 	protected Composite createConnectorParametersTableComposition(FormToolkit widgetFactory, Composite parent) {
-	    
-	    this.connectorParameters = new ReferenceGroup(getDescription(EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters, null),
-	            new ConnectorParameterRenderer(propertiesEditionComponent, this));
-		for (ViewerFilter filter : this.connectorParametersFilters) {
-			this.connectorParameters.addFilter(filter);
-		}
-		//this.connectorParameters.setHelpText(propertiesEditionComponent.getHelpContent(EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters, EsbViewsRepository.FORM_KIND));
-		this.connectorParameters.createControls(parent, widgetFactory);
-//		this.connectorParameters.addSelectionListener(new SelectionAdapter() {
-//			
-//			public void widgetSelected(SelectionEvent e) {
-//				if (e.item != null && e.item.getData() instanceof EObject) {
-//					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CloudConnectorOperationPropertiesEditionPartForm.this, EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
-//				}
-//			}
-//			
-//		});
-//		GridData connectorParametersData = new GridData(GridData.FILL_HORIZONTAL);
-//		connectorParametersData.horizontalSpan = 3;
-//		this.connectorParameters.setLayoutData(connectorParametersData);
-//		this.connectorParameters.setLowerBound(0);
-//		this.connectorParameters.setUpperBound(-1);
-		connectorParameters.setID(EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters);
-		connectorParameters.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
-		// Start of user code for createConnectorParametersTableComposition
+	     // Start of user code for createConnectorParametersTableComposition
+	    if(hasConnectorSchema) {
+            CloudConnectorOperationImpl connectorObject = (CloudConnectorOperationImpl)propertiesEditionComponent.getEditingContext().getEObject();
+            String schemaName = connectorObject.getConnectorName().split("connector")[0] + "-" + connectorObject.getOperationName();
+            this.connectorParameters = new ReferenceGroup(getDescription(EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters, null),
+                    new ConnectorParameterRenderer(propertiesEditionComponent, this), schemaName);
+            this.connectorParameters.createControls(parent, widgetFactory);
+            connectorParameters.setID(EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters);
+            connectorParameters.setEEFType("eef::AdvancedTableComposition");
+            infoLabel = new CLabel(propertiesGroup, SWT.NONE);
+            Image image;
+            try {
+                image = new Image(parent.getShell().getDisplay(), EEFPropertyViewUtil.getIconPath("icons/full/obj16/CacheOnHitBranch.gif"));
+                //image = new Image(parent.getShell().getDisplay(), EEFPropertyViewUtil.getIconPath("icons/full/obj16/ModelObjectInvalid.gif"));
+               
+                infoLabel.setImage(image);
+                infoLabel.setText("There are no errors");
+            } catch (URISyntaxException | IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
 
+	    } else {
+	        this.connectorParameters = new ReferencesTable(getDescription(EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters, EsbMessages.CloudConnectorOperationPropertiesEditionPart_ConnectorParametersLabel), new ReferencesTableListener() {
+	            public void handleAdd() {
+	                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CloudConnectorOperationPropertiesEditionPartForm.this, EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+	                connectorParameters.refresh();
+	            }
+	            public void handleEdit(EObject element) {
+	                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CloudConnectorOperationPropertiesEditionPartForm.this, EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+	                connectorParameters.refresh();
+	            }
+	            public void handleMove(EObject element, int oldIndex, int newIndex) {
+	                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CloudConnectorOperationPropertiesEditionPartForm.this, EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+	                connectorParameters.refresh();
+	            }
+	            public void handleRemove(EObject element) {
+	                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CloudConnectorOperationPropertiesEditionPartForm.this, EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+	                connectorParameters.refresh();
+	            }
+	            public void navigateTo(EObject element) { }
+	        });
+	        for (ViewerFilter filter : this.connectorParametersFilters) {
+	            this.connectorParameters.addFilter(filter);
+	        }
+	        this.connectorParameters.setHelpText(propertiesEditionComponent.getHelpContent(EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters, EsbViewsRepository.FORM_KIND));
+	        this.connectorParameters.createControls(parent, widgetFactory);
+	        this.connectorParameters.addSelectionListener(new SelectionAdapter() {
+	            
+	            public void widgetSelected(SelectionEvent e) {
+	                if (e.item != null && e.item.getData() instanceof EObject) {
+	                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CloudConnectorOperationPropertiesEditionPartForm.this, EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+	                }
+	            }
+	            
+	        });
+	        GridData connectorParametersData = new GridData(GridData.FILL_HORIZONTAL);
+	        connectorParametersData.horizontalSpan = 3;
+	        this.connectorParameters.setLayoutData(connectorParametersData);
+	        this.connectorParameters.setLowerBound(0);
+	        this.connectorParameters.setUpperBound(-1);
+	        connectorParameters.setID(EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters);
+	        connectorParameters.setEEFType("eef::AdvancedTableComposition");
+	    }
 		// End of user code
 		return parent;
 	}
@@ -448,7 +515,8 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	 * @generated NOT
 	 */
 	protected Composite createConfigRefText(FormToolkit widgetFactory, Composite parent) {
-	        filterConfigSubPropertiesGroup = EEFPropertyViewUtil.createNewGroup(widgetFactory, parent.getParent(), "Session");
+	        filterConfigSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Session",
+                    true);
 	        Control [] previousControls = filterConfigSubPropertiesGroup.getChildren();
 		createDescription(filterConfigSubPropertiesGroup, EsbViewsRepository.CloudConnectorOperation.Properties.configRef, EsbMessages.CloudConnectorOperationPropertiesEditionPart_ConfigRefLabel);
 		configRef = widgetFactory.createText(filterConfigSubPropertiesGroup, ""); //$NON-NLS-1$
@@ -966,27 +1034,29 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	 * 
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#initConnectorParameters(EObject current, EReference containingFeature, EReference feature)
 	 */
-	public void initConnectorParameters(ReferencesTableSettings settings) {
-		if (current.eResource() != null && current.eResource().getResourceSet() != null)
-			this.resourceSet = current.eResource().getResourceSet();
-		//ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
-		//connectorParameters.setContentProvider(contentProvider);
-
-        EList<CallTemplateParameter> parameterList = ((CloudConnectorOperation)((ReferencesTableSettings)settings).getSource()).getConnectorParameters();
-        HashMap<String,String> paramValues = new HashMap<String,String>();
-        for(CallTemplateParameter ctpi : parameterList) {
-            paramValues.put(ctpi.getParameterName(), ctpi.getParameterValue());
+    public void initConnectorParameters(ReferencesTableSettings settings) {
+        if (current.eResource() != null && current.eResource().getResourceSet() != null)
+            this.resourceSet = current.eResource().getResourceSet();
+        if (hasConnectorSchema) {
+            EObject dataObject = ((ReferencesTableSettings) settings).getSource();
+            if (connectorParameters instanceof ReferenceGroup) {
+                ((ReferenceGroup) connectorParameters).setInput(settings, dataObject);
+            }
+        } else {
+            ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+            connectorParameters.setContentProvider(contentProvider);
+            connectorParameters.setInput(settings);
+            boolean eefElementEditorReadOnlyState = isReadOnly(
+                    EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters);
+            if (eefElementEditorReadOnlyState && connectorParameters.isEnabled()) {
+                connectorParameters.setEnabled(false);
+                connectorParameters.setToolTipText(EsbMessages.CloudConnectorOperation_ReadOnly);
+            } else if (!eefElementEditorReadOnlyState && !connectorParameters.isEnabled()) {
+                connectorParameters.setEnabled(true);
+            }
         }
-		connectorParameters.setInput(settings, paramValues, parameterList);
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters);
-//		if (eefElementEditorReadOnlyState && connectorParameters.isEnabled()) {
-//			connectorParameters.setEnabled(false);
-//			connectorParameters.setToolTipText(EsbMessages.CloudConnectorOperation_ReadOnly);
-//		} else if (!eefElementEditorReadOnlyState && !connectorParameters.isEnabled()) {
-//			connectorParameters.setEnabled(true);
-//		}	
-		
-	}
+    }
+
 
 	/**
 	 * {@inheritDoc}
@@ -995,7 +1065,9 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	 * 
 	 */
 	public void updateConnectorParameters() {
-	connectorParameters.refresh();
+	    if (!hasConnectorSchema) {
+	        connectorParameters.refresh();
+	    }
 }
 
 	/**
@@ -1253,11 +1325,13 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 		return EsbMessages.CloudConnectorOperation_Part_Title;
 	}
 
-	// Start of user code additional methods
+//	 Start of user code additional methods
     @Override
     public void refresh() {
         super.refresh();
-        validate();
+        if(!hasConnectorSchema) {
+            validate();
+        }
     }
 
     public void validate() {
@@ -1268,9 +1342,32 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 
         epv.showEntry(configRefElements, false);
         epv.showEntry(availableConfigsElements, false);
-        epv.hideEntry(commentsElements, false);
-        epv.hideEntry(reverseElements, false);
         view.layout(true, true);
+    }
+    
+    public void updateMessage(String kind, String message, String field, String regex) throws URISyntaxException, IOException {
+        String bannerMessage;
+        Image image;
+        if(infoLabel != null && !infoLabel.isDisposed()) {
+            infoLabel.dispose();
+        }
+        infoLabel = new CLabel(propertiesGroup, SWT.NONE);
+        if(kind.equals("requirederror")) {
+            image = new Image(propertiesGroup.getShell().getDisplay(), EEFPropertyViewUtil.getIconPath("icons/full/obj16/ModelObjectInvalid.gif"));
+            bannerMessage = "Value of the '" + field + "' field is required"; 
+        } else if (kind.equals("regexerror")) {
+            image = new Image(propertiesGroup.getShell().getDisplay(), EEFPropertyViewUtil.getIconPath("icons/full/obj16/ModelObjectInvalid.gif"));
+            bannerMessage = "Value of the '" + field + "' field should match " + regex;
+        } else if (kind.equals("custom")){
+            image = new Image(propertiesGroup.getShell().getDisplay(), EEFPropertyViewUtil.getIconPath("icons/full/obj16/CacheOnHitBranch.gif"));
+            bannerMessage = message;
+        } else {
+            image = new Image(propertiesGroup.getShell().getDisplay(), EEFPropertyViewUtil.getIconPath("icons/full/obj16/CacheOnHitBranch.gif"));
+            bannerMessage = "There are no errors";
+        }
+        infoLabel.setImage(image);
+        infoLabel.setText(bannerMessage);
+        infoLabel.getParent().layout();
     }
 	// End of user code
 

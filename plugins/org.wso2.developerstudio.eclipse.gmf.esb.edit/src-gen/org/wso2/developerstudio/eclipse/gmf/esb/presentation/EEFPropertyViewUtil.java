@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +14,8 @@ import java.util.Properties;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.layout.FormData;
@@ -21,6 +25,7 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
+import org.osgi.framework.Bundle;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.Activator;
@@ -36,6 +41,7 @@ public class EEFPropertyViewUtil {
     private static final String TYPE_TEMPLATE_EPT = "synapse/endpointTemplate";
     private static final String AVAILABLE_TEMPLATE_LIST_DEFAULT_VALUE = "Select From Templates";
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    public static final String PLUGIN_ID = "org.wso2.developerstudio.eclipse.gmf.esb.edit";
 
     static {
         URL url;
@@ -286,4 +292,13 @@ public class EEFPropertyViewUtil {
         }
         return str;
     }
+    
+    public static String getIconPath(String iconName) throws URISyntaxException, IOException {
+        Bundle bundle = Platform.getBundle(PLUGIN_ID);
+        URL webAppURL = bundle.getEntry(iconName);
+        URL resolvedFolderURL = FileLocator.toFileURL(webAppURL);
+        URI resolvedFolderURI = new URI(resolvedFolderURL.getProtocol(), resolvedFolderURL.getPath(), null);
+        File resolvedWebAppFolder = new File(resolvedFolderURI);
+        return resolvedWebAppFolder.getAbsolutePath();
+    } 
 }

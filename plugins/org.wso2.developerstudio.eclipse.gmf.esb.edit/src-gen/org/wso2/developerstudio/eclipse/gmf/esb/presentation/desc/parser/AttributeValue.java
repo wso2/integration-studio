@@ -32,6 +32,12 @@ public class AttributeValue extends Value {
     String defaultType; //????
     //String default; ????
     ArrayList<EnableCondition> enableCondition;
+    ArrayList<String> comboValues;
+   
+    public AttributeValue() {
+        enableCondition = new ArrayList<EnableCondition>();
+        comboValues = new ArrayList<String>();
+    }
     
 
     public String getName() {
@@ -88,6 +94,14 @@ public class AttributeValue extends Value {
 
     public void setAllowedConnectionTypes(Connection allowedConnectionTypes) {
         this.allowedConnectionTypes = allowedConnectionTypes;
+    }
+    
+    public ArrayList<String> getComboValues() {
+        return comboValues;
+    }
+
+    public void addComboValue(String comboValue) {
+        this.comboValues.add(comboValue);
     }
 
 }

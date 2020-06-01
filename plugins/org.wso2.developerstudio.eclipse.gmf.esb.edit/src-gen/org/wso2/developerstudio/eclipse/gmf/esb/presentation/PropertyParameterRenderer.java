@@ -20,11 +20,12 @@ package org.wso2.developerstudio.eclipse.gmf.esb.presentation;
 import java.util.HashMap;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorRoot;
 
 public abstract class PropertyParameterRenderer {
     abstract Composite generate(FormToolkit widgetFactory, Composite parent, ConnectorRoot connectorRoot);
-    abstract void fillData(HashMap<String,String> paramValues,EList parameterList);
+    abstract void fillData(EObject dataObject);
 }

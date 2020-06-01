@@ -19,12 +19,17 @@ package org.wso2.developerstudio.eclipse.gmf.esb.presentation;
 
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.HashMap;
+import java.util.regex.Pattern;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
@@ -33,7 +38,12 @@ import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
+import org.eclipse.swt.events.PaintEvent;
+import org.eclipse.swt.events.PaintListener;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -49,6 +59,7 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter;
+import org.wso2.developerstudio.eclipse.gmf.esb.CloudConnectorOperation;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleOptionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
@@ -66,232 +77,83 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
     HashMap<String, Composite> compositeList;
     IPropertiesEditionComponent propertiesEditionComponent;
     SectionPropertiesEditingPart partForm;
+    PropertiesWidgetProvider widgetProvider;
     
     public ConnectorParameterRenderer(IPropertiesEditionComponent propertiesEditionComponent, SectionPropertiesEditingPart partForm) {
         this.propertiesEditionComponent = propertiesEditionComponent;
         this.partForm = partForm;
+        this.controlList = new HashMap<String, Control>();
+        this.compositeList = new HashMap<String, Composite>();
+        widgetProvider = new PropertiesWidgetProvider(partForm, propertiesEditionComponent, controlList, compositeList);
     }
     
     @Override
-    public Group generate(FormToolkit widgetFactory, Composite parent, ConnectorRoot connectorRoot) {
+    public Composite generate(FormToolkit widgetFactory, Composite parent, ConnectorRoot connectorRoot) {
         //parent.setBackgroundMode(SWT.INHERIT_FORCE);
-//        for(Element elem: connectorRoot.getElements()) {
-//            recursive(elem, parent);
-//        }
-        Group propertiesSection = createGroup(parent, "Connector Params");
-        Group propertiesAnotherSection = createGroup(parent, "Another Connector Params");
-        //Iterate through recieved json and generate fields accordingly. Pass parameter name as id.
-        controlList = new HashMap<String, Control>();
-        compositeList = new HashMap<String, Composite>();
-        createTextBoxFieldWithButton(widgetFactory, propertiesSection, "File Pattern:","FX", "filePattern");
-        createTextBoxField(widgetFactory, propertiesSection, "Set Timeout:","setTimeout");
-        createTextBoxFieldWithButton(widgetFactory, propertiesSection, "Destination:","FX", "destination");
-        createTextBoxField(widgetFactory, propertiesSection, "Set Passive Mode:","setPassiveMode");
-        
-        Group propertiesSubSection = createGroup(propertiesSection,"Timeout Section");
-        createTextBoxField(widgetFactory, propertiesSubSection, "Set So Timeout:", "setSoTimeout");
-        createTextBoxField(widgetFactory, propertiesSection, "Source:","source");
-        createTextBoxField(widgetFactory, propertiesSubSection, "Set User Dir Is Root:", "setUserDirIsRoot");
-        createTextBoxField(widgetFactory, propertiesAnotherSection, "Set Strict Host Key Checking:","setStrictHostKeyChecking");
-        createTextBoxField(widgetFactory, propertiesAnotherSection, "Include Parent Directory:", "includeParentDirectory");
-        //filePattern=, setTimeout=, destination=, setPassiveMode=, setSoTimeout=, source=, setUserDirIsRoot=, setStrictHostKeyChecking=, includeParentDirectory=}
-//        createTextBoxFieldWithButton(widgetFactory, propertiesSection, "Field With Button :", "fX", "xpath");
-       createDropDownField(widgetFactory, propertiesSubSection, "Drop Down: ", new String[] {"option 1", "option 2"}, "drop");
-//        createCheckBoxField(widgetFactory, propertiesSection, "Check Box : ", new String[] {"option 1", "option 2"}, "check");
-        
-        return propertiesSection;
+        Group generalGroup = widgetProvider.createGroup(parent, "General");
+//      
+        for(Element elem: connectorRoot.getElements()) {
+            recursive(elem, parent, generalGroup, widgetFactory, 0);
+        }       
+        return parent;
     }
     
-    public void recursive(Element element, Composite parent) {
+    public void recursive(Element element, Composite parent, Composite generalGroup, FormToolkit widgetFactory, int level) {
+        ++level;
         if(element.getType().equals("attribute")) {
-            evaluateAttribute((AttributeValue)element.getValue(), parent);
+            if(level != 2) { //Will be 2 since ++ level
+                evaluateAttribute((AttributeValue)element.getValue(), parent, widgetFactory, level);
+            } else {
+                evaluateAttribute((AttributeValue)element.getValue(), generalGroup, widgetFactory, level);
+            }
         } else {
             AttributeGroupValue agv = (AttributeGroupValue)element.getValue();
             // Is group Name connection special????
-            Group subGroup = createGroup(parent, agv.getGroupName());
-            for(Element elem: agv.getElements()) {
-                recursive(elem, subGroup);
+            if(level != 1) {
+                Group subGroup = widgetProvider.createGroup(parent, agv.getGroupName());
+                for(Element elem: agv.getElements()) {
+                    recursive(elem, subGroup, generalGroup, widgetFactory, level);
+                }
+            } else {
+                for(Element elem: agv.getElements()) {
+                    recursive(elem, parent, generalGroup, widgetFactory, level);
+                }
             }
-        }
-    }
-    
-    public void evaluateAttribute(AttributeValue value, Composite parent) {
-        if(AttributeValueType.STRING.equals(value.getType())) {
-            
-        } else if (AttributeValueType.VALUEOREXPRESSION.equals(value.getType())) {
-            
-        } else if (AttributeValueType.COMBO.equals(value.getType())) {
-            
-        }
-    }
-    
-    public Group createGroup(Composite parent, String label) {
-        Group propertiesSection = new Group(parent, SWT.SHADOW_ETCHED_IN);
-        propertiesSection.setBackgroundMode(SWT.INHERIT_FORCE);
-        propertiesSection.setText(label);
-        GridLayout propertiesGroupLayout = new GridLayout();
-        propertiesGroupLayout.numColumns = 2;
-        propertiesGroupLayout.marginLeft = 5;
-        propertiesGroupLayout.horizontalSpacing = 20;
-        propertiesGroupLayout.verticalSpacing = 10;
-        propertiesSection.setLayout(propertiesGroupLayout);
-        GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
-        propertiesSectionData.horizontalSpan = 2;
-        propertiesSection.setLayoutData(propertiesSectionData);
-        return propertiesSection;      
-    }
-    
-    
-    private Composite createTextBoxField(FormToolkit widgetFactory, Composite parent, String Label, String id) {
-        Composite textBoxComposite = createComposite(id, widgetFactory, parent,2,2);
-        Label label = new Label(textBoxComposite, SWT.NO_BACKGROUND);
-        label.setText(Label);
-        GridData labelRefData = new GridData();
-        labelRefData.widthHint = 120;
-        label.setLayoutData(labelRefData);
-        setToolTip(label, "This is a generic Tool tip Message of new properties renderer");
-        Text configRef = widgetFactory.createText(textBoxComposite, "");
-        controlList.put(id, configRef);
-        configRef.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-        GridData configRefData = new GridData(GridData.FILL_HORIZONTAL);
-        configRef.setLayoutData(configRefData);
 
-        configRef.addKeyListener(new KeyAdapter() {
-            /**
-             * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-             * 
-             */
-            @Override
-            @SuppressWarnings("synthetic-access")
-            public void keyPressed(KeyEvent e) {
-                //if (e.character == SWT.CR) {
-                    //((CallTemplateParameter)configRef.getData()).setParameterValue(configRef.getText());
-                    CallTemplateParameter ctp = (CallTemplateParameter)configRef.getData();
-                    setParameterType(RuleOptionType.VALUE, ctp);
-                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(partForm, EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, ctp, configRef.getText()));
-                    
-               // }
-            }
-        });
-        return parent;
-    }
-    
-    private Composite createTextBoxFieldWithButton(FormToolkit widgetFactory,final Composite parent, String Label, String buttonText, String id) {
-        Composite textBoxComposite = createComposite(id, widgetFactory, parent,3,3);
-        Label label = new Label(textBoxComposite, SWT.NO_BACKGROUND);
-        label.setText(Label);
-        GridData labelRefData = new GridData();
-        labelRefData.widthHint = 120;
-        label.setLayoutData(labelRefData);
-        //label.setToolTipText(Label);
-        setToolTip(label, "This is a generic Tool tip Message of new properties renderer");
-        final Text configRef = widgetFactory.createText(textBoxComposite, "");
-        configRef.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-        controlList.put(id, configRef);
-        GridData configRefData = new GridData(GridData.FILL_HORIZONTAL);
-        Button configButton = widgetFactory.createButton(textBoxComposite, buttonText, SWT.PUSH);
-        configButton.setText(buttonText);
-        configRef.setLayoutData(configRefData);
-        configButton.addListener(SWT.Selection, new Listener()
-        {
-            @Override
-            public void handleEvent(Event event)
-            {
-                CallTemplateParameter ctp = (CallTemplateParameter)configRef.getData();
-                setParameterType(RuleOptionType.EXPRESSION, ctp);
-                openValueExpressionWidgetNamespacedPropertyEditor(parent, configRef, ctp.getParameterExpression());
-                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(partForm, EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, ctp, configRef.getText()));
-            }
-        });
-        configRef.addKeyListener(new KeyAdapter() {
-            /**
-             * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-             * 
-             */
-            @Override
-            @SuppressWarnings("synthetic-access")
-            public void keyPressed(KeyEvent e) {
-                //if (e.character == SWT.CR) {
-                    //((CallTemplateParameter)configRef.getData()).setParameterValue(configRef.getText());
-                    CallTemplateParameter ctp = (CallTemplateParameter)configRef.getData();
-                    //ctp.setParameterValue(configRef.getText());
-                    setParameterType(RuleOptionType.VALUE, ctp);
-                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(partForm, EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, ctp, configRef.getText()));
-                    
-                //}
-            }
-        });
-        return parent;
-    }
-    
-    private Composite createDropDownField(FormToolkit widgetFactory, Composite parent, String Label, String [] options, String id) {
-        Composite textBoxComposite = createComposite(id, widgetFactory, parent, 2, 2);
-        Label label = new Label(textBoxComposite, SWT.NO_BACKGROUND);
-        label.setText(Label);
-        GridData labelRefData = new GridData();
-        labelRefData.widthHint = 120;
-        label.setLayoutData(labelRefData);
-        Combo configRef = new Combo(textBoxComposite, SWT.DROP_DOWN);
-        controlList.put(id, configRef);
-        configRef.setItems(options);
-        GridData configRefData = new GridData(GridData.FILL_HORIZONTAL);
-        configRef.setLayoutData(configRefData);
-        return parent;
-    }
-    
-    private Composite createCheckBoxField(FormToolkit widgetFactory, Composite parent, String Label, String [] options, String id) {
-        Composite textBoxComposite = createComposite(id, widgetFactory, parent, options.length+1, options.length+1);
-        Label label = new Label(textBoxComposite, SWT.NO_BACKGROUND);
-        label.setText(Label);
-        GridData configRefDatass = new GridData(GridData.FILL_HORIZONTAL);
-        label.setLayoutData(configRefDatass);
-        for (String option:options) {
-            Button configRef = widgetFactory.createButton(textBoxComposite,option,SWT.CHECK);
-            configRef.setText(option);
-            //configRef.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-            GridData configRefData = new GridData(GridData.FILL_HORIZONTAL);
-            configRef.setLayoutData(configRefData);
         }
-        return parent;
     }
     
-    private Composite createComposite(FormToolkit widgetFactory, Composite parent) {
-        Composite composite = widgetFactory.createComposite(parent);
-        GridLayout propertiesGroupLayout = new GridLayout();
-        propertiesGroupLayout.numColumns = 2;
-        propertiesGroupLayout.marginLeft = 15;
-        propertiesGroupLayout.horizontalSpacing = 20;
-        propertiesGroupLayout.verticalSpacing = 10;
-        composite.setLayout(propertiesGroupLayout);
-        GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
-        propertiesSectionData.horizontalSpan = 2;
-        composite.setLayoutData(propertiesSectionData);
-        return composite;
-        
+    public void evaluateAttribute(AttributeValue value, Composite parent, FormToolkit widgetFactory, int level) {
+        if (AttributeValueType.STRING.equals(value.getType())) {
+            widgetProvider.createTextBoxFieldWithButton(widgetFactory, parent, value);
+        } else if (AttributeValueType.BOOLEANOREXPRESSION.equals(value.getType())) {
+            widgetProvider.createDropDownField(widgetFactory, parent, new String[] {"true", "false"}, value);
+        } else if (AttributeValueType.COMBO.equals(value.getType())) {
+            widgetProvider.createDropDownField(widgetFactory, parent, value.getComboValues().toArray(new String[0]), value);
+        } else if (AttributeValueType.CONNECTION.equals(value.getType())) {
+            widgetProvider.createConnectionField(widgetFactory, parent, value, getConnectionEntriesList());
+        }
     }
     
-    private Composite createComposite(String id, FormToolkit widgetFactory, Composite parent, int columns, int span) {
-        Composite composite = widgetFactory.createComposite(parent, SWT.NO_BACKGROUND);
-        GridLayout propertiesGroupLayout = new GridLayout();
-        propertiesGroupLayout.numColumns = columns;
-        propertiesGroupLayout.marginLeft = 0;
-        propertiesGroupLayout.horizontalSpacing = 20;
-        propertiesGroupLayout.verticalSpacing = 10;
-        composite.setLayout(propertiesGroupLayout);
-        GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
-        propertiesSectionData.horizontalSpan = span;
-        composite.setLayoutData(propertiesSectionData);
-        compositeList.put(id, composite);
-        return composite;
-        
+    //mock values
+    public String[] getConnectionEntriesList () {
+        return new String[] {"SMTP", "POP3", "IMAP"};
     }
+    
+    
     
     
     //Triggerred with ecore event bus
     @Override
-    public void fillData(HashMap<String,String> paramValues, EList parameterList) {
+    public void fillData(EObject dataObject) {
+        EList<CallTemplateParameter> parameterList = ((CloudConnectorOperation)dataObject).getConnectorParameters();
+        String configRefValue = ((CloudConnectorOperation)dataObject).getConfigRef();
+        Combo configRefCombo = (Combo)controlList.get("configRef");
+        if(configRefValue != null) {
+            configRefCombo.setText(configRefValue);
+        }
+       
         for(String key: controlList.keySet()) {
-            if(controlList.get(key) instanceof Text) {
                 CallTemplateParameter ctp = null;
                 for(Object parameter: parameterList) {
                    CallTemplateParameter ctpi = (CallTemplateParameter)parameter;
@@ -299,14 +161,23 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
                        ctp = ctpi;
                    }
                 }
-                String value = ctp.getParameterValue();
-                if (ctp.getTemplateParameterType().equals(RuleOptionType.EXPRESSION)) {
-                    NamespacedProperty namespacedExpression = ctp.getParameterExpression();
-                    value = namespacedExpression.getPropertyValue();
+                if (ctp != null) {
+                    String value = ctp.getParameterValue();
+                    if (ctp.getTemplateParameterType().equals(RuleOptionType.EXPRESSION)) {
+                        NamespacedProperty namespacedExpression = ctp.getParameterExpression();
+                        value = namespacedExpression.getPropertyValue();
+                    }
+                
+                    if(controlList.get(key) instanceof Text) {
+                        ((Text)controlList.get(key)).setText(value);
+                        ((Text)controlList.get(key)).setData(ctp);
+                    } else if (controlList.get(key) instanceof Combo) {
+                        Combo combo = (Combo)controlList.get(key);
+                        combo.setText(value);
+                        combo.setData(ctp);
+                    }
                 }
-                ((Text)controlList.get(key)).setText(value);
-                ((Text)controlList.get(key)).setData(ctp);
-            }
+            
         }
         validate();
     }
@@ -314,58 +185,5 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
     public void validate() {
         //Implement enableCondition Logic Here
     }
-    
-    
-    
-    private void openValueExpressionWidgetNamespacedPropertyEditor(final Composite parent, Text valueExpressionText, NamespacedProperty valueExpression) {
-        if(valueExpression == null) { 
-            valueExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
-            ((CallTemplateParameter)valueExpressionText.getData()).setParameterExpression(valueExpression);
-        }
-        EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
-                valueExpression);
-        valueExpression = nspd.open();
-        valueExpressionText.setText(valueExpression.getPropertyValue());
-    }
-    
-    private void setParameterType(RuleOptionType ruleType, CallTemplateParameter ctp) {
-        TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(ctp);
-        domain.getCommandStack().execute(new RecordingCommand(domain) {
-
-            @Override
-            protected void doExecute() {
-                ctp.setTemplateParameterType(ruleType);
-            }
-        });
-    }
-    
-    public void setToolTip(Control control, String text) {
-        final ToolTip tip = new ToolTip(control.getShell(), SWT.BALLOON);
-        tip.setMessage(text);
-        tip.setAutoHide(true);
-        control.addMouseListener(new MouseListener() {
-            
-            @Override
-            public void mouseUp(MouseEvent e) {                
-            Control actionWidget = (Control) e.widget;
-            Point loc = actionWidget.toDisplay(actionWidget.getLocation());
-            tip.setLocation(loc.x + actionWidget.getSize().x - actionWidget.getBorderWidth(), loc.y);
-            tip.setVisible(true);
-            }
-            
-            @Override
-            public void mouseDown(MouseEvent e) {
-                // TODO Auto-generated method stub
-                
-            }
-            
-            @Override
-            public void mouseDoubleClick(MouseEvent e) {
-                // TODO Auto-generated method stub
-                
-            }
-        });
-    }
-    
 
 }

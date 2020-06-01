@@ -58,6 +58,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.ConnectorSchemaHolder;
 
 
 // End of user code
@@ -240,37 +241,38 @@ public class CloudConnectorOperationPropertiesEditionComponent extends SinglePar
 		}
 
 		if (EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters == event.getAffectedEditor()) {
-		    EList connectorParams = cloudConnectorOperation.getConnectorParameters();
-		    int index = connectorParams.indexOf(event.getOldValue());
-		    CallTemplateParameter ctpi = (CallTemplateParameter)connectorParams.get(index);
-		    ctpi.setParameterValue(event.getNewValue().toString());
-		    connectorParams.set(index, ctpi);
-		    //dascloudConnectorOperation.setConfigRef(event.getNewValue().toString());
-//			if (event.getKind() == PropertiesEditionEvent.ADD) {
-//				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, connectorParametersSettings, editingContext.getAdapterFactory());
-//				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
-//				if (provider != null) {
-//					PropertiesEditingPolicy policy = provider.getPolicy(context);
-//					if (policy instanceof CreateEditingPolicy) {
-//						policy.execute();
-//					}
-//				}
-//			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
-//				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
-//				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
-//				if (provider != null) {
-//					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
-//					if (editionPolicy != null) {
-//						editionPolicy.execute();
-//					}
-//				}
-//			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-//				connectorParametersSettings.removeFromReference((EObject) event.getNewValue());
-//			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-//				connectorParametersSettings.move(event.getNewIndex(), (CallTemplateParameter) event.getNewValue());
-//			}
-		    
-		    
+		      String schemaName = cloudConnectorOperation.getConnectorName().split("connector")[0] + "-" + cloudConnectorOperation.getOperationName();
+		      if(ConnectorSchemaHolder.getInstance().hasConnectorSchema(schemaName)) {
+		          EList connectorParams = cloudConnectorOperation.getConnectorParameters();
+	              int index = connectorParams.indexOf(event.getOldValue());
+	              CallTemplateParameter ctpi = (CallTemplateParameter)connectorParams.get(index);
+	              ctpi.setParameterValue(event.getNewValue().toString());
+	              connectorParams.set(index, ctpi);
+		      } else {
+		          if (event.getKind() == PropertiesEditionEvent.ADD) {
+		                EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, connectorParametersSettings, editingContext.getAdapterFactory());
+		                PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+		                if (provider != null) {
+		                    PropertiesEditingPolicy policy = provider.getPolicy(context);
+		                    if (policy instanceof CreateEditingPolicy) {
+		                        policy.execute();
+		                    }
+		                }
+		            } else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+		                EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+		                PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+		                if (provider != null) {
+		                    PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+		                    if (editionPolicy != null) {
+		                        editionPolicy.execute();
+		                    }
+		                }
+		            } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+		                connectorParametersSettings.removeFromReference((EObject) event.getNewValue());
+		            } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+		                connectorParametersSettings.move(event.getNewIndex(), (CallTemplateParameter) event.getNewValue());
+		            }
+		      }
 		}
 		if (EsbViewsRepository.CloudConnectorOperation.Properties.configRef == event.getAffectedEditor()) {
 			cloudConnectorOperation.setConfigRef((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
@@ -323,7 +325,7 @@ public class CloudConnectorOperationPropertiesEditionComponent extends SinglePar
 				basePart.setReverse((Boolean)msg.getNewValue());
 			
 			if (EsbPackage.eINSTANCE.getCloudConnectorOperation_ConnectorParameters().equals(msg.getFeature()) && isAccessible(EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters))
-				//basePart.updateConnectorParameters();
+				basePart.updateConnectorParameters();
 			if (EsbPackage.eINSTANCE.getCloudConnectorOperation_ConfigRef().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.CloudConnectorOperation.Properties.configRef)) {
 				if (msg.getNewValue() != null) {
 					basePart.setConfigRef(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));

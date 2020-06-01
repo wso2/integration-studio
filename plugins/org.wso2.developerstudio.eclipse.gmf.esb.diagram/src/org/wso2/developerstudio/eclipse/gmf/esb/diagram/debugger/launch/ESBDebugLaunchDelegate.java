@@ -41,8 +41,8 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.wst.server.core.IServer;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
-import org.wso2.developerstudio.eclipse.carbonserver44microei11.register.product.servers.MicroIntegratorInstance;
-import org.wso2.developerstudio.eclipse.carbonserver44microei11.wizard.CompositeApplicationArtifactUpdateWizard;
+import org.wso2.developerstudio.eclipse.carbonserver44microei12.register.product.servers.MicroIntegratorInstance;
+import org.wso2.developerstudio.eclipse.carbonserver44microei12.wizard.CompositeApplicationArtifactUpdateWizard;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.impl.ESBDebugger;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.events.DebuggerStartedEvent;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.model.ESBDebugTarget;
@@ -174,8 +174,12 @@ public class ESBDebugLaunchDelegate implements ILaunchConfigurationDelegate {
                 if (statusCode == Window.OK) {
                     // If the debugger running mode is set to internal ESB runtime, start the
                     // micro-integrator set the mediation debug mode in micro-integrator instance
-                    MicroIntegratorInstance.getInstance().setDebugMode(true);
-                    MicroIntegratorInstance.getInstance().restart();
+                    MicroIntegratorInstance microIntegratorInstance = MicroIntegratorInstance.getInstance();
+                    microIntegratorInstance.setDebugMode(true);
+                    if (!microIntegratorInstance.isHotDeploymentEnabled()
+                            || !microIntegratorInstance.isServerStarted()) {
+                        microIntegratorInstance.restart();
+                    }
 
                     // run listening to the debug ports in a separate thread to let the server instance
                     // to run without waiting this main thread to complete

@@ -40,4 +40,5 @@ Import-Package: org.apache.commons.lang3;version="3.1.0",
  org.eclipse.ui.forms.widgets,
  org.eclipse.ui.ide,
  org.eclipse.ui.navigator,
- org.wso2.developerstudio.eclipse.logging.core
+ org.wso2.developerstudio.eclipse.logging.core,
+ org.wso2.developerstudio.eclipse.registry.base.ui.util;version="7.0.0"

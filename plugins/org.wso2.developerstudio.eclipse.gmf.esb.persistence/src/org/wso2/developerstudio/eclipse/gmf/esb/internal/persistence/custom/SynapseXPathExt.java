@@ -44,4 +44,20 @@ public class SynapseXPathExt {
         }
         return synPath;
     }
+
+    public static SynapseXPath createSynapseXPath(String xpathExpr) {
+        SynapseXPath synXPath = null;
+        try {
+            synXPath = new SynapseXPath(xpathExpr);
+        } catch (JaxenException e) {
+            String defaultString = "/DEFAULT/XPATH";
+            try {
+                synXPath = new SynapseXPath(defaultString);
+                synXPath.setExpression(xpathExpr);
+            } catch (JaxenException e1) {
+                // ignore
+            }
+        }
+        return synXPath;
+    }
 }

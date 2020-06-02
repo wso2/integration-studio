@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.codehaus.jettison.json.JSONException;
@@ -32,6 +33,8 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloudConnectorOperation;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValue;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.Connection;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorDescriptorParser;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorRoot;
 
@@ -69,8 +72,9 @@ public class ReferenceGroup extends ReferencesTable {
         
     }
     
-    public HashMap<String, Control> createControls(Composite parent, ConnectorRoot root, Map<String,String> updateConfigMap) {
-    	return connectionRenderer.generate(parent, root, updateConfigMap);
+    public HashMap<String, Control> createControls(Composite parent, ConnectorRoot root,
+            Map<String, String> updateConfigMap, AttributeValue allowedConnectionTypes) {
+        return connectionRenderer.generate(parent, root, updateConfigMap, allowedConnectionTypes);
     }
     
     @Override

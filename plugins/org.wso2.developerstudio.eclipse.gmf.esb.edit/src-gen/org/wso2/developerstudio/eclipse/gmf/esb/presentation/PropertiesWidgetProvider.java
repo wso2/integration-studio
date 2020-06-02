@@ -5,12 +5,14 @@ import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.regex.Pattern;
 
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
@@ -34,10 +36,13 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.ToolTip;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleOptionType;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.CloudConnectorOperationImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.CloudConnectorOperationPropertiesEditionPartForm;
@@ -50,6 +55,7 @@ public class PropertiesWidgetProvider {
     protected SectionPropertiesEditingPart partForm;
     protected HashMap<String, Control> controlList;
     protected HashMap<String, Composite> compositeList;
+    private boolean isConnectionWidgetProvider = false;
 
     public PropertiesWidgetProvider(SectionPropertiesEditingPart partForm,
             IPropertiesEditionComponent propertiesEditionComponent, HashMap<String, Control> controlList,
@@ -58,6 +64,12 @@ public class PropertiesWidgetProvider {
         this.partForm = partForm;
         this.controlList = controlList;
         this.compositeList = compositeList;
+    }
+    
+    public PropertiesWidgetProvider(HashMap<String, Control> controlList, HashMap<String, Composite> compositeList) {
+        this.controlList = controlList;
+        this.compositeList = compositeList;
+        this.isConnectionWidgetProvider = true;
     }
 
     public Group createGroup(Composite parent, String label) {
@@ -98,13 +110,15 @@ public class PropertiesWidgetProvider {
             @Override
             @SuppressWarnings("synthetic-access")
             public void keyPressed(KeyEvent e) {
-                // if (e.character == SWT.CR) {
-                // ((CallTemplateParameter)configRef.getData()).setParameterValue(configRef.getText());
-                CallTemplateParameter ctp = (CallTemplateParameter) ((Text) e.getSource()).getData();
-                setParameterType(RuleOptionType.VALUE, ctp);
-                AttributeValue uiSchemaValue = (AttributeValue) ((Text) e.getSource()).getData(UI_SCHEMA_OBJECT_KEY);
-                updateModel(ctp, configRef, uiSchemaValue);
-                // }
+                if (!isConnectionWidgetProvider) {
+                 // if (e.character == SWT.CR) {
+                    // ((CallTemplateParameter)configRef.getData()).setParameterValue(configRef.getText());
+                    CallTemplateParameter ctp = (CallTemplateParameter) ((Text) e.getSource()).getData();
+                    setParameterType(RuleOptionType.VALUE, ctp);
+                    AttributeValue uiSchemaValue = (AttributeValue) ((Text) e.getSource()).getData(UI_SCHEMA_OBJECT_KEY);
+                    updateModel(ctp, configRef, uiSchemaValue);
+                    // }
+                }
             }
         });
         setItemFocus(configRef);
@@ -132,11 +146,13 @@ public class PropertiesWidgetProvider {
         configButton.addListener(SWT.Selection, new Listener() {
             @Override
             public void handleEvent(Event event) {
-                CallTemplateParameter ctp = (CallTemplateParameter) configRef.getData();
-                setParameterType(RuleOptionType.EXPRESSION, ctp);
-                openValueExpressionWidgetNamespacedPropertyEditor(parent, configRef, ctp.getParameterExpression());
-                AttributeValue uiSchemaValue = (AttributeValue) configRef.getData(UI_SCHEMA_OBJECT_KEY);
-                updateModel(ctp, configRef, uiSchemaValue);
+                if (!isConnectionWidgetProvider) {
+                    CallTemplateParameter ctp = (CallTemplateParameter) configRef.getData();
+                    setParameterType(RuleOptionType.EXPRESSION, ctp);
+                    openValueExpressionWidgetNamespacedPropertyEditor(parent, configRef, ctp.getParameterExpression());
+                    AttributeValue uiSchemaValue = (AttributeValue) configRef.getData(UI_SCHEMA_OBJECT_KEY);
+                    updateModel(ctp, configRef, uiSchemaValue);
+                }
             }
         });
 
@@ -159,14 +175,16 @@ public class PropertiesWidgetProvider {
             @Override
             @SuppressWarnings("synthetic-access")
             public void keyReleased(KeyEvent e) {
-                // if (e.character == SWT.CR) {
-                // ((CallTemplateParameter)configRef.getData()).setParameterValue(configRef.getText());
-                CallTemplateParameter ctp = (CallTemplateParameter) ((Text) e.getSource()).getData();
-                // ctp.setParameterValue(configRef.getText());
-                setParameterType(RuleOptionType.VALUE, ctp);
-                AttributeValue uiSchemaValue = (AttributeValue) ((Text) e.getSource()).getData(UI_SCHEMA_OBJECT_KEY);
-                updateModel(ctp, configRef, uiSchemaValue);
-                // }
+                if (!isConnectionWidgetProvider) {
+                 // if (e.character == SWT.CR) {
+                    // ((CallTemplateParameter)configRef.getData()).setParameterValue(configRef.getText());
+                    CallTemplateParameter ctp = (CallTemplateParameter) ((Text) e.getSource()).getData();
+                    // ctp.setParameterValue(configRef.getText());
+                    setParameterType(RuleOptionType.VALUE, ctp);
+                    AttributeValue uiSchemaValue = (AttributeValue) ((Text) e.getSource()).getData(UI_SCHEMA_OBJECT_KEY);
+                    updateModel(ctp, configRef, uiSchemaValue);
+                    // }
+                }
             }
         });
         setItemFocus(configRef);
@@ -181,7 +199,7 @@ public class PropertiesWidgetProvider {
         GridData labelRefData = new GridData();
         labelRefData.widthHint = 120;
         label.setLayoutData(labelRefData);
-        Combo configRef = new Combo(textBoxComposite, SWT.DROP_DOWN);
+        Combo configRef = new Combo(textBoxComposite, SWT.READ_ONLY | SWT.DROP_DOWN);
         controlList.put(value.getName(), configRef);
         configRef.setItems(options);
         configRef.setData(UI_SCHEMA_OBJECT_KEY, value);
@@ -190,11 +208,13 @@ public class PropertiesWidgetProvider {
         configRef.setLayoutData(configRefData);
         configRef.addSelectionListener(new SelectionAdapter() {
             public void widgetSelected(SelectionEvent event) {
-                CallTemplateParameter ctp = (CallTemplateParameter) ((Combo) event.getSource()).getData();
-                setParameterType(RuleOptionType.VALUE, ctp);
-                AttributeValue uiSchemaValue = (AttributeValue) ((Combo) event.getSource())
-                        .getData(UI_SCHEMA_OBJECT_KEY);
-                updateModel(ctp, configRef, uiSchemaValue);
+                if (!isConnectionWidgetProvider) {
+                    CallTemplateParameter ctp = (CallTemplateParameter) ((Combo) event.getSource()).getData();
+                    setParameterType(RuleOptionType.VALUE, ctp);
+                    AttributeValue uiSchemaValue = (AttributeValue) ((Combo) event.getSource())
+                            .getData(UI_SCHEMA_OBJECT_KEY);
+                    updateModel(ctp, configRef, uiSchemaValue);
+                }
             }
         });
         setItemFocus(configRef);
@@ -203,13 +223,15 @@ public class PropertiesWidgetProvider {
 
     public Composite createConnectionField(FormToolkit widgetFactory, Composite parent, AttributeValue value,
             String[] options) {
-        Composite textBoxComposite = createComposite(value.getName(), widgetFactory, parent, 3, 3);
+        Image NEW_ELEMENT_IMG = EEFRuntimePlugin.getImage(EEFRuntimePlugin.ICONS_16x16 + "Add_16x16.gif");
+        Image DELETE_ELEMENT_IMG = EEFRuntimePlugin.getImage(EEFRuntimePlugin.ICONS_16x16 + "Delete_16x16.gif");
+        Composite textBoxComposite = createComposite(value.getName(), widgetFactory, parent, 4, 4);
         Label label = new Label(textBoxComposite, SWT.NO_BACKGROUND);
         label.setText(value.getDisplayName());
         GridData labelRefData = new GridData();
         labelRefData.widthHint = 120;
         label.setLayoutData(labelRefData);
-        Combo configRef = new Combo(textBoxComposite, SWT.DROP_DOWN);
+        Combo configRef = new Combo(textBoxComposite, SWT.READ_ONLY | SWT.DROP_DOWN);
         controlList.put(value.getName(), configRef);
         configRef.setItems(options);
         configRef.setData(UI_SCHEMA_OBJECT_KEY, value);
@@ -218,43 +240,42 @@ public class PropertiesWidgetProvider {
         configRef.setLayoutData(configRefData);
         configRef.addSelectionListener(new SelectionAdapter() {
             public void widgetSelected(SelectionEvent event) {
-                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(partForm,
-                        EsbViewsRepository.CloudConnectorOperation.Properties.configRef, PropertiesEditionEvent.COMMIT,
-                        PropertiesEditionEvent.EDIT, null, configRef.getText()));
-            }
-        });
-        Button configButton = widgetFactory.createButton(textBoxComposite, "+", SWT.PUSH | SWT.TRANSPARENT);
-        configButton.setText("+");
-        configButton.addPaintListener(new PaintListener() {
-            @Override
-            public void paintControl(PaintEvent event) {
-                // event.gc.setBackground( event.display.getSystemColor( SWT.COLOR_GREEN ) );
-                event.gc.fillRectangle(event.x, event.y, event.width, event.height);
-                Image image;
-                try {
-                    image = new Image(parent.getShell().getDisplay(),
-                            EEFPropertyViewUtil.getIconPath("icons/full/obj16/XSLTProperty.gif"));
-                    image.getImageData().scaledTo(configButton.getBounds().height, configButton.getBounds().width);
-                    event.gc.drawImage(image, 0, 0);
-                } catch (URISyntaxException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
+                if (!isConnectionWidgetProvider) {
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(partForm,
+                            EsbViewsRepository.CloudConnectorOperation.Properties.configRef, PropertiesEditionEvent.COMMIT,
+                            PropertiesEditionEvent.EDIT, null, configRef.getText()));
                 }
             }
         });
+        Button configButton = widgetFactory.createButton(textBoxComposite, "", SWT.PUSH | SWT.TRANSPARENT);
+        configButton.setImage(NEW_ELEMENT_IMG);
+        
         configButton.addListener(SWT.Selection, new Listener() {
             @Override
             public void handleEvent(Event event) {
-                openConnectionEditor(parent, configRef, null, value);
+                if (!isConnectionWidgetProvider) {
+                    openConnectionEditor(widgetFactory, parent, configRef, null, value);
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(partForm,
+                            EsbViewsRepository.CloudConnectorOperation.Properties.configRef, PropertiesEditionEvent.COMMIT,
+                            PropertiesEditionEvent.EDIT, null, configRef.getText()));
+                }
+                
+            }
+        });
+        setItemFocus(configRef);
+        
+        Button editConnectionButton = widgetFactory.createButton(textBoxComposite, "", SWT.PUSH | SWT.TRANSPARENT);
+        editConnectionButton.setImage(DELETE_ELEMENT_IMG);
+        editConnectionButton.addListener(SWT.Selection, new Listener() {
+            @Override
+            public void handleEvent(Event event) {
+                openConnectionUpdateEditor(widgetFactory, parent, configRef, null, value);
                 propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(partForm,
                         EsbViewsRepository.CloudConnectorOperation.Properties.configRef, PropertiesEditionEvent.COMMIT,
                         PropertiesEditionEvent.EDIT, null, configRef.getText()));
             }
         });
-        setItemFocus(configRef);
+        
         return parent;
     }
 
@@ -320,16 +341,32 @@ public class PropertiesWidgetProvider {
         valueExpressionText.setText(valueExpression.getPropertyValue());
     }
 
-    public void openConnectionEditor(final Composite parent, Combo valueExpressionCombo,
+    public void openConnectionEditor(FormToolkit widgetFactory, final Composite parent, Combo valueExpressionCombo,
             NamespacedProperty valueExpression, AttributeValue value) {
-        if (valueExpression == null) {
-            valueExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
-            ((CallTemplateParameter) valueExpressionCombo.getData()).setParameterExpression(valueExpression);
-        }
-        EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
-                valueExpression);
-        valueExpression = nspd.open();
-        valueExpressionCombo.setText(valueExpression.getPropertyValue());
+        CloudConnectorOperationImpl connectorObject = (CloudConnectorOperationImpl) propertiesEditionComponent
+                .getEditingContext().getEObject();
+        String connectorName = connectorObject.getConnectorName().split("connector")[0];
+        IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+        ConnectionParameterWizard wizard = new ConnectionParameterWizard(widgetFactory, connectorName,
+                valueExpressionCombo, value);
+        wizard.init(PlatformUI.getWorkbench(), null);
+        WizardDialog connectionWizard = new WizardDialog(window.getShell(), wizard);
+        connectionWizard.setHelpAvailable(false);
+        connectionWizard.open();
+    }
+
+    public void openConnectionUpdateEditor(FormToolkit widgetFactory, final Composite parent, Combo valueExpressionCombo,
+            NamespacedProperty valueExpression, AttributeValue value) {
+        CloudConnectorOperationImpl connectorObject = (CloudConnectorOperationImpl) propertiesEditionComponent
+                .getEditingContext().getEObject();
+        String connectorName = connectorObject.getConnectorName().split("connector")[0];
+        IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+        ConnectionParameterWizard wizard = new ConnectionParameterWizard(widgetFactory, connectorName,
+                valueExpressionCombo.getText(), value);
+        wizard.init(PlatformUI.getWorkbench(), null);
+        WizardDialog connectionWizard = new WizardDialog(window.getShell(), wizard);
+        connectionWizard.setHelpAvailable(false);
+        connectionWizard.open();
     }
 
     //////////////// Widget util Methods////////////////////////

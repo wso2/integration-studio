@@ -31,6 +31,7 @@ DynamicImport-Package: com.mysql.jdbc,
  com.microsoft.sqlserver.jdbc
 Import-Package: org.apache.commons.io;version="2.0.0.wso2v1",
  org.apache.commons.lang,
+ org.apache.commons.lang3;version="3.1.0",
  org.apache.commons.logging;version="1.1.1",
  org.eclipse.emf.ecore.provider,
  org.eclipse.wst.xml.xpath.core.util,

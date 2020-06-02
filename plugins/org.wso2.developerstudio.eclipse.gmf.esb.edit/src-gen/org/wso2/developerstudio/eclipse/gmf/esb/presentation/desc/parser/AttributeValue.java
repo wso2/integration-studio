@@ -18,6 +18,7 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AttributeValue extends Value {
 
@@ -27,16 +28,17 @@ public class AttributeValue extends Value {
     String defaultValue;
     boolean required;
     String helpTip;
-    Connection allowedConnectionTypes;
+    List<Connection> allowedConnectionTypes;
     String validation;
     String defaultType; //????
     //String default; ????
-    ArrayList<EnableCondition> enableCondition;
-    ArrayList<String> comboValues;
+    List<EnableCondition> enableCondition;
+    List<String> comboValues;
    
     public AttributeValue() {
-        enableCondition = new ArrayList<EnableCondition>();
-        comboValues = new ArrayList<String>();
+        enableCondition = new ArrayList<>();
+        comboValues = new ArrayList<>();
+        allowedConnectionTypes = new ArrayList<>();
     }
     
 
@@ -88,15 +90,19 @@ public class AttributeValue extends Value {
         this.helpTip = helpTip;
     }
     
-    public Connection getAllowedConnectionTypes() {
+    public List<Connection> getAllowedConnectionTypes() {
         return allowedConnectionTypes;
     }
 
-    public void setAllowedConnectionTypes(Connection allowedConnectionTypes) {
+    public void setAllowedConnectionTypes(List<Connection> allowedConnectionTypes) {
         this.allowedConnectionTypes = allowedConnectionTypes;
     }
     
-    public ArrayList<String> getComboValues() {
+    public void addAllowedConnectionTypes(Connection allowedConnectionTypes) {
+        this.allowedConnectionTypes.add(allowedConnectionTypes);
+    }
+    
+    public List<String> getComboValues() {
         return comboValues;
     }
 

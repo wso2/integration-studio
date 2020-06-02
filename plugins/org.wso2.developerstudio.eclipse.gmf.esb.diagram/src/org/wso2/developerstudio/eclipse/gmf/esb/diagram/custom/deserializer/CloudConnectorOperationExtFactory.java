@@ -29,8 +29,10 @@ import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
 import org.apache.synapse.Mediator;
 import org.apache.synapse.config.xml.AbstractMediatorFactory;
+import org.apache.synapse.config.xml.SynapseXPathFactory;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.mediators.Value;
+import org.apache.synapse.mediators.eip.aggregator.AggregateMediator;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.ui.IEditorInput;
@@ -41,6 +43,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.cloudconnector.Cl
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbEditorInput;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.CloudConnectorOperationExt;
+import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.SynapseXPathExt;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
@@ -82,8 +85,15 @@ public class CloudConnectorOperationExtFactory extends AbstractMediatorFactory {
                 paramValue = paramValue.substring(1, paramValue.length() - 1);
                 SynapseXPath synapseXpath = null;
                 try {
-                    synapseXpath = new SynapseXPath(parameter, paramValue);
+                    synapseXpath = SynapseXPathFactory.getSynapseXPath(parameter, paramValue);
                 } catch (JaxenException e) {
+                    // If the xPath is not a valid synapse xpath this will add the invalid xpath to
+                    // the model.
+                    // This is useful when we use this extended class for create dummy synapse
+                    // mediators with
+                    // empty string properties for create model class objects for generating the
+                    // design view
+                    synapseXpath = SynapseXPathExt.createSynapseXPath(paramValue);
                     log.error("Error while deserializing connector operation", e);
                 }
                 cloudConnectorOperationExt.getpName2ExpressionMap().put(paramName, new Value(synapseXpath));

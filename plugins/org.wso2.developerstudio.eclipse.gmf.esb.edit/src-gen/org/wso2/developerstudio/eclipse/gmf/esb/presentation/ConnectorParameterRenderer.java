@@ -162,12 +162,12 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
         //Not parameters
         String configRefValue = ((CloudConnectorOperation)dataObject).getConfigRef();
         Combo configRefCombo = (Combo)controlList.get("configRef");
-        if(configRefValue != null) {
-            configRefCombo.setText(configRefValue);
+        if(configRefCombo != null) {
+            configRefCombo.select( configRefCombo.indexOf(configRefValue));
         }
         String descriptionValue = ((CloudConnectorOperation)dataObject).getDescription();
         Text descriptionText = (Text)controlList.get("description");
-        if(descriptionValue != null) {
+        if(descriptionText != null) {
             descriptionText.setText(descriptionValue);
         }
         //////

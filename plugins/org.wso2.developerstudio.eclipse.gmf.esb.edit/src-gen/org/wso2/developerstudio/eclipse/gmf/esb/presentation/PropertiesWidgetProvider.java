@@ -68,10 +68,11 @@ public class PropertiesWidgetProvider {
         this.requiredList = requiredList;
     }
     
-    public PropertiesWidgetProvider(HashMap<String, Control> controlList, HashMap<String, Composite> compositeList) {
+    public PropertiesWidgetProvider(HashMap<String, Control> controlList, HashMap<String, Composite> compositeList, HashMap<String, Control> requiredList) {
         this.controlList = controlList;
         this.compositeList = compositeList;
         this.isConnectionWidgetProvider = true;
+        this.requiredList = requiredList;
     }
 
     public Group createGroup(Composite parent, String label) {

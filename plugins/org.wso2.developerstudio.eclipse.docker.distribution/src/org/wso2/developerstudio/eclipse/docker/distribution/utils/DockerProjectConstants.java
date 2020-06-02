@@ -83,7 +83,7 @@ public class DockerProjectConstants extends NLS {
     public static final String SUFFCIENT_DEPENDENCY_NOT_FOUND = "Cannot export an empty docker image. please tick/check atleast one carbon application from the dependencies";
     public static final String OS_NAME = "os.name";
     public static final String WINDOWS = "win";
-    public static final String BASE_IMAGE_XPATH = "/project/properties/base.image";
+    public static final String BASE_IMAGE_XPATH = "/project/properties/dockerfile.base.image";
     public static final String TARGET_REPOSITORY_XPATH = "/project/properties/dockerfile.repository";
     public static final String TARGET_TAG_XPATH = "/project/properties/dockerfile.tag";
     public static final String TARGET_REPOSITORY_XPATH_OLD = "/project/build/plugins/plugin/executions/execution/configuration/repository";

@@ -51,10 +51,12 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.navigator.CommonNavigator;
 import org.eclipse.ui.part.FileEditorInput;
 import org.osgi.framework.Bundle;
 import org.wso2.developerstudio.eclipse.distribution.project.util.ArtifactTypeMapping;
@@ -541,6 +543,7 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
             IFile pom = project.getFile("pom.xml");
             IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
             IWorkbenchPage page = window.getActivePage();
+            ((CommonNavigator) page.findViewReference(IPageLayout.ID_PROJECT_EXPLORER, null).getView(true)).setLinkingEnabled(true);
             page.openEditor(new FileEditorInput(pom), DockerProjectConstants.DOCKER_EDITOR);
 
             // open docker user guide

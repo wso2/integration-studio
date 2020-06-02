@@ -37,7 +37,7 @@ public class PlatformUIConstants {
             + "[a-zA-Z0-9])([.]([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]|[a-zA-Z0-9]))*(:[0-9]+\\/))?"
             + "((([a-z0-9]+)((__|[._]|[-]+)([a-z0-9]+))*)(\\/([a-z0-9]+)((__|[._]|[-]+)([a-z0-9]+))*)*)";
     public static final String DOCKER_TAG_REGEX = "[\\w][\\w.-]{0,127}";
-    public static final String DEFAULT_REMOTE_REPOSITORY = "wso2/micro-integrator";
-    public static final String DEFAULT_REMOTE_TAG = "1.1.0";
+    public static final String DOCKER_DEFAULT_BASE_REPOSITORY = "wso2/wso2mi";
+    public static final String DOCKER_DEFAULT_BASE_TAG = "1.1.0";
 
 }

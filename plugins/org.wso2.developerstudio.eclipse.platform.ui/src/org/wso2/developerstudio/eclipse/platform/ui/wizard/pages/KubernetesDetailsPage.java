@@ -220,8 +220,8 @@ public class KubernetesDetailsPage extends WizardPage {
 		data.left = new FormAttachment(lblKubeRemoteRepository, 0);
 		data.right = new FormAttachment(98);
 		txtKubeRemoteRepository.setLayoutData(data);
-		txtKubeRemoteRepository.setText(PlatformUIConstants.DEFAULT_REMOTE_REPOSITORY);
-		dataModel.setKubeRemoteRepository(PlatformUIConstants.DEFAULT_REMOTE_REPOSITORY);
+		txtKubeRemoteRepository.setText(PlatformUIConstants.DOCKER_DEFAULT_BASE_REPOSITORY);
+		dataModel.setKubeRemoteRepository(PlatformUIConstants.DOCKER_DEFAULT_BASE_REPOSITORY);
 		txtKubeRemoteRepository.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent arg0) {
 				dataModel.setKubeRemoteRepository(txtKubeRemoteRepository.getText());
@@ -243,8 +243,8 @@ public class KubernetesDetailsPage extends WizardPage {
 		data.left = new FormAttachment(lblKubeRemoteTag, 0);
 		data.right = new FormAttachment(98);
 		txtKubeRemoteTag.setLayoutData(data);
-		txtKubeRemoteTag.setText(PlatformUIConstants.DEFAULT_REMOTE_TAG);
-		dataModel.setKubeRemoteTag(PlatformUIConstants.DEFAULT_REMOTE_TAG);
+		txtKubeRemoteTag.setText(PlatformUIConstants.DOCKER_DEFAULT_BASE_TAG);
+		dataModel.setKubeRemoteTag(PlatformUIConstants.DOCKER_DEFAULT_BASE_TAG);
 		txtKubeRemoteTag.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent arg0) {
 				dataModel.setKubeRemoteTag(txtKubeRemoteTag.getText());

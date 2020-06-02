@@ -170,8 +170,8 @@ public class DockerDetailsPage extends WizardPage {
 		data.left = new FormAttachment(lblRemoteRepository, 0);
 		data.right = new FormAttachment(97);
 		txtRemoteRepository.setLayoutData(data);
-		txtRemoteRepository.setText(PlatformUIConstants.DEFAULT_REMOTE_REPOSITORY);
-		dataModel.setDockerRemoteRepository(PlatformUIConstants.DEFAULT_REMOTE_REPOSITORY);
+		txtRemoteRepository.setText(PlatformUIConstants.DOCKER_DEFAULT_BASE_REPOSITORY);
+		dataModel.setDockerRemoteRepository(PlatformUIConstants.DOCKER_DEFAULT_BASE_REPOSITORY);
 		txtRemoteRepository.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent arg0) {
 				dataModel.setDockerRemoteRepository(txtRemoteRepository.getText());
@@ -193,8 +193,8 @@ public class DockerDetailsPage extends WizardPage {
 		data.left = new FormAttachment(lblRemoteTag, 0);
 		data.right = new FormAttachment(97);
 		txtRemoteTag.setLayoutData(data);
-		txtRemoteTag.setText(PlatformUIConstants.DEFAULT_REMOTE_TAG);
-		dataModel.setDockerRemoteTag(PlatformUIConstants.DEFAULT_REMOTE_TAG);
+		txtRemoteTag.setText(PlatformUIConstants.DOCKER_DEFAULT_BASE_TAG);
+		dataModel.setDockerRemoteTag(PlatformUIConstants.DOCKER_DEFAULT_BASE_TAG);
 		txtRemoteTag.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent arg0) {
 				dataModel.setDockerRemoteTag(txtRemoteTag.getText());

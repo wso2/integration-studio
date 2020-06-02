@@ -76,6 +76,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.Element
 public class ConnectorParameterRenderer extends PropertyParameterRenderer {
     
     HashMap<String, Control> controlList;
+    HashMap<String, Control> requiredList;
     HashMap<String, Composite> compositeList;
     IPropertiesEditionComponent propertiesEditionComponent;
     SectionPropertiesEditingPart partForm;
@@ -86,7 +87,8 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
         this.partForm = partForm;
         this.controlList = new HashMap<String, Control>();
         this.compositeList = new HashMap<String, Composite>();
-        widgetProvider = new PropertiesWidgetProvider(partForm, propertiesEditionComponent, controlList, compositeList);
+        this.requiredList = new HashMap<String, Control>();
+        widgetProvider = new PropertiesWidgetProvider(partForm, propertiesEditionComponent, controlList, compositeList, requiredList);
     }
     
     @Override
@@ -129,7 +131,11 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
     
     public void evaluateAttribute(AttributeValue value, Composite parent, FormToolkit widgetFactory, int level) {
         if (AttributeValueType.STRING.equals(value.getType())) {
-            widgetProvider.createTextBoxFieldWithButton(widgetFactory, parent, value);
+            if(level == 2) {
+                widgetProvider.createTextBoxField(widgetFactory, parent, value);
+            } else {
+                widgetProvider.createTextBoxFieldWithButton(widgetFactory, parent, value);
+            }
         } else if (AttributeValueType.BOOLEANOREXPRESSION.equals(value.getType())) {
             widgetProvider.createDropDownField(widgetFactory, parent, new String[] {"true", "false"}, value);
         } else if (AttributeValueType.COMBO.equals(value.getType())) {
@@ -152,11 +158,20 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
     @Override
     public void fillData(EObject dataObject) {
         EList<CallTemplateParameter> parameterList = ((CloudConnectorOperation)dataObject).getConnectorParameters();
+
+        //Not parameters
         String configRefValue = ((CloudConnectorOperation)dataObject).getConfigRef();
         Combo configRefCombo = (Combo)controlList.get("configRef");
         if(configRefValue != null) {
             configRefCombo.setText(configRefValue);
         }
+        String descriptionValue = ((CloudConnectorOperation)dataObject).getDescription();
+        Text descriptionText = (Text)controlList.get("description");
+        if(descriptionValue != null) {
+            descriptionText.setText(descriptionValue);
+        }
+        //////
+
        
         for(String key: controlList.keySet()) {
                 CallTemplateParameter ctp = null;
@@ -185,6 +200,7 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
             
         }
         validate();
+        widgetProvider.checkRequired();
     }
     
     public void validate() {

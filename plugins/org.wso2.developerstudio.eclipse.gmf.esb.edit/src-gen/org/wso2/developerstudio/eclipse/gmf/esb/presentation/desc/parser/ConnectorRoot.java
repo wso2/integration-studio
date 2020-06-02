@@ -23,6 +23,7 @@ public class ConnectorRoot {
 
     private String connectorName;
     private String connectionName;
+    private String operationName;
     private String displayName;
     private String help;
     private ArrayList<Element> elements;
@@ -78,6 +79,14 @@ public class ConnectorRoot {
 
     public void removeElement(Element element) {
         this.elements.add(element);
+    }
+
+    public String getOperationName() {
+        return operationName;
+    }
+
+    public void setOperationName(String operationName) {
+        this.operationName = operationName;
     }
 
 }

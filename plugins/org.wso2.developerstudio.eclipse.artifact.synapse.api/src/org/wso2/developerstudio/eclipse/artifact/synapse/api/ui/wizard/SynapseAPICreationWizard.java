@@ -53,6 +53,7 @@ import org.json.simple.JSONValue;
 import org.wso2.carbon.rest.api.APIException;
 import org.wso2.carbon.rest.api.service.RestApiAdmin;
 import org.wso2.developerstudio.eclipse.artifact.synapse.api.Activator;
+import org.wso2.developerstudio.eclipse.artifact.synapse.api.exceptions.SwaggerDefinitionProcessingException;
 import org.wso2.developerstudio.eclipse.artifact.synapse.api.model.APIArtifactModel;
 import org.wso2.developerstudio.eclipse.artifact.synapse.api.util.APIImageUtils;
 import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
@@ -111,6 +112,18 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
 	@Override
 	public IResource getCreatedResource() {
 		return artifactFile;
+	}
+	
+	@Override
+	public boolean canFinish() {
+		// If option to generate API from swagger definition is selected,
+		// can finish if only both swagger definition and registry project is selected.
+		if (getModel().getSelectedOption().equals("create.swagger") && 
+				(artifactModel.getSwaggerFile().getPath().equals("") || 
+						artifactModel.getSwaggerRegistryLocation() == null)) {
+			return false;
+		}
+		return true;
 	}
 
 	@Override
@@ -176,6 +189,8 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
 			createRegistryResource(artifactModel.getSwaggerRegistryLocation(), artifactModel.getSwaggerFile(),
 					REGISTRY_RESOURCE_PATH);
 
+		} catch (SwaggerDefinitionProcessingException e) {
+			MessageDialog.openError(getShell(), "Error while creating the API", e.getMessage());
 		} catch (CoreException e) {
 			log.error("CoreException has occurred", e);
 		} catch (Exception e) {
@@ -223,7 +238,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
 		return content.toString();
 	}
 	
-	private String getSynapseAPIFromSwagger(File swaggerFile) {
+	private String getSynapseAPIFromSwagger(File swaggerFile) throws SwaggerDefinitionProcessingException {
 		RestApiAdmin restAPIAdmin = new RestApiAdmin();
 		String swaggerJson = getSwaggerFileAsJSON(swaggerFile);
 
@@ -239,11 +254,12 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
 			generatedAPI = element.toString();
 		} catch (APIException | XMLStreamException e) {
 			log.error("Exception occured while generating API using swagger file", e);
+			throw new SwaggerDefinitionProcessingException("Failed to generate API from the definition.", e);
 		}
 		return generatedAPI;
 	}
 
-	private String getAPINameFromSwagger(File swaggerFile) {
+	private String getAPINameFromSwagger(File swaggerFile) throws SwaggerDefinitionProcessingException {
 		String apiName = "";
 		try {
 			String swaggerJson = getSwaggerFileAsJSON(swaggerFile);
@@ -252,6 +268,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
 			apiName = swaggerInfo.get("title").toString();
 		} catch (Exception e) {
 			log.error("Exception occured while extracting API name from the swagger file", e);
+			throw new SwaggerDefinitionProcessingException("Invalid swagger definition.", e);
 		}
 		return apiName;
 	}

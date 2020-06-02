@@ -17,6 +17,7 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser;
 
+import org.apache.commons.lang3.EnumUtils;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
@@ -68,23 +69,31 @@ public class ConnectorDescriptorParser {
                 value.setHelpTip(attrObj.getString("helpTip"));
                 value.setDisplayName(attrObj.getString("displayName"));
                  // HardCoded
-                if(attrObj.getString("inputType").equalsIgnoreCase("stringOrExpression")) {
+                if(attrObj.getString("type").equalsIgnoreCase("stringOrExpression")) {
                     value.setType(AttributeValueType.STRING); 
-                } else if (attrObj.getString("inputType").equalsIgnoreCase("textOrExpression")) {
+                } else if (attrObj.getString("type").equalsIgnoreCase("textOrExpression")) {
                     value.setType(AttributeValueType.STRING); 
-                } else if (attrObj.getString("inputType").equalsIgnoreCase("comboOrExpression")) {
+                } else if (attrObj.getString("type").equalsIgnoreCase("comboOrExpression")) {
                     value.setType(AttributeValueType.COMBO); 
                     JSONArray comboArray = attrObj.getJSONArray("comboValues");
                     for(int j=0;j<comboArray.length();j++) {
                         value.addComboValue(comboArray.getString(j));
                     }
-                } else if (attrObj.getString("inputType").equalsIgnoreCase("booleanOrExpression")) {
+                } else if (attrObj.getString("type").equalsIgnoreCase("booleanOrExpression")) {
                     value.setType(AttributeValueType.BOOLEANOREXPRESSION); 
-                } else if (attrObj.getString("inputType").equalsIgnoreCase("connection")) {
+                } else if (attrObj.getString("type").equalsIgnoreCase("connection")) {
                     value.setType(AttributeValueType.CONNECTION); 
+                    JSONArray allowedConnectionType = attrObj.getJSONArray("allowedConnectionTypes");
+                    for(int k = 0; k < allowedConnectionType.length(); k++) {
+                        String allowedType = allowedConnectionType.getString(k).split("\\.")[1].toUpperCase();
+                        if (EnumUtils.isValidEnum(Connection.class, allowedType)) {
+                            value.addAllowedConnectionTypes(Connection.valueOf(allowedType));
+                        }
+                    }
                 } else {
                     value.setType(AttributeValueType.STRING);
                 }
+                
                 element.setValue(value);
             } else {
                 AttributeGroupValue groupValue = new AttributeGroupValue();
@@ -112,24 +121,31 @@ public class ConnectorDescriptorParser {
                 value.setRequired(Boolean.parseBoolean(attrObj.getString("required")));
                 value.setHelpTip(attrObj.getString("helpTip"));
                 value.setDisplayName(attrObj.getString("displayName"));
-                if(attrObj.getString("inputType").equalsIgnoreCase("stringOrExpression")) {
+                if(attrObj.getString("type").equalsIgnoreCase("stringOrExpression")) {
                     value.setType(AttributeValueType.STRING); 
-                } else if (attrObj.getString("inputType").equalsIgnoreCase("textOrExpression")) {
+                } else if (attrObj.getString("type").equalsIgnoreCase("textOrExpression")) {
                     value.setType(AttributeValueType.STRING); 
-                } else if (attrObj.getString("inputType").equalsIgnoreCase("comboOrExpression")) {
+                } else if (attrObj.getString("type").equalsIgnoreCase("comboOrExpression")) {
                     value.setType(AttributeValueType.COMBO); 
                     JSONArray comboArray = attrObj.getJSONArray("comboValues");
                     for(int j=0;j<comboArray.length();j++) {
                         value.addComboValue(comboArray.getString(j));
                     }
-                } else if (attrObj.getString("inputType").equalsIgnoreCase("booleanOrExpression")) {
+                } else if (attrObj.getString("type").equalsIgnoreCase("booleanOrExpression")) {
                     value.setType(AttributeValueType.BOOLEANOREXPRESSION); 
-                } else if (attrObj.getString("inputType").equalsIgnoreCase("connection")) {
+                } else if (attrObj.getString("type").equalsIgnoreCase("connection")) {
                     value.setType(AttributeValueType.CONNECTION); 
+                    JSONArray allowedConnectionType = attrObj.getJSONArray("allowedConnectionTypes");
+                    for(int k = 0; k < allowedConnectionType.length(); k++) {
+                        String allowedType = allowedConnectionType.getString(k).split("\\.")[1].toUpperCase();
+                        if (EnumUtils.isValidEnum(Connection.class, allowedType)) {
+                            value.addAllowedConnectionTypes(Connection.valueOf(allowedType));
+                        }
+                    }
                 } else {
                     value.setType(AttributeValueType.STRING);
                 }
-                element.setValue(value);
+                
                 element.setValue(value);
             } else {
                 AttributeGroupValue groupValue = new AttributeGroupValue();

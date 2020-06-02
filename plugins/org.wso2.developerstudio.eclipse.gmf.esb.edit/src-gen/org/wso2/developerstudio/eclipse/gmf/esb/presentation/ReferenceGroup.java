@@ -21,16 +21,20 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.codehaus.jettison.json.JSONException;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
-import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloudConnectorOperation;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValue;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.Connection;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorDescriptorParser;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorRoot;
 
@@ -40,6 +44,8 @@ public class ReferenceGroup extends ReferencesTable {
     private Object input;
     private PropertyParameterRenderer propertyRenderer;
     private String schemaName;
+    private ConnectionParameterRenderer connectionRenderer;
+
     
 
     public ReferenceGroup(String labeltoDisplay, PropertyParameterRenderer propertyRenderer) {
@@ -53,12 +59,22 @@ public class ReferenceGroup extends ReferencesTable {
         this.schemaName = schemaName;
     }
     
+    public ReferenceGroup(ConnectionParameterRenderer conenctionRenderer) {
+    	super("", null);
+        this.connectionRenderer = conenctionRenderer;
+    }
+    
     @Override
     public void createControls(Composite parent) {
         
         ConnectorRoot connectorRoot = ConnectorSchemaHolder.getInstance().getConnectorSchema(getSchemaName());
         propertyRenderer.generate(widgetFactory, parent.getParent(), connectorRoot);
         
+    }
+    
+    public HashMap<String, Control> createControls(Composite parent, ConnectorRoot root,
+            Map<String, String> updateConfigMap, AttributeValue allowedConnectionTypes) {
+        return connectionRenderer.generate(parent, root, updateConfigMap, allowedConnectionTypes);
     }
     
     @Override
@@ -84,6 +100,4 @@ public class ReferenceGroup extends ReferencesTable {
         this.input = input;
         propertyRenderer.fillData(dataObject);
     }
-
-
 }

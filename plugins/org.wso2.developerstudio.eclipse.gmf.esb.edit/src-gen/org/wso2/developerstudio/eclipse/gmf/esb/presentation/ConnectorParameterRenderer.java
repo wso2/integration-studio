@@ -33,6 +33,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSet
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
@@ -57,6 +58,7 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.ToolTip;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Event;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloudConnectorOperation;
@@ -90,12 +92,14 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
     @Override
     public Composite generate(FormToolkit widgetFactory, Composite parent, ConnectorRoot connectorRoot) {
         //parent.setBackgroundMode(SWT.INHERIT_FORCE);
+
         Group generalGroup = widgetProvider.createGroup(parent, "General");
 //      
         for(Element elem: connectorRoot.getElements()) {
             recursive(elem, parent, generalGroup, widgetFactory, 0);
         }       
         return parent;
+
     }
     
     public void recursive(Element element, Composite parent, Composite generalGroup, FormToolkit widgetFactory, int level) {
@@ -135,7 +139,8 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
         }
     }
     
-    //mock values
+
+  //mock values
     public String[] getConnectionEntriesList () {
         return new String[] {"SMTP", "POP3", "IMAP"};
     }

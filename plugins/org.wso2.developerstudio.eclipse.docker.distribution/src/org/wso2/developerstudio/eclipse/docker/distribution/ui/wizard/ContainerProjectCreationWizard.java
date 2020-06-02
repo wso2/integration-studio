@@ -335,7 +335,7 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
             	deploymentTomlPluginExecution.setPhase("none");  
             }
             String deploymentTomlPluginConfig = "<configuration>\n" + "                <miVersion>"
-                    + PlatformUIConstants.DEFAULT_REMOTE_TAG + "</miVersion>\n" + "            </configuration>";
+                    + PlatformUIConstants.DOCKER_DEFAULT_BASE_TAG + "</miVersion>\n" + "            </configuration>";
             Xpp3Dom tomlDom = Xpp3DomBuilder.build(new ByteArrayInputStream(deploymentTomlPluginConfig.getBytes()),
                     "UTF-8");
             deploymentTomlPluginExecution.setConfiguration(tomlDom);
@@ -371,10 +371,10 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
                 remoteTag = dockerModel.getKubeRemoteTag();
             }
             if (remoteRepository == null || remoteRepository.isEmpty()) {
-                remoteRepository = DockerProjectConstants.DOCKER_DEFAULT_REPOSITORY;
+                remoteRepository = PlatformUIConstants.DOCKER_DEFAULT_BASE_REPOSITORY;
             } 
             if (remoteTag == null || remoteTag.isEmpty()) {
-                remoteTag = DockerProjectConstants.DOCKER_DEFAULT_TAG;
+                remoteTag = PlatformUIConstants.DOCKER_DEFAULT_BASE_TAG;
             } 
             
             mavenProject.getProperties().put("dockerfile.base.image", remoteRepository + ":" + remoteTag);

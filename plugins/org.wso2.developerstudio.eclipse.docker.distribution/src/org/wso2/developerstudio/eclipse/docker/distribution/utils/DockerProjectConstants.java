@@ -65,9 +65,6 @@ public class DockerProjectConstants extends NLS {
     public static String DOCKER_REMOTE_REPOSITORY_KEY;
     public static String DOCKER_REMOTE_TAG_KEY;
 
-    public static String DOCKER_DEFAULT_REPOSITORY;
-    public static String DOCKER_DEFAULT_TAG;
-
     public static final String DOCKER_REPOSITORY = "repository";
     public static final String DOCKER_TAG = "tag";
     public static final String REPOSITORY_SEPERATOR = "/";

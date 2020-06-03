@@ -3,9 +3,9 @@
 <plugin>
     <extension point="org.eclipse.ui.newWizards">
         <wizard
-               category="org.wso2.developerstudio.eclipse.capp.distribution"
+               category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.container.exporters"
                class="org.wso2.developerstudio.eclipse.docker.distribution.ui.wizard.DockerProjectCreationWizard"
-               icon="icons/car.png"
+               icon="icons/docker-16.png"
                id="org.wso2.developerstudio.eclipse.artifact.newdockerproject"
                name="Docker Exporter Project"
                project="true">
@@ -14,9 +14,9 @@
     </extension>
     <extension point="org.eclipse.ui.newWizards">
         <wizard
-               category="org.wso2.developerstudio.eclipse.capp.distribution"
+               category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.container.exporters"
                class="org.wso2.developerstudio.eclipse.docker.distribution.ui.wizard.KubernetesProjectCreationWizard"
-               icon="icons/car.png"
+               icon="icons/k8s-16.png"
                id="org.wso2.developerstudio.eclipse.artifact.newkubernetesproject"
                name="Kubernetes Exporter Project"
                project="true">
@@ -210,7 +210,7 @@
         id="org.wso2.developerstudio.eclipse.docker.distribution.exportkubernetesartifacts">
             <action
                 label="Generate Kubernetes Artifacts"
-                icon="icons/docker.png"
+                icon="icons/kubernetes-deployment-icon-16x16.png"
                 class="org.wso2.developerstudio.eclipse.docker.distribution.action.GenerateKubernetesArtifactsAction"
                 id="org.wso2.developerstudio.eclipse.docker.distribution.exportkubernetesartifacts">
             </action>
@@ -221,5 +221,36 @@
                 </adapt>
             </enablement>
         </objectContribution>
+    </extension>
+    
+        <!-- Adding extension to Maven Multi Module project's new list -->
+    <extension point="org.eclipse.ui.navigator.navigatorContent">
+        <commonWizard type="new" menuGroupId="3org.wso2.developerstudio.eclipse.artifact.webservice" wizardId="org.wso2.developerstudio.eclipse.artifact.newdockerproject">
+            <enablement>
+                <or>
+                    <adapt type="org.eclipse.core.resources.IProject">
+                        <test property="org.eclipse.core.resources.projectNature" value="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" />
+                    </adapt>
+                    <adapt type="org.eclipse.jdt.core.IPackageFragment">
+                        <test property="org.wso2.developerstudio.projectNature" value="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" />
+                    </adapt>
+                </or>
+            </enablement>
+        </commonWizard>
+    </extension>
+    
+    <extension point="org.eclipse.ui.navigator.navigatorContent">
+        <commonWizard type="new" menuGroupId="3org.wso2.developerstudio.eclipse.artifact.webservice" wizardId="org.wso2.developerstudio.eclipse.artifact.newkubernetesproject">
+            <enablement>
+                <or>
+                    <adapt type="org.eclipse.core.resources.IProject">
+                        <test property="org.eclipse.core.resources.projectNature" value="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" />
+                    </adapt>
+                    <adapt type="org.eclipse.jdt.core.IPackageFragment">
+                        <test property="org.wso2.developerstudio.projectNature" value="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" />
+                    </adapt>
+                </or>
+            </enablement>
+        </commonWizard>
     </extension>
 </plugin>

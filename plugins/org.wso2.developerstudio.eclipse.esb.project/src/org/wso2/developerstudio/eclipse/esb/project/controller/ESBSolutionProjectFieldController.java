@@ -24,19 +24,24 @@ import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataM
 
 public class ESBSolutionProjectFieldController extends ESBProjectFieldController {
 
-	@Override
-	public void validate(String modelProperty, Object value, ProjectDataModel model) throws FieldValidationException {
-		super.validate(modelProperty, value, model);
-	}
+    @Override
+    public void validate(String modelProperty, Object value, ProjectDataModel model) throws FieldValidationException {
+        super.validate(modelProperty, value, model);
+    }
 
-	@Override
-	public List<String> getUpdateFields(String modelProperty, ProjectDataModel model) {
-		List<String> updateFields = super.getUpdateFields(modelProperty, model);
-        if (modelProperty.equals(ESB_PROJECT_NAME)) {
+    /**
+     * Specifies which fields to change upon the changes of other fields on the wizard.
+     */
+    @Override
+    public List<String> getUpdateFields(String modelProperty, ProjectDataModel model) {
+        List<String> updateFields = super.getUpdateFields(modelProperty, model);
+        if (modelProperty.equals(MMM_PROJECT_NAME)) {
 
             if (model instanceof ESBSolutionProjectModel) {
                 ESBSolutionProjectModel esbSolutionModel = (ESBSolutionProjectModel) model;
-
+                if (esbSolutionModel.isConfigProjectChecked()) {
+                    updateFields.add(ESB_PROJECT_NAME);
+                }
                 if (esbSolutionModel.isCappProjectChecked()) {
                     updateFields.add(COMPOSITE_APPLICATION_PROJECT_NAME);
                 }
@@ -53,39 +58,52 @@ public class ESBSolutionProjectFieldController extends ESBProjectFieldController
                     updateFields.add(KUBERNETES_EXPORTER_PROJECT_NAME);
                 }
             }
-		} else if (modelProperty.equals(REGISTRY_PROJECT_CHECKED)) {
-			updateFields.add(REGISTRY_RESOURCES_PROJECT_NAME);
-		} else if (modelProperty.equals(CONNECTOR_EXPORTER_PROJECT_CHECKED)) {
-			updateFields.add(CONNECTOR_EXPORTER_PROJECT_NAME);
-		} else if (modelProperty.equals(CAPP_PROJECT_CHECKED)) {
-			updateFields.add(COMPOSITE_APPLICATION_PROJECT_NAME);
-		} else if (modelProperty.equals(DOCKER_EXPORTER_PROJECT_CHECKED)) {
-			updateFields.add(DOCKER_EXPORTER_PROJECT_NAME);
-		} else if (modelProperty.equals(KUBERNETES_EXPORTER_PROJECT_CHECKED)) {
-			updateFields.add(KUBERNETES_EXPORTER_PROJECT_NAME);
-		}
-		return updateFields;
-	}
+        } else if (modelProperty.equals(ESB_PROJECT_CHOICE)) {
+            updateFields.add(ESB_PROJECT_NAME);
+        } else if (modelProperty.equals(MMM_PROJECT_CHOICE)) {
+            updateFields.add(ESB_PROJECT_NAME);
+            updateFields.add(ESB_PROJECT_CHOICE);
+        } else if (modelProperty.equals(ESB_PROJECT_NAME)) {
+            updateFields.add(ESB_PROJECT_NAME);
+        } else if (modelProperty.equals(REGISTRY_PROJECT_CHECKED)) {
+            updateFields.add(REGISTRY_RESOURCES_PROJECT_NAME);
+        } else if (modelProperty.equals(CONNECTOR_EXPORTER_PROJECT_CHECKED)) {
+            updateFields.add(CONNECTOR_EXPORTER_PROJECT_NAME);
+        } else if (modelProperty.equals(CAPP_PROJECT_CHECKED)) {
+            updateFields.add(COMPOSITE_APPLICATION_PROJECT_NAME);
+        } else if (modelProperty.equals(DOCKER_EXPORTER_PROJECT_CHECKED)) {
+            updateFields.add(DOCKER_EXPORTER_PROJECT_NAME);
+        } else if (modelProperty.equals(KUBERNETES_EXPORTER_PROJECT_CHECKED)) {
+            updateFields.add(KUBERNETES_EXPORTER_PROJECT_NAME);
+        }
+        return updateFields;
+    }
 
-	@Override
-	public boolean isEnableField(String modelProperty, ProjectDataModel model) {
-		boolean enable = super.isEnableField(modelProperty, model);
-		boolean registryEnabled = ((ESBSolutionProjectModel) model).isRegistryProjectChecked();
-		boolean connectorEnabled = ((ESBSolutionProjectModel) model).isConnectorExporterProjectChecked();
-		boolean cappEnabled = ((ESBSolutionProjectModel) model).isCappProjectChecked();
-		boolean dockerEnabled = ((ESBSolutionProjectModel) model).isDockerExporterProjectChecked();
-		boolean kubernetesEnabled = ((ESBSolutionProjectModel) model).isKubernetesExporterProjectChecked();
-		if (modelProperty.equals(REGISTRY_RESOURCES_PROJECT_NAME)) {
-			enable = registryEnabled;
-		} else if (modelProperty.equals(CONNECTOR_EXPORTER_PROJECT_NAME)) {
-			enable = connectorEnabled;
-		} else if (modelProperty.equals(COMPOSITE_APPLICATION_PROJECT_NAME)) {
-			enable = cappEnabled;
-		} else if (modelProperty.equals(DOCKER_EXPORTER_PROJECT_NAME)) {
-			enable = dockerEnabled;
-		} else if (modelProperty.equals(KUBERNETES_EXPORTER_PROJECT_NAME)) {
-			enable = kubernetesEnabled;
-		}
-		return enable;
-	}
+    /**
+     * Defines conditions to enable/disable field on the wizard.
+     */
+    @Override
+    public boolean isEnableField(String modelProperty, ProjectDataModel model) {
+        boolean mmmProjectEnabled = ((ESBSolutionProjectModel) model).isMMMProjectChecked();
+        if (modelProperty.equals(REGISTRY_RESOURCES_PROJECT_NAME)) {
+            return ((ESBSolutionProjectModel) model).isRegistryProjectChecked();
+        } else if (modelProperty.equals(CONNECTOR_EXPORTER_PROJECT_NAME)) {
+            return ((ESBSolutionProjectModel) model).isConnectorExporterProjectChecked();
+        } else if (modelProperty.equals(COMPOSITE_APPLICATION_PROJECT_NAME)) {
+            return ((ESBSolutionProjectModel) model).isCappProjectChecked();
+        } else if (modelProperty.equals(DOCKER_EXPORTER_PROJECT_NAME)) {
+            return ((ESBSolutionProjectModel) model).isDockerExporterProjectChecked();
+        } else if (modelProperty.equals(KUBERNETES_EXPORTER_PROJECT_NAME)) {
+            return ((ESBSolutionProjectModel) model).isKubernetesExporterProjectChecked();
+        } else if (modelProperty.equals(ESB_PROJECT_NAME)) {
+            if (!mmmProjectEnabled) {
+                return false;
+            } else {
+                return ((ESBSolutionProjectModel) model).isConfigProjectChecked();
+            }
+        } else if (modelProperty.equals(ESB_PROJECT_CHOICE) && !mmmProjectEnabled) {
+            return false;
+        }
+        return super.isEnableField(modelProperty, model);
+    }
 }

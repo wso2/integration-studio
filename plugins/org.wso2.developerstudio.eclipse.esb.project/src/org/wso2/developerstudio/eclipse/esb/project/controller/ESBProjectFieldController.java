@@ -28,7 +28,7 @@ public class ESBProjectFieldController extends AbstractFieldController {
 	
 	public void validate(String modelProperty, Object value, ProjectDataModel model)
 	        throws FieldValidationException {
-		if (modelProperty.equals("project.name")) {
+		if (modelProperty.equals("mmm.project.name")) {
 			CommonFieldValidator.validateProjectField(value);
 		}else if (modelProperty.equals("synapseConfig.location")){
 			if (value == null) {

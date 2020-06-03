@@ -47,7 +47,7 @@ public class DescriptorConstants {
     public static final String ALLOWED_CONNECTION_TYPES = "allowedConnectionTypes";
     public static final String VALIDATION = "attributeGroup";
     public static final String ENABLE_CONDITION = "enableCondition";
-    public static final String COMBO_VALUE = "comboValue";
+    public static final String COMBO_VALUES = "comboValues";
 
     // Supported Input Types
     public static final String STRING = "string";

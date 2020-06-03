@@ -58,6 +58,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.ConnectorSchemaHolder;
 
 
 // End of user code
@@ -70,6 +71,7 @@ public class CloudConnectorOperationPropertiesEditionComponent extends SinglePar
 
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
+	public static String ADVANCE_PART = "Advance";
 
 	
 	/**
@@ -84,7 +86,7 @@ public class CloudConnectorOperationPropertiesEditionComponent extends SinglePar
 	 */
 	public CloudConnectorOperationPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject cloudConnectorOperation, String editing_mode) {
 		super(editingContext, cloudConnectorOperation, editing_mode);
-		parts = new String[] { BASE_PART };
+		parts = new String[] { BASE_PART, ADVANCE_PART};
 		repositoryKey = EsbViewsRepository.class;
 		partKey = EsbViewsRepository.CloudConnectorOperation.class;
 	}
@@ -237,30 +239,40 @@ public class CloudConnectorOperationPropertiesEditionComponent extends SinglePar
 		if (EsbViewsRepository.CloudConnectorOperation.Properties.reverse == event.getAffectedEditor()) {
 			cloudConnectorOperation.setReverse((Boolean)event.getNewValue());
 		}
+
 		if (EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD) {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, connectorParametersSettings, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy instanceof CreateEditingPolicy) {
-						policy.execute();
-					}
-				}
-			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
-					if (editionPolicy != null) {
-						editionPolicy.execute();
-					}
-				}
-			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				connectorParametersSettings.removeFromReference((EObject) event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-				connectorParametersSettings.move(event.getNewIndex(), (CallTemplateParameter) event.getNewValue());
-			}
+		      String schemaName = cloudConnectorOperation.getConnectorName().split("connector")[0] + "-" + cloudConnectorOperation.getOperationName();
+		      if(ConnectorSchemaHolder.getInstance().hasConnectorOperationSchema(schemaName)) {
+		          EList connectorParams = cloudConnectorOperation.getConnectorParameters();
+	              int index = connectorParams.indexOf(event.getOldValue());
+	              CallTemplateParameter ctpi = (CallTemplateParameter)connectorParams.get(index);
+	              ctpi.setParameterValue(event.getNewValue().toString());
+	              connectorParams.set(index, ctpi);
+		      } else {
+		          if (event.getKind() == PropertiesEditionEvent.ADD) {
+		                EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, connectorParametersSettings, editingContext.getAdapterFactory());
+		                PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+		                if (provider != null) {
+		                    PropertiesEditingPolicy policy = provider.getPolicy(context);
+		                    if (policy instanceof CreateEditingPolicy) {
+		                        policy.execute();
+		                    }
+		                }
+		            } else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+		                EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+		                PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+		                if (provider != null) {
+		                    PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+		                    if (editionPolicy != null) {
+		                        editionPolicy.execute();
+		                    }
+		                }
+		            } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+		                connectorParametersSettings.removeFromReference((EObject) event.getNewValue());
+		            } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+		                connectorParametersSettings.move(event.getNewIndex(), (CallTemplateParameter) event.getNewValue());
+		            }
+		      }
 		}
 		if (EsbViewsRepository.CloudConnectorOperation.Properties.configRef == event.getAffectedEditor()) {
 			cloudConnectorOperation.setConfigRef((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));

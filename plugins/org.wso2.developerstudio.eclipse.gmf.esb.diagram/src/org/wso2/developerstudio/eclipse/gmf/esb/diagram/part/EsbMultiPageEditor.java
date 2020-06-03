@@ -56,6 +56,7 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
+import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
@@ -64,6 +65,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.internal.DiagramUIPlugin;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramEditDomain;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
@@ -249,6 +251,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
      * diagram
      */
     void createPage0() {
+        DiagramUIPlugin.getInstance().getPreferenceStore().setValue("org.eclipse.gmf.pdock", PositionConstants.EAST);
         deleteMarkers();
 
         GMFPluginDetails.setiUpdateGMFPlugin(new UpdateGMFPlugin());

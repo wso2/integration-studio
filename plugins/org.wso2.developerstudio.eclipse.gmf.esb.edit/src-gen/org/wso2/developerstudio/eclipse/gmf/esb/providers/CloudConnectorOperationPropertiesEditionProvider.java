@@ -61,7 +61,7 @@ public class CloudConnectorOperationPropertiesEditionProvider extends Properties
 	 * 
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof CloudConnectorOperation) && (CloudConnectorOperationPropertiesEditionComponent.BASE_PART.equals(part));
+		return (editingContext.getEObject() instanceof CloudConnectorOperation) && (CloudConnectorOperationPropertiesEditionComponent.ADVANCE_PART.equals(part));
 	}
 
 	/**
@@ -81,7 +81,7 @@ public class CloudConnectorOperationPropertiesEditionProvider extends Properties
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof CloudConnectorOperation) && ((CloudConnectorOperationPropertiesEditionComponent.BASE_PART.equals(part) && refinement == CloudConnectorOperationPropertiesEditionComponent.class));
+		return (editingContext.getEObject() instanceof CloudConnectorOperation) && ((CloudConnectorOperationPropertiesEditionComponent.ADVANCE_PART.equals(part) && refinement == CloudConnectorOperationPropertiesEditionComponent.class));
 	}
 
 	/**
@@ -105,6 +105,8 @@ public class CloudConnectorOperationPropertiesEditionProvider extends Properties
 		if (editingContext.getEObject() instanceof CloudConnectorOperation) {
 			if (CloudConnectorOperationPropertiesEditionComponent.BASE_PART.equals(part))
 				return new CloudConnectorOperationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (CloudConnectorOperationPropertiesEditionComponent.ADVANCE_PART.equals(part))
+                return new CloudConnectorOperationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part);
 	}
@@ -119,6 +121,9 @@ public class CloudConnectorOperationPropertiesEditionProvider extends Properties
 			if (CloudConnectorOperationPropertiesEditionComponent.BASE_PART.equals(part)
 				&& refinement == CloudConnectorOperationPropertiesEditionComponent.class)
 				return new CloudConnectorOperationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (CloudConnectorOperationPropertiesEditionComponent.ADVANCE_PART.equals(part)
+	                && refinement == CloudConnectorOperationPropertiesEditionComponent.class)
+	                return new CloudConnectorOperationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 	}

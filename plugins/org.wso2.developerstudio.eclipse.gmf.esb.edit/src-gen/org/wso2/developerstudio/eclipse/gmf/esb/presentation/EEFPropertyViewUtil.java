@@ -4,27 +4,62 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 
+import org.codehaus.jettison.json.JSONException;
+import javax.xml.stream.FactoryConfigurationError;
+
+import org.apache.maven.model.Plugin;
+import org.apache.maven.model.PluginExecution;
+import org.apache.maven.project.MavenProject;
+import org.codehaus.plexus.util.xml.Xpp3Dom;
+import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.IEditorInput;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IEditorReference;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
+import org.eclipse.ui.part.FileEditorInput;
+import org.osgi.framework.Bundle;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.CloudConnectorOperationImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.Activator;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorConnectionRoot;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorDescriptorParser;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorOperationRoot;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.eclipse.swt.layout.GridLayout;
 
 public class EEFPropertyViewUtil {
@@ -33,8 +68,14 @@ public class EEFPropertyViewUtil {
     static Properties properties = null;
     private static final String TYPE_TEMPLATE_SEQ = "synapse/sequenceTemplate";
     private static final String TYPE_TEMPLATE_EPT = "synapse/endpointTemplate";
+    private static final String LOCAL_ENTRIES_DIR_NAME = "local-entries";
     private static final String AVAILABLE_TEMPLATE_LIST_DEFAULT_VALUE = "Select From Templates";
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    public static final String PLUGIN_ID = "org.wso2.developerstudio.eclipse.gmf.esb.edit";
+    public static final String WSO2_ESB_LOCAL_ENTRY_VERSION="2.1.0";
+    private static final String LOCAL_ENTRY_LOCATION = File.separator + "src" + File.separator + "main" + File.separator
+            + "synapse-config" + File.separator + "local-entries";
+    private static final String XML_EXTENSION = ".xml";
 
     static {
         URL url;
@@ -180,6 +221,22 @@ public class EEFPropertyViewUtil {
         return subsectionGroup;
     }
     
+    
+    public static Composite createNewGroup(FormToolkit widgetFactory, final Composite parent, String name) {
+        Group propertiesSection = new Group(parent, SWT.FILL);
+        propertiesSection.setText(name);
+        GridLayout propertiesGroupLayout = new GridLayout();
+        propertiesGroupLayout.numColumns = 3;
+        propertiesGroupLayout.marginLeft = 15;
+        propertiesGroupLayout.horizontalSpacing = 20;
+        propertiesGroupLayout.verticalSpacing = 10;
+        propertiesSection.setLayout(propertiesGroupLayout);
+        GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
+        propertiesSectionData.horizontalSpan = 3;
+        propertiesSection.setLayoutData(propertiesSectionData);
+        return propertiesSection;
+    }
+    
     /**
      * This method will check if a specific key combination matches a defined
      * set of key combinations.
@@ -268,5 +325,159 @@ public class EEFPropertyViewUtil {
             str = str.concat("\t");
         }
         return str;
+    }
+    
+    public static String getIconPath(String iconName) throws URISyntaxException, IOException {
+        Bundle bundle = Platform.getBundle(PLUGIN_ID);
+        URL webAppURL = bundle.getEntry(iconName);
+        URL resolvedFolderURL = FileLocator.toFileURL(webAppURL);
+        URI resolvedFolderURI = new URI(resolvedFolderURL.getProtocol(), resolvedFolderURL.getPath(), null);
+        File resolvedWebAppFolder = new File(resolvedFolderURI);
+        return resolvedWebAppFolder.getAbsolutePath();
+    }
+
+    /**
+     * This method removes connector palettes from editor if the connector is not in the workspace.
+     * 
+     * @param editorPart editor from which palettes should be removed
+     * @param esbPaletteFactory PaletteFactory of the editor
+     */
+    public static void loadConnectorSchemas() {
+        String connectorDirectory = ResourcesPlugin.getWorkspace().getRoot().getLocation().toString() + File.separator
+                + ".metadata" + File.separator + ".Connectors";
+        File directory = new File(connectorDirectory);
+        if (directory.isDirectory()) {
+            File[] children = directory.listFiles();
+            for (int childIndex = 0; childIndex < children.length; ++childIndex) {
+                if (children[childIndex].isDirectory()) {
+                    String jsonSchemaDirPath = children[childIndex].getAbsolutePath() + File.separator + "uischema";
+                    File jsonSchemaDir = new File(jsonSchemaDirPath);
+                    if (jsonSchemaDir.isDirectory()) {
+                        File[] jsonSchemaChildren = jsonSchemaDir.listFiles();
+                        for (int jsonSchemaIndex = 0; jsonSchemaIndex < jsonSchemaChildren.length; ++jsonSchemaIndex) {
+                            String jsonSchemaName = jsonSchemaChildren[jsonSchemaIndex].getName();
+                            if (jsonSchemaName.endsWith(".json")) {
+                                addConnectorRoot(jsonSchemaChildren[jsonSchemaIndex]);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private static void addConnectorRoot(File jsonSchemafile) {
+        String content = "";
+        ConnectorSchemaHolder schemaHolder = ConnectorSchemaHolder.getInstance();
+
+        try {
+            content = new String(Files.readAllBytes(Paths.get(jsonSchemafile.getAbsolutePath())));
+
+            if (ConnectorDescriptorParser.isConnectorConnection(content)) {
+                ConnectorConnectionRoot connectorConnectionRoot = ConnectorDescriptorParser
+                        .parseConnectionRoot(content);
+                String schemaName = connectorConnectionRoot.getConnectorName() + '-'
+                        + connectorConnectionRoot.getConnectionName();
+                schemaHolder.putConnectorConnectionSchema(schemaName, connectorConnectionRoot);
+            } else {
+                ConnectorOperationRoot connectorOperationRoot = ConnectorDescriptorParser.parseOperationRoot(content);
+                String schemaName = connectorOperationRoot.getConnectorName() + '-'
+                        + connectorOperationRoot.getOperationName();
+                schemaHolder.putConnectorOperationSchema(schemaName, connectorOperationRoot);
+            }
+        } catch (IOException | JSONException e) {
+            // log.error("Unable to parse the Connector UI descriptor file", e);
+            e.printStackTrace();
+        }
+    }
+    public static String generateSchemaName(IPropertiesEditionComponent propertiesEditionComponent) {
+        CloudConnectorOperationImpl connectorObject = (CloudConnectorOperationImpl)propertiesEditionComponent.getEditingContext().getEObject();
+        String schemaName = connectorObject.getConnectorName().split("connector")[0] + "-" + connectorObject.getOperationName();
+        return schemaName;
+    }
+
+    public static ArrayList<String> getAvailableConnectionEntriesList() throws CoreException {
+        ArrayList<String> definedTemplates = new ArrayList<String>();
+        IFolder localEntriesDir = getLocalEntriesDir();
+        for(IResource resource:localEntriesDir.members()) {
+            if (resource instanceof IFile && ((IFile)resource).getFileExtension().equals("xml")) {
+                //((IFile)resource).getContents();
+                definedTemplates.add(((IFile)resource).getName().split(".xml")[0]);
+            }
+        }
+        return definedTemplates;
+    }
+
+    public static IFolder getLocalEntriesDir() {
+        IEditorPart editorPart = null;
+        IFolder localEntriesDir = null;
+        IEditorReference editorReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+                .getEditorReferences();
+        for (int i = 0; i < editorReferences.length; i++) {
+            IEditorPart editor = editorReferences[i].getEditor(false);
+
+            if (editor != null) {
+                editorPart = editor.getSite().getWorkbenchWindow().getActivePage().getActiveEditor();
+            }
+
+            if (editorPart != null) {
+                IEditorInput input =
+                        editorPart == null ? null : editorPart.getEditorInput();
+                IPath path = input instanceof FileEditorInput
+                        ? ((FileEditorInput)input).getPath()
+                        : null;
+                        //Do nature validation
+                //String localEntriesPath = ((FileEditorInput)input).getFile().getParent().getParent().getFolder(new Path(LOCAL_ENTRIES_DIR_NAME)).getLocation().toOSString();
+                localEntriesDir = ((FileEditorInput)input).getFile().getParent().getParent().getFolder(new Path(LOCAL_ENTRIES_DIR_NAME));
+            }
+        }
+        return localEntriesDir;
+    }
+
+    public static void updateArtifact(HashMap<String, Control> generatedElements, IProject currentProject) throws FactoryConfigurationError, Exception {
+        Text connectionNameText = (Text)generatedElements.get("connectionName");
+        String localEntryName =  connectionNameText.getText();
+        MavenProject mvp = EEFPropertyViewUtil.updatePom(currentProject);
+        ESBProjectArtifact esbProjectArtifact = new ESBProjectArtifact();
+        esbProjectArtifact.fromFile(currentProject.getFile("artifact.xml").getLocation().toFile());
+        ESBArtifact artifact = new ESBArtifact();
+        artifact.setName(localEntryName);
+        artifact.setVersion(mvp.getVersion());
+        artifact.setType("synapse/local-entry");
+        artifact.setServerRole("EnterpriseServiceBus");
+        artifact.setGroupId(mvp.getGroupId());
+        artifact.setFile(LOCAL_ENTRY_LOCATION
+                + File.separator + localEntryName + XML_EXTENSION);
+        esbProjectArtifact.addESBArtifact(artifact);
+        esbProjectArtifact.toFile();
+        currentProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+    }
+
+    public static MavenProject updatePom(IProject esbProject) throws IOException, XmlPullParserException {
+        File mavenProjectPomLocation = esbProject.getFile("pom.xml").getLocation().toFile();
+        MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
+        String version = mavenProject.getVersion();
+
+        // Skip changing the pom file if group ID and artifact ID are matched
+        if (MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-localentry-plugin")) {
+            return mavenProject;
+        }
+
+        Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-localentry-plugin",
+                WSO2_ESB_LOCAL_ENTRY_VERSION, true);
+        PluginExecution pluginExecution = new PluginExecution();
+        pluginExecution.addGoal("pom-gen");
+        pluginExecution.setPhase("process-resources");
+        pluginExecution.setId("localentry");
+
+        Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
+        Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, "artifactLocation");
+        artifactLocationNode.setValue(".");
+        Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
+        typeListNode.setValue("${artifact.types}");
+        pluginExecution.setConfiguration(configurationNode);
+        plugin.addExecution(pluginExecution);
+        MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
+        return mavenProject;
     }
 }

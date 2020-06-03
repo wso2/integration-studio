@@ -21,6 +21,7 @@ import java.util.List;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
@@ -34,9 +35,11 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
+import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.esb.project.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.ui.utils.PluginImageUtils;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 public class RemoveCloudConnectorWizardPage extends WizardPage{
@@ -116,7 +119,7 @@ public class RemoveCloudConnectorWizardPage extends WizardPage{
 	 * List available connectors
 	 */
 	private void listConnectors(Table table) {				
-		String connectorDirectory = getSelectedProject().getWorkspace().getRoot().getLocation().toOSString()
+		String connectorDirectory = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString()
 				+ File.separator + DIR_DOT_METADATA + File.separator + DIR_CONNECTORS;
 		File directory=new File(connectorDirectory);
 		if(directory.isDirectory()){

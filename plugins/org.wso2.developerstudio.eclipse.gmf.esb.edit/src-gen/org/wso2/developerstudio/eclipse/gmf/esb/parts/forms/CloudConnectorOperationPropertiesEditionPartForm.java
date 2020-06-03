@@ -99,8 +99,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
-import javafx.scene.Scene;
-
 // End of user code
 
 /**

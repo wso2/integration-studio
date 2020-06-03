@@ -158,7 +158,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 	    CloudConnectorOperationImpl connectorObject = (CloudConnectorOperationImpl)propertiesEditionComponent.getEditingContext().getEObject();
 	    String schemaName = connectorObject.getConnectorName().split("connector")[0] + "-" + connectorObject.getOperationName();
-	    if(ConnectorSchemaHolder.getInstance().hasConnectorSchema(schemaName)) {
+	    if(ConnectorSchemaHolder.getInstance().hasConnectorOperationSchema(schemaName)) {
 	        hasConnectorSchema = true;
 	    } else {
 	        hasConnectorSchema = false;

@@ -17,155 +17,162 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser;
 
-import org.apache.commons.lang3.EnumUtils;
+import org.apache.commons.lang.StringUtils;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
 public class ConnectorDescriptorParser {
-    
-    public static ConnectorRoot parse(String jsonString) {
-        return new ConnectorRoot();
-    }
-    
-    public static ConnectorRoot demoValue() {
-        ConnectorRoot connectorRoot = new ConnectorRoot();
-        connectorRoot.setConnectorName("file");
-        connectorRoot.setDisplayName("File Append");
-        connectorRoot.setHelp("<h1>File Append</h1>");
-        Element l1element = new Element();
-        l1element.setType("attributeGroup");
-        AttributeGroupValue agv = new AttributeGroupValue();
-        agv.setGroupName("General");
-        Element l2element = new Element();
-        l2element.setType("attribute");
-        AttributeValue agvl2 = new AttributeValue();
-        agvl2.setName("description");
-        agvl2.setDefaultValue("");
-        
-        agv.addElement(l2element);
-        l1element.setValue(agv);
-        connectorRoot.addElement(l1element);
-        return connectorRoot;
-    }
-    
-    public ConnectorRoot createObject(String jsonString) throws JSONException {
-        ConnectorRoot connectorRoot = new ConnectorRoot();
+
+    public static ConnectorConnectionRoot parseConnectionRoot(String jsonString) throws JSONException {
+        ConnectorConnectionRoot root = new ConnectorConnectionRoot();
         JSONObject rootObject = new JSONObject(jsonString);
-        Boolean isConnection = rootObject.has("connectionName");
-        if(isConnection) { //Validate with a subclass of connectorRoot
-            connectorRoot.setConnectorName(rootObject.getString("connectorName"));
-            connectorRoot.setConnectionName(rootObject.getString("connectionName")); 
-        } else {
-            connectorRoot.setConnectorName(rootObject.getString("connectorName"));
-            connectorRoot.setOperationName(rootObject.getString("operationName"));
-        }
-        connectorRoot.setDisplayName(rootObject.getString("displayName"));
-        connectorRoot.setHelp(rootObject.getString("help"));
-        JSONArray elementsArray = rootObject.getJSONArray("elements");
-        for(int i=0;i<elementsArray.length();i++) {
-            Element element = new Element();
-            JSONObject obj = elementsArray.getJSONObject(i);
-            element.setType(obj.getString("type"));
-            if(element.getType().equalsIgnoreCase("attribute")) {
-                AttributeValue value = new AttributeValue();
-                JSONObject attrObj = obj.getJSONObject("value");
-                value.setName(attrObj.getString("name"));
-                value.setDefaultValue(attrObj.getString("defaultValue"));
-                value.setRequired(Boolean.parseBoolean(attrObj.getString("required")));
-                value.setHelpTip(attrObj.getString("helpTip"));
-                value.setDisplayName(attrObj.getString("displayName"));
-                 // HardCoded
-                if(attrObj.getString("type").equalsIgnoreCase("stringOrExpression")) {
-                    value.setType(AttributeValueType.STRING); 
-                } else if (attrObj.getString("type").equalsIgnoreCase("textOrExpression")) {
-                    value.setType(AttributeValueType.STRING); 
-                } else if (attrObj.getString("type").equalsIgnoreCase("comboOrExpression")) {
-                    value.setType(AttributeValueType.COMBO); 
-                    JSONArray comboArray = attrObj.getJSONArray("comboValues");
-                    for(int j=0;j<comboArray.length();j++) {
-                        value.addComboValue(comboArray.getString(j));
-                    }
-                } else if (attrObj.getString("type").equalsIgnoreCase("booleanOrExpression")) {
-                    value.setType(AttributeValueType.BOOLEANOREXPRESSION); 
-                } else if (attrObj.getString("type").equalsIgnoreCase("connection")) {
-                    value.setType(AttributeValueType.CONNECTION); 
-                    JSONArray allowedConnectionType = attrObj.getJSONArray("allowedConnectionTypes");
-                    for(int k = 0; k < allowedConnectionType.length(); k++) {
-                        String allowedType = allowedConnectionType.getString(k).split("\\.")[1].toUpperCase();
-                        if (EnumUtils.isValidEnum(Connection.class, allowedType)) {
-                            value.addAllowedConnectionTypes(Connection.valueOf(allowedType));
-                        }
-                    }
-                } else {
-                    value.setType(AttributeValueType.STRING);
-                }
-                
-                element.setValue(value);
-            } else {
-                AttributeGroupValue groupValue = new AttributeGroupValue();
-                JSONObject attrGroupObj = obj.getJSONObject("value");
-                groupValue.setGroupName(attrGroupObj.getString("groupName"));
-                recursive(attrGroupObj.getJSONArray("elements"), groupValue);
-                element.setValue(groupValue);
-            }
-            connectorRoot.addElement(element);
-        }
-        
-        return connectorRoot;
+        String connectionName = rootObject.getString(DescriptorConstants.CONNECTION_NAME);
+        root.setConnectionName(connectionName);
+        createConnectorRoot(root, jsonString);
+        return root;
     }
-    
-    public void recursive(JSONArray elementsArray, Value rootValue) throws JSONException {
-        for(int i=0;i<elementsArray.length();i++) {
+
+    public static ConnectorOperationRoot parseOperationRoot(String jsonString) throws JSONException {
+        ConnectorOperationRoot root = new ConnectorOperationRoot();
+        JSONObject rootObject = new JSONObject(jsonString);
+        String connectionName = rootObject.getString(DescriptorConstants.OPERATION_NAME);
+        root.setOperationName(connectionName);
+        createConnectorRoot(root, jsonString);
+        return root;
+    }
+
+    public static void createConnectorRoot(ConnectorRoot root, String jsonString) throws JSONException {
+        JSONObject rootObject = new JSONObject(jsonString);
+        root.setTitle(rootObject.getString(DescriptorConstants.TITLE));
+        root.setHelp(rootObject.getString(DescriptorConstants.HELP));
+        JSONArray elementsArray = rootObject.getJSONArray(DescriptorConstants.ELEMENTS);
+        for (int i = 0; i < elementsArray.length(); i++) {
             Element element = new Element();
             JSONObject obj = elementsArray.getJSONObject(i);
-            element.setType(obj.getString("type"));
-            if(element.getType().equalsIgnoreCase("attribute")) {
+            element.setType(obj.getString(DescriptorConstants.TYPE));
+            if (element.getType().equalsIgnoreCase(DescriptorConstants.ATTRIBUTE)) {
                 AttributeValue value = new AttributeValue();
-                JSONObject attrObj = obj.getJSONObject("value");
-                value.setName(attrObj.getString("name"));
-                value.setDefaultValue(attrObj.getString("defaultValue"));
-                value.setRequired(Boolean.parseBoolean(attrObj.getString("required")));
-                value.setHelpTip(attrObj.getString("helpTip"));
-                value.setDisplayName(attrObj.getString("displayName"));
-                if(attrObj.getString("type").equalsIgnoreCase("stringOrExpression")) {
-                    value.setType(AttributeValueType.STRING); 
-                } else if (attrObj.getString("type").equalsIgnoreCase("textOrExpression")) {
-                    value.setType(AttributeValueType.STRING); 
-                } else if (attrObj.getString("type").equalsIgnoreCase("comboOrExpression")) {
-                    value.setType(AttributeValueType.COMBO); 
-                    JSONArray comboArray = attrObj.getJSONArray("comboValues");
-                    for(int j=0;j<comboArray.length();j++) {
+                JSONObject attrObj = obj.getJSONObject(DescriptorConstants.VALUE);
+                value.setName(attrObj.getString(DescriptorConstants.NAME));
+                value.setDefaultValue(attrObj.getString(DescriptorConstants.DEFAULT_VALUE));
+                value.setRequired(Boolean.parseBoolean(attrObj.getString(DescriptorConstants.REQUIRED)));
+                value.setHelpTip(attrObj.getString(DescriptorConstants.HELP_TIP));
+                value.setDisplayName(attrObj.getString(DescriptorConstants.DISPLAY_NAME));
+                String inputType = attrObj.getString(DescriptorConstants.INPUT_TYPE);
+
+                switch (inputType) {
+                case DescriptorConstants.STRING_OR_EXPRESSION:
+                    value.setType(AttributeValueType.STRING);
+                    break;
+                case DescriptorConstants.TEXT_OR_EXPRESSION:
+                    value.setType(AttributeValueType.STRING);
+                    break;
+                case DescriptorConstants.COMBO_OR_EXPRESSION:
+                    value.setType(AttributeValueType.COMBO);
+                    JSONArray comboArray = attrObj.getJSONArray(DescriptorConstants.COMBO_VALUE);
+                    for (int j = 0; j < comboArray.length(); j++) {
                         value.addComboValue(comboArray.getString(j));
                     }
-                } else if (attrObj.getString("type").equalsIgnoreCase("booleanOrExpression")) {
-                    value.setType(AttributeValueType.BOOLEANOREXPRESSION); 
-                } else if (attrObj.getString("type").equalsIgnoreCase("connection")) {
-                    value.setType(AttributeValueType.CONNECTION); 
-                    JSONArray allowedConnectionType = attrObj.getJSONArray("allowedConnectionTypes");
-                    for(int k = 0; k < allowedConnectionType.length(); k++) {
-                        String allowedType = allowedConnectionType.getString(k).split("\\.")[1].toUpperCase();
-                        if (EnumUtils.isValidEnum(Connection.class, allowedType)) {
-                            value.addAllowedConnectionTypes(Connection.valueOf(allowedType));
-                        }
+                    break;
+                case DescriptorConstants.BOOLEAN_OR_EXPRESSION:
+                    value.setType(AttributeValueType.BOOLEANOREXPRESSION);
+                    break;
+                case DescriptorConstants.CONNECTION:
+
+                    value.setType(AttributeValueType.CONNECTION);
+                    JSONArray allowedConnectionType = attrObj
+                            .getJSONArray(DescriptorConstants.ALLOWED_CONNECTION_TYPES);
+                    for (int k = 0; k < allowedConnectionType.length(); k++) {
+                        value.addAllowedConnectionType(allowedConnectionType.getString(k));
                     }
-                } else {
+                    break;
+                default:
                     value.setType(AttributeValueType.STRING);
+                    break;
                 }
-                
                 element.setValue(value);
             } else {
                 AttributeGroupValue groupValue = new AttributeGroupValue();
-                JSONObject attrGroupObj = obj.getJSONObject("value");
-                groupValue.setGroupName(attrGroupObj.getString("groupName"));
-                recursive(attrGroupObj.getJSONArray("elements"), groupValue);
+                JSONObject attrGroupObj = obj.getJSONObject(DescriptorConstants.VALUE);
+                groupValue.setGroupName(attrGroupObj.getString(DescriptorConstants.GROUP_NAME));
+                getGroupValuesRecursively(attrGroupObj.getJSONArray(DescriptorConstants.ELEMENTS), groupValue);
                 element.setValue(groupValue);
-                
             }
-            if(rootValue instanceof AttributeGroupValue) {
-                ((AttributeGroupValue)rootValue).addElement(element);
+            root.addElement(element);
+        }
+    }
+
+    public static void getGroupValuesRecursively(JSONArray elementsArray, Value rootValue) throws JSONException {
+        for (int i = 0; i < elementsArray.length(); i++) {
+            Element element = new Element();
+            JSONObject obj = elementsArray.getJSONObject(i);
+            element.setType(obj.getString(DescriptorConstants.TYPE));
+            if (element.getType().equalsIgnoreCase(DescriptorConstants.ATTRIBUTE)) {
+                AttributeValue value = new AttributeValue();
+                JSONObject attrObj = obj.getJSONObject(DescriptorConstants.VALUE);
+                value.setName(attrObj.getString(DescriptorConstants.NAME));
+                value.setDefaultValue(attrObj.getString(DescriptorConstants.DEFAULT_VALUE));
+                value.setRequired(Boolean.parseBoolean(attrObj.getString(DescriptorConstants.REQUIRED)));
+                value.setHelpTip(attrObj.getString(DescriptorConstants.HELP_TIP));
+                value.setDisplayName(attrObj.getString(DescriptorConstants.DISPLAY_NAME));
+                String inputType = attrObj.getString(DescriptorConstants.INPUT_TYPE);
+                switch (inputType) {
+                case DescriptorConstants.STRING_OR_EXPRESSION:
+                    value.setType(AttributeValueType.STRING);
+                    break;
+                case DescriptorConstants.TEXT_OR_EXPRESSION:
+                    value.setType(AttributeValueType.STRING);
+                    break;
+                case DescriptorConstants.COMBO_OR_EXPRESSION:
+                    value.setType(AttributeValueType.COMBO);
+                    JSONArray comboArray = attrObj.getJSONArray(DescriptorConstants.COMBO_VALUE);
+                    for (int j = 0; j < comboArray.length(); j++) {
+                        value.addComboValue(comboArray.getString(j));
+                    }
+                    break;
+                case DescriptorConstants.BOOLEAN_OR_EXPRESSION:
+                    value.setType(AttributeValueType.BOOLEANOREXPRESSION);
+                    break;
+                case DescriptorConstants.CONNECTION:
+
+                    value.setType(AttributeValueType.CONNECTION);
+                    JSONArray allowedConnectionType = attrObj
+                            .getJSONArray(DescriptorConstants.ALLOWED_CONNECTION_TYPES);
+                    for (int k = 0; k < allowedConnectionType.length(); k++) {
+                        value.addAllowedConnectionType(allowedConnectionType.getString(k));
+                    }
+                    break;
+                default:
+                    value.setType(AttributeValueType.STRING);
+                    break;
+                }
+
+                element.setValue(value);
+            } else {
+                AttributeGroupValue groupValue = new AttributeGroupValue();
+                JSONObject attrGroupObj = obj.getJSONObject(DescriptorConstants.VALUE);
+                groupValue.setGroupName(attrGroupObj.getString(DescriptorConstants.GROUP_NAME));
+                getGroupValuesRecursively(attrGroupObj.getJSONArray(DescriptorConstants.ELEMENTS), groupValue);
+                element.setValue(groupValue);
+
+            }
+            if (rootValue instanceof AttributeGroupValue) {
+                ((AttributeGroupValue) rootValue).addElement(element);
             }
         }
+    }
+
+    public static boolean isConnectorConnection(String jsonString) throws JSONException {
+        JSONObject rootObject;
+        boolean isConnection = false;
+        rootObject = new JSONObject(jsonString);
+        String connectionName = rootObject.getString(DescriptorConstants.CONNECTION_NAME);
+        if (StringUtils.isNotEmpty(connectionName)) {
+            isConnection = true;
+        }
+
+        return isConnection;
     }
 
 }

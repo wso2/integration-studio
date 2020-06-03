@@ -37,7 +37,6 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeGroupValue;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValue;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValueType;
-import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.Connection;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorRoot;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.Element;
 
@@ -69,12 +68,12 @@ public class ConnectionParameterRenderer {
             }
         }
         
-        List<Connection> connectorConnectionTypes = allowedConnectionTypes.getAllowedConnectionTypes();
+        List<String> connectorConnectionTypes = allowedConnectionTypes.getAllowedConnectionTypes();
         allowedConnectionTypes.setDisplayName("Connection Type");
         allowedConnectionTypes.setName("connectionType");
         String connectionTypes[] = new String[connectorConnectionTypes.size()]; 
         for (int j = 0; j < connectorConnectionTypes.size(); j++) { 
-            connectionTypes[j] = connectorConnectionTypes.get(j).toString(); 
+            connectionTypes[j] = connectorConnectionTypes.get(j); 
         } 
         widgetProvider.createDropDownField(widgetFactory, parent, connectionTypes, allowedConnectionTypes);
 
@@ -139,12 +138,7 @@ public class ConnectionParameterRenderer {
         } else if (AttributeValueType.COMBO.equals(value.getType())) {
             widgetProvider.createDropDownField(widgetFactory, parent, value.getComboValues().toArray(new String[0]),
                     value);
-        } else if (AttributeValueType.CONNECTION.equals(value.getType())) {
-            widgetProvider.createConnectionField(widgetFactory, parent, value, getConnectionEntriesList());
         }
     }
 
-    public String[] getConnectionEntriesList() {
-        return new String[] { "SMTP", "POP3", "IMAP" };
-    }
 }

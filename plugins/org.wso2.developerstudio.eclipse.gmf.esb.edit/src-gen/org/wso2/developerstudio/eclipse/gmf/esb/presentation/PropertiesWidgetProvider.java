@@ -91,7 +91,7 @@ public class PropertiesWidgetProvider {
         return propertiesSection;
     }
 
-    public Composite createTextBoxField(FormToolkit widgetFactory, Composite parent, AttributeValue value) {
+    public Composite createTextBoxField(FormToolkit widgetFactory, Composite parent, final AttributeValue value) {
         Composite textBoxComposite = createComposite(value.getName(), widgetFactory, parent, 2, 2);
         Label label = new Label(textBoxComposite, SWT.NO_BACKGROUND);
         label.setText(value.getDisplayName());
@@ -99,7 +99,7 @@ public class PropertiesWidgetProvider {
         labelRefData.widthHint = 120;
         label.setLayoutData(labelRefData);
         setToolTip(label, value.getHelpTip());
-        Text configRef = widgetFactory.createText(textBoxComposite, "", SWT.BORDER);
+        final Text configRef = widgetFactory.createText(textBoxComposite, "", SWT.BORDER);
         controlList.put(value.getName(), configRef);
         if(value.getRequired()) {
             requiredList.put(value.getName(), configRef);
@@ -198,7 +198,7 @@ public class PropertiesWidgetProvider {
         return parent;
     }
 
-    public Composite createDropDownField(FormToolkit widgetFactory, Composite parent, String[] options,
+    public Composite createDropDownField(FormToolkit widgetFactory, final Composite parent, String[] options,
             AttributeValue value) {
         Composite textBoxComposite = createComposite(value.getName(), widgetFactory, parent, 3, 3);
         Label label = new Label(textBoxComposite, SWT.NO_BACKGROUND);
@@ -206,7 +206,7 @@ public class PropertiesWidgetProvider {
         GridData labelRefData = new GridData();
         labelRefData.widthHint = 120;
         label.setLayoutData(labelRefData);
-        Combo configRef = new Combo(textBoxComposite, SWT.DROP_DOWN);
+        final Combo configRef = new Combo(textBoxComposite, SWT.DROP_DOWN);
         controlList.put(value.getName(), configRef);
         if(value.getRequired()) {
             requiredList.put(value.getName(), configRef);
@@ -258,7 +258,7 @@ public class PropertiesWidgetProvider {
         return parent;
     }
 
-    public Composite createConnectionField(FormToolkit widgetFactory, Composite parent, AttributeValue value,
+    public Composite createConnectionField(final FormToolkit widgetFactory, final Composite parent, final AttributeValue value,
             String[] options) {
         Image NEW_ELEMENT_IMG = EEFRuntimePlugin.getImage(EEFRuntimePlugin.ICONS_16x16 + "Add_16x16.gif");
         Image DELETE_ELEMENT_IMG = EEFRuntimePlugin.getImage(EEFRuntimePlugin.ICONS_16x16 + "Delete_16x16.gif");
@@ -268,7 +268,7 @@ public class PropertiesWidgetProvider {
         GridData labelRefData = new GridData();
         labelRefData.widthHint = 120;
         label.setLayoutData(labelRefData);
-        Combo configRef = new Combo(textBoxComposite, SWT.READ_ONLY | SWT.DROP_DOWN);
+        final Combo configRef = new Combo(textBoxComposite, SWT.READ_ONLY | SWT.DROP_DOWN);
         controlList.put(value.getName(), configRef);
         configRef.setItems(options);
         configRef.setData(UI_SCHEMA_OBJECT_KEY, value);
@@ -291,6 +291,7 @@ public class PropertiesWidgetProvider {
         configButton.setImage(NEW_ELEMENT_IMG);
         
         configButton.addListener(SWT.Selection, new Listener() {
+
             @Override
             public void handleEvent(Event event) {
                 if (!isConnectionWidgetProvider) {
@@ -417,7 +418,7 @@ public class PropertiesWidgetProvider {
 
     //////////////// Widget util Methods////////////////////////
 
-    public void setParameterType(RuleOptionType ruleType, CallTemplateParameter ctp) {
+    public void setParameterType(final RuleOptionType ruleType, final CallTemplateParameter ctp) {
         TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(ctp);
         domain.getCommandStack().execute(new RecordingCommand(domain) {
 
@@ -453,7 +454,7 @@ public class PropertiesWidgetProvider {
 
     }
 
-    public void setItemFocus(Control control) {
+    public void setItemFocus(final Control control) {
         control.addFocusListener(new org.eclipse.swt.events.FocusListener() {
 
             @Override

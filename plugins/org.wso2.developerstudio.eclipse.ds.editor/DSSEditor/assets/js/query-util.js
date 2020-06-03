@@ -56,11 +56,7 @@ function populateDSListForQueries(root) {
     $('#q-datasource-select').append(options.join());
     
     $("#q-datasource-select").change(function () {
-    	if (isMongoDB($("#q-datasource-select").val())) {
-    		$("#sql-query-label").text("Expression");
-    	} else {
-    		$("#sql-query-label").text("SQL Query");
-    	}
+        adaptQueryViewToMongo($(this).val());
     });
     
 }
@@ -483,6 +479,24 @@ function updateValidatorsTable() {
     }
 }
 
+/*
+ * Check if the selected datasource is mongoDB, then change query input label and hide generate buttons.
+ */
+function adaptQueryViewToMongo(selectDataSourceId) {
+    if (isMongoDB(selectDataSourceId)) {
+        $(SQL_QUERY_INPUT_LABEL).text("Expression");
+        $(OUTPUT_ELEMENT_MAPPING_GENERATE_BTN).prop(HIDDEN, true);
+        $(INPUT_ELEMENT_MAPPING_GENERATE_BTN).prop(HIDDEN, true);
+    } else {
+        $(SQL_QUERY_INPUT_LABEL).text("SQL Query");
+        $(INPUT_ELEMENT_MAPPING_GENERATE_BTN).prop(HIDDEN, false);
+        // Even if it is not MongoDB, output mapping generation btn should be hidden if output type is JSON.
+        if ($("#om-outputtype-select").val() != 'json') {
+            $(OUTPUT_ELEMENT_MAPPING_GENERATE_BTN).prop(HIDDEN, false);
+        }
+    }
+}
+
 function saveInputMappingsToQueryElement(queryElement) {
     for (let i = 0, len = window.params.length; i < len; i++) {
         queryElement.appendChild(window.params[i]);
@@ -641,7 +655,11 @@ function editQuery(root, queryId) {
     }
     clearQueryAdvancedProperties();
     populateQueryAdvancedProperties();
-    return populateOueryOutputMappings(window.queryElement);
+    let returnedValue = populateOueryOutputMappings(window.queryElement);
+    
+    // Customize the query view according to the data source type.
+    adaptQueryViewToMongo($(DATA_SOURCE_SELECT).val());
+    return returnedValue;
 }
 
 function deleteQuery(root, queryId) {

@@ -121,7 +121,7 @@ public class EmbeddedServerConfigWizardPage extends WizardPage {
         super(DIALOG_TITLE);
         setTitle(DIALOG_TITLE);
         Bundle bundle = Platform.getBundle(Activator.PLUGIN_ID);
-        final URL imagePathInString = FileLocator.find(bundle, new Path("icons/server.png"), null);
+        final URL imagePathInString = FileLocator.find(bundle, new Path("icons/server-config-icon-64x64.png"), null);
         setImageDescriptor(ImageDescriptor.createFromURL(imagePathInString));
         setTomlConfig(tomlConfig);
         this.serverConfigPath = serverConfigPath;

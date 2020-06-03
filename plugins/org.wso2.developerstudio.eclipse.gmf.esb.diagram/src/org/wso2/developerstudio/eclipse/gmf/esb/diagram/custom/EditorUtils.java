@@ -148,6 +148,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbPaletteFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.CloudConnectorOperationImpl;
 import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 
 public class EditorUtils {
 
@@ -884,6 +885,8 @@ public class EditorUtils {
                         esbPaletteFactory.updateToolPaletteItems(((EsbMultiPageEditor) editor).getGraphicalEditor());
                     }
                 }
+                // Update Cloud Connector UI model 
+                EEFPropertyViewUtil.loadConnectorSchemas();
             }
         });
     }

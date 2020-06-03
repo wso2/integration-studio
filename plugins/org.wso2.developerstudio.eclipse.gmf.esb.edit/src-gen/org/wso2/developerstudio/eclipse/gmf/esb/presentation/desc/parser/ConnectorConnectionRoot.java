@@ -17,8 +17,14 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser;
 
-public enum Connection
-{ 
-    IMAP, POP3, SMTP; 
-} 
+public class ConnectorConnectionRoot extends ConnectorRoot {
+    private String connectionName;
 
+    public String getConnectionName() {
+        return connectionName;
+    }
+
+    public void setConnectionName(String connectorName) {
+        this.connectionName = connectorName;
+    }
+}

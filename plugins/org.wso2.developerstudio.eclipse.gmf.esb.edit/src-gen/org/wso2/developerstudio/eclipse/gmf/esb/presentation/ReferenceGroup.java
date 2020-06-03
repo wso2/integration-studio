@@ -34,7 +34,6 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloudConnectorOperation;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValue;
-import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.Connection;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorDescriptorParser;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorRoot;
 
@@ -67,7 +66,7 @@ public class ReferenceGroup extends ReferencesTable {
     @Override
     public void createControls(Composite parent) {
         
-        ConnectorRoot connectorRoot = ConnectorSchemaHolder.getInstance().getConnectorSchema(getSchemaName());
+        ConnectorRoot connectorRoot = ConnectorSchemaHolder.getInstance().getConnectorOperationSchema(getSchemaName());
         propertyRenderer.generate(widgetFactory, parent.getParent(), connectorRoot);
         
     }

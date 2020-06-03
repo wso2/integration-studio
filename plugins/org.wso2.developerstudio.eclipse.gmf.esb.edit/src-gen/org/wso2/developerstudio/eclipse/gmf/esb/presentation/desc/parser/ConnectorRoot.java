@@ -19,12 +19,10 @@ package org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser;
 
 import java.util.ArrayList;
 
-public class ConnectorRoot {
+public abstract class ConnectorRoot {
 
     private String connectorName;
-    private String connectionName;
-    private String operationName;
-    private String displayName;
+    private String title;
     private String help;
     private ArrayList<Element> elements;
 
@@ -33,28 +31,12 @@ public class ConnectorRoot {
         setElements(new ArrayList<Element>());
     }
 
-    public String getConnectorName() {
-        return connectorName;
+    public String getTitle() {
+        return title;
     }
 
-    public void setConnectorName(String connectorName) {
-        this.connectorName = connectorName;
-    }
-
-    public String getConnectionName() {
-        return connectionName;
-    }
-
-    public void setConnectionName(String connectionName) {
-        this.connectionName = connectionName;
-    }
-
-    public String getDisplayName() {
-        return displayName;
-    }
-
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
+    public void setTitle(String displayName) {
+        this.title = displayName;
     }
 
     public String getHelp() {
@@ -81,12 +63,12 @@ public class ConnectorRoot {
         this.elements.add(element);
     }
 
-    public String getOperationName() {
-        return operationName;
+    public String getConnectorName() {
+        return connectorName;
     }
 
-    public void setOperationName(String operationName) {
-        this.operationName = operationName;
+    public void setConnectorName(String connectorName) {
+        this.connectorName = connectorName;
     }
 
 }

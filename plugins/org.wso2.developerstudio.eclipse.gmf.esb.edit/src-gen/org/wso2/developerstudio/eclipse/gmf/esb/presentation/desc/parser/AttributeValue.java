@@ -28,7 +28,7 @@ public class AttributeValue extends Value {
     String defaultValue;
     boolean required;
     String helpTip;
-    List<Connection> allowedConnectionTypes;
+    List<String> allowedConnectionTypes;
     String validation;
     String defaultType; //????
     //String default; ????
@@ -90,16 +90,16 @@ public class AttributeValue extends Value {
         this.helpTip = helpTip;
     }
     
-    public List<Connection> getAllowedConnectionTypes() {
+    public List<String> getAllowedConnectionTypes() {
         return allowedConnectionTypes;
     }
 
-    public void setAllowedConnectionTypes(List<Connection> allowedConnectionTypes) {
+    public void setAllowedConnectionTypes(List<String> allowedConnectionTypes) {
         this.allowedConnectionTypes = allowedConnectionTypes;
     }
     
-    public void addAllowedConnectionTypes(Connection allowedConnectionTypes) {
-        this.allowedConnectionTypes.add(allowedConnectionTypes);
+    public void addAllowedConnectionType(String allowedConnectionType) {
+        this.allowedConnectionTypes.add(allowedConnectionType);
     }
     
     public List<String> getComboValues() {

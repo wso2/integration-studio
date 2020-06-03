@@ -28,30 +28,30 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValue;
-import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorRoot;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorConnectionRoot;
 
 public class ConnectionParameterWizardPage extends WizardPage {
     private static final String DIALOG_TITLE = " Connector Connection Configurations";
     private static final String DIALOG_DESCRIPTION = "Configure your connector connection configurations";
 
     protected ReferenceGroup connectionParameters;
-    private ConnectorRoot root;
+    private ConnectorConnectionRoot root;
     private HashMap<String, Control> elements;
     private Map<String, String> updateConfigMap;
     private AttributeValue allowedConnectionTypes;
     private FormToolkit widgetFactory;
 
-    protected ConnectionParameterWizardPage(FormToolkit widgetFactory, ConnectorRoot root,
+    protected ConnectionParameterWizardPage(FormToolkit widgetFactory, ConnectorConnectionRoot root,
             AttributeValue allowedConnectionTypes) {
-        super(StringUtils.capitalize(root.getConnectorName()) + DIALOG_TITLE);
-        setTitle(StringUtils.capitalize(root.getConnectorName()) + DIALOG_TITLE);
+        super(StringUtils.capitalize(root.getConnectionName()) + DIALOG_TITLE);
+        setTitle(StringUtils.capitalize(root.getConnectionName()) + DIALOG_TITLE);
         setDescription(DIALOG_DESCRIPTION);
         this.widgetFactory = widgetFactory;
         this.root = root;
         this.allowedConnectionTypes = allowedConnectionTypes;
     }
 
-    protected ConnectionParameterWizardPage(FormToolkit widgetFactory, ConnectorRoot root,
+    protected ConnectionParameterWizardPage(FormToolkit widgetFactory, ConnectorConnectionRoot root,
             Map<String, String> updateConfigMap, AttributeValue allowedConnectionTypes) {
         super(DIALOG_TITLE);
         setTitle(DIALOG_TITLE);

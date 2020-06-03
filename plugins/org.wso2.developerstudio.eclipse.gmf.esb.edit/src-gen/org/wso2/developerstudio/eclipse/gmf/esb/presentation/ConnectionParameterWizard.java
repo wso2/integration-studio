@@ -59,6 +59,7 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValue;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorConnectionRoot;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorRoot;
 
 public class ConnectionParameterWizard extends Wizard implements IExportWizard {
@@ -70,7 +71,7 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
     private String connectorName;
     private String connectionNameFromLocalEntry;
     private Map<String, String> updateComponentWidgets = new HashMap<>();
-    private ConnectorRoot connectorRoot;
+    private ConnectorConnectionRoot connectorRoot;
     private Control valueExpressionCombo;
     private AttributeValue allowedConnectionTypes;
     private FormToolkit widgetFactory;
@@ -96,7 +97,7 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
     @Override
     public void init(IWorkbench workbench, IStructuredSelection selection) {
         try {
-            connectorRoot = ConnectorSchemaHolder.getInstance().getConnectorSchema(connectorName + "-connection");
+            connectorRoot = ConnectorSchemaHolder.getInstance().getConnectorConnectionSchema(connectorName + "-connection");
 
             if (connectionNameFromLocalEntry != null) {
                 IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();

@@ -242,7 +242,7 @@ public class CloudConnectorOperationPropertiesEditionComponent extends SinglePar
 
 		if (EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters == event.getAffectedEditor()) {
 		      String schemaName = cloudConnectorOperation.getConnectorName().split("connector")[0] + "-" + cloudConnectorOperation.getOperationName();
-		      if(ConnectorSchemaHolder.getInstance().hasConnectorSchema(schemaName)) {
+		      if(ConnectorSchemaHolder.getInstance().hasConnectorOperationSchema(schemaName)) {
 		          EList connectorParams = cloudConnectorOperation.getConnectorParameters();
 	              int index = connectorParams.indexOf(event.getOldValue());
 	              CallTemplateParameter ctpi = (CallTemplateParameter)connectorParams.get(index);

@@ -65,8 +65,8 @@
             	commandId="org.wso2.developerstudio.eclipse.platform.ui.commands.openfeedbackviewer"
                 icon="icons/feedback.png"
                 id="org.wso2.developerstudio.eclipse.platform.ui.toolbars.openfeedbackviewer"
-                label="Share Feedback"
-                tooltip="Share your ideas, suggestions or issues about Integration Studio">
+                label="Report an issue"
+                tooltip="Share your issues, suggestions or ideas about Integration Studio">
 			</command>
     	</menuContribution>
     </extension>

@@ -41,3 +41,4 @@ Import-Package: org.eclipse.core.expressions,
  org.wso2.developerstudio.eclipse.utils.file;version="[4.1.0,8.0.0)",
  org.wso2.developerstudio.eclipse.utils.project;version="[4.1.0,8.0.0)",
  org.wso2.developerstudio.eclipse.utils.ui
+Export-Package: org.wso2.developerstudio.eclipse.maven.multi.module.handlers

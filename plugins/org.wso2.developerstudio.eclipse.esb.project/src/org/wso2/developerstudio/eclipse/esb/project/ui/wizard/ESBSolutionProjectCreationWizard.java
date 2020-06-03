@@ -133,6 +133,7 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 				mmmModel.setSelectedWorkingSets(esbSolutionProjectModel.getSelectedWorkingSets());
 				mmmWizard.performFinish();
 				projectRootPath = projectRootPath + File.separator + mmmProjectName;
+				pomFile = mmmWizard.getPomFile();
 			} catch (ObserverFailedException e) {
 				log.error("Failed to set project name : " + mmmProjectName, e);
 			}
@@ -153,7 +154,9 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 			}
 			esbProjectWizard.setModel(esbSolutionProjectModel);
 			esbProjectWizard.performFinish();
-			pomFile = esbProjectWizard.getPomFile();
+			if (!isMMMChecked) {
+				pomFile = esbProjectWizard.getPomFile();
+			}
 		}
 		
 		// Creating Registry Project
@@ -272,8 +275,7 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 				distributionModel.setProjectName(distributionProjectName);
 				distributionModel.setLocation(new File(projectRootPath + File.separator + distributionProjectName));
 				distributionModel.setIsUserDefine(esbSolutionProjectModel.isUserSet());
-				distributionModel.setLocation(esbSolutionProjectModel.getLocation());
-				updateMavenInformation(pomFile,CAPP_ARTIFACT_ID);
+				updateMavenInformation(pomFile, CAPP_ARTIFACT_ID);
 				distributionModel.setGroupId(esbSolutionProjectModel.getGroupId());
 				distributionModel.setMavenInfo(esbSolutionProjectModel.getMavenInfo());
 				distributionModel.setSelectedOption(esbSolutionProjectModel.getSelectedOption());
@@ -305,7 +307,7 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 	private void updateMavenInformation(File pomLocation, String name) {
 		MavenProject mavenProject = getMavenProject(pomLocation);
 		esbSolutionProjectModel.getMavenInfo().setGroupId(mavenProject.getGroupId());
-		esbSolutionProjectModel.getMavenInfo().setArtifactId(mavenProject.getArtifactId()+name);
+		esbSolutionProjectModel.getMavenInfo().setArtifactId(mavenProject.getArtifactId() + name);
 		esbSolutionProjectModel.getMavenInfo().setVersion(mavenProject.getVersion());
 	}
 

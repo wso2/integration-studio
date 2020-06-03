@@ -52,6 +52,7 @@ public class DockerProjectConstants extends NLS {
     public static String RESOURCES_FOLDER;
     public static String CARBON_HOME_FOLDER;
     public static String CARBON_APP_FOLDER_LOCATION;
+    public static String SECURITY_RESOURCES_FOLDER_LOCATION;
     public static String LIBS_FOLDER_LOCATION;
     public static String CONF_FOLDER_LOCATION;
 
@@ -68,6 +69,10 @@ public class DockerProjectConstants extends NLS {
     public static final String DOCKER_REPOSITORY = "repository";
     public static final String DOCKER_TAG = "tag";
     public static final String REPOSITORY_SEPERATOR = "/";
+    
+    public static final String DEFAULT_KEY_STORE_FILE = "wso2carbon.jks";
+    public static final String DEFAULT_TRUEST_STORE_FILE = "client-truststore.jks";
+    public static final String DEFAULT_KEY_STORE_ALIAS_PASSWORD = "wso2carbon";
 
     public static final String UNIX_DEFAULT_DOCKER_HOST = "unix:///var/run/docker.sock";
     public static final String WINDOWS_DEFAULT_DOCKER_HOST = "tcp://localhost:2375";

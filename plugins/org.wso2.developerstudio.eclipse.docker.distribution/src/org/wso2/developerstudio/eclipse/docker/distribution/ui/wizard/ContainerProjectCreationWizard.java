@@ -27,8 +27,10 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
 
@@ -88,6 +90,13 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
     private static final String POM_FILE = "pom.xml";
     private IProject project;
     private DockerModel dockerModel;
+    
+    private static final String TOOLING_PATH_MAC = "/Applications/IntegrationStudio.app/Contents/Eclipse";
+    private static final String EMPTY_STRING = "";
+    private static final String MI_FOLDER = "runtime" + File.separator + "microesb";
+    
+    private static final String MI_SECURITY_DIR = getMicroIntegratorPath() + File.separator + "repository"
+            + File.separator + "resources" + File.separator + "security";
 
     public ContainerProjectCreationWizard() {
         this.dockerModel = new DockerModel();
@@ -112,6 +121,7 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
     private void copyDockerFile() throws IOException {
         IFile dockerFile = project.getFile(DockerProjectConstants.DOCKER_FILE_NAME);
         File newFile = new File(dockerFile.getLocationURI().getPath());
+        
         if (!newFile.exists()) {
             // Creating the new docker file
             StringBuilder stringBuilder = new StringBuilder();
@@ -120,6 +130,16 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
             stringBuilder.append(System.lineSeparator());
             stringBuilder.append("COPY " + DockerProjectConstants.CARBON_APP_FOLDER + "/*.car "
                     + DockerProjectConstants.CARBON_APP_FOLDER_LOCATION);
+            stringBuilder.append(System.lineSeparator());
+            stringBuilder.append("COPY " + DockerProjectConstants.RESOURCES_FOLDER + "/"
+                    + DockerProjectConstants.DEFAULT_KEY_STORE_FILE + " "
+                    + DockerProjectConstants.SECURITY_RESOURCES_FOLDER_LOCATION
+                    + DockerProjectConstants.DEFAULT_KEY_STORE_FILE);
+            stringBuilder.append(System.lineSeparator());
+            stringBuilder.append("COPY " + DockerProjectConstants.RESOURCES_FOLDER + "/"
+                    + DockerProjectConstants.DEFAULT_TRUEST_STORE_FILE + " "
+                    + DockerProjectConstants.SECURITY_RESOURCES_FOLDER_LOCATION
+                    + DockerProjectConstants.DEFAULT_TRUEST_STORE_FILE);
             stringBuilder.append(System.lineSeparator());
             stringBuilder.append("#COPY " + DockerProjectConstants.LIBS_FOLDER + "/*.jar "
                     + DockerProjectConstants.LIBS_FOLDER_LOCATION);
@@ -272,6 +292,19 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
             // Copy deployment.toml file
             copyDeploymentTomlFile();
             
+            // Copy default jks files to Resources directory
+            IFolder resourcesFolder = ProjectUtils.getWorkspaceFolder(project, DockerProjectConstants.RESOURCES_FOLDER);
+            if (resourcesFolder.exists()) {
+                org.apache.commons.io.FileUtils.copyFile(
+                        new File(MI_SECURITY_DIR + File.separator + DockerProjectConstants.DEFAULT_KEY_STORE_FILE),
+                        new File(resourcesFolder.getRawLocation().toOSString() + File.separator
+                                + DockerProjectConstants.DEFAULT_KEY_STORE_FILE));
+                org.apache.commons.io.FileUtils.copyFile(
+                        new File(MI_SECURITY_DIR + File.separator + DockerProjectConstants.DEFAULT_TRUEST_STORE_FILE),
+                        new File(resourcesFolder.getRawLocation().toOSString() + File.separator
+                                + DockerProjectConstants.DEFAULT_TRUEST_STORE_FILE));
+            }
+            
             File pomfile = project.getFile(POM_FILE).getLocation().toFile();
             createPOM(pomfile);
             
@@ -325,10 +358,17 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
             
             // Add deployment.toml execution plugin
             Plugin deploymentTomlPlugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven",
-                    "mi-container-config-mapper", "5.2.19", true);
+                    "mi-container-config-mapper", "5.2.25", true);
             PluginExecution deploymentTomlPluginExecution = new PluginExecution();
             deploymentTomlPluginExecution.addGoal("config-mapper-parser");
             deploymentTomlPluginExecution.setId("config-mapper-parser");
+            
+            //add default secure-vault properties
+            mavenProject.getProperties().put("keystore.name", DockerProjectConstants.DEFAULT_KEY_STORE_FILE);
+            mavenProject.getProperties().put("keystore.password",
+                    DockerProjectConstants.DEFAULT_KEY_STORE_ALIAS_PASSWORD);
+            mavenProject.getProperties().put("keystore.type", "JKS");
+            mavenProject.getProperties().put("keystore.alias", DockerProjectConstants.DEFAULT_KEY_STORE_ALIAS_PASSWORD);
             
             // Check base image contains deployment.toml and apply config-map plugin and other resources
             if (dockerModel.isDeploymentTomlEnabled()) {
@@ -336,8 +376,14 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
             } else {
             	deploymentTomlPluginExecution.setPhase("none");  
             }
-            String deploymentTomlPluginConfig = "<configuration>\n" + "                <miVersion>"
-                    + PlatformUIConstants.DOCKER_DEFAULT_BASE_TAG + "</miVersion>\n" + "            </configuration>";
+            String deploymentTomlPluginConfig = "<configuration>\n" + ""
+                    + "                <miVersion>" + PlatformUIConstants.DOCKER_DEFAULT_BASE_TAG + "</miVersion>\n" 
+                    + "                <keystoreName>${keystore.name}</keystoreName>\n" 
+                    + "                <keystoreAlias>${keystore.alias}</keystoreAlias>\n" 
+                    + "                <keystoreType>${keystore.type}</keystoreType>\n" 
+                    + "                <keystorePassword>${keystore.password}</keystorePassword>\n" 
+                    + "                <projectLocation>${project.basedir}</projectLocation>\n" 
+                    + "            </configuration>";
             Xpp3Dom tomlDom = Xpp3DomBuilder.build(new ByteArrayInputStream(deploymentTomlPluginConfig.getBytes()),
                     "UTF-8");
             deploymentTomlPluginExecution.setConfiguration(tomlDom);
@@ -582,6 +628,31 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
             }
         });
 
+    }
+
+    /**
+     * Method of getting MI path based on the OS type.
+     * 
+     * @return MI path
+     */
+    private static String getMicroIntegratorPath() {
+        String OS = System.getProperty("os.name", "generic").toLowerCase(Locale.ENGLISH);
+        String microInteratorPath;
+
+        if ((OS.indexOf("mac") >= 0) || (OS.indexOf("darwin") >= 0)) {
+            // check if EI Tooling is in Application folder for MAC
+            File macOSEIToolingAppFile = new File(TOOLING_PATH_MAC);
+            if (macOSEIToolingAppFile.exists()) {
+                microInteratorPath = TOOLING_PATH_MAC + File.separator + MI_FOLDER;
+            } else {
+                java.nio.file.Path path = Paths.get(EMPTY_STRING);
+                microInteratorPath = (path).toAbsolutePath().toString() + File.separator + MI_FOLDER;
+            }
+        } else {
+            java.nio.file.Path path = Paths.get(EMPTY_STRING);
+            microInteratorPath = (path).toAbsolutePath().toString() + File.separator + MI_FOLDER;
+        }
+        return microInteratorPath;
     }
 
 }

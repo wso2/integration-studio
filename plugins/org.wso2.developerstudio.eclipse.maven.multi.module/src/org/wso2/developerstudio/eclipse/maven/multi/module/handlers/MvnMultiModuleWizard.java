@@ -188,19 +188,21 @@ public class MvnMultiModuleWizard extends AbstractWSO2ProjectCreationWizard {
             }
         }
 
-        getShell().getDisplay().asyncExec(new Runnable() {
-            @Override
-            public void run() {
-                IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-                if (!ESB_GRAPHICAL_PERSPECTIVE.equals(window.getActivePage().getPerspective().getId())) {
-                    try {
-                        PlatformUI.getWorkbench().showPerspective(ESB_GRAPHICAL_PERSPECTIVE, window);
-                    } catch (Exception e) {
-                        log.error("Cannot switch to ESB Graphical Perspective", e);
+        if (getShell() != null) {
+            getShell().getDisplay().asyncExec(new Runnable() {
+                @Override
+                public void run() {
+                    IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+                    if (!ESB_GRAPHICAL_PERSPECTIVE.equals(window.getActivePage().getPerspective().getId())) {
+                        try {
+                            PlatformUI.getWorkbench().showPerspective(ESB_GRAPHICAL_PERSPECTIVE, window);
+                        } catch (Exception e) {
+                            log.error("Cannot switch to ESB Graphical Perspective", e);
+                        }
                     }
                 }
-            }
-        });
+            });
+        }
 
         return true;
     }
@@ -316,4 +318,7 @@ public class MvnMultiModuleWizard extends AbstractWSO2ProjectCreationWizard {
         return multiModuleProject;
     }
 
+    public MvnMultiModuleModel getMvnMultiModuleModel() {
+        return this.moduleModel;
+    }
 }

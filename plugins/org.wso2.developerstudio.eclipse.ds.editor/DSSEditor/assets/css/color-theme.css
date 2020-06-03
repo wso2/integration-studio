@@ -1,13 +1,16 @@
+body {
+	padding: 10px 20px;
+}
+
 .header {
-    padding: 15px;
-    text-align: center;
-    background: #607D8B;
-    color: white;
-    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
+    padding: 15px 0;
+    text-align: left;
+    color: #607D8B;
+    font-weight: 300;
 }
 
 body {
-    background: #fcfcfc;
+    background: #F6F7F9;
 }
 
 thead {
@@ -16,36 +19,21 @@ thead {
 }
 
 .collapse-custom .btn-collapse-header {
-    background-color: #757575 !important;
-    color: white !important;
-    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
+    background-color: #fff !important;
+    color: #607D8B !important;
 }
 
-.collapse-custom .collapse {
-    border: 2px solid #757575 !important;
-    border-top-color: transparent !important;
-}
-
-.inputgroup {
-    background: #fcfcfc !important;
-}
-
-.collapse {
-    background-color: #eceff1 !important;
+.collapse-custom > div {
+    border: 0;
 }
 
 #q-add-edit-query-section {
-    background-color: #eceff1 !important;
+    background-color: #fff !important;
     border: 3px solid #757575 !important;
 }
 
 #q-addedit-title {
-    background-color: #EEEEEE !important;
     padding: 5px;
-}
-
-.collapse .inputgroup input,  .collapse .field {
-    background-color: #eceff1 !important;
 }
 
 tbody tr:nth-child(odd) {
@@ -57,11 +45,15 @@ tbody tr:nth-child(even) {
 }
 
 .modal-header {
-    background-color: #EEEEEE;
+    border: 0;
+}
+
+.modal-header h4 {
+	font-weight: 300;
 }
 
 .modal-footer {
-    background-color: #EEEEEE;
+    border: 0;
 }
 
 .tlypageguide-open #tlyPageGuideWrapper .tlypageguide_toggle.tlyPageGuideToggleActive {
@@ -94,4 +86,55 @@ tbody tr:nth-child(even) {
 
 #tlyPageGuideWrapper #tlyPageGuideMessages .tlypageguide_close {
     background: rgba(211,47,47,1);
+}
+.content-wrapper {
+	background: #fff;
+	padding: 20px;
+	margin-bottom: 50px;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
+}
+
+.collapse-custom {
+	background-color: #fff !important;
+    color: #607D8B !important;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
+    padding: .7rem;
+}
+.collapse-custom .btn-primary:not(:disabled):not(.disabled).active:focus, .collapse-custom .btn-primary:not(:disabled):not(.disabled):active:focus, .collapse-custom .show>.btn-primary.dropdown-toggle:focus, .btn-primary.focus, .btn-primary:focus {
+	box-shadow: none;
+}
+
+.collapse-custom a:before {
+  font-family: 'FontAwesome';
+  float: right;
+  transition: all 0.5s;
+}
+
+.collapse-custom a[aria-expanded="true"]:before {
+  content:"\f106";
+}
+
+.collapse-custom a[aria-expanded="false"]:before {
+  content:"\f107";
+}
+
+.collapse-custom.active a:before {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+h3 {
+	font-size: 16px;
+	font-weight: 500;
+	color: #607D8B;
+	margin: 15px 0;
+}
+
+.inputgroup {
+	margin: 10px 0;
+}
+
+.sub-section {
+	margin-top: 50px;
 }

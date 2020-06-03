@@ -71,11 +71,13 @@ input:placeholder-shown + label {
   text-overflow: ellipsis;
   transform-origin: left bottom;
   transform: translate(0, 1.5rem) scale(1);
+  font-weight: 500;
 }
 
 input:not(:placeholder-shown) + label, input:focus + label {
   transform: translate(0, 0) scale(1);
   cursor: pointer;
+  font-weight: 500;
 }
 
 label {
@@ -87,6 +89,7 @@ label {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: clip;
+  color: #495057;
 }
 
 input:invalid {

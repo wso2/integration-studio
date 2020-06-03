@@ -3,13 +3,12 @@
   text-align: left;
   background-color: #eaeaea;
   color: #000;
-  font-weight: bold;
+  font-weight: 500;
   border: none;
 }
 
-.collapse-custom .collapse {
+.collapse-custom > div {
   padding: 20px;
-  border: 2px solid #E0E0E0;
 }
 
 .collapse-custom {
@@ -139,6 +138,5 @@
 #q-input-mapping-generate-btn {
   margin-right: 7px;
 }
-
 
 

@@ -26,6 +26,7 @@ import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.stream.FactoryConfigurationError;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
@@ -146,10 +147,15 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
                         + File.separator;
                 serializeConnector(generatedElements, localEntryPath);
                 currentProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+                EEFPropertyViewUtil.updateArtifact(generatedElements, currentProject);
                 return true;
             }
         } catch (CoreException e) {
-            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (FactoryConfigurationError e) {
+             e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return false;
     }

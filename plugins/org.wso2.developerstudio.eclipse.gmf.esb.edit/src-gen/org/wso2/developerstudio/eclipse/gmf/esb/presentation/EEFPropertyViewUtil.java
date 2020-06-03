@@ -10,10 +10,18 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 
 import org.codehaus.jettison.json.JSONException;
+import javax.xml.stream.FactoryConfigurationError;
+
+import org.apache.maven.model.Plugin;
+import org.apache.maven.model.PluginExecution;
+import org.apache.maven.project.MavenProject;
+import org.codehaus.plexus.util.xml.Xpp3Dom;
+import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
@@ -22,6 +30,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -32,6 +41,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
@@ -49,6 +59,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.Connect
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorOperationRoot;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.eclipse.swt.layout.GridLayout;
 
 public class EEFPropertyViewUtil {
@@ -61,6 +72,10 @@ public class EEFPropertyViewUtil {
     private static final String AVAILABLE_TEMPLATE_LIST_DEFAULT_VALUE = "Select From Templates";
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     public static final String PLUGIN_ID = "org.wso2.developerstudio.eclipse.gmf.esb.edit";
+    public static final String WSO2_ESB_LOCAL_ENTRY_VERSION="2.1.0";
+    private static final String LOCAL_ENTRY_LOCATION = File.separator + "src" + File.separator + "main" + File.separator
+            + "synapse-config" + File.separator + "local-entries";
+    private static final String XML_EXTENSION = ".xml";
 
     static {
         URL url;
@@ -417,5 +432,52 @@ public class EEFPropertyViewUtil {
             }
         }
         return localEntriesDir;
+    }
+
+    public static void updateArtifact(HashMap<String, Control> generatedElements, IProject currentProject) throws FactoryConfigurationError, Exception {
+        Text connectionNameText = (Text)generatedElements.get("connectionName");
+        String localEntryName =  connectionNameText.getText();
+        MavenProject mvp = EEFPropertyViewUtil.updatePom(currentProject);
+        ESBProjectArtifact esbProjectArtifact = new ESBProjectArtifact();
+        esbProjectArtifact.fromFile(currentProject.getFile("artifact.xml").getLocation().toFile());
+        ESBArtifact artifact = new ESBArtifact();
+        artifact.setName(localEntryName);
+        artifact.setVersion(mvp.getVersion());
+        artifact.setType("synapse/local-entry");
+        artifact.setServerRole("EnterpriseServiceBus");
+        artifact.setGroupId(mvp.getGroupId());
+        artifact.setFile(LOCAL_ENTRY_LOCATION
+                + File.separator + localEntryName + XML_EXTENSION);
+        esbProjectArtifact.addESBArtifact(artifact);
+        esbProjectArtifact.toFile();
+        currentProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+    }
+
+    public static MavenProject updatePom(IProject esbProject) throws IOException, XmlPullParserException {
+        File mavenProjectPomLocation = esbProject.getFile("pom.xml").getLocation().toFile();
+        MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
+        String version = mavenProject.getVersion();
+
+        // Skip changing the pom file if group ID and artifact ID are matched
+        if (MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-localentry-plugin")) {
+            return mavenProject;
+        }
+
+        Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-localentry-plugin",
+                WSO2_ESB_LOCAL_ENTRY_VERSION, true);
+        PluginExecution pluginExecution = new PluginExecution();
+        pluginExecution.addGoal("pom-gen");
+        pluginExecution.setPhase("process-resources");
+        pluginExecution.setId("localentry");
+
+        Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
+        Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, "artifactLocation");
+        artifactLocationNode.setValue(".");
+        Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
+        typeListNode.setValue("${artifact.types}");
+        pluginExecution.setConfiguration(configurationNode);
+        plugin.addExecution(pluginExecution);
+        MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
+        return mavenProject;
     }
 }

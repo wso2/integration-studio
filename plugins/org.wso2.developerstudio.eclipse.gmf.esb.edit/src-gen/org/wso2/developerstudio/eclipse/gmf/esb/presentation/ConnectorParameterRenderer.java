@@ -21,9 +21,11 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.regex.Pattern;
 
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -72,6 +74,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.Attribu
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorRoot;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.Element;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public class ConnectorParameterRenderer extends PropertyParameterRenderer {
     
@@ -81,6 +85,7 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
     IPropertiesEditionComponent propertiesEditionComponent;
     SectionPropertiesEditingPart partForm;
     PropertiesWidgetProvider widgetProvider;
+    private static IDeveloperStudioLog log = Logger.getLog(EEFPropertyViewUtil.PLUGIN_ID);
     
     public ConnectorParameterRenderer(IPropertiesEditionComponent propertiesEditionComponent, SectionPropertiesEditingPart partForm) {
         this.propertiesEditionComponent = propertiesEditionComponent;
@@ -93,10 +98,9 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
     
     @Override
     public Composite generate(FormToolkit widgetFactory, Composite parent, ConnectorRoot connectorRoot) {
-        //parent.setBackgroundMode(SWT.INHERIT_FORCE);
-
+        //Create main group
         Group generalGroup = widgetProvider.createGroup(parent, "General");
-//      
+        //Iterate over the ui schema
         for(Element elem: connectorRoot.getElements()) {
             recursive(elem, parent, generalGroup, widgetFactory, 0);
         }       
@@ -148,7 +152,17 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
 
   //mock values
     public String[] getConnectionEntriesList () {
-        return new String[] {"SMTP", "POP3", "IMAP"};
+        ArrayList<String> availableConnections = null;
+        try {
+            availableConnections = EEFPropertyViewUtil.getAvailableConnectionEntriesList();
+        } catch (CoreException e) {
+            e.printStackTrace();
+        }
+        if(availableConnections == null || availableConnections.isEmpty()) {
+            return new String[] {"SMTP", "POP3", "IMAP"};
+        } else {
+            return availableConnections.toArray(new String[] {});
+        }
     }
     
     
@@ -159,7 +173,7 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
     public void fillData(EObject dataObject) {
         EList<CallTemplateParameter> parameterList = ((CloudConnectorOperation)dataObject).getConnectorParameters();
 
-        //Not parameters
+        ///Not parameters
         String configRefValue = ((CloudConnectorOperation)dataObject).getConfigRef();
         Combo configRefCombo = (Combo)controlList.get("configRef");
         if(configRefCombo != null && configRefValue != null) {

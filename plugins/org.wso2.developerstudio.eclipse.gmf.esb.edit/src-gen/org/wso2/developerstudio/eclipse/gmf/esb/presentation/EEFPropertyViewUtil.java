@@ -11,11 +11,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.layout.FormData;
@@ -23,11 +29,17 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.ui.IEditorInput;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IEditorReference;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
+import org.eclipse.ui.part.FileEditorInput;
 import org.osgi.framework.Bundle;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.CloudConnectorOperationImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -39,6 +51,7 @@ public class EEFPropertyViewUtil {
     static Properties properties = null;
     private static final String TYPE_TEMPLATE_SEQ = "synapse/sequenceTemplate";
     private static final String TYPE_TEMPLATE_EPT = "synapse/endpointTemplate";
+    private static final String LOCAL_ENTRIES_DIR_NAME = "local-entries";
     private static final String AVAILABLE_TEMPLATE_LIST_DEFAULT_VALUE = "Select From Templates";
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     public static final String PLUGIN_ID = "org.wso2.developerstudio.eclipse.gmf.esb.edit";
@@ -300,5 +313,49 @@ public class EEFPropertyViewUtil {
         URI resolvedFolderURI = new URI(resolvedFolderURL.getProtocol(), resolvedFolderURL.getPath(), null);
         File resolvedWebAppFolder = new File(resolvedFolderURI);
         return resolvedWebAppFolder.getAbsolutePath();
-    } 
+    }
+
+    public static String generateSchemaName(IPropertiesEditionComponent propertiesEditionComponent) {
+        CloudConnectorOperationImpl connectorObject = (CloudConnectorOperationImpl)propertiesEditionComponent.getEditingContext().getEObject();
+        String schemaName = connectorObject.getConnectorName().split("connector")[0] + "-" + connectorObject.getOperationName();
+        return schemaName;
+    }
+
+    public static ArrayList<String> getAvailableConnectionEntriesList() throws CoreException {
+        ArrayList<String> definedTemplates = new ArrayList<String>();
+        IFolder localEntriesDir = getLocalEntriesDir();
+        for(IResource resource:localEntriesDir.members()) {
+            if (resource instanceof IFile && ((IFile)resource).getFileExtension().equals("xml")) {
+                //((IFile)resource).getContents();
+                definedTemplates.add(((IFile)resource).getName().split(".xml")[0]);
+            }
+        }
+        return definedTemplates;
+    }
+
+    public static IFolder getLocalEntriesDir() {
+        IEditorPart editorPart = null;
+        IFolder localEntriesDir = null;
+        IEditorReference editorReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+                .getEditorReferences();
+        for (int i = 0; i < editorReferences.length; i++) {
+            IEditorPart editor = editorReferences[i].getEditor(false);
+
+            if (editor != null) {
+                editorPart = editor.getSite().getWorkbenchWindow().getActivePage().getActiveEditor();
+            }
+
+            if (editorPart != null) {
+                IEditorInput input =
+                        editorPart == null ? null : editorPart.getEditorInput();
+                IPath path = input instanceof FileEditorInput
+                        ? ((FileEditorInput)input).getPath()
+                        : null;
+                        //Do nature validation
+                //String localEntriesPath = ((FileEditorInput)input).getFile().getParent().getParent().getFolder(new Path(LOCAL_ENTRIES_DIR_NAME)).getLocation().toOSString();
+                localEntriesDir = ((FileEditorInput)input).getFile().getParent().getParent().getFolder(new Path(LOCAL_ENTRIES_DIR_NAME));
+            }
+        }
+        return localEntriesDir;
+    }
 }

@@ -72,8 +72,8 @@ public class ReferenceGroup extends ReferencesTable {
     }
     
     public HashMap<String, Control> createControls(Composite parent, ConnectorRoot root,
-            Map<String, String> updateConfigMap, AttributeValue allowedConnectionTypes) {
-        return connectionRenderer.generate(parent, root, updateConfigMap, allowedConnectionTypes);
+            Map<String, String> updateConfigMap, AttributeValue allowedConnectionTypes, String connectorName) {
+        return connectionRenderer.generate(parent, root, updateConfigMap, allowedConnectionTypes, connectorName);
     }
     
     @Override

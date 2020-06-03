@@ -17,6 +17,7 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.presentation;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,12 +25,15 @@ import java.util.Map;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.custom.CTabItem;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
@@ -47,6 +51,10 @@ public class ConnectionParameterRenderer {
     HashMap<String, Control> requiredList;
     PropertiesWidgetProvider widgetProvider;
     private FormToolkit widgetFactory;
+    private boolean isFirstTime = true;
+    private CTabFolder tabFolder;
+    private Group tabSection;
+    private Map<String, String> connectionTitleTypeMap = new HashMap<>();
 
     public ConnectionParameterRenderer(FormToolkit widgetFactory) {
         this.widgetFactory = widgetFactory;
@@ -57,30 +65,112 @@ public class ConnectionParameterRenderer {
     }
 
     public HashMap<String, Control> generate(Composite parent, ConnectorRoot connectorRoot,
-            Map<String, String> updateConfigMap, AttributeValue allowedConnectionTypes) {
+            Map<String, String> updateConfigMap, AttributeValue allowedConnectionTypes, String connectorName) {
         parent.setBackgroundMode(SWT.INHERIT_FORCE);
 
-        boolean isFirstTime = true;
-        CTabFolder tabFolder = null;
+        //connectionName
         for (Element elem : connectorRoot.getElements()) {
             if (elem.getType().equals("attribute")) {
                 evaluateAttribute((AttributeValue) elem.getValue(), parent, widgetFactory, 0);
+                break;
             }
         }
         
         List<String> connectorConnectionTypes = allowedConnectionTypes.getAllowedConnectionTypes();
-        allowedConnectionTypes.setDisplayName("Connection Type");
         allowedConnectionTypes.setName("connectionType");
         String connectionTypes[] = new String[connectorConnectionTypes.size()]; 
         for (int j = 0; j < connectorConnectionTypes.size(); j++) { 
-            connectionTypes[j] = connectorConnectionTypes.get(j); 
+            ConnectorRoot newConnectorRoot = ConnectorSchemaHolder.getInstance()
+                    .getConnectorConnectionSchema(connectorName + "-" + connectorConnectionTypes.get(j));
+            connectionTypes[j] = newConnectorRoot.getTitle(); 
+            connectionTitleTypeMap.put(newConnectorRoot.getTitle(), connectorConnectionTypes.get(j));
         } 
-        widgetProvider.createDropDownField(widgetFactory, parent, connectionTypes, allowedConnectionTypes);
+        
+        //create dropdown for connection types
+        Composite composite = widgetFactory.createComposite(parent, SWT.NO_BACKGROUND);
+        GridLayout propertiesGroupLayout = new GridLayout();
+        propertiesGroupLayout.numColumns = 2;
+        propertiesGroupLayout.marginLeft = 0;
+        propertiesGroupLayout.horizontalSpacing = 20;
+        propertiesGroupLayout.verticalSpacing = 0;
+        composite.setLayout(propertiesGroupLayout);
+        GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
+        propertiesSectionData.horizontalSpan = 2;
+        composite.setLayoutData(propertiesSectionData);
+        compositeList.put(allowedConnectionTypes.getName(), composite);
+        Label label = new Label(composite, SWT.NO_BACKGROUND);
+        label.setText("Connection Type:");
+        GridData labelRefData = new GridData();
+        labelRefData.widthHint = 120;
+        label.setLayoutData(labelRefData);
+        final Combo configRef = new Combo(composite, SWT.READ_ONLY | SWT.DROP_DOWN);
+        controlList.put(allowedConnectionTypes.getName(), configRef);
+        if(allowedConnectionTypes.getRequired()) {
+            requiredList.put(allowedConnectionTypes.getName(), configRef);
+        }
+        configRef.setItems(connectionTypes);
+        configRef.setData("conenctionTitles", connectionTitleTypeMap);
+        configRef.select(0);
+        GridData configRefData = new GridData(GridData.FILL_HORIZONTAL);
+        configRef.setLayoutData(configRefData);
+        configRef.addSelectionListener(new SelectionAdapter() {
+            public void widgetSelected(SelectionEvent event) {
+                ConnectorRoot newConnectorRoot = ConnectorSchemaHolder.getInstance()
+                        .getConnectorConnectionSchema(connectorName + "-" + connectionTitleTypeMap.get(configRef.getText()));
+                tabFolder.dispose();
+                tabSection.dispose();
+                isFirstTime = true;
+                
+                //remove dispose items from controlList
+                List<String> controlListItems = new ArrayList<>();
+                for (Map.Entry<String, Control> entry : controlList.entrySet()) {
+                    if (!entry.getKey().equals("connectionName") && !entry.getKey().equals("connectionType")) {
+                        controlListItems.add(entry.getKey());
+                    }
+                }
+                for (String item : controlListItems) {
+                    controlList.remove(item);
+                }
+                //render new UI based on dropdown value
+                renderContentOfConenction(newConnectorRoot, parent);
+            }
+        });
 
+        //load rest of the connection components
+        renderContentOfConenction(connectorRoot, parent);
+
+        if (updateConfigMap != null && updateConfigMap.size() > 0) {
+            for (Map.Entry<String, String> entry : updateConfigMap.entrySet()) {
+                if (controlList.containsKey(entry.getKey())) {
+                    Control control = controlList.get(entry.getKey());
+                    if (control instanceof Text) {
+                        if (entry.getKey().equals("connectionName")) {
+                            control.setEnabled(false);
+                        }
+                        ((Text) control).setText(entry.getValue());
+                    } else if (control instanceof Combo) {
+                        if (entry.getKey().equals("connectionType")) {
+                            control.setEnabled(false);
+                        }
+                        for (Map.Entry<String, String> titleItem : connectionTitleTypeMap.entrySet()) {
+                            if (titleItem.getValue().equals(entry.getValue())) {
+                                ((Combo) control).setText(titleItem.getKey());
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        return controlList;
+    }
+    
+    private void renderContentOfConenction(ConnectorRoot connectorRoot, Composite parent) {
         for (Element elem : connectorRoot.getElements()) {
             if (elem.getType().equals("attributeGroup")) {
                 if (isFirstTime) {
-                    Group tabSection = widgetProvider.createGroup(parent, "");
+                    tabSection = widgetProvider.createGroup(parent, "");
                     tabFolder = new CTabFolder(tabSection, SWT.NONE);
                     GridData tableLayoutData = new GridData(GridData.FILL_HORIZONTAL);
                     tabFolder.setLayoutData(tableLayoutData);
@@ -100,22 +190,9 @@ public class ConnectionParameterRenderer {
                 }
             }
         }
-
+        
+        parent.layout();
         tabFolder.setSelection(0);
-
-        if (updateConfigMap != null && updateConfigMap.size() > 0) {
-            for (Map.Entry<String, String> entry : updateConfigMap.entrySet()) {
-                if (controlList.containsKey(entry.getKey())) {
-                    Control control = controlList.get(entry.getKey());
-                    if (control instanceof Text) {
-                        ((Text) control).setText(entry.getValue());
-                    } else if (control instanceof Combo) {
-                        ((Combo) control).setText(entry.getValue());
-                    }
-                }
-            }
-        }
-        return controlList;
     }
 
     public void createDynamicWidgetComponents(Element element, Composite parent) {

@@ -9,12 +9,23 @@
 		<settings optionId="esb.solution" title="Integration Project"
 			description="Create a new Integration project to create all the required projects"
 			error="Please give a name to create the Integration project ">
-			<data modelProperty="project.name" type="string"
+			<data modelProperty="mmm.project.name" type="string"
 				fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBSolutionProjectFieldController">Integration Project Name</data>
 
+			<data modelProperty="mmm.project.choice" type="choice"
+				fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBSolutionProjectFieldController">Wrap children projects with a Maven Multi Module project</data>
+			
 			<group id="location" />
 			<group id="solution.projects.group" title="Selected projects will be created" />
 			
+			<data modelProperty="solution.config.choice" type="choice"
+				fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBSolutionProjectFieldController"
+				group="solution.projects.group">Create ESB Config Project</data>
+			
+			<data modelProperty="project.name" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBSolutionProjectFieldController"
+				group="solution.projects.group">Project Name</data>
+				
 			<data modelProperty="solution.capp.choice" type="choice"
 				fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBSolutionProjectFieldController"
 				group="solution.projects.group">Create Composite Application Project</data>

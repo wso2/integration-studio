@@ -40,7 +40,6 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
-import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.esb.core.utils.SynapseUtils;
 import org.wso2.developerstudio.eclipse.esb.project.Activator;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
@@ -57,7 +56,7 @@ import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 
 public class ESBProjectWizard extends AbstractWSO2ProjectCreationWizard {
-	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private static final String ESB_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.esb.project.nature";
 	private IProject project;
 	private ESBProjectModel esbProjectModel;
@@ -121,7 +120,7 @@ public class ESBProjectWizard extends AbstractWSO2ProjectCreationWizard {
 		            }
 	            }
 			}
-		}catch (Exception e) {
+		} catch (Exception e) {
 			MessageDialog.openError(getShell(), "Error while creating the project",
                     e.getMessage());
 			return false;

@@ -20,7 +20,11 @@ import org.eclipse.osgi.util.NLS;
 
 public final class SolutionProjectArtifactConstants extends NLS {
 	public static final String BUNDLE_NAME = "org.wso2.developerstudio.eclipse.esb.project.utils.constants";
+	
+	public static String MMM_PROJECT_NAME;
+	public static String MMM_PROJECT_CHOICE;
 	public static String ESB_PROJECT_NAME;
+	public static String ESB_PROJECT_CHOICE;
 	public static String REGISTRY_RESOURCES_PROJECT_NAME;
 	public static String CONNECTOR_EXPORTER_PROJECT_NAME;
 	public static String COMPOSITE_APPLICATION_PROJECT_NAME;

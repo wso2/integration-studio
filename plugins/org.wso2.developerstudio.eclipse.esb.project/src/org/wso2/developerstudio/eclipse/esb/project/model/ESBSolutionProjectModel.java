@@ -27,9 +27,37 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
     private String compositeApplicationProjectName;
     private String dockerExporterProjectName;
     private String kubernetesExporterProjectName;
+    private String mmmProjectName;
     private boolean registryProjectChecked = false;
     private boolean connectorExporterProjectChecked = false;
+    private boolean cappProjectChecked = true;
+    private boolean isConfigProjectChecked = true;
+    private boolean isMMMProjectChecked = true;
 
+    public void setMMMProjectName(String projectName) {
+        this.mmmProjectName = projectName;
+    }
+    
+    public String getMMMProjectName() {
+        return this.mmmProjectName;
+    }
+    
+    public void setConfigProjectChecked(boolean isConfigProjectChecked) {
+        this.isConfigProjectChecked = isConfigProjectChecked;
+    }
+    
+    public boolean isConfigProjectChecked() {
+        return this.isConfigProjectChecked;
+    }
+    
+    public void setMMMProjectChecked(boolean isMMMProjectChecked) {
+        this.isMMMProjectChecked = isMMMProjectChecked;
+    }
+    
+    public boolean isMMMProjectChecked() {
+        return this.isMMMProjectChecked;
+    }
+    
     public String getDockerExporterProjectName() {
         return dockerExporterProjectName;
     }
@@ -62,8 +90,6 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
         this.cappProjectChecked = cappProjectChecked;
     }
 
-    private boolean cappProjectChecked = true;
-
     public boolean isRegistryProjectChecked() {
         return registryProjectChecked;
     }
@@ -76,27 +102,33 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
         Object modelPropertyValue = super.getModelPropertyValue(key);
         if (modelPropertyValue == null) {
             if (key.equals(ESB_PROJECT_NAME)) {
-                modelPropertyValue = getEsbProjectName();
+                return getEsbProjectName();
             } else if (key.equals(REGISTRY_RESOURCES_PROJECT_NAME)) {
-                modelPropertyValue = getRegistryProjectName();
+                return getRegistryProjectName();
             } else if (key.equals(CONNECTOR_EXPORTER_PROJECT_NAME)) {
-                modelPropertyValue = getConnectorExporterProjectName();
+                return getConnectorExporterProjectName();
             } else if (key.equals(COMPOSITE_APPLICATION_PROJECT_NAME)) {
-                modelPropertyValue = getCompositeApplicationProjectName();
+                return getCompositeApplicationProjectName();
             } else if (key.equals(DOCKER_EXPORTER_PROJECT_NAME)) {
-                modelPropertyValue = getDockerExporterProjectName();
+                return getDockerExporterProjectName();
             } else if (key.equals(KUBERNETES_EXPORTER_PROJECT_NAME)) {
-                modelPropertyValue = getKubernetesExporterProjectName();
+                return getKubernetesExporterProjectName();
             } else if (key.equals(SolutionProjectArtifactConstants.REGISTRY_PROJECT_CHECKED)) {
-                modelPropertyValue = isRegistryProjectChecked();
+                return isRegistryProjectChecked();
             } else if (key.equals(CONNECTOR_EXPORTER_PROJECT_CHECKED)) {
-                modelPropertyValue = isConnectorExporterProjectChecked();
+                return isConnectorExporterProjectChecked();
             } else if (key.equals(CAPP_PROJECT_CHECKED)) {
-                modelPropertyValue = isCappProjectChecked();
+                return isCappProjectChecked();
             } else if (key.equals(DOCKER_EXPORTER_PROJECT_CHECKED)) {
-                modelPropertyValue = isDockerExporterProjectChecked();
+                return isDockerExporterProjectChecked();
             } else if (key.equals(KUBERNETES_EXPORTER_PROJECT_CHECKED)) {
-                modelPropertyValue = isKubernetesExporterProjectChecked();
+                return isKubernetesExporterProjectChecked();
+            } else if (key.equals(ESB_PROJECT_CHOICE)) {
+                return isConfigProjectChecked();
+            } else if (key.equals(MMM_PROJECT_NAME)) {
+                return getMMMProjectName();
+            } else if (key.equals(MMM_PROJECT_CHOICE)) {
+                return isMMMProjectChecked();
             }
         }
         return modelPropertyValue;
@@ -105,19 +137,41 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
 
     public boolean setModelPropertyValue(String key, Object data) throws ObserverFailedException {
         boolean returnResult = super.setModelPropertyValue(key, data);
-        if (key.equals(ESB_PROJECT_NAME)) {
-            setEsbProjectName(data.toString());
+        if (key.equals(MMM_PROJECT_NAME)) {
+            setMMMProjectName(data.toString());
             if (data.toString() != null && !data.toString().isEmpty()) {
+                if (this.isConfigProjectChecked) {
+                    if (this.isMMMProjectChecked) {
+                        setEsbProjectName(data.toString() + "ConfigProject");
+                    } else {
+                        setEsbProjectName(data.toString());
+                    }
+                }
+                
                 setRegistryProjectName(data.toString() + "Registry");
                 setConnectorExporterProjectName(data.toString() + "ConnectorExporter");
                 setCompositeApplicationProjectName(data.toString() + "CompositeApplication");
                 setDockerExporterProjectName(data.toString() + "DockerExporter");
                 setKubernetesExporterProjectName(data.toString() + "KubernetesExporter");
             } else {
+                setEsbProjectName("");
                 setRegistryProjectName("");
                 setConnectorExporterProjectName("");
                 setCompositeApplicationProjectName("");
+                setDockerExporterProjectName("");
+                setKubernetesExporterProjectName("");
             }
+        } else if (key.equals(ESB_PROJECT_NAME)) {
+            setEsbProjectName(data.toString());
+        } else if (key.equals(ESB_PROJECT_CHOICE)) {
+            setConfigProjectChecked((boolean) data);
+            if (!this.isConfigProjectChecked) {
+                setEsbProjectName("");
+            }
+        } else if (key.equals(MMM_PROJECT_CHOICE)) {
+            setMMMProjectChecked((boolean) data);
+            setEsbProjectName(getMMMProjectName());
+            setConfigProjectChecked(true);
         } else if (key.equals(REGISTRY_RESOURCES_PROJECT_NAME)) {
             setRegistryProjectName(data.toString());
         } else if (key.equals(CONNECTOR_EXPORTER_PROJECT_NAME)) {
@@ -130,16 +184,31 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
             setKubernetesExporterProjectName(data.toString());
         } else if (key.equals(REGISTRY_PROJECT_CHECKED)) {
             setRegistryProjectChecked((boolean) data);
+            if (!this.registryProjectChecked) {
+                setRegistryProjectName("");
+            }
         } else if (key.equals(CONNECTOR_EXPORTER_PROJECT_CHECKED)) {
             setConnectorExporterProjectChecked((boolean) data);
+            if (!this.connectorExporterProjectChecked) {
+                setConnectorExporterProjectName("");
+            }
         } else if (key.equals(CAPP_PROJECT_CHECKED)) {
             setCappProjectChecked((boolean) data);
+            if (!this.cappProjectChecked) {
+                setCompositeApplicationProjectName("");
+            }
         } else if (key.equals(DOCKER_EXPORTER_PROJECT_CHECKED)) {
             setDockerExporterProjectChecked((boolean) data);
             returnResult = (boolean) data;
+            if (!this.isDockerExporterProjectChecked()) {
+                setDockerExporterProjectName("");
+            }
         } else if (key.equals(KUBERNETES_EXPORTER_PROJECT_CHECKED)) {
             setKubernetesExporterProjectChecked((boolean) data);
             returnResult = (boolean) data;
+            if (!this.isKubernetesExporterProjectChecked()) {
+                setKubernetesExporterProjectName("");
+            }
         }
 
         return returnResult;
@@ -176,5 +245,4 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
     public void setCompositeApplicationProjectName(String compositeApplicationProjectName) {
         this.compositeApplicationProjectName = compositeApplicationProjectName;
     }
-
 }

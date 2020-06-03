@@ -7,6 +7,13 @@ $(document).ready(function() {
 
 });
 
+var OUTPUT_ELEMENT_MAPPING_GENERATE_BTN = "#q-output_mapping-gen-btn";
+var INPUT_ELEMENT_MAPPING_GENERATE_BTN = "#q-input-mapping-generate-btn";
+var OUTPUT_ELEMENT_MAPPING_ADD_BTN = "#q-output_mapping-add-btn";
+var SQL_QUERY_INPUT_LABEL = "#sql-query-label";
+var DATA_SOURCE_SELECT = "#q-datasource-select";
+var HIDDEN = "hidden";
+
 /**
  * Populates query parameters upon query id changes.
  */
@@ -72,6 +79,13 @@ $('#q-output_mapping-add-btn').click(function(e) {
 function populateOutputTypeElements() {
 	let outputType = $("#om-outputtype-select").val(); 
 	
+	// Making Add and Generate buttons visible.
+	// Make generate button visible only if data source is not mongoDB.
+	if (!isMongoDB($(DATA_SOURCE_SELECT).val())) {
+		$(OUTPUT_ELEMENT_MAPPING_GENERATE_BTN).prop(HIDDEN, false);
+	}
+	$(OUTPUT_ELEMENT_MAPPING_ADD_BTN).prop(HIDDEN, false);
+	
 	if (outputType == 'xml') {
 		$('#om-grouped-by-element-inputgroup').toggle(true);
 		$('#om-row-name-inputgroup').toggle(true);
@@ -99,6 +113,9 @@ function populateOutputTypeElements() {
 		$('#om-json-inputgroup').toggle(true);
 		$('#q-om-queries-table').toggle(false);
 		
+		// Hiding Add and Generate buttons if output type is JSON.
+		$(OUTPUT_ELEMENT_MAPPING_GENERATE_BTN).prop(HIDDEN, true);
+		$(OUTPUT_ELEMENT_MAPPING_ADD_BTN).prop(HIDDEN, true);
 	}
 }
 
@@ -1166,7 +1183,9 @@ function replaceResultInQuery(resultElement) {
 	if (rslt.length == 1) {
 		query.removeChild(rslt[0]);
 	}
-	if (resultElement != null && resultElement != undefined) {
+	// Add results element only if it has any attribute or child.
+	if (resultElement != null && resultElement != undefined 
+			&& (resultElement.attributes.length > 0 || resultElement.childNodes.length > 0)) {
 		window.queryElement.appendChild(resultElement);
 	}
 	

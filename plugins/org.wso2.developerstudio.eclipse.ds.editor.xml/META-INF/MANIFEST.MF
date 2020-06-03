@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: ABC
+Bundle-Name: Data Service Editor XML
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.ds.editor.xml;singleton:=true
 Bundle-Version: 7.0.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.ds.Activator

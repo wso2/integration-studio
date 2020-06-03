@@ -145,7 +145,10 @@
         </category>
         <category name="Message Mediation Features" id="org.wso2.developerstudio.eclipse.message.mediation.features"
                   parentCategory="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.message.mediation">
-        </category>    
+        </category> 
+        <category name="Containers" id="org.wso2.developerstudio.eclipse.container.exporters"
+                  parentCategory="org.wso2.developerstudio.eclipse.capp.project">
+        </category>   
     </extension>
 
      <extension

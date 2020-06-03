@@ -2,9 +2,11 @@ package org.wso2.developerstudio.eclipse.gmf.esb.presentation;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.regex.Pattern;
 
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
@@ -299,6 +301,13 @@ public class PropertiesWidgetProvider {
                     propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(partForm,
                             EsbViewsRepository.CloudConnectorOperation.Properties.configRef, PropertiesEditionEvent.COMMIT,
                             PropertiesEditionEvent.EDIT, null, configRef.getText()));
+//                    ArrayList<String> availableConnections = null;
+//                    try {
+//                        availableConnections = EEFPropertyViewUtil.getAvailableConnectionEntriesList();
+//                    } catch (CoreException e) {
+//                        e.printStackTrace();
+//                    }
+//                    configRef.setItems(availableConnections.toArray(new String[]{}));
                 }
                 
             }

@@ -96,6 +96,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.presentation.ConnectorSchemaHold
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.ReferenceGroup;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
+
 import javafx.scene.Scene;
 
 // End of user code
@@ -131,6 +134,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
     protected Composite filterConfigSubPropertiesGroup;
     private boolean hasConnectorSchema;
     protected CLabel infoLabel;
+    private static IDeveloperStudioLog log = Logger.getLog(EEFPropertyViewUtil.PLUGIN_ID);
     // End of user code
 
 	/**
@@ -156,9 +160,8 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	 * @generated NOT
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-	    CloudConnectorOperationImpl connectorObject = (CloudConnectorOperationImpl)propertiesEditionComponent.getEditingContext().getEObject();
-	    String schemaName = connectorObject.getConnectorName().split("connector")[0] + "-" + connectorObject.getOperationName();
-	    if(ConnectorSchemaHolder.getInstance().hasConnectorOperationSchema(schemaName)) {
+	    String schemaName = EEFPropertyViewUtil.generateSchemaName(propertiesEditionComponent);
+        if(ConnectorSchemaHolder.getInstance().hasConnectorOperationSchema(schemaName)) {
 	        hasConnectorSchema = true;
 	    } else {
 	        hasConnectorSchema = false;
@@ -251,18 +254,6 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	 * @generated NOT
 	 */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
-	    
-        
-//		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
-//		propertiesSection.setText(EsbMessages.CloudConnectorOperationPropertiesEditionPart_PropertiesGroupLabel);
-//		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
-//		propertiesSectionData.horizontalSpan = 3;
-//		propertiesSection.setLayoutData(propertiesSectionData);
-		
-//		propertiesGroupLayout.numColumns = 3;
-//		propertiesGroupLayout.marginLeft = 15;
-//		propertiesGroupLayout.horizontalSpacing = 20;
-//		propertiesGroupLayout.verticalSpacing = 10;
 	    if(hasConnectorSchema) {
     	    propertiesGroup = new Composite(parent, SWT.NO_BACKGROUND);
             propertiesGroup.setLocation(0, 0);
@@ -285,7 +276,6 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	        propertiesGroup.setLayout(propertiesGroupLayout);
 	        propertiesSection.setClient(propertiesGroup);
 	    }
-		//propertiesSection.setClient(propertiesGroup);
 		return propertiesGroup;
 	}
 
@@ -455,14 +445,11 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
             infoLabel = new CLabel(propertiesGroup, SWT.NONE);
             Image image;
             try {
-                image = new Image(parent.getShell().getDisplay(), EEFPropertyViewUtil.getIconPath("icons/full/obj16/CacheOnHitBranch.gif"));
-                //image = new Image(parent.getShell().getDisplay(), EEFPropertyViewUtil.getIconPath("icons/full/obj16/ModelObjectInvalid.gif"));
-               
+                image = new Image(parent.getShell().getDisplay(), EEFPropertyViewUtil.getIconPath("icons/full/obj16/CacheOnHitBranch.gif"));               
                 infoLabel.setImage(image);
                 infoLabel.setText("There are no errors");
             } catch (URISyntaxException | IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+                log.error("Error initializing properties view message banner", e);
             }
 
 	    } else {

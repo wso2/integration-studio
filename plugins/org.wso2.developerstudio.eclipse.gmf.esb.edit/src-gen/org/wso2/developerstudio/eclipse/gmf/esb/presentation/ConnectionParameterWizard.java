@@ -20,7 +20,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb.presentation;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import javax.xml.namespace.QName;
@@ -60,7 +59,6 @@ import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValue;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorConnectionRoot;
-import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorRoot;
 
 public class ConnectionParameterWizard extends Wizard implements IExportWizard {
 
@@ -75,6 +73,7 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
     private Control valueExpressionCombo;
     private AttributeValue allowedConnectionTypes;
     private FormToolkit widgetFactory;
+    private String updatingConnectionType;
 
     ConnectionParameterWizard(FormToolkit widgetFactory, String connectorName, Control valueExpressionCombo,
             AttributeValue allowedConnectionTypes) {
@@ -97,8 +96,6 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
     @Override
     public void init(IWorkbench workbench, IStructuredSelection selection) {
         try {
-            connectorRoot = ConnectorSchemaHolder.getInstance().getConnectorConnectionSchema(connectorName + "-connection");
-
             if (connectionNameFromLocalEntry != null) {
                 IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
                 IEditorPart activeEditor = activePage.getActiveEditor();
@@ -115,11 +112,15 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
                 String sourceFromLocalEntry = FileUtils.readFileToString(new File(localEntryPath), "UTF-8");
                 deserializeConnector(AXIOMUtil.stringToOM(sourceFromLocalEntry));
 
+                connectorRoot = ConnectorSchemaHolder.getInstance().getConnectorConnectionSchema(
+                        connectorName + "-" + updatingConnectionType);
                 connectionPage = new ConnectionParameterWizardPage(widgetFactory, connectorRoot, updateComponentWidgets,
-                        allowedConnectionTypes);
+                        allowedConnectionTypes, connectorName);
             } else {
+                connectorRoot = ConnectorSchemaHolder.getInstance().getConnectorConnectionSchema(
+                        connectorName + "-" + allowedConnectionTypes.getAllowedConnectionTypes().get(0));
                 connectionPage = new ConnectionParameterWizardPage(widgetFactory, connectorRoot,
-                        allowedConnectionTypes);
+                        allowedConnectionTypes, connectorName);
             }
         } catch (Exception e) {
             // TODO Auto-generated catch block
@@ -189,12 +190,15 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
                         org.w3c.dom.Element configElement = doc.createElement(elementId);
                         connectorRoot.appendChild(configElement);
                         configElement.appendChild(doc.createTextNode(value));
-                    } else {
-                        return;
-                    }
+                    } 
                 } else if (elementControl instanceof Combo) {
                     String value = ((Combo) elementControl).getText();
-                    if (!StringUtils.isEmpty(value)) {
+                    if (elementId.equals("connectionType")) {
+                        Map<String, String> titleMap = (Map)((Combo) elementControl).getData("conenctionTitles");
+                        org.w3c.dom.Element configElement = doc.createElement(elementId);
+                        connectorRoot.appendChild(configElement);
+                        configElement.appendChild(doc.createTextNode(titleMap.get(value)));
+                    } else if (!StringUtils.isEmpty(value)) {
                         org.w3c.dom.Element configElement = doc.createElement(elementId);
                         connectorRoot.appendChild(configElement);
                         configElement.appendChild(doc.createTextNode(value));
@@ -229,6 +233,9 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
         Iterator<?> resourceIterator = localEntryNode.getFirstElement().getChildElements();
         while (resourceIterator.hasNext()) {
             OMElement resource = (OMElement) resourceIterator.next();
+            if (resource.getLocalName().equals("connectionType")) {
+                updatingConnectionType = resource.getText();
+            }
             updateComponentWidgets.put(resource.getLocalName(), resource.getText());
         }
     }

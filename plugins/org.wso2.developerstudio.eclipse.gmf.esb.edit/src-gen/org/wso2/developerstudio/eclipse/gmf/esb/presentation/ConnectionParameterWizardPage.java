@@ -40,19 +40,21 @@ public class ConnectionParameterWizardPage extends WizardPage {
     private Map<String, String> updateConfigMap;
     private AttributeValue allowedConnectionTypes;
     private FormToolkit widgetFactory;
+    private String connectorName;
 
     protected ConnectionParameterWizardPage(FormToolkit widgetFactory, ConnectorConnectionRoot root,
-            AttributeValue allowedConnectionTypes) {
+            AttributeValue allowedConnectionTypes, String connectorName) {
         super(StringUtils.capitalize(root.getConnectionName()) + DIALOG_TITLE);
         setTitle(StringUtils.capitalize(root.getConnectionName()) + DIALOG_TITLE);
         setDescription(DIALOG_DESCRIPTION);
         this.widgetFactory = widgetFactory;
         this.root = root;
         this.allowedConnectionTypes = allowedConnectionTypes;
+        this.connectorName = connectorName;
     }
 
     protected ConnectionParameterWizardPage(FormToolkit widgetFactory, ConnectorConnectionRoot root,
-            Map<String, String> updateConfigMap, AttributeValue allowedConnectionTypes) {
+            Map<String, String> updateConfigMap, AttributeValue allowedConnectionTypes, String connectorName) {
         super(DIALOG_TITLE);
         setTitle(DIALOG_TITLE);
         setDescription(DIALOG_DESCRIPTION);
@@ -60,6 +62,7 @@ public class ConnectionParameterWizardPage extends WizardPage {
         this.root = root;
         this.updateConfigMap = updateConfigMap;
         this.allowedConnectionTypes = allowedConnectionTypes;
+        this.connectorName = connectorName;
     }
 
     @Override
@@ -68,7 +71,7 @@ public class ConnectionParameterWizardPage extends WizardPage {
         GridLayout propertiesGroupLayout = new GridLayout();
         composite.setLayout(propertiesGroupLayout);
         this.connectionParameters = new ReferenceGroup(new ConnectionParameterRenderer(widgetFactory));
-        elements = this.connectionParameters.createControls(composite, root, updateConfigMap, allowedConnectionTypes);
+        elements = this.connectionParameters.createControls(composite, root, updateConfigMap, allowedConnectionTypes, connectorName);
         setControl(composite);
     }
 

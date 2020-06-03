@@ -18,11 +18,14 @@
 package org.wso2.developerstudio.eclipse.apim.endpoint.central.utils;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import org.wso2.developerstudio.eclipse.apim.endpoint.central.model.APIArtifact;
 import org.wso2.developerstudio.eclipse.apim.endpoint.central.model.APIImportPayload;
+import org.wso2.developerstudio.eclipse.apim.endpoint.central.model.CTLAPI;
+import org.wso2.developerstudio.eclipse.apim.endpoint.central.model.CTLEnvironment;
 import org.wso2.developerstudio.eclipse.apim.endpoint.central.model.LoginPayload;
 import org.wso2.developerstudio.eclipse.apim.endpoint.central.model.ProjectData;
 import org.wso2.developerstudio.eclipse.apim.endpoint.central.model.Registry;
@@ -201,5 +204,39 @@ public class JsonUtils {
         Type type = new TypeToken<List<RegistryEntry>>() {
         }.getType();
         return gson.fromJson(json, type);
+    }
+
+    /**
+     * Convert JSON list to CTLEnvironment list.
+     * 
+     * @param json
+     * @return CTLEnvironment list
+     */
+    public static List<CTLEnvironment> getCTLEnvironmentListFromJson(List<String> jsonList) {
+        List<CTLEnvironment> environments = new ArrayList<>();
+        for (String json : jsonList) {
+            Gson gson = new Gson();
+            Type type = new TypeToken<CTLEnvironment>() {
+            }.getType();
+            environments.add(gson.fromJson(json, type));
+        }
+        return environments;
+    }
+
+    /**
+     * Convert JSON list to CTLAPI list.
+     * 
+     * @param json
+     * @return CTLEnvironment list
+     */
+    public static List<CTLAPI> getCTLAPIListFromJson(List<String> jsonList) {
+        List<CTLAPI> apis = new ArrayList<>();
+        for (String json : jsonList) {
+            Gson gson = new Gson();
+            Type type = new TypeToken<CTLAPI>() {
+            }.getType();
+            apis.add(gson.fromJson(json, type));
+        }
+        return apis;
     }
 }

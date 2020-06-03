@@ -42,6 +42,14 @@ public class EndpointCentralServletConstants {
     }
     
     /**
+     * Holds request header constants of APIM CTL.
+     */
+    public static class APIMCTLRequestHeaders {
+        public static final String LOGIN = "apim-ctl-login";
+        public static final String PUSH_API = "apim-ctl-push-api";
+    }
+
+    /**
      * Holds error messages for the response.
      */
     public static class ResponseMessages {
@@ -60,5 +68,6 @@ public class EndpointCentralServletConstants {
         public static final String ENDPOINT_CENTRAL_CONTEXT_PATH = "/endpointcentral";
         public static final String SERVLET_PATH = "/service";
         public static final String ROOT_PATH = "/";
+        public static final String APIM_CTL_LOGIN_PATH = "/login_apim_ctl.html";
     }
 }

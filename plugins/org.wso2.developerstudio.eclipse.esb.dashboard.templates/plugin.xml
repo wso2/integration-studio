@@ -18,6 +18,68 @@
 
 <?eclipse version="3.4"?>
 <plugin>
+	<!-- extension point for configure embedded MI server configurations -->	
+    <extension point="org.eclipse.ui.menus">
+   		<menuContribution locationURI="toolbar:org.eclipse.debug.ui.launchActionSet">
+      		<toolbar id="org.eclipse.debug.ui.launchActionSet">
+         		<command
+               		commandId="org.wso2.developerstudio.eclipse.esb.dashboard.templates.configure.server.command"
+               		icon="icons/server.png"
+               		tooltip="Server Configuration (Embedded Micro Integrator)"
+               		id="org.eclipse.debug.ui.launchActionSet">
+         		</command>
+      		</toolbar>
+   		</menuContribution>
+	</extension>
+    <extension point="org.eclipse.ui.handlers">
+   		<handler
+         	commandId="org.wso2.developerstudio.eclipse.esb.dashboard.templates.configure.server.command"
+         	class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.configure.server.EmbeddedServerConfigHandler">
+   		</handler>
+	</extension>
+	
+	<!-- extension point for configure embedded MI server in RUN as dropdown -->
+	<extension
+            point="org.eclipse.debug.ui.launchShortcuts">
+        <shortcut
+                class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.configure.server.EmbeddedServerConfigLauncher"
+                icon="icons/server.png"
+                id="org.wso2.developerstudio.eclipse.configure.server.configuration"
+                label="Server Configuration (Embedded Micro Integrator)"
+                description="Configure the embedded WSO2 Micro Integrator Server"
+                modes="run">
+            <contextualLaunch>
+                <enablement>
+                    <with variable="selection">
+                        <count value="+">
+                        </count>
+                    </with>
+                </enablement>
+            </contextualLaunch>
+        </shortcut>
+    </extension>
+    
+    <!-- extension point for configure embedded MI server in DEBUG as dropdown -->
+    <extension
+            point="org.eclipse.debug.ui.launchShortcuts">
+        <shortcut
+                class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.configure.server.EmbeddedServerConfigLauncher"
+                icon="icons/server.png"
+                id="org.wso2.developerstudio.eclipse.configure.server.configuration.debug"
+                label="Server Configuration (Embedded Micro Integrator)"
+                description="Configure the embedded WSO2 Micro Integrator Server"
+                modes="debug">
+            <contextualLaunch>
+                <enablement>
+                    <with variable="selection">
+                        <count value="+">
+                        </count>
+                    </with>
+                </enablement>
+            </contextualLaunch>
+        </shortcut>
+    </extension>
+	
     <extension
             point="org.eclipse.ui.newWizards">
         <category

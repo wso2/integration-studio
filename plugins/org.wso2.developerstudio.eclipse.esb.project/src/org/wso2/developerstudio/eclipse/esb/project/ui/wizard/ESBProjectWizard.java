@@ -130,9 +130,7 @@ public class ESBProjectWizard extends AbstractWSO2ProjectCreationWizard {
 	}
 	
 	public File getPomFile() {
-		File updatedFile = pomfile;
-		return updatedFile;
-
+		return pomfile;
 	}
 	
 	public static void openEditor(File file,Map<File,String> fileList){

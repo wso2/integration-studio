@@ -165,9 +165,6 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
             setEsbProjectName(data.toString());
         } else if (key.equals(ESB_PROJECT_CHOICE)) {
             setConfigProjectChecked((boolean) data);
-            if (!this.isConfigProjectChecked) {
-                setEsbProjectName("");
-            }
         } else if (key.equals(MMM_PROJECT_CHOICE)) {
             setMMMProjectChecked((boolean) data);
             setEsbProjectName(getMMMProjectName());
@@ -184,31 +181,16 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
             setKubernetesExporterProjectName(data.toString());
         } else if (key.equals(REGISTRY_PROJECT_CHECKED)) {
             setRegistryProjectChecked((boolean) data);
-            if (!this.registryProjectChecked) {
-                setRegistryProjectName("");
-            }
         } else if (key.equals(CONNECTOR_EXPORTER_PROJECT_CHECKED)) {
             setConnectorExporterProjectChecked((boolean) data);
-            if (!this.connectorExporterProjectChecked) {
-                setConnectorExporterProjectName("");
-            }
         } else if (key.equals(CAPP_PROJECT_CHECKED)) {
             setCappProjectChecked((boolean) data);
-            if (!this.cappProjectChecked) {
-                setCompositeApplicationProjectName("");
-            }
         } else if (key.equals(DOCKER_EXPORTER_PROJECT_CHECKED)) {
             setDockerExporterProjectChecked((boolean) data);
             returnResult = (boolean) data;
-            if (!this.isDockerExporterProjectChecked()) {
-                setDockerExporterProjectName("");
-            }
         } else if (key.equals(KUBERNETES_EXPORTER_PROJECT_CHECKED)) {
             setKubernetesExporterProjectChecked((boolean) data);
             returnResult = (boolean) data;
-            if (!this.isKubernetesExporterProjectChecked()) {
-                setKubernetesExporterProjectName("");
-            }
         }
 
         return returnResult;

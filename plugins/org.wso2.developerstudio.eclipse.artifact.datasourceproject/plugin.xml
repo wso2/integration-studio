@@ -61,7 +61,7 @@
 	</extension>-->
 			<extension point="org.eclipse.ui.navigator.navigatorContent">    
             <commonWizard type="new"
-                menuGroupId="org.wso2.developerstudio.eclipse.artifact.webservice"
+                menuGroupId="2org.wso2.developerstudio.eclipse.artifact.esb"
                 wizardId="org.wso2.developerstudio.eclipse.artifact.newdatasourceproject">
                 <enablement>
                     <or>

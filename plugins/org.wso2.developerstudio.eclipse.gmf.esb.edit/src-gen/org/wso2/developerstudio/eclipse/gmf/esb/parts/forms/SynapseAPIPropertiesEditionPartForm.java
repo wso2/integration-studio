@@ -180,9 +180,8 @@ public class SynapseAPIPropertiesEditionPartForm extends SectionPropertiesEditin
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence synapseAPIStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep handlerStep = synapseAPIStep.addStep(EsbViewsRepository.SynapseAPI.Handler.class);
-		handlerStep.addStep(EsbViewsRepository.SynapseAPI.Handler.handlers);
-		CompositionStep propertiesStep = handlerStep.addStep(EsbViewsRepository.SynapseAPI.Handler.Properties.class);
+		
+		CompositionStep propertiesStep = synapseAPIStep.addStep(EsbViewsRepository.SynapseAPI.Handler.Properties.class);
 		propertiesStep.addStep(EsbViewsRepository.SynapseAPI.Handler.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.SynapseAPI.Handler.Properties.apiName);
 		propertiesStep.addStep(EsbViewsRepository.SynapseAPI.Handler.Properties.context);
@@ -196,7 +195,8 @@ public class SynapseAPIPropertiesEditionPartForm extends SectionPropertiesEditin
 		propertiesStep.addStep(EsbViewsRepository.SynapseAPI.Handler.Properties.statisticsEnabled);
 		propertiesStep.addStep(EsbViewsRepository.SynapseAPI.Handler.Properties.description);
 		
-		
+		CompositionStep handlerStep = synapseAPIStep.addStep(EsbViewsRepository.SynapseAPI.Handler.class);
+		handlerStep.addStep(EsbViewsRepository.SynapseAPI.Handler.handlers);
 		
 		composer = new PartComposer(synapseAPIStep) {
 

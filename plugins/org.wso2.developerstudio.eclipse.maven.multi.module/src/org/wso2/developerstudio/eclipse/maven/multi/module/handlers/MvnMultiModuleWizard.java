@@ -50,6 +50,7 @@ public class MvnMultiModuleWizard extends AbstractWSO2ProjectCreationWizard {
     private MvnMultiModuleModel moduleModel;
     private IProject project;
     private IProject multiModuleProject;
+    private File pomfile;
 
     public MvnMultiModuleWizard() {
         moduleModel = new MvnMultiModuleModel();
@@ -176,10 +177,10 @@ public class MvnMultiModuleWizard extends AbstractWSO2ProjectCreationWizard {
             try {
                 moduleModel.setProjectName(moduleModel.getArtifactId());
                 project = createNewProject();
-
                 addMavenMultiModuleProjectNature(project);
 
                 addMavenModules(project, mavenProject, modules, selectedProjects, project.getFile("pom.xml"));
+                pomfile = project.getFile("pom.xml").getLocation().toFile();
 
             } catch (CoreException e) {
                 log.error("Error occured while creating the new Maven Multi Module Project", e);
@@ -320,5 +321,9 @@ public class MvnMultiModuleWizard extends AbstractWSO2ProjectCreationWizard {
 
     public MvnMultiModuleModel getMvnMultiModuleModel() {
         return this.moduleModel;
+    }
+    
+    public File getPomFile() {
+    	return pomfile;
     }
 }

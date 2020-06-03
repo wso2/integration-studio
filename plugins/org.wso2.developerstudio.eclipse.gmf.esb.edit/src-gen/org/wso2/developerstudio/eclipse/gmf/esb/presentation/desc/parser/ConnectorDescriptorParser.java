@@ -17,7 +17,6 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser;
 
-import org.apache.commons.lang.StringUtils;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
@@ -44,6 +43,7 @@ public class ConnectorDescriptorParser {
 
     public static void createConnectorRoot(ConnectorRoot root, String jsonString) throws JSONException {
         JSONObject rootObject = new JSONObject(jsonString);
+        root.setConnectorName(rootObject.getString(DescriptorConstants.CONNECTOR_NAME));
         root.setTitle(rootObject.getString(DescriptorConstants.TITLE));
         root.setHelp(rootObject.getString(DescriptorConstants.HELP));
         JSONArray elementsArray = rootObject.getJSONArray(DescriptorConstants.ELEMENTS);
@@ -70,7 +70,7 @@ public class ConnectorDescriptorParser {
                     break;
                 case DescriptorConstants.COMBO_OR_EXPRESSION:
                     value.setType(AttributeValueType.COMBO);
-                    JSONArray comboArray = attrObj.getJSONArray(DescriptorConstants.COMBO_VALUE);
+                    JSONArray comboArray = attrObj.getJSONArray(DescriptorConstants.COMBO_VALUES);
                     for (int j = 0; j < comboArray.length(); j++) {
                         value.addComboValue(comboArray.getString(j));
                     }
@@ -126,7 +126,7 @@ public class ConnectorDescriptorParser {
                     break;
                 case DescriptorConstants.COMBO_OR_EXPRESSION:
                     value.setType(AttributeValueType.COMBO);
-                    JSONArray comboArray = attrObj.getJSONArray(DescriptorConstants.COMBO_VALUE);
+                    JSONArray comboArray = attrObj.getJSONArray(DescriptorConstants.COMBO_VALUES);
                     for (int j = 0; j < comboArray.length(); j++) {
                         value.addComboValue(comboArray.getString(j));
                     }
@@ -164,15 +164,6 @@ public class ConnectorDescriptorParser {
     }
 
     public static boolean isConnectorConnection(String jsonString) throws JSONException {
-        JSONObject rootObject;
-        boolean isConnection = false;
-        rootObject = new JSONObject(jsonString);
-        String connectionName = rootObject.getString(DescriptorConstants.CONNECTION_NAME);
-        if (StringUtils.isNotEmpty(connectionName)) {
-            isConnection = true;
-        }
-
-        return isConnection;
+        return new JSONObject(jsonString).has(DescriptorConstants.CONNECTION_NAME);
     }
-
 }

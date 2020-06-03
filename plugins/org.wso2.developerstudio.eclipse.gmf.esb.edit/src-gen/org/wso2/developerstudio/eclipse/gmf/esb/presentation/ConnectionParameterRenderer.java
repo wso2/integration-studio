@@ -64,8 +64,8 @@ public class ConnectionParameterRenderer {
         this.widgetProvider = new PropertiesWidgetProvider(controlList, compositeList, requiredList);
     }
 
-    public HashMap<String, Control> generate(Composite parent, ConnectorRoot connectorRoot,
-            Map<String, String> updateConfigMap, AttributeValue allowedConnectionTypes, String connectorName) {
+    public HashMap<String, Control> generate(final Composite parent, ConnectorRoot connectorRoot,
+            Map<String, String> updateConfigMap, AttributeValue allowedConnectionTypes, final String connectorName) {
         parent.setBackgroundMode(SWT.INHERIT_FORCE);
 
         //connectionName

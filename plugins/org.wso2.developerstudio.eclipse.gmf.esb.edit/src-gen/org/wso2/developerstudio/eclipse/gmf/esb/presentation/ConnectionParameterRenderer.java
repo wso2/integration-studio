@@ -45,6 +45,7 @@ public class ConnectionParameterRenderer {
 
     HashMap<String, Control> controlList;
     HashMap<String, Composite> compositeList;
+    HashMap<String, Control> requiredList;
     PropertiesWidgetProvider widgetProvider;
     private FormToolkit widgetFactory;
 
@@ -52,7 +53,8 @@ public class ConnectionParameterRenderer {
         this.widgetFactory = widgetFactory;
         this.controlList = new HashMap<>();
         this.compositeList = new HashMap<>();
-        this.widgetProvider = new PropertiesWidgetProvider(controlList, compositeList);
+        this.requiredList = new HashMap<>();
+        this.widgetProvider = new PropertiesWidgetProvider(controlList, compositeList, requiredList);
     }
 
     public HashMap<String, Control> generate(Composite parent, ConnectorRoot connectorRoot,

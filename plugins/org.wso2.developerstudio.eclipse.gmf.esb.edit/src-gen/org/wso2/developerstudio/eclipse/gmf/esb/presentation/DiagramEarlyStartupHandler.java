@@ -16,13 +16,11 @@ import org.eclipse.ui.IStartup;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorDescriptorParser;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorRoot;
 
-public class DiagramEarlyStartupHandler implements IStartup{
+public class DiagramEarlyStartupHandler implements IStartup {
 
     @Override
     public void earlyStartup() {
-        // TODO Auto-generated method stub
         loadConnectorSchemas();
-        
     }
     
     /**
@@ -48,6 +46,8 @@ public class DiagramEarlyStartupHandler implements IStartup{
                             String jsonSchemaName = jsonSchemaChildren[jsonSchemaIndex].getName();
                             if(jsonSchemaName.endsWith(".json")) {
                                 schemaHolder.putConnectorSchema(jsonSchemaName.split(".json")[0], createConnectorRoot(jsonSchemaChildren[jsonSchemaIndex]));
+//                                ConnectorRoot cr = createConnectorRoot(jsonSchemaChildren[jsonSchemaIndex]);
+//                                schemaHolder.putConnectorSchema(cr.getConnectorName() + "-" + cr.getOperationName() , cr);
                             }
                         }
                     }

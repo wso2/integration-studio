@@ -52,7 +52,14 @@ public class ConnectorDescriptorParser {
     public ConnectorRoot createObject(String jsonString) throws JSONException {
         ConnectorRoot connectorRoot = new ConnectorRoot();
         JSONObject rootObject = new JSONObject(jsonString);
-        connectorRoot.setConnectorName(rootObject.getString("connectorName"));
+        Boolean isConnection = rootObject.has("connectionName");
+        if(isConnection) { //Validate with a subclass of connectorRoot
+            connectorRoot.setConnectorName(rootObject.getString("connectorName"));
+            connectorRoot.setConnectionName(rootObject.getString("connectionName")); 
+        } else {
+            connectorRoot.setConnectorName(rootObject.getString("connectorName"));
+            connectorRoot.setOperationName(rootObject.getString("operationName"));
+        }
         connectorRoot.setDisplayName(rootObject.getString("displayName"));
         connectorRoot.setHelp(rootObject.getString("help"));
         JSONArray elementsArray = rootObject.getJSONArray("elements");

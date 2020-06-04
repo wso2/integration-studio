@@ -253,7 +253,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	 */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
 	    if(hasConnectorSchema) {
-    	    propertiesGroup = new Composite(parent, SWT.NO_BACKGROUND);
+	        propertiesGroup = new Composite(parent, SWT.TRANSPARENT);
             propertiesGroup.setLocation(0, 0);
             GridLayout propertiesGroupLayout = new GridLayout();
             propertiesGroupLayout.numColumns = 1;

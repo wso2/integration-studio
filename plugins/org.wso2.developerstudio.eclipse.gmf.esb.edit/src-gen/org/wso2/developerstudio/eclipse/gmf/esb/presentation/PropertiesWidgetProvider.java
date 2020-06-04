@@ -49,6 +49,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.CloudConnectorOperationPropertiesEditionPartForm;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValue;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public class PropertiesWidgetProvider {
 
@@ -59,6 +61,7 @@ public class PropertiesWidgetProvider {
     protected HashMap<String, Composite> compositeList;
     private boolean isConnectionWidgetProvider = false;
     protected HashMap<String, Control> requiredList;
+    private static IDeveloperStudioLog log = Logger.getLog(EEFPropertyViewUtil.PLUGIN_ID);
 
     public PropertiesWidgetProvider(SectionPropertiesEditingPart partForm,
             IPropertiesEditionComponent propertiesEditionComponent, HashMap<String, Control> controlList,
@@ -174,7 +177,12 @@ public class PropertiesWidgetProvider {
               }
             }
         });
-        Image image = EEFRuntimePlugin.getImage(EEFRuntimePlugin.ICONS_16x16 + "DataMapperMediator.png");
+        Image image = null;
+        try {
+            image = new Image(parent.getShell().getDisplay(), EEFPropertyViewUtil.getIconPath("icons/full/obj16/Artboard_exp.png"));
+        } catch (URISyntaxException | IOException e1) {
+            log.error("Couldn't fetch property field icon", e1);
+        }
         configButton.setImage(image);
         configRef.addKeyListener(new KeyAdapter() {
             /**
@@ -231,7 +239,12 @@ public class PropertiesWidgetProvider {
         });
         
         Button configButton = new Button(textBoxComposite, SWT.PUSH);
-        Image image = EEFRuntimePlugin.getImage(EEFRuntimePlugin.ICONS_16x16 + "DataMapperMediator.png");
+        Image image = null;
+        try {
+            image = new Image(parent.getShell().getDisplay(), EEFPropertyViewUtil.getIconPath("icons/full/obj16/Artboard_exp.png"));
+        } catch (URISyntaxException | IOException e1) {
+            log.error("Couldn't fetch property field icon", e1);
+        }
         configButton.setImage(image);
         configButton.addListener(SWT.Selection, new Listener() {
             @Override
@@ -263,7 +276,12 @@ public class PropertiesWidgetProvider {
     public Composite createConnectionField(final FormToolkit widgetFactory, final Composite parent, final AttributeValue value,
             String[] options) {
         Image NEW_ELEMENT_IMG = EEFRuntimePlugin.getImage(EEFRuntimePlugin.ICONS_16x16 + "Add_16x16.gif");
-        Image DELETE_ELEMENT_IMG = EEFRuntimePlugin.getImage(EEFRuntimePlugin.ICONS_16x16 + "Delete_16x16.gif");
+        Image DELETE_ELEMENT_IMG = null;
+        try {
+            DELETE_ELEMENT_IMG = new Image(parent.getShell().getDisplay(), EEFPropertyViewUtil.getIconPath("icons/full/obj16/edit-icon-16x16.png"));
+        } catch (URISyntaxException | IOException e1) {
+            log.error("Couldn't fetch property field icon", e1);
+        }
         Composite textBoxComposite = createComposite(value.getName(), widgetFactory, parent, 4, 4);
         Label label = new Label(textBoxComposite, SWT.NO_BACKGROUND);
         label.setText(value.getDisplayName());
@@ -291,7 +309,6 @@ public class PropertiesWidgetProvider {
         });
         Button configButton = widgetFactory.createButton(textBoxComposite, "", SWT.PUSH | SWT.TRANSPARENT);
         configButton.setImage(NEW_ELEMENT_IMG);
-        
         configButton.addListener(SWT.Selection, new Listener() {
 
             @Override

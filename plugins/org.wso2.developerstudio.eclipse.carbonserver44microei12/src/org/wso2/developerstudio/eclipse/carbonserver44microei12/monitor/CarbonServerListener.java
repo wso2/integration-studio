@@ -230,15 +230,14 @@ public class CarbonServerListener implements IServerListener {
                     + "ServerConfigs";
             File serverConfigurationDirectory = new File(serverConfigDirectoryPath);
             File customizedTomlFile = new File(serverConfigDirectoryPath + File.separator + "deployment.toml");
-            if (serverConfigurationDirectory.exists()
-                    && !org.apache.commons.io.FileUtils.contentEquals(runningDeploymentTomlFile, customizedTomlFile)) {
+            if (serverConfigurationDirectory.exists()) {
                 // backup original lib, dropins and deployment.toml resources
                 FileUtils.copyDirectory(runningLibDirectory, tempLibDirectory);
                 FileUtils.copyDirectory(runningDropinsDirectory, tempDropinsDirectory);
                 org.apache.commons.io.FileUtils.copyFile(runningDeploymentTomlFile, tempDeploymentTomlFile);
 
                 // copy user edited deployment.toml to conf directory
-                if (customizedTomlFile.exists()) {
+                if (customizedTomlFile.exists() && !org.apache.commons.io.FileUtils.contentEquals(runningDeploymentTomlFile, customizedTomlFile)) {
                     org.apache.commons.io.FileUtils.copyFile(customizedTomlFile, runningDeploymentTomlFile);
                 }
 

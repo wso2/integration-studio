@@ -161,8 +161,10 @@
             <action
                 label="Push Docker Image"
                 icon="icons/docker.png"
-                class="org.wso2.developerstudio.eclipse.docker.distribution.action.DockerRunMavenAction"
                 id="org.wso2.developerstudio.eclipse.docker.distribution.exportandpushdocker">
+                <class class="org.wso2.developerstudio.eclipse.docker.distribution.action.DockerRunMavenAction">
+	                <parameter name="isDockerPushOnly" value="true"/>
+                </class>
             </action>
             <enablement>
                 <adapt type="org.eclipse.core.resources.IProject">

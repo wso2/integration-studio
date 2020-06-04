@@ -45,7 +45,6 @@ public class MavenJobThread implements Runnable {
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     private boolean isMavenBuildDone;
-    private boolean isThisOldContainerProject;
     private int isBuildSuccess = 1;
     private ILaunch launcher;
     private IProject project;
@@ -66,7 +65,6 @@ public class MavenJobThread implements Runnable {
         this.launcher = launch;
         this.project = project;
         this.authConfiguration = configuration;
-        this.isThisOldContainerProject = isThisOldContainerProject;
     }
 
     /**
@@ -168,7 +166,7 @@ public class MavenJobThread implements Runnable {
 
         // set maven properties for the created launcher
         mavenTestLaunchConfig.setAttribute(DockerBuildActionUtil.MAVEN_GOAL_KEY,
-                mavenDockerBuildGoal(isThisOldContainerProject));
+                mavenDockerBuildGoal());
         mavenTestLaunchConfig.setAttribute(DockerBuildActionUtil.MAVEN_WORKING_DIR_KEY,
                 "${workspace_loc:/" + project.getName() + "}");
         String javaHomePath = DockerBuildActionUtil.getJavaHomePath();
@@ -226,7 +224,7 @@ public class MavenJobThread implements Runnable {
      * @param unitTestConfigDetailPage  object of unit test config detail page
      * @return string of maven goal
      */
-    private String mavenDockerBuildGoal(boolean isThisOldContainerProject) {
+    private String mavenDockerBuildGoal() {
         StringBuilder builder = new StringBuilder();
         builder.append("dockerfile:push")
         .append(" -Ddockerfile.username=" + authConfiguration.getAuthUsername())

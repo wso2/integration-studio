@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.regex.Pattern;
 
 import org.eclipse.core.runtime.CoreException;
@@ -145,21 +146,21 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
         } else if (AttributeValueType.COMBO.equals(value.getType())) {
             widgetProvider.createDropDownField(widgetFactory, parent, value.getComboValues().toArray(new String[0]), value);
         } else if (AttributeValueType.CONNECTION.equals(value.getType())) {
-            widgetProvider.createConnectionField(widgetFactory, parent, value, getConnectionEntriesList());
+            widgetProvider.createConnectionField(widgetFactory, parent, value, getConnectionEntriesList(value.getAllowedConnectionTypes()));
         }
     }
     
 
   //mock values
-    public String[] getConnectionEntriesList () {
+    public String[] getConnectionEntriesList (List<String> allowedTypes) {
         ArrayList<String> availableConnections = null;
         try {
-            availableConnections = EEFPropertyViewUtil.getAvailableConnectionEntriesList();
+            availableConnections = EEFPropertyViewUtil.getAvailableConnectionEntriesList(allowedTypes);
         } catch (CoreException e) {
             e.printStackTrace();
         }
         if(availableConnections == null || availableConnections.isEmpty()) {
-            return new String[] {"SMTP", "POP3", "IMAP"};
+            return new String[] {""};
         } else {
             return availableConnections.toArray(new String[] {});
         }

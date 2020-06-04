@@ -443,7 +443,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
             infoLabel = new CLabel(propertiesGroup, SWT.NONE);
             Image image;
             try {
-                image = new Image(parent.getShell().getDisplay(), EEFPropertyViewUtil.getIconPath("icons/full/obj16/CacheOnHitBranch.gif"));               
+                image = new Image(parent.getShell().getDisplay(), EEFPropertyViewUtil.getIconPath("icons/full/obj16/check-icon-16x16.png"));
                 infoLabel.setImage(image);
                 infoLabel.setText("There are no errors");
             } catch (URISyntaxException | IOException e) {
@@ -1338,16 +1338,16 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
         }
         infoLabel = new CLabel(propertiesGroup, SWT.NONE);
         if(kind.equals("requirederror")) {
-            image = new Image(propertiesGroup.getShell().getDisplay(), EEFPropertyViewUtil.getIconPath("icons/full/obj16/ModelObjectInvalid.gif"));
+            image = new Image(propertiesGroup.getShell().getDisplay(), EEFPropertyViewUtil.getIconPath("icons/full/obj16/error-icon-16x16.png"));
             bannerMessage = "Value of the '" + field + "' field is required"; 
         } else if (kind.equals("regexerror")) {
-            image = new Image(propertiesGroup.getShell().getDisplay(), EEFPropertyViewUtil.getIconPath("icons/full/obj16/ModelObjectInvalid.gif"));
+            image = new Image(propertiesGroup.getShell().getDisplay(), EEFPropertyViewUtil.getIconPath("icons/full/obj16/error-icon-16x16.png"));
             bannerMessage = "Value of the '" + field + "' field should match " + regex;
         } else if (kind.equals("custom")){
-            image = new Image(propertiesGroup.getShell().getDisplay(), EEFPropertyViewUtil.getIconPath("icons/full/obj16/CacheOnHitBranch.gif"));
+            image = new Image(propertiesGroup.getShell().getDisplay(), EEFPropertyViewUtil.getIconPath("icons/full/obj16/check-icon-16x16.png"));
             bannerMessage = message;
         } else {
-            image = new Image(propertiesGroup.getShell().getDisplay(), EEFPropertyViewUtil.getIconPath("icons/full/obj16/CacheOnHitBranch.gif"));
+            image = new Image(propertiesGroup.getShell().getDisplay(), EEFPropertyViewUtil.getIconPath("icons/full/obj16/check-icon-16x16.png"));
             bannerMessage = "There are no errors";
         }
         infoLabel.setImage(image);

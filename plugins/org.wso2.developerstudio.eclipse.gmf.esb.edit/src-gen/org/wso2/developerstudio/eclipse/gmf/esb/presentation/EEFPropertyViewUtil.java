@@ -15,7 +15,16 @@ import java.util.List;
 import java.util.Properties;
 
 import org.codehaus.jettison.json.JSONException;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.stream.FactoryConfigurationError;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpression;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
 
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
@@ -50,6 +59,7 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.part.FileEditorInput;
 import org.osgi.framework.Bundle;
+import org.w3c.dom.Document;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.CloudConnectorOperationImpl;
@@ -60,6 +70,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.Connect
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
+import org.xml.sax.SAXException;
 import org.eclipse.swt.layout.GridLayout;
 
 public class EEFPropertyViewUtil {
@@ -76,6 +87,7 @@ public class EEFPropertyViewUtil {
     private static final String LOCAL_ENTRY_LOCATION = File.separator + "src" + File.separator + "main" + File.separator
             + "synapse-config" + File.separator + "local-entries";
     private static final String XML_EXTENSION = ".xml";
+    private static final String CONNECTION_LOCAL_ENTRY_TYPE_XPATH = "//*[local-name()='connectionType']/text()";
 
     static {
         URL url;
@@ -396,16 +408,41 @@ public class EEFPropertyViewUtil {
         return schemaName;
     }
 
-    public static ArrayList<String> getAvailableConnectionEntriesList() throws CoreException {
+    public static ArrayList<String> getAvailableConnectionEntriesList(List<String> allowedConnectionTypes) throws CoreException {
         ArrayList<String> definedTemplates = new ArrayList<String>();
         IFolder localEntriesDir = getLocalEntriesDir();
         for(IResource resource:localEntriesDir.members()) {
             if (resource instanceof IFile && ((IFile)resource).getFileExtension().equals("xml")) {
-                //((IFile)resource).getContents();
-                definedTemplates.add(((IFile)resource).getName().split(".xml")[0]);
+                try {
+                    if(isAllowedConnection(((IFile)resource), allowedConnectionTypes)) {
+                        definedTemplates.add(((IFile)resource).getName().split(XML_EXTENSION)[0]);
+                    }
+                } catch (XPathExpressionException e) {
+                    log.error("Connection Local Entry file is not well structured", e);
+                } catch (SAXException | ParserConfigurationException e) {
+                    log.error("Cannot parse Connection Local Entry file", e);
+                } catch (IOException e) {
+                    log.error("Cannot read Connection Local Entry file", e);
+                }
             }
         }
         return definedTemplates;
+    }
+
+    public static boolean isAllowedConnection(IFile file, List<String> allowedTypes) throws SAXException, IOException, ParserConfigurationException, XPathExpressionException, CoreException {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        factory.setNamespaceAware(true);
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        Document doc = builder.parse(file.getContents());
+        XPathFactory xpathfactory = XPathFactory.newInstance();
+        XPath xpath = xpathfactory.newXPath();
+        XPathExpression expr = xpath.compile(CONNECTION_LOCAL_ENTRY_TYPE_XPATH);
+        Object result = expr.evaluate(doc, XPathConstants.STRING);
+        boolean valid = false;
+        if(allowedTypes.contains(result)) {
+            valid = true;
+        }
+        return valid;
     }
 
     public static IFolder getLocalEntriesDir() {

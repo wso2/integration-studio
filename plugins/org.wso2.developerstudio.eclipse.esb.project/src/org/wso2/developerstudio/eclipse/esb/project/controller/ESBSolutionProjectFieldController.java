@@ -63,8 +63,6 @@ public class ESBSolutionProjectFieldController extends ESBProjectFieldController
         } else if (modelProperty.equals(MMM_PROJECT_CHOICE)) {
             updateFields.add(ESB_PROJECT_NAME);
             updateFields.add(ESB_PROJECT_CHOICE);
-        } else if (modelProperty.equals(ESB_PROJECT_NAME)) {
-            updateFields.add(ESB_PROJECT_NAME);
         } else if (modelProperty.equals(REGISTRY_PROJECT_CHECKED)) {
             updateFields.add(REGISTRY_RESOURCES_PROJECT_NAME);
         } else if (modelProperty.equals(CONNECTOR_EXPORTER_PROJECT_CHECKED)) {

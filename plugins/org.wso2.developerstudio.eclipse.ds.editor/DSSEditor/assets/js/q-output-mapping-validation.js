@@ -1011,21 +1011,29 @@ function saveResultToQueryElement(result, root) {
 		let elementName = $('#om-grouped-by-element-input').val();
 		if ($.trim(elementName) != "") {
 			result.setAttribute("element", elementName);
+		} else if (result.attributes.getNamedItem(RESULT_ATTRIBUTE_ELEMENT) != null) {
+			result.removeAttribute(RESULT_ATTRIBUTE_ELEMENT);
 		}
 		
 		let rowName = $('#om-row-name-input').val();
 		if ($.trim(rowName) != "") {
 			result.setAttribute("rowName", rowName);
+		} else if (result.attributes.getNamedItem(RESULT_ATTRIBUTE_ROW_NAME) != null) {
+			result.removeAttribute(RESULT_ATTRIBUTE_ROW_NAME);
 		}
 		
 		let defaultNamespace = $('#om-row-namespace-input').val();
 		if ($.trim(defaultNamespace) != "") {
 			result.setAttribute("defaultNamespace", defaultNamespace);
+		} else if (result.attributes.getNamedItem(RESULT_ATTRIBUTE_DEF_NAME_SPACE) != null) {
+			result.removeAttribute(RESULT_ATTRIBUTE_DEF_NAME_SPACE);
 		}
 		
 		let xsltPath = $('#om-xslt-path-input').val();
 		if ($.trim(xsltPath) != "") {
 			result.setAttribute("xsltPath", xsltPath);
+		} else if (result.attributes.getNamedItem(RESULT_ATTRIBUTE_XSLT_PATH) != null) {
+			result.removeAttribute(RESULT_ATTRIBUTE_XSLT_PATH);
 		}
 		
 		result.removeAttribute("rdfBaseURI");

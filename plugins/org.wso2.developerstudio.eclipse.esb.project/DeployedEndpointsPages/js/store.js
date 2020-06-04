@@ -65,9 +65,8 @@ function populateAPIList() {
 //	    }
 //	});
 	
-	
 	for(var i = 0; i < apiList.length; i++) {
-	    item = apiList[i];
+	    var item = apiList[i];
 	    $table = $('#table-container-api table tbody');
 	    $table.append('<tr><td>' + item.name + '</td><td>' + item.url + '</td></tr>');
 	}
@@ -76,10 +75,10 @@ function populateAPIList() {
 }
 
 function populateProxyList() {
-	proxyjsontemp = JSON.parse(proxyjson);
-	proxyList = proxyjsontemp.list;
+	var proxyjsontemp = JSON.parse(proxyjson);
+	var proxyList = proxyjsontemp.list;
 	for(var i = 0; i < proxyList.length; i++) {
-	    item = proxyList[i];
+	    var item = proxyList[i];
 	    $table = $('#table-container-proxy table tbody');
 		$table.append('<tr><td>' + item.name + '</td><td>' + item.wsdl1_1 + '</td><td>' + item.wsdl2_0 + '</td></tr>');
 	}

@@ -336,7 +336,7 @@ public class EmbeddedServerConfigWizardPage extends WizardPage {
                     String[] filterExt = { "*.jar;*.JAR" };
                     fileDlg.setFilterExtensions(filterExt);
                     String importFile = fileDlg.open();
-                    String[] pathSegments = importFile.split(File.separator);
+                    String[] pathSegments = importFile.split("\\"+File.separator);
                     String libraryName = pathSegments[pathSegments.length - 1];
                     FileUtils.copyFile(new File(importFile),
                             new File(serverConfigPath + SERVER_CONFIG_LIBS + File.separator + libraryName));

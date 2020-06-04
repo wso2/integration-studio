@@ -53,7 +53,7 @@ public class EmbeddedServerConfigWizard extends Wizard implements INewWizard, IE
     private static final String SERVER_CONF_DIRECTORY = File.separator + "conf";
     private static final String SERVER_CONFIG_SELECTED_LIBS = SERVER_CONFIG_LIBS + File.separator + "selected";
     private static final String TEMP_SERVER_CONFIGURATION_PATH = ResourcesPlugin.getWorkspace().getRoot().getLocation()
-            .toString() + SERVER_CONFIG_LOCATION;
+            .toOSString() + SERVER_CONFIG_LOCATION;
 
     private EmbeddedServerConfigWizardPage serverConfigPage;
     private String miDeploymentTomlPath;

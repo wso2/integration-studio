@@ -181,7 +181,7 @@ public class CarbonServerListener implements IServerListener {
      * Replace the original with customer edited configurations located in workspace/.metadata/ServerConfigs
      */
     private void configureEmbeddedServerConfigurations() {
-        String workspace = ResourcesPlugin.getWorkspace().getRoot().getLocation().toString();
+        String workspace = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString();
         String miHomePath = MicroIntegratorInstance.getInstance().getServerHome();
 
         File tempLibDirectory = new File(miHomePath + File.separator + "temp_lib");

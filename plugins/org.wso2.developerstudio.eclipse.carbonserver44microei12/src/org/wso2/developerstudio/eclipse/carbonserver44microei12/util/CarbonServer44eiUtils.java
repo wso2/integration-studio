@@ -216,10 +216,10 @@ public class CarbonServer44eiUtils implements CarbonServerXUtils {
     @Override
     public File getCappMonitorBundle() {
         URL resource = Platform.getBundle(Activator.PLUGIN_ID)
-                .getResource("lib" + File.separator + "org.wso2.carbon.capp.monitor-3.0.0.jar");
+                .getResource("lib/org.wso2.carbon.capp.monitor-3.0.0.jar");
         IPath path = Activator.getDefault().getStateLocation();
         IPath libFolder = path.append("lib");
-        String[] paths = resource.getFile().split(File.separator);
+        String[] paths = resource.getFile().split("\\" + File.separator);
         IPath library = libFolder.append(paths[paths.length - 1]);
         File libraryFile = new File(library.toOSString());
         if (libraryFile.exists()) {

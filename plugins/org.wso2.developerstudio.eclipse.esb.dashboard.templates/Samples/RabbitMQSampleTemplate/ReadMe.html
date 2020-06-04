@@ -58,16 +58,25 @@
                      </li>
                      <li>
                         <h3>Configure EI server</h3>
-                        <p>Enable RabbitMQ sender transport in the &lt;EI_HOME&gt;/conf/axis2/axis2.xml</p>
+                        <p>Enable RabbitMQ sender transport in the &lt;MI_HOME&gt;/conf/deployment.toml</p>
                         <table>
                            <tbody>
                               <tr>
                                  <td>
-                                    <pre><code class="language-bash">&lt;transportSender name="rabbitmq" class="org.apache.axis2.transport.rabbitmq.RabbitMQSender"/&gt;</code></pre>
+                                    <pre><code class="language-bash">[transport.rabbitmq]
+sender_enable = true
+
+[[transport.rabbitmq.listener]]
+name = "AMQPConnectionFactory"
+parameter.hostname = "localhost"
+parameter.port = 5672
+parameter.username = "guest"
+parameter.password = "guest"</code></pre>
                                  </td>
                               </tr>
                            </tbody>
                         </table>
+                        <p>Download the <a href="https://www.rabbitmq.com/java-client.html" target="_blank" rel="noopener noreferrer" class=" externalLink">amqp-client-5.7.0.jar</a> and copy it into &lt;MI_HOME&gt;/lib directory.</p>
                      </li>
                      <li>
                         <h3>Export project atrifacts & run</h3>

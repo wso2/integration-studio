@@ -39,7 +39,7 @@
              locationURI="toolbar:org.eclipse.debug.ui.launchActionSet">
           <command
                 commandId="org.wso2.developerstudio.eclipse.esb.dashboard.templates.configure.server.command"
-                icon="icons/server-config-icon-16x16.png"
+                icon="icons/server-config-16x16.png"
                 style="push">
              <visibleWhen
                    checkEnabled="true">
@@ -53,7 +53,7 @@
             point="org.eclipse.debug.ui.launchShortcuts">
         <shortcut
                 class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.configure.server.EmbeddedServerConfigLauncher"
-                icon="icons/server-config-icon-16x16.png"
+                icon="icons/server-config-16x16.png"
                 id="org.wso2.developerstudio.eclipse.configure.server.configuration"
                 label="Server Configuration (Embedded Micro Integrator)"
                 description="Configure the embedded WSO2 Micro Integrator Server"
@@ -74,7 +74,7 @@
             point="org.eclipse.debug.ui.launchShortcuts">
         <shortcut
                 class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.configure.server.EmbeddedServerConfigLauncher"
-                icon="icons/server-config-icon-16x16.png"
+                icon="icons/server-config-16x16.png"
                 id="org.wso2.developerstudio.eclipse.configure.server.configuration.debug"
                 label="Server Configuration (Embedded Micro Integrator)"
                 description="Configure the embedded WSO2 Micro Integrator Server"

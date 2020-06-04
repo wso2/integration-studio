@@ -206,7 +206,7 @@ public class EmbeddedServerConfigWizardPage extends WizardPage {
         data = new FormData();
         data.top = new FormAttachment(25);
         data.left = new FormAttachment(3);
-        data.right = new FormAttachment(97);
+        //data.right = new FormAttachment(97);
         secureLabel.setText("Encrypt secrets by running cipher-tool: ");
         secureLabel.setLayoutData(data);
 
@@ -360,16 +360,15 @@ public class EmbeddedServerConfigWizardPage extends WizardPage {
         libTable.setLinesVisible(true);
         libTable.setHeaderVisible(true);
 
-        TableColumn columnCheck = new TableColumn(libTable, SWT.LEFT);
-        columnCheck.setText("");
+
 
         TableColumn columnLibName = new TableColumn(libTable, SWT.LEFT);
         columnLibName.setText("Library Name");
-        columnLibName.setWidth(500);
+        columnLibName.setWidth(520);
 
         for (Map.Entry<String, Boolean> entry : librariesList.entrySet()) {
             TableItem item = new TableItem(libTable, SWT.NONE);
-            item.setText(1, entry.getKey());
+            item.setText(0, entry.getKey());
             item.setChecked(entry.getValue());
         }
 
@@ -377,7 +376,7 @@ public class EmbeddedServerConfigWizardPage extends WizardPage {
             public void handleEvent(Event event) {
                 final TableItem item = (TableItem) event.item;
                 if (event.detail == SWT.CHECK && item != null) {
-                    String itemName = item.getText(1);
+                    String itemName = item.getText(0);
                     String sourceDirectory;
                     String destinationDirectory;
                     try {
@@ -418,7 +417,7 @@ public class EmbeddedServerConfigWizardPage extends WizardPage {
         removeButton.addListener(SWT.Selection, new Listener() {
             public void handleEvent(Event event) {
                 if (libTable.getSelectionIndex() >= 0) {
-                    String propertyKey = libTable.getItem(libTable.getSelectionIndex()).getText(1);
+                    String propertyKey = libTable.getItem(libTable.getSelectionIndex()).getText(0);
                     if (librariesList.containsKey(propertyKey)) {
                         String selectedJarLocatedPath;
                         if (librariesList.get(propertyKey)) {
@@ -479,7 +478,7 @@ public class EmbeddedServerConfigWizardPage extends WizardPage {
                     }
 
                     TableItem item = new TableItem(libTable, SWT.NONE);
-                    item.setText(1, entry.getKey());
+                    item.setText(0, entry.getKey());
                     item.setChecked(true);
 
                     if (librariesList.containsKey(itemName)) {
@@ -514,7 +513,7 @@ public class EmbeddedServerConfigWizardPage extends WizardPage {
                     }
 
                     TableItem item = new TableItem(libTable, SWT.NONE);
-                    item.setText(1, entry.getKey());
+                    item.setText(0, entry.getKey());
                     item.setChecked(false);
 
                     if (librariesList.containsKey(itemName)) {
@@ -529,7 +528,7 @@ public class EmbeddedServerConfigWizardPage extends WizardPage {
         libTable.removeAll();
         for (Map.Entry<String, Boolean> entry : librariesList.entrySet()) {
             TableItem item = new TableItem(libTable, SWT.NONE);
-            item.setText(1, entry.getKey());
+            item.setText(0, entry.getKey());
             item.setChecked(entry.getValue());
         }
 

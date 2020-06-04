@@ -77,6 +77,10 @@ const DEFAULT_SYBASE_DRIVER_CLASS = "com.sybase.jdbc3.jdbc.SybDriver";
 const DEFAULT_SYBASE_URL = "jdbc:sybase:Tds:[HOST]:[PORT2048]/[database]";
 
 // Queries
+////SQL query
+//////SQL terms
+const SQL_WHERE = "where";
+
 //// Input Mappings
 ////// Validators
 const VALIDATOR_LONGRANGE = "validateLongRange";

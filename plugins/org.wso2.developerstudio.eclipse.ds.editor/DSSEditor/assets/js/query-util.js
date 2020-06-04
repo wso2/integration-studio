@@ -528,7 +528,7 @@ function isMongoDB(datasourceConfig) {
 	let url = "http://127.0.0.1:" + portValue + "/dsseditor/service";
 	let db_type = retrieveDSMetadata(datasourceConfig, url)
 
-	return db_type.includes("mongodb_ds");
+	return db_type.indexOf("mongodb_ds") != -1;
 }
 
 function addQuery(root, queryElement) {

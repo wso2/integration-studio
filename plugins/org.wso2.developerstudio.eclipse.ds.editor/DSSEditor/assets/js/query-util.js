@@ -709,8 +709,17 @@ function generateInputMappings(root) {
         return false;
     }
 
-    if ((query.toLowerCase().indexOf("select") != -1 && query.toLowerCase().indexOf("from") != -1)) {
-        return false;
+    if ((query.toLowerCase().indexOf("select") != -1 && query.toLowerCase().indexOf("from") != -1)
+            && query.toLowerCase().indexOf(SQL_WHERE) != -1) {
+        let andOrRegularExp = /([aA][nN][dD]|[oO][rR])/;
+        let mappingsStr = query.substring(query.toLowerCase().lastIndexOf(SQL_WHERE)).substring(5).trim();
+        let mappings = mappingsStr.split(andOrRegularExp);
+        for (let i = 0, len = mappings.length; i < len; i++) {
+            // Ignore empty strings and AND/OR strings.
+            if (mappings[i] && !mappings[i].match(andOrRegularExp)) {
+                mappingsArr.push(mappings[i].split("=")[0].trim());
+            }
+        }
     }
 
     if (query.toLowerCase().indexOf("insert") != -1 && query.toLowerCase().indexOf("into") != -1) {

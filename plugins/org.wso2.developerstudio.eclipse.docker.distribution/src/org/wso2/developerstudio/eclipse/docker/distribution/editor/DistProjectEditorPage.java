@@ -72,7 +72,9 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.swt.widgets.TreeItem;
+import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
+import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.IManagedForm;
@@ -905,6 +907,12 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
             dockerBuildAction = new Action("Generate Docker Image",
                     ImageDescriptor.createFromImage(SWTResourceManager.getImage(this.getClass(), actionIconType))) {
                 public void run() {
+                    // save all the existing ediros
+                    IWorkbenchPage[] pages = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPages();
+                    for (IWorkbenchPage page : pages) {
+                        IEditorPart editor = page.getActiveEditor();
+                        page.saveEditor(editor, true);
+                    }
 
                     // check whether there are atleast one depenedency composite project to build a image
                     List<String> dependencyProjectNames = DockerBuildActionUtil.getCompositeAppDependencyList(pomFile);

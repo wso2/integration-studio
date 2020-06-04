@@ -42,6 +42,8 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.ui.IActionDelegate;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.w3c.dom.Document;
@@ -83,6 +85,13 @@ public class DockerRunMavenAction implements IActionDelegate, IExecutableExtensi
      * Method of running ILauncher with maven dependency.
      */
     public void run(IAction action) {
+        // save all the existing ediros
+        IWorkbenchPage[] pages = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPages();
+        for (IWorkbenchPage page : pages) {
+            IEditorPart editor = page.getActiveEditor();
+            page.saveEditor(editor, true);
+        }
+        
         Object element = selection.getFirstElement();
         IProject project = ((IResource) element).getProject();
         IFile pomIFile = project.getFile(POM_FILE);
@@ -143,7 +152,9 @@ public class DockerRunMavenAction implements IActionDelegate, IExecutableExtensi
 
         // execute maven build and push jobs using project POM
         try {
-            if (getContainerType().equals(DockerProjectConstants.KUBERNETES_CONTAINER)) {
+            if ((getContainerType().equals(DockerProjectConstants.KUBERNETES_CONTAINER))
+                    || (getContainerType().equals(DockerProjectConstants.DOCKER_CONTAINER)
+                            && isDockerPushOnly == null)) {
                 executeDockerBuildProcess(project, dependencyProjectNames, newConfiguration, isThisOldContainerProject);
             } else {
                 DockerBuildActionUtil.runDockerPushWithMavenProfile(project, newConfiguration, isThisOldContainerProject);

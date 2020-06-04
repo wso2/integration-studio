@@ -87,7 +87,7 @@ public class ConnectionParameterRenderer {
         } 
         
         //create dropdown for connection types
-        Composite composite = widgetFactory.createComposite(parent, SWT.NO_BACKGROUND);
+        Composite composite = widgetFactory.createComposite(parent, SWT.NONE);
         GridLayout propertiesGroupLayout = new GridLayout();
         propertiesGroupLayout.numColumns = 2;
         propertiesGroupLayout.marginLeft = 0;
@@ -98,7 +98,7 @@ public class ConnectionParameterRenderer {
         propertiesSectionData.horizontalSpan = 2;
         composite.setLayoutData(propertiesSectionData);
         compositeList.put(allowedConnectionTypes.getName(), composite);
-        Label label = new Label(composite, SWT.NO_BACKGROUND);
+        Label label = new Label(composite, SWT.NONE);
         label.setText("Connection Type:");
         GridData labelRefData = new GridData();
         labelRefData.widthHint = 120;

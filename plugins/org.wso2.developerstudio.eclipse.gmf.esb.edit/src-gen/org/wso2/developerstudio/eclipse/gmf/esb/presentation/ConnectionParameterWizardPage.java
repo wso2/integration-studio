@@ -67,7 +67,7 @@ public class ConnectionParameterWizardPage extends WizardPage {
 
     @Override
     public void createControl(Composite parent) {
-        Composite composite = new Composite(parent, SWT.NO_BACKGROUND);
+        Composite composite = new Composite(parent, SWT.NONE);
         GridLayout propertiesGroupLayout = new GridLayout();
         composite.setLayout(propertiesGroupLayout);
         this.connectionParameters = new ReferenceGroup(new ConnectionParameterRenderer(widgetFactory));

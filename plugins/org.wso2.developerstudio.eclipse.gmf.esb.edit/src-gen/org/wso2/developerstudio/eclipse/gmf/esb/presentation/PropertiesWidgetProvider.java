@@ -24,6 +24,7 @@ import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
@@ -98,7 +99,7 @@ public class PropertiesWidgetProvider {
 
     public Composite createTextBoxField(FormToolkit widgetFactory, Composite parent, final AttributeValue value) {
         Composite textBoxComposite = createComposite(value.getName(), widgetFactory, parent, 2, 2);
-        Label label = new Label(textBoxComposite, SWT.NO_BACKGROUND);
+        Label label = new Label(textBoxComposite, SWT.TRANSPARENT);
         label.setText(value.getDisplayName());
         GridData labelRefData = new GridData();
         labelRefData.widthHint = 120;
@@ -145,7 +146,7 @@ public class PropertiesWidgetProvider {
     public Composite createTextBoxFieldWithButton(FormToolkit widgetFactory, final Composite parent,
             AttributeValue value) {
         Composite textBoxComposite = createComposite(value.getName(), widgetFactory, parent, 3, 3);
-        Label label = new Label(textBoxComposite, SWT.NO_BACKGROUND);
+        Label label = new Label(textBoxComposite, SWT.TRANSPARENT);
         label.setText(value.getDisplayName() + ":");
         GridData labelRefData = new GridData();
         labelRefData.widthHint = 120;
@@ -211,7 +212,7 @@ public class PropertiesWidgetProvider {
     public Composite createDropDownField(FormToolkit widgetFactory, final Composite parent, String[] options,
             AttributeValue value) {
         Composite textBoxComposite = createComposite(value.getName(), widgetFactory, parent, 3, 3);
-        Label label = new Label(textBoxComposite, SWT.NO_BACKGROUND);
+        Label label = new Label(textBoxComposite, SWT.TRANSPARENT);
         label.setText(value.getDisplayName() + ":");
         GridData labelRefData = new GridData();
         labelRefData.widthHint = 120;
@@ -283,7 +284,7 @@ public class PropertiesWidgetProvider {
             log.error("Couldn't fetch property field icon", e1);
         }
         Composite textBoxComposite = createComposite(value.getName(), widgetFactory, parent, 4, 4);
-        Label label = new Label(textBoxComposite, SWT.NO_BACKGROUND);
+        Label label = new Label(textBoxComposite, SWT.TRANSPARENT);
         label.setText(value.getDisplayName());
         GridData labelRefData = new GridData();
         labelRefData.widthHint = 120;
@@ -349,7 +350,7 @@ public class PropertiesWidgetProvider {
     public Composite createCheckBoxField(FormToolkit widgetFactory, Composite parent, String Label, String[] options,
             String id) {
         Composite textBoxComposite = createComposite(id, widgetFactory, parent, options.length + 1, options.length + 1);
-        Label label = new Label(textBoxComposite, SWT.NO_BACKGROUND);
+        Label label = new Label(textBoxComposite, SWT.TRANSPARENT);
         label.setText(Label);
         GridData configRefDatass = new GridData(GridData.FILL_HORIZONTAL);
         label.setLayoutData(configRefDatass);
@@ -378,7 +379,8 @@ public class PropertiesWidgetProvider {
     }
 
     public Composite createComposite(String id, FormToolkit widgetFactory, Composite parent, int columns, int span) {
-        Composite composite = widgetFactory.createComposite(parent, SWT.NO_BACKGROUND);
+        Composite composite = widgetFactory.createComposite(parent, SWT.TRANSPARENT);
+        composite.setBackground(new Color (parent.getShell().getDisplay(), 245, 245, 245));
         GridLayout propertiesGroupLayout = new GridLayout();
         propertiesGroupLayout.numColumns = columns;
         propertiesGroupLayout.marginLeft = 0;

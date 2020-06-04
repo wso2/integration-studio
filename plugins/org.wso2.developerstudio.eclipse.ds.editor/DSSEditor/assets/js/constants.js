@@ -89,3 +89,10 @@ const VALIDATOR_LENGTH = "validateLength";
 const VALIDATOR_PATTERN = "validatePattern";
 const VALIDATOR_TYPE_RANGE = "range";
 const VALIDATOR_TYPE_PATTERN = "pattern";
+
+//// Output Mappings
+////// Attributes
+const RESULT_ATTRIBUTE_ELEMENT = "element";
+const RESULT_ATTRIBUTE_ROW_NAME = "rowName";
+const RESULT_ATTRIBUTE_DEF_NAME_SPACE = "defaultNamespace";
+const RESULT_ATTRIBUTE_XSLT_PATH = "xsltPath";

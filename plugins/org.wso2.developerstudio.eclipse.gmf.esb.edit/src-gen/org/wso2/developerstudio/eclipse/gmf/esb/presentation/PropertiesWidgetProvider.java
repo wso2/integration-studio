@@ -180,7 +180,7 @@ public class PropertiesWidgetProvider {
         });
         Image image = null;
         try {
-            image = new Image(parent.getShell().getDisplay(), EEFPropertyViewUtil.getIconPath("icons/full/obj16/Artboard_exp.png"));
+            image = new Image(parent.getShell().getDisplay(), EEFPropertyViewUtil.getIconPath("icons/full/obj16/Artboard_2exp.png"));
         } catch (URISyntaxException | IOException e1) {
             log.error("Couldn't fetch property field icon", e1);
         }
@@ -242,7 +242,7 @@ public class PropertiesWidgetProvider {
         Button configButton = new Button(textBoxComposite, SWT.PUSH);
         Image image = null;
         try {
-            image = new Image(parent.getShell().getDisplay(), EEFPropertyViewUtil.getIconPath("icons/full/obj16/Artboard_1exp.png"));
+            image = new Image(parent.getShell().getDisplay(), EEFPropertyViewUtil.getIconPath("icons/full/obj16/Artboard_2exp.png"));
         } catch (URISyntaxException | IOException e1) {
             log.error("Couldn't fetch property field icon", e1);
         }

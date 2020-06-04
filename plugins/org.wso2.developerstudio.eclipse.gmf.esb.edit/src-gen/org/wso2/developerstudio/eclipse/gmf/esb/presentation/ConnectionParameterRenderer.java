@@ -87,7 +87,8 @@ public class ConnectionParameterRenderer {
         } 
         
         //create dropdown for connection types
-        Composite composite = widgetFactory.createComposite(parent, SWT.NONE);
+        Composite composite = widgetFactory.createComposite(parent, SWT.TRANSPARENT);
+        composite.setBackground(new Color (parent.getShell().getDisplay(), 245, 245, 245));
         GridLayout propertiesGroupLayout = new GridLayout();
         propertiesGroupLayout.numColumns = 2;
         propertiesGroupLayout.marginLeft = 0;

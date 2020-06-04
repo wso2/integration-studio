@@ -39,8 +39,11 @@ import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.debug.core.model.IProcess;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
+import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IExportWizard;
 import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.esb.synapse.unit.test.Activator;
 import org.wso2.developerstudio.eclipse.esb.synapse.unit.test.propertytester.RunTestResourceTester;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -80,6 +83,13 @@ public class UnitTestConfigurationWizard extends Wizard implements IExportWizard
 
     @Override
     public boolean performFinish() {
+        // save all the existing editors
+        IWorkbenchPage[] pages = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPages();
+        for (IWorkbenchPage page : pages) {
+            IEditorPart editor = page.getActiveEditor();
+            page.saveEditor(editor, true);
+        }
+        
         try {
             ILaunchManager launchManager = DebugPlugin.getDefault().getLaunchManager();
             Object element = selection.getFirstElement();

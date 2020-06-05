@@ -82,8 +82,12 @@ public class PlatformEarlyStartUpHandler implements IStartup {
      */
     private void setFileAssociations() {
         PlatformUI.getWorkbench().getEditorRegistry().setDefaultEditor("*.html", "org.eclipse.ui.browser.editorSupport");
-        PlatformUI.getWorkbench().getEditorRegistry().setDefaultEditor("*.yaml", YAML_EDITOR);
-        PlatformUI.getWorkbench().getEditorRegistry().setDefaultEditor("*.yml", YAML_EDITOR);
+        try {
+	        PlatformUI.getWorkbench().getEditorRegistry().setDefaultEditor("*.yaml", YAML_EDITOR);
+	        PlatformUI.getWorkbench().getEditorRegistry().setDefaultEditor("*.yml", YAML_EDITOR);
+        } catch (Exception e) {
+        	log.error("Error while configuraing the yaml editor.", e);
+        }
     }
     
     /**

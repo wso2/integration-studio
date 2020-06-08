@@ -299,15 +299,7 @@ public class PropertiesWidgetProvider {
         setToolTip(label, value.getHelpTip());
         GridData configRefData = new GridData(GridData.FILL_HORIZONTAL);
         configRef.setLayoutData(configRefData);
-        configRef.addSelectionListener(new SelectionAdapter() {
-            public void widgetSelected(SelectionEvent event) {
-                if (!isConnectionWidgetProvider) {
-                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(partForm,
-                            EsbViewsRepository.CloudConnectorOperation.Properties.configRef, PropertiesEditionEvent.COMMIT,
-                            PropertiesEditionEvent.EDIT, null, configRef.getText()));
-                }
-            }
-        });
+        
         Button configButton = widgetFactory.createButton(textBoxComposite, "", SWT.PUSH | SWT.TRANSPARENT);
         configButton.setImage(NEW_ELEMENT_IMG);
         configButton.addListener(SWT.Selection, new Listener() {
@@ -334,6 +326,7 @@ public class PropertiesWidgetProvider {
         
         Button editConnectionButton = widgetFactory.createButton(textBoxComposite, "", SWT.PUSH | SWT.TRANSPARENT);
         editConnectionButton.setImage(DELETE_ELEMENT_IMG);
+        editConnectionButton.setEnabled(false);
         editConnectionButton.addListener(SWT.Selection, new Listener() {
             @Override
             public void handleEvent(Event event) {
@@ -341,6 +334,22 @@ public class PropertiesWidgetProvider {
                 propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(partForm,
                         EsbViewsRepository.CloudConnectorOperation.Properties.configRef, PropertiesEditionEvent.COMMIT,
                         PropertiesEditionEvent.EDIT, null, configRef.getText()));
+            }
+        });
+        
+        configRef.addSelectionListener(new SelectionAdapter() {
+            public void widgetSelected(SelectionEvent event) {
+                if (!isConnectionWidgetProvider) {
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(partForm,
+                            EsbViewsRepository.CloudConnectorOperation.Properties.configRef, PropertiesEditionEvent.COMMIT,
+                            PropertiesEditionEvent.EDIT, null, configRef.getText()));
+                }
+                
+                if (!configRef.getText().isEmpty()) {
+                    editConnectionButton.setEnabled(true);
+                } else {
+                    editConnectionButton.setEnabled(false);
+                }
             }
         });
         
@@ -427,6 +436,7 @@ public class PropertiesWidgetProvider {
         wizard.init(PlatformUI.getWorkbench(), null);
         WizardDialog connectionWizard = new WizardDialog(window.getShell(), wizard);
         connectionWizard.setHelpAvailable(false);
+        connectionWizard.setPageSize(550, 460);
         connectionWizard.open();
     }
 
@@ -441,6 +451,7 @@ public class PropertiesWidgetProvider {
         wizard.init(PlatformUI.getWorkbench(), null);
         WizardDialog connectionWizard = new WizardDialog(window.getShell(), wizard);
         connectionWizard.setHelpAvailable(false);
+        connectionWizard.setPageSize(550, 460);
         connectionWizard.open();
     }
 

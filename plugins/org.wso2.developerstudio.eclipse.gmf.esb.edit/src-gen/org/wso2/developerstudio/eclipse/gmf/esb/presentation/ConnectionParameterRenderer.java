@@ -25,9 +25,15 @@ import java.util.Map;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.custom.CTabItem;
+import org.eclipse.swt.custom.ScrolledComposite;
+import org.eclipse.swt.events.ControlAdapter;
+import org.eclipse.swt.events.ControlEvent;
+import org.eclipse.swt.events.PaintEvent;
+import org.eclipse.swt.events.PaintListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Combo;
@@ -38,6 +44,7 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.forms.widgets.FormToolkit;
+import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeGroupValue;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValue;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValueType;
@@ -172,22 +179,39 @@ public class ConnectionParameterRenderer {
                 if (isFirstTime) {
                     tabSection = widgetProvider.createGroup(parent, "");
                     tabFolder = new CTabFolder(tabSection, SWT.NONE);
-                    GridData tableLayoutData = new GridData(GridData.FILL_HORIZONTAL);
-                    tabFolder.setLayoutData(tableLayoutData);
                     tabFolder.setBackground(new Color(Display.getCurrent(), 255, 255, 255));
+                    tabFolder.setUnselectedCloseVisible(false);
+                    GridData tableLayoutData = new GridData(GridData.FILL_HORIZONTAL);
+                    tableLayoutData.heightHint = 270;
+                    tabFolder.setLayoutData(tableLayoutData);
                     isFirstTime = false;
                 }
+                
                 AttributeGroupValue agv = (AttributeGroupValue) elem.getValue();
-                CTabItem tabGeneralSection = new CTabItem(tabFolder, SWT.NULL);
+                CTabItem tabGeneralSection = new CTabItem(tabFolder, SWT.NONE);
                 tabGeneralSection.setText(agv.getGroupName());
-
-                Composite tabComposite = new Composite(tabFolder, SWT.NONE);
-                GridLayout tabCompositeGroupLayout = new GridLayout();
-                tabComposite.setLayout(tabCompositeGroupLayout);
-                tabGeneralSection.setControl(tabComposite);
+                
+                final ScrolledComposite scroller = new ScrolledComposite(tabFolder, SWT.V_SCROLL);
+                Composite tabComposite = new Composite(scroller, SWT.NONE);
+                tabComposite.setLayout(new GridLayout());
+                
                 for (Element ele : agv.getElements()) {
                     createDynamicWidgetComponents(ele, tabComposite);
                 }
+                
+                scroller.layout();
+                scroller.setContent(tabComposite);
+                scroller.setExpandVertical(true);
+                scroller.setExpandHorizontal(true);
+                scroller.setMinHeight(tabComposite.computeSize(SWT.DEFAULT, SWT.DEFAULT).y);
+                
+                scroller.addControlListener(new ControlAdapter(){
+                    public void controlResized( ControlEvent e ) {
+                        scroller.setMinHeight(tabComposite.computeSize(SWT.DEFAULT, SWT.DEFAULT).y);
+                    }
+                });
+                
+                tabGeneralSection.setControl(scroller);
             }
         }
         

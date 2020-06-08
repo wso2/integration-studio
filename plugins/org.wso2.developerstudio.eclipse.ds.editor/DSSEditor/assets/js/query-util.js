@@ -159,6 +159,13 @@ function addInputMapping(root) {
     	paramElement.setAttribute("ordinal", ordinalVal);
     }
 
+    let optionalChecked = $(QUERY_PARAM_OPTIONAL_CHECK_INPUT).is(":checked");
+    if (optionalChecked) {
+        paramElement.setAttribute(QUERY_PARAM_OPTIONAL, TRUE_STRING);
+    } else {
+        paramElement.setAttribute(QUERY_PARAM_OPTIONAL, FALSE_STRING);
+    }
+
     // Append validators
     if (window.validators.length !== 0 || window.validators !== undefined || window.validators !== null) {
         for (let i = 0, len = window.validators.length; i < len; i++) {
@@ -408,6 +415,10 @@ function editInputMapping(root, mappingName) {
             if (paramElement.attributes.getNamedItem("defaultValue") !== null) {
                 $("#im-defaultvalue-input").val(paramElement.attributes.getNamedItem("defaultValue").value);
             }
+
+            let paramOptionalValue = paramElement.attributes.getNamedItem(QUERY_PARAM_OPTIONAL) !== null &&
+                    paramElement.attributes.getNamedItem(QUERY_PARAM_OPTIONAL).value == TRUE_STRING;
+            $(QUERY_PARAM_OPTIONAL_CHECK_INPUT).prop("checked", paramOptionalValue);
 
             if (paramElement.attributes.getNamedItem("type") !== null) {
                 $("#q-im-inout-select").val(paramElement.attributes.getNamedItem("type").value);

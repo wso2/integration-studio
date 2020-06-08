@@ -171,6 +171,7 @@
 			<xs:attribute name="type" type="inOut" />
 			<xs:attribute name="ordinal" type="xs:integer" />
 			<xs:attribute name="defaultValue" type="xs:string" />
+			<xs:attribute name="optional" type="xs:boolean" />
 		</xs:complexType>
 	</xs:element>
 

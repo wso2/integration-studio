@@ -1,5 +1,7 @@
 // Common constants
 const EMPTY_STRING = "";
+const TRUE_STRING = "true";
+const FALSE_STRING = "false";
 
 // Contains constants related to the DSS editor
 const OPERATION_TYPE_HEADER = "x-operation-type";
@@ -82,6 +84,10 @@ const DEFAULT_SYBASE_URL = "jdbc:sybase:Tds:[HOST]:[PORT2048]/[database]";
 const SQL_WHERE = "where";
 
 //// Input Mappings
+////// Attributes
+const QUERY_PARAM_OPTIONAL_CHECK_INPUT = "#q-im-optional-check";
+const QUERY_PARAM_OPTIONAL = "optional";
+
 ////// Validators
 const VALIDATOR_LONGRANGE = "validateLongRange";
 const VALIDATOR_DOUBLERANGE = "validateDoubleRange";

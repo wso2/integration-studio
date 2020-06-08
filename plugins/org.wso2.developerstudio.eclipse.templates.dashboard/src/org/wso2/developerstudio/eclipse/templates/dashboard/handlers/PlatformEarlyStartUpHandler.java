@@ -55,8 +55,6 @@ public class PlatformEarlyStartUpHandler implements IStartup {
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     
-    private static final String YAML_EDITOR = "de.jcup.yamleditor.YamlEditor";
-
     private static final String EMPTY_STRING = "";
     private static final String MAVEN_HOME = "apache-maven";
     private static final String TOOLING_PATH_MAC = "/Applications/IntegrationStudio.app/Contents/Eclipse";
@@ -82,8 +80,6 @@ public class PlatformEarlyStartUpHandler implements IStartup {
      */
     private void setFileAssociations() {
         PlatformUI.getWorkbench().getEditorRegistry().setDefaultEditor("*.html", "org.eclipse.ui.browser.editorSupport");
-        PlatformUI.getWorkbench().getEditorRegistry().setDefaultEditor("*.yaml", YAML_EDITOR);
-        PlatformUI.getWorkbench().getEditorRegistry().setDefaultEditor("*.yml", YAML_EDITOR);
     }
     
     /**

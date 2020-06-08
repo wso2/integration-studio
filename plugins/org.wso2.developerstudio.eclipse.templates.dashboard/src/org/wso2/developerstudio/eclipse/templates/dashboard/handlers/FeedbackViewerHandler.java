@@ -32,7 +32,7 @@ import org.wso2.developerstudio.eclipse.templates.dashboard.Activator;
 public class FeedbackViewerHandler extends AbstractHandler {
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-    private static final String IS_GIT_ISSUES = "https://github.com/wso2/devstudio-tooling-ei/issues";
+    private static final String IS_GIT_ISSUES = "https://github.com/wso2/devstudio-tooling-ei/issues/new";
 
     public Object execute(ExecutionEvent event) throws ExecutionException {
         try {

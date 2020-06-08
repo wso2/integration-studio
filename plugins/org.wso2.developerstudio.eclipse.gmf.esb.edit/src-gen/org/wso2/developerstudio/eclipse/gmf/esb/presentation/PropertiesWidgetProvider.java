@@ -218,6 +218,8 @@ public class PropertiesWidgetProvider {
         labelRefData.widthHint = 120;
         label.setLayoutData(labelRefData);
         final Combo configRef = new Combo(textBoxComposite, SWT.DROP_DOWN);
+        Color colorWhite = new Color(null, 255, 255, 255);
+        configRef.setBackground(colorWhite);
         controlList.put(value.getName(), configRef);
         if(value.getRequired()) {
             requiredList.put(value.getName(), configRef);

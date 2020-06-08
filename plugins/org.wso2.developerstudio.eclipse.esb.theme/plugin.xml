@@ -25,7 +25,7 @@
       	os="macosx" 
       	/>
       	<theme
-      	basestylesheeturi="themes/css/wso2-theme-standalone.css" 
+      	basestylesheeturi="themes/css/wso2-theme-standalone-linux.css"
       	id="org.wso2.developerstudio.eclipse.esb.theme" 
       	label="WSO2EI" 
       	os="linux" 

@@ -17,23 +17,18 @@
  */
 package org.wso2.developerstudio.eclipse.esb.synapse.unit.test.wizard.unittest;
 
-import java.io.File;
-
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
-import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.FormLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
-import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 import org.wso2.developerstudio.eclipse.esb.synapse.unit.test.component.DependencyTree;
@@ -71,20 +66,10 @@ public class UnitTestSuiteSupportiveArtifactsSelectionPage extends WizardPage {
 
         container.setLayout(new FormLayout());
         
-        //Specific for the release 7.0.2 
-        Label templateNotice = new Label(container, SWT.NONE);
-        final Color myColor = new Color(Display.getCurrent(), 244, 41, 65);
-        templateNotice.setText("Notice : Take the WSO2 Micro-Integrator latest WUM updated pack to work with template testing in Unit Test Suite.");
-        templateNotice.setForeground(myColor);
         FormData fd = new FormData();
-        fd.top = new FormAttachment(1);
-        fd.left = new FormAttachment(2);
-        templateNotice.setLayoutData(fd);
-        templateNotice.setVisible(false);
-
         Label supportiveArtifactlblName = new Label(container, SWT.NONE);
         fd = new FormData();
-        fd.top = new FormAttachment(templateNotice, 2);
+        fd.top = new FormAttachment(2);
         fd.left = new FormAttachment(2);
         supportiveArtifactlblName.setLayoutData(fd);
         supportiveArtifactlblName.setText(SUPPORTIVE_ARTIFACTS_LABEL);
@@ -104,10 +89,6 @@ public class UnitTestSuiteSupportiveArtifactsSelectionPage extends WizardPage {
                 final TreeItem item = (TreeItem) evt.item;
                 if (evt.detail == SWT.CHECK && item != null) {
                     resourceTree.handleTreeItemChecked(item);
-					if (item.getText(1).contains("src" + File.separator + "main" + File.separator + "synapse-config"
-							+ File.separator + "templates")) {
-						templateNotice.setVisible(true);
-					}
                 }
             }
 

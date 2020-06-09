@@ -766,8 +766,8 @@ function populateWithMappings(root, mappings) {
             let paramElement = root.createElement("param");
 
             paramElement.setAttribute("name", mappings[i]);
-            paramElement.setAttribute("paramType", "scalar");
-            paramElement.setAttribute("sqlType", "string");
+            paramElement.setAttribute("paramType", "SCALAR");
+            paramElement.setAttribute("sqlType", "STRING");
 
             window.params.push(paramElement);
         }

@@ -87,9 +87,13 @@ public class DockerRunMavenAction implements IActionDelegate, IExecutableExtensi
     public void run(IAction action) {
         // save all the existing ediros
         IWorkbenchPage[] pages = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPages();
-        for (IWorkbenchPage page : pages) {
-            IEditorPart editor = page.getActiveEditor();
-            page.saveEditor(editor, true);
+        if (pages != null) {
+            for (IWorkbenchPage page : pages) {
+                IEditorPart editor = page.getActiveEditor();
+                if (editor != null) {
+                    page.saveEditor(editor, true);
+                }
+            }
         }
         
         Object element = selection.getFirstElement();

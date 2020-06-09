@@ -907,11 +907,15 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
             dockerBuildAction = new Action("Generate Docker Image",
                     ImageDescriptor.createFromImage(SWTResourceManager.getImage(this.getClass(), actionIconType))) {
                 public void run() {
-                    // save all the existing ediros
+                    // save all the existing editors
                     IWorkbenchPage[] pages = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPages();
-                    for (IWorkbenchPage page : pages) {
-                        IEditorPart editor = page.getActiveEditor();
-                        page.saveEditor(editor, true);
+                    if (pages != null) {
+                        for (IWorkbenchPage page : pages) {
+                            IEditorPart editor = page.getActiveEditor();
+                            if (editor != null) {
+                                page.saveEditor(editor, true);
+                            }
+                        }
                     }
 
                     // check whether there are atleast one depenedency composite project to build a image

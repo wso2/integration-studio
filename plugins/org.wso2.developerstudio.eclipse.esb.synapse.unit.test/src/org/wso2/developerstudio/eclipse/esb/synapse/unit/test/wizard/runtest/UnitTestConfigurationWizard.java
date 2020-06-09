@@ -85,10 +85,15 @@ public class UnitTestConfigurationWizard extends Wizard implements IExportWizard
     public boolean performFinish() {
         // save all the existing editors
         IWorkbenchPage[] pages = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPages();
-        for (IWorkbenchPage page : pages) {
-            IEditorPart editor = page.getActiveEditor();
-            page.saveEditor(editor, true);
+        if (pages != null) {
+            for (IWorkbenchPage page : pages) {
+                IEditorPart editor = page.getActiveEditor();
+                if (editor != null) {
+                    page.saveEditor(editor, true);
+                }
+            }
         }
+        
         
         try {
             ILaunchManager launchManager = DebugPlugin.getDefault().getLaunchManager();

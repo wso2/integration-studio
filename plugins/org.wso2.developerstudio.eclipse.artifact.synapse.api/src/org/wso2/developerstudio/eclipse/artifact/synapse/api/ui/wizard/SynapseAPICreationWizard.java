@@ -151,7 +151,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
 				} 	
 				copyImportFile(location,isNewArtifact,groupId);
 			} else if (getModel().getSelectedOption().equals("create.swagger")) {
-				String apiName = getAPINameFromSwagger(artifactModel.getSwaggerFile());
+				String apiName = getAPINameFromSwagger(artifactModel.getSwaggerFile()).replaceAll(" ", "_");
 				artifactModel.setName(apiName);
 				artifactFile = location.getFile(new Path(apiName + ".xml"));
 				File destFile = artifactFile.getLocation().toFile();
@@ -250,7 +250,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
 			OMElement element = AXIOMUtil.stringToOM(generatedAPI);
 			element.addAttribute(fac.createOMAttribute("publishSwagger",
 					fac.createOMNamespace(XMLConfigConstants.NULL_NAMESPACE, ""),
-					REGISTRY_RESOURCE_PATH + "/" + artifactModel.getSwaggerFile().getName()));
+					REGISTRY_RESOURCE_PATH + "/" + artifactModel.getSwaggerFile().getName().replaceAll(" ", "_")));
 			generatedAPI = element.toString();
 		} catch (APIException | XMLStreamException e) {
 			log.error("Exception occured while generating API using swagger file", e);
@@ -390,7 +390,8 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
 		try {
 			IProject project = regProject.getProject();
 			RegistryResourceInfoDoc regResInfoDoc = new RegistryResourceInfoDoc();
-			IFile resourceFile = regProject.getFile(new Path(importFile.getName()));
+			String resourceFileName = importFile.getName().replaceAll(" ", "_");
+			IFile resourceFile = regProject.getFile(new Path(resourceFileName));
 			File destFile = resourceFile.getLocation().toFile();
 			FileUtils.copy(importFile, destFile);
 			RegistryResourceUtils.createMetaDataForFolder(registryPath, destFile.getParentFile());
@@ -411,7 +412,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
 			generalProjectArtifact.fromFile(project.getFile("artifact.xml").getLocation().toFile());
 
 			RegistryArtifact artifact = new RegistryArtifact();
-			artifact.setName(ProjectUtils.fileNameWithExtension(importFile.getName()));
+			artifact.setName(ProjectUtils.fileNameWithExtension(resourceFileName));
 			artifact.setVersion(version);
 			artifact.setType("registry/resource");
 			artifact.setServerRole("EnterpriseIntegrator");

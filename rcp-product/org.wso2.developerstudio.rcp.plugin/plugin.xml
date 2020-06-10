@@ -25,7 +25,7 @@
          </property>
          <property
 		   name="cssTheme"
-	         value="org.wso2.developerstudio.eclipse.esb.theme">
+	         value="org.wso2.developerstudio.eclipse.esb.light.theme">
          </property>      
          <property
            name="lifeCycleURI"

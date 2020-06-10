@@ -248,7 +248,7 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
 
     @Override
     public boolean canFinish() {
-        return true;
+        return super.canFinish();
     }
 
     public void addPages() {

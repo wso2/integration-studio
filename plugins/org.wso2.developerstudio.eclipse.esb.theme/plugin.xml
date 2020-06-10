@@ -19,13 +19,36 @@
 <plugin>
    <extension point="org.eclipse.e4.ui.css.swt.theme">
       <theme
-      	basestylesheeturi="themes/css/wso2-theme-standalone.css" 
+      	basestylesheeturi="themes/css/wso2-theme-standalone-light.css"
+      	id="org.wso2.developerstudio.eclipse.esb.light.theme"
+      	label="WSO2EI Light"
+      	os="macosx"
+      	/>
+      	<theme
+      	basestylesheeturi="themes/css/wso2-theme-standalone-light-linux.css"
+      	id="org.wso2.developerstudio.eclipse.esb.light.theme"
+      	label="WSO2EI Light"
+      	os="linux"
+      	/>
+      	<theme
+      	basestylesheeturi="themes/css/wso2-theme-standalone-light.css"
+      	id="org.wso2.developerstudio.eclipse.esb.light.theme"
+      	label="WSO2EI Light"
+      	os="win32"
+      	os_version="6.0,6.1,6.2,6.3,10.0"
+      	/>
+      <property name="applicationCSSResources"
+      value="platform:/plugin/org.wso2.developerstudio.eclipse.esb.theme/themes/images/" />
+   </extension>
+   <extension point="org.eclipse.e4.ui.css.swt.theme">
+		<theme
+		basestylesheeturi="themes/css/wso2-theme-standalone.css"
       	id="org.wso2.developerstudio.eclipse.esb.theme" 
       	label="WSO2EI" 
       	os="macosx" 
       	/>
       	<theme
-      	basestylesheeturi="themes/css/wso2-theme-standalone-linux.css"
+      	basestylesheeturi="themes/css/wso2-theme-standalone.css"
       	id="org.wso2.developerstudio.eclipse.esb.theme" 
       	label="WSO2EI" 
       	os="linux" 
@@ -37,7 +60,7 @@
       	os="win32"
       	os_version="6.0,6.1,6.2,6.3,10.0"
       	/>
-      <property name="applicationCSSResources" 
+      <property name="applicationCSSResources"
       value="platform:/plugin/org.wso2.developerstudio.eclipse.esb.theme/themes/images/" />
    </extension>
    <extension point="org.eclipse.ui.commandImages">

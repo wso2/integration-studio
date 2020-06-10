@@ -23,9 +23,12 @@ import java.util.Map;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.KeyAdapter;
+import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValue;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorConnectionRoot;
@@ -72,6 +75,23 @@ public class ConnectionParameterWizardPage extends WizardPage {
         composite.setLayout(propertiesGroupLayout);
         this.connectionParameters = new ReferenceGroup(new ConnectionParameterRenderer(widgetFactory));
         elements = this.connectionParameters.createControls(composite, root, updateConfigMap, allowedConnectionTypes, connectorName);
+        setPageComplete(false);
+        Text connectionNameText = (Text)getGeneratedElements().get("connectionName");
+        if(connectionNameText != null) {
+            connectionNameText.addKeyListener(new KeyAdapter() {
+
+                @Override
+                @SuppressWarnings("synthetic-access")
+                public void keyReleased(KeyEvent e) {
+                     String value = ((Text)e.getSource()).getText();
+                     if(value != null && !value.isEmpty()) {
+                         setPageComplete(true);
+                     } else {
+                         setPageComplete(false);
+                     }
+                }
+            });
+        }
         setControl(composite);
     }
 

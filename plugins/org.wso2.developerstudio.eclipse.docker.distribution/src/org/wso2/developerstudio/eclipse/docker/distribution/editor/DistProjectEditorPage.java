@@ -457,7 +457,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
         if (!isThisOldContainerProject) {
             managedForm.getToolkit().createLabel(managedForm.getForm().getBody(), "Enable Cipher Tool", SWT.NONE);
             btnSecurityEnableChecker = managedForm.getToolkit().createButton(managedForm.getForm().getBody(),
-                    "Required for secrets encyption and decryption", SWT.CHECK);
+                    "Required for secrets encryption and decryption", SWT.CHECK);
             btnSecurityEnableChecker.setSelection(isSecurityEnabled());
             GridData gdBtnSecurityEnableChecker = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
             btnSecurityEnableChecker.setLayoutData(gdBtnSecurityEnableChecker);

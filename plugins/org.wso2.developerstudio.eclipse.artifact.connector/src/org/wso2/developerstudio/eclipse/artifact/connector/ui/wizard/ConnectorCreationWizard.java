@@ -83,6 +83,7 @@ public class ConnectorCreationWizard extends AbstractWSO2ProjectCreationWizard {
 
 	public boolean performFinish() {
 		try {
+			setProjectNature(CONNECTOR_PROJECT_NATURE);
 			project = createNewProject();
 			pomfile = project.getFile("pom.xml").getLocation().toFile();
 			createPOM(pomfile, "pom");

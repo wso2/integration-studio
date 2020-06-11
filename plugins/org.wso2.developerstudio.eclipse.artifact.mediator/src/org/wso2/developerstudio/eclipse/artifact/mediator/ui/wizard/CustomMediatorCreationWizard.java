@@ -94,6 +94,7 @@ public class CustomMediatorCreationWizard extends AbstractWSO2ProjectCreationWiz
 	    try {
 	    	
 			if(customMediatorModel.getSelectedOption().equals("new.mediator")){
+				setProjectNature(MEDIATOR_PROJECT_NATURE);
 				project = createNewProject();
 				IFolder  srcFolder= ProjectUtils.getWorkspaceFolder(project, "src", "main","java");
 		     	JavaUtils.addJavaSupportAndSourceFolder(project, srcFolder);	     	

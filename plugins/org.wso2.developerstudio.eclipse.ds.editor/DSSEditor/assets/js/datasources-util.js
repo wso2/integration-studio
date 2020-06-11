@@ -141,16 +141,17 @@ function populateDSModal(root, dsId, metadata) {
                     // url
                     let url = getDSConfigPropertyValue(properties, "url");
 
-                    // populate data source test connection details from url
-                    if ((url != null && url != "") && url != undefined){
-                        populateDSTestConDetails(url);
-                    }
                     if (url === "") {
                         url = getDSConfigPropertyValue(properties, "org.wso2.ws.dataservice.protocol");
                     }
 
                     if (url != null && url != undefined) {
                         $("#ds-url-input").val(url.trim());
+                        
+                        // populate data source test connection details from url
+                        if (url != "") {
+                            populateDSTestConDetails(url.trim());
+                        }
                     }
 
                     // username

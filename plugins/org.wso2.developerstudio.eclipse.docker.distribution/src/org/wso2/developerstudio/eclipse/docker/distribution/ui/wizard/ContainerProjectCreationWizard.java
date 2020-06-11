@@ -278,6 +278,13 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
                 this.getModel().setLocation(projectLocation);
                 this.getModel().setIsUserDefine(false);
             }
+            
+            // Passing the project nature for creation.
+            if (dockerModel.isKubernetesExporterProjectChecked()) {
+                setProjectNature(Constants.KUBERNETES_EXPORTER_PROJECT_NATURE);
+            } else if (dockerModel.isDockerExporterProjectChecked()) {
+                setProjectNature(Constants.DOCKER_EXPORTER_PROJECT_NATURE);
+            }
             project = createNewProject();
 
             // Creating CarbonApps and Libs and CarbonHome folders

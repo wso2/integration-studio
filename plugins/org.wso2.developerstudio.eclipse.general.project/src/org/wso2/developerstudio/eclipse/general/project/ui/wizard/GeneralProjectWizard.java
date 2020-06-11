@@ -53,6 +53,7 @@ public class GeneralProjectWizard extends AbstractWSO2ProjectCreationWizard {
 	
 	public boolean performFinish() {
 		try {
+			setProjectNature(GENERAL_PROJECT_NATURE);
 			project = createNewProject();
 			JavaUtils.addJavaNature(project,false);
 			

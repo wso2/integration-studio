@@ -67,6 +67,7 @@ public class DistributionProjectWizard extends
 	public boolean performFinish() {
 		try {
 			DistributionProjectModel projectModel = (DistributionProjectModel) getModel();
+			setProjectNature(DISTRIBUTION_PROJECT_NATURE);
 			project = createNewProject();
 			File pomfile = project.getFile("pom.xml").getLocation().toFile();
 			createPOM(pomfile);

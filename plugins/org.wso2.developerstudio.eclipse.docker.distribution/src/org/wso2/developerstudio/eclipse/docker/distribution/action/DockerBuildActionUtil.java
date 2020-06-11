@@ -321,9 +321,10 @@ public class DockerBuildActionUtil {
      * @param targetTag pom value for target tag
      * @param isConfigMapEnabaled value for config map enabled or disabled
      * @param isThisOldContainerProject
+     * @param isCipherToolEnable value for isCipherToolEnablement
      */
     public static void changeDockerImageDataInPOMPlugin(File pomFile, String baseImage, String targetRepository, String targetTag,
-            boolean isConfigMapEnabaled, IFile pomIFile, boolean isThisOldContainerProject) {
+            boolean isConfigMapEnabaled, IFile pomIFile, boolean isThisOldContainerProject, boolean isCipherToolEnable) {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
@@ -354,6 +355,15 @@ public class DockerBuildActionUtil {
                 Node tagNode = (Node) xPathBuildTag.compile(DockerProjectConstants.TARGET_TAG_XPATH).evaluate(doc,
                         XPathConstants.NODE);
                 tagNode.setTextContent(targetTag);
+                
+                XPath xPathConfigMapPlugin = XPathFactory.newInstance().newXPath();
+                Node configMapPluginCipherToolEnableNode = (Node) xPathConfigMapPlugin
+                        .compile(DockerProjectConstants.CIPHER_TOOL_ENABLE_XPATH).evaluate(doc, XPathConstants.NODE);
+                if (isCipherToolEnable) {
+                    configMapPluginCipherToolEnableNode.setTextContent("true");
+                } else {
+                    configMapPluginCipherToolEnableNode.setTextContent("false");
+                }
             }
 
             XPath xPathConfigMapPlugin = XPathFactory.newInstance().newXPath();

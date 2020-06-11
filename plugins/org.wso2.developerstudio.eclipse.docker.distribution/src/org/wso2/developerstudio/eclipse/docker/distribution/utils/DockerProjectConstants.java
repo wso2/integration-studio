@@ -91,6 +91,7 @@ public class DockerProjectConstants extends NLS {
     public static final String BASE_IMAGE_XPATH = "/project/properties/dockerfile.base.image";
     public static final String TARGET_REPOSITORY_XPATH = "/project/properties/dockerfile.repository";
     public static final String TARGET_TAG_XPATH = "/project/properties/dockerfile.tag";
+    public static final String CIPHER_TOOL_ENABLE_XPATH = "/project/properties/ciphertool.enable";
     public static final String TARGET_REPOSITORY_XPATH_OLD = "/project/build/plugins/plugin/executions/execution/configuration/repository";
     public static final String TARGET_TAG_XPATH_OLD = "/project/build/plugins/plugin/executions/execution/configuration/tag";
     public static final String DOCKER_SPOTIFY_PLUGIN_BUILD_ARG = "/project/build/plugins/plugin/executions/execution/configuration/buildArgs";

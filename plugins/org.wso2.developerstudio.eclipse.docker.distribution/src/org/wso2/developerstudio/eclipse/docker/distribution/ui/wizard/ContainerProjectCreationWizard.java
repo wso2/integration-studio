@@ -364,6 +364,7 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
             deploymentTomlPluginExecution.setId("config-mapper-parser");
             
             //add default secure-vault properties
+            mavenProject.getProperties().put("ciphertool.enable", "false");
             mavenProject.getProperties().put("keystore.name", DockerProjectConstants.DEFAULT_KEY_STORE_FILE);
             mavenProject.getProperties().put("keystore.password",
                     DockerProjectConstants.DEFAULT_KEY_STORE_ALIAS_PASSWORD);
@@ -378,6 +379,7 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
             }
             String deploymentTomlPluginConfig = "<configuration>\n" + ""
                     + "                <miVersion>" + PlatformUIConstants.DOCKER_DEFAULT_BASE_TAG + "</miVersion>\n" 
+                    + "                <executeCipherTool>${ciphertool.enable}</executeCipherTool>\n" 
                     + "                <keystoreName>${keystore.name}</keystoreName>\n" 
                     + "                <keystoreAlias>${keystore.alias}</keystoreAlias>\n" 
                     + "                <keystoreType>${keystore.type}</keystoreType>\n" 

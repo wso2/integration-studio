@@ -126,6 +126,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
     private Text txtTargetTag;
     private Text txtDescription;
     private Button btnDeploymentTomlEnableChecker;
+    private Button btnSecurityEnableChecker;
     private boolean pageDirty;
 
     IStatus editorStatus = new Status(IStatus.OK, Activator.PLUGIN_ID, "");
@@ -150,6 +151,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
     private String targetRepository = "";
     private String targetTag = "";
     private boolean isDeploymentConfigEnabled = false;
+    private boolean isSecurityEnabled = false;
     private boolean isThisOldContainerProject = false;
 
     private Action dockerBuildAction;
@@ -246,6 +248,10 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
                 XPathExpression xpTag = XPathFactory.newInstance().newXPath().compile(DockerProjectConstants.TARGET_TAG_XPATH);
                 String tag = xpTag.evaluate(doc);
                 setTargetTag(tag);
+                
+                XPathExpression xpCipherToolEnable = XPathFactory.newInstance().newXPath()
+                        .compile(DockerProjectConstants.CIPHER_TOOL_ENABLE_XPATH);
+                setSecurityEnabled(Boolean.parseBoolean(xpCipherToolEnable.evaluate(doc)));
             }
             
 			XPathExpression xPathConfigMapEnabled = XPathFactory.newInstance().newXPath()
@@ -289,7 +295,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
             }
             
             DockerBuildActionUtil.changeDockerImageDataInPOMPlugin(pomFile, getBaseImage(), getTargetRepository(), getTargetTag(),
-                    isDeploymentConfigEnabled, pomFileRes, isThisOldContainerProject);
+                    isDeploymentConfigEnabled, pomFileRes, isThisOldContainerProject, isSecurityEnabled);
             setPageDirty(false);
             updateDirtyState();
             pomFileRes.getProject().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
@@ -447,11 +453,34 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
             }
         });
         
+        //Enable security check button for new Docker/k8s projects, since this is working only for newer plugin versions
+        if (!isThisOldContainerProject) {
+            managedForm.getToolkit().createLabel(managedForm.getForm().getBody(), "Enable Cipher Tool", SWT.NONE);
+            btnSecurityEnableChecker = managedForm.getToolkit().createButton(managedForm.getForm().getBody(),
+                    "Required for secrets encyption and decryption", SWT.CHECK);
+            btnSecurityEnableChecker.setSelection(isSecurityEnabled());
+            GridData gdBtnSecurityEnableChecker = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
+            btnSecurityEnableChecker.setLayoutData(gdBtnSecurityEnableChecker);
+            btnSecurityEnableChecker.addSelectionListener(new SelectionAdapter() {
+                @Override
+                public void widgetSelected(SelectionEvent e) {
+                    setPageDirty(true);
+                    if (btnSecurityEnableChecker.getSelection()) {
+                        setSecurityEnabled(true);
+                    } else {
+                        setSecurityEnabled(false);
+                    }
+                    updateDirtyState();
+                }
+            });
+        }
+        
         Section sctnDependencies = managedForm.getToolkit().createSection(managedForm.getForm().getBody(),
                 Section.TWISTIE | Section.TITLE_BAR);
         GridData gd_sctnNewSection = new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1);
         gd_sctnNewSection.heightHint = 250;
         gd_sctnNewSection.widthHint = 411;
+        gd_sctnNewSection.verticalSpan = 55;
         sctnDependencies.setLayoutData(gd_sctnNewSection);
         managedForm.getToolkit().paintBordersFor(sctnDependencies);
         sctnDependencies.setText("Dependencies");
@@ -1101,6 +1130,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
                         btnDeploymentTomlEnableChecker.setSelection(isDeploymentConfigEnabled());
                         if (!isThisOldContainerProject) {
                             txtBaseImage.setText(getBaseImage());
+                            btnSecurityEnableChecker.setSelection(isSecurityEnabled());
                         }
                     }
                 });
@@ -1236,6 +1266,14 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
     
     public boolean isDeploymentConfigEnabled() {
         return isDeploymentConfigEnabled;
+    }
+    
+    public boolean isSecurityEnabled() {
+        return isSecurityEnabled;
+    }
+
+    public void setSecurityEnabled(boolean isSecurityEnabled) {
+        this.isSecurityEnabled = isSecurityEnabled;
     }
 
     public static String[] combine(String[] a, String[] b) {

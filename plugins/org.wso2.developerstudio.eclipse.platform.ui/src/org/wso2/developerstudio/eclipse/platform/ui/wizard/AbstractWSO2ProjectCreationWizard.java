@@ -69,6 +69,7 @@ import org.wso2.developerstudio.eclipse.platform.ui.wizard.pages.MavenDetailsPag
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.pages.ProjectOptionsDataPage;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.pages.ProjectOptionsPage;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
+import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 
 public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implements INewWizard, IExecutableExtension {
 	protected static final String SNAPSHOTS_UPDATE_POLICY = "SNAPSHOTS_UPDATE_POLICY";
@@ -99,7 +100,17 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 	private IPreferencesService preferencesService = Platform.getPreferencesService();
 	private ProjectOptionsDataPage mainWizardPage;
 	private MavenDetailsPage mavenDetailPage;
+	private String projectNature;
 	
+	/**
+	 * Allows to set the project nature.
+	 * 
+	 * @param projectNature nature of the project
+	 */
+	public void setProjectNature(String projectNature) {
+		this.projectNature = projectNature;
+	}
+
 	public void setMap(String label, Text txt) {
 		map.put(label, txt);
 	}
@@ -311,6 +322,9 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 		newProjectDescription.setLocationURI(location.toURI());
 		project.create(newProjectDescription, new NullProgressMonitor());
 		project.open(new NullProgressMonitor());
+		if (null != projectNature) {
+			ProjectUtils.addNatureToProject(project, false, projectNature);
+		}
 
 		try {
 			updateMMMPModuleList(name, parentProject);

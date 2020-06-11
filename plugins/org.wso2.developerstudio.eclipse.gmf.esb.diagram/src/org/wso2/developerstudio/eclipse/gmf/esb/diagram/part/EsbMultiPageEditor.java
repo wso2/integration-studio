@@ -237,8 +237,8 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
         if (editorInput instanceof FileEditorInput) {
             IFile file = ((FileEditorInput) editorInput).getFile();
             fileName = file.getName();
-            try {
-                final String source = new Scanner(file.getContents()).useDelimiter("\\A").next();
+            try (InputStream inputStream = file.getContents(); Scanner scanner = new Scanner(inputStream)) {
+                final String source = scanner.useDelimiter("\\A").next();
                 currArtifactType = Deserializer.getInstance().getArtifactType(source);
             } catch (Exception e) {
                 log.error("Error in retrieving the artifact type for editor generation", e);
@@ -262,9 +262,8 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
             IFile file = ((FileEditorInput) editorInput).getFile();
             fileName = file.getName();
             
-            try (InputStream inputStream = file.getContents()) {
-                
-                final String source = new Scanner(inputStream).useDelimiter("\\A").next();
+            try (InputStream inputStream = file.getContents(); Scanner scanner = new Scanner(inputStream)) {
+                final String source = scanner.useDelimiter("\\A").next();
                 final Deserializer deserializer = Deserializer.getInstance();
                 editorInput = new EsbEditorInput(null, file, deserializer.getArtifactType(source).getLiteral());
 
@@ -443,9 +442,8 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                 final Deserializer deserializer = Deserializer.getInstance();
                 isFormEditor = true;
                 currArtifactType = artifactType;
-                try (InputStream inputStream = file.getContents()) {
-                    
-                    final String source = new Scanner(inputStream).useDelimiter("\\A").next();
+                try (InputStream inputStream = file.getContents(); Scanner scanner = new Scanner(inputStream)) {
+                    final String source = scanner.useDelimiter("\\A").next();
                     editorInput = new EsbEditorInput(null, file, artifactType.getLiteral());
                     Display.getDefault().asyncExec(new Runnable() {
                         @Override
@@ -1023,11 +1021,13 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
         IFile xmlFile = null;
         String source = null;
         xmlFile = ((EsbEditorInput) getEditor(0).getEditorInput()).getXmlResource();
-        try {
-            source = new Scanner(xmlFile.getContents()).useDelimiter("\\A").next();
+        try (InputStream inputStream = xmlFile.getContents(); Scanner scanner = new Scanner(inputStream)) {
+            source = scanner.useDelimiter("\\A").next();
         } catch (CoreException exception) {
             MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error Details",
                     "Error in loading associated XML : " + exception.getMessage());
+        } catch (IOException e) {
+            log.error("Error while reading xml file conetent for artifact", e);
         }
 
         return source;

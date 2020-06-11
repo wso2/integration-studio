@@ -27,12 +27,14 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.Dese
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.Scanner;
 
 import org.eclipse.core.internal.resources.Folder;
 import org.eclipse.core.internal.resources.Project;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.emf.validation.internal.util.Log;
 import org.eclipse.jface.resource.ImageDescriptor;
 
 public class FileDecorator extends LabelProvider implements ILightweightLabelDecorator {
@@ -191,13 +193,15 @@ public class FileDecorator extends LabelProvider implements ILightweightLabelDec
                 String fileName = files[i];
                 if (fileName.endsWith(".xml")) {
 
-                    try {
-                        String source = new Scanner(new FileReader(folderPath + File.separator + fileName))
-                                .useDelimiter("\\A").next();
+                    try (FileReader fileReader = new FileReader(folderPath + File.separator + fileName);
+                            Scanner scanner = new Scanner(fileReader);) {
+                        String source = scanner.useDelimiter("\\A").next();
                         if (!isValid(source)) {
                             return false;
                         }
                     } catch (FileNotFoundException e) {
+                        // ignore
+                    } catch (IOException e1) {
                         // ignore
                     }
                 }

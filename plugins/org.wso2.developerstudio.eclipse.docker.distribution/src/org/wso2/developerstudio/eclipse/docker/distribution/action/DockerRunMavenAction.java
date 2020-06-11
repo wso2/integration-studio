@@ -142,7 +142,7 @@ public class DockerRunMavenAction implements IActionDelegate, IExecutableExtensi
             wizard.init(PlatformUI.getWorkbench(), null);
             CustomWizardDialog headerWizardDialog = new CustomWizardDialog(window.getShell(), wizard);
             headerWizardDialog.setHelpAvailable(false);
-            headerWizardDialog.setPageSize(580, 200);
+            headerWizardDialog.setPageSize(580, 230);
             headerWizardDialog.open();
 
             if (newConfiguration.getAuthUsername() == null && newConfiguration.getAuthPassword() == null) {

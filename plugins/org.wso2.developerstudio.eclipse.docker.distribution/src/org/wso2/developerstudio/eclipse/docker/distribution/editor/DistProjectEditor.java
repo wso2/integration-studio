@@ -134,9 +134,9 @@ public class DistProjectEditor extends FormEditor implements Refreshable {
 
 	private void updateSourceFromDesign() {
 		String content;
-		try {
+		try (InputStream inputStream = getFile().getContents(); Scanner scanner = new Scanner(inputStream)){
 			distProjectEditorPage.savePOM();
-			content = new Scanner(getFile().getContents()).useDelimiter("\\A").next();
+			content = scanner.useDelimiter("\\A").next();
 			getDocument().set(content);
 		} catch (Exception e) {
 			log.error("An unexpected error has occurred", e);

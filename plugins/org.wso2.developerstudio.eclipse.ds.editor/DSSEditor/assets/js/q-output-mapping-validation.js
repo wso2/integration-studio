@@ -76,6 +76,16 @@ $('#q-output_mapping-add-btn').click(function(e) {
 	$('#q-om-complex-child-inputgroup').toggle(false);
 });
 
+/*
+ * Toggle between input groups according to the datasource type.
+ */
+function toggleBetweenDataSourceTypes() {
+	let qParamType = $('#q-om-addedit-dsmapping-select').val();
+	let isColumn = (qParamType == 'column');
+	$('#q-om-addedit-dscolname-inputgroup').toggle(isColumn);
+	$('#q-om-addedit-qparamname-inputgroup').toggle(!isColumn);
+}
+
 function populateOutputTypeElements() {
 	let outputType = $("#om-outputtype-select").val(); 
 	
@@ -562,12 +572,11 @@ function clearOutputMappingForm() {
 function populateOutputMappingModal(root, populateQueries) {
 	let mappingType = $('#q-om-addedit-mappingtype-select').val();
 	if (mappingType == "element") {
+		toggleBetweenDataSourceTypes();
 		$('#q-om-addedit-dsmapping-select-inputgroup').toggle(true);
 		$('#q-om-addedit-outputfn-inputgroup').toggle(true);
 		$('#q-om-addedit-elename-inputgroup').toggle(false);
 		$('#q-om-addedit-elens-inputgroup').toggle(true);
-		$('#q-om-addedit-dscolname-inputgroup').toggle(true);
-		$('#q-om-addedit-qparamname-inputgroup').toggle(false);
 		$('#q-om-addedit-paramtype-inputgroup').toggle(true);
 		$('#q-om-addedit-arrayname-inputgroup').toggle(false);
 		$('#q-om-addedit-schematype-inputgroup').toggle(true);
@@ -578,12 +587,11 @@ function populateOutputMappingModal(root, populateQueries) {
 		$('#q-om-complex-child-inputgroup').toggle(false);
 		
 	} else if (mappingType == "attribute") {
+		toggleBetweenDataSourceTypes();
 		$('#q-om-addedit-dsmapping-select-inputgroup').toggle(true);
 		$('#q-om-addedit-outputfn-inputgroup').toggle(true);
 		$('#q-om-addedit-elename-inputgroup').toggle(false);
 		$('#q-om-addedit-elens-inputgroup').toggle(false);
-		$('#q-om-addedit-dscolname-inputgroup').toggle(true);
-		$('#q-om-addedit-qparamname-inputgroup').toggle(false);
 		$('#q-om-addedit-paramtype-inputgroup').toggle(true);
 		$('#q-om-addedit-arrayname-inputgroup').toggle(false);
 		$('#q-om-addedit-schematype-inputgroup').toggle(true);

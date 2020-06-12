@@ -333,13 +333,13 @@ function populateElementModal(result, tds) {
 		 let name = ele.attributes.getNamedItem("name").value;
 		 if (name == tds[0].innerText) {
 			 let dsType = tds[1].innerText;
-			 if (dsType == "column" && ele.attributes.getNamedItem("column") != null) {
+			 if (dsType == "column") {
 				 $('#q-om-addedit-mappingtype-select').val('element');
 				 $('#q-om-addedit-dsmapping-select').val('column');
 				 $('#q-om-addedit-outputfn-input').val(name);
 				 setNamespaceValues(ele);
 				 
-				 $('#q-om-addedit-dscolname-input').val(ele.attributes.getNamedItem("column").value);
+				 $('#q-om-addedit-dscolname-input').val(getAttributeValue(ele, 'column'));
 				 setParamaterTypeValues(ele);
 				 let paramTypeVal = tds[5].innerText;
 				 if (paramTypeVal.indexOf(":") != -1) {
@@ -355,12 +355,12 @@ function populateElementModal(result, tds) {
 				 
 				 break;
 				 
-			 } else if (dsType == "query-param" && ele.attributes.getNamedItem("query-param") != null) {
+			 } else if (dsType == "query-param") {
 				 $('#q-om-addedit-mappingtype-select').val('element');
 				 $('#q-om-addedit-dsmapping-select').val('query-param');
 				 $('#q-om-addedit-outputfn-input').val(name);
 				 setNamespaceValues(ele);
-				 $('#q-om-addedit-qparamname-input').val(ele.attributes.getNamedItem("query-param").value);
+				 $('#q-om-addedit-qparamname-input').val(getAttributeValue(ele, "query-param"));
 				 setParamaterTypeValues(ele);
 				 $('#q-om-paramtype-select').val(tds[5].innerText);
 				 setOptionalValue(ele);
@@ -392,6 +392,17 @@ function populateElementModal(result, tds) {
 			 }
 		}
 	}
+}
+
+/*
+ * Validate attribute and returns attribute value.
+ */
+function getAttributeValue(element, attributeName) {
+	let attribute = element.attributes.getNamedItem(attributeName);
+	if (attribute != null && attribute != undefined) {
+		return attribute.value;
+	}
+	return EMPTY_STRING;
 }
 
 function setNamespaceValues(ele) {

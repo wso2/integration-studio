@@ -99,6 +99,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
 	private static final int REGISTRY_COLLECTION = 1; 
 	private static final int REGISTRY_DUMP = 2; 
 	private static final String REGISTRY_RESOURCE_PATH = "/_system/governance/swagger_files";
+	private static final String EMPTY_STRING = "";
 	
 	private String version;
 	
@@ -116,11 +117,24 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
 	
 	@Override
 	public boolean canFinish() {
-		// If option to generate API from swagger definition is selected,
-		// can finish if only both swagger definition and registry project is selected.
-		if (getModel().getSelectedOption().equals("create.swagger") && 
-				(artifactModel.getSwaggerFile().getPath().equals("") || 
-						artifactModel.getSwaggerRegistryLocation() == null)) {
+		// If it is options page, cannot finish.
+		if (getContainer().getCurrentPage().getTitle().equals("API Artifact Creation Options")) {
+			return false;
+		}
+		if (getModel().getSelectedOption().equals("create.api") && (artifactModel.getName().equals(EMPTY_STRING)
+				|| artifactModel.getContext().equals(EMPTY_STRING))) {
+			// If option to create a new API is selected,
+			// can finish only if both context and name is given.
+			return false;
+		} else if (getModel().getSelectedOption().equals("import.api")
+				&& getModel().getImportFile().getName().equals(EMPTY_STRING)) {
+			// If option to import artifact is selected,
+			// can finish only if artifact file is selected.
+			return false;
+		} else if (getModel().getSelectedOption().equals("create.swagger")
+				&& artifactModel.getSwaggerFile().getPath().equals(EMPTY_STRING)) {
+			// If option to generate API from swagger definition is selected,
+			// can finish only if swagger definition is selected.
 			return false;
 		}
 		return true;

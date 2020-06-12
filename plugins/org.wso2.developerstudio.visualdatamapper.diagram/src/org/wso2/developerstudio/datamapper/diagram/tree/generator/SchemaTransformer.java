@@ -1114,13 +1114,13 @@ public class SchemaTransformer implements ISchemaTransformer {
 	 */
 	@SuppressWarnings("resource")
 	@Override
-	public String getSchemaContentFromFile(String path) {
-		File jschema = new File(path);
-		String entireFileText = null;
-		try {
-			entireFileText = new Scanner(jschema).useDelimiter("\\A").next();
-		} catch (FileNotFoundException e) {
-			log.error(ERROR_TEXT, e);
+    public String getSchemaContentFromFile(String path) {
+        File jschema = new File(path);
+        String entireFileText = null;
+        try (Scanner scanner = new Scanner(jschema)) {
+            entireFileText = scanner.useDelimiter("\\A").next();
+        } catch (FileNotFoundException e) {
+            log.error(ERROR_TEXT, e);
 		}
 		return entireFileText;
 	}

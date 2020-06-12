@@ -46,11 +46,11 @@ public class AvroSchemaTransformer implements ISchemaTransformer {
 
 	@Override
 	public String getSchemaContentFromFile(String path) {
-		File avsc = new File(path);
-		String entireFileText = null;
-		try {
-			entireFileText = new Scanner(avsc).useDelimiter("\\A").next();
-		} catch (FileNotFoundException e) {
+        File avsc = new File(path);
+        String entireFileText = null;
+        try (Scanner scanner = new Scanner(avsc)) {
+            entireFileText = scanner.useDelimiter("\\A").next();
+        } catch (FileNotFoundException e) {
 			log.error(ERROR_TEXT, e);
 		}
 		return entireFileText;

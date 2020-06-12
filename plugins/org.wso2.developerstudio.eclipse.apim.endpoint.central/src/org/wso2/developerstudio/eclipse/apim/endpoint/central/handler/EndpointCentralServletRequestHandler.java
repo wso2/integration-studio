@@ -472,8 +472,9 @@ public class EndpointCentralServletRequestHandler {
         IWorkspace workspace = ResourcesPlugin.getWorkspace();
         IWorkspaceRoot root = workspace.getRoot();
         IProject parentProject = root.getProject(apiArtifact.getParent());
-        try (InputStream inputStream = parentProject.getFile(apiArtifact.getPath()).getContents()) {
-            String source = new Scanner(inputStream).useDelimiter("\\A").next();
+        try (InputStream inputStream = parentProject.getFile(apiArtifact.getPath()).getContents();
+                Scanner scanner = new Scanner(inputStream);) {
+            String source = scanner.useDelimiter("\\A").next();
             RestApiAdmin restAPIAdmin = new RestApiAdmin();
             OMElement element = AXIOMUtil.stringToOM(source);
             API api = APIFactory.createAPI(element);

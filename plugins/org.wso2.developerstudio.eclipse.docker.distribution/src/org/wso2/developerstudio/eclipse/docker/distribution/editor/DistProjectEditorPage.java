@@ -457,7 +457,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
         if (!isThisOldContainerProject) {
             managedForm.getToolkit().createLabel(managedForm.getForm().getBody(), "Enable Cipher Tool", SWT.NONE);
             btnSecurityEnableChecker = managedForm.getToolkit().createButton(managedForm.getForm().getBody(),
-                    "Required for secrets encyption and decryption", SWT.CHECK);
+                    "Required for secrets encryption and decryption", SWT.CHECK);
             btnSecurityEnableChecker.setSelection(isSecurityEnabled());
             GridData gdBtnSecurityEnableChecker = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
             btnSecurityEnableChecker.setLayoutData(gdBtnSecurityEnableChecker);
@@ -963,7 +963,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
                         wizard.init(PlatformUI.getWorkbench(), null);
                         CustomWizardDialog headerWizardDialog = new CustomWizardDialog(window.getShell(), wizard);
                         headerWizardDialog.setHelpAvailable(false);
-                        headerWizardDialog.setPageSize(580, 200);
+                        headerWizardDialog.setPageSize(580, 230);
                         headerWizardDialog.open();
 
                         if (newConfiguration.getAuthUsername() == null || newConfiguration.getAuthPassword() == null) {
@@ -1004,7 +1004,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
                     wizard.init(PlatformUI.getWorkbench(), null);
                     CustomWizardDialog headerWizardDialog = new CustomWizardDialog(window.getShell(), wizard);
                     headerWizardDialog.setHelpAvailable(false);
-                    headerWizardDialog.setPageSize(580, 200);
+                    headerWizardDialog.setPageSize(580, 230);
                     headerWizardDialog.open();
                     
                     if (newConfiguration.getAuthUsername() == null || newConfiguration.getAuthPassword() == null) {

@@ -57,6 +57,7 @@ public class DockerHubLoginPage extends WizardPage {
     private static final String SUB_DIALOG_TITLE = "Enter Docker Registry Credentials";
     private static final String EMPTY_STRING = "";
     private static final String REGISTRY_URL = "Registry URL Type:";
+    private static final String IMAGE_NAME = "Docker Image Name:";
     private static final String ENTER_REGISTRY_URL = "Enter Registry URL:";
     private static final String USERNAME = "Username:";
     private static final String PASSWORD = "Password:";
@@ -70,6 +71,7 @@ public class DockerHubLoginPage extends WizardPage {
     private String dockerHubPassword = EMPTY_STRING;
     private String dockerHubOtherRegistryURL = EMPTY_STRING;
     private String selectedRegistryType = EMPTY_STRING;
+    private String dockerImageName = EMPTY_STRING;
 
     private Combo registryURLCombo;
     private Text txtDockerUsername;
@@ -94,9 +96,27 @@ public class DockerHubLoginPage extends WizardPage {
         container.setLayout(new FormLayout());
         FormData data;
         
-        Label lblRegistryURL = new Label(container, SWT.NONE);
+        Label lblImageName = new Label(container, SWT.NONE);
         data = new FormData();
         data.top = new FormAttachment(10);
+        data.left = new FormAttachment(3);
+        data.width = 160;
+        lblImageName.setLayoutData(data);
+        lblImageName.setText(IMAGE_NAME);
+        
+        Text txtImageNameValue = new Text(container, SWT.READ_ONLY | SWT.BORDER);
+        data = new FormData();
+        data.top = new FormAttachment(10);
+        data.left = new FormAttachment(lblImageName, 0);
+        data.right = new FormAttachment(97);
+        data.width = 400;
+        txtImageNameValue.setLayoutData(data);
+        txtImageNameValue.setText(dockerImageName);
+        txtImageNameValue.setSelection(0);
+        
+        Label lblRegistryURL = new Label(container, SWT.NONE);
+        data = new FormData();
+        data.top = new FormAttachment(lblImageName, 20);
         data.left = new FormAttachment(3);
         data.width = 160;
         lblRegistryURL.setLayoutData(data);
@@ -106,7 +126,7 @@ public class DockerHubLoginPage extends WizardPage {
         registryURLCombo = new Combo(container, SWT.READ_ONLY | SWT.BORDER);
         registryURLCombo.setItems(registryContainers);
         data = new FormData();
-        data.top = new FormAttachment(10);
+        data.top = new FormAttachment(lblImageName, 20);
         data.left = new FormAttachment(lblRegistryURL, 0);
         data.right = new FormAttachment(97);
         data.width = 400;
@@ -141,7 +161,7 @@ public class DockerHubLoginPage extends WizardPage {
         data.right = new FormAttachment(100);
         containerDockerRegistry.setLayoutData(data);
         data = new FormData();
-        data.top = new FormAttachment(28);
+        data.top = new FormAttachment(registryURLCombo, 16);
         data.left = new FormAttachment(0);
         data.right = new FormAttachment(100);
         containerOtherRegistry.setLayoutData(data);
@@ -300,6 +320,7 @@ public class DockerHubLoginPage extends WizardPage {
         data.right = new FormAttachment(97);
         data.width = 400;
         txtDockerPassword.setLayoutData(data);
+        txtDockerPassword.setFocus();
         if (!getPasswordValue().isEmpty()) {
             txtDockerPassword.setText(getPasswordValue());
         }
@@ -353,17 +374,27 @@ public class DockerHubLoginPage extends WizardPage {
                 //Read target repository name and the tag from the pom spotify plugin tags
                 XPathExpression xpRepo = XPathFactory.newInstance().newXPath().compile(DockerProjectConstants.TARGET_REPOSITORY_XPATH_OLD);
                 repository = xpRepo.evaluate(doc);
+                dockerImageName += repository;
+                
+                XPathExpression xpTag = XPathFactory.newInstance().newXPath().compile(DockerProjectConstants.TARGET_TAG_XPATH_OLD);
+                dockerImageName += ":" + xpTag.evaluate(doc);
             } else {
                 //Read target repository name and the tag from the pom properties tags
                 XPathExpression xpRepo = XPathFactory.newInstance().newXPath().compile(DockerProjectConstants.TARGET_REPOSITORY_XPATH);
                 repository = xpRepo.evaluate(doc);
+                dockerImageName += repository;
+                
+                XPathExpression xpTag = XPathFactory.newInstance().newXPath().compile(DockerProjectConstants.TARGET_TAG_XPATH);
+                dockerImageName += ":" + xpTag.evaluate(doc);
             }
             
             String[] repositoryTags = repository.split("/");
             if (repositoryTags.length == 3) {
                 setSelectedRegistryType(OTHER_REGISTRY);
                 setDockerHubOtherRegistryURL(repositoryTags[0]);
+                setUsernameValue(repositoryTags[1]);
             } else {
+                setUsernameValue(repositoryTags[0]);
                 setSelectedRegistryType(DOCKERHUB_REGISTRY);
             }
         } catch (XPathExpressionException e) {

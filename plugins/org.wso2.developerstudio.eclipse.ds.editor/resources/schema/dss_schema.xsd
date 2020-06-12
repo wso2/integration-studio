@@ -574,6 +574,7 @@
 		<xs:attribute name="namespace" type="xs:string" />
 		<xs:attribute name="optional" type="xs:boolean" />
 		<xs:attribute name="arrayName" type="xs:string" />
+		<xs:attribute name="query-param" type="xs:string" />
 	</xs:attributeGroup>
 
 	<xs:element name="resource" type="Resource">

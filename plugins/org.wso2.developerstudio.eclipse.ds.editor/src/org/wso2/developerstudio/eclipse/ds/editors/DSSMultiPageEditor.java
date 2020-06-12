@@ -133,8 +133,8 @@ public class DSSMultiPageEditor extends MultiPageEditorPart implements IResource
             if (editorInput instanceof FileEditorInput) {
                 IFile file = ((FileEditorInput) editorInput).getFile();
                 
-                try (InputStream inputStream = file.getContents()) {
-                    setDsXmlContent(new Scanner(inputStream).useDelimiter("\\A").next());
+                try (InputStream inputStream = file.getContents(); Scanner scanner = new Scanner(inputStream)) {
+                    setDsXmlContent(scanner.useDelimiter("\\A").next());
                 } catch (IOException | CoreException e) {
                     log.error("Error while reading file", e);
                 }

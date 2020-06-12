@@ -99,6 +99,12 @@ public class MicroIntegratorRunLaunchDelegate implements ILaunchConfigurationDel
         IResource selectedCARAppResource = selectedProject.getParent()
                 .findMember(currentProjectName + "CompositeApplication");
         
+        //check selected project is created from new Integration Wizard
+        if (selectedCARAppResource == null) {
+            selectedCARAppResource = selectedProject.getParent()
+                    .findMember(currentProjectName.split("ConfigProject")[0] + "CompositeApplication");
+        }
+        
         boolean isCompositeSelectionPageNeeded = false;
         if (selectedCARAppResource == null && currentProjectName != null
                 && !currentProjectName.contains("CompositeApplication")

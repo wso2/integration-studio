@@ -178,6 +178,9 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
 						.replaceAll(Pattern.quote(File.separator), "/");
 				esbProjectArtifact.addESBArtifact(createArtifact(apiName, groupId, version, relativePath));
 				esbProjectArtifact.toFile();
+				// Copy swagger file to the registry
+	            createRegistryResource(artifactModel.getSwaggerRegistryLocation(), artifactModel.getSwaggerFile(),
+	                    REGISTRY_RESOURCE_PATH);
 			} else {
 				artifactFile = location.getFile(new Path(artifactModel.getName() + ".xml"));
 				File destFile = artifactFile.getLocation().toFile();
@@ -198,11 +201,6 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
 					openEditor(file);
 				}
 			}
-
-			// Copy swagger file to the registry
-			createRegistryResource(artifactModel.getSwaggerRegistryLocation(), artifactModel.getSwaggerFile(),
-					REGISTRY_RESOURCE_PATH);
-
 		} catch (SwaggerDefinitionProcessingException e) {
 			MessageDialog.openError(getShell(), "Error while creating the API", e.getMessage());
 		} catch (CoreException e) {

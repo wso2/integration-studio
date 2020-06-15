@@ -43,7 +43,6 @@ import org.wso2.developerstudio.eclipse.carbon.server.model.util.CarbonServerCom
 import org.wso2.developerstudio.eclipse.carbonserver.base.impl.CarbonServerBehaviour;
 import org.wso2.developerstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.Activator;
-import org.wso2.developerstudio.eclipse.carbonserver44microei12.operations.CommonOperations;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.util.CarbonServer44eiUtils;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.util.ServerConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -57,7 +56,6 @@ public class CarbonServerBehavior44microei12 extends CarbonServerBehaviour {
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     private CarbonServer44eiUtils carbonServer44eiUtils = new CarbonServer44eiUtils();
-    private CommonOperations commonOperations = new CommonOperations();
 
     private void checkClosed(IModule[] module) throws CoreException {
         for (int i = 0; i < module.length; i++) {

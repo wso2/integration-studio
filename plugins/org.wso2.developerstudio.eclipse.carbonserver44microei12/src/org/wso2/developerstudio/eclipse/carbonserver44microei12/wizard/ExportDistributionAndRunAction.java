@@ -18,6 +18,11 @@
 
 package org.wso2.developerstudio.eclipse.carbonserver44microei12.wizard;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Paths;
+
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
@@ -30,6 +35,9 @@ import org.wso2.developerstudio.eclipse.carbonserver44microei12.Activator;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.register.product.servers.MicroIntegratorInstance;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+
+import net.consensys.cava.toml.Toml;
+import net.consensys.cava.toml.TomlParseResult;
 
 public class ExportDistributionAndRunAction implements IActionDelegate {
 
@@ -48,8 +56,30 @@ public class ExportDistributionAndRunAction implements IActionDelegate {
                 // restart embedded micro-integrator profile if it is not started already
                 try {
                     MicroIntegratorInstance microIntegratorInstance = MicroIntegratorInstance.getInstance();
-                    if (!microIntegratorInstance.isHotDeploymentEnabled()
-                            || !microIntegratorInstance.isServerStarted()) {
+                    boolean isHotDeploymentEnabled = true;
+                    String workspace = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString();
+                    try {
+                        String serverConfigDirectoryPath = workspace + File.separator + ".metadata" + File.separator
+                                + "ServerConfigs";
+                        File serverConfigurationDirectory = new File(serverConfigDirectoryPath);
+                        String tomlFilePath = serverConfigDirectoryPath + File.separator + "deployment.toml";
+                        File customizedTomlFile = new File(tomlFilePath);
+                        if (serverConfigurationDirectory.exists() && customizedTomlFile.exists()) {
+                        	TomlParseResult tomlResults = Toml.parse(Paths.get(tomlFilePath));
+                            Object hotDeploymentObject = tomlResults.get("server.hot_deployment");
+                            if ((hotDeploymentObject instanceof String && ((String) hotDeploymentObject).equals("false"))
+                                    || (hotDeploymentObject instanceof Boolean && !((Boolean) hotDeploymentObject))) {
+                            	isHotDeploymentEnabled = false;
+                            }
+
+                        } else {
+                        	isHotDeploymentEnabled = microIntegratorInstance.isHotDeploymentEnabled();
+                        }
+                    } catch (IOException e) {
+                        log.error("An error occured while backup default server configurations", e);
+                    }
+
+                    if (!isHotDeploymentEnabled || !microIntegratorInstance.isServerStarted()) {
                         microIntegratorInstance.restart();
                     }
                 } catch (CoreException e) {

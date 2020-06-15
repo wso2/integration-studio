@@ -19,6 +19,7 @@
 package org.wso2.developerstudio.eclipse.esb.dashboard.templates.configure.server;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -49,16 +50,21 @@ public class EmbeddedServerConfigWizard extends Wizard implements INewWizard, IE
     private static final String MI_FOLDER = "runtime" + File.separator + "microesb";
     private static final String DEPLOYMENT_TOML_FILE = File.separator + "deployment.toml";
     private static final String SECRET_CONF_FILE = File.separator + "secret-conf.properties";
+    private static final String PASSWORD_PERSISTS_WINDOWS = File.separator + "password-persist.txt";
+    private static final String PASSWORD_PERSISTS_OTHERS = File.separator + "password-persist";
     private static final String SERVER_CONFIG_LIBS = File.separator + "lib";
     private static final String SERVER_CONF_DIRECTORY = File.separator + "conf";
     private static final String SERVER_CONFIG_SELECTED_LIBS = SERVER_CONFIG_LIBS + File.separator + "selected";
     private static final String TEMP_SERVER_CONFIGURATION_PATH = ResourcesPlugin.getWorkspace().getRoot().getLocation()
             .toOSString() + SERVER_CONFIG_LOCATION;
+    private static final String WINDOW_OS = "WINDOWS";
+    private static final String OTHER_OS = "OTHER";
 
     private EmbeddedServerConfigWizardPage serverConfigPage;
     private String miDeploymentTomlPath;
     private String serverConfigDeploymentTomlPath;
     private String miServerPath;
+    private String osType;
     private Map<String, Boolean> librariesList = new HashMap<>();
 
     @Override
@@ -120,6 +126,7 @@ public class EmbeddedServerConfigWizard extends Wizard implements INewWizard, IE
         String microInteratorPath;
 
         if ((OS.indexOf("mac") >= 0) || (OS.indexOf("darwin") >= 0)) {
+            osType = OTHER_OS;
             // check if EI Tooling is in Application folder for MAC
             File macOSEIToolingAppFile = new File(TOOLING_PATH_MAC);
             if (macOSEIToolingAppFile.exists()) {
@@ -129,6 +136,7 @@ public class EmbeddedServerConfigWizard extends Wizard implements INewWizard, IE
                 microInteratorPath = (path).toAbsolutePath().toString() + File.separator + MI_FOLDER;
             }
         } else {
+            osType = WINDOW_OS;
             java.nio.file.Path path = Paths.get(EMPTY_STRING);
             microInteratorPath = (path).toAbsolutePath().toString() + File.separator + MI_FOLDER;
         }
@@ -156,10 +164,31 @@ public class EmbeddedServerConfigWizard extends Wizard implements INewWizard, IE
 
         try {
             Map<String, String> secrets = serverConfigPage.getSecretsFromConfiguration(serverConfigDeploymentTomlPath);
+            
+            File passwordFile;
+            if (osType.equals(WINDOW_OS)) {
+                passwordFile = new File(TEMP_SERVER_CONFIGURATION_PATH + PASSWORD_PERSISTS_WINDOWS);
+            } else {
+                passwordFile = new File(TEMP_SERVER_CONFIGURATION_PATH + PASSWORD_PERSISTS_OTHERS); 
+            }
+            
             if (secrets.size() == 0) {
                 File secretConfFile = new File(TEMP_SERVER_CONFIGURATION_PATH + SECRET_CONF_FILE);
                 if (secretConfFile.exists()) {
                     secretConfFile.delete();
+                }
+                
+                if (passwordFile.exists()) {
+                    passwordFile.delete();
+                }
+            } else {
+                if (!passwordFile.exists()) {
+                    passwordFile.createNewFile();
+                    try (FileWriter myWriter = new FileWriter(passwordFile)) {
+                        myWriter.write("wso2carbon");
+                    } catch (IOException e) {
+                        log.error("Error while creating password-persist file", e);
+                    }
                 }
             }
         } catch (IOException e) {

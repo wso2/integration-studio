@@ -259,6 +259,7 @@ public class EntitlementMediatorGraphicalShape extends RoundedRectangle {
         esbNodeTypeNameLabel.setFont(new Font(null, "Arial", 10, SWT.BOLD));
         esbNodeTypeNameLabel.setAlignment(SWT.CENTER);
         esbNodeTypeNameLabel.setPreferredSize(new Dimension(45, 20));
+        esbNodeTypeNameLabel.setForegroundColor(new Color(null, 255, 255, 255));
 
         figureLayer.add(esbNodeTypeNameLabel, constraintEsbNodeTypeNameRectangle);
         pane.add(figureLayer);
@@ -279,11 +280,11 @@ public class EntitlementMediatorGraphicalShape extends RoundedRectangle {
         innerRect.setCornerDimensions(new Dimension(1, 1));
         innerRect.setOutline(false);
         innerRect.setBackgroundColor(this.getBackgroundColor());
-        LineBorder innerRectBorder = new LineBorder(new Color(null, 53, 73, 94), 1, SWT.BORDER_SOLID);
+        LineBorder innerRectBorder = new LineBorder(new Color(null, 255, 255, 255), 1, SWT.BORDER_SOLID);
         innerRect.setBorder(innerRectBorder);
         innerRect.setPreferredSize(new Dimension(95, 25));
         innerRect.setMinimumSize(new Dimension(80, 100));
-        innerRect.setBackgroundColor(new Color(null, 247, 247, 247));
+        innerRect.setBackgroundColor(new Color(null, 255, 149, 149));
 
         GridLayout innerRectLayout = new GridLayout();
         innerRectLayout.numColumns = 1;

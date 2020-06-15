@@ -145,6 +145,8 @@ public class CarbonServerListener implements IServerListener {
                 + File.separator + "secret-conf_temp.properties");
         File runningSecretConfFile = new File(miHomePath + File.separator + "conf" + File.separator + "security"
                 + File.separator + "secret-conf.properties");
+        File passwordPersistWindowsFile = new File(miHomePath +  File.separator + "password-persist.txt");
+        File passwordPersistOtherFile = new File(miHomePath +  File.separator + "password-persist");
 
         if (tempLibDirectory.exists()) {
             try {
@@ -172,6 +174,14 @@ public class CarbonServerListener implements IServerListener {
         if (tempSecretConfFile.exists()) {
             runningSecretConfFile.delete();
             tempSecretConfFile.renameTo(runningSecretConfFile);
+        }
+        
+        if (passwordPersistWindowsFile.exists()) {
+            passwordPersistWindowsFile.delete();
+        }
+        
+        if (passwordPersistOtherFile.exists()) {
+            passwordPersistOtherFile.delete();
         }
     }
 
@@ -196,6 +206,8 @@ public class CarbonServerListener implements IServerListener {
                 + File.separator + "secret-conf_temp.properties");
         File runningSecretConfFile = new File(miHomePath + File.separator + "conf" + File.separator + "security"
                 + File.separator + "secret-conf.properties");
+        File passwordPersistWindowsFile = new File(miHomePath +  File.separator + "password-persist.txt");
+        File passwordPersistOtherFile = new File(miHomePath +  File.separator + "password-persist");
 
         if (tempLibDirectory.exists()) {
             try {
@@ -224,29 +236,53 @@ public class CarbonServerListener implements IServerListener {
             runningSecretConfFile.delete();
             tempSecretConfFile.renameTo(runningSecretConfFile);
         }
+        
+        if (passwordPersistWindowsFile.exists()) {
+            passwordPersistWindowsFile.delete();
+        }
+        
+        if (passwordPersistOtherFile.exists()) {
+            passwordPersistOtherFile.delete();
+        }
 
         try {
             String serverConfigDirectoryPath = workspace + File.separator + ".metadata" + File.separator
                     + "ServerConfigs";
             File serverConfigurationDirectory = new File(serverConfigDirectoryPath);
             File customizedTomlFile = new File(serverConfigDirectoryPath + File.separator + "deployment.toml");
+            boolean isDeploymentTomlsEquals = org.apache.commons.io.FileUtils.contentEquals(runningDeploymentTomlFile,
+                    customizedTomlFile);
             if (serverConfigurationDirectory.exists()) {
-                // backup original lib, dropins and deployment.toml resources
-                FileUtils.copyDirectory(runningLibDirectory, tempLibDirectory);
-                FileUtils.copyDirectory(runningDropinsDirectory, tempDropinsDirectory);
-                org.apache.commons.io.FileUtils.copyFile(runningDeploymentTomlFile, tempDeploymentTomlFile);
-
                 // copy user edited deployment.toml to conf directory
-                if (customizedTomlFile.exists() && !org.apache.commons.io.FileUtils.contentEquals(runningDeploymentTomlFile, customizedTomlFile)) {
+                if (customizedTomlFile.exists() && !isDeploymentTomlsEquals) {
+                    org.apache.commons.io.FileUtils.copyFile(runningDeploymentTomlFile, tempDeploymentTomlFile);
                     org.apache.commons.io.FileUtils.copyFile(customizedTomlFile, runningDeploymentTomlFile);
                 }
 
                 // copy user generated secret-conf.properties to conf/security directory
                 File customizedSecretConflFile = new File(
                         serverConfigDirectoryPath + File.separator + "secret-conf.properties");
-                if (customizedSecretConflFile.exists()) {
+                if (customizedSecretConflFile.exists() && !isDeploymentTomlsEquals) {
                     org.apache.commons.io.FileUtils.copyFile(runningSecretConfFile, tempSecretConfFile);
                     org.apache.commons.io.FileUtils.copyFile(customizedSecretConflFile, runningSecretConfFile);
+                }
+                
+                // copy password-persist file to root directory in windows os
+                File customizedPasswordPersistWindowsFile = new File(
+                        serverConfigDirectoryPath + File.separator + "password-persist.txt");
+                if (customizedPasswordPersistWindowsFile.exists() && !isDeploymentTomlsEquals) {
+                    passwordPersistWindowsFile.createNewFile();
+                    org.apache.commons.io.FileUtils.copyFile(customizedPasswordPersistWindowsFile,
+                            passwordPersistWindowsFile);
+                }
+
+                // copy password-persist file to root directory in other os
+                File customizedPasswordPersistOtherFile = new File(
+                        serverConfigDirectoryPath + File.separator + "password-persist");
+                if (customizedPasswordPersistOtherFile.exists() && !isDeploymentTomlsEquals) {
+                    passwordPersistOtherFile.createNewFile();
+                    org.apache.commons.io.FileUtils.copyFile(customizedPasswordPersistOtherFile,
+                            passwordPersistOtherFile);
                 }
 
                 // copy user selected libraries to lib directory
@@ -254,6 +290,12 @@ public class CarbonServerListener implements IServerListener {
                         + "selected";
                 File selectedCheckedLibs = new File(selectedLibraryPath);
                 File[] listSelectedCheckedLibs = selectedCheckedLibs.listFiles();
+                
+                if (listSelectedCheckedLibs.length > 0) {
+                    // backup original lib and dropins resources
+                    FileUtils.copyDirectory(runningLibDirectory, tempLibDirectory);
+                    FileUtils.copyDirectory(runningDropinsDirectory, tempDropinsDirectory);
+                }
                 for (int i = 0; i < listSelectedCheckedLibs.length; i++) {
                     String filename = listSelectedCheckedLibs[i].getName();
                     if (filename.endsWith(".jar") || filename.endsWith(".JAR")) {

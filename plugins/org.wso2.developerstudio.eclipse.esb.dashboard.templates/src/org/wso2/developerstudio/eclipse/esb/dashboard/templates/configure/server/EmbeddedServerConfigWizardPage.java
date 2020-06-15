@@ -265,15 +265,15 @@ public class EmbeddedServerConfigWizardPage extends WizardPage {
                             properties.setProperty("secretRepositories.file.provider",
                                     "org.wso2.securevault.secret.repository.FileBaseSecretRepositoryProvider");
                             properties.setProperty("secretRepositories.file.location",
-                                    embeddedMILocation + File.separator + "conf" + File.separator + "security"
+                                            "conf" + File.separator + "security"
                                             + File.separator + "cipher-text.properties");
                             properties.setProperty("keystore.identity.location", keyStoreFile);
                             properties.setProperty("keystore.identity.type", "JKS");
                             properties.setProperty("keystore.identity.alias", "wso2carbon");
-                            properties.setProperty("keystore.identity.store.password", "wso2carbon");
+                            properties.setProperty("keystore.identity.store.password", "identity.store.password");
                             properties.setProperty("keystore.identity.store.secretProvider",
                                     "org.wso2.carbon.securevault.DefaultSecretCallbackHandler");
-                            properties.setProperty("keystore.identity.key.password", "wso2carbon");
+                            properties.setProperty("keystore.identity.key.password", "identity.key.password");
                             properties.setProperty("keystore.identity.key.secretProvider",
                                     "org.wso2.carbon.securevault.DefaultSecretCallbackHandler");
                             properties.setProperty("secretRepositories.file.algorithm", cipherTransformation);
@@ -306,7 +306,7 @@ public class EmbeddedServerConfigWizardPage extends WizardPage {
         data.left = new FormAttachment(3);
         data.right = new FormAttachment(97);
         data.bottom = new FormAttachment(98);
-        data.height = 260;
+        data.height = 225;
         libGroup.setLayoutData(data);
         libGroup.setLayout(new FormLayout());
         libGroup.setText("Select libraries(JARs) which are needed to copy to Lib directory:");

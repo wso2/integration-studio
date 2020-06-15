@@ -152,7 +152,7 @@ public class IterateMediatorEditPart extends SingleCompartmentComplexFiguredAbst
      * @generated NOT
      */
     protected IFigure createNodeShape() {
-        return primaryShape = new IterateMediatorFigure(new Color(null, 230, 76, 60), new Color(null, 255, 255, 255)) {
+        return primaryShape = new IterateMediatorFigure(new Color(null, 239, 187, 63), new Color(null, 255, 255, 255)) {
             public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
                 super.setBounds(rect);
                 if ((!connected) && (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0)) {

@@ -141,7 +141,7 @@ public class AggregateMediatorEditPart extends SingleCompartmentComplexFiguredAb
      * @generated NOT
      */
     protected IFigure createNodeShape() {
-        return primaryShape = new AggregateMediatorFigure(new Color(null, 230, 76, 60),
+        return primaryShape = new AggregateMediatorFigure(new Color(null, 239, 187, 63),
                 new Color(null, 255, 255, 255)) {
             public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
                 super.setBounds(rect);

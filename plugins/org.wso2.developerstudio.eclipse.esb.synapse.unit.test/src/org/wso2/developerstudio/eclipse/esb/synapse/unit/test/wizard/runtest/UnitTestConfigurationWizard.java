@@ -305,7 +305,7 @@ public class UnitTestConfigurationWizard extends Wizard implements IExportWizard
 
             builder.append(" -DtestServerType=local");
             builder.append(" -DtestServerPort=" + serverPort);
-            builder.append(" -DtestServerPath=" + serverPath);
+            builder.append(" -DtestServerPath=\"" + serverPath + "\"");
             
             //clear embedded MI pack carbonapps folder before to run the test
             clearCarbonAppsFolder();

@@ -29,7 +29,10 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.esb.project.connector.store.Connector;
 import org.wso2.developerstudio.eclipse.esb.project.exception.ConnectorException;
 import org.wso2.developerstudio.eclipse.esb.project.utils.WizardDialogUtils;
@@ -57,8 +60,14 @@ public class ConnectorDownloadServlet extends HttpServlet {
         final String function = request.getParameter("data");
         Connector connector = new Gson().fromJson(function, Connector.class);
         
-        WizardDialogUtils.showSuccessMessage(connector.getAttributes().getOverview_name()
-                + " connector is being downloaded. Click 'Finish' to close the store view.", DOWNLOADING_CONNECTOR_MSG);
+        int isCanceled = WizardDialogUtils.showSuccessMessage(
+                "Click 'OK' to download the " + connector.getAttributes().getOverview_name() + " connector to the workspace.",
+                DOWNLOADING_CONNECTOR_MSG, true);
+
+        // check user action is CANCEL or not
+        if (isCanceled == SWT.CANCEL) {
+            return;
+        }
 
         response.setContentType("application/json");
         response.setStatus(HttpServletResponse.SC_OK);
@@ -77,8 +86,9 @@ public class ConnectorDownloadServlet extends HttpServlet {
                                     if (ConnectorServletUtil.downloadConnectorAndUpdateProjects(downloadLink)) {
                                         monitor.worked(100);
                                         monitor.done();
+                                        
                                         WizardDialogUtils.showSuccessMessage(connector.getAttributes().getOverview_name()
-                                                + " connector is downloaded Successfully.", DOWNLOADING_CONNECTOR_MSG);
+                                                + " connector is downloaded Successfully.", DOWNLOADING_CONNECTOR_MSG, false);
                                         return Status.OK_STATUS;
                                     }
                                 } catch (ConnectorException e) {

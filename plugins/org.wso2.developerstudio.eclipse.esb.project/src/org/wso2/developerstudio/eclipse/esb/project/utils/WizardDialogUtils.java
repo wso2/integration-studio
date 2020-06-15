@@ -28,6 +28,8 @@ import org.eclipse.ui.PlatformUI;
  *
  */
 public class WizardDialogUtils {
+ 
+    static int isCanceled = 0;
     
     /**
      * Shows error pop ups
@@ -56,19 +58,26 @@ public class WizardDialogUtils {
      * @param message
      * @param title
      */
-    public static void showSuccessMessage(String message, String title) {
-        Display.getDefault().asyncExec(new Runnable() {
+    public static int showSuccessMessage(String message, String title, boolean isCancelEnabled) {
+        Display.getDefault().syncExec(new Runnable() {
             public void run() {
                 Display display = PlatformUI.getWorkbench().getDisplay();
                 Shell shell = display.getActiveShell();
 
-                MessageBox exportMsg = new MessageBox(shell, SWT.ICON_WORKING);
+                MessageBox exportMsg;
+                if (isCancelEnabled) {
+                    exportMsg = new MessageBox(shell, SWT.ICON_WORKING | SWT.OK | SWT.CANCEL);
+                } else {
+                    exportMsg = new MessageBox(shell, SWT.ICON_WORKING);
+                }
                 exportMsg.setText(title);
                 exportMsg.setMessage(message);
 
-                exportMsg.open();
+                isCanceled = exportMsg.open();
             }
         });
+        
+        return isCanceled;
     }
 
 }

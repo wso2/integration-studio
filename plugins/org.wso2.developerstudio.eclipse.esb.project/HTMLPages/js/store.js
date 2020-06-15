@@ -167,7 +167,7 @@ function createConnectorNode(appId, version, templateName, templateDescription,
 			downloadLink
 			+ "' data-name='"
 			+ templateName		
-			+"' src='images/download.png'/></div></div>";
+			+"' src='images/download_new.png'/></div></div>";
 	return html;
 };
 

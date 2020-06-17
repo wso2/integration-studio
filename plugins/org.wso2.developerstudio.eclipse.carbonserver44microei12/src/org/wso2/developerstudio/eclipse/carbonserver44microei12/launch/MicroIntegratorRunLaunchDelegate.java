@@ -38,6 +38,7 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.Activator;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.register.product.servers.MicroIntegratorInstance;
+import org.wso2.developerstudio.eclipse.carbonserver44microei12.util.CarbonServer44eiUtils;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.wizard.CompositeApplicationArtifactUpdateWizard;
 
 /**
@@ -137,8 +138,12 @@ public class MicroIntegratorRunLaunchDelegate implements ILaunchConfigurationDel
         if (statusCode == Window.OK) {
             // If the debugger running mode is set to internal ESB runtime, start the
             // micro-integrator set the mediation debug mode in micro-integrator instance
-            MicroIntegratorInstance.getInstance().setDebugMode(false);
-            MicroIntegratorInstance.getInstance().restart();
+            MicroIntegratorInstance microIntegratorInstance = MicroIntegratorInstance.getInstance();
+            microIntegratorInstance.setDebugMode(false);
+            if (CarbonServer44eiUtils.hasEmbeddedConfigsChanged() || !microIntegratorInstance.isServerStarted()
+                    || !CarbonServer44eiUtils.isHotDeploymentEnabled(microIntegratorInstance)) {
+                microIntegratorInstance.restart();
+            }
         }
 
     }

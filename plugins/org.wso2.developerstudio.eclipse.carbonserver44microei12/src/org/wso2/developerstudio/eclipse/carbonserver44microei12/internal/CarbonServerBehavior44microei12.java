@@ -117,7 +117,11 @@ public class CarbonServerBehavior44microei12 extends CarbonServerBehaviour {
         try {
             setServerisStillStarting(true);
             String url = "http://" + getServer().getHost();
-            String offsetString = carbonServer44eiUtils.resolveProperties(getServer(), "carbon.offset");
+            String carbonHome = carbonServer44eiUtils.resolveProperties(getServer(), ServerConstants.PROP_CARBON_HOME);
+			CarbonServer44eiUtils carbonServer44eiUtils = new CarbonServer44eiUtils();
+			String offsetString = carbonServer44eiUtils.readTomlValue(carbonServer44eiUtils.getTomlResults(carbonHome),
+					ServerConstants.TOML_PORTOFFSET, "10");
+
             if (offsetString == null || offsetString.equals("")) {
                 offsetString = "10";
             }

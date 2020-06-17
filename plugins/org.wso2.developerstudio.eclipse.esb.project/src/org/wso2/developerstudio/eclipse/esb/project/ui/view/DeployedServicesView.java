@@ -52,8 +52,10 @@ public class DeployedServicesView extends ViewPart {
     private static final String MI_LOGIN_API_URL= "https://localhost:9164/management/login";
     private static final String MI_API_API_URL= "https://localhost:9164/management/apis";
     private static final String MI_PROXY_API_URL= "https://localhost:9164/management/proxy-services";
+    private static final String MI_DATASERVICES_API_URL= "https://localhost:9164/management/data-services";
     private static final String API_DETAILS_GET_PARAM= "apidetails";
     private static final String PROXY_DETAILS_GET_PARAM= "proxydetails";
+    private static final String DATASERVICE_DETAILS_GET_PARAM= "dataservicedetails";
     private static final String DEFAULT_USERNAME = "admin";
     private static final String DEFAULT_PASSWORD = "admin";
     
@@ -68,17 +70,21 @@ public class DeployedServicesView extends ViewPart {
             generateAccessToken();
             String apiList = getDeployedServices(MI_API_API_URL);
             String proxyList = getDeployedServices(MI_PROXY_API_URL);
-            browser.setUrl(getDefaultPage(apiList, proxyList));
+            String dataServiceList = getDeployedServices(MI_DATASERVICES_API_URL);
+            browser.setUrl(getDefaultPage(apiList, proxyList, dataServiceList));
         } catch (Exception ex) {
             log.error("Failed to start deployed services page", ex);
         }
 
     }
-    private String getDefaultPage(String apiList, String proxyList) throws URISyntaxException, IOException {
+
+    private String getDefaultPage(String apiList, String proxyList, String dataServiceList)
+            throws URISyntaxException, IOException {
         IEclipsePreferences rootNode = Platform.getPreferencesService().getRootNode();
-        String port =  rootNode.get("portDetails", String.valueOf(FunctionServerConstants.EMBEDDED_SERVER_PORT));
-        return "http://localhost:"
-                + port + "/project/endpoints?"+API_DETAILS_GET_PARAM+"="+apiList+"&"+PROXY_DETAILS_GET_PARAM+"="+proxyList;
+        String port = rootNode.get("portDetails", String.valueOf(FunctionServerConstants.EMBEDDED_SERVER_PORT));
+        return "http://localhost:" + port + "/project/endpoints?" + API_DETAILS_GET_PARAM + "=" + apiList + "&"
+                + PROXY_DETAILS_GET_PARAM + "=" + proxyList + "&" + DATASERVICE_DETAILS_GET_PARAM + "="
+                + dataServiceList;
     }
 
     @Override

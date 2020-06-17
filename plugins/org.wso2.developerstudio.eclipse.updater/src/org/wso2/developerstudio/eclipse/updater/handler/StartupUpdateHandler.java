@@ -15,7 +15,6 @@
  */
 package org.wso2.developerstudio.eclipse.updater.handler;
 
-
 import org.eclipse.ui.IStartup;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -23,15 +22,18 @@ import org.wso2.developerstudio.eclipse.updater.UpdaterPlugin;
 
 public class StartupUpdateHandler implements IStartup {
 
-	
-	protected static IDeveloperStudioLog log = Logger.getLog(UpdaterPlugin.PLUGIN_ID);
+    protected static IDeveloperStudioLog log = Logger.getLog(UpdaterPlugin.PLUGIN_ID);
 
-	@Override
-	public void earlyStartup() {
-		// check if user has set startup updates
-		// Read updater preferences
-		// Let updater wait a minute till workspace preferences are initialized
-		UpdaterRootJob updaterRootJob = new UpdaterRootJob("Running Integration Studio updater Tool");
-		updaterRootJob.schedule();
-	}
+     @Override
+     public void earlyStartup() {
+         // check if user has set startup updates
+         // Read updater preferences
+         // Let updater wait a minute till workspace preferences are initialized
+
+         // UpdaterRootJob updaterRootJob = new UpdaterRootJob("Running Integration Studio updater Tool");
+         // updaterRootJob.schedule();
+         
+         RunUpdaterRootJob updaterRootJob = new RunUpdaterRootJob("Running Integration Studio Updater Tool");
+         updaterRootJob.schedule();
+     }
 }

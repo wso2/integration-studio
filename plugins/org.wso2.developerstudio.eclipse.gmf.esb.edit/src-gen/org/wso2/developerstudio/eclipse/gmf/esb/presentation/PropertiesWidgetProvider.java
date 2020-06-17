@@ -326,7 +326,7 @@ public class PropertiesWidgetProvider {
         });
         setItemFocus(configRef);
         
-        Button editConnectionButton = widgetFactory.createButton(textBoxComposite, "", SWT.PUSH | SWT.TRANSPARENT);
+        final Button editConnectionButton = widgetFactory.createButton(textBoxComposite, "", SWT.PUSH | SWT.TRANSPARENT);
         editConnectionButton.setImage(DELETE_ELEMENT_IMG);
         editConnectionButton.setEnabled(false);
         editConnectionButton.addListener(SWT.Selection, new Listener() {

@@ -165,9 +165,9 @@ sed -e '/-vmargs/i\'$'\n'$JDK_HOME_MACOS developerstudio_temp.ini > developerstu
 rm -f developerstudio_temp.ini
 popd
 
-pushd ${MACOS_JDK_LIB_PATH}
-cp libfreetype.dylib.6 libfreetype.6.dylib
-popd
+# pushd ${MACOS_JDK_LIB_PATH}
+# cp libfreetype.dylib.6 libfreetype.6.dylib
+# popd
 
 # Rename distribution executables and configuration files
 pushd ${PRODUCT_PATH_LINUX_86}

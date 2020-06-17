@@ -158,7 +158,7 @@
                             <goal>wget</goal>
                         </goals>
                         <configuration>
-                            <url>http://product-dist.wso2.com/tools/developerstudio/jdk-distributions/OpenJDK8U-jdk_x64_linux_hotspot_8u192b12.tar.gz</url>
+                            <url>http://product-dist.wso2.com/tools/developerstudio/jdk-distributions/OpenJDK8U-jdk_x64_linux_hotspot_8u252b09.tar.gz</url>
                             <unpack>false</unpack>
                             <outputDirectory>${project.build.directory}/jdk/jdk-linux</outputDirectory>
                         </configuration>
@@ -170,7 +170,7 @@
                             <goal>wget</goal>
                         </goals>
                         <configuration>
-                            <url>http://product-dist.wso2.com/tools/developerstudio/jdk-distributions/OpenJDK8U-jdk_x64_windows_hotspot_8u192b12.zip</url>
+                            <url>http://product-dist.wso2.com/tools/developerstudio/jdk-distributions/OpenJDK8U-jdk_x64_windows_hotspot_8u252b09.zip</url>
                             <unpack>false</unpack>
                             <outputDirectory>${project.build.directory}/jdk/jdk-windows</outputDirectory>
                         </configuration>
@@ -182,7 +182,7 @@
                             <goal>wget</goal>
                         </goals>
                         <configuration>
-                            <url>http://product-dist.wso2.com/tools/developerstudio/jdk-distributions/OpenJDK8U-jdk_x64_mac_hotspot_8u192b12.tar.gz</url>
+                            <url>http://product-dist.wso2.com/tools/developerstudio/jdk-distributions/OpenJDK8U-jdk_x64_mac_hotspot_8u252b09.tar.gz</url>
                             <unpack>false</unpack>
                             <outputDirectory>${project.build.directory}/jdk/jdk-macos</outputDirectory>
                         </configuration>

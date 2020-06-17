@@ -1,5 +1,6 @@
 var apijson = resolveGetParam("apidetails");
 var proxyjson = resolveGetParam("proxydetails");
+var dataservicejson = resolveGetParam("dataservicedetails");
 
 function resolveGetParam(param) {
     var paramValue = null,
@@ -38,6 +39,7 @@ loadContent();
 function loadContent(){
 	populateAPIList();
 	populateProxyList();
+	populateDataServiceList();
 }
 
 function populateAPIList() {
@@ -84,6 +86,18 @@ function populateProxyList() {
 	}
 	
 	return apiList;
+}
+
+function populateDataServiceList() {
+	var dataservicejsontemp = JSON.parse(dataservicejson);
+	var dataserviceList = dataservicejsontemp.list;
+	for(var i = 0; i < dataserviceList.length; i++) {
+	    var item = dataserviceList[i];
+	    $table = $('#table-container-ds table tbody');
+		$table.append('<tr><td>' + item.name + '</td><td>' + item.wsdl1_1 + '</td><td>' + item.wsdl2_0 + '</td></tr>');
+	}
+
+	return dataserviceList;
 }
 
 //function populateProxyList() {

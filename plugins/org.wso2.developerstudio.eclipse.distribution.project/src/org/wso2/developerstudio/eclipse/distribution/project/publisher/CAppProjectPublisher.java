@@ -176,7 +176,7 @@ public class CAppProjectPublisher implements ICarbonServerModulePublisher {
                 }
             }
 
-            boolean hotDeploymentDisabled = true;
+            boolean hotDeploymentEnabled = true;
             boolean isMI120Server = server.getServerType().getId().equals(MI_120_PLUGIN_ID);
 
             if (isMI120Server) {
@@ -185,15 +185,15 @@ public class CAppProjectPublisher implements ICarbonServerModulePublisher {
                         new String[] { "conf", "deployment.toml" });
                 TomlParseResult tomlResults = Toml.parse(Paths.get(tomlFilePath));
                 Object hotDeploymentObject = tomlResults.get("server.hot_deployment");
-                if ((hotDeploymentObject instanceof String && ((String) hotDeploymentObject).equals("true"))
-                        || (hotDeploymentObject instanceof Boolean && ((Boolean) hotDeploymentObject))) {
-                    hotDeploymentDisabled = false;
+                if ((hotDeploymentObject instanceof String && ((String) hotDeploymentObject).equals("false"))
+                        || (hotDeploymentObject instanceof Boolean && !((Boolean) hotDeploymentObject))) {
+                    hotDeploymentEnabled = false;
                 }
             }
 
             if (server.getServerType().getId().equals(MI_PLUGIN_ID)
                     || server.getServerType().getId().equals(MI_110_PLUGIN_ID)
-                    || (isMI120Server && hotDeploymentDisabled)) {
+                    || (isMI120Server && !hotDeploymentEnabled)) {
                 IPath iPath = CarbonServerManager.getServerHome(server);
                 File file = iPath.toFile();
                 copyCApp(file.getAbsolutePath(), project);

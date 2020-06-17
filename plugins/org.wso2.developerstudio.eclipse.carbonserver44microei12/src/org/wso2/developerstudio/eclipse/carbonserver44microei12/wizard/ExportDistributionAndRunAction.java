@@ -28,6 +28,7 @@ import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.Activator;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.register.product.servers.MicroIntegratorInstance;
+import org.wso2.developerstudio.eclipse.carbonserver44microei12.util.CarbonServer44eiUtils;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
@@ -36,6 +37,7 @@ public class ExportDistributionAndRunAction implements IActionDelegate {
     IStructuredSelection selection;
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
+    
     public void run(IAction action) {
         if (selection != null) {
             CompositeApplicationArtifactUpdateWizard wizard = new CompositeApplicationArtifactUpdateWizard();
@@ -48,8 +50,11 @@ public class ExportDistributionAndRunAction implements IActionDelegate {
                 // restart embedded micro-integrator profile if it is not started already
                 try {
                     MicroIntegratorInstance microIntegratorInstance = MicroIntegratorInstance.getInstance();
-                    if (!microIntegratorInstance.isHotDeploymentEnabled()
-                            || !microIntegratorInstance.isServerStarted()) {
+
+                    // hasEmbeddedConfigsChanged is called before checking server status and hot
+                    // deployment to update the config.properties file
+                    if (CarbonServer44eiUtils.hasEmbeddedConfigsChanged() || !microIntegratorInstance.isServerStarted()
+                            || !CarbonServer44eiUtils.isHotDeploymentEnabled(microIntegratorInstance)) {
                         microIntegratorInstance.restart();
                     }
                 } catch (CoreException e) {

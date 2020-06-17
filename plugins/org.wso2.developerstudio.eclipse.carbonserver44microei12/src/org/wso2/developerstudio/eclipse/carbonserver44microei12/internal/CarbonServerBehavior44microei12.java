@@ -43,7 +43,6 @@ import org.wso2.developerstudio.eclipse.carbon.server.model.util.CarbonServerCom
 import org.wso2.developerstudio.eclipse.carbonserver.base.impl.CarbonServerBehaviour;
 import org.wso2.developerstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.Activator;
-import org.wso2.developerstudio.eclipse.carbonserver44microei12.operations.CommonOperations;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.util.CarbonServer44eiUtils;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.util.ServerConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -57,7 +56,6 @@ public class CarbonServerBehavior44microei12 extends CarbonServerBehaviour {
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     private CarbonServer44eiUtils carbonServer44eiUtils = new CarbonServer44eiUtils();
-    private CommonOperations commonOperations = new CommonOperations();
 
     private void checkClosed(IModule[] module) throws CoreException {
         for (int i = 0; i < module.length; i++) {
@@ -119,20 +117,24 @@ public class CarbonServerBehavior44microei12 extends CarbonServerBehaviour {
         try {
             setServerisStillStarting(true);
             String url = "http://" + getServer().getHost();
-            String offsetString = carbonServer44eiUtils.resolveProperties(getServer(), "carbon.offset");
+            String carbonHome = carbonServer44eiUtils.resolveProperties(getServer(), ServerConstants.PROP_CARBON_HOME);
+			CarbonServer44eiUtils carbonServer44eiUtils = new CarbonServer44eiUtils();
+			String offsetString = carbonServer44eiUtils.readTomlValue(carbonServer44eiUtils.getTomlResults(carbonHome),
+					ServerConstants.TOML_PORTOFFSET, "10");
+
             if (offsetString == null || offsetString.equals("")) {
                 offsetString = "10";
             }
 
             List<String> urls = new ArrayList<String>();
-            int port = 9191; // default Prometheus API port
+            int port = 9191; // default ReadinessProbe API port
             int offSet = Integer.valueOf(offsetString);
 
             String newUrl = url;
             newUrl = newUrl + ":" + (port + offSet);
 
-            // Prometheus API is used as the ping server
-            newUrl = newUrl + "/metric-service/metrics";
+            // ReadinessProbe API is used as the ping server
+            newUrl = newUrl + "/healthz";
             urls.add(newUrl);
 
             return urls.toArray(new String[] {});

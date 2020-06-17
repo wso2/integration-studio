@@ -21,10 +21,14 @@ package org.wso2.developerstudio.eclipse.carbonserver44microei12.util;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.net.URL;
 import java.util.Map;
+import java.util.Properties;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import javax.xml.namespace.NamespaceContext;
@@ -37,6 +41,7 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
@@ -53,6 +58,7 @@ import org.wso2.developerstudio.eclipse.carbon.server.model.util.CarbonServerCom
 import org.wso2.developerstudio.eclipse.carbon.server.model.util.CarbonServerXUtils;
 import org.wso2.developerstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.Activator;
+import org.wso2.developerstudio.eclipse.carbonserver44microei12.register.product.servers.MicroIntegratorInstance;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
@@ -67,6 +73,11 @@ import net.consensys.cava.toml.TomlParseResult;
 public class CarbonServer44eiUtils implements CarbonServerXUtils {
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    private static final String CONFIG_PROPERTIES_FILE = "config.properties";
+    private static final String SERVER_CONFIG_LOCATION = File.separator + ".metadata" + File.separator
+            + "ServerConfigs";
+    private static final String TEMP_SERVER_CONFIGURATION_PATH = ResourcesPlugin.getWorkspace().getRoot().getLocation()
+            .toOSString() + SERVER_CONFIG_LOCATION;
 
     @Override
     public String getServerVersion() {
@@ -321,5 +332,63 @@ public class CarbonServer44eiUtils implements CarbonServerXUtils {
             return defaultValue;
         }
         return tomlValue;
+    }
+    
+    public static boolean hasEmbeddedConfigsChanged() {
+        String configPropertiesPath = TEMP_SERVER_CONFIGURATION_PATH + File.separator + CONFIG_PROPERTIES_FILE;
+        try (InputStream inStream = Files.newInputStream(Paths.get(configPropertiesPath))) {
+            if (inStream != null) {
+                Properties properties = new Properties();
+                properties.load(inStream);
+                boolean updatePropertiesfile = false;
+
+                String newTomlMd5sum = properties.getProperty(ServerConstants.NEW_TOML_MD5SUM);
+                String currentTomlMd5sum = properties.getProperty(ServerConstants.CURRENT_TOML_MD5SUM);
+                if (newTomlMd5sum != null && !newTomlMd5sum.equals(currentTomlMd5sum)) {
+                    properties.setProperty(ServerConstants.CURRENT_TOML_MD5SUM, newTomlMd5sum);
+                    updatePropertiesfile = true;
+                }
+
+                String newJarMd5sum = properties.getProperty(ServerConstants.NEW_JAR_MD5SUM);
+                String currentJarMd5sum = properties.getProperty(ServerConstants.CURRENT_JAR_MD5SUM);
+                if (newJarMd5sum != null && !newJarMd5sum.equals(currentJarMd5sum)) {
+                    properties.setProperty(ServerConstants.CURRENT_JAR_MD5SUM, newJarMd5sum);
+                    updatePropertiesfile = true;
+                }
+
+                if (updatePropertiesfile) {
+                    properties.store(new FileOutputStream(configPropertiesPath), null);
+                    return true;
+                }
+            }
+        } catch (IOException e) {
+            log.error("Error while reading conf.properties file.", e);
+        }
+        return false;
+    }
+
+    public static boolean isHotDeploymentEnabled(MicroIntegratorInstance microIntegratorInstance) {
+        String workspace = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString();
+        try {
+            String serverConfigDirectoryPath = workspace + File.separator + ".metadata" + File.separator
+                    + "ServerConfigs";
+            File serverConfigurationDirectory = new File(serverConfigDirectoryPath);
+            String tomlFilePath = serverConfigDirectoryPath + File.separator + "deployment.toml";
+            File customizedTomlFile = new File(tomlFilePath);
+            if (serverConfigurationDirectory.exists() && customizedTomlFile.exists()) {
+                TomlParseResult tomlResults = Toml.parse(Paths.get(tomlFilePath));
+                Object hotDeploymentObject = tomlResults.get("server.hot_deployment");
+                if ((hotDeploymentObject instanceof String && ((String) hotDeploymentObject).equals("false"))
+                        || (hotDeploymentObject instanceof Boolean && !((Boolean) hotDeploymentObject))) {
+                    return false;
+                }
+
+            } else {
+                return microIntegratorInstance.isHotDeploymentEnabled();
+            }
+        } catch (IOException e) {
+            log.error("An error occured while backup default server configurations", e);
+        }
+        return true;
     }
 }

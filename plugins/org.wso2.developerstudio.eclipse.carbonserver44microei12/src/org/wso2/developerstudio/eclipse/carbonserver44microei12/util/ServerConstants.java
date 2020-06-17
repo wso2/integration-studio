@@ -66,4 +66,9 @@ public class ServerConstants {
     public static final String DEBUG = "debug";
     public static final String RUN = "run";
     
+    //embedded server config properties
+    public static final String NEW_TOML_MD5SUM = "new.toml.md5sum";
+    public static final String CURRENT_TOML_MD5SUM = "current.toml.md5sum";
+    public static final String NEW_JAR_MD5SUM = "new.jar.md5sum";
+    public static final String CURRENT_JAR_MD5SUM = "current.jar.md5sum";
 }

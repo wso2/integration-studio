@@ -40,10 +40,13 @@ public class NOTOperatorTransformer extends AbstractDMOperatorTransformer {
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
 			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
 			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator, List<ForLoopBean> forLoopBeanList,
-			Map<String, Integer> outputArrayVariableForLoop, Map<String, Integer> outputArrayRootVariableForLoop) throws DataMapperException {
+			Map<String, Integer> outputArrayVariableForLoop,
+			Map<String, Integer> outputArrayRootVariableForLoop, List<String> unNamedVariables)
+			throws DataMapperException {
 		StringBuilder operationBuilder = new StringBuilder();
 		operationBuilder.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack,
-				forLoopBeanList, outputArrayVariableForLoop, outputArrayRootVariableForLoop));
+				forLoopBeanList, outputArrayVariableForLoop, outputArrayRootVariableForLoop,
+				unNamedVariables));
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
 			if (inputVariables.size() == 0) {
 				/* Default value is true */
@@ -52,7 +55,9 @@ public class NOTOperatorTransformer extends AbstractDMOperatorTransformer {
 				operationBuilder.append(CONSTANT_NOT_OPERATOR + "("
 						+ ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
 								variableTypeMap, parentForLoopBeanStack, true, forLoopBeanList,
-								outputArrayVariableForLoop, outputArrayRootVariableForLoop)
+								outputArrayVariableForLoop,
+								outputArrayRootVariableForLoop,
+								unNamedVariables)
 						+ ")");
 			}
 

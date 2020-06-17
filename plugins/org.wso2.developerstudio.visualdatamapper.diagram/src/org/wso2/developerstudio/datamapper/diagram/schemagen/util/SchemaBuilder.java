@@ -57,6 +57,7 @@ public class SchemaBuilder {
 	private static final String XSI_NAMESPACE_URI = "http://www.w3.org/2001/XMLSchema-instance";
 	private static final String XML = "xml";
 	private static final String JSON = "json";
+	private static final String ZERO = "0";
 	
 
 	protected JsonSchema root;
@@ -441,6 +442,12 @@ public class SchemaBuilder {
 					newJObj.add(name, value);
 				}
 			}
+		} else if (propertyValueType == TypeEnum.ARRAY) {
+			for (JsonElement subChildElement : childElement.getAsJsonArray()) {
+				JsonSchema schemaArray = addArrayToParentItemsArray(parent, ZERO);
+				createSchemaForArray(subChildElement, schemaArray, ZERO, jsonObject);
+				break;
+			}
 		} else {
 			addPrimitiveToParentItemsArray(parent, "0", propertyValueType);
 		}
@@ -534,6 +541,21 @@ public class SchemaBuilder {
 		JsonSchema schema = new JsonSchema();
 		schema.setId(parent.getId() + "/" + id);
 		schema.setType(OBJECT);
+		parent.addArrayItem(id, schema);
+		return schema;
+	}
+	
+	/**
+	 * Add an array type object into parents items array.
+	 * 
+	 * @param parent parent schema
+	 * @param id identifier of the new object
+	 * @return new schema
+	 */
+	protected JsonSchema addArrayToParentItemsArray(JsonSchema parent, String id) {
+		JsonSchema schema = new JsonSchema();
+		schema.setId(parent.getId() + "/" + id);
+		schema.setType(ARRAY);
 		parent.addArrayItem(id, schema);
 		return schema;
 	}

@@ -49,5 +49,7 @@ public interface DMOperatorTransformer {
 	String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
 			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
 			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator, List<ForLoopBean> forLoopBeanList,
-			Map<String, Integer> outputArrayVariableForLoop, Map<String, Integer> outputArrayRootVariableForLoop) throws DataMapperException;
+			Map<String, Integer> outputArrayVariableForLoop,
+			Map<String, Integer> outputArrayRootVariableForLoop, List<String> unNamedVariables)
+			throws DataMapperException;
 }

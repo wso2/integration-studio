@@ -103,6 +103,8 @@ public class SchemaTransformer implements ISchemaTransformer {
 	private static final String ERROR_IN_PARSING_JSONSCHEMA = "Error in parsing the JSONSchema";
 	private static final String ERROR_IN_MAPPING_JSONSCHEMA = "Error in mapping the JSONSchema";
 	private static final String ERROR_IN_PROCESSING_JSONSCHEMA = "Error in processing the JSONSchema";
+	private static final String DEFAULT_ARRAY_NAME = "_";
+	private static final String UNAMED = "unnamed";
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private static String ERROR_TEXT = "File cannot be found ";
@@ -642,6 +644,13 @@ public class SchemaTransformer implements ISchemaTransformer {
 						setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_PROPERTIES_ID,
 								getSchemaProperties(getSchemaItems(subSchema)).toString());
 						setProperties(getSchemaItems(subSchema), treeNode, count, namespaceMap);
+					} else if (subSchema.containsKey(JSON_SCHEMA_ITEMS)) {
+						// if the array has an array, then it has no properties and only items
+						setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList,
+								JSON_SCHEMA_PROPERTIES_ID,
+								subSchema.get(JSON_SCHEMA_ITEMS).toString());
+						setItemsToArray(getSchemaItems(subSchema), treeNode, count, 
+								namespaceMap);
 					}
 				}
 			} else {
@@ -657,6 +666,45 @@ public class SchemaTransformer implements ISchemaTransformer {
 		}
 		return inputRootTreeNode;
 
+	}
+	
+	/**
+	 * Set items to the array.
+	 * 
+	 * @param jsonSchemaMap array schema
+	 * @param inputRootTreeNode 
+	 * @param level level of the parent
+	 * @param namespaceMap name space map
+	 * @return treenode of the array
+	 */
+	private TreeNode setItemsToArray(Map<String, Object> jsonSchemaMap, TreeNode inputRootTreeNode, int level,
+			HashMap<String, String> namespaceMap) {
+		EList<PropertyKeyValuePair> propertyValueList = new BasicEList<PropertyKeyValuePair>();
+		level++;
+		String schemaType = getSchemaType(jsonSchemaMap);
+		TreeNode treeNode = createTreeNode(null, level, DEFAULT_ARRAY_NAME, jsonSchemaMap, schemaType, 
+				namespaceMap, null);
+		setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, UNAMED, TRUE);
+		inputRootTreeNode.getNode().add(treeNode);
+		if (getSchemaItems(jsonSchemaMap).size() > 0) {
+			// If array has attributes
+			if (getSchemaItems(jsonSchemaMap).get(JSON_SCHEMA_ATTRIBUTES) != null) {
+				setAttributesForElements(getSchemaItems(jsonSchemaMap), level, namespaceMap, treeNode);
+			}
+			if (getSchemaItems(jsonSchemaMap).containsKey(JSON_SCHEMA_PROPERTIES)) {
+				setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList,
+						JSON_SCHEMA_PROPERTIES_ID,
+						getSchemaProperties(getSchemaItems(jsonSchemaMap)).toString());
+				setProperties(getSchemaItems(jsonSchemaMap), treeNode, level, namespaceMap);
+			} else if (jsonSchemaMap.containsKey(JSON_SCHEMA_ITEMS)) {
+				// if the array has an array, then it has no properties and only items
+				setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList,
+						JSON_SCHEMA_PROPERTIES_ID,
+						jsonSchemaMap.get(JSON_SCHEMA_ITEMS).toString());
+				setItemsToArray(getSchemaItems(jsonSchemaMap), treeNode, level, namespaceMap);
+			}
+		}
+		return inputRootTreeNode;
 	}
 
 	/**

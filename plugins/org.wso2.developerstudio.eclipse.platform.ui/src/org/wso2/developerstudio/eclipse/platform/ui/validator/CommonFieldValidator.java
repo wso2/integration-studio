@@ -109,6 +109,28 @@ public class CommonFieldValidator {
 			throw new FieldValidationException("Project with the name '" + projectName + "' already exists");
 		}
 	}
+	
+	public static void validateProjectField(Object value, String componentName) throws FieldValidationException {
+        if (value == null) {
+            throw new FieldValidationException(componentName + " name cannot be empty");
+        }
+        String projectName = value.toString();
+        if (projectName.trim().equals("")) {
+            throw new FieldValidationException(componentName + " name cannot be empty");
+        } else {
+            if (projectName.indexOf(0x20) != -1) {
+                throw new FieldValidationException(componentName + " name cannot contain spaces");
+            } else if (!isValidArtifactName(projectName)) {
+                throw new FieldValidationException(componentName + " name cannot contain invalid characters(^/ : ; * # $ ? \" <> + $)");
+            }
+        }
+        IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
+
+        if (project.exists()) {
+            throw new FieldValidationException(componentName + " with the name '" + projectName + "' already exists");
+        }
+    }
+
 
     /**
      * Checks whether given url of the given field is valid or invalid.

@@ -24,7 +24,6 @@ import java.nio.file.Paths;
 import java.util.Locale;
 import java.util.Map;
 
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
@@ -52,9 +51,6 @@ import org.wso2.developerstudio.eclipse.carbonserver44microei12.util.CarbonServe
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.util.ServerConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
-
-import net.consensys.cava.toml.Toml;
-import net.consensys.cava.toml.TomlParseResult;
 
 /**
  * This class contains and manages the micro-integrator
@@ -390,38 +386,12 @@ public class MicroIntegratorInstance {
     }
 
     public boolean isHotDeploymentEnabled() {
-        String workspace = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString();
-        try {
-            String serverConfigDirectoryPath = workspace + File.separator + ".metadata" + File.separator
-                    + "ServerConfigs";
-            File serverConfigurationDirectory = new File(serverConfigDirectoryPath);
-            String tomlFilePath = serverConfigDirectoryPath + File.separator + "deployment.toml";
-            File customizedTomlFile = new File(tomlFilePath);
-            if (serverConfigurationDirectory.exists() && customizedTomlFile.exists()) {
-                TomlParseResult tomlResults = Toml.parse(Paths.get(tomlFilePath));
-                Object hotDeploymentObject = tomlResults.get(ServerConstants.TOML_HOT_DEPLOYMENT);
-                if ((hotDeploymentObject instanceof String && ((String) hotDeploymentObject).equals("false"))
-                        || (hotDeploymentObject instanceof Boolean && !((Boolean) hotDeploymentObject))) {
-                    return false;
-                }
-
-            } else {
-                CarbonServer44eiUtils carbonServer44eiUtils = new CarbonServer44eiUtils();
-                String hotDeploymentEnabled = carbonServer44eiUtils.resolveProperties(microIntegratorServer,
-                        ServerConstants.PROP_HOT_DEPLOYMENT);
-                if ("false".equals(hotDeploymentEnabled)) {
-                    return false;
-                }
-                return true;
-
-            }
-        } catch (IOException e) {
-            log.error("An error occured while backup default server configurations", e);
+        CarbonServer44eiUtils carbonServer44eiUtils = new CarbonServer44eiUtils();
+        String hotDeploymentEnabled = carbonServer44eiUtils.resolveProperties(microIntegratorServer,
+                ServerConstants.PROP_HOT_DEPLOYMENT);
+        if ("false".equals(hotDeploymentEnabled)) {
+            return false;
         }
         return true;
     }
-    
-	public boolean hasEmbeddedConfigsChanged() {
-		return CarbonServer44eiUtils.hasEmbeddedConfigsChanged();
-	}
 }

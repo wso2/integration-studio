@@ -193,7 +193,7 @@ public class ConnectionParameterRenderer {
                 tabGeneralSection.setText(agv.getGroupName());
                 
                 final ScrolledComposite scroller = new ScrolledComposite(tabFolder, SWT.V_SCROLL);
-                Composite tabComposite = new Composite(scroller, SWT.NONE);
+                final Composite tabComposite = new Composite(scroller, SWT.NONE);
                 tabComposite.setLayout(new GridLayout());
                 
                 for (Element ele : agv.getElements()) {

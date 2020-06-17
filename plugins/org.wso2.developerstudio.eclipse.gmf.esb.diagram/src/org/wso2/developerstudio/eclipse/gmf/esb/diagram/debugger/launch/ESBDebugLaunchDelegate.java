@@ -182,10 +182,7 @@ public class ESBDebugLaunchDelegate implements ILaunchConfigurationDelegate {
                     // micro-integrator set the mediation debug mode in micro-integrator instance
                     MicroIntegratorInstance microIntegratorInstance = MicroIntegratorInstance.getInstance();
                     microIntegratorInstance.setDebugMode(true);
-                    if (!microIntegratorInstance.isHotDeploymentEnabled()
-                            || !microIntegratorInstance.isServerStarted()) {
-                        microIntegratorInstance.restart();
-                    }
+                    microIntegratorInstance.restart();
 
                     // run listening to the debug ports in a separate thread to let the server instance
                     // to run without waiting this main thread to complete

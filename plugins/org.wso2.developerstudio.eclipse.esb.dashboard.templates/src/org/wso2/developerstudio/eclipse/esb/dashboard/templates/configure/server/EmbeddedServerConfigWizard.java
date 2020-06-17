@@ -19,14 +19,25 @@
 package org.wso2.developerstudio.eclipse.esb.dashboard.templates.configure.server;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.SequenceInputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Properties;
+import java.util.Vector;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.io.FileUtils;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -59,6 +70,7 @@ public class EmbeddedServerConfigWizard extends Wizard implements INewWizard, IE
             .toOSString() + SERVER_CONFIG_LOCATION;
     private static final String WINDOW_OS = "WINDOWS";
     private static final String OTHER_OS = "OTHER";
+    private static final String CONFIG_PROPERTIES_FILE = "config.properties";
 
     private EmbeddedServerConfigWizardPage serverConfigPage;
     private String miDeploymentTomlPath;
@@ -162,6 +174,8 @@ public class EmbeddedServerConfigWizard extends Wizard implements INewWizard, IE
             }
         }
 
+        setServerConfigProperties();
+        
         try {
             Map<String, String> secrets = serverConfigPage.getSecretsFromConfiguration(serverConfigDeploymentTomlPath);
             
@@ -197,6 +211,94 @@ public class EmbeddedServerConfigWizard extends Wizard implements INewWizard, IE
 
         return true;
     }
+
+	private void setServerConfigProperties() {
+		String configPropertiesPath = TEMP_SERVER_CONFIGURATION_PATH + File.separator + CONFIG_PROPERTIES_FILE;
+		boolean updatePropertiesfile = false;
+		Properties properties = new Properties();
+
+		String selectedJarPath = TEMP_SERVER_CONFIGURATION_PATH + SERVER_CONFIG_SELECTED_LIBS;
+		try {
+			properties.setProperty("new.jar.md5sum", hashDirectory(selectedJarPath));
+			updatePropertiesfile = true;
+		} catch (IOException e) {
+			log.error("Error while setting the md5sum value of the selected directory.", e);
+		}
+
+		try (InputStream propertiesFileStream = Files.newInputStream(Paths.get(configPropertiesPath))) {
+			if (propertiesFileStream != null) {
+				Properties existingProperties = new Properties();
+				existingProperties.load(propertiesFileStream);
+
+				String currentTomlMd5sum = existingProperties.getProperty("current.toml.md5sum");
+				if (currentTomlMd5sum != null) {
+					properties.setProperty("current.toml.md5sum", currentTomlMd5sum);
+					updatePropertiesfile = true;
+				}
+
+				String currentJarMd5sum = existingProperties.getProperty("current.jar.md5sum");
+				if (currentJarMd5sum != null) {
+					properties.setProperty("current.jar.md5sum", currentJarMd5sum);
+					updatePropertiesfile = true;
+				}
+			}
+		} catch (IOException | IllegalArgumentException e) {
+			log.error("Error while setting the md5sum values of embedded server configurations.", e);
+		}
+
+		try (InputStream inStream = Files.newInputStream(Paths.get(serverConfigDeploymentTomlPath))) {
+
+			if (inStream != null) {
+				String tomlMd5sum = DigestUtils.md5Hex(inStream);
+				properties.setProperty("new.toml.md5sum", tomlMd5sum);
+				updatePropertiesfile = true;
+			}
+		} catch (IOException e) {
+			log.error("Error while setting the md5sum value of the toml file.", e);
+		}
+
+		if (updatePropertiesfile) {
+			try (OutputStream outputStream = new FileOutputStream(configPropertiesPath)) {
+				properties.store(outputStream, null);
+			} catch (IOException e) {
+				log.error("Error while writing to the conf.properties file.", e);
+			}
+		}
+	}
+
+	private static String hashDirectory(String directoryPath) throws IOException {
+		File directory = new File(directoryPath);
+
+		if (!directory.isDirectory()) {
+			throw new IllegalArgumentException("Not a directory");
+		}
+
+		Vector<FileInputStream> fileStreams = new Vector<>();
+		collectFiles(directory, fileStreams, false);
+
+		try (SequenceInputStream sequenceInputStream = new SequenceInputStream(fileStreams.elements())) {
+			return DigestUtils.md5Hex(sequenceInputStream);
+		}
+	}
+
+	private static void collectFiles(File directory, List<FileInputStream> fileInputStreams, boolean includeHiddenFiles)
+			throws IOException {
+		File[] files = directory.listFiles();
+
+		if (files != null) {
+			Arrays.sort(files, Comparator.comparing(File::getName));
+
+			for (File file : files) {
+				if (includeHiddenFiles || !Files.isHidden(file.toPath())) {
+					if (file.isDirectory()) {
+						collectFiles(file, fileInputStreams, includeHiddenFiles);
+					} else {
+						fileInputStreams.add(new FileInputStream(file));
+					}
+				}
+			}
+		}
+	}
 
     public void addPages() {
         addPage(serverConfigPage);

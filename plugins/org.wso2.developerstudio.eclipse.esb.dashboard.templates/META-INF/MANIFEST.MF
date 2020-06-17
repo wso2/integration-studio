@@ -13,6 +13,7 @@ Require-Bundle: org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Import-Package: net.consensys.cava.toml,
+ org.apache.commons.codec.digest;version="1.4.0.wso2v1",
  org.eclipse.core.resources,
  org.eclipse.debug.core,
  org.eclipse.debug.ui,

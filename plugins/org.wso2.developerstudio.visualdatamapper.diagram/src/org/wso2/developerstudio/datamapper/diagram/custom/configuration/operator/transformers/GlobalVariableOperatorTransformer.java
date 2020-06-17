@@ -37,10 +37,13 @@ public class GlobalVariableOperatorTransformer extends AbstractDMOperatorTransfo
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
 			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
 			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator, List<ForLoopBean> forLoopBeanList,
-			Map<String, Integer> outputArrayVariableForLoop, Map<String, Integer> outputArrayRootVariableForLoop) throws DataMapperException {
+			Map<String, Integer> outputArrayVariableForLoop,
+			Map<String, Integer> outputArrayRootVariableForLoop, List<String> unNamedVariables)
+			throws DataMapperException {
 		StringBuilder operationBuilder = new StringBuilder();
 		operationBuilder.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack,
-				forLoopBeanList, outputArrayVariableForLoop, outputArrayRootVariableForLoop));
+				forLoopBeanList, outputArrayVariableForLoop, outputArrayRootVariableForLoop,
+				unNamedVariables));
 		String variableName = (String) operator.getProperty(TransformerConstants.GLOBAL_VARIABLE_NAME);
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
 			operationBuilder.append(variableName + ";");

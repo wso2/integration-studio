@@ -43,10 +43,13 @@ public class DirectOperatorTransformer extends AbstractDMOperatorTransformer {
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
 			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
 			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator, List<ForLoopBean> forLoopBeanList,
-			Map<String, Integer> outputArrayVariableForLoop, Map<String, Integer> outputArrayRootVariableForLoop) throws DataMapperException {
+			Map<String, Integer> outputArrayVariableForLoop,
+			Map<String, Integer> outputArrayRootVariableForLoop, List<String> unNamedVariables)
+			throws DataMapperException {
 		StringBuilder operationBuilder = new StringBuilder();
 		operationBuilder.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack,
-				forLoopBeanList, outputArrayVariableForLoop, outputArrayRootVariableForLoop));
+				forLoopBeanList, outputArrayVariableForLoop, outputArrayRootVariableForLoop,
+				unNamedVariables));
 		SchemaDataType outputDataType = getOutputVariableType(outputVariables);
 		if (SameLevelRecordMappingConfigGenerator.class.equals(generatorClass)) {
 			if (inputVariables.size() >= 1) {
@@ -57,7 +60,9 @@ public class DirectOperatorTransformer extends AbstractDMOperatorTransformer {
 		} else if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
 			if (inputVariables.size() >= 1) {
 				operationBuilder.append(this.appendTypeCorrectedInputVariable(operationBuilder, inputVariables, variableTypeMap, parentForLoopBeanStack,
-						forLoopBeanList, outputArrayVariableForLoop, outputArrayRootVariableForLoop, outputDataType) + ";");
+						forLoopBeanList, outputArrayVariableForLoop,
+						outputArrayRootVariableForLoop, outputDataType,
+						unNamedVariables) + ";");
 			} else {
 				operationBuilder.append("'';");
 			}
@@ -70,12 +75,13 @@ public class DirectOperatorTransformer extends AbstractDMOperatorTransformer {
 	private String appendTypeCorrectedInputVariable(StringBuilder operationBuilder, List<DMVariable> inputVariables,
 			Map<String, List<SchemaDataType>> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack,
 			List<ForLoopBean> forLoopBeanList, Map<String, Integer> outputArrayVariableForLoop,
-			Map<String, Integer> outputArrayRootVariableForLoop, SchemaDataType outputDataType) {
+			Map<String, Integer> outputArrayRootVariableForLoop, SchemaDataType outputDataType,
+			List<String> unNamedVariables) {
 
 		try {
 			String prettyVariable = ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
 					variableTypeMap, parentForLoopBeanStack, true, forLoopBeanList, outputArrayVariableForLoop,
-					outputArrayRootVariableForLoop);
+					outputArrayRootVariableForLoop, unNamedVariables);
 			SchemaDataType inputDataType = inputVariables.get(0).getSchemaVariableType();
 			String typeConvertedPrettyVariable = "";
 			if (!outputDataType.equals(inputDataType)) {

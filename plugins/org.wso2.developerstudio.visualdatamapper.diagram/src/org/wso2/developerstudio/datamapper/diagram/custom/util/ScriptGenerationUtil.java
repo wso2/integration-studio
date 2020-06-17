@@ -39,12 +39,15 @@ public class ScriptGenerationUtil {
 	private static final String DOT_REPRESENTATION = "_DOT_";
 	private static final int VARIABLE_TYPE_INDEX = 0;
 	private static final String HYPHEN_PREFIX = "_EnC0DeCHaRHyPh3n_";
+	private static final String SQ_BRACKET_OPEN = "[";
+	private static final String SQ_BRACKET_CLOSE = "]";
 	public static final String VALID_VARIABLE_NAME_REGEX = "^[a-zA-Z][a-zA-Z_$0-9]*$";
 
 	public static String getPrettyVariableNameInForOperation(DMVariable variable, Map<String, List<SchemaDataType>> map,
 			Stack<ForLoopBean> parentForLoopBeanStackTemp, boolean isOperationVariable,
 			List<ForLoopBean> forLoopBeanList, Map<String, Integer> outputArrayVariableForLoop,
-			Map<String, Integer> outputRootArrayVariableForLoop) throws DataMapperException {
+			Map<String, Integer> outputRootArrayVariableForLoop, List<String> unNamedVariables) 
+			throws DataMapperException {
 		@SuppressWarnings("unchecked")
 		Stack<ForLoopBean> parentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStackTemp.clone();
 		// put index values for array type variables
@@ -112,7 +115,14 @@ public class ScriptGenerationUtil {
 						if (iterateName.isEmpty()) {
 							iterateName = "0";
 						}
-						prettyVariableName += getValidNextName(nextName) + "[" + iterateName + "]";
+						// Discard unnamed variables.
+						if (unNamedVariables.contains(variableName)) {
+							prettyVariableName += SQ_BRACKET_OPEN + iterateName +
+									SQ_BRACKET_CLOSE;
+						} else {
+							prettyVariableName += getValidNextName(nextName) +
+									SQ_BRACKET_OPEN + iterateName + SQ_BRACKET_CLOSE;
+						}
 					} else if (nextName.startsWith("@") && isPerviousVariableTypePrimitive) {
 						prettyVariableName += "ATTR" + getValidNextName(nextName.replaceFirst("@", "attr_"));
 					} else if (nextName.startsWith("@")) {
@@ -184,7 +194,14 @@ public class ScriptGenerationUtil {
 						if (iterateName.isEmpty()) {
 							iterateName = "0";
 						}
-						prettyVariableName += getValidNextName(nextName) + "[" + iterateName + "]";
+						// Discard unnamed variables.
+						if (unNamedVariables.contains(variableName)) {
+							prettyVariableName += SQ_BRACKET_OPEN + iterateName + 
+									SQ_BRACKET_CLOSE;
+						} else {
+							prettyVariableName += getValidNextName(nextName) + 
+									SQ_BRACKET_OPEN + iterateName + SQ_BRACKET_CLOSE;
+						}
 					} else if (nextName.startsWith("@") && isPerviousVariableTypePrimitive) {
 						prettyVariableName += "ATTR" + getValidNextName(nextName.replaceFirst("@", "attr_"));
 					} else if (nextName.startsWith("@")) {
@@ -221,7 +238,14 @@ public class ScriptGenerationUtil {
 						} else {
 							iterateName = parentVariableBottomUpStack.pop().getIterativeName();
 						}
-						prettyVariableName += getValidNextName(nextName) + "[" + iterateName + "]";
+						// Discard unnamed variables.
+						if (unNamedVariables.contains(variableName)) {
+							prettyVariableName += SQ_BRACKET_OPEN + iterateName +
+									SQ_BRACKET_CLOSE;
+						} else {
+							prettyVariableName += getValidNextName(nextName) +
+									SQ_BRACKET_OPEN + iterateName + SQ_BRACKET_CLOSE;
+						}
 					} else if (nextName.startsWith("@") && isPerviousVariableTypePrimitive) {
 						prettyVariableName += "ATTR" + getValidNextName(nextName.replaceFirst("@", "attr_"));
 					} else if (nextName.startsWith("@")) {

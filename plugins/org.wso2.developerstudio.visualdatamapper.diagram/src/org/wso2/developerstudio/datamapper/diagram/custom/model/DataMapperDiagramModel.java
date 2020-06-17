@@ -65,6 +65,7 @@ public class DataMapperDiagramModel {
 	private static final String NAMESPACE_SEPERATOR = ":";
 	private static final String JSON_SCHEMA_NULLABLE = "nullable";
 	private static final String DOT_REPRESENTATION = "_DOT_";
+	private static final String UNAMED = "unnamed";
 	private List<DMVariable> variablesArray = new ArrayList<>();
 	private List<Integer> inputVariablesArray = new ArrayList<>();
 	private List<Integer> outputVariablesArray = new ArrayList<>();
@@ -77,6 +78,7 @@ public class DataMapperDiagramModel {
 	private List<ArrayList<Integer>> outputAdjList = new ArrayList<>();
 	private List<Integer> executionSeq = new ArrayList<>();
 	private Map<String, List<SchemaDataType>> variableTypeMap = new HashMap<>();
+	private List<String> unNamedVariables = new ArrayList<>();
 	private String inputRootName;
 	private String outputRootName;
 
@@ -134,6 +136,9 @@ public class DataMapperDiagramModel {
 				outputVariablesArray.add(index);
 				currentTreeNode.setIndex(index);
 				addVariableTypeToMap(addedVariable.getName(), variableType);
+				if(isUnNamed(currentTreeNode)) {
+					getUnNamedVariables().add(addedVariable.getName());
+				}
 				if (isTreeNodeElementNullable(currentNode)) {
 					addVariableTypeToMap(addedVariable.getName(), SchemaDataType.NULL);
 				}
@@ -158,6 +163,21 @@ public class DataMapperDiagramModel {
 		}
 		addOtherRootElemetsToNodeArray(tempNodeArray, input);
 		populateAdjacencyLists(tempNodeArray);
+	}
+	
+	/**
+	 * Given a treenode, check if unnamed property is true.
+	 * 
+	 * @param currentTreeNode treenode to check
+	 * @return unnamed value
+	 */
+	private boolean isUnNamed(TreeNodeImpl currentTreeNode) {
+		for (PropertyKeyValuePair property: currentTreeNode.getProperties()) {
+			if (UNAMED.equals(property.getKey())) {
+				return Boolean.parseBoolean(property.getValue());
+			}
+		}
+		return false;
 	}
 
 	private boolean isTreeNodeElementNullable(EObject currentTreeNode) {
@@ -950,6 +970,9 @@ public class DataMapperDiagramModel {
 				outputVariablesArray.add(variableIndex);
 				currentTreeNode.setIndex(variableIndex);
 				addVariableTypeToMap(variableName, variableType);
+				if (isUnNamed(currentTreeNode)) {
+					getUnNamedVariables().add(variableName);
+				}
 				if (currentTreeNode.getLevel() == parentVariableStack.size()) {
 					parentVariableStack.pop();
 					parentVariableStack.push(currentTreeNode);
@@ -1174,6 +1197,10 @@ public class DataMapperDiagramModel {
 	
 	private String replaceSpecialCharactersInAttribute(String attributeName) {
 	    return attributeName.replace(".", DOT_REPRESENTATION);
+	}
+
+	public List<String> getUnNamedVariables() {
+		return unNamedVariables;
 	}
 
 }

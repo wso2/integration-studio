@@ -12,6 +12,8 @@ Require-Bundle: org.eclipse.ui,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Import-Package: org.apache.commons.io;version="2.0.0.wso2v1",
+ org.apache.commons.io.filefilter;version="2.0.0.wso2v1",
+ org.apache.commons.lang3;version="3.1.0",
  org.eclipse.core.resources,
  org.eclipse.e4.core.contexts,
  org.eclipse.e4.core.di,
@@ -22,9 +24,12 @@ Import-Package: org.apache.commons.io;version="2.0.0.wso2v1",
  org.eclipse.equinox.p2.query,
  org.eclipse.equinox.p2.repository.artifact,
  org.eclipse.equinox.p2.repository.metadata,
+ org.eclipse.mylyn.commons.ui.dialogs,
  org.osgi.framework,
  org.wso2.developerstudio.eclipse.logging.core;version="[4.0.0,5.0.0)",
  org.wso2.developerstudio.eclipse.platform.core.utils,
  org.wso2.developerstudio.eclipse.platform.ui,
  org.wso2.developerstudio.eclipse.platform.ui.preferences,
  org.wso2.developerstudio.eclipse.platform.ui.wizard
+Bundle-ClassPath: .,
+ lib/jsoup-1.13.1.jar

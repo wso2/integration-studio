@@ -193,7 +193,7 @@ public class EmbeddedServerConfigWizardPage extends WizardPage {
                 inlineTomlTextArea.redraw();
             }
         });
-
+        
         Group secureGroup = new Group(container, SWT.NONE);
         data = new FormData();
         data.top = new FormAttachment(textGroup, 10);
@@ -299,10 +299,58 @@ public class EmbeddedServerConfigWizardPage extends WizardPage {
                 }
             }
         });
+        
+        Group restoreGroup = new Group(container, SWT.NONE);
+        data = new FormData();
+        data.top = new FormAttachment(textGroup, 43);
+        data.left = new FormAttachment(3);
+        data.right = new FormAttachment(97);
+        restoreGroup.setLayoutData(data);
+        restoreGroup.setLayout(new FormLayout());
+
+        Label restoreLabel = new Label(restoreGroup, SWT.NONE);
+        data = new FormData();
+        data.top = new FormAttachment(25);
+        data.left = new FormAttachment(3);
+        restoreLabel.setText("Restore deployment.toml default configuration: ");
+        restoreLabel.setLayoutData(data);
+        
+        Button restoreButton = new Button(restoreGroup, SWT.NONE);
+        data = new FormData();
+        data.top = new FormAttachment(15);
+        data.right = new FormAttachment(97);
+        restoreButton.setLayoutData(data);
+        restoreButton.setText("Restore Defaults");
+        
+        restoreButton.addSelectionListener(new SelectionAdapter() {
+            public void widgetSelected(SelectionEvent e) {
+                String confPath = embeddedMILocation + File.separator + "conf" + File.separator;
+                String tmpTomlFile = confPath + "deployment_temp.toml";
+                try {
+                    String content;
+                    if (new File(tmpTomlFile).exists()) {
+                        content = new String(Files.readAllBytes(Paths.get(tmpTomlFile)));
+                    } else {
+                        String tomlFile = confPath + "deployment.toml";
+                        content = new String(Files.readAllBytes(Paths.get(tomlFile)));
+                    }
+                    inlineTomlTextArea.setText(content);
+                    inlineTomlTextArea.setCaretOffset(inlineTomlTextArea.getText().length());
+                    inlineTomlTextArea.setTopIndex(inlineTomlTextArea.getLineCount() - 1);
+                    setTomlConfig(content);
+                } catch (IOException e1) {
+                    MessageBox messageBox = new MessageBox(
+                            PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), SWT.ERROR | SWT.OK);
+                    messageBox.setMessage("Error while restoring the default toml configuration.");
+                    messageBox.setText("Restore Defaults Error");
+                    messageBox.open();
+                }
+            }
+        });
 
         Group libGroup = new Group(container, SWT.NONE);
         data = new FormData();
-        data.top = new FormAttachment(secureGroup, 10);
+        data.top = new FormAttachment(secureGroup, 45);
         data.left = new FormAttachment(3);
         data.right = new FormAttachment(97);
         data.bottom = new FormAttachment(98);

@@ -109,6 +109,25 @@ public class Validator {
         }
         return invalidReason;
     }
+
+	public static String validateProjectName(String projectName, String moduleName) {
+		String invalidReason = null;
+		if (projectName == null) {
+			invalidReason = moduleName + " name cannot be null";
+		} else if (projectName.trim().equals("")) {
+			invalidReason = moduleName + " name cannot be empty";
+		} else if (projectName.indexOf(32) != -1) {
+			invalidReason = moduleName + " name cannot contain spaces";
+		} else if (!isValidArtifactName(projectName)) {
+			invalidReason = moduleName + " name cannot contain invalid characters(^/ : ; * # $ ? \" <> + $)";
+		} else {
+			IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
+			if (project.exists()) {
+				invalidReason = moduleName + " with the name '" + projectName + "' already exists";
+			}
+		}
+		return invalidReason;
+	}
     
     /**
      * Check the name is a valid artifact or not.

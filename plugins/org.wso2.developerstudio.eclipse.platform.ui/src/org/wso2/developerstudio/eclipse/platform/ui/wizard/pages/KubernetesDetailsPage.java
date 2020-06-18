@@ -56,7 +56,7 @@ public class KubernetesDetailsPage extends WizardPage {
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-	private static final String CONTAINER_PROJECT = "Kubernetes Project - Integration CR Details";
+	private static final String CONTAINER_PROJECT = "Kubernetes Exporter - Integration CR Details";
 	private static final String HELP_ICON = "/icons/help.png";
 	private static final String TARGET_REPOSITORY_DESCRIPTION = "This parameter is used to specify a name for the Docker image. "
 			+ "This value should be in convention of {registry-url}/{username}/{repository} or {username}/{repository} pattern";
@@ -87,7 +87,7 @@ public class KubernetesDetailsPage extends WizardPage {
 	 */
 	public KubernetesDetailsPage(ProjectDataModel projectDataModel) {
 		super("wizardPage");
-		setTitle("Kubernetes Project Information");
+		setTitle("Kubernetes Exporter Information");
 		setDescription("Kubernetes deployment information for the project");
 		setImageDescriptor(PluginImageUtils.getInstance().getImageDescriptor("kubernetes64x64.png"));
 		this.dataModel = projectDataModel;
@@ -118,7 +118,7 @@ public class KubernetesDetailsPage extends WizardPage {
 		data.left = new FormAttachment(2);
 		data.width = 200;
 		lblDockerProjectName.setLayoutData(data);
-		lblDockerProjectName.setText("Kubernetes Project Name");
+		lblDockerProjectName.setText("Kubernetes Exporter Name");
 
 		txtProjectName = new Text(projectNameContainer, SWT.BORDER);
 		data = new FormData();
@@ -517,7 +517,7 @@ public class KubernetesDetailsPage extends WizardPage {
 	private void updatePageStatus() {
 		String projectName = dataModel.getProjectName();
 		if (dataModel.isDirectContainerProjectCreation()) {
-			String inValidReason = Validator.validateProjectName(projectName);
+			String inValidReason = Validator.validateProjectName(projectName, "Kubernetes Exporter");
 			if (inValidReason != null) {
 				updatePageStatus(inValidReason);
 				return;

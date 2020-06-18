@@ -80,7 +80,7 @@ public class DockerDetailsPage extends WizardPage {
 	 */
 	public DockerDetailsPage(ProjectDataModel projectDataModel) {
 		super("wizardPage");
-		setTitle("Docker Project Information");
+		setTitle("Docker Exporter Information");
 		setDescription("Docker image information for the project");
 		setImageDescriptor(PluginImageUtils.getInstance().getImageDescriptor("Docker64x64.png"));
 		this.dataModel = projectDataModel;
@@ -111,7 +111,7 @@ public class DockerDetailsPage extends WizardPage {
 		data.left = new FormAttachment(2);
 		data.width = 200;
 		lblDockerProjectName.setLayoutData(data);
-		lblDockerProjectName.setText("Docker Project Name");
+		lblDockerProjectName.setText("Docker Exporter Name");
 
 		txtProjectName = new Text(projectNameContainer, SWT.BORDER);
 		data = new FormData();
@@ -383,7 +383,7 @@ public class DockerDetailsPage extends WizardPage {
 	private void updatePageStatus() {
 		String projectName = dataModel.getProjectName();
 		if (dataModel.isDirectContainerProjectCreation()) {
-			String inValidReason = Validator.validateProjectName(projectName);
+			String inValidReason = Validator.validateProjectName(projectName, "Docker Exporter");
 			if (inValidReason != null) {
 				updatePageStatus(inValidReason);
 				return;

@@ -120,7 +120,6 @@ button:focus{
     background: #e9eff24f;
     min-height: 8em;
     margin-left: 0;
-    max-height: 30em;
     overflow: auto;
 }
 .template{

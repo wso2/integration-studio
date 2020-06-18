@@ -98,6 +98,9 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 
 	@Override
 	public boolean canFinish() {
+		if (!this.getContainer().getCurrentPage().isPageComplete()) {
+			return false;
+		}
 		if ((getContainer().getCurrentPage() == getMainWizardPage() && getModel().isDockerExporterProjectChecked())
 				|| (getContainer().getCurrentPage() == getMainWizardPage()
 						&& getModel().isKubernetesExporterProjectChecked())
@@ -116,7 +119,15 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 		File location = new File(ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString());
 		boolean isMMMChecked = esbSolutionProjectModel.isMMMProjectChecked();
 		String projectRootPath = location.getAbsolutePath();
-		
+		String version = this.getMavenDetailPage().getMavenInformation().getVersion();
+		if (version != null && !version.equals("")) {
+			esbSolutionProjectModel.getMavenInfo().setVersion(version);
+		}
+		try {
+			esbSolutionProjectModel.setGroupId(this.getMavenDetailPage().getMavenInformation().getGroupId());
+		} catch (ObserverFailedException e) {
+			log.error("Error while setting maven information.", e);
+		}
 		if (isMMMChecked) {
 			// create MMM project
 			MvnMultiModuleWizard mmmWizard = new MvnMultiModuleWizard();

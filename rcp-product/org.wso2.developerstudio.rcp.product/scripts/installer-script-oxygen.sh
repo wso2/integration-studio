@@ -9,10 +9,8 @@ echo BASE_DIR $BASE_DIR and PRODUCT_VERSION $PRODUCT_VERSION
 
 # Product extraction locations
 PRODUCT_PATH_ROOT=$BASE_DIR/target/products
-PRODUCT_PATH_LINUX_86=$PRODUCT_PATH_ROOT/temp/linux-x86
 PRODUCT_PATH_LINUX_64=$PRODUCT_PATH_ROOT/temp/linux-x86_64
 PRODUCT_PATH_MACOS=$PRODUCT_PATH_ROOT/temp/macos
-PRODUCT_PATH_WIN_86=$PRODUCT_PATH_ROOT/temp/win-x86/IntegrationStudio
 PRODUCT_PATH_WIN_64=$PRODUCT_PATH_ROOT/temp/win-x86_64/IntegrationStudio
 
 PRODUCT_EXECUTABLE_NAME_DEFAULT=developerstudio
@@ -41,9 +39,7 @@ JDK_DISTRIBUTION_PATH_MACOS=$JDK_DISTRIBUTION_PATH/jdk-macos
 
 # Location of apictl distributions
 APICTL_DISTRIBUTION_PATH=$BASE_DIR/target/apictl
-APICTL_DISTRIBUTION_PATH_LINUX_86=$APICTL_DISTRIBUTION_PATH/apictl-linux-i586
 APICTL_DISTRIBUTION_PATH_LINUX_64=$APICTL_DISTRIBUTION_PATH/apictl-linux-x64
-APICTL_DISTRIBUTION_PATH_WINDOWS_86=$APICTL_DISTRIBUTION_PATH/apictl-windows-i586
 APICTL_DISTRIBUTION_PATH_WINDOWS_64=$APICTL_DISTRIBUTION_PATH/apictl-windows-x64
 APICTL_DISTRIBUTION_PATH_MACOSX_64=$APICTL_DISTRIBUTION_PATH/apictl-macosx-x64
 
@@ -52,71 +48,47 @@ DEPLOYMENT_FILE=deployment.toml
 DEPLOYMENT_FILE_PATH=resources/$DEPLOYMENT_FILE
 
 # Create temp directory and unzip created packages
-mkdir -p $PRODUCT_PATH_LINUX_86
 mkdir -p $PRODUCT_PATH_LINUX_64
 mkdir -p $PRODUCT_PATH_MACOS
-mkdir -p $PRODUCT_PATH_WIN_86
 mkdir -p $PRODUCT_PATH_WIN_64
 
-unzip $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-linux.gtk.x86.zip -d $PRODUCT_PATH_LINUX_86
 unzip $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-linux.gtk.x86_64.zip -d $PRODUCT_PATH_LINUX_64
 unzip $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-macosx.cocoa.x86_64.zip -d $PRODUCT_PATH_MACOS
-unzip $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-win32.win32.x86.zip -d $PRODUCT_PATH_WIN_86
 unzip $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-win32.win32.x86_64.zip -d $PRODUCT_PATH_WIN_64
 
 # Unzip micro esb to relevant packages
-unzip $PRODUCT_PATH_ROOT/wso2mi-${PRODUCT_VERSION}.zip -d $PRODUCT_PATH_LINUX_86/runtime
 unzip $PRODUCT_PATH_ROOT/wso2mi-${PRODUCT_VERSION}.zip -d $PRODUCT_PATH_LINUX_64/runtime
 unzip $PRODUCT_PATH_ROOT/wso2mi-${PRODUCT_VERSION}.zip -d $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse/runtime
-unzip $PRODUCT_PATH_ROOT/wso2mi-${PRODUCT_VERSION}.zip -d $PRODUCT_PATH_WIN_86/runtime
 unzip $PRODUCT_PATH_ROOT/wso2mi-${PRODUCT_VERSION}.zip -d $PRODUCT_PATH_WIN_64/runtime
 
 # Rename as "microesb" (this is the static name used in EI Tooling code)
-mv $PRODUCT_PATH_LINUX_86/runtime/wso2mi-$PRODUCT_DIRECTORY $PRODUCT_PATH_LINUX_86/runtime/microesb
 mv $PRODUCT_PATH_LINUX_64/runtime/wso2mi-$PRODUCT_DIRECTORY $PRODUCT_PATH_LINUX_64/runtime/microesb
 mv $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse/runtime/wso2mi-$PRODUCT_DIRECTORY $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse/runtime/microesb
-mv $PRODUCT_PATH_WIN_86/runtime/wso2mi-$PRODUCT_DIRECTORY $PRODUCT_PATH_WIN_86/runtime/microesb
 mv $PRODUCT_PATH_WIN_64/runtime/wso2mi-$PRODUCT_DIRECTORY $PRODUCT_PATH_WIN_64/runtime/microesb
 
 # Unzip apche maven to relevant packages
-unzip $PRODUCT_PATH_ROOT/apache-maven-${APACHE_MAVEN_VERSION}-bin.zip -d $PRODUCT_PATH_LINUX_86/
 unzip $PRODUCT_PATH_ROOT/apache-maven-${APACHE_MAVEN_VERSION}-bin.zip -d $PRODUCT_PATH_LINUX_64/
 unzip $PRODUCT_PATH_ROOT/apache-maven-${APACHE_MAVEN_VERSION}-bin.zip -d $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse/
-unzip $PRODUCT_PATH_ROOT/apache-maven-${APACHE_MAVEN_VERSION}-bin.zip -d $PRODUCT_PATH_WIN_86/
 unzip $PRODUCT_PATH_ROOT/apache-maven-${APACHE_MAVEN_VERSION}-bin.zip -d $PRODUCT_PATH_WIN_64/
 
 # Rename as "apche-maven" (this is the static name used in EI Tooling code)
-mv $PRODUCT_PATH_LINUX_86/apache-maven-$APACHE_MAVEN_VERSION $PRODUCT_PATH_LINUX_86/apache-maven
 mv $PRODUCT_PATH_LINUX_64/apache-maven-$APACHE_MAVEN_VERSION $PRODUCT_PATH_LINUX_64/apache-maven
 mv $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse/apache-maven-${APACHE_MAVEN_VERSION} $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse/apache-maven
-mv $PRODUCT_PATH_WIN_86/apache-maven-${APACHE_MAVEN_VERSION} $PRODUCT_PATH_WIN_86/apache-maven
 mv $PRODUCT_PATH_WIN_64/apache-maven-${APACHE_MAVEN_VERSION} $PRODUCT_PATH_WIN_64/apache-maven
 
 # Replace "deployment.toml" in Micro Integrator
-cp -f $DEPLOYMENT_FILE_PATH $PRODUCT_PATH_LINUX_86/runtime/microesb/conf
 cp -f $DEPLOYMENT_FILE_PATH $PRODUCT_PATH_LINUX_64/runtime/microesb/conf
 cp -f $DEPLOYMENT_FILE_PATH $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse/runtime/microesb/conf
-cp -f $DEPLOYMENT_FILE_PATH $PRODUCT_PATH_WIN_86/runtime/microesb/conf
 cp -f $DEPLOYMENT_FILE_PATH $PRODUCT_PATH_WIN_64/runtime/microesb/conf
 
 # Clean up existing packages
-rm -rf $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-linux.gtk.x86.tar.gz
 rm -rf $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-linux.gtk.x86_64.tar.gz
-rm -rf $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-win32.win32.x86.zip
 rm -rf $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-win32.win32.x86_64.zip
 rm -rf $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-macosx.cocoa.x86_64.tar.gz
 
 # Extract api-ctl to relevant packages
-pushd ${APICTL_DISTRIBUTION_PATH_LINUX_86}
-tar xzf apictl-$APIM_CTL_VERSION-linux-i586.tar.gz -C $PRODUCT_PATH_LINUX_86
-popd
-
 pushd ${APICTL_DISTRIBUTION_PATH_LINUX_64}
 tar xzf apictl-$APIM_CTL_VERSION-linux-x64.tar.gz -C $PRODUCT_PATH_LINUX_64
-popd
-
-pushd ${APICTL_DISTRIBUTION_PATH_WINDOWS_86}
-unzip apictl-$APIM_CTL_VERSION-windows-i586.zip -d $PRODUCT_PATH_WIN_86
 popd
 
 pushd ${APICTL_DISTRIBUTION_PATH_WINDOWS_64}
@@ -170,11 +142,6 @@ cp libfreetype.dylib.6 libfreetype.6.dylib
 popd
 
 # Rename distribution executables and configuration files
-pushd ${PRODUCT_PATH_LINUX_86}
-mv $PRODUCT_EXECUTABLE_NAME_DEFAULT $PRODUCT_EXECUTABLE_NAME
-mv $PRODUCT_EXECUTABLE_CONFIG_FILE_NAME_DEFAULT $PRODUCT_EXECUTABLE_CONFIG_FILE_NAME
-popd
-
 pushd ${PRODUCT_PATH_LINUX_64}
 mv $PRODUCT_EXECUTABLE_NAME_DEFAULT $PRODUCT_EXECUTABLE_NAME
 mv $PRODUCT_EXECUTABLE_CONFIG_FILE_NAME_DEFAULT $PRODUCT_EXECUTABLE_CONFIG_FILE_NAME
@@ -185,11 +152,6 @@ mv $PRODUCT_EXECUTABLE_NAME_DEFAULT $PRODUCT_EXECUTABLE_NAME
 popd
 
 pushd ${MACOS_ECLIPSE_CONFIG_PATH}
-mv $PRODUCT_EXECUTABLE_CONFIG_FILE_NAME_DEFAULT $PRODUCT_EXECUTABLE_CONFIG_FILE_NAME
-popd
-
-pushd ${PRODUCT_PATH_WIN_86}
-mv $PRODUCT_EXECUTABLE_NAME_DEFAULT.exe $PRODUCT_EXECUTABLE_NAME.exe
 mv $PRODUCT_EXECUTABLE_CONFIG_FILE_NAME_DEFAULT $PRODUCT_EXECUTABLE_CONFIG_FILE_NAME
 popd
 
@@ -207,13 +169,6 @@ mv Info_temp.plist Info.plist
 popd
 
 # Zip the packages with microesb and JDK
-pushd ${PRODUCT_PATH_LINUX_86}
-cd ../
-mv linux-x86 IntegrationStudio
-tar -czf WSO2-Integration-Studio-linux.gtk.x86.tar.gz IntegrationStudio
-mv WSO2-Integration-Studio-linux.gtk.x86.tar.gz $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-linux.gtk.x86.tar.gz
-popd
-
 pushd ${PRODUCT_PATH_LINUX_64}
 cd ../
 rm -rf IntegrationStudio
@@ -226,11 +181,6 @@ pushd ${PRODUCT_PATH_MACOS}
 mv DeveloperStudio.app IntegrationStudio.app
 tar -czf WSO2-Integration-Studio-macosx.cocoa.x86_64.tar.gz *
 mv WSO2-Integration-Studio-macosx.cocoa.x86_64.tar.gz $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-macosx.cocoa.x86_64.tar.gz
-popd
-
-pushd ${PRODUCT_PATH_WIN_86}
-cd ../
-zip -r $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-win32.win32.x86.zip *
 popd
 
 pushd ${PRODUCT_PATH_WIN_64}
@@ -246,6 +196,5 @@ rm -rf $PRODUCT_PATH_ROOT/temp
 rm -rf $PRODUCT_PATH_ROOT/IntegrationStudio
 rm -rf $JDK_DISTRIBUTION_PATH
 
-rm -rf $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-linux.gtk.x86.zip
 rm -rf $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-linux.gtk.x86_64.zip
 rm -rf $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-macosx.cocoa.x86_64.zip

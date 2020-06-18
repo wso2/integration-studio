@@ -22,6 +22,9 @@ import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.layout.FormAttachment;
+import org.eclipse.swt.layout.FormData;
+import org.eclipse.swt.layout.FormLayout;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
@@ -41,12 +44,24 @@ public class ImportRemoveSelectionWizardPage extends WizardPage {
 	public void createControl(Composite parent) {
 		final Composite container = new Composite(parent, SWT.NULL);
 		setControl(container);
-		container.setLayout(new GridLayout(1, false));
+		container.setLayout(new FormLayout());
+		FormData data;
+		
 		importRadioButton = new Button(container, SWT.RADIO);
 		importRadioButton.setText("Add connector");
 		importRadioButton.setSelection(true);
+		data = new FormData();
+		data.top = new FormAttachment(5);
+        data.left = new FormAttachment(3);
+        importRadioButton.setLayoutData(data);
+        
 		removeRadioButton = new Button(container, SWT.RADIO);
 		removeRadioButton.setText("Remove connector");
+		data = new FormData();
+        data.top = new FormAttachment(importRadioButton, 10);
+        data.left = new FormAttachment(3);
+        removeRadioButton.setLayoutData(data);
+        
 		importRadioButton.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				setPageComplete(true);

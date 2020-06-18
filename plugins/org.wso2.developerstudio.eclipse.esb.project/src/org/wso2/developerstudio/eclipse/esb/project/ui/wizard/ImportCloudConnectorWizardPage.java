@@ -35,8 +35,14 @@ import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.browser.Browser;
+import org.eclipse.swt.events.ControlAdapter;
+import org.eclipse.swt.events.ControlEvent;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.swt.layout.FormAttachment;
+import org.eclipse.swt.layout.FormData;
+import org.eclipse.swt.layout.FormLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -83,31 +89,27 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
     public void createControl(Composite parent) {
         final Composite container = new Composite(parent, SWT.NULL);
         setControl(container);
-        container.setLayout(new GridLayout(3, false));
+        container.setLayout(new FormLayout());
+        FormData data;
 
-        GridData gridData = new GridData();
-        gridData.horizontalAlignment = GridData.FILL;
-        gridData.verticalAlignment = GridData.FILL;
-        gridData.horizontalSpan = 3;
-        gridData.verticalSpan = 7;
-        gridData.grabExcessVerticalSpace = true;
-        gridData.heightHint = 400;
-        gridData.widthHint = 250;
-
-        Browser browser;
-        browser = new Browser(container, SWT.NONE);
-        GridData data = new GridData();
-        data.horizontalAlignment = GridData.FILL;
-        data.verticalAlignment = SWT.TOP;
-        data.grabExcessHorizontalSpace = true;
-        data.grabExcessVerticalSpace = false;
-        data.horizontalSpan = 3;
-        data.heightHint = 400;
+        Browser browser = new Browser(container, SWT.NONE);
+        data = new FormData();
+        data.top = new FormAttachment(2);
+        data.left = new FormAttachment(3);
+        data.right = new FormAttachment(96);
+        data.bottom = new FormAttachment(92);
+        data.width = 600;
+        data.height = 600;
         browser.setLayoutData(data);
         browser.setUrl(LOAD_CONNECTORS_PAGE);
 
         fileSystem = new Button(container, SWT.NONE);
         fileSystem.setText("Add from File System");
+        data = new FormData();
+        data.top = new FormAttachment(browser, 15);
+        data.left = new FormAttachment(4);
+        data.bottom = new FormAttachment(99);
+        fileSystem.setLayoutData(data);
         fileSystem.addListener(SWT.Selection, new Listener() {
             @Override
             public void handleEvent(Event event) {

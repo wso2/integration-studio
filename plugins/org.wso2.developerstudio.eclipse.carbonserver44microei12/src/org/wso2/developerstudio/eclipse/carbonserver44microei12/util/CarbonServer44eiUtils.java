@@ -362,7 +362,8 @@ public class CarbonServer44eiUtils implements CarbonServerXUtils {
                 }
             }
         } catch (IOException e) {
-            log.error("Error while reading conf.properties file.", e);
+            // ignore the error as there wont be a config.properties file until any change is made to the embedded
+            // server configurations
         }
         return false;
     }

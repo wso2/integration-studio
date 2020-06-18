@@ -376,6 +376,9 @@ public class InboundEndpointDeserializer
                         if (paramEntry.getValue().equals(InboundEndpointConstants.DELETE)) {
                             executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_PROCESS,
                                     VFSAction.DELETE);
+                        } else if (paramEntry.getValue().equals(InboundEndpointConstants.VSF_ACTION_NONE)) {
+                            executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_PROCESS,
+                                    VFSAction.NONE);
                         } else {
                             executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_PROCESS,
                                     VFSAction.MOVE);
@@ -384,6 +387,9 @@ public class InboundEndpointDeserializer
                         if (paramEntry.getValue().equals(InboundEndpointConstants.DELETE)) {
                             executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_FAILURE,
                                     VFSAction.DELETE);
+                        } else if (paramEntry.getValue().equals(InboundEndpointConstants.VSF_ACTION_NONE)) {
+                            executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_FAILURE,
+                                    VFSAction.NONE);
                         } else {
                             executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_FAILURE,
                                     VFSAction.MOVE);

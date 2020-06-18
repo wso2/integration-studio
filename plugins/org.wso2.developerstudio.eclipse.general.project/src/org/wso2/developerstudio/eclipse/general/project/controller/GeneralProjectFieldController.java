@@ -27,7 +27,7 @@ public class GeneralProjectFieldController extends AbstractFieldController {
 	public void validate(String modelProperty, Object value, ProjectDataModel model)
 	        throws FieldValidationException {
 		if (modelProperty.equals("project.name")) {
-			CommonFieldValidator.validateProjectField(value);
+			CommonFieldValidator.validateProjectField(value, "Registry Resources");
 		}
 	}
 

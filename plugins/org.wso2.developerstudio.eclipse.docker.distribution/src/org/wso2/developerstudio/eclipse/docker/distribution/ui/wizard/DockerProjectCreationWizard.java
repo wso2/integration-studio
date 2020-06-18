@@ -41,7 +41,7 @@ public class DockerProjectCreationWizard extends Wizard implements IExportWizard
 
     private static final IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     
-    private static final String WINDOW_TITLE = "New Docker Project";
+    private static final String WINDOW_TITLE = "New Docker Exporter";
     private boolean initError = false;
     private DockerDetailsPage dockerDetailPage;
     private MavenDetailsPage mavenDetailPage;

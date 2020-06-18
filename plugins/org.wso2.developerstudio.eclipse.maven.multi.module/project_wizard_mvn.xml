@@ -3,7 +3,7 @@
 		<option id="mavneInfo" default="true">maven info</option>
 	</projectOptions>
 	<projectOptionSettings>
-		<settings optionId="mavneInfo" title="Maven Information settings" description="Specify the maven information" error="Please select a method to create the project">
+		<settings optionId="mavneInfo" description="Specify the maven information" error="Please select a method to create the project">
 			<data modelProperty="group.id" type="string"    fieldController="org.wso2.developerstudio.eclipse.maven.multi.module.handlers.MvnMutiModuleFieldsController">Group Id</data>
 			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.maven.multi.module.handlers.MvnMutiModuleFieldsController">Artifact Id</data>			
 			<data modelProperty="version.id" type="string"  fieldController="org.wso2.developerstudio.eclipse.maven.multi.module.handlers.MvnMutiModuleFieldsController">Version</data>

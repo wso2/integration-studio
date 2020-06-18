@@ -48,7 +48,15 @@ public enum VFSAction implements Enumerator {
      * @generated
      * @ordered
      */
-    MOVE(1, "MOVE", "MOVE");
+    MOVE(1, "MOVE", "MOVE"), /**
+     * The '<em><b>NONE</b></em>' literal object.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #NONE_VALUE
+     * @generated
+     * @ordered
+     */
+    NONE(2, "NONE", "NONE");
 
     /**
      * The '<em><b>DELETE</b></em>' literal value.
@@ -81,6 +89,21 @@ public enum VFSAction implements Enumerator {
     public static final int MOVE_VALUE = 1;
 
     /**
+     * The '<em><b>NONE</b></em>' literal value.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of '<em><b>NONE</b></em>' literal object isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @see #NONE
+     * @model
+     * @generated
+     * @ordered
+     */
+    public static final int NONE_VALUE = 2;
+
+    /**
      * An array of all the '<em><b>VFS Action</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -89,6 +112,7 @@ public enum VFSAction implements Enumerator {
     private static final VFSAction[] VALUES_ARRAY = new VFSAction[] {
             DELETE,
             MOVE,
+            NONE,
         };
 
     /**
@@ -147,6 +171,7 @@ public enum VFSAction implements Enumerator {
         switch (value) {
             case DELETE_VALUE: return DELETE;
             case MOVE_VALUE: return MOVE;
+            case NONE_VALUE: return NONE;
         }
         return null;
     }

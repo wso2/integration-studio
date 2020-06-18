@@ -734,6 +734,7 @@
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//VFSAction">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//VFSAction/DELETE"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//VFSAction/MOVE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//VFSAction/NONE"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//VFSFileSort">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//VFSFileSort/none"/>

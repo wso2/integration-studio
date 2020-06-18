@@ -3418,6 +3418,7 @@
   <eClassifiers xsi:type="ecore:EEnum" name="VFSAction">
     <eLiterals name="DELETE" literal="DELETE"/>
     <eLiterals name="MOVE" value="1" literal="MOVE"/>
+    <eLiterals name="NONE" value="2" literal="NONE"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="VFSFileSort">
     <eLiterals name="none" literal="none"/>

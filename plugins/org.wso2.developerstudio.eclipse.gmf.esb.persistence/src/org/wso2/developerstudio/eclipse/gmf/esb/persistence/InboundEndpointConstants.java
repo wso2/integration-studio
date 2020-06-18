@@ -36,6 +36,7 @@ public class InboundEndpointConstants {
     public static final String TRUE = "true";
     public static final String FALSE = "false";
     public static final String NONE = "none";
+    public static final String VSF_ACTION_NONE = "NONE";
     public static final String DELETE = "DELETE";
     public static final String ENABLE = "enable";
     public static final String NAME = "name";

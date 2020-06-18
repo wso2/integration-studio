@@ -78,7 +78,7 @@ public class UpdateNotificationPopUp extends AbstractNotificationPopup {
         newFeaturesLbl.setFont(font);
 
         // Configure scrolled composite
-        ScrolledComposite scrolledComposite = new ScrolledComposite(container, SWT.V_SCROLL | SWT.H_SCROLL);
+        final ScrolledComposite scrolledComposite = new ScrolledComposite(container, SWT.V_SCROLL | SWT.H_SCROLL);
         scrolledComposite.setLayout(new GridLayout());
         GridData dData = new GridData(GridData.FILL_HORIZONTAL);
         dData.heightHint  = 105;
@@ -87,7 +87,7 @@ public class UpdateNotificationPopUp extends AbstractNotificationPopup {
         scrolledComposite.setExpandHorizontal(true);
         
         // Add content to scrolled composite
-        Composite scrolledContent = new Composite(scrolledComposite, SWT.NONE);
+        final Composite scrolledContent = new Composite(scrolledComposite, SWT.NONE);
         scrolledContent.setLayout(new GridLayout());
         GridData releaseSectionData = new GridData(GridData.FILL_HORIZONTAL);
         scrolledContent.setLayoutData(releaseSectionData);
@@ -107,7 +107,7 @@ public class UpdateNotificationPopUp extends AbstractNotificationPopup {
         });
         
         new Label(container, SWT.NONE);
-        Link updateNowLbl = new Link(container, SWT.WRAP | SWT.LEFT);
+        final Link updateNowLbl = new Link(container, SWT.WRAP | SWT.LEFT);
         updateNowLbl.setText(createUrl("Review and install updates"));
         Cursor cursor = new Cursor(display, SWT.CURSOR_HAND);
         GridData linkData = new GridData();
@@ -115,7 +115,7 @@ public class UpdateNotificationPopUp extends AbstractNotificationPopup {
         updateNowLbl.setLayoutData(linkData);
         updateNowLbl.setCursor(cursor);
         
-        StyledText elseMessage = new StyledText(container, SWT.NONE);
+        final StyledText elseMessage = new StyledText(container, SWT.NONE);
         elseMessage.setText("Go to Help > Check for Updates if you stop the automatic update");
         elseMessage.setLayoutData(linkData);
         elseMessage.setVisible(false);

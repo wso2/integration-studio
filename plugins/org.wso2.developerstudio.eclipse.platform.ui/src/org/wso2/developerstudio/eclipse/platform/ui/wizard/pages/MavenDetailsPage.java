@@ -609,6 +609,10 @@ public class MavenDetailsPage extends WizardPage implements Observer {
 
 	}
 
+	public MavenInfo getMavenInformation() {
+		return this.mavenProjectInfo;
+	}
+	
 	public boolean canFlipToNextPage() {
 		return false;
 	}

@@ -136,7 +136,7 @@ public class RunUpdaterRootJob extends Job {
 
     private static void loadUpdateNotificationPopup() {
         long localMaxTimestamp = getLocalMaxTimestamp();
-        List<String> releaseNoteItems = new ArrayList<>();
+        final List<String> releaseNoteItems = new ArrayList<>();
         getReleaseNotes(releaseNoteItems, localMaxTimestamp);
 
         Display.getDefault().asyncExec(new Runnable() {

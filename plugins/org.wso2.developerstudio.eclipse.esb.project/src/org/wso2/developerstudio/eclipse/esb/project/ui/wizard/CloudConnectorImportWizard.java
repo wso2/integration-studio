@@ -23,6 +23,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.widgets.TableItem;
+import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.esb.project.Activator;
@@ -46,18 +47,13 @@ public class CloudConnectorImportWizard extends AbstractWSO2ProjectCreationWizar
     private static final String ADD_CONNECTOR_FAILURE_MSG = "Failed to add connector";
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-
-    public CloudConnectorImportWizard() {
-        IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-        if (window != null) {
-            IStructuredSelection selection = (IStructuredSelection) window.getSelectionService().getSelection();
-            if (selection != null) {
-                selectionPage = new ImportRemoveSelectionWizardPage(selection);
-                storeWizardPage = new ImportCloudConnectorWizardPage(selection);
-                removeWizardPage = new RemoveCloudConnectorWizardPage(selection);
-                setWindowTitle("Add or Remove Connectors");
-            }
-        }
+    
+    @Override
+    public void init(IWorkbench workbench, IStructuredSelection selection) {
+        setWindowTitle("Add or Remove Connectors");
+        selectionPage = new ImportRemoveSelectionWizardPage(selection);
+        storeWizardPage = new ImportCloudConnectorWizardPage(selection);
+        removeWizardPage = new RemoveCloudConnectorWizardPage(selection);
     }
 
     /**
@@ -67,6 +63,7 @@ public class CloudConnectorImportWizard extends AbstractWSO2ProjectCreationWizar
         addPage(selectionPage);
         addPage(storeWizardPage);
         addPage(removeWizardPage);
+        super.addPages();
     }
 
     /**

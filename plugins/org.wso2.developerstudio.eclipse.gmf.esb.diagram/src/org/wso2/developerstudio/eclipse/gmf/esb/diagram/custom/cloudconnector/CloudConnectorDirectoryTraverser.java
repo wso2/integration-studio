@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -31,6 +32,7 @@ import java.util.Set;
 
 import javax.xml.stream.XMLStreamException;
 
+import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.synapse.config.xml.TemplateMediatorFactory;
@@ -482,10 +484,18 @@ public class CloudConnectorDirectoryTraverser {
             OMElement element = AXIOMUtil.stringToOM(source);
 
             if (element.getFirstChildWithName(new QName(synapseNS, "sequence", null)) != null) {
-                TemplateMediatorFactory templateMediatorFactory = new TemplateMediatorFactory();
-                TemplateMediator templateMediator = (TemplateMediator) templateMediatorFactory.createMediator(element,
-                        properties);
-                return templateMediator.getParameters();
+                Iterator iterator = element.getChildrenWithLocalName("parameter");
+                while (iterator.hasNext()) {
+                    OMElement parameterElement = (OMElement) iterator.next();
+                    Iterator attributeIterator = parameterElement.getAllAttributes();
+                    while (attributeIterator.hasNext()) {
+                        OMAttribute attribute = (OMAttribute) attributeIterator.next();
+                        if (attribute.getLocalName().equals("name")) {
+                            parameters.add(attribute.getAttributeValue());
+                            break;
+                        }
+                    }
+                }
             }
         } catch (XMLStreamException e) {
             log.error("Error occurred while parsing selected template file", e);

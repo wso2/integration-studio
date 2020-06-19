@@ -18,7 +18,6 @@ package org.wso2.developerstudio.eclipse.esb.project.model;
 
 import java.io.File;
 
-import org.wso2.developerstudio.eclipse.esb.project.utils.SolutionProjectArtifactConstants;
 import org.wso2.developerstudio.eclipse.platform.core.exception.ObserverFailedException;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
 

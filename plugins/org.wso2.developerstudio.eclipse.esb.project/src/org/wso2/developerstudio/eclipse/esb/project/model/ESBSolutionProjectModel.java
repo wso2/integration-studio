@@ -137,22 +137,23 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
 
     public boolean setModelPropertyValue(String key, Object data) throws ObserverFailedException {
         boolean returnResult = super.setModelPropertyValue(key, data);
+        String value = data.toString();
         if (key.equals(MMM_PROJECT_NAME)) {
-            setMMMProjectName(data.toString());
-            if (data.toString() != null && !data.toString().isEmpty()) {
+            setMMMProjectName(value);
+            if (value != null && !value.isEmpty()) {
                 if (this.isConfigProjectChecked) {
                     if (this.isMMMProjectChecked) {
-                        setEsbProjectName(data.toString() + "ConfigProject");
+                        setEsbProjectName(value + "ConfigProject");
                     } else {
-                        setEsbProjectName(data.toString());
+                        setEsbProjectName(value);
                     }
                 }
                 
-                setRegistryProjectName(data.toString() + "Registry");
-                setConnectorExporterProjectName(data.toString() + "ConnectorExporter");
-                setCompositeApplicationProjectName(data.toString() + "CompositeApplication");
-                setDockerExporterProjectName(data.toString() + "DockerExporter");
-                setKubernetesExporterProjectName(data.toString() + "KubernetesExporter");
+                setRegistryProjectName(value + "Registry");
+                setConnectorExporterProjectName(value + "ConnectorExporter");
+                setCompositeApplicationProjectName(value + "CompositeApplication");
+                setDockerExporterProjectName(value + "DockerExporter");
+                setKubernetesExporterProjectName(value + "KubernetesExporter");
             } else {
                 setEsbProjectName("");
                 setRegistryProjectName("");
@@ -162,7 +163,7 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
                 setKubernetesExporterProjectName("");
             }
         } else if (key.equals(ESB_PROJECT_NAME)) {
-            setEsbProjectName(data.toString());
+            setEsbProjectName(value);
         } else if (key.equals(ESB_PROJECT_CHOICE)) {
             setConfigProjectChecked((boolean) data);
         } else if (key.equals(MMM_PROJECT_CHOICE)) {
@@ -170,15 +171,15 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
             setEsbProjectName(getMMMProjectName());
             setConfigProjectChecked(true);
         } else if (key.equals(REGISTRY_RESOURCES_PROJECT_NAME)) {
-            setRegistryProjectName(data.toString());
+            setRegistryProjectName(value);
         } else if (key.equals(CONNECTOR_EXPORTER_PROJECT_NAME)) {
-            setConnectorExporterProjectName(data.toString());
+            setConnectorExporterProjectName(value);
         } else if (key.equals(COMPOSITE_APPLICATION_PROJECT_NAME)) {
-            setCompositeApplicationProjectName(data.toString());
+            setCompositeApplicationProjectName(value);
         } else if (key.equals(DOCKER_EXPORTER_PROJECT_NAME)) {
-            setDockerExporterProjectName(data.toString());
+            setDockerExporterProjectName(value);
         } else if (key.equals(KUBERNETES_EXPORTER_PROJECT_NAME)) {
-            setKubernetesExporterProjectName(data.toString());
+            setKubernetesExporterProjectName(value);
         } else if (key.equals(REGISTRY_PROJECT_CHECKED)) {
             setRegistryProjectChecked((boolean) data);
         } else if (key.equals(CONNECTOR_EXPORTER_PROJECT_CHECKED)) {
@@ -187,10 +188,10 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
             setCappProjectChecked((boolean) data);
         } else if (key.equals(DOCKER_EXPORTER_PROJECT_CHECKED)) {
             setDockerExporterProjectChecked((boolean) data);
-            returnResult = (boolean) data;
+            return (boolean) data;
         } else if (key.equals(KUBERNETES_EXPORTER_PROJECT_CHECKED)) {
             setKubernetesExporterProjectChecked((boolean) data);
-            returnResult = (boolean) data;
+            return (boolean) data;
         }
 
         return returnResult;

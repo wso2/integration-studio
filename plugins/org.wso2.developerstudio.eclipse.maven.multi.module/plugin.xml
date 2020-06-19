@@ -166,4 +166,39 @@
             </enablement>
         </actionProvider>
     </extension>
+    
+    <!-- Adding property tester for adding the 'Import to a Maven Multi Module' Project to the right click menu based on the resource type-->
+    <extension point="org.eclipse.ui.popupMenus">
+            <objectContribution objectClass="org.eclipse.core.resources.IProject"
+                                id="org.wso2.developerstudio.eclipse.maven.multi.module.add.other.project.id">
+                <action
+                        label="Import to a Maven Multi Module"
+                        icon="icons/cancel_16.png"
+                        class="org.wso2.developerstudio.eclipse.maven.multi.module.add.other.projects.ImportToMMMProjectAction"
+                        id="org.wso2.developerstudio.eclipse.maven.multi.module.add.other.projects">
+                </action>
+                <enablement>
+                    <adapt
+                            type="org.eclipse.core.resources.IProject">
+                        <test
+                                property="org.wso2.developerstudio.eclipse.maven.multi.module.add.other.projects.checkImportProjectType"
+                                value="true"
+                                forcePluginActivation="true">
+                        </test>
+                    </adapt>
+                </enablement>
+            </objectContribution>
+    </extension>
+        
+    <!-- Adding property tester for adding the item to the right click menu based on the resource type-->
+    <extension
+            point="org.eclipse.core.expressions.propertyTesters">
+        <propertyTester
+                class="org.wso2.developerstudio.eclipse.maven.multi.module.add.other.projects.ImportProjectTester"
+                id="ImportToMMMProjectTester"
+                namespace="org.wso2.developerstudio.eclipse.maven.multi.module.add.other.projects"
+                properties="checkImportProjectType"
+                type="org.eclipse.core.resources.IProject">
+        </propertyTester>
+    </extension>
 </plugin>

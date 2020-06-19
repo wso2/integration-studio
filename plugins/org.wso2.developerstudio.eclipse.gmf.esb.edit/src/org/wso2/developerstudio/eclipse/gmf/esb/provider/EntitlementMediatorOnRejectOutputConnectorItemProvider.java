@@ -29,11 +29,9 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 /**
- * This is the item provider adapter for a
- * {@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediatorOnRejectOutputConnector} object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediatorOnRejectOutputConnector} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class EntitlementMediatorOnRejectOutputConnectorItemProvider extends OutputConnectorItemProvider {
@@ -41,7 +39,6 @@ public class EntitlementMediatorOnRejectOutputConnectorItemProvider extends Outp
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EntitlementMediatorOnRejectOutputConnectorItemProvider(AdapterFactory adapterFactory) {
@@ -52,7 +49,6 @@ public class EntitlementMediatorOnRejectOutputConnectorItemProvider extends Outp
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -68,20 +64,17 @@ public class EntitlementMediatorOnRejectOutputConnectorItemProvider extends Outp
      * This returns EntitlementMediatorOnRejectOutputConnector.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object,
-                getResourceLocator().getImage("full/obj16/EntitlementMediatorOnRejectOutputConnector"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/EntitlementMediatorOnRejectOutputConnector"));
     }
 
     /**
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -94,7 +87,6 @@ public class EntitlementMediatorOnRejectOutputConnectorItemProvider extends Outp
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -108,7 +100,6 @@ public class EntitlementMediatorOnRejectOutputConnectorItemProvider extends Outp
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

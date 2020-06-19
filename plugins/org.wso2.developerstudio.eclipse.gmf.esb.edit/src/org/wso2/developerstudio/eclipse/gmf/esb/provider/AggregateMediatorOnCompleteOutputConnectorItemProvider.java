@@ -20,11 +20,9 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 /**
- * This is the item provider adapter for a
- * {@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediatorOnCompleteOutputConnector} object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediatorOnCompleteOutputConnector} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class AggregateMediatorOnCompleteOutputConnectorItemProvider extends OutputConnectorItemProvider {
@@ -32,7 +30,6 @@ public class AggregateMediatorOnCompleteOutputConnectorItemProvider extends Outp
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public AggregateMediatorOnCompleteOutputConnectorItemProvider(AdapterFactory adapterFactory) {
@@ -43,7 +40,6 @@ public class AggregateMediatorOnCompleteOutputConnectorItemProvider extends Outp
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -59,20 +55,17 @@ public class AggregateMediatorOnCompleteOutputConnectorItemProvider extends Outp
      * This returns AggregateMediatorOnCompleteOutputConnector.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object,
-                getResourceLocator().getImage("full/obj16/AggregateMediatorOnCompleteOutputConnector"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/AggregateMediatorOnCompleteOutputConnector"));
     }
 
     /**
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -85,7 +78,6 @@ public class AggregateMediatorOnCompleteOutputConnectorItemProvider extends Outp
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -99,7 +91,6 @@ public class AggregateMediatorOnCompleteOutputConnectorItemProvider extends Outp
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

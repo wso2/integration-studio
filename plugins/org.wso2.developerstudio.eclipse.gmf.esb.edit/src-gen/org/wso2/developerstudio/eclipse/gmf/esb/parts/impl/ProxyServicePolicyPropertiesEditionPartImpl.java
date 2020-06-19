@@ -48,102 +48,111 @@ import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDe
  * 
  * 
  */
-public class ProxyServicePolicyPropertiesEditionPartImpl extends CompositePropertiesEditionPart
-        implements ISWTPropertiesEditionPart, ProxyServicePolicyPropertiesEditionPart {
+public class ProxyServicePolicyPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, ProxyServicePolicyPropertiesEditionPart {
 
-    // Start of user code for policyKey widgets declarations
-    protected RegistryKeyProperty policyKey;
-    protected Text policyKeyText;
-    protected Control[] policyKeyElements;
-    // End of user code
+	// Start of user code  for policyKey widgets declarations
+	protected RegistryKeyProperty policyKey;
+	protected Text policyKeyText;
+	protected Control[] policyKeyElements;
+	// End of user code
 
-    /**
-     * Default constructor
-     * 
-     * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-     * 
-     */
-    public ProxyServicePolicyPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
-        super(editionComponent);
-    }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
-     *      createFigure(org.eclipse.swt.widgets.Composite)
-     * 
-     */
-    public Composite createFigure(final Composite parent) {
-        view = new Composite(parent, SWT.NONE);
-        GridLayout layout = new GridLayout();
-        layout.numColumns = 3;
-        view.setLayout(layout);
-        createControls(view);
-        return view;
-    }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
-     *      createControls(org.eclipse.swt.widgets.Composite)
-     * 
-     */
-    public void createControls(Composite view) {
-        CompositionSequence proxyServicePolicyStep = new BindingCompositionSequence(propertiesEditionComponent);
-        proxyServicePolicyStep.addStep(EsbViewsRepository.ProxyServicePolicy.Properties.class)
-                .addStep(EsbViewsRepository.ProxyServicePolicy.Properties.policyKey);
 
-        composer = new PartComposer(proxyServicePolicyStep) {
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
+	 */
+	public ProxyServicePolicyPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
+		super(editionComponent);
+	}
 
-            @Override
-            public Composite addToPart(Composite parent, Object key) {
-                if (key == EsbViewsRepository.ProxyServicePolicy.Properties.class) {
-                    return createPropertiesGroup(parent);
-                }
-                // Start of user code for policyKey addToPart creation
-                if (key == EsbViewsRepository.ProxyServicePolicy.Properties.policyKey) {
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 * 
+	 */
+	public Composite createFigure(final Composite parent) {
+		view = new Composite(parent, SWT.NONE);
+		GridLayout layout = new GridLayout();
+		layout.numColumns = 3;
+		view.setLayout(layout);
+		createControls(view);
+		return view;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 * 
+	 */
+	public void createControls(Composite view) { 
+		CompositionSequence proxyServicePolicyStep = new BindingCompositionSequence(propertiesEditionComponent);
+		proxyServicePolicyStep
+			.addStep(EsbViewsRepository.ProxyServicePolicy.Properties.class)
+			.addStep(EsbViewsRepository.ProxyServicePolicy.Properties.policyKey);
+		
+		
+		composer = new PartComposer(proxyServicePolicyStep) {
+
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == EsbViewsRepository.ProxyServicePolicy.Properties.class) {
+					return createPropertiesGroup(parent);
+				}
+				// Start of user code for policyKey addToPart creation
+				if (key == EsbViewsRepository.ProxyServicePolicy.Properties.policyKey) {
                     return createPolicyKey(parent);
                 }
-                // End of user code
-                return parent;
-            }
-        };
-        composer.compose(view);
-    }
+				// End of user code
+				return parent;
+			}
+		};
+		composer.compose(view);
+	}
 
-    /**
-     * 
-     */
-    protected Composite createPropertiesGroup(Composite parent) {
-        Group propertiesGroup = new Group(parent, SWT.NONE);
-        propertiesGroup.setText(EsbMessages.ProxyServicePolicyPropertiesEditionPart_PropertiesGroupLabel);
-        GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
-        propertiesGroupData.horizontalSpan = 3;
-        propertiesGroup.setLayoutData(propertiesGroupData);
-        GridLayout propertiesGroupLayout = new GridLayout();
-        propertiesGroupLayout.numColumns = 3;
-        propertiesGroup.setLayout(propertiesGroupLayout);
-        return propertiesGroup;
-    }
+	/**
+	 * 
+	 */
+	protected Composite createPropertiesGroup(Composite parent) {
+		Group propertiesGroup = new Group(parent, SWT.NONE);
+		propertiesGroup.setText(EsbMessages.ProxyServicePolicyPropertiesEditionPart_PropertiesGroupLabel);
+		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
+		propertiesGroupData.horizontalSpan = 3;
+		propertiesGroup.setLayoutData(propertiesGroupData);
+		GridLayout propertiesGroupLayout = new GridLayout();
+		propertiesGroupLayout.numColumns = 3;
+		propertiesGroup.setLayout(propertiesGroupLayout);
+		return propertiesGroup;
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
-     */
-    public void firePropertiesChanged(IPropertiesEditionEvent event) {
-        // Start of user code for tab synchronization
 
-        // End of user code
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+		// Start of user code for tab synchronization
+		
+		// End of user code
+	}
 
-    // Start of user code for policyKey specific getters and setters implementation
-    @Override
+
+
+
+
+
+	// Start of user code for policyKey specific getters and setters implementation
+	@Override
     public void setPolicyKey(RegistryKeyProperty registryKeyProperty) {
-        if (policyKey != null) {
+	    if (policyKey != null) {
             policyKey = registryKeyProperty;
             policyKeyText.setText(registryKeyProperty.getKeyValue());
         }
@@ -153,28 +162,28 @@ public class ProxyServicePolicyPropertiesEditionPartImpl extends CompositeProper
     public RegistryKeyProperty getPolicyKey() {
         return policyKey;
     }
+	
+	// End of user code
 
-    // End of user code
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
+	 */
+	public String getTitle() {
+		return EsbMessages.ProxyServicePolicy_Part_Title;
+	}
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-     * 
-     */
-    public String getTitle() {
-        return EsbMessages.ProxyServicePolicy_Part_Title;
-    }
-
-    // Start of user code additional methods
-    protected Composite createPolicyKey(final Composite parent) {
+	// Start of user code additional methods
+	protected Composite createPolicyKey(final Composite parent) {
         Control policyKeyLabel = createDescription(parent, EsbViewsRepository.ProxyServicePolicy.Properties.policyKey,
                 EsbMessages.ProxyServicePolicyPropertiesEditionPart_PolicyKeyLabel);
 
         if (policyKey == null) {
             policyKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         }
-
+        
         policyKeyText = SWTUtils.createScrollableText(parent, SWT.BORDER);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         policyKeyText.setLayoutData(valueData);
@@ -191,10 +200,10 @@ public class ProxyServicePolicyPropertiesEditionPartImpl extends CompositeProper
                         SWT.NULL, policyKey, new ArrayList<NamedEntityDescriptor>());
                 dialog.open();
                 policyKeyText.setText(policyKey.getKeyValue());
-                propertiesEditionComponent.firePropertiesChanged(
-                        new PropertiesEditionEvent(ProxyServicePolicyPropertiesEditionPartImpl.this,
-                                EsbViewsRepository.ProxyServicePolicy.Properties.policyKey,
-                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getPolicyKey()));
+                propertiesEditionComponent
+                        .firePropertiesChanged(new PropertiesEditionEvent(ProxyServicePolicyPropertiesEditionPartImpl.this,
+                                EsbViewsRepository.ProxyServicePolicy.Properties.policyKey, PropertiesEditionEvent.COMMIT,
+                                PropertiesEditionEvent.SET, null, getPolicyKey()));
             }
 
             @Override
@@ -203,36 +212,39 @@ public class ProxyServicePolicyPropertiesEditionPartImpl extends CompositeProper
 
             }
         });
-
+        
         policyKeyText.addKeyListener(new KeyListener() {
-
+            
             @Override
             public void keyReleased(KeyEvent e) {
                 if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
-                    EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(
-                            parent.getShell(), SWT.NULL, policyKey, new ArrayList<NamedEntityDescriptor>());
+                    EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(parent.getShell(),
+                            SWT.NULL, policyKey, new ArrayList<NamedEntityDescriptor>());
                     dialog.open();
                     policyKeyText.setText(policyKey.getKeyValue());
-                    propertiesEditionComponent.firePropertiesChanged(
-                            new PropertiesEditionEvent(ProxyServicePolicyPropertiesEditionPartImpl.this,
-                                    EsbViewsRepository.ProxyServicePolicy.Properties.policyKey,
-                                    PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getPolicyKey()));
+                    propertiesEditionComponent
+                            .firePropertiesChanged(new PropertiesEditionEvent(ProxyServicePolicyPropertiesEditionPartImpl.this,
+                                    EsbViewsRepository.ProxyServicePolicy.Properties.policyKey, PropertiesEditionEvent.COMMIT,
+                                    PropertiesEditionEvent.SET, null, getPolicyKey()));
                 }
             }
-
+            
             @Override
-            public void keyPressed(KeyEvent e) {
-            }
-
+            public void keyPressed(KeyEvent e) {}
+            
         });
-
+        
         EditingUtils.setID(policyKeyText, EsbViewsRepository.ProxyServicePolicy.Properties.policyKey);
         EditingUtils.setEEFtype(policyKeyText, "eef::Text");
-        Control policyKeyHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(
-                EsbViewsRepository.ProxyServicePolicy.Properties.policyKey, EsbViewsRepository.FORM_KIND), null);
+        Control policyKeyHelp = SWTUtils
+                .createHelpButton(parent,
+                        propertiesEditionComponent.getHelpContent(
+                                EsbViewsRepository.ProxyServicePolicy.Properties.policyKey, EsbViewsRepository.FORM_KIND),
+                        null);
         policyKeyElements = new Control[] { policyKeyLabel, policyKeyText, policyKeyHelp };
         return parent;
     }
-    // End of user code
+	// End of user code
+
 
 }

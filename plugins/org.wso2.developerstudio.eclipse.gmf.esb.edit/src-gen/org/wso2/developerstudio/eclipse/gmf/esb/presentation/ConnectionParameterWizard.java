@@ -113,15 +113,15 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
                 String sourceFromLocalEntry = FileUtils.readFileToString(new File(localEntryPath), "UTF-8");
                 deserializeConnector(AXIOMUtil.stringToOM(sourceFromLocalEntry));
 
-                connectorRoot = ConnectorSchemaHolder.getInstance()
-                        .getConnectorConnectionSchema(connectorName + "-" + updatingConnectionType);
+                connectorRoot = ConnectorSchemaHolder.getInstance().getConnectorConnectionSchema(
+                        connectorName + "-" + updatingConnectionType);
                 connectionPage = new ConnectionParameterWizardPage(widgetFactory, connectorRoot, updateComponentWidgets,
                         allowedConnectionTypes, connectorName);
             } else {
                 connectorRoot = ConnectorSchemaHolder.getInstance().getConnectorConnectionSchema(
                         connectorName + "-" + allowedConnectionTypes.getAllowedConnectionTypes().get(0));
-                connectionPage = new ConnectionParameterWizardPage(widgetFactory, connectorRoot, allowedConnectionTypes,
-                        connectorName);
+                connectionPage = new ConnectionParameterWizardPage(widgetFactory, connectorRoot,
+                        allowedConnectionTypes, connectorName);
             }
         } catch (Exception e) {
             // TODO Auto-generated catch block
@@ -153,7 +153,7 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
         } catch (CoreException e) {
             e.printStackTrace();
         } catch (FactoryConfigurationError e) {
-            e.printStackTrace();
+             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -196,11 +196,11 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
                         org.w3c.dom.Element configElement = doc.createElement(elementId);
                         connectorRoot.appendChild(configElement);
                         configElement.appendChild(doc.createTextNode(value));
-                    }
+                    } 
                 } else if (elementControl instanceof Combo) {
                     String value = ((Combo) elementControl).getText();
                     if (elementId.equals("connectionType")) {
-                        Map<String, String> titleMap = (Map) ((Combo) elementControl).getData("conenctionTitles");
+                        Map<String, String> titleMap = (Map)((Combo) elementControl).getData("conenctionTitles");
                         org.w3c.dom.Element configElement = doc.createElement(elementId);
                         connectorRoot.appendChild(configElement);
                         configElement.appendChild(doc.createTextNode(titleMap.get(value)));

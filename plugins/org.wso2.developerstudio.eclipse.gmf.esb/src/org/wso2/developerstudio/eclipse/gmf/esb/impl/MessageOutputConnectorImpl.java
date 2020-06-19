@@ -22,7 +22,6 @@ public class MessageOutputConnectorImpl extends OutputConnectorImpl implements M
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected MessageOutputConnectorImpl() {
@@ -32,7 +31,6 @@ public class MessageOutputConnectorImpl extends OutputConnectorImpl implements M
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

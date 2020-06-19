@@ -26,26 +26,23 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PropertyGroupMediatorInputConnec
  *
  * @generated
  */
-public class PropertyGroupMediatorInputConnectorImpl extends InputConnectorImpl
-        implements PropertyGroupMediatorInputConnector {
-    /**
+public class PropertyGroupMediatorInputConnectorImpl extends InputConnectorImpl implements PropertyGroupMediatorInputConnector {
+	/**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * 
+	 * <!-- end-user-doc -->
      * @generated
      */
-    protected PropertyGroupMediatorInputConnectorImpl() {
+	protected PropertyGroupMediatorInputConnectorImpl() {
         super();
     }
 
-    /**
+	/**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * 
+	 * <!-- end-user-doc -->
      * @generated
      */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
         return EsbPackage.Literals.PROPERTY_GROUP_MEDIATOR_INPUT_CONNECTOR;
     }
-} // PropertyGroupMediatorInputConnectorImpl
+} //PropertyGroupMediatorInputConnectorImpl

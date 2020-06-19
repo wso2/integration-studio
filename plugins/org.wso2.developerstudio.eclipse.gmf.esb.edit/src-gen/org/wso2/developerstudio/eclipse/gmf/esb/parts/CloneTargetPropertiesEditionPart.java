@@ -15,6 +15,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSett
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 
+
 // End of user code
 
 /**
@@ -23,149 +24,147 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
  */
 public interface CloneTargetPropertiesEditionPart {
 
-    /**
-     * @return the sequenceType
-     * 
-     */
-    public Enumerator getSequenceType();
+	/**
+	 * @return the sequenceType
+	 * 
+	 */
+	public Enumerator getSequenceType();
 
-    /**
-     * Init the sequenceType
-     * 
-     * @param input the viewer input
-     * @param current the current value
-     */
-    public void initSequenceType(Object input, Enumerator current);
+	/**
+	 * Init the sequenceType
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initSequenceType(Object input, Enumerator current);
 
-    /**
-     * Defines a new sequenceType
-     * 
-     * @param newValue the new sequenceType to set
-     * 
-     */
-    public void setSequenceType(Enumerator newValue);
+	/**
+	 * Defines a new sequenceType
+	 * @param newValue the new sequenceType to set
+	 * 
+	 */
+	public void setSequenceType(Enumerator newValue);
 
-    /**
-     * @return the sequence
-     * 
-     */
-    public EObject getSequence();
 
-    /**
-     * Init the sequence
-     * 
-     * @param settings the combo setting
-     */
-    public void initSequence(EObjectFlatComboSettings settings);
+	/**
+	 * @return the sequence
+	 * 
+	 */
+	public EObject getSequence();
 
-    /**
-     * Defines a new sequence
-     * 
-     * @param newValue the new sequence to set
-     * 
-     */
-    public void setSequence(EObject newValue);
+	/**
+	 * Init the sequence
+	 * @param settings the combo setting
+	 */
+	public void initSequence(EObjectFlatComboSettings settings);
 
-    /**
-     * Defines the button mode
-     * 
-     * @param newValue the new mode to set
-     * 
-     */
-    public void setSequenceButtonMode(ButtonsModeEnum newValue);
+	/**
+	 * Defines a new sequence
+	 * @param newValue the new sequence to set
+	 * 
+	 */
+	public void setSequence(EObject newValue);
 
-    /**
-     * Adds the given filter to the sequence edition editor.
-     * 
-     * @param filter
-     *            a viewer filter
-     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
-     */
-    public void addFilterToSequence(ViewerFilter filter);
+	/**
+	 * Defines the button mode
+	 * @param newValue the new mode to set
+	 * 
+	 */
+	public void setSequenceButtonMode(ButtonsModeEnum newValue);
 
-    /**
-     * Adds the given filter to the sequence edition editor.
-     * 
-     * @param filter
-     *            a viewer filter
-     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
-     */
-    public void addBusinessFilterToSequence(ViewerFilter filter);
+	/**
+	 * Adds the given filter to the sequence edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToSequence(ViewerFilter filter);
 
-    /**
-     * @return the endpointType
-     * 
-     */
-    public Enumerator getEndpointType();
+	/**
+	 * Adds the given filter to the sequence edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToSequence(ViewerFilter filter);
 
-    /**
-     * Init the endpointType
-     * 
-     * @param input the viewer input
-     * @param current the current value
-     */
-    public void initEndpointType(Object input, Enumerator current);
 
-    /**
-     * Defines a new endpointType
-     * 
-     * @param newValue the new endpointType to set
-     * 
-     */
-    public void setEndpointType(Enumerator newValue);
+	/**
+	 * @return the endpointType
+	 * 
+	 */
+	public Enumerator getEndpointType();
 
-    /**
-     * @return the soapAction
-     * 
-     */
-    public String getSoapAction();
+	/**
+	 * Init the endpointType
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initEndpointType(Object input, Enumerator current);
 
-    /**
-     * Defines a new soapAction
-     * 
-     * @param newValue the new soapAction to set
-     * 
-     */
-    public void setSoapAction(String newValue);
+	/**
+	 * Defines a new endpointType
+	 * @param newValue the new endpointType to set
+	 * 
+	 */
+	public void setEndpointType(Enumerator newValue);
 
-    /**
-     * @return the toAddress
-     * 
-     */
-    public String getToAddress();
 
-    /**
-     * Defines a new toAddress
-     * 
-     * @param newValue the new toAddress to set
-     * 
-     */
-    public void setToAddress(String newValue);
+	/**
+	 * @return the soapAction
+	 * 
+	 */
+	public String getSoapAction();
 
-    // Start of user code for endpointRegistryKey specific getters and setters declaration
-    public RegistryKeyProperty getEndpointKey();
+	/**
+	 * Defines a new soapAction
+	 * @param newValue the new soapAction to set
+	 * 
+	 */
+	public void setSoapAction(String newValue);
 
+
+	/**
+	 * @return the toAddress
+	 * 
+	 */
+	public String getToAddress();
+
+	/**
+	 * Defines a new toAddress
+	 * @param newValue the new toAddress to set
+	 * 
+	 */
+	public void setToAddress(String newValue);
+
+
+
+
+	// Start of user code for endpointRegistryKey specific getters and setters declaration
+	public RegistryKeyProperty getEndpointKey();
+    
     public void setEndpointKey(RegistryKeyProperty registryKeyProperty);
-
-    // End of user code
-    // Start of user code for sequenceRegistryKey specific getters and setters declaration
+    
+	// End of user code
+	// Start of user code for sequenceRegistryKey specific getters and setters declaration
     public RegistryKeyProperty getSequenceKey();
-
+    
     public void setSequenceKey(RegistryKeyProperty registryKeyProperty);
-    // End of user code
+	// End of user code
 
-    /**
-     * Returns the internationalized title text.
-     * 
-     * @return the internationalized title text.
-     * 
-     */
-    public String getTitle();
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 * 
+	 */
+	public String getTitle();
 
-    // Start of user code for additional methods
-
-    // End of user code
+	// Start of user code for additional methods
+	
+	// End of user code
 
 }

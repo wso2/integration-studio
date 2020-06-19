@@ -35,7 +35,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SqlStatement;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.SqlStatement} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class SqlStatementItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
@@ -44,7 +43,6 @@ public class SqlStatementItemProvider extends ItemProviderAdapter implements IEd
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public SqlStatementItemProvider(AdapterFactory adapterFactory) {
@@ -55,7 +53,6 @@ public class SqlStatementItemProvider extends ItemProviderAdapter implements IEd
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -74,34 +71,44 @@ public class SqlStatementItemProvider extends ItemProviderAdapter implements IEd
      * This adds a property descriptor for the Query String feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addQueryStringPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_SqlStatement_queryString_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_SqlStatement_queryString_feature",
-                                "_UI_SqlStatement_type"),
-                        EsbPackage.Literals.SQL_STATEMENT__QUERY_STRING, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_SqlStatement_queryString_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_SqlStatement_queryString_feature", "_UI_SqlStatement_type"),
+                 EsbPackage.Literals.SQL_STATEMENT__QUERY_STRING,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Results Enabled feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addResultsEnabledPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_SqlStatement_resultsEnabled_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_SqlStatement_resultsEnabled_feature",
-                                "_UI_SqlStatement_type"),
-                        EsbPackage.Literals.SQL_STATEMENT__RESULTS_ENABLED, true, false, false,
-                        ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_SqlStatement_resultsEnabled_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_SqlStatement_resultsEnabled_feature", "_UI_SqlStatement_type"),
+                 EsbPackage.Literals.SQL_STATEMENT__RESULTS_ENABLED,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
@@ -110,7 +117,6 @@ public class SqlStatementItemProvider extends ItemProviderAdapter implements IEd
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -127,7 +133,6 @@ public class SqlStatementItemProvider extends ItemProviderAdapter implements IEd
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -143,7 +148,6 @@ public class SqlStatementItemProvider extends ItemProviderAdapter implements IEd
      * This returns SqlStatement.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -156,15 +160,15 @@ public class SqlStatementItemProvider extends ItemProviderAdapter implements IEd
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((SqlStatement) object).getQueryString();
-        return label == null || label.length() == 0 ? getString("_UI_SqlStatement_type")
-                : getString("_UI_SqlStatement_type") + " " + label;
+        String label = ((SqlStatement)object).getQueryString();
+        return label == null || label.length() == 0 ?
+            getString("_UI_SqlStatement_type") :
+            getString("_UI_SqlStatement_type") + " " + label;
     }
 
     /**
@@ -172,7 +176,6 @@ public class SqlStatementItemProvider extends ItemProviderAdapter implements IEd
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -181,14 +184,14 @@ public class SqlStatementItemProvider extends ItemProviderAdapter implements IEd
         updateChildren(notification);
 
         switch (notification.getFeatureID(SqlStatement.class)) {
-        case EsbPackage.SQL_STATEMENT__QUERY_STRING:
-        case EsbPackage.SQL_STATEMENT__RESULTS_ENABLED:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.SQL_STATEMENT__PARAMETERS:
-        case EsbPackage.SQL_STATEMENT__RESULTS:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.SQL_STATEMENT__QUERY_STRING:
+            case EsbPackage.SQL_STATEMENT__RESULTS_ENABLED:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.SQL_STATEMENT__PARAMETERS:
+            case EsbPackage.SQL_STATEMENT__RESULTS:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -198,7 +201,6 @@ public class SqlStatementItemProvider extends ItemProviderAdapter implements IEd
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -206,18 +208,21 @@ public class SqlStatementItemProvider extends ItemProviderAdapter implements IEd
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.SQL_STATEMENT__PARAMETERS,
-                EsbFactory.eINSTANCE.createSqlParameterDefinition()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.SQL_STATEMENT__PARAMETERS,
+                 EsbFactory.eINSTANCE.createSqlParameterDefinition()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.SQL_STATEMENT__RESULTS,
-                EsbFactory.eINSTANCE.createSqlResultMapping()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.SQL_STATEMENT__RESULTS,
+                 EsbFactory.eINSTANCE.createSqlResultMapping()));
     }
 
     /**
      * Return the resource locator for this item provider's resources.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

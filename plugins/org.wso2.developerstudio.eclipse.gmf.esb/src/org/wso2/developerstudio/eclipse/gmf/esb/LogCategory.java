@@ -17,7 +17,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Log Category</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getLogCategory()
  * @model
  * @generated
@@ -27,7 +26,6 @@ public enum LogCategory implements Enumerator {
      * The '<em><b>TRACE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #TRACE_VALUE
      * @generated
      * @ordered
@@ -38,7 +36,6 @@ public enum LogCategory implements Enumerator {
      * The '<em><b>DEBUG</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #DEBUG_VALUE
      * @generated
      * @ordered
@@ -49,7 +46,6 @@ public enum LogCategory implements Enumerator {
      * The '<em><b>INFO</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #INFO_VALUE
      * @generated
      * @ordered
@@ -60,7 +56,6 @@ public enum LogCategory implements Enumerator {
      * The '<em><b>WARN</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #WARN_VALUE
      * @generated
      * @ordered
@@ -71,7 +66,6 @@ public enum LogCategory implements Enumerator {
      * The '<em><b>ERROR</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #ERROR_VALUE
      * @generated
      * @ordered
@@ -82,7 +76,6 @@ public enum LogCategory implements Enumerator {
      * The '<em><b>FATAL</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #FATAL_VALUE
      * @generated
      * @ordered
@@ -97,7 +90,6 @@ public enum LogCategory implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #TRACE
      * @model
      * @generated
@@ -113,7 +105,6 @@ public enum LogCategory implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #DEBUG
      * @model
      * @generated
@@ -129,7 +120,6 @@ public enum LogCategory implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #INFO
      * @model
      * @generated
@@ -145,7 +135,6 @@ public enum LogCategory implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #WARN
      * @model
      * @generated
@@ -161,7 +150,6 @@ public enum LogCategory implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #ERROR
      * @model
      * @generated
@@ -177,7 +165,6 @@ public enum LogCategory implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #FATAL
      * @model
      * @generated
@@ -189,16 +176,21 @@ public enum LogCategory implements Enumerator {
      * An array of all the '<em><b>Log Category</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
-    private static final LogCategory[] VALUES_ARRAY = new LogCategory[] { TRACE, DEBUG, INFO, WARN, ERROR, FATAL, };
+    private static final LogCategory[] VALUES_ARRAY = new LogCategory[] {
+            TRACE,
+            DEBUG,
+            INFO,
+            WARN,
+            ERROR,
+            FATAL,
+        };
 
     /**
      * A public read-only list of all the '<em><b>Log Category</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public static final List<LogCategory> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -207,7 +199,6 @@ public enum LogCategory implements Enumerator {
      * Returns the '<em><b>Log Category</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -226,7 +217,6 @@ public enum LogCategory implements Enumerator {
      * Returns the '<em><b>Log Category</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -245,25 +235,18 @@ public enum LogCategory implements Enumerator {
      * Returns the '<em><b>Log Category</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static LogCategory get(int value) {
         switch (value) {
-        case TRACE_VALUE:
-            return TRACE;
-        case DEBUG_VALUE:
-            return DEBUG;
-        case INFO_VALUE:
-            return INFO;
-        case WARN_VALUE:
-            return WARN;
-        case ERROR_VALUE:
-            return ERROR;
-        case FATAL_VALUE:
-            return FATAL;
+            case TRACE_VALUE: return TRACE;
+            case DEBUG_VALUE: return DEBUG;
+            case INFO_VALUE: return INFO;
+            case WARN_VALUE: return WARN;
+            case ERROR_VALUE: return ERROR;
+            case FATAL_VALUE: return FATAL;
         }
         return null;
     }
@@ -271,7 +254,6 @@ public enum LogCategory implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final int value;
@@ -279,7 +261,6 @@ public enum LogCategory implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String name;
@@ -287,7 +268,6 @@ public enum LogCategory implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String literal;
@@ -296,7 +276,6 @@ public enum LogCategory implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private LogCategory(int value, String name, String literal) {
@@ -308,38 +287,34 @@ public enum LogCategory implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public int getValue() {
-        return value;
+      return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getName() {
-        return name;
+      return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getLiteral() {
-        return literal;
+      return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

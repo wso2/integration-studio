@@ -83,7 +83,7 @@ public class DummyAPIFactory {
         if (publishSwagger != null) {
             api.setSwaggerResourcePath(publishSwagger.getAttributeValue());
         }
-
+        
         OMAttribute traceAtt = apiElt.getAttribute(new QName("trace"));
         if (traceAtt != null && "enable".equals(traceAtt.getAttributeValue())) {
             api.getAspectConfiguration().setTracingEnabled(true);
@@ -165,19 +165,19 @@ public class DummyAPIFactory {
                         if (omElt != null) {
                             dummyHandler.addProperty(propName, omElt);
                         } else {
-                            if (withSynapse) {
-                                handleException("A Class mediator property must specify "
-                                        + "name and value attributes, or a name and a child XML fragment");
-                            }
+                        	if (withSynapse) {
+                        		handleException("A Class mediator property must specify "
+                        				+ "name and value attributes, or a name and a child XML fragment");
+                        	}
                         }
                     }
                 }
             }
 
         } catch (Exception e) {
-            if (withSynapse) {
-                handleException("Error initializing API handler: " + handlerClass, e);
-            }
+        	if (withSynapse) {
+        		handleException("Error initializing API handler: " + handlerClass, e);
+        	}
         }
     }
 

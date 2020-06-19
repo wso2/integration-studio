@@ -17,8 +17,8 @@ public class EsbModelingAssistantProviderOfJsonTransformMediatorInputConnectorEd
         extends EsbModelingAssistantProvider {
 
     /**
-     * @generated
-     */
+    * @generated
+    */
     @Override
 
     public List<IElementType> getRelTypesOnTarget(IAdaptable target) {
@@ -27,8 +27,8 @@ public class EsbModelingAssistantProviderOfJsonTransformMediatorInputConnectorEd
     }
 
     /**
-     * @generated
-     */
+    * @generated
+    */
     public List<IElementType> doGetRelTypesOnTarget(JsonTransformMediatorInputConnectorEditPart target) {
         List<IElementType> types = new ArrayList<IElementType>(1);
         types.add(EsbElementTypes.EsbLink_4001);
@@ -36,8 +36,8 @@ public class EsbModelingAssistantProviderOfJsonTransformMediatorInputConnectorEd
     }
 
     /**
-     * @generated
-     */
+    * @generated
+    */
     @Override
 
     public List<IElementType> getTypesForSource(IAdaptable target, IElementType relationshipType) {
@@ -46,8 +46,8 @@ public class EsbModelingAssistantProviderOfJsonTransformMediatorInputConnectorEd
     }
 
     /**
-     * @generated
-     */
+    * @generated
+    */
     public List<IElementType> doGetTypesForSource(JsonTransformMediatorInputConnectorEditPart target,
             IElementType relationshipType) {
         List<IElementType> types = new ArrayList<IElementType>();

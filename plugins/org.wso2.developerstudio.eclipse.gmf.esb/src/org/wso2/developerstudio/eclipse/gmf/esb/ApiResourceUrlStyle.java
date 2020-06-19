@@ -17,7 +17,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Api Resource Url Style</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getApiResourceUrlStyle()
  * @model
  * @generated
@@ -27,7 +26,6 @@ public enum ApiResourceUrlStyle implements Enumerator {
      * The '<em><b>NONE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #NONE_VALUE
      * @generated
      * @ordered
@@ -38,7 +36,6 @@ public enum ApiResourceUrlStyle implements Enumerator {
      * The '<em><b>URI TEMPLATE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #URI_TEMPLATE_VALUE
      * @generated
      * @ordered
@@ -49,7 +46,6 @@ public enum ApiResourceUrlStyle implements Enumerator {
      * The '<em><b>URL MAPPING</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #URL_MAPPING_VALUE
      * @generated
      * @ordered
@@ -64,7 +60,6 @@ public enum ApiResourceUrlStyle implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #NONE
      * @model
      * @generated
@@ -80,7 +75,6 @@ public enum ApiResourceUrlStyle implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #URI_TEMPLATE
      * @model
      * @generated
@@ -96,7 +90,6 @@ public enum ApiResourceUrlStyle implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #URL_MAPPING
      * @model
      * @generated
@@ -108,17 +101,18 @@ public enum ApiResourceUrlStyle implements Enumerator {
      * An array of all the '<em><b>Api Resource Url Style</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
-    private static final ApiResourceUrlStyle[] VALUES_ARRAY = new ApiResourceUrlStyle[] { NONE, URI_TEMPLATE,
-            URL_MAPPING, };
+    private static final ApiResourceUrlStyle[] VALUES_ARRAY = new ApiResourceUrlStyle[] {
+            NONE,
+            URI_TEMPLATE,
+            URL_MAPPING,
+        };
 
     /**
      * A public read-only list of all the '<em><b>Api Resource Url Style</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public static final List<ApiResourceUrlStyle> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -127,7 +121,6 @@ public enum ApiResourceUrlStyle implements Enumerator {
      * Returns the '<em><b>Api Resource Url Style</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -146,7 +139,6 @@ public enum ApiResourceUrlStyle implements Enumerator {
      * Returns the '<em><b>Api Resource Url Style</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -165,19 +157,15 @@ public enum ApiResourceUrlStyle implements Enumerator {
      * Returns the '<em><b>Api Resource Url Style</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static ApiResourceUrlStyle get(int value) {
         switch (value) {
-        case NONE_VALUE:
-            return NONE;
-        case URI_TEMPLATE_VALUE:
-            return URI_TEMPLATE;
-        case URL_MAPPING_VALUE:
-            return URL_MAPPING;
+            case NONE_VALUE: return NONE;
+            case URI_TEMPLATE_VALUE: return URI_TEMPLATE;
+            case URL_MAPPING_VALUE: return URL_MAPPING;
         }
         return null;
     }
@@ -185,7 +173,6 @@ public enum ApiResourceUrlStyle implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final int value;
@@ -193,7 +180,6 @@ public enum ApiResourceUrlStyle implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String name;
@@ -201,7 +187,6 @@ public enum ApiResourceUrlStyle implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String literal;
@@ -210,7 +195,6 @@ public enum ApiResourceUrlStyle implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private ApiResourceUrlStyle(int value, String name, String literal) {
@@ -222,38 +206,34 @@ public enum ApiResourceUrlStyle implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public int getValue() {
-        return value;
+      return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getName() {
-        return name;
+      return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getLiteral() {
-        return literal;
+      return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

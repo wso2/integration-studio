@@ -328,9 +328,10 @@ public class SequencesEditPart extends AbstractSequencesEditPart {
                 FigureCanvas canvas = (FigureCanvas) getViewer().getControl();
                 canvas.getViewport().repaint();
             }
-        }
+        }        
     }
 
+    
     /**
      * @generated
      */

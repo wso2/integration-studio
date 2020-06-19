@@ -31,7 +31,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.WSDLEndPoint;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.WSDLEndPoint} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class WSDLEndPointItemProvider extends AbstractEndPointItemProvider {
@@ -39,7 +38,6 @@ public class WSDLEndPointItemProvider extends AbstractEndPointItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public WSDLEndPointItemProvider(AdapterFactory adapterFactory) {
@@ -69,51 +67,66 @@ public class WSDLEndPointItemProvider extends AbstractEndPointItemProvider {
      * This adds a property descriptor for the Wsdl Uri feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addWsdlUriPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_WSDLEndPoint_wsdlUri_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_WSDLEndPoint_wsdlUri_feature",
-                                "_UI_WSDLEndPoint_type"),
-                        EsbPackage.Literals.WSDL_END_POINT__WSDL_URI, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_WSDLEndPoint_wsdlUri_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_WSDLEndPoint_wsdlUri_feature", "_UI_WSDLEndPoint_type"),
+                 EsbPackage.Literals.WSDL_END_POINT__WSDL_URI,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Service feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addServicePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_WSDLEndPoint_service_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_WSDLEndPoint_service_feature",
-                                "_UI_WSDLEndPoint_type"),
-                        EsbPackage.Literals.WSDL_END_POINT__SERVICE, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_WSDLEndPoint_service_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_WSDLEndPoint_service_feature", "_UI_WSDLEndPoint_type"),
+                 EsbPackage.Literals.WSDL_END_POINT__SERVICE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Port feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addPortPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_WSDLEndPoint_port_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_WSDLEndPoint_port_feature",
-                                "_UI_WSDLEndPoint_type"),
-                        EsbPackage.Literals.WSDL_END_POINT__PORT, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_WSDLEndPoint_port_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_WSDLEndPoint_port_feature", "_UI_WSDLEndPoint_type"),
+                 EsbPackage.Literals.WSDL_END_POINT__PORT,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
@@ -122,7 +135,6 @@ public class WSDLEndPointItemProvider extends AbstractEndPointItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -138,7 +150,6 @@ public class WSDLEndPointItemProvider extends AbstractEndPointItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -153,7 +164,6 @@ public class WSDLEndPointItemProvider extends AbstractEndPointItemProvider {
      * This returns WSDLEndPoint.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -165,14 +175,14 @@ public class WSDLEndPointItemProvider extends AbstractEndPointItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((WSDLEndPoint) object).getEndPointName();
-        return label == null || label.length() == 0 ? getString("_UI_WSDLEndPoint_type")
-                : getString("_UI_WSDLEndPoint_type") + " " + label;
+        String label = ((WSDLEndPoint)object).getEndPointName();
+        return label == null || label.length() == 0 ?
+            getString("_UI_WSDLEndPoint_type") :
+            getString("_UI_WSDLEndPoint_type") + " " + label;
     }
 
     /**
@@ -180,7 +190,6 @@ public class WSDLEndPointItemProvider extends AbstractEndPointItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -188,15 +197,15 @@ public class WSDLEndPointItemProvider extends AbstractEndPointItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(WSDLEndPoint.class)) {
-        case EsbPackage.WSDL_END_POINT__WSDL_URI:
-        case EsbPackage.WSDL_END_POINT__SERVICE:
-        case EsbPackage.WSDL_END_POINT__PORT:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.WSDL_END_POINT__INPUT_CONNECTOR:
-        case EsbPackage.WSDL_END_POINT__OUTPUT_CONNECTOR:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.WSDL_END_POINT__WSDL_URI:
+            case EsbPackage.WSDL_END_POINT__SERVICE:
+            case EsbPackage.WSDL_END_POINT__PORT:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.WSDL_END_POINT__INPUT_CONNECTOR:
+            case EsbPackage.WSDL_END_POINT__OUTPUT_CONNECTOR:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -206,25 +215,27 @@ public class WSDLEndPointItemProvider extends AbstractEndPointItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.WSDL_END_POINT__INPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createWSDLEndPointInputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.WSDL_END_POINT__INPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createWSDLEndPointInputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.WSDL_END_POINT__OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createWSDLEndPointOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.WSDL_END_POINT__OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createWSDLEndPointOutputConnector()));
     }
 
     /**
      * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -232,12 +243,14 @@ public class WSDLEndPointItemProvider extends AbstractEndPointItemProvider {
         Object childFeature = feature;
         Object childObject = child;
 
-        boolean qualify = childFeature == EsbPackage.Literals.ABSTRACT_END_POINT__INBOUND_POLICY
-                || childFeature == EsbPackage.Literals.ABSTRACT_END_POINT__OUTBOUND_POLICY;
+        boolean qualify =
+            childFeature == EsbPackage.Literals.ABSTRACT_END_POINT__INBOUND_POLICY ||
+            childFeature == EsbPackage.Literals.ABSTRACT_END_POINT__OUTBOUND_POLICY;
 
         if (qualify) {
-            return getString("_UI_CreateChild_text2",
-                    new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+            return getString
+                ("_UI_CreateChild_text2",
+                 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }

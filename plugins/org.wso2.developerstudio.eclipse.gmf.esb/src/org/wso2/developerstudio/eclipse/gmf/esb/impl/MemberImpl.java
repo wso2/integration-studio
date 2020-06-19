@@ -33,9 +33,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.Member;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MemberImpl#getHostName <em>Host Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MemberImpl#getHttpPort <em>Http Port</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MemberImpl#getHttpsPort <em>Https Port</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MemberImpl#getHostName <em>Host Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MemberImpl#getHttpPort <em>Http Port</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MemberImpl#getHttpsPort <em>Https Port</em>}</li>
  * </ul>
  *
  * @generated
@@ -45,7 +45,6 @@ public class MemberImpl extends EObjectImpl implements Member {
      * The default value of the '{@link #getHostName() <em>Host Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getHostName()
      * @generated
      * @ordered
@@ -56,7 +55,6 @@ public class MemberImpl extends EObjectImpl implements Member {
      * The cached value of the '{@link #getHostName() <em>Host Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getHostName()
      * @generated
      * @ordered
@@ -67,7 +65,6 @@ public class MemberImpl extends EObjectImpl implements Member {
      * The default value of the '{@link #getHttpPort() <em>Http Port</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getHttpPort()
      * @generated
      * @ordered
@@ -78,7 +75,6 @@ public class MemberImpl extends EObjectImpl implements Member {
      * The cached value of the '{@link #getHttpPort() <em>Http Port</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getHttpPort()
      * @generated
      * @ordered
@@ -89,7 +85,6 @@ public class MemberImpl extends EObjectImpl implements Member {
      * The default value of the '{@link #getHttpsPort() <em>Https Port</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getHttpsPort()
      * @generated
      * @ordered
@@ -100,7 +95,6 @@ public class MemberImpl extends EObjectImpl implements Member {
      * The cached value of the '{@link #getHttpsPort() <em>Https Port</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getHttpsPort()
      * @generated
      * @ordered
@@ -110,7 +104,6 @@ public class MemberImpl extends EObjectImpl implements Member {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected MemberImpl() {
@@ -120,7 +113,6 @@ public class MemberImpl extends EObjectImpl implements Member {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -131,7 +123,6 @@ public class MemberImpl extends EObjectImpl implements Member {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getHostName() {
@@ -141,7 +132,6 @@ public class MemberImpl extends EObjectImpl implements Member {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setHostName(String newHostName) {
@@ -154,7 +144,6 @@ public class MemberImpl extends EObjectImpl implements Member {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getHttpPort() {
@@ -164,7 +153,6 @@ public class MemberImpl extends EObjectImpl implements Member {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setHttpPort(String newHttpPort) {
@@ -177,7 +165,6 @@ public class MemberImpl extends EObjectImpl implements Member {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getHttpsPort() {
@@ -187,32 +174,29 @@ public class MemberImpl extends EObjectImpl implements Member {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setHttpsPort(String newHttpsPort) {
         String oldHttpsPort = httpsPort;
         httpsPort = newHttpsPort;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MEMBER__HTTPS_PORT, oldHttpsPort,
-                    httpsPort));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MEMBER__HTTPS_PORT, oldHttpsPort, httpsPort));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case EsbPackage.MEMBER__HOST_NAME:
-            return getHostName();
-        case EsbPackage.MEMBER__HTTP_PORT:
-            return getHttpPort();
-        case EsbPackage.MEMBER__HTTPS_PORT:
-            return getHttpsPort();
+            case EsbPackage.MEMBER__HOST_NAME:
+                return getHostName();
+            case EsbPackage.MEMBER__HTTP_PORT:
+                return getHttpPort();
+            case EsbPackage.MEMBER__HTTPS_PORT:
+                return getHttpsPort();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -220,21 +204,20 @@ public class MemberImpl extends EObjectImpl implements Member {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case EsbPackage.MEMBER__HOST_NAME:
-            setHostName((String) newValue);
-            return;
-        case EsbPackage.MEMBER__HTTP_PORT:
-            setHttpPort((String) newValue);
-            return;
-        case EsbPackage.MEMBER__HTTPS_PORT:
-            setHttpsPort((String) newValue);
-            return;
+            case EsbPackage.MEMBER__HOST_NAME:
+                setHostName((String)newValue);
+                return;
+            case EsbPackage.MEMBER__HTTP_PORT:
+                setHttpPort((String)newValue);
+                return;
+            case EsbPackage.MEMBER__HTTPS_PORT:
+                setHttpsPort((String)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -242,21 +225,20 @@ public class MemberImpl extends EObjectImpl implements Member {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case EsbPackage.MEMBER__HOST_NAME:
-            setHostName(HOST_NAME_EDEFAULT);
-            return;
-        case EsbPackage.MEMBER__HTTP_PORT:
-            setHttpPort(HTTP_PORT_EDEFAULT);
-            return;
-        case EsbPackage.MEMBER__HTTPS_PORT:
-            setHttpsPort(HTTPS_PORT_EDEFAULT);
-            return;
+            case EsbPackage.MEMBER__HOST_NAME:
+                setHostName(HOST_NAME_EDEFAULT);
+                return;
+            case EsbPackage.MEMBER__HTTP_PORT:
+                setHttpPort(HTTP_PORT_EDEFAULT);
+                return;
+            case EsbPackage.MEMBER__HTTPS_PORT:
+                setHttpsPort(HTTPS_PORT_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -264,18 +246,17 @@ public class MemberImpl extends EObjectImpl implements Member {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case EsbPackage.MEMBER__HOST_NAME:
-            return HOST_NAME_EDEFAULT == null ? hostName != null : !HOST_NAME_EDEFAULT.equals(hostName);
-        case EsbPackage.MEMBER__HTTP_PORT:
-            return HTTP_PORT_EDEFAULT == null ? httpPort != null : !HTTP_PORT_EDEFAULT.equals(httpPort);
-        case EsbPackage.MEMBER__HTTPS_PORT:
-            return HTTPS_PORT_EDEFAULT == null ? httpsPort != null : !HTTPS_PORT_EDEFAULT.equals(httpsPort);
+            case EsbPackage.MEMBER__HOST_NAME:
+                return HOST_NAME_EDEFAULT == null ? hostName != null : !HOST_NAME_EDEFAULT.equals(hostName);
+            case EsbPackage.MEMBER__HTTP_PORT:
+                return HTTP_PORT_EDEFAULT == null ? httpPort != null : !HTTP_PORT_EDEFAULT.equals(httpPort);
+            case EsbPackage.MEMBER__HTTPS_PORT:
+                return HTTPS_PORT_EDEFAULT == null ? httpsPort != null : !HTTPS_PORT_EDEFAULT.equals(httpsPort);
         }
         return super.eIsSet(featureID);
     }
@@ -283,13 +264,11 @@ public class MemberImpl extends EObjectImpl implements Member {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
-            return super.toString();
+        if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (hostName: ");

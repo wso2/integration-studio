@@ -41,7 +41,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.ComplexEndpoints} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class ComplexEndpointsItemProvider extends EsbElementItemProvider {
@@ -49,7 +48,6 @@ public class ComplexEndpointsItemProvider extends EsbElementItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public ComplexEndpointsItemProvider(AdapterFactory adapterFactory) {
@@ -60,7 +58,6 @@ public class ComplexEndpointsItemProvider extends EsbElementItemProvider {
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -77,17 +74,22 @@ public class ComplexEndpointsItemProvider extends EsbElementItemProvider {
      * This adds a property descriptor for the Name feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_ComplexEndpoints_name_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_ComplexEndpoints_name_feature",
-                                "_UI_ComplexEndpoints_type"),
-                        EsbPackage.Literals.COMPLEX_ENDPOINTS__NAME, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ComplexEndpoints_name_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ComplexEndpoints_name_feature", "_UI_ComplexEndpoints_type"),
+                 EsbPackage.Literals.COMPLEX_ENDPOINTS__NAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
@@ -96,7 +98,6 @@ public class ComplexEndpointsItemProvider extends EsbElementItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -112,7 +113,6 @@ public class ComplexEndpointsItemProvider extends EsbElementItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -127,7 +127,6 @@ public class ComplexEndpointsItemProvider extends EsbElementItemProvider {
      * This returns ComplexEndpoints.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -139,14 +138,14 @@ public class ComplexEndpointsItemProvider extends EsbElementItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((ComplexEndpoints) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_ComplexEndpoints_type")
-                : getString("_UI_ComplexEndpoints_type") + " " + label;
+        String label = ((ComplexEndpoints)object).getName();
+        return label == null || label.length() == 0 ?
+            getString("_UI_ComplexEndpoints_type") :
+            getString("_UI_ComplexEndpoints_type") + " " + label;
     }
 
     /**
@@ -154,7 +153,6 @@ public class ComplexEndpointsItemProvider extends EsbElementItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -162,13 +160,13 @@ public class ComplexEndpointsItemProvider extends EsbElementItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(ComplexEndpoints.class)) {
-        case EsbPackage.COMPLEX_ENDPOINTS__NAME:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.COMPLEX_ENDPOINTS__OUTPUT_CONNECTOR:
-        case EsbPackage.COMPLEX_ENDPOINTS__MEDIATOR_FLOW:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.COMPLEX_ENDPOINTS__NAME:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.COMPLEX_ENDPOINTS__OUTPUT_CONNECTOR:
+            case EsbPackage.COMPLEX_ENDPOINTS__MEDIATOR_FLOW:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -178,18 +176,21 @@ public class ComplexEndpointsItemProvider extends EsbElementItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.COMPLEX_ENDPOINTS__OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createComplexEndpointsOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.COMPLEX_ENDPOINTS__OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createComplexEndpointsOutputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.COMPLEX_ENDPOINTS__MEDIATOR_FLOW,
-                EsbFactory.eINSTANCE.createMediatorFlow()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.COMPLEX_ENDPOINTS__MEDIATOR_FLOW,
+                 EsbFactory.eINSTANCE.createMediatorFlow()));
     }
 
 }

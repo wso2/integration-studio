@@ -47,9 +47,9 @@ public class DataMapperMediatorTransformer extends AbstractEsbNodeTransformer {
             if (setInputSchemaKey(visualDataMapperMediator, carbonDataMapperMediator)) {
 
                 setOutputSchemaKey(visualDataMapperMediator, carbonDataMapperMediator);
-
+                
                 setXsltStyleSheetKey(visualDataMapperMediator, carbonDataMapperMediator);
-
+                
             }
         }
 
@@ -112,7 +112,7 @@ public class DataMapperMediatorTransformer extends AbstractEsbNodeTransformer {
         }
         return true;
     }
-
+    
     private void setXsltStyleSheetKey(DataMapperMediator visualDataMapperMediator,
             org.wso2.carbon.mediator.datamapper.DataMapperMediator carbonDataMapperMediator)
             throws TransformerException {

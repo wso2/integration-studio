@@ -19,11 +19,9 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.MergeNodeOutputConnector}
- * object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.MergeNodeOutputConnector} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class MergeNodeOutputConnectorItemProvider extends OutputConnectorItemProvider {
@@ -31,7 +29,6 @@ public class MergeNodeOutputConnectorItemProvider extends OutputConnectorItemPro
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public MergeNodeOutputConnectorItemProvider(AdapterFactory adapterFactory) {
@@ -42,7 +39,6 @@ public class MergeNodeOutputConnectorItemProvider extends OutputConnectorItemPro
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -59,7 +55,6 @@ public class MergeNodeOutputConnectorItemProvider extends OutputConnectorItemPro
      * This returns MergeNodeOutputConnector.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -72,7 +67,6 @@ public class MergeNodeOutputConnectorItemProvider extends OutputConnectorItemPro
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -86,7 +80,6 @@ public class MergeNodeOutputConnectorItemProvider extends OutputConnectorItemPro
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -101,7 +94,6 @@ public class MergeNodeOutputConnectorItemProvider extends OutputConnectorItemPro
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

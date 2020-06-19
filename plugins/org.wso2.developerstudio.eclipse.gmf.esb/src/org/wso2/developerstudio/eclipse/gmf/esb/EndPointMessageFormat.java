@@ -17,7 +17,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>End Point Message Format</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEndPointMessageFormat()
  * @model
  * @generated
@@ -27,7 +26,6 @@ public enum EndPointMessageFormat implements Enumerator {
      * The '<em><b>LEAVE AS IS</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #LEAVE_AS_IS_VALUE
      * @generated
      * @ordered
@@ -38,7 +36,6 @@ public enum EndPointMessageFormat implements Enumerator {
      * The '<em><b>SOAP 11</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #SOAP_11_VALUE
      * @generated
      * @ordered
@@ -49,7 +46,6 @@ public enum EndPointMessageFormat implements Enumerator {
      * The '<em><b>SOAP 12</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #SOAP_12_VALUE
      * @generated
      * @ordered
@@ -60,7 +56,6 @@ public enum EndPointMessageFormat implements Enumerator {
      * The '<em><b>POX</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #POX_VALUE
      * @generated
      * @ordered
@@ -71,7 +66,6 @@ public enum EndPointMessageFormat implements Enumerator {
      * The '<em><b>GET</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #GET_VALUE
      * @generated
      * @ordered
@@ -81,7 +75,6 @@ public enum EndPointMessageFormat implements Enumerator {
      * The '<em><b>REST</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #REST_VALUE
      * @generated
      * @ordered
@@ -96,7 +89,6 @@ public enum EndPointMessageFormat implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #LEAVE_AS_IS
      * @model
      * @generated
@@ -112,7 +104,6 @@ public enum EndPointMessageFormat implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #SOAP_11
      * @model name="SOAP_1_1" literal="soap11"
      * @generated
@@ -128,7 +119,6 @@ public enum EndPointMessageFormat implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #SOAP_12
      * @model name="SOAP_1_2" literal="soap12"
      * @generated
@@ -144,7 +134,6 @@ public enum EndPointMessageFormat implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #POX
      * @model literal="pox"
      * @generated
@@ -160,7 +149,6 @@ public enum EndPointMessageFormat implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #GET
      * @model literal="get"
      * @generated
@@ -176,7 +164,6 @@ public enum EndPointMessageFormat implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #REST
      * @model literal="rest"
      * @generated
@@ -188,17 +175,21 @@ public enum EndPointMessageFormat implements Enumerator {
      * An array of all the '<em><b>End Point Message Format</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
-    private static final EndPointMessageFormat[] VALUES_ARRAY = new EndPointMessageFormat[] { LEAVE_AS_IS, SOAP_11,
-            SOAP_12, POX, GET, REST, };
+    private static final EndPointMessageFormat[] VALUES_ARRAY = new EndPointMessageFormat[] {
+            LEAVE_AS_IS,
+            SOAP_11,
+            SOAP_12,
+            POX,
+            GET,
+            REST,
+        };
 
     /**
      * A public read-only list of all the '<em><b>End Point Message Format</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public static final List<EndPointMessageFormat> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -207,7 +198,6 @@ public enum EndPointMessageFormat implements Enumerator {
      * Returns the '<em><b>End Point Message Format</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -226,7 +216,6 @@ public enum EndPointMessageFormat implements Enumerator {
      * Returns the '<em><b>End Point Message Format</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -245,25 +234,18 @@ public enum EndPointMessageFormat implements Enumerator {
      * Returns the '<em><b>End Point Message Format</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static EndPointMessageFormat get(int value) {
         switch (value) {
-        case LEAVE_AS_IS_VALUE:
-            return LEAVE_AS_IS;
-        case SOAP_11_VALUE:
-            return SOAP_11;
-        case SOAP_12_VALUE:
-            return SOAP_12;
-        case POX_VALUE:
-            return POX;
-        case GET_VALUE:
-            return GET;
-        case REST_VALUE:
-            return REST;
+            case LEAVE_AS_IS_VALUE: return LEAVE_AS_IS;
+            case SOAP_11_VALUE: return SOAP_11;
+            case SOAP_12_VALUE: return SOAP_12;
+            case POX_VALUE: return POX;
+            case GET_VALUE: return GET;
+            case REST_VALUE: return REST;
         }
         return null;
     }
@@ -271,7 +253,6 @@ public enum EndPointMessageFormat implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final int value;
@@ -279,7 +260,6 @@ public enum EndPointMessageFormat implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String name;
@@ -287,7 +267,6 @@ public enum EndPointMessageFormat implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String literal;
@@ -296,7 +275,6 @@ public enum EndPointMessageFormat implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private EndPointMessageFormat(int value, String name, String literal) {
@@ -308,38 +286,34 @@ public enum EndPointMessageFormat implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public int getValue() {
-        return value;
+      return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getName() {
-        return name;
+      return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getLiteral() {
-        return literal;
+      return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

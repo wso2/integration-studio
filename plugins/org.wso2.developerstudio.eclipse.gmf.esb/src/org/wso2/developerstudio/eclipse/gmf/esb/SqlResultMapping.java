@@ -17,8 +17,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SqlResultMapping#getPropertyName <em>Property Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SqlResultMapping#getColumnId <em>Column Id</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SqlResultMapping#getPropertyName <em>Property Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SqlResultMapping#getColumnId <em>Column Id</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSqlResultMapping()
@@ -35,7 +35,6 @@ public interface SqlResultMapping extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Property Name</em>' attribute.
      * @see #setPropertyName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSqlResultMapping_PropertyName()
@@ -45,11 +44,9 @@ public interface SqlResultMapping extends EObject {
     String getPropertyName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SqlResultMapping#getPropertyName
-     * <em>Property Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SqlResultMapping#getPropertyName <em>Property Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Property Name</em>' attribute.
      * @see #getPropertyName()
      * @generated
@@ -65,7 +62,6 @@ public interface SqlResultMapping extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Column Id</em>' attribute.
      * @see #setColumnId(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSqlResultMapping_ColumnId()
@@ -75,11 +71,9 @@ public interface SqlResultMapping extends EObject {
     String getColumnId();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SqlResultMapping#getColumnId <em>Column
-     * Id</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SqlResultMapping#getColumnId <em>Column Id</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Column Id</em>' attribute.
      * @see #getColumnId()
      * @generated

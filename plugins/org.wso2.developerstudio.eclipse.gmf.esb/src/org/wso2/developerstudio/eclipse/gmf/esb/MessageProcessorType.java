@@ -26,7 +26,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Message Processor Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessorType()
  * @model
  * @generated
@@ -36,7 +35,6 @@ public enum MessageProcessorType implements Enumerator {
      * The '<em><b>SCHEDULED MSG FORWARDING</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #SCHEDULED_MSG_FORWARDING_VALUE
      * @generated
      * @ordered
@@ -47,7 +45,6 @@ public enum MessageProcessorType implements Enumerator {
      * The '<em><b>SCHEDULED FAILOVER MSG FORWARDING</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #SCHEDULED_FAILOVER_MSG_FORWARDING_VALUE
      * @generated
      * @ordered
@@ -57,7 +54,6 @@ public enum MessageProcessorType implements Enumerator {
      * The '<em><b>MSG SAMPLING</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #MSG_SAMPLING_VALUE
      * @generated
      * @ordered
@@ -68,7 +64,6 @@ public enum MessageProcessorType implements Enumerator {
      * The '<em><b>CUSTOM</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #CUSTOM_VALUE
      * @generated
      * @ordered
@@ -83,7 +78,6 @@ public enum MessageProcessorType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #SCHEDULED_MSG_FORWARDING
      * @model
      * @generated
@@ -99,7 +93,6 @@ public enum MessageProcessorType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #SCHEDULED_FAILOVER_MSG_FORWARDING
      * @model
      * @generated
@@ -115,7 +108,6 @@ public enum MessageProcessorType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #MSG_SAMPLING
      * @model
      * @generated
@@ -131,7 +123,6 @@ public enum MessageProcessorType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #CUSTOM
      * @model
      * @generated
@@ -143,17 +134,19 @@ public enum MessageProcessorType implements Enumerator {
      * An array of all the '<em><b>Message Processor Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
-    private static final MessageProcessorType[] VALUES_ARRAY = new MessageProcessorType[] { SCHEDULED_MSG_FORWARDING,
-            SCHEDULED_FAILOVER_MSG_FORWARDING, MSG_SAMPLING, CUSTOM, };
+    private static final MessageProcessorType[] VALUES_ARRAY = new MessageProcessorType[] {
+            SCHEDULED_MSG_FORWARDING,
+            SCHEDULED_FAILOVER_MSG_FORWARDING,
+            MSG_SAMPLING,
+            CUSTOM,
+        };
 
     /**
      * A public read-only list of all the '<em><b>Message Processor Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public static final List<MessageProcessorType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -162,7 +155,6 @@ public enum MessageProcessorType implements Enumerator {
      * Returns the '<em><b>Message Processor Type</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -181,7 +173,6 @@ public enum MessageProcessorType implements Enumerator {
      * Returns the '<em><b>Message Processor Type</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -200,21 +191,16 @@ public enum MessageProcessorType implements Enumerator {
      * Returns the '<em><b>Message Processor Type</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static MessageProcessorType get(int value) {
         switch (value) {
-        case SCHEDULED_MSG_FORWARDING_VALUE:
-            return SCHEDULED_MSG_FORWARDING;
-        case SCHEDULED_FAILOVER_MSG_FORWARDING_VALUE:
-            return SCHEDULED_FAILOVER_MSG_FORWARDING;
-        case MSG_SAMPLING_VALUE:
-            return MSG_SAMPLING;
-        case CUSTOM_VALUE:
-            return CUSTOM;
+            case SCHEDULED_MSG_FORWARDING_VALUE: return SCHEDULED_MSG_FORWARDING;
+            case SCHEDULED_FAILOVER_MSG_FORWARDING_VALUE: return SCHEDULED_FAILOVER_MSG_FORWARDING;
+            case MSG_SAMPLING_VALUE: return MSG_SAMPLING;
+            case CUSTOM_VALUE: return CUSTOM;
         }
         return null;
     }
@@ -222,7 +208,6 @@ public enum MessageProcessorType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final int value;
@@ -230,7 +215,6 @@ public enum MessageProcessorType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String name;
@@ -238,7 +222,6 @@ public enum MessageProcessorType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String literal;
@@ -247,7 +230,6 @@ public enum MessageProcessorType implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private MessageProcessorType(int value, String name, String literal) {
@@ -259,38 +241,34 @@ public enum MessageProcessorType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public int getValue() {
-        return value;
+      return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getName() {
-        return name;
+      return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getLiteral() {
-        return literal;
+      return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

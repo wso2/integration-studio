@@ -5,6 +5,8 @@ package org.wso2.developerstudio.eclipse.gmf.esb.parts;
 
 // Start of user code for imports
 
+
+
 // End of user code
 
 /**
@@ -13,44 +15,47 @@ package org.wso2.developerstudio.eclipse.gmf.esb.parts;
  */
 public interface MessageStoreParameterPropertiesEditionPart {
 
-    /**
-     * @return the parameterName
-     * 
-     */
-    public String getParameterName();
+	/**
+	 * @return the parameterName
+	 * 
+	 */
+	public String getParameterName();
 
-    /**
-     * Defines a new parameterName
-     * 
-     * @param newValue the new parameterName to set
-     * 
-     */
-    public void setParameterName(String newValue);
+	/**
+	 * Defines a new parameterName
+	 * @param newValue the new parameterName to set
+	 * 
+	 */
+	public void setParameterName(String newValue);
 
-    /**
-     * @return the parameterValue
-     * 
-     */
-    public String getParameterValue();
 
-    /**
-     * Defines a new parameterValue
-     * 
-     * @param newValue the new parameterValue to set
-     * 
-     */
-    public void setParameterValue(String newValue);
+	/**
+	 * @return the parameterValue
+	 * 
+	 */
+	public String getParameterValue();
 
-    /**
-     * Returns the internationalized title text.
-     * 
-     * @return the internationalized title text.
-     * 
-     */
-    public String getTitle();
+	/**
+	 * Defines a new parameterValue
+	 * @param newValue the new parameterValue to set
+	 * 
+	 */
+	public void setParameterValue(String newValue);
 
-    // Start of user code for additional methods
 
-    // End of user code
+
+
+
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 * 
+	 */
+	public String getTitle();
+
+	// Start of user code for additional methods
+	
+	// End of user code
 
 }

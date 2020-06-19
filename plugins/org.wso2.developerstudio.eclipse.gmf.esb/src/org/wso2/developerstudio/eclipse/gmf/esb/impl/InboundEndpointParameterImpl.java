@@ -33,8 +33,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointParameter;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointParameterImpl#getName <em>Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointParameterImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointParameterImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointParameterImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
@@ -44,7 +44,6 @@ public class InboundEndpointParameterImpl extends EObjectImpl implements Inbound
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getName()
      * @generated
      * @ordered
@@ -55,7 +54,6 @@ public class InboundEndpointParameterImpl extends EObjectImpl implements Inbound
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getName()
      * @generated
      * @ordered
@@ -66,7 +64,6 @@ public class InboundEndpointParameterImpl extends EObjectImpl implements Inbound
      * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getValue()
      * @generated
      * @ordered
@@ -77,7 +74,6 @@ public class InboundEndpointParameterImpl extends EObjectImpl implements Inbound
      * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getValue()
      * @generated
      * @ordered
@@ -87,7 +83,6 @@ public class InboundEndpointParameterImpl extends EObjectImpl implements Inbound
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected InboundEndpointParameterImpl() {
@@ -97,7 +92,6 @@ public class InboundEndpointParameterImpl extends EObjectImpl implements Inbound
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -108,7 +102,6 @@ public class InboundEndpointParameterImpl extends EObjectImpl implements Inbound
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getName() {
@@ -118,21 +111,18 @@ public class InboundEndpointParameterImpl extends EObjectImpl implements Inbound
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setName(String newName) {
         String oldName = name;
         name = newName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT_PARAMETER__NAME, oldName,
-                    name));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT_PARAMETER__NAME, oldName, name));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getValue() {
@@ -142,30 +132,27 @@ public class InboundEndpointParameterImpl extends EObjectImpl implements Inbound
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setValue(String newValue) {
         String oldValue = value;
         value = newValue;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT_PARAMETER__VALUE,
-                    oldValue, value));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT_PARAMETER__VALUE, oldValue, value));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case EsbPackage.INBOUND_ENDPOINT_PARAMETER__NAME:
-            return getName();
-        case EsbPackage.INBOUND_ENDPOINT_PARAMETER__VALUE:
-            return getValue();
+            case EsbPackage.INBOUND_ENDPOINT_PARAMETER__NAME:
+                return getName();
+            case EsbPackage.INBOUND_ENDPOINT_PARAMETER__VALUE:
+                return getValue();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -173,18 +160,17 @@ public class InboundEndpointParameterImpl extends EObjectImpl implements Inbound
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case EsbPackage.INBOUND_ENDPOINT_PARAMETER__NAME:
-            setName((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT_PARAMETER__VALUE:
-            setValue((String) newValue);
-            return;
+            case EsbPackage.INBOUND_ENDPOINT_PARAMETER__NAME:
+                setName((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT_PARAMETER__VALUE:
+                setValue((String)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -192,18 +178,17 @@ public class InboundEndpointParameterImpl extends EObjectImpl implements Inbound
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case EsbPackage.INBOUND_ENDPOINT_PARAMETER__NAME:
-            setName(NAME_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT_PARAMETER__VALUE:
-            setValue(VALUE_EDEFAULT);
-            return;
+            case EsbPackage.INBOUND_ENDPOINT_PARAMETER__NAME:
+                setName(NAME_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT_PARAMETER__VALUE:
+                setValue(VALUE_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -211,16 +196,15 @@ public class InboundEndpointParameterImpl extends EObjectImpl implements Inbound
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case EsbPackage.INBOUND_ENDPOINT_PARAMETER__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-        case EsbPackage.INBOUND_ENDPOINT_PARAMETER__VALUE:
-            return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+            case EsbPackage.INBOUND_ENDPOINT_PARAMETER__NAME:
+                return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            case EsbPackage.INBOUND_ENDPOINT_PARAMETER__VALUE:
+                return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
         }
         return super.eIsSet(featureID);
     }
@@ -228,13 +212,11 @@ public class InboundEndpointParameterImpl extends EObjectImpl implements Inbound
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
-            return super.toString();
+        if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (name: ");

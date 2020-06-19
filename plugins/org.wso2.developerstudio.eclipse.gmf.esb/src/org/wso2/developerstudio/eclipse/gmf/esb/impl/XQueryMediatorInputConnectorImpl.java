@@ -22,7 +22,6 @@ public class XQueryMediatorInputConnectorImpl extends InputConnectorImpl impleme
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected XQueryMediatorInputConnectorImpl() {
@@ -32,7 +31,6 @@ public class XQueryMediatorInputConnectorImpl extends InputConnectorImpl impleme
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

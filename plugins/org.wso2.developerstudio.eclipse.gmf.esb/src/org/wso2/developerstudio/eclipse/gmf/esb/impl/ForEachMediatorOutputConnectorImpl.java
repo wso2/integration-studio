@@ -31,7 +31,6 @@ public class ForEachMediatorOutputConnectorImpl extends OutputConnectorImpl impl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected ForEachMediatorOutputConnectorImpl() {
@@ -41,7 +40,6 @@ public class ForEachMediatorOutputConnectorImpl extends OutputConnectorImpl impl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

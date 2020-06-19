@@ -17,12 +17,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SqlParameterDefinition#getDataType <em>Data Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SqlParameterDefinition#getValueType <em>Value Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SqlParameterDefinition#getValueLiteral <em>Value
- * Literal</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SqlParameterDefinition#getValueExpression <em>Value
- * Expression</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SqlParameterDefinition#getDataType <em>Data Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SqlParameterDefinition#getValueType <em>Value Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SqlParameterDefinition#getValueLiteral <em>Value Literal</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SqlParameterDefinition#getValueExpression <em>Value Expression</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSqlParameterDefinition()
@@ -40,7 +38,6 @@ public interface SqlParameterDefinition extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Data Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.SqlParameterDataType
      * @see #setDataType(SqlParameterDataType)
@@ -51,11 +48,9 @@ public interface SqlParameterDefinition extends EObject {
     SqlParameterDataType getDataType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SqlParameterDefinition#getDataType
-     * <em>Data Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SqlParameterDefinition#getDataType <em>Data Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Data Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.SqlParameterDataType
      * @see #getDataType()
@@ -73,7 +68,6 @@ public interface SqlParameterDefinition extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Value Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.SqlParameterValueType
      * @see #setValueType(SqlParameterValueType)
@@ -84,11 +78,9 @@ public interface SqlParameterDefinition extends EObject {
     SqlParameterValueType getValueType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SqlParameterDefinition#getValueType
-     * <em>Value Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SqlParameterDefinition#getValueType <em>Value Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Value Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.SqlParameterValueType
      * @see #getValueType()
@@ -105,7 +97,6 @@ public interface SqlParameterDefinition extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Value Literal</em>' attribute.
      * @see #setValueLiteral(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSqlParameterDefinition_ValueLiteral()
@@ -115,11 +106,9 @@ public interface SqlParameterDefinition extends EObject {
     String getValueLiteral();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SqlParameterDefinition#getValueLiteral
-     * <em>Value Literal</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SqlParameterDefinition#getValueLiteral <em>Value Literal</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Value Literal</em>' attribute.
      * @see #getValueLiteral()
      * @generated
@@ -134,7 +123,6 @@ public interface SqlParameterDefinition extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Value Expression</em>' containment reference.
      * @see #setValueExpression(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSqlParameterDefinition_ValueExpression()
@@ -144,11 +132,9 @@ public interface SqlParameterDefinition extends EObject {
     NamespacedProperty getValueExpression();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SqlParameterDefinition#getValueExpression
-     * <em>Value Expression</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SqlParameterDefinition#getValueExpression <em>Value Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Value Expression</em>' containment reference.
      * @see #getValueExpression()
      * @generated

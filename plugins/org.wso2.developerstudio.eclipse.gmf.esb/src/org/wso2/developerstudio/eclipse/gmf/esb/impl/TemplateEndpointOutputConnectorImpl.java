@@ -32,7 +32,6 @@ public class TemplateEndpointOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected TemplateEndpointOutputConnectorImpl() {
@@ -42,7 +41,6 @@ public class TemplateEndpointOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

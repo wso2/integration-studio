@@ -17,7 +17,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>End Point Time Out Action</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEndPointTimeOutAction()
  * @model
  * @generated
@@ -27,7 +26,6 @@ public enum EndPointTimeOutAction implements Enumerator {
      * The '<em><b>NEVER</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #NEVER_VALUE
      * @generated
      * @ordered
@@ -37,7 +35,6 @@ public enum EndPointTimeOutAction implements Enumerator {
      * The '<em><b>DISCARD</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #DISCARD_VALUE
      * @generated
      * @ordered
@@ -48,7 +45,6 @@ public enum EndPointTimeOutAction implements Enumerator {
      * The '<em><b>FAULT</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #FAULT_VALUE
      * @generated
      * @ordered
@@ -63,7 +59,6 @@ public enum EndPointTimeOutAction implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #NEVER
      * @model literal="never"
      * @generated
@@ -79,7 +74,6 @@ public enum EndPointTimeOutAction implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #DISCARD
      * @model literal="discard"
      * @generated
@@ -95,7 +89,6 @@ public enum EndPointTimeOutAction implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #FAULT
      * @model literal="fault"
      * @generated
@@ -107,16 +100,18 @@ public enum EndPointTimeOutAction implements Enumerator {
      * An array of all the '<em><b>End Point Time Out Action</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
-    private static final EndPointTimeOutAction[] VALUES_ARRAY = new EndPointTimeOutAction[] { NEVER, DISCARD, FAULT, };
+    private static final EndPointTimeOutAction[] VALUES_ARRAY = new EndPointTimeOutAction[] {
+            NEVER,
+            DISCARD,
+            FAULT,
+        };
 
     /**
      * A public read-only list of all the '<em><b>End Point Time Out Action</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public static final List<EndPointTimeOutAction> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -125,7 +120,6 @@ public enum EndPointTimeOutAction implements Enumerator {
      * Returns the '<em><b>End Point Time Out Action</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -144,7 +138,6 @@ public enum EndPointTimeOutAction implements Enumerator {
      * Returns the '<em><b>End Point Time Out Action</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -163,19 +156,15 @@ public enum EndPointTimeOutAction implements Enumerator {
      * Returns the '<em><b>End Point Time Out Action</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static EndPointTimeOutAction get(int value) {
         switch (value) {
-        case NEVER_VALUE:
-            return NEVER;
-        case DISCARD_VALUE:
-            return DISCARD;
-        case FAULT_VALUE:
-            return FAULT;
+            case NEVER_VALUE: return NEVER;
+            case DISCARD_VALUE: return DISCARD;
+            case FAULT_VALUE: return FAULT;
         }
         return null;
     }
@@ -183,7 +172,6 @@ public enum EndPointTimeOutAction implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final int value;
@@ -191,7 +179,6 @@ public enum EndPointTimeOutAction implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String name;
@@ -199,7 +186,6 @@ public enum EndPointTimeOutAction implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String literal;
@@ -208,7 +194,6 @@ public enum EndPointTimeOutAction implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private EndPointTimeOutAction(int value, String name, String literal) {
@@ -220,38 +205,34 @@ public enum EndPointTimeOutAction implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public int getValue() {
-        return value;
+      return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getName() {
-        return name;
+      return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getLiteral() {
-        return literal;
+      return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

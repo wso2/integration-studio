@@ -17,18 +17,12 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#isContinueAfterRoute <em>Continue After
- * Route</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#getConditionalRouteBranches
- * <em>Conditional Route Branches</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#getInputConnector <em>Input
- * Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#getOutputConnector <em>Output
- * Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#getAdditionalOutputConnector
- * <em>Additional Output Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#getMediatorFlow <em>Mediator
- * Flow</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#isContinueAfterRoute <em>Continue After Route</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#getConditionalRouteBranches <em>Conditional Route Branches</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#getAdditionalOutputConnector <em>Additional Output Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#getMediatorFlow <em>Mediator Flow</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getConditionalRouterMediator()
@@ -44,7 +38,6 @@ public interface ConditionalRouterMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Continue After Route</em>' attribute.
      * @see #setContinueAfterRoute(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getConditionalRouterMediator_ContinueAfterRoute()
@@ -54,12 +47,9 @@ public interface ConditionalRouterMediator extends Mediator {
     boolean isContinueAfterRoute();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#isContinueAfterRoute <em>Continue
-     * After Route</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#isContinueAfterRoute <em>Continue After Route</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Continue After Route</em>' attribute.
      * @see #isContinueAfterRoute()
      * @generated
@@ -75,7 +65,6 @@ public interface ConditionalRouterMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Conditional Route Branches</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getConditionalRouterMediator_ConditionalRouteBranches()
      * @model containment="true"
@@ -91,7 +80,6 @@ public interface ConditionalRouterMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(ConditionalRouterMediatorInputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getConditionalRouterMediator_InputConnector()
@@ -101,12 +89,9 @@ public interface ConditionalRouterMediator extends Mediator {
     ConditionalRouterMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#getInputConnector <em>Input
-     * Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#getInputConnector <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
      * @see #getInputConnector()
      * @generated
@@ -121,7 +106,6 @@ public interface ConditionalRouterMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(ConditionalRouterMediatorOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getConditionalRouterMediator_OutputConnector()
@@ -131,12 +115,9 @@ public interface ConditionalRouterMediator extends Mediator {
     ConditionalRouterMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#getOutputConnector <em>Output
-     * Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
      * @see #getOutputConnector()
      * @generated
@@ -151,7 +132,6 @@ public interface ConditionalRouterMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Additional Output Connector</em>' containment reference.
      * @see #setAdditionalOutputConnector(ConditionalRouterMediatorAdditionalOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getConditionalRouterMediator_AdditionalOutputConnector()
@@ -161,12 +141,9 @@ public interface ConditionalRouterMediator extends Mediator {
     ConditionalRouterMediatorAdditionalOutputConnector getAdditionalOutputConnector();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#getAdditionalOutputConnector
-     * <em>Additional Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#getAdditionalOutputConnector <em>Additional Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Additional Output Connector</em>' containment reference.
      * @see #getAdditionalOutputConnector()
      * @generated
@@ -181,7 +158,6 @@ public interface ConditionalRouterMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Mediator Flow</em>' containment reference.
      * @see #setMediatorFlow(MediatorFlow)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getConditionalRouterMediator_MediatorFlow()
@@ -191,11 +167,9 @@ public interface ConditionalRouterMediator extends Mediator {
     MediatorFlow getMediatorFlow();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#getMediatorFlow
-     * <em>Mediator Flow</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#getMediatorFlow <em>Mediator Flow</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Mediator Flow</em>' containment reference.
      * @see #getMediatorFlow()
      * @generated

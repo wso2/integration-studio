@@ -26,65 +26,46 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getStoreName <em>Store Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getStoreType <em>Store Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getInitialContextFactory <em>Initial Context
- * Factory</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getProviderURL <em>Provider URL</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJndiQueueName <em>Jndi Queue Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getConnectionFactory <em>Connection
- * Factory</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getUserName <em>User Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getPassword <em>Password</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#isCacheConnection <em>Cache Connection</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJmsSpecVersion <em>Jms Spec Version</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#isEnableCaching <em>Enable Caching</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getProviderClass <em>Provider Class</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQServerHostName <em>Rabbit MQ Server Host
- * Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQServerHostPort <em>Rabbit MQ Server Host
- * Port</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQQueueName <em>Rabbit MQ Queue
- * Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQExchangeName <em>Rabbit MQ Exchange
- * Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRoutingKey <em>Routing Key</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQUserName <em>Rabbit MQ User
- * Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQPassword <em>Rabbit MQ
- * Password</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getVirtualHost <em>Virtual Host</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcDatabaseTable <em>Jdbc Database
- * Table</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcConnectionInformation <em>Jdbc Connection
- * Information</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcDriver <em>Jdbc Driver</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcURL <em>Jdbc URL</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcUser <em>Jdbc User</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcPassword <em>Jdbc Password</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcDatasourceName <em>Jdbc Datasource
- * Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getParameters <em>Parameters</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#isEnableProducerGuaranteedDelivery <em>Enable
- * Producer Guaranteed Delivery</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getFailoverMessageStore <em>Failover Message
- * Store</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequencepolling
- * <em>Resequencepolling</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceDatabaseTable <em>Resequence Database
- * Table</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceConnectionInformation <em>Resequence
- * Connection Information</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceDriver <em>Resequence Driver</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceURL <em>Resequence URL</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceUser <em>Resequence User</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequencePassword <em>Resequence
- * Password</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceDatasourceName <em>Resequence
- * Datasource Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceXpath <em>Resequence Xpath</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceXpathAttr <em>Resequence Xpath
- * Attr</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getStoreName <em>Store Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getStoreType <em>Store Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getInitialContextFactory <em>Initial Context Factory</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getProviderURL <em>Provider URL</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJndiQueueName <em>Jndi Queue Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getConnectionFactory <em>Connection Factory</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getUserName <em>User Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getPassword <em>Password</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#isCacheConnection <em>Cache Connection</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJmsSpecVersion <em>Jms Spec Version</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#isEnableCaching <em>Enable Caching</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getProviderClass <em>Provider Class</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQServerHostName <em>Rabbit MQ Server Host Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQServerHostPort <em>Rabbit MQ Server Host Port</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQQueueName <em>Rabbit MQ Queue Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQExchangeName <em>Rabbit MQ Exchange Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRoutingKey <em>Routing Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQUserName <em>Rabbit MQ User Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQPassword <em>Rabbit MQ Password</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getVirtualHost <em>Virtual Host</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcDatabaseTable <em>Jdbc Database Table</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcConnectionInformation <em>Jdbc Connection Information</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcDriver <em>Jdbc Driver</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcURL <em>Jdbc URL</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcUser <em>Jdbc User</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcPassword <em>Jdbc Password</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcDatasourceName <em>Jdbc Datasource Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#isEnableProducerGuaranteedDelivery <em>Enable Producer Guaranteed Delivery</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getFailoverMessageStore <em>Failover Message Store</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequencepolling <em>Resequencepolling</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceDatabaseTable <em>Resequence Database Table</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceConnectionInformation <em>Resequence Connection Information</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceDriver <em>Resequence Driver</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceURL <em>Resequence URL</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceUser <em>Resequence User</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequencePassword <em>Resequence Password</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceDatasourceName <em>Resequence Datasource Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceXpath <em>Resequence Xpath</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceXpathAttr <em>Resequence Xpath Attr</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore()
@@ -100,7 +81,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Store Name</em>' attribute.
      * @see #setStoreName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_StoreName()
@@ -110,11 +90,9 @@ public interface MessageStore extends EsbElement {
     String getStoreName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getStoreName <em>Store
-     * Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getStoreName <em>Store Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Store Name</em>' attribute.
      * @see #getStoreName()
      * @generated
@@ -130,7 +108,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Store Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageStoreType
      * @see #setStoreType(MessageStoreType)
@@ -141,11 +118,9 @@ public interface MessageStore extends EsbElement {
     MessageStoreType getStoreType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getStoreType <em>Store
-     * Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getStoreType <em>Store Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Store Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageStoreType
      * @see #getStoreType()
@@ -161,7 +136,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Initial Context Factory</em>' attribute.
      * @see #setInitialContextFactory(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_InitialContextFactory()
@@ -171,11 +145,9 @@ public interface MessageStore extends EsbElement {
     String getInitialContextFactory();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getInitialContextFactory
-     * <em>Initial Context Factory</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getInitialContextFactory <em>Initial Context Factory</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Initial Context Factory</em>' attribute.
      * @see #getInitialContextFactory()
      * @generated
@@ -190,7 +162,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Provider URL</em>' attribute.
      * @see #setProviderURL(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_ProviderURL()
@@ -200,11 +171,9 @@ public interface MessageStore extends EsbElement {
     String getProviderURL();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getProviderURL <em>Provider
-     * URL</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getProviderURL <em>Provider URL</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Provider URL</em>' attribute.
      * @see #getProviderURL()
      * @generated
@@ -219,7 +188,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Jndi Queue Name</em>' attribute.
      * @see #setJndiQueueName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_JndiQueueName()
@@ -229,11 +197,9 @@ public interface MessageStore extends EsbElement {
     String getJndiQueueName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJndiQueueName <em>Jndi
-     * Queue Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJndiQueueName <em>Jndi Queue Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Jndi Queue Name</em>' attribute.
      * @see #getJndiQueueName()
      * @generated
@@ -248,7 +214,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Connection Factory</em>' attribute.
      * @see #setConnectionFactory(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_ConnectionFactory()
@@ -258,11 +223,9 @@ public interface MessageStore extends EsbElement {
     String getConnectionFactory();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getConnectionFactory
-     * <em>Connection Factory</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getConnectionFactory <em>Connection Factory</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Connection Factory</em>' attribute.
      * @see #getConnectionFactory()
      * @generated
@@ -277,7 +240,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>User Name</em>' attribute.
      * @see #setUserName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_UserName()
@@ -287,11 +249,9 @@ public interface MessageStore extends EsbElement {
     String getUserName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getUserName <em>User
-     * Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getUserName <em>User Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>User Name</em>' attribute.
      * @see #getUserName()
      * @generated
@@ -306,7 +266,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Password</em>' attribute.
      * @see #setPassword(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_Password()
@@ -316,11 +275,9 @@ public interface MessageStore extends EsbElement {
     String getPassword();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getPassword
-     * <em>Password</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getPassword <em>Password</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Password</em>' attribute.
      * @see #getPassword()
      * @generated
@@ -335,7 +292,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Cache Connection</em>' attribute.
      * @see #setCacheConnection(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_CacheConnection()
@@ -345,11 +301,9 @@ public interface MessageStore extends EsbElement {
     boolean isCacheConnection();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#isCacheConnection <em>Cache
-     * Connection</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#isCacheConnection <em>Cache Connection</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Cache Connection</em>' attribute.
      * @see #isCacheConnection()
      * @generated
@@ -365,7 +319,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Jms Spec Version</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.JMSSpecVersion
      * @see #setJmsSpecVersion(JMSSpecVersion)
@@ -376,11 +329,9 @@ public interface MessageStore extends EsbElement {
     JMSSpecVersion getJmsSpecVersion();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJmsSpecVersion <em>Jms
-     * Spec Version</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJmsSpecVersion <em>Jms Spec Version</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Jms Spec Version</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.JMSSpecVersion
      * @see #getJmsSpecVersion()
@@ -396,7 +347,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Enable Caching</em>' attribute.
      * @see #setEnableCaching(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_EnableCaching()
@@ -406,11 +356,9 @@ public interface MessageStore extends EsbElement {
     boolean isEnableCaching();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#isEnableCaching <em>Enable
-     * Caching</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#isEnableCaching <em>Enable Caching</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Enable Caching</em>' attribute.
      * @see #isEnableCaching()
      * @generated
@@ -425,7 +373,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Provider Class</em>' attribute.
      * @see #setProviderClass(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_ProviderClass()
@@ -435,11 +382,9 @@ public interface MessageStore extends EsbElement {
     String getProviderClass();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getProviderClass <em>Provider
-     * Class</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getProviderClass <em>Provider Class</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Provider Class</em>' attribute.
      * @see #getProviderClass()
      * @generated
@@ -454,7 +399,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Rabbit MQ Server Host Name</em>' attribute.
      * @see #setRabbitMQServerHostName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_RabbitMQServerHostName()
@@ -464,11 +408,9 @@ public interface MessageStore extends EsbElement {
     String getRabbitMQServerHostName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQServerHostName
-     * <em>Rabbit MQ Server Host Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQServerHostName <em>Rabbit MQ Server Host Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Rabbit MQ Server Host Name</em>' attribute.
      * @see #getRabbitMQServerHostName()
      * @generated
@@ -483,7 +425,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Rabbit MQ Server Host Port</em>' attribute.
      * @see #setRabbitMQServerHostPort(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_RabbitMQServerHostPort()
@@ -493,11 +434,9 @@ public interface MessageStore extends EsbElement {
     String getRabbitMQServerHostPort();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQServerHostPort
-     * <em>Rabbit MQ Server Host Port</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQServerHostPort <em>Rabbit MQ Server Host Port</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Rabbit MQ Server Host Port</em>' attribute.
      * @see #getRabbitMQServerHostPort()
      * @generated
@@ -512,7 +451,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Rabbit MQ Queue Name</em>' attribute.
      * @see #setRabbitMQQueueName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_RabbitMQQueueName()
@@ -522,11 +460,9 @@ public interface MessageStore extends EsbElement {
     String getRabbitMQQueueName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQQueueName
-     * <em>Rabbit MQ Queue Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQQueueName <em>Rabbit MQ Queue Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Rabbit MQ Queue Name</em>' attribute.
      * @see #getRabbitMQQueueName()
      * @generated
@@ -541,7 +477,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Rabbit MQ Exchange Name</em>' attribute.
      * @see #setRabbitMQExchangeName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_RabbitMQExchangeName()
@@ -551,11 +486,9 @@ public interface MessageStore extends EsbElement {
     String getRabbitMQExchangeName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQExchangeName
-     * <em>Rabbit MQ Exchange Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQExchangeName <em>Rabbit MQ Exchange Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Rabbit MQ Exchange Name</em>' attribute.
      * @see #getRabbitMQExchangeName()
      * @generated
@@ -570,7 +503,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Routing Key</em>' attribute.
      * @see #setRoutingKey(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_RoutingKey()
@@ -580,11 +512,9 @@ public interface MessageStore extends EsbElement {
     String getRoutingKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRoutingKey <em>Routing
-     * Key</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRoutingKey <em>Routing Key</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Routing Key</em>' attribute.
      * @see #getRoutingKey()
      * @generated
@@ -599,7 +529,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Rabbit MQ User Name</em>' attribute.
      * @see #setRabbitMQUserName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_RabbitMQUserName()
@@ -609,11 +538,9 @@ public interface MessageStore extends EsbElement {
     String getRabbitMQUserName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQUserName
-     * <em>Rabbit MQ User Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQUserName <em>Rabbit MQ User Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Rabbit MQ User Name</em>' attribute.
      * @see #getRabbitMQUserName()
      * @generated
@@ -628,7 +555,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Rabbit MQ Password</em>' attribute.
      * @see #setRabbitMQPassword(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_RabbitMQPassword()
@@ -638,11 +564,9 @@ public interface MessageStore extends EsbElement {
     String getRabbitMQPassword();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQPassword
-     * <em>Rabbit MQ Password</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQPassword <em>Rabbit MQ Password</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Rabbit MQ Password</em>' attribute.
      * @see #getRabbitMQPassword()
      * @generated
@@ -657,7 +581,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Virtual Host</em>' attribute.
      * @see #setVirtualHost(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_VirtualHost()
@@ -667,11 +590,9 @@ public interface MessageStore extends EsbElement {
     String getVirtualHost();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getVirtualHost <em>Virtual
-     * Host</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getVirtualHost <em>Virtual Host</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Virtual Host</em>' attribute.
      * @see #getVirtualHost()
      * @generated
@@ -686,7 +607,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Jdbc Database Table</em>' attribute.
      * @see #setJdbcDatabaseTable(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_JdbcDatabaseTable()
@@ -696,11 +616,9 @@ public interface MessageStore extends EsbElement {
     String getJdbcDatabaseTable();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcDatabaseTable <em>Jdbc
-     * Database Table</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcDatabaseTable <em>Jdbc Database Table</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Jdbc Database Table</em>' attribute.
      * @see #getJdbcDatabaseTable()
      * @generated
@@ -710,15 +628,13 @@ public interface MessageStore extends EsbElement {
     /**
      * Returns the value of the '<em><b>Jdbc Connection Information</b></em>' attribute.
      * The default value is <code>"JDBC_POOL"</code>.
-     * The literals are from the enumeration
-     * {@link org.wso2.developerstudio.eclipse.gmf.esb.JDBCConnectionInformationType}.
+     * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.JDBCConnectionInformationType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Jdbc Connection Information</em>' attribute isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Jdbc Connection Information</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.JDBCConnectionInformationType
      * @see #setJdbcConnectionInformation(JDBCConnectionInformationType)
@@ -729,11 +645,9 @@ public interface MessageStore extends EsbElement {
     JDBCConnectionInformationType getJdbcConnectionInformation();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcConnectionInformation
-     * <em>Jdbc Connection Information</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcConnectionInformation <em>Jdbc Connection Information</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Jdbc Connection Information</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.JDBCConnectionInformationType
      * @see #getJdbcConnectionInformation()
@@ -749,7 +663,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Jdbc Driver</em>' attribute.
      * @see #setJdbcDriver(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_JdbcDriver()
@@ -759,11 +672,9 @@ public interface MessageStore extends EsbElement {
     String getJdbcDriver();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcDriver <em>Jdbc
-     * Driver</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcDriver <em>Jdbc Driver</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Jdbc Driver</em>' attribute.
      * @see #getJdbcDriver()
      * @generated
@@ -778,7 +689,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Jdbc URL</em>' attribute.
      * @see #setJdbcURL(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_JdbcURL()
@@ -788,11 +698,9 @@ public interface MessageStore extends EsbElement {
     String getJdbcURL();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcURL <em>Jdbc
-     * URL</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcURL <em>Jdbc URL</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Jdbc URL</em>' attribute.
      * @see #getJdbcURL()
      * @generated
@@ -807,7 +715,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Jdbc User</em>' attribute.
      * @see #setJdbcUser(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_JdbcUser()
@@ -817,11 +724,9 @@ public interface MessageStore extends EsbElement {
     String getJdbcUser();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcUser <em>Jdbc
-     * User</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcUser <em>Jdbc User</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Jdbc User</em>' attribute.
      * @see #getJdbcUser()
      * @generated
@@ -836,7 +741,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Jdbc Password</em>' attribute.
      * @see #setJdbcPassword(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_JdbcPassword()
@@ -846,11 +750,9 @@ public interface MessageStore extends EsbElement {
     String getJdbcPassword();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcPassword <em>Jdbc
-     * Password</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcPassword <em>Jdbc Password</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Jdbc Password</em>' attribute.
      * @see #getJdbcPassword()
      * @generated
@@ -865,7 +767,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Jdbc Datasource Name</em>' attribute.
      * @see #setJdbcDatasourceName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_JdbcDatasourceName()
@@ -875,11 +776,9 @@ public interface MessageStore extends EsbElement {
     String getJdbcDatasourceName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcDatasourceName
-     * <em>Jdbc Datasource Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcDatasourceName <em>Jdbc Datasource Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Jdbc Datasource Name</em>' attribute.
      * @see #getJdbcDatasourceName()
      * @generated
@@ -895,7 +794,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Parameters</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_Parameters()
      * @model containment="true"
@@ -912,7 +810,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Enable Producer Guaranteed Delivery</em>' attribute.
      * @see #setEnableProducerGuaranteedDelivery(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_EnableProducerGuaranteedDelivery()
@@ -922,12 +819,9 @@ public interface MessageStore extends EsbElement {
     boolean isEnableProducerGuaranteedDelivery();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#isEnableProducerGuaranteedDelivery <em>Enable
-     * Producer Guaranteed Delivery</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#isEnableProducerGuaranteedDelivery <em>Enable Producer Guaranteed Delivery</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Enable Producer Guaranteed Delivery</em>' attribute.
      * @see #isEnableProducerGuaranteedDelivery()
      * @generated
@@ -943,7 +837,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Failover Message Store</em>' attribute.
      * @see #setFailoverMessageStore(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_FailoverMessageStore()
@@ -953,11 +846,9 @@ public interface MessageStore extends EsbElement {
     String getFailoverMessageStore();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getFailoverMessageStore
-     * <em>Failover Message Store</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getFailoverMessageStore <em>Failover Message Store</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Failover Message Store</em>' attribute.
      * @see #getFailoverMessageStore()
      * @generated
@@ -972,7 +863,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Resequencepolling</em>' attribute.
      * @see #setResequencepolling(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_Resequencepolling()
@@ -982,11 +872,9 @@ public interface MessageStore extends EsbElement {
     String getResequencepolling();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequencepolling
-     * <em>Resequencepolling</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequencepolling <em>Resequencepolling</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Resequencepolling</em>' attribute.
      * @see #getResequencepolling()
      * @generated
@@ -1001,7 +889,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Resequence Database Table</em>' attribute.
      * @see #setResequenceDatabaseTable(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_ResequenceDatabaseTable()
@@ -1011,11 +898,9 @@ public interface MessageStore extends EsbElement {
     String getResequenceDatabaseTable();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceDatabaseTable
-     * <em>Resequence Database Table</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceDatabaseTable <em>Resequence Database Table</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Resequence Database Table</em>' attribute.
      * @see #getResequenceDatabaseTable()
      * @generated
@@ -1024,15 +909,13 @@ public interface MessageStore extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Resequence Connection Information</b></em>' attribute.
-     * The literals are from the enumeration
-     * {@link org.wso2.developerstudio.eclipse.gmf.esb.JDBCConnectionInformationType}.
+     * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.JDBCConnectionInformationType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Resequence Connection Information</em>' attribute isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Resequence Connection Information</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.JDBCConnectionInformationType
      * @see #setResequenceConnectionInformation(JDBCConnectionInformationType)
@@ -1043,12 +926,9 @@ public interface MessageStore extends EsbElement {
     JDBCConnectionInformationType getResequenceConnectionInformation();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceConnectionInformation <em>Resequence
-     * Connection Information</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceConnectionInformation <em>Resequence Connection Information</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Resequence Connection Information</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.JDBCConnectionInformationType
      * @see #getResequenceConnectionInformation()
@@ -1064,7 +944,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Resequence Driver</em>' attribute.
      * @see #setResequenceDriver(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_ResequenceDriver()
@@ -1074,11 +953,9 @@ public interface MessageStore extends EsbElement {
     String getResequenceDriver();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceDriver
-     * <em>Resequence Driver</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceDriver <em>Resequence Driver</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Resequence Driver</em>' attribute.
      * @see #getResequenceDriver()
      * @generated
@@ -1093,7 +970,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Resequence URL</em>' attribute.
      * @see #setResequenceURL(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_ResequenceURL()
@@ -1103,11 +979,9 @@ public interface MessageStore extends EsbElement {
     String getResequenceURL();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceURL
-     * <em>Resequence URL</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceURL <em>Resequence URL</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Resequence URL</em>' attribute.
      * @see #getResequenceURL()
      * @generated
@@ -1122,7 +996,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Resequence User</em>' attribute.
      * @see #setResequenceUser(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_ResequenceUser()
@@ -1132,11 +1005,9 @@ public interface MessageStore extends EsbElement {
     String getResequenceUser();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceUser
-     * <em>Resequence User</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceUser <em>Resequence User</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Resequence User</em>' attribute.
      * @see #getResequenceUser()
      * @generated
@@ -1151,7 +1022,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Resequence Password</em>' attribute.
      * @see #setResequencePassword(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_ResequencePassword()
@@ -1161,11 +1031,9 @@ public interface MessageStore extends EsbElement {
     String getResequencePassword();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequencePassword
-     * <em>Resequence Password</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequencePassword <em>Resequence Password</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Resequence Password</em>' attribute.
      * @see #getResequencePassword()
      * @generated
@@ -1180,7 +1048,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Resequence Datasource Name</em>' attribute.
      * @see #setResequenceDatasourceName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_ResequenceDatasourceName()
@@ -1190,11 +1057,9 @@ public interface MessageStore extends EsbElement {
     String getResequenceDatasourceName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceDatasourceName
-     * <em>Resequence Datasource Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceDatasourceName <em>Resequence Datasource Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Resequence Datasource Name</em>' attribute.
      * @see #getResequenceDatasourceName()
      * @generated
@@ -1210,7 +1075,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Resequence Xpath</em>' attribute.
      * @see #setResequenceXpath(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_ResequenceXpath()
@@ -1220,11 +1084,9 @@ public interface MessageStore extends EsbElement {
     String getResequenceXpath();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceXpath
-     * <em>Resequence Xpath</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceXpath <em>Resequence Xpath</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Resequence Xpath</em>' attribute.
      * @see #getResequenceXpath()
      * @generated
@@ -1239,7 +1101,6 @@ public interface MessageStore extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Resequence Xpath Attr</em>' reference.
      * @see #setResequenceXpathAttr(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_ResequenceXpathAttr()
@@ -1249,11 +1110,9 @@ public interface MessageStore extends EsbElement {
     NamespacedProperty getResequenceXpathAttr();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceXpathAttr
-     * <em>Resequence Xpath Attr</em>}' reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceXpathAttr <em>Resequence Xpath Attr</em>}' reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Resequence Xpath Attr</em>' reference.
      * @see #getResequenceXpathAttr()
      * @generated

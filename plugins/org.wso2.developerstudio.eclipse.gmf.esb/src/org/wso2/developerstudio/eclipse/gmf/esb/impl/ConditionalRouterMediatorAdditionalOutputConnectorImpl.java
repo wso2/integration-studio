@@ -23,7 +23,6 @@ public class ConditionalRouterMediatorAdditionalOutputConnectorImpl extends Outp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected ConditionalRouterMediatorAdditionalOutputConnectorImpl() {
@@ -33,7 +32,6 @@ public class ConditionalRouterMediatorAdditionalOutputConnectorImpl extends Outp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

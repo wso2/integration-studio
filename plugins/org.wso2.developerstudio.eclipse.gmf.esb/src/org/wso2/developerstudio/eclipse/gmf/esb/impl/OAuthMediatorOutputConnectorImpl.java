@@ -22,7 +22,6 @@ public class OAuthMediatorOutputConnectorImpl extends OutputConnectorImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected OAuthMediatorOutputConnectorImpl() {
@@ -32,7 +31,6 @@ public class OAuthMediatorOutputConnectorImpl extends OutputConnectorImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

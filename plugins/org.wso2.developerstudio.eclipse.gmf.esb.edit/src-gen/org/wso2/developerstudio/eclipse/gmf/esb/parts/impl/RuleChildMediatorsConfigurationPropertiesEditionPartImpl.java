@@ -33,80 +33,87 @@ import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
  * 
  * 
  */
-public class RuleChildMediatorsConfigurationPropertiesEditionPartImpl extends CompositePropertiesEditionPart
-        implements ISWTPropertiesEditionPart, RuleChildMediatorsConfigurationPropertiesEditionPart {
+public class RuleChildMediatorsConfigurationPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, RuleChildMediatorsConfigurationPropertiesEditionPart {
 
-    /**
-     * Default constructor
-     * 
-     * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-     * 
-     */
-    public RuleChildMediatorsConfigurationPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
-        super(editionComponent);
-    }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
-     *      createFigure(org.eclipse.swt.widgets.Composite)
-     * 
-     */
-    public Composite createFigure(final Composite parent) {
-        view = new Composite(parent, SWT.NONE);
-        GridLayout layout = new GridLayout();
-        layout.numColumns = 3;
-        view.setLayout(layout);
-        createControls(view);
-        return view;
-    }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
-     *      createControls(org.eclipse.swt.widgets.Composite)
-     * 
-     */
-    public void createControls(Composite view) {
-        CompositionSequence ruleChildMediatorsConfigurationStep = new BindingCompositionSequence(
-                propertiesEditionComponent);
 
-        composer = new PartComposer(ruleChildMediatorsConfigurationStep) {
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
+	 */
+	public RuleChildMediatorsConfigurationPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
+		super(editionComponent);
+	}
 
-            @Override
-            public Composite addToPart(Composite parent, Object key) {
-                return parent;
-            }
-        };
-        composer.compose(view);
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 * 
+	 */
+	public Composite createFigure(final Composite parent) {
+		view = new Composite(parent, SWT.NONE);
+		GridLayout layout = new GridLayout();
+		layout.numColumns = 3;
+		view.setLayout(layout);
+		createControls(view);
+		return view;
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
-     */
-    public void firePropertiesChanged(IPropertiesEditionEvent event) {
-        // Start of user code for tab synchronization
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 * 
+	 */
+	public void createControls(Composite view) { 
+		CompositionSequence ruleChildMediatorsConfigurationStep = new BindingCompositionSequence(propertiesEditionComponent);
+		
+		composer = new PartComposer(ruleChildMediatorsConfigurationStep) {
 
-        // End of user code
-    }
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				return parent;
+			}
+		};
+		composer.compose(view);
+	}
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-     * 
-     */
-    public String getTitle() {
-        return EsbMessages.RuleChildMediatorsConfiguration_Part_Title;
-    }
 
-    // Start of user code additional methods
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+		// Start of user code for tab synchronization
+		
+		// End of user code
+	}
 
-    // End of user code
+
+
+
+
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
+	 */
+	public String getTitle() {
+		return EsbMessages.RuleChildMediatorsConfiguration_Part_Title;
+	}
+
+	// Start of user code additional methods
+	
+	// End of user code
+
 
 }

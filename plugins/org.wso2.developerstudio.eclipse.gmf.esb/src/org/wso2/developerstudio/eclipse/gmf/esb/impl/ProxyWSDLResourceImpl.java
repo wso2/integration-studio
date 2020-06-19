@@ -60,7 +60,6 @@ public class ProxyWSDLResourceImpl extends AbstractLocationKeyResourceImpl imple
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

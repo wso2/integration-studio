@@ -185,7 +185,8 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
         if (endpointCommons.getEndpointRetryCount() != null
                 && StringUtils.isNotEmpty(endpointCommons.getEndpointRetryCount().getText())) {
             try {
-                synapseEPDef.setRetriesOnTimeoutBeforeSuspend(endpointCommons.getEndpointRetryCount().getText().trim());
+                synapseEPDef.setRetriesOnTimeoutBeforeSuspend(
+                        endpointCommons.getEndpointRetryCount().getText().trim());
             } catch (NumberFormatException ex) {
                 throw new NumberFormatException("Input for Entry Count is invalid,the value should be a float");
             }
@@ -287,7 +288,7 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
         } else if (visualEndPoint.getOptimize().getValue() == 2) {
             synapseEPDef.setUseSwa(true);
         }
-
+        
         String retryEnabledErrorCodes = visualEndPoint.getFailoverRetryErrorCodes();
         if (retryEnabledErrorCodes != null && !"".equals(retryEnabledErrorCodes)) {
             String[] retryEnabledErrorCodesList = retryEnabledErrorCodes.split("\\,");
@@ -296,7 +297,7 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
                 synapseEPDef.addRetryEnabledErrorCode(Integer.parseInt(code));
             }
         }
-
+        
         String retryDisabledErrorCodes = visualEndPoint.getFailoverNonRetryErrorCodes();
         if (retryDisabledErrorCodes != null && !"".equals(retryDisabledErrorCodes)) {
             String[] retryDisabledErrorCodesList = retryDisabledErrorCodes.split("\\,");

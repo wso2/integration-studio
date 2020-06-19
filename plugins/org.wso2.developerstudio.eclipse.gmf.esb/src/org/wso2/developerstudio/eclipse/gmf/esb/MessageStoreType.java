@@ -26,7 +26,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Message Store Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStoreType()
  * @model
  * @generated
@@ -36,7 +35,6 @@ public enum MessageStoreType implements Enumerator {
      * The '<em><b>IN MEMORY</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #IN_MEMORY_VALUE
      * @generated
      * @ordered
@@ -47,7 +45,6 @@ public enum MessageStoreType implements Enumerator {
      * The '<em><b>JMS</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #JMS_VALUE
      * @generated
      * @ordered
@@ -58,7 +55,6 @@ public enum MessageStoreType implements Enumerator {
      * The '<em><b>CUSTOM</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #CUSTOM_VALUE
      * @generated
      * @ordered
@@ -68,7 +64,6 @@ public enum MessageStoreType implements Enumerator {
      * The '<em><b>RABBITMQ</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #RABBITMQ_VALUE
      * @generated
      * @ordered
@@ -78,7 +73,6 @@ public enum MessageStoreType implements Enumerator {
      * The '<em><b>JDBC</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #JDBC_VALUE
      * @generated
      * @ordered
@@ -88,7 +82,6 @@ public enum MessageStoreType implements Enumerator {
      * The '<em><b>RESEQUENCE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #RESEQUENCE_VALUE
      * @generated
      * @ordered
@@ -103,7 +96,6 @@ public enum MessageStoreType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #IN_MEMORY
      * @model
      * @generated
@@ -119,7 +111,6 @@ public enum MessageStoreType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #JMS
      * @model
      * @generated
@@ -135,7 +126,6 @@ public enum MessageStoreType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #CUSTOM
      * @model
      * @generated
@@ -151,7 +141,6 @@ public enum MessageStoreType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #RABBITMQ
      * @model
      * @generated
@@ -167,7 +156,6 @@ public enum MessageStoreType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #JDBC
      * @model
      * @generated
@@ -183,7 +171,6 @@ public enum MessageStoreType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #RESEQUENCE
      * @model
      * @generated
@@ -195,17 +182,21 @@ public enum MessageStoreType implements Enumerator {
      * An array of all the '<em><b>Message Store Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
-    private static final MessageStoreType[] VALUES_ARRAY = new MessageStoreType[] { IN_MEMORY, JMS, CUSTOM, RABBITMQ,
-            JDBC, RESEQUENCE, };
+    private static final MessageStoreType[] VALUES_ARRAY = new MessageStoreType[] {
+            IN_MEMORY,
+            JMS,
+            CUSTOM,
+            RABBITMQ,
+            JDBC,
+            RESEQUENCE,
+        };
 
     /**
      * A public read-only list of all the '<em><b>Message Store Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public static final List<MessageStoreType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -214,7 +205,6 @@ public enum MessageStoreType implements Enumerator {
      * Returns the '<em><b>Message Store Type</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -233,7 +223,6 @@ public enum MessageStoreType implements Enumerator {
      * Returns the '<em><b>Message Store Type</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -252,25 +241,18 @@ public enum MessageStoreType implements Enumerator {
      * Returns the '<em><b>Message Store Type</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static MessageStoreType get(int value) {
         switch (value) {
-        case IN_MEMORY_VALUE:
-            return IN_MEMORY;
-        case JMS_VALUE:
-            return JMS;
-        case CUSTOM_VALUE:
-            return CUSTOM;
-        case RABBITMQ_VALUE:
-            return RABBITMQ;
-        case JDBC_VALUE:
-            return JDBC;
-        case RESEQUENCE_VALUE:
-            return RESEQUENCE;
+            case IN_MEMORY_VALUE: return IN_MEMORY;
+            case JMS_VALUE: return JMS;
+            case CUSTOM_VALUE: return CUSTOM;
+            case RABBITMQ_VALUE: return RABBITMQ;
+            case JDBC_VALUE: return JDBC;
+            case RESEQUENCE_VALUE: return RESEQUENCE;
         }
         return null;
     }
@@ -278,7 +260,6 @@ public enum MessageStoreType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final int value;
@@ -286,7 +267,6 @@ public enum MessageStoreType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String name;
@@ -294,7 +274,6 @@ public enum MessageStoreType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String literal;
@@ -303,7 +282,6 @@ public enum MessageStoreType implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private MessageStoreType(int value, String name, String literal) {
@@ -315,38 +293,34 @@ public enum MessageStoreType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public int getValue() {
-        return value;
+      return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getName() {
-        return name;
+      return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getLiteral() {
-        return literal;
+      return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

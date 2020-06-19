@@ -17,12 +17,12 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.LogMediator#getLogCategory <em>Log Category</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.LogMediator#getLogLevel <em>Log Level</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.LogMediator#getLogSeparator <em>Log Separator</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.LogMediator#getInputConnector <em>Input Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.LogMediator#getOutputConnector <em>Output Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.LogMediator#getProperties <em>Properties</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.LogMediator#getLogCategory <em>Log Category</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.LogMediator#getLogLevel <em>Log Level</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.LogMediator#getLogSeparator <em>Log Separator</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.LogMediator#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.LogMediator#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.LogMediator#getProperties <em>Properties</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getLogMediator()
@@ -40,7 +40,6 @@ public interface LogMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Log Category</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.LogCategory
      * @see #setLogCategory(LogCategory)
@@ -51,11 +50,9 @@ public interface LogMediator extends Mediator {
     LogCategory getLogCategory();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.LogMediator#getLogCategory <em>Log
-     * Category</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.LogMediator#getLogCategory <em>Log Category</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Log Category</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.LogCategory
      * @see #getLogCategory()
@@ -72,7 +69,6 @@ public interface LogMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Log Level</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.LogLevel
      * @see #setLogLevel(LogLevel)
@@ -83,11 +79,9 @@ public interface LogMediator extends Mediator {
     LogLevel getLogLevel();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.LogMediator#getLogLevel <em>Log
-     * Level</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.LogMediator#getLogLevel <em>Log Level</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Log Level</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.LogLevel
      * @see #getLogLevel()
@@ -103,7 +97,6 @@ public interface LogMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Log Separator</em>' attribute.
      * @see #setLogSeparator(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getLogMediator_LogSeparator()
@@ -113,11 +106,9 @@ public interface LogMediator extends Mediator {
     String getLogSeparator();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.LogMediator#getLogSeparator <em>Log
-     * Separator</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.LogMediator#getLogSeparator <em>Log Separator</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Log Separator</em>' attribute.
      * @see #getLogSeparator()
      * @generated
@@ -132,7 +123,6 @@ public interface LogMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(LogMediatorInputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getLogMediator_InputConnector()
@@ -142,11 +132,9 @@ public interface LogMediator extends Mediator {
     LogMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.LogMediator#getInputConnector <em>Input
-     * Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.LogMediator#getInputConnector <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
      * @see #getInputConnector()
      * @generated
@@ -161,7 +149,6 @@ public interface LogMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(LogMediatorOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getLogMediator_OutputConnector()
@@ -171,11 +158,9 @@ public interface LogMediator extends Mediator {
     LogMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.LogMediator#getOutputConnector <em>Output
-     * Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.LogMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
      * @see #getOutputConnector()
      * @generated
@@ -191,7 +176,6 @@ public interface LogMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Properties</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getLogMediator_Properties()
      * @model containment="true"

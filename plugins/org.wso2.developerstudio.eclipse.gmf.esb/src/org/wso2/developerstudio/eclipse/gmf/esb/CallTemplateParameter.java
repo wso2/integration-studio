@@ -15,14 +15,10 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter#getParameterName <em>Parameter
- * Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter#getTemplateParameterType <em>Template
- * Parameter Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter#getParameterValue <em>Parameter
- * Value</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter#getParameterExpression <em>Parameter
- * Expression</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter#getParameterName <em>Parameter Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter#getTemplateParameterType <em>Template Parameter Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter#getParameterValue <em>Parameter Value</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter#getParameterExpression <em>Parameter Expression</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCallTemplateParameter()
@@ -38,7 +34,6 @@ public interface CallTemplateParameter extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Parameter Name</em>' attribute.
      * @see #setParameterName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCallTemplateParameter_ParameterName()
@@ -48,11 +43,9 @@ public interface CallTemplateParameter extends EsbNode {
     String getParameterName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter#getParameterName
-     * <em>Parameter Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter#getParameterName <em>Parameter Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Parameter Name</em>' attribute.
      * @see #getParameterName()
      * @generated
@@ -68,7 +61,6 @@ public interface CallTemplateParameter extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Template Parameter Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.RuleOptionType
      * @see #setTemplateParameterType(RuleOptionType)
@@ -79,12 +71,9 @@ public interface CallTemplateParameter extends EsbNode {
     RuleOptionType getTemplateParameterType();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter#getTemplateParameterType <em>Template
-     * Parameter Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter#getTemplateParameterType <em>Template Parameter Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Template Parameter Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.RuleOptionType
      * @see #getTemplateParameterType()
@@ -100,7 +89,6 @@ public interface CallTemplateParameter extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Parameter Value</em>' attribute.
      * @see #setParameterValue(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCallTemplateParameter_ParameterValue()
@@ -110,11 +98,9 @@ public interface CallTemplateParameter extends EsbNode {
     String getParameterValue();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter#getParameterValue
-     * <em>Parameter Value</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter#getParameterValue <em>Parameter Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Parameter Value</em>' attribute.
      * @see #getParameterValue()
      * @generated
@@ -129,7 +115,6 @@ public interface CallTemplateParameter extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Parameter Expression</em>' containment reference.
      * @see #setParameterExpression(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCallTemplateParameter_ParameterExpression()
@@ -139,12 +124,9 @@ public interface CallTemplateParameter extends EsbNode {
     NamespacedProperty getParameterExpression();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter#getParameterExpression <em>Parameter
-     * Expression</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter#getParameterExpression <em>Parameter Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Parameter Expression</em>' containment reference.
      * @see #getParameterExpression()
      * @generated

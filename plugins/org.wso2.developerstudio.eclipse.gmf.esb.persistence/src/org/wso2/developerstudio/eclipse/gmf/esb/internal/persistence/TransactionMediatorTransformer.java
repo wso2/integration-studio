@@ -34,8 +34,7 @@ public class TransactionMediatorTransformer extends AbstractEsbNodeTransformer {
 
     }
 
-    public static org.apache.synapse.mediators.transaction.TransactionMediator createTransactionMediator(
-            EsbNode subject) {
+    public static org.apache.synapse.mediators.transaction.TransactionMediator createTransactionMediator(EsbNode subject) {
         /*
          * Check subject.
          */

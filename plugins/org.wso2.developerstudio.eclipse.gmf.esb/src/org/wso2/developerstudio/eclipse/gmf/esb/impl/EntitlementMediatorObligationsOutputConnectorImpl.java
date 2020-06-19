@@ -32,7 +32,6 @@ public class EntitlementMediatorObligationsOutputConnectorImpl extends OutputCon
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected EntitlementMediatorObligationsOutputConnectorImpl() {
@@ -42,7 +41,6 @@ public class EntitlementMediatorObligationsOutputConnectorImpl extends OutputCon
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

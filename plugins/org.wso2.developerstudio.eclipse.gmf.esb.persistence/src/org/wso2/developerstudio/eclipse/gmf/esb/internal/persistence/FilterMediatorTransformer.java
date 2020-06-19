@@ -59,12 +59,11 @@ public class FilterMediatorTransformer extends AbstractEsbNodeTransformer {
                 // TODO: validate xpaths before adding
                 if (visualFilter.getXpath() != null && visualFilter.getXpath().getPropertyValue() != null) {
                     SynapsePath xPath;
-                    if (StringUtils.isEmpty(visualFilter.getXpath().getPropertyValue())) {
-                        // If the validation filter is empty then add a factory default value for serialize using
-                        // synapse serialize
-                        xPath = CustomSynapsePathFactory
-                                .getSynapsePath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
-                    } else {
+                    if(StringUtils.isEmpty(visualFilter.getXpath().getPropertyValue())) {
+                        // If the validation filter is empty then add a factory default value for serialize using synapse serialize
+                        xPath = CustomSynapsePathFactory.getSynapsePath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+                    }
+                    else {
                         xPath = CustomSynapsePathFactory.getSynapsePath(visualFilter.getXpath().getPropertyValue());
                     }
                     if (visualFilter.getXpath().getNamespaces() != null && !(xPath instanceof SynapseJsonPath)) {
@@ -84,12 +83,11 @@ public class FilterMediatorTransformer extends AbstractEsbNodeTransformer {
                 if (visualFilter.getSource() != null && visualFilter.getSource().getPropertyValue() != null) {
 
                     SynapsePath source;
-                    if (StringUtils.isEmpty(visualFilter.getSource().getPropertyValue())) {
-                        // If the validation filter is empty then add a factory default value for serialize using
-                        // synapse serialize
-                        source = CustomSynapsePathFactory
-                                .getSynapsePath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
-                    } else {
+                    if(StringUtils.isEmpty(visualFilter.getSource().getPropertyValue())) {
+                        // If the validation filter is empty then add a factory default value for serialize using synapse serialize
+                        source = CustomSynapsePathFactory.getSynapsePath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+                    }
+                    else {
                         source = CustomSynapsePathFactory.getSynapsePath(visualFilter.getSource().getPropertyValue());
                     }
 
@@ -229,10 +227,9 @@ public class FilterMediatorTransformer extends AbstractEsbNodeTransformer {
 
         doTransformWithinSequence(info, ((FilterMediator) subject).getOutputConnector().getOutgoingLink(), sequence);
     }
-
+    
     /**
      * This method will return synapse object of the filter mediator using the emf data model
-     * 
      * @param info information related to the mediator
      * @param subject data model of the mediator
      * @return

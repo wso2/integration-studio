@@ -43,62 +43,62 @@ import org.wso2.developerstudio.eclipse.templates.dashboard.handlers.JettyServer
  */
 public class SwaggerEditorEarlyStartup implements IStartup {
 
-    private static final String WEB_APP_LOCATION = "swagger-editor";
-    private static final String SWAGGER_CONTEXT_PATH = "/swagger-editor";
-    private static final String SERVLET_PATH = "/service";
-    private static final String ROOT_PATH = "/";
-    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+	private static final String WEB_APP_LOCATION = "swagger-editor";
+	private static final String SWAGGER_CONTEXT_PATH = "/swagger-editor";
+	private static final String SERVLET_PATH = "/service";
+	private static final String ROOT_PATH = "/";
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-    @Override
-    public void earlyStartup() {
-        JettyServerHandler jettyServerHandler = JettyServerHandler.getInstance();
+	@Override
+	public void earlyStartup() {
+		JettyServerHandler jettyServerHandler = JettyServerHandler.getInstance();
 
-        // Registering servlet context handler of the Swagger editor
-        ServletContextHandler swaggerEditorContext = new ServletContextHandler();
+		// Registering servlet context handler of the Swagger editor
+		ServletContextHandler swaggerEditorContext = new ServletContextHandler();
 
-        swaggerEditorContext.setContextPath(SWAGGER_CONTEXT_PATH);
-        String swaggerEditorWebAppPath = WEB_APP_LOCATION;
+		swaggerEditorContext.setContextPath(SWAGGER_CONTEXT_PATH);
+		String swaggerEditorWebAppPath = WEB_APP_LOCATION;
 
-        try {
-            // Get web app path from the bundle
-            swaggerEditorWebAppPath = getSwaggerEditorWebAppPath();
-        } catch (URISyntaxException uriException) {
-            log.error("Error resolving web app path", uriException);
-        } catch (IOException ioException) {
-            log.error("Error resolving web app path", ioException);
-        }
+		try {
+			// Get web app path from the bundle
+			swaggerEditorWebAppPath = getSwaggerEditorWebAppPath();
+		} catch (URISyntaxException uriException) {
+			log.error("Error resolving web app path", uriException);
+		} catch (IOException ioException) {
+			log.error("Error resolving web app path", ioException);
+		}
 
-        // Adding Default servlet and Registry reader servlet
-        swaggerEditorContext.addServlet(SwaggerEditorServlet.class, SERVLET_PATH);
-        swaggerEditorContext.addServlet(DefaultServlet.class, ROOT_PATH);
-        swaggerEditorContext.setResourceBase(swaggerEditorWebAppPath);
+		// Adding Default servlet and Registry reader servlet
+		swaggerEditorContext.addServlet(SwaggerEditorServlet.class, SERVLET_PATH);
+		swaggerEditorContext.addServlet(DefaultServlet.class, ROOT_PATH);
+		swaggerEditorContext.setResourceBase(swaggerEditorWebAppPath);
 
-        // Registering the handler in the Jetty server
-        jettyServerHandler.getHandlerCollection().addHandler(swaggerEditorContext);
+		// Registering the handler in the Jetty server
+		jettyServerHandler.getHandlerCollection().addHandler(swaggerEditorContext);
 
-        try {
-            swaggerEditorContext.start();
-        } catch (Exception e) {
-            log.error("Error occured while starting swagger editor conntex in the jetty server", e);
-        }
-    }
+		try {
+			swaggerEditorContext.start();
+		} catch (Exception e) {
+			log.error("Error occured while starting swagger editor conntex in the jetty server", e);
+		}
+	}
 
-    /**
-     * Returns the web app path of the Swagger editor
-     * 
-     * @return Web app path of the Swagger editor
-     * 
-     * @throws URISyntaxException
-     * @throws IOException
-     */
-    public String getSwaggerEditorWebAppPath() throws URISyntaxException, IOException {
-        Bundle bundle = Platform.getBundle(Activator.PLUGIN_ID);
-        URL webAppURL = bundle.getEntry(WEB_APP_LOCATION);
-        URL resolvedFolderURL = FileLocator.toFileURL(webAppURL);
-        URI resolvedFolderURI = new URI(resolvedFolderURL.getProtocol(), resolvedFolderURL.getPath(), null);
-        File resolvedWebAppFolder = new File(resolvedFolderURI);
+	/**
+	 * Returns the web app path of the Swagger editor
+	 * 
+	 * @return Web app path of the Swagger editor
+	 * 
+	 * @throws URISyntaxException
+	 * @throws IOException
+	 */
+	public String getSwaggerEditorWebAppPath() throws URISyntaxException, IOException {
+		Bundle bundle = Platform.getBundle(Activator.PLUGIN_ID);
+		URL webAppURL = bundle.getEntry(WEB_APP_LOCATION);
+		URL resolvedFolderURL = FileLocator.toFileURL(webAppURL);
+		URI resolvedFolderURI = new URI(resolvedFolderURL.getProtocol(), resolvedFolderURL.getPath(), null);
+		File resolvedWebAppFolder = new File(resolvedFolderURI);
 
-        return resolvedWebAppFolder.getAbsolutePath();
-    }
+		return resolvedWebAppFolder.getAbsolutePath();
+	}
 
 }

@@ -142,7 +142,6 @@ public class SequenceMediatorTransformer extends AbstractEsbNodeTransformer {
             throw new TransformerException(e);
         }
     }
-
     /**
      * This method will create a synapse sequence mediator using the mediator data model
      * 

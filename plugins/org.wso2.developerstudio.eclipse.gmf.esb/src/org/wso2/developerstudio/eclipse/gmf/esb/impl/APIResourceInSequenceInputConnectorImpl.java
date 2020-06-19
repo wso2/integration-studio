@@ -32,7 +32,6 @@ public class APIResourceInSequenceInputConnectorImpl extends InputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected APIResourceInSequenceInputConnectorImpl() {
@@ -42,7 +41,6 @@ public class APIResourceInSequenceInputConnectorImpl extends InputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

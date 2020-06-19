@@ -23,10 +23,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractBooleanFeatureImpl#getFeatureName <em>Feature
- * Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractBooleanFeatureImpl#isFeatureEnabled <em>Feature
- * Enabled</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractBooleanFeatureImpl#getFeatureName <em>Feature Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractBooleanFeatureImpl#isFeatureEnabled <em>Feature Enabled</em>}</li>
  * </ul>
  *
  * @generated
@@ -36,7 +34,6 @@ public abstract class AbstractBooleanFeatureImpl extends EsbNodeImpl implements 
      * The default value of the '{@link #getFeatureName() <em>Feature Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getFeatureName()
      * @generated
      * @ordered
@@ -47,7 +44,6 @@ public abstract class AbstractBooleanFeatureImpl extends EsbNodeImpl implements 
      * The cached value of the '{@link #getFeatureName() <em>Feature Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getFeatureName()
      * @generated
      * @ordered
@@ -58,7 +54,6 @@ public abstract class AbstractBooleanFeatureImpl extends EsbNodeImpl implements 
      * The default value of the '{@link #isFeatureEnabled() <em>Feature Enabled</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #isFeatureEnabled()
      * @generated
      * @ordered
@@ -69,7 +64,6 @@ public abstract class AbstractBooleanFeatureImpl extends EsbNodeImpl implements 
      * The cached value of the '{@link #isFeatureEnabled() <em>Feature Enabled</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #isFeatureEnabled()
      * @generated
      * @ordered
@@ -79,7 +73,6 @@ public abstract class AbstractBooleanFeatureImpl extends EsbNodeImpl implements 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected AbstractBooleanFeatureImpl() {
@@ -89,7 +82,6 @@ public abstract class AbstractBooleanFeatureImpl extends EsbNodeImpl implements 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -101,7 +93,6 @@ public abstract class AbstractBooleanFeatureImpl extends EsbNodeImpl implements 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getFeatureName() {
@@ -111,21 +102,18 @@ public abstract class AbstractBooleanFeatureImpl extends EsbNodeImpl implements 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setFeatureName(String newFeatureName) {
         String oldFeatureName = featureName;
         featureName = newFeatureName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_BOOLEAN_FEATURE__FEATURE_NAME,
-                    oldFeatureName, featureName));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_BOOLEAN_FEATURE__FEATURE_NAME, oldFeatureName, featureName));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public boolean isFeatureEnabled() {
@@ -135,31 +123,28 @@ public abstract class AbstractBooleanFeatureImpl extends EsbNodeImpl implements 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setFeatureEnabled(boolean newFeatureEnabled) {
         boolean oldFeatureEnabled = featureEnabled;
         featureEnabled = newFeatureEnabled;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_BOOLEAN_FEATURE__FEATURE_ENABLED,
-                    oldFeatureEnabled, featureEnabled));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_BOOLEAN_FEATURE__FEATURE_ENABLED, oldFeatureEnabled, featureEnabled));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case EsbPackage.ABSTRACT_BOOLEAN_FEATURE__FEATURE_NAME:
-            return getFeatureName();
-        case EsbPackage.ABSTRACT_BOOLEAN_FEATURE__FEATURE_ENABLED:
-            return isFeatureEnabled();
+            case EsbPackage.ABSTRACT_BOOLEAN_FEATURE__FEATURE_NAME:
+                return getFeatureName();
+            case EsbPackage.ABSTRACT_BOOLEAN_FEATURE__FEATURE_ENABLED:
+                return isFeatureEnabled();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -167,19 +152,18 @@ public abstract class AbstractBooleanFeatureImpl extends EsbNodeImpl implements 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case EsbPackage.ABSTRACT_BOOLEAN_FEATURE__FEATURE_NAME:
-            setFeatureName((String) newValue);
-            return;
-        case EsbPackage.ABSTRACT_BOOLEAN_FEATURE__FEATURE_ENABLED:
-            setFeatureEnabled((Boolean) newValue);
-            return;
+            case EsbPackage.ABSTRACT_BOOLEAN_FEATURE__FEATURE_NAME:
+                setFeatureName((String)newValue);
+                return;
+            case EsbPackage.ABSTRACT_BOOLEAN_FEATURE__FEATURE_ENABLED:
+                setFeatureEnabled((Boolean)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -187,19 +171,18 @@ public abstract class AbstractBooleanFeatureImpl extends EsbNodeImpl implements 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case EsbPackage.ABSTRACT_BOOLEAN_FEATURE__FEATURE_NAME:
-            setFeatureName(FEATURE_NAME_EDEFAULT);
-            return;
-        case EsbPackage.ABSTRACT_BOOLEAN_FEATURE__FEATURE_ENABLED:
-            setFeatureEnabled(FEATURE_ENABLED_EDEFAULT);
-            return;
+            case EsbPackage.ABSTRACT_BOOLEAN_FEATURE__FEATURE_NAME:
+                setFeatureName(FEATURE_NAME_EDEFAULT);
+                return;
+            case EsbPackage.ABSTRACT_BOOLEAN_FEATURE__FEATURE_ENABLED:
+                setFeatureEnabled(FEATURE_ENABLED_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -207,17 +190,16 @@ public abstract class AbstractBooleanFeatureImpl extends EsbNodeImpl implements 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case EsbPackage.ABSTRACT_BOOLEAN_FEATURE__FEATURE_NAME:
-            return FEATURE_NAME_EDEFAULT == null ? featureName != null : !FEATURE_NAME_EDEFAULT.equals(featureName);
-        case EsbPackage.ABSTRACT_BOOLEAN_FEATURE__FEATURE_ENABLED:
-            return featureEnabled != FEATURE_ENABLED_EDEFAULT;
+            case EsbPackage.ABSTRACT_BOOLEAN_FEATURE__FEATURE_NAME:
+                return FEATURE_NAME_EDEFAULT == null ? featureName != null : !FEATURE_NAME_EDEFAULT.equals(featureName);
+            case EsbPackage.ABSTRACT_BOOLEAN_FEATURE__FEATURE_ENABLED:
+                return featureEnabled != FEATURE_ENABLED_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -225,14 +207,12 @@ public abstract class AbstractBooleanFeatureImpl extends EsbNodeImpl implements 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public String toString() {
-        if (eIsProxy())
-            return super.toString();
+        if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (featureName: ");

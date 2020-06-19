@@ -15,6 +15,7 @@ import org.eclipse.jface.viewers.ViewerFilter;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 
+
 // End of user code
 
 /**
@@ -23,176 +24,176 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
  */
 public interface SendMediatorPropertiesEditionPart {
 
-    /**
-     * @return the skipSerialization
-     * 
-     */
-    public Boolean getSkipSerialization();
+	/**
+	 * @return the skipSerialization
+	 * 
+	 */
+	public Boolean getSkipSerialization();
 
-    /**
-     * Defines a new skipSerialization
-     * 
-     * @param newValue the new skipSerialization to set
-     * 
-     */
-    public void setSkipSerialization(Boolean newValue);
+	/**
+	 * Defines a new skipSerialization
+	 * @param newValue the new skipSerialization to set
+	 * 
+	 */
+	public void setSkipSerialization(Boolean newValue);
 
-    /**
-     * Init the EndPoint
-     * 
-     * @param settings settings for the EndPoint ReferencesTable
-     */
-    public void initEndPoint(ReferencesTableSettings settings);
 
-    /**
-     * Update the EndPoint
-     * 
-     * @param newValue the EndPoint to update
-     * 
-     */
-    public void updateEndPoint();
 
-    /**
-     * Adds the given filter to the EndPoint edition editor.
-     * 
-     * @param filter
-     *            a viewer filter
-     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
-     */
-    public void addFilterToEndPoint(ViewerFilter filter);
 
-    /**
-     * Adds the given filter to the EndPoint edition editor.
-     * 
-     * @param filter
-     *            a viewer filter
-     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
-     */
-    public void addBusinessFilterToEndPoint(ViewerFilter filter);
+	/**
+	 * Init the EndPoint
+	 * @param settings settings for the EndPoint ReferencesTable 
+	 */
+	public void initEndPoint(ReferencesTableSettings settings);
 
-    /**
-     * @return true if the given element is contained inside the EndPoint table
-     * 
-     */
-    public boolean isContainedInEndPointTable(EObject element);
+	/**
+	 * Update the EndPoint
+	 * @param newValue the EndPoint to update
+	 * 
+	 */
+	public void updateEndPoint();
 
-    /**
-     * @return the receivingSequenceType
-     * 
-     */
-    public Enumerator getReceivingSequenceType();
+	/**
+	 * Adds the given filter to the EndPoint edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToEndPoint(ViewerFilter filter);
 
-    /**
-     * Init the receivingSequenceType
-     * 
-     * @param input the viewer input
-     * @param current the current value
-     */
-    public void initReceivingSequenceType(Object input, Enumerator current);
+	/**
+	 * Adds the given filter to the EndPoint edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToEndPoint(ViewerFilter filter);
 
-    /**
-     * Defines a new receivingSequenceType
-     * 
-     * @param newValue the new receivingSequenceType to set
-     * 
-     */
-    public void setReceivingSequenceType(Enumerator newValue);
+	/**
+	 * @return true if the given element is contained inside the EndPoint table
+	 * 
+	 */
+	public boolean isContainedInEndPointTable(EObject element);
 
-    /**
-     * @return the buildMessageBeforeSending
-     * 
-     */
-    public Boolean getBuildMessageBeforeSending();
 
-    /**
-     * Defines a new buildMessageBeforeSending
-     * 
-     * @param newValue the new buildMessageBeforeSending to set
-     * 
-     */
-    public void setBuildMessageBeforeSending(Boolean newValue);
+	/**
+	 * @return the receivingSequenceType
+	 * 
+	 */
+	public Enumerator getReceivingSequenceType();
 
-    /**
-     * @return the description
-     * 
-     */
-    public String getDescription();
+	/**
+	 * Init the receivingSequenceType
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initReceivingSequenceType(Object input, Enumerator current);
 
-    /**
-     * Defines a new description
-     * 
-     * @param newValue the new description to set
-     * 
-     */
-    public void setDescription(String newValue);
+	/**
+	 * Defines a new receivingSequenceType
+	 * @param newValue the new receivingSequenceType to set
+	 * 
+	 */
+	public void setReceivingSequenceType(Enumerator newValue);
 
-    /**
-     * @return the commentsList
-     * 
-     */
-    public EList getCommentsList();
 
-    /**
-     * Defines a new commentsList
-     * 
-     * @param newValue the new commentsList to set
-     * 
-     */
-    public void setCommentsList(EList newValue);
+	/**
+	 * @return the buildMessageBeforeSending
+	 * 
+	 */
+	public Boolean getBuildMessageBeforeSending();
 
-    /**
-     * Add a value to the commentsList multivalued attribute.
-     * 
-     * @param newValue the value to add
-     */
-    public void addToCommentsList(Object newValue);
+	/**
+	 * Defines a new buildMessageBeforeSending
+	 * @param newValue the new buildMessageBeforeSending to set
+	 * 
+	 */
+	public void setBuildMessageBeforeSending(Boolean newValue);
 
-    /**
-     * Remove a value to the commentsList multivalued attribute.
-     * 
-     * @param newValue the value to remove
-     */
-    public void removeToCommentsList(Object newValue);
 
-    /**
-     * @return the Reverse
-     * 
-     */
-    public Boolean getReverse();
+	/**
+	 * @return the description
+	 * 
+	 */
+	public String getDescription();
 
-    /**
-     * Defines a new Reverse
-     * 
-     * @param newValue the new Reverse to set
-     * 
-     */
-    public void setReverse(Boolean newValue);
+	/**
+	 * Defines a new description
+	 * @param newValue the new description to set
+	 * 
+	 */
+	public void setDescription(String newValue);
 
-    // Start of user code for StaticReceivingSequence specific getters and setters declaration
-    public void setStaticReceivingSequence(RegistryKeyProperty registryKeyProperty);
 
-    public RegistryKeyProperty getStaticReceivingSequence();
+	/**
+	 * @return the commentsList
+	 * 
+	 */
+	public EList getCommentsList();
 
-    // End of user code
-    // Start of user code for DynamicReceivingSequence specific getters and setters declaration
-    public void setDynamicReceivingSequence(NamespacedProperty namespacedProperty);
+	/**
+	 * Defines a new commentsList
+	 * @param newValue the new commentsList to set
+	 * 
+	 */
+	public void setCommentsList(EList newValue);
 
-    public NamespacedProperty getDynamicReceivingSequence();
+	/**
+	 * Add a value to the commentsList multivalued attribute.
+	 * @param newValue the value to add
+	 */
+	public void addToCommentsList(Object newValue);
 
-    // End of user code
+	/**
+	 * Remove a value to the commentsList multivalued attribute.
+	 * @param newValue the value to remove
+	 */
+	public void removeToCommentsList(Object newValue);
 
-    /**
-     * Returns the internationalized title text.
-     * 
-     * @return the internationalized title text.
-     * 
-     */
-    public String getTitle();
 
-    // Start of user code for additional methods
+	/**
+	 * @return the Reverse
+	 * 
+	 */
+	public Boolean getReverse();
 
-    // End of user code
+	/**
+	 * Defines a new Reverse
+	 * @param newValue the new Reverse to set
+	 * 
+	 */
+	public void setReverse(Boolean newValue);
+
+
+
+
+	// Start of user code for StaticReceivingSequence specific getters and setters declaration
+	public void setStaticReceivingSequence(RegistryKeyProperty registryKeyProperty);
+	
+	public RegistryKeyProperty getStaticReceivingSequence();
+	
+	// End of user code
+	// Start of user code for DynamicReceivingSequence specific getters and setters declaration
+	public void setDynamicReceivingSequence(NamespacedProperty namespacedProperty);
+	
+	public NamespacedProperty getDynamicReceivingSequence();
+	
+	// End of user code
+
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 * 
+	 */
+	public String getTitle();
+
+	// Start of user code for additional methods
+	
+	// End of user code
 
 }

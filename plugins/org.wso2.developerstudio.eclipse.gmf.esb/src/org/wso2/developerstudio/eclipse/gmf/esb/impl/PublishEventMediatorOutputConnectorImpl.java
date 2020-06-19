@@ -32,7 +32,6 @@ public class PublishEventMediatorOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected PublishEventMediatorOutputConnectorImpl() {
@@ -42,7 +41,6 @@ public class PublishEventMediatorOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

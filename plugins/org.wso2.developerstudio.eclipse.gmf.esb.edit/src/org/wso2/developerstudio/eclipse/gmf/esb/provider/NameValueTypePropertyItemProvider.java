@@ -26,11 +26,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.NameValueTypeProperty;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.NameValueTypeProperty}
- * object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.NameValueTypeProperty} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class NameValueTypePropertyItemProvider extends EsbNodeItemProvider {
@@ -38,7 +36,6 @@ public class NameValueTypePropertyItemProvider extends EsbNodeItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NameValueTypePropertyItemProvider(AdapterFactory adapterFactory) {
@@ -49,7 +46,6 @@ public class NameValueTypePropertyItemProvider extends EsbNodeItemProvider {
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -68,58 +64,72 @@ public class NameValueTypePropertyItemProvider extends EsbNodeItemProvider {
      * This adds a property descriptor for the Property Name feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addPropertyNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_NameValueTypeProperty_propertyName_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_NameValueTypeProperty_propertyName_feature",
-                        "_UI_NameValueTypeProperty_type"),
-                EsbPackage.Literals.NAME_VALUE_TYPE_PROPERTY__PROPERTY_NAME, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_NameValueTypeProperty_propertyName_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_NameValueTypeProperty_propertyName_feature", "_UI_NameValueTypeProperty_type"),
+                 EsbPackage.Literals.NAME_VALUE_TYPE_PROPERTY__PROPERTY_NAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Property Value feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addPropertyValuePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_NameValueTypeProperty_propertyValue_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_NameValueTypeProperty_propertyValue_feature",
-                        "_UI_NameValueTypeProperty_type"),
-                EsbPackage.Literals.NAME_VALUE_TYPE_PROPERTY__PROPERTY_VALUE, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_NameValueTypeProperty_propertyValue_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_NameValueTypeProperty_propertyValue_feature", "_UI_NameValueTypeProperty_type"),
+                 EsbPackage.Literals.NAME_VALUE_TYPE_PROPERTY__PROPERTY_VALUE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Property Type feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addPropertyTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_NameValueTypeProperty_propertyType_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_NameValueTypeProperty_propertyType_feature",
-                        "_UI_NameValueTypeProperty_type"),
-                EsbPackage.Literals.NAME_VALUE_TYPE_PROPERTY__PROPERTY_TYPE, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_NameValueTypeProperty_propertyType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_NameValueTypeProperty_propertyType_feature", "_UI_NameValueTypeProperty_type"),
+                 EsbPackage.Literals.NAME_VALUE_TYPE_PROPERTY__PROPERTY_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This returns NameValueTypeProperty.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -131,14 +141,14 @@ public class NameValueTypePropertyItemProvider extends EsbNodeItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((NameValueTypeProperty) object).getPropertyName();
-        return label == null || label.length() == 0 ? getString("_UI_NameValueTypeProperty_type")
-                : getString("_UI_NameValueTypeProperty_type") + " " + label;
+        String label = ((NameValueTypeProperty)object).getPropertyName();
+        return label == null || label.length() == 0 ?
+            getString("_UI_NameValueTypeProperty_type") :
+            getString("_UI_NameValueTypeProperty_type") + " " + label;
     }
 
     /**
@@ -146,7 +156,6 @@ public class NameValueTypePropertyItemProvider extends EsbNodeItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -154,11 +163,11 @@ public class NameValueTypePropertyItemProvider extends EsbNodeItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(NameValueTypeProperty.class)) {
-        case EsbPackage.NAME_VALUE_TYPE_PROPERTY__PROPERTY_NAME:
-        case EsbPackage.NAME_VALUE_TYPE_PROPERTY__PROPERTY_VALUE:
-        case EsbPackage.NAME_VALUE_TYPE_PROPERTY__PROPERTY_TYPE:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
+            case EsbPackage.NAME_VALUE_TYPE_PROPERTY__PROPERTY_NAME:
+            case EsbPackage.NAME_VALUE_TYPE_PROPERTY__PROPERTY_VALUE:
+            case EsbPackage.NAME_VALUE_TYPE_PROPERTY__PROPERTY_TYPE:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -168,7 +177,6 @@ public class NameValueTypePropertyItemProvider extends EsbNodeItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

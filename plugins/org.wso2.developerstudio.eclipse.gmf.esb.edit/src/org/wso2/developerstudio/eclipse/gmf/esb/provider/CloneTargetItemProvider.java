@@ -30,7 +30,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TargetSequenceType;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.CloneTarget} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class CloneTargetItemProvider extends AbstractCommonTargetItemProvider {
@@ -38,7 +37,6 @@ public class CloneTargetItemProvider extends AbstractCommonTargetItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public CloneTargetItemProvider(AdapterFactory adapterFactory) {
@@ -49,7 +47,6 @@ public class CloneTargetItemProvider extends AbstractCommonTargetItemProvider {
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -67,41 +64,50 @@ public class CloneTargetItemProvider extends AbstractCommonTargetItemProvider {
      * This adds a property descriptor for the Soap Action feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addSoapActionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_CloneTarget_soapAction_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_CloneTarget_soapAction_feature",
-                                "_UI_CloneTarget_type"),
-                        EsbPackage.Literals.CLONE_TARGET__SOAP_ACTION, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CloneTarget_soapAction_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CloneTarget_soapAction_feature", "_UI_CloneTarget_type"),
+                 EsbPackage.Literals.CLONE_TARGET__SOAP_ACTION,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the To Address feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addToAddressPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_CloneTarget_toAddress_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_CloneTarget_toAddress_feature",
-                                "_UI_CloneTarget_type"),
-                        EsbPackage.Literals.CLONE_TARGET__TO_ADDRESS, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CloneTarget_toAddress_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CloneTarget_toAddress_feature", "_UI_CloneTarget_type"),
+                 EsbPackage.Literals.CLONE_TARGET__TO_ADDRESS,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This returns CloneTarget.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -113,15 +119,15 @@ public class CloneTargetItemProvider extends AbstractCommonTargetItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        TargetSequenceType labelValue = ((CloneTarget) object).getSequenceType();
+        TargetSequenceType labelValue = ((CloneTarget)object).getSequenceType();
         String label = labelValue == null ? null : labelValue.toString();
-        return label == null || label.length() == 0 ? getString("_UI_CloneTarget_type")
-                : getString("_UI_CloneTarget_type") + " " + label;
+        return label == null || label.length() == 0 ?
+            getString("_UI_CloneTarget_type") :
+            getString("_UI_CloneTarget_type") + " " + label;
     }
 
     /**
@@ -129,7 +135,6 @@ public class CloneTargetItemProvider extends AbstractCommonTargetItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -137,10 +142,10 @@ public class CloneTargetItemProvider extends AbstractCommonTargetItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(CloneTarget.class)) {
-        case EsbPackage.CLONE_TARGET__SOAP_ACTION:
-        case EsbPackage.CLONE_TARGET__TO_ADDRESS:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
+            case EsbPackage.CLONE_TARGET__SOAP_ACTION:
+            case EsbPackage.CLONE_TARGET__TO_ADDRESS:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -150,7 +155,6 @@ public class CloneTargetItemProvider extends AbstractCommonTargetItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -162,7 +166,6 @@ public class CloneTargetItemProvider extends AbstractCommonTargetItemProvider {
      * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -170,12 +173,14 @@ public class CloneTargetItemProvider extends AbstractCommonTargetItemProvider {
         Object childFeature = feature;
         Object childObject = child;
 
-        boolean qualify = childFeature == EsbPackage.Literals.ABSTRACT_COMMON_TARGET__SEQUENCE_KEY
-                || childFeature == EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT_KEY;
+        boolean qualify =
+            childFeature == EsbPackage.Literals.ABSTRACT_COMMON_TARGET__SEQUENCE_KEY ||
+            childFeature == EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT_KEY;
 
         if (qualify) {
-            return getString("_UI_CreateChild_text2",
-                    new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+            return getString
+                ("_UI_CreateChild_text2",
+                 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }

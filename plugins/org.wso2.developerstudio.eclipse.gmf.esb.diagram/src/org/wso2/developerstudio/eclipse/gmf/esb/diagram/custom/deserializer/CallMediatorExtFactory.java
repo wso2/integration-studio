@@ -31,12 +31,12 @@ import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.builtin.CallMediator;
 
 public class CallMediatorExtFactory extends CallMediatorFactory {
-
+    
     private static CallMediatorExtFactory instance;
-
+    
     private CallMediatorExtFactory() {
     }
-
+    
     public static synchronized CallMediatorExtFactory getInstance() {
         if (instance == null) {
             instance = new CallMediatorExtFactory();

@@ -25,8 +25,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbElementImpl#getDescription <em>Description</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbElementImpl#getCommentsList <em>Comments List</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbElementImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbElementImpl#getCommentsList <em>Comments List</em>}</li>
  * </ul>
  *
  * @generated
@@ -36,7 +36,6 @@ public abstract class EsbElementImpl extends EsbNodeImpl implements EsbElement {
      * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getDescription()
      * @generated
      * @ordered
@@ -46,7 +45,6 @@ public abstract class EsbElementImpl extends EsbNodeImpl implements EsbElement {
      * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getDescription()
      * @generated
      * @ordered
@@ -57,7 +55,6 @@ public abstract class EsbElementImpl extends EsbNodeImpl implements EsbElement {
      * The cached value of the '{@link #getCommentsList() <em>Comments List</em>}' attribute list.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getCommentsList()
      * @generated
      * @ordered
@@ -67,7 +64,6 @@ public abstract class EsbElementImpl extends EsbNodeImpl implements EsbElement {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected EsbElementImpl() {
@@ -77,7 +73,6 @@ public abstract class EsbElementImpl extends EsbNodeImpl implements EsbElement {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -89,7 +84,6 @@ public abstract class EsbElementImpl extends EsbNodeImpl implements EsbElement {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getDescription() {
@@ -99,21 +93,18 @@ public abstract class EsbElementImpl extends EsbNodeImpl implements EsbElement {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setDescription(String newDescription) {
         String oldDescription = description;
         description = newDescription;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ESB_ELEMENT__DESCRIPTION, oldDescription,
-                    description));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ESB_ELEMENT__DESCRIPTION, oldDescription, description));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EList<String> getCommentsList() {
@@ -126,16 +117,15 @@ public abstract class EsbElementImpl extends EsbNodeImpl implements EsbElement {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case EsbPackage.ESB_ELEMENT__DESCRIPTION:
-            return getDescription();
-        case EsbPackage.ESB_ELEMENT__COMMENTS_LIST:
-            return getCommentsList();
+            case EsbPackage.ESB_ELEMENT__DESCRIPTION:
+                return getDescription();
+            case EsbPackage.ESB_ELEMENT__COMMENTS_LIST:
+                return getCommentsList();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -143,20 +133,19 @@ public abstract class EsbElementImpl extends EsbNodeImpl implements EsbElement {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case EsbPackage.ESB_ELEMENT__DESCRIPTION:
-            setDescription((String) newValue);
-            return;
-        case EsbPackage.ESB_ELEMENT__COMMENTS_LIST:
-            getCommentsList().clear();
-            getCommentsList().addAll((Collection<? extends String>) newValue);
-            return;
+            case EsbPackage.ESB_ELEMENT__DESCRIPTION:
+                setDescription((String)newValue);
+                return;
+            case EsbPackage.ESB_ELEMENT__COMMENTS_LIST:
+                getCommentsList().clear();
+                getCommentsList().addAll((Collection<? extends String>)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -164,18 +153,17 @@ public abstract class EsbElementImpl extends EsbNodeImpl implements EsbElement {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case EsbPackage.ESB_ELEMENT__DESCRIPTION:
-            setDescription(DESCRIPTION_EDEFAULT);
-            return;
-        case EsbPackage.ESB_ELEMENT__COMMENTS_LIST:
-            getCommentsList().clear();
-            return;
+            case EsbPackage.ESB_ELEMENT__DESCRIPTION:
+                setDescription(DESCRIPTION_EDEFAULT);
+                return;
+            case EsbPackage.ESB_ELEMENT__COMMENTS_LIST:
+                getCommentsList().clear();
+                return;
         }
         super.eUnset(featureID);
     }
@@ -183,16 +171,15 @@ public abstract class EsbElementImpl extends EsbNodeImpl implements EsbElement {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case EsbPackage.ESB_ELEMENT__DESCRIPTION:
-            return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
-        case EsbPackage.ESB_ELEMENT__COMMENTS_LIST:
-            return commentsList != null && !commentsList.isEmpty();
+            case EsbPackage.ESB_ELEMENT__DESCRIPTION:
+                return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
+            case EsbPackage.ESB_ELEMENT__COMMENTS_LIST:
+                return commentsList != null && !commentsList.isEmpty();
         }
         return super.eIsSet(featureID);
     }
@@ -200,13 +187,11 @@ public abstract class EsbElementImpl extends EsbNodeImpl implements EsbElement {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
-            return super.toString();
+        if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (description: ");

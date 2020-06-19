@@ -15,6 +15,7 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.provider;
 
+
 import java.util.Collection;
 import java.util.List;
 
@@ -32,11 +33,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator}
- * object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class JsonTransformMediatorItemProvider extends MediatorItemProvider {
@@ -44,7 +43,6 @@ public class JsonTransformMediatorItemProvider extends MediatorItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public JsonTransformMediatorItemProvider(AdapterFactory adapterFactory) {
@@ -55,7 +53,6 @@ public class JsonTransformMediatorItemProvider extends MediatorItemProvider {
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated NOT
      */
     @Override
@@ -65,7 +62,7 @@ public class JsonTransformMediatorItemProvider extends MediatorItemProvider {
         }
         super.getPropertyDescriptors(object);
         addDescriptionPropertyDescriptor(object);
-
+        
         return itemPropertyDescriptors;
     }
 
@@ -73,33 +70,44 @@ public class JsonTransformMediatorItemProvider extends MediatorItemProvider {
      * This adds a property descriptor for the Json Transform Properties feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addJsonTransformPropertiesPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_JsonTransformMediator_jsonTransformProperties_feature"),
-                getString("_UI_PropertyDescriptor_description",
-                        "_UI_JsonTransformMediator_jsonTransformProperties_feature", "_UI_JsonTransformMediator_type"),
-                EsbPackage.Literals.JSON_TRANSFORM_MEDIATOR__JSON_TRANSFORM_PROPERTIES, true, false, true, null, null,
-                null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_JsonTransformMediator_jsonTransformProperties_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_JsonTransformMediator_jsonTransformProperties_feature", "_UI_JsonTransformMediator_type"),
+                 EsbPackage.Literals.JSON_TRANSFORM_MEDIATOR__JSON_TRANSFORM_PROPERTIES,
+                 true,
+                 false,
+                 true,
+                 null,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Schema feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addSchemaPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_JsonTransformMediator_schema_feature"),
-                        getString("_UI_PropertyDescriptor_description", "__UI_JsonTransformMediator_schema_feature",
-                                "_UI_JsonTransformMediator_type"),
-                        EsbPackage.Literals.JSON_TRANSFORM_MEDIATOR__SCHEMA, true, false, false, null, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_JsonTransformMediator_schema_feature"),
+                 getString("_UI_PropertyDescriptor_description", "__UI_JsonTransformMediator_schema_feature", "_UI_JsonTransformMediator_type"),
+                 EsbPackage.Literals.JSON_TRANSFORM_MEDIATOR__SCHEMA,
+                 true,
+                 false,
+                 false,
+                 null,
+                 null,
+                 null));
     }
 
     /**
@@ -108,7 +116,6 @@ public class JsonTransformMediatorItemProvider extends MediatorItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -125,7 +132,6 @@ public class JsonTransformMediatorItemProvider extends MediatorItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -140,7 +146,6 @@ public class JsonTransformMediatorItemProvider extends MediatorItemProvider {
      * This returns JsonTransformMediator.png.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated NOT
      */
     @Override
@@ -152,22 +157,22 @@ public class JsonTransformMediatorItemProvider extends MediatorItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((JsonTransformMediator) object).getDescription();
-        return label == null || label.length() == 0 ? getString("_UI_JsonTransformMediator_type")
-                : getString("_UI_JsonTransformMediator_type") + " " + label;
+        String label = ((JsonTransformMediator)object).getDescription();
+        return label == null || label.length() == 0 ?
+            getString("_UI_JsonTransformMediator_type") :
+            getString("_UI_JsonTransformMediator_type") + " " + label;
     }
+    
 
     /**
      * This handles model notifications by calling {@link #updateChildren} to update any cached
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -175,11 +180,11 @@ public class JsonTransformMediatorItemProvider extends MediatorItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(JsonTransformMediator.class)) {
-        case EsbPackage.JSON_TRANSFORM_MEDIATOR__INPUT_CONNECTOR:
-        case EsbPackage.JSON_TRANSFORM_MEDIATOR__OUTPUT_CONNECTOR:
-        case EsbPackage.JSON_TRANSFORM_MEDIATOR__SCHEMA:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.JSON_TRANSFORM_MEDIATOR__INPUT_CONNECTOR:
+            case EsbPackage.JSON_TRANSFORM_MEDIATOR__OUTPUT_CONNECTOR:
+            case EsbPackage.JSON_TRANSFORM_MEDIATOR__SCHEMA:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -189,21 +194,26 @@ public class JsonTransformMediatorItemProvider extends MediatorItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.JSON_TRANSFORM_MEDIATOR__INPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createJsonTransformMediatorInputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.JSON_TRANSFORM_MEDIATOR__INPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createJsonTransformMediatorInputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.JSON_TRANSFORM_MEDIATOR__OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createJsonTransformMediatorOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.JSON_TRANSFORM_MEDIATOR__OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createJsonTransformMediatorOutputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.JSON_TRANSFORM_MEDIATOR__SCHEMA,
-                EsbFactory.eINSTANCE.createRegistryKeyProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.JSON_TRANSFORM_MEDIATOR__SCHEMA,
+                 EsbFactory.eINSTANCE.createRegistryKeyProperty()));
     }
 
 }

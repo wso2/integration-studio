@@ -22,7 +22,6 @@ public class MergeNodeOutputConnectorImpl extends OutputConnectorImpl implements
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected MergeNodeOutputConnectorImpl() {
@@ -32,7 +31,6 @@ public class MergeNodeOutputConnectorImpl extends OutputConnectorImpl implements
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

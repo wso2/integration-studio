@@ -31,7 +31,6 @@ public class TemplateEndpointInputConnectorImpl extends InputConnectorImpl imple
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected TemplateEndpointInputConnectorImpl() {
@@ -41,7 +40,6 @@ public class TemplateEndpointInputConnectorImpl extends InputConnectorImpl imple
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

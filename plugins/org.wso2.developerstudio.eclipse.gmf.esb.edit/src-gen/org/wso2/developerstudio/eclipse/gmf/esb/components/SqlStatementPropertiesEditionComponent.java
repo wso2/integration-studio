@@ -53,6 +53,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SqlStatement;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.SqlStatementPropertiesEditionPart;
 
+
 // End of user code
 
 /**
@@ -61,288 +62,271 @@ import org.wso2.developerstudio.eclipse.gmf.esb.parts.SqlStatementPropertiesEdit
  */
 public class SqlStatementPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
-    public static String BASE_PART = "Base"; //$NON-NLS-1$
+	
+	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
-    /**
-     * Settings for parameters ReferencesTable
-     */
-    protected ReferencesTableSettings parametersSettings;
+	
+	/**
+	 * Settings for parameters ReferencesTable
+	 */
+	protected ReferencesTableSettings parametersSettings;
+	
+	/**
+	 * Settings for results ReferencesTable
+	 */
+	protected ReferencesTableSettings resultsSettings;
+	
+	
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public SqlStatementPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject sqlStatement, String editing_mode) {
+		super(editingContext, sqlStatement, editing_mode);
+		parts = new String[] { BASE_PART };
+		repositoryKey = EsbViewsRepository.class;
+		partKey = EsbViewsRepository.SqlStatement.class;
+	}
 
-    /**
-     * Settings for results ReferencesTable
-     */
-    protected ReferencesTableSettings resultsSettings;
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
+	 *      org.eclipse.emf.ecore.resource.ResourceSet)
+	 * 
+	 */
+	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
+		setInitializing(true);
+		if (editingPart != null && key == partKey) {
+			editingPart.setContext(elt, allResource);
+			
+			final SqlStatement sqlStatement = (SqlStatement)elt;
+			final SqlStatementPropertiesEditionPart basePart = (SqlStatementPropertiesEditionPart)editingPart;
+			// init values
+			if (isAccessible(EsbViewsRepository.SqlStatement.Properties.queryString))
+				basePart.setQueryString(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, sqlStatement.getQueryString()));
+			
+			if (isAccessible(EsbViewsRepository.SqlStatement.Properties.parameters)) {
+				parametersSettings = new ReferencesTableSettings(sqlStatement, EsbPackage.eINSTANCE.getSqlStatement_Parameters());
+				basePart.initParameters(parametersSettings);
+			}
+			if (isAccessible(EsbViewsRepository.SqlStatement.Properties.resultsEnabled)) {
+				basePart.setResultsEnabled(sqlStatement.isResultsEnabled());
+			}
+			if (isAccessible(EsbViewsRepository.SqlStatement.Properties.results)) {
+				resultsSettings = new ReferencesTableSettings(sqlStatement, EsbPackage.eINSTANCE.getSqlStatement_Results());
+				basePart.initResults(resultsSettings);
+			}
+			// init filters
+			
+			if (isAccessible(EsbViewsRepository.SqlStatement.Properties.parameters)) {
+				basePart.addFilterToParameters(new ViewerFilter() {
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof SqlParameterDefinition); //$NON-NLS-1$ 
+					}
+			
+				});
+				// Start of user code for additional businessfilters for parameters
+				// End of user code
+			}
+			
+			if (isAccessible(EsbViewsRepository.SqlStatement.Properties.results)) {
+				basePart.addFilterToResults(new ViewerFilter() {
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof SqlResultMapping); //$NON-NLS-1$ 
+					}
+			
+				});
+				// Start of user code for additional businessfilters for results
+				// End of user code
+			}
+			// init values for referenced views
+			
+			// init filters for referenced views
+			
+		}
+		setInitializing(false);
+	}
 
-    /**
-     * Default constructor
-     * 
-     */
-    public SqlStatementPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject sqlStatement,
-            String editing_mode) {
-        super(editingContext, sqlStatement, editing_mode);
-        parts = new String[] { BASE_PART };
-        repositoryKey = EsbViewsRepository.class;
-        partKey = EsbViewsRepository.SqlStatement.class;
-    }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int,
-     *      org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.emf.ecore.resource.ResourceSet)
-     * 
-     */
-    public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-        setInitializing(true);
-        if (editingPart != null && key == partKey) {
-            editingPart.setContext(elt, allResource);
 
-            final SqlStatement sqlStatement = (SqlStatement) elt;
-            final SqlStatementPropertiesEditionPart basePart = (SqlStatementPropertiesEditionPart) editingPart;
-            // init values
-            if (isAccessible(EsbViewsRepository.SqlStatement.Properties.queryString))
-                basePart.setQueryString(
-                        EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, sqlStatement.getQueryString()));
 
-            if (isAccessible(EsbViewsRepository.SqlStatement.Properties.parameters)) {
-                parametersSettings = new ReferencesTableSettings(sqlStatement,
-                        EsbPackage.eINSTANCE.getSqlStatement_Parameters());
-                basePart.initParameters(parametersSettings);
-            }
-            if (isAccessible(EsbViewsRepository.SqlStatement.Properties.resultsEnabled)) {
-                basePart.setResultsEnabled(sqlStatement.isResultsEnabled());
-            }
-            if (isAccessible(EsbViewsRepository.SqlStatement.Properties.results)) {
-                resultsSettings = new ReferencesTableSettings(sqlStatement,
-                        EsbPackage.eINSTANCE.getSqlStatement_Results());
-                basePart.initResults(resultsSettings);
-            }
-            // init filters
 
-            if (isAccessible(EsbViewsRepository.SqlStatement.Properties.parameters)) {
-                basePart.addFilterToParameters(new ViewerFilter() {
-                    /**
-                     * {@inheritDoc}
-                     * 
-                     * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer,
-                     *      java.lang.Object, java.lang.Object)
-                     */
-                    public boolean select(Viewer viewer, Object parentElement, Object element) {
-                        return (element instanceof String && element.equals("")) //$NON-NLS-1$
-                                || (element instanceof SqlParameterDefinition);
-                    }
 
-                });
-                // Start of user code for additional businessfilters for parameters
-                // End of user code
-            }
 
-            if (isAccessible(EsbViewsRepository.SqlStatement.Properties.results)) {
-                basePart.addFilterToResults(new ViewerFilter() {
-                    /**
-                     * {@inheritDoc}
-                     * 
-                     * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer,
-                     *      java.lang.Object, java.lang.Object)
-                     */
-                    public boolean select(Viewer viewer, Object parentElement, Object element) {
-                        return (element instanceof String && element.equals("")) //$NON-NLS-1$
-                                || (element instanceof SqlResultMapping);
-                    }
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	public EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == EsbViewsRepository.SqlStatement.Properties.queryString) {
+			return EsbPackage.eINSTANCE.getSqlStatement_QueryString();
+		}
+		if (editorKey == EsbViewsRepository.SqlStatement.Properties.parameters) {
+			return EsbPackage.eINSTANCE.getSqlStatement_Parameters();
+		}
+		if (editorKey == EsbViewsRepository.SqlStatement.Properties.resultsEnabled) {
+			return EsbPackage.eINSTANCE.getSqlStatement_ResultsEnabled();
+		}
+		if (editorKey == EsbViewsRepository.SqlStatement.Properties.results) {
+			return EsbPackage.eINSTANCE.getSqlStatement_Results();
+		}
+		return super.associatedFeature(editorKey);
+	}
 
-                });
-                // Start of user code for additional businessfilters for results
-                // End of user code
-            }
-            // init values for referenced views
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
+	 */
+	public void updateSemanticModel(final IPropertiesEditionEvent event) {
+		SqlStatement sqlStatement = (SqlStatement)semanticObject;
+		if (EsbViewsRepository.SqlStatement.Properties.queryString == event.getAffectedEditor()) {
+			sqlStatement.setQueryString((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
+		if (EsbViewsRepository.SqlStatement.Properties.parameters == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, parametersSettings, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy instanceof CreateEditingPolicy) {
+						policy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+					if (editionPolicy != null) {
+						editionPolicy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				parametersSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				parametersSettings.move(event.getNewIndex(), (SqlParameterDefinition) event.getNewValue());
+			}
+		}
+		if (EsbViewsRepository.SqlStatement.Properties.resultsEnabled == event.getAffectedEditor()) {
+			sqlStatement.setResultsEnabled((Boolean)event.getNewValue());
+		}
+		if (EsbViewsRepository.SqlStatement.Properties.results == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, resultsSettings, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy instanceof CreateEditingPolicy) {
+						policy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+					if (editionPolicy != null) {
+						editionPolicy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				resultsSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				resultsSettings.move(event.getNewIndex(), (SqlResultMapping) event.getNewValue());
+			}
+		}
+	}
 
-            // init filters for referenced views
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
+	 */
+	public void updatePart(Notification msg) {
+		super.updatePart(msg);
+		if (editingPart.isVisible()) {
+			SqlStatementPropertiesEditionPart basePart = (SqlStatementPropertiesEditionPart)editingPart;
+			if (EsbPackage.eINSTANCE.getSqlStatement_QueryString().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.SqlStatement.Properties.queryString)) {
+				if (msg.getNewValue() != null) {
+					basePart.setQueryString(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+				} else {
+					basePart.setQueryString("");
+				}
+			}
+			if (EsbPackage.eINSTANCE.getSqlStatement_Parameters().equals(msg.getFeature()) && isAccessible(EsbViewsRepository.SqlStatement.Properties.parameters))
+				basePart.updateParameters();
+			if (EsbPackage.eINSTANCE.getSqlStatement_ResultsEnabled().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.SqlStatement.Properties.resultsEnabled))
+				basePart.setResultsEnabled((Boolean)msg.getNewValue());
+			
+			if (EsbPackage.eINSTANCE.getSqlStatement_Results().equals(msg.getFeature()) && isAccessible(EsbViewsRepository.SqlStatement.Properties.results))
+				basePart.updateResults();
+			
+		}
+	}
 
-        }
-        setInitializing(false);
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EsbPackage.eINSTANCE.getSqlStatement_QueryString(),
+			EsbPackage.eINSTANCE.getSqlStatement_Parameters(),
+			EsbPackage.eINSTANCE.getSqlStatement_ResultsEnabled(),
+			EsbPackage.eINSTANCE.getSqlStatement_Results()		);
+		return new NotificationFilter[] {filter,};
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
-     */
-    public EStructuralFeature associatedFeature(Object editorKey) {
-        if (editorKey == EsbViewsRepository.SqlStatement.Properties.queryString) {
-            return EsbPackage.eINSTANCE.getSqlStatement_QueryString();
-        }
-        if (editorKey == EsbViewsRepository.SqlStatement.Properties.parameters) {
-            return EsbPackage.eINSTANCE.getSqlStatement_Parameters();
-        }
-        if (editorKey == EsbViewsRepository.SqlStatement.Properties.resultsEnabled) {
-            return EsbPackage.eINSTANCE.getSqlStatement_ResultsEnabled();
-        }
-        if (editorKey == EsbViewsRepository.SqlStatement.Properties.results) {
-            return EsbPackage.eINSTANCE.getSqlStatement_Results();
-        }
-        return super.associatedFeature(editorKey);
-    }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
-     */
-    public void updateSemanticModel(final IPropertiesEditionEvent event) {
-        SqlStatement sqlStatement = (SqlStatement) semanticObject;
-        if (EsbViewsRepository.SqlStatement.Properties.queryString == event.getAffectedEditor()) {
-            sqlStatement.setQueryString((java.lang.String) EEFConverterUtil
-                    .createFromString(EcorePackage.Literals.ESTRING, (String) event.getNewValue()));
-        }
-        if (EsbViewsRepository.SqlStatement.Properties.parameters == event.getAffectedEditor()) {
-            if (event.getKind() == PropertiesEditionEvent.ADD) {
-                EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext,
-                        this, parametersSettings, editingContext.getAdapterFactory());
-                PropertiesEditingProvider provider = (PropertiesEditingProvider) editingContext.getAdapterFactory()
-                        .adapt(semanticObject, PropertiesEditingProvider.class);
-                if (provider != null) {
-                    PropertiesEditingPolicy policy = provider.getPolicy(context);
-                    if (policy instanceof CreateEditingPolicy) {
-                        policy.execute();
-                    }
-                }
-            } else if (event.getKind() == PropertiesEditionEvent.EDIT) {
-                EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this,
-                        (EObject) event.getNewValue(), editingContext.getAdapterFactory());
-                PropertiesEditingProvider provider = (PropertiesEditingProvider) editingContext.getAdapterFactory()
-                        .adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
-                if (provider != null) {
-                    PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
-                    if (editionPolicy != null) {
-                        editionPolicy.execute();
-                    }
-                }
-            } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-                parametersSettings.removeFromReference((EObject) event.getNewValue());
-            } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-                parametersSettings.move(event.getNewIndex(), (SqlParameterDefinition) event.getNewValue());
-            }
-        }
-        if (EsbViewsRepository.SqlStatement.Properties.resultsEnabled == event.getAffectedEditor()) {
-            sqlStatement.setResultsEnabled((Boolean) event.getNewValue());
-        }
-        if (EsbViewsRepository.SqlStatement.Properties.results == event.getAffectedEditor()) {
-            if (event.getKind() == PropertiesEditionEvent.ADD) {
-                EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext,
-                        this, resultsSettings, editingContext.getAdapterFactory());
-                PropertiesEditingProvider provider = (PropertiesEditingProvider) editingContext.getAdapterFactory()
-                        .adapt(semanticObject, PropertiesEditingProvider.class);
-                if (provider != null) {
-                    PropertiesEditingPolicy policy = provider.getPolicy(context);
-                    if (policy instanceof CreateEditingPolicy) {
-                        policy.execute();
-                    }
-                }
-            } else if (event.getKind() == PropertiesEditionEvent.EDIT) {
-                EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this,
-                        (EObject) event.getNewValue(), editingContext.getAdapterFactory());
-                PropertiesEditingProvider provider = (PropertiesEditingProvider) editingContext.getAdapterFactory()
-                        .adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
-                if (provider != null) {
-                    PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
-                    if (editionPolicy != null) {
-                        editionPolicy.execute();
-                    }
-                }
-            } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-                resultsSettings.removeFromReference((EObject) event.getNewValue());
-            } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-                resultsSettings.move(event.getNewIndex(), (SqlResultMapping) event.getNewValue());
-            }
-        }
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
+	 */
+	public Diagnostic validateValue(IPropertiesEditionEvent event) {
+		Diagnostic ret = Diagnostic.OK_INSTANCE;
+		if (event.getNewValue() != null) {
+			try {
+				if (EsbViewsRepository.SqlStatement.Properties.queryString == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getSqlStatement_QueryString().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getSqlStatement_QueryString().getEAttributeType(), newValue);
+				}
+				if (EsbViewsRepository.SqlStatement.Properties.resultsEnabled == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getSqlStatement_ResultsEnabled().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getSqlStatement_ResultsEnabled().getEAttributeType(), newValue);
+				}
+			} catch (IllegalArgumentException iae) {
+				ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (WrappedException we) {
+				ret = BasicDiagnostic.toDiagnostic(we);
+			}
+		}
+		return ret;
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
-     */
-    public void updatePart(Notification msg) {
-        super.updatePart(msg);
-        if (editingPart.isVisible()) {
-            SqlStatementPropertiesEditionPart basePart = (SqlStatementPropertiesEditionPart) editingPart;
-            if (EsbPackage.eINSTANCE.getSqlStatement_QueryString().equals(msg.getFeature())
-                    && msg.getNotifier().equals(semanticObject) && basePart != null
-                    && isAccessible(EsbViewsRepository.SqlStatement.Properties.queryString)) {
-                if (msg.getNewValue() != null) {
-                    basePart.setQueryString(
-                            EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
-                } else {
-                    basePart.setQueryString("");
-                }
-            }
-            if (EsbPackage.eINSTANCE.getSqlStatement_Parameters().equals(msg.getFeature())
-                    && isAccessible(EsbViewsRepository.SqlStatement.Properties.parameters))
-                basePart.updateParameters();
-            if (EsbPackage.eINSTANCE.getSqlStatement_ResultsEnabled().equals(msg.getFeature())
-                    && msg.getNotifier().equals(semanticObject) && basePart != null
-                    && isAccessible(EsbViewsRepository.SqlStatement.Properties.resultsEnabled))
-                basePart.setResultsEnabled((Boolean) msg.getNewValue());
 
-            if (EsbPackage.eINSTANCE.getSqlStatement_Results().equals(msg.getFeature())
-                    && isAccessible(EsbViewsRepository.SqlStatement.Properties.results))
-                basePart.updateResults();
+	
 
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
-     */
-    @Override
-    protected NotificationFilter[] getNotificationFilters() {
-        NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-                EsbPackage.eINSTANCE.getSqlStatement_QueryString(), EsbPackage.eINSTANCE.getSqlStatement_Parameters(),
-                EsbPackage.eINSTANCE.getSqlStatement_ResultsEnabled(), EsbPackage.eINSTANCE.getSqlStatement_Results());
-        return new NotificationFilter[] { filter, };
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
-     */
-    public Diagnostic validateValue(IPropertiesEditionEvent event) {
-        Diagnostic ret = Diagnostic.OK_INSTANCE;
-        if (event.getNewValue() != null) {
-            try {
-                if (EsbViewsRepository.SqlStatement.Properties.queryString == event.getAffectedEditor()) {
-                    Object newValue = event.getNewValue();
-                    if (newValue instanceof String) {
-                        newValue = EEFConverterUtil.createFromString(
-                                EsbPackage.eINSTANCE.getSqlStatement_QueryString().getEAttributeType(),
-                                (String) newValue);
-                    }
-                    ret = Diagnostician.INSTANCE
-                            .validate(EsbPackage.eINSTANCE.getSqlStatement_QueryString().getEAttributeType(), newValue);
-                }
-                if (EsbViewsRepository.SqlStatement.Properties.resultsEnabled == event.getAffectedEditor()) {
-                    Object newValue = event.getNewValue();
-                    if (newValue instanceof String) {
-                        newValue = EEFConverterUtil.createFromString(
-                                EsbPackage.eINSTANCE.getSqlStatement_ResultsEnabled().getEAttributeType(),
-                                (String) newValue);
-                    }
-                    ret = Diagnostician.INSTANCE.validate(
-                            EsbPackage.eINSTANCE.getSqlStatement_ResultsEnabled().getEAttributeType(), newValue);
-                }
-            } catch (IllegalArgumentException iae) {
-                ret = BasicDiagnostic.toDiagnostic(iae);
-            } catch (WrappedException we) {
-                ret = BasicDiagnostic.toDiagnostic(we);
-            }
-        }
-        return ret;
-    }
+	
 
 }

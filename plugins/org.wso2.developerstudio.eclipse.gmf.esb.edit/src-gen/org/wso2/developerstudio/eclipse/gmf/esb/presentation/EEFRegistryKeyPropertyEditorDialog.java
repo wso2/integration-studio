@@ -58,10 +58,11 @@ public class EEFRegistryKeyPropertyEditorDialog extends RegistryKeyPropertyEdito
             java.util.List<NamedEntityDescriptor> localNamedEntities) {
         super(parent, style, property, localNamedEntities);
     }
-
+    
     @Override
     protected void saveConfiguration() {
         super.saveConfigurationWithTransaction();
     }
 
 }
+

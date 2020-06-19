@@ -22,7 +22,6 @@ public class SequenceInputConnectorImpl extends InputConnectorImpl implements Se
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected SequenceInputConnectorImpl() {
@@ -32,7 +31,6 @@ public class SequenceInputConnectorImpl extends InputConnectorImpl implements Se
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

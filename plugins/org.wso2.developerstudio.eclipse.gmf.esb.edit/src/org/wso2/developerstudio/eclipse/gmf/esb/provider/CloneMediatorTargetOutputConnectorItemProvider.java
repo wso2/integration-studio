@@ -26,11 +26,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.CloneMediatorTargetOutputConnect
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 
 /**
- * This is the item provider adapter for a
- * {@link org.wso2.developerstudio.eclipse.gmf.esb.CloneMediatorTargetOutputConnector} object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.CloneMediatorTargetOutputConnector} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class CloneMediatorTargetOutputConnectorItemProvider extends OutputConnectorItemProvider {
@@ -38,7 +36,6 @@ public class CloneMediatorTargetOutputConnectorItemProvider extends OutputConnec
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public CloneMediatorTargetOutputConnectorItemProvider(AdapterFactory adapterFactory) {
@@ -49,7 +46,6 @@ public class CloneMediatorTargetOutputConnectorItemProvider extends OutputConnec
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -67,43 +63,50 @@ public class CloneMediatorTargetOutputConnectorItemProvider extends OutputConnec
      * This adds a property descriptor for the Soap Action feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addSoapActionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_CloneMediatorTargetOutputConnector_soapAction_feature"),
-                        getString("_UI_PropertyDescriptor_description",
-                                "_UI_CloneMediatorTargetOutputConnector_soapAction_feature",
-                                "_UI_CloneMediatorTargetOutputConnector_type"),
-                        EsbPackage.Literals.CLONE_MEDIATOR_TARGET_OUTPUT_CONNECTOR__SOAP_ACTION, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CloneMediatorTargetOutputConnector_soapAction_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CloneMediatorTargetOutputConnector_soapAction_feature", "_UI_CloneMediatorTargetOutputConnector_type"),
+                 EsbPackage.Literals.CLONE_MEDIATOR_TARGET_OUTPUT_CONNECTOR__SOAP_ACTION,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the To Address feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addToAddressPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_CloneMediatorTargetOutputConnector_toAddress_feature"),
-                        getString("_UI_PropertyDescriptor_description",
-                                "_UI_CloneMediatorTargetOutputConnector_toAddress_feature",
-                                "_UI_CloneMediatorTargetOutputConnector_type"),
-                        EsbPackage.Literals.CLONE_MEDIATOR_TARGET_OUTPUT_CONNECTOR__TO_ADDRESS, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CloneMediatorTargetOutputConnector_toAddress_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CloneMediatorTargetOutputConnector_toAddress_feature", "_UI_CloneMediatorTargetOutputConnector_type"),
+                 EsbPackage.Literals.CLONE_MEDIATOR_TARGET_OUTPUT_CONNECTOR__TO_ADDRESS,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This returns CloneMediatorTargetOutputConnector.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -115,14 +118,14 @@ public class CloneMediatorTargetOutputConnectorItemProvider extends OutputConnec
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((CloneMediatorTargetOutputConnector) object).getSoapAction();
-        return label == null || label.length() == 0 ? getString("_UI_CloneMediatorTargetOutputConnector_type")
-                : getString("_UI_CloneMediatorTargetOutputConnector_type") + " " + label;
+        String label = ((CloneMediatorTargetOutputConnector)object).getSoapAction();
+        return label == null || label.length() == 0 ?
+            getString("_UI_CloneMediatorTargetOutputConnector_type") :
+            getString("_UI_CloneMediatorTargetOutputConnector_type") + " " + label;
     }
 
     /**
@@ -130,7 +133,6 @@ public class CloneMediatorTargetOutputConnectorItemProvider extends OutputConnec
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -138,10 +140,10 @@ public class CloneMediatorTargetOutputConnectorItemProvider extends OutputConnec
         updateChildren(notification);
 
         switch (notification.getFeatureID(CloneMediatorTargetOutputConnector.class)) {
-        case EsbPackage.CLONE_MEDIATOR_TARGET_OUTPUT_CONNECTOR__SOAP_ACTION:
-        case EsbPackage.CLONE_MEDIATOR_TARGET_OUTPUT_CONNECTOR__TO_ADDRESS:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
+            case EsbPackage.CLONE_MEDIATOR_TARGET_OUTPUT_CONNECTOR__SOAP_ACTION:
+            case EsbPackage.CLONE_MEDIATOR_TARGET_OUTPUT_CONNECTOR__TO_ADDRESS:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -151,7 +153,6 @@ public class CloneMediatorTargetOutputConnectorItemProvider extends OutputConnec
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

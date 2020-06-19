@@ -15,10 +15,8 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottleContainer#getOnAcceptContainer <em>On Accept
- * Container</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottleContainer#getOnRejectContainer <em>On Reject
- * Container</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottleContainer#getOnAcceptContainer <em>On Accept Container</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottleContainer#getOnRejectContainer <em>On Reject Container</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getThrottleContainer()
@@ -34,7 +32,6 @@ public interface ThrottleContainer extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>On Accept Container</em>' containment reference.
      * @see #setOnAcceptContainer(ThrottleOnAcceptContainer)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getThrottleContainer_OnAcceptContainer()
@@ -44,11 +41,9 @@ public interface ThrottleContainer extends EsbNode {
     ThrottleOnAcceptContainer getOnAcceptContainer();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottleContainer#getOnAcceptContainer
-     * <em>On Accept Container</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottleContainer#getOnAcceptContainer <em>On Accept Container</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>On Accept Container</em>' containment reference.
      * @see #getOnAcceptContainer()
      * @generated
@@ -63,7 +58,6 @@ public interface ThrottleContainer extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>On Reject Container</em>' containment reference.
      * @see #setOnRejectContainer(ThrottleOnRejectContainer)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getThrottleContainer_OnRejectContainer()
@@ -73,11 +67,9 @@ public interface ThrottleContainer extends EsbNode {
     ThrottleOnRejectContainer getOnRejectContainer();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottleContainer#getOnRejectContainer
-     * <em>On Reject Container</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottleContainer#getOnRejectContainer <em>On Reject Container</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>On Reject Container</em>' containment reference.
      * @see #getOnRejectContainer()
      * @generated

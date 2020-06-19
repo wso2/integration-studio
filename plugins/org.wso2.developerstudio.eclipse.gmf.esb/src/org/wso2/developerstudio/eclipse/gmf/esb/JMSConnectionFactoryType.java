@@ -26,7 +26,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>JMS Connection Factory Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getJMSConnectionFactoryType()
  * @model
  * @generated
@@ -36,7 +35,6 @@ public enum JMSConnectionFactoryType implements Enumerator {
      * The '<em><b>Topic</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #TOPIC_VALUE
      * @generated
      * @ordered
@@ -47,7 +45,6 @@ public enum JMSConnectionFactoryType implements Enumerator {
      * The '<em><b>Queue</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #QUEUE_VALUE
      * @generated
      * @ordered
@@ -62,7 +59,6 @@ public enum JMSConnectionFactoryType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #TOPIC
      * @model name="topic"
      * @generated
@@ -78,7 +74,6 @@ public enum JMSConnectionFactoryType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #QUEUE
      * @model name="queue"
      * @generated
@@ -90,26 +85,25 @@ public enum JMSConnectionFactoryType implements Enumerator {
      * An array of all the '<em><b>JMS Connection Factory Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
-    private static final JMSConnectionFactoryType[] VALUES_ARRAY = new JMSConnectionFactoryType[] { TOPIC, QUEUE, };
+    private static final JMSConnectionFactoryType[] VALUES_ARRAY = new JMSConnectionFactoryType[] {
+            TOPIC,
+            QUEUE,
+        };
 
     /**
      * A public read-only list of all the '<em><b>JMS Connection Factory Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
-    public static final List<JMSConnectionFactoryType> VALUES = Collections
-            .unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<JMSConnectionFactoryType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
     /**
      * Returns the '<em><b>JMS Connection Factory Type</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -128,7 +122,6 @@ public enum JMSConnectionFactoryType implements Enumerator {
      * Returns the '<em><b>JMS Connection Factory Type</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -147,17 +140,14 @@ public enum JMSConnectionFactoryType implements Enumerator {
      * Returns the '<em><b>JMS Connection Factory Type</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static JMSConnectionFactoryType get(int value) {
         switch (value) {
-        case TOPIC_VALUE:
-            return TOPIC;
-        case QUEUE_VALUE:
-            return QUEUE;
+            case TOPIC_VALUE: return TOPIC;
+            case QUEUE_VALUE: return QUEUE;
         }
         return null;
     }
@@ -165,7 +155,6 @@ public enum JMSConnectionFactoryType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final int value;
@@ -173,7 +162,6 @@ public enum JMSConnectionFactoryType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String name;
@@ -181,7 +169,6 @@ public enum JMSConnectionFactoryType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String literal;
@@ -190,7 +177,6 @@ public enum JMSConnectionFactoryType implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private JMSConnectionFactoryType(int value, String name, String literal) {
@@ -202,38 +188,34 @@ public enum JMSConnectionFactoryType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public int getValue() {
-        return value;
+      return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getName() {
-        return name;
+      return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getLiteral() {
-        return literal;
+      return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

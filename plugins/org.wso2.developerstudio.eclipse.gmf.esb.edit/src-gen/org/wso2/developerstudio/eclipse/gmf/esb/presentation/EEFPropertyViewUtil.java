@@ -83,7 +83,7 @@ public class EEFPropertyViewUtil {
     private static final String AVAILABLE_TEMPLATE_LIST_DEFAULT_VALUE = "Select From Templates";
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     public static final String PLUGIN_ID = "org.wso2.developerstudio.eclipse.gmf.esb.edit";
-    public static final String WSO2_ESB_LOCAL_ENTRY_VERSION = "2.1.0";
+    public static final String WSO2_ESB_LOCAL_ENTRY_VERSION="2.1.0";
     private static final String LOCAL_ENTRY_LOCATION = File.separator + "src" + File.separator + "main" + File.separator
             + "synapse-config" + File.separator + "local-entries";
     private static final String XML_EXTENSION = ".xml";
@@ -92,8 +92,7 @@ public class EEFPropertyViewUtil {
     static {
         URL url;
         try {
-            url = new URL(
-                    "platform:/plugin/org.wso2.developerstudio.eclipse.gmf.esb.edit/src-gen/org/wso2/developerstudio/eclipse/gmf/esb/presentation/helpcontent.properties");
+            url = new URL("platform:/plugin/org.wso2.developerstudio.eclipse.gmf.esb.edit/src-gen/org/wso2/developerstudio/eclipse/gmf/esb/presentation/helpcontent.properties");
             InputStream inputStream = url.openConnection().getInputStream();
             properties = new Properties();
             properties.load(inputStream);
@@ -115,10 +114,10 @@ public class EEFPropertyViewUtil {
     }
 
     public void clearTableButtons(Control[] controls) {
-        for (Control control : ((Composite) controls[0]).getChildren()) {
-            if (control instanceof org.eclipse.swt.widgets.Button) {
-                control.setVisible(false);
-            }
+        for (Control control : ((Composite)controls[0]).getChildren()) {
+          if (control instanceof org.eclipse.swt.widgets.Button) {
+              control.setVisible(false);
+          }
         }
     }
 
@@ -172,7 +171,7 @@ public class EEFPropertyViewUtil {
             view.layout(true, true);
         }
     }
-
+    
     public void showEntry(ArrayList<Control> controls, boolean layout) {
         for (Control control : controls) {
             // null check and type check
@@ -201,28 +200,24 @@ public class EEFPropertyViewUtil {
         }
         return tableElements;
     }
-
-    public static void addTableElementsAsList(ArrayList<Control> arrayList, Control[] previousControls,
-            Control[] newControls) {
-        /*
-         * Control [] controlArray = getTableElements(previousControls, newControls);
-         * for(Control control : controlArray) {
-         * arrayList.add(control);
-         * }
-         */
-
-        // Control[] tableElements = new Control[newControls.length - previousControls.length];
+    
+    public static void addTableElementsAsList(ArrayList<Control> arrayList, Control[] previousControls, Control[] newControls) {
+/*        Control [] controlArray = getTableElements(previousControls, newControls);
+        for(Control control : controlArray) {
+            arrayList.add(control);
+        }*/
+        
+        //Control[] tableElements = new Control[newControls.length - previousControls.length];
         for (int i = previousControls.length; i < newControls.length; i++) {
-            // tableElements[i - previousControls.length] = newControls[i];
+            //tableElements[i - previousControls.length] = newControls[i];
             arrayList.add(newControls[i]);
         }
     }
-
+    
     // This method will return a subSection group that can be use to group section inside a eef form
-    public static Composite createSubsectionGroup(FormToolkit widgetFactory, final Composite parent, String name,
-            boolean expanded) {
+    public static Composite createSubsectionGroup(FormToolkit widgetFactory, final Composite parent, String name, boolean expanded) {
         int style = Section.TITLE_BAR | Section.TWISTIE;
-        if (expanded) {
+        if(expanded) {
             style = Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED;
         }
         Section propertiesSection = widgetFactory.createSection(parent, style);
@@ -237,7 +232,8 @@ public class EEFPropertyViewUtil {
         propertiesSection.setClient(subsectionGroup);
         return subsectionGroup;
     }
-
+    
+    
     public static Composite createNewGroup(FormToolkit widgetFactory, final Composite parent, String name) {
         Group propertiesSection = new Group(parent, SWT.FILL);
         propertiesSection.setText(name);
@@ -252,7 +248,7 @@ public class EEFPropertyViewUtil {
         propertiesSection.setLayoutData(propertiesSectionData);
         return propertiesSection;
     }
-
+    
     /**
      * This method will check if a specific key combination matches a defined
      * set of key combinations.
@@ -261,7 +257,7 @@ public class EEFPropertyViewUtil {
      * @return 'True' if matches, 'False' otherwise.
      */
     public static boolean isReservedKeyCombination(KeyEvent e) {
-
+        
         if (e.keyCode == SWT.CR) {
             return true;
         } else if (e.keyCode == SWT.COMMAND) {
@@ -277,25 +273,24 @@ public class EEFPropertyViewUtil {
         } else if (e.stateMask == SWT.COMMAND) {
             return true;
         } else if (e.stateMask == SWT.ALT && e.keyCode != SWT.TAB) {
-            return true;
-        } else if (e.stateMask == SWT.CTRL && e.keyCode != 118) {// not returning true for Ctrl+V
+        	return true;
+        } else if (e.stateMask == SWT.CTRL && e.keyCode != 118) {//not returning true for Ctrl+V
             return true;
         }
-
+        
         return false;
     }
 
     /**
      * This returns help content assigned for each property (in helpContent.properties file)
-     * 
      * @param key property key
      * @return property help content
      */
     public static String getHelpContent(Object key) {
         String helpContent = "";
-        if (key instanceof String) {
-            // replacing :: to - since colon is a reserved char
-            helpContent = ((String) key).replaceAll("::", "-");
+        if(key instanceof String) {
+            //replacing :: to - since colon is a reserved char
+            helpContent = ((String)key).replaceAll("::", "-");
         }
         return properties.getProperty(helpContent);
     }
@@ -343,7 +338,7 @@ public class EEFPropertyViewUtil {
         }
         return str;
     }
-
+    
     public static String getIconPath(String iconName) throws URISyntaxException, IOException {
         Bundle bundle = Platform.getBundle(PLUGIN_ID);
         URL webAppURL = bundle.getEntry(iconName);
@@ -407,24 +402,20 @@ public class EEFPropertyViewUtil {
             e.printStackTrace();
         }
     }
-
     public static String generateSchemaName(IPropertiesEditionComponent propertiesEditionComponent) {
-        CloudConnectorOperationImpl connectorObject = (CloudConnectorOperationImpl) propertiesEditionComponent
-                .getEditingContext().getEObject();
-        String schemaName = connectorObject.getConnectorName().split("connector")[0] + "-"
-                + connectorObject.getOperationName();
+        CloudConnectorOperationImpl connectorObject = (CloudConnectorOperationImpl)propertiesEditionComponent.getEditingContext().getEObject();
+        String schemaName = connectorObject.getConnectorName().split("connector")[0] + "-" + connectorObject.getOperationName();
         return schemaName;
     }
 
-    public static ArrayList<String> getAvailableConnectionEntriesList(List<String> allowedConnectionTypes)
-            throws CoreException {
+    public static ArrayList<String> getAvailableConnectionEntriesList(List<String> allowedConnectionTypes) throws CoreException {
         ArrayList<String> definedTemplates = new ArrayList<String>();
         IFolder localEntriesDir = getLocalEntriesDir();
-        for (IResource resource : localEntriesDir.members()) {
-            if (resource instanceof IFile && ((IFile) resource).getFileExtension().equals("xml")) {
+        for(IResource resource:localEntriesDir.members()) {
+            if (resource instanceof IFile && ((IFile)resource).getFileExtension().equals("xml")) {
                 try {
-                    if (isAllowedConnection(((IFile) resource), allowedConnectionTypes)) {
-                        definedTemplates.add(((IFile) resource).getName().split(XML_EXTENSION)[0]);
+                    if(isAllowedConnection(((IFile)resource), allowedConnectionTypes)) {
+                        definedTemplates.add(((IFile)resource).getName().split(XML_EXTENSION)[0]);
                     }
                 } catch (XPathExpressionException e) {
                     log.error("Connection Local Entry file is not well structured", e);
@@ -438,8 +429,7 @@ public class EEFPropertyViewUtil {
         return definedTemplates;
     }
 
-    public static boolean isAllowedConnection(IFile file, List<String> allowedTypes)
-            throws SAXException, IOException, ParserConfigurationException, XPathExpressionException, CoreException {
+    public static boolean isAllowedConnection(IFile file, List<String> allowedTypes) throws SAXException, IOException, ParserConfigurationException, XPathExpressionException, CoreException {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         factory.setNamespaceAware(true);
         DocumentBuilder builder = factory.newDocumentBuilder();
@@ -449,7 +439,7 @@ public class EEFPropertyViewUtil {
         XPathExpression expr = xpath.compile(CONNECTION_LOCAL_ENTRY_TYPE_XPATH);
         Object result = expr.evaluate(doc, XPathConstants.STRING);
         boolean valid = false;
-        if (allowedTypes.contains(result)) {
+        if(allowedTypes.contains(result)) {
             valid = true;
         }
         return valid;
@@ -468,22 +458,22 @@ public class EEFPropertyViewUtil {
             }
 
             if (editorPart != null) {
-                IEditorInput input = editorPart == null ? null : editorPart.getEditorInput();
-                IPath path = input instanceof FileEditorInput ? ((FileEditorInput) input).getPath() : null;
-                // Do nature validation
-                // String localEntriesPath = ((FileEditorInput)input).getFile().getParent().getParent().getFolder(new
-                // Path(LOCAL_ENTRIES_DIR_NAME)).getLocation().toOSString();
-                localEntriesDir = ((FileEditorInput) input).getFile().getParent().getParent()
-                        .getFolder(new Path(LOCAL_ENTRIES_DIR_NAME));
+                IEditorInput input =
+                        editorPart == null ? null : editorPart.getEditorInput();
+                IPath path = input instanceof FileEditorInput
+                        ? ((FileEditorInput)input).getPath()
+                        : null;
+                        //Do nature validation
+                //String localEntriesPath = ((FileEditorInput)input).getFile().getParent().getParent().getFolder(new Path(LOCAL_ENTRIES_DIR_NAME)).getLocation().toOSString();
+                localEntriesDir = ((FileEditorInput)input).getFile().getParent().getParent().getFolder(new Path(LOCAL_ENTRIES_DIR_NAME));
             }
         }
         return localEntriesDir;
     }
 
-    public static void updateArtifact(HashMap<String, Control> generatedElements, IProject currentProject)
-            throws FactoryConfigurationError, Exception {
-        Text connectionNameText = (Text) generatedElements.get("connectionName");
-        String localEntryName = connectionNameText.getText();
+    public static void updateArtifact(HashMap<String, Control> generatedElements, IProject currentProject) throws FactoryConfigurationError, Exception {
+        Text connectionNameText = (Text)generatedElements.get("connectionName");
+        String localEntryName =  connectionNameText.getText();
         MavenProject mvp = EEFPropertyViewUtil.updatePom(currentProject);
         ESBProjectArtifact esbProjectArtifact = new ESBProjectArtifact();
         esbProjectArtifact.fromFile(currentProject.getFile("artifact.xml").getLocation().toFile());
@@ -493,7 +483,8 @@ public class EEFPropertyViewUtil {
         artifact.setType("synapse/local-entry");
         artifact.setServerRole("EnterpriseServiceBus");
         artifact.setGroupId(mvp.getGroupId());
-        artifact.setFile(LOCAL_ENTRY_LOCATION + File.separator + localEntryName + XML_EXTENSION);
+        artifact.setFile(LOCAL_ENTRY_LOCATION
+                + File.separator + localEntryName + XML_EXTENSION);
         esbProjectArtifact.addESBArtifact(artifact);
         esbProjectArtifact.toFile();
         currentProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());

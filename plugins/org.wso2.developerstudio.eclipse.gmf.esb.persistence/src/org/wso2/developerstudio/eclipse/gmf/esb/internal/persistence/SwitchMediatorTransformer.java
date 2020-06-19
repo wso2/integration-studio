@@ -84,8 +84,8 @@ public class SwitchMediatorTransformer extends AbstractEsbNodeTransformer {
             }
 
             switchMediator.setSource(XPath);
-        } else if (!isForValidation) {
-            // Add default XPath for use synapse serialization engine
+        } else if(!isForValidation) {
+            //Add default XPath for use synapse serialization engine
             switchMediator.setSource(new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION));
         }
 

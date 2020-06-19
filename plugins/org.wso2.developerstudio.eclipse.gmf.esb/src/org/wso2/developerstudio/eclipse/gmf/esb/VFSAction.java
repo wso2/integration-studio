@@ -26,7 +26,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>VFS Action</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getVFSAction()
  * @model
  * @generated
@@ -36,7 +35,6 @@ public enum VFSAction implements Enumerator {
      * The '<em><b>DELETE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #DELETE_VALUE
      * @generated
      * @ordered
@@ -46,17 +44,14 @@ public enum VFSAction implements Enumerator {
      * The '<em><b>MOVE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #MOVE_VALUE
      * @generated
      * @ordered
      */
-    MOVE(1, "MOVE", "MOVE"),
-    /**
+    MOVE(1, "MOVE", "MOVE"), /**
      * The '<em><b>NONE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #NONE_VALUE
      * @generated
      * @ordered
@@ -71,7 +66,6 @@ public enum VFSAction implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #DELETE
      * @model
      * @generated
@@ -87,7 +81,6 @@ public enum VFSAction implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #MOVE
      * @model
      * @generated
@@ -103,7 +96,6 @@ public enum VFSAction implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #NONE
      * @model
      * @generated
@@ -115,16 +107,18 @@ public enum VFSAction implements Enumerator {
      * An array of all the '<em><b>VFS Action</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
-    private static final VFSAction[] VALUES_ARRAY = new VFSAction[] { DELETE, MOVE, NONE, };
+    private static final VFSAction[] VALUES_ARRAY = new VFSAction[] {
+            DELETE,
+            MOVE,
+            NONE,
+        };
 
     /**
      * A public read-only list of all the '<em><b>VFS Action</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public static final List<VFSAction> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -133,7 +127,6 @@ public enum VFSAction implements Enumerator {
      * Returns the '<em><b>VFS Action</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -152,7 +145,6 @@ public enum VFSAction implements Enumerator {
      * Returns the '<em><b>VFS Action</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -171,19 +163,15 @@ public enum VFSAction implements Enumerator {
      * Returns the '<em><b>VFS Action</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static VFSAction get(int value) {
         switch (value) {
-        case DELETE_VALUE:
-            return DELETE;
-        case MOVE_VALUE:
-            return MOVE;
-        case NONE_VALUE:
-            return NONE;
+            case DELETE_VALUE: return DELETE;
+            case MOVE_VALUE: return MOVE;
+            case NONE_VALUE: return NONE;
         }
         return null;
     }
@@ -191,7 +179,6 @@ public enum VFSAction implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final int value;
@@ -199,7 +186,6 @@ public enum VFSAction implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String name;
@@ -207,7 +193,6 @@ public enum VFSAction implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String literal;
@@ -216,7 +201,6 @@ public enum VFSAction implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private VFSAction(int value, String name, String literal) {
@@ -228,38 +212,34 @@ public enum VFSAction implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public int getValue() {
-        return value;
+      return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getName() {
-        return name;
+      return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getLiteral() {
-        return literal;
+      return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

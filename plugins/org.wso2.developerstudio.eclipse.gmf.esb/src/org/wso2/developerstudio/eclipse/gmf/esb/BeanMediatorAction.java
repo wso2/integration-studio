@@ -26,7 +26,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Bean Mediator Action</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getBeanMediatorAction()
  * @model
  * @generated
@@ -36,7 +35,6 @@ public enum BeanMediatorAction implements Enumerator {
      * The '<em><b>CREATE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #CREATE_VALUE
      * @generated
      * @ordered
@@ -47,7 +45,6 @@ public enum BeanMediatorAction implements Enumerator {
      * The '<em><b>REMOVE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #REMOVE_VALUE
      * @generated
      * @ordered
@@ -58,7 +55,6 @@ public enum BeanMediatorAction implements Enumerator {
      * The '<em><b>SET PROPERTY</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #SET_PROPERTY_VALUE
      * @generated
      * @ordered
@@ -69,7 +65,6 @@ public enum BeanMediatorAction implements Enumerator {
      * The '<em><b>GET PROPERTY</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #GET_PROPERTY_VALUE
      * @generated
      * @ordered
@@ -84,7 +79,6 @@ public enum BeanMediatorAction implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #CREATE
      * @model
      * @generated
@@ -100,7 +94,6 @@ public enum BeanMediatorAction implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #REMOVE
      * @model
      * @generated
@@ -116,7 +109,6 @@ public enum BeanMediatorAction implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #SET_PROPERTY
      * @model
      * @generated
@@ -132,7 +124,6 @@ public enum BeanMediatorAction implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #GET_PROPERTY
      * @model
      * @generated
@@ -144,17 +135,19 @@ public enum BeanMediatorAction implements Enumerator {
      * An array of all the '<em><b>Bean Mediator Action</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
-    private static final BeanMediatorAction[] VALUES_ARRAY = new BeanMediatorAction[] { CREATE, REMOVE, SET_PROPERTY,
-            GET_PROPERTY, };
+    private static final BeanMediatorAction[] VALUES_ARRAY = new BeanMediatorAction[] {
+            CREATE,
+            REMOVE,
+            SET_PROPERTY,
+            GET_PROPERTY,
+        };
 
     /**
      * A public read-only list of all the '<em><b>Bean Mediator Action</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public static final List<BeanMediatorAction> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -163,7 +156,6 @@ public enum BeanMediatorAction implements Enumerator {
      * Returns the '<em><b>Bean Mediator Action</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -182,7 +174,6 @@ public enum BeanMediatorAction implements Enumerator {
      * Returns the '<em><b>Bean Mediator Action</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -201,21 +192,16 @@ public enum BeanMediatorAction implements Enumerator {
      * Returns the '<em><b>Bean Mediator Action</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static BeanMediatorAction get(int value) {
         switch (value) {
-        case CREATE_VALUE:
-            return CREATE;
-        case REMOVE_VALUE:
-            return REMOVE;
-        case SET_PROPERTY_VALUE:
-            return SET_PROPERTY;
-        case GET_PROPERTY_VALUE:
-            return GET_PROPERTY;
+            case CREATE_VALUE: return CREATE;
+            case REMOVE_VALUE: return REMOVE;
+            case SET_PROPERTY_VALUE: return SET_PROPERTY;
+            case GET_PROPERTY_VALUE: return GET_PROPERTY;
         }
         return null;
     }
@@ -223,7 +209,6 @@ public enum BeanMediatorAction implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final int value;
@@ -231,7 +216,6 @@ public enum BeanMediatorAction implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String name;
@@ -239,7 +223,6 @@ public enum BeanMediatorAction implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String literal;
@@ -248,7 +231,6 @@ public enum BeanMediatorAction implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private BeanMediatorAction(int value, String name, String literal) {
@@ -260,38 +242,34 @@ public enum BeanMediatorAction implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public int getValue() {
-        return value;
+      return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getName() {
-        return name;
+      return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getLiteral() {
-        return literal;
+      return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

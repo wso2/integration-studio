@@ -38,111 +38,116 @@ import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
  * 
  * 
  */
-public class ProxyServicePolicyPropertiesEditionPartForm extends SectionPropertiesEditingPart
-        implements IFormPropertiesEditionPart, ProxyServicePolicyPropertiesEditionPart {
+public class ProxyServicePolicyPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, ProxyServicePolicyPropertiesEditionPart {
 
-    // Start of user code for policyKey widgets declarations
+	// Start of user code  for policyKey widgets declarations
+	
+	// End of user code
 
-    // End of user code
 
-    /**
-     * For {@link ISection} use only.
-     */
-    public ProxyServicePolicyPropertiesEditionPartForm() {
-        super();
-    }
 
-    /**
-     * Default constructor
-     * 
-     * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-     * 
-     */
-    public ProxyServicePolicyPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
-        super(editionComponent);
-    }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-     *      createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
-     * 
-     */
-    public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-        ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-        Form form = scrolledForm.getForm();
-        view = form.getBody();
-        GridLayout layout = new GridLayout();
-        layout.numColumns = 3;
-        view.setLayout(layout);
-        createControls(widgetFactory, view);
-        return scrolledForm;
-    }
+	/**
+	 * For {@link ISection} use only.
+	 */
+	public ProxyServicePolicyPropertiesEditionPartForm() { super(); }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-     *      createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
-     * 
-     */
-    public void createControls(final FormToolkit widgetFactory, Composite view) {
-        CompositionSequence proxyServicePolicyStep = new BindingCompositionSequence(propertiesEditionComponent);
-        proxyServicePolicyStep.addStep(EsbViewsRepository.ProxyServicePolicy.Properties.class)
-                .addStep(EsbViewsRepository.ProxyServicePolicy.Properties.policyKey);
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
+	 */
+	public ProxyServicePolicyPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
+		super(editionComponent);
+	}
 
-        composer = new PartComposer(proxyServicePolicyStep) {
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * 
+	 */
+	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
+		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
+		Form form = scrolledForm.getForm();
+		view = form.getBody();
+		GridLayout layout = new GridLayout();
+		layout.numColumns = 3;
+		view.setLayout(layout);
+		createControls(widgetFactory, view);
+		return scrolledForm;
+	}
 
-            @Override
-            public Composite addToPart(Composite parent, Object key) {
-                if (key == EsbViewsRepository.ProxyServicePolicy.Properties.class) {
-                    return createPropertiesGroup(widgetFactory, parent);
-                }
-                // Start of user code for policyKey addToPart creation
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+	 * 
+	 */
+	public void createControls(final FormToolkit widgetFactory, Composite view) {
+		CompositionSequence proxyServicePolicyStep = new BindingCompositionSequence(propertiesEditionComponent);
+		proxyServicePolicyStep
+			.addStep(EsbViewsRepository.ProxyServicePolicy.Properties.class)
+			.addStep(EsbViewsRepository.ProxyServicePolicy.Properties.policyKey);
+		
+		
+		composer = new PartComposer(proxyServicePolicyStep) {
 
-                // End of user code
-                return parent;
-            }
-        };
-        composer.compose(view);
-    }
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == EsbViewsRepository.ProxyServicePolicy.Properties.class) {
+					return createPropertiesGroup(widgetFactory, parent);
+				}
+				// Start of user code for policyKey addToPart creation
+				
+				// End of user code
+				return parent;
+			}
+		};
+		composer.compose(view);
+	}
+	/**
+	 * 
+	 */
+	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
+		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+		propertiesSection.setText(EsbMessages.ProxyServicePolicyPropertiesEditionPart_PropertiesGroupLabel);
+		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
+		propertiesSectionData.horizontalSpan = 3;
+		propertiesSection.setLayoutData(propertiesSectionData);
+		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
+		GridLayout propertiesGroupLayout = new GridLayout();
+		propertiesGroupLayout.numColumns = 3;
+		propertiesGroup.setLayout(propertiesGroupLayout);
+		propertiesSection.setClient(propertiesGroup);
+		return propertiesGroup;
+	}
 
-    /**
-     * 
-     */
-    protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
-        Section propertiesSection = widgetFactory.createSection(parent,
-                Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
-        propertiesSection.setText(EsbMessages.ProxyServicePolicyPropertiesEditionPart_PropertiesGroupLabel);
-        GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
-        propertiesSectionData.horizontalSpan = 3;
-        propertiesSection.setLayoutData(propertiesSectionData);
-        Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
-        GridLayout propertiesGroupLayout = new GridLayout();
-        propertiesGroupLayout.numColumns = 3;
-        propertiesGroup.setLayout(propertiesGroupLayout);
-        propertiesSection.setClient(propertiesGroup);
-        return propertiesGroup;
-    }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
-     */
-    public void firePropertiesChanged(IPropertiesEditionEvent event) {
-        // Start of user code for tab synchronization
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+		// Start of user code for tab synchronization
+		
+		// End of user code
+	}
 
-        // End of user code
-    }
 
-    // Start of user code for policyKey specific getters and setters implementation
-    @Override
+
+
+
+
+	// Start of user code for policyKey specific getters and setters implementation
+	@Override
     public void setPolicyKey(RegistryKeyProperty registryKeyProperty) {
         // TODO Auto-generated method stub
-
+        
     }
 
     @Override
@@ -150,20 +155,23 @@ public class ProxyServicePolicyPropertiesEditionPartForm extends SectionProperti
         // TODO Auto-generated method stub
         return null;
     }
-    // End of user code
+	// End of user code
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-     * 
-     */
-    public String getTitle() {
-        return EsbMessages.ProxyServicePolicy_Part_Title;
-    }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
+	 */
+	public String getTitle() {
+		return EsbMessages.ProxyServicePolicy_Part_Title;
+	}
 
-    // Start of user code additional methods
+    
 
-    // End of user code
+	// Start of user code additional methods
+	
+	// End of user code
+
 
 }

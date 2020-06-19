@@ -35,7 +35,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RuleResult;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.RuleResult} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class RuleResultItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
@@ -44,7 +43,6 @@ public class RuleResultItemProvider extends ItemProviderAdapter implements IEdit
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public RuleResultItemProvider(AdapterFactory adapterFactory) {
@@ -55,7 +53,6 @@ public class RuleResultItemProvider extends ItemProviderAdapter implements IEdit
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -77,85 +74,110 @@ public class RuleResultItemProvider extends ItemProviderAdapter implements IEdit
      * This adds a property descriptor for the Result Type feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addResultTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_RuleResult_resultType_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_RuleResult_resultType_feature",
-                                "_UI_RuleResult_type"),
-                        EsbPackage.Literals.RULE_RESULT__RESULT_TYPE, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_RuleResult_resultType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_RuleResult_resultType_feature", "_UI_RuleResult_type"),
+                 EsbPackage.Literals.RULE_RESULT__RESULT_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Result Custom Type feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addResultCustomTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_RuleResult_resultCustomType_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_RuleResult_resultCustomType_feature",
-                                "_UI_RuleResult_type"),
-                        EsbPackage.Literals.RULE_RESULT__RESULT_CUSTOM_TYPE, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_RuleResult_resultCustomType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_RuleResult_resultCustomType_feature", "_UI_RuleResult_type"),
+                 EsbPackage.Literals.RULE_RESULT__RESULT_CUSTOM_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Result Name feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addResultNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_RuleResult_resultName_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_RuleResult_resultName_feature",
-                                "_UI_RuleResult_type"),
-                        EsbPackage.Literals.RULE_RESULT__RESULT_NAME, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_RuleResult_resultName_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_RuleResult_resultName_feature", "_UI_RuleResult_type"),
+                 EsbPackage.Literals.RULE_RESULT__RESULT_NAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Value Type feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addValueTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_RuleResult_valueType_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_RuleResult_valueType_feature",
-                                "_UI_RuleResult_type"),
-                        EsbPackage.Literals.RULE_RESULT__VALUE_TYPE, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_RuleResult_valueType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_RuleResult_valueType_feature", "_UI_RuleResult_type"),
+                 EsbPackage.Literals.RULE_RESULT__VALUE_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Value Literal feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addValueLiteralPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_RuleResult_valueLiteral_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_RuleResult_valueLiteral_feature",
-                                "_UI_RuleResult_type"),
-                        EsbPackage.Literals.RULE_RESULT__VALUE_LITERAL, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_RuleResult_valueLiteral_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_RuleResult_valueLiteral_feature", "_UI_RuleResult_type"),
+                 EsbPackage.Literals.RULE_RESULT__VALUE_LITERAL,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
@@ -164,7 +186,6 @@ public class RuleResultItemProvider extends ItemProviderAdapter implements IEdit
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -181,7 +202,6 @@ public class RuleResultItemProvider extends ItemProviderAdapter implements IEdit
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -197,7 +217,6 @@ public class RuleResultItemProvider extends ItemProviderAdapter implements IEdit
      * This returns RuleResult.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -210,15 +229,15 @@ public class RuleResultItemProvider extends ItemProviderAdapter implements IEdit
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((RuleResult) object).getResultName();
-        return label == null || label.length() == 0 ? getString("_UI_RuleResult_type")
-                : getString("_UI_RuleResult_type") + " " + label;
+        String label = ((RuleResult)object).getResultName();
+        return label == null || label.length() == 0 ?
+            getString("_UI_RuleResult_type") :
+            getString("_UI_RuleResult_type") + " " + label;
     }
 
     /**
@@ -226,7 +245,6 @@ public class RuleResultItemProvider extends ItemProviderAdapter implements IEdit
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -235,17 +253,17 @@ public class RuleResultItemProvider extends ItemProviderAdapter implements IEdit
         updateChildren(notification);
 
         switch (notification.getFeatureID(RuleResult.class)) {
-        case EsbPackage.RULE_RESULT__RESULT_TYPE:
-        case EsbPackage.RULE_RESULT__RESULT_CUSTOM_TYPE:
-        case EsbPackage.RULE_RESULT__RESULT_NAME:
-        case EsbPackage.RULE_RESULT__VALUE_TYPE:
-        case EsbPackage.RULE_RESULT__VALUE_LITERAL:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.RULE_RESULT__VALUE_EXPRESSION:
-        case EsbPackage.RULE_RESULT__VALUE_KEY:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.RULE_RESULT__RESULT_TYPE:
+            case EsbPackage.RULE_RESULT__RESULT_CUSTOM_TYPE:
+            case EsbPackage.RULE_RESULT__RESULT_NAME:
+            case EsbPackage.RULE_RESULT__VALUE_TYPE:
+            case EsbPackage.RULE_RESULT__VALUE_LITERAL:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.RULE_RESULT__VALUE_EXPRESSION:
+            case EsbPackage.RULE_RESULT__VALUE_KEY:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -255,7 +273,6 @@ public class RuleResultItemProvider extends ItemProviderAdapter implements IEdit
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -263,18 +280,21 @@ public class RuleResultItemProvider extends ItemProviderAdapter implements IEdit
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.RULE_RESULT__VALUE_EXPRESSION,
-                EsbFactory.eINSTANCE.createNamespacedProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.RULE_RESULT__VALUE_EXPRESSION,
+                 EsbFactory.eINSTANCE.createNamespacedProperty()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.RULE_RESULT__VALUE_KEY,
-                EsbFactory.eINSTANCE.createRegistryKeyProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.RULE_RESULT__VALUE_KEY,
+                 EsbFactory.eINSTANCE.createRegistryKeyProperty()));
     }
 
     /**
      * Return the resource locator for this item provider's resources.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

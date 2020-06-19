@@ -65,8 +65,8 @@ public class LogMediatorTransformer extends AbstractEsbNodeTransformer {
      * @return org.apache.synapse.mediators.builtin.LogMediator
      * @throws JaxenException
      */
-    public static org.apache.synapse.mediators.builtin.LogMediator createLogMediator(LogMediator visualLog,
-            boolean isForValidation) throws JaxenException {
+    public static org.apache.synapse.mediators.builtin.LogMediator createLogMediator(LogMediator visualLog, boolean isForValidation)
+            throws JaxenException {
         org.apache.synapse.mediators.builtin.LogMediator logMediator = new org.apache.synapse.mediators.builtin.LogMediator();
         setCommonProperties(logMediator, visualLog);
         {
@@ -135,7 +135,8 @@ public class LogMediatorTransformer extends AbstractEsbNodeTransformer {
                             }
 
                             mediatorProperty.setExpression(propertyExpression);
-                        } else {
+                        }
+                        else {
                             SynapsePath propertyExpression = CustomSynapsePathFactory
                                     .getSynapsePath(namespacedExpression.getPropertyValue());
                             if (namespacedExpression.getNamespaces() != null

@@ -151,7 +151,7 @@ public class HTTPEndPointTransformer extends AbstractEndpointTransformer {
         if (httpFormPage.getEndpointCommentList() != null) {
             synapseHttpEP.getCommentsList().addAll(httpFormPage.getEndpointCommentList());
         }
-
+        
         createAdvanceOptions(httpFormPage, synapseHttpEP);
         if (httpFormPage.httpEP_Method.getSelectionIndex() != 0) {
             if (httpFormPage.httpEP_Method.getSelectionIndex() == 1) {

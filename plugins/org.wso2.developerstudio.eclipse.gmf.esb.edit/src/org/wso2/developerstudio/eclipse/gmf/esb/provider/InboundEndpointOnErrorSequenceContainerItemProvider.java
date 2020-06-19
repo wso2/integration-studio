@@ -36,11 +36,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceContainer;
 
 /**
- * This is the item provider adapter for a
- * {@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceContainer} object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceContainer} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class InboundEndpointOnErrorSequenceContainerItemProvider extends EsbNodeItemProvider {
@@ -48,7 +46,6 @@ public class InboundEndpointOnErrorSequenceContainerItemProvider extends EsbNode
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public InboundEndpointOnErrorSequenceContainerItemProvider(AdapterFactory adapterFactory) {
@@ -59,7 +56,6 @@ public class InboundEndpointOnErrorSequenceContainerItemProvider extends EsbNode
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -77,7 +73,6 @@ public class InboundEndpointOnErrorSequenceContainerItemProvider extends EsbNode
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -92,7 +87,6 @@ public class InboundEndpointOnErrorSequenceContainerItemProvider extends EsbNode
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -107,20 +101,17 @@ public class InboundEndpointOnErrorSequenceContainerItemProvider extends EsbNode
      * This returns InboundEndpointOnErrorSequenceContainer.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object,
-                getResourceLocator().getImage("full/obj16/InboundEndpointOnErrorSequenceContainer"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/InboundEndpointOnErrorSequenceContainer"));
     }
 
     /**
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -133,7 +124,6 @@ public class InboundEndpointOnErrorSequenceContainerItemProvider extends EsbNode
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -141,9 +131,9 @@ public class InboundEndpointOnErrorSequenceContainerItemProvider extends EsbNode
         updateChildren(notification);
 
         switch (notification.getFeatureID(InboundEndpointOnErrorSequenceContainer.class)) {
-        case EsbPackage.INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_CONTAINER__MEDIATOR_FLOW:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_CONTAINER__MEDIATOR_FLOW:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -153,16 +143,16 @@ public class InboundEndpointOnErrorSequenceContainerItemProvider extends EsbNode
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(
-                createChildParameter(EsbPackage.Literals.INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_CONTAINER__MEDIATOR_FLOW,
-                        EsbFactory.eINSTANCE.createMediatorFlow()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_CONTAINER__MEDIATOR_FLOW,
+                 EsbFactory.eINSTANCE.createMediatorFlow()));
     }
 
 }

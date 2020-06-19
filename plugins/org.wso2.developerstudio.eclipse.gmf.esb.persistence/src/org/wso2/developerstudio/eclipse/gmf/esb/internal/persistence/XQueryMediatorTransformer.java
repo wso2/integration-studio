@@ -77,8 +77,8 @@ public class XQueryMediatorTransformer extends AbstractEsbNodeTransformer {
         }
     }
 
-    public static org.apache.synapse.mediators.xquery.XQueryMediator createXQueryMediator(EsbNode subject,
-            boolean isForValidation) throws JaxenException {
+    public static org.apache.synapse.mediators.xquery.XQueryMediator createXQueryMediator(EsbNode subject, boolean isForValidation)
+            throws JaxenException {
         Assert.isTrue(subject instanceof XQueryMediator, "Invalid subject.");
         XQueryMediator visualXQuery = (XQueryMediator) subject;
         org.apache.synapse.mediators.xquery.XQueryMediator xqueryMediator = new org.apache.synapse.mediators.xquery.XQueryMediator();
@@ -181,13 +181,11 @@ public class XQueryMediatorTransformer extends AbstractEsbNodeTransformer {
                     NamespacedProperty valueExpression = vishualVariable.getValueExpression();
                     if (valueExpression != null) {
                         SynapseXPath propertyExpression;
-                        if (!isForValidation
-                                && StringUtils.isEmpty(vishualVariable.getValueExpression().getPropertyValue())) {
+                        if (!isForValidation && StringUtils.isEmpty(vishualVariable.getValueExpression().getPropertyValue())) {
                             // Fill the XPath with a default values, so that we can use synapse serializer
                             propertyExpression = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
                         } else {
-                            propertyExpression = new SynapseXPath(
-                                    vishualVariable.getValueExpression().getPropertyValue());
+                            propertyExpression = new SynapseXPath(vishualVariable.getValueExpression().getPropertyValue());
                         }
                         if (valueExpression.getNamespaces() != null) {
                             for (Entry<String, String> entry : valueExpression.getNamespaces().entrySet()) {

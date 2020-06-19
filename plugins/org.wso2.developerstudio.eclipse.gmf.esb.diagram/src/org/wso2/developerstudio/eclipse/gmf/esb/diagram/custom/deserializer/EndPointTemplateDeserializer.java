@@ -100,7 +100,7 @@ public class EndPointTemplateDeserializer extends AbstractEndPointTemplateDeseri
 
         }
         executeAddAllCommand(templateModel.getCommentsList(), template.getCommentsList());
-
+        
         return templateModel;
     }
 

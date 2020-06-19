@@ -22,7 +22,6 @@ public class NamedEndpointOutputConnectorImpl extends OutputConnectorImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected NamedEndpointOutputConnectorImpl() {
@@ -32,7 +31,6 @@ public class NamedEndpointOutputConnectorImpl extends OutputConnectorImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

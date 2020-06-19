@@ -15,11 +15,9 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MergeNode#getFirstInputConnector <em>First Input
- * Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MergeNode#getSecondInputConnector <em>Second Input
- * Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MergeNode#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MergeNode#getFirstInputConnector <em>First Input Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MergeNode#getSecondInputConnector <em>Second Input Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MergeNode#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMergeNode()
@@ -35,7 +33,6 @@ public interface MergeNode extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>First Input Connector</em>' containment reference.
      * @see #setFirstInputConnector(MergeNodeFirstInputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMergeNode_FirstInputConnector()
@@ -45,11 +42,9 @@ public interface MergeNode extends Mediator {
     MergeNodeFirstInputConnector getFirstInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MergeNode#getFirstInputConnector <em>First
-     * Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MergeNode#getFirstInputConnector <em>First Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>First Input Connector</em>' containment reference.
      * @see #getFirstInputConnector()
      * @generated
@@ -64,7 +59,6 @@ public interface MergeNode extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Second Input Connector</em>' containment reference.
      * @see #setSecondInputConnector(MergeNodeSecondInputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMergeNode_SecondInputConnector()
@@ -74,11 +68,9 @@ public interface MergeNode extends Mediator {
     MergeNodeSecondInputConnector getSecondInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MergeNode#getSecondInputConnector
-     * <em>Second Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MergeNode#getSecondInputConnector <em>Second Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Second Input Connector</em>' containment reference.
      * @see #getSecondInputConnector()
      * @generated
@@ -93,7 +85,6 @@ public interface MergeNode extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(MergeNodeOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMergeNode_OutputConnector()
@@ -103,11 +94,9 @@ public interface MergeNode extends Mediator {
     MergeNodeOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MergeNode#getOutputConnector <em>Output
-     * Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MergeNode#getOutputConnector <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
      * @see #getOutputConnector()
      * @generated

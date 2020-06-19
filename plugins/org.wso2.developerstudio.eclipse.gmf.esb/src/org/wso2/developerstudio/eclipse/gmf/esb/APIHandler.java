@@ -26,8 +26,8 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.APIHandler#getClassName <em>Class Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.APIHandler#getProperties <em>Properties</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.APIHandler#getClassName <em>Class Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.APIHandler#getProperties <em>Properties</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAPIHandler()
@@ -43,7 +43,6 @@ public interface APIHandler extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Class Name</em>' attribute.
      * @see #setClassName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAPIHandler_ClassName()
@@ -53,11 +52,9 @@ public interface APIHandler extends EsbNode {
     String getClassName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.APIHandler#getClassName <em>Class
-     * Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.APIHandler#getClassName <em>Class Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Class Name</em>' attribute.
      * @see #getClassName()
      * @generated
@@ -73,7 +70,6 @@ public interface APIHandler extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Properties</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAPIHandler_Properties()
      * @model containment="true"

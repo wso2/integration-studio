@@ -22,7 +22,6 @@ public class MergeNodeSecondInputConnectorImpl extends InputConnectorImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected MergeNodeSecondInputConnectorImpl() {
@@ -32,7 +31,6 @@ public class MergeNodeSecondInputConnectorImpl extends InputConnectorImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

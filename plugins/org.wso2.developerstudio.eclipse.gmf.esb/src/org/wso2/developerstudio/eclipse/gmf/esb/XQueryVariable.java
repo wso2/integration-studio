@@ -17,12 +17,12 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariable#getVariableName <em>Variable Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariable#getVariableType <em>Variable Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariable#getValueType <em>Value Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariable#getValueLiteral <em>Value Literal</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariable#getValueExpression <em>Value Expression</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariable#getValueKey <em>Value Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariable#getVariableName <em>Variable Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariable#getVariableType <em>Variable Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariable#getValueType <em>Value Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariable#getValueLiteral <em>Value Literal</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariable#getValueExpression <em>Value Expression</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariable#getValueKey <em>Value Key</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getXQueryVariable()
@@ -39,7 +39,6 @@ public interface XQueryVariable extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Variable Name</em>' attribute.
      * @see #setVariableName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getXQueryVariable_VariableName()
@@ -49,11 +48,9 @@ public interface XQueryVariable extends EObject {
     String getVariableName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariable#getVariableName
-     * <em>Variable Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariable#getVariableName <em>Variable Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Variable Name</em>' attribute.
      * @see #getVariableName()
      * @generated
@@ -70,7 +67,6 @@ public interface XQueryVariable extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Variable Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariableType
      * @see #setVariableType(XQueryVariableType)
@@ -81,11 +77,9 @@ public interface XQueryVariable extends EObject {
     XQueryVariableType getVariableType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariable#getVariableType
-     * <em>Variable Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariable#getVariableType <em>Variable Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Variable Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariableType
      * @see #getVariableType()
@@ -103,7 +97,6 @@ public interface XQueryVariable extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Value Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariableValueType
      * @see #setValueType(XQueryVariableValueType)
@@ -114,11 +107,9 @@ public interface XQueryVariable extends EObject {
     XQueryVariableValueType getValueType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariable#getValueType <em>Value
-     * Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariable#getValueType <em>Value Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Value Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariableValueType
      * @see #getValueType()
@@ -135,7 +126,6 @@ public interface XQueryVariable extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Value Literal</em>' attribute.
      * @see #setValueLiteral(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getXQueryVariable_ValueLiteral()
@@ -145,11 +135,9 @@ public interface XQueryVariable extends EObject {
     String getValueLiteral();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariable#getValueLiteral <em>Value
-     * Literal</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariable#getValueLiteral <em>Value Literal</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Value Literal</em>' attribute.
      * @see #getValueLiteral()
      * @generated
@@ -164,7 +152,6 @@ public interface XQueryVariable extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Value Expression</em>' containment reference.
      * @see #setValueExpression(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getXQueryVariable_ValueExpression()
@@ -174,11 +161,9 @@ public interface XQueryVariable extends EObject {
     NamespacedProperty getValueExpression();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariable#getValueExpression
-     * <em>Value Expression</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariable#getValueExpression <em>Value Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Value Expression</em>' containment reference.
      * @see #getValueExpression()
      * @generated
@@ -193,7 +178,6 @@ public interface XQueryVariable extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Value Key</em>' containment reference.
      * @see #setValueKey(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getXQueryVariable_ValueKey()
@@ -203,11 +187,9 @@ public interface XQueryVariable extends EObject {
     RegistryKeyProperty getValueKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariable#getValueKey <em>Value
-     * Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariable#getValueKey <em>Value Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Value Key</em>' containment reference.
      * @see #getValueKey()
      * @generated

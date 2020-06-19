@@ -35,11 +35,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.TemplateEndpointParameter;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.TemplateEndpointParameter}
- * object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.TemplateEndpointParameter} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class TemplateEndpointParameterItemProvider extends EsbNodeItemProvider {
@@ -47,7 +45,6 @@ public class TemplateEndpointParameterItemProvider extends EsbNodeItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public TemplateEndpointParameterItemProvider(AdapterFactory adapterFactory) {
@@ -58,7 +55,6 @@ public class TemplateEndpointParameterItemProvider extends EsbNodeItemProvider {
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -76,41 +72,50 @@ public class TemplateEndpointParameterItemProvider extends EsbNodeItemProvider {
      * This adds a property descriptor for the Parameter Name feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addParameterNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TemplateEndpointParameter_parameterName_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_TemplateEndpointParameter_parameterName_feature",
-                        "_UI_TemplateEndpointParameter_type"),
-                EsbPackage.Literals.TEMPLATE_ENDPOINT_PARAMETER__PARAMETER_NAME, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_TemplateEndpointParameter_parameterName_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_TemplateEndpointParameter_parameterName_feature", "_UI_TemplateEndpointParameter_type"),
+                 EsbPackage.Literals.TEMPLATE_ENDPOINT_PARAMETER__PARAMETER_NAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Parameter Value feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addParameterValuePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TemplateEndpointParameter_parameterValue_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_TemplateEndpointParameter_parameterValue_feature",
-                        "_UI_TemplateEndpointParameter_type"),
-                EsbPackage.Literals.TEMPLATE_ENDPOINT_PARAMETER__PARAMETER_VALUE, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_TemplateEndpointParameter_parameterValue_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_TemplateEndpointParameter_parameterValue_feature", "_UI_TemplateEndpointParameter_type"),
+                 EsbPackage.Literals.TEMPLATE_ENDPOINT_PARAMETER__PARAMETER_VALUE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This returns TemplateEndpointParameter.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -122,14 +127,14 @@ public class TemplateEndpointParameterItemProvider extends EsbNodeItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((TemplateEndpointParameter) object).getParameterName();
-        return label == null || label.length() == 0 ? getString("_UI_TemplateEndpointParameter_type")
-                : getString("_UI_TemplateEndpointParameter_type") + " " + label;
+        String label = ((TemplateEndpointParameter)object).getParameterName();
+        return label == null || label.length() == 0 ?
+            getString("_UI_TemplateEndpointParameter_type") :
+            getString("_UI_TemplateEndpointParameter_type") + " " + label;
     }
 
     /**
@@ -137,7 +142,6 @@ public class TemplateEndpointParameterItemProvider extends EsbNodeItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -145,10 +149,10 @@ public class TemplateEndpointParameterItemProvider extends EsbNodeItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(TemplateEndpointParameter.class)) {
-        case EsbPackage.TEMPLATE_ENDPOINT_PARAMETER__PARAMETER_NAME:
-        case EsbPackage.TEMPLATE_ENDPOINT_PARAMETER__PARAMETER_VALUE:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
+            case EsbPackage.TEMPLATE_ENDPOINT_PARAMETER__PARAMETER_NAME:
+            case EsbPackage.TEMPLATE_ENDPOINT_PARAMETER__PARAMETER_VALUE:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -158,7 +162,6 @@ public class TemplateEndpointParameterItemProvider extends EsbNodeItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

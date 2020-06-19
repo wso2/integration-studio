@@ -62,12 +62,9 @@ public class SynapseAPIItemSemanticEditPolicy extends EsbBaseItemSemanticEditPol
                     switch (EsbVisualIDRegistry.getVisualID(cnode)) {
                     case APIResourceEditPart.VISUAL_ID:
                         cmd.add(new DestroyElementCommand(
-                                new DestroyElementRequest(getEditingDomain(), cnode.getElement(), false))); // directlyOwned:
-                                                                                                            // true
-                        // don't need explicit deletion of cnode as parent's view deletion would clean child views as
-                        // well
-                        // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(),
-                        // cnode));
+                                new DestroyElementRequest(getEditingDomain(), cnode.getElement(), false))); // directlyOwned: true
+                        // don't need explicit deletion of cnode as parent's view deletion would clean child views as well 
+                        // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
                         break;
                     }
                 }

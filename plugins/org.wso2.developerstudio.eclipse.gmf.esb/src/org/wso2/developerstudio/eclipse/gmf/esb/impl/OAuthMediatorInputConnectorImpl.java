@@ -22,7 +22,6 @@ public class OAuthMediatorInputConnectorImpl extends InputConnectorImpl implemen
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected OAuthMediatorInputConnectorImpl() {
@@ -32,7 +31,6 @@ public class OAuthMediatorInputConnectorImpl extends InputConnectorImpl implemen
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

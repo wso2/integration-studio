@@ -17,7 +17,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>End Point Attachment Optimization</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEndPointAttachmentOptimization()
  * @model
  * @generated
@@ -27,7 +26,6 @@ public enum EndPointAttachmentOptimization implements Enumerator {
      * The '<em><b>LEAVE AS IS</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #LEAVE_AS_IS_VALUE
      * @generated
      * @ordered
@@ -38,7 +36,6 @@ public enum EndPointAttachmentOptimization implements Enumerator {
      * The '<em><b>MTOM</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #MTOM_VALUE
      * @generated
      * @ordered
@@ -49,7 +46,6 @@ public enum EndPointAttachmentOptimization implements Enumerator {
      * The '<em><b>SWA</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #SWA_VALUE
      * @generated
      * @ordered
@@ -64,7 +60,6 @@ public enum EndPointAttachmentOptimization implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #LEAVE_AS_IS
      * @model
      * @generated
@@ -80,7 +75,6 @@ public enum EndPointAttachmentOptimization implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #MTOM
      * @model literal="mtom"
      * @generated
@@ -96,7 +90,6 @@ public enum EndPointAttachmentOptimization implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #SWA
      * @model literal="swa"
      * @generated
@@ -108,27 +101,26 @@ public enum EndPointAttachmentOptimization implements Enumerator {
      * An array of all the '<em><b>End Point Attachment Optimization</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private static final EndPointAttachmentOptimization[] VALUES_ARRAY = new EndPointAttachmentOptimization[] {
-            LEAVE_AS_IS, MTOM, SWA, };
+            LEAVE_AS_IS,
+            MTOM,
+            SWA,
+        };
 
     /**
      * A public read-only list of all the '<em><b>End Point Attachment Optimization</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
-    public static final List<EndPointAttachmentOptimization> VALUES = Collections
-            .unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<EndPointAttachmentOptimization> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
     /**
      * Returns the '<em><b>End Point Attachment Optimization</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -147,7 +139,6 @@ public enum EndPointAttachmentOptimization implements Enumerator {
      * Returns the '<em><b>End Point Attachment Optimization</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -166,19 +157,15 @@ public enum EndPointAttachmentOptimization implements Enumerator {
      * Returns the '<em><b>End Point Attachment Optimization</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static EndPointAttachmentOptimization get(int value) {
         switch (value) {
-        case LEAVE_AS_IS_VALUE:
-            return LEAVE_AS_IS;
-        case MTOM_VALUE:
-            return MTOM;
-        case SWA_VALUE:
-            return SWA;
+            case LEAVE_AS_IS_VALUE: return LEAVE_AS_IS;
+            case MTOM_VALUE: return MTOM;
+            case SWA_VALUE: return SWA;
         }
         return null;
     }
@@ -186,7 +173,6 @@ public enum EndPointAttachmentOptimization implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final int value;
@@ -194,7 +180,6 @@ public enum EndPointAttachmentOptimization implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String name;
@@ -202,7 +187,6 @@ public enum EndPointAttachmentOptimization implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String literal;
@@ -211,7 +195,6 @@ public enum EndPointAttachmentOptimization implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private EndPointAttachmentOptimization(int value, String name, String literal) {
@@ -223,38 +206,34 @@ public enum EndPointAttachmentOptimization implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public int getValue() {
-        return value;
+      return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getName() {
-        return name;
+      return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getLiteral() {
-        return literal;
+      return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

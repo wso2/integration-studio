@@ -23,9 +23,9 @@ import org.eclipse.osgi.util.NLS;
 public class Constants extends NLS {
 
     private static final String BUNDLE_NAME = "org.wso2.developerstudio.eclipse.gmf.esb.constants"; //$NON-NLS-1$
-
+    
     public static String EMPTY_TEXT;
-
+    
     // DB related constants
     public static String TXT_EMPTY;
     public static String TXT_DATABASE_DRIVER_MYSQL;
@@ -45,7 +45,7 @@ public class Constants extends NLS {
     public static String TXT_DATABASE_TYPE_MSSQL;
     public static String TXT_DATABASE_TYPE_POSTGRESQL;
     public static String TXT_DATABASE_TYPE_OTHER;
-
+    
     static {
         // initializing resource bundle
         NLS.initializeMessages(BUNDLE_NAME, Constants.class);
@@ -54,5 +54,5 @@ public class Constants extends NLS {
     private Constants() {
 
     }
-
+    
 }

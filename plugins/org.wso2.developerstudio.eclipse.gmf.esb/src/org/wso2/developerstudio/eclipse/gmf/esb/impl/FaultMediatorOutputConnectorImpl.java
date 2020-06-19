@@ -22,7 +22,6 @@ public class FaultMediatorOutputConnectorImpl extends OutputConnectorImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected FaultMediatorOutputConnectorImpl() {
@@ -32,7 +31,6 @@ public class FaultMediatorOutputConnectorImpl extends OutputConnectorImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

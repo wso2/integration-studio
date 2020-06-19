@@ -224,7 +224,8 @@ public class RecipientListEndPointTransformer extends AbstractEndpointTransforme
                     }
 
                     String endpointName = (String) model.getName();
-                    IPath location = new Path("src/main/synapse-config/endpoints" + "/" + endpointName + ".xml");
+                    IPath location = new Path(
+                            "src/main/synapse-config/endpoints" + "/" + endpointName + ".xml");
                     IFile file = activeProject.getFile(location);
 
                     if (file.exists()) {
@@ -233,8 +234,8 @@ public class RecipientListEndPointTransformer extends AbstractEndpointTransforme
                     }
                     Properties properties = new Properties();
                     properties.put(WSDLEndpointFactory.SKIP_WSDL_PARSING, "true");
-                    // recipientList = (RecipientListEndpoint) EndpointFactory.getEndpointFromElement(element, false,
-                    // properties);
+//                    recipientList = (RecipientListEndpoint) EndpointFactory.getEndpointFromElement(element, false,
+//                            properties);
 
                 }
             } catch (Exception e) {
@@ -246,7 +247,7 @@ public class RecipientListEndPointTransformer extends AbstractEndpointTransforme
         saveProperties(model, recipientList);
         return recipientList;
     }
-
+    
     public SynapseArtifact create(RecipientListEndpointFormPage formPage) throws NumberFormatException, JaxenException {
 
         RecipientListEndpoint synapseRecipientListEP = new RecipientListEndpoint();

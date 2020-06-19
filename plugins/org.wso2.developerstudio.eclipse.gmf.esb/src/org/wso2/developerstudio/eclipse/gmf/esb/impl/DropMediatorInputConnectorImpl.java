@@ -22,7 +22,6 @@ public class DropMediatorInputConnectorImpl extends InputConnectorImpl implement
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected DropMediatorInputConnectorImpl() {
@@ -32,7 +31,6 @@ public class DropMediatorInputConnectorImpl extends InputConnectorImpl implement
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

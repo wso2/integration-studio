@@ -390,7 +390,7 @@ public class EJBMediatorEditPart extends FixedSizedAbstractMediator {
         }
         super.notifyChanged(notification);
     }
-
+    
     /**
      * @generated
      */

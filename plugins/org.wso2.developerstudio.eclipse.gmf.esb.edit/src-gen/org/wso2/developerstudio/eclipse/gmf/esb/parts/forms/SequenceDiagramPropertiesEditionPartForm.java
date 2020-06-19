@@ -38,110 +38,115 @@ import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
  * 
  * 
  */
-public class SequenceDiagramPropertiesEditionPartForm extends SectionPropertiesEditingPart
-        implements IFormPropertiesEditionPart, SequenceDiagramPropertiesEditionPart {
+public class SequenceDiagramPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, SequenceDiagramPropertiesEditionPart {
 
-    /**
-     * For {@link ISection} use only.
-     */
-    public SequenceDiagramPropertiesEditionPartForm() {
-        super();
-    }
 
-    /**
-     * Default constructor
-     * 
-     * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-     * 
-     */
-    public SequenceDiagramPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
-        super(editionComponent);
-    }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-     *      createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
-     * 
-     */
-    public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-        ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-        Form form = scrolledForm.getForm();
-        view = form.getBody();
-        GridLayout layout = new GridLayout();
-        layout.numColumns = 3;
-        view.setLayout(layout);
-        createControls(widgetFactory, view);
-        return scrolledForm;
-    }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-     *      createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
-     * 
-     */
-    public void createControls(final FormToolkit widgetFactory, Composite view) {
-        CompositionSequence sequenceDiagramStep = new BindingCompositionSequence(propertiesEditionComponent);
-        sequenceDiagramStep.addStep(EsbViewsRepository.SequenceDiagram.Properties.class);
+	/**
+	 * For {@link ISection} use only.
+	 */
+	public SequenceDiagramPropertiesEditionPartForm() { super(); }
 
-        composer = new PartComposer(sequenceDiagramStep) {
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
+	 */
+	public SequenceDiagramPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
+		super(editionComponent);
+	}
 
-            @Override
-            public Composite addToPart(Composite parent, Object key) {
-                if (key == EsbViewsRepository.SequenceDiagram.Properties.class) {
-                    return createPropertiesGroup(widgetFactory, parent);
-                }
-                return parent;
-            }
-        };
-        composer.compose(view);
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * 
+	 */
+	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
+		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
+		Form form = scrolledForm.getForm();
+		view = form.getBody();
+		GridLayout layout = new GridLayout();
+		layout.numColumns = 3;
+		view.setLayout(layout);
+		createControls(widgetFactory, view);
+		return scrolledForm;
+	}
 
-    /**
-     * 
-     */
-    protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
-        Section propertiesSection = widgetFactory.createSection(parent,
-                Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
-        propertiesSection.setText(EsbMessages.SequenceDiagramPropertiesEditionPart_PropertiesGroupLabel);
-        GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
-        propertiesSectionData.horizontalSpan = 3;
-        propertiesSection.setLayoutData(propertiesSectionData);
-        Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
-        GridLayout propertiesGroupLayout = new GridLayout();
-        propertiesGroupLayout.numColumns = 3;
-        propertiesGroup.setLayout(propertiesGroupLayout);
-        propertiesSection.setClient(propertiesGroup);
-        return propertiesGroup;
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+	 * 
+	 */
+	public void createControls(final FormToolkit widgetFactory, Composite view) {
+		CompositionSequence sequenceDiagramStep = new BindingCompositionSequence(propertiesEditionComponent);
+		sequenceDiagramStep
+			.addStep(EsbViewsRepository.SequenceDiagram.Properties.class);
+		
+		composer = new PartComposer(sequenceDiagramStep) {
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
-     */
-    public void firePropertiesChanged(IPropertiesEditionEvent event) {
-        // Start of user code for tab synchronization
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == EsbViewsRepository.SequenceDiagram.Properties.class) {
+					return createPropertiesGroup(widgetFactory, parent);
+				}
+				return parent;
+			}
+		};
+		composer.compose(view);
+	}
+	/**
+	 * 
+	 */
+	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
+		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+		propertiesSection.setText(EsbMessages.SequenceDiagramPropertiesEditionPart_PropertiesGroupLabel);
+		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
+		propertiesSectionData.horizontalSpan = 3;
+		propertiesSection.setLayoutData(propertiesSectionData);
+		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
+		GridLayout propertiesGroupLayout = new GridLayout();
+		propertiesGroupLayout.numColumns = 3;
+		propertiesGroup.setLayout(propertiesGroupLayout);
+		propertiesSection.setClient(propertiesGroup);
+		return propertiesGroup;
+	}
 
-        // End of user code
-    }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-     * 
-     */
-    public String getTitle() {
-        return EsbMessages.SequenceDiagram_Part_Title;
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+		// Start of user code for tab synchronization
+		
+		// End of user code
+	}
 
-    // Start of user code additional methods
 
-    // End of user code
+
+
+
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
+	 */
+	public String getTitle() {
+		return EsbMessages.SequenceDiagram_Part_Title;
+	}
+
+	// Start of user code additional methods
+	
+	// End of user code
+
 
 }

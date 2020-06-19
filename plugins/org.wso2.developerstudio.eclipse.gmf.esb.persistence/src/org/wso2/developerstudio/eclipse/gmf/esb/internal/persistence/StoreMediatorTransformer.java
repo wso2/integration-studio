@@ -62,8 +62,8 @@ public class StoreMediatorTransformer extends AbstractEsbNodeTransformer {
         }
     }
 
-    public static org.apache.synapse.mediators.store.MessageStoreMediator createStoreMediator(EsbNode subject,
-            boolean isForValidation) throws JaxenException {
+    public static org.apache.synapse.mediators.store.MessageStoreMediator createStoreMediator(EsbNode subject, boolean isForValidation)
+            throws JaxenException {
         Assert.isTrue(subject instanceof StoreMediator, "Invalid subject.");
         StoreMediator visualStore = (StoreMediator) subject;
         org.apache.synapse.mediators.store.MessageStoreMediator storeMediator = new org.apache.synapse.mediators.store.MessageStoreMediator();

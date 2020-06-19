@@ -34,7 +34,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ValidateResource;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateResource} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class ValidateResourceItemProvider extends AbstractLocationKeyResourceItemProvider {
@@ -42,7 +41,6 @@ public class ValidateResourceItemProvider extends AbstractLocationKeyResourceIte
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public ValidateResourceItemProvider(AdapterFactory adapterFactory) {
@@ -53,7 +51,6 @@ public class ValidateResourceItemProvider extends AbstractLocationKeyResourceIte
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -69,7 +66,6 @@ public class ValidateResourceItemProvider extends AbstractLocationKeyResourceIte
      * This returns ValidateResource.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -81,14 +77,14 @@ public class ValidateResourceItemProvider extends AbstractLocationKeyResourceIte
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((ValidateResource) object).getLocation();
-        return label == null || label.length() == 0 ? getString("_UI_ValidateResource_type")
-                : getString("_UI_ValidateResource_type") + " " + label;
+        String label = ((ValidateResource)object).getLocation();
+        return label == null || label.length() == 0 ?
+            getString("_UI_ValidateResource_type") :
+            getString("_UI_ValidateResource_type") + " " + label;
     }
 
     /**
@@ -96,7 +92,6 @@ public class ValidateResourceItemProvider extends AbstractLocationKeyResourceIte
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -110,7 +105,6 @@ public class ValidateResourceItemProvider extends AbstractLocationKeyResourceIte
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

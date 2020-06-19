@@ -14,6 +14,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSet
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 
+
 // End of user code
 
 /**
@@ -22,180 +23,179 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
  */
 public interface PayloadFactoryMediatorPropertiesEditionPart {
 
-    /**
-     * @return the payloadFormat
-     * 
-     */
-    public Enumerator getPayloadFormat();
+	/**
+	 * @return the payloadFormat
+	 * 
+	 */
+	public Enumerator getPayloadFormat();
 
-    /**
-     * Init the payloadFormat
-     * 
-     * @param input the viewer input
-     * @param current the current value
-     */
-    public void initPayloadFormat(Object input, Enumerator current);
+	/**
+	 * Init the payloadFormat
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initPayloadFormat(Object input, Enumerator current);
 
-    /**
-     * Defines a new payloadFormat
-     * 
-     * @param newValue the new payloadFormat to set
-     * 
-     */
-    public void setPayloadFormat(Enumerator newValue);
+	/**
+	 * Defines a new payloadFormat
+	 * @param newValue the new payloadFormat to set
+	 * 
+	 */
+	public void setPayloadFormat(Enumerator newValue);
 
-    /**
-     * @return the payload
-     * 
-     */
-    public String getPayload();
 
-    /**
-     * Defines a new payload
-     * 
-     * @param newValue the new payload to set
-     * 
-     */
-    public void setPayload(String newValue);
+	/**
+	 * @return the payload
+	 * 
+	 */
+	public String getPayload();
 
-    /**
-     * Init the args
-     * 
-     * @param current the current value
-     * @param containgFeature the feature where to navigate if necessary
-     * @param feature the feature to manage
-     */
-    public void initArgs(ReferencesTableSettings settings);
+	/**
+	 * Defines a new payload
+	 * @param newValue the new payload to set
+	 * 
+	 */
+	public void setPayload(String newValue);
 
-    /**
-     * Update the args
-     * 
-     * @param newValue the args to update
-     * 
-     */
-    public void updateArgs();
 
-    /**
-     * Adds the given filter to the args edition editor.
-     * 
-     * @param filter
-     *            a viewer filter
-     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
-     */
-    public void addFilterToArgs(ViewerFilter filter);
 
-    /**
-     * Adds the given filter to the args edition editor.
-     * 
-     * @param filter
-     *            a viewer filter
-     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
-     */
-    public void addBusinessFilterToArgs(ViewerFilter filter);
 
-    /**
-     * @return true if the given element is contained inside the args table
-     * 
-     */
-    public boolean isContainedInArgsTable(EObject element);
+	/**
+	 * Init the args
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initArgs(ReferencesTableSettings settings);
 
-    /**
-     * @return the mediaType
-     * 
-     */
-    public Enumerator getMediaType();
+	/**
+	 * Update the args
+	 * @param newValue the args to update
+	 * 
+	 */
+	public void updateArgs();
 
-    /**
-     * Init the mediaType
-     * 
-     * @param input the viewer input
-     * @param current the current value
-     */
-    public void initMediaType(Object input, Enumerator current);
+	/**
+	 * Adds the given filter to the args edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToArgs(ViewerFilter filter);
 
-    /**
-     * Defines a new mediaType
-     * 
-     * @param newValue the new mediaType to set
-     * 
-     */
-    public void setMediaType(Enumerator newValue);
+	/**
+	 * Adds the given filter to the args edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToArgs(ViewerFilter filter);
 
-    /**
-     * @return the description
-     * 
-     */
-    public String getDescription();
+	/**
+	 * @return true if the given element is contained inside the args table
+	 * 
+	 */
+	public boolean isContainedInArgsTable(EObject element);
 
-    /**
-     * Defines a new description
-     * 
-     * @param newValue the new description to set
-     * 
-     */
-    public void setDescription(String newValue);
 
-    /**
-     * @return the commentsList
-     * 
-     */
-    public EList getCommentsList();
+	/**
+	 * @return the mediaType
+	 * 
+	 */
+	public Enumerator getMediaType();
 
-    /**
-     * Defines a new commentsList
-     * 
-     * @param newValue the new commentsList to set
-     * 
-     */
-    public void setCommentsList(EList newValue);
+	/**
+	 * Init the mediaType
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initMediaType(Object input, Enumerator current);
 
-    /**
-     * Add a value to the commentsList multivalued attribute.
-     * 
-     * @param newValue the value to add
-     */
-    public void addToCommentsList(Object newValue);
+	/**
+	 * Defines a new mediaType
+	 * @param newValue the new mediaType to set
+	 * 
+	 */
+	public void setMediaType(Enumerator newValue);
 
-    /**
-     * Remove a value to the commentsList multivalued attribute.
-     * 
-     * @param newValue the value to remove
-     */
-    public void removeToCommentsList(Object newValue);
 
-    /**
-     * @return the Reverse
-     * 
-     */
-    public Boolean getReverse();
+	/**
+	 * @return the description
+	 * 
+	 */
+	public String getDescription();
 
-    /**
-     * Defines a new Reverse
-     * 
-     * @param newValue the new Reverse to set
-     * 
-     */
-    public void setReverse(Boolean newValue);
+	/**
+	 * Defines a new description
+	 * @param newValue the new description to set
+	 * 
+	 */
+	public void setDescription(String newValue);
 
-    // Start of user code for payloadKey specific getters and setters declaration
-    public void setPayloadKey(RegistryKeyProperty registryKeyProperty);
 
-    public RegistryKeyProperty getPayloadKey();
+	/**
+	 * @return the commentsList
+	 * 
+	 */
+	public EList getCommentsList();
 
-    // End of user code
+	/**
+	 * Defines a new commentsList
+	 * @param newValue the new commentsList to set
+	 * 
+	 */
+	public void setCommentsList(EList newValue);
 
-    /**
-     * Returns the internationalized title text.
-     * 
-     * @return the internationalized title text.
-     * 
-     */
-    public String getTitle();
+	/**
+	 * Add a value to the commentsList multivalued attribute.
+	 * @param newValue the value to add
+	 */
+	public void addToCommentsList(Object newValue);
 
-    // Start of user code for additional methods
+	/**
+	 * Remove a value to the commentsList multivalued attribute.
+	 * @param newValue the value to remove
+	 */
+	public void removeToCommentsList(Object newValue);
 
-    // End of user code
+
+	/**
+	 * @return the Reverse
+	 * 
+	 */
+	public Boolean getReverse();
+
+	/**
+	 * Defines a new Reverse
+	 * @param newValue the new Reverse to set
+	 * 
+	 */
+	public void setReverse(Boolean newValue);
+
+
+
+
+	// Start of user code for payloadKey specific getters and setters declaration
+	public void setPayloadKey(RegistryKeyProperty registryKeyProperty);
+	
+	public RegistryKeyProperty getPayloadKey();
+	
+	// End of user code
+
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 * 
+	 */
+	public String getTitle();
+
+	// Start of user code for additional methods
+	
+	// End of user code
 
 }

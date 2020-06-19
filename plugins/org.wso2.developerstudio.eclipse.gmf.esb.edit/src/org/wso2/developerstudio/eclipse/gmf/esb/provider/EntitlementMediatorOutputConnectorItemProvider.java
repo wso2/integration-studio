@@ -20,11 +20,9 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 /**
- * This is the item provider adapter for a
- * {@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediatorOutputConnector} object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediatorOutputConnector} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class EntitlementMediatorOutputConnectorItemProvider extends OutputConnectorItemProvider {
@@ -32,7 +30,6 @@ public class EntitlementMediatorOutputConnectorItemProvider extends OutputConnec
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EntitlementMediatorOutputConnectorItemProvider(AdapterFactory adapterFactory) {
@@ -43,7 +40,6 @@ public class EntitlementMediatorOutputConnectorItemProvider extends OutputConnec
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -60,7 +56,6 @@ public class EntitlementMediatorOutputConnectorItemProvider extends OutputConnec
      * This returns EntitlementMediatorOutputConnector.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -73,7 +68,6 @@ public class EntitlementMediatorOutputConnectorItemProvider extends OutputConnec
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -87,7 +81,6 @@ public class EntitlementMediatorOutputConnectorItemProvider extends OutputConnec
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -102,7 +95,6 @@ public class EntitlementMediatorOutputConnectorItemProvider extends OutputConnec
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

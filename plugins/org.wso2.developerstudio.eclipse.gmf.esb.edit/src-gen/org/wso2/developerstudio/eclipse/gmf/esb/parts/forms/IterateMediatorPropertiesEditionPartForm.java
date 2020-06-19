@@ -1211,13 +1211,13 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
 
             }
         });
-
+        
         iterateExpressionText.addKeyListener(new KeyListener() {
-
+            
             @Override
             public void keyPressed(KeyEvent e) {
             }
-
+            
             @Override
             public void keyReleased(KeyEvent e) {
                 if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
@@ -1227,11 +1227,11 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
                     iterateExpressionText.setText(iterateExpression.getPropertyValue());
                     propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
                             IterateMediatorPropertiesEditionPartForm.this,
-                            EsbViewsRepository.IterateMediator.Properties.iterateExpression,
-                            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getIterateExpression()));
+                            EsbViewsRepository.IterateMediator.Properties.iterateExpression, PropertiesEditionEvent.COMMIT,
+                            PropertiesEditionEvent.SET, null, getIterateExpression()));
                 }
             }
-
+            
         });
 
         EditingUtils.setID(iterateExpressionText, EsbViewsRepository.IterateMediator.Properties.iterateExpression);
@@ -1281,13 +1281,13 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
 
             }
         });
-
+        
         sequenceKeyText.addKeyListener(new KeyListener() {
-
+            
             @Override
             public void keyPressed(KeyEvent e) {
             }
-
+            
             @Override
             public void keyReleased(KeyEvent e) {
                 if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
@@ -1295,13 +1295,13 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
                             SWT.NULL, sequenceKey, new ArrayList<NamedEntityDescriptor>());
                     dialog.open();
                     sequenceKeyText.setText(sequenceKey.getKeyValue());
-                    propertiesEditionComponent.firePropertiesChanged(
-                            new PropertiesEditionEvent(IterateMediatorPropertiesEditionPartForm.this,
+                    propertiesEditionComponent
+                            .firePropertiesChanged(new PropertiesEditionEvent(IterateMediatorPropertiesEditionPartForm.this,
                                     EsbViewsRepository.IterateMediator.Properties.sequenceKey,
                                     PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSequenceKey()));
                 }
             }
-
+            
         });
 
         EditingUtils.setID(sequenceKeyText, EsbViewsRepository.IterateMediator.Properties.sequenceKey);
@@ -1352,7 +1352,7 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
 
             }
         });
-
+        
         attachPathText.addKeyListener(new KeyListener() {
 
             @Override
@@ -1395,7 +1395,7 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
     public void validate() {
         EEFPropertyViewUtil eu = new EEFPropertyViewUtil(view);
         eu.clearElements(new Composite[] { propertiesGroup });
-        eu.showEntry(new Control[] { sequenceSubsection.getParent() }, false);
+        eu.showEntry(new Control[] {sequenceSubsection.getParent()}, false);
         eu.clearElements(new Composite[] { sequenceSubsection });
         eu.showEntry(iterateIDElements, false);
         eu.showEntry(sequentialMediationElements, false);

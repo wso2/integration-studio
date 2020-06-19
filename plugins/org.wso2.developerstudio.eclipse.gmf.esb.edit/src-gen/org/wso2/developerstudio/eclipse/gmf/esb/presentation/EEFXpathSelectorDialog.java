@@ -486,13 +486,11 @@ public class EEFXpathSelectorDialog extends Dialog {
         childTreeItem.setText(node.getNodeName());
 
         // Select the icon based on the node type.
-        /*
-         * if (node.getNodeType() == Node.ELEMENT_NODE) {
-         * childTreeItem.setImage(ImageHolder.getInstance().getXPathElementImage());
-         * } else {
-         * childTreeItem.setImage(ImageHolder.getInstance().getXPathAttributeImage());
-         * }
-         */
+/*        if (node.getNodeType() == Node.ELEMENT_NODE) {
+            childTreeItem.setImage(ImageHolder.getInstance().getXPathElementImage());
+        } else {
+            childTreeItem.setImage(ImageHolder.getInstance().getXPathAttributeImage());
+        }*/
 
         // Associated dom node with the newly created tree item.
         childTreeItem.setData(TREE_ITEM_DATA_KEY, new TreeItemData(node));

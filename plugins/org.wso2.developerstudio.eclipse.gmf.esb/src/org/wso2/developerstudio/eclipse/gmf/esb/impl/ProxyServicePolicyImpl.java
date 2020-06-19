@@ -27,8 +27,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyServicePolicyImpl#getPolicyKey <em>Policy
- * Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyServicePolicyImpl#getPolicyKey <em>Policy Key</em>}</li>
  * </ul>
  *
  * @generated
@@ -38,7 +37,6 @@ public class ProxyServicePolicyImpl extends EObjectImpl implements ProxyServiceP
      * The cached value of the '{@link #getPolicyKey() <em>Policy Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getPolicyKey()
      * @generated
      * @ordered
@@ -63,7 +61,6 @@ public class ProxyServicePolicyImpl extends EObjectImpl implements ProxyServiceP
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -74,7 +71,6 @@ public class ProxyServicePolicyImpl extends EObjectImpl implements ProxyServiceP
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public RegistryKeyProperty getPolicyKey() {
@@ -84,19 +80,14 @@ public class ProxyServicePolicyImpl extends EObjectImpl implements ProxyServiceP
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetPolicyKey(RegistryKeyProperty newPolicyKey, NotificationChain msgs) {
         RegistryKeyProperty oldPolicyKey = policyKey;
         policyKey = newPolicyKey;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.PROXY_SERVICE_POLICY__POLICY_KEY, oldPolicyKey, newPolicyKey);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.PROXY_SERVICE_POLICY__POLICY_KEY, oldPolicyKey, newPolicyKey);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -104,37 +95,32 @@ public class ProxyServicePolicyImpl extends EObjectImpl implements ProxyServiceP
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setPolicyKey(RegistryKeyProperty newPolicyKey) {
         if (newPolicyKey != policyKey) {
             NotificationChain msgs = null;
             if (policyKey != null)
-                msgs = ((InternalEObject) policyKey).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.PROXY_SERVICE_POLICY__POLICY_KEY, null, msgs);
+                msgs = ((InternalEObject)policyKey).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.PROXY_SERVICE_POLICY__POLICY_KEY, null, msgs);
             if (newPolicyKey != null)
-                msgs = ((InternalEObject) newPolicyKey).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.PROXY_SERVICE_POLICY__POLICY_KEY, null, msgs);
+                msgs = ((InternalEObject)newPolicyKey).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.PROXY_SERVICE_POLICY__POLICY_KEY, null, msgs);
             msgs = basicSetPolicyKey(newPolicyKey, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROXY_SERVICE_POLICY__POLICY_KEY,
-                    newPolicyKey, newPolicyKey));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROXY_SERVICE_POLICY__POLICY_KEY, newPolicyKey, newPolicyKey));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-        case EsbPackage.PROXY_SERVICE_POLICY__POLICY_KEY:
-            return basicSetPolicyKey(null, msgs);
+            case EsbPackage.PROXY_SERVICE_POLICY__POLICY_KEY:
+                return basicSetPolicyKey(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -142,14 +128,13 @@ public class ProxyServicePolicyImpl extends EObjectImpl implements ProxyServiceP
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case EsbPackage.PROXY_SERVICE_POLICY__POLICY_KEY:
-            return getPolicyKey();
+            case EsbPackage.PROXY_SERVICE_POLICY__POLICY_KEY:
+                return getPolicyKey();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -157,15 +142,14 @@ public class ProxyServicePolicyImpl extends EObjectImpl implements ProxyServiceP
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case EsbPackage.PROXY_SERVICE_POLICY__POLICY_KEY:
-            setPolicyKey((RegistryKeyProperty) newValue);
-            return;
+            case EsbPackage.PROXY_SERVICE_POLICY__POLICY_KEY:
+                setPolicyKey((RegistryKeyProperty)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -173,15 +157,14 @@ public class ProxyServicePolicyImpl extends EObjectImpl implements ProxyServiceP
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case EsbPackage.PROXY_SERVICE_POLICY__POLICY_KEY:
-            setPolicyKey((RegistryKeyProperty) null);
-            return;
+            case EsbPackage.PROXY_SERVICE_POLICY__POLICY_KEY:
+                setPolicyKey((RegistryKeyProperty)null);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -189,14 +172,13 @@ public class ProxyServicePolicyImpl extends EObjectImpl implements ProxyServiceP
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case EsbPackage.PROXY_SERVICE_POLICY__POLICY_KEY:
-            return policyKey != null;
+            case EsbPackage.PROXY_SERVICE_POLICY__POLICY_KEY:
+                return policyKey != null;
         }
         return super.eIsSet(featureID);
     }

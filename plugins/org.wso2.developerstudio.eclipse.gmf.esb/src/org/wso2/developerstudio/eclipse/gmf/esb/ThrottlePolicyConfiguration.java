@@ -19,14 +19,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyConfiguration#getPolicyType <em>Policy
- * Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyConfiguration#getPolicyKey <em>Policy
- * Key</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyConfiguration#getMaxConcurrentAccessCount <em>Max
- * Concurrent Access Count</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyConfiguration#getPolicyEntries <em>Policy
- * Entries</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyConfiguration#getPolicyType <em>Policy Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyConfiguration#getPolicyKey <em>Policy Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyConfiguration#getMaxConcurrentAccessCount <em>Max Concurrent Access Count</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyConfiguration#getPolicyEntries <em>Policy Entries</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getThrottlePolicyConfiguration()
@@ -44,7 +40,6 @@ public interface ThrottlePolicyConfiguration extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Policy Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyType
      * @see #setPolicyType(ThrottlePolicyType)
@@ -55,11 +50,9 @@ public interface ThrottlePolicyConfiguration extends EObject {
     ThrottlePolicyType getPolicyType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyConfiguration#getPolicyType
-     * <em>Policy Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyConfiguration#getPolicyType <em>Policy Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Policy Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyType
      * @see #getPolicyType()
@@ -75,7 +68,6 @@ public interface ThrottlePolicyConfiguration extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Policy Key</em>' containment reference.
      * @see #setPolicyKey(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getThrottlePolicyConfiguration_PolicyKey()
@@ -85,11 +77,9 @@ public interface ThrottlePolicyConfiguration extends EObject {
     RegistryKeyProperty getPolicyKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyConfiguration#getPolicyKey
-     * <em>Policy Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyConfiguration#getPolicyKey <em>Policy Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Policy Key</em>' containment reference.
      * @see #getPolicyKey()
      * @generated
@@ -104,7 +94,6 @@ public interface ThrottlePolicyConfiguration extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Max Concurrent Access Count</em>' attribute.
      * @see #setMaxConcurrentAccessCount(int)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getThrottlePolicyConfiguration_MaxConcurrentAccessCount()
@@ -114,12 +103,9 @@ public interface ThrottlePolicyConfiguration extends EObject {
     int getMaxConcurrentAccessCount();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyConfiguration#getMaxConcurrentAccessCount <em>Max
-     * Concurrent Access Count</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyConfiguration#getMaxConcurrentAccessCount <em>Max Concurrent Access Count</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Max Concurrent Access Count</em>' attribute.
      * @see #getMaxConcurrentAccessCount()
      * @generated
@@ -135,7 +121,6 @@ public interface ThrottlePolicyConfiguration extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Policy Entries</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getThrottlePolicyConfiguration_PolicyEntries()
      * @model containment="true"

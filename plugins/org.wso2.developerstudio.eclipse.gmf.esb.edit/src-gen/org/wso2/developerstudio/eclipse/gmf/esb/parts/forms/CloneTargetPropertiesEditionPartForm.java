@@ -218,7 +218,6 @@ public class CloneTargetPropertiesEditionPartForm extends SectionPropertiesEditi
         propertiesSection.setClient(propertiesGroup);
         return propertiesGroup;
     }
-
     /**
      * @generated NOT
      */
@@ -311,11 +310,10 @@ public class CloneTargetPropertiesEditionPartForm extends SectionPropertiesEditi
 
         });
         sequence.setID(EsbViewsRepository.CloneTarget.Properties.sequence);
-        Control sequenceHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent
-                .getHelpContent(EsbViewsRepository.CloneTarget.Properties.sequence, EsbViewsRepository.FORM_KIND),
-                null); // $NON-NLS-1$
+        Control sequenceHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(
+                EsbViewsRepository.CloneTarget.Properties.sequence, EsbViewsRepository.FORM_KIND), null); // $NON-NLS-1$
         // Start of user code for createSequenceFlatComboViewer
-        sequenceElements = new Control[] { sequenceLabel, sequence, sequenceHelp };
+        sequenceElements = new Control[] {sequenceLabel, sequence, sequenceHelp};
         // End of user code
         return parent;
     }
@@ -358,20 +356,17 @@ public class CloneTargetPropertiesEditionPartForm extends SectionPropertiesEditi
 
         });
         endpointType.setID(EsbViewsRepository.CloneTarget.Properties.endpointType);
-        Control endpointTypeHelp = FormUtils
-                .createHelpButton(widgetFactory, parent,
-                        propertiesEditionComponent.getHelpContent(
-                                EsbViewsRepository.CloneTarget.Properties.endpointType, EsbViewsRepository.FORM_KIND),
-                        null); // $NON-NLS-1$
+        Control endpointTypeHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(
+                EsbViewsRepository.CloneTarget.Properties.endpointType, EsbViewsRepository.FORM_KIND), null); // $NON-NLS-1$
         // Start of user code for createEndpointTypeEMFComboViewer
-        endpointTypeElements = new Control[] { endpointTypeLabel, endpointType.getCombo(), endpointTypeHelp };
+        endpointTypeElements = new Control[] {endpointTypeLabel, endpointType.getCombo(), endpointTypeHelp};
         endpointType.addSelectionChangedListener(new ISelectionChangedListener() {
-
+            
             /**
              * {@inheritDoc}
              * 
              * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-             * 
+             *  
              */
             public void selectionChanged(SelectionChangedEvent event) {
                 refresh();
@@ -443,11 +438,10 @@ public class CloneTargetPropertiesEditionPartForm extends SectionPropertiesEditi
         });
         EditingUtils.setID(soapAction, EsbViewsRepository.CloneTarget.Properties.soapAction);
         EditingUtils.setEEFtype(soapAction, "eef::Text"); //$NON-NLS-1$
-        Control soapActionHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent
-                .getHelpContent(EsbViewsRepository.CloneTarget.Properties.soapAction, EsbViewsRepository.FORM_KIND),
-                null); // $NON-NLS-1$
+        Control soapActionHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(
+                EsbViewsRepository.CloneTarget.Properties.soapAction, EsbViewsRepository.FORM_KIND), null); // $NON-NLS-1$
         // Start of user code for createSoapActionText
-        soapActionElements = new Control[] { soapActionLabel, soapAction, soapActionHelp };
+        soapActionElements = new Control[] {soapActionLabel, soapAction, soapActionHelp};
         // End of user code
         return parent;
     }
@@ -514,11 +508,10 @@ public class CloneTargetPropertiesEditionPartForm extends SectionPropertiesEditi
         });
         EditingUtils.setID(toAddress, EsbViewsRepository.CloneTarget.Properties.toAddress);
         EditingUtils.setEEFtype(toAddress, "eef::Text"); //$NON-NLS-1$
-        Control toAddressHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent
-                .getHelpContent(EsbViewsRepository.CloneTarget.Properties.toAddress, EsbViewsRepository.FORM_KIND),
-                null); // $NON-NLS-1$
+        Control toAddressHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(
+                EsbViewsRepository.CloneTarget.Properties.toAddress, EsbViewsRepository.FORM_KIND), null); // $NON-NLS-1$
         // Start of user code for createToAddressText
-        toAddressElements = new Control[] { toAddressLabel, sequenceType.getCombo(), toAddressHelp };
+        toAddressElements = new Control[] {toAddressLabel, sequenceType.getCombo(), toAddressHelp};
         // End of user code
         return parent;
     }
@@ -937,7 +930,7 @@ public class CloneTargetPropertiesEditionPartForm extends SectionPropertiesEditi
 
     public void validate() {
         EEFPropertyViewUtil eu = new EEFPropertyViewUtil(view);
-        eu.clearElements(new Composite[] { propertiesGroup });
+        eu.clearElements(new Composite[] {propertiesGroup});
         eu.showEntry(sequenceTypeElements, false);
         eu.showEntry(sequenceKeyElements, false);
         eu.showEntry(endpointTypeElements, false);
@@ -945,6 +938,7 @@ public class CloneTargetPropertiesEditionPartForm extends SectionPropertiesEditi
         eu.showEntry(soapActionElements, false);
         eu.showEntry(toAddressElements, false);
     }
+
 
     // End of user code
 

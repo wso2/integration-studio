@@ -35,12 +35,12 @@ import org.apache.synapse.mediators.filters.FilterMediator;
 import org.jaxen.JaxenException;
 
 public class FilterMediatorExtFactory extends FilterMediatorFactory {
-
+    
     private static FilterMediatorExtFactory instance;
-
+    
     private FilterMediatorExtFactory() {
     }
-
+    
     public static synchronized FilterMediatorExtFactory getInstance() {
         if (instance == null) {
             instance = new FilterMediatorExtFactory();
@@ -124,7 +124,7 @@ public class FilterMediatorExtFactory extends FilterMediatorFactory {
             addChildren(omElement, (FilterMediator) mediator, null);
         }
         addAllCommentChildrenToList(omElement, ((FilterMediator) mediator).getCommentsList());
-
+        
         return mediator;
     }
 

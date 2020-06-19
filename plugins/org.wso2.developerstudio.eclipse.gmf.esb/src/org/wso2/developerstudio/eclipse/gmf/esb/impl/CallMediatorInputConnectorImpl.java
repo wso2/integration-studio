@@ -31,7 +31,6 @@ public class CallMediatorInputConnectorImpl extends InputConnectorImpl implement
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected CallMediatorInputConnectorImpl() {
@@ -41,7 +40,6 @@ public class CallMediatorInputConnectorImpl extends InputConnectorImpl implement
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

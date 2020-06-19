@@ -17,7 +17,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Sql Parameter Data Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSqlParameterDataType()
  * @model
  * @generated
@@ -27,7 +26,6 @@ public enum SqlParameterDataType implements Enumerator {
      * The '<em><b>CHAR</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #CHAR_VALUE
      * @generated
      * @ordered
@@ -38,7 +36,6 @@ public enum SqlParameterDataType implements Enumerator {
      * The '<em><b>VARCHAR</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #VARCHAR_VALUE
      * @generated
      * @ordered
@@ -49,7 +46,6 @@ public enum SqlParameterDataType implements Enumerator {
      * The '<em><b>LONGVARCHAR</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #LONGVARCHAR_VALUE
      * @generated
      * @ordered
@@ -60,7 +56,6 @@ public enum SqlParameterDataType implements Enumerator {
      * The '<em><b>NUMERIC</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #NUMERIC_VALUE
      * @generated
      * @ordered
@@ -71,7 +66,6 @@ public enum SqlParameterDataType implements Enumerator {
      * The '<em><b>DECIMAL</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #DECIMAL_VALUE
      * @generated
      * @ordered
@@ -82,7 +76,6 @@ public enum SqlParameterDataType implements Enumerator {
      * The '<em><b>BIT</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #BIT_VALUE
      * @generated
      * @ordered
@@ -93,7 +86,6 @@ public enum SqlParameterDataType implements Enumerator {
      * The '<em><b>TINYINT</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #TINYINT_VALUE
      * @generated
      * @ordered
@@ -104,7 +96,6 @@ public enum SqlParameterDataType implements Enumerator {
      * The '<em><b>SMALLINT</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #SMALLINT_VALUE
      * @generated
      * @ordered
@@ -115,7 +106,6 @@ public enum SqlParameterDataType implements Enumerator {
      * The '<em><b>INTEGER</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #INTEGER_VALUE
      * @generated
      * @ordered
@@ -126,7 +116,6 @@ public enum SqlParameterDataType implements Enumerator {
      * The '<em><b>BIGINT</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #BIGINT_VALUE
      * @generated
      * @ordered
@@ -137,7 +126,6 @@ public enum SqlParameterDataType implements Enumerator {
      * The '<em><b>REAL</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #REAL_VALUE
      * @generated
      * @ordered
@@ -148,7 +136,6 @@ public enum SqlParameterDataType implements Enumerator {
      * The '<em><b>FLOAT</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #FLOAT_VALUE
      * @generated
      * @ordered
@@ -159,7 +146,6 @@ public enum SqlParameterDataType implements Enumerator {
      * The '<em><b>DOUBLE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #DOUBLE_VALUE
      * @generated
      * @ordered
@@ -170,7 +156,6 @@ public enum SqlParameterDataType implements Enumerator {
      * The '<em><b>DATE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #DATE_VALUE
      * @generated
      * @ordered
@@ -181,7 +166,6 @@ public enum SqlParameterDataType implements Enumerator {
      * The '<em><b>TIME</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #TIME_VALUE
      * @generated
      * @ordered
@@ -192,7 +176,6 @@ public enum SqlParameterDataType implements Enumerator {
      * The '<em><b>TIMESTAMP</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #TIMESTAMP_VALUE
      * @generated
      * @ordered
@@ -207,7 +190,6 @@ public enum SqlParameterDataType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #CHAR
      * @model
      * @generated
@@ -223,7 +205,6 @@ public enum SqlParameterDataType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #VARCHAR
      * @model
      * @generated
@@ -239,7 +220,6 @@ public enum SqlParameterDataType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #LONGVARCHAR
      * @model
      * @generated
@@ -255,7 +235,6 @@ public enum SqlParameterDataType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #NUMERIC
      * @model
      * @generated
@@ -271,7 +250,6 @@ public enum SqlParameterDataType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #DECIMAL
      * @model
      * @generated
@@ -287,7 +265,6 @@ public enum SqlParameterDataType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #BIT
      * @model
      * @generated
@@ -303,7 +280,6 @@ public enum SqlParameterDataType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #TINYINT
      * @model
      * @generated
@@ -319,7 +295,6 @@ public enum SqlParameterDataType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #SMALLINT
      * @model
      * @generated
@@ -335,7 +310,6 @@ public enum SqlParameterDataType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #INTEGER
      * @model
      * @generated
@@ -351,7 +325,6 @@ public enum SqlParameterDataType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #BIGINT
      * @model
      * @generated
@@ -367,7 +340,6 @@ public enum SqlParameterDataType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #REAL
      * @model
      * @generated
@@ -383,7 +355,6 @@ public enum SqlParameterDataType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #FLOAT
      * @model
      * @generated
@@ -399,7 +370,6 @@ public enum SqlParameterDataType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #DOUBLE
      * @model
      * @generated
@@ -415,7 +385,6 @@ public enum SqlParameterDataType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #DATE
      * @model
      * @generated
@@ -431,7 +400,6 @@ public enum SqlParameterDataType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #TIME
      * @model
      * @generated
@@ -447,7 +415,6 @@ public enum SqlParameterDataType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #TIMESTAMP
      * @model
      * @generated
@@ -459,17 +426,31 @@ public enum SqlParameterDataType implements Enumerator {
      * An array of all the '<em><b>Sql Parameter Data Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
-    private static final SqlParameterDataType[] VALUES_ARRAY = new SqlParameterDataType[] { CHAR, VARCHAR, LONGVARCHAR,
-            NUMERIC, DECIMAL, BIT, TINYINT, SMALLINT, INTEGER, BIGINT, REAL, FLOAT, DOUBLE, DATE, TIME, TIMESTAMP, };
+    private static final SqlParameterDataType[] VALUES_ARRAY = new SqlParameterDataType[] {
+            CHAR,
+            VARCHAR,
+            LONGVARCHAR,
+            NUMERIC,
+            DECIMAL,
+            BIT,
+            TINYINT,
+            SMALLINT,
+            INTEGER,
+            BIGINT,
+            REAL,
+            FLOAT,
+            DOUBLE,
+            DATE,
+            TIME,
+            TIMESTAMP,
+        };
 
     /**
      * A public read-only list of all the '<em><b>Sql Parameter Data Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public static final List<SqlParameterDataType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -478,7 +459,6 @@ public enum SqlParameterDataType implements Enumerator {
      * Returns the '<em><b>Sql Parameter Data Type</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -497,7 +477,6 @@ public enum SqlParameterDataType implements Enumerator {
      * Returns the '<em><b>Sql Parameter Data Type</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -516,45 +495,28 @@ public enum SqlParameterDataType implements Enumerator {
      * Returns the '<em><b>Sql Parameter Data Type</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static SqlParameterDataType get(int value) {
         switch (value) {
-        case CHAR_VALUE:
-            return CHAR;
-        case VARCHAR_VALUE:
-            return VARCHAR;
-        case LONGVARCHAR_VALUE:
-            return LONGVARCHAR;
-        case NUMERIC_VALUE:
-            return NUMERIC;
-        case DECIMAL_VALUE:
-            return DECIMAL;
-        case BIT_VALUE:
-            return BIT;
-        case TINYINT_VALUE:
-            return TINYINT;
-        case SMALLINT_VALUE:
-            return SMALLINT;
-        case INTEGER_VALUE:
-            return INTEGER;
-        case BIGINT_VALUE:
-            return BIGINT;
-        case REAL_VALUE:
-            return REAL;
-        case FLOAT_VALUE:
-            return FLOAT;
-        case DOUBLE_VALUE:
-            return DOUBLE;
-        case DATE_VALUE:
-            return DATE;
-        case TIME_VALUE:
-            return TIME;
-        case TIMESTAMP_VALUE:
-            return TIMESTAMP;
+            case CHAR_VALUE: return CHAR;
+            case VARCHAR_VALUE: return VARCHAR;
+            case LONGVARCHAR_VALUE: return LONGVARCHAR;
+            case NUMERIC_VALUE: return NUMERIC;
+            case DECIMAL_VALUE: return DECIMAL;
+            case BIT_VALUE: return BIT;
+            case TINYINT_VALUE: return TINYINT;
+            case SMALLINT_VALUE: return SMALLINT;
+            case INTEGER_VALUE: return INTEGER;
+            case BIGINT_VALUE: return BIGINT;
+            case REAL_VALUE: return REAL;
+            case FLOAT_VALUE: return FLOAT;
+            case DOUBLE_VALUE: return DOUBLE;
+            case DATE_VALUE: return DATE;
+            case TIME_VALUE: return TIME;
+            case TIMESTAMP_VALUE: return TIMESTAMP;
         }
         return null;
     }
@@ -562,7 +524,6 @@ public enum SqlParameterDataType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final int value;
@@ -570,7 +531,6 @@ public enum SqlParameterDataType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String name;
@@ -578,7 +538,6 @@ public enum SqlParameterDataType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String literal;
@@ -587,7 +546,6 @@ public enum SqlParameterDataType implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private SqlParameterDataType(int value, String name, String literal) {
@@ -599,38 +557,34 @@ public enum SqlParameterDataType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public int getValue() {
-        return value;
+      return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getName() {
-        return name;
+      return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getLiteral() {
-        return literal;
+      return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

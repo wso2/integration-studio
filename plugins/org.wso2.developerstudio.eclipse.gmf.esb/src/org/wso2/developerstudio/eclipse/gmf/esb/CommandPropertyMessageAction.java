@@ -17,7 +17,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Command Property Message Action</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCommandPropertyMessageAction()
  * @model
  * @generated
@@ -27,7 +26,6 @@ public enum CommandPropertyMessageAction implements Enumerator {
      * The '<em><b>READ MESSAGE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #READ_MESSAGE_VALUE
      * @generated
      * @ordered
@@ -38,7 +36,6 @@ public enum CommandPropertyMessageAction implements Enumerator {
      * The '<em><b>UPDATE MESSAGE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #UPDATE_MESSAGE_VALUE
      * @generated
      * @ordered
@@ -49,7 +46,6 @@ public enum CommandPropertyMessageAction implements Enumerator {
      * The '<em><b>READ AND UPDATE MESSAGE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #READ_AND_UPDATE_MESSAGE_VALUE
      * @generated
      * @ordered
@@ -64,7 +60,6 @@ public enum CommandPropertyMessageAction implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #READ_MESSAGE
      * @model literal="ReadMessage"
      * @generated
@@ -80,7 +75,6 @@ public enum CommandPropertyMessageAction implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #UPDATE_MESSAGE
      * @model literal="UpdateMessage"
      * @generated
@@ -96,7 +90,6 @@ public enum CommandPropertyMessageAction implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #READ_AND_UPDATE_MESSAGE
      * @model literal="ReadAndUpdateMessage"
      * @generated
@@ -108,27 +101,26 @@ public enum CommandPropertyMessageAction implements Enumerator {
      * An array of all the '<em><b>Command Property Message Action</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private static final CommandPropertyMessageAction[] VALUES_ARRAY = new CommandPropertyMessageAction[] {
-            READ_MESSAGE, UPDATE_MESSAGE, READ_AND_UPDATE_MESSAGE, };
+            READ_MESSAGE,
+            UPDATE_MESSAGE,
+            READ_AND_UPDATE_MESSAGE,
+        };
 
     /**
      * A public read-only list of all the '<em><b>Command Property Message Action</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
-    public static final List<CommandPropertyMessageAction> VALUES = Collections
-            .unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<CommandPropertyMessageAction> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
     /**
      * Returns the '<em><b>Command Property Message Action</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -147,7 +139,6 @@ public enum CommandPropertyMessageAction implements Enumerator {
      * Returns the '<em><b>Command Property Message Action</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -166,19 +157,15 @@ public enum CommandPropertyMessageAction implements Enumerator {
      * Returns the '<em><b>Command Property Message Action</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static CommandPropertyMessageAction get(int value) {
         switch (value) {
-        case READ_MESSAGE_VALUE:
-            return READ_MESSAGE;
-        case UPDATE_MESSAGE_VALUE:
-            return UPDATE_MESSAGE;
-        case READ_AND_UPDATE_MESSAGE_VALUE:
-            return READ_AND_UPDATE_MESSAGE;
+            case READ_MESSAGE_VALUE: return READ_MESSAGE;
+            case UPDATE_MESSAGE_VALUE: return UPDATE_MESSAGE;
+            case READ_AND_UPDATE_MESSAGE_VALUE: return READ_AND_UPDATE_MESSAGE;
         }
         return null;
     }
@@ -186,7 +173,6 @@ public enum CommandPropertyMessageAction implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final int value;
@@ -194,7 +180,6 @@ public enum CommandPropertyMessageAction implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String name;
@@ -202,7 +187,6 @@ public enum CommandPropertyMessageAction implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String literal;
@@ -211,7 +195,6 @@ public enum CommandPropertyMessageAction implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private CommandPropertyMessageAction(int value, String name, String literal) {
@@ -223,38 +206,34 @@ public enum CommandPropertyMessageAction implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public int getValue() {
-        return value;
+      return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getName() {
-        return name;
+      return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getLiteral() {
-        return literal;
+      return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

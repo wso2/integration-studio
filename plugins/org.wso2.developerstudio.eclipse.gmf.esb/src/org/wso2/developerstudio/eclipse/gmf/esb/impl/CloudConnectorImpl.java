@@ -44,12 +44,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CloudConnectorImpl#getInputConnector <em>Input
- * Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CloudConnectorImpl#getOutputConnector <em>Output
- * Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CloudConnectorImpl#getConnectorParameters <em>Connector
- * Parameters</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CloudConnectorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CloudConnectorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CloudConnectorImpl#getConnectorParameters <em>Connector Parameters</em>}</li>
  * </ul>
  *
  * @generated
@@ -59,7 +56,6 @@ public class CloudConnectorImpl extends EsbElementImpl implements CloudConnector
      * The cached value of the '{@link #getInputConnector() <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getInputConnector()
      * @generated
      * @ordered
@@ -70,7 +66,6 @@ public class CloudConnectorImpl extends EsbElementImpl implements CloudConnector
      * The cached value of the '{@link #getOutputConnector() <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getOutputConnector()
      * @generated
      * @ordered
@@ -78,11 +73,9 @@ public class CloudConnectorImpl extends EsbElementImpl implements CloudConnector
     protected CloudConnectorOutputConnector outputConnector;
 
     /**
-     * The cached value of the '{@link #getConnectorParameters() <em>Connector Parameters</em>}' containment reference
-     * list.
+     * The cached value of the '{@link #getConnectorParameters() <em>Connector Parameters</em>}' containment reference list.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getConnectorParameters()
      * @generated
      * @ordered
@@ -92,7 +85,6 @@ public class CloudConnectorImpl extends EsbElementImpl implements CloudConnector
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected CloudConnectorImpl() {
@@ -102,7 +94,6 @@ public class CloudConnectorImpl extends EsbElementImpl implements CloudConnector
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -113,7 +104,6 @@ public class CloudConnectorImpl extends EsbElementImpl implements CloudConnector
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public CloudConnectorInputConnector getInputConnector() {
@@ -123,7 +113,6 @@ public class CloudConnectorImpl extends EsbElementImpl implements CloudConnector
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetInputConnector(CloudConnectorInputConnector newInputConnector,
@@ -131,12 +120,8 @@ public class CloudConnectorImpl extends EsbElementImpl implements CloudConnector
         CloudConnectorInputConnector oldInputConnector = inputConnector;
         inputConnector = newInputConnector;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.CLOUD_CONNECTOR__INPUT_CONNECTOR, oldInputConnector, newInputConnector);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.CLOUD_CONNECTOR__INPUT_CONNECTOR, oldInputConnector, newInputConnector);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -144,30 +129,25 @@ public class CloudConnectorImpl extends EsbElementImpl implements CloudConnector
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setInputConnector(CloudConnectorInputConnector newInputConnector) {
         if (newInputConnector != inputConnector) {
             NotificationChain msgs = null;
             if (inputConnector != null)
-                msgs = ((InternalEObject) inputConnector).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.CLOUD_CONNECTOR__INPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)inputConnector).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.CLOUD_CONNECTOR__INPUT_CONNECTOR, null, msgs);
             if (newInputConnector != null)
-                msgs = ((InternalEObject) newInputConnector).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.CLOUD_CONNECTOR__INPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)newInputConnector).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.CLOUD_CONNECTOR__INPUT_CONNECTOR, null, msgs);
             msgs = basicSetInputConnector(newInputConnector, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CLOUD_CONNECTOR__INPUT_CONNECTOR,
-                    newInputConnector, newInputConnector));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CLOUD_CONNECTOR__INPUT_CONNECTOR, newInputConnector, newInputConnector));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public CloudConnectorOutputConnector getOutputConnector() {
@@ -177,7 +157,6 @@ public class CloudConnectorImpl extends EsbElementImpl implements CloudConnector
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetOutputConnector(CloudConnectorOutputConnector newOutputConnector,
@@ -185,12 +164,8 @@ public class CloudConnectorImpl extends EsbElementImpl implements CloudConnector
         CloudConnectorOutputConnector oldOutputConnector = outputConnector;
         outputConnector = newOutputConnector;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.CLOUD_CONNECTOR__OUTPUT_CONNECTOR, oldOutputConnector, newOutputConnector);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.CLOUD_CONNECTOR__OUTPUT_CONNECTOR, oldOutputConnector, newOutputConnector);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -198,36 +173,30 @@ public class CloudConnectorImpl extends EsbElementImpl implements CloudConnector
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setOutputConnector(CloudConnectorOutputConnector newOutputConnector) {
         if (newOutputConnector != outputConnector) {
             NotificationChain msgs = null;
             if (outputConnector != null)
-                msgs = ((InternalEObject) outputConnector).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.CLOUD_CONNECTOR__OUTPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)outputConnector).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.CLOUD_CONNECTOR__OUTPUT_CONNECTOR, null, msgs);
             if (newOutputConnector != null)
-                msgs = ((InternalEObject) newOutputConnector).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.CLOUD_CONNECTOR__OUTPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)newOutputConnector).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.CLOUD_CONNECTOR__OUTPUT_CONNECTOR, null, msgs);
             msgs = basicSetOutputConnector(newOutputConnector, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CLOUD_CONNECTOR__OUTPUT_CONNECTOR,
-                    newOutputConnector, newOutputConnector));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CLOUD_CONNECTOR__OUTPUT_CONNECTOR, newOutputConnector, newOutputConnector));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EList<CallTemplateParameter> getConnectorParameters() {
         if (connectorParameters == null) {
-            connectorParameters = new EObjectContainmentEList<CallTemplateParameter>(CallTemplateParameter.class, this,
-                    EsbPackage.CLOUD_CONNECTOR__CONNECTOR_PARAMETERS);
+            connectorParameters = new EObjectContainmentEList<CallTemplateParameter>(CallTemplateParameter.class, this, EsbPackage.CLOUD_CONNECTOR__CONNECTOR_PARAMETERS);
         }
         return connectorParameters;
     }
@@ -235,18 +204,17 @@ public class CloudConnectorImpl extends EsbElementImpl implements CloudConnector
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-        case EsbPackage.CLOUD_CONNECTOR__INPUT_CONNECTOR:
-            return basicSetInputConnector(null, msgs);
-        case EsbPackage.CLOUD_CONNECTOR__OUTPUT_CONNECTOR:
-            return basicSetOutputConnector(null, msgs);
-        case EsbPackage.CLOUD_CONNECTOR__CONNECTOR_PARAMETERS:
-            return ((InternalEList<?>) getConnectorParameters()).basicRemove(otherEnd, msgs);
+            case EsbPackage.CLOUD_CONNECTOR__INPUT_CONNECTOR:
+                return basicSetInputConnector(null, msgs);
+            case EsbPackage.CLOUD_CONNECTOR__OUTPUT_CONNECTOR:
+                return basicSetOutputConnector(null, msgs);
+            case EsbPackage.CLOUD_CONNECTOR__CONNECTOR_PARAMETERS:
+                return ((InternalEList<?>)getConnectorParameters()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -254,18 +222,17 @@ public class CloudConnectorImpl extends EsbElementImpl implements CloudConnector
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case EsbPackage.CLOUD_CONNECTOR__INPUT_CONNECTOR:
-            return getInputConnector();
-        case EsbPackage.CLOUD_CONNECTOR__OUTPUT_CONNECTOR:
-            return getOutputConnector();
-        case EsbPackage.CLOUD_CONNECTOR__CONNECTOR_PARAMETERS:
-            return getConnectorParameters();
+            case EsbPackage.CLOUD_CONNECTOR__INPUT_CONNECTOR:
+                return getInputConnector();
+            case EsbPackage.CLOUD_CONNECTOR__OUTPUT_CONNECTOR:
+                return getOutputConnector();
+            case EsbPackage.CLOUD_CONNECTOR__CONNECTOR_PARAMETERS:
+                return getConnectorParameters();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -273,23 +240,22 @@ public class CloudConnectorImpl extends EsbElementImpl implements CloudConnector
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case EsbPackage.CLOUD_CONNECTOR__INPUT_CONNECTOR:
-            setInputConnector((CloudConnectorInputConnector) newValue);
-            return;
-        case EsbPackage.CLOUD_CONNECTOR__OUTPUT_CONNECTOR:
-            setOutputConnector((CloudConnectorOutputConnector) newValue);
-            return;
-        case EsbPackage.CLOUD_CONNECTOR__CONNECTOR_PARAMETERS:
-            getConnectorParameters().clear();
-            getConnectorParameters().addAll((Collection<? extends CallTemplateParameter>) newValue);
-            return;
+            case EsbPackage.CLOUD_CONNECTOR__INPUT_CONNECTOR:
+                setInputConnector((CloudConnectorInputConnector)newValue);
+                return;
+            case EsbPackage.CLOUD_CONNECTOR__OUTPUT_CONNECTOR:
+                setOutputConnector((CloudConnectorOutputConnector)newValue);
+                return;
+            case EsbPackage.CLOUD_CONNECTOR__CONNECTOR_PARAMETERS:
+                getConnectorParameters().clear();
+                getConnectorParameters().addAll((Collection<? extends CallTemplateParameter>)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -297,21 +263,20 @@ public class CloudConnectorImpl extends EsbElementImpl implements CloudConnector
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case EsbPackage.CLOUD_CONNECTOR__INPUT_CONNECTOR:
-            setInputConnector((CloudConnectorInputConnector) null);
-            return;
-        case EsbPackage.CLOUD_CONNECTOR__OUTPUT_CONNECTOR:
-            setOutputConnector((CloudConnectorOutputConnector) null);
-            return;
-        case EsbPackage.CLOUD_CONNECTOR__CONNECTOR_PARAMETERS:
-            getConnectorParameters().clear();
-            return;
+            case EsbPackage.CLOUD_CONNECTOR__INPUT_CONNECTOR:
+                setInputConnector((CloudConnectorInputConnector)null);
+                return;
+            case EsbPackage.CLOUD_CONNECTOR__OUTPUT_CONNECTOR:
+                setOutputConnector((CloudConnectorOutputConnector)null);
+                return;
+            case EsbPackage.CLOUD_CONNECTOR__CONNECTOR_PARAMETERS:
+                getConnectorParameters().clear();
+                return;
         }
         super.eUnset(featureID);
     }
@@ -319,18 +284,17 @@ public class CloudConnectorImpl extends EsbElementImpl implements CloudConnector
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case EsbPackage.CLOUD_CONNECTOR__INPUT_CONNECTOR:
-            return inputConnector != null;
-        case EsbPackage.CLOUD_CONNECTOR__OUTPUT_CONNECTOR:
-            return outputConnector != null;
-        case EsbPackage.CLOUD_CONNECTOR__CONNECTOR_PARAMETERS:
-            return connectorParameters != null && !connectorParameters.isEmpty();
+            case EsbPackage.CLOUD_CONNECTOR__INPUT_CONNECTOR:
+                return inputConnector != null;
+            case EsbPackage.CLOUD_CONNECTOR__OUTPUT_CONNECTOR:
+                return outputConnector != null;
+            case EsbPackage.CLOUD_CONNECTOR__CONNECTOR_PARAMETERS:
+                return connectorParameters != null && !connectorParameters.isEmpty();
         }
         return super.eIsSet(featureID);
     }

@@ -22,7 +22,6 @@ public class WSDLEndPointInputConnectorImpl extends InputConnectorImpl implement
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected WSDLEndPointInputConnectorImpl() {
@@ -32,7 +31,6 @@ public class WSDLEndPointInputConnectorImpl extends InputConnectorImpl implement
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

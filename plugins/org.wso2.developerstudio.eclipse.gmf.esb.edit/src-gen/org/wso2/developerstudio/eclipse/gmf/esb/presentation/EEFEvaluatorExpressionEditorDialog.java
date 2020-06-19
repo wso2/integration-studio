@@ -151,7 +151,7 @@ public class EEFEvaluatorExpressionEditorDialog extends Dialog {
             domain.getCommandStack().execute(new RecordingCommand(domain) {
                 @Override
                 protected void doExecute() {
-                    evaluatorExpressionProperty.setEvaluatorValue(eETextField.getText());
+                evaluatorExpressionProperty.setEvaluatorValue(eETextField.getText());
                 }
             });
         } else {

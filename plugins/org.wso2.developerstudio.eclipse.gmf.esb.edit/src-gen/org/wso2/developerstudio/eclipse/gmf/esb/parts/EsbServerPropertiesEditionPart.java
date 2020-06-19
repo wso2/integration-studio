@@ -12,6 +12,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSet
 
 import org.eclipse.jface.viewers.ViewerFilter;
 
+
 // End of user code
 
 /**
@@ -20,81 +21,84 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public interface EsbServerPropertiesEditionPart {
 
-    /**
-     * Init the children
-     * 
-     * @param current the current value
-     * @param containgFeature the feature where to navigate if necessary
-     * @param feature the feature to manage
-     */
-    public void initChildren(ReferencesTableSettings settings);
 
-    /**
-     * Update the children
-     * 
-     * @param newValue the children to update
-     * 
-     */
-    public void updateChildren();
 
-    /**
-     * Adds the given filter to the children edition editor.
-     * 
-     * @param filter
-     *            a viewer filter
-     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
-     */
-    public void addFilterToChildren(ViewerFilter filter);
+	/**
+	 * Init the children
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initChildren(ReferencesTableSettings settings);
 
-    /**
-     * Adds the given filter to the children edition editor.
-     * 
-     * @param filter
-     *            a viewer filter
-     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
-     */
-    public void addBusinessFilterToChildren(ViewerFilter filter);
+	/**
+	 * Update the children
+	 * @param newValue the children to update
+	 * 
+	 */
+	public void updateChildren();
 
-    /**
-     * @return true if the given element is contained inside the children table
-     * 
-     */
-    public boolean isContainedInChildrenTable(EObject element);
+	/**
+	 * Adds the given filter to the children edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToChildren(ViewerFilter filter);
 
-    /**
-     * @return the type
-     * 
-     */
-    public Enumerator getType();
+	/**
+	 * Adds the given filter to the children edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToChildren(ViewerFilter filter);
 
-    /**
-     * Init the type
-     * 
-     * @param input the viewer input
-     * @param current the current value
-     */
-    public void initType(Object input, Enumerator current);
+	/**
+	 * @return true if the given element is contained inside the children table
+	 * 
+	 */
+	public boolean isContainedInChildrenTable(EObject element);
 
-    /**
-     * Defines a new type
-     * 
-     * @param newValue the new type to set
-     * 
-     */
-    public void setType(Enumerator newValue);
 
-    /**
-     * Returns the internationalized title text.
-     * 
-     * @return the internationalized title text.
-     * 
-     */
-    public String getTitle();
+	/**
+	 * @return the type
+	 * 
+	 */
+	public Enumerator getType();
 
-    // Start of user code for additional methods
+	/**
+	 * Init the type
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initType(Object input, Enumerator current);
 
-    // End of user code
+	/**
+	 * Defines a new type
+	 * @param newValue the new type to set
+	 * 
+	 */
+	public void setType(Enumerator newValue);
+
+
+
+
+
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 * 
+	 */
+	public String getTitle();
+
+	// Start of user code for additional methods
+	
+	// End of user code
 
 }

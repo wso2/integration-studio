@@ -42,16 +42,11 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.FastXSLTMediatorImpl#getFastXsltSchemaKeyType <em>Fast Xslt
- * Schema Key Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.FastXSLTMediatorImpl#getFastXsltStaticSchemaKey <em>Fast
- * Xslt Static Schema Key</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.FastXSLTMediatorImpl#getFastXsltDynamicSchemaKey <em>Fast
- * Xslt Dynamic Schema Key</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.FastXSLTMediatorImpl#getInputConnector <em>Input
- * Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.FastXSLTMediatorImpl#getOutputConnector <em>Output
- * Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.FastXSLTMediatorImpl#getFastXsltSchemaKeyType <em>Fast Xslt Schema Key Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.FastXSLTMediatorImpl#getFastXsltStaticSchemaKey <em>Fast Xslt Static Schema Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.FastXSLTMediatorImpl#getFastXsltDynamicSchemaKey <em>Fast Xslt Dynamic Schema Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.FastXSLTMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.FastXSLTMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
  *
  * @generated
@@ -61,7 +56,6 @@ public class FastXSLTMediatorImpl extends MediatorImpl implements FastXSLTMediat
      * The default value of the '{@link #getFastXsltSchemaKeyType() <em>Fast Xslt Schema Key Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getFastXsltSchemaKeyType()
      * @generated
      * @ordered
@@ -72,7 +66,6 @@ public class FastXSLTMediatorImpl extends MediatorImpl implements FastXSLTMediat
      * The cached value of the '{@link #getFastXsltSchemaKeyType() <em>Fast Xslt Schema Key Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getFastXsltSchemaKeyType()
      * @generated
      * @ordered
@@ -80,11 +73,9 @@ public class FastXSLTMediatorImpl extends MediatorImpl implements FastXSLTMediat
     protected KeyType fastXsltSchemaKeyType = FAST_XSLT_SCHEMA_KEY_TYPE_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getFastXsltStaticSchemaKey() <em>Fast Xslt Static Schema Key</em>}' containment
-     * reference.
+     * The cached value of the '{@link #getFastXsltStaticSchemaKey() <em>Fast Xslt Static Schema Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getFastXsltStaticSchemaKey()
      * @generated
      * @ordered
@@ -92,11 +83,9 @@ public class FastXSLTMediatorImpl extends MediatorImpl implements FastXSLTMediat
     protected RegistryKeyProperty fastXsltStaticSchemaKey;
 
     /**
-     * The cached value of the '{@link #getFastXsltDynamicSchemaKey() <em>Fast Xslt Dynamic Schema Key</em>}'
-     * containment reference.
+     * The cached value of the '{@link #getFastXsltDynamicSchemaKey() <em>Fast Xslt Dynamic Schema Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getFastXsltDynamicSchemaKey()
      * @generated
      * @ordered
@@ -107,7 +96,6 @@ public class FastXSLTMediatorImpl extends MediatorImpl implements FastXSLTMediat
      * The cached value of the '{@link #getInputConnector() <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getInputConnector()
      * @generated
      * @ordered
@@ -118,7 +106,6 @@ public class FastXSLTMediatorImpl extends MediatorImpl implements FastXSLTMediat
      * The cached value of the '{@link #getOutputConnector() <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getOutputConnector()
      * @generated
      * @ordered
@@ -157,7 +144,6 @@ public class FastXSLTMediatorImpl extends MediatorImpl implements FastXSLTMediat
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -168,7 +154,6 @@ public class FastXSLTMediatorImpl extends MediatorImpl implements FastXSLTMediat
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public KeyType getFastXsltSchemaKeyType() {
@@ -178,23 +163,18 @@ public class FastXSLTMediatorImpl extends MediatorImpl implements FastXSLTMediat
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setFastXsltSchemaKeyType(KeyType newFastXsltSchemaKeyType) {
         KeyType oldFastXsltSchemaKeyType = fastXsltSchemaKeyType;
-        fastXsltSchemaKeyType = newFastXsltSchemaKeyType == null ? FAST_XSLT_SCHEMA_KEY_TYPE_EDEFAULT
-                : newFastXsltSchemaKeyType;
+        fastXsltSchemaKeyType = newFastXsltSchemaKeyType == null ? FAST_XSLT_SCHEMA_KEY_TYPE_EDEFAULT : newFastXsltSchemaKeyType;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_SCHEMA_KEY_TYPE, oldFastXsltSchemaKeyType,
-                    fastXsltSchemaKeyType));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_SCHEMA_KEY_TYPE, oldFastXsltSchemaKeyType, fastXsltSchemaKeyType));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public RegistryKeyProperty getFastXsltStaticSchemaKey() {
@@ -204,7 +184,6 @@ public class FastXSLTMediatorImpl extends MediatorImpl implements FastXSLTMediat
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetFastXsltStaticSchemaKey(RegistryKeyProperty newFastXsltStaticSchemaKey,
@@ -212,13 +191,8 @@ public class FastXSLTMediatorImpl extends MediatorImpl implements FastXSLTMediat
         RegistryKeyProperty oldFastXsltStaticSchemaKey = fastXsltStaticSchemaKey;
         fastXsltStaticSchemaKey = newFastXsltStaticSchemaKey;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_STATIC_SCHEMA_KEY, oldFastXsltStaticSchemaKey,
-                    newFastXsltStaticSchemaKey);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_STATIC_SCHEMA_KEY, oldFastXsltStaticSchemaKey, newFastXsltStaticSchemaKey);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -226,33 +200,25 @@ public class FastXSLTMediatorImpl extends MediatorImpl implements FastXSLTMediat
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setFastXsltStaticSchemaKey(RegistryKeyProperty newFastXsltStaticSchemaKey) {
         if (newFastXsltStaticSchemaKey != fastXsltStaticSchemaKey) {
             NotificationChain msgs = null;
             if (fastXsltStaticSchemaKey != null)
-                msgs = ((InternalEObject) fastXsltStaticSchemaKey).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_STATIC_SCHEMA_KEY, null,
-                        msgs);
+                msgs = ((InternalEObject)fastXsltStaticSchemaKey).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_STATIC_SCHEMA_KEY, null, msgs);
             if (newFastXsltStaticSchemaKey != null)
-                msgs = ((InternalEObject) newFastXsltStaticSchemaKey).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_STATIC_SCHEMA_KEY, null,
-                        msgs);
+                msgs = ((InternalEObject)newFastXsltStaticSchemaKey).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_STATIC_SCHEMA_KEY, null, msgs);
             msgs = basicSetFastXsltStaticSchemaKey(newFastXsltStaticSchemaKey, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_STATIC_SCHEMA_KEY, newFastXsltStaticSchemaKey,
-                    newFastXsltStaticSchemaKey));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_STATIC_SCHEMA_KEY, newFastXsltStaticSchemaKey, newFastXsltStaticSchemaKey));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NamespacedProperty getFastXsltDynamicSchemaKey() {
@@ -262,7 +228,6 @@ public class FastXSLTMediatorImpl extends MediatorImpl implements FastXSLTMediat
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetFastXsltDynamicSchemaKey(NamespacedProperty newFastXsltDynamicSchemaKey,
@@ -270,13 +235,8 @@ public class FastXSLTMediatorImpl extends MediatorImpl implements FastXSLTMediat
         NamespacedProperty oldFastXsltDynamicSchemaKey = fastXsltDynamicSchemaKey;
         fastXsltDynamicSchemaKey = newFastXsltDynamicSchemaKey;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_DYNAMIC_SCHEMA_KEY, oldFastXsltDynamicSchemaKey,
-                    newFastXsltDynamicSchemaKey);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_DYNAMIC_SCHEMA_KEY, oldFastXsltDynamicSchemaKey, newFastXsltDynamicSchemaKey);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -284,33 +244,25 @@ public class FastXSLTMediatorImpl extends MediatorImpl implements FastXSLTMediat
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setFastXsltDynamicSchemaKey(NamespacedProperty newFastXsltDynamicSchemaKey) {
         if (newFastXsltDynamicSchemaKey != fastXsltDynamicSchemaKey) {
             NotificationChain msgs = null;
             if (fastXsltDynamicSchemaKey != null)
-                msgs = ((InternalEObject) fastXsltDynamicSchemaKey).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_DYNAMIC_SCHEMA_KEY, null,
-                        msgs);
+                msgs = ((InternalEObject)fastXsltDynamicSchemaKey).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_DYNAMIC_SCHEMA_KEY, null, msgs);
             if (newFastXsltDynamicSchemaKey != null)
-                msgs = ((InternalEObject) newFastXsltDynamicSchemaKey).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_DYNAMIC_SCHEMA_KEY, null,
-                        msgs);
+                msgs = ((InternalEObject)newFastXsltDynamicSchemaKey).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_DYNAMIC_SCHEMA_KEY, null, msgs);
             msgs = basicSetFastXsltDynamicSchemaKey(newFastXsltDynamicSchemaKey, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_DYNAMIC_SCHEMA_KEY, newFastXsltDynamicSchemaKey,
-                    newFastXsltDynamicSchemaKey));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_DYNAMIC_SCHEMA_KEY, newFastXsltDynamicSchemaKey, newFastXsltDynamicSchemaKey));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public FastXSLTMediatorInputConnector getInputConnector() {
@@ -320,7 +272,6 @@ public class FastXSLTMediatorImpl extends MediatorImpl implements FastXSLTMediat
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetInputConnector(FastXSLTMediatorInputConnector newInputConnector,
@@ -328,12 +279,8 @@ public class FastXSLTMediatorImpl extends MediatorImpl implements FastXSLTMediat
         FastXSLTMediatorInputConnector oldInputConnector = inputConnector;
         inputConnector = newInputConnector;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.FAST_XSLT_MEDIATOR__INPUT_CONNECTOR, oldInputConnector, newInputConnector);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.FAST_XSLT_MEDIATOR__INPUT_CONNECTOR, oldInputConnector, newInputConnector);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -341,30 +288,25 @@ public class FastXSLTMediatorImpl extends MediatorImpl implements FastXSLTMediat
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setInputConnector(FastXSLTMediatorInputConnector newInputConnector) {
         if (newInputConnector != inputConnector) {
             NotificationChain msgs = null;
             if (inputConnector != null)
-                msgs = ((InternalEObject) inputConnector).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.FAST_XSLT_MEDIATOR__INPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)inputConnector).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.FAST_XSLT_MEDIATOR__INPUT_CONNECTOR, null, msgs);
             if (newInputConnector != null)
-                msgs = ((InternalEObject) newInputConnector).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.FAST_XSLT_MEDIATOR__INPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)newInputConnector).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.FAST_XSLT_MEDIATOR__INPUT_CONNECTOR, null, msgs);
             msgs = basicSetInputConnector(newInputConnector, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.FAST_XSLT_MEDIATOR__INPUT_CONNECTOR,
-                    newInputConnector, newInputConnector));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.FAST_XSLT_MEDIATOR__INPUT_CONNECTOR, newInputConnector, newInputConnector));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public FastXSLTMediatorOutputConnector getOutputConnector() {
@@ -374,7 +316,6 @@ public class FastXSLTMediatorImpl extends MediatorImpl implements FastXSLTMediat
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetOutputConnector(FastXSLTMediatorOutputConnector newOutputConnector,
@@ -382,12 +323,8 @@ public class FastXSLTMediatorImpl extends MediatorImpl implements FastXSLTMediat
         FastXSLTMediatorOutputConnector oldOutputConnector = outputConnector;
         outputConnector = newOutputConnector;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.FAST_XSLT_MEDIATOR__OUTPUT_CONNECTOR, oldOutputConnector, newOutputConnector);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.FAST_XSLT_MEDIATOR__OUTPUT_CONNECTOR, oldOutputConnector, newOutputConnector);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -395,43 +332,38 @@ public class FastXSLTMediatorImpl extends MediatorImpl implements FastXSLTMediat
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setOutputConnector(FastXSLTMediatorOutputConnector newOutputConnector) {
         if (newOutputConnector != outputConnector) {
             NotificationChain msgs = null;
             if (outputConnector != null)
-                msgs = ((InternalEObject) outputConnector).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.FAST_XSLT_MEDIATOR__OUTPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)outputConnector).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.FAST_XSLT_MEDIATOR__OUTPUT_CONNECTOR, null, msgs);
             if (newOutputConnector != null)
-                msgs = ((InternalEObject) newOutputConnector).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.FAST_XSLT_MEDIATOR__OUTPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)newOutputConnector).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.FAST_XSLT_MEDIATOR__OUTPUT_CONNECTOR, null, msgs);
             msgs = basicSetOutputConnector(newOutputConnector, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.FAST_XSLT_MEDIATOR__OUTPUT_CONNECTOR,
-                    newOutputConnector, newOutputConnector));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.FAST_XSLT_MEDIATOR__OUTPUT_CONNECTOR, newOutputConnector, newOutputConnector));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-        case EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_STATIC_SCHEMA_KEY:
-            return basicSetFastXsltStaticSchemaKey(null, msgs);
-        case EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_DYNAMIC_SCHEMA_KEY:
-            return basicSetFastXsltDynamicSchemaKey(null, msgs);
-        case EsbPackage.FAST_XSLT_MEDIATOR__INPUT_CONNECTOR:
-            return basicSetInputConnector(null, msgs);
-        case EsbPackage.FAST_XSLT_MEDIATOR__OUTPUT_CONNECTOR:
-            return basicSetOutputConnector(null, msgs);
+            case EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_STATIC_SCHEMA_KEY:
+                return basicSetFastXsltStaticSchemaKey(null, msgs);
+            case EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_DYNAMIC_SCHEMA_KEY:
+                return basicSetFastXsltDynamicSchemaKey(null, msgs);
+            case EsbPackage.FAST_XSLT_MEDIATOR__INPUT_CONNECTOR:
+                return basicSetInputConnector(null, msgs);
+            case EsbPackage.FAST_XSLT_MEDIATOR__OUTPUT_CONNECTOR:
+                return basicSetOutputConnector(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -439,22 +371,21 @@ public class FastXSLTMediatorImpl extends MediatorImpl implements FastXSLTMediat
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_SCHEMA_KEY_TYPE:
-            return getFastXsltSchemaKeyType();
-        case EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_STATIC_SCHEMA_KEY:
-            return getFastXsltStaticSchemaKey();
-        case EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_DYNAMIC_SCHEMA_KEY:
-            return getFastXsltDynamicSchemaKey();
-        case EsbPackage.FAST_XSLT_MEDIATOR__INPUT_CONNECTOR:
-            return getInputConnector();
-        case EsbPackage.FAST_XSLT_MEDIATOR__OUTPUT_CONNECTOR:
-            return getOutputConnector();
+            case EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_SCHEMA_KEY_TYPE:
+                return getFastXsltSchemaKeyType();
+            case EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_STATIC_SCHEMA_KEY:
+                return getFastXsltStaticSchemaKey();
+            case EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_DYNAMIC_SCHEMA_KEY:
+                return getFastXsltDynamicSchemaKey();
+            case EsbPackage.FAST_XSLT_MEDIATOR__INPUT_CONNECTOR:
+                return getInputConnector();
+            case EsbPackage.FAST_XSLT_MEDIATOR__OUTPUT_CONNECTOR:
+                return getOutputConnector();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -462,27 +393,26 @@ public class FastXSLTMediatorImpl extends MediatorImpl implements FastXSLTMediat
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_SCHEMA_KEY_TYPE:
-            setFastXsltSchemaKeyType((KeyType) newValue);
-            return;
-        case EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_STATIC_SCHEMA_KEY:
-            setFastXsltStaticSchemaKey((RegistryKeyProperty) newValue);
-            return;
-        case EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_DYNAMIC_SCHEMA_KEY:
-            setFastXsltDynamicSchemaKey((NamespacedProperty) newValue);
-            return;
-        case EsbPackage.FAST_XSLT_MEDIATOR__INPUT_CONNECTOR:
-            setInputConnector((FastXSLTMediatorInputConnector) newValue);
-            return;
-        case EsbPackage.FAST_XSLT_MEDIATOR__OUTPUT_CONNECTOR:
-            setOutputConnector((FastXSLTMediatorOutputConnector) newValue);
-            return;
+            case EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_SCHEMA_KEY_TYPE:
+                setFastXsltSchemaKeyType((KeyType)newValue);
+                return;
+            case EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_STATIC_SCHEMA_KEY:
+                setFastXsltStaticSchemaKey((RegistryKeyProperty)newValue);
+                return;
+            case EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_DYNAMIC_SCHEMA_KEY:
+                setFastXsltDynamicSchemaKey((NamespacedProperty)newValue);
+                return;
+            case EsbPackage.FAST_XSLT_MEDIATOR__INPUT_CONNECTOR:
+                setInputConnector((FastXSLTMediatorInputConnector)newValue);
+                return;
+            case EsbPackage.FAST_XSLT_MEDIATOR__OUTPUT_CONNECTOR:
+                setOutputConnector((FastXSLTMediatorOutputConnector)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -490,27 +420,26 @@ public class FastXSLTMediatorImpl extends MediatorImpl implements FastXSLTMediat
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_SCHEMA_KEY_TYPE:
-            setFastXsltSchemaKeyType(FAST_XSLT_SCHEMA_KEY_TYPE_EDEFAULT);
-            return;
-        case EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_STATIC_SCHEMA_KEY:
-            setFastXsltStaticSchemaKey((RegistryKeyProperty) null);
-            return;
-        case EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_DYNAMIC_SCHEMA_KEY:
-            setFastXsltDynamicSchemaKey((NamespacedProperty) null);
-            return;
-        case EsbPackage.FAST_XSLT_MEDIATOR__INPUT_CONNECTOR:
-            setInputConnector((FastXSLTMediatorInputConnector) null);
-            return;
-        case EsbPackage.FAST_XSLT_MEDIATOR__OUTPUT_CONNECTOR:
-            setOutputConnector((FastXSLTMediatorOutputConnector) null);
-            return;
+            case EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_SCHEMA_KEY_TYPE:
+                setFastXsltSchemaKeyType(FAST_XSLT_SCHEMA_KEY_TYPE_EDEFAULT);
+                return;
+            case EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_STATIC_SCHEMA_KEY:
+                setFastXsltStaticSchemaKey((RegistryKeyProperty)null);
+                return;
+            case EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_DYNAMIC_SCHEMA_KEY:
+                setFastXsltDynamicSchemaKey((NamespacedProperty)null);
+                return;
+            case EsbPackage.FAST_XSLT_MEDIATOR__INPUT_CONNECTOR:
+                setInputConnector((FastXSLTMediatorInputConnector)null);
+                return;
+            case EsbPackage.FAST_XSLT_MEDIATOR__OUTPUT_CONNECTOR:
+                setOutputConnector((FastXSLTMediatorOutputConnector)null);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -518,22 +447,21 @@ public class FastXSLTMediatorImpl extends MediatorImpl implements FastXSLTMediat
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_SCHEMA_KEY_TYPE:
-            return fastXsltSchemaKeyType != FAST_XSLT_SCHEMA_KEY_TYPE_EDEFAULT;
-        case EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_STATIC_SCHEMA_KEY:
-            return fastXsltStaticSchemaKey != null;
-        case EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_DYNAMIC_SCHEMA_KEY:
-            return fastXsltDynamicSchemaKey != null;
-        case EsbPackage.FAST_XSLT_MEDIATOR__INPUT_CONNECTOR:
-            return inputConnector != null;
-        case EsbPackage.FAST_XSLT_MEDIATOR__OUTPUT_CONNECTOR:
-            return outputConnector != null;
+            case EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_SCHEMA_KEY_TYPE:
+                return fastXsltSchemaKeyType != FAST_XSLT_SCHEMA_KEY_TYPE_EDEFAULT;
+            case EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_STATIC_SCHEMA_KEY:
+                return fastXsltStaticSchemaKey != null;
+            case EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_DYNAMIC_SCHEMA_KEY:
+                return fastXsltDynamicSchemaKey != null;
+            case EsbPackage.FAST_XSLT_MEDIATOR__INPUT_CONNECTOR:
+                return inputConnector != null;
+            case EsbPackage.FAST_XSLT_MEDIATOR__OUTPUT_CONNECTOR:
+                return outputConnector != null;
         }
         return super.eIsSet(featureID);
     }
@@ -541,13 +469,11 @@ public class FastXSLTMediatorImpl extends MediatorImpl implements FastXSLTMediat
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
-            return super.toString();
+        if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (fastXsltSchemaKeyType: ");

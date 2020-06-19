@@ -17,7 +17,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Local Entry Value Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getLocalEntryValueType()
  * @model
  * @generated
@@ -27,7 +26,6 @@ public enum LocalEntryValueType implements Enumerator {
      * The '<em><b>LITERAL</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #LITERAL_VALUE
      * @generated
      * @ordered
@@ -38,7 +36,6 @@ public enum LocalEntryValueType implements Enumerator {
      * The '<em><b>XML</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #XML_VALUE
      * @generated
      * @ordered
@@ -49,7 +46,6 @@ public enum LocalEntryValueType implements Enumerator {
      * The '<em><b>URL</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #URL_VALUE
      * @generated
      * @ordered
@@ -64,7 +60,6 @@ public enum LocalEntryValueType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #LITERAL
      * @model literal="In-lined Text Entry"
      * @generated
@@ -80,7 +75,6 @@ public enum LocalEntryValueType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #XML
      * @model literal="In-lined XML Entry"
      * @generated
@@ -96,7 +90,6 @@ public enum LocalEntryValueType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #URL
      * @model literal="Source URL Entry"
      * @generated
@@ -108,16 +101,18 @@ public enum LocalEntryValueType implements Enumerator {
      * An array of all the '<em><b>Local Entry Value Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
-    private static final LocalEntryValueType[] VALUES_ARRAY = new LocalEntryValueType[] { LITERAL, XML, URL, };
+    private static final LocalEntryValueType[] VALUES_ARRAY = new LocalEntryValueType[] {
+            LITERAL,
+            XML,
+            URL,
+        };
 
     /**
      * A public read-only list of all the '<em><b>Local Entry Value Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public static final List<LocalEntryValueType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -126,7 +121,6 @@ public enum LocalEntryValueType implements Enumerator {
      * Returns the '<em><b>Local Entry Value Type</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -145,7 +139,6 @@ public enum LocalEntryValueType implements Enumerator {
      * Returns the '<em><b>Local Entry Value Type</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -164,19 +157,15 @@ public enum LocalEntryValueType implements Enumerator {
      * Returns the '<em><b>Local Entry Value Type</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static LocalEntryValueType get(int value) {
         switch (value) {
-        case LITERAL_VALUE:
-            return LITERAL;
-        case XML_VALUE:
-            return XML;
-        case URL_VALUE:
-            return URL;
+            case LITERAL_VALUE: return LITERAL;
+            case XML_VALUE: return XML;
+            case URL_VALUE: return URL;
         }
         return null;
     }
@@ -184,7 +173,6 @@ public enum LocalEntryValueType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final int value;
@@ -192,7 +180,6 @@ public enum LocalEntryValueType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String name;
@@ -200,7 +187,6 @@ public enum LocalEntryValueType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String literal;
@@ -209,7 +195,6 @@ public enum LocalEntryValueType implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private LocalEntryValueType(int value, String name, String literal) {
@@ -221,38 +206,34 @@ public enum LocalEntryValueType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public int getValue() {
-        return value;
+      return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getName() {
-        return name;
+      return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getLiteral() {
-        return literal;
+      return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

@@ -23,7 +23,6 @@ public class FailoverEndPointOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected FailoverEndPointOutputConnectorImpl() {
@@ -33,7 +32,6 @@ public class FailoverEndPointOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

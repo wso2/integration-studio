@@ -66,7 +66,8 @@ public class CacheMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstr
             setCommonProperties(mediator, mediatorModel);
 
             if (!mediator.isPreviousCacheImplementation()) {
-                executeSetValueCommand(CACHE_MEDIATOR__CACHE_MEDIATOR_IMPLEMENTATION, CacheMediatorType.DEFAULT);
+                executeSetValueCommand(CACHE_MEDIATOR__CACHE_MEDIATOR_IMPLEMENTATION,
+                        CacheMediatorType.DEFAULT);
             } else {
                 executeSetValueCommand(CACHE_MEDIATOR__CACHE_MEDIATOR_IMPLEMENTATION,
                         CacheMediatorType.COMPATIBILITY_611);

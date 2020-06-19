@@ -26,12 +26,11 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty#getName <em>Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty#getValue <em>Value</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty#getScope <em>Scope</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty#getValueType <em>Value Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty#getValueExpression <em>Value
- * Expression</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty#getValue <em>Value</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty#getScope <em>Scope</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty#getValueType <em>Value Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty#getValueExpression <em>Value Expression</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEndPointProperty()
@@ -47,7 +46,6 @@ public interface EndPointProperty extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEndPointProperty_Name()
@@ -57,11 +55,9 @@ public interface EndPointProperty extends EObject {
     String getName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty#getName <em>Name</em>}'
-     * attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty#getName <em>Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Name</em>' attribute.
      * @see #getName()
      * @generated
@@ -76,7 +72,6 @@ public interface EndPointProperty extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Value</em>' attribute.
      * @see #setValue(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEndPointProperty_Value()
@@ -86,11 +81,9 @@ public interface EndPointProperty extends EObject {
     String getValue();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty#getValue <em>Value</em>}'
-     * attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty#getValue <em>Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Value</em>' attribute.
      * @see #getValue()
      * @generated
@@ -106,7 +99,6 @@ public interface EndPointProperty extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Scope</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EndPointPropertyScope
      * @see #setScope(EndPointPropertyScope)
@@ -117,11 +109,9 @@ public interface EndPointProperty extends EObject {
     EndPointPropertyScope getScope();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty#getScope <em>Scope</em>}'
-     * attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty#getScope <em>Scope</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Scope</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EndPointPropertyScope
      * @see #getScope()
@@ -138,7 +128,6 @@ public interface EndPointProperty extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Value Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType
      * @see #setValueType(PropertyValueType)
@@ -149,11 +138,9 @@ public interface EndPointProperty extends EObject {
     PropertyValueType getValueType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty#getValueType <em>Value
-     * Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty#getValueType <em>Value Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Value Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType
      * @see #getValueType()
@@ -169,7 +156,6 @@ public interface EndPointProperty extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Value Expression</em>' containment reference.
      * @see #setValueExpression(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEndPointProperty_ValueExpression()
@@ -179,11 +165,9 @@ public interface EndPointProperty extends EObject {
     NamespacedProperty getValueExpression();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty#getValueExpression
-     * <em>Value Expression</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty#getValueExpression <em>Value Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Value Expression</em>' containment reference.
      * @see #getValueExpression()
      * @generated

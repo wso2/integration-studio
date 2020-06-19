@@ -105,9 +105,8 @@ public class ProxyServiceItemSemanticEditPolicy extends EsbBaseItemSemanticEditP
                     }
                 }
                 cmd.add(new DestroyElementCommand(
-                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned:
-                                                                                                   // true
-                // don't need explicit deletion of node as parent's view deletion would clean child views as well
+                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned: true
+                // don't need explicit deletion of node as parent's view deletion would clean child views as well 
                 // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
                 break;
             case ProxyInputConnectorEditPart.VISUAL_ID:
@@ -121,9 +120,8 @@ public class ProxyServiceItemSemanticEditPolicy extends EsbBaseItemSemanticEditP
                     }
                 }
                 cmd.add(new DestroyElementCommand(
-                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned:
-                                                                                                   // true
-                // don't need explicit deletion of node as parent's view deletion would clean child views as well
+                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned: true
+                // don't need explicit deletion of node as parent's view deletion would clean child views as well 
                 // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
                 break;
             case ProxyOutSequenceOutputConnectorEditPart.VISUAL_ID:
@@ -137,9 +135,8 @@ public class ProxyServiceItemSemanticEditPolicy extends EsbBaseItemSemanticEditP
                     }
                 }
                 cmd.add(new DestroyElementCommand(
-                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned:
-                                                                                                   // true
-                // don't need explicit deletion of node as parent's view deletion would clean child views as well
+                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned: true
+                // don't need explicit deletion of node as parent's view deletion would clean child views as well 
                 // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
                 break;
             case ProxyFaultInputConnectorEditPart.VISUAL_ID:
@@ -153,16 +150,14 @@ public class ProxyServiceItemSemanticEditPolicy extends EsbBaseItemSemanticEditP
                     }
                 }
                 cmd.add(new DestroyElementCommand(
-                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned:
-                                                                                                   // true
-                // don't need explicit deletion of node as parent's view deletion would clean child views as well
+                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned: true
+                // don't need explicit deletion of node as parent's view deletion would clean child views as well 
                 // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
                 break;
             case ProxyServiceContainerEditPart.VISUAL_ID:
                 cmd.add(new DestroyElementCommand(
-                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned:
-                                                                                                   // true
-                // don't need explicit deletion of node as parent's view deletion would clean child views as well
+                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned: true
+                // don't need explicit deletion of node as parent's view deletion would clean child views as well 
                 // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
                 break;
             case ProxyInSequenceInputConnectorEditPart.VISUAL_ID:
@@ -176,9 +171,8 @@ public class ProxyServiceItemSemanticEditPolicy extends EsbBaseItemSemanticEditP
                     }
                 }
                 cmd.add(new DestroyElementCommand(
-                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned:
-                                                                                                   // true
-                // don't need explicit deletion of node as parent's view deletion would clean child views as well
+                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned: true
+                // don't need explicit deletion of node as parent's view deletion would clean child views as well 
                 // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
                 break;
             }

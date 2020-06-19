@@ -26,7 +26,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Filter Mediator Condition Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFilterMediatorConditionType()
  * @model
  * @generated
@@ -36,7 +35,6 @@ public enum FilterMediatorConditionType implements Enumerator {
      * The '<em><b>SOURCE REGEX</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #SOURCE_REGEX_VALUE
      * @generated
      * @ordered
@@ -46,7 +44,6 @@ public enum FilterMediatorConditionType implements Enumerator {
      * The '<em><b>XPath</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #XPATH_VALUE
      * @generated
      * @ordered
@@ -61,7 +58,6 @@ public enum FilterMediatorConditionType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #SOURCE_REGEX
      * @model literal="Source and Regular Expression"
      * @generated
@@ -77,7 +73,6 @@ public enum FilterMediatorConditionType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #XPATH
      * @model name="XPath"
      * @generated
@@ -89,27 +84,25 @@ public enum FilterMediatorConditionType implements Enumerator {
      * An array of all the '<em><b>Filter Mediator Condition Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
-    private static final FilterMediatorConditionType[] VALUES_ARRAY = new FilterMediatorConditionType[] { SOURCE_REGEX,
-            XPATH, };
+    private static final FilterMediatorConditionType[] VALUES_ARRAY = new FilterMediatorConditionType[] {
+            SOURCE_REGEX,
+            XPATH,
+        };
 
     /**
      * A public read-only list of all the '<em><b>Filter Mediator Condition Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
-    public static final List<FilterMediatorConditionType> VALUES = Collections
-            .unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<FilterMediatorConditionType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
     /**
      * Returns the '<em><b>Filter Mediator Condition Type</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -128,7 +121,6 @@ public enum FilterMediatorConditionType implements Enumerator {
      * Returns the '<em><b>Filter Mediator Condition Type</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -147,17 +139,14 @@ public enum FilterMediatorConditionType implements Enumerator {
      * Returns the '<em><b>Filter Mediator Condition Type</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static FilterMediatorConditionType get(int value) {
         switch (value) {
-        case SOURCE_REGEX_VALUE:
-            return SOURCE_REGEX;
-        case XPATH_VALUE:
-            return XPATH;
+            case SOURCE_REGEX_VALUE: return SOURCE_REGEX;
+            case XPATH_VALUE: return XPATH;
         }
         return null;
     }
@@ -165,7 +154,6 @@ public enum FilterMediatorConditionType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final int value;
@@ -173,7 +161,6 @@ public enum FilterMediatorConditionType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String name;
@@ -181,7 +168,6 @@ public enum FilterMediatorConditionType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String literal;
@@ -190,7 +176,6 @@ public enum FilterMediatorConditionType implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private FilterMediatorConditionType(int value, String name, String literal) {
@@ -202,38 +187,34 @@ public enum FilterMediatorConditionType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public int getValue() {
-        return value;
+      return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getName() {
-        return name;
+      return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getLiteral() {
-        return literal;
+      return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

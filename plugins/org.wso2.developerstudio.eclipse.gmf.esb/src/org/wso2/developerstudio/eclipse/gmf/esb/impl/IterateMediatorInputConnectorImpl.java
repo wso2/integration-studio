@@ -22,7 +22,6 @@ public class IterateMediatorInputConnectorImpl extends InputConnectorImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected IterateMediatorInputConnectorImpl() {
@@ -32,7 +31,6 @@ public class IterateMediatorInputConnectorImpl extends InputConnectorImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

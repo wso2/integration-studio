@@ -28,12 +28,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediatorProperty;
  *
  * @generated
  */
-public class JsonTransformMediatorPropertyImpl extends AbstractNameValueExpressionPropertyImpl
-        implements JsonTransformMediatorProperty {
+public class JsonTransformMediatorPropertyImpl extends AbstractNameValueExpressionPropertyImpl implements JsonTransformMediatorProperty {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected JsonTransformMediatorPropertyImpl() {
@@ -43,18 +41,16 @@ public class JsonTransformMediatorPropertyImpl extends AbstractNameValueExpressi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     protected EClass eStaticClass() {
         return EsbPackage.Literals.JSON_TRANSFORM_MEDIATOR_PROPERTY;
     }
-
+    
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getPropertyName() {
@@ -67,7 +63,6 @@ public class JsonTransformMediatorPropertyImpl extends AbstractNameValueExpressi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated NOT
      */
     @Override
@@ -75,14 +70,12 @@ public class JsonTransformMediatorPropertyImpl extends AbstractNameValueExpressi
         String oldPropertyName = propertyName;
         propertyName = newPropertyName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_PROPERTY__PROPERTY_NAME, oldPropertyName, propertyName));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_PROPERTY__PROPERTY_NAME, oldPropertyName, propertyName));
     }
-
+    
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated NOT
      */
     @Override
@@ -96,16 +89,13 @@ public class JsonTransformMediatorPropertyImpl extends AbstractNameValueExpressi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setPropertyValue(String newPropertyValue) {
         String oldPropertyValue = propertyValue;
         propertyValue = newPropertyValue;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_PROPERTY__PROPERTY_VALUE, oldPropertyValue,
-                    propertyValue));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_PROPERTY__PROPERTY_VALUE, oldPropertyValue, propertyValue));
     }
 
-} // JsonTransformMediatorPropertyImpl
+} //JsonTransformMediatorPropertyImpl

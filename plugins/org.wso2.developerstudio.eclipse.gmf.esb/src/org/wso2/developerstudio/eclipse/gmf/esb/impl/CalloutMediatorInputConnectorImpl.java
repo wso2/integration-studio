@@ -22,7 +22,6 @@ public class CalloutMediatorInputConnectorImpl extends InputConnectorImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected CalloutMediatorInputConnectorImpl() {
@@ -32,7 +31,6 @@ public class CalloutMediatorInputConnectorImpl extends InputConnectorImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

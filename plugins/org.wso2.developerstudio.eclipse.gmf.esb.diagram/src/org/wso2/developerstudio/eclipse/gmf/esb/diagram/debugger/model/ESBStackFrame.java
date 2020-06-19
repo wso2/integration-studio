@@ -90,7 +90,7 @@ public class ESBStackFrame extends ESBDebugElement implements IStackFrame, Event
     private static final String URL_MAPPING_NEW_WIRELOG_KEY = "mapping";
     private static final String METHOD_WIRELOG_KEY = "method";
     private static final String SEQUENCE_WIRELOG_KEY = "sequence";
-
+    
     private final IThread thread;
     private int lineNumber = 1;
     private List<IVariable> variables = new ArrayList<>();
@@ -332,15 +332,15 @@ public class ESBStackFrame extends ESBDebugElement implements IStackFrame, Event
             // wire log ID from the server side
 
             if (breakpointCommandJsonObject.get(MEDIATION_COMPONENT_WIRELOG_KEY) != null
-                    && breakpointCommandJsonObject.get(SEQUENCE_WIRELOG_KEY) != null && breakpointCommandJsonObject
-                            .get(SEQUENCE_WIRELOG_KEY).getAsJsonObject().get(API_WIRELOG_KEY) != null) {
+                    && breakpointCommandJsonObject.get(SEQUENCE_WIRELOG_KEY) != null
+                    && breakpointCommandJsonObject.get(SEQUENCE_WIRELOG_KEY).getAsJsonObject().get(API_WIRELOG_KEY) != null) {
 
-                JsonObject resourceJsonObject = breakpointCommandJsonObject.get(SEQUENCE_WIRELOG_KEY).getAsJsonObject()
-                        .get(API_WIRELOG_KEY).getAsJsonObject().get(RESOURCE_WIRELOG_KEY).getAsJsonObject();
+                JsonObject resourceJsonObject = breakpointCommandJsonObject.get(SEQUENCE_WIRELOG_KEY).getAsJsonObject().get(API_WIRELOG_KEY)
+                        .getAsJsonObject().get(RESOURCE_WIRELOG_KEY).getAsJsonObject();
 
                 JsonElement urlMappingElement = resourceJsonObject.get(URL_MAPPING_OLD_WIRELOG_KEY);
                 resourceJsonObject.remove(URL_MAPPING_OLD_WIRELOG_KEY);
-                if (urlMappingElement == null) {
+                if(urlMappingElement == null) {
                     urlMappingElement = resourceJsonObject.get(URL_MAPPING_OLD_WIRELOG_KEY_TEMPLATE);
                     resourceJsonObject.remove(URL_MAPPING_OLD_WIRELOG_KEY_TEMPLATE);
                 }

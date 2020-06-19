@@ -22,7 +22,6 @@ public class SwitchMediatorOutputConnectorImpl extends OutputConnectorImpl imple
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected SwitchMediatorOutputConnectorImpl() {
@@ -32,7 +31,6 @@ public class SwitchMediatorOutputConnectorImpl extends OutputConnectorImpl imple
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

@@ -27,7 +27,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTProperty} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class XSLTPropertyItemProvider extends AbstractNameValueExpressionPropertyItemProvider {
@@ -35,7 +34,6 @@ public class XSLTPropertyItemProvider extends AbstractNameValueExpressionPropert
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public XSLTPropertyItemProvider(AdapterFactory adapterFactory) {
@@ -46,7 +44,6 @@ public class XSLTPropertyItemProvider extends AbstractNameValueExpressionPropert
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -63,7 +60,6 @@ public class XSLTPropertyItemProvider extends AbstractNameValueExpressionPropert
      * This returns XSLTProperty.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -76,7 +72,6 @@ public class XSLTPropertyItemProvider extends AbstractNameValueExpressionPropert
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated NOT
      */
 
@@ -110,7 +105,6 @@ public class XSLTPropertyItemProvider extends AbstractNameValueExpressionPropert
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -125,7 +119,6 @@ public class XSLTPropertyItemProvider extends AbstractNameValueExpressionPropert
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

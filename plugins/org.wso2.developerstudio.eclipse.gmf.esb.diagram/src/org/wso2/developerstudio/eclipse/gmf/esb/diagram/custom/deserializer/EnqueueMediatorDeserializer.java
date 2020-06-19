@@ -39,7 +39,8 @@ public class EnqueueMediatorDeserializer extends AbstractEsbNodeDeserializer<Abs
         // Setting executer name
         if (enqueueMediator.getExecutorName() != null && !enqueueMediator.getExecutorName().equals("")) {
             executeSetValueCommand(ENQUEUE_MEDIATOR__EXECUTOR, enqueueMediator.getExecutorName());
-        } else {
+        }
+        else {
             executeSetValueCommand(ENQUEUE_MEDIATOR__EXECUTOR, "");
         }
 
@@ -51,7 +52,8 @@ public class EnqueueMediatorDeserializer extends AbstractEsbNodeDeserializer<Abs
             RegistryKeyProperty regkey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
             regkey.setKeyValue(enqueueMediator.getSequenceName());
             executeSetValueCommand(ENQUEUE_MEDIATOR__SEQUENCE_KEY, regkey);
-        } else {
+        }
+        else {
             RegistryKeyProperty regkey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
             regkey.setKeyValue("");
             executeSetValueCommand(ENQUEUE_MEDIATOR__SEQUENCE_KEY, regkey);

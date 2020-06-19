@@ -213,8 +213,9 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
         contextActionsDirection.put(FilterMediator.class, new DirectionFilterMediatorAction(part));
 
         contextActionsDirection.put(PropertyMediator.class, new DirectionPropertyMediatorAction(part));
-
+        
         contextActionsDirection.put(PropertyGroupMediator.class, new DirectionPropertyGroupMediatorAction(part));
+
 
         contextActionsDirection.put(EnrichMediator.class, new DirectionEnrichMediatorAction(part));
 

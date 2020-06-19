@@ -26,17 +26,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyEntry;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottlePolicyEntryImpl#getThrottleType <em>Throttle
- * Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottlePolicyEntryImpl#getThrottleRange <em>Throttle
- * Range</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottlePolicyEntryImpl#getAccessType <em>Access
- * Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottlePolicyEntryImpl#getMaxRequestCount <em>Max Request
- * Count</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottlePolicyEntryImpl#getUnitTime <em>Unit Time</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottlePolicyEntryImpl#getProhibitPeriod <em>Prohibit
- * Period</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottlePolicyEntryImpl#getThrottleType <em>Throttle Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottlePolicyEntryImpl#getThrottleRange <em>Throttle Range</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottlePolicyEntryImpl#getAccessType <em>Access Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottlePolicyEntryImpl#getMaxRequestCount <em>Max Request Count</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottlePolicyEntryImpl#getUnitTime <em>Unit Time</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottlePolicyEntryImpl#getProhibitPeriod <em>Prohibit Period</em>}</li>
  * </ul>
  *
  * @generated
@@ -46,7 +41,6 @@ public class ThrottlePolicyEntryImpl extends EObjectImpl implements ThrottlePoli
      * The default value of the '{@link #getThrottleType() <em>Throttle Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getThrottleType()
      * @generated
      * @ordered
@@ -57,7 +51,6 @@ public class ThrottlePolicyEntryImpl extends EObjectImpl implements ThrottlePoli
      * The cached value of the '{@link #getThrottleType() <em>Throttle Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getThrottleType()
      * @generated
      * @ordered
@@ -68,7 +61,6 @@ public class ThrottlePolicyEntryImpl extends EObjectImpl implements ThrottlePoli
      * The default value of the '{@link #getThrottleRange() <em>Throttle Range</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getThrottleRange()
      * @generated
      * @ordered
@@ -79,7 +71,6 @@ public class ThrottlePolicyEntryImpl extends EObjectImpl implements ThrottlePoli
      * The cached value of the '{@link #getThrottleRange() <em>Throttle Range</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getThrottleRange()
      * @generated
      * @ordered
@@ -90,7 +81,6 @@ public class ThrottlePolicyEntryImpl extends EObjectImpl implements ThrottlePoli
      * The default value of the '{@link #getAccessType() <em>Access Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getAccessType()
      * @generated
      * @ordered
@@ -101,7 +91,6 @@ public class ThrottlePolicyEntryImpl extends EObjectImpl implements ThrottlePoli
      * The cached value of the '{@link #getAccessType() <em>Access Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getAccessType()
      * @generated
      * @ordered
@@ -112,7 +101,6 @@ public class ThrottlePolicyEntryImpl extends EObjectImpl implements ThrottlePoli
      * The default value of the '{@link #getMaxRequestCount() <em>Max Request Count</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getMaxRequestCount()
      * @generated
      * @ordered
@@ -123,7 +111,6 @@ public class ThrottlePolicyEntryImpl extends EObjectImpl implements ThrottlePoli
      * The cached value of the '{@link #getMaxRequestCount() <em>Max Request Count</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getMaxRequestCount()
      * @generated
      * @ordered
@@ -134,7 +121,6 @@ public class ThrottlePolicyEntryImpl extends EObjectImpl implements ThrottlePoli
      * The default value of the '{@link #getUnitTime() <em>Unit Time</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getUnitTime()
      * @generated
      * @ordered
@@ -145,7 +131,6 @@ public class ThrottlePolicyEntryImpl extends EObjectImpl implements ThrottlePoli
      * The cached value of the '{@link #getUnitTime() <em>Unit Time</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getUnitTime()
      * @generated
      * @ordered
@@ -156,7 +141,6 @@ public class ThrottlePolicyEntryImpl extends EObjectImpl implements ThrottlePoli
      * The default value of the '{@link #getProhibitPeriod() <em>Prohibit Period</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getProhibitPeriod()
      * @generated
      * @ordered
@@ -167,7 +151,6 @@ public class ThrottlePolicyEntryImpl extends EObjectImpl implements ThrottlePoli
      * The cached value of the '{@link #getProhibitPeriod() <em>Prohibit Period</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getProhibitPeriod()
      * @generated
      * @ordered
@@ -177,7 +160,6 @@ public class ThrottlePolicyEntryImpl extends EObjectImpl implements ThrottlePoli
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected ThrottlePolicyEntryImpl() {
@@ -187,7 +169,6 @@ public class ThrottlePolicyEntryImpl extends EObjectImpl implements ThrottlePoli
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -199,7 +180,6 @@ public class ThrottlePolicyEntryImpl extends EObjectImpl implements ThrottlePoli
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public ThrottleConditionType getThrottleType() {
@@ -209,21 +189,18 @@ public class ThrottlePolicyEntryImpl extends EObjectImpl implements ThrottlePoli
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setThrottleType(ThrottleConditionType newThrottleType) {
         ThrottleConditionType oldThrottleType = throttleType;
         throttleType = newThrottleType == null ? THROTTLE_TYPE_EDEFAULT : newThrottleType;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.THROTTLE_POLICY_ENTRY__THROTTLE_TYPE,
-                    oldThrottleType, throttleType));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.THROTTLE_POLICY_ENTRY__THROTTLE_TYPE, oldThrottleType, throttleType));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getThrottleRange() {
@@ -233,21 +210,18 @@ public class ThrottlePolicyEntryImpl extends EObjectImpl implements ThrottlePoli
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setThrottleRange(String newThrottleRange) {
         String oldThrottleRange = throttleRange;
         throttleRange = newThrottleRange;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.THROTTLE_POLICY_ENTRY__THROTTLE_RANGE,
-                    oldThrottleRange, throttleRange));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.THROTTLE_POLICY_ENTRY__THROTTLE_RANGE, oldThrottleRange, throttleRange));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public ThrottleAccessType getAccessType() {
@@ -257,21 +231,18 @@ public class ThrottlePolicyEntryImpl extends EObjectImpl implements ThrottlePoli
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setAccessType(ThrottleAccessType newAccessType) {
         ThrottleAccessType oldAccessType = accessType;
         accessType = newAccessType == null ? ACCESS_TYPE_EDEFAULT : newAccessType;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.THROTTLE_POLICY_ENTRY__ACCESS_TYPE,
-                    oldAccessType, accessType));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.THROTTLE_POLICY_ENTRY__ACCESS_TYPE, oldAccessType, accessType));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public int getMaxRequestCount() {
@@ -281,21 +252,18 @@ public class ThrottlePolicyEntryImpl extends EObjectImpl implements ThrottlePoli
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setMaxRequestCount(int newMaxRequestCount) {
         int oldMaxRequestCount = maxRequestCount;
         maxRequestCount = newMaxRequestCount;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.THROTTLE_POLICY_ENTRY__MAX_REQUEST_COUNT,
-                    oldMaxRequestCount, maxRequestCount));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.THROTTLE_POLICY_ENTRY__MAX_REQUEST_COUNT, oldMaxRequestCount, maxRequestCount));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public int getUnitTime() {
@@ -305,21 +273,18 @@ public class ThrottlePolicyEntryImpl extends EObjectImpl implements ThrottlePoli
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setUnitTime(int newUnitTime) {
         int oldUnitTime = unitTime;
         unitTime = newUnitTime;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.THROTTLE_POLICY_ENTRY__UNIT_TIME,
-                    oldUnitTime, unitTime));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.THROTTLE_POLICY_ENTRY__UNIT_TIME, oldUnitTime, unitTime));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public int getProhibitPeriod() {
@@ -329,39 +294,36 @@ public class ThrottlePolicyEntryImpl extends EObjectImpl implements ThrottlePoli
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setProhibitPeriod(int newProhibitPeriod) {
         int oldProhibitPeriod = prohibitPeriod;
         prohibitPeriod = newProhibitPeriod;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.THROTTLE_POLICY_ENTRY__PROHIBIT_PERIOD,
-                    oldProhibitPeriod, prohibitPeriod));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.THROTTLE_POLICY_ENTRY__PROHIBIT_PERIOD, oldProhibitPeriod, prohibitPeriod));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case EsbPackage.THROTTLE_POLICY_ENTRY__THROTTLE_TYPE:
-            return getThrottleType();
-        case EsbPackage.THROTTLE_POLICY_ENTRY__THROTTLE_RANGE:
-            return getThrottleRange();
-        case EsbPackage.THROTTLE_POLICY_ENTRY__ACCESS_TYPE:
-            return getAccessType();
-        case EsbPackage.THROTTLE_POLICY_ENTRY__MAX_REQUEST_COUNT:
-            return getMaxRequestCount();
-        case EsbPackage.THROTTLE_POLICY_ENTRY__UNIT_TIME:
-            return getUnitTime();
-        case EsbPackage.THROTTLE_POLICY_ENTRY__PROHIBIT_PERIOD:
-            return getProhibitPeriod();
+            case EsbPackage.THROTTLE_POLICY_ENTRY__THROTTLE_TYPE:
+                return getThrottleType();
+            case EsbPackage.THROTTLE_POLICY_ENTRY__THROTTLE_RANGE:
+                return getThrottleRange();
+            case EsbPackage.THROTTLE_POLICY_ENTRY__ACCESS_TYPE:
+                return getAccessType();
+            case EsbPackage.THROTTLE_POLICY_ENTRY__MAX_REQUEST_COUNT:
+                return getMaxRequestCount();
+            case EsbPackage.THROTTLE_POLICY_ENTRY__UNIT_TIME:
+                return getUnitTime();
+            case EsbPackage.THROTTLE_POLICY_ENTRY__PROHIBIT_PERIOD:
+                return getProhibitPeriod();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -369,31 +331,30 @@ public class ThrottlePolicyEntryImpl extends EObjectImpl implements ThrottlePoli
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case EsbPackage.THROTTLE_POLICY_ENTRY__THROTTLE_TYPE:
-            setThrottleType((ThrottleConditionType) newValue);
-            return;
-        case EsbPackage.THROTTLE_POLICY_ENTRY__THROTTLE_RANGE:
-            setThrottleRange((String) newValue);
-            return;
-        case EsbPackage.THROTTLE_POLICY_ENTRY__ACCESS_TYPE:
-            setAccessType((ThrottleAccessType) newValue);
-            return;
-        case EsbPackage.THROTTLE_POLICY_ENTRY__MAX_REQUEST_COUNT:
-            setMaxRequestCount((Integer) newValue);
-            return;
-        case EsbPackage.THROTTLE_POLICY_ENTRY__UNIT_TIME:
-            setUnitTime((Integer) newValue);
-            return;
-        case EsbPackage.THROTTLE_POLICY_ENTRY__PROHIBIT_PERIOD:
-            setProhibitPeriod((Integer) newValue);
-            return;
+            case EsbPackage.THROTTLE_POLICY_ENTRY__THROTTLE_TYPE:
+                setThrottleType((ThrottleConditionType)newValue);
+                return;
+            case EsbPackage.THROTTLE_POLICY_ENTRY__THROTTLE_RANGE:
+                setThrottleRange((String)newValue);
+                return;
+            case EsbPackage.THROTTLE_POLICY_ENTRY__ACCESS_TYPE:
+                setAccessType((ThrottleAccessType)newValue);
+                return;
+            case EsbPackage.THROTTLE_POLICY_ENTRY__MAX_REQUEST_COUNT:
+                setMaxRequestCount((Integer)newValue);
+                return;
+            case EsbPackage.THROTTLE_POLICY_ENTRY__UNIT_TIME:
+                setUnitTime((Integer)newValue);
+                return;
+            case EsbPackage.THROTTLE_POLICY_ENTRY__PROHIBIT_PERIOD:
+                setProhibitPeriod((Integer)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -401,31 +362,30 @@ public class ThrottlePolicyEntryImpl extends EObjectImpl implements ThrottlePoli
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case EsbPackage.THROTTLE_POLICY_ENTRY__THROTTLE_TYPE:
-            setThrottleType(THROTTLE_TYPE_EDEFAULT);
-            return;
-        case EsbPackage.THROTTLE_POLICY_ENTRY__THROTTLE_RANGE:
-            setThrottleRange(THROTTLE_RANGE_EDEFAULT);
-            return;
-        case EsbPackage.THROTTLE_POLICY_ENTRY__ACCESS_TYPE:
-            setAccessType(ACCESS_TYPE_EDEFAULT);
-            return;
-        case EsbPackage.THROTTLE_POLICY_ENTRY__MAX_REQUEST_COUNT:
-            setMaxRequestCount(MAX_REQUEST_COUNT_EDEFAULT);
-            return;
-        case EsbPackage.THROTTLE_POLICY_ENTRY__UNIT_TIME:
-            setUnitTime(UNIT_TIME_EDEFAULT);
-            return;
-        case EsbPackage.THROTTLE_POLICY_ENTRY__PROHIBIT_PERIOD:
-            setProhibitPeriod(PROHIBIT_PERIOD_EDEFAULT);
-            return;
+            case EsbPackage.THROTTLE_POLICY_ENTRY__THROTTLE_TYPE:
+                setThrottleType(THROTTLE_TYPE_EDEFAULT);
+                return;
+            case EsbPackage.THROTTLE_POLICY_ENTRY__THROTTLE_RANGE:
+                setThrottleRange(THROTTLE_RANGE_EDEFAULT);
+                return;
+            case EsbPackage.THROTTLE_POLICY_ENTRY__ACCESS_TYPE:
+                setAccessType(ACCESS_TYPE_EDEFAULT);
+                return;
+            case EsbPackage.THROTTLE_POLICY_ENTRY__MAX_REQUEST_COUNT:
+                setMaxRequestCount(MAX_REQUEST_COUNT_EDEFAULT);
+                return;
+            case EsbPackage.THROTTLE_POLICY_ENTRY__UNIT_TIME:
+                setUnitTime(UNIT_TIME_EDEFAULT);
+                return;
+            case EsbPackage.THROTTLE_POLICY_ENTRY__PROHIBIT_PERIOD:
+                setProhibitPeriod(PROHIBIT_PERIOD_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -433,26 +393,24 @@ public class ThrottlePolicyEntryImpl extends EObjectImpl implements ThrottlePoli
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case EsbPackage.THROTTLE_POLICY_ENTRY__THROTTLE_TYPE:
-            return throttleType != THROTTLE_TYPE_EDEFAULT;
-        case EsbPackage.THROTTLE_POLICY_ENTRY__THROTTLE_RANGE:
-            return THROTTLE_RANGE_EDEFAULT == null ? throttleRange != null
-                    : !THROTTLE_RANGE_EDEFAULT.equals(throttleRange);
-        case EsbPackage.THROTTLE_POLICY_ENTRY__ACCESS_TYPE:
-            return accessType != ACCESS_TYPE_EDEFAULT;
-        case EsbPackage.THROTTLE_POLICY_ENTRY__MAX_REQUEST_COUNT:
-            return maxRequestCount != MAX_REQUEST_COUNT_EDEFAULT;
-        case EsbPackage.THROTTLE_POLICY_ENTRY__UNIT_TIME:
-            return unitTime != UNIT_TIME_EDEFAULT;
-        case EsbPackage.THROTTLE_POLICY_ENTRY__PROHIBIT_PERIOD:
-            return prohibitPeriod != PROHIBIT_PERIOD_EDEFAULT;
+            case EsbPackage.THROTTLE_POLICY_ENTRY__THROTTLE_TYPE:
+                return throttleType != THROTTLE_TYPE_EDEFAULT;
+            case EsbPackage.THROTTLE_POLICY_ENTRY__THROTTLE_RANGE:
+                return THROTTLE_RANGE_EDEFAULT == null ? throttleRange != null : !THROTTLE_RANGE_EDEFAULT.equals(throttleRange);
+            case EsbPackage.THROTTLE_POLICY_ENTRY__ACCESS_TYPE:
+                return accessType != ACCESS_TYPE_EDEFAULT;
+            case EsbPackage.THROTTLE_POLICY_ENTRY__MAX_REQUEST_COUNT:
+                return maxRequestCount != MAX_REQUEST_COUNT_EDEFAULT;
+            case EsbPackage.THROTTLE_POLICY_ENTRY__UNIT_TIME:
+                return unitTime != UNIT_TIME_EDEFAULT;
+            case EsbPackage.THROTTLE_POLICY_ENTRY__PROHIBIT_PERIOD:
+                return prohibitPeriod != PROHIBIT_PERIOD_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -460,14 +418,12 @@ public class ThrottlePolicyEntryImpl extends EObjectImpl implements ThrottlePoli
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public String toString() {
-        if (eIsProxy())
-            return super.toString();
+        if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (throttleType: ");

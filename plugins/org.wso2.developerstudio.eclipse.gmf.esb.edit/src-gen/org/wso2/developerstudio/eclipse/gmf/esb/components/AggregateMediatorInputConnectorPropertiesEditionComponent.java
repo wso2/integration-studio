@@ -40,6 +40,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.AggregateMediatorInputConnectorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 
+
 // End of user code
 
 /**
@@ -48,138 +49,143 @@ import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
  */
 public class AggregateMediatorInputConnectorPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
-    public static String BASE_PART = "Base"; //$NON-NLS-1$
+	
+	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
-    /**
-     * Settings for incomingLinks ReferencesTable
-     */
-    private ReferencesTableSettings incomingLinksSettings;
+	
+	/**
+	 * Settings for incomingLinks ReferencesTable
+	 */
+	private ReferencesTableSettings incomingLinksSettings;
+	
+	
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public AggregateMediatorInputConnectorPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject aggregateMediatorInputConnector, String editing_mode) {
+		super(editingContext, aggregateMediatorInputConnector, editing_mode);
+		parts = new String[] { BASE_PART };
+		repositoryKey = EsbViewsRepository.class;
+		partKey = EsbViewsRepository.AggregateMediatorInputConnector.class;
+	}
 
-    /**
-     * Default constructor
-     * 
-     */
-    public AggregateMediatorInputConnectorPropertiesEditionComponent(PropertiesEditingContext editingContext,
-            EObject aggregateMediatorInputConnector, String editing_mode) {
-        super(editingContext, aggregateMediatorInputConnector, editing_mode);
-        parts = new String[] { BASE_PART };
-        repositoryKey = EsbViewsRepository.class;
-        partKey = EsbViewsRepository.AggregateMediatorInputConnector.class;
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
+	 *      org.eclipse.emf.ecore.resource.ResourceSet)
+	 * 
+	 */
+	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
+		setInitializing(true);
+		if (editingPart != null && key == partKey) {
+			editingPart.setContext(elt, allResource);
+			
+			final AggregateMediatorInputConnector aggregateMediatorInputConnector = (AggregateMediatorInputConnector)elt;
+			final AggregateMediatorInputConnectorPropertiesEditionPart basePart = (AggregateMediatorInputConnectorPropertiesEditionPart)editingPart;
+			// init values
+			if (isAccessible(EsbViewsRepository.AggregateMediatorInputConnector.Properties.incomingLinks)) {
+				incomingLinksSettings = new ReferencesTableSettings(aggregateMediatorInputConnector, EsbPackage.eINSTANCE.getInputConnector_IncomingLinks());
+				basePart.initIncomingLinks(incomingLinksSettings);
+			}
+			// init filters
+			if (isAccessible(EsbViewsRepository.AggregateMediatorInputConnector.Properties.incomingLinks)) {
+				basePart.addFilterToIncomingLinks(new EObjectFilter(EsbPackage.Literals.ESB_LINK));
+				// Start of user code for additional businessfilters for incomingLinks
+				// End of user code
+			}
+			// init values for referenced views
+			
+			// init filters for referenced views
+			
+		}
+		setInitializing(false);
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int,
-     *      org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.emf.ecore.resource.ResourceSet)
-     * 
-     */
-    public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-        setInitializing(true);
-        if (editingPart != null && key == partKey) {
-            editingPart.setContext(elt, allResource);
 
-            final AggregateMediatorInputConnector aggregateMediatorInputConnector = (AggregateMediatorInputConnector) elt;
-            final AggregateMediatorInputConnectorPropertiesEditionPart basePart = (AggregateMediatorInputConnectorPropertiesEditionPart) editingPart;
-            // init values
-            if (isAccessible(EsbViewsRepository.AggregateMediatorInputConnector.Properties.incomingLinks)) {
-                incomingLinksSettings = new ReferencesTableSettings(aggregateMediatorInputConnector,
-                        EsbPackage.eINSTANCE.getInputConnector_IncomingLinks());
-                basePart.initIncomingLinks(incomingLinksSettings);
-            }
-            // init filters
-            if (isAccessible(EsbViewsRepository.AggregateMediatorInputConnector.Properties.incomingLinks)) {
-                basePart.addFilterToIncomingLinks(new EObjectFilter(EsbPackage.Literals.ESB_LINK));
-                // Start of user code for additional businessfilters for incomingLinks
-                // End of user code
-            }
-            // init values for referenced views
 
-            // init filters for referenced views
 
-        }
-        setInitializing(false);
-    }
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	public EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == EsbViewsRepository.AggregateMediatorInputConnector.Properties.incomingLinks) {
+			return EsbPackage.eINSTANCE.getInputConnector_IncomingLinks();
+		}
+		return super.associatedFeature(editorKey);
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
-     */
-    public EStructuralFeature associatedFeature(Object editorKey) {
-        if (editorKey == EsbViewsRepository.AggregateMediatorInputConnector.Properties.incomingLinks) {
-            return EsbPackage.eINSTANCE.getInputConnector_IncomingLinks();
-        }
-        return super.associatedFeature(editorKey);
-    }
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
+	 */
+	public void updateSemanticModel(final IPropertiesEditionEvent event) {
+		AggregateMediatorInputConnector aggregateMediatorInputConnector = (AggregateMediatorInputConnector)semanticObject;
+		if (EsbViewsRepository.AggregateMediatorInputConnector.Properties.incomingLinks == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
+				if (event.getNewValue() instanceof EsbLink) {
+					incomingLinksSettings.addToReference((EObject) event.getNewValue());
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				incomingLinksSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				incomingLinksSettings.move(event.getNewIndex(), (EsbLink) event.getNewValue());
+			}
+		}
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
-     */
-    public void updateSemanticModel(final IPropertiesEditionEvent event) {
-        AggregateMediatorInputConnector aggregateMediatorInputConnector = (AggregateMediatorInputConnector) semanticObject;
-        if (EsbViewsRepository.AggregateMediatorInputConnector.Properties.incomingLinks == event.getAffectedEditor()) {
-            if (event.getKind() == PropertiesEditionEvent.ADD) {
-                if (event.getNewValue() instanceof EsbLink) {
-                    incomingLinksSettings.addToReference((EObject) event.getNewValue());
-                }
-            } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-                incomingLinksSettings.removeFromReference((EObject) event.getNewValue());
-            } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-                incomingLinksSettings.move(event.getNewIndex(), (EsbLink) event.getNewValue());
-            }
-        }
-    }
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
+	 */
+	public void updatePart(Notification msg) {
+		super.updatePart(msg);
+		if (editingPart.isVisible()) {
+			AggregateMediatorInputConnectorPropertiesEditionPart basePart = (AggregateMediatorInputConnectorPropertiesEditionPart)editingPart;
+			if (EsbPackage.eINSTANCE.getInputConnector_IncomingLinks().equals(msg.getFeature())  && isAccessible(EsbViewsRepository.AggregateMediatorInputConnector.Properties.incomingLinks))
+				basePart.updateIncomingLinks();
+			
+		}
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
-     */
-    public void updatePart(Notification msg) {
-        super.updatePart(msg);
-        if (editingPart.isVisible()) {
-            AggregateMediatorInputConnectorPropertiesEditionPart basePart = (AggregateMediatorInputConnectorPropertiesEditionPart) editingPart;
-            if (EsbPackage.eINSTANCE.getInputConnector_IncomingLinks().equals(msg.getFeature())
-                    && isAccessible(EsbViewsRepository.AggregateMediatorInputConnector.Properties.incomingLinks))
-                basePart.updateIncomingLinks();
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EsbPackage.eINSTANCE.getInputConnector_IncomingLinks()		);
+		return new NotificationFilter[] {filter,};
+	}
 
-        }
-    }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
-     */
-    @Override
-    protected NotificationFilter[] getNotificationFilters() {
-        NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-                EsbPackage.eINSTANCE.getInputConnector_IncomingLinks());
-        return new NotificationFilter[] { filter, };
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
+	 */
+	public Diagnostic validateValue(IPropertiesEditionEvent event) {
+		Diagnostic ret = Diagnostic.OK_INSTANCE;
+		if (event.getNewValue() != null) {
+			try {
+			} catch (IllegalArgumentException iae) {
+				ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (WrappedException we) {
+				ret = BasicDiagnostic.toDiagnostic(we);
+			}
+		}
+		return ret;
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
-     */
-    public Diagnostic validateValue(IPropertiesEditionEvent event) {
-        Diagnostic ret = Diagnostic.OK_INSTANCE;
-        if (event.getNewValue() != null) {
-            try {
-            } catch (IllegalArgumentException iae) {
-                ret = BasicDiagnostic.toDiagnostic(iae);
-            } catch (WrappedException we) {
-                ret = BasicDiagnostic.toDiagnostic(we);
-            }
-        }
-        return ret;
-    }
+
+	
+
+	
 
 }

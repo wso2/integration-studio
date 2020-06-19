@@ -26,52 +26,34 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getProcessorName <em>Processor Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getProcessorType <em>Processor Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getMessageProcessorProvider <em>Message
- * Processor Provider</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getMessageStore <em>Message Store</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getSourceMessageStore <em>Source Message
- * Store</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getTargetMessageStore <em>Target Message
- * Store</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getProcessorState <em>Processor State</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getEndpointName <em>Endpoint Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getSequence <em>Sequence</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getRetryInterval <em>Retry Interval</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getForwardingInterval <em>Forwarding
- * Interval</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getSamplingInterval <em>Sampling
- * Interval</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getSamplingConcurrency <em>Sampling
- * Concurrency</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getMaxDeliveryAttempts <em>Max Delivery
- * Attempts</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getDropMessageAfterMaximumDeliveryAttempts
- * <em>Drop Message After Maximum Delivery Attempts</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getAxis2ClientRepository <em>Axis2 Client
- * Repository</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getAxis2Configuration <em>Axis2
- * Configuration</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getReplySequenceName <em>Reply Sequence
- * Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getFaultSequenceName <em>Fault Sequence
- * Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getDeactivateSequenceName <em>Deactivate
- * Sequence Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getQuartzConfigFilePath <em>Quartz Config File
- * Path</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getCronExpression <em>Cron Expression</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getNonRetryHttpStatusCodes <em>Non Retry Http
- * Status Codes</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getParameters <em>Parameters</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getTaskCount <em>Task Count</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getMaxStoreConnectionAttempts <em>Max Store
- * Connection Attempts</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getStoreConnectionInterval <em>Store Connection
- * Interval</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getFailMessagesStore <em>Fail Messages
- * Store</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getProcessorName <em>Processor Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getProcessorType <em>Processor Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getMessageProcessorProvider <em>Message Processor Provider</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getMessageStore <em>Message Store</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getSourceMessageStore <em>Source Message Store</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getTargetMessageStore <em>Target Message Store</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getProcessorState <em>Processor State</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getEndpointName <em>Endpoint Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getSequence <em>Sequence</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getRetryInterval <em>Retry Interval</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getForwardingInterval <em>Forwarding Interval</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getSamplingInterval <em>Sampling Interval</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getSamplingConcurrency <em>Sampling Concurrency</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getMaxDeliveryAttempts <em>Max Delivery Attempts</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getDropMessageAfterMaximumDeliveryAttempts <em>Drop Message After Maximum Delivery Attempts</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getAxis2ClientRepository <em>Axis2 Client Repository</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getAxis2Configuration <em>Axis2 Configuration</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getReplySequenceName <em>Reply Sequence Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getFaultSequenceName <em>Fault Sequence Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getDeactivateSequenceName <em>Deactivate Sequence Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getQuartzConfigFilePath <em>Quartz Config File Path</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getCronExpression <em>Cron Expression</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getNonRetryHttpStatusCodes <em>Non Retry Http Status Codes</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getTaskCount <em>Task Count</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getMaxStoreConnectionAttempts <em>Max Store Connection Attempts</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getStoreConnectionInterval <em>Store Connection Interval</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getFailMessagesStore <em>Fail Messages Store</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor()
@@ -87,7 +69,6 @@ public interface MessageProcessor extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Processor Name</em>' attribute.
      * @see #setProcessorName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_ProcessorName()
@@ -97,11 +78,9 @@ public interface MessageProcessor extends EsbElement {
     String getProcessorName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getProcessorName
-     * <em>Processor Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getProcessorName <em>Processor Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Processor Name</em>' attribute.
      * @see #getProcessorName()
      * @generated
@@ -117,7 +96,6 @@ public interface MessageProcessor extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Processor Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessorType
      * @see #setProcessorType(MessageProcessorType)
@@ -128,11 +106,9 @@ public interface MessageProcessor extends EsbElement {
     MessageProcessorType getProcessorType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getProcessorType
-     * <em>Processor Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getProcessorType <em>Processor Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Processor Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessorType
      * @see #getProcessorType()
@@ -148,7 +124,6 @@ public interface MessageProcessor extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Message Processor Provider</em>' attribute.
      * @see #setMessageProcessorProvider(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_MessageProcessorProvider()
@@ -158,12 +133,9 @@ public interface MessageProcessor extends EsbElement {
     String getMessageProcessorProvider();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getMessageProcessorProvider <em>Message
-     * Processor Provider</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getMessageProcessorProvider <em>Message Processor Provider</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Message Processor Provider</em>' attribute.
      * @see #getMessageProcessorProvider()
      * @generated
@@ -178,7 +150,6 @@ public interface MessageProcessor extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Message Store</em>' attribute.
      * @see #setMessageStore(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_MessageStore()
@@ -188,11 +159,9 @@ public interface MessageProcessor extends EsbElement {
     String getMessageStore();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getMessageStore
-     * <em>Message Store</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getMessageStore <em>Message Store</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Message Store</em>' attribute.
      * @see #getMessageStore()
      * @generated
@@ -207,7 +176,6 @@ public interface MessageProcessor extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Source Message Store</em>' attribute.
      * @see #setSourceMessageStore(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_SourceMessageStore()
@@ -217,11 +185,9 @@ public interface MessageProcessor extends EsbElement {
     String getSourceMessageStore();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getSourceMessageStore
-     * <em>Source Message Store</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getSourceMessageStore <em>Source Message Store</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Source Message Store</em>' attribute.
      * @see #getSourceMessageStore()
      * @generated
@@ -236,7 +202,6 @@ public interface MessageProcessor extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Target Message Store</em>' attribute.
      * @see #setTargetMessageStore(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_TargetMessageStore()
@@ -246,11 +211,9 @@ public interface MessageProcessor extends EsbElement {
     String getTargetMessageStore();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getTargetMessageStore
-     * <em>Target Message Store</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getTargetMessageStore <em>Target Message Store</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Target Message Store</em>' attribute.
      * @see #getTargetMessageStore()
      * @generated
@@ -266,7 +229,6 @@ public interface MessageProcessor extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Processor State</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.ProcessorState
      * @see #setProcessorState(ProcessorState)
@@ -277,11 +239,9 @@ public interface MessageProcessor extends EsbElement {
     ProcessorState getProcessorState();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getProcessorState
-     * <em>Processor State</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getProcessorState <em>Processor State</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Processor State</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.ProcessorState
      * @see #getProcessorState()
@@ -297,7 +257,6 @@ public interface MessageProcessor extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Endpoint Name</em>' containment reference.
      * @see #setEndpointName(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_EndpointName()
@@ -307,11 +266,9 @@ public interface MessageProcessor extends EsbElement {
     RegistryKeyProperty getEndpointName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getEndpointName
-     * <em>Endpoint Name</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getEndpointName <em>Endpoint Name</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Endpoint Name</em>' containment reference.
      * @see #getEndpointName()
      * @generated
@@ -326,7 +283,6 @@ public interface MessageProcessor extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Sequence</em>' containment reference.
      * @see #setSequence(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_Sequence()
@@ -336,11 +292,9 @@ public interface MessageProcessor extends EsbElement {
     RegistryKeyProperty getSequence();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getSequence
-     * <em>Sequence</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getSequence <em>Sequence</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Sequence</em>' containment reference.
      * @see #getSequence()
      * @generated
@@ -355,7 +309,6 @@ public interface MessageProcessor extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Retry Interval</em>' attribute.
      * @see #setRetryInterval(long)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_RetryInterval()
@@ -365,11 +318,9 @@ public interface MessageProcessor extends EsbElement {
     long getRetryInterval();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getRetryInterval
-     * <em>Retry Interval</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getRetryInterval <em>Retry Interval</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Retry Interval</em>' attribute.
      * @see #getRetryInterval()
      * @generated
@@ -385,7 +336,6 @@ public interface MessageProcessor extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Forwarding Interval</em>' attribute.
      * @see #setForwardingInterval(long)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_ForwardingInterval()
@@ -395,11 +345,9 @@ public interface MessageProcessor extends EsbElement {
     long getForwardingInterval();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getForwardingInterval
-     * <em>Forwarding Interval</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getForwardingInterval <em>Forwarding Interval</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Forwarding Interval</em>' attribute.
      * @see #getForwardingInterval()
      * @generated
@@ -415,7 +363,6 @@ public interface MessageProcessor extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Sampling Interval</em>' attribute.
      * @see #setSamplingInterval(long)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_SamplingInterval()
@@ -425,11 +372,9 @@ public interface MessageProcessor extends EsbElement {
     long getSamplingInterval();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getSamplingInterval
-     * <em>Sampling Interval</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getSamplingInterval <em>Sampling Interval</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Sampling Interval</em>' attribute.
      * @see #getSamplingInterval()
      * @generated
@@ -445,7 +390,6 @@ public interface MessageProcessor extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Sampling Concurrency</em>' attribute.
      * @see #setSamplingConcurrency(int)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_SamplingConcurrency()
@@ -455,11 +399,9 @@ public interface MessageProcessor extends EsbElement {
     int getSamplingConcurrency();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getSamplingConcurrency
-     * <em>Sampling Concurrency</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getSamplingConcurrency <em>Sampling Concurrency</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Sampling Concurrency</em>' attribute.
      * @see #getSamplingConcurrency()
      * @generated
@@ -475,7 +417,6 @@ public interface MessageProcessor extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Max Delivery Attempts</em>' attribute.
      * @see #setMaxDeliveryAttempts(int)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_MaxDeliveryAttempts()
@@ -485,11 +426,9 @@ public interface MessageProcessor extends EsbElement {
     int getMaxDeliveryAttempts();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getMaxDeliveryAttempts
-     * <em>Max Delivery Attempts</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getMaxDeliveryAttempts <em>Max Delivery Attempts</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Max Delivery Attempts</em>' attribute.
      * @see #getMaxDeliveryAttempts()
      * @generated
@@ -505,7 +444,6 @@ public interface MessageProcessor extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Drop Message After Maximum Delivery Attempts</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EnableDisableState
      * @see #setDropMessageAfterMaximumDeliveryAttempts(EnableDisableState)
@@ -516,12 +454,9 @@ public interface MessageProcessor extends EsbElement {
     EnableDisableState getDropMessageAfterMaximumDeliveryAttempts();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getDropMessageAfterMaximumDeliveryAttempts
-     * <em>Drop Message After Maximum Delivery Attempts</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getDropMessageAfterMaximumDeliveryAttempts <em>Drop Message After Maximum Delivery Attempts</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Drop Message After Maximum Delivery Attempts</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EnableDisableState
      * @see #getDropMessageAfterMaximumDeliveryAttempts()
@@ -537,7 +472,6 @@ public interface MessageProcessor extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Axis2 Client Repository</em>' attribute.
      * @see #setAxis2ClientRepository(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_Axis2ClientRepository()
@@ -547,11 +481,9 @@ public interface MessageProcessor extends EsbElement {
     String getAxis2ClientRepository();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getAxis2ClientRepository
-     * <em>Axis2 Client Repository</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getAxis2ClientRepository <em>Axis2 Client Repository</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Axis2 Client Repository</em>' attribute.
      * @see #getAxis2ClientRepository()
      * @generated
@@ -566,7 +498,6 @@ public interface MessageProcessor extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Axis2 Configuration</em>' attribute.
      * @see #setAxis2Configuration(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_Axis2Configuration()
@@ -576,11 +507,9 @@ public interface MessageProcessor extends EsbElement {
     String getAxis2Configuration();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getAxis2Configuration
-     * <em>Axis2 Configuration</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getAxis2Configuration <em>Axis2 Configuration</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Axis2 Configuration</em>' attribute.
      * @see #getAxis2Configuration()
      * @generated
@@ -595,7 +524,6 @@ public interface MessageProcessor extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Reply Sequence Name</em>' containment reference.
      * @see #setReplySequenceName(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_ReplySequenceName()
@@ -605,11 +533,9 @@ public interface MessageProcessor extends EsbElement {
     RegistryKeyProperty getReplySequenceName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getReplySequenceName
-     * <em>Reply Sequence Name</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getReplySequenceName <em>Reply Sequence Name</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Reply Sequence Name</em>' containment reference.
      * @see #getReplySequenceName()
      * @generated
@@ -624,7 +550,6 @@ public interface MessageProcessor extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Fault Sequence Name</em>' containment reference.
      * @see #setFaultSequenceName(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_FaultSequenceName()
@@ -634,11 +559,9 @@ public interface MessageProcessor extends EsbElement {
     RegistryKeyProperty getFaultSequenceName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getFaultSequenceName
-     * <em>Fault Sequence Name</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getFaultSequenceName <em>Fault Sequence Name</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Fault Sequence Name</em>' containment reference.
      * @see #getFaultSequenceName()
      * @generated
@@ -653,7 +576,6 @@ public interface MessageProcessor extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Deactivate Sequence Name</em>' containment reference.
      * @see #setDeactivateSequenceName(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_DeactivateSequenceName()
@@ -663,11 +585,9 @@ public interface MessageProcessor extends EsbElement {
     RegistryKeyProperty getDeactivateSequenceName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getDeactivateSequenceName
-     * <em>Deactivate Sequence Name</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getDeactivateSequenceName <em>Deactivate Sequence Name</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Deactivate Sequence Name</em>' containment reference.
      * @see #getDeactivateSequenceName()
      * @generated
@@ -682,7 +602,6 @@ public interface MessageProcessor extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Quartz Config File Path</em>' attribute.
      * @see #setQuartzConfigFilePath(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_QuartzConfigFilePath()
@@ -692,11 +611,9 @@ public interface MessageProcessor extends EsbElement {
     String getQuartzConfigFilePath();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getQuartzConfigFilePath
-     * <em>Quartz Config File Path</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getQuartzConfigFilePath <em>Quartz Config File Path</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Quartz Config File Path</em>' attribute.
      * @see #getQuartzConfigFilePath()
      * @generated
@@ -711,7 +628,6 @@ public interface MessageProcessor extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Cron Expression</em>' attribute.
      * @see #setCronExpression(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_CronExpression()
@@ -721,11 +637,9 @@ public interface MessageProcessor extends EsbElement {
     String getCronExpression();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getCronExpression
-     * <em>Cron Expression</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getCronExpression <em>Cron Expression</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Cron Expression</em>' attribute.
      * @see #getCronExpression()
      * @generated
@@ -740,7 +654,6 @@ public interface MessageProcessor extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Non Retry Http Status Codes</em>' attribute.
      * @see #setNonRetryHttpStatusCodes(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_NonRetryHttpStatusCodes()
@@ -750,12 +663,9 @@ public interface MessageProcessor extends EsbElement {
     String getNonRetryHttpStatusCodes();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getNonRetryHttpStatusCodes <em>Non Retry Http
-     * Status Codes</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getNonRetryHttpStatusCodes <em>Non Retry Http Status Codes</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Non Retry Http Status Codes</em>' attribute.
      * @see #getNonRetryHttpStatusCodes()
      * @generated
@@ -771,7 +681,6 @@ public interface MessageProcessor extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Parameters</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_Parameters()
      * @model containment="true"
@@ -787,7 +696,6 @@ public interface MessageProcessor extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Task Count</em>' attribute.
      * @see #setTaskCount(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_TaskCount()
@@ -797,11 +705,9 @@ public interface MessageProcessor extends EsbElement {
     String getTaskCount();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getTaskCount <em>Task
-     * Count</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getTaskCount <em>Task Count</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Task Count</em>' attribute.
      * @see #getTaskCount()
      * @generated
@@ -817,7 +723,6 @@ public interface MessageProcessor extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Max Store Connection Attempts</em>' attribute.
      * @see #setMaxStoreConnectionAttempts(int)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_MaxStoreConnectionAttempts()
@@ -827,12 +732,9 @@ public interface MessageProcessor extends EsbElement {
     int getMaxStoreConnectionAttempts();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getMaxStoreConnectionAttempts <em>Max Store
-     * Connection Attempts</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getMaxStoreConnectionAttempts <em>Max Store Connection Attempts</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Max Store Connection Attempts</em>' attribute.
      * @see #getMaxStoreConnectionAttempts()
      * @generated
@@ -848,7 +750,6 @@ public interface MessageProcessor extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Store Connection Interval</em>' attribute.
      * @see #setStoreConnectionInterval(int)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_StoreConnectionInterval()
@@ -858,12 +759,9 @@ public interface MessageProcessor extends EsbElement {
     int getStoreConnectionInterval();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getStoreConnectionInterval <em>Store Connection
-     * Interval</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getStoreConnectionInterval <em>Store Connection Interval</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Store Connection Interval</em>' attribute.
      * @see #getStoreConnectionInterval()
      * @generated
@@ -878,7 +776,6 @@ public interface MessageProcessor extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Fail Messages Store</em>' attribute.
      * @see #setFailMessagesStore(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_FailMessagesStore()
@@ -888,11 +785,9 @@ public interface MessageProcessor extends EsbElement {
     String getFailMessagesStore();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getFailMessagesStore
-     * <em>Fail Messages Store</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getFailMessagesStore <em>Fail Messages Store</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Fail Messages Store</em>' attribute.
      * @see #getFailMessagesStore()
      * @generated

@@ -7,6 +7,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.parts;
 import org.eclipse.emf.common.util.Enumerator;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 
+
 // End of user code
 
 /**
@@ -15,95 +16,95 @@ import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
  */
 public interface EndPointPropertyPropertiesEditionPart {
 
-    /**
-     * @return the name
-     * 
-     */
-    public String getName();
+	/**
+	 * @return the name
+	 * 
+	 */
+	public String getName();
 
-    /**
-     * Defines a new name
-     * 
-     * @param newValue the new name to set
-     * 
-     */
-    public void setName(String newValue);
+	/**
+	 * Defines a new name
+	 * @param newValue the new name to set
+	 * 
+	 */
+	public void setName(String newValue);
 
-    /**
-     * @return the value
-     * 
-     */
-    public String getValue();
 
-    /**
-     * Defines a new value
-     * 
-     * @param newValue the new value to set
-     * 
-     */
-    public void setValue(String newValue);
+	/**
+	 * @return the value
+	 * 
+	 */
+	public String getValue();
 
-    /**
-     * @return the scope
-     * 
-     */
-    public Enumerator getScope();
+	/**
+	 * Defines a new value
+	 * @param newValue the new value to set
+	 * 
+	 */
+	public void setValue(String newValue);
 
-    /**
-     * Init the scope
-     * 
-     * @param input the viewer input
-     * @param current the current value
-     */
-    public void initScope(Object input, Enumerator current);
 
-    /**
-     * Defines a new scope
-     * 
-     * @param newValue the new scope to set
-     * 
-     */
-    public void setScope(Enumerator newValue);
+	/**
+	 * @return the scope
+	 * 
+	 */
+	public Enumerator getScope();
 
-    /**
-     * @return the valueType
-     * 
-     */
-    public Enumerator getValueType();
+	/**
+	 * Init the scope
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initScope(Object input, Enumerator current);
 
-    /**
-     * Init the valueType
-     * 
-     * @param input the viewer input
-     * @param current the current value
-     */
-    public void initValueType(Object input, Enumerator current);
+	/**
+	 * Defines a new scope
+	 * @param newValue the new scope to set
+	 * 
+	 */
+	public void setScope(Enumerator newValue);
 
-    /**
-     * Defines a new valueType
-     * 
-     * @param newValue the new valueType to set
-     * 
-     */
-    public void setValueType(Enumerator newValue);
 
-    // Start of user code for valueExpression specific getters and setters declaration
-    public NamespacedProperty getValueExpression();
+	/**
+	 * @return the valueType
+	 * 
+	 */
+	public Enumerator getValueType();
 
-    public void setValueExpression(NamespacedProperty namespacedProperty);
+	/**
+	 * Init the valueType
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initValueType(Object input, Enumerator current);
 
-    // End of user code
+	/**
+	 * Defines a new valueType
+	 * @param newValue the new valueType to set
+	 * 
+	 */
+	public void setValueType(Enumerator newValue);
 
-    /**
-     * Returns the internationalized title text.
-     * 
-     * @return the internationalized title text.
-     * 
-     */
-    public String getTitle();
 
-    // Start of user code for additional methods
 
-    // End of user code
+
+	// Start of user code for valueExpression specific getters and setters declaration
+	public NamespacedProperty getValueExpression();
+	
+	public void setValueExpression(NamespacedProperty namespacedProperty);
+	
+	// End of user code
+
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 * 
+	 */
+	public String getTitle();
+
+	// Start of user code for additional methods
+	
+	// End of user code
 
 }

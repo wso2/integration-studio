@@ -10,6 +10,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSet
 
 import org.eclipse.jface.viewers.ViewerFilter;
 
+
 // End of user code
 
 /**
@@ -18,73 +19,77 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public interface APIHandlerPropertiesEditionPart {
 
-    /**
-     * @return the className
-     * 
-     */
-    public String getClassName();
+	/**
+	 * @return the className
+	 * 
+	 */
+	public String getClassName();
 
-    /**
-     * Defines a new className
-     * 
-     * @param newValue the new className to set
-     * 
-     */
-    public void setClassName(String newValue);
+	/**
+	 * Defines a new className
+	 * @param newValue the new className to set
+	 * 
+	 */
+	public void setClassName(String newValue);
 
-    /**
-     * Init the properties
-     * 
-     * @param current the current value
-     * @param containgFeature the feature where to navigate if necessary
-     * @param feature the feature to manage
-     */
-    public void initProperties(ReferencesTableSettings settings);
 
-    /**
-     * Update the properties
-     * 
-     * @param newValue the properties to update
-     * 
-     */
-    public void updateProperties();
 
-    /**
-     * Adds the given filter to the properties edition editor.
-     * 
-     * @param filter
-     *            a viewer filter
-     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
-     */
-    public void addFilterToProperties(ViewerFilter filter);
 
-    /**
-     * Adds the given filter to the properties edition editor.
-     * 
-     * @param filter
-     *            a viewer filter
-     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
-     */
-    public void addBusinessFilterToProperties(ViewerFilter filter);
+	/**
+	 * Init the properties
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initProperties(ReferencesTableSettings settings);
 
-    /**
-     * @return true if the given element is contained inside the properties table
-     * 
-     */
-    public boolean isContainedInPropertiesTable(EObject element);
+	/**
+	 * Update the properties
+	 * @param newValue the properties to update
+	 * 
+	 */
+	public void updateProperties();
 
-    /**
-     * Returns the internationalized title text.
-     * 
-     * @return the internationalized title text.
-     * 
-     */
-    public String getTitle();
+	/**
+	 * Adds the given filter to the properties edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToProperties(ViewerFilter filter);
 
-    // Start of user code for additional methods
+	/**
+	 * Adds the given filter to the properties edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToProperties(ViewerFilter filter);
 
-    // End of user code
+	/**
+	 * @return true if the given element is contained inside the properties table
+	 * 
+	 */
+	public boolean isContainedInPropertiesTable(EObject element);
+
+
+
+
+
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 * 
+	 */
+	public String getTitle();
+
+	// Start of user code for additional methods
+	
+	// End of user code
 
 }

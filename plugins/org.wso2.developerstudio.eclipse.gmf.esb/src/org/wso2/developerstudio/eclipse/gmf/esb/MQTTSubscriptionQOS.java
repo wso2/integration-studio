@@ -26,7 +26,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>MQTT Subscription QOS</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMQTTSubscriptionQOS()
  * @model
  * @generated
@@ -36,7 +35,6 @@ public enum MQTTSubscriptionQOS implements Enumerator {
      * The '<em><b>Zero</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #ZERO_VALUE
      * @generated
      * @ordered
@@ -47,7 +45,6 @@ public enum MQTTSubscriptionQOS implements Enumerator {
      * The '<em><b>One</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #ONE_VALUE
      * @generated
      * @ordered
@@ -58,7 +55,6 @@ public enum MQTTSubscriptionQOS implements Enumerator {
      * The '<em><b>Two</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #TWO_VALUE
      * @generated
      * @ordered
@@ -73,7 +69,6 @@ public enum MQTTSubscriptionQOS implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #ZERO
      * @model name="zero" literal="0"
      * @generated
@@ -89,7 +84,6 @@ public enum MQTTSubscriptionQOS implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #ONE
      * @model name="one" literal="1"
      * @generated
@@ -105,7 +99,6 @@ public enum MQTTSubscriptionQOS implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #TWO
      * @model name="two" literal="2"
      * @generated
@@ -117,16 +110,18 @@ public enum MQTTSubscriptionQOS implements Enumerator {
      * An array of all the '<em><b>MQTT Subscription QOS</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
-    private static final MQTTSubscriptionQOS[] VALUES_ARRAY = new MQTTSubscriptionQOS[] { ZERO, ONE, TWO, };
+    private static final MQTTSubscriptionQOS[] VALUES_ARRAY = new MQTTSubscriptionQOS[] {
+            ZERO,
+            ONE,
+            TWO,
+        };
 
     /**
      * A public read-only list of all the '<em><b>MQTT Subscription QOS</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public static final List<MQTTSubscriptionQOS> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -135,7 +130,6 @@ public enum MQTTSubscriptionQOS implements Enumerator {
      * Returns the '<em><b>MQTT Subscription QOS</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -154,7 +148,6 @@ public enum MQTTSubscriptionQOS implements Enumerator {
      * Returns the '<em><b>MQTT Subscription QOS</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -173,19 +166,15 @@ public enum MQTTSubscriptionQOS implements Enumerator {
      * Returns the '<em><b>MQTT Subscription QOS</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static MQTTSubscriptionQOS get(int value) {
         switch (value) {
-        case ZERO_VALUE:
-            return ZERO;
-        case ONE_VALUE:
-            return ONE;
-        case TWO_VALUE:
-            return TWO;
+            case ZERO_VALUE: return ZERO;
+            case ONE_VALUE: return ONE;
+            case TWO_VALUE: return TWO;
         }
         return null;
     }
@@ -193,7 +182,6 @@ public enum MQTTSubscriptionQOS implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final int value;
@@ -201,7 +189,6 @@ public enum MQTTSubscriptionQOS implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String name;
@@ -209,7 +196,6 @@ public enum MQTTSubscriptionQOS implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String literal;
@@ -218,7 +204,6 @@ public enum MQTTSubscriptionQOS implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private MQTTSubscriptionQOS(int value, String name, String literal) {
@@ -230,38 +215,34 @@ public enum MQTTSubscriptionQOS implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public int getValue() {
-        return value;
+      return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getName() {
-        return name;
+      return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getLiteral() {
-        return literal;
+      return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

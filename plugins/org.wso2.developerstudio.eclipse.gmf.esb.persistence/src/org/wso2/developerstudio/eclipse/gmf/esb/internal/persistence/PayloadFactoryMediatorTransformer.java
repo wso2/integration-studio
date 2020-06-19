@@ -72,8 +72,8 @@ public class PayloadFactoryMediatorTransformer extends AbstractEsbNodeTransforme
         }
     }
 
-    public static org.apache.synapse.mediators.transform.PayloadFactoryMediator createPayloadFactoryMediator(
-            EsbNode subject) throws JaxenException {
+    public static org.apache.synapse.mediators.transform.PayloadFactoryMediator createPayloadFactoryMediator(EsbNode subject)
+            throws JaxenException {
 
         // Check subject.
         Assert.isTrue(subject instanceof PayloadFactoryMediator, "Unsupported mediator passed in for serialization.");
@@ -101,13 +101,13 @@ public class PayloadFactoryMediatorTransformer extends AbstractEsbNodeTransforme
                 // SynapsePath expression = new SynapseXPath(namespacedProperty.getPropertyValue());
                 SynapsePath expression;
                 if (arg.getEvaluator() == PayloadFactoryEvaluatorType.JSON) {
-                    expression = CustomSynapsePathFactory.getSynapsePath(namespacedProperty.getPropertyValue(),
+                    expression = CustomSynapsePathFactory.getSynapsePath(namespacedProperty.getPropertyValue(), 
                             MediaType.JSON);
                 } else {
-                    expression = CustomSynapsePathFactory.getSynapsePath(namespacedProperty.getPropertyValue(),
+                    expression = CustomSynapsePathFactory.getSynapsePath(namespacedProperty.getPropertyValue(), 
                             MediaType.XML);
                 }
-
+                
                 // SynapseJsonPath doesn't support namespaces
                 if (namespacedProperty.getNamespaces() != null && !(expression instanceof SynapseJsonPath)) {
                     for (Entry<String, String> entry : namespacedProperty.getNamespaces().entrySet()) {

@@ -12,6 +12,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSet
 
 import org.eclipse.jface.viewers.ViewerFilter;
 
+
 // End of user code
 
 /**
@@ -20,200 +21,203 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public interface CloneMediatorPropertiesEditionPart {
 
-    /**
-     * @return the description
-     * 
-     */
-    public String getDescription();
+	/**
+	 * @return the description
+	 * 
+	 */
+	public String getDescription();
 
-    /**
-     * Defines a new description
-     * 
-     * @param newValue the new description to set
-     * 
-     */
-    public void setDescription(String newValue);
+	/**
+	 * Defines a new description
+	 * @param newValue the new description to set
+	 * 
+	 */
+	public void setDescription(String newValue);
 
-    /**
-     * @return the commentsList
-     * 
-     */
-    public EList getCommentsList();
 
-    /**
-     * Defines a new commentsList
-     * 
-     * @param newValue the new commentsList to set
-     * 
-     */
-    public void setCommentsList(EList newValue);
+	/**
+	 * @return the commentsList
+	 * 
+	 */
+	public EList getCommentsList();
 
-    /**
-     * Add a value to the commentsList multivalued attribute.
-     * 
-     * @param newValue the value to add
-     */
-    public void addToCommentsList(Object newValue);
+	/**
+	 * Defines a new commentsList
+	 * @param newValue the new commentsList to set
+	 * 
+	 */
+	public void setCommentsList(EList newValue);
 
-    /**
-     * Remove a value to the commentsList multivalued attribute.
-     * 
-     * @param newValue the value to remove
-     */
-    public void removeToCommentsList(Object newValue);
+	/**
+	 * Add a value to the commentsList multivalued attribute.
+	 * @param newValue the value to add
+	 */
+	public void addToCommentsList(Object newValue);
 
-    /**
-     * @return the Reverse
-     * 
-     */
-    public Boolean getReverse();
+	/**
+	 * Remove a value to the commentsList multivalued attribute.
+	 * @param newValue the value to remove
+	 */
+	public void removeToCommentsList(Object newValue);
 
-    /**
-     * Defines a new Reverse
-     * 
-     * @param newValue the new Reverse to set
-     * 
-     */
-    public void setReverse(Boolean newValue);
 
-    /**
-     * @return the cloneID
-     * 
-     */
-    public String getCloneID();
+	/**
+	 * @return the Reverse
+	 * 
+	 */
+	public Boolean getReverse();
 
-    /**
-     * Defines a new cloneID
-     * 
-     * @param newValue the new cloneID to set
-     * 
-     */
-    public void setCloneID(String newValue);
+	/**
+	 * Defines a new Reverse
+	 * @param newValue the new Reverse to set
+	 * 
+	 */
+	public void setReverse(Boolean newValue);
 
-    /**
-     * @return the sequentialMediation
-     * 
-     */
-    public Boolean getSequentialMediation();
 
-    /**
-     * Defines a new sequentialMediation
-     * 
-     * @param newValue the new sequentialMediation to set
-     * 
-     */
-    public void setSequentialMediation(Boolean newValue);
+	/**
+	 * @return the cloneID
+	 * 
+	 */
+	public String getCloneID();
 
-    /**
-     * @return the continueParent
-     * 
-     */
-    public Boolean getContinueParent();
+	/**
+	 * Defines a new cloneID
+	 * @param newValue the new cloneID to set
+	 * 
+	 */
+	public void setCloneID(String newValue);
 
-    /**
-     * Defines a new continueParent
-     * 
-     * @param newValue the new continueParent to set
-     * 
-     */
-    public void setContinueParent(Boolean newValue);
 
-    /**
-     * Init the targets
-     * 
-     * @param current the current value
-     * @param containgFeature the feature where to navigate if necessary
-     * @param feature the feature to manage
-     */
-    public void initTargets(ReferencesTableSettings settings);
+	/**
+	 * @return the sequentialMediation
+	 * 
+	 */
+	public Boolean getSequentialMediation();
 
-    /**
-     * Update the targets
-     * 
-     * @param newValue the targets to update
-     * 
-     */
-    public void updateTargets();
+	/**
+	 * Defines a new sequentialMediation
+	 * @param newValue the new sequentialMediation to set
+	 * 
+	 */
+	public void setSequentialMediation(Boolean newValue);
 
-    /**
-     * Adds the given filter to the targets edition editor.
-     * 
-     * @param filter
-     *            a viewer filter
-     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
-     */
-    public void addFilterToTargets(ViewerFilter filter);
 
-    /**
-     * Adds the given filter to the targets edition editor.
-     * 
-     * @param filter
-     *            a viewer filter
-     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
-     */
-    public void addBusinessFilterToTargets(ViewerFilter filter);
+	/**
+	 * @return the continueParent
+	 * 
+	 */
+	public Boolean getContinueParent();
 
-    /**
-     * @return true if the given element is contained inside the targets table
-     * 
-     */
-    public boolean isContainedInTargetsTable(EObject element);
+	/**
+	 * Defines a new continueParent
+	 * @param newValue the new continueParent to set
+	 * 
+	 */
+	public void setContinueParent(Boolean newValue);
 
-    /**
-     * Init the targetsOutputConnector
-     * 
-     * @param current the current value
-     * @param containgFeature the feature where to navigate if necessary
-     * @param feature the feature to manage
-     */
-    public void initTargetsOutputConnector(ReferencesTableSettings settings);
 
-    /**
-     * Update the targetsOutputConnector
-     * 
-     * @param newValue the targetsOutputConnector to update
-     * 
-     */
-    public void updateTargetsOutputConnector();
 
-    /**
-     * Adds the given filter to the targetsOutputConnector edition editor.
-     * 
-     * @param filter
-     *            a viewer filter
-     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
-     */
-    public void addFilterToTargetsOutputConnector(ViewerFilter filter);
 
-    /**
-     * Adds the given filter to the targetsOutputConnector edition editor.
-     * 
-     * @param filter
-     *            a viewer filter
-     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
-     */
-    public void addBusinessFilterToTargetsOutputConnector(ViewerFilter filter);
+	/**
+	 * Init the targets
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initTargets(ReferencesTableSettings settings);
 
-    /**
-     * @return true if the given element is contained inside the targetsOutputConnector table
-     * 
-     */
-    public boolean isContainedInTargetsOutputConnectorTable(EObject element);
+	/**
+	 * Update the targets
+	 * @param newValue the targets to update
+	 * 
+	 */
+	public void updateTargets();
 
-    /**
-     * Returns the internationalized title text.
-     * 
-     * @return the internationalized title text.
-     * 
-     */
-    public String getTitle();
+	/**
+	 * Adds the given filter to the targets edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToTargets(ViewerFilter filter);
 
-    // Start of user code for additional methods
+	/**
+	 * Adds the given filter to the targets edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToTargets(ViewerFilter filter);
 
-    // End of user code
+	/**
+	 * @return true if the given element is contained inside the targets table
+	 * 
+	 */
+	public boolean isContainedInTargetsTable(EObject element);
+
+
+
+
+	/**
+	 * Init the targetsOutputConnector
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initTargetsOutputConnector(ReferencesTableSettings settings);
+
+	/**
+	 * Update the targetsOutputConnector
+	 * @param newValue the targetsOutputConnector to update
+	 * 
+	 */
+	public void updateTargetsOutputConnector();
+
+	/**
+	 * Adds the given filter to the targetsOutputConnector edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToTargetsOutputConnector(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the targetsOutputConnector edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToTargetsOutputConnector(ViewerFilter filter);
+
+	/**
+	 * @return true if the given element is contained inside the targetsOutputConnector table
+	 * 
+	 */
+	public boolean isContainedInTargetsOutputConnectorTable(EObject element);
+
+
+
+
+
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 * 
+	 */
+	public String getTitle();
+
+	// Start of user code for additional methods
+	
+	// End of user code
 
 }

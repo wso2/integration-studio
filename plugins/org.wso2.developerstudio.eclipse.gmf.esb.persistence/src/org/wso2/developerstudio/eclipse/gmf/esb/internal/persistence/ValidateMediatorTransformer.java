@@ -177,8 +177,7 @@ public class ValidateMediatorTransformer extends AbstractEsbNodeTransformer {
      * @throws JaxenException
      */
 
-    private static SynapsePath getParamExpression(NamespacedProperty sourcePath, String sourceValue)
-            throws JaxenException {
+    private static SynapsePath getParamExpression(NamespacedProperty sourcePath, String sourceValue) throws JaxenException {
         if (sourceValue.startsWith(JSON_EVAL)) {
             SynapseJsonPath paramExpression = new SynapseJsonPath(sourceValue.substring(10, sourceValue.length() - 1));
             return addNamespaceToParam(sourcePath, paramExpression);

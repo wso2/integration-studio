@@ -30,16 +30,17 @@ public class AttributeValue extends Value {
     String helpTip;
     List<String> allowedConnectionTypes;
     String validation;
-    String defaultType; // ????
-    // String default; ????
+    String defaultType; //????
+    //String default; ????
     List<EnableCondition> enableCondition;
     List<String> comboValues;
-
+   
     public AttributeValue() {
         enableCondition = new ArrayList<>();
         comboValues = new ArrayList<>();
         allowedConnectionTypes = new ArrayList<>();
     }
+    
 
     public String getName() {
         return name;
@@ -88,7 +89,7 @@ public class AttributeValue extends Value {
     public void setHelpTip(String helpTip) {
         this.helpTip = helpTip;
     }
-
+    
     public List<String> getAllowedConnectionTypes() {
         return allowedConnectionTypes;
     }
@@ -96,11 +97,11 @@ public class AttributeValue extends Value {
     public void setAllowedConnectionTypes(List<String> allowedConnectionTypes) {
         this.allowedConnectionTypes = allowedConnectionTypes;
     }
-
+    
     public void addAllowedConnectionType(String allowedConnectionType) {
         this.allowedConnectionTypes.add(allowedConnectionType);
     }
-
+    
     public List<String> getComboValues() {
         return comboValues;
     }

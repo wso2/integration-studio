@@ -53,202 +53,199 @@ import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
  * 
  * 
  */
-public class ThrottleOnRejectBranchPropertiesEditionPartImpl extends CompositePropertiesEditionPart
-        implements ISWTPropertiesEditionPart, ThrottleOnRejectBranchPropertiesEditionPart {
+public class ThrottleOnRejectBranchPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, ThrottleOnRejectBranchPropertiesEditionPart {
 
-    protected EMFComboViewer sequenceType;
+	protected EMFComboViewer sequenceType;
 
-    /**
-     * Default constructor
-     * 
-     * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-     * 
-     */
-    public ThrottleOnRejectBranchPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
-        super(editionComponent);
-    }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
-     *      createFigure(org.eclipse.swt.widgets.Composite)
-     * 
-     */
-    public Composite createFigure(final Composite parent) {
-        view = new Composite(parent, SWT.NONE);
-        GridLayout layout = new GridLayout();
-        layout.numColumns = 3;
-        view.setLayout(layout);
-        createControls(view);
-        return view;
-    }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
-     *      createControls(org.eclipse.swt.widgets.Composite)
-     * 
-     */
-    public void createControls(Composite view) {
-        CompositionSequence throttleOnRejectBranchStep = new BindingCompositionSequence(propertiesEditionComponent);
-        throttleOnRejectBranchStep.addStep(EsbViewsRepository.ThrottleOnRejectBranch.Properties.class)
-                .addStep(EsbViewsRepository.ThrottleOnRejectBranch.Properties.sequenceType);
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
+	 */
+	public ThrottleOnRejectBranchPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
+		super(editionComponent);
+	}
 
-        composer = new PartComposer(throttleOnRejectBranchStep) {
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 * 
+	 */
+	public Composite createFigure(final Composite parent) {
+		view = new Composite(parent, SWT.NONE);
+		GridLayout layout = new GridLayout();
+		layout.numColumns = 3;
+		view.setLayout(layout);
+		createControls(view);
+		return view;
+	}
 
-            @Override
-            public Composite addToPart(Composite parent, Object key) {
-                if (key == EsbViewsRepository.ThrottleOnRejectBranch.Properties.class) {
-                    return createPropertiesGroup(parent);
-                }
-                if (key == EsbViewsRepository.ThrottleOnRejectBranch.Properties.sequenceType) {
-                    return createSequenceTypeEMFComboViewer(parent);
-                }
-                return parent;
-            }
-        };
-        composer.compose(view);
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 * 
+	 */
+	public void createControls(Composite view) { 
+		CompositionSequence throttleOnRejectBranchStep = new BindingCompositionSequence(propertiesEditionComponent);
+		throttleOnRejectBranchStep
+			.addStep(EsbViewsRepository.ThrottleOnRejectBranch.Properties.class)
+			.addStep(EsbViewsRepository.ThrottleOnRejectBranch.Properties.sequenceType);
+		
+		
+		composer = new PartComposer(throttleOnRejectBranchStep) {
 
-    /**
-     * 
-     */
-    protected Composite createPropertiesGroup(Composite parent) {
-        Group propertiesGroup = new Group(parent, SWT.NONE);
-        propertiesGroup.setText(EsbMessages.ThrottleOnRejectBranchPropertiesEditionPart_PropertiesGroupLabel);
-        GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
-        propertiesGroupData.horizontalSpan = 3;
-        propertiesGroup.setLayoutData(propertiesGroupData);
-        GridLayout propertiesGroupLayout = new GridLayout();
-        propertiesGroupLayout.numColumns = 3;
-        propertiesGroup.setLayout(propertiesGroupLayout);
-        return propertiesGroup;
-    }
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == EsbViewsRepository.ThrottleOnRejectBranch.Properties.class) {
+					return createPropertiesGroup(parent);
+				}
+				if (key == EsbViewsRepository.ThrottleOnRejectBranch.Properties.sequenceType) {
+					return createSequenceTypeEMFComboViewer(parent);
+				}
+				return parent;
+			}
+		};
+		composer.compose(view);
+	}
 
-    /**
-     * @generated NOT
-     */
-    protected Composite createSequenceTypeEMFComboViewer(Composite parent) {
-        createDescription(parent, EsbViewsRepository.ThrottleOnRejectBranch.Properties.sequenceType,
-                EsbMessages.ThrottleOnRejectBranchPropertiesEditionPart_SequenceTypeLabel);
-        sequenceType = new EMFComboViewer(parent);
-        sequenceType.setContentProvider(new ArrayContentProvider());
-        sequenceType
-                .setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
-        GridData sequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
-        sequenceType.getCombo().setLayoutData(sequenceTypeData);
-        sequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+	/**
+	 * 
+	 */
+	protected Composite createPropertiesGroup(Composite parent) {
+		Group propertiesGroup = new Group(parent, SWT.NONE);
+		propertiesGroup.setText(EsbMessages.ThrottleOnRejectBranchPropertiesEditionPart_PropertiesGroupLabel);
+		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
+		propertiesGroupData.horizontalSpan = 3;
+		propertiesGroup.setLayoutData(propertiesGroupData);
+		GridLayout propertiesGroupLayout = new GridLayout();
+		propertiesGroupLayout.numColumns = 3;
+		propertiesGroup.setLayout(propertiesGroupLayout);
+		return propertiesGroup;
+	}
 
-            @Override
-            public void handleEvent(Event arg0) {
-                arg0.doit = false;
-            }
-        });
-        sequenceType.addSelectionChangedListener(new ISelectionChangedListener() {
+	/**
+	 * @generated NOT
+	 */
+	protected Composite createSequenceTypeEMFComboViewer(Composite parent) {
+		createDescription(parent, EsbViewsRepository.ThrottleOnRejectBranch.Properties.sequenceType, EsbMessages.ThrottleOnRejectBranchPropertiesEditionPart_SequenceTypeLabel);
+		sequenceType = new EMFComboViewer(parent);
+		sequenceType.setContentProvider(new ArrayContentProvider());
+		sequenceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		GridData sequenceTypeData = new GridData(GridData.FILL_HORIZONTAL);
+		sequenceType.getCombo().setLayoutData(sequenceTypeData);
+                sequenceType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-            /**
-             * {@inheritDoc}
-             * 
-             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-             * 
-             */
-            public void selectionChanged(SelectionChangedEvent event) {
-                if (propertiesEditionComponent != null)
-                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-                            ThrottleOnRejectBranchPropertiesEditionPartImpl.this,
-                            EsbViewsRepository.ThrottleOnRejectBranch.Properties.sequenceType,
-                            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSequenceType()));
-            }
+                    @Override
+                    public void handleEvent(Event arg0) {
+                        arg0.doit = false;
+                    }
+                });
+		sequenceType.addSelectionChangedListener(new ISelectionChangedListener() {
 
-        });
-        sequenceType.setID(EsbViewsRepository.ThrottleOnRejectBranch.Properties.sequenceType);
-        SWTUtils.createHelpButton(parent,
-                propertiesEditionComponent.getHelpContent(
-                        EsbViewsRepository.ThrottleOnRejectBranch.Properties.sequenceType, EsbViewsRepository.SWT_KIND),
-                null); // $NON-NLS-1$
-        // Start of user code for createSequenceTypeEMFComboViewer
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+			 * 	
+			 */
+			public void selectionChanged(SelectionChangedEvent event) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ThrottleOnRejectBranchPropertiesEditionPartImpl.this, EsbViewsRepository.ThrottleOnRejectBranch.Properties.sequenceType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSequenceType()));
+			}
 
-        // End of user code
-        return parent;
-    }
+		});
+		sequenceType.setID(EsbViewsRepository.ThrottleOnRejectBranch.Properties.sequenceType);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ThrottleOnRejectBranch.Properties.sequenceType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSequenceTypeEMFComboViewer
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
-     */
-    public void firePropertiesChanged(IPropertiesEditionEvent event) {
-        // Start of user code for tab synchronization
+		// End of user code
+		return parent;
+	}
 
-        // End of user code
-    }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ThrottleOnRejectBranchPropertiesEditionPart#getSequenceType()
-     * 
-     */
-    public Enumerator getSequenceType() {
-        Enumerator selection = (Enumerator) ((StructuredSelection) sequenceType.getSelection()).getFirstElement();
-        return selection;
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+		// Start of user code for tab synchronization
+		
+		// End of user code
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ThrottleOnRejectBranchPropertiesEditionPart#initSequenceType(Object
-     *      input, Enumerator current)
-     */
-    public void initSequenceType(Object input, Enumerator current) {
-        sequenceType.setInput(input);
-        sequenceType.modelUpdating(new StructuredSelection(current));
-        boolean eefElementEditorReadOnlyState = isReadOnly(
-                EsbViewsRepository.ThrottleOnRejectBranch.Properties.sequenceType);
-        if (eefElementEditorReadOnlyState && sequenceType.isEnabled()) {
-            sequenceType.setEnabled(false);
-            sequenceType.setToolTipText(EsbMessages.ThrottleOnRejectBranch_ReadOnly);
-        } else if (!eefElementEditorReadOnlyState && !sequenceType.isEnabled()) {
-            sequenceType.setEnabled(true);
-        }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ThrottleOnRejectBranchPropertiesEditionPart#getSequenceType()
+	 * 
+	 */
+	public Enumerator getSequenceType() {
+		Enumerator selection = (Enumerator) ((StructuredSelection) sequenceType.getSelection()).getFirstElement();
+		return selection;
+	}
 
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ThrottleOnRejectBranchPropertiesEditionPart#initSequenceType(Object input, Enumerator current)
+	 */
+	public void initSequenceType(Object input, Enumerator current) {
+		sequenceType.setInput(input);
+		sequenceType.modelUpdating(new StructuredSelection(current));
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ThrottleOnRejectBranch.Properties.sequenceType);
+		if (eefElementEditorReadOnlyState && sequenceType.isEnabled()) {
+			sequenceType.setEnabled(false);
+			sequenceType.setToolTipText(EsbMessages.ThrottleOnRejectBranch_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !sequenceType.isEnabled()) {
+			sequenceType.setEnabled(true);
+		}	
+		
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ThrottleOnRejectBranchPropertiesEditionPart#setSequenceType(Enumerator
-     *      newValue)
-     * 
-     */
-    public void setSequenceType(Enumerator newValue) {
-        sequenceType.modelUpdating(new StructuredSelection(newValue));
-        boolean eefElementEditorReadOnlyState = isReadOnly(
-                EsbViewsRepository.ThrottleOnRejectBranch.Properties.sequenceType);
-        if (eefElementEditorReadOnlyState && sequenceType.isEnabled()) {
-            sequenceType.setEnabled(false);
-            sequenceType.setToolTipText(EsbMessages.ThrottleOnRejectBranch_ReadOnly);
-        } else if (!eefElementEditorReadOnlyState && !sequenceType.isEnabled()) {
-            sequenceType.setEnabled(true);
-        }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ThrottleOnRejectBranchPropertiesEditionPart#setSequenceType(Enumerator newValue)
+	 * 
+	 */
+	public void setSequenceType(Enumerator newValue) {
+		sequenceType.modelUpdating(new StructuredSelection(newValue));
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ThrottleOnRejectBranch.Properties.sequenceType);
+		if (eefElementEditorReadOnlyState && sequenceType.isEnabled()) {
+			sequenceType.setEnabled(false);
+			sequenceType.setToolTipText(EsbMessages.ThrottleOnRejectBranch_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !sequenceType.isEnabled()) {
+			sequenceType.setEnabled(true);
+		}	
+		
+	}
 
-    }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-     * 
-     */
-    public String getTitle() {
-        return EsbMessages.ThrottleOnRejectBranch_Part_Title;
-    }
 
-    // Start of user code additional methods
 
-    // End of user code
+
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
+	 */
+	public String getTitle() {
+		return EsbMessages.ThrottleOnRejectBranch_Part_Title;
+	}
+
+	// Start of user code additional methods
+	
+	// End of user code
+
 
 }

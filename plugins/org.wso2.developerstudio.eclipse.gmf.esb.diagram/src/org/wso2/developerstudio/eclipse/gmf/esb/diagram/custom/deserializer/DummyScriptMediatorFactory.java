@@ -39,9 +39,7 @@ import java.util.Properties;
  * Creates an instance of a Script mediator for inline or external script mediation for BSF
  * scripting languages.
  * <p/>
- * *
- * 
- * <pre>
+ * * <pre>
  *    &lt;script [key=&quot;entry-key&quot;]
  *      [function=&quot;script-function-name&quot;] language="javascript|groovy|ruby"&gt
  *      (text | xml)?
@@ -62,25 +60,31 @@ import java.util.Properties;
  */
 public class DummyScriptMediatorFactory extends AbstractMediatorFactory {
 
-    private static final QName TAG_NAME = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "script");
+    private static final QName TAG_NAME
+            = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "script");
 
-    private static final QName INCLUDE_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "include");
+    private static final QName INCLUDE_Q
+            = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "include");
 
     public Mediator createSpecificMediator(OMElement elem, Properties properties) {
 
         ScriptMediator mediator = null;
-        ClassLoader classLoader = (ClassLoader) properties.get(SynapseConstants.SYNAPSE_LIB_LOADER);
-        OMAttribute keyAtt = elem.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "key"));
-        OMAttribute langAtt = elem.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "language"));
-        OMAttribute functionAtt = elem.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "function"));
+        ClassLoader  classLoader = (ClassLoader) properties.get(SynapseConstants.SYNAPSE_LIB_LOADER);
+        OMAttribute keyAtt = elem.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE,
+                "key"));
+        OMAttribute langAtt = elem.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE,
+                "language"));
+        OMAttribute functionAtt = elem.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE,
+                "function"));
 
         if (langAtt == null) {
-            throw new SynapseException("The 'language' attribute is required for" + " a script mediator");
+            throw new SynapseException("The 'language' attribute is required for" +
+                    " a script mediator");
             // TODO: couldn't this be determined from the key in some scenarios?
         }
         if (keyAtt == null && functionAtt != null) {
-            throw new SynapseException(
-                    "Cannot use 'function' attribute without 'key' " + "attribute for a script mediator");
+            throw new SynapseException("Cannot use 'function' attribute without 'key' " +
+                    "attribute for a script mediator");
         }
 
         Map<Value, Object> includeKeysMap = getIncludeKeysMap(elem);
@@ -93,21 +97,21 @@ public class DummyScriptMediatorFactory extends AbstractMediatorFactory {
             Value generatedKey = keyFac.createValue(XMLConfigConstants.KEY, elem);
 
             String functionName = (functionAtt == null ? null : functionAtt.getAttributeValue());
-            mediator = new ScriptMediator(langAtt.getAttributeValue(), includeKeysMap, generatedKey, functionName,
-                    classLoader);
+            mediator = new ScriptMediator(langAtt.getAttributeValue(),
+                    includeKeysMap, generatedKey, functionName,classLoader);
         } else {
-            try {
-                mediator = new ScriptMediator(langAtt.getAttributeValue(), elem.getText(), classLoader);
-            } catch (SynapseException e) {
-                if (!langAtt.getAttributeValue().equals("rb")) {
-                    throw new SynapseException(e);
-                }
-            }
+        	try {
+        		mediator = new ScriptMediator(langAtt.getAttributeValue(), elem.getText(),classLoader);
+        	} catch (SynapseException e) {
+        		if (!langAtt.getAttributeValue().equals("rb")) {
+        			throw new SynapseException(e); 
+        		}
+        	}
         }
 
         if (mediator != null) {
-            processAuditStatus(mediator, elem);
-            addAllCommentChildrenToList(elem, mediator.getCommentsList());
+	        processAuditStatus(mediator, elem);
+	        addAllCommentChildrenToList(elem, mediator.getCommentsList());
         }
 
         return mediator;
@@ -124,15 +128,16 @@ public class DummyScriptMediatorFactory extends AbstractMediatorFactory {
         Iterator itr = elem.getChildrenWithName(INCLUDE_Q);
         while (itr.hasNext()) {
             OMElement includeElem = (OMElement) itr.next();
-            OMAttribute key = includeElem.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "key"));
+            OMAttribute key = includeElem.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE,
+                    "key"));
             // ValueFactory for creating dynamic or static Value
             ValueFactory keyFac = new ValueFactory();
             // create dynamic or static key based on OMElement
             Value generatedKey = keyFac.createValue(XMLConfigConstants.KEY, includeElem);
 
             if (key == null) {
-                throw new SynapseException(
-                        "Cannot use 'include' element without 'key'" + " attribute for a script mediator");
+                throw new SynapseException("Cannot use 'include' element without 'key'" +
+                        " attribute for a script mediator");
             }
 
             includeKeysMap.put(generatedKey, null);

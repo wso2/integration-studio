@@ -26,8 +26,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EndpointDiagramImpl#getChild <em>Child</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EndpointDiagramImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EndpointDiagramImpl#getChild <em>Child</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EndpointDiagramImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
@@ -37,7 +37,6 @@ public class EndpointDiagramImpl extends EsbElementImpl implements EndpointDiagr
      * The cached value of the '{@link #getChild() <em>Child</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getChild()
      * @generated
      * @ordered
@@ -48,7 +47,6 @@ public class EndpointDiagramImpl extends EsbElementImpl implements EndpointDiagr
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getName()
      * @generated
      * @ordered
@@ -58,7 +56,6 @@ public class EndpointDiagramImpl extends EsbElementImpl implements EndpointDiagr
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getName()
      * @generated
      * @ordered
@@ -68,7 +65,6 @@ public class EndpointDiagramImpl extends EsbElementImpl implements EndpointDiagr
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected EndpointDiagramImpl() {
@@ -78,7 +74,6 @@ public class EndpointDiagramImpl extends EsbElementImpl implements EndpointDiagr
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -89,7 +84,6 @@ public class EndpointDiagramImpl extends EsbElementImpl implements EndpointDiagr
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EndPoint getChild() {
@@ -99,19 +93,14 @@ public class EndpointDiagramImpl extends EsbElementImpl implements EndpointDiagr
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetChild(EndPoint newChild, NotificationChain msgs) {
         EndPoint oldChild = child;
         child = newChild;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.ENDPOINT_DIAGRAM__CHILD, oldChild, newChild);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.ENDPOINT_DIAGRAM__CHILD, oldChild, newChild);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -119,30 +108,25 @@ public class EndpointDiagramImpl extends EsbElementImpl implements EndpointDiagr
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setChild(EndPoint newChild) {
         if (newChild != child) {
             NotificationChain msgs = null;
             if (child != null)
-                msgs = ((InternalEObject) child).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.ENDPOINT_DIAGRAM__CHILD, null, msgs);
+                msgs = ((InternalEObject)child).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.ENDPOINT_DIAGRAM__CHILD, null, msgs);
             if (newChild != null)
-                msgs = ((InternalEObject) newChild).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.ENDPOINT_DIAGRAM__CHILD, null, msgs);
+                msgs = ((InternalEObject)newChild).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.ENDPOINT_DIAGRAM__CHILD, null, msgs);
             msgs = basicSetChild(newChild, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ENDPOINT_DIAGRAM__CHILD, newChild,
-                    newChild));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ENDPOINT_DIAGRAM__CHILD, newChild, newChild));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getName() {
@@ -152,7 +136,6 @@ public class EndpointDiagramImpl extends EsbElementImpl implements EndpointDiagr
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setName(String newName) {
@@ -165,14 +148,13 @@ public class EndpointDiagramImpl extends EsbElementImpl implements EndpointDiagr
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-        case EsbPackage.ENDPOINT_DIAGRAM__CHILD:
-            return basicSetChild(null, msgs);
+            case EsbPackage.ENDPOINT_DIAGRAM__CHILD:
+                return basicSetChild(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -180,16 +162,15 @@ public class EndpointDiagramImpl extends EsbElementImpl implements EndpointDiagr
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case EsbPackage.ENDPOINT_DIAGRAM__CHILD:
-            return getChild();
-        case EsbPackage.ENDPOINT_DIAGRAM__NAME:
-            return getName();
+            case EsbPackage.ENDPOINT_DIAGRAM__CHILD:
+                return getChild();
+            case EsbPackage.ENDPOINT_DIAGRAM__NAME:
+                return getName();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -197,18 +178,17 @@ public class EndpointDiagramImpl extends EsbElementImpl implements EndpointDiagr
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case EsbPackage.ENDPOINT_DIAGRAM__CHILD:
-            setChild((EndPoint) newValue);
-            return;
-        case EsbPackage.ENDPOINT_DIAGRAM__NAME:
-            setName((String) newValue);
-            return;
+            case EsbPackage.ENDPOINT_DIAGRAM__CHILD:
+                setChild((EndPoint)newValue);
+                return;
+            case EsbPackage.ENDPOINT_DIAGRAM__NAME:
+                setName((String)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -216,18 +196,17 @@ public class EndpointDiagramImpl extends EsbElementImpl implements EndpointDiagr
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case EsbPackage.ENDPOINT_DIAGRAM__CHILD:
-            setChild((EndPoint) null);
-            return;
-        case EsbPackage.ENDPOINT_DIAGRAM__NAME:
-            setName(NAME_EDEFAULT);
-            return;
+            case EsbPackage.ENDPOINT_DIAGRAM__CHILD:
+                setChild((EndPoint)null);
+                return;
+            case EsbPackage.ENDPOINT_DIAGRAM__NAME:
+                setName(NAME_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -235,16 +214,15 @@ public class EndpointDiagramImpl extends EsbElementImpl implements EndpointDiagr
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case EsbPackage.ENDPOINT_DIAGRAM__CHILD:
-            return child != null;
-        case EsbPackage.ENDPOINT_DIAGRAM__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            case EsbPackage.ENDPOINT_DIAGRAM__CHILD:
+                return child != null;
+            case EsbPackage.ENDPOINT_DIAGRAM__NAME:
+                return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
         }
         return super.eIsSet(featureID);
     }
@@ -252,13 +230,11 @@ public class EndpointDiagramImpl extends EsbElementImpl implements EndpointDiagr
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
-            return super.toString();
+        if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (name: ");

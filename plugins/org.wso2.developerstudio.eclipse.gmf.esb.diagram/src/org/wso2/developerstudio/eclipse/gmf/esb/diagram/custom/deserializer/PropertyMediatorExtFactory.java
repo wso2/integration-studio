@@ -32,12 +32,12 @@ import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.SynapseXPathExt;
 
 public class PropertyMediatorExtFactory extends PropertyMediatorFactory {
-
+    
     private static PropertyMediatorExtFactory instance;
 
     PropertyMediatorExtFactory() {
     }
-
+    
     public static synchronized PropertyMediatorExtFactory getInstance() {
         if (instance == null) {
             instance = new PropertyMediatorExtFactory();
@@ -111,7 +111,7 @@ public class PropertyMediatorExtFactory extends PropertyMediatorFactory {
 
         processAuditStatus(mediator, omElement);
         addAllCommentChildrenToList(omElement, ((PropertyMediator) mediator).getCommentsList());
-
+        
         return mediator;
     }
 }

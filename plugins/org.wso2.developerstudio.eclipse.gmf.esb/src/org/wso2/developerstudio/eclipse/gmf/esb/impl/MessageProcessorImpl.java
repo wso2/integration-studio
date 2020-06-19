@@ -52,59 +52,34 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getProcessorName <em>Processor
- * Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getProcessorType <em>Processor
- * Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getMessageProcessorProvider <em>Message
- * Processor Provider</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getMessageStore <em>Message
- * Store</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getSourceMessageStore <em>Source
- * Message Store</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getTargetMessageStore <em>Target
- * Message Store</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getProcessorState <em>Processor
- * State</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getEndpointName <em>Endpoint
- * Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getSequence <em>Sequence</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getRetryInterval <em>Retry
- * Interval</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getForwardingInterval <em>Forwarding
- * Interval</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getSamplingInterval <em>Sampling
- * Interval</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getSamplingConcurrency <em>Sampling
- * Concurrency</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getMaxDeliveryAttempts <em>Max Delivery
- * Attempts</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getDropMessageAfterMaximumDeliveryAttempts
- * <em>Drop Message After Maximum Delivery Attempts</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getAxis2ClientRepository <em>Axis2
- * Client Repository</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getAxis2Configuration <em>Axis2
- * Configuration</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getReplySequenceName <em>Reply Sequence
- * Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getFaultSequenceName <em>Fault Sequence
- * Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getDeactivateSequenceName
- * <em>Deactivate Sequence Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getQuartzConfigFilePath <em>Quartz
- * Config File Path</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getCronExpression <em>Cron
- * Expression</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getNonRetryHttpStatusCodes <em>Non
- * Retry Http Status Codes</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getParameters <em>Parameters</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getTaskCount <em>Task Count</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getMaxStoreConnectionAttempts <em>Max
- * Store Connection Attempts</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getStoreConnectionInterval <em>Store
- * Connection Interval</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getFailMessagesStore <em>Fail Messages
- * Store</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getProcessorName <em>Processor Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getProcessorType <em>Processor Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getMessageProcessorProvider <em>Message Processor Provider</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getMessageStore <em>Message Store</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getSourceMessageStore <em>Source Message Store</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getTargetMessageStore <em>Target Message Store</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getProcessorState <em>Processor State</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getEndpointName <em>Endpoint Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getSequence <em>Sequence</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getRetryInterval <em>Retry Interval</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getForwardingInterval <em>Forwarding Interval</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getSamplingInterval <em>Sampling Interval</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getSamplingConcurrency <em>Sampling Concurrency</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getMaxDeliveryAttempts <em>Max Delivery Attempts</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getDropMessageAfterMaximumDeliveryAttempts <em>Drop Message After Maximum Delivery Attempts</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getAxis2ClientRepository <em>Axis2 Client Repository</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getAxis2Configuration <em>Axis2 Configuration</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getReplySequenceName <em>Reply Sequence Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getFaultSequenceName <em>Fault Sequence Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getDeactivateSequenceName <em>Deactivate Sequence Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getQuartzConfigFilePath <em>Quartz Config File Path</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getCronExpression <em>Cron Expression</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getNonRetryHttpStatusCodes <em>Non Retry Http Status Codes</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getTaskCount <em>Task Count</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getMaxStoreConnectionAttempts <em>Max Store Connection Attempts</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getStoreConnectionInterval <em>Store Connection Interval</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getFailMessagesStore <em>Fail Messages Store</em>}</li>
  * </ul>
  *
  * @generated
@@ -114,7 +89,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The default value of the '{@link #getProcessorName() <em>Processor Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getProcessorName()
      * @generated
      * @ordered
@@ -125,7 +99,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The cached value of the '{@link #getProcessorName() <em>Processor Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getProcessorName()
      * @generated
      * @ordered
@@ -136,7 +109,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The default value of the '{@link #getProcessorType() <em>Processor Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getProcessorType()
      * @generated
      * @ordered
@@ -147,7 +119,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The cached value of the '{@link #getProcessorType() <em>Processor Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getProcessorType()
      * @generated
      * @ordered
@@ -158,7 +129,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The default value of the '{@link #getMessageProcessorProvider() <em>Message Processor Provider</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getMessageProcessorProvider()
      * @generated
      * @ordered
@@ -169,7 +139,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The cached value of the '{@link #getMessageProcessorProvider() <em>Message Processor Provider</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getMessageProcessorProvider()
      * @generated
      * @ordered
@@ -180,7 +149,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The default value of the '{@link #getMessageStore() <em>Message Store</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getMessageStore()
      * @generated
      * @ordered
@@ -191,7 +159,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The cached value of the '{@link #getMessageStore() <em>Message Store</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getMessageStore()
      * @generated
      * @ordered
@@ -202,7 +169,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The default value of the '{@link #getSourceMessageStore() <em>Source Message Store</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getSourceMessageStore()
      * @generated
      * @ordered
@@ -213,7 +179,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The cached value of the '{@link #getSourceMessageStore() <em>Source Message Store</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getSourceMessageStore()
      * @generated
      * @ordered
@@ -224,7 +189,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The default value of the '{@link #getTargetMessageStore() <em>Target Message Store</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTargetMessageStore()
      * @generated
      * @ordered
@@ -235,7 +199,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The cached value of the '{@link #getTargetMessageStore() <em>Target Message Store</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTargetMessageStore()
      * @generated
      * @ordered
@@ -246,7 +209,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The default value of the '{@link #getProcessorState() <em>Processor State</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getProcessorState()
      * @generated
      * @ordered
@@ -257,7 +219,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The cached value of the '{@link #getProcessorState() <em>Processor State</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getProcessorState()
      * @generated
      * @ordered
@@ -268,7 +229,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The cached value of the '{@link #getEndpointName() <em>Endpoint Name</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getEndpointName()
      * @generated
      * @ordered
@@ -279,7 +239,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The cached value of the '{@link #getSequence() <em>Sequence</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getSequence()
      * @generated
      * @ordered
@@ -290,7 +249,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The default value of the '{@link #getRetryInterval() <em>Retry Interval</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getRetryInterval()
      * @generated
      * @ordered
@@ -301,7 +259,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The cached value of the '{@link #getRetryInterval() <em>Retry Interval</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getRetryInterval()
      * @generated
      * @ordered
@@ -312,7 +269,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The default value of the '{@link #getForwardingInterval() <em>Forwarding Interval</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getForwardingInterval()
      * @generated
      * @ordered
@@ -323,7 +279,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The cached value of the '{@link #getForwardingInterval() <em>Forwarding Interval</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getForwardingInterval()
      * @generated
      * @ordered
@@ -334,7 +289,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The default value of the '{@link #getSamplingInterval() <em>Sampling Interval</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getSamplingInterval()
      * @generated
      * @ordered
@@ -345,7 +299,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The cached value of the '{@link #getSamplingInterval() <em>Sampling Interval</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getSamplingInterval()
      * @generated
      * @ordered
@@ -356,7 +309,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The default value of the '{@link #getSamplingConcurrency() <em>Sampling Concurrency</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getSamplingConcurrency()
      * @generated
      * @ordered
@@ -367,7 +319,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The cached value of the '{@link #getSamplingConcurrency() <em>Sampling Concurrency</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getSamplingConcurrency()
      * @generated
      * @ordered
@@ -378,7 +329,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The default value of the '{@link #getMaxDeliveryAttempts() <em>Max Delivery Attempts</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getMaxDeliveryAttempts()
      * @generated
      * @ordered
@@ -389,7 +339,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The cached value of the '{@link #getMaxDeliveryAttempts() <em>Max Delivery Attempts</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getMaxDeliveryAttempts()
      * @generated
      * @ordered
@@ -397,11 +346,9 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     protected int maxDeliveryAttempts = MAX_DELIVERY_ATTEMPTS_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getDropMessageAfterMaximumDeliveryAttempts() <em>Drop Message After Maximum
-     * Delivery Attempts</em>}' attribute.
+     * The default value of the '{@link #getDropMessageAfterMaximumDeliveryAttempts() <em>Drop Message After Maximum Delivery Attempts</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getDropMessageAfterMaximumDeliveryAttempts()
      * @generated
      * @ordered
@@ -409,11 +356,9 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     protected static final EnableDisableState DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS_EDEFAULT = EnableDisableState.DISABLED;
 
     /**
-     * The cached value of the '{@link #getDropMessageAfterMaximumDeliveryAttempts() <em>Drop Message After Maximum
-     * Delivery Attempts</em>}' attribute.
+     * The cached value of the '{@link #getDropMessageAfterMaximumDeliveryAttempts() <em>Drop Message After Maximum Delivery Attempts</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getDropMessageAfterMaximumDeliveryAttempts()
      * @generated
      * @ordered
@@ -424,7 +369,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The default value of the '{@link #getAxis2ClientRepository() <em>Axis2 Client Repository</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getAxis2ClientRepository()
      * @generated
      * @ordered
@@ -435,7 +379,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The cached value of the '{@link #getAxis2ClientRepository() <em>Axis2 Client Repository</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getAxis2ClientRepository()
      * @generated
      * @ordered
@@ -446,7 +389,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The default value of the '{@link #getAxis2Configuration() <em>Axis2 Configuration</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getAxis2Configuration()
      * @generated
      * @ordered
@@ -457,7 +399,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The cached value of the '{@link #getAxis2Configuration() <em>Axis2 Configuration</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getAxis2Configuration()
      * @generated
      * @ordered
@@ -468,7 +409,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The cached value of the '{@link #getReplySequenceName() <em>Reply Sequence Name</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getReplySequenceName()
      * @generated
      * @ordered
@@ -479,7 +419,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The cached value of the '{@link #getFaultSequenceName() <em>Fault Sequence Name</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getFaultSequenceName()
      * @generated
      * @ordered
@@ -487,11 +426,9 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     protected RegistryKeyProperty faultSequenceName;
 
     /**
-     * The cached value of the '{@link #getDeactivateSequenceName() <em>Deactivate Sequence Name</em>}' containment
-     * reference.
+     * The cached value of the '{@link #getDeactivateSequenceName() <em>Deactivate Sequence Name</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getDeactivateSequenceName()
      * @generated
      * @ordered
@@ -502,7 +439,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The default value of the '{@link #getQuartzConfigFilePath() <em>Quartz Config File Path</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getQuartzConfigFilePath()
      * @generated
      * @ordered
@@ -513,7 +449,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The cached value of the '{@link #getQuartzConfigFilePath() <em>Quartz Config File Path</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getQuartzConfigFilePath()
      * @generated
      * @ordered
@@ -524,7 +459,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The default value of the '{@link #getCronExpression() <em>Cron Expression</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getCronExpression()
      * @generated
      * @ordered
@@ -535,7 +469,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The cached value of the '{@link #getCronExpression() <em>Cron Expression</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getCronExpression()
      * @generated
      * @ordered
@@ -546,7 +479,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The default value of the '{@link #getNonRetryHttpStatusCodes() <em>Non Retry Http Status Codes</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getNonRetryHttpStatusCodes()
      * @generated
      * @ordered
@@ -557,7 +489,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The cached value of the '{@link #getNonRetryHttpStatusCodes() <em>Non Retry Http Status Codes</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getNonRetryHttpStatusCodes()
      * @generated
      * @ordered
@@ -568,7 +499,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getParameters()
      * @generated
      * @ordered
@@ -579,7 +509,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The default value of the '{@link #getTaskCount() <em>Task Count</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTaskCount()
      * @generated
      * @ordered
@@ -590,7 +519,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The cached value of the '{@link #getTaskCount() <em>Task Count</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTaskCount()
      * @generated
      * @ordered
@@ -598,11 +526,9 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     protected String taskCount = TASK_COUNT_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getMaxStoreConnectionAttempts() <em>Max Store Connection Attempts</em>}'
-     * attribute.
+     * The default value of the '{@link #getMaxStoreConnectionAttempts() <em>Max Store Connection Attempts</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getMaxStoreConnectionAttempts()
      * @generated
      * @ordered
@@ -610,11 +536,9 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     protected static final int MAX_STORE_CONNECTION_ATTEMPTS_EDEFAULT = -1;
 
     /**
-     * The cached value of the '{@link #getMaxStoreConnectionAttempts() <em>Max Store Connection Attempts</em>}'
-     * attribute.
+     * The cached value of the '{@link #getMaxStoreConnectionAttempts() <em>Max Store Connection Attempts</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getMaxStoreConnectionAttempts()
      * @generated
      * @ordered
@@ -625,7 +549,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The default value of the '{@link #getStoreConnectionInterval() <em>Store Connection Interval</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getStoreConnectionInterval()
      * @generated
      * @ordered
@@ -636,7 +559,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The cached value of the '{@link #getStoreConnectionInterval() <em>Store Connection Interval</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getStoreConnectionInterval()
      * @generated
      * @ordered
@@ -647,7 +569,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The default value of the '{@link #getFailMessagesStore() <em>Fail Messages Store</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getFailMessagesStore()
      * @generated
      * @ordered
@@ -658,7 +579,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
      * The cached value of the '{@link #getFailMessagesStore() <em>Fail Messages Store</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getFailMessagesStore()
      * @generated
      * @ordered
@@ -710,7 +630,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -721,7 +640,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getProcessorName() {
@@ -731,21 +649,18 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setProcessorName(String newProcessorName) {
         String oldProcessorName = processorName;
         processorName = newProcessorName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_NAME,
-                    oldProcessorName, processorName));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_NAME, oldProcessorName, processorName));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public MessageProcessorType getProcessorType() {
@@ -755,21 +670,18 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setProcessorType(MessageProcessorType newProcessorType) {
         MessageProcessorType oldProcessorType = processorType;
         processorType = newProcessorType == null ? PROCESSOR_TYPE_EDEFAULT : newProcessorType;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_TYPE,
-                    oldProcessorType, processorType));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_TYPE, oldProcessorType, processorType));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getMessageProcessorProvider() {
@@ -779,22 +691,18 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setMessageProcessorProvider(String newMessageProcessorProvider) {
         String oldMessageProcessorProvider = messageProcessorProvider;
         messageProcessorProvider = newMessageProcessorProvider;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.MESSAGE_PROCESSOR__MESSAGE_PROCESSOR_PROVIDER, oldMessageProcessorProvider,
-                    messageProcessorProvider));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__MESSAGE_PROCESSOR_PROVIDER, oldMessageProcessorProvider, messageProcessorProvider));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getMessageStore() {
@@ -804,21 +712,18 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setMessageStore(String newMessageStore) {
         String oldMessageStore = messageStore;
         messageStore = newMessageStore;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__MESSAGE_STORE,
-                    oldMessageStore, messageStore));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__MESSAGE_STORE, oldMessageStore, messageStore));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getSourceMessageStore() {
@@ -828,21 +733,18 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setSourceMessageStore(String newSourceMessageStore) {
         String oldSourceMessageStore = sourceMessageStore;
         sourceMessageStore = newSourceMessageStore;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__SOURCE_MESSAGE_STORE,
-                    oldSourceMessageStore, sourceMessageStore));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__SOURCE_MESSAGE_STORE, oldSourceMessageStore, sourceMessageStore));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTargetMessageStore() {
@@ -852,21 +754,18 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTargetMessageStore(String newTargetMessageStore) {
         String oldTargetMessageStore = targetMessageStore;
         targetMessageStore = newTargetMessageStore;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__TARGET_MESSAGE_STORE,
-                    oldTargetMessageStore, targetMessageStore));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__TARGET_MESSAGE_STORE, oldTargetMessageStore, targetMessageStore));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public ProcessorState getProcessorState() {
@@ -876,21 +775,18 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setProcessorState(ProcessorState newProcessorState) {
         ProcessorState oldProcessorState = processorState;
         processorState = newProcessorState == null ? PROCESSOR_STATE_EDEFAULT : newProcessorState;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_STATE,
-                    oldProcessorState, processorState));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_STATE, oldProcessorState, processorState));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public RegistryKeyProperty getEndpointName() {
@@ -900,19 +796,14 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetEndpointName(RegistryKeyProperty newEndpointName, NotificationChain msgs) {
         RegistryKeyProperty oldEndpointName = endpointName;
         endpointName = newEndpointName;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.MESSAGE_PROCESSOR__ENDPOINT_NAME, oldEndpointName, newEndpointName);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__ENDPOINT_NAME, oldEndpointName, newEndpointName);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -920,30 +811,25 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setEndpointName(RegistryKeyProperty newEndpointName) {
         if (newEndpointName != endpointName) {
             NotificationChain msgs = null;
             if (endpointName != null)
-                msgs = ((InternalEObject) endpointName).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.MESSAGE_PROCESSOR__ENDPOINT_NAME, null, msgs);
+                msgs = ((InternalEObject)endpointName).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.MESSAGE_PROCESSOR__ENDPOINT_NAME, null, msgs);
             if (newEndpointName != null)
-                msgs = ((InternalEObject) newEndpointName).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.MESSAGE_PROCESSOR__ENDPOINT_NAME, null, msgs);
+                msgs = ((InternalEObject)newEndpointName).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.MESSAGE_PROCESSOR__ENDPOINT_NAME, null, msgs);
             msgs = basicSetEndpointName(newEndpointName, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__ENDPOINT_NAME,
-                    newEndpointName, newEndpointName));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__ENDPOINT_NAME, newEndpointName, newEndpointName));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public RegistryKeyProperty getSequence() {
@@ -953,19 +839,14 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetSequence(RegistryKeyProperty newSequence, NotificationChain msgs) {
         RegistryKeyProperty oldSequence = sequence;
         sequence = newSequence;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.MESSAGE_PROCESSOR__SEQUENCE, oldSequence, newSequence);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__SEQUENCE, oldSequence, newSequence);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -973,30 +854,25 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setSequence(RegistryKeyProperty newSequence) {
         if (newSequence != sequence) {
             NotificationChain msgs = null;
             if (sequence != null)
-                msgs = ((InternalEObject) sequence).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.MESSAGE_PROCESSOR__SEQUENCE, null, msgs);
+                msgs = ((InternalEObject)sequence).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.MESSAGE_PROCESSOR__SEQUENCE, null, msgs);
             if (newSequence != null)
-                msgs = ((InternalEObject) newSequence).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.MESSAGE_PROCESSOR__SEQUENCE, null, msgs);
+                msgs = ((InternalEObject)newSequence).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.MESSAGE_PROCESSOR__SEQUENCE, null, msgs);
             msgs = basicSetSequence(newSequence, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__SEQUENCE, newSequence,
-                    newSequence));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__SEQUENCE, newSequence, newSequence));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public long getRetryInterval() {
@@ -1006,21 +882,18 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setRetryInterval(long newRetryInterval) {
         long oldRetryInterval = retryInterval;
         retryInterval = newRetryInterval;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__RETRY_INTERVAL,
-                    oldRetryInterval, retryInterval));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__RETRY_INTERVAL, oldRetryInterval, retryInterval));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public long getForwardingInterval() {
@@ -1030,21 +903,18 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setForwardingInterval(long newForwardingInterval) {
         long oldForwardingInterval = forwardingInterval;
         forwardingInterval = newForwardingInterval;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__FORWARDING_INTERVAL,
-                    oldForwardingInterval, forwardingInterval));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__FORWARDING_INTERVAL, oldForwardingInterval, forwardingInterval));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public long getSamplingInterval() {
@@ -1054,21 +924,18 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setSamplingInterval(long newSamplingInterval) {
         long oldSamplingInterval = samplingInterval;
         samplingInterval = newSamplingInterval;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__SAMPLING_INTERVAL,
-                    oldSamplingInterval, samplingInterval));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__SAMPLING_INTERVAL, oldSamplingInterval, samplingInterval));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public int getSamplingConcurrency() {
@@ -1078,21 +945,18 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setSamplingConcurrency(int newSamplingConcurrency) {
         int oldSamplingConcurrency = samplingConcurrency;
         samplingConcurrency = newSamplingConcurrency;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__SAMPLING_CONCURRENCY,
-                    oldSamplingConcurrency, samplingConcurrency));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__SAMPLING_CONCURRENCY, oldSamplingConcurrency, samplingConcurrency));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public int getMaxDeliveryAttempts() {
@@ -1102,21 +966,18 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setMaxDeliveryAttempts(int newMaxDeliveryAttempts) {
         int oldMaxDeliveryAttempts = maxDeliveryAttempts;
         maxDeliveryAttempts = newMaxDeliveryAttempts;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__MAX_DELIVERY_ATTEMPTS,
-                    oldMaxDeliveryAttempts, maxDeliveryAttempts));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__MAX_DELIVERY_ATTEMPTS, oldMaxDeliveryAttempts, maxDeliveryAttempts));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EnableDisableState getDropMessageAfterMaximumDeliveryAttempts() {
@@ -1126,25 +987,19 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setDropMessageAfterMaximumDeliveryAttempts(
             EnableDisableState newDropMessageAfterMaximumDeliveryAttempts) {
         EnableDisableState oldDropMessageAfterMaximumDeliveryAttempts = dropMessageAfterMaximumDeliveryAttempts;
-        dropMessageAfterMaximumDeliveryAttempts = newDropMessageAfterMaximumDeliveryAttempts == null
-                ? DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS_EDEFAULT
-                : newDropMessageAfterMaximumDeliveryAttempts;
+        dropMessageAfterMaximumDeliveryAttempts = newDropMessageAfterMaximumDeliveryAttempts == null ? DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS_EDEFAULT : newDropMessageAfterMaximumDeliveryAttempts;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS,
-                    oldDropMessageAfterMaximumDeliveryAttempts, dropMessageAfterMaximumDeliveryAttempts));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS, oldDropMessageAfterMaximumDeliveryAttempts, dropMessageAfterMaximumDeliveryAttempts));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getAxis2ClientRepository() {
@@ -1154,21 +1009,18 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setAxis2ClientRepository(String newAxis2ClientRepository) {
         String oldAxis2ClientRepository = axis2ClientRepository;
         axis2ClientRepository = newAxis2ClientRepository;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__AXIS2_CLIENT_REPOSITORY,
-                    oldAxis2ClientRepository, axis2ClientRepository));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__AXIS2_CLIENT_REPOSITORY, oldAxis2ClientRepository, axis2ClientRepository));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getAxis2Configuration() {
@@ -1178,21 +1030,18 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setAxis2Configuration(String newAxis2Configuration) {
         String oldAxis2Configuration = axis2Configuration;
         axis2Configuration = newAxis2Configuration;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__AXIS2_CONFIGURATION,
-                    oldAxis2Configuration, axis2Configuration));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__AXIS2_CONFIGURATION, oldAxis2Configuration, axis2Configuration));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public RegistryKeyProperty getReplySequenceName() {
@@ -1202,7 +1051,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetReplySequenceName(RegistryKeyProperty newReplySequenceName,
@@ -1210,12 +1058,8 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
         RegistryKeyProperty oldReplySequenceName = replySequenceName;
         replySequenceName = newReplySequenceName;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.MESSAGE_PROCESSOR__REPLY_SEQUENCE_NAME, oldReplySequenceName, newReplySequenceName);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__REPLY_SEQUENCE_NAME, oldReplySequenceName, newReplySequenceName);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -1223,30 +1067,25 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setReplySequenceName(RegistryKeyProperty newReplySequenceName) {
         if (newReplySequenceName != replySequenceName) {
             NotificationChain msgs = null;
             if (replySequenceName != null)
-                msgs = ((InternalEObject) replySequenceName).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.MESSAGE_PROCESSOR__REPLY_SEQUENCE_NAME, null, msgs);
+                msgs = ((InternalEObject)replySequenceName).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.MESSAGE_PROCESSOR__REPLY_SEQUENCE_NAME, null, msgs);
             if (newReplySequenceName != null)
-                msgs = ((InternalEObject) newReplySequenceName).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.MESSAGE_PROCESSOR__REPLY_SEQUENCE_NAME, null, msgs);
+                msgs = ((InternalEObject)newReplySequenceName).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.MESSAGE_PROCESSOR__REPLY_SEQUENCE_NAME, null, msgs);
             msgs = basicSetReplySequenceName(newReplySequenceName, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__REPLY_SEQUENCE_NAME,
-                    newReplySequenceName, newReplySequenceName));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__REPLY_SEQUENCE_NAME, newReplySequenceName, newReplySequenceName));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public RegistryKeyProperty getFaultSequenceName() {
@@ -1256,7 +1095,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetFaultSequenceName(RegistryKeyProperty newFaultSequenceName,
@@ -1264,12 +1102,8 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
         RegistryKeyProperty oldFaultSequenceName = faultSequenceName;
         faultSequenceName = newFaultSequenceName;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME, oldFaultSequenceName, newFaultSequenceName);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME, oldFaultSequenceName, newFaultSequenceName);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -1277,30 +1111,25 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setFaultSequenceName(RegistryKeyProperty newFaultSequenceName) {
         if (newFaultSequenceName != faultSequenceName) {
             NotificationChain msgs = null;
             if (faultSequenceName != null)
-                msgs = ((InternalEObject) faultSequenceName).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME, null, msgs);
+                msgs = ((InternalEObject)faultSequenceName).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME, null, msgs);
             if (newFaultSequenceName != null)
-                msgs = ((InternalEObject) newFaultSequenceName).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME, null, msgs);
+                msgs = ((InternalEObject)newFaultSequenceName).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME, null, msgs);
             msgs = basicSetFaultSequenceName(newFaultSequenceName, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME,
-                    newFaultSequenceName, newFaultSequenceName));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME, newFaultSequenceName, newFaultSequenceName));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public RegistryKeyProperty getDeactivateSequenceName() {
@@ -1310,7 +1139,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetDeactivateSequenceName(RegistryKeyProperty newDeactivateSequenceName,
@@ -1318,13 +1146,8 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
         RegistryKeyProperty oldDeactivateSequenceName = deactivateSequenceName;
         deactivateSequenceName = newDeactivateSequenceName;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME, oldDeactivateSequenceName,
-                    newDeactivateSequenceName);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME, oldDeactivateSequenceName, newDeactivateSequenceName);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -1332,31 +1155,25 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setDeactivateSequenceName(RegistryKeyProperty newDeactivateSequenceName) {
         if (newDeactivateSequenceName != deactivateSequenceName) {
             NotificationChain msgs = null;
             if (deactivateSequenceName != null)
-                msgs = ((InternalEObject) deactivateSequenceName).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME, null, msgs);
+                msgs = ((InternalEObject)deactivateSequenceName).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME, null, msgs);
             if (newDeactivateSequenceName != null)
-                msgs = ((InternalEObject) newDeactivateSequenceName).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME, null, msgs);
+                msgs = ((InternalEObject)newDeactivateSequenceName).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME, null, msgs);
             msgs = basicSetDeactivateSequenceName(newDeactivateSequenceName, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME, newDeactivateSequenceName,
-                    newDeactivateSequenceName));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME, newDeactivateSequenceName, newDeactivateSequenceName));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getQuartzConfigFilePath() {
@@ -1366,21 +1183,18 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setQuartzConfigFilePath(String newQuartzConfigFilePath) {
         String oldQuartzConfigFilePath = quartzConfigFilePath;
         quartzConfigFilePath = newQuartzConfigFilePath;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH,
-                    oldQuartzConfigFilePath, quartzConfigFilePath));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH, oldQuartzConfigFilePath, quartzConfigFilePath));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getCronExpression() {
@@ -1390,21 +1204,18 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setCronExpression(String newCronExpression) {
         String oldCronExpression = cronExpression;
         cronExpression = newCronExpression;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__CRON_EXPRESSION,
-                    oldCronExpression, cronExpression));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__CRON_EXPRESSION, oldCronExpression, cronExpression));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getNonRetryHttpStatusCodes() {
@@ -1414,28 +1225,23 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setNonRetryHttpStatusCodes(String newNonRetryHttpStatusCodes) {
         String oldNonRetryHttpStatusCodes = nonRetryHttpStatusCodes;
         nonRetryHttpStatusCodes = newNonRetryHttpStatusCodes;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.MESSAGE_PROCESSOR__NON_RETRY_HTTP_STATUS_CODES, oldNonRetryHttpStatusCodes,
-                    nonRetryHttpStatusCodes));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__NON_RETRY_HTTP_STATUS_CODES, oldNonRetryHttpStatusCodes, nonRetryHttpStatusCodes));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EList<MessageProcessorParameter> getParameters() {
         if (parameters == null) {
-            parameters = new EObjectContainmentEList<MessageProcessorParameter>(MessageProcessorParameter.class, this,
-                    EsbPackage.MESSAGE_PROCESSOR__PARAMETERS);
+            parameters = new EObjectContainmentEList<MessageProcessorParameter>(MessageProcessorParameter.class, this, EsbPackage.MESSAGE_PROCESSOR__PARAMETERS);
         }
         return parameters;
     }
@@ -1443,7 +1249,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTaskCount() {
@@ -1453,15 +1258,13 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTaskCount(String newTaskCount) {
         String oldTaskCount = taskCount;
         taskCount = newTaskCount;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__TASK_COUNT,
-                    oldTaskCount, taskCount));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__TASK_COUNT, oldTaskCount, taskCount));
     }
 
     /**
@@ -1541,24 +1344,23 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-        case EsbPackage.MESSAGE_PROCESSOR__ENDPOINT_NAME:
-            return basicSetEndpointName(null, msgs);
-        case EsbPackage.MESSAGE_PROCESSOR__SEQUENCE:
-            return basicSetSequence(null, msgs);
-        case EsbPackage.MESSAGE_PROCESSOR__REPLY_SEQUENCE_NAME:
-            return basicSetReplySequenceName(null, msgs);
-        case EsbPackage.MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME:
-            return basicSetFaultSequenceName(null, msgs);
-        case EsbPackage.MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME:
-            return basicSetDeactivateSequenceName(null, msgs);
-        case EsbPackage.MESSAGE_PROCESSOR__PARAMETERS:
-            return ((InternalEList<?>) getParameters()).basicRemove(otherEnd, msgs);
+            case EsbPackage.MESSAGE_PROCESSOR__ENDPOINT_NAME:
+                return basicSetEndpointName(null, msgs);
+            case EsbPackage.MESSAGE_PROCESSOR__SEQUENCE:
+                return basicSetSequence(null, msgs);
+            case EsbPackage.MESSAGE_PROCESSOR__REPLY_SEQUENCE_NAME:
+                return basicSetReplySequenceName(null, msgs);
+            case EsbPackage.MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME:
+                return basicSetFaultSequenceName(null, msgs);
+            case EsbPackage.MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME:
+                return basicSetDeactivateSequenceName(null, msgs);
+            case EsbPackage.MESSAGE_PROCESSOR__PARAMETERS:
+                return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -1566,68 +1368,67 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_NAME:
-            return getProcessorName();
-        case EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_TYPE:
-            return getProcessorType();
-        case EsbPackage.MESSAGE_PROCESSOR__MESSAGE_PROCESSOR_PROVIDER:
-            return getMessageProcessorProvider();
-        case EsbPackage.MESSAGE_PROCESSOR__MESSAGE_STORE:
-            return getMessageStore();
-        case EsbPackage.MESSAGE_PROCESSOR__SOURCE_MESSAGE_STORE:
-            return getSourceMessageStore();
-        case EsbPackage.MESSAGE_PROCESSOR__TARGET_MESSAGE_STORE:
-            return getTargetMessageStore();
-        case EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_STATE:
-            return getProcessorState();
-        case EsbPackage.MESSAGE_PROCESSOR__ENDPOINT_NAME:
-            return getEndpointName();
-        case EsbPackage.MESSAGE_PROCESSOR__SEQUENCE:
-            return getSequence();
-        case EsbPackage.MESSAGE_PROCESSOR__RETRY_INTERVAL:
-            return getRetryInterval();
-        case EsbPackage.MESSAGE_PROCESSOR__FORWARDING_INTERVAL:
-            return getForwardingInterval();
-        case EsbPackage.MESSAGE_PROCESSOR__SAMPLING_INTERVAL:
-            return getSamplingInterval();
-        case EsbPackage.MESSAGE_PROCESSOR__SAMPLING_CONCURRENCY:
-            return getSamplingConcurrency();
-        case EsbPackage.MESSAGE_PROCESSOR__MAX_DELIVERY_ATTEMPTS:
-            return getMaxDeliveryAttempts();
-        case EsbPackage.MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS:
-            return getDropMessageAfterMaximumDeliveryAttempts();
-        case EsbPackage.MESSAGE_PROCESSOR__AXIS2_CLIENT_REPOSITORY:
-            return getAxis2ClientRepository();
-        case EsbPackage.MESSAGE_PROCESSOR__AXIS2_CONFIGURATION:
-            return getAxis2Configuration();
-        case EsbPackage.MESSAGE_PROCESSOR__REPLY_SEQUENCE_NAME:
-            return getReplySequenceName();
-        case EsbPackage.MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME:
-            return getFaultSequenceName();
-        case EsbPackage.MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME:
-            return getDeactivateSequenceName();
-        case EsbPackage.MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH:
-            return getQuartzConfigFilePath();
-        case EsbPackage.MESSAGE_PROCESSOR__CRON_EXPRESSION:
-            return getCronExpression();
-        case EsbPackage.MESSAGE_PROCESSOR__NON_RETRY_HTTP_STATUS_CODES:
-            return getNonRetryHttpStatusCodes();
-        case EsbPackage.MESSAGE_PROCESSOR__PARAMETERS:
-            return getParameters();
-        case EsbPackage.MESSAGE_PROCESSOR__TASK_COUNT:
-            return getTaskCount();
-        case EsbPackage.MESSAGE_PROCESSOR__MAX_STORE_CONNECTION_ATTEMPTS:
-            return getMaxStoreConnectionAttempts();
-        case EsbPackage.MESSAGE_PROCESSOR__STORE_CONNECTION_INTERVAL:
-            return getStoreConnectionInterval();
-        case EsbPackage.MESSAGE_PROCESSOR__FAIL_MESSAGES_STORE:
-            return getFailMessagesStore();
+            case EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_NAME:
+                return getProcessorName();
+            case EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_TYPE:
+                return getProcessorType();
+            case EsbPackage.MESSAGE_PROCESSOR__MESSAGE_PROCESSOR_PROVIDER:
+                return getMessageProcessorProvider();
+            case EsbPackage.MESSAGE_PROCESSOR__MESSAGE_STORE:
+                return getMessageStore();
+            case EsbPackage.MESSAGE_PROCESSOR__SOURCE_MESSAGE_STORE:
+                return getSourceMessageStore();
+            case EsbPackage.MESSAGE_PROCESSOR__TARGET_MESSAGE_STORE:
+                return getTargetMessageStore();
+            case EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_STATE:
+                return getProcessorState();
+            case EsbPackage.MESSAGE_PROCESSOR__ENDPOINT_NAME:
+                return getEndpointName();
+            case EsbPackage.MESSAGE_PROCESSOR__SEQUENCE:
+                return getSequence();
+            case EsbPackage.MESSAGE_PROCESSOR__RETRY_INTERVAL:
+                return getRetryInterval();
+            case EsbPackage.MESSAGE_PROCESSOR__FORWARDING_INTERVAL:
+                return getForwardingInterval();
+            case EsbPackage.MESSAGE_PROCESSOR__SAMPLING_INTERVAL:
+                return getSamplingInterval();
+            case EsbPackage.MESSAGE_PROCESSOR__SAMPLING_CONCURRENCY:
+                return getSamplingConcurrency();
+            case EsbPackage.MESSAGE_PROCESSOR__MAX_DELIVERY_ATTEMPTS:
+                return getMaxDeliveryAttempts();
+            case EsbPackage.MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS:
+                return getDropMessageAfterMaximumDeliveryAttempts();
+            case EsbPackage.MESSAGE_PROCESSOR__AXIS2_CLIENT_REPOSITORY:
+                return getAxis2ClientRepository();
+            case EsbPackage.MESSAGE_PROCESSOR__AXIS2_CONFIGURATION:
+                return getAxis2Configuration();
+            case EsbPackage.MESSAGE_PROCESSOR__REPLY_SEQUENCE_NAME:
+                return getReplySequenceName();
+            case EsbPackage.MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME:
+                return getFaultSequenceName();
+            case EsbPackage.MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME:
+                return getDeactivateSequenceName();
+            case EsbPackage.MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH:
+                return getQuartzConfigFilePath();
+            case EsbPackage.MESSAGE_PROCESSOR__CRON_EXPRESSION:
+                return getCronExpression();
+            case EsbPackage.MESSAGE_PROCESSOR__NON_RETRY_HTTP_STATUS_CODES:
+                return getNonRetryHttpStatusCodes();
+            case EsbPackage.MESSAGE_PROCESSOR__PARAMETERS:
+                return getParameters();
+            case EsbPackage.MESSAGE_PROCESSOR__TASK_COUNT:
+                return getTaskCount();
+            case EsbPackage.MESSAGE_PROCESSOR__MAX_STORE_CONNECTION_ATTEMPTS:
+                return getMaxStoreConnectionAttempts();
+            case EsbPackage.MESSAGE_PROCESSOR__STORE_CONNECTION_INTERVAL:
+                return getStoreConnectionInterval();
+            case EsbPackage.MESSAGE_PROCESSOR__FAIL_MESSAGES_STORE:
+                return getFailMessagesStore();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -1635,98 +1436,97 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_NAME:
-            setProcessorName((String) newValue);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_TYPE:
-            setProcessorType((MessageProcessorType) newValue);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__MESSAGE_PROCESSOR_PROVIDER:
-            setMessageProcessorProvider((String) newValue);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__MESSAGE_STORE:
-            setMessageStore((String) newValue);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__SOURCE_MESSAGE_STORE:
-            setSourceMessageStore((String) newValue);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__TARGET_MESSAGE_STORE:
-            setTargetMessageStore((String) newValue);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_STATE:
-            setProcessorState((ProcessorState) newValue);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__ENDPOINT_NAME:
-            setEndpointName((RegistryKeyProperty) newValue);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__SEQUENCE:
-            setSequence((RegistryKeyProperty) newValue);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__RETRY_INTERVAL:
-            setRetryInterval((Long) newValue);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__FORWARDING_INTERVAL:
-            setForwardingInterval((Long) newValue);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__SAMPLING_INTERVAL:
-            setSamplingInterval((Long) newValue);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__SAMPLING_CONCURRENCY:
-            setSamplingConcurrency((Integer) newValue);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__MAX_DELIVERY_ATTEMPTS:
-            setMaxDeliveryAttempts((Integer) newValue);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS:
-            setDropMessageAfterMaximumDeliveryAttempts((EnableDisableState) newValue);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__AXIS2_CLIENT_REPOSITORY:
-            setAxis2ClientRepository((String) newValue);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__AXIS2_CONFIGURATION:
-            setAxis2Configuration((String) newValue);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__REPLY_SEQUENCE_NAME:
-            setReplySequenceName((RegistryKeyProperty) newValue);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME:
-            setFaultSequenceName((RegistryKeyProperty) newValue);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME:
-            setDeactivateSequenceName((RegistryKeyProperty) newValue);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH:
-            setQuartzConfigFilePath((String) newValue);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__CRON_EXPRESSION:
-            setCronExpression((String) newValue);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__NON_RETRY_HTTP_STATUS_CODES:
-            setNonRetryHttpStatusCodes((String) newValue);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__PARAMETERS:
-            getParameters().clear();
-            getParameters().addAll((Collection<? extends MessageProcessorParameter>) newValue);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__TASK_COUNT:
-            setTaskCount((String) newValue);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__MAX_STORE_CONNECTION_ATTEMPTS:
-            setMaxStoreConnectionAttempts((Integer) newValue);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__STORE_CONNECTION_INTERVAL:
-            setStoreConnectionInterval((Integer) newValue);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__FAIL_MESSAGES_STORE:
-            setFailMessagesStore((String) newValue);
-            return;
+            case EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_NAME:
+                setProcessorName((String)newValue);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_TYPE:
+                setProcessorType((MessageProcessorType)newValue);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__MESSAGE_PROCESSOR_PROVIDER:
+                setMessageProcessorProvider((String)newValue);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__MESSAGE_STORE:
+                setMessageStore((String)newValue);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__SOURCE_MESSAGE_STORE:
+                setSourceMessageStore((String)newValue);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__TARGET_MESSAGE_STORE:
+                setTargetMessageStore((String)newValue);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_STATE:
+                setProcessorState((ProcessorState)newValue);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__ENDPOINT_NAME:
+                setEndpointName((RegistryKeyProperty)newValue);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__SEQUENCE:
+                setSequence((RegistryKeyProperty)newValue);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__RETRY_INTERVAL:
+                setRetryInterval((Long)newValue);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__FORWARDING_INTERVAL:
+                setForwardingInterval((Long)newValue);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__SAMPLING_INTERVAL:
+                setSamplingInterval((Long)newValue);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__SAMPLING_CONCURRENCY:
+                setSamplingConcurrency((Integer)newValue);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__MAX_DELIVERY_ATTEMPTS:
+                setMaxDeliveryAttempts((Integer)newValue);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS:
+                setDropMessageAfterMaximumDeliveryAttempts((EnableDisableState)newValue);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__AXIS2_CLIENT_REPOSITORY:
+                setAxis2ClientRepository((String)newValue);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__AXIS2_CONFIGURATION:
+                setAxis2Configuration((String)newValue);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__REPLY_SEQUENCE_NAME:
+                setReplySequenceName((RegistryKeyProperty)newValue);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME:
+                setFaultSequenceName((RegistryKeyProperty)newValue);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME:
+                setDeactivateSequenceName((RegistryKeyProperty)newValue);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH:
+                setQuartzConfigFilePath((String)newValue);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__CRON_EXPRESSION:
+                setCronExpression((String)newValue);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__NON_RETRY_HTTP_STATUS_CODES:
+                setNonRetryHttpStatusCodes((String)newValue);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__PARAMETERS:
+                getParameters().clear();
+                getParameters().addAll((Collection<? extends MessageProcessorParameter>)newValue);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__TASK_COUNT:
+                setTaskCount((String)newValue);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__MAX_STORE_CONNECTION_ATTEMPTS:
+                setMaxStoreConnectionAttempts((Integer)newValue);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__STORE_CONNECTION_INTERVAL:
+                setStoreConnectionInterval((Integer)newValue);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__FAIL_MESSAGES_STORE:
+                setFailMessagesStore((String)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -1734,96 +1534,95 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_NAME:
-            setProcessorName(PROCESSOR_NAME_EDEFAULT);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_TYPE:
-            setProcessorType(PROCESSOR_TYPE_EDEFAULT);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__MESSAGE_PROCESSOR_PROVIDER:
-            setMessageProcessorProvider(MESSAGE_PROCESSOR_PROVIDER_EDEFAULT);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__MESSAGE_STORE:
-            setMessageStore(MESSAGE_STORE_EDEFAULT);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__SOURCE_MESSAGE_STORE:
-            setSourceMessageStore(SOURCE_MESSAGE_STORE_EDEFAULT);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__TARGET_MESSAGE_STORE:
-            setTargetMessageStore(TARGET_MESSAGE_STORE_EDEFAULT);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_STATE:
-            setProcessorState(PROCESSOR_STATE_EDEFAULT);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__ENDPOINT_NAME:
-            setEndpointName((RegistryKeyProperty) null);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__SEQUENCE:
-            setSequence((RegistryKeyProperty) null);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__RETRY_INTERVAL:
-            setRetryInterval(RETRY_INTERVAL_EDEFAULT);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__FORWARDING_INTERVAL:
-            setForwardingInterval(FORWARDING_INTERVAL_EDEFAULT);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__SAMPLING_INTERVAL:
-            setSamplingInterval(SAMPLING_INTERVAL_EDEFAULT);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__SAMPLING_CONCURRENCY:
-            setSamplingConcurrency(SAMPLING_CONCURRENCY_EDEFAULT);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__MAX_DELIVERY_ATTEMPTS:
-            setMaxDeliveryAttempts(MAX_DELIVERY_ATTEMPTS_EDEFAULT);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS:
-            setDropMessageAfterMaximumDeliveryAttempts(DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS_EDEFAULT);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__AXIS2_CLIENT_REPOSITORY:
-            setAxis2ClientRepository(AXIS2_CLIENT_REPOSITORY_EDEFAULT);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__AXIS2_CONFIGURATION:
-            setAxis2Configuration(AXIS2_CONFIGURATION_EDEFAULT);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__REPLY_SEQUENCE_NAME:
-            setReplySequenceName((RegistryKeyProperty) null);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME:
-            setFaultSequenceName((RegistryKeyProperty) null);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME:
-            setDeactivateSequenceName((RegistryKeyProperty) null);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH:
-            setQuartzConfigFilePath(QUARTZ_CONFIG_FILE_PATH_EDEFAULT);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__CRON_EXPRESSION:
-            setCronExpression(CRON_EXPRESSION_EDEFAULT);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__NON_RETRY_HTTP_STATUS_CODES:
-            setNonRetryHttpStatusCodes(NON_RETRY_HTTP_STATUS_CODES_EDEFAULT);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__PARAMETERS:
-            getParameters().clear();
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__TASK_COUNT:
-            setTaskCount(TASK_COUNT_EDEFAULT);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__MAX_STORE_CONNECTION_ATTEMPTS:
-            setMaxStoreConnectionAttempts(MAX_STORE_CONNECTION_ATTEMPTS_EDEFAULT);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__STORE_CONNECTION_INTERVAL:
-            setStoreConnectionInterval(STORE_CONNECTION_INTERVAL_EDEFAULT);
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__FAIL_MESSAGES_STORE:
-            setFailMessagesStore(FAIL_MESSAGES_STORE_EDEFAULT);
-            return;
+            case EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_NAME:
+                setProcessorName(PROCESSOR_NAME_EDEFAULT);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_TYPE:
+                setProcessorType(PROCESSOR_TYPE_EDEFAULT);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__MESSAGE_PROCESSOR_PROVIDER:
+                setMessageProcessorProvider(MESSAGE_PROCESSOR_PROVIDER_EDEFAULT);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__MESSAGE_STORE:
+                setMessageStore(MESSAGE_STORE_EDEFAULT);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__SOURCE_MESSAGE_STORE:
+                setSourceMessageStore(SOURCE_MESSAGE_STORE_EDEFAULT);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__TARGET_MESSAGE_STORE:
+                setTargetMessageStore(TARGET_MESSAGE_STORE_EDEFAULT);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_STATE:
+                setProcessorState(PROCESSOR_STATE_EDEFAULT);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__ENDPOINT_NAME:
+                setEndpointName((RegistryKeyProperty)null);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__SEQUENCE:
+                setSequence((RegistryKeyProperty)null);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__RETRY_INTERVAL:
+                setRetryInterval(RETRY_INTERVAL_EDEFAULT);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__FORWARDING_INTERVAL:
+                setForwardingInterval(FORWARDING_INTERVAL_EDEFAULT);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__SAMPLING_INTERVAL:
+                setSamplingInterval(SAMPLING_INTERVAL_EDEFAULT);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__SAMPLING_CONCURRENCY:
+                setSamplingConcurrency(SAMPLING_CONCURRENCY_EDEFAULT);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__MAX_DELIVERY_ATTEMPTS:
+                setMaxDeliveryAttempts(MAX_DELIVERY_ATTEMPTS_EDEFAULT);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS:
+                setDropMessageAfterMaximumDeliveryAttempts(DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS_EDEFAULT);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__AXIS2_CLIENT_REPOSITORY:
+                setAxis2ClientRepository(AXIS2_CLIENT_REPOSITORY_EDEFAULT);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__AXIS2_CONFIGURATION:
+                setAxis2Configuration(AXIS2_CONFIGURATION_EDEFAULT);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__REPLY_SEQUENCE_NAME:
+                setReplySequenceName((RegistryKeyProperty)null);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME:
+                setFaultSequenceName((RegistryKeyProperty)null);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME:
+                setDeactivateSequenceName((RegistryKeyProperty)null);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH:
+                setQuartzConfigFilePath(QUARTZ_CONFIG_FILE_PATH_EDEFAULT);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__CRON_EXPRESSION:
+                setCronExpression(CRON_EXPRESSION_EDEFAULT);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__NON_RETRY_HTTP_STATUS_CODES:
+                setNonRetryHttpStatusCodes(NON_RETRY_HTTP_STATUS_CODES_EDEFAULT);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__PARAMETERS:
+                getParameters().clear();
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__TASK_COUNT:
+                setTaskCount(TASK_COUNT_EDEFAULT);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__MAX_STORE_CONNECTION_ATTEMPTS:
+                setMaxStoreConnectionAttempts(MAX_STORE_CONNECTION_ATTEMPTS_EDEFAULT);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__STORE_CONNECTION_INTERVAL:
+                setStoreConnectionInterval(STORE_CONNECTION_INTERVAL_EDEFAULT);
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__FAIL_MESSAGES_STORE:
+                setFailMessagesStore(FAIL_MESSAGES_STORE_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -1831,78 +1630,67 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_NAME:
-            return PROCESSOR_NAME_EDEFAULT == null ? processorName != null
-                    : !PROCESSOR_NAME_EDEFAULT.equals(processorName);
-        case EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_TYPE:
-            return processorType != PROCESSOR_TYPE_EDEFAULT;
-        case EsbPackage.MESSAGE_PROCESSOR__MESSAGE_PROCESSOR_PROVIDER:
-            return MESSAGE_PROCESSOR_PROVIDER_EDEFAULT == null ? messageProcessorProvider != null
-                    : !MESSAGE_PROCESSOR_PROVIDER_EDEFAULT.equals(messageProcessorProvider);
-        case EsbPackage.MESSAGE_PROCESSOR__MESSAGE_STORE:
-            return MESSAGE_STORE_EDEFAULT == null ? messageStore != null : !MESSAGE_STORE_EDEFAULT.equals(messageStore);
-        case EsbPackage.MESSAGE_PROCESSOR__SOURCE_MESSAGE_STORE:
-            return SOURCE_MESSAGE_STORE_EDEFAULT == null ? sourceMessageStore != null
-                    : !SOURCE_MESSAGE_STORE_EDEFAULT.equals(sourceMessageStore);
-        case EsbPackage.MESSAGE_PROCESSOR__TARGET_MESSAGE_STORE:
-            return TARGET_MESSAGE_STORE_EDEFAULT == null ? targetMessageStore != null
-                    : !TARGET_MESSAGE_STORE_EDEFAULT.equals(targetMessageStore);
-        case EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_STATE:
-            return processorState != PROCESSOR_STATE_EDEFAULT;
-        case EsbPackage.MESSAGE_PROCESSOR__ENDPOINT_NAME:
-            return endpointName != null;
-        case EsbPackage.MESSAGE_PROCESSOR__SEQUENCE:
-            return sequence != null;
-        case EsbPackage.MESSAGE_PROCESSOR__RETRY_INTERVAL:
-            return retryInterval != RETRY_INTERVAL_EDEFAULT;
-        case EsbPackage.MESSAGE_PROCESSOR__FORWARDING_INTERVAL:
-            return forwardingInterval != FORWARDING_INTERVAL_EDEFAULT;
-        case EsbPackage.MESSAGE_PROCESSOR__SAMPLING_INTERVAL:
-            return samplingInterval != SAMPLING_INTERVAL_EDEFAULT;
-        case EsbPackage.MESSAGE_PROCESSOR__SAMPLING_CONCURRENCY:
-            return samplingConcurrency != SAMPLING_CONCURRENCY_EDEFAULT;
-        case EsbPackage.MESSAGE_PROCESSOR__MAX_DELIVERY_ATTEMPTS:
-            return maxDeliveryAttempts != MAX_DELIVERY_ATTEMPTS_EDEFAULT;
-        case EsbPackage.MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS:
-            return dropMessageAfterMaximumDeliveryAttempts != DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS_EDEFAULT;
-        case EsbPackage.MESSAGE_PROCESSOR__AXIS2_CLIENT_REPOSITORY:
-            return AXIS2_CLIENT_REPOSITORY_EDEFAULT == null ? axis2ClientRepository != null
-                    : !AXIS2_CLIENT_REPOSITORY_EDEFAULT.equals(axis2ClientRepository);
-        case EsbPackage.MESSAGE_PROCESSOR__AXIS2_CONFIGURATION:
-            return AXIS2_CONFIGURATION_EDEFAULT == null ? axis2Configuration != null
-                    : !AXIS2_CONFIGURATION_EDEFAULT.equals(axis2Configuration);
-        case EsbPackage.MESSAGE_PROCESSOR__REPLY_SEQUENCE_NAME:
-            return replySequenceName != null;
-        case EsbPackage.MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME:
-            return faultSequenceName != null;
-        case EsbPackage.MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME:
-            return deactivateSequenceName != null;
-        case EsbPackage.MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH:
-            return QUARTZ_CONFIG_FILE_PATH_EDEFAULT == null ? quartzConfigFilePath != null
-                    : !QUARTZ_CONFIG_FILE_PATH_EDEFAULT.equals(quartzConfigFilePath);
-        case EsbPackage.MESSAGE_PROCESSOR__CRON_EXPRESSION:
-            return CRON_EXPRESSION_EDEFAULT == null ? cronExpression != null
-                    : !CRON_EXPRESSION_EDEFAULT.equals(cronExpression);
-        case EsbPackage.MESSAGE_PROCESSOR__NON_RETRY_HTTP_STATUS_CODES:
-            return NON_RETRY_HTTP_STATUS_CODES_EDEFAULT == null ? nonRetryHttpStatusCodes != null
-                    : !NON_RETRY_HTTP_STATUS_CODES_EDEFAULT.equals(nonRetryHttpStatusCodes);
-        case EsbPackage.MESSAGE_PROCESSOR__PARAMETERS:
-            return parameters != null && !parameters.isEmpty();
-        case EsbPackage.MESSAGE_PROCESSOR__TASK_COUNT:
-            return TASK_COUNT_EDEFAULT == null ? taskCount != null : !TASK_COUNT_EDEFAULT.equals(taskCount);
-        case EsbPackage.MESSAGE_PROCESSOR__MAX_STORE_CONNECTION_ATTEMPTS:
-            return maxStoreConnectionAttempts != MAX_STORE_CONNECTION_ATTEMPTS_EDEFAULT;
-        case EsbPackage.MESSAGE_PROCESSOR__STORE_CONNECTION_INTERVAL:
-            return storeConnectionInterval != STORE_CONNECTION_INTERVAL_EDEFAULT;
-        case EsbPackage.MESSAGE_PROCESSOR__FAIL_MESSAGES_STORE:
-            return FAIL_MESSAGES_STORE_EDEFAULT == null ? failMessagesStore != null
-                    : !FAIL_MESSAGES_STORE_EDEFAULT.equals(failMessagesStore);
+            case EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_NAME:
+                return PROCESSOR_NAME_EDEFAULT == null ? processorName != null : !PROCESSOR_NAME_EDEFAULT.equals(processorName);
+            case EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_TYPE:
+                return processorType != PROCESSOR_TYPE_EDEFAULT;
+            case EsbPackage.MESSAGE_PROCESSOR__MESSAGE_PROCESSOR_PROVIDER:
+                return MESSAGE_PROCESSOR_PROVIDER_EDEFAULT == null ? messageProcessorProvider != null : !MESSAGE_PROCESSOR_PROVIDER_EDEFAULT.equals(messageProcessorProvider);
+            case EsbPackage.MESSAGE_PROCESSOR__MESSAGE_STORE:
+                return MESSAGE_STORE_EDEFAULT == null ? messageStore != null : !MESSAGE_STORE_EDEFAULT.equals(messageStore);
+            case EsbPackage.MESSAGE_PROCESSOR__SOURCE_MESSAGE_STORE:
+                return SOURCE_MESSAGE_STORE_EDEFAULT == null ? sourceMessageStore != null : !SOURCE_MESSAGE_STORE_EDEFAULT.equals(sourceMessageStore);
+            case EsbPackage.MESSAGE_PROCESSOR__TARGET_MESSAGE_STORE:
+                return TARGET_MESSAGE_STORE_EDEFAULT == null ? targetMessageStore != null : !TARGET_MESSAGE_STORE_EDEFAULT.equals(targetMessageStore);
+            case EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_STATE:
+                return processorState != PROCESSOR_STATE_EDEFAULT;
+            case EsbPackage.MESSAGE_PROCESSOR__ENDPOINT_NAME:
+                return endpointName != null;
+            case EsbPackage.MESSAGE_PROCESSOR__SEQUENCE:
+                return sequence != null;
+            case EsbPackage.MESSAGE_PROCESSOR__RETRY_INTERVAL:
+                return retryInterval != RETRY_INTERVAL_EDEFAULT;
+            case EsbPackage.MESSAGE_PROCESSOR__FORWARDING_INTERVAL:
+                return forwardingInterval != FORWARDING_INTERVAL_EDEFAULT;
+            case EsbPackage.MESSAGE_PROCESSOR__SAMPLING_INTERVAL:
+                return samplingInterval != SAMPLING_INTERVAL_EDEFAULT;
+            case EsbPackage.MESSAGE_PROCESSOR__SAMPLING_CONCURRENCY:
+                return samplingConcurrency != SAMPLING_CONCURRENCY_EDEFAULT;
+            case EsbPackage.MESSAGE_PROCESSOR__MAX_DELIVERY_ATTEMPTS:
+                return maxDeliveryAttempts != MAX_DELIVERY_ATTEMPTS_EDEFAULT;
+            case EsbPackage.MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS:
+                return dropMessageAfterMaximumDeliveryAttempts != DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS_EDEFAULT;
+            case EsbPackage.MESSAGE_PROCESSOR__AXIS2_CLIENT_REPOSITORY:
+                return AXIS2_CLIENT_REPOSITORY_EDEFAULT == null ? axis2ClientRepository != null : !AXIS2_CLIENT_REPOSITORY_EDEFAULT.equals(axis2ClientRepository);
+            case EsbPackage.MESSAGE_PROCESSOR__AXIS2_CONFIGURATION:
+                return AXIS2_CONFIGURATION_EDEFAULT == null ? axis2Configuration != null : !AXIS2_CONFIGURATION_EDEFAULT.equals(axis2Configuration);
+            case EsbPackage.MESSAGE_PROCESSOR__REPLY_SEQUENCE_NAME:
+                return replySequenceName != null;
+            case EsbPackage.MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME:
+                return faultSequenceName != null;
+            case EsbPackage.MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME:
+                return deactivateSequenceName != null;
+            case EsbPackage.MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH:
+                return QUARTZ_CONFIG_FILE_PATH_EDEFAULT == null ? quartzConfigFilePath != null : !QUARTZ_CONFIG_FILE_PATH_EDEFAULT.equals(quartzConfigFilePath);
+            case EsbPackage.MESSAGE_PROCESSOR__CRON_EXPRESSION:
+                return CRON_EXPRESSION_EDEFAULT == null ? cronExpression != null : !CRON_EXPRESSION_EDEFAULT.equals(cronExpression);
+            case EsbPackage.MESSAGE_PROCESSOR__NON_RETRY_HTTP_STATUS_CODES:
+                return NON_RETRY_HTTP_STATUS_CODES_EDEFAULT == null ? nonRetryHttpStatusCodes != null : !NON_RETRY_HTTP_STATUS_CODES_EDEFAULT.equals(nonRetryHttpStatusCodes);
+            case EsbPackage.MESSAGE_PROCESSOR__PARAMETERS:
+                return parameters != null && !parameters.isEmpty();
+            case EsbPackage.MESSAGE_PROCESSOR__TASK_COUNT:
+                return TASK_COUNT_EDEFAULT == null ? taskCount != null : !TASK_COUNT_EDEFAULT.equals(taskCount);
+            case EsbPackage.MESSAGE_PROCESSOR__MAX_STORE_CONNECTION_ATTEMPTS:
+                return maxStoreConnectionAttempts != MAX_STORE_CONNECTION_ATTEMPTS_EDEFAULT;
+            case EsbPackage.MESSAGE_PROCESSOR__STORE_CONNECTION_INTERVAL:
+                return storeConnectionInterval != STORE_CONNECTION_INTERVAL_EDEFAULT;
+            case EsbPackage.MESSAGE_PROCESSOR__FAIL_MESSAGES_STORE:
+                return FAIL_MESSAGES_STORE_EDEFAULT == null ? failMessagesStore != null : !FAIL_MESSAGES_STORE_EDEFAULT.equals(failMessagesStore);
         }
         return super.eIsSet(featureID);
     }
@@ -1910,13 +1698,11 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
-            return super.toString();
+        if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (processorName: ");

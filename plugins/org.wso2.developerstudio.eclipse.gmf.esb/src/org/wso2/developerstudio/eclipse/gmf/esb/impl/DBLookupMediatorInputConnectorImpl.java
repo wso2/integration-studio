@@ -22,7 +22,6 @@ public class DBLookupMediatorInputConnectorImpl extends InputConnectorImpl imple
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected DBLookupMediatorInputConnectorImpl() {
@@ -32,7 +31,6 @@ public class DBLookupMediatorInputConnectorImpl extends InputConnectorImpl imple
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

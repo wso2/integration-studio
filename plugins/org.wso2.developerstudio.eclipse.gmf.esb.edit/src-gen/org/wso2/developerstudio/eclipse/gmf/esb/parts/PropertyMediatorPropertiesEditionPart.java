@@ -8,6 +8,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.Enumerator;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 
+
 // End of user code
 
 /**
@@ -16,273 +17,270 @@ import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
  */
 public interface PropertyMediatorPropertiesEditionPart {
 
-    /**
-     * @return the propertyName
-     * 
-     */
-    public Enumerator getPropertyName();
+	/**
+	 * @return the propertyName
+	 * 
+	 */
+	public Enumerator getPropertyName();
 
-    /**
-     * Init the propertyName
-     * 
-     * @param input the viewer input
-     * @param current the current value
-     */
-    public void initPropertyName(Object input, Enumerator current);
+	/**
+	 * Init the propertyName
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initPropertyName(Object input, Enumerator current);
 
-    /**
-     * Defines a new propertyName
-     * 
-     * @param newValue the new propertyName to set
-     * 
-     */
-    public void setPropertyName(Enumerator newValue);
+	/**
+	 * Defines a new propertyName
+	 * @param newValue the new propertyName to set
+	 * 
+	 */
+	public void setPropertyName(Enumerator newValue);
 
-    /**
-     * @return the propertyDataType
-     * 
-     */
-    public Enumerator getPropertyDataType();
 
-    /**
-     * Init the propertyDataType
-     * 
-     * @param input the viewer input
-     * @param current the current value
-     */
-    public void initPropertyDataType(Object input, Enumerator current);
+	/**
+	 * @return the propertyDataType
+	 * 
+	 */
+	public Enumerator getPropertyDataType();
 
-    /**
-     * Defines a new propertyDataType
-     * 
-     * @param newValue the new propertyDataType to set
-     * 
-     */
-    public void setPropertyDataType(Enumerator newValue);
+	/**
+	 * Init the propertyDataType
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initPropertyDataType(Object input, Enumerator current);
 
-    /**
-     * @return the propertyAction
-     * 
-     */
-    public Enumerator getPropertyAction();
+	/**
+	 * Defines a new propertyDataType
+	 * @param newValue the new propertyDataType to set
+	 * 
+	 */
+	public void setPropertyDataType(Enumerator newValue);
 
-    /**
-     * Init the propertyAction
-     * 
-     * @param input the viewer input
-     * @param current the current value
-     */
-    public void initPropertyAction(Object input, Enumerator current);
 
-    /**
-     * Defines a new propertyAction
-     * 
-     * @param newValue the new propertyAction to set
-     * 
-     */
-    public void setPropertyAction(Enumerator newValue);
+	/**
+	 * @return the propertyAction
+	 * 
+	 */
+	public Enumerator getPropertyAction();
 
-    /**
-     * @return the propertyScope
-     * 
-     */
-    public Enumerator getPropertyScope();
+	/**
+	 * Init the propertyAction
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initPropertyAction(Object input, Enumerator current);
 
-    /**
-     * Init the propertyScope
-     * 
-     * @param input the viewer input
-     * @param current the current value
-     */
-    public void initPropertyScope(Object input, Enumerator current);
+	/**
+	 * Defines a new propertyAction
+	 * @param newValue the new propertyAction to set
+	 * 
+	 */
+	public void setPropertyAction(Enumerator newValue);
 
-    /**
-     * Defines a new propertyScope
-     * 
-     * @param newValue the new propertyScope to set
-     * 
-     */
-    public void setPropertyScope(Enumerator newValue);
 
-    /**
-     * @return the valueType
-     * 
-     */
-    public Enumerator getValueType();
+	/**
+	 * @return the propertyScope
+	 * 
+	 */
+	public Enumerator getPropertyScope();
 
-    /**
-     * Init the valueType
-     * 
-     * @param input the viewer input
-     * @param current the current value
-     */
-    public void initValueType(Object input, Enumerator current);
+	/**
+	 * Init the propertyScope
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initPropertyScope(Object input, Enumerator current);
 
-    /**
-     * Defines a new valueType
-     * 
-     * @param newValue the new valueType to set
-     * 
-     */
-    public void setValueType(Enumerator newValue);
+	/**
+	 * Defines a new propertyScope
+	 * @param newValue the new propertyScope to set
+	 * 
+	 */
+	public void setPropertyScope(Enumerator newValue);
 
-    /**
-     * @return the value
-     * 
-     */
-    public String getValue();
 
-    /**
-     * Defines a new value
-     * 
-     * @param newValue the new value to set
-     * 
-     */
-    public void setValue(String newValue);
+	/**
+	 * @return the valueType
+	 * 
+	 */
+	public Enumerator getValueType();
 
-    /**
-     * @return the expression
-     * 
-     */
-    public String getExpression();
+	/**
+	 * Init the valueType
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initValueType(Object input, Enumerator current);
 
-    /**
-     * Defines a new expression
-     * 
-     * @param newValue the new expression to set
-     * 
-     */
-    public void setExpression(String newValue);
+	/**
+	 * Defines a new valueType
+	 * @param newValue the new valueType to set
+	 * 
+	 */
+	public void setValueType(Enumerator newValue);
 
-    /**
-     * @return the namespacePrefix
-     * 
-     */
-    public String getNamespacePrefix();
 
-    /**
-     * Defines a new namespacePrefix
-     * 
-     * @param newValue the new namespacePrefix to set
-     * 
-     */
-    public void setNamespacePrefix(String newValue);
+	/**
+	 * @return the value
+	 * 
+	 */
+	public String getValue();
 
-    /**
-     * @return the namespace
-     * 
-     */
-    public String getNamespace();
+	/**
+	 * Defines a new value
+	 * @param newValue the new value to set
+	 * 
+	 */
+	public void setValue(String newValue);
 
-    /**
-     * Defines a new namespace
-     * 
-     * @param newValue the new namespace to set
-     * 
-     */
-    public void setNamespace(String newValue);
 
-    /**
-     * @return the boolean
-     * 
-     */
-    public Boolean getBoolean_();
+	/**
+	 * @return the expression
+	 * 
+	 */
+	public String getExpression();
 
-    /**
-     * Defines a new boolean
-     * 
-     * @param newValue the new boolean to set
-     * 
-     */
-    public void setBoolean_(Boolean newValue);
+	/**
+	 * Defines a new expression
+	 * @param newValue the new expression to set
+	 * 
+	 */
+	public void setExpression(String newValue);
 
-    /**
-     * @return the OM
-     * 
-     */
-    public String getOM();
 
-    /**
-     * Defines a new OM
-     * 
-     * @param newValue the new OM to set
-     * 
-     */
-    public void setOM(String newValue);
+	/**
+	 * @return the namespacePrefix
+	 * 
+	 */
+	public String getNamespacePrefix();
 
-    /**
-     * @return the valueStringPattern
-     * 
-     */
-    public String getValueStringPattern();
+	/**
+	 * Defines a new namespacePrefix
+	 * @param newValue the new namespacePrefix to set
+	 * 
+	 */
+	public void setNamespacePrefix(String newValue);
 
-    /**
-     * Defines a new valueStringPattern
-     * 
-     * @param newValue the new valueStringPattern to set
-     * 
-     */
-    public void setValueStringPattern(String newValue);
 
-    /**
-     * @return the valueStringCapturingGroup
-     * 
-     */
-    public String getValueStringCapturingGroup();
+	/**
+	 * @return the namespace
+	 * 
+	 */
+	public String getNamespace();
 
-    /**
-     * Defines a new valueStringCapturingGroup
-     * 
-     * @param newValue the new valueStringCapturingGroup to set
-     * 
-     */
-    public void setValueStringCapturingGroup(String newValue);
+	/**
+	 * Defines a new namespace
+	 * @param newValue the new namespace to set
+	 * 
+	 */
+	public void setNamespace(String newValue);
 
-    /**
-     * @return the newPropertyName
-     * 
-     */
-    public String getNewPropertyName();
 
-    /**
-     * Defines a new newPropertyName
-     * 
-     * @param newValue the new newPropertyName to set
-     * 
-     */
-    public void setNewPropertyName(String newValue);
+	/**
+	 * @return the boolean
+	 * 
+	 */
+	public Boolean getBoolean_();
 
-    /**
-     * @return the description
-     * 
-     */
-    public String getDescription();
+	/**
+	 * Defines a new boolean
+	 * @param newValue the new boolean to set
+	 * 
+	 */
+	public void setBoolean_(Boolean newValue);
 
-    /**
-     * Defines a new description
-     * 
-     * @param newValue the new description to set
-     * 
-     */
-    public void setDescription(String newValue);
 
-    // Start of user code for valueExpression specific getters and setters declaration
-    public NamespacedProperty getValueExpression();
+	/**
+	 * @return the OM
+	 * 
+	 */
+	public String getOM();
 
-    public void setValueExpression(NamespacedProperty nameSpacedProperty);
+	/**
+	 * Defines a new OM
+	 * @param newValue the new OM to set
+	 * 
+	 */
+	public void setOM(String newValue);
 
-    // End of user code
 
-    /**
-     * Returns the internationalized title text.
-     * 
-     * @return the internationalized title text.
-     * 
-     */
-    public String getTitle();
+	/**
+	 * @return the valueStringPattern
+	 * 
+	 */
+	public String getValueStringPattern();
 
-    // Start of user code for additional methods
+	/**
+	 * Defines a new valueStringPattern
+	 * @param newValue the new valueStringPattern to set
+	 * 
+	 */
+	public void setValueStringPattern(String newValue);
 
-    // End of user code
+
+	/**
+	 * @return the valueStringCapturingGroup
+	 * 
+	 */
+	public String getValueStringCapturingGroup();
+
+	/**
+	 * Defines a new valueStringCapturingGroup
+	 * @param newValue the new valueStringCapturingGroup to set
+	 * 
+	 */
+	public void setValueStringCapturingGroup(String newValue);
+
+
+	/**
+	 * @return the newPropertyName
+	 * 
+	 */
+	public String getNewPropertyName();
+
+	/**
+	 * Defines a new newPropertyName
+	 * @param newValue the new newPropertyName to set
+	 * 
+	 */
+	public void setNewPropertyName(String newValue);
+
+
+	/**
+	 * @return the description
+	 * 
+	 */
+	public String getDescription();
+
+	/**
+	 * Defines a new description
+	 * @param newValue the new description to set
+	 * 
+	 */
+	public void setDescription(String newValue);
+
+
+
+
+	// Start of user code for valueExpression specific getters and setters declaration
+	public NamespacedProperty getValueExpression();
+	
+	public void setValueExpression(NamespacedProperty nameSpacedProperty);
+	
+	// End of user code
+
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 * 
+	 */
+	public String getTitle();
+
+	// Start of user code for additional methods
+	
+	// End of user code
 
 }

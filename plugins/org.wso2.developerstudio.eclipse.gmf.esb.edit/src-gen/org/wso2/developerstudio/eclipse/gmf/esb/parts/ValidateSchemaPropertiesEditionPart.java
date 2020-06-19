@@ -16,6 +16,7 @@ import org.eclipse.jface.viewers.ViewerFilter;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 
+
 // End of user code
 
 /**
@@ -24,99 +25,98 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
  */
 public interface ValidateSchemaPropertiesEditionPart {
 
-    /**
-     * @return the validateSchemaKeyType
-     * 
-     */
-    public Enumerator getValidateSchemaKeyType();
+	/**
+	 * @return the validateSchemaKeyType
+	 * 
+	 */
+	public Enumerator getValidateSchemaKeyType();
 
-    /**
-     * Init the validateSchemaKeyType
-     * 
-     * @param input the viewer input
-     * @param current the current value
-     */
-    public void initValidateSchemaKeyType(Object input, Enumerator current);
+	/**
+	 * Init the validateSchemaKeyType
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initValidateSchemaKeyType(Object input, Enumerator current);
 
-    /**
-     * Defines a new validateSchemaKeyType
-     * 
-     * @param newValue the new validateSchemaKeyType to set
-     * 
-     */
-    public void setValidateSchemaKeyType(Enumerator newValue);
+	/**
+	 * Defines a new validateSchemaKeyType
+	 * @param newValue the new validateSchemaKeyType to set
+	 * 
+	 */
+	public void setValidateSchemaKeyType(Enumerator newValue);
 
-    /**
-     * @return the schemaKey
-     * 
-     */
-    public EObject getSchemaKey();
 
-    /**
-     * Init the schemaKey
-     * 
-     * @param settings the combo setting
-     */
-    public void initSchemaKey(EObjectFlatComboSettings settings);
+	/**
+	 * @return the schemaKey
+	 * 
+	 */
+	public EObject getSchemaKey();
 
-    /**
-     * Defines a new schemaKey
-     * 
-     * @param newValue the new schemaKey to set
-     * 
-     */
-    public void setSchemaKey(EObject newValue);
+	/**
+	 * Init the schemaKey
+	 * @param settings the combo setting
+	 */
+	public void initSchemaKey(EObjectFlatComboSettings settings);
 
-    /**
-     * Defines the button mode
-     * 
-     * @param newValue the new mode to set
-     * 
-     */
-    public void setSchemaKeyButtonMode(ButtonsModeEnum newValue);
+	/**
+	 * Defines a new schemaKey
+	 * @param newValue the new schemaKey to set
+	 * 
+	 */
+	public void setSchemaKey(EObject newValue);
 
-    /**
-     * Adds the given filter to the schemaKey edition editor.
-     * 
-     * @param filter
-     *            a viewer filter
-     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
-     */
-    public void addFilterToSchemaKey(ViewerFilter filter);
+	/**
+	 * Defines the button mode
+	 * @param newValue the new mode to set
+	 * 
+	 */
+	public void setSchemaKeyButtonMode(ButtonsModeEnum newValue);
 
-    /**
-     * Adds the given filter to the schemaKey edition editor.
-     * 
-     * @param filter
-     *            a viewer filter
-     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
-     */
-    public void addBusinessFilterToSchemaKey(ViewerFilter filter);
+	/**
+	 * Adds the given filter to the schemaKey edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToSchemaKey(ViewerFilter filter);
 
-    // Start of user code for staticSchemaKey specific getters and setters declaration
-    public RegistryKeyProperty getStaticSchemaKey();
+	/**
+	 * Adds the given filter to the schemaKey edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToSchemaKey(ViewerFilter filter);
 
+
+
+
+	// Start of user code for staticSchemaKey specific getters and setters declaration
+	public RegistryKeyProperty getStaticSchemaKey();
+    
     public void setStaticSchemaKey(RegistryKeyProperty registryKeyProperty);
 
-    // End of user code
-    // Start of user code for dynamicSchemaKey specific getters and setters declaration
+	// End of user code
+	// Start of user code for dynamicSchemaKey specific getters and setters declaration
     public NamespacedProperty getDynamicSchemaKey();
-
+    
     public void setDynamicSchemaKey(NamespacedProperty nameSpacedProperty);
-    // End of user code
+	// End of user code
 
-    /**
-     * Returns the internationalized title text.
-     * 
-     * @return the internationalized title text.
-     * 
-     */
-    public String getTitle();
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 * 
+	 */
+	public String getTitle();
 
-    // Start of user code for additional methods
-
-    // End of user code
+	// Start of user code for additional methods
+	
+	// End of user code
 
 }

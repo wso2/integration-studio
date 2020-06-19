@@ -855,13 +855,13 @@ public class Messages extends NLS {
     public static String PublishEventMediator49CreationTool_desc;
 
     /**
-     * @generated
-     */
+    * @generated
+    */
     public static String JsonTransformMediator50CreationTool_title;
 
     /**
-     * @generated
-     */
+    * @generated
+    */
     public static String JsonTransformMediator50CreationTool_desc;
 
     /**
@@ -1500,13 +1500,13 @@ public class Messages extends NLS {
     public static String NavigatorGroupName_PropertyGroupMediatorOutputConnector_3790_outgoinglinks;
 
     /**
-     * @generated
-     */
+    * @generated
+    */
     public static String NavigatorGroupName_JsonTransformMediatorInputConnector_3792_incominglinks;
 
     /**
-     * @generated
-     */
+    * @generated
+    */
     public static String NavigatorGroupName_JsonTransformMediatorOutputConnector_3793_outgoinglinks;
 
     /**

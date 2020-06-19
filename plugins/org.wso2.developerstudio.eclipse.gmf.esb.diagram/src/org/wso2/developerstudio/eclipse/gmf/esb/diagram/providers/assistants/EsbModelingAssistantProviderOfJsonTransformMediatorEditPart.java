@@ -14,8 +14,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbModelingAss
 public class EsbModelingAssistantProviderOfJsonTransformMediatorEditPart extends EsbModelingAssistantProvider {
 
     /**
-     * @generated
-     */
+    * @generated
+    */
     @Override
 
     public List<IElementType> getTypesForPopupBar(IAdaptable host) {

@@ -62,7 +62,7 @@ public abstract class AbstractDBMediatorTransformer extends AbstractEsbNodeTrans
     public static final QName DSNAME_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "dsName");
     static final QName ICCLASS_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "icClass");
 
-    protected static <T extends AbstractDBMediator> void transformDBMediator(T dbMediator,
+    protected static <T extends AbstractDBMediator>  void transformDBMediator(T dbMediator,
             AbstractSqlExecutorMediator sqlExecutor) {
         setCommonProperties(dbMediator, sqlExecutor);
 
@@ -79,8 +79,7 @@ public abstract class AbstractDBMediatorTransformer extends AbstractEsbNodeTrans
                 dbMediator.setRegistryBasedUrlConfig(isRegistryBasedUrlConfig);
                 if (isRegistryBasedUrlConfig) {
                     if (sqlExecutor.getRegistryBasedUrlConfigKey() != null) {
-                        dbMediator.addDataSourceProperty(URL_Q,
-                                sqlExecutor.getRegistryBasedUrlConfigKey().getKeyValue());
+                        dbMediator.addDataSourceProperty(URL_Q, sqlExecutor.getRegistryBasedUrlConfigKey().getKeyValue());
                         dataSourceInfo.setUrl(sqlExecutor.getRegistryBasedUrlConfigKey().getKeyName());
                     } else {
                         dbMediator.addDataSourceProperty(URL_Q, "conf:url.xml");
@@ -94,14 +93,13 @@ public abstract class AbstractDBMediatorTransformer extends AbstractEsbNodeTrans
                 dbMediator.setRegistryBasedUserConfig(isRegistryBasedUserConfig);
                 if (isRegistryBasedUserConfig) {
                     if (sqlExecutor.getRegistryBasedUserConfigKey() != null) {
-                        dbMediator.addDataSourceProperty(USER_Q,
-                                sqlExecutor.getRegistryBasedUserConfigKey().getKeyValue());
+                        dbMediator.addDataSourceProperty(USER_Q, sqlExecutor.getRegistryBasedUserConfigKey().getKeyValue());
                         secretInformation.setUser(sqlExecutor.getRegistryBasedUserConfigKey().getKeyValue());
                     } else {
                         dbMediator.addDataSourceProperty(USER_Q, "conf:user.xml");
                         secretInformation.setUser("conf:user.xml");
                     }
-
+                    
                 } else {
                     dbMediator.addDataSourceProperty(USER_Q, sqlExecutor.getConnectionUsername());
                 }
@@ -110,8 +108,7 @@ public abstract class AbstractDBMediatorTransformer extends AbstractEsbNodeTrans
                 dbMediator.setRegistryBasedPassConfig(isRegistryBasedPassConfig);
                 if (isRegistryBasedPassConfig) {
                     if (sqlExecutor.getRegistryBasedPassConfigKey() != null) {
-                        dbMediator.addDataSourceProperty(PASS_Q,
-                                sqlExecutor.getRegistryBasedPassConfigKey().getKeyValue());
+                        dbMediator.addDataSourceProperty(PASS_Q, sqlExecutor.getRegistryBasedPassConfigKey().getKeyValue());
                         secretInformation.setAliasSecret(sqlExecutor.getRegistryBasedPassConfigKey().getKeyValue());
                     } else {
                         dbMediator.addDataSourceProperty(PASS_Q, "conf:password.xml");
@@ -120,18 +117,17 @@ public abstract class AbstractDBMediatorTransformer extends AbstractEsbNodeTrans
                 } else {
                     dbMediator.addDataSourceProperty(PASS_Q, sqlExecutor.getConnectionPassword());
                 }
-
+                
                 addDataSourceProperties(dbMediator, sqlExecutor);
             }
 
         } else {
-
+            
             boolean isRegistryBasedDriverConfig = sqlExecutor.isIsRegistryBasedDriverConfig();
             dbMediator.setRegistryBasedDriverConfig(isRegistryBasedDriverConfig);
             if (isRegistryBasedDriverConfig) {
                 if (sqlExecutor.getRegistryBasedDriverConfigKey() != null) {
-                    dbMediator.addDataSourceProperty(DRIVER_Q,
-                            sqlExecutor.getRegistryBasedDriverConfigKey().getKeyValue());
+                    dbMediator.addDataSourceProperty(DRIVER_Q, sqlExecutor.getRegistryBasedDriverConfigKey().getKeyValue());
                     dataSourceInfo.setDriver(sqlExecutor.getRegistryBasedDriverConfigKey().getKeyValue());
                 } else {
                     dbMediator.addDataSourceProperty(DRIVER_Q, "conf:driver.xml");
@@ -165,7 +161,7 @@ public abstract class AbstractDBMediatorTransformer extends AbstractEsbNodeTrans
                     dbMediator.addDataSourceProperty(USER_Q, "conf:user.xml");
                     secretInformation.setUser("conf:user.xml");
                 }
-
+                
             } else {
                 dbMediator.addDataSourceProperty(USER_Q, sqlExecutor.getConnectionUsername());
             }
@@ -274,7 +270,7 @@ public abstract class AbstractDBMediatorTransformer extends AbstractEsbNodeTrans
     public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
 
     }
-
+    
     private String getKey(OMElement pool, QName qName) {
         OMElement ele = pool.getFirstChildWithName(qName);
         if (ele != null) {

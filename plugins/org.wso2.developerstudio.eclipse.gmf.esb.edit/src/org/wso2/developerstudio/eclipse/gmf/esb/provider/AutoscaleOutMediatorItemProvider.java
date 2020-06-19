@@ -24,7 +24,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.AutoscaleOutMediator;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.AutoscaleOutMediator} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class AutoscaleOutMediatorItemProvider extends MediatorItemProvider {
@@ -32,7 +31,6 @@ public class AutoscaleOutMediatorItemProvider extends MediatorItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public AutoscaleOutMediatorItemProvider(AdapterFactory adapterFactory) {
@@ -43,7 +41,6 @@ public class AutoscaleOutMediatorItemProvider extends MediatorItemProvider {
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -60,7 +57,6 @@ public class AutoscaleOutMediatorItemProvider extends MediatorItemProvider {
      * This returns AutoscaleOutMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -73,15 +69,15 @@ public class AutoscaleOutMediatorItemProvider extends MediatorItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((AutoscaleOutMediator) object).getDescription();
-        return label == null || label.length() == 0 ? getString("_UI_AutoscaleOutMediator_type")
-                : getString("_UI_AutoscaleOutMediator_type") + " " + label;
+        String label = ((AutoscaleOutMediator)object).getDescription();
+        return label == null || label.length() == 0 ?
+            getString("_UI_AutoscaleOutMediator_type") :
+            getString("_UI_AutoscaleOutMediator_type") + " " + label;
     }
 
     /**
@@ -89,7 +85,6 @@ public class AutoscaleOutMediatorItemProvider extends MediatorItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -104,7 +99,6 @@ public class AutoscaleOutMediatorItemProvider extends MediatorItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

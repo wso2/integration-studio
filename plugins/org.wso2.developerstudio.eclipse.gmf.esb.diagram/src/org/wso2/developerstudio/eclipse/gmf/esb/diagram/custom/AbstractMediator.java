@@ -128,19 +128,18 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public abstract class AbstractMediator extends AbstractBorderedShapeEditPart implements DroppableElement {
 
-    private static final String SEND_ERROR_MESSAGE = " is used to send messages out of synapse to an endpoint. The response will be processed in the outSequence or receive sequence."
-            + "\n"
-            + "Therefore, mediators defined after the send mediator within the same sequence, will not be considered.";
-
-    private static final String DROP_ERROR_MESSAGE = " represents the end of the mediation flow where the current message will be stopped processing."
+    private static final String SEND_ERROR_MESSAGE = " is used to send messages out of synapse to an endpoint. The response will be processed in the outSequence or receive sequence." 
+            + "\n" + "Therefore, mediators defined after the send mediator within the same sequence, will not be considered.";
+    
+    private static final String DROP_ERROR_MESSAGE = " represents the end of the mediation flow where the current message will be stopped processing." 
             + "\n" + "Therefore, mediators defined after the drop mediator will not be considered.";
-
-    private static final String RESPOND_ERROR_MESSAGE = " stops the processing on the current message and sends the message back to the client as a response."
+    
+    private static final String RESPOND_ERROR_MESSAGE = " stops the processing on the current message and sends the message back to the client as a response." 
             + "\n" + "Therefore, mediators defined after the respond mediator will not be considered.";
-
-    private static final String LOOPBACK_ERROR_MESSAGE = " moves messages from the in-flow to the out-flow." + "\n"
-            + "Therefore, mediators defined after the loopback within the in-flow mediator will not be considered.";
-
+    
+    private static final String LOOPBACK_ERROR_MESSAGE = " moves messages from the in-flow to the out-flow."
+    		+ "\n" + "Therefore, mediators defined after the loopback within the in-flow mediator will not be considered.";
+    
     private static final String CACHE_MEDIATOR_ERROR_MESSAGE = "Cannot add mediators inside the cache mediator when the cache type is set to Collector mode."
             + "\n"
             + "Adding mediators inside the cache mediator is only allowed when the cache type is set to Finder mode.";

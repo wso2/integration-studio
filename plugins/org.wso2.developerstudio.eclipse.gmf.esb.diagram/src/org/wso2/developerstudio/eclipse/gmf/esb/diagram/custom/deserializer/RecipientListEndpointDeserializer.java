@@ -52,7 +52,8 @@ import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.Recipient
 
 public class RecipientListEndpointDeserializer extends AbstractEndpointDeserializer {
 
-    public AbstractEndPoint createNode(IGraphicalEditPart part, AbstractEndpoint object) throws DeserializerException {
+    public AbstractEndPoint createNode(IGraphicalEditPart part, AbstractEndpoint object)
+            throws DeserializerException {
         Assert.isTrue(object instanceof org.apache.synapse.endpoints.RecipientListEndpoint,
                 "Unsupported endpoint passed in for deserialization at " + this.getClass());
 
@@ -93,7 +94,7 @@ public class RecipientListEndpointDeserializer extends AbstractEndpointDeseriali
             }
         } else {
             executeSetValueCommand(RECIPIENT_LIST_END_POINT__ENDPOINT_TYPE, RecipientListEndpointType.INLINE);
-            // deserializeComplexEndpoint(endpoint, part);
+//            deserializeComplexEndpoint(endpoint, part);
         }
 
         if (StringUtils.isNotBlank(endpoint.getName())) {
@@ -142,5 +143,5 @@ public class RecipientListEndpointDeserializer extends AbstractEndpointDeseriali
         }
         super.createNode(formEditor, endpointObject);
     }
-
+    
 }

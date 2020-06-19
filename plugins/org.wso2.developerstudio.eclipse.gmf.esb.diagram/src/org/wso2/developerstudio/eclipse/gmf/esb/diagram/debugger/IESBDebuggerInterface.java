@@ -40,7 +40,7 @@ public interface IESBDebuggerInterface {
      * @param commandPort
      * @param hostName
      * @throws IOException
-     * @throws InterruptedException
+     * @throws InterruptedException 
      */
     public void setRequestSocket(int commandPort, String hostName) throws IOException, InterruptedException;
 
@@ -67,7 +67,7 @@ public interface IESBDebuggerInterface {
      * @param eventPort
      * @param hostName
      * @throws IOException
-     * @throws InterruptedException
+     * @throws InterruptedException 
      */
     public void setEventSocket(int eventPort, String hostName) throws IOException, InterruptedException;
 

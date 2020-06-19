@@ -22,7 +22,6 @@ public class XSLTMediatorOutputConnectorImpl extends OutputConnectorImpl impleme
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected XSLTMediatorOutputConnectorImpl() {
@@ -32,7 +31,6 @@ public class XSLTMediatorOutputConnectorImpl extends OutputConnectorImpl impleme
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

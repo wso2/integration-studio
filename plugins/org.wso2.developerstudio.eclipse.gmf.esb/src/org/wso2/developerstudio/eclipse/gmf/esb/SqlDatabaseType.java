@@ -26,7 +26,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Sql Database Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSqlDatabaseType()
  * @model
  * @generated
@@ -36,7 +35,6 @@ public enum SqlDatabaseType implements Enumerator {
      * The '<em><b>OTHER</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #OTHER_VALUE
      * @generated
      * @ordered
@@ -47,7 +45,6 @@ public enum SqlDatabaseType implements Enumerator {
      * The '<em><b>MYSQL</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #MYSQL_VALUE
      * @generated
      * @ordered
@@ -58,7 +55,6 @@ public enum SqlDatabaseType implements Enumerator {
      * The '<em><b>ORACLE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #ORACLE_VALUE
      * @generated
      * @ordered
@@ -69,7 +65,6 @@ public enum SqlDatabaseType implements Enumerator {
      * The '<em><b>MSSQL</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #MSSQL_VALUE
      * @generated
      * @ordered
@@ -80,7 +75,6 @@ public enum SqlDatabaseType implements Enumerator {
      * The '<em><b>POSTGRESQL</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #POSTGRESQL_VALUE
      * @generated
      * @ordered
@@ -95,7 +89,6 @@ public enum SqlDatabaseType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #OTHER
      * @model
      * @generated
@@ -111,7 +104,6 @@ public enum SqlDatabaseType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #MYSQL
      * @model
      * @generated
@@ -127,7 +119,6 @@ public enum SqlDatabaseType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #ORACLE
      * @model
      * @generated
@@ -143,7 +134,6 @@ public enum SqlDatabaseType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #MSSQL
      * @model
      * @generated
@@ -159,7 +149,6 @@ public enum SqlDatabaseType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #POSTGRESQL
      * @model
      * @generated
@@ -171,17 +160,21 @@ public enum SqlDatabaseType implements Enumerator {
      * An array of all the '<em><b>Sql Database Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
-    private static final SqlDatabaseType[] VALUES_ARRAY = new SqlDatabaseType[] { OTHER, MYSQL, ORACLE, MSSQL,
-            POSTGRESQL, };
+    private static final SqlDatabaseType[] VALUES_ARRAY =
+        new SqlDatabaseType[] {
+            OTHER,
+            MYSQL,
+            ORACLE,
+            MSSQL,
+            POSTGRESQL,
+        };
 
     /**
      * A public read-only list of all the '<em><b>Sql Database Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public static final List<SqlDatabaseType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -190,7 +183,6 @@ public enum SqlDatabaseType implements Enumerator {
      * Returns the '<em><b>Sql Database Type</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -209,7 +201,6 @@ public enum SqlDatabaseType implements Enumerator {
      * Returns the '<em><b>Sql Database Type</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -228,23 +219,17 @@ public enum SqlDatabaseType implements Enumerator {
      * Returns the '<em><b>Sql Database Type</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static SqlDatabaseType get(int value) {
         switch (value) {
-        case OTHER_VALUE:
-            return OTHER;
-        case MYSQL_VALUE:
-            return MYSQL;
-        case ORACLE_VALUE:
-            return ORACLE;
-        case MSSQL_VALUE:
-            return MSSQL;
-        case POSTGRESQL_VALUE:
-            return POSTGRESQL;
+            case OTHER_VALUE: return OTHER;
+            case MYSQL_VALUE: return MYSQL;
+            case ORACLE_VALUE: return ORACLE;
+            case MSSQL_VALUE: return MSSQL;
+            case POSTGRESQL_VALUE: return POSTGRESQL;
         }
         return null;
     }
@@ -252,7 +237,6 @@ public enum SqlDatabaseType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final int value;
@@ -260,7 +244,6 @@ public enum SqlDatabaseType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String name;
@@ -268,7 +251,6 @@ public enum SqlDatabaseType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String literal;
@@ -277,7 +259,6 @@ public enum SqlDatabaseType implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private SqlDatabaseType(int value, String name, String literal) {
@@ -289,43 +270,39 @@ public enum SqlDatabaseType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public int getValue() {
-        return value;
+      return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getName() {
-        return name;
+      return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getLiteral() {
-        return literal;
+      return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String toString() {
         return literal;
     }
-
-} // SqlDatabaseType
+    
+} //SqlDatabaseType

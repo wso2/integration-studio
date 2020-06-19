@@ -35,12 +35,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MessageBuilder;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.BuilderMediatorImpl#getMessageBuilders <em>Message
- * Builders</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.BuilderMediatorImpl#getInputConnector <em>Input
- * Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.BuilderMediatorImpl#getOutputConnector <em>Output
- * Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.BuilderMediatorImpl#getMessageBuilders <em>Message Builders</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.BuilderMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.BuilderMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
  *
  * @generated
@@ -50,7 +47,6 @@ public class BuilderMediatorImpl extends MediatorImpl implements BuilderMediator
      * The cached value of the '{@link #getMessageBuilders() <em>Message Builders</em>}' containment reference list.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getMessageBuilders()
      * @generated
      * @ordered
@@ -61,7 +57,6 @@ public class BuilderMediatorImpl extends MediatorImpl implements BuilderMediator
      * The cached value of the '{@link #getInputConnector() <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getInputConnector()
      * @generated
      * @ordered
@@ -72,7 +67,6 @@ public class BuilderMediatorImpl extends MediatorImpl implements BuilderMediator
      * The cached value of the '{@link #getOutputConnector() <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getOutputConnector()
      * @generated
      * @ordered
@@ -82,7 +76,6 @@ public class BuilderMediatorImpl extends MediatorImpl implements BuilderMediator
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected BuilderMediatorImpl() {
@@ -92,7 +85,6 @@ public class BuilderMediatorImpl extends MediatorImpl implements BuilderMediator
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -103,13 +95,11 @@ public class BuilderMediatorImpl extends MediatorImpl implements BuilderMediator
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EList<MessageBuilder> getMessageBuilders() {
         if (messageBuilders == null) {
-            messageBuilders = new EObjectContainmentEList<MessageBuilder>(MessageBuilder.class, this,
-                    EsbPackage.BUILDER_MEDIATOR__MESSAGE_BUILDERS);
+            messageBuilders = new EObjectContainmentEList<MessageBuilder>(MessageBuilder.class, this, EsbPackage.BUILDER_MEDIATOR__MESSAGE_BUILDERS);
         }
         return messageBuilders;
     }
@@ -117,7 +107,6 @@ public class BuilderMediatorImpl extends MediatorImpl implements BuilderMediator
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public BuilderMediatorInputConnector getInputConnector() {
@@ -127,7 +116,6 @@ public class BuilderMediatorImpl extends MediatorImpl implements BuilderMediator
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetInputConnector(BuilderMediatorInputConnector newInputConnector,
@@ -135,12 +123,8 @@ public class BuilderMediatorImpl extends MediatorImpl implements BuilderMediator
         BuilderMediatorInputConnector oldInputConnector = inputConnector;
         inputConnector = newInputConnector;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.BUILDER_MEDIATOR__INPUT_CONNECTOR, oldInputConnector, newInputConnector);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.BUILDER_MEDIATOR__INPUT_CONNECTOR, oldInputConnector, newInputConnector);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -148,30 +132,25 @@ public class BuilderMediatorImpl extends MediatorImpl implements BuilderMediator
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setInputConnector(BuilderMediatorInputConnector newInputConnector) {
         if (newInputConnector != inputConnector) {
             NotificationChain msgs = null;
             if (inputConnector != null)
-                msgs = ((InternalEObject) inputConnector).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.BUILDER_MEDIATOR__INPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)inputConnector).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.BUILDER_MEDIATOR__INPUT_CONNECTOR, null, msgs);
             if (newInputConnector != null)
-                msgs = ((InternalEObject) newInputConnector).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.BUILDER_MEDIATOR__INPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)newInputConnector).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.BUILDER_MEDIATOR__INPUT_CONNECTOR, null, msgs);
             msgs = basicSetInputConnector(newInputConnector, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.BUILDER_MEDIATOR__INPUT_CONNECTOR,
-                    newInputConnector, newInputConnector));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.BUILDER_MEDIATOR__INPUT_CONNECTOR, newInputConnector, newInputConnector));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public BuilderMediatorOutputConector getOutputConnector() {
@@ -181,7 +160,6 @@ public class BuilderMediatorImpl extends MediatorImpl implements BuilderMediator
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetOutputConnector(BuilderMediatorOutputConector newOutputConnector,
@@ -189,12 +167,8 @@ public class BuilderMediatorImpl extends MediatorImpl implements BuilderMediator
         BuilderMediatorOutputConector oldOutputConnector = outputConnector;
         outputConnector = newOutputConnector;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.BUILDER_MEDIATOR__OUTPUT_CONNECTOR, oldOutputConnector, newOutputConnector);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.BUILDER_MEDIATOR__OUTPUT_CONNECTOR, oldOutputConnector, newOutputConnector);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -202,41 +176,36 @@ public class BuilderMediatorImpl extends MediatorImpl implements BuilderMediator
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setOutputConnector(BuilderMediatorOutputConector newOutputConnector) {
         if (newOutputConnector != outputConnector) {
             NotificationChain msgs = null;
             if (outputConnector != null)
-                msgs = ((InternalEObject) outputConnector).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.BUILDER_MEDIATOR__OUTPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)outputConnector).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.BUILDER_MEDIATOR__OUTPUT_CONNECTOR, null, msgs);
             if (newOutputConnector != null)
-                msgs = ((InternalEObject) newOutputConnector).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.BUILDER_MEDIATOR__OUTPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)newOutputConnector).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.BUILDER_MEDIATOR__OUTPUT_CONNECTOR, null, msgs);
             msgs = basicSetOutputConnector(newOutputConnector, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.BUILDER_MEDIATOR__OUTPUT_CONNECTOR,
-                    newOutputConnector, newOutputConnector));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.BUILDER_MEDIATOR__OUTPUT_CONNECTOR, newOutputConnector, newOutputConnector));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-        case EsbPackage.BUILDER_MEDIATOR__MESSAGE_BUILDERS:
-            return ((InternalEList<?>) getMessageBuilders()).basicRemove(otherEnd, msgs);
-        case EsbPackage.BUILDER_MEDIATOR__INPUT_CONNECTOR:
-            return basicSetInputConnector(null, msgs);
-        case EsbPackage.BUILDER_MEDIATOR__OUTPUT_CONNECTOR:
-            return basicSetOutputConnector(null, msgs);
+            case EsbPackage.BUILDER_MEDIATOR__MESSAGE_BUILDERS:
+                return ((InternalEList<?>)getMessageBuilders()).basicRemove(otherEnd, msgs);
+            case EsbPackage.BUILDER_MEDIATOR__INPUT_CONNECTOR:
+                return basicSetInputConnector(null, msgs);
+            case EsbPackage.BUILDER_MEDIATOR__OUTPUT_CONNECTOR:
+                return basicSetOutputConnector(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -244,18 +213,17 @@ public class BuilderMediatorImpl extends MediatorImpl implements BuilderMediator
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case EsbPackage.BUILDER_MEDIATOR__MESSAGE_BUILDERS:
-            return getMessageBuilders();
-        case EsbPackage.BUILDER_MEDIATOR__INPUT_CONNECTOR:
-            return getInputConnector();
-        case EsbPackage.BUILDER_MEDIATOR__OUTPUT_CONNECTOR:
-            return getOutputConnector();
+            case EsbPackage.BUILDER_MEDIATOR__MESSAGE_BUILDERS:
+                return getMessageBuilders();
+            case EsbPackage.BUILDER_MEDIATOR__INPUT_CONNECTOR:
+                return getInputConnector();
+            case EsbPackage.BUILDER_MEDIATOR__OUTPUT_CONNECTOR:
+                return getOutputConnector();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -263,23 +231,22 @@ public class BuilderMediatorImpl extends MediatorImpl implements BuilderMediator
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case EsbPackage.BUILDER_MEDIATOR__MESSAGE_BUILDERS:
-            getMessageBuilders().clear();
-            getMessageBuilders().addAll((Collection<? extends MessageBuilder>) newValue);
-            return;
-        case EsbPackage.BUILDER_MEDIATOR__INPUT_CONNECTOR:
-            setInputConnector((BuilderMediatorInputConnector) newValue);
-            return;
-        case EsbPackage.BUILDER_MEDIATOR__OUTPUT_CONNECTOR:
-            setOutputConnector((BuilderMediatorOutputConector) newValue);
-            return;
+            case EsbPackage.BUILDER_MEDIATOR__MESSAGE_BUILDERS:
+                getMessageBuilders().clear();
+                getMessageBuilders().addAll((Collection<? extends MessageBuilder>)newValue);
+                return;
+            case EsbPackage.BUILDER_MEDIATOR__INPUT_CONNECTOR:
+                setInputConnector((BuilderMediatorInputConnector)newValue);
+                return;
+            case EsbPackage.BUILDER_MEDIATOR__OUTPUT_CONNECTOR:
+                setOutputConnector((BuilderMediatorOutputConector)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -287,21 +254,20 @@ public class BuilderMediatorImpl extends MediatorImpl implements BuilderMediator
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case EsbPackage.BUILDER_MEDIATOR__MESSAGE_BUILDERS:
-            getMessageBuilders().clear();
-            return;
-        case EsbPackage.BUILDER_MEDIATOR__INPUT_CONNECTOR:
-            setInputConnector((BuilderMediatorInputConnector) null);
-            return;
-        case EsbPackage.BUILDER_MEDIATOR__OUTPUT_CONNECTOR:
-            setOutputConnector((BuilderMediatorOutputConector) null);
-            return;
+            case EsbPackage.BUILDER_MEDIATOR__MESSAGE_BUILDERS:
+                getMessageBuilders().clear();
+                return;
+            case EsbPackage.BUILDER_MEDIATOR__INPUT_CONNECTOR:
+                setInputConnector((BuilderMediatorInputConnector)null);
+                return;
+            case EsbPackage.BUILDER_MEDIATOR__OUTPUT_CONNECTOR:
+                setOutputConnector((BuilderMediatorOutputConector)null);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -309,18 +275,17 @@ public class BuilderMediatorImpl extends MediatorImpl implements BuilderMediator
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case EsbPackage.BUILDER_MEDIATOR__MESSAGE_BUILDERS:
-            return messageBuilders != null && !messageBuilders.isEmpty();
-        case EsbPackage.BUILDER_MEDIATOR__INPUT_CONNECTOR:
-            return inputConnector != null;
-        case EsbPackage.BUILDER_MEDIATOR__OUTPUT_CONNECTOR:
-            return outputConnector != null;
+            case EsbPackage.BUILDER_MEDIATOR__MESSAGE_BUILDERS:
+                return messageBuilders != null && !messageBuilders.isEmpty();
+            case EsbPackage.BUILDER_MEDIATOR__INPUT_CONNECTOR:
+                return inputConnector != null;
+            case EsbPackage.BUILDER_MEDIATOR__OUTPUT_CONNECTOR:
+                return outputConnector != null;
         }
         return super.eIsSet(featureID);
     }

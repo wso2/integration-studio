@@ -50,6 +50,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EndpointFlowPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 
+
 // End of user code
 
 /**
@@ -58,167 +59,167 @@ import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
  */
 public class EndpointFlowPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
-    public static String BASE_PART = "Base"; //$NON-NLS-1$
+	
+	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
-    /**
-     * Settings for children ReferencesTable
-     */
-    protected ReferencesTableSettings childrenSettings;
+	
+	/**
+	 * Settings for children ReferencesTable
+	 */
+	protected ReferencesTableSettings childrenSettings;
+	
+	
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public EndpointFlowPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject endpointFlow, String editing_mode) {
+		super(editingContext, endpointFlow, editing_mode);
+		parts = new String[] { BASE_PART };
+		repositoryKey = EsbViewsRepository.class;
+		partKey = EsbViewsRepository.EndpointFlow.class;
+	}
 
-    /**
-     * Default constructor
-     * 
-     */
-    public EndpointFlowPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject endpointFlow,
-            String editing_mode) {
-        super(editingContext, endpointFlow, editing_mode);
-        parts = new String[] { BASE_PART };
-        repositoryKey = EsbViewsRepository.class;
-        partKey = EsbViewsRepository.EndpointFlow.class;
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
+	 *      org.eclipse.emf.ecore.resource.ResourceSet)
+	 * 
+	 */
+	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
+		setInitializing(true);
+		if (editingPart != null && key == partKey) {
+			editingPart.setContext(elt, allResource);
+			
+			final EndpointFlow endpointFlow = (EndpointFlow)elt;
+			final EndpointFlowPropertiesEditionPart basePart = (EndpointFlowPropertiesEditionPart)editingPart;
+			// init values
+			if (isAccessible(EsbViewsRepository.EndpointFlow.Properties.children)) {
+				childrenSettings = new ReferencesTableSettings(endpointFlow, EsbPackage.eINSTANCE.getEndpointFlow_Children());
+				basePart.initChildren(childrenSettings);
+			}
+			// init filters
+			if (isAccessible(EsbViewsRepository.EndpointFlow.Properties.children)) {
+				basePart.addFilterToChildren(new ViewerFilter() {
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof EsbElement); //$NON-NLS-1$ 
+					}
+			
+				});
+				// Start of user code for additional businessfilters for children
+				// End of user code
+			}
+			// init values for referenced views
+			
+			// init filters for referenced views
+			
+		}
+		setInitializing(false);
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int,
-     *      org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.emf.ecore.resource.ResourceSet)
-     * 
-     */
-    public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-        setInitializing(true);
-        if (editingPart != null && key == partKey) {
-            editingPart.setContext(elt, allResource);
 
-            final EndpointFlow endpointFlow = (EndpointFlow) elt;
-            final EndpointFlowPropertiesEditionPart basePart = (EndpointFlowPropertiesEditionPart) editingPart;
-            // init values
-            if (isAccessible(EsbViewsRepository.EndpointFlow.Properties.children)) {
-                childrenSettings = new ReferencesTableSettings(endpointFlow,
-                        EsbPackage.eINSTANCE.getEndpointFlow_Children());
-                basePart.initChildren(childrenSettings);
-            }
-            // init filters
-            if (isAccessible(EsbViewsRepository.EndpointFlow.Properties.children)) {
-                basePart.addFilterToChildren(new ViewerFilter() {
-                    /**
-                     * {@inheritDoc}
-                     * 
-                     * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer,
-                     *      java.lang.Object, java.lang.Object)
-                     */
-                    public boolean select(Viewer viewer, Object parentElement, Object element) {
-                        return (element instanceof String && element.equals("")) || (element instanceof EsbElement); //$NON-NLS-1$
-                    }
 
-                });
-                // Start of user code for additional businessfilters for children
-                // End of user code
-            }
-            // init values for referenced views
 
-            // init filters for referenced views
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	public EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == EsbViewsRepository.EndpointFlow.Properties.children) {
+			return EsbPackage.eINSTANCE.getEndpointFlow_Children();
+		}
+		return super.associatedFeature(editorKey);
+	}
 
-        }
-        setInitializing(false);
-    }
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
+	 */
+	public void updateSemanticModel(final IPropertiesEditionEvent event) {
+		EndpointFlow endpointFlow = (EndpointFlow)semanticObject;
+		if (EsbViewsRepository.EndpointFlow.Properties.children == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, childrenSettings, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy instanceof CreateEditingPolicy) {
+						policy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+					if (editionPolicy != null) {
+						editionPolicy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				childrenSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				childrenSettings.move(event.getNewIndex(), (EsbElement) event.getNewValue());
+			}
+		}
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
-     */
-    public EStructuralFeature associatedFeature(Object editorKey) {
-        if (editorKey == EsbViewsRepository.EndpointFlow.Properties.children) {
-            return EsbPackage.eINSTANCE.getEndpointFlow_Children();
-        }
-        return super.associatedFeature(editorKey);
-    }
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
+	 */
+	public void updatePart(Notification msg) {
+		super.updatePart(msg);
+		if (editingPart.isVisible()) {
+			EndpointFlowPropertiesEditionPart basePart = (EndpointFlowPropertiesEditionPart)editingPart;
+			if (EsbPackage.eINSTANCE.getEndpointFlow_Children().equals(msg.getFeature()) && isAccessible(EsbViewsRepository.EndpointFlow.Properties.children))
+				basePart.updateChildren();
+			
+		}
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
-     */
-    public void updateSemanticModel(final IPropertiesEditionEvent event) {
-        EndpointFlow endpointFlow = (EndpointFlow) semanticObject;
-        if (EsbViewsRepository.EndpointFlow.Properties.children == event.getAffectedEditor()) {
-            if (event.getKind() == PropertiesEditionEvent.ADD) {
-                EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext,
-                        this, childrenSettings, editingContext.getAdapterFactory());
-                PropertiesEditingProvider provider = (PropertiesEditingProvider) editingContext.getAdapterFactory()
-                        .adapt(semanticObject, PropertiesEditingProvider.class);
-                if (provider != null) {
-                    PropertiesEditingPolicy policy = provider.getPolicy(context);
-                    if (policy instanceof CreateEditingPolicy) {
-                        policy.execute();
-                    }
-                }
-            } else if (event.getKind() == PropertiesEditionEvent.EDIT) {
-                EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this,
-                        (EObject) event.getNewValue(), editingContext.getAdapterFactory());
-                PropertiesEditingProvider provider = (PropertiesEditingProvider) editingContext.getAdapterFactory()
-                        .adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
-                if (provider != null) {
-                    PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
-                    if (editionPolicy != null) {
-                        editionPolicy.execute();
-                    }
-                }
-            } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-                childrenSettings.removeFromReference((EObject) event.getNewValue());
-            } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-                childrenSettings.move(event.getNewIndex(), (EsbElement) event.getNewValue());
-            }
-        }
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EsbPackage.eINSTANCE.getEndpointFlow_Children()		);
+		return new NotificationFilter[] {filter,};
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
-     */
-    public void updatePart(Notification msg) {
-        super.updatePart(msg);
-        if (editingPart.isVisible()) {
-            EndpointFlowPropertiesEditionPart basePart = (EndpointFlowPropertiesEditionPart) editingPart;
-            if (EsbPackage.eINSTANCE.getEndpointFlow_Children().equals(msg.getFeature())
-                    && isAccessible(EsbViewsRepository.EndpointFlow.Properties.children))
-                basePart.updateChildren();
 
-        }
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
+	 */
+	public Diagnostic validateValue(IPropertiesEditionEvent event) {
+		Diagnostic ret = Diagnostic.OK_INSTANCE;
+		if (event.getNewValue() != null) {
+			try {
+			} catch (IllegalArgumentException iae) {
+				ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (WrappedException we) {
+				ret = BasicDiagnostic.toDiagnostic(we);
+			}
+		}
+		return ret;
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
-     */
-    @Override
-    protected NotificationFilter[] getNotificationFilters() {
-        NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-                EsbPackage.eINSTANCE.getEndpointFlow_Children());
-        return new NotificationFilter[] { filter, };
-    }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
-     */
-    public Diagnostic validateValue(IPropertiesEditionEvent event) {
-        Diagnostic ret = Diagnostic.OK_INSTANCE;
-        if (event.getNewValue() != null) {
-            try {
-            } catch (IllegalArgumentException iae) {
-                ret = BasicDiagnostic.toDiagnostic(iae);
-            } catch (WrappedException we) {
-                ret = BasicDiagnostic.toDiagnostic(we);
-            }
-        }
-        return ret;
-    }
+	
+
+	
 
 }

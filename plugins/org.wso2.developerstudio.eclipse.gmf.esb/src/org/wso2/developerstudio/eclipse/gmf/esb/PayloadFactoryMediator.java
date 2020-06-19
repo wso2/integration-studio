@@ -17,16 +17,13 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getPayload <em>Payload</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getPayloadKey <em>Payload Key</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getArgs <em>Args</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getInputConnector <em>Input
- * Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getOutputConnector <em>Output
- * Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getMediaType <em>Media Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getPayloadFormat <em>Payload
- * Format</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getPayload <em>Payload</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getPayloadKey <em>Payload Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getArgs <em>Args</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getMediaType <em>Media Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getPayloadFormat <em>Payload Format</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPayloadFactoryMediator()
@@ -42,7 +39,6 @@ public interface PayloadFactoryMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Payload</em>' attribute.
      * @see #setPayload(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPayloadFactoryMediator_Payload()
@@ -52,11 +48,9 @@ public interface PayloadFactoryMediator extends Mediator {
     String getPayload();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getPayload
-     * <em>Payload</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getPayload <em>Payload</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Payload</em>' attribute.
      * @see #getPayload()
      * @generated
@@ -71,7 +65,6 @@ public interface PayloadFactoryMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Payload Key</em>' containment reference.
      * @see #setPayloadKey(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPayloadFactoryMediator_PayloadKey()
@@ -81,11 +74,9 @@ public interface PayloadFactoryMediator extends Mediator {
     RegistryKeyProperty getPayloadKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getPayloadKey
-     * <em>Payload Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getPayloadKey <em>Payload Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Payload Key</em>' containment reference.
      * @see #getPayloadKey()
      * @generated
@@ -101,7 +92,6 @@ public interface PayloadFactoryMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Args</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPayloadFactoryMediator_Args()
      * @model containment="true"
@@ -117,7 +107,6 @@ public interface PayloadFactoryMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(PayloadFactoryMediatorInputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPayloadFactoryMediator_InputConnector()
@@ -127,11 +116,9 @@ public interface PayloadFactoryMediator extends Mediator {
     PayloadFactoryMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getInputConnector
-     * <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getInputConnector <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
      * @see #getInputConnector()
      * @generated
@@ -146,7 +133,6 @@ public interface PayloadFactoryMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(PayloadFactoryMediatorOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPayloadFactoryMediator_OutputConnector()
@@ -156,11 +142,9 @@ public interface PayloadFactoryMediator extends Mediator {
     PayloadFactoryMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getOutputConnector
-     * <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
      * @see #getOutputConnector()
      * @generated
@@ -177,7 +161,6 @@ public interface PayloadFactoryMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Media Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.MediaType
      * @see #setMediaType(MediaType)
@@ -188,11 +171,9 @@ public interface PayloadFactoryMediator extends Mediator {
     MediaType getMediaType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getMediaType
-     * <em>Media Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getMediaType <em>Media Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Media Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.MediaType
      * @see #getMediaType()
@@ -209,7 +190,6 @@ public interface PayloadFactoryMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Payload Format</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.PayloadFormatType
      * @see #setPayloadFormat(PayloadFormatType)
@@ -220,11 +200,9 @@ public interface PayloadFactoryMediator extends Mediator {
     PayloadFormatType getPayloadFormat();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getPayloadFormat
-     * <em>Payload Format</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getPayloadFormat <em>Payload Format</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Payload Format</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.PayloadFormatType
      * @see #getPayloadFormat()

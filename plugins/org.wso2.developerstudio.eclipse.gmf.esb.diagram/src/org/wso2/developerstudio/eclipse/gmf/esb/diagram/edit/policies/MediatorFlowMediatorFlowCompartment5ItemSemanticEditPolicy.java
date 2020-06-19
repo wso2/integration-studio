@@ -335,16 +335,16 @@ public class MediatorFlowMediatorFlowCompartment5ItemSemanticEditPolicy extends 
  * EsbBaseItemSemanticEditPolicy {
  * 
  *//**
-    * @generated
-    */
+         * @generated
+         */
 /*
  * public MediatorFlowMediatorFlowCompartment5ItemSemanticEditPolicy() {
  * super(EsbElementTypes.MediatorFlow_3529);
  * }
  * 
  *//**
-    * @generated
-    */
+         * @generated
+         */
 /*
  * protected Command getCreateCommand(CreateElementRequest req) {
  * if (EsbElementTypes.DropMediator_3491 == req.getElementType()) {

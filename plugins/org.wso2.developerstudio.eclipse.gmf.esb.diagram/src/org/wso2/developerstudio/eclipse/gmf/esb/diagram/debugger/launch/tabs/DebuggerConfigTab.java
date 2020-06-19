@@ -266,13 +266,13 @@ public class DebuggerConfigTab extends AbstractLaunchConfigurationTab {
             public void widgetSelected(SelectionEvent e) {
                 setDirty(true);
                 updateLaunchConfigurationDialog();
-                if (debugModeCombo.getText().equals(DEBUG_PROFILE_INTERNAL_RUNNING_MODE)) {
+                if(debugModeCombo.getText().equals(DEBUG_PROFILE_INTERNAL_RUNNING_MODE)) {
                     eventPort.setText(DEFAULT_EVENT_PORT);
                     commandPort.setText(DEFAULT_COMMAND_PORT);
                     hostName.setEnabled(false);
                     eventPort.setEnabled(false);
                     commandPort.setEnabled(false);
-                } else {
+                }else {
                     hostName.setEnabled(true);
                     eventPort.setEnabled(true);
                     commandPort.setEnabled(true);
@@ -290,7 +290,7 @@ public class DebuggerConfigTab extends AbstractLaunchConfigurationTab {
         hostName.setEnabled(false);
         eventPort.setEnabled(false);
         commandPort.setEnabled(false);
-
+        
         setControl(topControl);
     }
 

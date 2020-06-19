@@ -191,7 +191,7 @@ public class TemplateEndpointDeserializer extends AbstractEndpointDeserializer {
         return newlyAddedProperties;
 
     }
-
+    
     public org.wso2.developerstudio.eclipse.gmf.esb.EndPoint createUIEndpoint(Endpoint synapseEndpoint) {
         Assert.isTrue(synapseEndpoint instanceof org.apache.synapse.endpoints.TemplateEndpoint,
                 "Unsupported endpoint has been passed to create the UI object at " + this.getClass());
@@ -199,12 +199,11 @@ public class TemplateEndpointDeserializer extends AbstractEndpointDeserializer {
         org.wso2.developerstudio.eclipse.gmf.esb.EndPoint endpoint = new TemplateEndpointImpl();
 
         org.apache.synapse.endpoints.TemplateEndpoint templateEndpoint = (org.apache.synapse.endpoints.TemplateEndpoint) synapseEndpoint;
-
+        
         ((TemplateEndpointImpl) endpoint).setEndPointName(templateEndpoint.getName());
         ((TemplateEndpointImpl) endpoint).setTargetTemplate(templateEndpoint.getTemplate());
         if (templateEndpoint.getParameterValue("suspend_duration") != null) {
-            ((TemplateEndpointImpl) endpoint)
-                    .setSuspendInitialDuration(templateEndpoint.getParameterValue("suspend_duration"));
+        	((TemplateEndpointImpl) endpoint).setSuspendInitialDuration(templateEndpoint.getParameterValue("suspend_duration"));
         }
         ((TemplateEndpointImpl) endpoint).setAddress(templateEndpoint.getParameterValue("uri"));
 

@@ -31,11 +31,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 
 /**
- * This is the item provider adapter for a
- * {@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractNameValueExpressionAttribute} object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractNameValueExpressionAttribute} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class AbstractNameValueExpressionAttributeItemProvider extends EsbNodeItemProvider {
@@ -43,7 +41,6 @@ public class AbstractNameValueExpressionAttributeItemProvider extends EsbNodeIte
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public AbstractNameValueExpressionAttributeItemProvider(AdapterFactory adapterFactory) {
@@ -54,7 +51,6 @@ public class AbstractNameValueExpressionAttributeItemProvider extends EsbNodeIte
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -74,72 +70,88 @@ public class AbstractNameValueExpressionAttributeItemProvider extends EsbNodeIte
      * This adds a property descriptor for the Attribute Name feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addAttributeNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_AbstractNameValueExpressionAttribute_attributeName_feature"),
-                getString("_UI_PropertyDescriptor_description",
-                        "_UI_AbstractNameValueExpressionAttribute_attributeName_feature",
-                        "_UI_AbstractNameValueExpressionAttribute_type"),
-                EsbPackage.Literals.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_NAME, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_AbstractNameValueExpressionAttribute_attributeName_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_AbstractNameValueExpressionAttribute_attributeName_feature", "_UI_AbstractNameValueExpressionAttribute_type"),
+                 EsbPackage.Literals.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_NAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Attribute Value Type feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addAttributeValueTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_AbstractNameValueExpressionAttribute_attributeValueType_feature"),
-                getString("_UI_PropertyDescriptor_description",
-                        "_UI_AbstractNameValueExpressionAttribute_attributeValueType_feature",
-                        "_UI_AbstractNameValueExpressionAttribute_type"),
-                EsbPackage.Literals.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE_TYPE, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_AbstractNameValueExpressionAttribute_attributeValueType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_AbstractNameValueExpressionAttribute_attributeValueType_feature", "_UI_AbstractNameValueExpressionAttribute_type"),
+                 EsbPackage.Literals.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Attribute Value feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addAttributeValuePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_AbstractNameValueExpressionAttribute_attributeValue_feature"),
-                getString("_UI_PropertyDescriptor_description",
-                        "_UI_AbstractNameValueExpressionAttribute_attributeValue_feature",
-                        "_UI_AbstractNameValueExpressionAttribute_type"),
-                EsbPackage.Literals.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_AbstractNameValueExpressionAttribute_attributeValue_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_AbstractNameValueExpressionAttribute_attributeValue_feature", "_UI_AbstractNameValueExpressionAttribute_type"),
+                 EsbPackage.Literals.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Attribute Type feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addAttributeTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_AbstractNameValueExpressionAttribute_attributeType_feature"),
-                getString("_UI_PropertyDescriptor_description",
-                        "_UI_AbstractNameValueExpressionAttribute_attributeType_feature",
-                        "_UI_AbstractNameValueExpressionAttribute_type"),
-                EsbPackage.Literals.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_TYPE, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_AbstractNameValueExpressionAttribute_attributeType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_AbstractNameValueExpressionAttribute_attributeType_feature", "_UI_AbstractNameValueExpressionAttribute_type"),
+                 EsbPackage.Literals.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
@@ -148,7 +160,6 @@ public class AbstractNameValueExpressionAttributeItemProvider extends EsbNodeIte
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -163,7 +174,6 @@ public class AbstractNameValueExpressionAttributeItemProvider extends EsbNodeIte
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -178,14 +188,14 @@ public class AbstractNameValueExpressionAttributeItemProvider extends EsbNodeIte
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((AbstractNameValueExpressionAttribute) object).getAttributeName();
-        return label == null || label.length() == 0 ? getString("_UI_AbstractNameValueExpressionAttribute_type")
-                : getString("_UI_AbstractNameValueExpressionAttribute_type") + " " + label;
+        String label = ((AbstractNameValueExpressionAttribute)object).getAttributeName();
+        return label == null || label.length() == 0 ?
+            getString("_UI_AbstractNameValueExpressionAttribute_type") :
+            getString("_UI_AbstractNameValueExpressionAttribute_type") + " " + label;
     }
 
     /**
@@ -193,7 +203,6 @@ public class AbstractNameValueExpressionAttributeItemProvider extends EsbNodeIte
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -201,15 +210,15 @@ public class AbstractNameValueExpressionAttributeItemProvider extends EsbNodeIte
         updateChildren(notification);
 
         switch (notification.getFeatureID(AbstractNameValueExpressionAttribute.class)) {
-        case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_NAME:
-        case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE_TYPE:
-        case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE:
-        case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_TYPE:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_EXPRESSION:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_NAME:
+            case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE_TYPE:
+            case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE:
+            case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_TYPE:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_EXPRESSION:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -219,16 +228,16 @@ public class AbstractNameValueExpressionAttributeItemProvider extends EsbNodeIte
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(
-                createChildParameter(EsbPackage.Literals.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_EXPRESSION,
-                        EsbFactory.eINSTANCE.createNamespacedProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_EXPRESSION,
+                 EsbFactory.eINSTANCE.createNamespacedProperty()));
     }
 
 }

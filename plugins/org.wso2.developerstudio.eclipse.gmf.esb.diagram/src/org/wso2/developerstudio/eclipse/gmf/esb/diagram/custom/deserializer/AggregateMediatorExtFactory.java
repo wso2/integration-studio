@@ -36,15 +36,15 @@ import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.SynapseXPathExt;
 
 /**
- * This class is use to create a Aggregate mediator synapse object by
+ * This class is use to create a Aggregate mediator synapse object by 
  * skipping the synapse validations.
  * This is useful when building the synapse model from the source to the diagram.
  * (by skipping the exceptions if certain properties are empty by default)
  */
 public class AggregateMediatorExtFactory extends AggregateMediatorFactory {
-
+    
     private static AggregateMediatorExtFactory instance;
-
+    
     private AggregateMediatorExtFactory() {
     }
 
@@ -54,7 +54,7 @@ public class AggregateMediatorExtFactory extends AggregateMediatorFactory {
         }
         return instance;
     }
-
+    
     protected Mediator createSpecificMediator(OMElement omElement) {
         Mediator mediator = new AggregateMediator();
 
@@ -90,7 +90,7 @@ public class AggregateMediatorExtFactory extends AggregateMediatorFactory {
                     // This is useful when we use this extended class for create dummy synapse mediators with
                     // empty string properties for create model class objects for generating the design view
                     ((AggregateMediator) mediator).setCorrelateExpression(SynapseXPathExt
-                            .createSynapsePath(corelateOn.getAttribute(EXPRESSION_Q).getAttributeValue()));
+                            .createSynapsePath(corelateOn.getAttribute(EXPRESSION_Q).getAttributeValue()));                  
                 }
             }
         }

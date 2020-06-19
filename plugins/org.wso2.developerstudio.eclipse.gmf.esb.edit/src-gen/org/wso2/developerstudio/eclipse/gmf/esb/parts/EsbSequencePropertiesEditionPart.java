@@ -10,6 +10,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSet
 
 import org.eclipse.jface.viewers.ViewerFilter;
 
+
 // End of user code
 
 /**
@@ -18,73 +19,77 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public interface EsbSequencePropertiesEditionPart {
 
-    /**
-     * @return the name
-     * 
-     */
-    public String getName();
+	/**
+	 * @return the name
+	 * 
+	 */
+	public String getName();
 
-    /**
-     * Defines a new name
-     * 
-     * @param newValue the new name to set
-     * 
-     */
-    public void setName(String newValue);
+	/**
+	 * Defines a new name
+	 * @param newValue the new name to set
+	 * 
+	 */
+	public void setName(String newValue);
 
-    /**
-     * Init the childMediators
-     * 
-     * @param current the current value
-     * @param containgFeature the feature where to navigate if necessary
-     * @param feature the feature to manage
-     */
-    public void initChildMediators(ReferencesTableSettings settings);
 
-    /**
-     * Update the childMediators
-     * 
-     * @param newValue the childMediators to update
-     * 
-     */
-    public void updateChildMediators();
 
-    /**
-     * Adds the given filter to the childMediators edition editor.
-     * 
-     * @param filter
-     *            a viewer filter
-     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
-     */
-    public void addFilterToChildMediators(ViewerFilter filter);
 
-    /**
-     * Adds the given filter to the childMediators edition editor.
-     * 
-     * @param filter
-     *            a viewer filter
-     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
-     */
-    public void addBusinessFilterToChildMediators(ViewerFilter filter);
+	/**
+	 * Init the childMediators
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initChildMediators(ReferencesTableSettings settings);
 
-    /**
-     * @return true if the given element is contained inside the childMediators table
-     * 
-     */
-    public boolean isContainedInChildMediatorsTable(EObject element);
+	/**
+	 * Update the childMediators
+	 * @param newValue the childMediators to update
+	 * 
+	 */
+	public void updateChildMediators();
 
-    /**
-     * Returns the internationalized title text.
-     * 
-     * @return the internationalized title text.
-     * 
-     */
-    public String getTitle();
+	/**
+	 * Adds the given filter to the childMediators edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToChildMediators(ViewerFilter filter);
 
-    // Start of user code for additional methods
+	/**
+	 * Adds the given filter to the childMediators edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToChildMediators(ViewerFilter filter);
 
-    // End of user code
+	/**
+	 * @return true if the given element is contained inside the childMediators table
+	 * 
+	 */
+	public boolean isContainedInChildMediatorsTable(EObject element);
+
+
+
+
+
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 * 
+	 */
+	public String getTitle();
+
+	// Start of user code for additional methods
+	
+	// End of user code
 
 }

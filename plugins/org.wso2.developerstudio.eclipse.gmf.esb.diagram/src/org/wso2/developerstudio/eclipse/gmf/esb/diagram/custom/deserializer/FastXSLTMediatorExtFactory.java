@@ -28,12 +28,12 @@ import org.wso2.carbon.mediator.fastXSLT.FastXSLTMediator;
 import org.wso2.carbon.mediator.fastXSLT.config.xml.FastXSLTMediatorFactory;
 
 public class FastXSLTMediatorExtFactory extends FastXSLTMediatorFactory {
-
+    
     private static FastXSLTMediatorExtFactory instance;
-
+    
     private FastXSLTMediatorExtFactory() {
     }
-
+    
     public static synchronized FastXSLTMediatorExtFactory getInstance() {
         if (instance == null) {
             instance = new FastXSLTMediatorExtFactory();
@@ -56,7 +56,7 @@ public class FastXSLTMediatorExtFactory extends FastXSLTMediatorFactory {
 
         processAuditStatus(mediator, omElement);
         addAllCommentChildrenToList(omElement, ((FastXSLTMediator) mediator).getCommentsList());
-
+        
         return mediator;
     }
 

@@ -139,7 +139,7 @@ public class AddressEndPointTransformer extends AbstractEndpointTransformer {
         if (formPage.getEndpointCommentList() != null) {
             synapseAddEP.getCommentsList().addAll(formPage.getEndpointCommentList());
         }
-
+        
         if (formPage.endpointPropertyList != null && formPage.endpointPropertyList.size() > 0) {
             saveProperties(formPage, synapseAddEP);
         }

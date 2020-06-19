@@ -57,8 +57,7 @@ public class ESBDebuggerInterface implements IESBDebuggerInterface {
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-    public ESBDebuggerInterface(int commandPort, int eventPort, String hostName)
-            throws IOException, InterruptedException {
+    public ESBDebuggerInterface(int commandPort, int eventPort, String hostName) throws IOException, InterruptedException {
         setRequestSocket(commandPort, hostName);
         log.info("Socket created for command channel : " + hostName + ":" + commandPort);
         setEventSocket(eventPort, hostName);
@@ -230,23 +229,23 @@ public class ESBDebuggerInterface implements IESBDebuggerInterface {
         return eventDispatcher;
     }
 
-    private Socket createSocketWithPolling(String host, int port)
-            throws UnknownHostException, IOException, InterruptedException {
-        int MAX_TIME = 60000;
-        int INTERVAL = 100;
-        int time = 0;
-        while (time < MAX_TIME) {
-            try {
-                Socket socket = new Socket(host, port);
-                return socket;
-            } catch (IOException ignored) {
-                // Ignoring the exception since we are polling till the port opens from the
-                // server-side
-            }
-            Thread.sleep(INTERVAL);
-            time = time + INTERVAL;
-        }
-        return new Socket(host, port);
-    }
+	private Socket createSocketWithPolling(String host, int port)
+			throws UnknownHostException, IOException, InterruptedException {
+		int MAX_TIME = 60000;
+		int INTERVAL = 100;
+		int time = 0;
+		while (time < MAX_TIME) {
+			try {
+				Socket socket = new Socket(host, port);
+				return socket;
+			} catch (IOException ignored) {
+				// Ignoring the exception since we are polling till the port opens from the
+				// server-side
+			}
+			Thread.sleep(INTERVAL);
+			time = time + INTERVAL;
+		}
+		return new Socket(host, port);
+	}
 
 }

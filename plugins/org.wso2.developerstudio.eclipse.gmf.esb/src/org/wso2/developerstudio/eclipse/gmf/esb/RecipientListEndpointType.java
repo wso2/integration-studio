@@ -26,7 +26,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Recipient List Endpoint Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRecipientListEndpointType()
  * @model
  * @generated
@@ -36,7 +35,6 @@ public enum RecipientListEndpointType implements Enumerator {
      * The '<em><b>INLINE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #INLINE_VALUE
      * @generated
      * @ordered
@@ -47,7 +45,6 @@ public enum RecipientListEndpointType implements Enumerator {
      * The '<em><b>VALUE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #VALUE_VALUE
      * @generated
      * @ordered
@@ -57,7 +54,6 @@ public enum RecipientListEndpointType implements Enumerator {
      * The '<em><b>XPATH</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #XPATH_VALUE
      * @generated
      * @ordered
@@ -72,7 +68,6 @@ public enum RecipientListEndpointType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #INLINE
      * @model literal="Inline"
      * @generated
@@ -88,7 +83,6 @@ public enum RecipientListEndpointType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #VALUE
      * @model literal="Value"
      * @generated
@@ -104,7 +98,6 @@ public enum RecipientListEndpointType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #XPATH
      * @model literal="XPath"
      * @generated
@@ -116,27 +109,26 @@ public enum RecipientListEndpointType implements Enumerator {
      * An array of all the '<em><b>Recipient List Endpoint Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
-    private static final RecipientListEndpointType[] VALUES_ARRAY = new RecipientListEndpointType[] { INLINE, VALUE,
-            XPATH, };
+    private static final RecipientListEndpointType[] VALUES_ARRAY = new RecipientListEndpointType[] {
+            INLINE,
+            VALUE,
+            XPATH,
+        };
 
     /**
      * A public read-only list of all the '<em><b>Recipient List Endpoint Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
-    public static final List<RecipientListEndpointType> VALUES = Collections
-            .unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<RecipientListEndpointType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
     /**
      * Returns the '<em><b>Recipient List Endpoint Type</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -155,7 +147,6 @@ public enum RecipientListEndpointType implements Enumerator {
      * Returns the '<em><b>Recipient List Endpoint Type</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -174,19 +165,15 @@ public enum RecipientListEndpointType implements Enumerator {
      * Returns the '<em><b>Recipient List Endpoint Type</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static RecipientListEndpointType get(int value) {
         switch (value) {
-        case INLINE_VALUE:
-            return INLINE;
-        case VALUE_VALUE:
-            return VALUE;
-        case XPATH_VALUE:
-            return XPATH;
+            case INLINE_VALUE: return INLINE;
+            case VALUE_VALUE: return VALUE;
+            case XPATH_VALUE: return XPATH;
         }
         return null;
     }
@@ -194,7 +181,6 @@ public enum RecipientListEndpointType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final int value;
@@ -202,7 +188,6 @@ public enum RecipientListEndpointType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String name;
@@ -210,7 +195,6 @@ public enum RecipientListEndpointType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String literal;
@@ -219,7 +203,6 @@ public enum RecipientListEndpointType implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private RecipientListEndpointType(int value, String name, String literal) {
@@ -231,38 +214,34 @@ public enum RecipientListEndpointType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public int getValue() {
-        return value;
+      return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getName() {
-        return name;
+      return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getLiteral() {
-        return literal;
+      return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

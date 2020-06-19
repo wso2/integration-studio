@@ -14,6 +14,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSet
 
 import org.eclipse.jface.viewers.ViewerFilter;
 
+
 // End of user code
 
 /**
@@ -22,148 +23,150 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public interface MediatorSequencePropertiesEditionPart {
 
-    /**
-     * @return the anonymous
-     * 
-     */
-    public Boolean getAnonymous();
+	/**
+	 * @return the anonymous
+	 * 
+	 */
+	public Boolean getAnonymous();
 
-    /**
-     * Defines a new anonymous
-     * 
-     * @param newValue the new anonymous to set
-     * 
-     */
-    public void setAnonymous(Boolean newValue);
+	/**
+	 * Defines a new anonymous
+	 * @param newValue the new anonymous to set
+	 * 
+	 */
+	public void setAnonymous(Boolean newValue);
 
-    /**
-     * @return the sequenceName
-     * 
-     */
-    public String getSequenceName();
 
-    /**
-     * Defines a new sequenceName
-     * 
-     * @param newValue the new sequenceName to set
-     * 
-     */
-    public void setSequenceName(String newValue);
+	/**
+	 * @return the sequenceName
+	 * 
+	 */
+	public String getSequenceName();
 
-    /**
-     * Init the mediators
-     * 
-     * @param settings settings for the mediators ReferencesTable
-     */
-    public void initMediators(ReferencesTableSettings settings);
+	/**
+	 * Defines a new sequenceName
+	 * @param newValue the new sequenceName to set
+	 * 
+	 */
+	public void setSequenceName(String newValue);
 
-    /**
-     * Update the mediators
-     * 
-     * @param newValue the mediators to update
-     * 
-     */
-    public void updateMediators();
 
-    /**
-     * Adds the given filter to the mediators edition editor.
-     * 
-     * @param filter
-     *            a viewer filter
-     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
-     */
-    public void addFilterToMediators(ViewerFilter filter);
 
-    /**
-     * Adds the given filter to the mediators edition editor.
-     * 
-     * @param filter
-     *            a viewer filter
-     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
-     */
-    public void addBusinessFilterToMediators(ViewerFilter filter);
 
-    /**
-     * @return true if the given element is contained inside the mediators table
-     * 
-     */
-    public boolean isContainedInMediatorsTable(EObject element);
+	/**
+	 * Init the mediators
+	 * @param settings settings for the mediators ReferencesTable 
+	 */
+	public void initMediators(ReferencesTableSettings settings);
 
-    /**
-     * @return the onError
-     * 
-     */
-    public EObject getOnError();
+	/**
+	 * Update the mediators
+	 * @param newValue the mediators to update
+	 * 
+	 */
+	public void updateMediators();
 
-    /**
-     * Init the onError
-     * 
-     * @param settings the combo setting
-     */
-    public void initOnError(EObjectFlatComboSettings settings);
+	/**
+	 * Adds the given filter to the mediators edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToMediators(ViewerFilter filter);
 
-    /**
-     * Defines a new onError
-     * 
-     * @param newValue the new onError to set
-     * 
-     */
-    public void setOnError(EObject newValue);
+	/**
+	 * Adds the given filter to the mediators edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToMediators(ViewerFilter filter);
 
-    /**
-     * Defines the button mode
-     * 
-     * @param newValue the new mode to set
-     * 
-     */
-    public void setOnErrorButtonMode(ButtonsModeEnum newValue);
+	/**
+	 * @return true if the given element is contained inside the mediators table
+	 * 
+	 */
+	public boolean isContainedInMediatorsTable(EObject element);
 
-    /**
-     * Adds the given filter to the onError edition editor.
-     * 
-     * @param filter
-     *            a viewer filter
-     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
-     */
-    public void addFilterToOnError(ViewerFilter filter);
 
-    /**
-     * Adds the given filter to the onError edition editor.
-     * 
-     * @param filter
-     *            a viewer filter
-     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
-     */
-    public void addBusinessFilterToOnError(ViewerFilter filter);
+	/**
+	 * @return the onError
+	 * 
+	 */
+	public EObject getOnError();
 
-    /**
-     * @return the description
-     * 
-     */
-    public String getDescription();
+	/**
+	 * Init the onError
+	 * @param settings the combo setting
+	 */
+	public void initOnError(EObjectFlatComboSettings settings);
 
-    /**
-     * Defines a new description
-     * 
-     * @param newValue the new description to set
-     * 
-     */
-    public void setDescription(String newValue);
+	/**
+	 * Defines a new onError
+	 * @param newValue the new onError to set
+	 * 
+	 */
+	public void setOnError(EObject newValue);
 
-    /**
-     * Returns the internationalized title text.
-     * 
-     * @return the internationalized title text.
-     * 
-     */
-    public String getTitle();
+	/**
+	 * Defines the button mode
+	 * @param newValue the new mode to set
+	 * 
+	 */
+	public void setOnErrorButtonMode(ButtonsModeEnum newValue);
 
-    // Start of user code for additional methods
+	/**
+	 * Adds the given filter to the onError edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToOnError(ViewerFilter filter);
 
-    // End of user code
+	/**
+	 * Adds the given filter to the onError edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToOnError(ViewerFilter filter);
+
+
+	/**
+	 * @return the description
+	 * 
+	 */
+	public String getDescription();
+
+	/**
+	 * Defines a new description
+	 * @param newValue the new description to set
+	 * 
+	 */
+	public void setDescription(String newValue);
+
+
+
+
+
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 * 
+	 */
+	public String getTitle();
+
+	// Start of user code for additional methods
+	
+	// End of user code
 
 }

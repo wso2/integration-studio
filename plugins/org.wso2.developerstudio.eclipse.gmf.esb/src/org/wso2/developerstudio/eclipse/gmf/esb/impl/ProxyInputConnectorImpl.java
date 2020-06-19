@@ -22,7 +22,6 @@ public class ProxyInputConnectorImpl extends InputConnectorImpl implements Proxy
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected ProxyInputConnectorImpl() {
@@ -32,7 +31,6 @@ public class ProxyInputConnectorImpl extends InputConnectorImpl implements Proxy
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

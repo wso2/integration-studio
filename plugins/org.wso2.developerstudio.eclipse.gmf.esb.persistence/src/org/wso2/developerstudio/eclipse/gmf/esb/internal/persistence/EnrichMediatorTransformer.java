@@ -48,7 +48,7 @@ public class EnrichMediatorTransformer extends AbstractEsbNodeTransformer {
     private static final String ENV = "envelope";
     private static final String BDY = "body";
     private static final String CUS = "custom";
-    private static final String PROP = "property";
+    private static  final String PROP = "property";
 
     /**
      * {@inheritDoc}
@@ -82,8 +82,8 @@ public class EnrichMediatorTransformer extends AbstractEsbNodeTransformer {
         }
     }
 
-    public static org.apache.synapse.mediators.elementary.EnrichMediator createEnrichMediator(EsbNode subject,
-            boolean isForValidation) throws XMLStreamException, JaxenException {
+    public static org.apache.synapse.mediators.elementary.EnrichMediator createEnrichMediator(EsbNode subject, boolean isForValidation)
+            throws XMLStreamException, JaxenException {
         // Check subject.
         Assert.isTrue(subject instanceof EnrichMediator, "Invalid subject.");
         EnrichMediator visualEnrich = (EnrichMediator) subject;
@@ -142,10 +142,11 @@ public class EnrichMediatorTransformer extends AbstractEsbNodeTransformer {
                 NamespacedProperty visualSourceXPath = visualEnrich.getSourceXpath();
 
                 SynapseXPath xPath;
-                if (!isForValidation && StringUtils.isEmpty(visualSourceXPath.getPropertyValue())) {
+                if(!isForValidation && StringUtils.isEmpty(visualSourceXPath.getPropertyValue())) {
                     // Fill the XPath with a default values, so that we can use synapse serializer
                     xPath = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
-                } else {
+                }
+                else {
                     xPath = (SynapseXPath) SynapseXPathExt.createSynapsePath(visualSourceXPath.getPropertyValue());
                 }
                 Map<String, String> map = visualSourceXPath.getNamespaces();
@@ -176,10 +177,11 @@ public class EnrichMediatorTransformer extends AbstractEsbNodeTransformer {
                 target.setTargetType(org.apache.synapse.mediators.elementary.EnrichMediator.CUSTOM);
                 NamespacedProperty visualTargetXPath = visualEnrich.getTargetXpath();
                 SynapseXPath xPath;
-                if (!isForValidation && StringUtils.isEmpty(visualTargetXPath.getPropertyValue())) {
+                if(!isForValidation && StringUtils.isEmpty(visualTargetXPath.getPropertyValue())) {
                     // Fill the XPath with a default values, so that we can use synapse serializer
                     xPath = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
-                } else {
+                }
+                else {
                     xPath = (SynapseXPath) SynapseXPathExt.createSynapsePath(visualTargetXPath.getPropertyValue());
                 }
                 Map<String, String> map = visualTargetXPath.getNamespaces();
@@ -213,3 +215,4 @@ public class EnrichMediatorTransformer extends AbstractEsbNodeTransformer {
     }
 
 }
+

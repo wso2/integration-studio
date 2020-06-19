@@ -34,7 +34,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ProxyWSDLResource;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyWSDLResource} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class ProxyWSDLResourceItemProvider extends AbstractLocationKeyResourceItemProvider {
@@ -42,7 +41,6 @@ public class ProxyWSDLResourceItemProvider extends AbstractLocationKeyResourceIt
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public ProxyWSDLResourceItemProvider(AdapterFactory adapterFactory) {
@@ -53,7 +51,6 @@ public class ProxyWSDLResourceItemProvider extends AbstractLocationKeyResourceIt
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -69,7 +66,6 @@ public class ProxyWSDLResourceItemProvider extends AbstractLocationKeyResourceIt
      * This returns ProxyWSDLResource.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -81,14 +77,14 @@ public class ProxyWSDLResourceItemProvider extends AbstractLocationKeyResourceIt
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((ProxyWSDLResource) object).getLocation();
-        return label == null || label.length() == 0 ? getString("_UI_ProxyWSDLResource_type")
-                : getString("_UI_ProxyWSDLResource_type") + " " + label;
+        String label = ((ProxyWSDLResource)object).getLocation();
+        return label == null || label.length() == 0 ?
+            getString("_UI_ProxyWSDLResource_type") :
+            getString("_UI_ProxyWSDLResource_type") + " " + label;
     }
 
     /**
@@ -96,7 +92,6 @@ public class ProxyWSDLResourceItemProvider extends AbstractLocationKeyResourceIt
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -110,7 +105,6 @@ public class ProxyWSDLResourceItemProvider extends AbstractLocationKeyResourceIt
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

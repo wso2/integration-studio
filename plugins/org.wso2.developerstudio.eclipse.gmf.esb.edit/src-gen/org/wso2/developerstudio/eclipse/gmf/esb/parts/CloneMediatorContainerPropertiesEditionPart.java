@@ -10,6 +10,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSet
 
 import org.eclipse.jface.viewers.ViewerFilter;
 
+
 // End of user code
 
 /**
@@ -18,59 +19,63 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public interface CloneMediatorContainerPropertiesEditionPart {
 
-    /**
-     * Init the cloneTargetContainer
-     * 
-     * @param current the current value
-     * @param containgFeature the feature where to navigate if necessary
-     * @param feature the feature to manage
-     */
-    public void initCloneTargetContainer(ReferencesTableSettings settings);
 
-    /**
-     * Update the cloneTargetContainer
-     * 
-     * @param newValue the cloneTargetContainer to update
-     * 
-     */
-    public void updateCloneTargetContainer();
 
-    /**
-     * Adds the given filter to the cloneTargetContainer edition editor.
-     * 
-     * @param filter
-     *            a viewer filter
-     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
-     */
-    public void addFilterToCloneTargetContainer(ViewerFilter filter);
+	/**
+	 * Init the cloneTargetContainer
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initCloneTargetContainer(ReferencesTableSettings settings);
 
-    /**
-     * Adds the given filter to the cloneTargetContainer edition editor.
-     * 
-     * @param filter
-     *            a viewer filter
-     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
-     */
-    public void addBusinessFilterToCloneTargetContainer(ViewerFilter filter);
+	/**
+	 * Update the cloneTargetContainer
+	 * @param newValue the cloneTargetContainer to update
+	 * 
+	 */
+	public void updateCloneTargetContainer();
 
-    /**
-     * @return true if the given element is contained inside the cloneTargetContainer table
-     * 
-     */
-    public boolean isContainedInCloneTargetContainerTable(EObject element);
+	/**
+	 * Adds the given filter to the cloneTargetContainer edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToCloneTargetContainer(ViewerFilter filter);
 
-    /**
-     * Returns the internationalized title text.
-     * 
-     * @return the internationalized title text.
-     * 
-     */
-    public String getTitle();
+	/**
+	 * Adds the given filter to the cloneTargetContainer edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToCloneTargetContainer(ViewerFilter filter);
 
-    // Start of user code for additional methods
+	/**
+	 * @return true if the given element is contained inside the cloneTargetContainer table
+	 * 
+	 */
+	public boolean isContainedInCloneTargetContainerTable(EObject element);
 
-    // End of user code
+
+
+
+
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 * 
+	 */
+	public String getTitle();
+
+	// Start of user code for additional methods
+	
+	// End of user code
 
 }

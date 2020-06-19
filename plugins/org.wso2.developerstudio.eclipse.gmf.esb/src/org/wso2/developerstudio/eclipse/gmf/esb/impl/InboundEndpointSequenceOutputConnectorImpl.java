@@ -32,7 +32,6 @@ public class InboundEndpointSequenceOutputConnectorImpl extends OutputConnectorI
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected InboundEndpointSequenceOutputConnectorImpl() {
@@ -42,7 +41,6 @@ public class InboundEndpointSequenceOutputConnectorImpl extends OutputConnectorI
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

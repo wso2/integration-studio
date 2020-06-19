@@ -36,11 +36,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.SwitchDefaultParentContainer;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchDefaultParentContainer}
- * object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchDefaultParentContainer} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class SwitchDefaultParentContainerItemProvider extends EsbNodeItemProvider {
@@ -48,7 +46,6 @@ public class SwitchDefaultParentContainerItemProvider extends EsbNodeItemProvide
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public SwitchDefaultParentContainerItemProvider(AdapterFactory adapterFactory) {
@@ -59,7 +56,6 @@ public class SwitchDefaultParentContainerItemProvider extends EsbNodeItemProvide
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -77,7 +73,6 @@ public class SwitchDefaultParentContainerItemProvider extends EsbNodeItemProvide
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -92,7 +87,6 @@ public class SwitchDefaultParentContainerItemProvider extends EsbNodeItemProvide
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -107,7 +101,6 @@ public class SwitchDefaultParentContainerItemProvider extends EsbNodeItemProvide
      * This returns SwitchDefaultParentContainer.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -119,7 +112,6 @@ public class SwitchDefaultParentContainerItemProvider extends EsbNodeItemProvide
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -132,7 +124,6 @@ public class SwitchDefaultParentContainerItemProvider extends EsbNodeItemProvide
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -140,9 +131,9 @@ public class SwitchDefaultParentContainerItemProvider extends EsbNodeItemProvide
         updateChildren(notification);
 
         switch (notification.getFeatureID(SwitchDefaultParentContainer.class)) {
-        case EsbPackage.SWITCH_DEFAULT_PARENT_CONTAINER__SWITCH_DEFAULT_CONTAINER:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.SWITCH_DEFAULT_PARENT_CONTAINER__SWITCH_DEFAULT_CONTAINER:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -152,16 +143,16 @@ public class SwitchDefaultParentContainerItemProvider extends EsbNodeItemProvide
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors
-                .add(createChildParameter(EsbPackage.Literals.SWITCH_DEFAULT_PARENT_CONTAINER__SWITCH_DEFAULT_CONTAINER,
-                        EsbFactory.eINSTANCE.createSwitchDefaultContainer()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.SWITCH_DEFAULT_PARENT_CONTAINER__SWITCH_DEFAULT_CONTAINER,
+                 EsbFactory.eINSTANCE.createSwitchDefaultContainer()));
     }
 
 }

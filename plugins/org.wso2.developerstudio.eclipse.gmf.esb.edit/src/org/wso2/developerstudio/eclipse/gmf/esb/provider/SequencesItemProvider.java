@@ -31,7 +31,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.Template;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class SequencesItemProvider extends EsbElementItemProvider {
@@ -39,7 +38,6 @@ public class SequencesItemProvider extends EsbElementItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public SequencesItemProvider(AdapterFactory adapterFactory) {
@@ -78,117 +76,154 @@ public class SequencesItemProvider extends EsbElementItemProvider {
      * This adds a property descriptor for the Name feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_Sequences_name_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_Sequences_name_feature",
-                                "_UI_Sequences_type"),
-                        EsbPackage.Literals.SEQUENCES__NAME, false, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Sequences_name_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Sequences_name_feature", "_UI_Sequences_type"),
+                 EsbPackage.Literals.SEQUENCES__NAME,
+                 false,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Recieve Sequence feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addRecieveSequencePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_Sequences_recieveSequence_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_Sequences_recieveSequence_feature",
-                                "_UI_Sequences_type"),
-                        EsbPackage.Literals.SEQUENCES__RECIEVE_SEQUENCE, true, false, false,
-                        ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Sequences_recieveSequence_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Sequences_recieveSequence_feature", "_UI_Sequences_type"),
+                 EsbPackage.Literals.SEQUENCES__RECIEVE_SEQUENCE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Associated Proxy feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addAssociatedProxyPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_Sequences_associatedProxy_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_Sequences_associatedProxy_feature",
-                                "_UI_Sequences_type"),
-                        EsbPackage.Literals.SEQUENCES__ASSOCIATED_PROXY, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Sequences_associatedProxy_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Sequences_associatedProxy_feature", "_UI_Sequences_type"),
+                 EsbPackage.Literals.SEQUENCES__ASSOCIATED_PROXY,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the On Error feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addOnErrorPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_Sequences_onError_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_Sequences_onError_feature",
-                                "_UI_Sequences_type"),
-                        EsbPackage.Literals.SEQUENCES__ON_ERROR, true, false, false, null, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Sequences_onError_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Sequences_onError_feature", "_UI_Sequences_type"),
+                 EsbPackage.Literals.SEQUENCES__ON_ERROR,
+                 true,
+                 false,
+                 false,
+                 null,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Template Parameters feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addTemplateParametersPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_Sequences_templateParameters_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_Sequences_templateParameters_feature",
-                                "_UI_Sequences_type"),
-                        EsbPackage.Literals.SEQUENCES__TEMPLATE_PARAMETERS, true, false, false, null, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Sequences_templateParameters_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Sequences_templateParameters_feature", "_UI_Sequences_type"),
+                 EsbPackage.Literals.SEQUENCES__TEMPLATE_PARAMETERS,
+                 true,
+                 false,
+                 false,
+                 null,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Trace Enabled feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addTraceEnabledPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_Sequences_traceEnabled_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_Sequences_traceEnabled_feature",
-                                "_UI_Sequences_type"),
-                        EsbPackage.Literals.SEQUENCES__TRACE_ENABLED, true, false, false,
-                        ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Sequences_traceEnabled_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Sequences_traceEnabled_feature", "_UI_Sequences_type"),
+                 EsbPackage.Literals.SEQUENCES__TRACE_ENABLED,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Statistics Enabled feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addStatisticsEnabledPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_Sequences_statisticsEnabled_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_Sequences_statisticsEnabled_feature",
-                                "_UI_Sequences_type"),
-                        EsbPackage.Literals.SEQUENCES__STATISTICS_ENABLED, true, false, false,
-                        ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Sequences_statisticsEnabled_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Sequences_statisticsEnabled_feature", "_UI_Sequences_type"),
+                 EsbPackage.Literals.SEQUENCES__STATISTICS_ENABLED,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
@@ -197,7 +232,6 @@ public class SequencesItemProvider extends EsbElementItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -216,7 +250,6 @@ public class SequencesItemProvider extends EsbElementItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -231,7 +264,6 @@ public class SequencesItemProvider extends EsbElementItemProvider {
      * This returns Sequences.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -243,14 +275,14 @@ public class SequencesItemProvider extends EsbElementItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((Sequences) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_Sequences_type")
-                : getString("_UI_Sequences_type") + " " + label;
+        String label = ((Sequences)object).getName();
+        return label == null || label.length() == 0 ?
+            getString("_UI_Sequences_type") :
+            getString("_UI_Sequences_type") + " " + label;
     }
 
     /**
@@ -258,7 +290,6 @@ public class SequencesItemProvider extends EsbElementItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -266,20 +297,20 @@ public class SequencesItemProvider extends EsbElementItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(Sequences.class)) {
-        case EsbPackage.SEQUENCES__NAME:
-        case EsbPackage.SEQUENCES__RECIEVE_SEQUENCE:
-        case EsbPackage.SEQUENCES__ASSOCIATED_PROXY:
-        case EsbPackage.SEQUENCES__TRACE_ENABLED:
-        case EsbPackage.SEQUENCES__STATISTICS_ENABLED:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.SEQUENCES__OUTPUT_CONNECTOR:
-        case EsbPackage.SEQUENCES__INPUT_CONNECTOR:
-        case EsbPackage.SEQUENCES__MEDIATOR_FLOW:
-        case EsbPackage.SEQUENCES__ON_ERROR:
-        case EsbPackage.SEQUENCES__TEMPLATE_PARAMETERS:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.SEQUENCES__NAME:
+            case EsbPackage.SEQUENCES__RECIEVE_SEQUENCE:
+            case EsbPackage.SEQUENCES__ASSOCIATED_PROXY:
+            case EsbPackage.SEQUENCES__TRACE_ENABLED:
+            case EsbPackage.SEQUENCES__STATISTICS_ENABLED:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.SEQUENCES__OUTPUT_CONNECTOR:
+            case EsbPackage.SEQUENCES__INPUT_CONNECTOR:
+            case EsbPackage.SEQUENCES__MEDIATOR_FLOW:
+            case EsbPackage.SEQUENCES__ON_ERROR:
+            case EsbPackage.SEQUENCES__TEMPLATE_PARAMETERS:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -289,27 +320,36 @@ public class SequencesItemProvider extends EsbElementItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.SEQUENCES__OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createSequencesOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.SEQUENCES__OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createSequencesOutputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.SEQUENCES__INPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createSequencesInputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.SEQUENCES__INPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createSequencesInputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.SEQUENCES__MEDIATOR_FLOW,
-                EsbFactory.eINSTANCE.createMediatorFlow()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.SEQUENCES__MEDIATOR_FLOW,
+                 EsbFactory.eINSTANCE.createMediatorFlow()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.SEQUENCES__ON_ERROR,
-                EsbFactory.eINSTANCE.createRegistryKeyProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.SEQUENCES__ON_ERROR,
+                 EsbFactory.eINSTANCE.createRegistryKeyProperty()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.SEQUENCES__TEMPLATE_PARAMETERS,
-                EsbFactory.eINSTANCE.createTemplateParameter()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.SEQUENCES__TEMPLATE_PARAMETERS,
+                 EsbFactory.eINSTANCE.createTemplateParameter()));
     }
 
 }

@@ -51,8 +51,8 @@ public class BAMMediatorTransformer extends AbstractEsbNodeTransformer {
 
     }
 
-    public static org.wso2.carbon.mediator.bam.BamMediator createBAMMediator(EsbNode subject,
-            TransformationInfo information, boolean isForValidation) throws TransformerException {
+    public static org.wso2.carbon.mediator.bam.BamMediator createBAMMediator(EsbNode subject, TransformationInfo information, boolean isForValidation)
+            throws TransformerException {
 
         if (subject instanceof BAMMediator) {
             BAMMediator visualBAMMediator = (BAMMediator) subject;
@@ -61,7 +61,7 @@ public class BAMMediatorTransformer extends AbstractEsbNodeTransformer {
             setCommonProperties(bamMediator, visualBAMMediator);
             if (StringUtils.isNotEmpty(visualBAMMediator.getServerProfile())) {
                 bamMediator.setServerProfile(visualBAMMediator.getServerProfile());
-            } else if (!isForValidation) {
+            } else if(!isForValidation){
                 // Set the default values for use the synapse transformers
                 bamMediator.setServerProfile(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
             }
@@ -72,7 +72,7 @@ public class BAMMediatorTransformer extends AbstractEsbNodeTransformer {
                     streamConfiguration.setName(visualBAMMediator.getStreamName());
                     streamConfiguration.setVersion(visualBAMMediator.getStreamVersion());
                     bamMediator.getStream().setStreamConfiguration(streamConfiguration);
-                } else if (!isForValidation) {
+                } else if(!isForValidation){
                     // Set the default values for use the synapse transformers
                     StreamConfiguration streamConfiguration = new StreamConfiguration();
                     streamConfiguration.setName(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);

@@ -95,10 +95,10 @@ public class ComplexEndpointDeserializerUtils {
                 IndirectEndpoint indirectEndpoint = (IndirectEndpoint) child;
                 EndpointTableEntry tempEntry = new EndpointTableEntry(false, indirectEndpoint.getKey());
                 endpointTableEntries.add(tempEntry);
-
+                
             } else if (child instanceof TemplateEndpoint) {
-                TemplateEndpoint templateEndpoint = (TemplateEndpoint) child;
-                omElement = TemplateEndpointSerializer.getElementFromEndpoint(templateEndpoint);
+            	TemplateEndpoint templateEndpoint = (TemplateEndpoint) child;
+            	omElement = TemplateEndpointSerializer.getElementFromEndpoint(templateEndpoint);
             }
 
             if (omElement != null) {

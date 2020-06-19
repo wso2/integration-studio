@@ -26,7 +26,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Inbound Endpoint Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpointType()
  * @model
  * @generated
@@ -36,7 +35,6 @@ public enum InboundEndpointType implements Enumerator {
      * The '<em><b>Http</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #HTTP_VALUE
      * @generated
      * @ordered
@@ -47,7 +45,6 @@ public enum InboundEndpointType implements Enumerator {
      * The '<em><b>File</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #FILE_VALUE
      * @generated
      * @ordered
@@ -58,7 +55,6 @@ public enum InboundEndpointType implements Enumerator {
      * The '<em><b>Jms</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #JMS_VALUE
      * @generated
      * @ordered
@@ -69,7 +65,6 @@ public enum InboundEndpointType implements Enumerator {
      * The '<em><b>Custom</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #CUSTOM_VALUE
      * @generated
      * @ordered
@@ -79,7 +74,6 @@ public enum InboundEndpointType implements Enumerator {
      * The '<em><b>Https</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #HTTPS_VALUE
      * @generated
      * @ordered
@@ -89,7 +83,6 @@ public enum InboundEndpointType implements Enumerator {
      * The '<em><b>Hl7</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #HL7_VALUE
      * @generated
      * @ordered
@@ -99,7 +92,6 @@ public enum InboundEndpointType implements Enumerator {
      * The '<em><b>Kafka</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #KAFKA_VALUE
      * @generated
      * @ordered
@@ -109,7 +101,6 @@ public enum InboundEndpointType implements Enumerator {
      * The '<em><b>Cxf ws rm</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #CXF_WS_RM_VALUE
      * @generated
      * @ordered
@@ -119,7 +110,6 @@ public enum InboundEndpointType implements Enumerator {
      * The '<em><b>Mqtt</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #MQTT_VALUE
      * @generated
      * @ordered
@@ -129,7 +119,6 @@ public enum InboundEndpointType implements Enumerator {
      * The '<em><b>Rabbitmq</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #RABBITMQ_VALUE
      * @generated
      * @ordered
@@ -139,7 +128,6 @@ public enum InboundEndpointType implements Enumerator {
      * The '<em><b>Feed</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #FEED_VALUE
      * @generated
      * @ordered
@@ -149,7 +137,6 @@ public enum InboundEndpointType implements Enumerator {
      * The '<em><b>Wso2 mb</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #WSO2_MB_VALUE
      * @generated
      * @ordered
@@ -159,7 +146,6 @@ public enum InboundEndpointType implements Enumerator {
      * The '<em><b>Ws</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #WS_VALUE
      * @generated
      * @ordered
@@ -169,7 +155,6 @@ public enum InboundEndpointType implements Enumerator {
      * The '<em><b>Wss</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #WSS_VALUE
      * @generated
      * @ordered
@@ -184,7 +169,6 @@ public enum InboundEndpointType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #HTTP
      * @model name="http" literal="HTTP"
      * @generated
@@ -200,7 +184,6 @@ public enum InboundEndpointType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #FILE
      * @model name="file" literal="File"
      * @generated
@@ -216,7 +199,6 @@ public enum InboundEndpointType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #JMS
      * @model name="jms" literal="JMS"
      * @generated
@@ -232,7 +214,6 @@ public enum InboundEndpointType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #CUSTOM
      * @model name="custom" literal="Custom"
      * @generated
@@ -248,7 +229,6 @@ public enum InboundEndpointType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #HTTPS
      * @model name="https" literal="HTTPS"
      * @generated
@@ -264,7 +244,6 @@ public enum InboundEndpointType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #HL7
      * @model name="hl7" literal="HL7"
      * @generated
@@ -280,7 +259,6 @@ public enum InboundEndpointType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #KAFKA
      * @model name="kafka" literal="KAFKA"
      * @generated
@@ -296,7 +274,6 @@ public enum InboundEndpointType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #CXF_WS_RM
      * @model name="cxf_ws_rm" literal="CXF_WS_RM"
      * @generated
@@ -312,7 +289,6 @@ public enum InboundEndpointType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #MQTT
      * @model name="mqtt" literal="MQTT"
      * @generated
@@ -328,7 +304,6 @@ public enum InboundEndpointType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #RABBITMQ
      * @model name="rabbitmq" literal="RABBITMQ"
      * @generated
@@ -344,7 +319,6 @@ public enum InboundEndpointType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #FEED
      * @model name="feed" literal="Feed"
      * @generated
@@ -360,7 +334,6 @@ public enum InboundEndpointType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #WSO2_MB
      * @model name="wso2_mb" literal="WSO2_MB"
      * @generated
@@ -376,7 +349,6 @@ public enum InboundEndpointType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #WS
      * @model name="ws" literal="WS"
      * @generated
@@ -392,7 +364,6 @@ public enum InboundEndpointType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #WSS
      * @model name="wss" literal="WSS"
      * @generated
@@ -404,17 +375,29 @@ public enum InboundEndpointType implements Enumerator {
      * An array of all the '<em><b>Inbound Endpoint Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
-    private static final InboundEndpointType[] VALUES_ARRAY = new InboundEndpointType[] { HTTP, FILE, JMS, CUSTOM,
-            HTTPS, HL7, KAFKA, CXF_WS_RM, MQTT, RABBITMQ, FEED, WSO2_MB, WS, WSS, };
+    private static final InboundEndpointType[] VALUES_ARRAY = new InboundEndpointType[] {
+            HTTP,
+            FILE,
+            JMS,
+            CUSTOM,
+            HTTPS,
+            HL7,
+            KAFKA,
+            CXF_WS_RM,
+            MQTT,
+            RABBITMQ,
+            FEED,
+            WSO2_MB,
+            WS,
+            WSS,
+        };
 
     /**
      * A public read-only list of all the '<em><b>Inbound Endpoint Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public static final List<InboundEndpointType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -423,7 +406,6 @@ public enum InboundEndpointType implements Enumerator {
      * Returns the '<em><b>Inbound Endpoint Type</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -442,7 +424,6 @@ public enum InboundEndpointType implements Enumerator {
      * Returns the '<em><b>Inbound Endpoint Type</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -461,41 +442,26 @@ public enum InboundEndpointType implements Enumerator {
      * Returns the '<em><b>Inbound Endpoint Type</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static InboundEndpointType get(int value) {
         switch (value) {
-        case HTTP_VALUE:
-            return HTTP;
-        case FILE_VALUE:
-            return FILE;
-        case JMS_VALUE:
-            return JMS;
-        case CUSTOM_VALUE:
-            return CUSTOM;
-        case HTTPS_VALUE:
-            return HTTPS;
-        case HL7_VALUE:
-            return HL7;
-        case KAFKA_VALUE:
-            return KAFKA;
-        case CXF_WS_RM_VALUE:
-            return CXF_WS_RM;
-        case MQTT_VALUE:
-            return MQTT;
-        case RABBITMQ_VALUE:
-            return RABBITMQ;
-        case FEED_VALUE:
-            return FEED;
-        case WSO2_MB_VALUE:
-            return WSO2_MB;
-        case WS_VALUE:
-            return WS;
-        case WSS_VALUE:
-            return WSS;
+            case HTTP_VALUE: return HTTP;
+            case FILE_VALUE: return FILE;
+            case JMS_VALUE: return JMS;
+            case CUSTOM_VALUE: return CUSTOM;
+            case HTTPS_VALUE: return HTTPS;
+            case HL7_VALUE: return HL7;
+            case KAFKA_VALUE: return KAFKA;
+            case CXF_WS_RM_VALUE: return CXF_WS_RM;
+            case MQTT_VALUE: return MQTT;
+            case RABBITMQ_VALUE: return RABBITMQ;
+            case FEED_VALUE: return FEED;
+            case WSO2_MB_VALUE: return WSO2_MB;
+            case WS_VALUE: return WS;
+            case WSS_VALUE: return WSS;
         }
         return null;
     }
@@ -503,7 +469,6 @@ public enum InboundEndpointType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final int value;
@@ -511,7 +476,6 @@ public enum InboundEndpointType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String name;
@@ -519,7 +483,6 @@ public enum InboundEndpointType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String literal;
@@ -528,7 +491,6 @@ public enum InboundEndpointType implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private InboundEndpointType(int value, String name, String literal) {
@@ -540,38 +502,34 @@ public enum InboundEndpointType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public int getValue() {
-        return value;
+      return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getName() {
-        return name;
+      return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getLiteral() {
-        return literal;
+      return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

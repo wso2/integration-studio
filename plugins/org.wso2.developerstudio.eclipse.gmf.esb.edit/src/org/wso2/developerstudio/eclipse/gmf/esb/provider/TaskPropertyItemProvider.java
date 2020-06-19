@@ -25,7 +25,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TaskProperty;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.TaskProperty} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class TaskPropertyItemProvider extends NameValueTypePropertyItemProvider {
@@ -33,7 +32,6 @@ public class TaskPropertyItemProvider extends NameValueTypePropertyItemProvider 
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public TaskPropertyItemProvider(AdapterFactory adapterFactory) {
@@ -44,7 +42,6 @@ public class TaskPropertyItemProvider extends NameValueTypePropertyItemProvider 
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -60,7 +57,6 @@ public class TaskPropertyItemProvider extends NameValueTypePropertyItemProvider 
      * This returns TaskProperty.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -72,14 +68,14 @@ public class TaskPropertyItemProvider extends NameValueTypePropertyItemProvider 
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((TaskProperty) object).getPropertyName();
-        return label == null || label.length() == 0 ? getString("_UI_TaskProperty_type")
-                : getString("_UI_TaskProperty_type") + " " + label;
+        String label = ((TaskProperty)object).getPropertyName();
+        return label == null || label.length() == 0 ?
+            getString("_UI_TaskProperty_type") :
+            getString("_UI_TaskProperty_type") + " " + label;
     }
 
     /**
@@ -87,7 +83,6 @@ public class TaskPropertyItemProvider extends NameValueTypePropertyItemProvider 
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -101,7 +96,6 @@ public class TaskPropertyItemProvider extends NameValueTypePropertyItemProvider 
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

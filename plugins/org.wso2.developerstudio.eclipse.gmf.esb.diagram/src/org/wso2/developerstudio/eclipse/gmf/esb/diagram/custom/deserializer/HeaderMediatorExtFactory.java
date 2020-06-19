@@ -34,12 +34,12 @@ import org.apache.synapse.mediators.transform.HeaderMediator;
 import org.jaxen.JaxenException;
 
 public class HeaderMediatorExtFactory extends HeaderMediatorFactory {
-
+    
     private static HeaderMediatorExtFactory instance;
-
+    
     private HeaderMediatorExtFactory() {
     }
-
+    
     public static synchronized HeaderMediatorExtFactory getInstance() {
         if (instance == null) {
             instance = new HeaderMediatorExtFactory();

@@ -3501,8 +3501,8 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements ICommonL
     }
 
     /**
-     * @generated
-     */
+    * @generated
+    */
     private String getPropertyGroupMediator_3788Text(View view) {
         IParser parser = EsbParserProvider.getParser(EsbElementTypes.PropertyGroupMediator_3788,
                 view.getElement() != null ? view.getElement() : view,
@@ -3517,22 +3517,22 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements ICommonL
     }
 
     /**
-     * @generated
-     */
+    * @generated
+    */
     private String getPropertyGroupMediatorInputConnector_3789Text(View view) {
         return ""; //$NON-NLS-1$
     }
 
     /**
-     * @generated
-     */
+    * @generated
+    */
     private String getPropertyGroupMediatorOutputConnector_3790Text(View view) {
         return ""; //$NON-NLS-1$
     }
 
     /**
-     * @generated
-     */
+    * @generated
+    */
     private String getJsonTransformMediator_3791Text(View view) {
         IParser parser = EsbParserProvider.getParser(EsbElementTypes.JsonTransformMediator_3791,
                 view.getElement() != null ? view.getElement() : view,
@@ -3547,15 +3547,15 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements ICommonL
     }
 
     /**
-     * @generated
-     */
+    * @generated
+    */
     private String getJsonTransformMediatorInputConnector_3792Text(View view) {
         return ""; //$NON-NLS-1$
     }
 
     /**
-     * @generated
-     */
+    * @generated
+    */
     private String getJsonTransformMediatorOutputConnector_3793Text(View view) {
         return ""; //$NON-NLS-1$
     }
@@ -5253,14 +5253,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements ICommonL
      * @generated
      */
     private String getUnknownElementText(View view) {
-        return "<UnknownElement Visual_ID = " + view.getType() + ">"; //$NON-NLS-1$ //$NON-NLS-2$
+        return "<UnknownElement Visual_ID = " + view.getType() + ">"; //$NON-NLS-1$  //$NON-NLS-2$
     }
 
     /**
      * @generated
      */
     private String getUnresolvedDomainElementProxyText(View view) {
-        return "<Unresolved domain element Visual_ID = " + view.getType() + ">"; //$NON-NLS-1$ //$NON-NLS-2$
+        return "<Unresolved domain element Visual_ID = " + view.getType() + ">"; //$NON-NLS-1$  //$NON-NLS-2$
     }
 
     /**

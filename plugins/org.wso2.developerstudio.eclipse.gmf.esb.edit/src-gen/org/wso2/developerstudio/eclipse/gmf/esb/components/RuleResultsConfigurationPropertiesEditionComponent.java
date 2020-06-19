@@ -50,6 +50,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RuleResultsConfiguration;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.RuleResultsConfigurationPropertiesEditionPart;
 
+
 // End of user code
 
 /**
@@ -58,167 +59,167 @@ import org.wso2.developerstudio.eclipse.gmf.esb.parts.RuleResultsConfigurationPr
  */
 public class RuleResultsConfigurationPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
-    public static String BASE_PART = "Base"; //$NON-NLS-1$
+	
+	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
-    /**
-     * Settings for results ReferencesTable
-     */
-    protected ReferencesTableSettings resultsSettings;
+	
+	/**
+	 * Settings for results ReferencesTable
+	 */
+	protected ReferencesTableSettings resultsSettings;
+	
+	
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public RuleResultsConfigurationPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject ruleResultsConfiguration, String editing_mode) {
+		super(editingContext, ruleResultsConfiguration, editing_mode);
+		parts = new String[] { BASE_PART };
+		repositoryKey = EsbViewsRepository.class;
+		partKey = EsbViewsRepository.RuleResultsConfiguration.class;
+	}
 
-    /**
-     * Default constructor
-     * 
-     */
-    public RuleResultsConfigurationPropertiesEditionComponent(PropertiesEditingContext editingContext,
-            EObject ruleResultsConfiguration, String editing_mode) {
-        super(editingContext, ruleResultsConfiguration, editing_mode);
-        parts = new String[] { BASE_PART };
-        repositoryKey = EsbViewsRepository.class;
-        partKey = EsbViewsRepository.RuleResultsConfiguration.class;
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
+	 *      org.eclipse.emf.ecore.resource.ResourceSet)
+	 * 
+	 */
+	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
+		setInitializing(true);
+		if (editingPart != null && key == partKey) {
+			editingPart.setContext(elt, allResource);
+			
+			final RuleResultsConfiguration ruleResultsConfiguration = (RuleResultsConfiguration)elt;
+			final RuleResultsConfigurationPropertiesEditionPart basePart = (RuleResultsConfigurationPropertiesEditionPart)editingPart;
+			// init values
+			if (isAccessible(EsbViewsRepository.RuleResultsConfiguration.Properties.results)) {
+				resultsSettings = new ReferencesTableSettings(ruleResultsConfiguration, EsbPackage.eINSTANCE.getRuleResultsConfiguration_Results());
+				basePart.initResults(resultsSettings);
+			}
+			// init filters
+			if (isAccessible(EsbViewsRepository.RuleResultsConfiguration.Properties.results)) {
+				basePart.addFilterToResults(new ViewerFilter() {
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof RuleResult); //$NON-NLS-1$ 
+					}
+			
+				});
+				// Start of user code for additional businessfilters for results
+				// End of user code
+			}
+			// init values for referenced views
+			
+			// init filters for referenced views
+			
+		}
+		setInitializing(false);
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int,
-     *      org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.emf.ecore.resource.ResourceSet)
-     * 
-     */
-    public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-        setInitializing(true);
-        if (editingPart != null && key == partKey) {
-            editingPart.setContext(elt, allResource);
 
-            final RuleResultsConfiguration ruleResultsConfiguration = (RuleResultsConfiguration) elt;
-            final RuleResultsConfigurationPropertiesEditionPart basePart = (RuleResultsConfigurationPropertiesEditionPart) editingPart;
-            // init values
-            if (isAccessible(EsbViewsRepository.RuleResultsConfiguration.Properties.results)) {
-                resultsSettings = new ReferencesTableSettings(ruleResultsConfiguration,
-                        EsbPackage.eINSTANCE.getRuleResultsConfiguration_Results());
-                basePart.initResults(resultsSettings);
-            }
-            // init filters
-            if (isAccessible(EsbViewsRepository.RuleResultsConfiguration.Properties.results)) {
-                basePart.addFilterToResults(new ViewerFilter() {
-                    /**
-                     * {@inheritDoc}
-                     * 
-                     * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer,
-                     *      java.lang.Object, java.lang.Object)
-                     */
-                    public boolean select(Viewer viewer, Object parentElement, Object element) {
-                        return (element instanceof String && element.equals("")) || (element instanceof RuleResult); //$NON-NLS-1$
-                    }
 
-                });
-                // Start of user code for additional businessfilters for results
-                // End of user code
-            }
-            // init values for referenced views
 
-            // init filters for referenced views
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	public EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == EsbViewsRepository.RuleResultsConfiguration.Properties.results) {
+			return EsbPackage.eINSTANCE.getRuleResultsConfiguration_Results();
+		}
+		return super.associatedFeature(editorKey);
+	}
 
-        }
-        setInitializing(false);
-    }
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
+	 */
+	public void updateSemanticModel(final IPropertiesEditionEvent event) {
+		RuleResultsConfiguration ruleResultsConfiguration = (RuleResultsConfiguration)semanticObject;
+		if (EsbViewsRepository.RuleResultsConfiguration.Properties.results == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, resultsSettings, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy instanceof CreateEditingPolicy) {
+						policy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+					if (editionPolicy != null) {
+						editionPolicy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				resultsSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				resultsSettings.move(event.getNewIndex(), (RuleResult) event.getNewValue());
+			}
+		}
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
-     */
-    public EStructuralFeature associatedFeature(Object editorKey) {
-        if (editorKey == EsbViewsRepository.RuleResultsConfiguration.Properties.results) {
-            return EsbPackage.eINSTANCE.getRuleResultsConfiguration_Results();
-        }
-        return super.associatedFeature(editorKey);
-    }
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
+	 */
+	public void updatePart(Notification msg) {
+		super.updatePart(msg);
+		if (editingPart.isVisible()) {
+			RuleResultsConfigurationPropertiesEditionPart basePart = (RuleResultsConfigurationPropertiesEditionPart)editingPart;
+			if (EsbPackage.eINSTANCE.getRuleResultsConfiguration_Results().equals(msg.getFeature()) && isAccessible(EsbViewsRepository.RuleResultsConfiguration.Properties.results))
+				basePart.updateResults();
+			
+		}
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
-     */
-    public void updateSemanticModel(final IPropertiesEditionEvent event) {
-        RuleResultsConfiguration ruleResultsConfiguration = (RuleResultsConfiguration) semanticObject;
-        if (EsbViewsRepository.RuleResultsConfiguration.Properties.results == event.getAffectedEditor()) {
-            if (event.getKind() == PropertiesEditionEvent.ADD) {
-                EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext,
-                        this, resultsSettings, editingContext.getAdapterFactory());
-                PropertiesEditingProvider provider = (PropertiesEditingProvider) editingContext.getAdapterFactory()
-                        .adapt(semanticObject, PropertiesEditingProvider.class);
-                if (provider != null) {
-                    PropertiesEditingPolicy policy = provider.getPolicy(context);
-                    if (policy instanceof CreateEditingPolicy) {
-                        policy.execute();
-                    }
-                }
-            } else if (event.getKind() == PropertiesEditionEvent.EDIT) {
-                EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this,
-                        (EObject) event.getNewValue(), editingContext.getAdapterFactory());
-                PropertiesEditingProvider provider = (PropertiesEditingProvider) editingContext.getAdapterFactory()
-                        .adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
-                if (provider != null) {
-                    PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
-                    if (editionPolicy != null) {
-                        editionPolicy.execute();
-                    }
-                }
-            } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-                resultsSettings.removeFromReference((EObject) event.getNewValue());
-            } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-                resultsSettings.move(event.getNewIndex(), (RuleResult) event.getNewValue());
-            }
-        }
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EsbPackage.eINSTANCE.getRuleResultsConfiguration_Results()		);
+		return new NotificationFilter[] {filter,};
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
-     */
-    public void updatePart(Notification msg) {
-        super.updatePart(msg);
-        if (editingPart.isVisible()) {
-            RuleResultsConfigurationPropertiesEditionPart basePart = (RuleResultsConfigurationPropertiesEditionPart) editingPart;
-            if (EsbPackage.eINSTANCE.getRuleResultsConfiguration_Results().equals(msg.getFeature())
-                    && isAccessible(EsbViewsRepository.RuleResultsConfiguration.Properties.results))
-                basePart.updateResults();
 
-        }
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
+	 */
+	public Diagnostic validateValue(IPropertiesEditionEvent event) {
+		Diagnostic ret = Diagnostic.OK_INSTANCE;
+		if (event.getNewValue() != null) {
+			try {
+			} catch (IllegalArgumentException iae) {
+				ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (WrappedException we) {
+				ret = BasicDiagnostic.toDiagnostic(we);
+			}
+		}
+		return ret;
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
-     */
-    @Override
-    protected NotificationFilter[] getNotificationFilters() {
-        NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-                EsbPackage.eINSTANCE.getRuleResultsConfiguration_Results());
-        return new NotificationFilter[] { filter, };
-    }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
-     */
-    public Diagnostic validateValue(IPropertiesEditionEvent event) {
-        Diagnostic ret = Diagnostic.OK_INSTANCE;
-        if (event.getNewValue() != null) {
-            try {
-            } catch (IllegalArgumentException iae) {
-                ret = BasicDiagnostic.toDiagnostic(iae);
-            } catch (WrappedException we) {
-                ret = BasicDiagnostic.toDiagnostic(we);
-            }
-        }
-        return ret;
-    }
+	
+
+	
 
 }

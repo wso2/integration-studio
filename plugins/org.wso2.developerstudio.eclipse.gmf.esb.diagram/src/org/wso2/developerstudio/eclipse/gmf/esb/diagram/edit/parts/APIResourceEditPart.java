@@ -260,12 +260,12 @@ public class APIResourceEditPart extends AbstractBaseFigureEditPart {
             inSequenceInputConnectorFigure = ((APIResourceInSequenceInputConnectorEditPart) childEditPart).getFigure();
             IFigure figure = ((GraphicalEditPart) ((GraphicalEditPart) ((GraphicalEditPart) getChildren().get(4))
                     .getChildren().get(0)).getChildren().get(0)).getFigure();
-            BorderItemLocator locator = new FixedBorderItemLocator(
-                    /*
-                     * (IFigure) ((IFigure) ((IFigure) (IFigure) getFigure()
-                     * .getChildren().get(0)).getChildren().get(0))
-                     * .getChildren().get(1)
-                     */figure, inSequenceInputConnectorFigure, PositionConstants.EAST, 0.25);
+            BorderItemLocator locator = new FixedBorderItemLocator(/*
+                                                                    * (IFigure) ((IFigure) ((IFigure) (IFigure) getFigure()
+                                                                    * .getChildren().get(0)).getChildren().get(0))
+                                                                    * .getChildren().get(1)
+                                                                    */figure, inSequenceInputConnectorFigure,
+                    PositionConstants.EAST, 0.25);
             getBorderedFigure().getBorderItemContainer().add(inSequenceInputConnectorFigure, locator);
             return true;
         }

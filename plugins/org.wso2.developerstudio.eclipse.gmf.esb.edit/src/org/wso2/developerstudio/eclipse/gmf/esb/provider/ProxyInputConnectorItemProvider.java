@@ -22,7 +22,6 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyInputConnector} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class ProxyInputConnectorItemProvider extends InputConnectorItemProvider {
@@ -30,7 +29,6 @@ public class ProxyInputConnectorItemProvider extends InputConnectorItemProvider 
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public ProxyInputConnectorItemProvider(AdapterFactory adapterFactory) {
@@ -41,7 +39,6 @@ public class ProxyInputConnectorItemProvider extends InputConnectorItemProvider 
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -58,7 +55,6 @@ public class ProxyInputConnectorItemProvider extends InputConnectorItemProvider 
      * This returns ProxyInputConnector.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -71,7 +67,6 @@ public class ProxyInputConnectorItemProvider extends InputConnectorItemProvider 
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -85,7 +80,6 @@ public class ProxyInputConnectorItemProvider extends InputConnectorItemProvider 
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -100,7 +94,6 @@ public class ProxyInputConnectorItemProvider extends InputConnectorItemProvider 
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

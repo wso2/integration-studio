@@ -23,7 +23,6 @@ public class AggregateMediatorOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected AggregateMediatorOutputConnectorImpl() {
@@ -33,7 +32,6 @@ public class AggregateMediatorOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

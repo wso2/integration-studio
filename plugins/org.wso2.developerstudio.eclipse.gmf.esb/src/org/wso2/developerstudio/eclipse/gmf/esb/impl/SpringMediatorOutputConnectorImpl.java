@@ -22,7 +22,6 @@ public class SpringMediatorOutputConnectorImpl extends OutputConnectorImpl imple
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected SpringMediatorOutputConnectorImpl() {
@@ -32,7 +31,6 @@ public class SpringMediatorOutputConnectorImpl extends OutputConnectorImpl imple
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

@@ -23,7 +23,6 @@ public class EntitlementMediatorInputConnectorImpl extends InputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected EntitlementMediatorInputConnectorImpl() {
@@ -33,7 +32,6 @@ public class EntitlementMediatorInputConnectorImpl extends InputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

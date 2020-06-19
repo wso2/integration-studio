@@ -44,12 +44,12 @@ import org.apache.synapse.mediators.Value;
 import org.apache.synapse.mediators.builtin.SendMediator;
 
 public class SendMediatorExtFactory extends SendMediatorFactory {
-
+    
     private static SendMediatorExtFactory instance;
-
+    
     private SendMediatorExtFactory() {
     }
-
+    
     public static synchronized SendMediatorExtFactory getInstance() {
         if (instance == null) {
             instance = new SendMediatorExtFactory();

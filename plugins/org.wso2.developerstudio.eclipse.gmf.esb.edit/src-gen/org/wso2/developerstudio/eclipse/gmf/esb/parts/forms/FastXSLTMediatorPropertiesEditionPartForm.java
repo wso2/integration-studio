@@ -263,8 +263,8 @@ public class FastXSLTMediatorPropertiesEditionPartForm extends SectionProperties
              */
             public void widgetSelected(SelectionEvent e) {
                 EEFFeatureEditorDialog dialog = new EEFFeatureEditorDialog(commentsList.getShell(), "FastXSLTMediator", //$NON-NLS-1$
-                        new AdapterFactoryLabelProvider(adapterFactory), commentsListList,
-                        EsbPackage.eINSTANCE.getEsbElement_CommentsList().getEType(), null, false, true, null, null);
+                        new AdapterFactoryLabelProvider(adapterFactory), commentsListList, EsbPackage.eINSTANCE.getEsbElement_CommentsList().getEType(), null, false,
+                        true, null, null);
                 if (dialog.open() == Window.OK) {
                     commentsListList = dialog.getResult();
                     if (commentsListList == null) {
@@ -433,7 +433,7 @@ public class FastXSLTMediatorPropertiesEditionPartForm extends SectionProperties
         widgetFactory.paintBordersFor(parent);
         GridData descriptionData = new GridData(GridData.FILL_HORIZONTAL);
         description.setLayoutData(descriptionData);
-
+        
         description.addFocusListener(new FocusAdapter() {
             /**
              * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
@@ -466,7 +466,7 @@ public class FastXSLTMediatorPropertiesEditionPartForm extends SectionProperties
                 }
             }
         });
-
+        
         description.addKeyListener(new KeyAdapter() {
             /**
              * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
@@ -484,7 +484,7 @@ public class FastXSLTMediatorPropertiesEditionPartForm extends SectionProperties
                 }
             }
         });
-
+        
         EditingUtils.setID(description, EsbViewsRepository.FastXSLTMediator.Misc.description);
         EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
         Control descriptionHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent
@@ -737,9 +737,9 @@ public class FastXSLTMediatorPropertiesEditionPartForm extends SectionProperties
         widgetFactory.paintBordersFor(parent);
         GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
         staticSchemaKeyText.setLayoutData(valueData);
-
+        
         staticSchemaKeyText.addMouseListener(new MouseListener() {
-
+            
             @Override
             public void mouseDown(MouseEvent e) {
                 EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
@@ -751,19 +751,17 @@ public class FastXSLTMediatorPropertiesEditionPartForm extends SectionProperties
                         EsbViewsRepository.FastXSLTMediator.Basic.fastXsltStaticSchemaKey,
                         PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getFastXsltStaticSchemaKey()));
             }
-
+            
             @Override
-            public void mouseUp(MouseEvent e) {
-            }
-
+            public void mouseUp(MouseEvent e) {}
+            
             @Override
-            public void mouseDoubleClick(MouseEvent e) {
-            }
-
+            public void mouseDoubleClick(MouseEvent e) {}
+            
         });
-
+        
         staticSchemaKeyText.addKeyListener(new KeyListener() {
-
+            
             @Override
             public void keyReleased(KeyEvent e) {
                 if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
@@ -771,20 +769,18 @@ public class FastXSLTMediatorPropertiesEditionPartForm extends SectionProperties
                             SWT.NULL, fastXsltStaticSchemaKey, new ArrayList<NamedEntityDescriptor>());
                     dialog.open();
                     staticSchemaKeyText.setText(fastXsltStaticSchemaKey.getKeyValue());
-                    propertiesEditionComponent.firePropertiesChanged(
-                            new PropertiesEditionEvent(FastXSLTMediatorPropertiesEditionPartForm.this,
-                                    EsbViewsRepository.FastXSLTMediator.Basic.fastXsltStaticSchemaKey,
-                                    PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
-                                    getFastXsltStaticSchemaKey()));
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            FastXSLTMediatorPropertiesEditionPartForm.this,
+                            EsbViewsRepository.FastXSLTMediator.Basic.fastXsltStaticSchemaKey,
+                            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getFastXsltStaticSchemaKey()));
                 }
             }
-
+            
             @Override
-            public void keyPressed(KeyEvent e) {
-            }
-
+            public void keyPressed(KeyEvent e) {}
+            
         });
-
+        
         EditingUtils.setID(staticSchemaKeyText, EsbViewsRepository.FastXSLTMediator.Basic.fastXsltStaticSchemaKey);
         EditingUtils.setEEFtype(staticSchemaKeyText, "eef::Text");
         Control staticSchemaKeyHelp = FormUtils.createHelpButton(widgetFactory, parent,
@@ -813,9 +809,9 @@ public class FastXSLTMediatorPropertiesEditionPartForm extends SectionProperties
         dynamicSchemaKeyText.setLayoutData(valueData);
 
         dynamicSchemaKeyText.addMouseListener(new MouseAdapter() {
-
+            
             @Override
-            public void mouseDown(MouseEvent event) {
+            public void mouseDown( MouseEvent event ) {
                 EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
                         SWT.NULL, fastXsltDynamicSchemaKey);
                 nspd.open();
@@ -826,11 +822,11 @@ public class FastXSLTMediatorPropertiesEditionPartForm extends SectionProperties
                                 PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
                                 getFastXsltDynamicSchemaKey()));
             }
-
+            
         });
-
+        
         dynamicSchemaKeyText.addKeyListener(new KeyListener() {
-
+                        
             @Override
             public void keyReleased(KeyEvent e) {
                 if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
@@ -845,13 +841,12 @@ public class FastXSLTMediatorPropertiesEditionPartForm extends SectionProperties
                                     getFastXsltDynamicSchemaKey()));
                 }
             }
-
+            
             @Override
-            public void keyPressed(KeyEvent e) {
-            }
-
+            public void keyPressed(KeyEvent e) {}
+            
         });
-
+        
         EditingUtils.setID(dynamicSchemaKeyText, EsbViewsRepository.FastXSLTMediator.Basic.fastXsltDynamicSchemaKey);
         EditingUtils.setEEFtype(dynamicSchemaKeyText, "eef::Text");
         Control dynamicSchemaKeyHelp = FormUtils.createHelpButton(widgetFactory, parent,
@@ -862,18 +857,20 @@ public class FastXSLTMediatorPropertiesEditionPartForm extends SectionProperties
         dynamicSchemaKeyElements = new Control[] { dynamicSchemaKeyLabel, dynamicSchemaKeyText, dynamicSchemaKeyHelp };
         return parent;
     }
-
+    
     private void openNamespacedPropertyEditor(final Composite parent) {
-        EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
-                fastXsltDynamicSchemaKey);
+        EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(),
+                SWT.NULL, fastXsltDynamicSchemaKey);
         // valueExpression.setPropertyValue(valueExpressionText.getText());
         fastXsltDynamicSchemaKey = nspd.open();
         dynamicSchemaKeyText.setText(fastXsltDynamicSchemaKey.getPropertyValue());
-        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-                FastXSLTMediatorPropertiesEditionPartForm.this,
-                EsbViewsRepository.FastXSLTMediator.Basic.fastXsltDynamicSchemaKey, PropertiesEditionEvent.COMMIT,
-                PropertiesEditionEvent.SET, null, getFastXsltDynamicSchemaKey()));
+        propertiesEditionComponent.firePropertiesChanged(
+                new PropertiesEditionEvent(FastXSLTMediatorPropertiesEditionPartForm.this,
+                        EsbViewsRepository.FastXSLTMediator.Basic.fastXsltDynamicSchemaKey,
+                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                        getFastXsltDynamicSchemaKey()));
     }
+
 
     @Override
     public void refresh() {

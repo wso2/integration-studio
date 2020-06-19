@@ -43,27 +43,17 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediatorOutputConnec
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getInputConnector <em>Input
- * Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getOutputconnector
- * <em>Outputconnector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getStreamName <em>Stream
- * Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getStreamVersion <em>Stream
- * Version</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getEventSink <em>Event
- * Sink</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getMetaAttributes <em>Meta
- * Attributes</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getCorrelationAttributes
- * <em>Correlation Attributes</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getPayloadAttributes <em>Payload
- * Attributes</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getArbitraryAttributes
- * <em>Arbitrary Attributes</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#isAsync <em>Async</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getAsyncTimeout <em>Async
- * Timeout</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getOutputconnector <em>Outputconnector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getStreamName <em>Stream Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getStreamVersion <em>Stream Version</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getEventSink <em>Event Sink</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getMetaAttributes <em>Meta Attributes</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getCorrelationAttributes <em>Correlation Attributes</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getPayloadAttributes <em>Payload Attributes</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getArbitraryAttributes <em>Arbitrary Attributes</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#isAsync <em>Async</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getAsyncTimeout <em>Async Timeout</em>}</li>
  * </ul>
  *
  * @generated
@@ -73,7 +63,6 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
      * The cached value of the '{@link #getInputConnector() <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getInputConnector()
      * @generated
      * @ordered
@@ -84,7 +73,6 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
      * The cached value of the '{@link #getOutputconnector() <em>Outputconnector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getOutputconnector()
      * @generated
      * @ordered
@@ -95,7 +83,6 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
      * The default value of the '{@link #getStreamName() <em>Stream Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getStreamName()
      * @generated
      * @ordered
@@ -106,7 +93,6 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
      * The cached value of the '{@link #getStreamName() <em>Stream Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getStreamName()
      * @generated
      * @ordered
@@ -117,7 +103,6 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
      * The default value of the '{@link #getStreamVersion() <em>Stream Version</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getStreamVersion()
      * @generated
      * @ordered
@@ -128,7 +113,6 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
      * The cached value of the '{@link #getStreamVersion() <em>Stream Version</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getStreamVersion()
      * @generated
      * @ordered
@@ -139,7 +123,6 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
      * The default value of the '{@link #getEventSink() <em>Event Sink</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getEventSink()
      * @generated
      * @ordered
@@ -150,7 +133,6 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
      * The cached value of the '{@link #getEventSink() <em>Event Sink</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getEventSink()
      * @generated
      * @ordered
@@ -161,7 +143,6 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
      * The cached value of the '{@link #getMetaAttributes() <em>Meta Attributes</em>}' containment reference list.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getMetaAttributes()
      * @generated
      * @ordered
@@ -169,11 +150,9 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
     protected EList<PublishEventMediatorAttribute> metaAttributes;
 
     /**
-     * The cached value of the '{@link #getCorrelationAttributes() <em>Correlation Attributes</em>}' containment
-     * reference list.
+     * The cached value of the '{@link #getCorrelationAttributes() <em>Correlation Attributes</em>}' containment reference list.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getCorrelationAttributes()
      * @generated
      * @ordered
@@ -184,7 +163,6 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
      * The cached value of the '{@link #getPayloadAttributes() <em>Payload Attributes</em>}' containment reference list.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getPayloadAttributes()
      * @generated
      * @ordered
@@ -192,11 +170,9 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
     protected EList<PublishEventMediatorAttribute> payloadAttributes;
 
     /**
-     * The cached value of the '{@link #getArbitraryAttributes() <em>Arbitrary Attributes</em>}' containment reference
-     * list.
+     * The cached value of the '{@link #getArbitraryAttributes() <em>Arbitrary Attributes</em>}' containment reference list.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getArbitraryAttributes()
      * @generated
      * @ordered
@@ -207,7 +183,6 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
      * The default value of the '{@link #isAsync() <em>Async</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #isAsync()
      * @generated
      * @ordered
@@ -218,7 +193,6 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
      * The cached value of the '{@link #isAsync() <em>Async</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #isAsync()
      * @generated
      * @ordered
@@ -229,7 +203,6 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
      * The default value of the '{@link #getAsyncTimeout() <em>Async Timeout</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getAsyncTimeout()
      * @generated
      * @ordered
@@ -240,7 +213,6 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
      * The cached value of the '{@link #getAsyncTimeout() <em>Async Timeout</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getAsyncTimeout()
      * @generated
      * @ordered
@@ -250,7 +222,6 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected PublishEventMediatorImpl() {
@@ -260,7 +231,6 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -271,7 +241,6 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public PublishEventMediatorInputConnector getInputConnector() {
@@ -281,7 +250,6 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetInputConnector(PublishEventMediatorInputConnector newInputConnector,
@@ -289,12 +257,8 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
         PublishEventMediatorInputConnector oldInputConnector = inputConnector;
         inputConnector = newInputConnector;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.PUBLISH_EVENT_MEDIATOR__INPUT_CONNECTOR, oldInputConnector, newInputConnector);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.PUBLISH_EVENT_MEDIATOR__INPUT_CONNECTOR, oldInputConnector, newInputConnector);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -302,30 +266,25 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setInputConnector(PublishEventMediatorInputConnector newInputConnector) {
         if (newInputConnector != inputConnector) {
             NotificationChain msgs = null;
             if (inputConnector != null)
-                msgs = ((InternalEObject) inputConnector).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.PUBLISH_EVENT_MEDIATOR__INPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)inputConnector).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.PUBLISH_EVENT_MEDIATOR__INPUT_CONNECTOR, null, msgs);
             if (newInputConnector != null)
-                msgs = ((InternalEObject) newInputConnector).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.PUBLISH_EVENT_MEDIATOR__INPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)newInputConnector).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.PUBLISH_EVENT_MEDIATOR__INPUT_CONNECTOR, null, msgs);
             msgs = basicSetInputConnector(newInputConnector, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PUBLISH_EVENT_MEDIATOR__INPUT_CONNECTOR,
-                    newInputConnector, newInputConnector));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PUBLISH_EVENT_MEDIATOR__INPUT_CONNECTOR, newInputConnector, newInputConnector));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public PublishEventMediatorOutputConnector getOutputconnector() {
@@ -335,7 +294,6 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetOutputconnector(PublishEventMediatorOutputConnector newOutputconnector,
@@ -343,12 +301,8 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
         PublishEventMediatorOutputConnector oldOutputconnector = outputconnector;
         outputconnector = newOutputconnector;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.PUBLISH_EVENT_MEDIATOR__OUTPUTCONNECTOR, oldOutputconnector, newOutputconnector);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.PUBLISH_EVENT_MEDIATOR__OUTPUTCONNECTOR, oldOutputconnector, newOutputconnector);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -356,30 +310,25 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setOutputconnector(PublishEventMediatorOutputConnector newOutputconnector) {
         if (newOutputconnector != outputconnector) {
             NotificationChain msgs = null;
             if (outputconnector != null)
-                msgs = ((InternalEObject) outputconnector).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.PUBLISH_EVENT_MEDIATOR__OUTPUTCONNECTOR, null, msgs);
+                msgs = ((InternalEObject)outputconnector).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.PUBLISH_EVENT_MEDIATOR__OUTPUTCONNECTOR, null, msgs);
             if (newOutputconnector != null)
-                msgs = ((InternalEObject) newOutputconnector).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.PUBLISH_EVENT_MEDIATOR__OUTPUTCONNECTOR, null, msgs);
+                msgs = ((InternalEObject)newOutputconnector).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.PUBLISH_EVENT_MEDIATOR__OUTPUTCONNECTOR, null, msgs);
             msgs = basicSetOutputconnector(newOutputconnector, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PUBLISH_EVENT_MEDIATOR__OUTPUTCONNECTOR,
-                    newOutputconnector, newOutputconnector));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PUBLISH_EVENT_MEDIATOR__OUTPUTCONNECTOR, newOutputconnector, newOutputconnector));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getStreamName() {
@@ -389,21 +338,18 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setStreamName(String newStreamName) {
         String oldStreamName = streamName;
         streamName = newStreamName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PUBLISH_EVENT_MEDIATOR__STREAM_NAME,
-                    oldStreamName, streamName));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PUBLISH_EVENT_MEDIATOR__STREAM_NAME, oldStreamName, streamName));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getStreamVersion() {
@@ -413,21 +359,18 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setStreamVersion(String newStreamVersion) {
         String oldStreamVersion = streamVersion;
         streamVersion = newStreamVersion;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PUBLISH_EVENT_MEDIATOR__STREAM_VERSION,
-                    oldStreamVersion, streamVersion));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PUBLISH_EVENT_MEDIATOR__STREAM_VERSION, oldStreamVersion, streamVersion));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getEventSink() {
@@ -437,27 +380,23 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setEventSink(String newEventSink) {
         String oldEventSink = eventSink;
         eventSink = newEventSink;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PUBLISH_EVENT_MEDIATOR__EVENT_SINK,
-                    oldEventSink, eventSink));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PUBLISH_EVENT_MEDIATOR__EVENT_SINK, oldEventSink, eventSink));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EList<PublishEventMediatorAttribute> getMetaAttributes() {
         if (metaAttributes == null) {
-            metaAttributes = new EObjectContainmentEList<PublishEventMediatorAttribute>(
-                    PublishEventMediatorAttribute.class, this, EsbPackage.PUBLISH_EVENT_MEDIATOR__META_ATTRIBUTES);
+            metaAttributes = new EObjectContainmentEList<PublishEventMediatorAttribute>(PublishEventMediatorAttribute.class, this, EsbPackage.PUBLISH_EVENT_MEDIATOR__META_ATTRIBUTES);
         }
         return metaAttributes;
     }
@@ -465,14 +404,11 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EList<PublishEventMediatorAttribute> getCorrelationAttributes() {
         if (correlationAttributes == null) {
-            correlationAttributes = new EObjectContainmentEList<PublishEventMediatorAttribute>(
-                    PublishEventMediatorAttribute.class, this,
-                    EsbPackage.PUBLISH_EVENT_MEDIATOR__CORRELATION_ATTRIBUTES);
+            correlationAttributes = new EObjectContainmentEList<PublishEventMediatorAttribute>(PublishEventMediatorAttribute.class, this, EsbPackage.PUBLISH_EVENT_MEDIATOR__CORRELATION_ATTRIBUTES);
         }
         return correlationAttributes;
     }
@@ -480,13 +416,11 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EList<PublishEventMediatorAttribute> getPayloadAttributes() {
         if (payloadAttributes == null) {
-            payloadAttributes = new EObjectContainmentEList<PublishEventMediatorAttribute>(
-                    PublishEventMediatorAttribute.class, this, EsbPackage.PUBLISH_EVENT_MEDIATOR__PAYLOAD_ATTRIBUTES);
+            payloadAttributes = new EObjectContainmentEList<PublishEventMediatorAttribute>(PublishEventMediatorAttribute.class, this, EsbPackage.PUBLISH_EVENT_MEDIATOR__PAYLOAD_ATTRIBUTES);
         }
         return payloadAttributes;
     }
@@ -494,13 +428,11 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EList<PublishEventMediatorAttribute> getArbitraryAttributes() {
         if (arbitraryAttributes == null) {
-            arbitraryAttributes = new EObjectContainmentEList<PublishEventMediatorAttribute>(
-                    PublishEventMediatorAttribute.class, this, EsbPackage.PUBLISH_EVENT_MEDIATOR__ARBITRARY_ATTRIBUTES);
+            arbitraryAttributes = new EObjectContainmentEList<PublishEventMediatorAttribute>(PublishEventMediatorAttribute.class, this, EsbPackage.PUBLISH_EVENT_MEDIATOR__ARBITRARY_ATTRIBUTES);
         }
         return arbitraryAttributes;
     }
@@ -508,7 +440,6 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public boolean isAsync() {
@@ -518,21 +449,18 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setAsync(boolean newAsync) {
         boolean oldAsync = async;
         async = newAsync;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PUBLISH_EVENT_MEDIATOR__ASYNC, oldAsync,
-                    async));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PUBLISH_EVENT_MEDIATOR__ASYNC, oldAsync, async));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getAsyncTimeout() {
@@ -542,38 +470,35 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setAsyncTimeout(String newAsyncTimeout) {
         String oldAsyncTimeout = asyncTimeout;
         asyncTimeout = newAsyncTimeout;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PUBLISH_EVENT_MEDIATOR__ASYNC_TIMEOUT,
-                    oldAsyncTimeout, asyncTimeout));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PUBLISH_EVENT_MEDIATOR__ASYNC_TIMEOUT, oldAsyncTimeout, asyncTimeout));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__INPUT_CONNECTOR:
-            return basicSetInputConnector(null, msgs);
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__OUTPUTCONNECTOR:
-            return basicSetOutputconnector(null, msgs);
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__META_ATTRIBUTES:
-            return ((InternalEList<?>) getMetaAttributes()).basicRemove(otherEnd, msgs);
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__CORRELATION_ATTRIBUTES:
-            return ((InternalEList<?>) getCorrelationAttributes()).basicRemove(otherEnd, msgs);
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__PAYLOAD_ATTRIBUTES:
-            return ((InternalEList<?>) getPayloadAttributes()).basicRemove(otherEnd, msgs);
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__ARBITRARY_ATTRIBUTES:
-            return ((InternalEList<?>) getArbitraryAttributes()).basicRemove(otherEnd, msgs);
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__INPUT_CONNECTOR:
+                return basicSetInputConnector(null, msgs);
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__OUTPUTCONNECTOR:
+                return basicSetOutputconnector(null, msgs);
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__META_ATTRIBUTES:
+                return ((InternalEList<?>)getMetaAttributes()).basicRemove(otherEnd, msgs);
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__CORRELATION_ATTRIBUTES:
+                return ((InternalEList<?>)getCorrelationAttributes()).basicRemove(otherEnd, msgs);
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__PAYLOAD_ATTRIBUTES:
+                return ((InternalEList<?>)getPayloadAttributes()).basicRemove(otherEnd, msgs);
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__ARBITRARY_ATTRIBUTES:
+                return ((InternalEList<?>)getArbitraryAttributes()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -581,34 +506,33 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__INPUT_CONNECTOR:
-            return getInputConnector();
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__OUTPUTCONNECTOR:
-            return getOutputconnector();
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__STREAM_NAME:
-            return getStreamName();
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__STREAM_VERSION:
-            return getStreamVersion();
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__EVENT_SINK:
-            return getEventSink();
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__META_ATTRIBUTES:
-            return getMetaAttributes();
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__CORRELATION_ATTRIBUTES:
-            return getCorrelationAttributes();
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__PAYLOAD_ATTRIBUTES:
-            return getPayloadAttributes();
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__ARBITRARY_ATTRIBUTES:
-            return getArbitraryAttributes();
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__ASYNC:
-            return isAsync();
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__ASYNC_TIMEOUT:
-            return getAsyncTimeout();
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__INPUT_CONNECTOR:
+                return getInputConnector();
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__OUTPUTCONNECTOR:
+                return getOutputconnector();
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__STREAM_NAME:
+                return getStreamName();
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__STREAM_VERSION:
+                return getStreamVersion();
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__EVENT_SINK:
+                return getEventSink();
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__META_ATTRIBUTES:
+                return getMetaAttributes();
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__CORRELATION_ATTRIBUTES:
+                return getCorrelationAttributes();
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__PAYLOAD_ATTRIBUTES:
+                return getPayloadAttributes();
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__ARBITRARY_ATTRIBUTES:
+                return getArbitraryAttributes();
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__ASYNC:
+                return isAsync();
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__ASYNC_TIMEOUT:
+                return getAsyncTimeout();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -616,50 +540,49 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__INPUT_CONNECTOR:
-            setInputConnector((PublishEventMediatorInputConnector) newValue);
-            return;
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__OUTPUTCONNECTOR:
-            setOutputconnector((PublishEventMediatorOutputConnector) newValue);
-            return;
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__STREAM_NAME:
-            setStreamName((String) newValue);
-            return;
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__STREAM_VERSION:
-            setStreamVersion((String) newValue);
-            return;
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__EVENT_SINK:
-            setEventSink((String) newValue);
-            return;
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__META_ATTRIBUTES:
-            getMetaAttributes().clear();
-            getMetaAttributes().addAll((Collection<? extends PublishEventMediatorAttribute>) newValue);
-            return;
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__CORRELATION_ATTRIBUTES:
-            getCorrelationAttributes().clear();
-            getCorrelationAttributes().addAll((Collection<? extends PublishEventMediatorAttribute>) newValue);
-            return;
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__PAYLOAD_ATTRIBUTES:
-            getPayloadAttributes().clear();
-            getPayloadAttributes().addAll((Collection<? extends PublishEventMediatorAttribute>) newValue);
-            return;
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__ARBITRARY_ATTRIBUTES:
-            getArbitraryAttributes().clear();
-            getArbitraryAttributes().addAll((Collection<? extends PublishEventMediatorAttribute>) newValue);
-            return;
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__ASYNC:
-            setAsync((Boolean) newValue);
-            return;
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__ASYNC_TIMEOUT:
-            setAsyncTimeout((String) newValue);
-            return;
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__INPUT_CONNECTOR:
+                setInputConnector((PublishEventMediatorInputConnector)newValue);
+                return;
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__OUTPUTCONNECTOR:
+                setOutputconnector((PublishEventMediatorOutputConnector)newValue);
+                return;
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__STREAM_NAME:
+                setStreamName((String)newValue);
+                return;
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__STREAM_VERSION:
+                setStreamVersion((String)newValue);
+                return;
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__EVENT_SINK:
+                setEventSink((String)newValue);
+                return;
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__META_ATTRIBUTES:
+                getMetaAttributes().clear();
+                getMetaAttributes().addAll((Collection<? extends PublishEventMediatorAttribute>)newValue);
+                return;
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__CORRELATION_ATTRIBUTES:
+                getCorrelationAttributes().clear();
+                getCorrelationAttributes().addAll((Collection<? extends PublishEventMediatorAttribute>)newValue);
+                return;
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__PAYLOAD_ATTRIBUTES:
+                getPayloadAttributes().clear();
+                getPayloadAttributes().addAll((Collection<? extends PublishEventMediatorAttribute>)newValue);
+                return;
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__ARBITRARY_ATTRIBUTES:
+                getArbitraryAttributes().clear();
+                getArbitraryAttributes().addAll((Collection<? extends PublishEventMediatorAttribute>)newValue);
+                return;
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__ASYNC:
+                setAsync((Boolean)newValue);
+                return;
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__ASYNC_TIMEOUT:
+                setAsyncTimeout((String)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -667,45 +590,44 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__INPUT_CONNECTOR:
-            setInputConnector((PublishEventMediatorInputConnector) null);
-            return;
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__OUTPUTCONNECTOR:
-            setOutputconnector((PublishEventMediatorOutputConnector) null);
-            return;
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__STREAM_NAME:
-            setStreamName(STREAM_NAME_EDEFAULT);
-            return;
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__STREAM_VERSION:
-            setStreamVersion(STREAM_VERSION_EDEFAULT);
-            return;
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__EVENT_SINK:
-            setEventSink(EVENT_SINK_EDEFAULT);
-            return;
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__META_ATTRIBUTES:
-            getMetaAttributes().clear();
-            return;
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__CORRELATION_ATTRIBUTES:
-            getCorrelationAttributes().clear();
-            return;
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__PAYLOAD_ATTRIBUTES:
-            getPayloadAttributes().clear();
-            return;
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__ARBITRARY_ATTRIBUTES:
-            getArbitraryAttributes().clear();
-            return;
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__ASYNC:
-            setAsync(ASYNC_EDEFAULT);
-            return;
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__ASYNC_TIMEOUT:
-            setAsyncTimeout(ASYNC_TIMEOUT_EDEFAULT);
-            return;
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__INPUT_CONNECTOR:
+                setInputConnector((PublishEventMediatorInputConnector)null);
+                return;
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__OUTPUTCONNECTOR:
+                setOutputconnector((PublishEventMediatorOutputConnector)null);
+                return;
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__STREAM_NAME:
+                setStreamName(STREAM_NAME_EDEFAULT);
+                return;
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__STREAM_VERSION:
+                setStreamVersion(STREAM_VERSION_EDEFAULT);
+                return;
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__EVENT_SINK:
+                setEventSink(EVENT_SINK_EDEFAULT);
+                return;
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__META_ATTRIBUTES:
+                getMetaAttributes().clear();
+                return;
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__CORRELATION_ATTRIBUTES:
+                getCorrelationAttributes().clear();
+                return;
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__PAYLOAD_ATTRIBUTES:
+                getPayloadAttributes().clear();
+                return;
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__ARBITRARY_ATTRIBUTES:
+                getArbitraryAttributes().clear();
+                return;
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__ASYNC:
+                setAsync(ASYNC_EDEFAULT);
+                return;
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__ASYNC_TIMEOUT:
+                setAsyncTimeout(ASYNC_TIMEOUT_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -713,35 +635,33 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__INPUT_CONNECTOR:
-            return inputConnector != null;
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__OUTPUTCONNECTOR:
-            return outputconnector != null;
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__STREAM_NAME:
-            return STREAM_NAME_EDEFAULT == null ? streamName != null : !STREAM_NAME_EDEFAULT.equals(streamName);
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__STREAM_VERSION:
-            return STREAM_VERSION_EDEFAULT == null ? streamVersion != null
-                    : !STREAM_VERSION_EDEFAULT.equals(streamVersion);
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__EVENT_SINK:
-            return EVENT_SINK_EDEFAULT == null ? eventSink != null : !EVENT_SINK_EDEFAULT.equals(eventSink);
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__META_ATTRIBUTES:
-            return metaAttributes != null && !metaAttributes.isEmpty();
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__CORRELATION_ATTRIBUTES:
-            return correlationAttributes != null && !correlationAttributes.isEmpty();
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__PAYLOAD_ATTRIBUTES:
-            return payloadAttributes != null && !payloadAttributes.isEmpty();
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__ARBITRARY_ATTRIBUTES:
-            return arbitraryAttributes != null && !arbitraryAttributes.isEmpty();
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__ASYNC:
-            return async != ASYNC_EDEFAULT;
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__ASYNC_TIMEOUT:
-            return ASYNC_TIMEOUT_EDEFAULT == null ? asyncTimeout != null : !ASYNC_TIMEOUT_EDEFAULT.equals(asyncTimeout);
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__INPUT_CONNECTOR:
+                return inputConnector != null;
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__OUTPUTCONNECTOR:
+                return outputconnector != null;
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__STREAM_NAME:
+                return STREAM_NAME_EDEFAULT == null ? streamName != null : !STREAM_NAME_EDEFAULT.equals(streamName);
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__STREAM_VERSION:
+                return STREAM_VERSION_EDEFAULT == null ? streamVersion != null : !STREAM_VERSION_EDEFAULT.equals(streamVersion);
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__EVENT_SINK:
+                return EVENT_SINK_EDEFAULT == null ? eventSink != null : !EVENT_SINK_EDEFAULT.equals(eventSink);
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__META_ATTRIBUTES:
+                return metaAttributes != null && !metaAttributes.isEmpty();
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__CORRELATION_ATTRIBUTES:
+                return correlationAttributes != null && !correlationAttributes.isEmpty();
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__PAYLOAD_ATTRIBUTES:
+                return payloadAttributes != null && !payloadAttributes.isEmpty();
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__ARBITRARY_ATTRIBUTES:
+                return arbitraryAttributes != null && !arbitraryAttributes.isEmpty();
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__ASYNC:
+                return async != ASYNC_EDEFAULT;
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__ASYNC_TIMEOUT:
+                return ASYNC_TIMEOUT_EDEFAULT == null ? asyncTimeout != null : !ASYNC_TIMEOUT_EDEFAULT.equals(asyncTimeout);
         }
         return super.eIsSet(featureID);
     }
@@ -749,13 +669,11 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
-            return super.toString();
+        if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (streamName: ");

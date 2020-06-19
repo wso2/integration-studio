@@ -23,7 +23,6 @@ public class TransactionMediatorOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected TransactionMediatorOutputConnectorImpl() {
@@ -33,7 +32,6 @@ public class TransactionMediatorOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

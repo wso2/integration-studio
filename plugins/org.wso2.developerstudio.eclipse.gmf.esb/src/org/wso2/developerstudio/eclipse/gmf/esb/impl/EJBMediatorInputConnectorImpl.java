@@ -31,7 +31,6 @@ public class EJBMediatorInputConnectorImpl extends InputConnectorImpl implements
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected EJBMediatorInputConnectorImpl() {
@@ -41,7 +40,6 @@ public class EJBMediatorInputConnectorImpl extends InputConnectorImpl implements
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

@@ -77,20 +77,20 @@ public class URLRewriteMediatorDeserializer extends AbstractEsbNodeDeserializer<
                         evaluatorSerializer.serialize(conditionElem, evaluator);
                         String condition = conditionElem.getFirstOMChild().toString();
                         evaluatorExpressionProperty.setEvaluatorValue(condition);
-
+                        
                         TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(urlRewriteRule);
                         if (domain != null) {
                             domain.getCommandStack().execute(new RecordingCommand(domain) {
 
                                 @Override
                                 protected void doExecute() {
-                                    urlRewriteRule.setUrlRewriteRuleCondition(evaluatorExpressionProperty);
+                                	urlRewriteRule.setUrlRewriteRuleCondition(evaluatorExpressionProperty);
                                 }
                             });
                         } else {
-                            urlRewriteRule.setUrlRewriteRuleCondition(evaluatorExpressionProperty);
+                        	urlRewriteRule.setUrlRewriteRuleCondition(evaluatorExpressionProperty);
                         }
-
+                        
                     } catch (EvaluatorException e) {
                         getLog().warn("", e);
                     }

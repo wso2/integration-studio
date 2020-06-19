@@ -7,6 +7,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.parts;
 import org.eclipse.emf.common.util.Enumerator;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 
+
 // End of user code
 
 /**
@@ -15,80 +16,80 @@ import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
  */
 public interface SqlParameterDefinitionPropertiesEditionPart {
 
-    /**
-     * @return the dataType
-     * 
-     */
-    public Enumerator getDataType();
+	/**
+	 * @return the dataType
+	 * 
+	 */
+	public Enumerator getDataType();
 
-    /**
-     * Init the dataType
-     * 
-     * @param input the viewer input
-     * @param current the current value
-     */
-    public void initDataType(Object input, Enumerator current);
+	/**
+	 * Init the dataType
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initDataType(Object input, Enumerator current);
 
-    /**
-     * Defines a new dataType
-     * 
-     * @param newValue the new dataType to set
-     * 
-     */
-    public void setDataType(Enumerator newValue);
+	/**
+	 * Defines a new dataType
+	 * @param newValue the new dataType to set
+	 * 
+	 */
+	public void setDataType(Enumerator newValue);
 
-    /**
-     * @return the valueType
-     * 
-     */
-    public Enumerator getValueType();
 
-    /**
-     * Init the valueType
-     * 
-     * @param input the viewer input
-     * @param current the current value
-     */
-    public void initValueType(Object input, Enumerator current);
+	/**
+	 * @return the valueType
+	 * 
+	 */
+	public Enumerator getValueType();
 
-    /**
-     * Defines a new valueType
-     * 
-     * @param newValue the new valueType to set
-     * 
-     */
-    public void setValueType(Enumerator newValue);
+	/**
+	 * Init the valueType
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initValueType(Object input, Enumerator current);
 
-    /**
-     * @return the valueLiteral
-     * 
-     */
-    public String getValueLiteral();
+	/**
+	 * Defines a new valueType
+	 * @param newValue the new valueType to set
+	 * 
+	 */
+	public void setValueType(Enumerator newValue);
 
-    /**
-     * Defines a new valueLiteral
-     * 
-     * @param newValue the new valueLiteral to set
-     * 
-     */
-    public void setValueLiteral(String newValue);
 
-    // Start of user code for valueExpression specific getters and setters declaration
-    public void setValueExpression(NamespacedProperty nsp);
+	/**
+	 * @return the valueLiteral
+	 * 
+	 */
+	public String getValueLiteral();
 
-    public NamespacedProperty getValueExpression();
-    // End of user code
+	/**
+	 * Defines a new valueLiteral
+	 * @param newValue the new valueLiteral to set
+	 * 
+	 */
+	public void setValueLiteral(String newValue);
 
-    /**
-     * Returns the internationalized title text.
-     * 
-     * @return the internationalized title text.
-     * 
-     */
-    public String getTitle();
 
-    // Start of user code for additional methods
 
-    // End of user code
+
+	// Start of user code for valueExpression specific getters and setters declaration
+	public void setValueExpression(NamespacedProperty nsp);
+	
+	public NamespacedProperty getValueExpression();
+	// End of user code
+
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 * 
+	 */
+	public String getTitle();
+
+	// Start of user code for additional methods
+	
+	// End of user code
 
 }

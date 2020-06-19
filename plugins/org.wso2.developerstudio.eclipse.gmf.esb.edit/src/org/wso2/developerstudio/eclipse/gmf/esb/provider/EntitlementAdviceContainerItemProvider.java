@@ -36,11 +36,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementAdviceContainer}
- * object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementAdviceContainer} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class EntitlementAdviceContainerItemProvider extends EsbNodeItemProvider {
@@ -48,7 +46,6 @@ public class EntitlementAdviceContainerItemProvider extends EsbNodeItemProvider 
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EntitlementAdviceContainerItemProvider(AdapterFactory adapterFactory) {
@@ -59,7 +56,6 @@ public class EntitlementAdviceContainerItemProvider extends EsbNodeItemProvider 
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -77,7 +73,6 @@ public class EntitlementAdviceContainerItemProvider extends EsbNodeItemProvider 
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -92,7 +87,6 @@ public class EntitlementAdviceContainerItemProvider extends EsbNodeItemProvider 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -107,7 +101,6 @@ public class EntitlementAdviceContainerItemProvider extends EsbNodeItemProvider 
      * This returns EntitlementAdviceContainer.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -119,7 +112,6 @@ public class EntitlementAdviceContainerItemProvider extends EsbNodeItemProvider 
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -132,7 +124,6 @@ public class EntitlementAdviceContainerItemProvider extends EsbNodeItemProvider 
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -140,9 +131,9 @@ public class EntitlementAdviceContainerItemProvider extends EsbNodeItemProvider 
         updateChildren(notification);
 
         switch (notification.getFeatureID(EntitlementAdviceContainer.class)) {
-        case EsbPackage.ENTITLEMENT_ADVICE_CONTAINER__MEDIATOR_FLOW:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.ENTITLEMENT_ADVICE_CONTAINER__MEDIATOR_FLOW:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -152,15 +143,16 @@ public class EntitlementAdviceContainerItemProvider extends EsbNodeItemProvider 
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.ENTITLEMENT_ADVICE_CONTAINER__MEDIATOR_FLOW,
-                EsbFactory.eINSTANCE.createMediatorFlow()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.ENTITLEMENT_ADVICE_CONTAINER__MEDIATOR_FLOW,
+                 EsbFactory.eINSTANCE.createMediatorFlow()));
     }
 
 }

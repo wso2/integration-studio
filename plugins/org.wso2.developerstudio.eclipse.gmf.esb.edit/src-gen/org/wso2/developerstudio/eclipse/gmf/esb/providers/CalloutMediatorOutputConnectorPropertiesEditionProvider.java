@@ -30,138 +30,114 @@ import org.wso2.developerstudio.eclipse.gmf.esb.components.CalloutMediatorOutput
  */
 public class CalloutMediatorOutputConnectorPropertiesEditionProvider extends PropertiesEditingProviderImpl {
 
-    /**
-     * Constructor without provider for super types.
-     */
-    public CalloutMediatorOutputConnectorPropertiesEditionProvider() {
-        super();
-    }
+	/**
+	 * Constructor without provider for super types.
+	 */
+	public CalloutMediatorOutputConnectorPropertiesEditionProvider() {
+		super();
+	}
 
-    /**
-     * Constructor with providers for super types.
-     * 
-     * @param superProviders providers to use for super types.
-     */
-    public CalloutMediatorOutputConnectorPropertiesEditionProvider(List<PropertiesEditingProvider> superProviders) {
-        super(superProviders);
-    }
+	/**
+	 * Constructor with providers for super types.
+	 * @param superProviders providers to use for super types.
+	 */
+	public CalloutMediatorOutputConnectorPropertiesEditionProvider(List<PropertiesEditingProvider> superProviders) {
+		super(superProviders);
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext)
-     * 
-     */
-    public boolean provides(PropertiesEditingContext editingContext) {
-        return (editingContext.getEObject() instanceof CalloutMediatorOutputConnector)
-                && (EsbPackage.Literals.CALLOUT_MEDIATOR_OUTPUT_CONNECTOR == editingContext.getEObject().eClass());
-    }
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext)
+	 * 
+	 */
+	public boolean provides(PropertiesEditingContext editingContext) {
+		return (editingContext.getEObject() instanceof CalloutMediatorOutputConnector) 
+					&& (EsbPackage.Literals.CALLOUT_MEDIATOR_OUTPUT_CONNECTOR == editingContext.getEObject().eClass());
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext,
-     *      java.lang.String)
-     * 
-     */
-    public boolean provides(PropertiesEditingContext editingContext, String part) {
-        return (editingContext.getEObject() instanceof CalloutMediatorOutputConnector)
-                && (CalloutMediatorOutputConnectorPropertiesEditionComponent.BASE_PART.equals(part));
-    }
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String)
+	 * 
+	 */
+	public boolean provides(PropertiesEditingContext editingContext, String part) {
+		return (editingContext.getEObject() instanceof CalloutMediatorOutputConnector) && (CalloutMediatorOutputConnectorPropertiesEditionComponent.BASE_PART.equals(part));
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext,
-     *      java.lang.Class)
-     * 
-     */
-    @SuppressWarnings("rawtypes")
-    public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-        return (editingContext.getEObject() instanceof CalloutMediatorOutputConnector)
-                && (refinement == CalloutMediatorOutputConnectorPropertiesEditionComponent.class);
-    }
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.Class)
+	 * 
+	 */
+	@SuppressWarnings("rawtypes")
+	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
+		return (editingContext.getEObject() instanceof CalloutMediatorOutputConnector) && (refinement == CalloutMediatorOutputConnectorPropertiesEditionComponent.class);
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext,
-     *      java.lang.String, java.lang.Class)
-     * 
-     */
-    @SuppressWarnings("rawtypes")
-    public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-        return (editingContext.getEObject() instanceof CalloutMediatorOutputConnector)
-                && ((CalloutMediatorOutputConnectorPropertiesEditionComponent.BASE_PART.equals(part)
-                        && refinement == CalloutMediatorOutputConnectorPropertiesEditionComponent.class));
-    }
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.Class)
+	 * 
+	 */
+	@SuppressWarnings("rawtypes")
+	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
+		return (editingContext.getEObject() instanceof CalloutMediatorOutputConnector) && ((CalloutMediatorOutputConnectorPropertiesEditionComponent.BASE_PART.equals(part) && refinement == CalloutMediatorOutputConnectorPropertiesEditionComponent.class));
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext,
-     *      java.lang.String)
-     * 
-     */
-    public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext,
-            String mode) {
-        if (editingContext.getEObject() instanceof CalloutMediatorOutputConnector) {
-            return new CalloutMediatorOutputConnectorPropertiesEditionComponent(editingContext,
-                    editingContext.getEObject(), mode);
-        }
-        return super.getPropertiesEditingComponent(editingContext, mode);
-    }
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String)
+	 * 
+	 */
+	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
+		if (editingContext.getEObject() instanceof CalloutMediatorOutputConnector) {
+			return new CalloutMediatorOutputConnectorPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		}
+		return super.getPropertiesEditingComponent(editingContext, mode);
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext,
-     *      java.lang.String, java.lang.String)
-     * 
-     */
-    public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext,
-            String mode, String part) {
-        if (editingContext.getEObject() instanceof CalloutMediatorOutputConnector) {
-            if (CalloutMediatorOutputConnectorPropertiesEditionComponent.BASE_PART.equals(part))
-                return new CalloutMediatorOutputConnectorPropertiesEditionComponent(editingContext,
-                        editingContext.getEObject(), mode);
-        }
-        return super.getPropertiesEditingComponent(editingContext, mode, part);
-    }
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.String)
+	 * 
+	 */
+	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
+		if (editingContext.getEObject() instanceof CalloutMediatorOutputConnector) {
+			if (CalloutMediatorOutputConnectorPropertiesEditionComponent.BASE_PART.equals(part))
+				return new CalloutMediatorOutputConnectorPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		}
+		return super.getPropertiesEditingComponent(editingContext, mode, part);
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext,
-     *      java.lang.String, java.lang.String, java.lang.Class)
-     */
-    @SuppressWarnings("rawtypes")
-    public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext,
-            String mode, String part, java.lang.Class refinement) {
-        if (editingContext.getEObject() instanceof CalloutMediatorOutputConnector) {
-            if (CalloutMediatorOutputConnectorPropertiesEditionComponent.BASE_PART.equals(part)
-                    && refinement == CalloutMediatorOutputConnectorPropertiesEditionComponent.class)
-                return new CalloutMediatorOutputConnectorPropertiesEditionComponent(editingContext,
-                        editingContext.getEObject(), mode);
-        }
-        return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
-    }
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.String, java.lang.Class)
+	 */
+	@SuppressWarnings("rawtypes")
+	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
+		if (editingContext.getEObject() instanceof CalloutMediatorOutputConnector) {
+			if (CalloutMediatorOutputConnectorPropertiesEditionComponent.BASE_PART.equals(part)
+				&& refinement == CalloutMediatorOutputConnectorPropertiesEditionComponent.class)
+				return new CalloutMediatorOutputConnectorPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		}
+		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
+	}
 
-    /**
-     * Provides the filter used by the plugin.xml to assign part forms.
-     */
-    public static class EditionFilter implements IFilter {
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
-         */
-        public boolean select(Object toTest) {
-            EObject eObj = EEFUtils.resolveSemanticObject(toTest);
-            return eObj != null && EsbPackage.Literals.CALLOUT_MEDIATOR_OUTPUT_CONNECTOR == eObj.eClass();
-        }
-
-    }
+	/**
+	 * Provides the filter used by the plugin.xml to assign part forms.
+	 */
+	public static class EditionFilter implements IFilter {
+	
+		/**
+		 * {@inheritDoc}
+		 * 
+		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
+		 */
+		public boolean select(Object toTest) {
+			EObject eObj = EEFUtils.resolveSemanticObject(toTest);
+			return eObj != null && EsbPackage.Literals.CALLOUT_MEDIATOR_OUTPUT_CONNECTOR == eObj.eClass();
+		}
+		
+	}
 
 }

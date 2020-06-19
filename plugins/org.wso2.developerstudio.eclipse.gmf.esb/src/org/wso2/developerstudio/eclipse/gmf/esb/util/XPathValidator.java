@@ -35,7 +35,7 @@ public interface XPathValidator {
      * @return Evaluated output as a string
      */
     String getEvaluatedResult(File file, String xpath, Map<String, String> namespaces);
-
+    
     /**
      * Returns the output of an evaluated XPath expression on a given XML string.
      * 
@@ -44,7 +44,7 @@ public interface XPathValidator {
      * @return Evaluated output as a string
      */
     String getEvaluatedResult(String xml, String xpath, Map<String, String> namespaces);
-
+    
     /**
      * Checks the validity of an XML syntax.
      * 
@@ -52,23 +52,23 @@ public interface XPathValidator {
      * @return True is valid, False otherwise
      */
     boolean isValidXML(String xml);
-
+    
     /**
-     * Returns a pretty-fied XML string from a document.
+     * Returns a pretty-fied XML string from a document. 
      * 
      * @param document Document object
      * @return Pretty-fied XML string
      */
     String getFormattedXMLStringFromDoc(Document document);
-
+    
     /**
-     * Returns a pretty-fied XML string from a string.
+     * Returns a pretty-fied XML string from a string. 
      * 
      * @param xmlStr XML string
      * @return Pretty-fied XML string
      */
     String getFormattedXMLStringFromString(String xmlStr);
-
+    
     /**
      * Parses an XML string and creates a Document.
      * 

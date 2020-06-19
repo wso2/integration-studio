@@ -34,14 +34,14 @@ import java.util.Properties;
  * &lt;target&gt; element specified as follows
  *
  * &lt;target (sequence="string reference")? (endpoint="string reference")?&gt;
- * (&lt;sequence&gt; | &lt;endpoinit&gt;)?
+ *  (&lt;sequence&gt; | &lt;endpoinit&gt;)?
  * &lt;/target&gt;
  */
 public class TargetExtFactory {
 
     private static final String NULL_NAMESPACE = "";
     private static final String SYNAPSE_NAMESPACE = "http://ws.apache.org/ns/synapse";
-
+    
     /**
      * Holds the QName of the target element in the xml configuration
      */
@@ -51,7 +51,7 @@ public class TargetExtFactory {
      * This static method will be used to build the Target from the specified element
      * 
      * @param elem - OMElement describing the xml configuration of the target
-     * @param properties bag of properties with information
+     * @param properties bag of properties with information 
      * @return Target built by parsing the given element
      */
     public static Target createTarget(OMElement elem, Properties properties) {
@@ -66,28 +66,33 @@ public class TargetExtFactory {
             target.setToAddress(toAttr.getAttributeValue());
         }
 
-        OMAttribute soapAction = elem.getAttribute(new QName(NULL_NAMESPACE, "soapAction"));
+        OMAttribute soapAction = elem.getAttribute(
+                new QName(NULL_NAMESPACE, "soapAction"));
         if (soapAction != null && soapAction.getAttributeValue() != null) {
             target.setSoapAction(soapAction.getAttributeValue());
         }
 
-        OMAttribute sequenceAttr = elem.getAttribute(new QName(NULL_NAMESPACE, "sequence"));
+        OMAttribute sequenceAttr = elem.getAttribute(
+                new QName(NULL_NAMESPACE, "sequence"));
         if (sequenceAttr != null && sequenceAttr.getAttributeValue() != null) {
             target.setSequenceRef(sequenceAttr.getAttributeValue());
         }
 
-        OMAttribute endpointAttr = elem.getAttribute(new QName(NULL_NAMESPACE, "endpoint"));
+        OMAttribute endpointAttr = elem.getAttribute(
+                new QName(NULL_NAMESPACE, "endpoint"));
         if (endpointAttr != null && endpointAttr.getAttributeValue() != null) {
             target.setEndpointRef(endpointAttr.getAttributeValue());
         }
 
-        OMElement sequence = elem.getFirstChildWithName(new QName(SYNAPSE_NAMESPACE, "sequence"));
+        OMElement sequence = elem.getFirstChildWithName(
+                new QName(SYNAPSE_NAMESPACE, "sequence"));
         if (sequence != null) {
             SequenceMediatorExtFactory fac = SequenceMediatorExtFactory.getInstance();
             target.setSequence(fac.createAnonymousSequence(sequence, properties));
         }
 
-        OMElement endpoint = elem.getFirstChildWithName(new QName(SYNAPSE_NAMESPACE, "endpoint"));
+        OMElement endpoint = elem.getFirstChildWithName(
+                new QName(SYNAPSE_NAMESPACE, "endpoint"));
         if (endpoint != null) {
             target.setEndpoint(EndpointFactory.getEndpointFromElement(endpoint, true, properties));
         }
@@ -100,7 +105,7 @@ public class TargetExtFactory {
      *
      * @param message - String message to be logged and the message of the exception
      */
-    private static void handleException(String message) {
+    private static void handleException (String message) {
         throw new SynapseException(message);
     }
 }

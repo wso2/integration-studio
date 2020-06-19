@@ -137,7 +137,7 @@ public class FailoverEndPointTransformer extends AbstractEndpointTransformer {
 
         return synapseFailEP;
     }
-
+    
     public SynapseArtifact create(FailoverEndpointFormPage formPage) throws NumberFormatException, JaxenException {
 
         FailoverEndpoint synapseFailoverEP = new FailoverEndpoint();
@@ -156,7 +156,7 @@ public class FailoverEndPointTransformer extends AbstractEndpointTransformer {
             synapseFailoverEP.setChildren(formPage.getSynapseEndpointList());
 
         }
-
+        
         synapseFailoverEP.setDescription(formPage.getEP_Description().getText());
 
         List<MediatorProperty> mediatorProperties = new ArrayList<>();
@@ -179,5 +179,5 @@ public class FailoverEndPointTransformer extends AbstractEndpointTransformer {
 
         return synapseFailoverEP;
     }
-
+    
 }

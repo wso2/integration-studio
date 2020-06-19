@@ -22,7 +22,6 @@ public class CacheMediatorInputConnectorImpl extends InputConnectorImpl implemen
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected CacheMediatorInputConnectorImpl() {
@@ -32,7 +31,6 @@ public class CacheMediatorInputConnectorImpl extends InputConnectorImpl implemen
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

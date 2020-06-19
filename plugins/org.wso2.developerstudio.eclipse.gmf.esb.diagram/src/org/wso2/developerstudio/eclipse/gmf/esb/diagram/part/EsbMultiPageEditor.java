@@ -160,7 +160,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 
     /** Our all new graphical editor */
     private EsbDiagramEditor graphicalEditor;
-
+    
     /** Our all new swagger editor */
     private EsbSwaggerEditor swaggerlEditor;
 
@@ -188,22 +188,22 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
      * Source view page index.
      */
     private static final int SOURCE_VIEW_PAGE_INDEX = 1;
-
+    
     /**
      * Source view page index.
      */
     private static final int SWAGGER_VIEW_PAGE_INDEX = 2;
 
     private static final String SOURCE_VIEW_ERROR = "SOURCE_VIEW_ERROR";
-
+    
     private static final String MOCK_SERVICE = "MOCK_SERVICE";
-
+    
     private static final String SYNAPSE_UNIT_TEST = "SYNAPSE_UNIT_TEST";
 
     private static final String CONFIG_ERROR = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.synapseerror";
 
     private static final String ESB_GRAPHICAL_PERSPECTIVE_ID = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.perspective";
-
+    
     private static final String CONNECTOR_ADDED_KEY = "ConnectorAdded";
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
@@ -261,7 +261,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
         if (editorInput instanceof FileEditorInput) {
             IFile file = ((FileEditorInput) editorInput).getFile();
             fileName = file.getName();
-
+            
             try (InputStream inputStream = file.getContents(); Scanner scanner = new Scanner(inputStream)) {
                 final String source = scanner.useDelimiter("\\A").next();
                 final Deserializer deserializer = Deserializer.getInstance();
@@ -274,8 +274,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                     public void run() {
                         ESBDebuggerUtil.setPageCreateOperationActivated(true);
                         try {
-                            DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(source, true,
-                                    false);
+                            DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(source, true, false);
                             deleteMarkers();
                             if (deserializeStatus.isValid()
                                     || deserializeStatus.getExecption() instanceof SynapseException
@@ -451,8 +450,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                         public void run() {
                             ESBDebuggerUtil.setPageCreateOperationActivated(true);
                             try {
-                                DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(source, true,
-                                        false);
+                                DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(source, true, false);
 
                                 if (deserializeStatus.isValid()) {
                                     deserializer.updateDesign(source, formEditor, currArtifactType, true);
@@ -491,19 +489,18 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
         }
     }
 
-    /**
-     * Creates the swagger design editor page.
-     */
-    void createSwaggerEditorPage() {
-        swaggerlEditor = new EsbSwaggerEditor(this);
-        try {
-            addPage(SWAGGER_VIEW_PAGE_INDEX, swaggerlEditor, getEditorInput());
-            setPageText(SWAGGER_VIEW_PAGE_INDEX, "Swagger Editor");
-        } catch (PartInitException e) {
-            ErrorDialog.openError(getSite().getShell(), "Error Creating Swagger Editor", null, e.getStatus());
-        }
-    }
-
+	/**
+	 * Creates the swagger design editor page.
+	 */
+	void createSwaggerEditorPage() {
+		swaggerlEditor = new EsbSwaggerEditor(this);
+		try {
+			addPage(SWAGGER_VIEW_PAGE_INDEX, swaggerlEditor, getEditorInput());
+			setPageText(SWAGGER_VIEW_PAGE_INDEX, "Swagger Editor");
+		} catch (PartInitException e) {
+			ErrorDialog.openError(getSite().getShell(), "Error Creating Swagger Editor", null, e.getStatus());
+		}
+	}
     /**
      * Utility method for obtaining a reference to a temporary file with the given
      * extension.
@@ -590,7 +587,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
         case ENDPOINT_FAILOVER:
         case ENDPOINT_RECIPIENTLIST:
         case MOCK_SERVICE:
-        case SYNAPSE_UNIT_TEST:
+        case SYNAPSE_UNIT_TEST:	
             createPageForm(currArtifactType);
             break;
         default:
@@ -600,9 +597,9 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
             createPage0();
         }
         createPage1();
-        if (currArtifactType.equals(org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType.API)) {
-            createSwaggerEditorPage();
-        }
+		if (currArtifactType.equals(org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType.API)) {
+			createSwaggerEditorPage();
+		}
         if (graphicalEditor != null) {
             EditorUtils.setLockmode(graphicalEditor, false);
         }
@@ -620,28 +617,27 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 
         // Invoke the appropriate handler method.
         switch (pageIndex) {
-        case DESIGN_VIEW_PAGE_INDEX: {
-            if (lastActivePage == SWAGGER_VIEW_PAGE_INDEX) {
-                // Update the design view when the user switch from Swagger editor
-                String currentSource = sourceEditor.getDocument().get();
-                try {
-                    RestApiAdmin restAPIAdmin = new RestApiAdmin();
-                    OMElement element = AXIOMUtil.stringToOM(currentSource);
-                    API api = APIFactory.createAPI(element);
-                    String updatedAPI = restAPIAdmin.generateUpdatedAPIFromSwagger(getSource(), api);
-                    sourceEditor.getDocument().set(updatedAPI);
-                } catch (Exception e) {
-                    log.error("Unable to generate API from the swagger definition", e);
-                }
-            }
-            ESBDebuggerUtil.setPageChangeOperationActivated(true);
+		case DESIGN_VIEW_PAGE_INDEX: {
+			if (lastActivePage == SWAGGER_VIEW_PAGE_INDEX) {
+				// Update the design view when the user switch from Swagger editor
+				String currentSource = sourceEditor.getDocument().get();
+				try {
+					RestApiAdmin restAPIAdmin = new RestApiAdmin();
+					OMElement element = AXIOMUtil.stringToOM(currentSource);
+					API api = APIFactory.createAPI(element);
+					String updatedAPI = restAPIAdmin.generateUpdatedAPIFromSwagger(getSource(), api);
+					sourceEditor.getDocument().set(updatedAPI);
+				} catch (Exception e) {
+					log.error("Unable to generate API from the swagger definition", e);
+				}
+			}
+			ESBDebuggerUtil.setPageChangeOperationActivated(true);
             MediatorFactoryUtils.registerFactories();
             String source = sourceEditor.getDocument().get();
             SourceError sourceError = null;
 
             if (!source.isEmpty()) {
-                DeserializeStatus deserializeStatus = Deserializer.getInstance().isValidSynapseConfig(source, false,
-                        true);
+                DeserializeStatus deserializeStatus = Deserializer.getInstance().isValidSynapseConfig(source, false, true);
 
                 if (!deserializeStatus.isValid()) {
 
@@ -652,7 +648,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                         sourceEditor.getDocument().set(source);
 
                         try {
-                            sourceError = ProcessSourceView.validateXMLContent(source);
+                        	sourceError = ProcessSourceView.validateXMLContent(source);
                             if (sourceError != null) {
                                 addMarker(sourceError);
                                 return;
@@ -662,7 +658,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                         }
                     } else if (deserializeStatus.getExecption() instanceof NullPointerException
                             || deserializeStatus.getExecption() instanceof TransformerException) {
-                        sourceError = new SourceError(
+                    	sourceError = new SourceError(
                                 "Invalid mediator configuration: " + deserializeStatus.getExecption().getMessage(), 0,
                                 0, 2);
 
@@ -679,12 +675,12 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
             try {
 
                 deleteMarkers();
-
-                if (currArtifactType.toString().equals(MOCK_SERVICE)
-                        || currArtifactType.toString().equals(SYNAPSE_UNIT_TEST)) {
-                    sourceError = null;
+                
+                if (currArtifactType.toString().equals(MOCK_SERVICE) || 
+                		currArtifactType.toString().equals(SYNAPSE_UNIT_TEST)) {
+                	sourceError = null;
                 }
-
+                
                 if (sourceError != null) {
                     sourceDirty = true;
                 }
@@ -736,108 +732,109 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 
             break;
         }
-        case SOURCE_VIEW_PAGE_INDEX: {
-            if (lastActivePage == SWAGGER_VIEW_PAGE_INDEX) {
-                // Update the source view when the user switch from Swagger editor
-                String currentSource = sourceEditor.getDocument().get();
-                try {
-                    RestApiAdmin restAPIAdmin = new RestApiAdmin();
-                    OMElement element = AXIOMUtil.stringToOM(currentSource);
-                    API api = APIFactory.createAPI(element);
-                    String updatedAPI = restAPIAdmin.generateUpdatedAPIFromSwagger(getSource(), api);
-                    sourceEditor.getDocument().set(DefaultEsbModelExporter.format(updatedAPI));
-                } catch (Exception e) {
-                    MessageDialog.openError(Display.getCurrent().getActiveShell(),
-                            "Could not update the source view from swagger editor", e.getMessage());
-                }
-            } else {
-                Display.getDefault().asyncExec(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            if (isFormEditor) {
-                                if (currArtifactType != null) {
-                                    sourceEditor.update(formEditor.getFormPageForArtifact(currArtifactType),
-                                            currArtifactType);
-                                    sourceDirty = false;
-                                    firePropertyChange(PROP_DIRTY);
-                                }
-                            } else {
-                                deleteMarkers();
-                                updateSequenceDetails();
-                                handleSourceViewActivatedEvent();
-                                String source = sourceEditor.getDocument().get();
-                                SourceError tempError = ProcessSourceView.validateSynapseContent(source);
-                                if (tempError != null) {
-                                    addMarker(tempError);
-                                    sourceDirty = true;
-                                }
-                            }
-                        } catch (NumberFormatException nfe) {
-                            log.error("Cannot update source view", nfe);
-                            String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(nfe.getMessage());
-                            handleSourceUpdateError(simpleMessage, nfe);
-                            setActivePage(DESIGN_VIEW_PAGE_INDEX);
-                        } catch (TransformerException te) {
-                            sourceDirty = true;
-                            log.error("Error while saving the diagram", te);
-                            String errorMsgHeader = "Save failed. Following error(s) have been detected."
-                                    + " Please see the error log for more details";
-                            handleSourceUpdateError(errorMsgHeader, te);
-                        } catch (DeserializerException de) {
-                            sourceDirty = true;
-                            log.error("Error while saving the diagram", de);
-                            String errorMsgHeader = "Save failed. Following error(s) have been detected."
-                                    + " Please see the error log for more details.";
-                            handleSourceUpdateError(errorMsgHeader, de);
-                        } catch (Exception e) {
-                            log.error("Cannot update source view", e);
-                            String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(e.getMessage());
-                            handleSourceUpdateError(simpleMessage, e);
-                            setActivePage(DESIGN_VIEW_PAGE_INDEX);
-                        }
-                    }
-                });
-            }
-            break;
-        }
-        case SWAGGER_VIEW_PAGE_INDEX: {
-            if (lastActivePage == SOURCE_VIEW_PAGE_INDEX) {
-                try {
-                    String currentSource = sourceEditor.getDocument().get();
-                    RestApiAdmin restAPIAdmin = new RestApiAdmin();
-                    OMElement element = AXIOMUtil.stringToOM(currentSource);
-                    API api = APIFactory.createAPI(element);
-                    setSwaggerSource(restAPIAdmin.generateSwaggerFromSynapseAPI(api));
-                    swaggerlEditor.getBrowser().refresh();
+		case SOURCE_VIEW_PAGE_INDEX: {
+			if (lastActivePage == SWAGGER_VIEW_PAGE_INDEX) {
+				// Update the source view when the user switch from Swagger editor
+				String currentSource = sourceEditor.getDocument().get();
+				try {
+					RestApiAdmin restAPIAdmin = new RestApiAdmin();
+					OMElement element = AXIOMUtil.stringToOM(currentSource);
+					API api = APIFactory.createAPI(element);
+					String updatedAPI = restAPIAdmin.generateUpdatedAPIFromSwagger(getSource(), api);
+					sourceEditor.getDocument().set(DefaultEsbModelExporter.format(updatedAPI));
+				} catch (Exception e) {
+					MessageDialog.openError(Display.getCurrent().getActiveShell(),
+							"Could not update the source view from swagger editor", e.getMessage());
+				}
+			} else {
+				Display.getDefault().asyncExec(new Runnable() {
+					@Override
+					public void run() {
+						try {
+							if (isFormEditor) {
+								if (currArtifactType != null) {
+									sourceEditor.update(formEditor.getFormPageForArtifact(currArtifactType),
+											currArtifactType);
+									sourceDirty = false;
+									firePropertyChange(PROP_DIRTY);
+								}
+							} else {
+								deleteMarkers();
+								updateSequenceDetails();
+								handleSourceViewActivatedEvent();
+								String source = sourceEditor.getDocument().get();
+								SourceError tempError = ProcessSourceView.validateSynapseContent(source);
+								if (tempError != null) {
+									addMarker(tempError);
+									sourceDirty = true;
+								}
+							}
+						} catch (NumberFormatException nfe) {
+							log.error("Cannot update source view", nfe);
+							String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(nfe.getMessage());
+							handleSourceUpdateError(simpleMessage, nfe);
+							setActivePage(DESIGN_VIEW_PAGE_INDEX);
+						} catch (TransformerException te) {
+							sourceDirty = true;
+							log.error("Error while saving the diagram", te);
+							String errorMsgHeader = "Save failed. Following error(s) have been detected."
+									+ " Please see the error log for more details";
+							handleSourceUpdateError(errorMsgHeader, te);
+						} catch (DeserializerException de) {
+							sourceDirty = true;
+							log.error("Error while saving the diagram", de);
+							String errorMsgHeader = "Save failed. Following error(s) have been detected."
+									+ " Please see the error log for more details.";
+							handleSourceUpdateError(errorMsgHeader, de);
+						} catch (Exception e) {
+							log.error("Cannot update source view", e);
+							String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(e.getMessage());
+							handleSourceUpdateError(simpleMessage, e);
+							setActivePage(DESIGN_VIEW_PAGE_INDEX);
+						}
+					}
+				});
+			}
+			break;
+		}
+		case SWAGGER_VIEW_PAGE_INDEX: {
+			if (lastActivePage == SOURCE_VIEW_PAGE_INDEX) {
+				try {
+					String currentSource = sourceEditor.getDocument().get();
+					RestApiAdmin restAPIAdmin = new RestApiAdmin();
+					OMElement element = AXIOMUtil.stringToOM(currentSource);
+					API api = APIFactory.createAPI(element);
+					setSwaggerSource(restAPIAdmin.generateSwaggerFromSynapseAPI(api));
+					swaggerlEditor.getBrowser().refresh();
 
-                } catch (Exception e) {
-                    MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error Details",
-                            "Error in loading associated XML : " + e.getMessage());
-                    setActivePage(lastActivePage);
-                }
-            } else {
-                try {
-                    EsbDiagram diagram = (EsbDiagram) graphicalEditor.getDiagram().getElement();
-                    EsbServer server = diagram.getServer();
-                    String currentSource = EsbModelTransformer.instance.designToSource(server);
-                    RestApiAdmin restAPIAdmin = new RestApiAdmin();
-                    OMElement element = AXIOMUtil.stringToOM(currentSource);
-                    API api = APIFactory.createAPI(element);
-                    setSwaggerSource(restAPIAdmin.generateSwaggerFromSynapseAPI(api));
-                    swaggerlEditor.getBrowser().refresh();
-                    sourceEditor.getDocument().set(currentSource);
-                } catch (Exception e) {
-                    MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error Details",
-                            "Error in loading associated XML : " + e.getMessage());
-                    setActivePage(lastActivePage);
-                }
+				} catch (Exception e) {
+					MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error Details",
+		                    "Error in loading associated XML : " + e.getMessage());
+					setActivePage(lastActivePage);
+				}
+			}
+			else {
+				try {
+					EsbDiagram diagram = (EsbDiagram) graphicalEditor.getDiagram().getElement();
+					EsbServer server = diagram.getServer();
+					String currentSource = EsbModelTransformer.instance.designToSource(server);
+					RestApiAdmin restAPIAdmin = new RestApiAdmin();
+					OMElement element = AXIOMUtil.stringToOM(currentSource);
+					API api = APIFactory.createAPI(element);
+					setSwaggerSource(restAPIAdmin.generateSwaggerFromSynapseAPI(api));
+					swaggerlEditor.getBrowser().refresh();
+					sourceEditor.getDocument().set(currentSource);
+				} catch (Exception e) {
+					MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error Details",
+							"Error in loading associated XML : " + e.getMessage());
+					setActivePage(lastActivePage);
+				}
 
-            }
-        }
-        }
-        lastActivePage = getActivePage();
-    }
+			}
+		}
+		}
+		lastActivePage = getActivePage();
+	}
 
     /**
      * Performs necessary house-keeping tasks whenever the design view is activated.
@@ -867,16 +864,14 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
             String xmlSource = sourceEditor.getDocument().get();
             if (xmlSource != null && sourceDirty) {// source dirty is coming as false
                 if (!xmlSource.trim().isEmpty()) {
-                    if (currArtifactType.toString().equals(MOCK_SERVICE)) {
-                        MockServiceSourceToFormDeserializer
-                                .generateFormView((FormPage) formEditor.getActivePageInstance(), xmlSource, false);
-                    } else if (currArtifactType.toString().equals(SYNAPSE_UNIT_TEST)) {
-                        SynapseUnitTestSourceToFormDeserializer
-                                .generateFormView((FormPage) formEditor.getActivePageInstance(), xmlSource, false);
-                    } else {
-                        Deserializer.getInstance().updateDesign(xmlSource, formEditor, currArtifactType, withSynapse);
-                    }
-
+                	if (currArtifactType.toString().equals(MOCK_SERVICE)) {
+                		MockServiceSourceToFormDeserializer.generateFormView((FormPage)formEditor.getActivePageInstance(), xmlSource, false);
+                	} else if (currArtifactType.toString().equals(SYNAPSE_UNIT_TEST)) {
+                		SynapseUnitTestSourceToFormDeserializer.generateFormView((FormPage)formEditor.getActivePageInstance(), xmlSource, false);
+                	} else {
+                		Deserializer.getInstance().updateDesign(xmlSource, formEditor, currArtifactType, withSynapse);
+                	}
+                    
                     final EsbMultiPageEditor tempEditor = this;
                     Display.getDefault().asyncExec(new Runnable() {
                         public void run() {
@@ -976,11 +971,11 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
         if (isFormEditor) {
             FormPage formEditorPage = formEditor.getFormPageForArtifact(currArtifactType);
             if (currArtifactType.toString().equals(MOCK_SERVICE)) {
-                source = MockServiceFormToSourceTransformer.generateMockServiceTemplate(formEditorPage);
+            	source = MockServiceFormToSourceTransformer.generateMockServiceTemplate(formEditorPage);
             } else if (currArtifactType.toString().equals(SYNAPSE_UNIT_TEST)) {
-                source = SynapseUnitTestFormToSourceTransformer.generateUnitTestTemplate(formEditorPage);
+            	source = SynapseUnitTestFormToSourceTransformer.generateUnitTestTemplate(formEditorPage);
             } else {
-                source = EsbModelTransformer.instance.formToSource(formEditorPage, currArtifactType);
+            	source = EsbModelTransformer.instance.formToSource(formEditorPage, currArtifactType);
             }
 
         } else {
@@ -1065,14 +1060,14 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                 deleteMarkers();
                 if (deserializeStatus.isValid()) {
                     SourceError sourceError;
-
-                    if (currArtifactType.toString().equals(MOCK_SERVICE)
-                            || currArtifactType.toString().equals(SYNAPSE_UNIT_TEST)) {
-                        sourceError = null;
+                    
+                    if (currArtifactType.toString().equals(MOCK_SERVICE) || 
+                    		currArtifactType.toString().equals(SYNAPSE_UNIT_TEST)) {
+                    	sourceError = null;
                     } else {
-                        sourceError = ProcessSourceView.validateSynapseContent(xmlSource);
+                    	sourceError = ProcessSourceView.validateSynapseContent(xmlSource);
                     }
-
+                    
                     if (sourceError != null) {
                         if (!sourceError.getException().contains("Invalid mediator")) {
                             addMarker(sourceError);
@@ -1176,12 +1171,12 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 
                         String theString = writer.toString();
                         SourceError sourceError;
-
-                        if (currArtifactType.toString().equals(MOCK_SERVICE)
-                                || currArtifactType.toString().equals(SYNAPSE_UNIT_TEST)) {
-                            sourceError = null;
+                        
+                        if (currArtifactType.toString().equals(MOCK_SERVICE) || 
+                        		currArtifactType.toString().equals(SYNAPSE_UNIT_TEST)) {
+                        	sourceError = null;
                         } else {
-                            sourceError = ProcessSourceView.validateSynapseContent(theString);
+                        	sourceError = ProcessSourceView.validateSynapseContent(theString);
                         }
 
                         if (sourceError != null) {
@@ -1502,82 +1497,81 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
     @Override
     public void setFocus() {
         super.setFocus();
-        String currentPerspective = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-                .getPerspective().getLabel();
+        String currentPerspective = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getPerspective().getLabel();
         try {
-            if (!"debug".equalsIgnoreCase(currentPerspective))
-                PlatformUI.getWorkbench().showPerspective(ESB_GRAPHICAL_PERSPECTIVE_ID,
-                        PlatformUI.getWorkbench().getActiveWorkbenchWindow());
+            if(!"debug".equalsIgnoreCase(currentPerspective))
+            PlatformUI.getWorkbench().showPerspective(ESB_GRAPHICAL_PERSPECTIVE_ID,
+                    PlatformUI.getWorkbench().getActiveWorkbenchWindow());
         } catch (WorkbenchException e) {
             log.error("Error occurred while switching to ESB perspective " + e.getMessage());
         }
-
+        
         // If CONNECTOR_ADDED_KEY is set to true, update all editors.
         IEclipsePreferences rootNode = Platform.getPreferencesService().getRootNode();
         if (rootNode.get(CONNECTOR_ADDED_KEY, String.valueOf(false)).equals(String.valueOf(true))) {
-            IUpdateGMFPlugin updateGMFPlugin = GMFPluginDetails.getiUpdateGMFPlugin();
-            if (updateGMFPlugin != null) {
-                updateGMFPlugin.updateOpenedEditors();
-            }
-            rootNode.put(CONNECTOR_ADDED_KEY, String.valueOf(false));
+        	IUpdateGMFPlugin updateGMFPlugin = GMFPluginDetails.getiUpdateGMFPlugin();
+        	if (updateGMFPlugin != null) {
+        		updateGMFPlugin.updateOpenedEditors();
+        	}
+        	rootNode.put(CONNECTOR_ADDED_KEY, String.valueOf(false));
         }
     }
 
-    public String getSource() {
-        return swaggerSource;
-    }
+	public String getSource() {
+		return swaggerSource;
+	}
 
-    public void setSwaggerSource(String source) {
-        swaggerSource = source;
-    }
+	public void setSwaggerSource(String source) {
+		swaggerSource = source;
+	}
 
-    /*
-     * This method will get the swagger resource path from the given api and return
-     * the swagger file as a string
-     * 
-     * @param api Synapse API
-     * 
-     * @return Swagger File content as a String
-     */
-    public static String getSwaggerJsonFromRegistry(API api) {
-        String swaggerJsonFile = null;
+	/*
+	 * This method will get the swagger resource path from the given api and return
+	 * the swagger file as a string
+	 * 
+	 * @param api Synapse API
+	 * 
+	 * @return Swagger File content as a String
+	 */
+	public static String getSwaggerJsonFromRegistry(API api) {
+		String swaggerJsonFile = null;
 
-        try {
-            String swaggerRegistryPath = api.getSwaggerResourcePath();
-            IDeveloperStudioProviderData[] providerProjectsList = RegistryResourcesUtils
-                    .loadProviderProjectsList(new Class[] { IRegistryFile.class });
-            Map<String, List<String>> filters = new HashMap<String, List<String>>();
-            String mediaTypeKey = CSProviderConstants.FILTER_MEDIA_TYPE;
-            List<String> types = new ArrayList<String>();
-            types.add("application/yaml");
-            types.add("application/json");
-            filters.put(mediaTypeKey, types);
+		try {
+			String swaggerRegistryPath = api.getSwaggerResourcePath();
+			IDeveloperStudioProviderData[] providerProjectsList = RegistryResourcesUtils
+					.loadProviderProjectsList(new Class[] { IRegistryFile.class });
+			Map<String, List<String>> filters = new HashMap<String, List<String>>();
+			String mediaTypeKey = CSProviderConstants.FILTER_MEDIA_TYPE;
+			List<String> types = new ArrayList<String>();
+			types.add("application/yaml");
+			types.add("application/json");
+			filters.put(mediaTypeKey, types);
 
-            String swaggerName = swaggerRegistryPath.substring(swaggerRegistryPath.lastIndexOf("/") + 1,
-                    swaggerRegistryPath.length());
+			String swaggerName = swaggerRegistryPath.substring(swaggerRegistryPath.lastIndexOf("/") + 1,
+					swaggerRegistryPath.length());
 
-            String pathForSwagger = DataMapperMediatorEditPart.getConfigurationLocalPath(providerProjectsList, filters,
-                    swaggerName);
+			String pathForSwagger = DataMapperMediatorEditPart.getConfigurationLocalPath(providerProjectsList, filters,
+					swaggerName);
 
-            // Copy to string, use the file's encoding
-            Path path = new Path(pathForSwagger);
-            IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(path);
-            InputStream inputStream = file.getContents();
-            StringWriter writer = new StringWriter();
+			// Copy to string, use the file's encoding
+			Path path = new Path(pathForSwagger);
+			IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(path);
+			InputStream inputStream = file.getContents();
+			StringWriter writer = new StringWriter();
 
-            IOUtils.copy(inputStream, writer, file.getCharset());
-            inputStream.close();
-            swaggerJsonFile = writer.toString();
+			IOUtils.copy(inputStream, writer, file.getCharset());
+			inputStream.close();
+			swaggerJsonFile = writer.toString();
 
-        } catch (IOException e) {
-            log.error("IO Exceprion occured while trying to retrieve swagger file", e);
-        } catch (CoreException e) {
-            log.error("Eclipse Core exception occured while trying to retrieve swagger file", e);
-        } catch (Exception e) {
-            log.error("Error occured while trying to retrieve swagger file", e);
-        }
+		} catch (IOException e) {
+			log.error("IO Exceprion occured while trying to retrieve swagger file", e);
+		} catch (CoreException e) {
+			log.error("Eclipse Core exception occured while trying to retrieve swagger file", e);
+		} catch (Exception e) {
+			log.error("Error occured while trying to retrieve swagger file", e);
+		}
 
-        return swaggerJsonFile;
-    }
+		return swaggerJsonFile;
+	}
 
 }

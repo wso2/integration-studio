@@ -33,7 +33,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class MessageProcessorItemProvider extends EsbElementItemProvider {
@@ -41,7 +40,6 @@ public class MessageProcessorItemProvider extends EsbElementItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public MessageProcessorItemProvider(AdapterFactory adapterFactory) {
@@ -136,241 +134,308 @@ public class MessageProcessorItemProvider extends EsbElementItemProvider {
      * This adds a property descriptor for the Processor Name feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addProcessorNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_MessageProcessor_processorName_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_MessageProcessor_processorName_feature",
-                                "_UI_MessageProcessor_type"),
-                        EsbPackage.Literals.MESSAGE_PROCESSOR__PROCESSOR_NAME, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_BasicPropertyCategory"), null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_MessageProcessor_processorName_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_MessageProcessor_processorName_feature", "_UI_MessageProcessor_type"),
+                 EsbPackage.Literals.MESSAGE_PROCESSOR__PROCESSOR_NAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 getString("_UI_BasicPropertyCategory"),
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Processor Type feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addProcessorTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_MessageProcessor_processorType_feature"),
-                        getString("_UI_MessageProcessor_processorType_description"),
-                        EsbPackage.Literals.MESSAGE_PROCESSOR__PROCESSOR_TYPE, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_BasicPropertyCategory"), null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_MessageProcessor_processorType_feature"),
+                 getString("_UI_MessageProcessor_processorType_description"),
+                 EsbPackage.Literals.MESSAGE_PROCESSOR__PROCESSOR_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 getString("_UI_BasicPropertyCategory"),
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Message Processor Provider feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addMessageProcessorProviderPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_MessageProcessor_messageProcessorProvider_feature"),
-                        getString("_UI_PropertyDescriptor_description",
-                                "_UI_MessageProcessor_messageProcessorProvider_feature", "_UI_MessageProcessor_type"),
-                        EsbPackage.Literals.MESSAGE_PROCESSOR__MESSAGE_PROCESSOR_PROVIDER, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_BasicPropertyCategory"), null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_MessageProcessor_messageProcessorProvider_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_MessageProcessor_messageProcessorProvider_feature", "_UI_MessageProcessor_type"),
+                 EsbPackage.Literals.MESSAGE_PROCESSOR__MESSAGE_PROCESSOR_PROVIDER,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 getString("_UI_BasicPropertyCategory"),
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Message Store feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addMessageStorePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_MessageProcessor_messageStore_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_MessageProcessor_messageStore_feature",
-                        "_UI_MessageProcessor_type"),
-                EsbPackage.Literals.MESSAGE_PROCESSOR__MESSAGE_STORE, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_BasicPropertyCategory"), null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_MessageProcessor_messageStore_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_MessageProcessor_messageStore_feature", "_UI_MessageProcessor_type"),
+                 EsbPackage.Literals.MESSAGE_PROCESSOR__MESSAGE_STORE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 getString("_UI_BasicPropertyCategory"),
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Source Message Store feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addSourceMessageStorePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_MessageProcessor_sourceMessageStore_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_MessageProcessor_sourceMessageStore_feature",
-                        "_UI_MessageProcessor_type"),
-                EsbPackage.Literals.MESSAGE_PROCESSOR__SOURCE_MESSAGE_STORE, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_MessageProcessor_sourceMessageStore_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_MessageProcessor_sourceMessageStore_feature", "_UI_MessageProcessor_type"),
+                 EsbPackage.Literals.MESSAGE_PROCESSOR__SOURCE_MESSAGE_STORE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Target Message Store feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addTargetMessageStorePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_MessageProcessor_targetMessageStore_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_MessageProcessor_targetMessageStore_feature",
-                        "_UI_MessageProcessor_type"),
-                EsbPackage.Literals.MESSAGE_PROCESSOR__TARGET_MESSAGE_STORE, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_MessageProcessor_targetMessageStore_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_MessageProcessor_targetMessageStore_feature", "_UI_MessageProcessor_type"),
+                 EsbPackage.Literals.MESSAGE_PROCESSOR__TARGET_MESSAGE_STORE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Processor State feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addProcessorStatePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_MessageProcessor_processorState_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_MessageProcessor_processorState_feature",
-                                "_UI_MessageProcessor_type"),
-                        EsbPackage.Literals.MESSAGE_PROCESSOR__PROCESSOR_STATE, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                        getString("_UI_AdditionalParametersPropertyCategory"), null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_MessageProcessor_processorState_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_MessageProcessor_processorState_feature", "_UI_MessageProcessor_type"),
+                 EsbPackage.Literals.MESSAGE_PROCESSOR__PROCESSOR_STATE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 getString("_UI_AdditionalParametersPropertyCategory"),
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Endpoint Name feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addEndpointNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_MessageProcessor_endpointName_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_MessageProcessor_endpointName_feature",
-                                "_UI_MessageProcessor_type"),
-                        EsbPackage.Literals.MESSAGE_PROCESSOR__ENDPOINT_NAME, true, false, false, null,
-                        getString("_UI_BasicPropertyCategory"), null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_MessageProcessor_endpointName_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_MessageProcessor_endpointName_feature", "_UI_MessageProcessor_type"),
+                 EsbPackage.Literals.MESSAGE_PROCESSOR__ENDPOINT_NAME,
+                 true,
+                 false,
+                 false,
+                 null,
+                 getString("_UI_BasicPropertyCategory"),
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Sequence feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addSequencePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_MessageProcessor_sequence_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_MessageProcessor_sequence_feature",
-                                "_UI_MessageProcessor_type"),
-                        EsbPackage.Literals.MESSAGE_PROCESSOR__SEQUENCE, true, false, true, null,
-                        getString("_UI_BasicPropertyCategory"), null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_MessageProcessor_sequence_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_MessageProcessor_sequence_feature", "_UI_MessageProcessor_type"),
+                 EsbPackage.Literals.MESSAGE_PROCESSOR__SEQUENCE,
+                 true,
+                 false,
+                 true,
+                 null,
+                 getString("_UI_BasicPropertyCategory"),
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Retry Interval feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addRetryIntervalPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_MessageProcessor_retryInterval_feature"),
-                        getString("_UI_MessageProcessor_retryInterval_description"),
-                        EsbPackage.Literals.MESSAGE_PROCESSOR__RETRY_INTERVAL, true, false, false,
-                        ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-                        getString("_UI_AdditionalParametersPropertyCategory"), null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_MessageProcessor_retryInterval_feature"),
+                 getString("_UI_MessageProcessor_retryInterval_description"),
+                 EsbPackage.Literals.MESSAGE_PROCESSOR__RETRY_INTERVAL,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+                 getString("_UI_AdditionalParametersPropertyCategory"),
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Forwarding Interval feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addForwardingIntervalPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_MessageProcessor_forwardingInterval_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_MessageProcessor_forwardingInterval_feature",
-                        "_UI_MessageProcessor_type"),
-                EsbPackage.Literals.MESSAGE_PROCESSOR__FORWARDING_INTERVAL, true, false, false,
-                ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, getString("_UI_AdditionalParametersPropertyCategory"),
-                null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_MessageProcessor_forwardingInterval_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_MessageProcessor_forwardingInterval_feature", "_UI_MessageProcessor_type"),
+                 EsbPackage.Literals.MESSAGE_PROCESSOR__FORWARDING_INTERVAL,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+                 getString("_UI_AdditionalParametersPropertyCategory"),
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Sampling Interval feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addSamplingIntervalPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_MessageProcessor_samplingInterval_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_MessageProcessor_samplingInterval_feature",
-                                "_UI_MessageProcessor_type"),
-                        EsbPackage.Literals.MESSAGE_PROCESSOR__SAMPLING_INTERVAL, true, false, false,
-                        ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-                        getString("_UI_AdditionalParametersPropertyCategory"), null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_MessageProcessor_samplingInterval_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_MessageProcessor_samplingInterval_feature", "_UI_MessageProcessor_type"),
+                 EsbPackage.Literals.MESSAGE_PROCESSOR__SAMPLING_INTERVAL,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+                 getString("_UI_AdditionalParametersPropertyCategory"),
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Sampling Concurrency feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addSamplingConcurrencyPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_MessageProcessor_samplingConcurrency_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_MessageProcessor_samplingConcurrency_feature",
-                        "_UI_MessageProcessor_type"),
-                EsbPackage.Literals.MESSAGE_PROCESSOR__SAMPLING_CONCURRENCY, true, false, false,
-                ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, getString("_UI_AdditionalParametersPropertyCategory"),
-                null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_MessageProcessor_samplingConcurrency_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_MessageProcessor_samplingConcurrency_feature", "_UI_MessageProcessor_type"),
+                 EsbPackage.Literals.MESSAGE_PROCESSOR__SAMPLING_CONCURRENCY,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+                 getString("_UI_AdditionalParametersPropertyCategory"),
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Max Delivery Attempts feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addMaxDeliveryAttemptsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_MessageProcessor_maxDeliveryAttempts_feature"),
-                        getString("_UI_MessageProcessor_maxDeliveryAttempts_description"),
-                        EsbPackage.Literals.MESSAGE_PROCESSOR__MAX_DELIVERY_ATTEMPTS, true, false, false,
-                        ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-                        getString("_UI_AdditionalParametersPropertyCategory"), null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_MessageProcessor_maxDeliveryAttempts_feature"),
+                 getString("_UI_MessageProcessor_maxDeliveryAttempts_description"),
+                 EsbPackage.Literals.MESSAGE_PROCESSOR__MAX_DELIVERY_ATTEMPTS,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+                 getString("_UI_AdditionalParametersPropertyCategory"),
+                 null));
     }
 
     /**
@@ -396,66 +461,88 @@ public class MessageProcessorItemProvider extends EsbElementItemProvider {
      * This adds a property descriptor for the Axis2 Client Repository feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addAxis2ClientRepositoryPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_MessageProcessor_axis2ClientRepository_feature"),
-                        getString("_UI_MessageProcessor_axis2ClientRepository_description"),
-                        EsbPackage.Literals.MESSAGE_PROCESSOR__AXIS2_CLIENT_REPOSITORY, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                        getString("_UI_AdditionalParametersPropertyCategory"), null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_MessageProcessor_axis2ClientRepository_feature"),
+                 getString("_UI_MessageProcessor_axis2ClientRepository_description"),
+                 EsbPackage.Literals.MESSAGE_PROCESSOR__AXIS2_CLIENT_REPOSITORY,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 getString("_UI_AdditionalParametersPropertyCategory"),
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Axis2 Configuration feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addAxis2ConfigurationPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_MessageProcessor_axis2Configuration_feature"),
-                        getString("_UI_MessageProcessor_axis2Configuration_description"),
-                        EsbPackage.Literals.MESSAGE_PROCESSOR__AXIS2_CONFIGURATION, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                        getString("_UI_AdditionalParametersPropertyCategory"), null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_MessageProcessor_axis2Configuration_feature"),
+                 getString("_UI_MessageProcessor_axis2Configuration_description"),
+                 EsbPackage.Literals.MESSAGE_PROCESSOR__AXIS2_CONFIGURATION,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 getString("_UI_AdditionalParametersPropertyCategory"),
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Reply Sequence Name feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addReplySequenceNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_MessageProcessor_replySequenceName_feature"),
-                        getString("_UI_MessageProcessor_replySequenceName_description"),
-                        EsbPackage.Literals.MESSAGE_PROCESSOR__REPLY_SEQUENCE_NAME, true, false, true, null,
-                        getString("_UI_AdditionalParametersPropertyCategory"), null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_MessageProcessor_replySequenceName_feature"),
+                 getString("_UI_MessageProcessor_replySequenceName_description"),
+                 EsbPackage.Literals.MESSAGE_PROCESSOR__REPLY_SEQUENCE_NAME,
+                 true,
+                 false,
+                 true,
+                 null,
+                 getString("_UI_AdditionalParametersPropertyCategory"),
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Fault Sequence Name feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addFaultSequenceNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_MessageProcessor_faultSequenceName_feature"),
-                        getString("_UI_MessageProcessor_faultSequenceName_description"),
-                        EsbPackage.Literals.MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME, true, false, true, null,
-                        getString("_UI_AdditionalParametersPropertyCategory"), null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_MessageProcessor_faultSequenceName_feature"),
+                 getString("_UI_MessageProcessor_faultSequenceName_description"),
+                 EsbPackage.Literals.MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME,
+                 true,
+                 false,
+                 true,
+                 null,
+                 getString("_UI_AdditionalParametersPropertyCategory"),
+                 null));
     }
 
     /**
@@ -479,68 +566,88 @@ public class MessageProcessorItemProvider extends EsbElementItemProvider {
      * This adds a property descriptor for the Quartz Config File Path feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addQuartzConfigFilePathPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_MessageProcessor_quartzConfigFilePath_feature"),
-                        getString("_UI_MessageProcessor_quartzConfigFilePath_description"),
-                        EsbPackage.Literals.MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                        getString("_UI_AdditionalParametersPropertyCategory"), null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_MessageProcessor_quartzConfigFilePath_feature"),
+                 getString("_UI_MessageProcessor_quartzConfigFilePath_description"),
+                 EsbPackage.Literals.MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 getString("_UI_AdditionalParametersPropertyCategory"),
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Cron Expression feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addCronExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_MessageProcessor_cronExpression_feature"),
-                        getString("_UI_MessageProcessor_cronExpression_description"),
-                        EsbPackage.Literals.MESSAGE_PROCESSOR__CRON_EXPRESSION, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                        getString("_UI_AdditionalParametersPropertyCategory"), null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_MessageProcessor_cronExpression_feature"),
+                 getString("_UI_MessageProcessor_cronExpression_description"),
+                 EsbPackage.Literals.MESSAGE_PROCESSOR__CRON_EXPRESSION,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 getString("_UI_AdditionalParametersPropertyCategory"),
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Non Retry Http Status Codes feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addNonRetryHttpStatusCodesPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_MessageProcessor_nonRetryHttpStatusCodes_feature"),
-                        getString("_UI_PropertyDescriptor_description",
-                                "_UI_MessageProcessor_nonRetryHttpStatusCodes_feature", "_UI_MessageProcessor_type"),
-                        EsbPackage.Literals.MESSAGE_PROCESSOR__NON_RETRY_HTTP_STATUS_CODES, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                        getString("_UI_AdditionalParametersPropertyCategory"), null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_MessageProcessor_nonRetryHttpStatusCodes_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_MessageProcessor_nonRetryHttpStatusCodes_feature", "_UI_MessageProcessor_type"),
+                 EsbPackage.Literals.MESSAGE_PROCESSOR__NON_RETRY_HTTP_STATUS_CODES,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 getString("_UI_AdditionalParametersPropertyCategory"),
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Parameters feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addParametersPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_MessageProcessor_parameters_feature"),
-                        getString("_UI_MessageProcessor_parameters_description"),
-                        EsbPackage.Literals.MESSAGE_PROCESSOR__PARAMETERS, true, false, true, null,
-                        getString("_UI_AdditionalParametersPropertyCategory"), null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_MessageProcessor_parameters_feature"),
+                 getString("_UI_MessageProcessor_parameters_description"),
+                 EsbPackage.Literals.MESSAGE_PROCESSOR__PARAMETERS,
+                 true,
+                 false,
+                 true,
+                 null,
+                 getString("_UI_AdditionalParametersPropertyCategory"),
+                 null));
     }
 
     /**
@@ -618,7 +725,6 @@ public class MessageProcessorItemProvider extends EsbElementItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -633,7 +739,6 @@ public class MessageProcessorItemProvider extends EsbElementItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -648,7 +753,6 @@ public class MessageProcessorItemProvider extends EsbElementItemProvider {
      * This returns MessageProcessor.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -660,14 +764,14 @@ public class MessageProcessorItemProvider extends EsbElementItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((MessageProcessor) object).getProcessorName();
-        return label == null || label.length() == 0 ? getString("_UI_MessageProcessor_type")
-                : getString("_UI_MessageProcessor_type") + " " + label;
+        String label = ((MessageProcessor)object).getProcessorName();
+        return label == null || label.length() == 0 ?
+            getString("_UI_MessageProcessor_type") :
+            getString("_UI_MessageProcessor_type") + " " + label;
     }
 
     /**
@@ -675,7 +779,6 @@ public class MessageProcessorItemProvider extends EsbElementItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -683,33 +786,33 @@ public class MessageProcessorItemProvider extends EsbElementItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(MessageProcessor.class)) {
-        case EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_NAME:
-        case EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_TYPE:
-        case EsbPackage.MESSAGE_PROCESSOR__MESSAGE_PROCESSOR_PROVIDER:
-        case EsbPackage.MESSAGE_PROCESSOR__MESSAGE_STORE:
-        case EsbPackage.MESSAGE_PROCESSOR__SOURCE_MESSAGE_STORE:
-        case EsbPackage.MESSAGE_PROCESSOR__TARGET_MESSAGE_STORE:
-        case EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_STATE:
-        case EsbPackage.MESSAGE_PROCESSOR__RETRY_INTERVAL:
-        case EsbPackage.MESSAGE_PROCESSOR__FORWARDING_INTERVAL:
-        case EsbPackage.MESSAGE_PROCESSOR__SAMPLING_INTERVAL:
-        case EsbPackage.MESSAGE_PROCESSOR__SAMPLING_CONCURRENCY:
-        case EsbPackage.MESSAGE_PROCESSOR__MAX_DELIVERY_ATTEMPTS:
-        case EsbPackage.MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS:
-        case EsbPackage.MESSAGE_PROCESSOR__AXIS2_CLIENT_REPOSITORY:
-        case EsbPackage.MESSAGE_PROCESSOR__AXIS2_CONFIGURATION:
-        case EsbPackage.MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH:
-        case EsbPackage.MESSAGE_PROCESSOR__CRON_EXPRESSION:
-        case EsbPackage.MESSAGE_PROCESSOR__NON_RETRY_HTTP_STATUS_CODES:
-        case EsbPackage.MESSAGE_PROCESSOR__TASK_COUNT:
-        case EsbPackage.MESSAGE_PROCESSOR__MAX_STORE_CONNECTION_ATTEMPTS:
-        case EsbPackage.MESSAGE_PROCESSOR__STORE_CONNECTION_INTERVAL:
-        case EsbPackage.MESSAGE_PROCESSOR__FAIL_MESSAGES_STORE:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.MESSAGE_PROCESSOR__ENDPOINT_NAME:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_NAME:
+            case EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_TYPE:
+            case EsbPackage.MESSAGE_PROCESSOR__MESSAGE_PROCESSOR_PROVIDER:
+            case EsbPackage.MESSAGE_PROCESSOR__MESSAGE_STORE:
+            case EsbPackage.MESSAGE_PROCESSOR__SOURCE_MESSAGE_STORE:
+            case EsbPackage.MESSAGE_PROCESSOR__TARGET_MESSAGE_STORE:
+            case EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_STATE:
+            case EsbPackage.MESSAGE_PROCESSOR__RETRY_INTERVAL:
+            case EsbPackage.MESSAGE_PROCESSOR__FORWARDING_INTERVAL:
+            case EsbPackage.MESSAGE_PROCESSOR__SAMPLING_INTERVAL:
+            case EsbPackage.MESSAGE_PROCESSOR__SAMPLING_CONCURRENCY:
+            case EsbPackage.MESSAGE_PROCESSOR__MAX_DELIVERY_ATTEMPTS:
+            case EsbPackage.MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS:
+            case EsbPackage.MESSAGE_PROCESSOR__AXIS2_CLIENT_REPOSITORY:
+            case EsbPackage.MESSAGE_PROCESSOR__AXIS2_CONFIGURATION:
+            case EsbPackage.MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH:
+            case EsbPackage.MESSAGE_PROCESSOR__CRON_EXPRESSION:
+            case EsbPackage.MESSAGE_PROCESSOR__NON_RETRY_HTTP_STATUS_CODES:
+            case EsbPackage.MESSAGE_PROCESSOR__TASK_COUNT:
+            case EsbPackage.MESSAGE_PROCESSOR__MAX_STORE_CONNECTION_ATTEMPTS:
+            case EsbPackage.MESSAGE_PROCESSOR__STORE_CONNECTION_INTERVAL:
+            case EsbPackage.MESSAGE_PROCESSOR__FAIL_MESSAGES_STORE:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.MESSAGE_PROCESSOR__ENDPOINT_NAME:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -719,15 +822,16 @@ public class MessageProcessorItemProvider extends EsbElementItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MESSAGE_PROCESSOR__ENDPOINT_NAME,
-                EsbFactory.eINSTANCE.createRegistryKeyProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MESSAGE_PROCESSOR__ENDPOINT_NAME,
+                 EsbFactory.eINSTANCE.createRegistryKeyProperty()));
     }
 
 }

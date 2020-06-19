@@ -6,6 +6,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.parts;
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
 
+
 // End of user code
 
 /**
@@ -14,66 +15,68 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public interface NameValueTypePropertyPropertiesEditionPart {
 
-    /**
-     * @return the propertyName
-     * 
-     */
-    public String getPropertyName();
+	/**
+	 * @return the propertyName
+	 * 
+	 */
+	public String getPropertyName();
 
-    /**
-     * Defines a new propertyName
-     * 
-     * @param newValue the new propertyName to set
-     * 
-     */
-    public void setPropertyName(String newValue);
+	/**
+	 * Defines a new propertyName
+	 * @param newValue the new propertyName to set
+	 * 
+	 */
+	public void setPropertyName(String newValue);
 
-    /**
-     * @return the propertyValue
-     * 
-     */
-    public String getPropertyValue();
 
-    /**
-     * Defines a new propertyValue
-     * 
-     * @param newValue the new propertyValue to set
-     * 
-     */
-    public void setPropertyValue(String newValue);
+	/**
+	 * @return the propertyValue
+	 * 
+	 */
+	public String getPropertyValue();
 
-    /**
-     * @return the propertyType
-     * 
-     */
-    public Enumerator getPropertyType();
+	/**
+	 * Defines a new propertyValue
+	 * @param newValue the new propertyValue to set
+	 * 
+	 */
+	public void setPropertyValue(String newValue);
 
-    /**
-     * Init the propertyType
-     * 
-     * @param input the viewer input
-     * @param current the current value
-     */
-    public void initPropertyType(Object input, Enumerator current);
 
-    /**
-     * Defines a new propertyType
-     * 
-     * @param newValue the new propertyType to set
-     * 
-     */
-    public void setPropertyType(Enumerator newValue);
+	/**
+	 * @return the propertyType
+	 * 
+	 */
+	public Enumerator getPropertyType();
 
-    /**
-     * Returns the internationalized title text.
-     * 
-     * @return the internationalized title text.
-     * 
-     */
-    public String getTitle();
+	/**
+	 * Init the propertyType
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initPropertyType(Object input, Enumerator current);
 
-    // Start of user code for additional methods
+	/**
+	 * Defines a new propertyType
+	 * @param newValue the new propertyType to set
+	 * 
+	 */
+	public void setPropertyType(Enumerator newValue);
 
-    // End of user code
+
+
+
+
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 * 
+	 */
+	public String getTitle();
+
+	// Start of user code for additional methods
+	
+	// End of user code
 
 }

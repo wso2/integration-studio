@@ -47,169 +47,141 @@ import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
  * 
  * @generated NOT
  */
-public class SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl extends CompositePropertiesEditionPart
-        implements ISWTPropertiesEditionPart, SwitchCaseBranchOutputConnectorPropertiesEditionPart {
+public class SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, SwitchCaseBranchOutputConnectorPropertiesEditionPart {
 
-    protected ReferencesTable commentMediators;
-    protected List<ViewerFilter> commentMediatorsBusinessFilters = new ArrayList<ViewerFilter>();
-    protected List<ViewerFilter> commentMediatorsFilters = new ArrayList<ViewerFilter>();
-    protected Text caseRegex;
-    protected Control[] commentElements;
-    protected Group propertiesGroup;
+	protected ReferencesTable commentMediators;
+	protected List<ViewerFilter> commentMediatorsBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> commentMediatorsFilters = new ArrayList<ViewerFilter>();
+	protected Text caseRegex;
+   protected Control[] commentElements;
+   protected Group propertiesGroup;
 
-    /**
-     * Default constructor
-     * 
-     * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-     * 
-     */
-    public SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
-        super(editionComponent);
-    }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
-     *      createFigure(org.eclipse.swt.widgets.Composite)
-     * 
-     */
-    public Composite createFigure(final Composite parent) {
-        view = new Composite(parent, SWT.NONE);
-        GridLayout layout = new GridLayout();
-        layout.numColumns = 3;
-        view.setLayout(layout);
-        createControls(view);
-        return view;
-    }
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
+	 */
+	public SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
+		super(editionComponent);
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
-     *      createControls(org.eclipse.swt.widgets.Composite)
-     * 
-     */
-    public void createControls(Composite view) {
-        CompositionSequence switchCaseBranchOutputConnectorStep = new BindingCompositionSequence(
-                propertiesEditionComponent);
-        CompositionStep propertiesStep = switchCaseBranchOutputConnectorStep
-                .addStep(EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.class);
-        propertiesStep.addStep(EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.commentMediators);
-        propertiesStep.addStep(EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.caseRegex);
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 * 
+	 */
+	public Composite createFigure(final Composite parent) {
+		view = new Composite(parent, SWT.NONE);
+		GridLayout layout = new GridLayout();
+		layout.numColumns = 3;
+		view.setLayout(layout);
+		createControls(view);
+		return view;
+	}
 
-        composer = new PartComposer(switchCaseBranchOutputConnectorStep) {
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 * 
+	 */
+	public void createControls(Composite view) { 
+		CompositionSequence switchCaseBranchOutputConnectorStep = new BindingCompositionSequence(propertiesEditionComponent);
+		CompositionStep propertiesStep = switchCaseBranchOutputConnectorStep.addStep(EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.class);
+		propertiesStep.addStep(EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.commentMediators);
+		propertiesStep.addStep(EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.caseRegex);
+		
+		
+		composer = new PartComposer(switchCaseBranchOutputConnectorStep) {
 
-            @Override
-            public Composite addToPart(Composite parent, Object key) {
-                if (key == EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.class) {
-                    return createPropertiesGroup(parent);
-                }
-                if (key == EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.commentMediators) {
-                    return createCommentMediatorsAdvancedTableComposition(parent);
-                }
-                if (key == EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.caseRegex) {
-                    return createCaseRegexText(parent);
-                }
-                return parent;
-            }
-        };
-        composer.compose(view);
-    }
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.class) {
+					return createPropertiesGroup(parent);
+				}
+				if (key == EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.commentMediators) {
+					return createCommentMediatorsAdvancedTableComposition(parent);
+				}
+				if (key == EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.caseRegex) {
+					return createCaseRegexText(parent);
+				}
+				return parent;
+			}
+		};
+		composer.compose(view);
+	}
 
-    /**
-     * @generated NOT
-     */
-    protected Composite createPropertiesGroup(Composite parent) {
-        propertiesGroup = new Group(parent, SWT.NONE);
-        propertiesGroup.setText(EsbMessages.SwitchCaseBranchOutputConnectorPropertiesEditionPart_PropertiesGroupLabel);
-        GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
-        propertiesGroupData.horizontalSpan = 3;
-        propertiesGroup.setLayoutData(propertiesGroupData);
-        GridLayout propertiesGroupLayout = new GridLayout();
-        propertiesGroupLayout.numColumns = 3;
-        propertiesGroup.setLayout(propertiesGroupLayout);
-        return propertiesGroup;
-    }
+	/**
+	 * @generated NOT
+	 */
+	protected Composite createPropertiesGroup(Composite parent) {
+		propertiesGroup = new Group(parent, SWT.NONE);
+		propertiesGroup.setText(EsbMessages.SwitchCaseBranchOutputConnectorPropertiesEditionPart_PropertiesGroupLabel);
+		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
+		propertiesGroupData.horizontalSpan = 3;
+		propertiesGroup.setLayoutData(propertiesGroupData);
+		GridLayout propertiesGroupLayout = new GridLayout();
+		propertiesGroupLayout.numColumns = 3;
+		propertiesGroup.setLayout(propertiesGroupLayout);
+		return propertiesGroup;
+	}
 
-    /**
-     * @param container
-     * @generated NOT
-     */
-    protected Composite createCommentMediatorsAdvancedTableComposition(Composite parent) {
-        Control[] previousControls = propertiesGroup.getChildren();
-        this.commentMediators = new ReferencesTable(
-                getDescription(EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.commentMediators,
-                        EsbMessages.SwitchCaseBranchOutputConnectorPropertiesEditionPart_CommentMediatorsLabel),
-                new ReferencesTableListener() {
-                    public void handleAdd() {
-                        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-                                SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl.this,
-                                EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.commentMediators,
-                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
-                        commentMediators.refresh();
-                    }
-
-                    public void handleEdit(EObject element) {
-                        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-                                SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl.this,
-                                EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.commentMediators,
-                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
-                        commentMediators.refresh();
-                    }
-
-                    public void handleMove(EObject element, int oldIndex, int newIndex) {
-                        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-                                SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl.this,
-                                EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.commentMediators,
-                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-                        commentMediators.refresh();
-                    }
-
-                    public void handleRemove(EObject element) {
-                        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-                                SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl.this,
-                                EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.commentMediators,
-                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-                        commentMediators.refresh();
-                    }
-
-                    public void navigateTo(EObject element) {
-                    }
-                });
-        for (ViewerFilter filter : this.commentMediatorsFilters) {
-            this.commentMediators.addFilter(filter);
-        }
-        this.commentMediators.setHelpText(propertiesEditionComponent.getHelpContent(
-                EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.commentMediators,
-                EsbViewsRepository.SWT_KIND));
-        this.commentMediators.createControls(parent);
-        this.commentMediators.addSelectionListener(new SelectionAdapter() {
-
-            public void widgetSelected(SelectionEvent e) {
-                if (e.item != null && e.item.getData() instanceof EObject) {
-                    propertiesEditionComponent.firePropertiesChanged(
-                            new PropertiesEditionEvent(SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl.this,
-                                    EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.commentMediators,
-                                    PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null,
-                                    e.item.getData()));
-                }
-            }
-
-        });
-        GridData commentMediatorsData = new GridData(GridData.FILL_HORIZONTAL);
-        commentMediatorsData.horizontalSpan = 3;
-        this.commentMediators.setLayoutData(commentMediatorsData);
-        this.commentMediators.setLowerBound(0);
-        this.commentMediators.setUpperBound(-1);
-        commentMediators.setID(EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.commentMediators);
-        commentMediators.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
-        // Start of user code for createCommentMediatorsAdvancedTableComposition
-        Control[] newControls = propertiesGroup.getChildren();
-        commentElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
-        // End of user code
-        return parent;
-    }
+	/**
+	 * @param container
+	 * @generated NOT
+	 */
+	protected Composite createCommentMediatorsAdvancedTableComposition(Composite parent) {
+	   Control [] previousControls = propertiesGroup.getChildren();
+		this.commentMediators = new ReferencesTable(getDescription(EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.commentMediators, EsbMessages.SwitchCaseBranchOutputConnectorPropertiesEditionPart_CommentMediatorsLabel), new ReferencesTableListener() {
+			public void handleAdd() { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl.this, EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.commentMediators, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				commentMediators.refresh();
+			}
+			public void handleEdit(EObject element) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl.this, EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.commentMediators, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+				commentMediators.refresh();
+			}
+			public void handleMove(EObject element, int oldIndex, int newIndex) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl.this, EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.commentMediators, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+				commentMediators.refresh();
+			}
+			public void handleRemove(EObject element) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl.this, EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.commentMediators, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+				commentMediators.refresh();
+			}
+			public void navigateTo(EObject element) { }
+		});
+		for (ViewerFilter filter : this.commentMediatorsFilters) {
+			this.commentMediators.addFilter(filter);
+		}
+		this.commentMediators.setHelpText(propertiesEditionComponent.getHelpContent(EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.commentMediators, EsbViewsRepository.SWT_KIND));
+		this.commentMediators.createControls(parent);
+		this.commentMediators.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl.this, EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.commentMediators, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
+		GridData commentMediatorsData = new GridData(GridData.FILL_HORIZONTAL);
+		commentMediatorsData.horizontalSpan = 3;
+		this.commentMediators.setLayoutData(commentMediatorsData);
+		this.commentMediators.setLowerBound(0);
+		this.commentMediators.setUpperBound(-1);
+		commentMediators.setID(EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.commentMediators);
+		commentMediators.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createCommentMediatorsAdvancedTableComposition
+		Control [] newControls = propertiesGroup.getChildren();
+      commentElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
+		// End of user code
+		return parent;
+	}
 
     protected Composite createCaseRegexText(Composite parent) {
         createDescription(parent, EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.caseRegex,
@@ -229,13 +201,13 @@ public class SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl extends Co
             @Override
             @SuppressWarnings("synthetic-access")
             public void keyReleased(KeyEvent e) {
-
+              
                 if (propertiesEditionComponent != null)
                     propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
                             SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl.this,
                             EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.caseRegex,
                             PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, caseRegex.getText()));
-
+                
             }
 
             @Override
@@ -262,132 +234,133 @@ public class SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl extends Co
         return parent;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
-     */
-    public void firePropertiesChanged(IPropertiesEditionEvent event) {
-        // Start of user code for tab synchronization
 
-        // End of user code
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+		// Start of user code for tab synchronization
+		
+		// End of user code
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SwitchCaseBranchOutputConnectorPropertiesEditionPart#initCommentMediators(EObject
-     *      current, EReference containingFeature, EReference feature)
-     */
-    public void initCommentMediators(ReferencesTableSettings settings) {
-        if (current.eResource() != null && current.eResource().getResourceSet() != null)
-            this.resourceSet = current.eResource().getResourceSet();
-        ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
-        commentMediators.setContentProvider(contentProvider);
-        commentMediators.setInput(settings);
-        boolean eefElementEditorReadOnlyState = isReadOnly(
-                EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.commentMediators);
-        if (eefElementEditorReadOnlyState && commentMediators.isEnabled()) {
-            commentMediators.setEnabled(false);
-            commentMediators.setToolTipText(EsbMessages.SwitchCaseBranchOutputConnector_ReadOnly);
-        } else if (!eefElementEditorReadOnlyState && !commentMediators.isEnabled()) {
-            commentMediators.setEnabled(true);
-        }
 
-    }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SwitchCaseBranchOutputConnectorPropertiesEditionPart#updateCommentMediators()
-     * 
-     */
-    public void updateCommentMediators() {
-        commentMediators.refresh();
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SwitchCaseBranchOutputConnectorPropertiesEditionPart#initCommentMediators(EObject current, EReference containingFeature, EReference feature)
+	 */
+	public void initCommentMediators(ReferencesTableSettings settings) {
+		if (current.eResource() != null && current.eResource().getResourceSet() != null)
+			this.resourceSet = current.eResource().getResourceSet();
+		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+		commentMediators.setContentProvider(contentProvider);
+		commentMediators.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.commentMediators);
+		if (eefElementEditorReadOnlyState && commentMediators.isEnabled()) {
+			commentMediators.setEnabled(false);
+			commentMediators.setToolTipText(EsbMessages.SwitchCaseBranchOutputConnector_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !commentMediators.isEnabled()) {
+			commentMediators.setEnabled(true);
+		}	
+		
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SwitchCaseBranchOutputConnectorPropertiesEditionPart#addFilterCommentMediators(ViewerFilter
-     *      filter)
-     * 
-     */
-    public void addFilterToCommentMediators(ViewerFilter filter) {
-        commentMediatorsFilters.add(filter);
-        if (this.commentMediators != null) {
-            this.commentMediators.addFilter(filter);
-        }
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SwitchCaseBranchOutputConnectorPropertiesEditionPart#updateCommentMediators()
+	 * 
+	 */
+	public void updateCommentMediators() {
+	commentMediators.refresh();
+}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SwitchCaseBranchOutputConnectorPropertiesEditionPart#addBusinessFilterCommentMediators(ViewerFilter
-     *      filter)
-     * 
-     */
-    public void addBusinessFilterToCommentMediators(ViewerFilter filter) {
-        commentMediatorsBusinessFilters.add(filter);
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SwitchCaseBranchOutputConnectorPropertiesEditionPart#addFilterCommentMediators(ViewerFilter filter)
+	 * 
+	 */
+	public void addFilterToCommentMediators(ViewerFilter filter) {
+		commentMediatorsFilters.add(filter);
+		if (this.commentMediators != null) {
+			this.commentMediators.addFilter(filter);
+		}
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SwitchCaseBranchOutputConnectorPropertiesEditionPart#isContainedInCommentMediatorsTable(EObject
-     *      element)
-     * 
-     */
-    public boolean isContainedInCommentMediatorsTable(EObject element) {
-        return ((ReferencesTableSettings) commentMediators.getInput()).contains(element);
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SwitchCaseBranchOutputConnectorPropertiesEditionPart#addBusinessFilterCommentMediators(ViewerFilter filter)
+	 * 
+	 */
+	public void addBusinessFilterToCommentMediators(ViewerFilter filter) {
+		commentMediatorsBusinessFilters.add(filter);
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SwitchCaseBranchOutputConnectorPropertiesEditionPart#getCaseRegex()
-     * 
-     */
-    public String getCaseRegex() {
-        return caseRegex.getText();
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SwitchCaseBranchOutputConnectorPropertiesEditionPart#isContainedInCommentMediatorsTable(EObject element)
+	 * 
+	 */
+	public boolean isContainedInCommentMediatorsTable(EObject element) {
+		return ((ReferencesTableSettings)commentMediators.getInput()).contains(element);
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SwitchCaseBranchOutputConnectorPropertiesEditionPart#setCaseRegex(String
-     *      newValue)
-     * 
-     */
-    public void setCaseRegex(String newValue) {
-        if (newValue != null) {
-            caseRegex.setText(newValue);
-        } else {
-            caseRegex.setText(""); //$NON-NLS-1$
-        }
-        boolean eefElementEditorReadOnlyState = isReadOnly(
-                EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.caseRegex);
-        if (eefElementEditorReadOnlyState && caseRegex.isEnabled()) {
-            caseRegex.setEnabled(false);
-            caseRegex.setToolTipText(EsbMessages.SwitchCaseBranchOutputConnector_ReadOnly);
-        } else if (!eefElementEditorReadOnlyState && !caseRegex.isEnabled()) {
-            caseRegex.setEnabled(true);
-        }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SwitchCaseBranchOutputConnectorPropertiesEditionPart#getCaseRegex()
+	 * 
+	 */
+	public String getCaseRegex() {
+		return caseRegex.getText();
+	}
 
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.SwitchCaseBranchOutputConnectorPropertiesEditionPart#setCaseRegex(String newValue)
+	 * 
+	 */
+	public void setCaseRegex(String newValue) {
+		if (newValue != null) {
+			caseRegex.setText(newValue);
+		} else {
+			caseRegex.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.SwitchCaseBranchOutputConnector.Properties.caseRegex);
+		if (eefElementEditorReadOnlyState && caseRegex.isEnabled()) {
+			caseRegex.setEnabled(false);
+			caseRegex.setToolTipText(EsbMessages.SwitchCaseBranchOutputConnector_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !caseRegex.isEnabled()) {
+			caseRegex.setEnabled(true);
+		}	
+		
+	}
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-     * 
-     */
-    public String getTitle() {
-        return EsbMessages.SwitchCaseBranchOutputConnector_Part_Title;
-    }
 
-    // Start of user code additional methods
+
+
+
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
+	 */
+	public String getTitle() {
+		return EsbMessages.SwitchCaseBranchOutputConnector_Part_Title;
+	}
+
+	// Start of user code additional methods
     @Override
     public void refresh() {
         super.refresh();
@@ -399,6 +372,7 @@ public class SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl extends Co
         epv.hideEntry(commentElements, false);
         view.layout(true, true);
     }
-    // End of user code
+	// End of user code
+
 
 }

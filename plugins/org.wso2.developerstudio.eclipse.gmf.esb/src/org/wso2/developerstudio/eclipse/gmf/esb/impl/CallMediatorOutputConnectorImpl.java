@@ -31,7 +31,6 @@ public class CallMediatorOutputConnectorImpl extends OutputConnectorImpl impleme
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected CallMediatorOutputConnectorImpl() {
@@ -41,7 +40,6 @@ public class CallMediatorOutputConnectorImpl extends OutputConnectorImpl impleme
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

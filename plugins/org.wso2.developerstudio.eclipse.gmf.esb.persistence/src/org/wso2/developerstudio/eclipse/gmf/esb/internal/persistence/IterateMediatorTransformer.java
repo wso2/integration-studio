@@ -66,8 +66,7 @@ public class IterateMediatorTransformer extends AbstractEsbNodeTransformer {
     }
 
     public static org.apache.synapse.mediators.eip.splitter.IterateMediator createIterateMediator(
-            TransformationInfo information, EsbNode subject, boolean isForValidation)
-            throws JaxenException, TransformerException {
+            TransformationInfo information, EsbNode subject, boolean isForValidation) throws JaxenException, TransformerException {
         /*
          * Check subject.
          */

@@ -22,7 +22,6 @@ public class ClassMediatorOutputConnectorImpl extends OutputConnectorImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected ClassMediatorOutputConnectorImpl() {
@@ -32,7 +31,6 @@ public class ClassMediatorOutputConnectorImpl extends OutputConnectorImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

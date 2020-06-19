@@ -105,13 +105,13 @@ public class APIDeserializer extends AbstractEsbNodeDeserializer<API, SynapseAPI
         }
         executeSetValueCommand(SYNAPSE_API__API_NAME, api.getAPIName());
         executeSetValueCommand(SYNAPSE_API__CONTEXT, api.getContext());
-
+        
         if (api.getSwaggerResourcePath() != null) {
-            RegistryKeyProperty registryKeyProperty = EsbFactory.eINSTANCE.createRegistryKeyProperty();
-            registryKeyProperty.setKeyValue(api.getSwaggerResourcePath());
-            executeSetValueCommand(SYNAPSE_API__PUBLISH_SWAGGER, registryKeyProperty);
+        	RegistryKeyProperty registryKeyProperty = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+        	registryKeyProperty.setKeyValue(api.getSwaggerResourcePath());
+        	executeSetValueCommand(SYNAPSE_API__PUBLISH_SWAGGER, registryKeyProperty);
         }
-
+        
         if (api.getHost() != null) {
             executeSetValueCommand(SYNAPSE_API__HOST_NAME, api.getHost());
         }

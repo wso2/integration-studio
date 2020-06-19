@@ -17,7 +17,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Property Action</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPropertyAction()
  * @model
  * @generated
@@ -27,7 +26,6 @@ public enum PropertyAction implements Enumerator {
      * The '<em><b>SET</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #SET_VALUE
      * @generated
      * @ordered
@@ -38,7 +36,6 @@ public enum PropertyAction implements Enumerator {
      * The '<em><b>REMOVE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #REMOVE_VALUE
      * @generated
      * @ordered
@@ -53,7 +50,6 @@ public enum PropertyAction implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #SET
      * @model literal="set"
      * @generated
@@ -69,7 +65,6 @@ public enum PropertyAction implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #REMOVE
      * @model literal="remove"
      * @generated
@@ -81,16 +76,17 @@ public enum PropertyAction implements Enumerator {
      * An array of all the '<em><b>Property Action</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
-    private static final PropertyAction[] VALUES_ARRAY = new PropertyAction[] { SET, REMOVE, };
+    private static final PropertyAction[] VALUES_ARRAY = new PropertyAction[] {
+            SET,
+            REMOVE,
+        };
 
     /**
      * A public read-only list of all the '<em><b>Property Action</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public static final List<PropertyAction> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -99,7 +95,6 @@ public enum PropertyAction implements Enumerator {
      * Returns the '<em><b>Property Action</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -118,7 +113,6 @@ public enum PropertyAction implements Enumerator {
      * Returns the '<em><b>Property Action</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -137,17 +131,14 @@ public enum PropertyAction implements Enumerator {
      * Returns the '<em><b>Property Action</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static PropertyAction get(int value) {
         switch (value) {
-        case SET_VALUE:
-            return SET;
-        case REMOVE_VALUE:
-            return REMOVE;
+            case SET_VALUE: return SET;
+            case REMOVE_VALUE: return REMOVE;
         }
         return null;
     }
@@ -155,7 +146,6 @@ public enum PropertyAction implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final int value;
@@ -163,7 +153,6 @@ public enum PropertyAction implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String name;
@@ -171,7 +160,6 @@ public enum PropertyAction implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String literal;
@@ -180,7 +168,6 @@ public enum PropertyAction implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private PropertyAction(int value, String name, String literal) {
@@ -192,38 +179,34 @@ public enum PropertyAction implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public int getValue() {
-        return value;
+      return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getName() {
-        return name;
+      return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getLiteral() {
-        return literal;
+      return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

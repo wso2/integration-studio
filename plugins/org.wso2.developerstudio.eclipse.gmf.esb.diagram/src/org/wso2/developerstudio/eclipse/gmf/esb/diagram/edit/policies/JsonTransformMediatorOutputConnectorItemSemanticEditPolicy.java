@@ -24,15 +24,15 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 public class JsonTransformMediatorOutputConnectorItemSemanticEditPolicy extends EsbBaseItemSemanticEditPolicy {
 
     /**
-     * @generated
-     */
+    * @generated
+    */
     public JsonTransformMediatorOutputConnectorItemSemanticEditPolicy() {
         super(EsbElementTypes.JsonTransformMediatorOutputConnector_3793);
     }
 
     /**
-     * @generated
-     */
+    * @generated
+    */
     protected Command getDestroyElementCommand(DestroyElementRequest req) {
         View view = (View) getHost().getModel();
         CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(getEditingDomain(), null);

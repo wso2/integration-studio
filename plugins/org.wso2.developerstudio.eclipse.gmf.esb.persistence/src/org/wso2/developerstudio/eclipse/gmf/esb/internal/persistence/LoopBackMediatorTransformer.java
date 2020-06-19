@@ -44,7 +44,7 @@ public class LoopBackMediatorTransformer extends AbstractEsbNodeTransformer {
 
         // Transform the loopback mediator output data flow path.
         try {
-            doTransform(information, visualMediator.getOutputConnector());
+        	doTransform(information, visualMediator.getOutputConnector());
         } catch (TransformerException e) {
             throw new TransformerException(e);
         }

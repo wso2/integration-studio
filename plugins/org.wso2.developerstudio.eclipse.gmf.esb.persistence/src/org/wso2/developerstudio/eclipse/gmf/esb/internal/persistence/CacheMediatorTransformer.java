@@ -137,8 +137,7 @@ public class CacheMediatorTransformer extends AbstractEsbNodeTransformer {
                 } else {
                     cacheMediator.setScope("per-mediator");
                     if (cacheMediator.getId().equals("")) {
-                        throw new TransformerException(
-                                "Cache ID cannot be empty since the cache scope is per-mediator.");
+                        throw new TransformerException("Cache ID cannot be empty since the cache scope is per-mediator.");
                     }
                 }
 

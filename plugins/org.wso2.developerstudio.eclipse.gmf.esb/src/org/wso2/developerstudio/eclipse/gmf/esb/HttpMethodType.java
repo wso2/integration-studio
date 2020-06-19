@@ -26,7 +26,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Http Method Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getHttpMethodType()
  * @model
  * @generated
@@ -36,7 +35,6 @@ public enum HttpMethodType implements Enumerator {
      * The '<em><b>GET</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #GET_VALUE
      * @generated
      * @ordered
@@ -47,7 +45,6 @@ public enum HttpMethodType implements Enumerator {
      * The '<em><b>POST</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #POST_VALUE
      * @generated
      * @ordered
@@ -58,7 +55,6 @@ public enum HttpMethodType implements Enumerator {
      * The '<em><b>PUT</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #PUT_VALUE
      * @generated
      * @ordered
@@ -69,7 +65,6 @@ public enum HttpMethodType implements Enumerator {
      * The '<em><b>DELETE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #DELETE_VALUE
      * @generated
      * @ordered
@@ -80,7 +75,6 @@ public enum HttpMethodType implements Enumerator {
      * The '<em><b>HEAD</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #HEAD_VALUE
      * @generated
      * @ordered
@@ -90,7 +84,6 @@ public enum HttpMethodType implements Enumerator {
      * The '<em><b>OPTIONS</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #OPTIONS_VALUE
      * @generated
      * @ordered
@@ -100,7 +93,6 @@ public enum HttpMethodType implements Enumerator {
      * The '<em><b>PATCH</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #PATCH_VALUE
      * @generated
      * @ordered
@@ -110,7 +102,6 @@ public enum HttpMethodType implements Enumerator {
      * The '<em><b>Leave as is</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #LEAVE_AS_IS_VALUE
      * @generated
      * @ordered
@@ -125,7 +116,6 @@ public enum HttpMethodType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #GET
      * @model
      * @generated
@@ -141,7 +131,6 @@ public enum HttpMethodType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #POST
      * @model
      * @generated
@@ -157,7 +146,6 @@ public enum HttpMethodType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #PUT
      * @model
      * @generated
@@ -173,7 +161,6 @@ public enum HttpMethodType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #DELETE
      * @model
      * @generated
@@ -189,7 +176,6 @@ public enum HttpMethodType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #HEAD
      * @model
      * @generated
@@ -205,7 +191,6 @@ public enum HttpMethodType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #OPTIONS
      * @model
      * @generated
@@ -221,7 +206,6 @@ public enum HttpMethodType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #PATCH
      * @model
      * @generated
@@ -237,7 +221,6 @@ public enum HttpMethodType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #LEAVE_AS_IS
      * @model name="Leave_as_is" literal="Leave-as-is"
      * @generated
@@ -249,17 +232,23 @@ public enum HttpMethodType implements Enumerator {
      * An array of all the '<em><b>Http Method Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
-    private static final HttpMethodType[] VALUES_ARRAY = new HttpMethodType[] { GET, POST, PUT, DELETE, HEAD, OPTIONS,
-            PATCH, LEAVE_AS_IS, };
+    private static final HttpMethodType[] VALUES_ARRAY = new HttpMethodType[] {
+            GET,
+            POST,
+            PUT,
+            DELETE,
+            HEAD,
+            OPTIONS,
+            PATCH,
+            LEAVE_AS_IS,
+        };
 
     /**
      * A public read-only list of all the '<em><b>Http Method Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public static final List<HttpMethodType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -268,7 +257,6 @@ public enum HttpMethodType implements Enumerator {
      * Returns the '<em><b>Http Method Type</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -287,7 +275,6 @@ public enum HttpMethodType implements Enumerator {
      * Returns the '<em><b>Http Method Type</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -306,29 +293,20 @@ public enum HttpMethodType implements Enumerator {
      * Returns the '<em><b>Http Method Type</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static HttpMethodType get(int value) {
         switch (value) {
-        case GET_VALUE:
-            return GET;
-        case POST_VALUE:
-            return POST;
-        case PUT_VALUE:
-            return PUT;
-        case DELETE_VALUE:
-            return DELETE;
-        case HEAD_VALUE:
-            return HEAD;
-        case OPTIONS_VALUE:
-            return OPTIONS;
-        case PATCH_VALUE:
-            return PATCH;
-        case LEAVE_AS_IS_VALUE:
-            return LEAVE_AS_IS;
+            case GET_VALUE: return GET;
+            case POST_VALUE: return POST;
+            case PUT_VALUE: return PUT;
+            case DELETE_VALUE: return DELETE;
+            case HEAD_VALUE: return HEAD;
+            case OPTIONS_VALUE: return OPTIONS;
+            case PATCH_VALUE: return PATCH;
+            case LEAVE_AS_IS_VALUE: return LEAVE_AS_IS;
         }
         return null;
     }
@@ -336,7 +314,6 @@ public enum HttpMethodType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final int value;
@@ -344,7 +321,6 @@ public enum HttpMethodType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String name;
@@ -352,7 +328,6 @@ public enum HttpMethodType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String literal;
@@ -361,7 +336,6 @@ public enum HttpMethodType implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private HttpMethodType(int value, String name, String literal) {
@@ -373,38 +347,34 @@ public enum HttpMethodType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public int getValue() {
-        return value;
+      return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getName() {
-        return name;
+      return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getLiteral() {
-        return literal;
+      return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

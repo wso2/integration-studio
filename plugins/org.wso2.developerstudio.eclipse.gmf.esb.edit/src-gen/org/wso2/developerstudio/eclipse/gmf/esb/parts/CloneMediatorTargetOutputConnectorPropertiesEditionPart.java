@@ -10,6 +10,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSet
 
 import org.eclipse.jface.viewers.ViewerFilter;
 
+
 // End of user code
 
 /**
@@ -18,87 +19,91 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public interface CloneMediatorTargetOutputConnectorPropertiesEditionPart {
 
-    /**
-     * Init the commentMediators
-     * 
-     * @param current the current value
-     * @param containgFeature the feature where to navigate if necessary
-     * @param feature the feature to manage
-     */
-    public void initCommentMediators(ReferencesTableSettings settings);
 
-    /**
-     * Update the commentMediators
-     * 
-     * @param newValue the commentMediators to update
-     * 
-     */
-    public void updateCommentMediators();
 
-    /**
-     * Adds the given filter to the commentMediators edition editor.
-     * 
-     * @param filter
-     *            a viewer filter
-     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
-     */
-    public void addFilterToCommentMediators(ViewerFilter filter);
+	/**
+	 * Init the commentMediators
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initCommentMediators(ReferencesTableSettings settings);
 
-    /**
-     * Adds the given filter to the commentMediators edition editor.
-     * 
-     * @param filter
-     *            a viewer filter
-     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
-     */
-    public void addBusinessFilterToCommentMediators(ViewerFilter filter);
+	/**
+	 * Update the commentMediators
+	 * @param newValue the commentMediators to update
+	 * 
+	 */
+	public void updateCommentMediators();
 
-    /**
-     * @return true if the given element is contained inside the commentMediators table
-     * 
-     */
-    public boolean isContainedInCommentMediatorsTable(EObject element);
+	/**
+	 * Adds the given filter to the commentMediators edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToCommentMediators(ViewerFilter filter);
 
-    /**
-     * @return the soapAction
-     * 
-     */
-    public String getSoapAction();
+	/**
+	 * Adds the given filter to the commentMediators edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToCommentMediators(ViewerFilter filter);
 
-    /**
-     * Defines a new soapAction
-     * 
-     * @param newValue the new soapAction to set
-     * 
-     */
-    public void setSoapAction(String newValue);
+	/**
+	 * @return true if the given element is contained inside the commentMediators table
+	 * 
+	 */
+	public boolean isContainedInCommentMediatorsTable(EObject element);
 
-    /**
-     * @return the toAddress
-     * 
-     */
-    public String getToAddress();
 
-    /**
-     * Defines a new toAddress
-     * 
-     * @param newValue the new toAddress to set
-     * 
-     */
-    public void setToAddress(String newValue);
+	/**
+	 * @return the soapAction
+	 * 
+	 */
+	public String getSoapAction();
 
-    /**
-     * Returns the internationalized title text.
-     * 
-     * @return the internationalized title text.
-     * 
-     */
-    public String getTitle();
+	/**
+	 * Defines a new soapAction
+	 * @param newValue the new soapAction to set
+	 * 
+	 */
+	public void setSoapAction(String newValue);
 
-    // Start of user code for additional methods
 
-    // End of user code
+	/**
+	 * @return the toAddress
+	 * 
+	 */
+	public String getToAddress();
+
+	/**
+	 * Defines a new toAddress
+	 * @param newValue the new toAddress to set
+	 * 
+	 */
+	public void setToAddress(String newValue);
+
+
+
+
+
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 * 
+	 */
+	public String getTitle();
+
+	// Start of user code for additional methods
+	
+	// End of user code
 
 }

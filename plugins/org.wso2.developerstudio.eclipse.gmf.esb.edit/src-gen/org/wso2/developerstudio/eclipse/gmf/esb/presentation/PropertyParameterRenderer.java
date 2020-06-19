@@ -27,6 +27,5 @@ import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.Connect
 
 public abstract class PropertyParameterRenderer {
     abstract Composite generate(FormToolkit widgetFactory, Composite parent, ConnectorRoot connectorRoot);
-
     abstract void fillData(EObject dataObject);
 }

@@ -46,13 +46,14 @@ import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointF
 
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
-public abstract class AbstractEndpointDeserializer extends AbstractEsbNodeDeserializer<AbstractEndpoint, EndPoint> {
+public abstract class AbstractEndpointDeserializer
+        extends AbstractEsbNodeDeserializer<AbstractEndpoint, EndPoint> {
 
     @Deprecated
     protected <T extends AbstractEndpoint> void deserializeEndpoint(T endpoint, AbstractEndPoint visualEndpoint) {
         String suspendErrorCodes = null;
         String retryErrorCodes = null;
-
+        
         String failoverRetryEnabledErrorCodes = null;
         String failoverRetryDisabledErrorCodes = null;
 
@@ -212,7 +213,7 @@ public abstract class AbstractEndpointDeserializer extends AbstractEsbNodeDeseri
 
             executeAddValueCommand(visualEndpoint.getProperties(), property, false);
         }
-
+        
         for (Integer code : endpoint.getDefinition().getRetryEnableErrorCodes()) {
             if (failoverRetryEnabledErrorCodes == null) {
                 failoverRetryEnabledErrorCodes = code.toString();
@@ -221,7 +222,7 @@ public abstract class AbstractEndpointDeserializer extends AbstractEsbNodeDeseri
             }
         }
         executeSetValueCommand(ABSTRACT_END_POINT__FAILOVER_RETRY_ERROR_CODES, failoverRetryEnabledErrorCodes);
-
+        
         for (Integer code : endpoint.getDefinition().getRetryDisabledErrorCodes()) {
             if (failoverRetryDisabledErrorCodes == null) {
                 failoverRetryDisabledErrorCodes = code.toString();
@@ -380,10 +381,10 @@ public abstract class AbstractEndpointDeserializer extends AbstractEsbNodeDeseri
                 endpointCommons.getEndpointTimeoutAction().select(2);
             }
         }
-
+        
         setTextValue(endpointCommons.getEndpointSuspendErrorCodes(),
                 definition.getSuspendErrorCodes().toString().replace("[", "").replace("]", "").replace(", ", ","));
-
+        
         setTextValue(endpointCommons.getEndpointSuspendErrorCodes(),
                 definition.getSuspendErrorCodes().toString().replace("[", "").replace("]", "").replace(", ", ","));
 
@@ -397,6 +398,6 @@ public abstract class AbstractEndpointDeserializer extends AbstractEsbNodeDeseri
 
     public org.wso2.developerstudio.eclipse.gmf.esb.EndPoint createUIEndpoint(Endpoint synapseEndpoint) {
         return null;
-
+        
     }
 }

@@ -28,12 +28,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ConditionalRouteBranchImpl#isBreakAfterRoute <em>Break After
- * Route</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ConditionalRouteBranchImpl#getEvaluatorExpression
- * <em>Evaluator Expression</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ConditionalRouteBranchImpl#getTargetSequence <em>Target
- * Sequence</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ConditionalRouteBranchImpl#isBreakAfterRoute <em>Break After Route</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ConditionalRouteBranchImpl#getEvaluatorExpression <em>Evaluator Expression</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ConditionalRouteBranchImpl#getTargetSequence <em>Target Sequence</em>}</li>
  * </ul>
  *
  * @generated
@@ -43,7 +40,6 @@ public class ConditionalRouteBranchImpl extends EsbNodeImpl implements Condition
      * The default value of the '{@link #isBreakAfterRoute() <em>Break After Route</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #isBreakAfterRoute()
      * @generated
      * @ordered
@@ -54,7 +50,6 @@ public class ConditionalRouteBranchImpl extends EsbNodeImpl implements Condition
      * The cached value of the '{@link #isBreakAfterRoute() <em>Break After Route</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #isBreakAfterRoute()
      * @generated
      * @ordered
@@ -65,7 +60,6 @@ public class ConditionalRouteBranchImpl extends EsbNodeImpl implements Condition
      * The cached value of the '{@link #getEvaluatorExpression() <em>Evaluator Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getEvaluatorExpression()
      * @generated
      * @ordered
@@ -76,7 +70,6 @@ public class ConditionalRouteBranchImpl extends EsbNodeImpl implements Condition
      * The cached value of the '{@link #getTargetSequence() <em>Target Sequence</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTargetSequence()
      * @generated
      * @ordered
@@ -86,7 +79,6 @@ public class ConditionalRouteBranchImpl extends EsbNodeImpl implements Condition
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected ConditionalRouteBranchImpl() {
@@ -96,7 +88,6 @@ public class ConditionalRouteBranchImpl extends EsbNodeImpl implements Condition
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -108,7 +99,6 @@ public class ConditionalRouteBranchImpl extends EsbNodeImpl implements Condition
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public boolean isBreakAfterRoute() {
@@ -118,21 +108,18 @@ public class ConditionalRouteBranchImpl extends EsbNodeImpl implements Condition
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setBreakAfterRoute(boolean newBreakAfterRoute) {
         boolean oldBreakAfterRoute = breakAfterRoute;
         breakAfterRoute = newBreakAfterRoute;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.CONDITIONAL_ROUTE_BRANCH__BREAK_AFTER_ROUTE, oldBreakAfterRoute, breakAfterRoute));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CONDITIONAL_ROUTE_BRANCH__BREAK_AFTER_ROUTE, oldBreakAfterRoute, breakAfterRoute));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EvaluatorExpressionProperty getEvaluatorExpression() {
@@ -142,7 +129,6 @@ public class ConditionalRouteBranchImpl extends EsbNodeImpl implements Condition
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetEvaluatorExpression(EvaluatorExpressionProperty newEvaluatorExpression,
@@ -150,13 +136,8 @@ public class ConditionalRouteBranchImpl extends EsbNodeImpl implements Condition
         EvaluatorExpressionProperty oldEvaluatorExpression = evaluatorExpression;
         evaluatorExpression = newEvaluatorExpression;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.CONDITIONAL_ROUTE_BRANCH__EVALUATOR_EXPRESSION, oldEvaluatorExpression,
-                    newEvaluatorExpression);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.CONDITIONAL_ROUTE_BRANCH__EVALUATOR_EXPRESSION, oldEvaluatorExpression, newEvaluatorExpression);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -164,31 +145,25 @@ public class ConditionalRouteBranchImpl extends EsbNodeImpl implements Condition
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setEvaluatorExpression(EvaluatorExpressionProperty newEvaluatorExpression) {
         if (newEvaluatorExpression != evaluatorExpression) {
             NotificationChain msgs = null;
             if (evaluatorExpression != null)
-                msgs = ((InternalEObject) evaluatorExpression).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.CONDITIONAL_ROUTE_BRANCH__EVALUATOR_EXPRESSION, null, msgs);
+                msgs = ((InternalEObject)evaluatorExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.CONDITIONAL_ROUTE_BRANCH__EVALUATOR_EXPRESSION, null, msgs);
             if (newEvaluatorExpression != null)
-                msgs = ((InternalEObject) newEvaluatorExpression).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.CONDITIONAL_ROUTE_BRANCH__EVALUATOR_EXPRESSION, null, msgs);
+                msgs = ((InternalEObject)newEvaluatorExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.CONDITIONAL_ROUTE_BRANCH__EVALUATOR_EXPRESSION, null, msgs);
             msgs = basicSetEvaluatorExpression(newEvaluatorExpression, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.CONDITIONAL_ROUTE_BRANCH__EVALUATOR_EXPRESSION, newEvaluatorExpression,
-                    newEvaluatorExpression));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CONDITIONAL_ROUTE_BRANCH__EVALUATOR_EXPRESSION, newEvaluatorExpression, newEvaluatorExpression));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public RegistryKeyProperty getTargetSequence() {
@@ -198,19 +173,14 @@ public class ConditionalRouteBranchImpl extends EsbNodeImpl implements Condition
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetTargetSequence(RegistryKeyProperty newTargetSequence, NotificationChain msgs) {
         RegistryKeyProperty oldTargetSequence = targetSequence;
         targetSequence = newTargetSequence;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.CONDITIONAL_ROUTE_BRANCH__TARGET_SEQUENCE, oldTargetSequence, newTargetSequence);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.CONDITIONAL_ROUTE_BRANCH__TARGET_SEQUENCE, oldTargetSequence, newTargetSequence);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -218,39 +188,34 @@ public class ConditionalRouteBranchImpl extends EsbNodeImpl implements Condition
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTargetSequence(RegistryKeyProperty newTargetSequence) {
         if (newTargetSequence != targetSequence) {
             NotificationChain msgs = null;
             if (targetSequence != null)
-                msgs = ((InternalEObject) targetSequence).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.CONDITIONAL_ROUTE_BRANCH__TARGET_SEQUENCE, null, msgs);
+                msgs = ((InternalEObject)targetSequence).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.CONDITIONAL_ROUTE_BRANCH__TARGET_SEQUENCE, null, msgs);
             if (newTargetSequence != null)
-                msgs = ((InternalEObject) newTargetSequence).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.CONDITIONAL_ROUTE_BRANCH__TARGET_SEQUENCE, null, msgs);
+                msgs = ((InternalEObject)newTargetSequence).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.CONDITIONAL_ROUTE_BRANCH__TARGET_SEQUENCE, null, msgs);
             msgs = basicSetTargetSequence(newTargetSequence, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CONDITIONAL_ROUTE_BRANCH__TARGET_SEQUENCE,
-                    newTargetSequence, newTargetSequence));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CONDITIONAL_ROUTE_BRANCH__TARGET_SEQUENCE, newTargetSequence, newTargetSequence));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-        case EsbPackage.CONDITIONAL_ROUTE_BRANCH__EVALUATOR_EXPRESSION:
-            return basicSetEvaluatorExpression(null, msgs);
-        case EsbPackage.CONDITIONAL_ROUTE_BRANCH__TARGET_SEQUENCE:
-            return basicSetTargetSequence(null, msgs);
+            case EsbPackage.CONDITIONAL_ROUTE_BRANCH__EVALUATOR_EXPRESSION:
+                return basicSetEvaluatorExpression(null, msgs);
+            case EsbPackage.CONDITIONAL_ROUTE_BRANCH__TARGET_SEQUENCE:
+                return basicSetTargetSequence(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -258,19 +223,18 @@ public class ConditionalRouteBranchImpl extends EsbNodeImpl implements Condition
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case EsbPackage.CONDITIONAL_ROUTE_BRANCH__BREAK_AFTER_ROUTE:
-            return isBreakAfterRoute();
-        case EsbPackage.CONDITIONAL_ROUTE_BRANCH__EVALUATOR_EXPRESSION:
-            return getEvaluatorExpression();
-        case EsbPackage.CONDITIONAL_ROUTE_BRANCH__TARGET_SEQUENCE:
-            return getTargetSequence();
+            case EsbPackage.CONDITIONAL_ROUTE_BRANCH__BREAK_AFTER_ROUTE:
+                return isBreakAfterRoute();
+            case EsbPackage.CONDITIONAL_ROUTE_BRANCH__EVALUATOR_EXPRESSION:
+                return getEvaluatorExpression();
+            case EsbPackage.CONDITIONAL_ROUTE_BRANCH__TARGET_SEQUENCE:
+                return getTargetSequence();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -278,22 +242,21 @@ public class ConditionalRouteBranchImpl extends EsbNodeImpl implements Condition
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case EsbPackage.CONDITIONAL_ROUTE_BRANCH__BREAK_AFTER_ROUTE:
-            setBreakAfterRoute((Boolean) newValue);
-            return;
-        case EsbPackage.CONDITIONAL_ROUTE_BRANCH__EVALUATOR_EXPRESSION:
-            setEvaluatorExpression((EvaluatorExpressionProperty) newValue);
-            return;
-        case EsbPackage.CONDITIONAL_ROUTE_BRANCH__TARGET_SEQUENCE:
-            setTargetSequence((RegistryKeyProperty) newValue);
-            return;
+            case EsbPackage.CONDITIONAL_ROUTE_BRANCH__BREAK_AFTER_ROUTE:
+                setBreakAfterRoute((Boolean)newValue);
+                return;
+            case EsbPackage.CONDITIONAL_ROUTE_BRANCH__EVALUATOR_EXPRESSION:
+                setEvaluatorExpression((EvaluatorExpressionProperty)newValue);
+                return;
+            case EsbPackage.CONDITIONAL_ROUTE_BRANCH__TARGET_SEQUENCE:
+                setTargetSequence((RegistryKeyProperty)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -301,22 +264,21 @@ public class ConditionalRouteBranchImpl extends EsbNodeImpl implements Condition
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case EsbPackage.CONDITIONAL_ROUTE_BRANCH__BREAK_AFTER_ROUTE:
-            setBreakAfterRoute(BREAK_AFTER_ROUTE_EDEFAULT);
-            return;
-        case EsbPackage.CONDITIONAL_ROUTE_BRANCH__EVALUATOR_EXPRESSION:
-            setEvaluatorExpression((EvaluatorExpressionProperty) null);
-            return;
-        case EsbPackage.CONDITIONAL_ROUTE_BRANCH__TARGET_SEQUENCE:
-            setTargetSequence((RegistryKeyProperty) null);
-            return;
+            case EsbPackage.CONDITIONAL_ROUTE_BRANCH__BREAK_AFTER_ROUTE:
+                setBreakAfterRoute(BREAK_AFTER_ROUTE_EDEFAULT);
+                return;
+            case EsbPackage.CONDITIONAL_ROUTE_BRANCH__EVALUATOR_EXPRESSION:
+                setEvaluatorExpression((EvaluatorExpressionProperty)null);
+                return;
+            case EsbPackage.CONDITIONAL_ROUTE_BRANCH__TARGET_SEQUENCE:
+                setTargetSequence((RegistryKeyProperty)null);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -324,19 +286,18 @@ public class ConditionalRouteBranchImpl extends EsbNodeImpl implements Condition
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case EsbPackage.CONDITIONAL_ROUTE_BRANCH__BREAK_AFTER_ROUTE:
-            return breakAfterRoute != BREAK_AFTER_ROUTE_EDEFAULT;
-        case EsbPackage.CONDITIONAL_ROUTE_BRANCH__EVALUATOR_EXPRESSION:
-            return evaluatorExpression != null;
-        case EsbPackage.CONDITIONAL_ROUTE_BRANCH__TARGET_SEQUENCE:
-            return targetSequence != null;
+            case EsbPackage.CONDITIONAL_ROUTE_BRANCH__BREAK_AFTER_ROUTE:
+                return breakAfterRoute != BREAK_AFTER_ROUTE_EDEFAULT;
+            case EsbPackage.CONDITIONAL_ROUTE_BRANCH__EVALUATOR_EXPRESSION:
+                return evaluatorExpression != null;
+            case EsbPackage.CONDITIONAL_ROUTE_BRANCH__TARGET_SEQUENCE:
+                return targetSequence != null;
         }
         return super.eIsSet(featureID);
     }
@@ -344,14 +305,12 @@ public class ConditionalRouteBranchImpl extends EsbNodeImpl implements Condition
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public String toString() {
-        if (eIsProxy())
-            return super.toString();
+        if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (breakAfterRoute: ");

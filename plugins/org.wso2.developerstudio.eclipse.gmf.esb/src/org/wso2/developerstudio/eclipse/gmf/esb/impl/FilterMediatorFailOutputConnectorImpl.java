@@ -23,7 +23,6 @@ public class FilterMediatorFailOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected FilterMediatorFailOutputConnectorImpl() {
@@ -33,7 +32,6 @@ public class FilterMediatorFailOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

@@ -55,9 +55,9 @@ import net.sf.saxon.s9api.XdmNode;
 public class XPathValidatorImpl implements XPathValidator {
 
     private static XPathValidator instance = new XPathValidatorImpl();
-
+    
     private static final String FORMAT_PRETTY_PRINT = "format-pretty-print";
-
+    
     private static IDeveloperStudioLog log = Logger.getLog("org.wso2.developerstudio.eclipse.gmf.esb.util");
 
     private XPathValidatorImpl() {
@@ -73,7 +73,7 @@ public class XPathValidatorImpl implements XPathValidator {
 
         return getItemListAsString(itemListItr);
     }
-
+    
     @Override
     public String getEvaluatedResult(String xml, String xpath, Map<String, String> namespaces) {
         return getItemListAsString(getIterableXpathResult(xml, xpath, namespaces));
@@ -85,16 +85,16 @@ public class XPathValidatorImpl implements XPathValidator {
         if (itemListItr != null) {
             return true;
         }
-
+        
         return false;
     }
-
+    
     @Override
     public boolean isValidXML(String xml) {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         javax.xml.parsers.DocumentBuilder builder = null;
         InputSource inputSource = new InputSource(new StringReader(xml));
-
+        
         try {
             builder = factory.newDocumentBuilder();
             builder.parse(inputSource);
@@ -102,10 +102,10 @@ public class XPathValidatorImpl implements XPathValidator {
             log.error("Could not parse XML String", e);
             return false;
         }
-
+        
         return true;
     }
-
+    
     @Override
     public Document parseXML(String xml) {
         Document document = null;
@@ -120,7 +120,7 @@ public class XPathValidatorImpl implements XPathValidator {
         }
         return document;
     }
-
+    
     @Override
     public String getFormattedXMLStringFromDoc(Document document) {
         DOMImplementation domImplementation = document.getImplementation();
@@ -128,52 +128,50 @@ public class XPathValidatorImpl implements XPathValidator {
             DOMImplementationLS domImplementationLS = (DOMImplementationLS) domImplementation.getFeature("LS", "3.0");
             LSSerializer lsSerializer = domImplementationLS.createLSSerializer();
             DOMConfiguration domConfiguration = lsSerializer.getDomConfig();
-
+            
             if (domConfiguration.canSetParameter(FORMAT_PRETTY_PRINT, Boolean.TRUE)) {
                 lsSerializer.getDomConfig().setParameter(FORMAT_PRETTY_PRINT, Boolean.TRUE);
                 StringWriter stringWriter = new StringWriter();
-
+                
                 LSOutput lsOutput = domImplementationLS.createLSOutput();
                 lsOutput.setEncoding(StandardCharsets.UTF_8.name());
                 lsOutput.setCharacterStream(stringWriter);
                 lsSerializer.write(document, lsOutput);
-
+                
                 return stringWriter.toString();
             } else {
-                throw new UnsupportedOperationException(
-                        "DOMConfiguration 'format-pretty-print' parameter isn't settable.");
+                throw new UnsupportedOperationException("DOMConfiguration 'format-pretty-print' parameter isn't settable.");
             }
-
+            
         } else {
             throw new UnsupportedOperationException("DOM 3.0 LS and/or DOM 2.0 Core not supported.");
         }
     }
-
+    
     @Override
     public String getFormattedXMLStringFromString(String xmlStr) {
         Document document = parseXML(xmlStr);
-
+        
         DOMImplementation domImplementation = document.getImplementation();
         if (domImplementation.hasFeature("LS", "3.0") && domImplementation.hasFeature("Core", "2.0")) {
             DOMImplementationLS domImplementationLS = (DOMImplementationLS) domImplementation.getFeature("LS", "3.0");
             LSSerializer lsSerializer = domImplementationLS.createLSSerializer();
             DOMConfiguration domConfiguration = lsSerializer.getDomConfig();
-
+            
             if (domConfiguration.canSetParameter(FORMAT_PRETTY_PRINT, Boolean.TRUE)) {
                 lsSerializer.getDomConfig().setParameter(FORMAT_PRETTY_PRINT, Boolean.TRUE);
                 StringWriter stringWriter = new StringWriter();
-
+                
                 LSOutput lsOutput = domImplementationLS.createLSOutput();
                 lsOutput.setEncoding(StandardCharsets.UTF_8.name());
                 lsOutput.setCharacterStream(stringWriter);
                 lsSerializer.write(document, lsOutput);
-
+                
                 return stringWriter.toString();
             } else {
-                throw new UnsupportedOperationException(
-                        "DOMConfiguration 'format-pretty-print' parameter isn't settable.");
+                throw new UnsupportedOperationException("DOMConfiguration 'format-pretty-print' parameter isn't settable.");
             }
-
+            
         } else {
             throw new UnsupportedOperationException("DOM 3.0 LS and/or DOM 2.0 Core not supported.");
         }
@@ -183,7 +181,7 @@ public class XPathValidatorImpl implements XPathValidator {
         Processor processor = new Processor(false);
         XPathCompiler compiler = processor.newXPathCompiler();
         Iterable<XdmItem> itemListItr = null;
-
+        
         for (String nsURI : namespaces.keySet()) {
             compiler.declareNamespace(nsURI, namespaces.get(nsURI));
         }
@@ -198,7 +196,7 @@ public class XPathValidatorImpl implements XPathValidator {
         } catch (SaxonApiException e) {
             log.error("Could not evaluate XPath expression", e);
         }
-
+        
         return itemListItr;
     }
 
@@ -210,7 +208,7 @@ public class XPathValidatorImpl implements XPathValidator {
             XdmItem element = (XdmItem) itr.next();
             outputStr += element.toString();
         }
-
+        
         return outputStr;
     }
 

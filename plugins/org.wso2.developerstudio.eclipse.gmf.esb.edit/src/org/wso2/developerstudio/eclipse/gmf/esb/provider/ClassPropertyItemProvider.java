@@ -30,7 +30,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.ClassProperty} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class ClassPropertyItemProvider extends AbstractNameValueExpressionPropertyItemProvider {
@@ -38,7 +37,6 @@ public class ClassPropertyItemProvider extends AbstractNameValueExpressionProper
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public ClassPropertyItemProvider(AdapterFactory adapterFactory) {
@@ -49,7 +47,6 @@ public class ClassPropertyItemProvider extends AbstractNameValueExpressionProper
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -66,7 +63,6 @@ public class ClassPropertyItemProvider extends AbstractNameValueExpressionProper
      * This returns ClassProperty.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -79,7 +75,6 @@ public class ClassPropertyItemProvider extends AbstractNameValueExpressionProper
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated NOT
      */
 
@@ -108,13 +103,15 @@ public class ClassPropertyItemProvider extends AbstractNameValueExpressionProper
         }
         if (PropertyValueType.LITERAL.getName().equals(propertyValueType)) {
             formattedString = StringUtils.rightPad("", marginSpaceLeft)
-                    + StringUtils.abbreviate(propertyName, maxLength) + emptySpace + StringUtils
-                            .abbreviate(StringUtils.rightPad(propertyValueType, propertyTypeLength), propertyTypeLength)
+                    + StringUtils.abbreviate(propertyName, maxLength)
+                    + emptySpace + StringUtils.abbreviate(StringUtils.rightPad(propertyValueType, propertyTypeLength),
+                            propertyTypeLength)
                     + emptySpace + StringUtils.abbreviate(propertyValue, maxLength);
         } else {
             formattedString = StringUtils.rightPad("", marginSpaceLeft)
-                    + StringUtils.abbreviate(propertyName, maxLength) + emptySpace + StringUtils
-                            .abbreviate(StringUtils.rightPad(propertyValueType, propertyTypeLength), propertyTypeLength)
+                    + StringUtils.abbreviate(propertyName, maxLength) + emptySpace
+                    + StringUtils.abbreviate(StringUtils.rightPad(propertyValueType, propertyTypeLength),
+                            propertyTypeLength)
                     + emptySpace + StringUtils.abbreviate(propertyExpression, maxLength);
         }
         return formattedString;
@@ -125,7 +122,6 @@ public class ClassPropertyItemProvider extends AbstractNameValueExpressionProper
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -140,7 +136,6 @@ public class ClassPropertyItemProvider extends AbstractNameValueExpressionProper
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

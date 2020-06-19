@@ -19,27 +19,27 @@ package org.wso2.developerstudio.eclipse.gmf.esb.presentation;
 
 public class Dependency {
 
-    String groupId;
-    String artifactId;
-    String version;
+	String groupId;
+	String artifactId;
+	String version;
 
-    public Dependency(String groupId, String artifactId, String version) {
-        super();
-        this.groupId = groupId;
-        this.artifactId = artifactId;
-        this.version = version;
-    }
+	public Dependency(String groupId, String artifactId, String version) {
+		super();
+		this.groupId = groupId;
+		this.artifactId = artifactId;
+		this.version = version;
+	}
 
-    public String getGroupId() {
-        return groupId;
-    }
+	public String getGroupId() {
+		return groupId;
+	}
 
-    public String getArtifactId() {
-        return artifactId;
-    }
+	public String getArtifactId() {
+		return artifactId;
+	}
 
-    public String getVersion() {
-        return version;
-    }
+	public String getVersion() {
+		return version;
+	}
 
 }

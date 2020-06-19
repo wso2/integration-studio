@@ -94,14 +94,14 @@ public class SequenceTransformer extends AbstractEsbNodeTransformer {
         } else {
             aspectConfiguration.disableStatistics();
         }
-
+        
         if (visualSequence.getCommentsList() != null) {
             sequence.getCommentsList().addAll(visualSequence.getCommentsList());
         }
 
         EsbLink outgoingLink = visualSequence.getOutputConnector().getOutgoingLink();
         doTransformWithinSequence(information, outgoingLink, sequence);
-
+        
         addMissingComments(sequence);
     }
 

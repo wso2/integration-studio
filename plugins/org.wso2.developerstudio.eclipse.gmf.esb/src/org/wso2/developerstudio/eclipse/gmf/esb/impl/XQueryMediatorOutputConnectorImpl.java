@@ -22,7 +22,6 @@ public class XQueryMediatorOutputConnectorImpl extends OutputConnectorImpl imple
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected XQueryMediatorOutputConnectorImpl() {
@@ -32,7 +31,6 @@ public class XQueryMediatorOutputConnectorImpl extends OutputConnectorImpl imple
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

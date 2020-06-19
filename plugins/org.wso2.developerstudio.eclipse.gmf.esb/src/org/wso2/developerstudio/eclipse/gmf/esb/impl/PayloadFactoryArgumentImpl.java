@@ -29,15 +29,11 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryEvaluatorType;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PayloadFactoryArgumentImpl#getArgumentType <em>Argument
- * Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PayloadFactoryArgumentImpl#getArgumentValue <em>Argument
- * Value</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PayloadFactoryArgumentImpl#getArgumentExpression
- * <em>Argument Expression</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PayloadFactoryArgumentImpl#getEvaluator
- * <em>Evaluator</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PayloadFactoryArgumentImpl#isLiteral <em>Literal</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PayloadFactoryArgumentImpl#getArgumentType <em>Argument Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PayloadFactoryArgumentImpl#getArgumentValue <em>Argument Value</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PayloadFactoryArgumentImpl#getArgumentExpression <em>Argument Expression</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PayloadFactoryArgumentImpl#getEvaluator <em>Evaluator</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PayloadFactoryArgumentImpl#isLiteral <em>Literal</em>}</li>
  * </ul>
  *
  * @generated
@@ -47,7 +43,6 @@ public class PayloadFactoryArgumentImpl extends EsbNodeImpl implements PayloadFa
      * The default value of the '{@link #getArgumentType() <em>Argument Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getArgumentType()
      * @generated
      * @ordered
@@ -58,7 +53,6 @@ public class PayloadFactoryArgumentImpl extends EsbNodeImpl implements PayloadFa
      * The cached value of the '{@link #getArgumentType() <em>Argument Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getArgumentType()
      * @generated
      * @ordered
@@ -80,7 +74,6 @@ public class PayloadFactoryArgumentImpl extends EsbNodeImpl implements PayloadFa
      * The cached value of the '{@link #getArgumentValue() <em>Argument Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getArgumentValue()
      * @generated
      * @ordered
@@ -91,7 +84,6 @@ public class PayloadFactoryArgumentImpl extends EsbNodeImpl implements PayloadFa
      * The cached value of the '{@link #getArgumentExpression() <em>Argument Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getArgumentExpression()
      * @generated
      * @ordered
@@ -102,7 +94,6 @@ public class PayloadFactoryArgumentImpl extends EsbNodeImpl implements PayloadFa
      * The default value of the '{@link #getEvaluator() <em>Evaluator</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getEvaluator()
      * @generated
      * @ordered
@@ -113,7 +104,6 @@ public class PayloadFactoryArgumentImpl extends EsbNodeImpl implements PayloadFa
      * The cached value of the '{@link #getEvaluator() <em>Evaluator</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getEvaluator()
      * @generated
      * @ordered
@@ -124,7 +114,6 @@ public class PayloadFactoryArgumentImpl extends EsbNodeImpl implements PayloadFa
      * The default value of the '{@link #isLiteral() <em>Literal</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #isLiteral()
      * @generated
      * @ordered
@@ -135,7 +124,6 @@ public class PayloadFactoryArgumentImpl extends EsbNodeImpl implements PayloadFa
      * The cached value of the '{@link #isLiteral() <em>Literal</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #isLiteral()
      * @generated
      * @ordered
@@ -160,7 +148,6 @@ public class PayloadFactoryArgumentImpl extends EsbNodeImpl implements PayloadFa
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -171,7 +158,6 @@ public class PayloadFactoryArgumentImpl extends EsbNodeImpl implements PayloadFa
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public PayloadFactoryArgumentType getArgumentType() {
@@ -181,21 +167,18 @@ public class PayloadFactoryArgumentImpl extends EsbNodeImpl implements PayloadFa
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setArgumentType(PayloadFactoryArgumentType newArgumentType) {
         PayloadFactoryArgumentType oldArgumentType = argumentType;
         argumentType = newArgumentType == null ? ARGUMENT_TYPE_EDEFAULT : newArgumentType;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_TYPE,
-                    oldArgumentType, argumentType));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_TYPE, oldArgumentType, argumentType));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getArgumentValue() {
@@ -205,21 +188,18 @@ public class PayloadFactoryArgumentImpl extends EsbNodeImpl implements PayloadFa
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setArgumentValue(String newArgumentValue) {
         String oldArgumentValue = argumentValue;
         argumentValue = newArgumentValue;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_VALUE,
-                    oldArgumentValue, argumentValue));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_VALUE, oldArgumentValue, argumentValue));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NamespacedProperty getArgumentExpression() {
@@ -229,7 +209,6 @@ public class PayloadFactoryArgumentImpl extends EsbNodeImpl implements PayloadFa
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetArgumentExpression(NamespacedProperty newArgumentExpression,
@@ -237,13 +216,8 @@ public class PayloadFactoryArgumentImpl extends EsbNodeImpl implements PayloadFa
         NamespacedProperty oldArgumentExpression = argumentExpression;
         argumentExpression = newArgumentExpression;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_EXPRESSION, oldArgumentExpression,
-                    newArgumentExpression);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_EXPRESSION, oldArgumentExpression, newArgumentExpression);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -251,31 +225,25 @@ public class PayloadFactoryArgumentImpl extends EsbNodeImpl implements PayloadFa
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setArgumentExpression(NamespacedProperty newArgumentExpression) {
         if (newArgumentExpression != argumentExpression) {
             NotificationChain msgs = null;
             if (argumentExpression != null)
-                msgs = ((InternalEObject) argumentExpression).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_EXPRESSION, null, msgs);
+                msgs = ((InternalEObject)argumentExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_EXPRESSION, null, msgs);
             if (newArgumentExpression != null)
-                msgs = ((InternalEObject) newArgumentExpression).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_EXPRESSION, null, msgs);
+                msgs = ((InternalEObject)newArgumentExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_EXPRESSION, null, msgs);
             msgs = basicSetArgumentExpression(newArgumentExpression, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_EXPRESSION, newArgumentExpression,
-                    newArgumentExpression));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_EXPRESSION, newArgumentExpression, newArgumentExpression));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public PayloadFactoryEvaluatorType getEvaluator() {
@@ -285,21 +253,18 @@ public class PayloadFactoryArgumentImpl extends EsbNodeImpl implements PayloadFa
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setEvaluator(PayloadFactoryEvaluatorType newEvaluator) {
         PayloadFactoryEvaluatorType oldEvaluator = evaluator;
         evaluator = newEvaluator == null ? EVALUATOR_EDEFAULT : newEvaluator;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PAYLOAD_FACTORY_ARGUMENT__EVALUATOR,
-                    oldEvaluator, evaluator));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PAYLOAD_FACTORY_ARGUMENT__EVALUATOR, oldEvaluator, evaluator));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public boolean isLiteral() {
@@ -309,28 +274,25 @@ public class PayloadFactoryArgumentImpl extends EsbNodeImpl implements PayloadFa
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setLiteral(boolean newLiteral) {
         boolean oldLiteral = literal;
         literal = newLiteral;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PAYLOAD_FACTORY_ARGUMENT__LITERAL,
-                    oldLiteral, literal));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PAYLOAD_FACTORY_ARGUMENT__LITERAL, oldLiteral, literal));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-        case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_EXPRESSION:
-            return basicSetArgumentExpression(null, msgs);
+            case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_EXPRESSION:
+                return basicSetArgumentExpression(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -338,22 +300,21 @@ public class PayloadFactoryArgumentImpl extends EsbNodeImpl implements PayloadFa
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_TYPE:
-            return getArgumentType();
-        case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_VALUE:
-            return getArgumentValue();
-        case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_EXPRESSION:
-            return getArgumentExpression();
-        case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__EVALUATOR:
-            return getEvaluator();
-        case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__LITERAL:
-            return isLiteral();
+            case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_TYPE:
+                return getArgumentType();
+            case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_VALUE:
+                return getArgumentValue();
+            case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_EXPRESSION:
+                return getArgumentExpression();
+            case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__EVALUATOR:
+                return getEvaluator();
+            case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__LITERAL:
+                return isLiteral();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -361,27 +322,26 @@ public class PayloadFactoryArgumentImpl extends EsbNodeImpl implements PayloadFa
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_TYPE:
-            setArgumentType((PayloadFactoryArgumentType) newValue);
-            return;
-        case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_VALUE:
-            setArgumentValue((String) newValue);
-            return;
-        case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_EXPRESSION:
-            setArgumentExpression((NamespacedProperty) newValue);
-            return;
-        case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__EVALUATOR:
-            setEvaluator((PayloadFactoryEvaluatorType) newValue);
-            return;
-        case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__LITERAL:
-            setLiteral((Boolean) newValue);
-            return;
+            case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_TYPE:
+                setArgumentType((PayloadFactoryArgumentType)newValue);
+                return;
+            case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_VALUE:
+                setArgumentValue((String)newValue);
+                return;
+            case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_EXPRESSION:
+                setArgumentExpression((NamespacedProperty)newValue);
+                return;
+            case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__EVALUATOR:
+                setEvaluator((PayloadFactoryEvaluatorType)newValue);
+                return;
+            case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__LITERAL:
+                setLiteral((Boolean)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -389,27 +349,26 @@ public class PayloadFactoryArgumentImpl extends EsbNodeImpl implements PayloadFa
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_TYPE:
-            setArgumentType(ARGUMENT_TYPE_EDEFAULT);
-            return;
-        case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_VALUE:
-            setArgumentValue(ARGUMENT_VALUE_EDEFAULT);
-            return;
-        case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_EXPRESSION:
-            setArgumentExpression((NamespacedProperty) null);
-            return;
-        case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__EVALUATOR:
-            setEvaluator(EVALUATOR_EDEFAULT);
-            return;
-        case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__LITERAL:
-            setLiteral(LITERAL_EDEFAULT);
-            return;
+            case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_TYPE:
+                setArgumentType(ARGUMENT_TYPE_EDEFAULT);
+                return;
+            case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_VALUE:
+                setArgumentValue(ARGUMENT_VALUE_EDEFAULT);
+                return;
+            case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_EXPRESSION:
+                setArgumentExpression((NamespacedProperty)null);
+                return;
+            case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__EVALUATOR:
+                setEvaluator(EVALUATOR_EDEFAULT);
+                return;
+            case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__LITERAL:
+                setLiteral(LITERAL_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -417,23 +376,21 @@ public class PayloadFactoryArgumentImpl extends EsbNodeImpl implements PayloadFa
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_TYPE:
-            return argumentType != ARGUMENT_TYPE_EDEFAULT;
-        case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_VALUE:
-            return ARGUMENT_VALUE_EDEFAULT == null ? argumentValue != null
-                    : !ARGUMENT_VALUE_EDEFAULT.equals(argumentValue);
-        case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_EXPRESSION:
-            return argumentExpression != null;
-        case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__EVALUATOR:
-            return evaluator != EVALUATOR_EDEFAULT;
-        case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__LITERAL:
-            return literal != LITERAL_EDEFAULT;
+            case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_TYPE:
+                return argumentType != ARGUMENT_TYPE_EDEFAULT;
+            case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_VALUE:
+                return ARGUMENT_VALUE_EDEFAULT == null ? argumentValue != null : !ARGUMENT_VALUE_EDEFAULT.equals(argumentValue);
+            case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_EXPRESSION:
+                return argumentExpression != null;
+            case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__EVALUATOR:
+                return evaluator != EVALUATOR_EDEFAULT;
+            case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__LITERAL:
+                return literal != LITERAL_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -441,13 +398,11 @@ public class PayloadFactoryArgumentImpl extends EsbNodeImpl implements PayloadFa
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
-            return super.toString();
+        if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (argumentType: ");

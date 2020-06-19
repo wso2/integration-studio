@@ -111,7 +111,7 @@ public class DummySequenceMediatorFactory {
             }
         }
         CommentListUtil.populateComments(elem, seqMediator.getCommentsList());
-
+        
         return seqMediator;
     }
 

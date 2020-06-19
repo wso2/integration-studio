@@ -725,2144 +725,2140 @@ import org.wso2.developerstudio.eclipse.gmf.esb.parts.impl.XSLTResourcePropertie
  */
 public class EsbPropertiesEditionPartProvider implements IPropertiesEditionPartProvider {
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#provides(java.lang.Object)
-     * 
-     */
-    public boolean provides(Object key) {
-        return key == EsbViewsRepository.class;
-    }
+	/** 
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#provides(java.lang.Object)
+	 * 
+	 */
+	public boolean provides(Object key) {
+		return key == EsbViewsRepository.class;
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#getPropertiesEditionPart(java.lang.Object,
-     *      int, org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent)
-     * 
-     */
-    public IPropertiesEditionPart getPropertiesEditionPart(Object key, int kind,
-            IPropertiesEditionComponent component) {
-        if (key == EsbViewsRepository.EsbDiagram.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new EsbDiagramPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new EsbDiagramPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.EsbServer.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new EsbServerPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new EsbServerPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.EsbLink.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new EsbLinkPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new EsbLinkPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.CallMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new CallMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new CallMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.CallMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new CallMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new CallMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.CallMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new CallMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new CallMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.CallMediatorEndpointOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new CallMediatorEndpointOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new CallMediatorEndpointOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.EndPointProperty.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new EndPointPropertyPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new EndPointPropertyPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ProxyService.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ProxyServicePropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ProxyServicePropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ProxyOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ProxyOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ProxyOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ProxyInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ProxyInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ProxyInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ProxyOutSequenceOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ProxyOutSequenceOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ProxyOutSequenceOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ProxyInSequenceInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ProxyInSequenceInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ProxyInSequenceInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ProxyWSDLResource.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ProxyWSDLResourcePropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ProxyWSDLResourcePropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ProxyFaultInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ProxyFaultInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ProxyFaultInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ProxyServiceParameter.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ProxyServiceParameterPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ProxyServiceParameterPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ProxyServicePolicy.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ProxyServicePolicyPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ProxyServicePolicyPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ProxyServiceSequenceAndEndpointContainer.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ProxyServiceSequenceAndEndpointContainerPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ProxyServiceSequenceAndEndpointContainerPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ProxyServiceFaultContainer.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ProxyServiceFaultContainerPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ProxyServiceFaultContainerPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ProxyServiceContainer.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ProxyServiceContainerPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ProxyServiceContainerPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.MediatorFlow.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new MediatorFlowPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new MediatorFlowPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.EndpointFlow.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new EndpointFlowPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new EndpointFlowPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.MessageMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new MessageMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new MessageMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.MessageInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new MessageInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new MessageInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.MessageOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new MessageOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new MessageOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.DefaultEndPoint.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new DefaultEndPointPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new DefaultEndPointPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.DefaultEndPointInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new DefaultEndPointInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new DefaultEndPointInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.DefaultEndPointOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new DefaultEndPointOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new DefaultEndPointOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.AddressEndPoint.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new AddressEndPointPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new AddressEndPointPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.AddressEndPointInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new AddressEndPointInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new AddressEndPointInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.AddressEndPointOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new AddressEndPointOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new AddressEndPointOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.TemplateEndpoint.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new TemplateEndpointPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new TemplateEndpointPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.TemplateEndpointInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new TemplateEndpointInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new TemplateEndpointInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.TemplateEndpointOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new TemplateEndpointOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new TemplateEndpointOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.TemplateEndpointParameter.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new TemplateEndpointParameterPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new TemplateEndpointParameterPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.HTTPEndpoint.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new HTTPEndpointPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new HTTPEndpointPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.HTTPEndPointInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new HTTPEndPointInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new HTTPEndPointInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.HTTPEndPointOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new HTTPEndPointOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new HTTPEndPointOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.DropMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new DropMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new DropMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.DropMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new DropMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new DropMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.FilterMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new FilterMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new FilterMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.FilterContainer.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new FilterContainerPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new FilterContainerPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.FilterPassContainer.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new FilterPassContainerPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new FilterPassContainerPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.FilterFailContainer.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new FilterFailContainerPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new FilterFailContainerPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.FilterMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new FilterMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new FilterMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.FilterMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new FilterMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new FilterMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.FilterMediatorPassOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new FilterMediatorPassOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new FilterMediatorPassOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.FilterMediatorFailOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new FilterMediatorFailOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new FilterMediatorFailOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.MergeNode.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new MergeNodePropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new MergeNodePropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.MergeNodeFirstInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new MergeNodeFirstInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new MergeNodeFirstInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.MergeNodeSecondInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new MergeNodeSecondInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new MergeNodeSecondInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.MergeNodeOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new MergeNodeOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new MergeNodeOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.LogMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new LogMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new LogMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.LogMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new LogMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new LogMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.LogMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new LogMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new LogMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.LogProperty.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new LogPropertyPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new LogPropertyPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.PublishEventMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new PublishEventMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new PublishEventMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.PublishEventMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new PublishEventMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new PublishEventMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.PublishEventMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new PublishEventMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new PublishEventMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.PublishEventMediatorAttribute.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new PublishEventMediatorAttributePropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new PublishEventMediatorAttributePropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.BAMMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new BAMMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new BAMMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.BAMMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new BAMMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new BAMMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.BAMMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new BAMMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new BAMMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.BeanMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new BeanMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new BeanMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.BeanMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new BeanMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new BeanMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.BeanMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new BeanMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new BeanMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.EJBMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new EJBMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new EJBMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.EJBMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new EJBMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new EJBMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.EJBMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new EJBMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new EJBMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.MethodArgument.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new MethodArgumentPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new MethodArgumentPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.RegistryKeyProperty.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new RegistryKeyPropertyPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new RegistryKeyPropertyPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.PropertyMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new PropertyMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new PropertyMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.PropertyMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new PropertyMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new PropertyMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.PropertyMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new PropertyMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new PropertyMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.PropertyGroupMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new PropertyGroupMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new PropertyGroupMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.PropertyGroupMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new PropertyGroupMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new PropertyGroupMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.PropertyGroupMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new PropertyGroupMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new PropertyGroupMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.NamespacedProperty.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new NamespacedPropertyPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new NamespacedPropertyPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.EnrichMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new EnrichMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new EnrichMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.EnrichMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new EnrichMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new EnrichMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.EnrichMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new EnrichMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new EnrichMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.XSLTMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new XSLTMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new XSLTMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.XSLTProperty.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new XSLTPropertyPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new XSLTPropertyPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.XSLTFeature.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new XSLTFeaturePropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new XSLTFeaturePropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.XSLTResource.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new XSLTResourcePropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new XSLTResourcePropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.XSLTMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new XSLTMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new XSLTMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.XSLTMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new XSLTMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new XSLTMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.SwitchMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new SwitchMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new SwitchMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.SwitchCaseBranchOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new SwitchCaseBranchOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.SwitchDefaultBranchOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new SwitchDefaultBranchOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new SwitchDefaultBranchOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.SwitchMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new SwitchMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new SwitchMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.SwitchMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new SwitchMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new SwitchMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.SwitchMediatorContainer.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new SwitchMediatorContainerPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new SwitchMediatorContainerPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.SwitchCaseParentContainer.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new SwitchCaseParentContainerPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new SwitchCaseParentContainerPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.SwitchDefaultParentContainer.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new SwitchDefaultParentContainerPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new SwitchDefaultParentContainerPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.SwitchCaseContainer.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new SwitchCaseContainerPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new SwitchCaseContainerPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.SwitchDefaultContainer.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new SwitchDefaultContainerPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new SwitchDefaultContainerPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.SequenceDiagram.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new SequenceDiagramPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new SequenceDiagramPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.EsbSequence.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new EsbSequencePropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new EsbSequencePropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.EsbSequenceInput.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new EsbSequenceInputPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new EsbSequenceInputPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.EsbSequenceOutput.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new EsbSequenceOutputPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new EsbSequenceOutputPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.EsbSequenceInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new EsbSequenceInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new EsbSequenceInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.EsbSequenceOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new EsbSequenceOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new EsbSequenceOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.Sequence.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new SequencePropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new SequencePropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.SequenceInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new SequenceInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new SequenceInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.SequenceOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new SequenceOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new SequenceOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.EventMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new EventMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new EventMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.EventMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new EventMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new EventMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.EventMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new EventMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new EventMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.EntitlementMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new EntitlementMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new EntitlementMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.EntitlementMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new EntitlementMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new EntitlementMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.EntitlementMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new EntitlementMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new EntitlementMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.EntitlementMediatorOnRejectOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new EntitlementMediatorOnRejectOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new EntitlementMediatorOnRejectOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.EntitlementMediatorOnAcceptOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new EntitlementMediatorOnAcceptOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new EntitlementMediatorOnAcceptOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.EntitlementMediatorAdviceOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new EntitlementMediatorAdviceOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new EntitlementMediatorAdviceOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.EntitlementMediatorObligationsOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new EntitlementMediatorObligationsOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new EntitlementMediatorObligationsOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.EntitlementContainer.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new EntitlementContainerPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new EntitlementContainerPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.EntitlementOnRejectContainer.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new EntitlementOnRejectContainerPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new EntitlementOnRejectContainerPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.EntitlementOnAcceptContainer.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new EntitlementOnAcceptContainerPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new EntitlementOnAcceptContainerPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.EntitlementAdviceContainer.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new EntitlementAdviceContainerPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new EntitlementAdviceContainerPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.EntitlementObligationsContainer.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new EntitlementObligationsContainerPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new EntitlementObligationsContainerPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.EnqueueMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new EnqueueMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new EnqueueMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.EnqueueMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new EnqueueMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new EnqueueMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.EnqueueMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new EnqueueMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new EnqueueMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ClassMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ClassMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ClassMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ClassMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ClassMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ClassMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ClassMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ClassMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ClassMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ClassProperty.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ClassPropertyPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ClassPropertyPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.SpringMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new SpringMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new SpringMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.SpringMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new SpringMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new SpringMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.SpringMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new SpringMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new SpringMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ScriptMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ScriptMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ScriptMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ScriptMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ScriptMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ScriptMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ScriptMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ScriptMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ScriptMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.FaultMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new FaultMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new FaultMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.FaultMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new FaultMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new FaultMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.FaultMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new FaultMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new FaultMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.AggregateMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new AggregateMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new AggregateMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.AggregateMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new AggregateMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new AggregateMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.AggregateMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new AggregateMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new AggregateMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.AggregateMediatorOnCompleteOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new AggregateMediatorOnCompleteOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new AggregateMediatorOnCompleteOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.RouterMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new RouterMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new RouterMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.RouterRoute.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new RouterRoutePropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new RouterRoutePropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.RouterTarget.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new RouterTargetPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new RouterTargetPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.RouterMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new RouterMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new RouterMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.RouterMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new RouterMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new RouterMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.RouterMediatorTargetOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new RouterMediatorTargetOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new RouterMediatorTargetOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.RouterMediatorContainer.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new RouterMediatorContainerPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new RouterMediatorContainerPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.RouterTargetContainer.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new RouterTargetContainerPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new RouterTargetContainerPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.CloneMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new CloneMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new CloneMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.CloneTarget.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new CloneTargetPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new CloneTargetPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.CloneMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new CloneMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new CloneMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.CloneMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new CloneMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new CloneMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.CloneMediatorTargetOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new CloneMediatorTargetOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new CloneMediatorTargetOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.CloneMediatorContainer.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new CloneMediatorContainerPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new CloneMediatorContainerPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.CloneTargetContainer.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new CloneTargetContainerPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new CloneTargetContainerPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ForEachMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ForEachMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ForEachMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ForEachMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ForEachMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ForEachMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ForEachMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ForEachMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ForEachMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ForEachMediatorTargetOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ForEachMediatorTargetOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ForEachMediatorTargetOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ForEachTarget.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ForEachTargetPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ForEachTargetPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.IterateMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new IterateMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new IterateMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.IterateMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new IterateMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new IterateMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.IterateMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new IterateMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new IterateMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.IterateMediatorTargetOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new IterateMediatorTargetOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new IterateMediatorTargetOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.IterateTarget.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new IterateTargetPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new IterateTargetPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.AbstractCommonTarget.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new AbstractCommonTargetPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new AbstractCommonTargetPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.MediatorSequence.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new MediatorSequencePropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new MediatorSequencePropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.CacheMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new CacheMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new CacheMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.CacheMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new CacheMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new CacheMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.CacheMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new CacheMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new CacheMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.CacheMediatorOnHitOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new CacheMediatorOnHitOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new CacheMediatorOnHitOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.XQueryMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new XQueryMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new XQueryMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.XQueryMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new XQueryMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new XQueryMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.XQueryMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new XQueryMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new XQueryMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.XQueryVariable.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new XQueryVariablePropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new XQueryVariablePropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.CalloutMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new CalloutMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new CalloutMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.CalloutMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new CalloutMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new CalloutMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.CalloutMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new CalloutMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new CalloutMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.RMSequenceMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new RMSequenceMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new RMSequenceMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.RMSequenceMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new RMSequenceMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new RMSequenceMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.RMSequenceMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new RMSequenceMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new RMSequenceMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.TransactionMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new TransactionMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new TransactionMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.TransactionMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new TransactionMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new TransactionMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.TransactionMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new TransactionMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new TransactionMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.OAuthMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new OAuthMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new OAuthMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.OAuthMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new OAuthMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new OAuthMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.OAuthMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new OAuthMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new OAuthMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.AutoscaleInMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new AutoscaleInMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new AutoscaleInMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.AutoscaleOutMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new AutoscaleOutMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new AutoscaleOutMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.HeaderMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new HeaderMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new HeaderMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.HeaderMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new HeaderMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new HeaderMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.HeaderMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new HeaderMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new HeaderMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ThrottleMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ThrottleMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ThrottleMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ThrottleMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ThrottleMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ThrottleMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ThrottleMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ThrottleMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ThrottleMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ThrottleMediatorOnAcceptOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ThrottleMediatorOnAcceptOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ThrottleMediatorOnAcceptOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ThrottleMediatorOnRejectOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ThrottleMediatorOnRejectOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ThrottleMediatorOnRejectOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ThrottlePolicyConfiguration.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ThrottlePolicyConfigurationPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ThrottlePolicyConfigurationPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ThrottlePolicyEntry.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ThrottlePolicyEntryPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ThrottlePolicyEntryPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ThrottleOnAcceptBranch.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ThrottleOnAcceptBranchPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ThrottleOnAcceptBranchPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ThrottleOnRejectBranch.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ThrottleOnRejectBranchPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ThrottleOnRejectBranchPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ThrottleContainer.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ThrottleContainerPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ThrottleContainerPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ThrottleOnAcceptContainer.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ThrottleOnAcceptContainerPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ThrottleOnAcceptContainerPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ThrottleOnRejectContainer.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ThrottleOnRejectContainerPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ThrottleOnRejectContainerPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.CommandMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new CommandMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new CommandMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.CommandMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new CommandMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new CommandMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.CommandMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new CommandMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new CommandMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.CommandProperty.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new CommandPropertyPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new CommandPropertyPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.SqlStatement.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new SqlStatementPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new SqlStatementPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.SqlParameterDefinition.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new SqlParameterDefinitionPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new SqlParameterDefinitionPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.SqlResultMapping.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new SqlResultMappingPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new SqlResultMappingPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.DBLookupMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new DBLookupMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new DBLookupMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.DBLookupMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new DBLookupMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new DBLookupMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.DBLookupMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new DBLookupMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new DBLookupMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.DBReportMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new DBReportMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new DBReportMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.DBReportMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new DBReportMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new DBReportMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.DBReportMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new DBReportMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new DBReportMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.RuleMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new RuleMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new RuleMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.RuleMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new RuleMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new RuleMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.RuleMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new RuleMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new RuleMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.RuleMediatorChildMediatorsOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new RuleMediatorChildMediatorsOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new RuleMediatorChildMediatorsOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.RuleSetCreationProperty.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new RuleSetCreationPropertyPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new RuleSetCreationPropertyPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.RuleSessionProperty.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new RuleSessionPropertyPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new RuleSessionPropertyPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.RuleFactsConfiguration.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new RuleFactsConfigurationPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new RuleFactsConfigurationPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.RuleFact.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new RuleFactPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new RuleFactPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.RuleResultsConfiguration.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new RuleResultsConfigurationPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new RuleResultsConfigurationPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.RuleResult.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new RuleResultPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new RuleResultPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.CallTemplateParameter.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new CallTemplateParameterPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new CallTemplateParameterPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.CallTemplateMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new CallTemplateMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new CallTemplateMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.CallTemplateMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new CallTemplateMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new CallTemplateMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.CallTemplateMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new CallTemplateMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new CallTemplateMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.LoopBackMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new LoopBackMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new LoopBackMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.LoopBackMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new LoopBackMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new LoopBackMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.LoopBackMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new LoopBackMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new LoopBackMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.RespondMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new RespondMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new RespondMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.RespondMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new RespondMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new RespondMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.RespondMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new RespondMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new RespondMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.SmooksMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new SmooksMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new SmooksMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.SmooksMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new SmooksMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new SmooksMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.SmooksMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new SmooksMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new SmooksMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.StoreMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new StoreMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new StoreMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.StoreMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new StoreMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new StoreMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.StoreMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new StoreMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new StoreMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.BuilderMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new BuilderMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new BuilderMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.BuilderMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new BuilderMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new BuilderMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.BuilderMediatorOutputConector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new BuilderMediatorOutputConectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new BuilderMediatorOutputConectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.MessageBuilder.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new MessageBuilderPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new MessageBuilderPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.PayloadFactoryMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new PayloadFactoryMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new PayloadFactoryMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.PayloadFactoryMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new PayloadFactoryMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new PayloadFactoryMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.PayloadFactoryMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new PayloadFactoryMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new PayloadFactoryMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.PayloadFactoryArgument.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new PayloadFactoryArgumentPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new PayloadFactoryArgumentPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ConditionalRouteBranch.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ConditionalRouteBranchPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ConditionalRouteBranchPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ConditionalRouterMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ConditionalRouterMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ConditionalRouterMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ConditionalRouterMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ConditionalRouterMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ConditionalRouterMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ConditionalRouterMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ConditionalRouterMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ConditionalRouterMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ConditionalRouterMediatorAdditionalOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ConditionalRouterMediatorAdditionalOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ConditionalRouterMediatorAdditionalOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.SendMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new SendMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new SendMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.SendContainer.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new SendContainerPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new SendContainerPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.SendMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new SendMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new SendMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.SendMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new SendMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new SendMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.SendMediatorEndpointOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new SendMediatorEndpointOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new SendMediatorEndpointOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.FailoverEndPoint.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new FailoverEndPointPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new FailoverEndPointPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.FailoverEndPointInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new FailoverEndPointInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new FailoverEndPointInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.FailoverEndPointOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new FailoverEndPointOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new FailoverEndPointOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.FailoverEndPointWestOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new FailoverEndPointWestOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new FailoverEndPointWestOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ParentEndPoint.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ParentEndPointPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ParentEndPointPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.WSDLEndPoint.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new WSDLEndPointPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new WSDLEndPointPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.WSDLEndPointInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new WSDLEndPointInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new WSDLEndPointInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.WSDLEndPointOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new WSDLEndPointOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new WSDLEndPointOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.LoadBalanceEndPoint.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new LoadBalanceEndPointPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new LoadBalanceEndPointPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.Member.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new MemberPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new MemberPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.LoadBalanceEndPointInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new LoadBalanceEndPointInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new LoadBalanceEndPointInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.LoadBalanceEndPointOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new LoadBalanceEndPointOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new LoadBalanceEndPointOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.LoadBalanceEndPointWestOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new LoadBalanceEndPointWestOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new LoadBalanceEndPointWestOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.LocalEntry.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new LocalEntryPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new LocalEntryPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.Session.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new SessionPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new SessionPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.Sequences.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new SequencesPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new SequencesPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.SequencesOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new SequencesOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new SequencesOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.SequencesInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new SequencesInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new SequencesInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.URLRewriteRuleAction.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new URLRewriteRuleActionPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new URLRewriteRuleActionPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.URLRewriteRule.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new URLRewriteRulePropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new URLRewriteRulePropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.URLRewriteMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new URLRewriteMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new URLRewriteMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.URLRewriteMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new URLRewriteMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new URLRewriteMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.URLRewriteMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new URLRewriteMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new URLRewriteMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.EvaluatorExpressionProperty.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new EvaluatorExpressionPropertyPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new EvaluatorExpressionPropertyPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ValidateMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ValidateMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ValidateMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ValidateResource.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ValidateResourcePropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ValidateResourcePropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ValidateFeature.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ValidateFeaturePropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ValidateFeaturePropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ValidateSchema.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ValidateSchemaPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ValidateSchemaPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ValidateMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ValidateMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ValidateMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ValidateMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ValidateMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ValidateMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ValidateMediatorOnFailOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ValidateMediatorOnFailOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ValidateMediatorOnFailOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.EndpointDiagram.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new EndpointDiagramPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new EndpointDiagramPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.NamedEndpoint.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new NamedEndpointPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new NamedEndpointPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.NamedEndpointInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new NamedEndpointInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new NamedEndpointInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.NamedEndpointOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new NamedEndpointOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new NamedEndpointOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.Template.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new TemplatePropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new TemplatePropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.TemplateParameter.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new TemplateParameterPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new TemplateParameterPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.Task.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new TaskPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new TaskPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.NameValueTypeProperty.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new NameValueTypePropertyPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new NameValueTypePropertyPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.TaskProperty.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new TaskPropertyPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new TaskPropertyPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.SynapseAPI.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new SynapseAPIPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new SynapseAPIPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.APIResource.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new APIResourcePropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new APIResourcePropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.APIResourceInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new APIResourceInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new APIResourceInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.APIResourceOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new APIResourceOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new APIResourceOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.APIResourceOutSequenceOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new APIResourceOutSequenceOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new APIResourceOutSequenceOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.APIResourceInSequenceInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new APIResourceInSequenceInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new APIResourceInSequenceInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.APIResourceFaultInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new APIResourceFaultInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new APIResourceFaultInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.APIResourceEndpoint.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new APIResourceEndpointPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new APIResourceEndpointPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.APIResourceEndpointInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new APIResourceEndpointInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new APIResourceEndpointInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.APIResourceEndpointOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new APIResourceEndpointOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new APIResourceEndpointOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ComplexEndpoints.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ComplexEndpointsPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ComplexEndpointsPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.ComplexEndpointsOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new ComplexEndpointsOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new ComplexEndpointsOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.AddressingEndpoint.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new AddressingEndpointPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new AddressingEndpointPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.AddressingEndpointInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new AddressingEndpointInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new AddressingEndpointInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.AddressingEndpointOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new AddressingEndpointOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new AddressingEndpointOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.RecipientListEndPoint.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new RecipientListEndPointPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new RecipientListEndPointPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.RecipientListEndPointInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new RecipientListEndPointInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new RecipientListEndPointInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.RecipientListEndPointOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new RecipientListEndPointOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new RecipientListEndPointOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.RecipientListEndPointWestOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new RecipientListEndPointWestOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new RecipientListEndPointWestOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.MessageStoreParameter.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new MessageStoreParameterPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new MessageStoreParameterPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.MessageStore.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new MessageStorePropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new MessageStorePropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.MessageProcessorParameter.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new MessageProcessorParameterPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new MessageProcessorParameterPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.MessageProcessor.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new MessageProcessorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new MessageProcessorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.APIHandler.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new APIHandlerPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new APIHandlerPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.APIHandlerProperty.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new APIHandlerPropertyPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new APIHandlerPropertyPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.CloudConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new CloudConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new CloudConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.CloudConnectorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new CloudConnectorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new CloudConnectorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.CloudConnectorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new CloudConnectorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new CloudConnectorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.CloudConnectorOperation.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new CloudConnectorOperationPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new CloudConnectorOperationPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.CloudConnectorOperationInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new CloudConnectorOperationInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new CloudConnectorOperationInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.CloudConnectorOperationOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new CloudConnectorOperationOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new CloudConnectorOperationOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.DataMapperMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new DataMapperMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new DataMapperMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.DataMapperMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new DataMapperMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new DataMapperMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.DataMapperMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new DataMapperMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new DataMapperMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.FastXSLTMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new FastXSLTMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new FastXSLTMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.FastXSLTMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new FastXSLTMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new FastXSLTMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.FastXSLTMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new FastXSLTMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new FastXSLTMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.InboundEndpoint.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new InboundEndpointPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new InboundEndpointPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.InboundEndpointParameter.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new InboundEndpointParameterPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new InboundEndpointParameterPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.InboundEndpointContainer.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new InboundEndpointContainerPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new InboundEndpointContainerPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.InboundEndpointSequenceContainer.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new InboundEndpointSequenceContainerPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new InboundEndpointSequenceContainerPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.InboundEndpointOnErrorSequenceContainer.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new InboundEndpointOnErrorSequenceContainerPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new InboundEndpointOnErrorSequenceContainerPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.InboundEndpointSequenceInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new InboundEndpointSequenceInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new InboundEndpointSequenceInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.InboundEndpointSequenceOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new InboundEndpointSequenceOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new InboundEndpointSequenceOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.InboundEndpointOnErrorSequenceOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new InboundEndpointOnErrorSequenceOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new InboundEndpointOnErrorSequenceOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.InboundEndpointOnErrorSequenceInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new InboundEndpointOnErrorSequenceInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new InboundEndpointOnErrorSequenceInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.CommentMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new CommentMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new CommentMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.JsonTransformMediator.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new JsonTransformMediatorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new JsonTransformMediatorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.JsonTransformMediatorOutputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new JsonTransformMediatorOutputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new JsonTransformMediatorOutputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.JsonTransformMediatorInputConnector.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new JsonTransformMediatorInputConnectorPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new JsonTransformMediatorInputConnectorPropertiesEditionPartForm(component);
-        }
-        if (key == EsbViewsRepository.JsonTransformMediatorProperty.class) {
-            if (kind == EsbViewsRepository.SWT_KIND)
-                return new JsonTransformMediatorPropertyPropertiesEditionPartImpl(component);
-            if (kind == EsbViewsRepository.FORM_KIND)
-                return new JsonTransformMediatorPropertyPropertiesEditionPartForm(component);
-        }
-        return null;
-    }
+	/** 
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#getPropertiesEditionPart(java.lang.Object, int, org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent)
+	 * 
+	 */
+	public IPropertiesEditionPart getPropertiesEditionPart(Object key, int kind, IPropertiesEditionComponent component) {
+		if (key == EsbViewsRepository.EsbDiagram.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new EsbDiagramPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new EsbDiagramPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.EsbServer.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new EsbServerPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new EsbServerPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.EsbLink.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new EsbLinkPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new EsbLinkPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.CallMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new CallMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new CallMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.CallMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new CallMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new CallMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.CallMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new CallMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new CallMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.CallMediatorEndpointOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new CallMediatorEndpointOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new CallMediatorEndpointOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.EndPointProperty.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new EndPointPropertyPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new EndPointPropertyPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ProxyService.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ProxyServicePropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ProxyServicePropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ProxyOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ProxyOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ProxyOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ProxyInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ProxyInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ProxyInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ProxyOutSequenceOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ProxyOutSequenceOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ProxyOutSequenceOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ProxyInSequenceInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ProxyInSequenceInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ProxyInSequenceInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ProxyWSDLResource.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ProxyWSDLResourcePropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ProxyWSDLResourcePropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ProxyFaultInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ProxyFaultInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ProxyFaultInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ProxyServiceParameter.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ProxyServiceParameterPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ProxyServiceParameterPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ProxyServicePolicy.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ProxyServicePolicyPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ProxyServicePolicyPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ProxyServiceSequenceAndEndpointContainer.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ProxyServiceSequenceAndEndpointContainerPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ProxyServiceSequenceAndEndpointContainerPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ProxyServiceFaultContainer.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ProxyServiceFaultContainerPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ProxyServiceFaultContainerPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ProxyServiceContainer.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ProxyServiceContainerPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ProxyServiceContainerPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.MediatorFlow.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new MediatorFlowPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new MediatorFlowPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.EndpointFlow.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new EndpointFlowPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new EndpointFlowPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.MessageMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new MessageMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new MessageMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.MessageInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new MessageInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new MessageInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.MessageOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new MessageOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new MessageOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.DefaultEndPoint.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new DefaultEndPointPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new DefaultEndPointPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.DefaultEndPointInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new DefaultEndPointInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new DefaultEndPointInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.DefaultEndPointOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new DefaultEndPointOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new DefaultEndPointOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.AddressEndPoint.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new AddressEndPointPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new AddressEndPointPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.AddressEndPointInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new AddressEndPointInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new AddressEndPointInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.AddressEndPointOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new AddressEndPointOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new AddressEndPointOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.TemplateEndpoint.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new TemplateEndpointPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new TemplateEndpointPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.TemplateEndpointInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new TemplateEndpointInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new TemplateEndpointInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.TemplateEndpointOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new TemplateEndpointOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new TemplateEndpointOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.TemplateEndpointParameter.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new TemplateEndpointParameterPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new TemplateEndpointParameterPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.HTTPEndpoint.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new HTTPEndpointPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new HTTPEndpointPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.HTTPEndPointInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new HTTPEndPointInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new HTTPEndPointInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.HTTPEndPointOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new HTTPEndPointOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new HTTPEndPointOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.DropMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new DropMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new DropMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.DropMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new DropMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new DropMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.FilterMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new FilterMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new FilterMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.FilterContainer.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new FilterContainerPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new FilterContainerPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.FilterPassContainer.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new FilterPassContainerPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new FilterPassContainerPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.FilterFailContainer.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new FilterFailContainerPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new FilterFailContainerPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.FilterMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new FilterMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new FilterMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.FilterMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new FilterMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new FilterMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.FilterMediatorPassOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new FilterMediatorPassOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new FilterMediatorPassOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.FilterMediatorFailOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new FilterMediatorFailOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new FilterMediatorFailOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.MergeNode.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new MergeNodePropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new MergeNodePropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.MergeNodeFirstInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new MergeNodeFirstInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new MergeNodeFirstInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.MergeNodeSecondInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new MergeNodeSecondInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new MergeNodeSecondInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.MergeNodeOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new MergeNodeOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new MergeNodeOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.LogMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new LogMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new LogMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.LogMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new LogMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new LogMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.LogMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new LogMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new LogMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.LogProperty.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new LogPropertyPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new LogPropertyPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.PublishEventMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new PublishEventMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new PublishEventMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.PublishEventMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new PublishEventMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new PublishEventMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.PublishEventMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new PublishEventMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new PublishEventMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.PublishEventMediatorAttribute.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new PublishEventMediatorAttributePropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new PublishEventMediatorAttributePropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.BAMMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new BAMMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new BAMMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.BAMMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new BAMMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new BAMMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.BAMMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new BAMMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new BAMMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.BeanMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new BeanMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new BeanMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.BeanMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new BeanMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new BeanMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.BeanMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new BeanMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new BeanMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.EJBMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new EJBMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new EJBMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.EJBMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new EJBMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new EJBMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.EJBMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new EJBMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new EJBMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.MethodArgument.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new MethodArgumentPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new MethodArgumentPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.RegistryKeyProperty.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new RegistryKeyPropertyPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new RegistryKeyPropertyPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.PropertyMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new PropertyMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new PropertyMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.PropertyMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new PropertyMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new PropertyMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.PropertyMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new PropertyMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new PropertyMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.PropertyGroupMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new PropertyGroupMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new PropertyGroupMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.PropertyGroupMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new PropertyGroupMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new PropertyGroupMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.PropertyGroupMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new PropertyGroupMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new PropertyGroupMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.NamespacedProperty.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new NamespacedPropertyPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new NamespacedPropertyPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.EnrichMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new EnrichMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new EnrichMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.EnrichMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new EnrichMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new EnrichMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.EnrichMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new EnrichMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new EnrichMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.XSLTMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new XSLTMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new XSLTMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.XSLTProperty.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new XSLTPropertyPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new XSLTPropertyPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.XSLTFeature.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new XSLTFeaturePropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new XSLTFeaturePropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.XSLTResource.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new XSLTResourcePropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new XSLTResourcePropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.XSLTMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new XSLTMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new XSLTMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.XSLTMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new XSLTMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new XSLTMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.SwitchMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new SwitchMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new SwitchMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.SwitchCaseBranchOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new SwitchCaseBranchOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.SwitchDefaultBranchOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new SwitchDefaultBranchOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new SwitchDefaultBranchOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.SwitchMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new SwitchMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new SwitchMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.SwitchMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new SwitchMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new SwitchMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.SwitchMediatorContainer.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new SwitchMediatorContainerPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new SwitchMediatorContainerPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.SwitchCaseParentContainer.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new SwitchCaseParentContainerPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new SwitchCaseParentContainerPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.SwitchDefaultParentContainer.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new SwitchDefaultParentContainerPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new SwitchDefaultParentContainerPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.SwitchCaseContainer.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new SwitchCaseContainerPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new SwitchCaseContainerPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.SwitchDefaultContainer.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new SwitchDefaultContainerPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new SwitchDefaultContainerPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.SequenceDiagram.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new SequenceDiagramPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new SequenceDiagramPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.EsbSequence.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new EsbSequencePropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new EsbSequencePropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.EsbSequenceInput.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new EsbSequenceInputPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new EsbSequenceInputPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.EsbSequenceOutput.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new EsbSequenceOutputPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new EsbSequenceOutputPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.EsbSequenceInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new EsbSequenceInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new EsbSequenceInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.EsbSequenceOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new EsbSequenceOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new EsbSequenceOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.Sequence.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new SequencePropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new SequencePropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.SequenceInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new SequenceInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new SequenceInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.SequenceOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new SequenceOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new SequenceOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.EventMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new EventMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new EventMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.EventMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new EventMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new EventMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.EventMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new EventMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new EventMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.EntitlementMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new EntitlementMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new EntitlementMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.EntitlementMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new EntitlementMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new EntitlementMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.EntitlementMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new EntitlementMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new EntitlementMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.EntitlementMediatorOnRejectOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new EntitlementMediatorOnRejectOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new EntitlementMediatorOnRejectOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.EntitlementMediatorOnAcceptOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new EntitlementMediatorOnAcceptOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new EntitlementMediatorOnAcceptOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.EntitlementMediatorAdviceOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new EntitlementMediatorAdviceOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new EntitlementMediatorAdviceOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.EntitlementMediatorObligationsOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new EntitlementMediatorObligationsOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new EntitlementMediatorObligationsOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.EntitlementContainer.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new EntitlementContainerPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new EntitlementContainerPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.EntitlementOnRejectContainer.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new EntitlementOnRejectContainerPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new EntitlementOnRejectContainerPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.EntitlementOnAcceptContainer.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new EntitlementOnAcceptContainerPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new EntitlementOnAcceptContainerPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.EntitlementAdviceContainer.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new EntitlementAdviceContainerPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new EntitlementAdviceContainerPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.EntitlementObligationsContainer.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new EntitlementObligationsContainerPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new EntitlementObligationsContainerPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.EnqueueMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new EnqueueMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new EnqueueMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.EnqueueMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new EnqueueMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new EnqueueMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.EnqueueMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new EnqueueMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new EnqueueMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ClassMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ClassMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ClassMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ClassMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ClassMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ClassMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ClassMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ClassMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ClassMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ClassProperty.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ClassPropertyPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ClassPropertyPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.SpringMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new SpringMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new SpringMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.SpringMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new SpringMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new SpringMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.SpringMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new SpringMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new SpringMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ScriptMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ScriptMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ScriptMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ScriptMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ScriptMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ScriptMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ScriptMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ScriptMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ScriptMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.FaultMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new FaultMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new FaultMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.FaultMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new FaultMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new FaultMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.FaultMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new FaultMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new FaultMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.AggregateMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new AggregateMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new AggregateMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.AggregateMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new AggregateMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new AggregateMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.AggregateMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new AggregateMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new AggregateMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.AggregateMediatorOnCompleteOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new AggregateMediatorOnCompleteOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new AggregateMediatorOnCompleteOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.RouterMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new RouterMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new RouterMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.RouterRoute.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new RouterRoutePropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new RouterRoutePropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.RouterTarget.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new RouterTargetPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new RouterTargetPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.RouterMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new RouterMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new RouterMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.RouterMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new RouterMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new RouterMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.RouterMediatorTargetOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new RouterMediatorTargetOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new RouterMediatorTargetOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.RouterMediatorContainer.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new RouterMediatorContainerPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new RouterMediatorContainerPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.RouterTargetContainer.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new RouterTargetContainerPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new RouterTargetContainerPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.CloneMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new CloneMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new CloneMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.CloneTarget.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new CloneTargetPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new CloneTargetPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.CloneMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new CloneMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new CloneMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.CloneMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new CloneMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new CloneMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.CloneMediatorTargetOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new CloneMediatorTargetOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new CloneMediatorTargetOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.CloneMediatorContainer.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new CloneMediatorContainerPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new CloneMediatorContainerPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.CloneTargetContainer.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new CloneTargetContainerPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new CloneTargetContainerPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ForEachMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ForEachMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ForEachMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ForEachMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ForEachMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ForEachMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ForEachMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ForEachMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ForEachMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ForEachMediatorTargetOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ForEachMediatorTargetOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ForEachMediatorTargetOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ForEachTarget.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ForEachTargetPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ForEachTargetPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.IterateMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new IterateMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new IterateMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.IterateMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new IterateMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new IterateMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.IterateMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new IterateMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new IterateMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.IterateMediatorTargetOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new IterateMediatorTargetOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new IterateMediatorTargetOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.IterateTarget.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new IterateTargetPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new IterateTargetPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.AbstractCommonTarget.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new AbstractCommonTargetPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new AbstractCommonTargetPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.MediatorSequence.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new MediatorSequencePropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new MediatorSequencePropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.CacheMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new CacheMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new CacheMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.CacheMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new CacheMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new CacheMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.CacheMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new CacheMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new CacheMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.CacheMediatorOnHitOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new CacheMediatorOnHitOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new CacheMediatorOnHitOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.XQueryMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new XQueryMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new XQueryMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.XQueryMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new XQueryMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new XQueryMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.XQueryMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new XQueryMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new XQueryMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.XQueryVariable.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new XQueryVariablePropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new XQueryVariablePropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.CalloutMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new CalloutMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new CalloutMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.CalloutMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new CalloutMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new CalloutMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.CalloutMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new CalloutMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new CalloutMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.RMSequenceMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new RMSequenceMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new RMSequenceMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.RMSequenceMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new RMSequenceMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new RMSequenceMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.RMSequenceMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new RMSequenceMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new RMSequenceMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.TransactionMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new TransactionMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new TransactionMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.TransactionMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new TransactionMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new TransactionMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.TransactionMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new TransactionMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new TransactionMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.OAuthMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new OAuthMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new OAuthMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.OAuthMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new OAuthMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new OAuthMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.OAuthMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new OAuthMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new OAuthMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.AutoscaleInMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new AutoscaleInMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new AutoscaleInMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.AutoscaleOutMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new AutoscaleOutMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new AutoscaleOutMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.HeaderMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new HeaderMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new HeaderMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.HeaderMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new HeaderMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new HeaderMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.HeaderMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new HeaderMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new HeaderMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ThrottleMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ThrottleMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ThrottleMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ThrottleMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ThrottleMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ThrottleMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ThrottleMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ThrottleMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ThrottleMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ThrottleMediatorOnAcceptOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ThrottleMediatorOnAcceptOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ThrottleMediatorOnAcceptOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ThrottleMediatorOnRejectOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ThrottleMediatorOnRejectOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ThrottleMediatorOnRejectOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ThrottlePolicyConfiguration.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ThrottlePolicyConfigurationPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ThrottlePolicyConfigurationPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ThrottlePolicyEntry.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ThrottlePolicyEntryPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ThrottlePolicyEntryPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ThrottleOnAcceptBranch.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ThrottleOnAcceptBranchPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ThrottleOnAcceptBranchPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ThrottleOnRejectBranch.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ThrottleOnRejectBranchPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ThrottleOnRejectBranchPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ThrottleContainer.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ThrottleContainerPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ThrottleContainerPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ThrottleOnAcceptContainer.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ThrottleOnAcceptContainerPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ThrottleOnAcceptContainerPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ThrottleOnRejectContainer.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ThrottleOnRejectContainerPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ThrottleOnRejectContainerPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.CommandMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new CommandMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new CommandMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.CommandMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new CommandMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new CommandMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.CommandMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new CommandMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new CommandMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.CommandProperty.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new CommandPropertyPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new CommandPropertyPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.SqlStatement.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new SqlStatementPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new SqlStatementPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.SqlParameterDefinition.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new SqlParameterDefinitionPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new SqlParameterDefinitionPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.SqlResultMapping.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new SqlResultMappingPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new SqlResultMappingPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.DBLookupMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new DBLookupMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new DBLookupMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.DBLookupMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new DBLookupMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new DBLookupMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.DBLookupMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new DBLookupMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new DBLookupMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.DBReportMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new DBReportMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new DBReportMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.DBReportMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new DBReportMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new DBReportMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.DBReportMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new DBReportMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new DBReportMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.RuleMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new RuleMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new RuleMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.RuleMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new RuleMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new RuleMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.RuleMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new RuleMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new RuleMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.RuleMediatorChildMediatorsOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new RuleMediatorChildMediatorsOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new RuleMediatorChildMediatorsOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.RuleSetCreationProperty.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new RuleSetCreationPropertyPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new RuleSetCreationPropertyPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.RuleSessionProperty.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new RuleSessionPropertyPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new RuleSessionPropertyPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.RuleFactsConfiguration.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new RuleFactsConfigurationPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new RuleFactsConfigurationPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.RuleFact.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new RuleFactPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new RuleFactPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.RuleResultsConfiguration.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new RuleResultsConfigurationPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new RuleResultsConfigurationPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.RuleResult.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new RuleResultPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new RuleResultPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.CallTemplateParameter.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new CallTemplateParameterPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new CallTemplateParameterPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.CallTemplateMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new CallTemplateMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new CallTemplateMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.CallTemplateMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new CallTemplateMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new CallTemplateMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.CallTemplateMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new CallTemplateMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new CallTemplateMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.LoopBackMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new LoopBackMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new LoopBackMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.LoopBackMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new LoopBackMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new LoopBackMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.LoopBackMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new LoopBackMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new LoopBackMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.RespondMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new RespondMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new RespondMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.RespondMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new RespondMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new RespondMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.RespondMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new RespondMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new RespondMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.SmooksMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new SmooksMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new SmooksMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.SmooksMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new SmooksMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new SmooksMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.SmooksMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new SmooksMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new SmooksMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.StoreMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new StoreMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new StoreMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.StoreMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new StoreMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new StoreMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.StoreMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new StoreMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new StoreMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.BuilderMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new BuilderMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new BuilderMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.BuilderMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new BuilderMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new BuilderMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.BuilderMediatorOutputConector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new BuilderMediatorOutputConectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new BuilderMediatorOutputConectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.MessageBuilder.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new MessageBuilderPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new MessageBuilderPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.PayloadFactoryMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new PayloadFactoryMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new PayloadFactoryMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.PayloadFactoryMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new PayloadFactoryMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new PayloadFactoryMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.PayloadFactoryMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new PayloadFactoryMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new PayloadFactoryMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.PayloadFactoryArgument.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new PayloadFactoryArgumentPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new PayloadFactoryArgumentPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ConditionalRouteBranch.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ConditionalRouteBranchPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ConditionalRouteBranchPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ConditionalRouterMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ConditionalRouterMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ConditionalRouterMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ConditionalRouterMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ConditionalRouterMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ConditionalRouterMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ConditionalRouterMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ConditionalRouterMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ConditionalRouterMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ConditionalRouterMediatorAdditionalOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ConditionalRouterMediatorAdditionalOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ConditionalRouterMediatorAdditionalOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.SendMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new SendMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new SendMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.SendContainer.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new SendContainerPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new SendContainerPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.SendMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new SendMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new SendMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.SendMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new SendMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new SendMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.SendMediatorEndpointOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new SendMediatorEndpointOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new SendMediatorEndpointOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.FailoverEndPoint.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new FailoverEndPointPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new FailoverEndPointPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.FailoverEndPointInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new FailoverEndPointInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new FailoverEndPointInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.FailoverEndPointOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new FailoverEndPointOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new FailoverEndPointOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.FailoverEndPointWestOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new FailoverEndPointWestOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new FailoverEndPointWestOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ParentEndPoint.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ParentEndPointPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ParentEndPointPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.WSDLEndPoint.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new WSDLEndPointPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new WSDLEndPointPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.WSDLEndPointInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new WSDLEndPointInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new WSDLEndPointInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.WSDLEndPointOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new WSDLEndPointOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new WSDLEndPointOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.LoadBalanceEndPoint.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new LoadBalanceEndPointPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new LoadBalanceEndPointPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.Member.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new MemberPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new MemberPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.LoadBalanceEndPointInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new LoadBalanceEndPointInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new LoadBalanceEndPointInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.LoadBalanceEndPointOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new LoadBalanceEndPointOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new LoadBalanceEndPointOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.LoadBalanceEndPointWestOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new LoadBalanceEndPointWestOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new LoadBalanceEndPointWestOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.LocalEntry.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new LocalEntryPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new LocalEntryPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.Session.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new SessionPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new SessionPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.Sequences.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new SequencesPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new SequencesPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.SequencesOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new SequencesOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new SequencesOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.SequencesInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new SequencesInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new SequencesInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.URLRewriteRuleAction.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new URLRewriteRuleActionPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new URLRewriteRuleActionPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.URLRewriteRule.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new URLRewriteRulePropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new URLRewriteRulePropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.URLRewriteMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new URLRewriteMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new URLRewriteMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.URLRewriteMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new URLRewriteMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new URLRewriteMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.URLRewriteMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new URLRewriteMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new URLRewriteMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.EvaluatorExpressionProperty.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new EvaluatorExpressionPropertyPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new EvaluatorExpressionPropertyPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ValidateMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ValidateMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ValidateMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ValidateResource.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ValidateResourcePropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ValidateResourcePropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ValidateFeature.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ValidateFeaturePropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ValidateFeaturePropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ValidateSchema.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ValidateSchemaPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ValidateSchemaPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ValidateMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ValidateMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ValidateMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ValidateMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ValidateMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ValidateMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ValidateMediatorOnFailOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ValidateMediatorOnFailOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ValidateMediatorOnFailOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.EndpointDiagram.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new EndpointDiagramPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new EndpointDiagramPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.NamedEndpoint.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new NamedEndpointPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new NamedEndpointPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.NamedEndpointInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new NamedEndpointInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new NamedEndpointInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.NamedEndpointOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new NamedEndpointOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new NamedEndpointOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.Template.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new TemplatePropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new TemplatePropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.TemplateParameter.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new TemplateParameterPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new TemplateParameterPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.Task.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new TaskPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new TaskPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.NameValueTypeProperty.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new NameValueTypePropertyPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new NameValueTypePropertyPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.TaskProperty.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new TaskPropertyPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new TaskPropertyPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.SynapseAPI.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new SynapseAPIPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new SynapseAPIPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.APIResource.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new APIResourcePropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new APIResourcePropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.APIResourceInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new APIResourceInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new APIResourceInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.APIResourceOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new APIResourceOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new APIResourceOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.APIResourceOutSequenceOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new APIResourceOutSequenceOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new APIResourceOutSequenceOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.APIResourceInSequenceInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new APIResourceInSequenceInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new APIResourceInSequenceInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.APIResourceFaultInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new APIResourceFaultInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new APIResourceFaultInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.APIResourceEndpoint.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new APIResourceEndpointPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new APIResourceEndpointPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.APIResourceEndpointInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new APIResourceEndpointInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new APIResourceEndpointInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.APIResourceEndpointOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new APIResourceEndpointOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new APIResourceEndpointOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ComplexEndpoints.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ComplexEndpointsPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ComplexEndpointsPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.ComplexEndpointsOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new ComplexEndpointsOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new ComplexEndpointsOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.AddressingEndpoint.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new AddressingEndpointPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new AddressingEndpointPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.AddressingEndpointInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new AddressingEndpointInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new AddressingEndpointInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.AddressingEndpointOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new AddressingEndpointOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new AddressingEndpointOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.RecipientListEndPoint.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new RecipientListEndPointPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new RecipientListEndPointPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.RecipientListEndPointInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new RecipientListEndPointInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new RecipientListEndPointInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.RecipientListEndPointOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new RecipientListEndPointOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new RecipientListEndPointOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.RecipientListEndPointWestOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new RecipientListEndPointWestOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new RecipientListEndPointWestOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.MessageStoreParameter.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new MessageStoreParameterPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new MessageStoreParameterPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.MessageStore.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new MessageStorePropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new MessageStorePropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.MessageProcessorParameter.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new MessageProcessorParameterPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new MessageProcessorParameterPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.MessageProcessor.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new MessageProcessorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new MessageProcessorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.APIHandler.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new APIHandlerPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new APIHandlerPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.APIHandlerProperty.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new APIHandlerPropertyPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new APIHandlerPropertyPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.CloudConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new CloudConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new CloudConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.CloudConnectorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new CloudConnectorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new CloudConnectorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.CloudConnectorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new CloudConnectorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new CloudConnectorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.CloudConnectorOperation.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new CloudConnectorOperationPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new CloudConnectorOperationPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.CloudConnectorOperationInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new CloudConnectorOperationInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new CloudConnectorOperationInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.CloudConnectorOperationOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new CloudConnectorOperationOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new CloudConnectorOperationOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.DataMapperMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new DataMapperMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new DataMapperMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.DataMapperMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new DataMapperMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new DataMapperMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.DataMapperMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new DataMapperMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new DataMapperMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.FastXSLTMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new FastXSLTMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new FastXSLTMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.FastXSLTMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new FastXSLTMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new FastXSLTMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.FastXSLTMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new FastXSLTMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new FastXSLTMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.InboundEndpoint.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new InboundEndpointPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new InboundEndpointPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.InboundEndpointParameter.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new InboundEndpointParameterPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new InboundEndpointParameterPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.InboundEndpointContainer.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new InboundEndpointContainerPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new InboundEndpointContainerPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.InboundEndpointSequenceContainer.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new InboundEndpointSequenceContainerPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new InboundEndpointSequenceContainerPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.InboundEndpointOnErrorSequenceContainer.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new InboundEndpointOnErrorSequenceContainerPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new InboundEndpointOnErrorSequenceContainerPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.InboundEndpointSequenceInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new InboundEndpointSequenceInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new InboundEndpointSequenceInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.InboundEndpointSequenceOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new InboundEndpointSequenceOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new InboundEndpointSequenceOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.InboundEndpointOnErrorSequenceOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new InboundEndpointOnErrorSequenceOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new InboundEndpointOnErrorSequenceOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.InboundEndpointOnErrorSequenceInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new InboundEndpointOnErrorSequenceInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new InboundEndpointOnErrorSequenceInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.CommentMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new CommentMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new CommentMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.JsonTransformMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new JsonTransformMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new JsonTransformMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.JsonTransformMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new JsonTransformMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new JsonTransformMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.JsonTransformMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new JsonTransformMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new JsonTransformMediatorInputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.JsonTransformMediatorProperty.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new JsonTransformMediatorPropertyPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new JsonTransformMediatorPropertyPropertiesEditionPartForm(component);
+		}
+		return null;
+	}
 
 }

@@ -10,6 +10,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSet
 
 import org.eclipse.jface.viewers.ViewerFilter;
 
+
 // End of user code
 
 /**
@@ -18,57 +19,61 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public interface EsbSequenceOutputConnectorPropertiesEditionPart {
 
-    /**
-     * Init the incomingLinks
-     * 
-     * @param settings settings for the incomingLinks ReferencesTable
-     */
-    public void initIncomingLinks(ReferencesTableSettings settings);
 
-    /**
-     * Update the incomingLinks
-     * 
-     * @param newValue the incomingLinks to update
-     * 
-     */
-    public void updateIncomingLinks();
 
-    /**
-     * Adds the given filter to the incomingLinks edition editor.
-     * 
-     * @param filter
-     *            a viewer filter
-     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
-     */
-    public void addFilterToIncomingLinks(ViewerFilter filter);
+	/**
+	 * Init the incomingLinks
+	 * @param settings settings for the incomingLinks ReferencesTable 
+	 */
+	public void initIncomingLinks(ReferencesTableSettings settings);
 
-    /**
-     * Adds the given filter to the incomingLinks edition editor.
-     * 
-     * @param filter
-     *            a viewer filter
-     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
-     */
-    public void addBusinessFilterToIncomingLinks(ViewerFilter filter);
+	/**
+	 * Update the incomingLinks
+	 * @param newValue the incomingLinks to update
+	 * 
+	 */
+	public void updateIncomingLinks();
 
-    /**
-     * @return true if the given element is contained inside the incomingLinks table
-     * 
-     */
-    public boolean isContainedInIncomingLinksTable(EObject element);
+	/**
+	 * Adds the given filter to the incomingLinks edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToIncomingLinks(ViewerFilter filter);
 
-    /**
-     * Returns the internationalized title text.
-     * 
-     * @return the internationalized title text.
-     * 
-     */
-    public String getTitle();
+	/**
+	 * Adds the given filter to the incomingLinks edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToIncomingLinks(ViewerFilter filter);
 
-    // Start of user code for additional methods
+	/**
+	 * @return true if the given element is contained inside the incomingLinks table
+	 * 
+	 */
+	public boolean isContainedInIncomingLinksTable(EObject element);
 
-    // End of user code
+
+
+
+
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 * 
+	 */
+	public String getTitle();
+
+	// Start of user code for additional methods
+	
+	// End of user code
 
 }

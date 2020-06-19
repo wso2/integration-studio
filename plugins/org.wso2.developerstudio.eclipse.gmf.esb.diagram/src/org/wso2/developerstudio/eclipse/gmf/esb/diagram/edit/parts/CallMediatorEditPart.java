@@ -359,7 +359,7 @@ public class CallMediatorEditPart extends SingleCompartmentComplexFiguredAbstrac
     /**
      * @generated NOT
      * 
-     *            This method will get invoked if the corresponding data model for the editpart changes
+     * This method will get invoked if the corresponding data model for the editpart changes
      */
     @Override
     public void notifyChanged(Notification notification) {

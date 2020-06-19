@@ -42,12 +42,12 @@ import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.SynapseXPathExt;
 
 public class PayloadFactoryMediatorExtFactory extends PayloadFactoryMediatorFactory {
-
+    
     private static PayloadFactoryMediatorExtFactory instance;
-
+    
     private PayloadFactoryMediatorExtFactory() {
     }
-
+    
     public static synchronized PayloadFactoryMediatorExtFactory getInstance() {
         if (instance == null) {
             instance = new PayloadFactoryMediatorExtFactory();

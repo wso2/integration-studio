@@ -32,7 +32,6 @@ public class InboundEndpointOnErrorSequenceOutputConnectorImpl extends OutputCon
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected InboundEndpointOnErrorSequenceOutputConnectorImpl() {
@@ -42,7 +41,6 @@ public class InboundEndpointOnErrorSequenceOutputConnectorImpl extends OutputCon
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

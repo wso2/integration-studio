@@ -22,7 +22,6 @@ public class CommandMediatorInputConnectorImpl extends InputConnectorImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected CommandMediatorInputConnectorImpl() {
@@ -32,7 +31,6 @@ public class CommandMediatorInputConnectorImpl extends InputConnectorImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

@@ -145,8 +145,7 @@ public class CloudConnectorDirectoryTraverser {
 
                             if (!connector.getConnectorName().equals(children[i].getName().split("-")[0])) {
                                 log.error("Connector directory name, \'" + children[i].getName() + "\',"
-                                        + " doesn't match with the connector name \'" + connector.getConnectorName()
-                                        + "\'.");
+                                        + " doesn't match with the connector name \'" + connector.getConnectorName() + "\'.");
                                 errorList.add("Connector directory name, \'" + children[i].getName() + "\',"
                                         + " doesn't match with the connector name \'" + connector.getConnectorName()
                                         + "\'. Valid connector should have the 'name-connector-1.0.0' format");
@@ -154,16 +153,15 @@ public class CloudConnectorDirectoryTraverser {
                                 continue;
                             }
 
-                            if (new File(connectorPath + File.separator + "icon" + File.separator + "icon-small.gif")
-                                    .exists()
-                                    || new File(
-                                            connectorPath + File.separator + "icon" + File.separator + "icon-small.png")
-                                                    .exists()
-                                            && new File(connectorPath + File.separator + "icon" + File.separator
-                                                    + "icon-large.gif").exists()
-                                    || new File(
-                                            connectorPath + File.separator + "icon" + File.separator + "icon-large.png")
-                                                    .exists()) {
+                            if (new File(connectorPath 
+                                    + File.separator + "icon" + File.separator + "icon-small.gif").exists() || 
+                                new File(connectorPath 
+                                    + File.separator + "icon" + File.separator + "icon-small.png").exists()
+                                && new File(
+                                     connectorPath + File.separator + "icon" + File.separator + "icon-large.gif")
+                                         .exists() ||
+                                     new File(connectorPath + File.separator + "icon" + File.separator 
+                                             + "icon-large.png").exists()) {
                                 CloudConnectorDirectoryTraverser.getInstance(connectorPath).getOperationsMap();
                             } else {
                                 log.error("Missing icons files of " + children[i].getName());

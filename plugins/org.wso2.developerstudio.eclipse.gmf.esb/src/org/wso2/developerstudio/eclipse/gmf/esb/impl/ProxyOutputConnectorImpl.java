@@ -22,7 +22,6 @@ public class ProxyOutputConnectorImpl extends OutputConnectorImpl implements Pro
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected ProxyOutputConnectorImpl() {
@@ -32,7 +31,6 @@ public class ProxyOutputConnectorImpl extends OutputConnectorImpl implements Pro
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

@@ -17,13 +17,11 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPoint#getInputConnector <em>Input Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPoint#getOutputConnector <em>Output
- * Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPoint#getWestOutputConnector <em>West Output
- * Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPoint#getMediatorFlow <em>Mediator Flow</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPoint#isBuildMessage <em>Build Message</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPoint#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPoint#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPoint#getWestOutputConnector <em>West Output Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPoint#getMediatorFlow <em>Mediator Flow</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPoint#isBuildMessage <em>Build Message</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFailoverEndPoint()
@@ -39,7 +37,6 @@ public interface FailoverEndPoint extends ParentEndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(FailoverEndPointInputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFailoverEndPoint_InputConnector()
@@ -49,11 +46,9 @@ public interface FailoverEndPoint extends ParentEndPoint {
     FailoverEndPointInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPoint#getInputConnector
-     * <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPoint#getInputConnector <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
      * @see #getInputConnector()
      * @generated
@@ -69,7 +64,6 @@ public interface FailoverEndPoint extends ParentEndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Output Connector</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFailoverEndPoint_OutputConnector()
      * @model containment="true"
@@ -85,7 +79,6 @@ public interface FailoverEndPoint extends ParentEndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>West Output Connector</em>' containment reference.
      * @see #setWestOutputConnector(FailoverEndPointWestOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFailoverEndPoint_WestOutputConnector()
@@ -95,11 +88,9 @@ public interface FailoverEndPoint extends ParentEndPoint {
     FailoverEndPointWestOutputConnector getWestOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPoint#getWestOutputConnector
-     * <em>West Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPoint#getWestOutputConnector <em>West Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>West Output Connector</em>' containment reference.
      * @see #getWestOutputConnector()
      * @generated
@@ -114,7 +105,6 @@ public interface FailoverEndPoint extends ParentEndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Mediator Flow</em>' containment reference.
      * @see #setMediatorFlow(MediatorFlow)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFailoverEndPoint_MediatorFlow()
@@ -124,11 +114,9 @@ public interface FailoverEndPoint extends ParentEndPoint {
     MediatorFlow getMediatorFlow();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPoint#getMediatorFlow
-     * <em>Mediator Flow</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPoint#getMediatorFlow <em>Mediator Flow</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Mediator Flow</em>' containment reference.
      * @see #getMediatorFlow()
      * @generated
@@ -143,7 +131,6 @@ public interface FailoverEndPoint extends ParentEndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Build Message</em>' attribute.
      * @see #setBuildMessage(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFailoverEndPoint_BuildMessage()
@@ -153,11 +140,9 @@ public interface FailoverEndPoint extends ParentEndPoint {
     boolean isBuildMessage();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPoint#isBuildMessage <em>Build
-     * Message</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPoint#isBuildMessage <em>Build Message</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Build Message</em>' attribute.
      * @see #isBuildMessage()
      * @generated

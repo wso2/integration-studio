@@ -31,11 +31,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RuleResult;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleResultsConfiguration;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.RuleResultsConfiguration}
- * object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.RuleResultsConfiguration} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class RuleResultsConfigurationItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
@@ -44,7 +42,6 @@ public class RuleResultsConfigurationItemProvider extends ItemProviderAdapter im
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public RuleResultsConfigurationItemProvider(AdapterFactory adapterFactory) {
@@ -55,7 +52,6 @@ public class RuleResultsConfigurationItemProvider extends ItemProviderAdapter im
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -74,7 +70,6 @@ public class RuleResultsConfigurationItemProvider extends ItemProviderAdapter im
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -90,7 +85,6 @@ public class RuleResultsConfigurationItemProvider extends ItemProviderAdapter im
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -106,7 +100,6 @@ public class RuleResultsConfigurationItemProvider extends ItemProviderAdapter im
      * This returns RuleResultsConfiguration.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -143,7 +136,6 @@ public class RuleResultsConfigurationItemProvider extends ItemProviderAdapter im
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -152,9 +144,9 @@ public class RuleResultsConfigurationItemProvider extends ItemProviderAdapter im
         updateChildren(notification);
 
         switch (notification.getFeatureID(RuleResultsConfiguration.class)) {
-        case EsbPackage.RULE_RESULTS_CONFIGURATION__RESULTS:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.RULE_RESULTS_CONFIGURATION__RESULTS:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -164,7 +156,6 @@ public class RuleResultsConfigurationItemProvider extends ItemProviderAdapter im
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -172,15 +163,16 @@ public class RuleResultsConfigurationItemProvider extends ItemProviderAdapter im
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.RULE_RESULTS_CONFIGURATION__RESULTS,
-                EsbFactory.eINSTANCE.createRuleResult()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.RULE_RESULTS_CONFIGURATION__RESULTS,
+                 EsbFactory.eINSTANCE.createRuleResult()));
     }
 
     /**
      * Return the resource locator for this item provider's resources.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

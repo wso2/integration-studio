@@ -22,11 +22,9 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleSetCreationProperty;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.RuleSetCreationProperty}
- * object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.RuleSetCreationProperty} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class RuleSetCreationPropertyItemProvider extends AbstractNameValuePropertyItemProvider {
@@ -34,7 +32,6 @@ public class RuleSetCreationPropertyItemProvider extends AbstractNameValueProper
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public RuleSetCreationPropertyItemProvider(AdapterFactory adapterFactory) {
@@ -45,7 +42,6 @@ public class RuleSetCreationPropertyItemProvider extends AbstractNameValueProper
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -62,7 +58,6 @@ public class RuleSetCreationPropertyItemProvider extends AbstractNameValueProper
      * This returns RuleSetCreationProperty.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -75,15 +70,15 @@ public class RuleSetCreationPropertyItemProvider extends AbstractNameValueProper
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((RuleSetCreationProperty) object).getPropertyName();
-        return label == null || label.length() == 0 ? getString("_UI_RuleSetCreationProperty_type")
-                : getString("_UI_RuleSetCreationProperty_type") + " " + label;
+        String label = ((RuleSetCreationProperty)object).getPropertyName();
+        return label == null || label.length() == 0 ?
+            getString("_UI_RuleSetCreationProperty_type") :
+            getString("_UI_RuleSetCreationProperty_type") + " " + label;
     }
 
     /**
@@ -91,7 +86,6 @@ public class RuleSetCreationPropertyItemProvider extends AbstractNameValueProper
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -106,7 +100,6 @@ public class RuleSetCreationPropertyItemProvider extends AbstractNameValueProper
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

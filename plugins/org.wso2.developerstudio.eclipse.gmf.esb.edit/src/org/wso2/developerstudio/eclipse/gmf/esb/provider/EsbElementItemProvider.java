@@ -28,7 +28,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.EsbElement} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class EsbElementItemProvider extends EsbNodeItemProvider {
@@ -36,7 +35,6 @@ public class EsbElementItemProvider extends EsbNodeItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EsbElementItemProvider(AdapterFactory adapterFactory) {
@@ -47,7 +45,6 @@ public class EsbElementItemProvider extends EsbNodeItemProvider {
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -66,49 +63,59 @@ public class EsbElementItemProvider extends EsbNodeItemProvider {
      * This adds a property descriptor for the Description feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addDescriptionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_EsbElement_description_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_EsbElement_description_feature",
-                                "_UI_EsbElement_type"),
-                        EsbPackage.Literals.ESB_ELEMENT__DESCRIPTION, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_EsbElement_description_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_EsbElement_description_feature", "_UI_EsbElement_type"),
+                 EsbPackage.Literals.ESB_ELEMENT__DESCRIPTION,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Comments List feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addCommentsListPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_EsbElement_commentsList_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_EsbElement_commentsList_feature",
-                                "_UI_EsbElement_type"),
-                        EsbPackage.Literals.ESB_ELEMENT__COMMENTS_LIST, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_EsbElement_commentsList_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_EsbElement_commentsList_feature", "_UI_EsbElement_type"),
+                 EsbPackage.Literals.ESB_ELEMENT__COMMENTS_LIST,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((EsbElement) object).getDescription();
-        return label == null || label.length() == 0 ? getString("_UI_EsbElement_type")
-                : getString("_UI_EsbElement_type") + " " + label;
+        String label = ((EsbElement)object).getDescription();
+        return label == null || label.length() == 0 ?
+            getString("_UI_EsbElement_type") :
+            getString("_UI_EsbElement_type") + " " + label;
     }
 
     /**
@@ -116,7 +123,6 @@ public class EsbElementItemProvider extends EsbNodeItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -125,10 +131,10 @@ public class EsbElementItemProvider extends EsbNodeItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(EsbElement.class)) {
-        case EsbPackage.ESB_ELEMENT__DESCRIPTION:
-        case EsbPackage.ESB_ELEMENT__COMMENTS_LIST:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
+            case EsbPackage.ESB_ELEMENT__DESCRIPTION:
+            case EsbPackage.ESB_ELEMENT__COMMENTS_LIST:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -138,7 +144,6 @@ public class EsbElementItemProvider extends EsbNodeItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

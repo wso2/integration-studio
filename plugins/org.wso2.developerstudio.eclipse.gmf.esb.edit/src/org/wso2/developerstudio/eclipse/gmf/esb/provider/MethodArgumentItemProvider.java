@@ -37,7 +37,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.MethodArgument} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class MethodArgumentItemProvider extends AbstractNameValueExpressionPropertyItemProvider {
@@ -45,7 +44,6 @@ public class MethodArgumentItemProvider extends AbstractNameValueExpressionPrope
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public MethodArgumentItemProvider(AdapterFactory adapterFactory) {
@@ -56,7 +54,6 @@ public class MethodArgumentItemProvider extends AbstractNameValueExpressionPrope
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -72,7 +69,6 @@ public class MethodArgumentItemProvider extends AbstractNameValueExpressionPrope
      * This returns MethodArgument.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -84,7 +80,6 @@ public class MethodArgumentItemProvider extends AbstractNameValueExpressionPrope
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated NOT
      */
     @Override
@@ -115,7 +110,6 @@ public class MethodArgumentItemProvider extends AbstractNameValueExpressionPrope
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -129,7 +123,6 @@ public class MethodArgumentItemProvider extends AbstractNameValueExpressionPrope
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

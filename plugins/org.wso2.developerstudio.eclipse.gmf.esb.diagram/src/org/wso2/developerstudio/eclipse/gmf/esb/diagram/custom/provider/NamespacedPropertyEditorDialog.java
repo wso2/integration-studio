@@ -195,7 +195,7 @@ public class NamespacedPropertyEditorDialog extends Dialog {
      * Tab item for XML content.
      */
     private TabItem xmlContentTabItem;
-
+    
     /**
      * Group box for XML content tab elements.
      */
@@ -205,137 +205,137 @@ public class NamespacedPropertyEditorDialog extends Dialog {
      * Tab item for namespaces.
      */
     private TabItem namespacesTabItem;
-
+    
     /**
      * Label providing an informative message.
      */
     private Label xmlDocumentLabel;
-
+    
     /**
      * Browse button.
      */
     private Button browseButton;
-
+    
     /**
      * Selected file path text filed.
      */
     private Text filePathTextField;
-
+    
     /**
      * Tree viewer.
      */
     private Tree treeViewWidget;
-
+    
     /**
      * XML namespaces.
      */
     private Map<String, String> nameSpaces;
-
+    
     /**
      * Selected xpath.
      */
     private String selectedXpath;
-
+    
     /**
      * Content of the XML file loaded.
      */
     private String xmlFileContentStr;
-
+    
     /**
      * Inline XML input type radio button.
      */
     private Button inlineRadioButton;
-
+    
     /**
      * File input type radio button.
      */
     private Button browseFileRadioButton;
-
+    
     /**
      * Group box for XML content.
      */
     private Group xmlContentGroupBox;
-
+    
     /**
      * Text area for inline XML content.
      */
     private StyledText inlineXMLTextArea;
-
+    
     /**
      * Group box for file browse components.
      */
     private Group browseFileGroupBox;
-
+    
     /**
      * Tab view for XML content.
      */
     private TabFolder xmlContentTabFolder;
-
+    
     /**
      * Tab item for XML source.
      */
     private TabItem xmlSourceTabItem;
-
+    
     /**
      * Tab item for XML visual tree view.
      */
     private TabItem xmlVisualTabItem;
-
+    
     /**
      * Label for XPath input box.
      */
     private Label xPathLabel;
-
+    
     /**
      * Text input box for XPath expressions.
      */
     private Text xPathTextField;
-
+    
     /**
      * Evaluate XPath expression button.
      */
     private Button evaluateXPathButton;
-
+    
     /**
      * Text area for evaluated XPath output.
      */
     private StyledText outputXMLTextArea;
-
+    
     /**
      * Currently chosen XML file from the browse dialog box.
      */
     private File currentFile;
-
+    
     /**
      * Group box for 'Input Type' radio button group.
      */
     private Group inputTypeRadioGroup;
-
+    
     /**
      * XML content information label.
      */
     private Label infoLabel;
-
+    
     /**
      * Inline XML content.
      */
     private String inlineXMLContent;
-
+    
     /**
      * A boolean to keep track of changes in inline XML content.
      */
     private boolean isInlineXMLContentChanged;
-
+    
     /**
      * A boolean to keep track of inline XML content validity.
      */
     private boolean isCurrentXMLContentValid = true;
-
+    
     /**
      * XPath validator object.
      */
     private XPathValidator xPathValidator;
-
+    
     private static final String EMPTY_STRING = "";
     private static final String SOURCE_VIEW_INFO_LABEL_TEXT = "Switch to 'Visual' tab to see a graphical "
             + "view of the XML content";
@@ -365,9 +365,9 @@ public class NamespacedPropertyEditorDialog extends Dialog {
     private static final String UI_JOB_ID = "add-root-tree-item-job";
     private static final String XML_EXTENSION_TYPE = "*.xml";
     private static final String TREE_ITEM_DATA_KEY = "dom_user_data_key";
-
+    
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-
+    
     /**
      * A utility class used to track TreeItem state as well as store
      * user data in it.
@@ -456,44 +456,44 @@ public class NamespacedPropertyEditorDialog extends Dialog {
         dialogShellLayout.marginHeight = 5;
         dialogShellLayout.marginWidth = 5;
         dialogShell.setLayout(dialogShellLayout);
-
+        
         // XML input type radio button group
         inputTypeRadioGroup = new Group(dialogShell, SWT.NONE);
-        {
+        {   
             RowLayout inputTypeRadioGroupRowLayout = new RowLayout(SWT.HORIZONTAL);
             inputTypeRadioGroupRowLayout.wrap = true;
             inputTypeRadioGroupRowLayout.marginRight = 0;
             inputTypeRadioGroupRowLayout.spacing = 30;
             inputTypeRadioGroup.setLayout(inputTypeRadioGroupRowLayout);
-
+            
             FormData inputTypeRadioGroupLayout = new FormData();
             inputTypeRadioGroupLayout.top = new FormAttachment(0);
             inputTypeRadioGroupLayout.left = new FormAttachment(1);
             inputTypeRadioGroupLayout.right = new FormAttachment(99);
             inputTypeRadioGroup.setLayoutData(inputTypeRadioGroupLayout);
-
+            
             inlineRadioButton = new Button(inputTypeRadioGroup, SWT.RADIO);
             inlineRadioButton.setText(INLINE_RADIO_BUTTON_TEXT);
             inlineRadioButton.setSelection(true);
-
+            
             browseFileRadioButton = new Button(inputTypeRadioGroup, SWT.RADIO);
             browseFileRadioButton.setText(FILE_RADIO_BUTTON_TEXT);
         }
-
+        
         browseFileGroupBox = new Group(dialogShell, SWT.NONE);
-        {
+        {   
             FormData browseFileGroupBoxLayoutData = new FormData();
             browseFileGroupBoxLayoutData.top = new FormAttachment(inputTypeRadioGroup, 0);
             browseFileGroupBoxLayoutData.left = new FormAttachment(1);
             browseFileGroupBoxLayoutData.right = new FormAttachment(99);
             browseFileGroupBox.setLayoutData(browseFileGroupBoxLayoutData);
-
+            
             // Configure group box internal layout.
             FormLayout browseFileGroupBoxLayout = new FormLayout();
             browseFileGroupBoxLayout.marginWidth = 5;
             browseFileGroupBoxLayout.marginHeight = 5;
             browseFileGroupBox.setLayout(browseFileGroupBoxLayout);
-
+            
             // File path text field.
             filePathTextField = new Text(browseFileGroupBox, SWT.BORDER);
             {
@@ -505,7 +505,7 @@ public class NamespacedPropertyEditorDialog extends Dialog {
                 filePathTextField.setLayoutData(filePathTextFieldLayoutData);
                 filePathTextField.setEnabled(false);
             }
-
+            
             // Browse button.
             browseButton = new Button(browseFileGroupBox, SWT.BORDER);
             {
@@ -519,7 +519,7 @@ public class NamespacedPropertyEditorDialog extends Dialog {
                 browseButton.setEnabled(false);
             }
         }
-
+        
         // Initialising main tab layout
         mainTabFolder = new TabFolder(dialogShell, SWT.NONE);
         FormData tabFolderLayoutData = new FormData();
@@ -528,11 +528,11 @@ public class NamespacedPropertyEditorDialog extends Dialog {
         tabFolderLayoutData.right = new FormAttachment(100);
         tabFolderLayoutData.height = 370;
         mainTabFolder.setLayoutData(tabFolderLayoutData);
-
+        
         // First Tab
         xmlContentTabItem = new TabItem(mainTabFolder, SWT.NONE);
         xmlContentTabItem.setText(XML_CONTENT_TAB_ITEM_TEXT);
-
+        
         // Second Tab
         namespacesTabItem = new TabItem(mainTabFolder, SWT.NONE);
         namespacesTabItem.setText(NAMESPACES_TAB_ITEM_TEXT);
@@ -638,7 +638,7 @@ public class NamespacedPropertyEditorDialog extends Dialog {
                 nsListBox.setLayoutData(nsListBoxFormData);
             }
         }
-
+        
         // Layout for XML tab content.
         xmlContentTabGroupBox = new Group(mainTabFolder, SWT.NONE);
         {
@@ -654,7 +654,7 @@ public class NamespacedPropertyEditorDialog extends Dialog {
             testGroupBoxLayout.marginHeight = 5;
             xmlContentTabGroupBox.setLayout(testGroupBoxLayout);
         }
-
+        
         infoLabel = new Label(xmlContentTabGroupBox, SWT.NONE);
         {
             infoLabel.setText(INFO_LABEL_DEFAULT_TEXT);
@@ -664,27 +664,27 @@ public class NamespacedPropertyEditorDialog extends Dialog {
             infoLabelLayoutData.right = new FormAttachment(99);
             infoLabel.setLayoutData(infoLabelLayoutData);
         }
-
+        
         // Initialising XML tab layout
         xmlContentTabFolder = new TabFolder(xmlContentTabGroupBox, SWT.BOTTOM | SWT.BORDER_SOLID);
         Device device = Display.getCurrent();
         xmlContentTabFolder.setBackground(new Color(device, new RGB(220, 220, 220)));
-
+        
         FormData xmlContentTabFolderLayoutData = new FormData();
         xmlContentTabFolderLayoutData.top = new FormAttachment(infoLabel, 5);
         xmlContentTabFolderLayoutData.left = new FormAttachment(0);
         xmlContentTabFolderLayoutData.right = new FormAttachment(100);
         xmlContentTabFolderLayoutData.bottom = new FormAttachment(100);
         xmlContentTabFolder.setLayoutData(xmlContentTabFolderLayoutData);
-
+        
         // First Tab
         xmlSourceTabItem = new TabItem(xmlContentTabFolder, SWT.NONE);
         xmlSourceTabItem.setText(SOURCE_TAB_ITEM_TEXT);
-
+        
         // Second Tab
         xmlVisualTabItem = new TabItem(xmlContentTabFolder, SWT.NONE);
         xmlVisualTabItem.setText(VISUAL_TAB_ITEM_TEXT);
-
+        
         // Construct and layout property edit box.
         xmlContentGroupBox = new Group(xmlContentTabFolder, SWT.NONE);
         {
@@ -693,15 +693,15 @@ public class NamespacedPropertyEditorDialog extends Dialog {
             xmlContentGroupBoxLayoutData.left = new FormAttachment(0);
             xmlContentGroupBoxLayoutData.right = new FormAttachment(100);
             xmlContentGroupBox.setLayoutData(xmlContentGroupBoxLayoutData);
-
+            
             // Configure group box internal layout.
             FormLayout xmlContentGroupBoxLayout = new FormLayout();
             xmlContentGroupBoxLayout.marginWidth = 5;
             xmlContentGroupBoxLayout.marginHeight = 5;
             xmlContentGroupBox.setLayout(xmlContentGroupBoxLayout);
-
-            inlineXMLTextArea = new StyledText(xmlContentGroupBox,
-                    SWT.MULTI | SWT.BORDER | SWT.WRAP | SWT.H_SCROLL | SWT.V_SCROLL);
+            
+            inlineXMLTextArea = new StyledText(xmlContentGroupBox, SWT.MULTI | SWT.BORDER | SWT.WRAP | 
+                    SWT.H_SCROLL | SWT.V_SCROLL);
             FormData xmlTextAreaLayoutData = new FormData();
             xmlTextAreaLayoutData.top = new FormAttachment(xmlContentGroupBox, 0);
             xmlTextAreaLayoutData.right = new FormAttachment(100);
@@ -710,7 +710,7 @@ public class NamespacedPropertyEditorDialog extends Dialog {
             inlineXMLTextArea.setText(XML_CONTENT_PLACEHOLDER_TEXT);
             inlineXMLTextArea.setLayoutData(xmlTextAreaLayoutData);
         }
-
+        
         // Construct and layout property edit box.
         treeViewGroupBox = new Group(xmlContentTabFolder, SWT.NONE);
         {
@@ -725,7 +725,7 @@ public class NamespacedPropertyEditorDialog extends Dialog {
             groupBoxLayout.marginWidth = 5;
             groupBoxLayout.marginHeight = 5;
             treeViewGroupBox.setLayout(groupBoxLayout);
-
+            
             // Tree view.
             treeViewWidget = new Tree(treeViewGroupBox, SWT.BORDER);
             {
@@ -737,7 +737,7 @@ public class NamespacedPropertyEditorDialog extends Dialog {
                 treeViewWidget.setLayoutData(treeViewLayoutData);
             }
         }
-
+        
         // Label for XPath text field
         xPathLabel = new Label(dialogShell, SWT.NONE);
         {
@@ -747,7 +747,7 @@ public class NamespacedPropertyEditorDialog extends Dialog {
             xPathLabelLayoutData.left = new FormAttachment(1);
             xPathLabel.setLayoutData(xPathLabelLayoutData);
         }
-
+        
         // Evaluate XPath button
         evaluateXPathButton = new Button(dialogShell, SWT.NONE);
         {
@@ -758,7 +758,7 @@ public class NamespacedPropertyEditorDialog extends Dialog {
             evaluateXPathButtonLayoutData.width = 80;
             evaluateXPathButton.setLayoutData(evaluateXPathButtonLayoutData);
         }
-
+        
         // XPath text field
         xPathTextField = new Text(dialogShell, SWT.BORDER);
         {
@@ -768,7 +768,7 @@ public class NamespacedPropertyEditorDialog extends Dialog {
             xpathTextFieldLayoutData.right = new FormAttachment(evaluateXPathButton, -5);
             xPathTextField.setLayoutData(xpathTextFieldLayoutData);
         }
-
+        
         Label outputLabel = new Label(dialogShell, SWT.NONE);
         {
             outputLabel.setText(OUTPUT_LABEL_TEXT);
@@ -777,8 +777,8 @@ public class NamespacedPropertyEditorDialog extends Dialog {
             outputLabelLayoutData.left = new FormAttachment(1);
             outputLabel.setLayoutData(outputLabelLayoutData);
         }
-
-        // Evaluated output text area
+        
+        // Evaluated output text area 
         outputXMLTextArea = new StyledText(dialogShell, SWT.MULTI | SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
         {
             FormData xmlTextAreaLayoutData = new FormData();
@@ -786,12 +786,12 @@ public class NamespacedPropertyEditorDialog extends Dialog {
             xmlTextAreaLayoutData.right = new FormAttachment(98);
             xmlTextAreaLayoutData.left = new FormAttachment(1);
             xmlTextAreaLayoutData.height = 90;
-
+            
             outputXMLTextArea.setText(EMPTY_STRING);
             outputXMLTextArea.setWordWrap(false);
             outputXMLTextArea.setLayoutData(xmlTextAreaLayoutData);
         }
-
+        
         // OK button.
         okButton = new Button(dialogShell, SWT.NONE);
         {
@@ -813,11 +813,11 @@ public class NamespacedPropertyEditorDialog extends Dialog {
             cancelButtonLayoutData.width = 80;
             cancelButton.setLayoutData(cancelButtonLayoutData);
         }
-
+        
         // Setting content to tabs
         xmlContentTabItem.setControl(xmlContentTabGroupBox);
         namespacesTabItem.setControl(namespacesGroupBox);
-
+        
         xmlSourceTabItem.setControl(xmlContentGroupBox);
         xmlVisualTabItem.setControl(treeViewGroupBox);
 
@@ -848,12 +848,12 @@ public class NamespacedPropertyEditorDialog extends Dialog {
         for (Entry<String, String> nsEntry : nsProperty.getNamespaces().entrySet()) {
             addNamespace(nsEntry.getKey(), nsEntry.getValue());
         }
-
+        
         xPathTextField.setFocus();
     }
 
     private void initActions() {
-
+        
         addButton.addListener(SWT.Selection, new Listener() {
             public void handleEvent(Event event) {
                 String prefix = nsPrefixTextField.getText();
@@ -895,7 +895,8 @@ public class NamespacedPropertyEditorDialog extends Dialog {
 
         okButton.addListener(SWT.Selection, new Listener() {
             public void handleEvent(Event event) {
-                if (XpathValidator.isValidConfiguration(dialogShell, xPathTextField.getText(), collectedNamespaces)) {
+                if (XpathValidator.isValidConfiguration(dialogShell, xPathTextField.getText(),
+                        collectedNamespaces)) {
                     try {
                         saveConfiguration();
                         setSaved(true);
@@ -913,7 +914,7 @@ public class NamespacedPropertyEditorDialog extends Dialog {
                 dialogShell.dispose();
             }
         });
-
+        
         browseButton.addListener(SWT.Selection, new Listener() {
             public void handleEvent(Event event) {
                 // Configure file dialog.
@@ -962,13 +963,13 @@ public class NamespacedPropertyEditorDialog extends Dialog {
                                             for (Entry<String, String> nsEntry : getNameSpaces().entrySet()) {
                                                 addNamespace(nsEntry.getKey(), nsEntry.getValue());
                                             }
-
+                                            
                                             // Get formatted XML content
                                             xmlFileContentStr = xPathValidator.getFormattedXMLStringFromDoc(document);
                                             inlineXMLTextArea.setText(xmlFileContentStr);
                                             infoLabel.setText(TREE_VIEW_INFO_LABEL_TEXT);
                                             isCurrentXMLContentValid = true;
-
+                                            
                                             return Status.OK_STATUS;
                                         }
                                     }.schedule();
@@ -1000,7 +1001,7 @@ public class NamespacedPropertyEditorDialog extends Dialog {
                 }
             }
         });
-
+        
         treeViewWidget.addListener(SWT.Selection, new Listener() {
             public void handleEvent(Event event) {
                 TreeItemData treeItemData = (TreeItemData) event.item.getData(TREE_ITEM_DATA_KEY);
@@ -1047,7 +1048,7 @@ public class NamespacedPropertyEditorDialog extends Dialog {
         });
 
         treeViewWidget.addMouseListener(new MouseListener() {
-
+            
             @Override
             public void mouseDoubleClick(MouseEvent e) {
                 TreeItem[] selection = treeViewWidget.getSelection();
@@ -1057,20 +1058,18 @@ public class NamespacedPropertyEditorDialog extends Dialog {
                     dialogShell.dispose();
                 }
             }
-
+            
             // The following two methods were left empty intentionally since they must be overridden
             @Override
-            public void mouseUp(MouseEvent e) {
-            }
+            public void mouseUp(MouseEvent e) {}
 
             @Override
-            public void mouseDown(MouseEvent e) {
-            }
+            public void mouseDown(MouseEvent e) {}
 
         });
-
-        inlineRadioButton.addSelectionListener(new SelectionAdapter() {
-
+        
+        inlineRadioButton.addSelectionListener(new SelectionAdapter()  {
+            
             @Override
             public void widgetSelected(SelectionEvent e) {
                 Button source = (Button) e.getSource();
@@ -1080,56 +1079,58 @@ public class NamespacedPropertyEditorDialog extends Dialog {
                     outputXMLTextArea.setText(EMPTY_STRING);
                     inlineXMLTextArea.setText(XML_CONTENT_PLACEHOLDER_TEXT);
                     infoLabel.setText(INFO_LABEL_DEFAULT_TEXT);
-
+                    
                     browseButton.setEnabled(false);
                     filePathTextField.setEnabled(false);
-
+                    
                     xmlContentTabFolder.setSelection(0);
                     xmlContentTabFolder.getTabList()[0].setEnabled(true);
-
+               
                     treeViewWidget.removeAll();
                 }
             }
         });
-
-        browseFileRadioButton.addSelectionListener(new SelectionAdapter() {
-
+         
+        browseFileRadioButton.addSelectionListener(new SelectionAdapter()  {
+ 
             @Override
             public void widgetSelected(SelectionEvent e) {
                 Button source = (Button) e.getSource();
                 if (source.getSelection()) {
                     browseButton.setEnabled(true);
                     infoLabel.setText(INFO_LABEL_DEFAULT_TEXT);
-
+                    
                     xmlContentTabFolder.setSelection(1);
                     treeViewWidget.removeAll();
                     inlineXMLTextArea.setText(EMPTY_STRING);
                     outputXMLTextArea.setText(EMPTY_STRING);
                 }
-            }
+            } 
         });
-
-        inlineXMLTextArea.addLineStyleListener(new LineStyleListener() {
-            public void lineGetStyle(LineStyleEvent e) {
+        
+        inlineXMLTextArea.addLineStyleListener(new LineStyleListener()
+        {
+            public void lineGetStyle(LineStyleEvent e)
+            {
                 e.bulletIndex = inlineXMLTextArea.getLineAtOffset(e.lineOffset);
 
                 StyleRange style = new StyleRange();
                 Device device = Display.getCurrent();
                 final RGB LINE_NUMBER_BG = new RGB(0, 0, 100);
                 final RGB LINE_NUMBER_FG = new RGB(255, 255, 255);
-
+                
                 style.background = new Color(device, LINE_NUMBER_BG);
                 style.foreground = new Color(device, LINE_NUMBER_FG);
-
-                style.metrics = new GlyphMetrics(0, 0,
-                        Integer.toString(inlineXMLTextArea.getLineCount() + 1).length() * 12);
+                
+                style.metrics = new GlyphMetrics(0, 0, Integer.toString(inlineXMLTextArea.
+                        getLineCount() + 1).length() * 12);
 
                 e.bullet = new Bullet(ST.BULLET_NUMBER, style);
             }
         });
-
+        
         inlineXMLTextArea.addFocusListener(new FocusListener() {
-
+            
             @Override
             public void focusGained(org.eclipse.swt.events.FocusEvent e) {
                 if (XML_CONTENT_PLACEHOLDER_TEXT.equalsIgnoreCase(inlineXMLTextArea.getText())) {
@@ -1139,11 +1140,11 @@ public class NamespacedPropertyEditorDialog extends Dialog {
 
             @Override
             public void focusLost(FocusEvent e) {
-
+                
                 String xmlText = inlineXMLTextArea.getText().trim();
-
+                
                 if (isInlineXMLContentChanged) {
-
+                    
                     if (!xPathValidator.isValidXML(xmlText)) {
                         outputXMLTextArea.setText(EMPTY_STRING);
                         treeViewWidget.removeAll();
@@ -1151,7 +1152,7 @@ public class NamespacedPropertyEditorDialog extends Dialog {
                         isCurrentXMLContentValid = false;
                         return;
                     }
-
+                    
                     treeViewWidget.removeAll();
 
                     IRunnableWithProgress runnable = new IRunnableWithProgress() {
@@ -1194,37 +1195,37 @@ public class NamespacedPropertyEditorDialog extends Dialog {
                                 "Error while parsing the specified xml file.");
                     }
                 }
-
+                
             }
         });
-
+        
         // Modify listener for inline XML text area.
         inlineXMLTextArea.addModifyListener(new ModifyListener() {
             @Override
-            public void modifyText(ModifyEvent e) {
+            public void modifyText(ModifyEvent e) {  
                 isInlineXMLContentChanged = true;
-
+                
                 if (EMPTY_STRING.equalsIgnoreCase(inlineXMLTextArea.getText())) {
                     infoLabel.setText(INFO_LABEL_DEFAULT_TEXT);
                 } else {
                     infoLabel.setText(SOURCE_VIEW_INFO_LABEL_TEXT);
                 }
-
+                
                 // For line number redrawing.
                 inlineXMLTextArea.redraw();
             }
         });
-
+        
         // Event listener for evaluate xpath button.
         evaluateXPathButton.addListener(SWT.Selection, new Listener() {
             @Override
             public void handleEvent(Event event) {
                 outputXMLTextArea.setText(EMPTY_STRING);
-
+                
                 if (xPathValidator.isValidXML(inlineXMLTextArea.getText().trim())) {
                     String outputStr = xPathValidator.getEvaluatedResult(inlineXMLTextArea.getText().trim(),
                             xPathTextField.getText().trim(), nameSpaces);
-
+                    
                     if (EMPTY_STRING.equalsIgnoreCase(outputStr)) {
                         outputXMLTextArea.setText(INVALID_XPATH_EXPRESSION_TEXT);
                     } else {
@@ -1238,16 +1239,16 @@ public class NamespacedPropertyEditorDialog extends Dialog {
                 }
             }
         });
-
+        
         // Event listener for XML content tab folder selection
         xmlContentTabFolder.addSelectionListener(new SelectionAdapter() {
-
+            
             @Override
             public void widgetSelected(SelectionEvent evt) {
                 TabItem item = xmlContentTabFolder.getSelection()[0];
-
-                if (XML_CONTENT_PLACEHOLDER_TEXT.equalsIgnoreCase(inlineXMLTextArea.getText())
-                        || EMPTY_STRING.equalsIgnoreCase(inlineXMLTextArea.getText())) {
+                
+                if (XML_CONTENT_PLACEHOLDER_TEXT.equalsIgnoreCase(inlineXMLTextArea.getText()) || 
+                        EMPTY_STRING.equalsIgnoreCase(inlineXMLTextArea.getText())) {
                     infoLabel.setText(INFO_LABEL_DEFAULT_TEXT);
                 } else {
                     if (isCurrentXMLContentValid) {
@@ -1297,15 +1298,15 @@ public class NamespacedPropertyEditorDialog extends Dialog {
 
     private void setTabOrder() {
         Control[] tabOrder = new Control[] { nsPrefixTextField, nsUriTextField, addButton };
-
+  
         namespacesGroupBox.setTabList(tabOrder);
 
         tabOrder = new Control[] { okButton };
         dialogShell.setTabList(tabOrder);
-
+        
         tabOrder = new Control[] { xmlContentTabGroupBox, namespacesGroupBox };
         mainTabFolder.setTabList(tabOrder);
-
+        
         tabOrder = new Control[] { xmlContentGroupBox, treeViewGroupBox };
         xmlContentTabFolder.setTabList(tabOrder);
     }
@@ -1323,11 +1324,11 @@ public class NamespacedPropertyEditorDialog extends Dialog {
     public boolean isSaved() {
         return saved;
     }
-
+    
     private void setSelectedXpath(String selectedXpath) {
         this.selectedXpath = selectedXpath;
     }
-
+    
     /**
      * Utility method for constructing a Document from an XML file.
      * 
@@ -1340,7 +1341,8 @@ public class NamespacedPropertyEditorDialog extends Dialog {
         DocumentBuilder builder = factory.newDocumentBuilder();
         return builder.parse(file);
     }
-
+    
+    
     /**
      * Utility method for adding a child TreeItem into the specified parent TreeItem object.
      * 
@@ -1377,7 +1379,7 @@ public class NamespacedPropertyEditorDialog extends Dialog {
             grandChild.setText(IN_PROGRESS_LABEL_TEXT);
         }
     }
-
+    
     /**
      * Adding namespaces to a list.
      * 
@@ -1395,9 +1397,9 @@ public class NamespacedPropertyEditorDialog extends Dialog {
             }
         }
     }
-
+    
     private Map<String, String> getNameSpaces() {
         return nameSpaces;
     }
-
+    
 }

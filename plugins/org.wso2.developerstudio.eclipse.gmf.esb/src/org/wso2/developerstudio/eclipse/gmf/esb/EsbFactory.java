@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
+ * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage
  * @generated
  */
@@ -21,6 +22,7 @@ public interface EsbFactory extends EFactory {
      * The singleton instance of the factory.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     EsbFactory eINSTANCE = org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl.init();
@@ -29,6 +31,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Diagram</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Diagram</em>'.
      * @generated
      */
@@ -38,6 +41,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Server</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Server</em>'.
      * @generated
      */
@@ -47,6 +51,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Link</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Link</em>'.
      * @generated
      */
@@ -56,6 +61,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Call Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Call Mediator</em>'.
      * @generated
      */
@@ -65,6 +71,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Call Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Call Mediator Input Connector</em>'.
      * @generated
      */
@@ -74,6 +81,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Call Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Call Mediator Output Connector</em>'.
      * @generated
      */
@@ -83,6 +91,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Call Mediator Endpoint Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Call Mediator Endpoint Output Connector</em>'.
      * @generated
      */
@@ -92,6 +101,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>End Point Property</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>End Point Property</em>'.
      * @generated
      */
@@ -101,6 +111,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Proxy Service</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Proxy Service</em>'.
      * @generated
      */
@@ -110,6 +121,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Proxy Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Proxy Output Connector</em>'.
      * @generated
      */
@@ -119,6 +131,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Proxy Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Proxy Input Connector</em>'.
      * @generated
      */
@@ -128,6 +141,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Proxy Out Sequence Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Proxy Out Sequence Output Connector</em>'.
      * @generated
      */
@@ -137,6 +151,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Proxy In Sequence Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Proxy In Sequence Input Connector</em>'.
      * @generated
      */
@@ -146,6 +161,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Proxy WSDL Resource</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Proxy WSDL Resource</em>'.
      * @generated
      */
@@ -155,6 +171,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Proxy Fault Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Proxy Fault Input Connector</em>'.
      * @generated
      */
@@ -164,6 +181,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Proxy Service Parameter</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Proxy Service Parameter</em>'.
      * @generated
      */
@@ -173,6 +191,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Proxy Service Policy</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Proxy Service Policy</em>'.
      * @generated
      */
@@ -182,6 +201,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Proxy Service Sequence And Endpoint Container</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Proxy Service Sequence And Endpoint Container</em>'.
      * @generated
      */
@@ -191,6 +211,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Proxy Service Fault Container</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Proxy Service Fault Container</em>'.
      * @generated
      */
@@ -200,6 +221,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Proxy Service Container</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Proxy Service Container</em>'.
      * @generated
      */
@@ -209,6 +231,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Mediator Flow</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Mediator Flow</em>'.
      * @generated
      */
@@ -218,6 +241,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Endpoint Flow</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Endpoint Flow</em>'.
      * @generated
      */
@@ -227,6 +251,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Message Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Message Mediator</em>'.
      * @generated
      */
@@ -236,6 +261,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Message Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Message Input Connector</em>'.
      * @generated
      */
@@ -245,6 +271,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Message Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Message Output Connector</em>'.
      * @generated
      */
@@ -254,6 +281,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Default End Point</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Default End Point</em>'.
      * @generated
      */
@@ -263,6 +291,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Default End Point Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Default End Point Input Connector</em>'.
      * @generated
      */
@@ -272,6 +301,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Default End Point Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Default End Point Output Connector</em>'.
      * @generated
      */
@@ -281,6 +311,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Address End Point</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Address End Point</em>'.
      * @generated
      */
@@ -290,6 +321,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Address End Point Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Address End Point Input Connector</em>'.
      * @generated
      */
@@ -299,6 +331,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Address End Point Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Address End Point Output Connector</em>'.
      * @generated
      */
@@ -308,6 +341,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Template Endpoint</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Template Endpoint</em>'.
      * @generated
      */
@@ -317,6 +351,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Template Endpoint Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Template Endpoint Input Connector</em>'.
      * @generated
      */
@@ -326,6 +361,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Template Endpoint Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Template Endpoint Output Connector</em>'.
      * @generated
      */
@@ -335,6 +371,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Template Endpoint Parameter</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Template Endpoint Parameter</em>'.
      * @generated
      */
@@ -344,6 +381,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>HTTP Endpoint</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>HTTP Endpoint</em>'.
      * @generated
      */
@@ -353,6 +391,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>HTTP End Point Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>HTTP End Point Input Connector</em>'.
      * @generated
      */
@@ -362,6 +401,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>HTTP End Point Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>HTTP End Point Output Connector</em>'.
      * @generated
      */
@@ -371,6 +411,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Drop Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Drop Mediator</em>'.
      * @generated
      */
@@ -380,6 +421,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Drop Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Drop Mediator Input Connector</em>'.
      * @generated
      */
@@ -389,6 +431,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Filter Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Filter Mediator</em>'.
      * @generated
      */
@@ -398,6 +441,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Filter Container</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Filter Container</em>'.
      * @generated
      */
@@ -407,6 +451,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Filter Pass Container</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Filter Pass Container</em>'.
      * @generated
      */
@@ -416,6 +461,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Filter Fail Container</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Filter Fail Container</em>'.
      * @generated
      */
@@ -425,6 +471,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Filter Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Filter Mediator Input Connector</em>'.
      * @generated
      */
@@ -434,6 +481,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Filter Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Filter Mediator Output Connector</em>'.
      * @generated
      */
@@ -443,6 +491,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Filter Mediator Pass Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Filter Mediator Pass Output Connector</em>'.
      * @generated
      */
@@ -452,6 +501,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Filter Mediator Fail Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Filter Mediator Fail Output Connector</em>'.
      * @generated
      */
@@ -461,6 +511,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Merge Node</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Merge Node</em>'.
      * @generated
      */
@@ -470,6 +521,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Merge Node First Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Merge Node First Input Connector</em>'.
      * @generated
      */
@@ -479,6 +531,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Merge Node Second Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Merge Node Second Input Connector</em>'.
      * @generated
      */
@@ -488,6 +541,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Merge Node Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Merge Node Output Connector</em>'.
      * @generated
      */
@@ -497,6 +551,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Log Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Log Mediator</em>'.
      * @generated
      */
@@ -506,6 +561,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Log Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Log Mediator Input Connector</em>'.
      * @generated
      */
@@ -515,6 +571,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Log Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Log Mediator Output Connector</em>'.
      * @generated
      */
@@ -524,6 +581,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Log Property</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Log Property</em>'.
      * @generated
      */
@@ -533,6 +591,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Publish Event Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Publish Event Mediator</em>'.
      * @generated
      */
@@ -542,6 +601,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Publish Event Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Publish Event Mediator Input Connector</em>'.
      * @generated
      */
@@ -551,6 +611,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Publish Event Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Publish Event Mediator Output Connector</em>'.
      * @generated
      */
@@ -560,6 +621,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Publish Event Mediator Attribute</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Publish Event Mediator Attribute</em>'.
      * @generated
      */
@@ -569,6 +631,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>BAM Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>BAM Mediator</em>'.
      * @generated
      */
@@ -578,6 +641,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>BAM Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>BAM Mediator Input Connector</em>'.
      * @generated
      */
@@ -587,6 +651,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>BAM Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>BAM Mediator Output Connector</em>'.
      * @generated
      */
@@ -596,6 +661,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Bean Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Bean Mediator</em>'.
      * @generated
      */
@@ -605,6 +671,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Bean Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Bean Mediator Input Connector</em>'.
      * @generated
      */
@@ -614,6 +681,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Bean Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Bean Mediator Output Connector</em>'.
      * @generated
      */
@@ -623,6 +691,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>EJB Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>EJB Mediator</em>'.
      * @generated
      */
@@ -632,6 +701,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>EJB Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>EJB Mediator Input Connector</em>'.
      * @generated
      */
@@ -641,6 +711,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>EJB Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>EJB Mediator Output Connector</em>'.
      * @generated
      */
@@ -650,6 +721,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Method Argument</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Method Argument</em>'.
      * @generated
      */
@@ -659,6 +731,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Registry Key Property</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Registry Key Property</em>'.
      * @generated
      */
@@ -670,6 +743,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Property Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Property Mediator</em>'.
      * @generated
      */
@@ -679,6 +753,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Property Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Property Mediator Input Connector</em>'.
      * @generated
      */
@@ -688,6 +763,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Property Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Property Mediator Output Connector</em>'.
      * @generated
      */
@@ -696,34 +772,38 @@ public interface EsbFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Property Group Mediator</em>'.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Property Group Mediator</em>'.
      * @generated
      */
-	PropertyGroupMediator createPropertyGroupMediator();
+    PropertyGroupMediator createPropertyGroupMediator();
 
-				/**
+    /**
      * Returns a new object of class '<em>Property Group Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Property Group Mediator Input Connector</em>'.
      * @generated
      */
-	PropertyGroupMediatorInputConnector createPropertyGroupMediatorInputConnector();
+    PropertyGroupMediatorInputConnector createPropertyGroupMediatorInputConnector();
 
-				/**
+    /**
      * Returns a new object of class '<em>Property Group Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Property Group Mediator Output Connector</em>'.
      * @generated
      */
-	PropertyGroupMediatorOutputConnector createPropertyGroupMediatorOutputConnector();
+    PropertyGroupMediatorOutputConnector createPropertyGroupMediatorOutputConnector();
 
-				/**
+    /**
      * Returns a new object of class '<em>Namespaced Property</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Namespaced Property</em>'.
      * @generated
      */
@@ -754,6 +834,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Enrich Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Enrich Mediator</em>'.
      * @generated
      */
@@ -763,6 +844,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Enrich Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Enrich Mediator Input Connector</em>'.
      * @generated
      */
@@ -772,6 +854,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Enrich Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Enrich Mediator Output Connector</em>'.
      * @generated
      */
@@ -781,6 +864,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>XSLT Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>XSLT Mediator</em>'.
      * @generated
      */
@@ -790,6 +874,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>XSLT Property</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>XSLT Property</em>'.
      * @generated
      */
@@ -799,6 +884,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>XSLT Feature</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>XSLT Feature</em>'.
      * @generated
      */
@@ -808,6 +894,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>XSLT Resource</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>XSLT Resource</em>'.
      * @generated
      */
@@ -817,6 +904,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>XSLT Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>XSLT Mediator Input Connector</em>'.
      * @generated
      */
@@ -826,6 +914,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>XSLT Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>XSLT Mediator Output Connector</em>'.
      * @generated
      */
@@ -835,6 +924,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Switch Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Switch Mediator</em>'.
      * @generated
      */
@@ -844,6 +934,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Switch Case Branch Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Switch Case Branch Output Connector</em>'.
      * @generated
      */
@@ -853,6 +944,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Switch Default Branch Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Switch Default Branch Output Connector</em>'.
      * @generated
      */
@@ -862,6 +954,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Switch Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Switch Mediator Input Connector</em>'.
      * @generated
      */
@@ -871,6 +964,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Switch Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Switch Mediator Output Connector</em>'.
      * @generated
      */
@@ -880,6 +974,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Switch Mediator Container</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Switch Mediator Container</em>'.
      * @generated
      */
@@ -889,6 +984,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Switch Case Parent Container</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Switch Case Parent Container</em>'.
      * @generated
      */
@@ -898,6 +994,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Switch Default Parent Container</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Switch Default Parent Container</em>'.
      * @generated
      */
@@ -907,6 +1004,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Switch Case Container</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Switch Case Container</em>'.
      * @generated
      */
@@ -916,6 +1014,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Switch Default Container</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Switch Default Container</em>'.
      * @generated
      */
@@ -925,6 +1024,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Sequence Diagram</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Sequence Diagram</em>'.
      * @generated
      */
@@ -934,6 +1034,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Sequence</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Sequence</em>'.
      * @generated
      */
@@ -943,6 +1044,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Sequence Input</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Sequence Input</em>'.
      * @generated
      */
@@ -952,6 +1054,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Sequence Output</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Sequence Output</em>'.
      * @generated
      */
@@ -961,6 +1064,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Sequence Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Sequence Input Connector</em>'.
      * @generated
      */
@@ -970,6 +1074,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Sequence Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Sequence Output Connector</em>'.
      * @generated
      */
@@ -979,6 +1084,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Sequence</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Sequence</em>'.
      * @generated
      */
@@ -988,6 +1094,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Sequence Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Sequence Input Connector</em>'.
      * @generated
      */
@@ -997,6 +1104,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Sequence Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Sequence Output Connector</em>'.
      * @generated
      */
@@ -1006,6 +1114,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Event Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Event Mediator</em>'.
      * @generated
      */
@@ -1015,6 +1124,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Event Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Event Mediator Input Connector</em>'.
      * @generated
      */
@@ -1024,6 +1134,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Event Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Event Mediator Output Connector</em>'.
      * @generated
      */
@@ -1033,6 +1144,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Entitlement Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Entitlement Mediator</em>'.
      * @generated
      */
@@ -1042,6 +1154,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Entitlement Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Entitlement Mediator Input Connector</em>'.
      * @generated
      */
@@ -1051,6 +1164,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Entitlement Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Entitlement Mediator Output Connector</em>'.
      * @generated
      */
@@ -1060,6 +1174,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Entitlement Mediator On Reject Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Entitlement Mediator On Reject Output Connector</em>'.
      * @generated
      */
@@ -1069,6 +1184,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Entitlement Mediator On Accept Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Entitlement Mediator On Accept Output Connector</em>'.
      * @generated
      */
@@ -1078,6 +1194,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Entitlement Mediator Advice Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Entitlement Mediator Advice Output Connector</em>'.
      * @generated
      */
@@ -1087,6 +1204,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Entitlement Mediator Obligations Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Entitlement Mediator Obligations Output Connector</em>'.
      * @generated
      */
@@ -1096,6 +1214,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Entitlement Container</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Entitlement Container</em>'.
      * @generated
      */
@@ -1105,6 +1224,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Entitlement On Reject Container</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Entitlement On Reject Container</em>'.
      * @generated
      */
@@ -1114,6 +1234,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Entitlement On Accept Container</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Entitlement On Accept Container</em>'.
      * @generated
      */
@@ -1123,6 +1244,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Entitlement Advice Container</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Entitlement Advice Container</em>'.
      * @generated
      */
@@ -1132,6 +1254,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Entitlement Obligations Container</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Entitlement Obligations Container</em>'.
      * @generated
      */
@@ -1141,6 +1264,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Enqueue Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Enqueue Mediator</em>'.
      * @generated
      */
@@ -1150,6 +1274,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Enqueue Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Enqueue Mediator Input Connector</em>'.
      * @generated
      */
@@ -1159,6 +1284,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Enqueue Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Enqueue Mediator Output Connector</em>'.
      * @generated
      */
@@ -1168,6 +1294,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Class Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Class Mediator</em>'.
      * @generated
      */
@@ -1177,6 +1304,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Class Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Class Mediator Input Connector</em>'.
      * @generated
      */
@@ -1186,6 +1314,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Class Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Class Mediator Output Connector</em>'.
      * @generated
      */
@@ -1195,6 +1324,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Class Property</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Class Property</em>'.
      * @generated
      */
@@ -1204,6 +1334,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Spring Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Spring Mediator</em>'.
      * @generated
      */
@@ -1213,6 +1344,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Spring Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Spring Mediator Input Connector</em>'.
      * @generated
      */
@@ -1222,6 +1354,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Spring Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Spring Mediator Output Connector</em>'.
      * @generated
      */
@@ -1231,6 +1364,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Validate Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Validate Mediator</em>'.
      * @generated
      */
@@ -1240,6 +1374,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Validate Resource</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Validate Resource</em>'.
      * @generated
      */
@@ -1249,6 +1384,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Validate Feature</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Validate Feature</em>'.
      * @generated
      */
@@ -1258,6 +1394,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Validate Schema</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Validate Schema</em>'.
      * @generated
      */
@@ -1267,6 +1404,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Validate Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Validate Mediator Input Connector</em>'.
      * @generated
      */
@@ -1276,6 +1414,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Validate Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Validate Mediator Output Connector</em>'.
      * @generated
      */
@@ -1285,6 +1424,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Validate Mediator On Fail Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Validate Mediator On Fail Output Connector</em>'.
      * @generated
      */
@@ -1294,6 +1434,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Endpoint Diagram</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Endpoint Diagram</em>'.
      * @generated
      */
@@ -1303,6 +1444,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Named Endpoint</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Named Endpoint</em>'.
      * @generated
      */
@@ -1312,6 +1454,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Named Endpoint Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Named Endpoint Input Connector</em>'.
      * @generated
      */
@@ -1321,6 +1464,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Named Endpoint Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Named Endpoint Output Connector</em>'.
      * @generated
      */
@@ -1330,6 +1474,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Template</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Template</em>'.
      * @generated
      */
@@ -1339,6 +1484,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Template Parameter</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Template Parameter</em>'.
      * @generated
      */
@@ -1348,6 +1494,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Task</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Task</em>'.
      * @generated
      */
@@ -1357,6 +1504,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Name Value Type Property</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Name Value Type Property</em>'.
      * @generated
      */
@@ -1366,6 +1514,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Task Property</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Task Property</em>'.
      * @generated
      */
@@ -1375,6 +1524,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Synapse API</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Synapse API</em>'.
      * @generated
      */
@@ -1384,6 +1534,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>API Resource</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>API Resource</em>'.
      * @generated
      */
@@ -1393,6 +1544,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>API Resource Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>API Resource Input Connector</em>'.
      * @generated
      */
@@ -1402,6 +1554,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>API Resource Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>API Resource Output Connector</em>'.
      * @generated
      */
@@ -1411,6 +1564,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>API Resource Out Sequence Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>API Resource Out Sequence Output Connector</em>'.
      * @generated
      */
@@ -1420,6 +1574,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>API Resource In Sequence Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>API Resource In Sequence Input Connector</em>'.
      * @generated
      */
@@ -1429,6 +1584,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>API Resource Fault Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>API Resource Fault Input Connector</em>'.
      * @generated
      */
@@ -1438,6 +1594,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>API Resource Endpoint</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>API Resource Endpoint</em>'.
      * @generated
      */
@@ -1447,6 +1604,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>API Resource Endpoint Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>API Resource Endpoint Input Connector</em>'.
      * @generated
      */
@@ -1456,6 +1614,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>API Resource Endpoint Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>API Resource Endpoint Output Connector</em>'.
      * @generated
      */
@@ -1465,6 +1624,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Complex Endpoints</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Complex Endpoints</em>'.
      * @generated
      */
@@ -1474,6 +1634,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Complex Endpoints Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Complex Endpoints Output Connector</em>'.
      * @generated
      */
@@ -1483,6 +1644,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Addressing Endpoint</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Addressing Endpoint</em>'.
      * @generated
      */
@@ -1492,6 +1654,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Addressing Endpoint Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Addressing Endpoint Input Connector</em>'.
      * @generated
      */
@@ -1501,6 +1664,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Addressing Endpoint Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Addressing Endpoint Output Connector</em>'.
      * @generated
      */
@@ -1510,6 +1674,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Recipient List End Point</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Recipient List End Point</em>'.
      * @generated
      */
@@ -1519,6 +1684,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Recipient List End Point Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Recipient List End Point Input Connector</em>'.
      * @generated
      */
@@ -1528,6 +1694,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Recipient List End Point Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Recipient List End Point Output Connector</em>'.
      * @generated
      */
@@ -1537,6 +1704,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Recipient List End Point West Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Recipient List End Point West Output Connector</em>'.
      * @generated
      */
@@ -1546,6 +1714,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Message Store Parameter</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Message Store Parameter</em>'.
      * @generated
      */
@@ -1555,6 +1724,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Message Store</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Message Store</em>'.
      * @generated
      */
@@ -1564,6 +1734,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Message Processor Parameter</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Message Processor Parameter</em>'.
      * @generated
      */
@@ -1573,6 +1744,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Message Processor</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Message Processor</em>'.
      * @generated
      */
@@ -1582,6 +1754,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>API Handler</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>API Handler</em>'.
      * @generated
      */
@@ -1591,6 +1764,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>API Handler Property</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>API Handler Property</em>'.
      * @generated
      */
@@ -1600,6 +1774,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Cloud Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Cloud Connector</em>'.
      * @generated
      */
@@ -1609,6 +1784,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Cloud Connector Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Cloud Connector Input Connector</em>'.
      * @generated
      */
@@ -1618,6 +1794,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Cloud Connector Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Cloud Connector Output Connector</em>'.
      * @generated
      */
@@ -1627,6 +1804,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Cloud Connector Operation</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Cloud Connector Operation</em>'.
      * @generated
      */
@@ -1636,6 +1814,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Cloud Connector Operation Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Cloud Connector Operation Input Connector</em>'.
      * @generated
      */
@@ -1645,6 +1824,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Cloud Connector Operation Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Cloud Connector Operation Output Connector</em>'.
      * @generated
      */
@@ -1654,6 +1834,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Data Mapper Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Data Mapper Mediator</em>'.
      * @generated
      */
@@ -1663,6 +1844,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Data Mapper Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Data Mapper Mediator Input Connector</em>'.
      * @generated
      */
@@ -1672,6 +1854,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Data Mapper Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Data Mapper Mediator Output Connector</em>'.
      * @generated
      */
@@ -1681,6 +1864,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Fast XSLT Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Fast XSLT Mediator</em>'.
      * @generated
      */
@@ -1690,6 +1874,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Fast XSLT Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Fast XSLT Mediator Input Connector</em>'.
      * @generated
      */
@@ -1699,6 +1884,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Fast XSLT Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Fast XSLT Mediator Output Connector</em>'.
      * @generated
      */
@@ -1708,6 +1894,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Inbound Endpoint</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Inbound Endpoint</em>'.
      * @generated
      */
@@ -1717,6 +1904,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Inbound Endpoint Parameter</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Inbound Endpoint Parameter</em>'.
      * @generated
      */
@@ -1726,6 +1914,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Inbound Endpoint Container</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Inbound Endpoint Container</em>'.
      * @generated
      */
@@ -1735,6 +1924,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Inbound Endpoint Sequence Container</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Inbound Endpoint Sequence Container</em>'.
      * @generated
      */
@@ -1744,6 +1934,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Inbound Endpoint On Error Sequence Container</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Inbound Endpoint On Error Sequence Container</em>'.
      * @generated
      */
@@ -1753,6 +1944,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Inbound Endpoint Sequence Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Inbound Endpoint Sequence Input Connector</em>'.
      * @generated
      */
@@ -1762,6 +1954,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Inbound Endpoint Sequence Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Inbound Endpoint Sequence Output Connector</em>'.
      * @generated
      */
@@ -1771,6 +1964,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Inbound Endpoint On Error Sequence Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Inbound Endpoint On Error Sequence Output Connector</em>'.
      * @generated
      */
@@ -1780,6 +1974,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Inbound Endpoint On Error Sequence Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Inbound Endpoint On Error Sequence Input Connector</em>'.
      * @generated
      */
@@ -1789,6 +1984,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Comment Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Comment Mediator</em>'.
      * @generated
      */
@@ -1798,6 +1994,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Json Transform Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Json Transform Mediator</em>'.
      * @generated
      */
@@ -1807,6 +2004,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Json Transform Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Json Transform Mediator Output Connector</em>'.
      * @generated
      */
@@ -1816,6 +2014,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Json Transform Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Json Transform Mediator Input Connector</em>'.
      * @generated
      */
@@ -1825,6 +2024,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Json Transform Mediator Property</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Json Transform Mediator Property</em>'.
      * @generated
      */
@@ -1834,6 +2034,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Script Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Script Mediator</em>'.
      * @generated
      */
@@ -1843,6 +2044,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Script Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Script Mediator Input Connector</em>'.
      * @generated
      */
@@ -1852,6 +2054,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Script Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Script Mediator Output Connector</em>'.
      * @generated
      */
@@ -1861,6 +2064,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Fault Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Fault Mediator</em>'.
      * @generated
      */
@@ -1870,6 +2074,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Fault Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Fault Mediator Input Connector</em>'.
      * @generated
      */
@@ -1879,6 +2084,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Fault Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Fault Mediator Output Connector</em>'.
      * @generated
      */
@@ -1888,6 +2094,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Aggregate Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Aggregate Mediator</em>'.
      * @generated
      */
@@ -1897,6 +2104,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Aggregate Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Aggregate Mediator Input Connector</em>'.
      * @generated
      */
@@ -1906,6 +2114,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Aggregate Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Aggregate Mediator Output Connector</em>'.
      * @generated
      */
@@ -1915,6 +2124,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Aggregate Mediator On Complete Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Aggregate Mediator On Complete Output Connector</em>'.
      * @generated
      */
@@ -1924,6 +2134,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Router Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Router Mediator</em>'.
      * @generated
      */
@@ -1933,6 +2144,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Router Route</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Router Route</em>'.
      * @generated
      */
@@ -1942,6 +2154,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Router Target</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Router Target</em>'.
      * @generated
      */
@@ -1951,6 +2164,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Router Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Router Mediator Input Connector</em>'.
      * @generated
      */
@@ -1960,6 +2174,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Router Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Router Mediator Output Connector</em>'.
      * @generated
      */
@@ -1969,6 +2184,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Router Mediator Target Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Router Mediator Target Output Connector</em>'.
      * @generated
      */
@@ -1978,6 +2194,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Router Mediator Container</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Router Mediator Container</em>'.
      * @generated
      */
@@ -1987,6 +2204,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Router Target Container</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Router Target Container</em>'.
      * @generated
      */
@@ -1996,6 +2214,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Clone Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Clone Mediator</em>'.
      * @generated
      */
@@ -2005,6 +2224,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Clone Target</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Clone Target</em>'.
      * @generated
      */
@@ -2014,6 +2234,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Clone Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Clone Mediator Input Connector</em>'.
      * @generated
      */
@@ -2023,6 +2244,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Clone Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Clone Mediator Output Connector</em>'.
      * @generated
      */
@@ -2032,6 +2254,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Clone Mediator Target Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Clone Mediator Target Output Connector</em>'.
      * @generated
      */
@@ -2041,6 +2264,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Clone Mediator Container</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Clone Mediator Container</em>'.
      * @generated
      */
@@ -2050,6 +2274,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Clone Target Container</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Clone Target Container</em>'.
      * @generated
      */
@@ -2059,6 +2284,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>For Each Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>For Each Mediator</em>'.
      * @generated
      */
@@ -2068,6 +2294,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>For Each Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>For Each Mediator Input Connector</em>'.
      * @generated
      */
@@ -2077,6 +2304,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>For Each Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>For Each Mediator Output Connector</em>'.
      * @generated
      */
@@ -2086,6 +2314,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>For Each Mediator Target Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>For Each Mediator Target Output Connector</em>'.
      * @generated
      */
@@ -2095,6 +2324,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>For Each Target</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>For Each Target</em>'.
      * @generated
      */
@@ -2104,6 +2334,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Iterate Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Iterate Mediator</em>'.
      * @generated
      */
@@ -2113,6 +2344,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Iterate Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Iterate Mediator Input Connector</em>'.
      * @generated
      */
@@ -2122,6 +2354,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Iterate Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Iterate Mediator Output Connector</em>'.
      * @generated
      */
@@ -2131,6 +2364,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Iterate Mediator Target Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Iterate Mediator Target Output Connector</em>'.
      * @generated
      */
@@ -2140,6 +2374,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Iterate Target</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Iterate Target</em>'.
      * @generated
      */
@@ -2149,6 +2384,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Abstract Common Target</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Abstract Common Target</em>'.
      * @generated
      */
@@ -2158,6 +2394,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Mediator Sequence</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Mediator Sequence</em>'.
      * @generated
      */
@@ -2167,6 +2404,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Cache Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Cache Mediator</em>'.
      * @generated
      */
@@ -2176,6 +2414,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Cache Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Cache Mediator Input Connector</em>'.
      * @generated
      */
@@ -2185,6 +2424,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Cache Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Cache Mediator Output Connector</em>'.
      * @generated
      */
@@ -2194,6 +2434,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Cache Mediator On Hit Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Cache Mediator On Hit Output Connector</em>'.
      * @generated
      */
@@ -2203,6 +2444,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Cache On Hit Branch</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Cache On Hit Branch</em>'.
      * @generated
      */
@@ -2212,6 +2454,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>XQuery Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>XQuery Mediator</em>'.
      * @generated
      */
@@ -2221,6 +2464,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>XQuery Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>XQuery Mediator Input Connector</em>'.
      * @generated
      */
@@ -2230,6 +2474,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>XQuery Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>XQuery Mediator Output Connector</em>'.
      * @generated
      */
@@ -2239,6 +2484,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>XQuery Variable</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>XQuery Variable</em>'.
      * @generated
      */
@@ -2248,6 +2494,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Callout Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Callout Mediator</em>'.
      * @generated
      */
@@ -2257,6 +2504,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Callout Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Callout Mediator Input Connector</em>'.
      * @generated
      */
@@ -2266,6 +2514,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Callout Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Callout Mediator Output Connector</em>'.
      * @generated
      */
@@ -2275,6 +2524,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>RM Sequence Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>RM Sequence Mediator</em>'.
      * @generated
      */
@@ -2284,6 +2534,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>RM Sequence Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>RM Sequence Mediator Input Connector</em>'.
      * @generated
      */
@@ -2293,6 +2544,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>RM Sequence Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>RM Sequence Mediator Output Connector</em>'.
      * @generated
      */
@@ -2302,6 +2554,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Transaction Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Transaction Mediator</em>'.
      * @generated
      */
@@ -2311,6 +2564,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Transaction Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Transaction Mediator Input Connector</em>'.
      * @generated
      */
@@ -2320,6 +2574,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Transaction Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Transaction Mediator Output Connector</em>'.
      * @generated
      */
@@ -2329,6 +2584,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>OAuth Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>OAuth Mediator</em>'.
      * @generated
      */
@@ -2338,6 +2594,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>OAuth Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>OAuth Mediator Input Connector</em>'.
      * @generated
      */
@@ -2347,6 +2604,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>OAuth Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>OAuth Mediator Output Connector</em>'.
      * @generated
      */
@@ -2356,6 +2614,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Autoscale In Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Autoscale In Mediator</em>'.
      * @generated
      */
@@ -2365,6 +2624,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Autoscale Out Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Autoscale Out Mediator</em>'.
      * @generated
      */
@@ -2374,6 +2634,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Header Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Header Mediator</em>'.
      * @generated
      */
@@ -2383,6 +2644,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Header Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Header Mediator Input Connector</em>'.
      * @generated
      */
@@ -2392,6 +2654,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Header Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Header Mediator Output Connector</em>'.
      * @generated
      */
@@ -2401,6 +2664,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Throttle Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Throttle Mediator</em>'.
      * @generated
      */
@@ -2410,6 +2674,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Throttle Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Throttle Mediator Input Connector</em>'.
      * @generated
      */
@@ -2419,6 +2684,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Throttle Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Throttle Mediator Output Connector</em>'.
      * @generated
      */
@@ -2428,6 +2694,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Throttle Mediator On Accept Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Throttle Mediator On Accept Output Connector</em>'.
      * @generated
      */
@@ -2437,6 +2704,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Throttle Mediator On Reject Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Throttle Mediator On Reject Output Connector</em>'.
      * @generated
      */
@@ -2446,6 +2714,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Throttle Policy Configuration</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Throttle Policy Configuration</em>'.
      * @generated
      */
@@ -2455,6 +2724,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Throttle Policy Entry</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Throttle Policy Entry</em>'.
      * @generated
      */
@@ -2464,6 +2734,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Throttle On Accept Branch</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Throttle On Accept Branch</em>'.
      * @generated
      */
@@ -2473,6 +2744,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Throttle On Reject Branch</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Throttle On Reject Branch</em>'.
      * @generated
      */
@@ -2482,6 +2754,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Throttle Container</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Throttle Container</em>'.
      * @generated
      */
@@ -2491,6 +2764,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Throttle On Accept Container</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Throttle On Accept Container</em>'.
      * @generated
      */
@@ -2500,6 +2774,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Throttle On Reject Container</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Throttle On Reject Container</em>'.
      * @generated
      */
@@ -2509,6 +2784,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Command Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Command Mediator</em>'.
      * @generated
      */
@@ -2518,6 +2794,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Command Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Command Mediator Input Connector</em>'.
      * @generated
      */
@@ -2527,6 +2804,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Command Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Command Mediator Output Connector</em>'.
      * @generated
      */
@@ -2536,6 +2814,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Command Property</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Command Property</em>'.
      * @generated
      */
@@ -2545,6 +2824,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Sql Statement</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Sql Statement</em>'.
      * @generated
      */
@@ -2554,6 +2834,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Sql Parameter Definition</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Sql Parameter Definition</em>'.
      * @generated
      */
@@ -2563,6 +2844,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Sql Result Mapping</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Sql Result Mapping</em>'.
      * @generated
      */
@@ -2572,6 +2854,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>DB Lookup Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>DB Lookup Mediator</em>'.
      * @generated
      */
@@ -2581,6 +2864,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>DB Lookup Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>DB Lookup Mediator Input Connector</em>'.
      * @generated
      */
@@ -2590,6 +2874,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>DB Lookup Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>DB Lookup Mediator Output Connector</em>'.
      * @generated
      */
@@ -2599,6 +2884,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>DB Report Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>DB Report Mediator</em>'.
      * @generated
      */
@@ -2608,6 +2894,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>DB Report Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>DB Report Mediator Input Connector</em>'.
      * @generated
      */
@@ -2617,6 +2904,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>DB Report Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>DB Report Mediator Output Connector</em>'.
      * @generated
      */
@@ -2626,6 +2914,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Rule Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Rule Mediator</em>'.
      * @generated
      */
@@ -2635,6 +2924,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Rule Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Rule Mediator Input Connector</em>'.
      * @generated
      */
@@ -2644,6 +2934,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Rule Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Rule Mediator Output Connector</em>'.
      * @generated
      */
@@ -2653,6 +2944,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Rule Mediator Child Mediators Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Rule Mediator Child Mediators Output Connector</em>'.
      * @generated
      */
@@ -2662,6 +2954,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Rule Set Creation Property</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Rule Set Creation Property</em>'.
      * @generated
      */
@@ -2671,6 +2964,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Rule Session Property</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Rule Session Property</em>'.
      * @generated
      */
@@ -2680,6 +2974,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Rule Facts Configuration</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Rule Facts Configuration</em>'.
      * @generated
      */
@@ -2689,6 +2984,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Rule Fact</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Rule Fact</em>'.
      * @generated
      */
@@ -2698,6 +2994,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Rule Results Configuration</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Rule Results Configuration</em>'.
      * @generated
      */
@@ -2707,6 +3004,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Rule Result</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Rule Result</em>'.
      * @generated
      */
@@ -2716,6 +3014,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Rule Child Mediators Configuration</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Rule Child Mediators Configuration</em>'.
      * @generated
      */
@@ -2725,6 +3024,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Call Template Parameter</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Call Template Parameter</em>'.
      * @generated
      */
@@ -2734,6 +3034,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Call Template Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Call Template Mediator</em>'.
      * @generated
      */
@@ -2743,6 +3044,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Call Template Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Call Template Mediator Input Connector</em>'.
      * @generated
      */
@@ -2752,6 +3054,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Call Template Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Call Template Mediator Output Connector</em>'.
      * @generated
      */
@@ -2761,6 +3064,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Loop Back Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Loop Back Mediator</em>'.
      * @generated
      */
@@ -2770,6 +3074,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Loop Back Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Loop Back Mediator Input Connector</em>'.
      * @generated
      */
@@ -2779,6 +3084,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Loop Back Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Loop Back Mediator Output Connector</em>'.
      * @generated
      */
@@ -2788,6 +3094,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Respond Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Respond Mediator</em>'.
      * @generated
      */
@@ -2797,6 +3104,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Respond Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Respond Mediator Input Connector</em>'.
      * @generated
      */
@@ -2806,6 +3114,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Respond Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Respond Mediator Output Connector</em>'.
      * @generated
      */
@@ -2815,6 +3124,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Smooks Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Smooks Mediator</em>'.
      * @generated
      */
@@ -2824,6 +3134,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Smooks Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Smooks Mediator Input Connector</em>'.
      * @generated
      */
@@ -2833,6 +3144,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Smooks Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Smooks Mediator Output Connector</em>'.
      * @generated
      */
@@ -2842,6 +3154,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Store Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Store Mediator</em>'.
      * @generated
      */
@@ -2851,6 +3164,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Store Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Store Mediator Input Connector</em>'.
      * @generated
      */
@@ -2860,6 +3174,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Store Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Store Mediator Output Connector</em>'.
      * @generated
      */
@@ -2869,6 +3184,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Builder Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Builder Mediator</em>'.
      * @generated
      */
@@ -2878,6 +3194,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Builder Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Builder Mediator Input Connector</em>'.
      * @generated
      */
@@ -2887,6 +3204,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Builder Mediator Output Conector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Builder Mediator Output Conector</em>'.
      * @generated
      */
@@ -2896,6 +3214,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Message Builder</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Message Builder</em>'.
      * @generated
      */
@@ -2905,6 +3224,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Payload Factory Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Payload Factory Mediator</em>'.
      * @generated
      */
@@ -2914,6 +3234,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Payload Factory Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Payload Factory Mediator Input Connector</em>'.
      * @generated
      */
@@ -2923,6 +3244,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Payload Factory Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Payload Factory Mediator Output Connector</em>'.
      * @generated
      */
@@ -2932,6 +3254,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Payload Factory Argument</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Payload Factory Argument</em>'.
      * @generated
      */
@@ -2941,6 +3264,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Conditional Route Branch</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Conditional Route Branch</em>'.
      * @generated
      */
@@ -2950,6 +3274,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Conditional Router Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Conditional Router Mediator</em>'.
      * @generated
      */
@@ -2959,6 +3284,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Conditional Router Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Conditional Router Mediator Input Connector</em>'.
      * @generated
      */
@@ -2968,6 +3294,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Conditional Router Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Conditional Router Mediator Output Connector</em>'.
      * @generated
      */
@@ -2977,6 +3304,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Conditional Router Mediator Additional Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Conditional Router Mediator Additional Output Connector</em>'.
      * @generated
      */
@@ -2986,6 +3314,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Send Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Send Mediator</em>'.
      * @generated
      */
@@ -2995,6 +3324,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Send Container</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Send Container</em>'.
      * @generated
      */
@@ -3004,6 +3334,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Send Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Send Mediator Input Connector</em>'.
      * @generated
      */
@@ -3013,6 +3344,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Send Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Send Mediator Output Connector</em>'.
      * @generated
      */
@@ -3022,6 +3354,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Send Mediator Endpoint Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Send Mediator Endpoint Output Connector</em>'.
      * @generated
      */
@@ -3031,6 +3364,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Failover End Point</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Failover End Point</em>'.
      * @generated
      */
@@ -3040,6 +3374,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Failover End Point Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Failover End Point Input Connector</em>'.
      * @generated
      */
@@ -3049,6 +3384,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Failover End Point Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Failover End Point Output Connector</em>'.
      * @generated
      */
@@ -3058,6 +3394,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Failover End Point West Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Failover End Point West Output Connector</em>'.
      * @generated
      */
@@ -3067,6 +3404,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Parent End Point</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Parent End Point</em>'.
      * @generated
      */
@@ -3076,6 +3414,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>WSDL End Point</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>WSDL End Point</em>'.
      * @generated
      */
@@ -3085,6 +3424,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>WSDL End Point Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>WSDL End Point Input Connector</em>'.
      * @generated
      */
@@ -3094,6 +3434,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>WSDL End Point Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>WSDL End Point Output Connector</em>'.
      * @generated
      */
@@ -3103,6 +3444,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Load Balance End Point</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Load Balance End Point</em>'.
      * @generated
      */
@@ -3112,6 +3454,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Member</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Member</em>'.
      * @generated
      */
@@ -3121,6 +3464,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Load Balance End Point Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Load Balance End Point Input Connector</em>'.
      * @generated
      */
@@ -3130,6 +3474,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Load Balance End Point Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Load Balance End Point Output Connector</em>'.
      * @generated
      */
@@ -3139,6 +3484,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Load Balance End Point West Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Load Balance End Point West Output Connector</em>'.
      * @generated
      */
@@ -3148,6 +3494,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Local Entry</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Local Entry</em>'.
      * @generated
      */
@@ -3157,6 +3504,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Session</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Session</em>'.
      * @generated
      */
@@ -3166,6 +3514,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Sequences</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Sequences</em>'.
      * @generated
      */
@@ -3175,6 +3524,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Sequences Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Sequences Output Connector</em>'.
      * @generated
      */
@@ -3184,6 +3534,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Sequences Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Sequences Input Connector</em>'.
      * @generated
      */
@@ -3193,6 +3544,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>URL Rewrite Rule Action</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>URL Rewrite Rule Action</em>'.
      * @generated
      */
@@ -3202,6 +3554,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>URL Rewrite Rule</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>URL Rewrite Rule</em>'.
      * @generated
      */
@@ -3211,6 +3564,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>URL Rewrite Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>URL Rewrite Mediator</em>'.
      * @generated
      */
@@ -3220,6 +3574,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>URL Rewrite Mediator Input Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>URL Rewrite Mediator Input Connector</em>'.
      * @generated
      */
@@ -3229,6 +3584,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>URL Rewrite Mediator Output Connector</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>URL Rewrite Mediator Output Connector</em>'.
      * @generated
      */
@@ -3238,6 +3594,7 @@ public interface EsbFactory extends EFactory {
      * Returns a new object of class '<em>Evaluator Expression Property</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Evaluator Expression Property</em>'.
      * @generated
      */
@@ -3247,6 +3604,7 @@ public interface EsbFactory extends EFactory {
      * Returns the package supported by this factory.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @return the package supported by this factory.
      * @generated
      */

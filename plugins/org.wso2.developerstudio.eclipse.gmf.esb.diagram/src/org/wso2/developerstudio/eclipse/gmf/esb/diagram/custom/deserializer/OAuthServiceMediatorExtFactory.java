@@ -33,12 +33,12 @@ public class OAuthServiceMediatorExtFactory extends OAuthMediatorFactory {
     private static final QName ATTR_NAME_SERVICE_EPR = new QName("remoteServiceUrl");
     private static final QName ATTR_NAME_USERNAME = new QName("username");
     private static final QName ATTR_NAME_PASSWORD = new QName("password");
-    
+
     private static OAuthServiceMediatorExtFactory instance;
-    
+
     private OAuthServiceMediatorExtFactory() {
     }
-    
+
     public static synchronized OAuthServiceMediatorExtFactory getInstance() {
         if (instance == null) {
             instance = new OAuthServiceMediatorExtFactory();

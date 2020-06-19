@@ -29,12 +29,12 @@ import org.apache.synapse.mediators.throttle.ThrottleMediator;
 import org.apache.synapse.mediators.throttle.ThrottleMediatorFactory;
 
 public class ThrottleMediatorExtFactory extends ThrottleMediatorFactory {
-    
+
     private static ThrottleMediatorExtFactory instance;
-    
+
     private ThrottleMediatorExtFactory() {
     }
-    
+
     public static synchronized ThrottleMediatorExtFactory getInstance() {
         if (instance == null) {
             instance = new ThrottleMediatorExtFactory();

@@ -27,15 +27,15 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 public class JsonTransformMediatorItemSemanticEditPolicy extends EsbBaseItemSemanticEditPolicy {
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public JsonTransformMediatorItemSemanticEditPolicy() {
         super(EsbElementTypes.JsonTransformMediator_3791);
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     protected Command getCreateCommand(CreateElementRequest req) {
         if (EsbElementTypes.JsonTransformMediatorInputConnector_3792 == req.getElementType()) {
             return getGEFWrapper(new JsonTransformMediatorInputConnectorCreateCommand(req));
@@ -47,8 +47,8 @@ public class JsonTransformMediatorItemSemanticEditPolicy extends EsbBaseItemSema
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     protected Command getDestroyElementCommand(DestroyElementRequest req) {
         View view = (View) getHost().getModel();
         CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(getEditingDomain(), null);
@@ -67,8 +67,8 @@ public class JsonTransformMediatorItemSemanticEditPolicy extends EsbBaseItemSema
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private void addDestroyChildNodesCommand(ICompositeCommand cmd) {
         View view = (View) getHost().getModel();
         for (Iterator<?> nit = view.getChildren().iterator(); nit.hasNext();) {
@@ -85,8 +85,9 @@ public class JsonTransformMediatorItemSemanticEditPolicy extends EsbBaseItemSema
                     }
                 }
                 cmd.add(new DestroyElementCommand(
-                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned: true
-                // don't need explicit deletion of node as parent's view deletion would clean child views as well 
+                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned:
+                                                                                                   // true
+                // don't need explicit deletion of node as parent's view deletion would clean child views as well
                 // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
                 break;
             case JsonTransformMediatorOutputConnectorEditPart.VISUAL_ID:
@@ -100,8 +101,9 @@ public class JsonTransformMediatorItemSemanticEditPolicy extends EsbBaseItemSema
                     }
                 }
                 cmd.add(new DestroyElementCommand(
-                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned: true
-                // don't need explicit deletion of node as parent's view deletion would clean child views as well 
+                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned:
+                                                                                                   // true
+                // don't need explicit deletion of node as parent's view deletion would clean child views as well
                 // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
                 break;
             }

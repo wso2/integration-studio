@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Feed Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
+ * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFeedType()
  * @model
  * @generated
@@ -35,6 +36,7 @@ public enum FeedType implements Enumerator {
      * The '<em><b>Atom</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #ATOM_VALUE
      * @generated
      * @ordered
@@ -45,6 +47,7 @@ public enum FeedType implements Enumerator {
      * The '<em><b>Rss</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #RSS_VALUE
      * @generated
      * @ordered
@@ -59,6 +62,7 @@ public enum FeedType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #ATOM
      * @model name="atom" literal="Atom"
      * @generated
@@ -74,6 +78,7 @@ public enum FeedType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #RSS
      * @model name="rss" literal="RSS"
      * @generated
@@ -85,17 +90,16 @@ public enum FeedType implements Enumerator {
      * An array of all the '<em><b>Feed Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
-    private static final FeedType[] VALUES_ARRAY = new FeedType[] {
-            ATOM,
-            RSS,
-        };
+    private static final FeedType[] VALUES_ARRAY = new FeedType[] { ATOM, RSS, };
 
     /**
      * A public read-only list of all the '<em><b>Feed Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public static final List<FeedType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -104,6 +108,7 @@ public enum FeedType implements Enumerator {
      * Returns the '<em><b>Feed Type</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -122,6 +127,7 @@ public enum FeedType implements Enumerator {
      * Returns the '<em><b>Feed Type</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -140,14 +146,17 @@ public enum FeedType implements Enumerator {
      * Returns the '<em><b>Feed Type</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static FeedType get(int value) {
         switch (value) {
-            case ATOM_VALUE: return ATOM;
-            case RSS_VALUE: return RSS;
+        case ATOM_VALUE:
+            return ATOM;
+        case RSS_VALUE:
+            return RSS;
         }
         return null;
     }
@@ -155,6 +164,7 @@ public enum FeedType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final int value;
@@ -162,6 +172,7 @@ public enum FeedType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String name;
@@ -169,6 +180,7 @@ public enum FeedType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String literal;
@@ -177,6 +189,7 @@ public enum FeedType implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private FeedType(int value, String name, String literal) {
@@ -188,34 +201,38 @@ public enum FeedType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public int getValue() {
-      return value;
+        return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getName() {
-      return name;
+        return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getLiteral() {
-      return literal;
+        return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

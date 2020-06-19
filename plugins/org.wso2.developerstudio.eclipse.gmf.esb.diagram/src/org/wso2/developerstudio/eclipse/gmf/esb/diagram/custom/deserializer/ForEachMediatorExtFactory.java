@@ -38,12 +38,12 @@ import org.jaxen.JaxenException;
 public class ForEachMediatorExtFactory extends ForEachMediatorFactory {
 
     private static final QName ID_Q = new QName(XMLConfigConstants.NULL_NAMESPACE, "id");
-    
+
     private static ForEachMediatorExtFactory instance;
-    
+
     private ForEachMediatorExtFactory() {
     }
-    
+
     public static synchronized ForEachMediatorExtFactory getInstance() {
         if (instance == null) {
             instance = new ForEachMediatorExtFactory();

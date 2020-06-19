@@ -46,46 +46,75 @@ import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getStoreName <em>Store Name</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getStoreType <em>Store Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getInitialContextFactory <em>Initial Context Factory</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getProviderURL <em>Provider URL</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJndiQueueName <em>Jndi Queue Name</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getConnectionFactory <em>Connection Factory</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getUserName <em>User Name</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getPassword <em>Password</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#isCacheConnection <em>Cache Connection</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJmsSpecVersion <em>Jms Spec Version</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#isEnableCaching <em>Enable Caching</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getProviderClass <em>Provider Class</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getRabbitMQServerHostName <em>Rabbit MQ Server Host Name</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getRabbitMQServerHostPort <em>Rabbit MQ Server Host Port</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getRabbitMQQueueName <em>Rabbit MQ Queue Name</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getRabbitMQExchangeName <em>Rabbit MQ Exchange Name</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getRoutingKey <em>Routing Key</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getRabbitMQUserName <em>Rabbit MQ User Name</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getRabbitMQPassword <em>Rabbit MQ Password</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getVirtualHost <em>Virtual Host</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJdbcDatabaseTable <em>Jdbc Database Table</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJdbcConnectionInformation <em>Jdbc Connection Information</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJdbcDriver <em>Jdbc Driver</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJdbcURL <em>Jdbc URL</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJdbcUser <em>Jdbc User</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJdbcPassword <em>Jdbc Password</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJdbcDatasourceName <em>Jdbc Datasource Name</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getParameters <em>Parameters</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#isEnableProducerGuaranteedDelivery <em>Enable Producer Guaranteed Delivery</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getFailoverMessageStore <em>Failover Message Store</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequencepolling <em>Resequencepolling</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequenceDatabaseTable <em>Resequence Database Table</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequenceConnectionInformation <em>Resequence Connection Information</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequenceDriver <em>Resequence Driver</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequenceURL <em>Resequence URL</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequenceUser <em>Resequence User</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequencePassword <em>Resequence Password</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequenceDatasourceName <em>Resequence Datasource Name</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequenceXpath <em>Resequence Xpath</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequenceXpathAttr <em>Resequence Xpath Attr</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getStoreName <em>Store Name</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getStoreType <em>Store Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getInitialContextFactory <em>Initial
+ * Context Factory</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getProviderURL <em>Provider URL</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJndiQueueName <em>Jndi Queue
+ * Name</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getConnectionFactory <em>Connection
+ * Factory</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getUserName <em>User Name</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getPassword <em>Password</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#isCacheConnection <em>Cache
+ * Connection</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJmsSpecVersion <em>Jms Spec
+ * Version</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#isEnableCaching <em>Enable
+ * Caching</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getProviderClass <em>Provider
+ * Class</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getRabbitMQServerHostName <em>Rabbit MQ
+ * Server Host Name</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getRabbitMQServerHostPort <em>Rabbit MQ
+ * Server Host Port</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getRabbitMQQueueName <em>Rabbit MQ Queue
+ * Name</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getRabbitMQExchangeName <em>Rabbit MQ
+ * Exchange Name</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getRoutingKey <em>Routing Key</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getRabbitMQUserName <em>Rabbit MQ User
+ * Name</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getRabbitMQPassword <em>Rabbit MQ
+ * Password</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getVirtualHost <em>Virtual Host</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJdbcDatabaseTable <em>Jdbc Database
+ * Table</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJdbcConnectionInformation <em>Jdbc
+ * Connection Information</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJdbcDriver <em>Jdbc Driver</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJdbcURL <em>Jdbc URL</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJdbcUser <em>Jdbc User</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJdbcPassword <em>Jdbc
+ * Password</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJdbcDatasourceName <em>Jdbc Datasource
+ * Name</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getParameters <em>Parameters</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#isEnableProducerGuaranteedDelivery
+ * <em>Enable Producer Guaranteed Delivery</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getFailoverMessageStore <em>Failover
+ * Message Store</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequencepolling
+ * <em>Resequencepolling</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequenceDatabaseTable <em>Resequence
+ * Database Table</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequenceConnectionInformation
+ * <em>Resequence Connection Information</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequenceDriver <em>Resequence
+ * Driver</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequenceURL <em>Resequence
+ * URL</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequenceUser <em>Resequence
+ * User</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequencePassword <em>Resequence
+ * Password</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequenceDatasourceName <em>Resequence
+ * Datasource Name</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequenceXpath <em>Resequence
+ * Xpath</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequenceXpathAttr <em>Resequence Xpath
+ * Attr</em>}</li>
  * </ul>
  *
  * @generated
@@ -95,6 +124,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The default value of the '{@link #getStoreName() <em>Store Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getStoreName()
      * @generated
      * @ordered
@@ -105,6 +135,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #getStoreName() <em>Store Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getStoreName()
      * @generated
      * @ordered
@@ -115,6 +146,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The default value of the '{@link #getStoreType() <em>Store Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getStoreType()
      * @generated
      * @ordered
@@ -125,6 +157,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #getStoreType() <em>Store Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getStoreType()
      * @generated
      * @ordered
@@ -135,6 +168,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The default value of the '{@link #getInitialContextFactory() <em>Initial Context Factory</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getInitialContextFactory()
      * @generated
      * @ordered
@@ -145,6 +179,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #getInitialContextFactory() <em>Initial Context Factory</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getInitialContextFactory()
      * @generated
      * @ordered
@@ -155,6 +190,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The default value of the '{@link #getProviderURL() <em>Provider URL</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getProviderURL()
      * @generated
      * @ordered
@@ -165,6 +201,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #getProviderURL() <em>Provider URL</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getProviderURL()
      * @generated
      * @ordered
@@ -175,6 +212,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The default value of the '{@link #getJndiQueueName() <em>Jndi Queue Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getJndiQueueName()
      * @generated
      * @ordered
@@ -185,6 +223,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #getJndiQueueName() <em>Jndi Queue Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getJndiQueueName()
      * @generated
      * @ordered
@@ -195,6 +234,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The default value of the '{@link #getConnectionFactory() <em>Connection Factory</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getConnectionFactory()
      * @generated
      * @ordered
@@ -205,6 +245,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #getConnectionFactory() <em>Connection Factory</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getConnectionFactory()
      * @generated
      * @ordered
@@ -215,6 +256,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The default value of the '{@link #getUserName() <em>User Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getUserName()
      * @generated
      * @ordered
@@ -225,6 +267,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #getUserName() <em>User Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getUserName()
      * @generated
      * @ordered
@@ -235,6 +278,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The default value of the '{@link #getPassword() <em>Password</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getPassword()
      * @generated
      * @ordered
@@ -245,6 +289,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #getPassword() <em>Password</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getPassword()
      * @generated
      * @ordered
@@ -255,6 +300,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The default value of the '{@link #isCacheConnection() <em>Cache Connection</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #isCacheConnection()
      * @generated
      * @ordered
@@ -265,6 +311,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #isCacheConnection() <em>Cache Connection</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #isCacheConnection()
      * @generated
      * @ordered
@@ -275,6 +322,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The default value of the '{@link #getJmsSpecVersion() <em>Jms Spec Version</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getJmsSpecVersion()
      * @generated
      * @ordered
@@ -285,6 +333,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #getJmsSpecVersion() <em>Jms Spec Version</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getJmsSpecVersion()
      * @generated
      * @ordered
@@ -295,6 +344,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The default value of the '{@link #isEnableCaching() <em>Enable Caching</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #isEnableCaching()
      * @generated
      * @ordered
@@ -305,6 +355,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #isEnableCaching() <em>Enable Caching</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #isEnableCaching()
      * @generated
      * @ordered
@@ -315,6 +366,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The default value of the '{@link #getProviderClass() <em>Provider Class</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getProviderClass()
      * @generated
      * @ordered
@@ -325,6 +377,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #getProviderClass() <em>Provider Class</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getProviderClass()
      * @generated
      * @ordered
@@ -335,6 +388,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The default value of the '{@link #getRabbitMQServerHostName() <em>Rabbit MQ Server Host Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getRabbitMQServerHostName()
      * @generated
      * @ordered
@@ -345,6 +399,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #getRabbitMQServerHostName() <em>Rabbit MQ Server Host Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getRabbitMQServerHostName()
      * @generated
      * @ordered
@@ -355,6 +410,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The default value of the '{@link #getRabbitMQServerHostPort() <em>Rabbit MQ Server Host Port</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getRabbitMQServerHostPort()
      * @generated
      * @ordered
@@ -365,6 +421,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #getRabbitMQServerHostPort() <em>Rabbit MQ Server Host Port</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getRabbitMQServerHostPort()
      * @generated
      * @ordered
@@ -375,6 +432,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The default value of the '{@link #getRabbitMQQueueName() <em>Rabbit MQ Queue Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getRabbitMQQueueName()
      * @generated
      * @ordered
@@ -385,6 +443,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #getRabbitMQQueueName() <em>Rabbit MQ Queue Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getRabbitMQQueueName()
      * @generated
      * @ordered
@@ -395,6 +454,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The default value of the '{@link #getRabbitMQExchangeName() <em>Rabbit MQ Exchange Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getRabbitMQExchangeName()
      * @generated
      * @ordered
@@ -405,6 +465,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #getRabbitMQExchangeName() <em>Rabbit MQ Exchange Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getRabbitMQExchangeName()
      * @generated
      * @ordered
@@ -415,6 +476,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The default value of the '{@link #getRoutingKey() <em>Routing Key</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getRoutingKey()
      * @generated
      * @ordered
@@ -425,6 +487,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #getRoutingKey() <em>Routing Key</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getRoutingKey()
      * @generated
      * @ordered
@@ -435,6 +498,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The default value of the '{@link #getRabbitMQUserName() <em>Rabbit MQ User Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getRabbitMQUserName()
      * @generated
      * @ordered
@@ -445,6 +509,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #getRabbitMQUserName() <em>Rabbit MQ User Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getRabbitMQUserName()
      * @generated
      * @ordered
@@ -455,6 +520,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The default value of the '{@link #getRabbitMQPassword() <em>Rabbit MQ Password</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getRabbitMQPassword()
      * @generated
      * @ordered
@@ -465,6 +531,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #getRabbitMQPassword() <em>Rabbit MQ Password</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getRabbitMQPassword()
      * @generated
      * @ordered
@@ -475,6 +542,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The default value of the '{@link #getVirtualHost() <em>Virtual Host</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getVirtualHost()
      * @generated
      * @ordered
@@ -485,6 +553,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #getVirtualHost() <em>Virtual Host</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getVirtualHost()
      * @generated
      * @ordered
@@ -495,6 +564,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The default value of the '{@link #getJdbcDatabaseTable() <em>Jdbc Database Table</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getJdbcDatabaseTable()
      * @generated
      * @ordered
@@ -505,6 +575,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #getJdbcDatabaseTable() <em>Jdbc Database Table</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getJdbcDatabaseTable()
      * @generated
      * @ordered
@@ -512,9 +583,11 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     protected String jdbcDatabaseTable = JDBC_DATABASE_TABLE_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getJdbcConnectionInformation() <em>Jdbc Connection Information</em>}' attribute.
+     * The default value of the '{@link #getJdbcConnectionInformation() <em>Jdbc Connection Information</em>}'
+     * attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getJdbcConnectionInformation()
      * @generated
      * @ordered
@@ -525,6 +598,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #getJdbcConnectionInformation() <em>Jdbc Connection Information</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getJdbcConnectionInformation()
      * @generated
      * @ordered
@@ -535,6 +609,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The default value of the '{@link #getJdbcDriver() <em>Jdbc Driver</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getJdbcDriver()
      * @generated
      * @ordered
@@ -545,6 +620,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #getJdbcDriver() <em>Jdbc Driver</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getJdbcDriver()
      * @generated
      * @ordered
@@ -555,6 +631,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The default value of the '{@link #getJdbcURL() <em>Jdbc URL</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getJdbcURL()
      * @generated
      * @ordered
@@ -565,6 +642,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #getJdbcURL() <em>Jdbc URL</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getJdbcURL()
      * @generated
      * @ordered
@@ -575,6 +653,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The default value of the '{@link #getJdbcUser() <em>Jdbc User</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getJdbcUser()
      * @generated
      * @ordered
@@ -585,6 +664,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #getJdbcUser() <em>Jdbc User</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getJdbcUser()
      * @generated
      * @ordered
@@ -595,6 +675,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The default value of the '{@link #getJdbcPassword() <em>Jdbc Password</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getJdbcPassword()
      * @generated
      * @ordered
@@ -605,6 +686,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #getJdbcPassword() <em>Jdbc Password</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getJdbcPassword()
      * @generated
      * @ordered
@@ -615,6 +697,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The default value of the '{@link #getJdbcDatasourceName() <em>Jdbc Datasource Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getJdbcDatasourceName()
      * @generated
      * @ordered
@@ -625,6 +708,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #getJdbcDatasourceName() <em>Jdbc Datasource Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getJdbcDatasourceName()
      * @generated
      * @ordered
@@ -635,6 +719,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getParameters()
      * @generated
      * @ordered
@@ -642,9 +727,11 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     protected EList<MessageStoreParameter> parameters;
 
     /**
-     * The default value of the '{@link #isEnableProducerGuaranteedDelivery() <em>Enable Producer Guaranteed Delivery</em>}' attribute.
+     * The default value of the '{@link #isEnableProducerGuaranteedDelivery() <em>Enable Producer Guaranteed
+     * Delivery</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #isEnableProducerGuaranteedDelivery()
      * @generated
      * @ordered
@@ -652,9 +739,11 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     protected static final boolean ENABLE_PRODUCER_GUARANTEED_DELIVERY_EDEFAULT = false;
 
     /**
-     * The cached value of the '{@link #isEnableProducerGuaranteedDelivery() <em>Enable Producer Guaranteed Delivery</em>}' attribute.
+     * The cached value of the '{@link #isEnableProducerGuaranteedDelivery() <em>Enable Producer Guaranteed
+     * Delivery</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #isEnableProducerGuaranteedDelivery()
      * @generated
      * @ordered
@@ -665,6 +754,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The default value of the '{@link #getFailoverMessageStore() <em>Failover Message Store</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getFailoverMessageStore()
      * @generated
      * @ordered
@@ -675,6 +765,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #getFailoverMessageStore() <em>Failover Message Store</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getFailoverMessageStore()
      * @generated
      * @ordered
@@ -685,6 +776,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The default value of the '{@link #getResequencepolling() <em>Resequencepolling</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getResequencepolling()
      * @generated
      * @ordered
@@ -695,6 +787,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #getResequencepolling() <em>Resequencepolling</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getResequencepolling()
      * @generated
      * @ordered
@@ -705,6 +798,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The default value of the '{@link #getResequenceDatabaseTable() <em>Resequence Database Table</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getResequenceDatabaseTable()
      * @generated
      * @ordered
@@ -715,6 +809,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #getResequenceDatabaseTable() <em>Resequence Database Table</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getResequenceDatabaseTable()
      * @generated
      * @ordered
@@ -722,9 +817,11 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     protected String resequenceDatabaseTable = RESEQUENCE_DATABASE_TABLE_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getResequenceConnectionInformation() <em>Resequence Connection Information</em>}' attribute.
+     * The default value of the '{@link #getResequenceConnectionInformation() <em>Resequence Connection
+     * Information</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getResequenceConnectionInformation()
      * @generated
      * @ordered
@@ -732,9 +829,11 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     protected static final JDBCConnectionInformationType RESEQUENCE_CONNECTION_INFORMATION_EDEFAULT = JDBCConnectionInformationType.JDBC_POOL;
 
     /**
-     * The cached value of the '{@link #getResequenceConnectionInformation() <em>Resequence Connection Information</em>}' attribute.
+     * The cached value of the '{@link #getResequenceConnectionInformation() <em>Resequence Connection
+     * Information</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getResequenceConnectionInformation()
      * @generated
      * @ordered
@@ -745,6 +844,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The default value of the '{@link #getResequenceDriver() <em>Resequence Driver</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getResequenceDriver()
      * @generated
      * @ordered
@@ -755,6 +855,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #getResequenceDriver() <em>Resequence Driver</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getResequenceDriver()
      * @generated
      * @ordered
@@ -765,6 +866,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The default value of the '{@link #getResequenceURL() <em>Resequence URL</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getResequenceURL()
      * @generated
      * @ordered
@@ -775,6 +877,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #getResequenceURL() <em>Resequence URL</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getResequenceURL()
      * @generated
      * @ordered
@@ -785,6 +888,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The default value of the '{@link #getResequenceUser() <em>Resequence User</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getResequenceUser()
      * @generated
      * @ordered
@@ -795,6 +899,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #getResequenceUser() <em>Resequence User</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getResequenceUser()
      * @generated
      * @ordered
@@ -805,6 +910,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The default value of the '{@link #getResequencePassword() <em>Resequence Password</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getResequencePassword()
      * @generated
      * @ordered
@@ -815,6 +921,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #getResequencePassword() <em>Resequence Password</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getResequencePassword()
      * @generated
      * @ordered
@@ -825,6 +932,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The default value of the '{@link #getResequenceDatasourceName() <em>Resequence Datasource Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getResequenceDatasourceName()
      * @generated
      * @ordered
@@ -835,6 +943,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #getResequenceDatasourceName() <em>Resequence Datasource Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getResequenceDatasourceName()
      * @generated
      * @ordered
@@ -845,6 +954,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The default value of the '{@link #getResequenceXpath() <em>Resequence Xpath</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getResequenceXpath()
      * @generated
      * @ordered
@@ -855,6 +965,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #getResequenceXpath() <em>Resequence Xpath</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getResequenceXpath()
      * @generated
      * @ordered
@@ -865,6 +976,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
      * The cached value of the '{@link #getResequenceXpathAttr() <em>Resequence Xpath Attr</em>}' reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getResequenceXpathAttr()
      * @generated
      * @ordered
@@ -874,6 +986,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected MessageStoreImpl() {
@@ -883,6 +996,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -893,6 +1007,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getStoreName() {
@@ -902,18 +1017,21 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setStoreName(String newStoreName) {
         String oldStoreName = storeName;
         storeName = newStoreName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__STORE_NAME, oldStoreName, storeName));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__STORE_NAME, oldStoreName,
+                    storeName));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public MessageStoreType getStoreType() {
@@ -923,18 +1041,21 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setStoreType(MessageStoreType newStoreType) {
         MessageStoreType oldStoreType = storeType;
         storeType = newStoreType == null ? STORE_TYPE_EDEFAULT : newStoreType;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__STORE_TYPE, oldStoreType, storeType));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__STORE_TYPE, oldStoreType,
+                    storeType));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getInitialContextFactory() {
@@ -944,18 +1065,21 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setInitialContextFactory(String newInitialContextFactory) {
         String oldInitialContextFactory = initialContextFactory;
         initialContextFactory = newInitialContextFactory;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__INITIAL_CONTEXT_FACTORY, oldInitialContextFactory, initialContextFactory));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__INITIAL_CONTEXT_FACTORY,
+                    oldInitialContextFactory, initialContextFactory));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getProviderURL() {
@@ -965,18 +1089,21 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setProviderURL(String newProviderURL) {
         String oldProviderURL = providerURL;
         providerURL = newProviderURL;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__PROVIDER_URL, oldProviderURL, providerURL));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__PROVIDER_URL,
+                    oldProviderURL, providerURL));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getJndiQueueName() {
@@ -986,18 +1113,21 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setJndiQueueName(String newJndiQueueName) {
         String oldJndiQueueName = jndiQueueName;
         jndiQueueName = newJndiQueueName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__JNDI_QUEUE_NAME, oldJndiQueueName, jndiQueueName));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__JNDI_QUEUE_NAME,
+                    oldJndiQueueName, jndiQueueName));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getConnectionFactory() {
@@ -1007,18 +1137,21 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setConnectionFactory(String newConnectionFactory) {
         String oldConnectionFactory = connectionFactory;
         connectionFactory = newConnectionFactory;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__CONNECTION_FACTORY, oldConnectionFactory, connectionFactory));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__CONNECTION_FACTORY,
+                    oldConnectionFactory, connectionFactory));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getUserName() {
@@ -1028,18 +1161,21 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setUserName(String newUserName) {
         String oldUserName = userName;
         userName = newUserName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__USER_NAME, oldUserName, userName));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__USER_NAME, oldUserName,
+                    userName));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getPassword() {
@@ -1049,18 +1185,21 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setPassword(String newPassword) {
         String oldPassword = password;
         password = newPassword;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__PASSWORD, oldPassword, password));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__PASSWORD, oldPassword,
+                    password));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public boolean isCacheConnection() {
@@ -1070,18 +1209,21 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setCacheConnection(boolean newCacheConnection) {
         boolean oldCacheConnection = cacheConnection;
         cacheConnection = newCacheConnection;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__CACHE_CONNECTION, oldCacheConnection, cacheConnection));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__CACHE_CONNECTION,
+                    oldCacheConnection, cacheConnection));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public JMSSpecVersion getJmsSpecVersion() {
@@ -1091,18 +1233,21 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setJmsSpecVersion(JMSSpecVersion newJmsSpecVersion) {
         JMSSpecVersion oldJmsSpecVersion = jmsSpecVersion;
         jmsSpecVersion = newJmsSpecVersion == null ? JMS_SPEC_VERSION_EDEFAULT : newJmsSpecVersion;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__JMS_SPEC_VERSION, oldJmsSpecVersion, jmsSpecVersion));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__JMS_SPEC_VERSION,
+                    oldJmsSpecVersion, jmsSpecVersion));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public boolean isEnableCaching() {
@@ -1112,18 +1257,21 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setEnableCaching(boolean newEnableCaching) {
         boolean oldEnableCaching = enableCaching;
         enableCaching = newEnableCaching;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__ENABLE_CACHING, oldEnableCaching, enableCaching));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__ENABLE_CACHING,
+                    oldEnableCaching, enableCaching));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getProviderClass() {
@@ -1133,18 +1281,21 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setProviderClass(String newProviderClass) {
         String oldProviderClass = providerClass;
         providerClass = newProviderClass;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__PROVIDER_CLASS, oldProviderClass, providerClass));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__PROVIDER_CLASS,
+                    oldProviderClass, providerClass));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getRabbitMQServerHostName() {
@@ -1154,18 +1305,21 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setRabbitMQServerHostName(String newRabbitMQServerHostName) {
         String oldRabbitMQServerHostName = rabbitMQServerHostName;
         rabbitMQServerHostName = newRabbitMQServerHostName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_NAME, oldRabbitMQServerHostName, rabbitMQServerHostName));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_NAME,
+                    oldRabbitMQServerHostName, rabbitMQServerHostName));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getRabbitMQServerHostPort() {
@@ -1175,18 +1329,21 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setRabbitMQServerHostPort(String newRabbitMQServerHostPort) {
         String oldRabbitMQServerHostPort = rabbitMQServerHostPort;
         rabbitMQServerHostPort = newRabbitMQServerHostPort;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_PORT, oldRabbitMQServerHostPort, rabbitMQServerHostPort));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_PORT,
+                    oldRabbitMQServerHostPort, rabbitMQServerHostPort));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getRabbitMQQueueName() {
@@ -1196,18 +1353,21 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setRabbitMQQueueName(String newRabbitMQQueueName) {
         String oldRabbitMQQueueName = rabbitMQQueueName;
         rabbitMQQueueName = newRabbitMQQueueName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RABBIT_MQ_QUEUE_NAME, oldRabbitMQQueueName, rabbitMQQueueName));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RABBIT_MQ_QUEUE_NAME,
+                    oldRabbitMQQueueName, rabbitMQQueueName));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getRabbitMQExchangeName() {
@@ -1217,18 +1377,21 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setRabbitMQExchangeName(String newRabbitMQExchangeName) {
         String oldRabbitMQExchangeName = rabbitMQExchangeName;
         rabbitMQExchangeName = newRabbitMQExchangeName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RABBIT_MQ_EXCHANGE_NAME, oldRabbitMQExchangeName, rabbitMQExchangeName));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RABBIT_MQ_EXCHANGE_NAME,
+                    oldRabbitMQExchangeName, rabbitMQExchangeName));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getRoutingKey() {
@@ -1238,18 +1401,21 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setRoutingKey(String newRoutingKey) {
         String oldRoutingKey = routingKey;
         routingKey = newRoutingKey;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__ROUTING_KEY, oldRoutingKey, routingKey));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__ROUTING_KEY, oldRoutingKey,
+                    routingKey));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getRabbitMQUserName() {
@@ -1259,18 +1425,21 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setRabbitMQUserName(String newRabbitMQUserName) {
         String oldRabbitMQUserName = rabbitMQUserName;
         rabbitMQUserName = newRabbitMQUserName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RABBIT_MQ_USER_NAME, oldRabbitMQUserName, rabbitMQUserName));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RABBIT_MQ_USER_NAME,
+                    oldRabbitMQUserName, rabbitMQUserName));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getRabbitMQPassword() {
@@ -1280,18 +1449,21 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setRabbitMQPassword(String newRabbitMQPassword) {
         String oldRabbitMQPassword = rabbitMQPassword;
         rabbitMQPassword = newRabbitMQPassword;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RABBIT_MQ_PASSWORD, oldRabbitMQPassword, rabbitMQPassword));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RABBIT_MQ_PASSWORD,
+                    oldRabbitMQPassword, rabbitMQPassword));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getVirtualHost() {
@@ -1301,18 +1473,21 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setVirtualHost(String newVirtualHost) {
         String oldVirtualHost = virtualHost;
         virtualHost = newVirtualHost;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__VIRTUAL_HOST, oldVirtualHost, virtualHost));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__VIRTUAL_HOST,
+                    oldVirtualHost, virtualHost));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getJdbcDatabaseTable() {
@@ -1322,18 +1497,21 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setJdbcDatabaseTable(String newJdbcDatabaseTable) {
         String oldJdbcDatabaseTable = jdbcDatabaseTable;
         jdbcDatabaseTable = newJdbcDatabaseTable;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__JDBC_DATABASE_TABLE, oldJdbcDatabaseTable, jdbcDatabaseTable));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__JDBC_DATABASE_TABLE,
+                    oldJdbcDatabaseTable, jdbcDatabaseTable));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public JDBCConnectionInformationType getJdbcConnectionInformation() {
@@ -1343,18 +1521,22 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setJdbcConnectionInformation(JDBCConnectionInformationType newJdbcConnectionInformation) {
         JDBCConnectionInformationType oldJdbcConnectionInformation = jdbcConnectionInformation;
-        jdbcConnectionInformation = newJdbcConnectionInformation == null ? JDBC_CONNECTION_INFORMATION_EDEFAULT : newJdbcConnectionInformation;
+        jdbcConnectionInformation = newJdbcConnectionInformation == null ? JDBC_CONNECTION_INFORMATION_EDEFAULT
+                : newJdbcConnectionInformation;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__JDBC_CONNECTION_INFORMATION, oldJdbcConnectionInformation, jdbcConnectionInformation));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__JDBC_CONNECTION_INFORMATION,
+                    oldJdbcConnectionInformation, jdbcConnectionInformation));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getJdbcDriver() {
@@ -1364,18 +1546,21 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setJdbcDriver(String newJdbcDriver) {
         String oldJdbcDriver = jdbcDriver;
         jdbcDriver = newJdbcDriver;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__JDBC_DRIVER, oldJdbcDriver, jdbcDriver));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__JDBC_DRIVER, oldJdbcDriver,
+                    jdbcDriver));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getJdbcURL() {
@@ -1385,18 +1570,21 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setJdbcURL(String newJdbcURL) {
         String oldJdbcURL = jdbcURL;
         jdbcURL = newJdbcURL;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__JDBC_URL, oldJdbcURL, jdbcURL));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__JDBC_URL, oldJdbcURL,
+                    jdbcURL));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getJdbcUser() {
@@ -1406,18 +1594,21 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setJdbcUser(String newJdbcUser) {
         String oldJdbcUser = jdbcUser;
         jdbcUser = newJdbcUser;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__JDBC_USER, oldJdbcUser, jdbcUser));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__JDBC_USER, oldJdbcUser,
+                    jdbcUser));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getJdbcPassword() {
@@ -1427,18 +1618,21 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setJdbcPassword(String newJdbcPassword) {
         String oldJdbcPassword = jdbcPassword;
         jdbcPassword = newJdbcPassword;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__JDBC_PASSWORD, oldJdbcPassword, jdbcPassword));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__JDBC_PASSWORD,
+                    oldJdbcPassword, jdbcPassword));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getJdbcDatasourceName() {
@@ -1448,23 +1642,27 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setJdbcDatasourceName(String newJdbcDatasourceName) {
         String oldJdbcDatasourceName = jdbcDatasourceName;
         jdbcDatasourceName = newJdbcDatasourceName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__JDBC_DATASOURCE_NAME, oldJdbcDatasourceName, jdbcDatasourceName));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__JDBC_DATASOURCE_NAME,
+                    oldJdbcDatasourceName, jdbcDatasourceName));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public EList<MessageStoreParameter> getParameters() {
         if (parameters == null) {
-            parameters = new EObjectContainmentEList<MessageStoreParameter>(MessageStoreParameter.class, this, EsbPackage.MESSAGE_STORE__PARAMETERS);
+            parameters = new EObjectContainmentEList<MessageStoreParameter>(MessageStoreParameter.class, this,
+                    EsbPackage.MESSAGE_STORE__PARAMETERS);
         }
         return parameters;
     }
@@ -1472,6 +1670,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public boolean isEnableProducerGuaranteedDelivery() {
@@ -1481,18 +1680,22 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setEnableProducerGuaranteedDelivery(boolean newEnableProducerGuaranteedDelivery) {
         boolean oldEnableProducerGuaranteedDelivery = enableProducerGuaranteedDelivery;
         enableProducerGuaranteedDelivery = newEnableProducerGuaranteedDelivery;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__ENABLE_PRODUCER_GUARANTEED_DELIVERY, oldEnableProducerGuaranteedDelivery, enableProducerGuaranteedDelivery));
+            eNotify(new ENotificationImpl(this, Notification.SET,
+                    EsbPackage.MESSAGE_STORE__ENABLE_PRODUCER_GUARANTEED_DELIVERY, oldEnableProducerGuaranteedDelivery,
+                    enableProducerGuaranteedDelivery));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getFailoverMessageStore() {
@@ -1502,18 +1705,21 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setFailoverMessageStore(String newFailoverMessageStore) {
         String oldFailoverMessageStore = failoverMessageStore;
         failoverMessageStore = newFailoverMessageStore;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__FAILOVER_MESSAGE_STORE, oldFailoverMessageStore, failoverMessageStore));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__FAILOVER_MESSAGE_STORE,
+                    oldFailoverMessageStore, failoverMessageStore));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getResequencepolling() {
@@ -1523,18 +1729,21 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setResequencepolling(String newResequencepolling) {
         String oldResequencepolling = resequencepolling;
         resequencepolling = newResequencepolling;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RESEQUENCEPOLLING, oldResequencepolling, resequencepolling));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RESEQUENCEPOLLING,
+                    oldResequencepolling, resequencepolling));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getResequenceDatabaseTable() {
@@ -1544,18 +1753,21 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setResequenceDatabaseTable(String newResequenceDatabaseTable) {
         String oldResequenceDatabaseTable = resequenceDatabaseTable;
         resequenceDatabaseTable = newResequenceDatabaseTable;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RESEQUENCE_DATABASE_TABLE, oldResequenceDatabaseTable, resequenceDatabaseTable));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RESEQUENCE_DATABASE_TABLE,
+                    oldResequenceDatabaseTable, resequenceDatabaseTable));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public JDBCConnectionInformationType getResequenceConnectionInformation() {
@@ -1565,18 +1777,24 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setResequenceConnectionInformation(JDBCConnectionInformationType newResequenceConnectionInformation) {
         JDBCConnectionInformationType oldResequenceConnectionInformation = resequenceConnectionInformation;
-        resequenceConnectionInformation = newResequenceConnectionInformation == null ? RESEQUENCE_CONNECTION_INFORMATION_EDEFAULT : newResequenceConnectionInformation;
+        resequenceConnectionInformation = newResequenceConnectionInformation == null
+                ? RESEQUENCE_CONNECTION_INFORMATION_EDEFAULT
+                : newResequenceConnectionInformation;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RESEQUENCE_CONNECTION_INFORMATION, oldResequenceConnectionInformation, resequenceConnectionInformation));
+            eNotify(new ENotificationImpl(this, Notification.SET,
+                    EsbPackage.MESSAGE_STORE__RESEQUENCE_CONNECTION_INFORMATION, oldResequenceConnectionInformation,
+                    resequenceConnectionInformation));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getResequenceDriver() {
@@ -1586,18 +1804,21 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setResequenceDriver(String newResequenceDriver) {
         String oldResequenceDriver = resequenceDriver;
         resequenceDriver = newResequenceDriver;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RESEQUENCE_DRIVER, oldResequenceDriver, resequenceDriver));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RESEQUENCE_DRIVER,
+                    oldResequenceDriver, resequenceDriver));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getResequenceURL() {
@@ -1607,18 +1828,21 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setResequenceURL(String newResequenceURL) {
         String oldResequenceURL = resequenceURL;
         resequenceURL = newResequenceURL;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RESEQUENCE_URL, oldResequenceURL, resequenceURL));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RESEQUENCE_URL,
+                    oldResequenceURL, resequenceURL));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getResequenceUser() {
@@ -1628,18 +1852,21 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setResequenceUser(String newResequenceUser) {
         String oldResequenceUser = resequenceUser;
         resequenceUser = newResequenceUser;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RESEQUENCE_USER, oldResequenceUser, resequenceUser));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RESEQUENCE_USER,
+                    oldResequenceUser, resequenceUser));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getResequencePassword() {
@@ -1649,18 +1876,21 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setResequencePassword(String newResequencePassword) {
         String oldResequencePassword = resequencePassword;
         resequencePassword = newResequencePassword;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RESEQUENCE_PASSWORD, oldResequencePassword, resequencePassword));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RESEQUENCE_PASSWORD,
+                    oldResequencePassword, resequencePassword));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getResequenceDatasourceName() {
@@ -1670,18 +1900,21 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setResequenceDatasourceName(String newResequenceDatasourceName) {
         String oldResequenceDatasourceName = resequenceDatasourceName;
         resequenceDatasourceName = newResequenceDatasourceName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RESEQUENCE_DATASOURCE_NAME, oldResequenceDatasourceName, resequenceDatasourceName));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RESEQUENCE_DATASOURCE_NAME,
+                    oldResequenceDatasourceName, resequenceDatasourceName));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getResequenceXpath() {
@@ -1691,27 +1924,32 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setResequenceXpath(String newResequenceXpath) {
         String oldResequenceXpath = resequenceXpath;
         resequenceXpath = newResequenceXpath;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RESEQUENCE_XPATH, oldResequenceXpath, resequenceXpath));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RESEQUENCE_XPATH,
+                    oldResequenceXpath, resequenceXpath));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public NamespacedProperty getResequenceXpathAttr() {
         if (resequenceXpathAttr != null && resequenceXpathAttr.eIsProxy()) {
-            InternalEObject oldResequenceXpathAttr = (InternalEObject)resequenceXpathAttr;
-            resequenceXpathAttr = (NamespacedProperty)eResolveProxy(oldResequenceXpathAttr);
+            InternalEObject oldResequenceXpathAttr = (InternalEObject) resequenceXpathAttr;
+            resequenceXpathAttr = (NamespacedProperty) eResolveProxy(oldResequenceXpathAttr);
             if (resequenceXpathAttr != oldResequenceXpathAttr) {
                 if (eNotificationRequired())
-                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, EsbPackage.MESSAGE_STORE__RESEQUENCE_XPATH_ATTR, oldResequenceXpathAttr, resequenceXpathAttr));
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+                            EsbPackage.MESSAGE_STORE__RESEQUENCE_XPATH_ATTR, oldResequenceXpathAttr,
+                            resequenceXpathAttr));
             }
         }
         return resequenceXpathAttr;
@@ -1720,6 +1958,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public NamespacedProperty basicGetResequenceXpathAttr() {
@@ -1729,25 +1968,28 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setResequenceXpathAttr(NamespacedProperty newResequenceXpathAttr) {
         NamespacedProperty oldResequenceXpathAttr = resequenceXpathAttr;
         resequenceXpathAttr = newResequenceXpathAttr;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RESEQUENCE_XPATH_ATTR, oldResequenceXpathAttr, resequenceXpathAttr));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RESEQUENCE_XPATH_ATTR,
+                    oldResequenceXpathAttr, resequenceXpathAttr));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-            case EsbPackage.MESSAGE_STORE__PARAMETERS:
-                return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
+        case EsbPackage.MESSAGE_STORE__PARAMETERS:
+            return ((InternalEList<?>) getParameters()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -1755,92 +1997,94 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-            case EsbPackage.MESSAGE_STORE__STORE_NAME:
-                return getStoreName();
-            case EsbPackage.MESSAGE_STORE__STORE_TYPE:
-                return getStoreType();
-            case EsbPackage.MESSAGE_STORE__INITIAL_CONTEXT_FACTORY:
-                return getInitialContextFactory();
-            case EsbPackage.MESSAGE_STORE__PROVIDER_URL:
-                return getProviderURL();
-            case EsbPackage.MESSAGE_STORE__JNDI_QUEUE_NAME:
-                return getJndiQueueName();
-            case EsbPackage.MESSAGE_STORE__CONNECTION_FACTORY:
-                return getConnectionFactory();
-            case EsbPackage.MESSAGE_STORE__USER_NAME:
-                return getUserName();
-            case EsbPackage.MESSAGE_STORE__PASSWORD:
-                return getPassword();
-            case EsbPackage.MESSAGE_STORE__CACHE_CONNECTION:
-                return isCacheConnection();
-            case EsbPackage.MESSAGE_STORE__JMS_SPEC_VERSION:
-                return getJmsSpecVersion();
-            case EsbPackage.MESSAGE_STORE__ENABLE_CACHING:
-                return isEnableCaching();
-            case EsbPackage.MESSAGE_STORE__PROVIDER_CLASS:
-                return getProviderClass();
-            case EsbPackage.MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_NAME:
-                return getRabbitMQServerHostName();
-            case EsbPackage.MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_PORT:
-                return getRabbitMQServerHostPort();
-            case EsbPackage.MESSAGE_STORE__RABBIT_MQ_QUEUE_NAME:
-                return getRabbitMQQueueName();
-            case EsbPackage.MESSAGE_STORE__RABBIT_MQ_EXCHANGE_NAME:
-                return getRabbitMQExchangeName();
-            case EsbPackage.MESSAGE_STORE__ROUTING_KEY:
-                return getRoutingKey();
-            case EsbPackage.MESSAGE_STORE__RABBIT_MQ_USER_NAME:
-                return getRabbitMQUserName();
-            case EsbPackage.MESSAGE_STORE__RABBIT_MQ_PASSWORD:
-                return getRabbitMQPassword();
-            case EsbPackage.MESSAGE_STORE__VIRTUAL_HOST:
-                return getVirtualHost();
-            case EsbPackage.MESSAGE_STORE__JDBC_DATABASE_TABLE:
-                return getJdbcDatabaseTable();
-            case EsbPackage.MESSAGE_STORE__JDBC_CONNECTION_INFORMATION:
-                return getJdbcConnectionInformation();
-            case EsbPackage.MESSAGE_STORE__JDBC_DRIVER:
-                return getJdbcDriver();
-            case EsbPackage.MESSAGE_STORE__JDBC_URL:
-                return getJdbcURL();
-            case EsbPackage.MESSAGE_STORE__JDBC_USER:
-                return getJdbcUser();
-            case EsbPackage.MESSAGE_STORE__JDBC_PASSWORD:
-                return getJdbcPassword();
-            case EsbPackage.MESSAGE_STORE__JDBC_DATASOURCE_NAME:
-                return getJdbcDatasourceName();
-            case EsbPackage.MESSAGE_STORE__PARAMETERS:
-                return getParameters();
-            case EsbPackage.MESSAGE_STORE__ENABLE_PRODUCER_GUARANTEED_DELIVERY:
-                return isEnableProducerGuaranteedDelivery();
-            case EsbPackage.MESSAGE_STORE__FAILOVER_MESSAGE_STORE:
-                return getFailoverMessageStore();
-            case EsbPackage.MESSAGE_STORE__RESEQUENCEPOLLING:
-                return getResequencepolling();
-            case EsbPackage.MESSAGE_STORE__RESEQUENCE_DATABASE_TABLE:
-                return getResequenceDatabaseTable();
-            case EsbPackage.MESSAGE_STORE__RESEQUENCE_CONNECTION_INFORMATION:
-                return getResequenceConnectionInformation();
-            case EsbPackage.MESSAGE_STORE__RESEQUENCE_DRIVER:
-                return getResequenceDriver();
-            case EsbPackage.MESSAGE_STORE__RESEQUENCE_URL:
-                return getResequenceURL();
-            case EsbPackage.MESSAGE_STORE__RESEQUENCE_USER:
-                return getResequenceUser();
-            case EsbPackage.MESSAGE_STORE__RESEQUENCE_PASSWORD:
-                return getResequencePassword();
-            case EsbPackage.MESSAGE_STORE__RESEQUENCE_DATASOURCE_NAME:
-                return getResequenceDatasourceName();
-            case EsbPackage.MESSAGE_STORE__RESEQUENCE_XPATH:
-                return getResequenceXpath();
-            case EsbPackage.MESSAGE_STORE__RESEQUENCE_XPATH_ATTR:
-                if (resolve) return getResequenceXpathAttr();
-                return basicGetResequenceXpathAttr();
+        case EsbPackage.MESSAGE_STORE__STORE_NAME:
+            return getStoreName();
+        case EsbPackage.MESSAGE_STORE__STORE_TYPE:
+            return getStoreType();
+        case EsbPackage.MESSAGE_STORE__INITIAL_CONTEXT_FACTORY:
+            return getInitialContextFactory();
+        case EsbPackage.MESSAGE_STORE__PROVIDER_URL:
+            return getProviderURL();
+        case EsbPackage.MESSAGE_STORE__JNDI_QUEUE_NAME:
+            return getJndiQueueName();
+        case EsbPackage.MESSAGE_STORE__CONNECTION_FACTORY:
+            return getConnectionFactory();
+        case EsbPackage.MESSAGE_STORE__USER_NAME:
+            return getUserName();
+        case EsbPackage.MESSAGE_STORE__PASSWORD:
+            return getPassword();
+        case EsbPackage.MESSAGE_STORE__CACHE_CONNECTION:
+            return isCacheConnection();
+        case EsbPackage.MESSAGE_STORE__JMS_SPEC_VERSION:
+            return getJmsSpecVersion();
+        case EsbPackage.MESSAGE_STORE__ENABLE_CACHING:
+            return isEnableCaching();
+        case EsbPackage.MESSAGE_STORE__PROVIDER_CLASS:
+            return getProviderClass();
+        case EsbPackage.MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_NAME:
+            return getRabbitMQServerHostName();
+        case EsbPackage.MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_PORT:
+            return getRabbitMQServerHostPort();
+        case EsbPackage.MESSAGE_STORE__RABBIT_MQ_QUEUE_NAME:
+            return getRabbitMQQueueName();
+        case EsbPackage.MESSAGE_STORE__RABBIT_MQ_EXCHANGE_NAME:
+            return getRabbitMQExchangeName();
+        case EsbPackage.MESSAGE_STORE__ROUTING_KEY:
+            return getRoutingKey();
+        case EsbPackage.MESSAGE_STORE__RABBIT_MQ_USER_NAME:
+            return getRabbitMQUserName();
+        case EsbPackage.MESSAGE_STORE__RABBIT_MQ_PASSWORD:
+            return getRabbitMQPassword();
+        case EsbPackage.MESSAGE_STORE__VIRTUAL_HOST:
+            return getVirtualHost();
+        case EsbPackage.MESSAGE_STORE__JDBC_DATABASE_TABLE:
+            return getJdbcDatabaseTable();
+        case EsbPackage.MESSAGE_STORE__JDBC_CONNECTION_INFORMATION:
+            return getJdbcConnectionInformation();
+        case EsbPackage.MESSAGE_STORE__JDBC_DRIVER:
+            return getJdbcDriver();
+        case EsbPackage.MESSAGE_STORE__JDBC_URL:
+            return getJdbcURL();
+        case EsbPackage.MESSAGE_STORE__JDBC_USER:
+            return getJdbcUser();
+        case EsbPackage.MESSAGE_STORE__JDBC_PASSWORD:
+            return getJdbcPassword();
+        case EsbPackage.MESSAGE_STORE__JDBC_DATASOURCE_NAME:
+            return getJdbcDatasourceName();
+        case EsbPackage.MESSAGE_STORE__PARAMETERS:
+            return getParameters();
+        case EsbPackage.MESSAGE_STORE__ENABLE_PRODUCER_GUARANTEED_DELIVERY:
+            return isEnableProducerGuaranteedDelivery();
+        case EsbPackage.MESSAGE_STORE__FAILOVER_MESSAGE_STORE:
+            return getFailoverMessageStore();
+        case EsbPackage.MESSAGE_STORE__RESEQUENCEPOLLING:
+            return getResequencepolling();
+        case EsbPackage.MESSAGE_STORE__RESEQUENCE_DATABASE_TABLE:
+            return getResequenceDatabaseTable();
+        case EsbPackage.MESSAGE_STORE__RESEQUENCE_CONNECTION_INFORMATION:
+            return getResequenceConnectionInformation();
+        case EsbPackage.MESSAGE_STORE__RESEQUENCE_DRIVER:
+            return getResequenceDriver();
+        case EsbPackage.MESSAGE_STORE__RESEQUENCE_URL:
+            return getResequenceURL();
+        case EsbPackage.MESSAGE_STORE__RESEQUENCE_USER:
+            return getResequenceUser();
+        case EsbPackage.MESSAGE_STORE__RESEQUENCE_PASSWORD:
+            return getResequencePassword();
+        case EsbPackage.MESSAGE_STORE__RESEQUENCE_DATASOURCE_NAME:
+            return getResequenceDatasourceName();
+        case EsbPackage.MESSAGE_STORE__RESEQUENCE_XPATH:
+            return getResequenceXpath();
+        case EsbPackage.MESSAGE_STORE__RESEQUENCE_XPATH_ATTR:
+            if (resolve)
+                return getResequenceXpathAttr();
+            return basicGetResequenceXpathAttr();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -1848,133 +2092,134 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-            case EsbPackage.MESSAGE_STORE__STORE_NAME:
-                setStoreName((String)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__STORE_TYPE:
-                setStoreType((MessageStoreType)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__INITIAL_CONTEXT_FACTORY:
-                setInitialContextFactory((String)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__PROVIDER_URL:
-                setProviderURL((String)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__JNDI_QUEUE_NAME:
-                setJndiQueueName((String)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__CONNECTION_FACTORY:
-                setConnectionFactory((String)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__USER_NAME:
-                setUserName((String)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__PASSWORD:
-                setPassword((String)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__CACHE_CONNECTION:
-                setCacheConnection((Boolean)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__JMS_SPEC_VERSION:
-                setJmsSpecVersion((JMSSpecVersion)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__ENABLE_CACHING:
-                setEnableCaching((Boolean)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__PROVIDER_CLASS:
-                setProviderClass((String)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_NAME:
-                setRabbitMQServerHostName((String)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_PORT:
-                setRabbitMQServerHostPort((String)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__RABBIT_MQ_QUEUE_NAME:
-                setRabbitMQQueueName((String)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__RABBIT_MQ_EXCHANGE_NAME:
-                setRabbitMQExchangeName((String)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__ROUTING_KEY:
-                setRoutingKey((String)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__RABBIT_MQ_USER_NAME:
-                setRabbitMQUserName((String)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__RABBIT_MQ_PASSWORD:
-                setRabbitMQPassword((String)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__VIRTUAL_HOST:
-                setVirtualHost((String)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__JDBC_DATABASE_TABLE:
-                setJdbcDatabaseTable((String)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__JDBC_CONNECTION_INFORMATION:
-                setJdbcConnectionInformation((JDBCConnectionInformationType)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__JDBC_DRIVER:
-                setJdbcDriver((String)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__JDBC_URL:
-                setJdbcURL((String)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__JDBC_USER:
-                setJdbcUser((String)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__JDBC_PASSWORD:
-                setJdbcPassword((String)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__JDBC_DATASOURCE_NAME:
-                setJdbcDatasourceName((String)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__PARAMETERS:
-                getParameters().clear();
-                getParameters().addAll((Collection<? extends MessageStoreParameter>)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__ENABLE_PRODUCER_GUARANTEED_DELIVERY:
-                setEnableProducerGuaranteedDelivery((Boolean)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__FAILOVER_MESSAGE_STORE:
-                setFailoverMessageStore((String)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__RESEQUENCEPOLLING:
-                setResequencepolling((String)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__RESEQUENCE_DATABASE_TABLE:
-                setResequenceDatabaseTable((String)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__RESEQUENCE_CONNECTION_INFORMATION:
-                setResequenceConnectionInformation((JDBCConnectionInformationType)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__RESEQUENCE_DRIVER:
-                setResequenceDriver((String)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__RESEQUENCE_URL:
-                setResequenceURL((String)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__RESEQUENCE_USER:
-                setResequenceUser((String)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__RESEQUENCE_PASSWORD:
-                setResequencePassword((String)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__RESEQUENCE_DATASOURCE_NAME:
-                setResequenceDatasourceName((String)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__RESEQUENCE_XPATH:
-                setResequenceXpath((String)newValue);
-                return;
-            case EsbPackage.MESSAGE_STORE__RESEQUENCE_XPATH_ATTR:
-                setResequenceXpathAttr((NamespacedProperty)newValue);
-                return;
+        case EsbPackage.MESSAGE_STORE__STORE_NAME:
+            setStoreName((String) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__STORE_TYPE:
+            setStoreType((MessageStoreType) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__INITIAL_CONTEXT_FACTORY:
+            setInitialContextFactory((String) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__PROVIDER_URL:
+            setProviderURL((String) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__JNDI_QUEUE_NAME:
+            setJndiQueueName((String) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__CONNECTION_FACTORY:
+            setConnectionFactory((String) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__USER_NAME:
+            setUserName((String) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__PASSWORD:
+            setPassword((String) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__CACHE_CONNECTION:
+            setCacheConnection((Boolean) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__JMS_SPEC_VERSION:
+            setJmsSpecVersion((JMSSpecVersion) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__ENABLE_CACHING:
+            setEnableCaching((Boolean) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__PROVIDER_CLASS:
+            setProviderClass((String) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_NAME:
+            setRabbitMQServerHostName((String) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_PORT:
+            setRabbitMQServerHostPort((String) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__RABBIT_MQ_QUEUE_NAME:
+            setRabbitMQQueueName((String) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__RABBIT_MQ_EXCHANGE_NAME:
+            setRabbitMQExchangeName((String) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__ROUTING_KEY:
+            setRoutingKey((String) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__RABBIT_MQ_USER_NAME:
+            setRabbitMQUserName((String) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__RABBIT_MQ_PASSWORD:
+            setRabbitMQPassword((String) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__VIRTUAL_HOST:
+            setVirtualHost((String) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__JDBC_DATABASE_TABLE:
+            setJdbcDatabaseTable((String) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__JDBC_CONNECTION_INFORMATION:
+            setJdbcConnectionInformation((JDBCConnectionInformationType) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__JDBC_DRIVER:
+            setJdbcDriver((String) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__JDBC_URL:
+            setJdbcURL((String) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__JDBC_USER:
+            setJdbcUser((String) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__JDBC_PASSWORD:
+            setJdbcPassword((String) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__JDBC_DATASOURCE_NAME:
+            setJdbcDatasourceName((String) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__PARAMETERS:
+            getParameters().clear();
+            getParameters().addAll((Collection<? extends MessageStoreParameter>) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__ENABLE_PRODUCER_GUARANTEED_DELIVERY:
+            setEnableProducerGuaranteedDelivery((Boolean) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__FAILOVER_MESSAGE_STORE:
+            setFailoverMessageStore((String) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__RESEQUENCEPOLLING:
+            setResequencepolling((String) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__RESEQUENCE_DATABASE_TABLE:
+            setResequenceDatabaseTable((String) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__RESEQUENCE_CONNECTION_INFORMATION:
+            setResequenceConnectionInformation((JDBCConnectionInformationType) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__RESEQUENCE_DRIVER:
+            setResequenceDriver((String) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__RESEQUENCE_URL:
+            setResequenceURL((String) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__RESEQUENCE_USER:
+            setResequenceUser((String) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__RESEQUENCE_PASSWORD:
+            setResequencePassword((String) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__RESEQUENCE_DATASOURCE_NAME:
+            setResequenceDatasourceName((String) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__RESEQUENCE_XPATH:
+            setResequenceXpath((String) newValue);
+            return;
+        case EsbPackage.MESSAGE_STORE__RESEQUENCE_XPATH_ATTR:
+            setResequenceXpathAttr((NamespacedProperty) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -1982,131 +2227,132 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-            case EsbPackage.MESSAGE_STORE__STORE_NAME:
-                setStoreName(STORE_NAME_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__STORE_TYPE:
-                setStoreType(STORE_TYPE_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__INITIAL_CONTEXT_FACTORY:
-                setInitialContextFactory(INITIAL_CONTEXT_FACTORY_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__PROVIDER_URL:
-                setProviderURL(PROVIDER_URL_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__JNDI_QUEUE_NAME:
-                setJndiQueueName(JNDI_QUEUE_NAME_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__CONNECTION_FACTORY:
-                setConnectionFactory(CONNECTION_FACTORY_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__USER_NAME:
-                setUserName(USER_NAME_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__PASSWORD:
-                setPassword(PASSWORD_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__CACHE_CONNECTION:
-                setCacheConnection(CACHE_CONNECTION_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__JMS_SPEC_VERSION:
-                setJmsSpecVersion(JMS_SPEC_VERSION_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__ENABLE_CACHING:
-                setEnableCaching(ENABLE_CACHING_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__PROVIDER_CLASS:
-                setProviderClass(PROVIDER_CLASS_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_NAME:
-                setRabbitMQServerHostName(RABBIT_MQ_SERVER_HOST_NAME_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_PORT:
-                setRabbitMQServerHostPort(RABBIT_MQ_SERVER_HOST_PORT_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__RABBIT_MQ_QUEUE_NAME:
-                setRabbitMQQueueName(RABBIT_MQ_QUEUE_NAME_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__RABBIT_MQ_EXCHANGE_NAME:
-                setRabbitMQExchangeName(RABBIT_MQ_EXCHANGE_NAME_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__ROUTING_KEY:
-                setRoutingKey(ROUTING_KEY_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__RABBIT_MQ_USER_NAME:
-                setRabbitMQUserName(RABBIT_MQ_USER_NAME_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__RABBIT_MQ_PASSWORD:
-                setRabbitMQPassword(RABBIT_MQ_PASSWORD_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__VIRTUAL_HOST:
-                setVirtualHost(VIRTUAL_HOST_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__JDBC_DATABASE_TABLE:
-                setJdbcDatabaseTable(JDBC_DATABASE_TABLE_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__JDBC_CONNECTION_INFORMATION:
-                setJdbcConnectionInformation(JDBC_CONNECTION_INFORMATION_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__JDBC_DRIVER:
-                setJdbcDriver(JDBC_DRIVER_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__JDBC_URL:
-                setJdbcURL(JDBC_URL_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__JDBC_USER:
-                setJdbcUser(JDBC_USER_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__JDBC_PASSWORD:
-                setJdbcPassword(JDBC_PASSWORD_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__JDBC_DATASOURCE_NAME:
-                setJdbcDatasourceName(JDBC_DATASOURCE_NAME_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__PARAMETERS:
-                getParameters().clear();
-                return;
-            case EsbPackage.MESSAGE_STORE__ENABLE_PRODUCER_GUARANTEED_DELIVERY:
-                setEnableProducerGuaranteedDelivery(ENABLE_PRODUCER_GUARANTEED_DELIVERY_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__FAILOVER_MESSAGE_STORE:
-                setFailoverMessageStore(FAILOVER_MESSAGE_STORE_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__RESEQUENCEPOLLING:
-                setResequencepolling(RESEQUENCEPOLLING_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__RESEQUENCE_DATABASE_TABLE:
-                setResequenceDatabaseTable(RESEQUENCE_DATABASE_TABLE_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__RESEQUENCE_CONNECTION_INFORMATION:
-                setResequenceConnectionInformation(RESEQUENCE_CONNECTION_INFORMATION_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__RESEQUENCE_DRIVER:
-                setResequenceDriver(RESEQUENCE_DRIVER_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__RESEQUENCE_URL:
-                setResequenceURL(RESEQUENCE_URL_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__RESEQUENCE_USER:
-                setResequenceUser(RESEQUENCE_USER_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__RESEQUENCE_PASSWORD:
-                setResequencePassword(RESEQUENCE_PASSWORD_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__RESEQUENCE_DATASOURCE_NAME:
-                setResequenceDatasourceName(RESEQUENCE_DATASOURCE_NAME_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__RESEQUENCE_XPATH:
-                setResequenceXpath(RESEQUENCE_XPATH_EDEFAULT);
-                return;
-            case EsbPackage.MESSAGE_STORE__RESEQUENCE_XPATH_ATTR:
-                setResequenceXpathAttr((NamespacedProperty)null);
-                return;
+        case EsbPackage.MESSAGE_STORE__STORE_NAME:
+            setStoreName(STORE_NAME_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__STORE_TYPE:
+            setStoreType(STORE_TYPE_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__INITIAL_CONTEXT_FACTORY:
+            setInitialContextFactory(INITIAL_CONTEXT_FACTORY_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__PROVIDER_URL:
+            setProviderURL(PROVIDER_URL_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__JNDI_QUEUE_NAME:
+            setJndiQueueName(JNDI_QUEUE_NAME_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__CONNECTION_FACTORY:
+            setConnectionFactory(CONNECTION_FACTORY_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__USER_NAME:
+            setUserName(USER_NAME_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__PASSWORD:
+            setPassword(PASSWORD_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__CACHE_CONNECTION:
+            setCacheConnection(CACHE_CONNECTION_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__JMS_SPEC_VERSION:
+            setJmsSpecVersion(JMS_SPEC_VERSION_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__ENABLE_CACHING:
+            setEnableCaching(ENABLE_CACHING_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__PROVIDER_CLASS:
+            setProviderClass(PROVIDER_CLASS_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_NAME:
+            setRabbitMQServerHostName(RABBIT_MQ_SERVER_HOST_NAME_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_PORT:
+            setRabbitMQServerHostPort(RABBIT_MQ_SERVER_HOST_PORT_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__RABBIT_MQ_QUEUE_NAME:
+            setRabbitMQQueueName(RABBIT_MQ_QUEUE_NAME_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__RABBIT_MQ_EXCHANGE_NAME:
+            setRabbitMQExchangeName(RABBIT_MQ_EXCHANGE_NAME_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__ROUTING_KEY:
+            setRoutingKey(ROUTING_KEY_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__RABBIT_MQ_USER_NAME:
+            setRabbitMQUserName(RABBIT_MQ_USER_NAME_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__RABBIT_MQ_PASSWORD:
+            setRabbitMQPassword(RABBIT_MQ_PASSWORD_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__VIRTUAL_HOST:
+            setVirtualHost(VIRTUAL_HOST_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__JDBC_DATABASE_TABLE:
+            setJdbcDatabaseTable(JDBC_DATABASE_TABLE_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__JDBC_CONNECTION_INFORMATION:
+            setJdbcConnectionInformation(JDBC_CONNECTION_INFORMATION_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__JDBC_DRIVER:
+            setJdbcDriver(JDBC_DRIVER_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__JDBC_URL:
+            setJdbcURL(JDBC_URL_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__JDBC_USER:
+            setJdbcUser(JDBC_USER_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__JDBC_PASSWORD:
+            setJdbcPassword(JDBC_PASSWORD_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__JDBC_DATASOURCE_NAME:
+            setJdbcDatasourceName(JDBC_DATASOURCE_NAME_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__PARAMETERS:
+            getParameters().clear();
+            return;
+        case EsbPackage.MESSAGE_STORE__ENABLE_PRODUCER_GUARANTEED_DELIVERY:
+            setEnableProducerGuaranteedDelivery(ENABLE_PRODUCER_GUARANTEED_DELIVERY_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__FAILOVER_MESSAGE_STORE:
+            setFailoverMessageStore(FAILOVER_MESSAGE_STORE_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__RESEQUENCEPOLLING:
+            setResequencepolling(RESEQUENCEPOLLING_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__RESEQUENCE_DATABASE_TABLE:
+            setResequenceDatabaseTable(RESEQUENCE_DATABASE_TABLE_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__RESEQUENCE_CONNECTION_INFORMATION:
+            setResequenceConnectionInformation(RESEQUENCE_CONNECTION_INFORMATION_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__RESEQUENCE_DRIVER:
+            setResequenceDriver(RESEQUENCE_DRIVER_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__RESEQUENCE_URL:
+            setResequenceURL(RESEQUENCE_URL_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__RESEQUENCE_USER:
+            setResequenceUser(RESEQUENCE_USER_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__RESEQUENCE_PASSWORD:
+            setResequencePassword(RESEQUENCE_PASSWORD_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__RESEQUENCE_DATASOURCE_NAME:
+            setResequenceDatasourceName(RESEQUENCE_DATASOURCE_NAME_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__RESEQUENCE_XPATH:
+            setResequenceXpath(RESEQUENCE_XPATH_EDEFAULT);
+            return;
+        case EsbPackage.MESSAGE_STORE__RESEQUENCE_XPATH_ATTR:
+            setResequenceXpathAttr((NamespacedProperty) null);
+            return;
         }
         super.eUnset(featureID);
     }
@@ -2114,91 +2360,113 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-            case EsbPackage.MESSAGE_STORE__STORE_NAME:
-                return STORE_NAME_EDEFAULT == null ? storeName != null : !STORE_NAME_EDEFAULT.equals(storeName);
-            case EsbPackage.MESSAGE_STORE__STORE_TYPE:
-                return storeType != STORE_TYPE_EDEFAULT;
-            case EsbPackage.MESSAGE_STORE__INITIAL_CONTEXT_FACTORY:
-                return INITIAL_CONTEXT_FACTORY_EDEFAULT == null ? initialContextFactory != null : !INITIAL_CONTEXT_FACTORY_EDEFAULT.equals(initialContextFactory);
-            case EsbPackage.MESSAGE_STORE__PROVIDER_URL:
-                return PROVIDER_URL_EDEFAULT == null ? providerURL != null : !PROVIDER_URL_EDEFAULT.equals(providerURL);
-            case EsbPackage.MESSAGE_STORE__JNDI_QUEUE_NAME:
-                return JNDI_QUEUE_NAME_EDEFAULT == null ? jndiQueueName != null : !JNDI_QUEUE_NAME_EDEFAULT.equals(jndiQueueName);
-            case EsbPackage.MESSAGE_STORE__CONNECTION_FACTORY:
-                return CONNECTION_FACTORY_EDEFAULT == null ? connectionFactory != null : !CONNECTION_FACTORY_EDEFAULT.equals(connectionFactory);
-            case EsbPackage.MESSAGE_STORE__USER_NAME:
-                return USER_NAME_EDEFAULT == null ? userName != null : !USER_NAME_EDEFAULT.equals(userName);
-            case EsbPackage.MESSAGE_STORE__PASSWORD:
-                return PASSWORD_EDEFAULT == null ? password != null : !PASSWORD_EDEFAULT.equals(password);
-            case EsbPackage.MESSAGE_STORE__CACHE_CONNECTION:
-                return cacheConnection != CACHE_CONNECTION_EDEFAULT;
-            case EsbPackage.MESSAGE_STORE__JMS_SPEC_VERSION:
-                return jmsSpecVersion != JMS_SPEC_VERSION_EDEFAULT;
-            case EsbPackage.MESSAGE_STORE__ENABLE_CACHING:
-                return enableCaching != ENABLE_CACHING_EDEFAULT;
-            case EsbPackage.MESSAGE_STORE__PROVIDER_CLASS:
-                return PROVIDER_CLASS_EDEFAULT == null ? providerClass != null : !PROVIDER_CLASS_EDEFAULT.equals(providerClass);
-            case EsbPackage.MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_NAME:
-                return RABBIT_MQ_SERVER_HOST_NAME_EDEFAULT == null ? rabbitMQServerHostName != null : !RABBIT_MQ_SERVER_HOST_NAME_EDEFAULT.equals(rabbitMQServerHostName);
-            case EsbPackage.MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_PORT:
-                return RABBIT_MQ_SERVER_HOST_PORT_EDEFAULT == null ? rabbitMQServerHostPort != null : !RABBIT_MQ_SERVER_HOST_PORT_EDEFAULT.equals(rabbitMQServerHostPort);
-            case EsbPackage.MESSAGE_STORE__RABBIT_MQ_QUEUE_NAME:
-                return RABBIT_MQ_QUEUE_NAME_EDEFAULT == null ? rabbitMQQueueName != null : !RABBIT_MQ_QUEUE_NAME_EDEFAULT.equals(rabbitMQQueueName);
-            case EsbPackage.MESSAGE_STORE__RABBIT_MQ_EXCHANGE_NAME:
-                return RABBIT_MQ_EXCHANGE_NAME_EDEFAULT == null ? rabbitMQExchangeName != null : !RABBIT_MQ_EXCHANGE_NAME_EDEFAULT.equals(rabbitMQExchangeName);
-            case EsbPackage.MESSAGE_STORE__ROUTING_KEY:
-                return ROUTING_KEY_EDEFAULT == null ? routingKey != null : !ROUTING_KEY_EDEFAULT.equals(routingKey);
-            case EsbPackage.MESSAGE_STORE__RABBIT_MQ_USER_NAME:
-                return RABBIT_MQ_USER_NAME_EDEFAULT == null ? rabbitMQUserName != null : !RABBIT_MQ_USER_NAME_EDEFAULT.equals(rabbitMQUserName);
-            case EsbPackage.MESSAGE_STORE__RABBIT_MQ_PASSWORD:
-                return RABBIT_MQ_PASSWORD_EDEFAULT == null ? rabbitMQPassword != null : !RABBIT_MQ_PASSWORD_EDEFAULT.equals(rabbitMQPassword);
-            case EsbPackage.MESSAGE_STORE__VIRTUAL_HOST:
-                return VIRTUAL_HOST_EDEFAULT == null ? virtualHost != null : !VIRTUAL_HOST_EDEFAULT.equals(virtualHost);
-            case EsbPackage.MESSAGE_STORE__JDBC_DATABASE_TABLE:
-                return JDBC_DATABASE_TABLE_EDEFAULT == null ? jdbcDatabaseTable != null : !JDBC_DATABASE_TABLE_EDEFAULT.equals(jdbcDatabaseTable);
-            case EsbPackage.MESSAGE_STORE__JDBC_CONNECTION_INFORMATION:
-                return jdbcConnectionInformation != JDBC_CONNECTION_INFORMATION_EDEFAULT;
-            case EsbPackage.MESSAGE_STORE__JDBC_DRIVER:
-                return JDBC_DRIVER_EDEFAULT == null ? jdbcDriver != null : !JDBC_DRIVER_EDEFAULT.equals(jdbcDriver);
-            case EsbPackage.MESSAGE_STORE__JDBC_URL:
-                return JDBC_URL_EDEFAULT == null ? jdbcURL != null : !JDBC_URL_EDEFAULT.equals(jdbcURL);
-            case EsbPackage.MESSAGE_STORE__JDBC_USER:
-                return JDBC_USER_EDEFAULT == null ? jdbcUser != null : !JDBC_USER_EDEFAULT.equals(jdbcUser);
-            case EsbPackage.MESSAGE_STORE__JDBC_PASSWORD:
-                return JDBC_PASSWORD_EDEFAULT == null ? jdbcPassword != null : !JDBC_PASSWORD_EDEFAULT.equals(jdbcPassword);
-            case EsbPackage.MESSAGE_STORE__JDBC_DATASOURCE_NAME:
-                return JDBC_DATASOURCE_NAME_EDEFAULT == null ? jdbcDatasourceName != null : !JDBC_DATASOURCE_NAME_EDEFAULT.equals(jdbcDatasourceName);
-            case EsbPackage.MESSAGE_STORE__PARAMETERS:
-                return parameters != null && !parameters.isEmpty();
-            case EsbPackage.MESSAGE_STORE__ENABLE_PRODUCER_GUARANTEED_DELIVERY:
-                return enableProducerGuaranteedDelivery != ENABLE_PRODUCER_GUARANTEED_DELIVERY_EDEFAULT;
-            case EsbPackage.MESSAGE_STORE__FAILOVER_MESSAGE_STORE:
-                return FAILOVER_MESSAGE_STORE_EDEFAULT == null ? failoverMessageStore != null : !FAILOVER_MESSAGE_STORE_EDEFAULT.equals(failoverMessageStore);
-            case EsbPackage.MESSAGE_STORE__RESEQUENCEPOLLING:
-                return RESEQUENCEPOLLING_EDEFAULT == null ? resequencepolling != null : !RESEQUENCEPOLLING_EDEFAULT.equals(resequencepolling);
-            case EsbPackage.MESSAGE_STORE__RESEQUENCE_DATABASE_TABLE:
-                return RESEQUENCE_DATABASE_TABLE_EDEFAULT == null ? resequenceDatabaseTable != null : !RESEQUENCE_DATABASE_TABLE_EDEFAULT.equals(resequenceDatabaseTable);
-            case EsbPackage.MESSAGE_STORE__RESEQUENCE_CONNECTION_INFORMATION:
-                return resequenceConnectionInformation != RESEQUENCE_CONNECTION_INFORMATION_EDEFAULT;
-            case EsbPackage.MESSAGE_STORE__RESEQUENCE_DRIVER:
-                return RESEQUENCE_DRIVER_EDEFAULT == null ? resequenceDriver != null : !RESEQUENCE_DRIVER_EDEFAULT.equals(resequenceDriver);
-            case EsbPackage.MESSAGE_STORE__RESEQUENCE_URL:
-                return RESEQUENCE_URL_EDEFAULT == null ? resequenceURL != null : !RESEQUENCE_URL_EDEFAULT.equals(resequenceURL);
-            case EsbPackage.MESSAGE_STORE__RESEQUENCE_USER:
-                return RESEQUENCE_USER_EDEFAULT == null ? resequenceUser != null : !RESEQUENCE_USER_EDEFAULT.equals(resequenceUser);
-            case EsbPackage.MESSAGE_STORE__RESEQUENCE_PASSWORD:
-                return RESEQUENCE_PASSWORD_EDEFAULT == null ? resequencePassword != null : !RESEQUENCE_PASSWORD_EDEFAULT.equals(resequencePassword);
-            case EsbPackage.MESSAGE_STORE__RESEQUENCE_DATASOURCE_NAME:
-                return RESEQUENCE_DATASOURCE_NAME_EDEFAULT == null ? resequenceDatasourceName != null : !RESEQUENCE_DATASOURCE_NAME_EDEFAULT.equals(resequenceDatasourceName);
-            case EsbPackage.MESSAGE_STORE__RESEQUENCE_XPATH:
-                return RESEQUENCE_XPATH_EDEFAULT == null ? resequenceXpath != null : !RESEQUENCE_XPATH_EDEFAULT.equals(resequenceXpath);
-            case EsbPackage.MESSAGE_STORE__RESEQUENCE_XPATH_ATTR:
-                return resequenceXpathAttr != null;
+        case EsbPackage.MESSAGE_STORE__STORE_NAME:
+            return STORE_NAME_EDEFAULT == null ? storeName != null : !STORE_NAME_EDEFAULT.equals(storeName);
+        case EsbPackage.MESSAGE_STORE__STORE_TYPE:
+            return storeType != STORE_TYPE_EDEFAULT;
+        case EsbPackage.MESSAGE_STORE__INITIAL_CONTEXT_FACTORY:
+            return INITIAL_CONTEXT_FACTORY_EDEFAULT == null ? initialContextFactory != null
+                    : !INITIAL_CONTEXT_FACTORY_EDEFAULT.equals(initialContextFactory);
+        case EsbPackage.MESSAGE_STORE__PROVIDER_URL:
+            return PROVIDER_URL_EDEFAULT == null ? providerURL != null : !PROVIDER_URL_EDEFAULT.equals(providerURL);
+        case EsbPackage.MESSAGE_STORE__JNDI_QUEUE_NAME:
+            return JNDI_QUEUE_NAME_EDEFAULT == null ? jndiQueueName != null
+                    : !JNDI_QUEUE_NAME_EDEFAULT.equals(jndiQueueName);
+        case EsbPackage.MESSAGE_STORE__CONNECTION_FACTORY:
+            return CONNECTION_FACTORY_EDEFAULT == null ? connectionFactory != null
+                    : !CONNECTION_FACTORY_EDEFAULT.equals(connectionFactory);
+        case EsbPackage.MESSAGE_STORE__USER_NAME:
+            return USER_NAME_EDEFAULT == null ? userName != null : !USER_NAME_EDEFAULT.equals(userName);
+        case EsbPackage.MESSAGE_STORE__PASSWORD:
+            return PASSWORD_EDEFAULT == null ? password != null : !PASSWORD_EDEFAULT.equals(password);
+        case EsbPackage.MESSAGE_STORE__CACHE_CONNECTION:
+            return cacheConnection != CACHE_CONNECTION_EDEFAULT;
+        case EsbPackage.MESSAGE_STORE__JMS_SPEC_VERSION:
+            return jmsSpecVersion != JMS_SPEC_VERSION_EDEFAULT;
+        case EsbPackage.MESSAGE_STORE__ENABLE_CACHING:
+            return enableCaching != ENABLE_CACHING_EDEFAULT;
+        case EsbPackage.MESSAGE_STORE__PROVIDER_CLASS:
+            return PROVIDER_CLASS_EDEFAULT == null ? providerClass != null
+                    : !PROVIDER_CLASS_EDEFAULT.equals(providerClass);
+        case EsbPackage.MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_NAME:
+            return RABBIT_MQ_SERVER_HOST_NAME_EDEFAULT == null ? rabbitMQServerHostName != null
+                    : !RABBIT_MQ_SERVER_HOST_NAME_EDEFAULT.equals(rabbitMQServerHostName);
+        case EsbPackage.MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_PORT:
+            return RABBIT_MQ_SERVER_HOST_PORT_EDEFAULT == null ? rabbitMQServerHostPort != null
+                    : !RABBIT_MQ_SERVER_HOST_PORT_EDEFAULT.equals(rabbitMQServerHostPort);
+        case EsbPackage.MESSAGE_STORE__RABBIT_MQ_QUEUE_NAME:
+            return RABBIT_MQ_QUEUE_NAME_EDEFAULT == null ? rabbitMQQueueName != null
+                    : !RABBIT_MQ_QUEUE_NAME_EDEFAULT.equals(rabbitMQQueueName);
+        case EsbPackage.MESSAGE_STORE__RABBIT_MQ_EXCHANGE_NAME:
+            return RABBIT_MQ_EXCHANGE_NAME_EDEFAULT == null ? rabbitMQExchangeName != null
+                    : !RABBIT_MQ_EXCHANGE_NAME_EDEFAULT.equals(rabbitMQExchangeName);
+        case EsbPackage.MESSAGE_STORE__ROUTING_KEY:
+            return ROUTING_KEY_EDEFAULT == null ? routingKey != null : !ROUTING_KEY_EDEFAULT.equals(routingKey);
+        case EsbPackage.MESSAGE_STORE__RABBIT_MQ_USER_NAME:
+            return RABBIT_MQ_USER_NAME_EDEFAULT == null ? rabbitMQUserName != null
+                    : !RABBIT_MQ_USER_NAME_EDEFAULT.equals(rabbitMQUserName);
+        case EsbPackage.MESSAGE_STORE__RABBIT_MQ_PASSWORD:
+            return RABBIT_MQ_PASSWORD_EDEFAULT == null ? rabbitMQPassword != null
+                    : !RABBIT_MQ_PASSWORD_EDEFAULT.equals(rabbitMQPassword);
+        case EsbPackage.MESSAGE_STORE__VIRTUAL_HOST:
+            return VIRTUAL_HOST_EDEFAULT == null ? virtualHost != null : !VIRTUAL_HOST_EDEFAULT.equals(virtualHost);
+        case EsbPackage.MESSAGE_STORE__JDBC_DATABASE_TABLE:
+            return JDBC_DATABASE_TABLE_EDEFAULT == null ? jdbcDatabaseTable != null
+                    : !JDBC_DATABASE_TABLE_EDEFAULT.equals(jdbcDatabaseTable);
+        case EsbPackage.MESSAGE_STORE__JDBC_CONNECTION_INFORMATION:
+            return jdbcConnectionInformation != JDBC_CONNECTION_INFORMATION_EDEFAULT;
+        case EsbPackage.MESSAGE_STORE__JDBC_DRIVER:
+            return JDBC_DRIVER_EDEFAULT == null ? jdbcDriver != null : !JDBC_DRIVER_EDEFAULT.equals(jdbcDriver);
+        case EsbPackage.MESSAGE_STORE__JDBC_URL:
+            return JDBC_URL_EDEFAULT == null ? jdbcURL != null : !JDBC_URL_EDEFAULT.equals(jdbcURL);
+        case EsbPackage.MESSAGE_STORE__JDBC_USER:
+            return JDBC_USER_EDEFAULT == null ? jdbcUser != null : !JDBC_USER_EDEFAULT.equals(jdbcUser);
+        case EsbPackage.MESSAGE_STORE__JDBC_PASSWORD:
+            return JDBC_PASSWORD_EDEFAULT == null ? jdbcPassword != null : !JDBC_PASSWORD_EDEFAULT.equals(jdbcPassword);
+        case EsbPackage.MESSAGE_STORE__JDBC_DATASOURCE_NAME:
+            return JDBC_DATASOURCE_NAME_EDEFAULT == null ? jdbcDatasourceName != null
+                    : !JDBC_DATASOURCE_NAME_EDEFAULT.equals(jdbcDatasourceName);
+        case EsbPackage.MESSAGE_STORE__PARAMETERS:
+            return parameters != null && !parameters.isEmpty();
+        case EsbPackage.MESSAGE_STORE__ENABLE_PRODUCER_GUARANTEED_DELIVERY:
+            return enableProducerGuaranteedDelivery != ENABLE_PRODUCER_GUARANTEED_DELIVERY_EDEFAULT;
+        case EsbPackage.MESSAGE_STORE__FAILOVER_MESSAGE_STORE:
+            return FAILOVER_MESSAGE_STORE_EDEFAULT == null ? failoverMessageStore != null
+                    : !FAILOVER_MESSAGE_STORE_EDEFAULT.equals(failoverMessageStore);
+        case EsbPackage.MESSAGE_STORE__RESEQUENCEPOLLING:
+            return RESEQUENCEPOLLING_EDEFAULT == null ? resequencepolling != null
+                    : !RESEQUENCEPOLLING_EDEFAULT.equals(resequencepolling);
+        case EsbPackage.MESSAGE_STORE__RESEQUENCE_DATABASE_TABLE:
+            return RESEQUENCE_DATABASE_TABLE_EDEFAULT == null ? resequenceDatabaseTable != null
+                    : !RESEQUENCE_DATABASE_TABLE_EDEFAULT.equals(resequenceDatabaseTable);
+        case EsbPackage.MESSAGE_STORE__RESEQUENCE_CONNECTION_INFORMATION:
+            return resequenceConnectionInformation != RESEQUENCE_CONNECTION_INFORMATION_EDEFAULT;
+        case EsbPackage.MESSAGE_STORE__RESEQUENCE_DRIVER:
+            return RESEQUENCE_DRIVER_EDEFAULT == null ? resequenceDriver != null
+                    : !RESEQUENCE_DRIVER_EDEFAULT.equals(resequenceDriver);
+        case EsbPackage.MESSAGE_STORE__RESEQUENCE_URL:
+            return RESEQUENCE_URL_EDEFAULT == null ? resequenceURL != null
+                    : !RESEQUENCE_URL_EDEFAULT.equals(resequenceURL);
+        case EsbPackage.MESSAGE_STORE__RESEQUENCE_USER:
+            return RESEQUENCE_USER_EDEFAULT == null ? resequenceUser != null
+                    : !RESEQUENCE_USER_EDEFAULT.equals(resequenceUser);
+        case EsbPackage.MESSAGE_STORE__RESEQUENCE_PASSWORD:
+            return RESEQUENCE_PASSWORD_EDEFAULT == null ? resequencePassword != null
+                    : !RESEQUENCE_PASSWORD_EDEFAULT.equals(resequencePassword);
+        case EsbPackage.MESSAGE_STORE__RESEQUENCE_DATASOURCE_NAME:
+            return RESEQUENCE_DATASOURCE_NAME_EDEFAULT == null ? resequenceDatasourceName != null
+                    : !RESEQUENCE_DATASOURCE_NAME_EDEFAULT.equals(resequenceDatasourceName);
+        case EsbPackage.MESSAGE_STORE__RESEQUENCE_XPATH:
+            return RESEQUENCE_XPATH_EDEFAULT == null ? resequenceXpath != null
+                    : !RESEQUENCE_XPATH_EDEFAULT.equals(resequenceXpath);
+        case EsbPackage.MESSAGE_STORE__RESEQUENCE_XPATH_ATTR:
+            return resequenceXpathAttr != null;
         }
         return super.eIsSet(featureID);
     }
@@ -2206,11 +2474,13 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy()) return super.toString();
+        if (eIsProxy())
+            return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (storeName: ");

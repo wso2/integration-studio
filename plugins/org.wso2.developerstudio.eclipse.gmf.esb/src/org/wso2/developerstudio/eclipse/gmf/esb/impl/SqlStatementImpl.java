@@ -35,10 +35,11 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SqlStatement;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SqlStatementImpl#getQueryString <em>Query String</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SqlStatementImpl#getParameters <em>Parameters</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SqlStatementImpl#isResultsEnabled <em>Results Enabled</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SqlStatementImpl#getResults <em>Results</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SqlStatementImpl#getQueryString <em>Query String</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SqlStatementImpl#getParameters <em>Parameters</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SqlStatementImpl#isResultsEnabled <em>Results
+ * Enabled</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SqlStatementImpl#getResults <em>Results</em>}</li>
  * </ul>
  *
  * @generated
@@ -48,6 +49,7 @@ public class SqlStatementImpl extends EObjectImpl implements SqlStatement {
      * The default value of the '{@link #getQueryString() <em>Query String</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getQueryString()
      * @generated
      * @ordered
@@ -58,6 +60,7 @@ public class SqlStatementImpl extends EObjectImpl implements SqlStatement {
      * The cached value of the '{@link #getQueryString() <em>Query String</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getQueryString()
      * @generated
      * @ordered
@@ -68,6 +71,7 @@ public class SqlStatementImpl extends EObjectImpl implements SqlStatement {
      * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getParameters()
      * @generated
      * @ordered
@@ -78,6 +82,7 @@ public class SqlStatementImpl extends EObjectImpl implements SqlStatement {
      * The default value of the '{@link #isResultsEnabled() <em>Results Enabled</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #isResultsEnabled()
      * @generated
      * @ordered
@@ -88,6 +93,7 @@ public class SqlStatementImpl extends EObjectImpl implements SqlStatement {
      * The cached value of the '{@link #isResultsEnabled() <em>Results Enabled</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #isResultsEnabled()
      * @generated
      * @ordered
@@ -98,6 +104,7 @@ public class SqlStatementImpl extends EObjectImpl implements SqlStatement {
      * The cached value of the '{@link #getResults() <em>Results</em>}' containment reference list.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getResults()
      * @generated
      * @ordered
@@ -107,6 +114,7 @@ public class SqlStatementImpl extends EObjectImpl implements SqlStatement {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected SqlStatementImpl() {
@@ -116,6 +124,7 @@ public class SqlStatementImpl extends EObjectImpl implements SqlStatement {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -127,6 +136,7 @@ public class SqlStatementImpl extends EObjectImpl implements SqlStatement {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getQueryString() {
@@ -136,23 +146,27 @@ public class SqlStatementImpl extends EObjectImpl implements SqlStatement {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setQueryString(String newQueryString) {
         String oldQueryString = queryString;
         queryString = newQueryString;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.SQL_STATEMENT__QUERY_STRING, oldQueryString, queryString));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.SQL_STATEMENT__QUERY_STRING,
+                    oldQueryString, queryString));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public EList<SqlParameterDefinition> getParameters() {
         if (parameters == null) {
-            parameters = new EObjectContainmentEList<SqlParameterDefinition>(SqlParameterDefinition.class, this, EsbPackage.SQL_STATEMENT__PARAMETERS);
+            parameters = new EObjectContainmentEList<SqlParameterDefinition>(SqlParameterDefinition.class, this,
+                    EsbPackage.SQL_STATEMENT__PARAMETERS);
         }
         return parameters;
     }
@@ -160,6 +174,7 @@ public class SqlStatementImpl extends EObjectImpl implements SqlStatement {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public boolean isResultsEnabled() {
@@ -169,23 +184,27 @@ public class SqlStatementImpl extends EObjectImpl implements SqlStatement {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setResultsEnabled(boolean newResultsEnabled) {
         boolean oldResultsEnabled = resultsEnabled;
         resultsEnabled = newResultsEnabled;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.SQL_STATEMENT__RESULTS_ENABLED, oldResultsEnabled, resultsEnabled));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.SQL_STATEMENT__RESULTS_ENABLED,
+                    oldResultsEnabled, resultsEnabled));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public EList<SqlResultMapping> getResults() {
         if (results == null) {
-            results = new EObjectContainmentEList<SqlResultMapping>(SqlResultMapping.class, this, EsbPackage.SQL_STATEMENT__RESULTS);
+            results = new EObjectContainmentEList<SqlResultMapping>(SqlResultMapping.class, this,
+                    EsbPackage.SQL_STATEMENT__RESULTS);
         }
         return results;
     }
@@ -193,16 +212,17 @@ public class SqlStatementImpl extends EObjectImpl implements SqlStatement {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-            case EsbPackage.SQL_STATEMENT__PARAMETERS:
-                return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
-            case EsbPackage.SQL_STATEMENT__RESULTS:
-                return ((InternalEList<?>)getResults()).basicRemove(otherEnd, msgs);
+        case EsbPackage.SQL_STATEMENT__PARAMETERS:
+            return ((InternalEList<?>) getParameters()).basicRemove(otherEnd, msgs);
+        case EsbPackage.SQL_STATEMENT__RESULTS:
+            return ((InternalEList<?>) getResults()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -210,20 +230,21 @@ public class SqlStatementImpl extends EObjectImpl implements SqlStatement {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-            case EsbPackage.SQL_STATEMENT__QUERY_STRING:
-                return getQueryString();
-            case EsbPackage.SQL_STATEMENT__PARAMETERS:
-                return getParameters();
-            case EsbPackage.SQL_STATEMENT__RESULTS_ENABLED:
-                return isResultsEnabled();
-            case EsbPackage.SQL_STATEMENT__RESULTS:
-                return getResults();
+        case EsbPackage.SQL_STATEMENT__QUERY_STRING:
+            return getQueryString();
+        case EsbPackage.SQL_STATEMENT__PARAMETERS:
+            return getParameters();
+        case EsbPackage.SQL_STATEMENT__RESULTS_ENABLED:
+            return isResultsEnabled();
+        case EsbPackage.SQL_STATEMENT__RESULTS:
+            return getResults();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -231,6 +252,7 @@ public class SqlStatementImpl extends EObjectImpl implements SqlStatement {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -238,20 +260,20 @@ public class SqlStatementImpl extends EObjectImpl implements SqlStatement {
 
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-            case EsbPackage.SQL_STATEMENT__QUERY_STRING:
-                setQueryString((String)newValue);
-                return;
-            case EsbPackage.SQL_STATEMENT__PARAMETERS:
-                getParameters().clear();
-                getParameters().addAll((Collection<? extends SqlParameterDefinition>)newValue);
-                return;
-            case EsbPackage.SQL_STATEMENT__RESULTS_ENABLED:
-                setResultsEnabled((Boolean)newValue);
-                return;
-            case EsbPackage.SQL_STATEMENT__RESULTS:
-                getResults().clear();
-                getResults().addAll((Collection<? extends SqlResultMapping>)newValue);
-                return;
+        case EsbPackage.SQL_STATEMENT__QUERY_STRING:
+            setQueryString((String) newValue);
+            return;
+        case EsbPackage.SQL_STATEMENT__PARAMETERS:
+            getParameters().clear();
+            getParameters().addAll((Collection<? extends SqlParameterDefinition>) newValue);
+            return;
+        case EsbPackage.SQL_STATEMENT__RESULTS_ENABLED:
+            setResultsEnabled((Boolean) newValue);
+            return;
+        case EsbPackage.SQL_STATEMENT__RESULTS:
+            getResults().clear();
+            getResults().addAll((Collection<? extends SqlResultMapping>) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -259,24 +281,25 @@ public class SqlStatementImpl extends EObjectImpl implements SqlStatement {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-            case EsbPackage.SQL_STATEMENT__QUERY_STRING:
-                setQueryString(QUERY_STRING_EDEFAULT);
-                return;
-            case EsbPackage.SQL_STATEMENT__PARAMETERS:
-                getParameters().clear();
-                return;
-            case EsbPackage.SQL_STATEMENT__RESULTS_ENABLED:
-                setResultsEnabled(RESULTS_ENABLED_EDEFAULT);
-                return;
-            case EsbPackage.SQL_STATEMENT__RESULTS:
-                getResults().clear();
-                return;
+        case EsbPackage.SQL_STATEMENT__QUERY_STRING:
+            setQueryString(QUERY_STRING_EDEFAULT);
+            return;
+        case EsbPackage.SQL_STATEMENT__PARAMETERS:
+            getParameters().clear();
+            return;
+        case EsbPackage.SQL_STATEMENT__RESULTS_ENABLED:
+            setResultsEnabled(RESULTS_ENABLED_EDEFAULT);
+            return;
+        case EsbPackage.SQL_STATEMENT__RESULTS:
+            getResults().clear();
+            return;
         }
         super.eUnset(featureID);
     }
@@ -284,20 +307,21 @@ public class SqlStatementImpl extends EObjectImpl implements SqlStatement {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-            case EsbPackage.SQL_STATEMENT__QUERY_STRING:
-                return QUERY_STRING_EDEFAULT == null ? queryString != null : !QUERY_STRING_EDEFAULT.equals(queryString);
-            case EsbPackage.SQL_STATEMENT__PARAMETERS:
-                return parameters != null && !parameters.isEmpty();
-            case EsbPackage.SQL_STATEMENT__RESULTS_ENABLED:
-                return resultsEnabled != RESULTS_ENABLED_EDEFAULT;
-            case EsbPackage.SQL_STATEMENT__RESULTS:
-                return results != null && !results.isEmpty();
+        case EsbPackage.SQL_STATEMENT__QUERY_STRING:
+            return QUERY_STRING_EDEFAULT == null ? queryString != null : !QUERY_STRING_EDEFAULT.equals(queryString);
+        case EsbPackage.SQL_STATEMENT__PARAMETERS:
+            return parameters != null && !parameters.isEmpty();
+        case EsbPackage.SQL_STATEMENT__RESULTS_ENABLED:
+            return resultsEnabled != RESULTS_ENABLED_EDEFAULT;
+        case EsbPackage.SQL_STATEMENT__RESULTS:
+            return results != null && !results.isEmpty();
         }
         return super.eIsSet(featureID);
     }
@@ -305,12 +329,14 @@ public class SqlStatementImpl extends EObjectImpl implements SqlStatement {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public String toString() {
-        if (eIsProxy()) return super.toString();
+        if (eIsProxy())
+            return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (queryString: ");

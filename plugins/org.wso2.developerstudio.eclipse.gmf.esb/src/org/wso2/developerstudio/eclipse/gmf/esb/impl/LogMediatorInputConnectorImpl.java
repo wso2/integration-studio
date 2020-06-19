@@ -22,6 +22,7 @@ public class LogMediatorInputConnectorImpl extends InputConnectorImpl implements
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected LogMediatorInputConnectorImpl() {
@@ -31,6 +32,7 @@ public class LogMediatorInputConnectorImpl extends InputConnectorImpl implements
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 

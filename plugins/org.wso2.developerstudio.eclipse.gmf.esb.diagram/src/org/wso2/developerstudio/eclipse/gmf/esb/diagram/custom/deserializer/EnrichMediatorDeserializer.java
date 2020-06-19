@@ -184,7 +184,7 @@ public class EnrichMediatorDeserializer extends AbstractEsbNodeDeserializer<Abst
                 SynapsePath xpath = target.getXpath();
 
                 NamespacedProperty nsp = EsbFactory.eINSTANCE.createNamespacedProperty();
-                
+
                 if (xpath == null) {
                     nsp.setPropertyValue("");
                 } else {

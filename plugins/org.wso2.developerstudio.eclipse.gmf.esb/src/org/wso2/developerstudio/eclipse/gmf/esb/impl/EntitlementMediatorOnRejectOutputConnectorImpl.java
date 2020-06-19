@@ -32,6 +32,7 @@ public class EntitlementMediatorOnRejectOutputConnectorImpl extends OutputConnec
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected EntitlementMediatorOnRejectOutputConnectorImpl() {
@@ -41,6 +42,7 @@ public class EntitlementMediatorOnRejectOutputConnectorImpl extends OutputConnec
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

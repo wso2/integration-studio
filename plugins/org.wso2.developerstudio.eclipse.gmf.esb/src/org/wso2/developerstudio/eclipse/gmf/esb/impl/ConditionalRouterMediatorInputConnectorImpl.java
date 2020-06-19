@@ -23,6 +23,7 @@ public class ConditionalRouterMediatorInputConnectorImpl extends InputConnectorI
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected ConditionalRouterMediatorInputConnectorImpl() {
@@ -32,6 +33,7 @@ public class ConditionalRouterMediatorInputConnectorImpl extends InputConnectorI
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

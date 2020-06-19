@@ -24,7 +24,8 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchDefaultParentContainer#getSwitchDefaultContainer <em>Switch Default Container</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchDefaultParentContainer#getSwitchDefaultContainer <em>Switch
+ * Default Container</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSwitchDefaultParentContainer()
@@ -40,6 +41,7 @@ public interface SwitchDefaultParentContainer extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Switch Default Container</em>' containment reference.
      * @see #setSwitchDefaultContainer(SwitchDefaultContainer)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSwitchDefaultParentContainer_SwitchDefaultContainer()
@@ -49,9 +51,12 @@ public interface SwitchDefaultParentContainer extends EsbNode {
     SwitchDefaultContainer getSwitchDefaultContainer();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchDefaultParentContainer#getSwitchDefaultContainer <em>Switch Default Container</em>}' containment reference.
+     * Sets the value of the
+     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchDefaultParentContainer#getSwitchDefaultContainer
+     * <em>Switch Default Container</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Switch Default Container</em>' containment reference.
      * @see #getSwitchDefaultContainer()
      * @generated

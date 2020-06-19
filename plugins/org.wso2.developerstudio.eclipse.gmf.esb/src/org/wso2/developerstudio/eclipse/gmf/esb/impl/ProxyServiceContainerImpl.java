@@ -27,17 +27,21 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ProxyServiceSequenceAndEndpointC
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyServiceContainerImpl#getSequenceAndEndpointContainer <em>Sequence And Endpoint Container</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyServiceContainerImpl#getFaultContainer <em>Fault Container</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyServiceContainerImpl#getSequenceAndEndpointContainer
+ * <em>Sequence And Endpoint Container</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyServiceContainerImpl#getFaultContainer <em>Fault
+ * Container</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class ProxyServiceContainerImpl extends EsbNodeImpl implements ProxyServiceContainer {
     /**
-     * The cached value of the '{@link #getSequenceAndEndpointContainer() <em>Sequence And Endpoint Container</em>}' containment reference.
+     * The cached value of the '{@link #getSequenceAndEndpointContainer() <em>Sequence And Endpoint Container</em>}'
+     * containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getSequenceAndEndpointContainer()
      * @generated
      * @ordered
@@ -48,6 +52,7 @@ public class ProxyServiceContainerImpl extends EsbNodeImpl implements ProxyServi
      * The cached value of the '{@link #getFaultContainer() <em>Fault Container</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getFaultContainer()
      * @generated
      * @ordered
@@ -57,6 +62,7 @@ public class ProxyServiceContainerImpl extends EsbNodeImpl implements ProxyServi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected ProxyServiceContainerImpl() {
@@ -66,6 +72,7 @@ public class ProxyServiceContainerImpl extends EsbNodeImpl implements ProxyServi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -76,6 +83,7 @@ public class ProxyServiceContainerImpl extends EsbNodeImpl implements ProxyServi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public ProxyServiceSequenceAndEndpointContainer getSequenceAndEndpointContainer() {
@@ -85,6 +93,7 @@ public class ProxyServiceContainerImpl extends EsbNodeImpl implements ProxyServi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public NotificationChain basicSetSequenceAndEndpointContainer(
@@ -92,8 +101,13 @@ public class ProxyServiceContainerImpl extends EsbNodeImpl implements ProxyServi
         ProxyServiceSequenceAndEndpointContainer oldSequenceAndEndpointContainer = sequenceAndEndpointContainer;
         sequenceAndEndpointContainer = newSequenceAndEndpointContainer;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.PROXY_SERVICE_CONTAINER__SEQUENCE_AND_ENDPOINT_CONTAINER, oldSequenceAndEndpointContainer, newSequenceAndEndpointContainer);
-            if (msgs == null) msgs = notification; else msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+                    EsbPackage.PROXY_SERVICE_CONTAINER__SEQUENCE_AND_ENDPOINT_CONTAINER,
+                    oldSequenceAndEndpointContainer, newSequenceAndEndpointContainer);
+            if (msgs == null)
+                msgs = notification;
+            else
+                msgs.add(notification);
         }
         return msgs;
     }
@@ -101,6 +115,7 @@ public class ProxyServiceContainerImpl extends EsbNodeImpl implements ProxyServi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setSequenceAndEndpointContainer(
@@ -108,19 +123,26 @@ public class ProxyServiceContainerImpl extends EsbNodeImpl implements ProxyServi
         if (newSequenceAndEndpointContainer != sequenceAndEndpointContainer) {
             NotificationChain msgs = null;
             if (sequenceAndEndpointContainer != null)
-                msgs = ((InternalEObject)sequenceAndEndpointContainer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.PROXY_SERVICE_CONTAINER__SEQUENCE_AND_ENDPOINT_CONTAINER, null, msgs);
+                msgs = ((InternalEObject) sequenceAndEndpointContainer).eInverseRemove(this,
+                        EOPPOSITE_FEATURE_BASE - EsbPackage.PROXY_SERVICE_CONTAINER__SEQUENCE_AND_ENDPOINT_CONTAINER,
+                        null, msgs);
             if (newSequenceAndEndpointContainer != null)
-                msgs = ((InternalEObject)newSequenceAndEndpointContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.PROXY_SERVICE_CONTAINER__SEQUENCE_AND_ENDPOINT_CONTAINER, null, msgs);
+                msgs = ((InternalEObject) newSequenceAndEndpointContainer).eInverseAdd(this,
+                        EOPPOSITE_FEATURE_BASE - EsbPackage.PROXY_SERVICE_CONTAINER__SEQUENCE_AND_ENDPOINT_CONTAINER,
+                        null, msgs);
             msgs = basicSetSequenceAndEndpointContainer(newSequenceAndEndpointContainer, msgs);
-            if (msgs != null) msgs.dispatch();
-        }
-        else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROXY_SERVICE_CONTAINER__SEQUENCE_AND_ENDPOINT_CONTAINER, newSequenceAndEndpointContainer, newSequenceAndEndpointContainer));
+            if (msgs != null)
+                msgs.dispatch();
+        } else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET,
+                    EsbPackage.PROXY_SERVICE_CONTAINER__SEQUENCE_AND_ENDPOINT_CONTAINER,
+                    newSequenceAndEndpointContainer, newSequenceAndEndpointContainer));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public ProxyServiceFaultContainer getFaultContainer() {
@@ -130,6 +152,7 @@ public class ProxyServiceContainerImpl extends EsbNodeImpl implements ProxyServi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public NotificationChain basicSetFaultContainer(ProxyServiceFaultContainer newFaultContainer,
@@ -137,8 +160,12 @@ public class ProxyServiceContainerImpl extends EsbNodeImpl implements ProxyServi
         ProxyServiceFaultContainer oldFaultContainer = faultContainer;
         faultContainer = newFaultContainer;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.PROXY_SERVICE_CONTAINER__FAULT_CONTAINER, oldFaultContainer, newFaultContainer);
-            if (msgs == null) msgs = notification; else msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+                    EsbPackage.PROXY_SERVICE_CONTAINER__FAULT_CONTAINER, oldFaultContainer, newFaultContainer);
+            if (msgs == null)
+                msgs = notification;
+            else
+                msgs.add(notification);
         }
         return msgs;
     }
@@ -146,34 +173,39 @@ public class ProxyServiceContainerImpl extends EsbNodeImpl implements ProxyServi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setFaultContainer(ProxyServiceFaultContainer newFaultContainer) {
         if (newFaultContainer != faultContainer) {
             NotificationChain msgs = null;
             if (faultContainer != null)
-                msgs = ((InternalEObject)faultContainer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.PROXY_SERVICE_CONTAINER__FAULT_CONTAINER, null, msgs);
+                msgs = ((InternalEObject) faultContainer).eInverseRemove(this,
+                        EOPPOSITE_FEATURE_BASE - EsbPackage.PROXY_SERVICE_CONTAINER__FAULT_CONTAINER, null, msgs);
             if (newFaultContainer != null)
-                msgs = ((InternalEObject)newFaultContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.PROXY_SERVICE_CONTAINER__FAULT_CONTAINER, null, msgs);
+                msgs = ((InternalEObject) newFaultContainer).eInverseAdd(this,
+                        EOPPOSITE_FEATURE_BASE - EsbPackage.PROXY_SERVICE_CONTAINER__FAULT_CONTAINER, null, msgs);
             msgs = basicSetFaultContainer(newFaultContainer, msgs);
-            if (msgs != null) msgs.dispatch();
-        }
-        else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROXY_SERVICE_CONTAINER__FAULT_CONTAINER, newFaultContainer, newFaultContainer));
+            if (msgs != null)
+                msgs.dispatch();
+        } else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROXY_SERVICE_CONTAINER__FAULT_CONTAINER,
+                    newFaultContainer, newFaultContainer));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-            case EsbPackage.PROXY_SERVICE_CONTAINER__SEQUENCE_AND_ENDPOINT_CONTAINER:
-                return basicSetSequenceAndEndpointContainer(null, msgs);
-            case EsbPackage.PROXY_SERVICE_CONTAINER__FAULT_CONTAINER:
-                return basicSetFaultContainer(null, msgs);
+        case EsbPackage.PROXY_SERVICE_CONTAINER__SEQUENCE_AND_ENDPOINT_CONTAINER:
+            return basicSetSequenceAndEndpointContainer(null, msgs);
+        case EsbPackage.PROXY_SERVICE_CONTAINER__FAULT_CONTAINER:
+            return basicSetFaultContainer(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -181,15 +213,16 @@ public class ProxyServiceContainerImpl extends EsbNodeImpl implements ProxyServi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-            case EsbPackage.PROXY_SERVICE_CONTAINER__SEQUENCE_AND_ENDPOINT_CONTAINER:
-                return getSequenceAndEndpointContainer();
-            case EsbPackage.PROXY_SERVICE_CONTAINER__FAULT_CONTAINER:
-                return getFaultContainer();
+        case EsbPackage.PROXY_SERVICE_CONTAINER__SEQUENCE_AND_ENDPOINT_CONTAINER:
+            return getSequenceAndEndpointContainer();
+        case EsbPackage.PROXY_SERVICE_CONTAINER__FAULT_CONTAINER:
+            return getFaultContainer();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -197,17 +230,18 @@ public class ProxyServiceContainerImpl extends EsbNodeImpl implements ProxyServi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-            case EsbPackage.PROXY_SERVICE_CONTAINER__SEQUENCE_AND_ENDPOINT_CONTAINER:
-                setSequenceAndEndpointContainer((ProxyServiceSequenceAndEndpointContainer)newValue);
-                return;
-            case EsbPackage.PROXY_SERVICE_CONTAINER__FAULT_CONTAINER:
-                setFaultContainer((ProxyServiceFaultContainer)newValue);
-                return;
+        case EsbPackage.PROXY_SERVICE_CONTAINER__SEQUENCE_AND_ENDPOINT_CONTAINER:
+            setSequenceAndEndpointContainer((ProxyServiceSequenceAndEndpointContainer) newValue);
+            return;
+        case EsbPackage.PROXY_SERVICE_CONTAINER__FAULT_CONTAINER:
+            setFaultContainer((ProxyServiceFaultContainer) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -215,17 +249,18 @@ public class ProxyServiceContainerImpl extends EsbNodeImpl implements ProxyServi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-            case EsbPackage.PROXY_SERVICE_CONTAINER__SEQUENCE_AND_ENDPOINT_CONTAINER:
-                setSequenceAndEndpointContainer((ProxyServiceSequenceAndEndpointContainer)null);
-                return;
-            case EsbPackage.PROXY_SERVICE_CONTAINER__FAULT_CONTAINER:
-                setFaultContainer((ProxyServiceFaultContainer)null);
-                return;
+        case EsbPackage.PROXY_SERVICE_CONTAINER__SEQUENCE_AND_ENDPOINT_CONTAINER:
+            setSequenceAndEndpointContainer((ProxyServiceSequenceAndEndpointContainer) null);
+            return;
+        case EsbPackage.PROXY_SERVICE_CONTAINER__FAULT_CONTAINER:
+            setFaultContainer((ProxyServiceFaultContainer) null);
+            return;
         }
         super.eUnset(featureID);
     }
@@ -233,15 +268,16 @@ public class ProxyServiceContainerImpl extends EsbNodeImpl implements ProxyServi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-            case EsbPackage.PROXY_SERVICE_CONTAINER__SEQUENCE_AND_ENDPOINT_CONTAINER:
-                return sequenceAndEndpointContainer != null;
-            case EsbPackage.PROXY_SERVICE_CONTAINER__FAULT_CONTAINER:
-                return faultContainer != null;
+        case EsbPackage.PROXY_SERVICE_CONTAINER__SEQUENCE_AND_ENDPOINT_CONTAINER:
+            return sequenceAndEndpointContainer != null;
+        case EsbPackage.PROXY_SERVICE_CONTAINER__FAULT_CONTAINER:
+            return faultContainer != null;
         }
         return super.eIsSet(featureID);
     }

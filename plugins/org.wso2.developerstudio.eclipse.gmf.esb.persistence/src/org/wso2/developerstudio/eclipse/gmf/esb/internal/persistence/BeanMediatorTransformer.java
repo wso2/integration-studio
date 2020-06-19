@@ -63,8 +63,8 @@ public class BeanMediatorTransformer extends AbstractEsbNodeTransformer {
         }
     }
 
-    public static BeanMediatorExt createBeanMediator(EsbNode subject, TransformationInfo information, boolean isForValidation)
-            throws TransformerException, JaxenException {
+    public static BeanMediatorExt createBeanMediator(EsbNode subject, TransformationInfo information,
+            boolean isForValidation) throws TransformerException, JaxenException {
 
         /*
          * Check subject.

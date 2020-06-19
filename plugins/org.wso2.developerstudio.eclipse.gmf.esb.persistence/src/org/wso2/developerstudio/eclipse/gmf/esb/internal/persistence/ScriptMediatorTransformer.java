@@ -68,8 +68,8 @@ public class ScriptMediatorTransformer extends AbstractEsbNodeTransformer {
         }
     }
 
-    public static org.apache.synapse.mediators.bsf.ScriptMediator createScriptMediator(EsbNode subject, boolean isForValidation)
-            throws JaxenException, TransformerException {
+    public static org.apache.synapse.mediators.bsf.ScriptMediator createScriptMediator(EsbNode subject,
+            boolean isForValidation) throws JaxenException, TransformerException {
         Assert.isTrue(subject instanceof ScriptMediator, "Invalid subject.");
         ScriptMediator visualScript = (ScriptMediator) subject;
         ScriptType scriptType = visualScript.getScriptType();
@@ -96,9 +96,9 @@ public class ScriptMediatorTransformer extends AbstractEsbNodeTransformer {
             } else {
                 NamespacedProperty scriptDynamicKey = visualScript.getScriptDynamicKey();
                 SynapseXPath synapseXPath;
-                if(!isForValidation && StringUtils.isEmpty(scriptDynamicKey.getPropertyValue())) {
+                if (!isForValidation && StringUtils.isEmpty(scriptDynamicKey.getPropertyValue())) {
                     synapseXPath = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
-                }else {
+                } else {
                     synapseXPath = new SynapseXPath(scriptDynamicKey.getPropertyValue());
                 }
 

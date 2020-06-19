@@ -32,6 +32,7 @@ public class AddressingEndpointOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected AddressingEndpointOutputConnectorImpl() {
@@ -41,6 +42,7 @@ public class AddressingEndpointOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

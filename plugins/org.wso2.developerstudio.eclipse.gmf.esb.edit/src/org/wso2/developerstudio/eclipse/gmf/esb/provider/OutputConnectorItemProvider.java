@@ -27,6 +27,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.OutputConnector;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.OutputConnector} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class OutputConnectorItemProvider extends EsbConnectorItemProvider {
@@ -34,6 +35,7 @@ public class OutputConnectorItemProvider extends EsbConnectorItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public OutputConnectorItemProvider(AdapterFactory adapterFactory) {
@@ -44,6 +46,7 @@ public class OutputConnectorItemProvider extends EsbConnectorItemProvider {
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -62,6 +65,7 @@ public class OutputConnectorItemProvider extends EsbConnectorItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -78,6 +82,7 @@ public class OutputConnectorItemProvider extends EsbConnectorItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -93,6 +98,7 @@ public class OutputConnectorItemProvider extends EsbConnectorItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -106,6 +112,7 @@ public class OutputConnectorItemProvider extends EsbConnectorItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -114,10 +121,10 @@ public class OutputConnectorItemProvider extends EsbConnectorItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(OutputConnector.class)) {
-            case EsbPackage.OUTPUT_CONNECTOR__OUTGOING_LINK:
-            case EsbPackage.OUTPUT_CONNECTOR__COMMENT_MEDIATORS:
-                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-                return;
+        case EsbPackage.OUTPUT_CONNECTOR__OUTGOING_LINK:
+        case EsbPackage.OUTPUT_CONNECTOR__COMMENT_MEDIATORS:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+            return;
         }
         super.notifyChanged(notification);
     }
@@ -127,6 +134,7 @@ public class OutputConnectorItemProvider extends EsbConnectorItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -134,15 +142,11 @@ public class OutputConnectorItemProvider extends EsbConnectorItemProvider {
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add
-            (createChildParameter
-                (EsbPackage.Literals.OUTPUT_CONNECTOR__OUTGOING_LINK,
-                 EsbFactory.eINSTANCE.createEsbLink()));
+        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.OUTPUT_CONNECTOR__OUTGOING_LINK,
+                EsbFactory.eINSTANCE.createEsbLink()));
 
-        newChildDescriptors.add
-            (createChildParameter
-                (EsbPackage.Literals.OUTPUT_CONNECTOR__COMMENT_MEDIATORS,
-                 EsbFactory.eINSTANCE.createCommentMediator()));
+        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.OUTPUT_CONNECTOR__COMMENT_MEDIATORS,
+                EsbFactory.eINSTANCE.createCommentMediator()));
     }
 
 }

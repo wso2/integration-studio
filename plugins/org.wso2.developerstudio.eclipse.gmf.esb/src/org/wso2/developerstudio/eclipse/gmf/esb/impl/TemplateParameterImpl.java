@@ -33,7 +33,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TemplateParameter;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateParameterImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateParameterImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
@@ -43,6 +43,7 @@ public class TemplateParameterImpl extends EObjectImpl implements TemplateParame
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getName()
      * @generated
      * @ordered
@@ -53,6 +54,7 @@ public class TemplateParameterImpl extends EObjectImpl implements TemplateParame
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getName()
      * @generated
      * @ordered
@@ -62,6 +64,7 @@ public class TemplateParameterImpl extends EObjectImpl implements TemplateParame
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected TemplateParameterImpl() {
@@ -71,6 +74,7 @@ public class TemplateParameterImpl extends EObjectImpl implements TemplateParame
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -81,6 +85,7 @@ public class TemplateParameterImpl extends EObjectImpl implements TemplateParame
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getName() {
@@ -90,6 +95,7 @@ public class TemplateParameterImpl extends EObjectImpl implements TemplateParame
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setName(String newName) {
@@ -102,13 +108,14 @@ public class TemplateParameterImpl extends EObjectImpl implements TemplateParame
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-            case EsbPackage.TEMPLATE_PARAMETER__NAME:
-                return getName();
+        case EsbPackage.TEMPLATE_PARAMETER__NAME:
+            return getName();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -116,14 +123,15 @@ public class TemplateParameterImpl extends EObjectImpl implements TemplateParame
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-            case EsbPackage.TEMPLATE_PARAMETER__NAME:
-                setName((String)newValue);
-                return;
+        case EsbPackage.TEMPLATE_PARAMETER__NAME:
+            setName((String) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -131,14 +139,15 @@ public class TemplateParameterImpl extends EObjectImpl implements TemplateParame
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-            case EsbPackage.TEMPLATE_PARAMETER__NAME:
-                setName(NAME_EDEFAULT);
-                return;
+        case EsbPackage.TEMPLATE_PARAMETER__NAME:
+            setName(NAME_EDEFAULT);
+            return;
         }
         super.eUnset(featureID);
     }
@@ -146,13 +155,14 @@ public class TemplateParameterImpl extends EObjectImpl implements TemplateParame
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-            case EsbPackage.TEMPLATE_PARAMETER__NAME:
-                return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+        case EsbPackage.TEMPLATE_PARAMETER__NAME:
+            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
         }
         return super.eIsSet(featureID);
     }
@@ -160,11 +170,13 @@ public class TemplateParameterImpl extends EObjectImpl implements TemplateParame
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy()) return super.toString();
+        if (eIsProxy())
+            return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (name: ");

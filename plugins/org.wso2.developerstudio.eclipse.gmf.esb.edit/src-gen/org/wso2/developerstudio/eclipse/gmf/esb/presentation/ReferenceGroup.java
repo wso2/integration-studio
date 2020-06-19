@@ -38,58 +38,56 @@ import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.Connect
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorRoot;
 
 public class ReferenceGroup extends ReferencesTable {
-    
+
     private FormToolkit widgetFactory;
     private Object input;
     private PropertyParameterRenderer propertyRenderer;
     private String schemaName;
     private ConnectionParameterRenderer connectionRenderer;
 
-    
-
     public ReferenceGroup(String labeltoDisplay, PropertyParameterRenderer propertyRenderer) {
         super(labeltoDisplay, null);
         this.propertyRenderer = propertyRenderer;
     }
-    
+
     public ReferenceGroup(String labeltoDisplay, PropertyParameterRenderer propertyRenderer, String schemaName) {
         super(labeltoDisplay, null);
         this.propertyRenderer = propertyRenderer;
         this.schemaName = schemaName;
     }
-    
+
     public ReferenceGroup(ConnectionParameterRenderer conenctionRenderer) {
-    	super("", null);
+        super("", null);
         this.connectionRenderer = conenctionRenderer;
     }
-    
+
     @Override
     public void createControls(Composite parent) {
-        
+
         ConnectorRoot connectorRoot = ConnectorSchemaHolder.getInstance().getConnectorOperationSchema(getSchemaName());
         propertyRenderer.generate(widgetFactory, parent.getParent(), connectorRoot);
-        
+
     }
-    
+
     public HashMap<String, Control> createControls(Composite parent, ConnectorRoot root,
             Map<String, String> updateConfigMap, AttributeValue allowedConnectionTypes, String connectorName) {
         return connectionRenderer.generate(parent, root, updateConfigMap, allowedConnectionTypes, connectorName);
     }
-    
+
     @Override
     public void createControls(Composite parent, FormToolkit widgetFactory) {
         this.widgetFactory = widgetFactory;
         createControls(parent);
     }
-    
+
     public void setSchemaName(String schemaName) {
         this.schemaName = schemaName;
     }
-    
+
     public String getSchemaName() {
         return this.schemaName;
     }
-    
+
     /**
      * input of viewer
      * 

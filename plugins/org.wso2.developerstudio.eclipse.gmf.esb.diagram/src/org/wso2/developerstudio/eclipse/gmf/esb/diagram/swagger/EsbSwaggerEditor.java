@@ -41,83 +41,83 @@ import org.wso2.developerstudio.eclipse.webui.core.exception.WebUIException;
 
 // Represents the DSS visual editor page
 public class EsbSwaggerEditor extends AbstractWebBasedEditor {
-	private static final String WEB_APP_PATH = "swagger-editor";
-	private static final String INDEX_HTML_FILE_NAME = "index.html";
-	public static final int EMBEDDED_JETTY_SERVER_PORT = 7774;
+    private static final String WEB_APP_PATH = "swagger-editor";
+    private static final String INDEX_HTML_FILE_NAME = "index.html";
+    public static final int EMBEDDED_JETTY_SERVER_PORT = 7774;
 
-	public EsbSwaggerEditor() {
-		super();
-	}
+    public EsbSwaggerEditor() {
+        super();
+    }
 
-	public EsbSwaggerEditor(MultiPageEditorPart multiPageEditor) {
-		super(multiPageEditor);
-	}
+    public EsbSwaggerEditor(MultiPageEditorPart multiPageEditor) {
+        super(multiPageEditor);
+    }
 
-	@Override
-	public String getEditorName() {
-		return "Swagger Editor";
-	}
+    @Override
+    public String getEditorName() {
+        return "Swagger Editor";
+    }
 
-	@Override
-	public String getEditorTitleToolTip() {
-		return "Swagger Editor";
-	}
+    @Override
+    public String getEditorTitleToolTip() {
+        return "Swagger Editor";
+    }
 
-	@Override
-	public String getEditorURL() throws WebUIException {
-		Bundle bundle = Platform.getBundle(Activator.PLUGIN_ID);
-		URL webAppURL = bundle.getEntry(WEB_APP_PATH);
-		File resolvedWebAppFolder;
-		File resolvedWebAppIndex;
-		try {
-			URL resolvedFolderURL = FileLocator.toFileURL(webAppURL);
-			URI resolvedFolderURI = new URI(resolvedFolderURL.getProtocol(), resolvedFolderURL.getPath(), null);
-			resolvedWebAppFolder = new File(resolvedFolderURI);
-			resolvedWebAppIndex = new File(resolvedWebAppFolder, INDEX_HTML_FILE_NAME);
+    @Override
+    public String getEditorURL() throws WebUIException {
+        Bundle bundle = Platform.getBundle(Activator.PLUGIN_ID);
+        URL webAppURL = bundle.getEntry(WEB_APP_PATH);
+        File resolvedWebAppFolder;
+        File resolvedWebAppIndex;
+        try {
+            URL resolvedFolderURL = FileLocator.toFileURL(webAppURL);
+            URI resolvedFolderURI = new URI(resolvedFolderURL.getProtocol(), resolvedFolderURL.getPath(), null);
+            resolvedWebAppFolder = new File(resolvedFolderURI);
+            resolvedWebAppIndex = new File(resolvedWebAppFolder, INDEX_HTML_FILE_NAME);
 
-			return resolvedWebAppIndex.getAbsolutePath() + "?port=" + getJettyPort();
-		} catch (IOException | URISyntaxException e) {
-			throw new WebUIException("Error while resolving the file path of web app.", e);
-		}
+            return resolvedWebAppIndex.getAbsolutePath() + "?port=" + getJettyPort();
+        } catch (IOException | URISyntaxException e) {
+            throw new WebUIException("Error while resolving the file path of web app.", e);
+        }
 
-	}
+    }
 
-	private String getJettyPort() {
-		IEclipsePreferences rootNode = Platform.getPreferencesService().getRootNode();
-		return rootNode.get("portDetails", String.valueOf(EMBEDDED_JETTY_SERVER_PORT));
-	}
+    private String getJettyPort() {
+        IEclipsePreferences rootNode = Platform.getPreferencesService().getRootNode();
+        return rootNode.get("portDetails", String.valueOf(EMBEDDED_JETTY_SERVER_PORT));
+    }
 
-	@Override
-	public void createPartControl(Composite parent) {
-		browser = createBrowser(parent);
-		String port = getPortValueForJS();
-		browser.setUrl("http://127.0.0.1:" + port + "/swagger-editor");
-	}
+    @Override
+    public void createPartControl(Composite parent) {
+        browser = createBrowser(parent);
+        String port = getPortValueForJS();
+        browser.setUrl("http://127.0.0.1:" + port + "/swagger-editor");
+    }
 
-	private Browser createBrowser(Composite parent) {
-		GridLayout gridLayout = new GridLayout();
-		gridLayout.numColumns = 1;
-		parent.setLayout(gridLayout);
-		Browser browser = new Browser(parent, WebEngineUtils.getBrowserType());
-		GridData data = new GridData();
-		data.horizontalAlignment = GridData.FILL;
-		data.verticalAlignment = GridData.FILL;
-		data.horizontalSpan = 1;
-		data.grabExcessHorizontalSpace = true;
-		data.grabExcessVerticalSpace = true;
-		browser.setLayoutData(data);
-		return browser;
-	}
+    private Browser createBrowser(Composite parent) {
+        GridLayout gridLayout = new GridLayout();
+        gridLayout.numColumns = 1;
+        parent.setLayout(gridLayout);
+        Browser browser = new Browser(parent, WebEngineUtils.getBrowserType());
+        GridData data = new GridData();
+        data.horizontalAlignment = GridData.FILL;
+        data.verticalAlignment = GridData.FILL;
+        data.horizontalSpan = 1;
+        data.grabExcessHorizontalSpace = true;
+        data.grabExcessVerticalSpace = true;
+        browser.setLayoutData(data);
+        return browser;
+    }
 
-	/**
-	 * This method gets port value retrieved from preferences
-	 * 
-	 * @param browser
-	 *            started browser instance
-	 */
-	private String getPortValueForJS() {
-		IEclipsePreferences rootNode = Platform.getPreferencesService().getRootNode();
-		return rootNode.get("portDetails", String.valueOf(FunctionServerConstants.EMBEDDED_SERVER_PORT));
-	}
+    /**
+     * This method gets port value retrieved from preferences
+     * 
+     * @param browser
+     *            started browser instance
+     */
+    private String getPortValueForJS() {
+        IEclipsePreferences rootNode = Platform.getPreferencesService().getRootNode();
+        return rootNode.get("portDetails", String.valueOf(FunctionServerConstants.EMBEDDED_SERVER_PORT));
+    }
 
-} 
+}

@@ -5,8 +5,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb.parts;
 
 // Start of user code for imports
 
-
-
 // End of user code
 
 /**
@@ -15,19 +13,16 @@ package org.wso2.developerstudio.eclipse.gmf.esb.parts;
  */
 public interface EntitlementContainerPropertiesEditionPart {
 
+    /**
+     * Returns the internationalized title text.
+     * 
+     * @return the internationalized title text.
+     * 
+     */
+    public String getTitle();
 
+    // Start of user code for additional methods
 
-
-	/**
-	 * Returns the internationalized title text.
-	 * 
-	 * @return the internationalized title text.
-	 * 
-	 */
-	public String getTitle();
-
-	// Start of user code for additional methods
-	
-	// End of user code
+    // End of user code
 
 }

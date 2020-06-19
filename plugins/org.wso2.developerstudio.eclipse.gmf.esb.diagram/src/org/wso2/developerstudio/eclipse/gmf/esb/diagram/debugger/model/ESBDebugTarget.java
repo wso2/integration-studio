@@ -146,13 +146,13 @@ public class ESBDebugTarget extends ESBDebugElement implements IDebugTarget, Eve
                         propertyChangeCommandEB.unsubscribe(debuggerThread.getTopStackFrame());
                         debuggerThread.getTopStackFrame().fireTerminateEvent();
                     }
-                    
+
                     setState(ESBDebuggerState.TERMINATED);
                     clearSuspendedEventStatus();
                     DebugPlugin.getDefault().getBreakpointManager().removeBreakpointListener(this);
                     debugTargetEventBroker.unsubscribe(this);
                     this.fireTerminateEvent();
-                    
+
                     // Switch back to ESB perspective if the user is in the debug perspective
                     String currentPerspective = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
                             .getPerspective().getLabel();
@@ -163,7 +163,7 @@ public class ESBDebugTarget extends ESBDebugElement implements IDebugTarget, Eve
                     } catch (WorkbenchException e) {
                         log.error("Error occurred while switching to ESB perspective " + e.getMessage());
                     }
-                    
+
                     // Shut down the micro-integrator runtime
                     MicroIntegratorInstance.getInstance().stop();
 

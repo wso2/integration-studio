@@ -15,29 +15,48 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getEntitlementServerURL <em>Entitlement Server URL</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getUsername <em>Username</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getPassword <em>Password</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getCallbackClassName <em>Callback Class Name</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getThriftHost <em>Thrift Host</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getThriftPort <em>Thrift Port</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getEntitlementClientType <em>Entitlement Client Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getOnRejectSequenceType <em>On Reject Sequence Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getOnAcceptSequenceType <em>On Accept Sequence Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getAdviceSequenceType <em>Advice Sequence Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getObligationsSequenceType <em>Obligations Sequence Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getOnRejectSequenceKey <em>On Reject Sequence Key</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getOnAcceptSequenceKey <em>On Accept Sequence Key</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getAdviceSequenceKey <em>Advice Sequence Key</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getObligationsSequenceKey <em>Obligations Sequence Key</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getEntitlementContainer <em>Entitlement Container</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getOnRejectOutputConnector <em>On Reject Output Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getOnAcceptOutputConnector <em>On Accept Output Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getAdviceOutputConnector <em>Advice Output Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getObligationsOutputConnector <em>Obligations Output Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getCallbackHandler <em>Callback Handler</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getEntitlementServerURL <em>Entitlement
+ * Server URL</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getUsername <em>Username</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getPassword <em>Password</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getCallbackClassName <em>Callback Class
+ * Name</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getThriftHost <em>Thrift Host</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getThriftPort <em>Thrift Port</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getEntitlementClientType <em>Entitlement
+ * Client Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getOnRejectSequenceType <em>On Reject
+ * Sequence Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getOnAcceptSequenceType <em>On Accept
+ * Sequence Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getAdviceSequenceType <em>Advice Sequence
+ * Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getObligationsSequenceType <em>Obligations
+ * Sequence Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getOnRejectSequenceKey <em>On Reject Sequence
+ * Key</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getOnAcceptSequenceKey <em>On Accept Sequence
+ * Key</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getAdviceSequenceKey <em>Advice Sequence
+ * Key</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getObligationsSequenceKey <em>Obligations
+ * Sequence Key</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getEntitlementContainer <em>Entitlement
+ * Container</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getInputConnector <em>Input
+ * Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getOutputConnector <em>Output
+ * Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getOnRejectOutputConnector <em>On Reject
+ * Output Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getOnAcceptOutputConnector <em>On Accept
+ * Output Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getAdviceOutputConnector <em>Advice Output
+ * Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getObligationsOutputConnector <em>Obligations
+ * Output Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getCallbackHandler <em>Callback
+ * Handler</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEntitlementMediator()
@@ -54,6 +73,7 @@ public interface EntitlementMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Entitlement Server URL</em>' attribute.
      * @see #setEntitlementServerURL(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEntitlementMediator_EntitlementServerURL()
@@ -63,9 +83,12 @@ public interface EntitlementMediator extends Mediator {
     String getEntitlementServerURL();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getEntitlementServerURL <em>Entitlement Server URL</em>}' attribute.
+     * Sets the value of the
+     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getEntitlementServerURL <em>Entitlement
+     * Server URL</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Entitlement Server URL</em>' attribute.
      * @see #getEntitlementServerURL()
      * @generated
@@ -81,6 +104,7 @@ public interface EntitlementMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Username</em>' attribute.
      * @see #setUsername(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEntitlementMediator_Username()
@@ -90,9 +114,11 @@ public interface EntitlementMediator extends Mediator {
     String getUsername();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getUsername <em>Username</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getUsername
+     * <em>Username</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Username</em>' attribute.
      * @see #getUsername()
      * @generated
@@ -108,6 +134,7 @@ public interface EntitlementMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Password</em>' attribute.
      * @see #setPassword(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEntitlementMediator_Password()
@@ -117,9 +144,11 @@ public interface EntitlementMediator extends Mediator {
     String getPassword();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getPassword <em>Password</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getPassword
+     * <em>Password</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Password</em>' attribute.
      * @see #getPassword()
      * @generated
@@ -134,6 +163,7 @@ public interface EntitlementMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Callback Class Name</em>' attribute.
      * @see #setCallbackClassName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEntitlementMediator_CallbackClassName()
@@ -143,9 +173,11 @@ public interface EntitlementMediator extends Mediator {
     String getCallbackClassName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getCallbackClassName <em>Callback Class Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getCallbackClassName
+     * <em>Callback Class Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Callback Class Name</em>' attribute.
      * @see #getCallbackClassName()
      * @generated
@@ -160,6 +192,7 @@ public interface EntitlementMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Thrift Host</em>' attribute.
      * @see #setThriftHost(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEntitlementMediator_ThriftHost()
@@ -169,9 +202,11 @@ public interface EntitlementMediator extends Mediator {
     String getThriftHost();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getThriftHost <em>Thrift Host</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getThriftHost
+     * <em>Thrift Host</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Thrift Host</em>' attribute.
      * @see #getThriftHost()
      * @generated
@@ -186,6 +221,7 @@ public interface EntitlementMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Thrift Port</em>' attribute.
      * @see #setThriftPort(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEntitlementMediator_ThriftPort()
@@ -195,9 +231,11 @@ public interface EntitlementMediator extends Mediator {
     String getThriftPort();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getThriftPort <em>Thrift Port</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getThriftPort
+     * <em>Thrift Port</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Thrift Port</em>' attribute.
      * @see #getThriftPort()
      * @generated
@@ -213,6 +251,7 @@ public interface EntitlementMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Entitlement Client Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EntitlementClientType
      * @see #setEntitlementClientType(EntitlementClientType)
@@ -223,9 +262,12 @@ public interface EntitlementMediator extends Mediator {
     EntitlementClientType getEntitlementClientType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getEntitlementClientType <em>Entitlement Client Type</em>}' attribute.
+     * Sets the value of the
+     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getEntitlementClientType <em>Entitlement
+     * Client Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Entitlement Client Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EntitlementClientType
      * @see #getEntitlementClientType()
@@ -242,6 +284,7 @@ public interface EntitlementMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>On Reject Sequence Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EntitlementSequenceType
      * @see #setOnRejectSequenceType(EntitlementSequenceType)
@@ -252,9 +295,12 @@ public interface EntitlementMediator extends Mediator {
     EntitlementSequenceType getOnRejectSequenceType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getOnRejectSequenceType <em>On Reject Sequence Type</em>}' attribute.
+     * Sets the value of the
+     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getOnRejectSequenceType <em>On Reject
+     * Sequence Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>On Reject Sequence Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EntitlementSequenceType
      * @see #getOnRejectSequenceType()
@@ -271,6 +317,7 @@ public interface EntitlementMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>On Accept Sequence Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EntitlementSequenceType
      * @see #setOnAcceptSequenceType(EntitlementSequenceType)
@@ -281,9 +328,12 @@ public interface EntitlementMediator extends Mediator {
     EntitlementSequenceType getOnAcceptSequenceType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getOnAcceptSequenceType <em>On Accept Sequence Type</em>}' attribute.
+     * Sets the value of the
+     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getOnAcceptSequenceType <em>On Accept
+     * Sequence Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>On Accept Sequence Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EntitlementSequenceType
      * @see #getOnAcceptSequenceType()
@@ -300,6 +350,7 @@ public interface EntitlementMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Advice Sequence Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EntitlementSequenceType
      * @see #setAdviceSequenceType(EntitlementSequenceType)
@@ -310,9 +361,11 @@ public interface EntitlementMediator extends Mediator {
     EntitlementSequenceType getAdviceSequenceType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getAdviceSequenceType <em>Advice Sequence Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getAdviceSequenceType
+     * <em>Advice Sequence Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Advice Sequence Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EntitlementSequenceType
      * @see #getAdviceSequenceType()
@@ -329,6 +382,7 @@ public interface EntitlementMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Obligations Sequence Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EntitlementSequenceType
      * @see #setObligationsSequenceType(EntitlementSequenceType)
@@ -339,9 +393,12 @@ public interface EntitlementMediator extends Mediator {
     EntitlementSequenceType getObligationsSequenceType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getObligationsSequenceType <em>Obligations Sequence Type</em>}' attribute.
+     * Sets the value of the
+     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getObligationsSequenceType <em>Obligations
+     * Sequence Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Obligations Sequence Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EntitlementSequenceType
      * @see #getObligationsSequenceType()
@@ -357,6 +414,7 @@ public interface EntitlementMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>On Reject Sequence Key</em>' containment reference.
      * @see #setOnRejectSequenceKey(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEntitlementMediator_OnRejectSequenceKey()
@@ -366,9 +424,11 @@ public interface EntitlementMediator extends Mediator {
     RegistryKeyProperty getOnRejectSequenceKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getOnRejectSequenceKey <em>On Reject Sequence Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getOnRejectSequenceKey
+     * <em>On Reject Sequence Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>On Reject Sequence Key</em>' containment reference.
      * @see #getOnRejectSequenceKey()
      * @generated
@@ -383,6 +443,7 @@ public interface EntitlementMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>On Accept Sequence Key</em>' containment reference.
      * @see #setOnAcceptSequenceKey(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEntitlementMediator_OnAcceptSequenceKey()
@@ -392,9 +453,11 @@ public interface EntitlementMediator extends Mediator {
     RegistryKeyProperty getOnAcceptSequenceKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getOnAcceptSequenceKey <em>On Accept Sequence Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getOnAcceptSequenceKey
+     * <em>On Accept Sequence Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>On Accept Sequence Key</em>' containment reference.
      * @see #getOnAcceptSequenceKey()
      * @generated
@@ -409,6 +472,7 @@ public interface EntitlementMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Advice Sequence Key</em>' containment reference.
      * @see #setAdviceSequenceKey(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEntitlementMediator_AdviceSequenceKey()
@@ -418,9 +482,11 @@ public interface EntitlementMediator extends Mediator {
     RegistryKeyProperty getAdviceSequenceKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getAdviceSequenceKey <em>Advice Sequence Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getAdviceSequenceKey
+     * <em>Advice Sequence Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Advice Sequence Key</em>' containment reference.
      * @see #getAdviceSequenceKey()
      * @generated
@@ -435,6 +501,7 @@ public interface EntitlementMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Obligations Sequence Key</em>' containment reference.
      * @see #setObligationsSequenceKey(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEntitlementMediator_ObligationsSequenceKey()
@@ -444,9 +511,12 @@ public interface EntitlementMediator extends Mediator {
     RegistryKeyProperty getObligationsSequenceKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getObligationsSequenceKey <em>Obligations Sequence Key</em>}' containment reference.
+     * Sets the value of the
+     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getObligationsSequenceKey <em>Obligations
+     * Sequence Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Obligations Sequence Key</em>' containment reference.
      * @see #getObligationsSequenceKey()
      * @generated
@@ -461,6 +531,7 @@ public interface EntitlementMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Entitlement Container</em>' containment reference.
      * @see #setEntitlementContainer(EntitlementContainer)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEntitlementMediator_EntitlementContainer()
@@ -470,9 +541,12 @@ public interface EntitlementMediator extends Mediator {
     EntitlementContainer getEntitlementContainer();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getEntitlementContainer <em>Entitlement Container</em>}' containment reference.
+     * Sets the value of the
+     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getEntitlementContainer <em>Entitlement
+     * Container</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Entitlement Container</em>' containment reference.
      * @see #getEntitlementContainer()
      * @generated
@@ -487,6 +561,7 @@ public interface EntitlementMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(EntitlementMediatorInputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEntitlementMediator_InputConnector()
@@ -496,9 +571,11 @@ public interface EntitlementMediator extends Mediator {
     EntitlementMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getInputConnector
+     * <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
      * @see #getInputConnector()
      * @generated
@@ -513,6 +590,7 @@ public interface EntitlementMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(EntitlementMediatorOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEntitlementMediator_OutputConnector()
@@ -522,9 +600,11 @@ public interface EntitlementMediator extends Mediator {
     EntitlementMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getOutputConnector
+     * <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
      * @see #getOutputConnector()
      * @generated
@@ -539,6 +619,7 @@ public interface EntitlementMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>On Reject Output Connector</em>' containment reference.
      * @see #setOnRejectOutputConnector(EntitlementMediatorOnRejectOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEntitlementMediator_OnRejectOutputConnector()
@@ -548,9 +629,12 @@ public interface EntitlementMediator extends Mediator {
     EntitlementMediatorOnRejectOutputConnector getOnRejectOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getOnRejectOutputConnector <em>On Reject Output Connector</em>}' containment reference.
+     * Sets the value of the
+     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getOnRejectOutputConnector <em>On Reject
+     * Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>On Reject Output Connector</em>' containment reference.
      * @see #getOnRejectOutputConnector()
      * @generated
@@ -565,6 +649,7 @@ public interface EntitlementMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>On Accept Output Connector</em>' containment reference.
      * @see #setOnAcceptOutputConnector(EntitlementMediatorOnAcceptOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEntitlementMediator_OnAcceptOutputConnector()
@@ -574,9 +659,12 @@ public interface EntitlementMediator extends Mediator {
     EntitlementMediatorOnAcceptOutputConnector getOnAcceptOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getOnAcceptOutputConnector <em>On Accept Output Connector</em>}' containment reference.
+     * Sets the value of the
+     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getOnAcceptOutputConnector <em>On Accept
+     * Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>On Accept Output Connector</em>' containment reference.
      * @see #getOnAcceptOutputConnector()
      * @generated
@@ -591,6 +679,7 @@ public interface EntitlementMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Advice Output Connector</em>' containment reference.
      * @see #setAdviceOutputConnector(EntitlementMediatorAdviceOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEntitlementMediator_AdviceOutputConnector()
@@ -600,9 +689,12 @@ public interface EntitlementMediator extends Mediator {
     EntitlementMediatorAdviceOutputConnector getAdviceOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getAdviceOutputConnector <em>Advice Output Connector</em>}' containment reference.
+     * Sets the value of the
+     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getAdviceOutputConnector <em>Advice Output
+     * Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Advice Output Connector</em>' containment reference.
      * @see #getAdviceOutputConnector()
      * @generated
@@ -617,6 +709,7 @@ public interface EntitlementMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Obligations Output Connector</em>' containment reference.
      * @see #setObligationsOutputConnector(EntitlementMediatorObligationsOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEntitlementMediator_ObligationsOutputConnector()
@@ -626,9 +719,12 @@ public interface EntitlementMediator extends Mediator {
     EntitlementMediatorObligationsOutputConnector getObligationsOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getObligationsOutputConnector <em>Obligations Output Connector</em>}' containment reference.
+     * Sets the value of the
+     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getObligationsOutputConnector
+     * <em>Obligations Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Obligations Output Connector</em>' containment reference.
      * @see #getObligationsOutputConnector()
      * @generated
@@ -637,13 +733,15 @@ public interface EntitlementMediator extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Callback Handler</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementCallbackHandler}.
+     * The literals are from the enumeration
+     * {@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementCallbackHandler}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Callback Handler</em>' attribute isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Callback Handler</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EntitlementCallbackHandler
      * @see #setCallbackHandler(EntitlementCallbackHandler)
@@ -654,9 +752,11 @@ public interface EntitlementMediator extends Mediator {
     EntitlementCallbackHandler getCallbackHandler();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getCallbackHandler <em>Callback Handler</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getCallbackHandler
+     * <em>Callback Handler</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Callback Handler</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EntitlementCallbackHandler
      * @see #getCallbackHandler()

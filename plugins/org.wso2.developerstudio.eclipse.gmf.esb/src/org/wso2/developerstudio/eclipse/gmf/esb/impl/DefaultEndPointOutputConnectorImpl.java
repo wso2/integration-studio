@@ -22,6 +22,7 @@ public class DefaultEndPointOutputConnectorImpl extends OutputConnectorImpl impl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected DefaultEndPointOutputConnectorImpl() {
@@ -31,6 +32,7 @@ public class DefaultEndPointOutputConnectorImpl extends OutputConnectorImpl impl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 

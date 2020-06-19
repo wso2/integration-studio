@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Cache Implementation Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
+ * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCacheImplementationType()
  * @model
  * @generated
@@ -26,14 +27,17 @@ public enum CacheImplementationType implements Enumerator {
      * The '<em><b>Memory</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #MEMORY_VALUE
      * @generated
      * @ordered
      */
-    MEMORY(0, "memory", "memory"), /**
+    MEMORY(0, "memory", "memory"),
+    /**
      * The '<em><b>Disk</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #DISK_VALUE
      * @generated
      * @ordered
@@ -48,6 +52,7 @@ public enum CacheImplementationType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #MEMORY
      * @model name="memory"
      * @generated
@@ -63,6 +68,7 @@ public enum CacheImplementationType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #DISK
      * @model name="disk"
      * @generated
@@ -74,25 +80,26 @@ public enum CacheImplementationType implements Enumerator {
      * An array of all the '<em><b>Cache Implementation Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
-    private static final CacheImplementationType[] VALUES_ARRAY = new CacheImplementationType[] {
-            MEMORY,
-            DISK,
-        };
+    private static final CacheImplementationType[] VALUES_ARRAY = new CacheImplementationType[] { MEMORY, DISK, };
 
     /**
      * A public read-only list of all the '<em><b>Cache Implementation Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
-    public static final List<CacheImplementationType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<CacheImplementationType> VALUES = Collections
+            .unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
     /**
      * Returns the '<em><b>Cache Implementation Type</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -111,6 +118,7 @@ public enum CacheImplementationType implements Enumerator {
      * Returns the '<em><b>Cache Implementation Type</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -129,14 +137,17 @@ public enum CacheImplementationType implements Enumerator {
      * Returns the '<em><b>Cache Implementation Type</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static CacheImplementationType get(int value) {
         switch (value) {
-            case MEMORY_VALUE: return MEMORY;
-            case DISK_VALUE: return DISK;
+        case MEMORY_VALUE:
+            return MEMORY;
+        case DISK_VALUE:
+            return DISK;
         }
         return null;
     }
@@ -144,6 +155,7 @@ public enum CacheImplementationType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final int value;
@@ -151,6 +163,7 @@ public enum CacheImplementationType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String name;
@@ -158,6 +171,7 @@ public enum CacheImplementationType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String literal;
@@ -166,6 +180,7 @@ public enum CacheImplementationType implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private CacheImplementationType(int value, String name, String literal) {
@@ -177,34 +192,38 @@ public enum CacheImplementationType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public int getValue() {
-      return value;
+        return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getName() {
-      return name;
+        return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getLiteral() {
-      return literal;
+        return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 

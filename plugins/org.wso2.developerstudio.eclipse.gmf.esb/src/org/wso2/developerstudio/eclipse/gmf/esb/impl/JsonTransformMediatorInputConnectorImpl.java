@@ -27,10 +27,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediatorInputConnec
  *
  * @generated
  */
-public class JsonTransformMediatorInputConnectorImpl extends InputConnectorImpl implements JsonTransformMediatorInputConnector {
+public class JsonTransformMediatorInputConnectorImpl extends InputConnectorImpl
+        implements JsonTransformMediatorInputConnector {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected JsonTransformMediatorInputConnectorImpl() {
@@ -40,6 +42,7 @@ public class JsonTransformMediatorInputConnectorImpl extends InputConnectorImpl 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -47,4 +50,4 @@ public class JsonTransformMediatorInputConnectorImpl extends InputConnectorImpl 
         return EsbPackage.Literals.JSON_TRANSFORM_MEDIATOR_INPUT_CONNECTOR;
     }
 
-} //JsonTransformMediatorInputConnectorImpl
+} // JsonTransformMediatorInputConnectorImpl

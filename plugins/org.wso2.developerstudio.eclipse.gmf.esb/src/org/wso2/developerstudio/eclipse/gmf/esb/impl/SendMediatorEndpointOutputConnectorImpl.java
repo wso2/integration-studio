@@ -23,6 +23,7 @@ public class SendMediatorEndpointOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected SendMediatorEndpointOutputConnectorImpl() {
@@ -32,6 +33,7 @@ public class SendMediatorEndpointOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

@@ -23,7 +23,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SwitchCaseBranchOutputConnector;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SwitchCaseBranchOutputConnectorImpl#getCaseRegex <em>Case Regex</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SwitchCaseBranchOutputConnectorImpl#getCaseRegex <em>Case
+ * Regex</em>}</li>
  * </ul>
  *
  * @generated
@@ -34,6 +35,7 @@ public class SwitchCaseBranchOutputConnectorImpl extends OutputConnectorImpl
      * The default value of the '{@link #getCaseRegex() <em>Case Regex</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getCaseRegex()
      * @generated
      * @ordered
@@ -44,6 +46,7 @@ public class SwitchCaseBranchOutputConnectorImpl extends OutputConnectorImpl
      * The cached value of the '{@link #getCaseRegex() <em>Case Regex</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getCaseRegex()
      * @generated
      * @ordered
@@ -53,6 +56,7 @@ public class SwitchCaseBranchOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected SwitchCaseBranchOutputConnectorImpl() {
@@ -62,6 +66,7 @@ public class SwitchCaseBranchOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -73,6 +78,7 @@ public class SwitchCaseBranchOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getCaseRegex() {
@@ -82,26 +88,29 @@ public class SwitchCaseBranchOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setCaseRegex(String newCaseRegex) {
         String oldCaseRegex = caseRegex;
         caseRegex = newCaseRegex;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.SWITCH_CASE_BRANCH_OUTPUT_CONNECTOR__CASE_REGEX, oldCaseRegex, caseRegex));
+            eNotify(new ENotificationImpl(this, Notification.SET,
+                    EsbPackage.SWITCH_CASE_BRANCH_OUTPUT_CONNECTOR__CASE_REGEX, oldCaseRegex, caseRegex));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-            case EsbPackage.SWITCH_CASE_BRANCH_OUTPUT_CONNECTOR__CASE_REGEX:
-                return getCaseRegex();
+        case EsbPackage.SWITCH_CASE_BRANCH_OUTPUT_CONNECTOR__CASE_REGEX:
+            return getCaseRegex();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -109,15 +118,16 @@ public class SwitchCaseBranchOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-            case EsbPackage.SWITCH_CASE_BRANCH_OUTPUT_CONNECTOR__CASE_REGEX:
-                setCaseRegex((String)newValue);
-                return;
+        case EsbPackage.SWITCH_CASE_BRANCH_OUTPUT_CONNECTOR__CASE_REGEX:
+            setCaseRegex((String) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -125,15 +135,16 @@ public class SwitchCaseBranchOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-            case EsbPackage.SWITCH_CASE_BRANCH_OUTPUT_CONNECTOR__CASE_REGEX:
-                setCaseRegex(CASE_REGEX_EDEFAULT);
-                return;
+        case EsbPackage.SWITCH_CASE_BRANCH_OUTPUT_CONNECTOR__CASE_REGEX:
+            setCaseRegex(CASE_REGEX_EDEFAULT);
+            return;
         }
         super.eUnset(featureID);
     }
@@ -141,14 +152,15 @@ public class SwitchCaseBranchOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-            case EsbPackage.SWITCH_CASE_BRANCH_OUTPUT_CONNECTOR__CASE_REGEX:
-                return CASE_REGEX_EDEFAULT == null ? caseRegex != null : !CASE_REGEX_EDEFAULT.equals(caseRegex);
+        case EsbPackage.SWITCH_CASE_BRANCH_OUTPUT_CONNECTOR__CASE_REGEX:
+            return CASE_REGEX_EDEFAULT == null ? caseRegex != null : !CASE_REGEX_EDEFAULT.equals(caseRegex);
         }
         return super.eIsSet(featureID);
     }

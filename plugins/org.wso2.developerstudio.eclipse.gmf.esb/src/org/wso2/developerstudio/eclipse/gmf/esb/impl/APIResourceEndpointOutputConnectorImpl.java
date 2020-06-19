@@ -23,6 +23,7 @@ public class APIResourceEndpointOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected APIResourceEndpointOutputConnectorImpl() {
@@ -32,6 +33,7 @@ public class APIResourceEndpointOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

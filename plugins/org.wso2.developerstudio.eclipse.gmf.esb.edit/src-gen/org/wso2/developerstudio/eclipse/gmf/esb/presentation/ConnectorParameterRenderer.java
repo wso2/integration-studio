@@ -79,7 +79,7 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public class ConnectorParameterRenderer extends PropertyParameterRenderer {
-    
+
     HashMap<String, Control> controlList;
     HashMap<String, Control> requiredList;
     HashMap<String, Composite> compositeList;
@@ -87,139 +87,139 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
     SectionPropertiesEditingPart partForm;
     PropertiesWidgetProvider widgetProvider;
     private static IDeveloperStudioLog log = Logger.getLog(EEFPropertyViewUtil.PLUGIN_ID);
-    
-    public ConnectorParameterRenderer(IPropertiesEditionComponent propertiesEditionComponent, SectionPropertiesEditingPart partForm) {
+
+    public ConnectorParameterRenderer(IPropertiesEditionComponent propertiesEditionComponent,
+            SectionPropertiesEditingPart partForm) {
         this.propertiesEditionComponent = propertiesEditionComponent;
         this.partForm = partForm;
         this.controlList = new HashMap<String, Control>();
         this.compositeList = new HashMap<String, Composite>();
         this.requiredList = new HashMap<String, Control>();
-        widgetProvider = new PropertiesWidgetProvider(partForm, propertiesEditionComponent, controlList, compositeList, requiredList);
+        widgetProvider = new PropertiesWidgetProvider(partForm, propertiesEditionComponent, controlList, compositeList,
+                requiredList);
     }
-    
+
     @Override
     public Composite generate(FormToolkit widgetFactory, Composite parent, ConnectorRoot connectorRoot) {
-        //Create main group
+        // Create main group
         Group generalGroup = widgetProvider.createGroup(parent, "General");
-        //Iterate over the ui schema
-        for(Element elem: connectorRoot.getElements()) {
+        // Iterate over the ui schema
+        for (Element elem : connectorRoot.getElements()) {
             recursive(elem, parent, generalGroup, widgetFactory, 0);
-        }       
+        }
         return parent;
 
     }
-    
-    public void recursive(Element element, Composite parent, Composite generalGroup, FormToolkit widgetFactory, int level) {
+
+    public void recursive(Element element, Composite parent, Composite generalGroup, FormToolkit widgetFactory,
+            int level) {
         ++level;
-        if(element.getType().equals("attribute")) {
-            if(level != 2) { //Will be 2 since ++ level
-                evaluateAttribute((AttributeValue)element.getValue(), parent, widgetFactory, level);
+        if (element.getType().equals("attribute")) {
+            if (level != 2) { // Will be 2 since ++ level
+                evaluateAttribute((AttributeValue) element.getValue(), parent, widgetFactory, level);
             } else {
-                evaluateAttribute((AttributeValue)element.getValue(), generalGroup, widgetFactory, level);
+                evaluateAttribute((AttributeValue) element.getValue(), generalGroup, widgetFactory, level);
             }
         } else {
-            AttributeGroupValue agv = (AttributeGroupValue)element.getValue();
+            AttributeGroupValue agv = (AttributeGroupValue) element.getValue();
             // Is group Name connection special????
-            if(level != 1) {
+            if (level != 1) {
                 Group subGroup = widgetProvider.createGroup(parent, agv.getGroupName());
-                for(Element elem: agv.getElements()) {
+                for (Element elem : agv.getElements()) {
                     recursive(elem, subGroup, generalGroup, widgetFactory, level);
                 }
             } else {
-                for(Element elem: agv.getElements()) {
+                for (Element elem : agv.getElements()) {
                     recursive(elem, parent, generalGroup, widgetFactory, level);
                 }
             }
 
         }
     }
-    
+
     public void evaluateAttribute(AttributeValue value, Composite parent, FormToolkit widgetFactory, int level) {
         if (AttributeValueType.STRING.equals(value.getType())) {
-            if(level == 2) {
+            if (level == 2) {
                 widgetProvider.createTextBoxField(widgetFactory, parent, value);
             } else {
                 widgetProvider.createTextBoxFieldWithButton(widgetFactory, parent, value);
             }
         } else if (AttributeValueType.BOOLEANOREXPRESSION.equals(value.getType())) {
-            widgetProvider.createDropDownField(widgetFactory, parent, new String[] {"true", "false"}, value);
+            widgetProvider.createDropDownField(widgetFactory, parent, new String[] { "true", "false" }, value);
         } else if (AttributeValueType.COMBO.equals(value.getType())) {
-            widgetProvider.createDropDownField(widgetFactory, parent, value.getComboValues().toArray(new String[0]), value);
+            widgetProvider.createDropDownField(widgetFactory, parent, value.getComboValues().toArray(new String[0]),
+                    value);
         } else if (AttributeValueType.CONNECTION.equals(value.getType())) {
-            widgetProvider.createConnectionField(widgetFactory, parent, value, getConnectionEntriesList(value.getAllowedConnectionTypes()));
+            widgetProvider.createConnectionField(widgetFactory, parent, value,
+                    getConnectionEntriesList(value.getAllowedConnectionTypes()));
         }
     }
-    
 
-  //mock values
-    public String[] getConnectionEntriesList (List<String> allowedTypes) {
+    // mock values
+    public String[] getConnectionEntriesList(List<String> allowedTypes) {
         ArrayList<String> availableConnections = null;
         try {
             availableConnections = EEFPropertyViewUtil.getAvailableConnectionEntriesList(allowedTypes);
         } catch (CoreException e) {
             e.printStackTrace();
         }
-        if(availableConnections == null || availableConnections.isEmpty()) {
-            return new String[] {""};
+        if (availableConnections == null || availableConnections.isEmpty()) {
+            return new String[] { "" };
         } else {
             return availableConnections.toArray(new String[] {});
         }
     }
-    
-    
-    
-    
-    //Triggerred with ecore event bus
+
+    // Triggerred with ecore event bus
     @Override
     public void fillData(EObject dataObject) {
-        EList<CallTemplateParameter> parameterList = ((CloudConnectorOperation)dataObject).getConnectorParameters();
+        EList<CallTemplateParameter> parameterList = ((CloudConnectorOperation) dataObject).getConnectorParameters();
 
-        ///Not parameters
-        String configRefValue = ((CloudConnectorOperation)dataObject).getConfigRef();
-        Combo configRefCombo = (Combo)controlList.get("configRef");
-        if(configRefCombo != null && configRefValue != null) {
-            configRefCombo.select( configRefCombo.indexOf(configRefValue));
+        /// Not parameters
+        String configRefValue = ((CloudConnectorOperation) dataObject).getConfigRef();
+        Combo configRefCombo = (Combo) controlList.get("configRef");
+        if (configRefCombo != null && configRefValue != null) {
+            configRefCombo.select(configRefCombo.indexOf(configRefValue));
         }
-        String descriptionValue = ((CloudConnectorOperation)dataObject).getDescription();
-        Text descriptionText = (Text)controlList.get("description");
-        if(descriptionText != null) {
+        String descriptionValue = ((CloudConnectorOperation) dataObject).getDescription();
+        Text descriptionText = (Text) controlList.get("description");
+        if (descriptionText != null) {
             descriptionText.setText(descriptionValue);
         }
         //////
 
-       
-        for(String key: controlList.keySet()) {
-                CallTemplateParameter ctp = null;
-                for(Object parameter: parameterList) {
-                   CallTemplateParameter ctpi = (CallTemplateParameter)parameter;
-                   if(((String)key).equals(ctpi.getParameterName())) {
-                       ctp = ctpi;
-                   }
+        for (String key : controlList.keySet()) {
+            CallTemplateParameter ctp = null;
+            for (Object parameter : parameterList) {
+                CallTemplateParameter ctpi = (CallTemplateParameter) parameter;
+                if (((String) key).equals(ctpi.getParameterName())) {
+                    ctp = ctpi;
                 }
-                if (ctp != null) {
-                    String value = ctp.getParameterValue();
-                    if (ctp.getTemplateParameterType().equals(RuleOptionType.EXPRESSION)) {
-                        NamespacedProperty namespacedExpression = ctp.getParameterExpression();
-                        value = namespacedExpression.getPropertyValue();
-                    }
-                
-                    if(controlList.get(key) instanceof Text) {
-                        ((Text)controlList.get(key)).setText(value);
-                        ((Text)controlList.get(key)).setData(ctp);
-                    } else if (controlList.get(key) instanceof Combo) {
-                        Combo combo = (Combo)controlList.get(key);
-                        combo.setText(value);
-                        combo.setData(ctp);
-                    }
+            }
+            if (ctp != null) {
+                String value = ctp.getParameterValue();
+                if (ctp.getTemplateParameterType().equals(RuleOptionType.EXPRESSION)) {
+                    NamespacedProperty namespacedExpression = ctp.getParameterExpression();
+                    value = namespacedExpression.getPropertyValue();
                 }
-            
+
+                if (controlList.get(key) instanceof Text) {
+                    ((Text) controlList.get(key)).setText(value);
+                    ((Text) controlList.get(key)).setData(ctp);
+                } else if (controlList.get(key) instanceof Combo) {
+                    Combo combo = (Combo) controlList.get(key);
+                    combo.setText(value);
+                    combo.setData(ctp);
+                }
+            }
+
         }
         validate();
         widgetProvider.checkRequired();
     }
-    
+
     public void validate() {
-        //Implement enableCondition Logic Here
+        // Implement enableCondition Logic Here
     }
 
 }

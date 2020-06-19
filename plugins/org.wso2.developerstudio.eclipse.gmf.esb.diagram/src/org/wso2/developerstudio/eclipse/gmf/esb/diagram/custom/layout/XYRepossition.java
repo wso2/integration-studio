@@ -124,9 +124,9 @@ public class XYRepossition {
     private static final int DEFAULT_PROXY_AND_EP_CONTAINER_HEIGHT = 312;
     private static final int DEFAULT_FAULT_CONTAINER_HEIGHT = 84;
     private static int COMPLEX_MEDIATOR_LEFT_RECTANGLE_WIDTH = 100;
-    
+
     private static float inSequenceOutSequenceHeightRatio = (float) 0.5;
-    
+
     private static EditPart mediatorFlowMediatorFlowCompartmentEditPart = null;
 
     public static void resizeContainers(IGraphicalEditPart editPart) {
@@ -287,7 +287,6 @@ public class XYRepossition {
         int inOutSeqChildren = inAndOutSeqEditPart.getChildren().size();
         int faultSeqChildren = faulSeqEditPart.getChildren().size();
 
-        
         // Calculate width and height of the in&out sequences.
         for (int i = 0; i < inOutSeqChildren; ++i) {
             if (inAndOutSeqEditPart.getChildren().get(i) instanceof AbstractMediator) {
@@ -309,8 +308,8 @@ public class XYRepossition {
                 }
             }
         }
-        
-        inSequenceOutSequenceHeightRatio = (float)inSequenceHeight/ (outSequenceHeight + inSequenceHeight);
+
+        inSequenceOutSequenceHeightRatio = (float) inSequenceHeight / (outSequenceHeight + inSequenceHeight);
 
         if (!mainSequence) {
             // Calculate width and height of the fault sequence.
@@ -353,9 +352,8 @@ public class XYRepossition {
 
         newHeight = inOutSeqHeight + faultSequenceHeight;
 
-        
         List children = proxyServiceEditPart.getChildren();
-        
+
         for (Object child : children) {
             if (child instanceof ProxyOutputConnectorEditPart || child instanceof APIResourceOutputConnectorEditPart) {
                 AbstractOutputConnectorEditPart inSequenceInputConnector = (AbstractOutputConnectorEditPart) child;
@@ -385,8 +383,7 @@ public class XYRepossition {
                         .add(inSequenceInputConnector.getFigure(), inputLocator);
             }
         }
-        
-        
+
         if (inOutSeqChildren == 0 && faultSeqChildren == 0) {
             // In & Out sequences and Fault Sequence are empty.
             newWidth = DEFAULT_PROXY_CONTAINER_WIDTH;
@@ -655,11 +652,11 @@ public class XYRepossition {
 
                 if (editPart instanceof MediatorFlowMediatorFlowCompartmentEditPart) {
                     y = (int) (((IGraphicalEditPart) editPart.getParent().getParent()).getFigure().getBounds().height
-                            * (inSequenceOutSequenceHeightRatio/2));
-				} else if (editPart instanceof MediatorFlowMediatorFlowCompartment5EditPart) {
-					y = ((IGraphicalEditPart) editPart.getParent().getParent()).getFigure().getBounds().height / 2;
-					// Adding an offset value of 10 to fix github issue https://github.com/wso2/product-ei/issues/3539
-					y += 10;
+                            * (inSequenceOutSequenceHeightRatio / 2));
+                } else if (editPart instanceof MediatorFlowMediatorFlowCompartment5EditPart) {
+                    y = ((IGraphicalEditPart) editPart.getParent().getParent()).getFigure().getBounds().height / 2;
+                    // Adding an offset value of 10 to fix github issue https://github.com/wso2/product-ei/issues/3539
+                    y += 10;
                 } else {
                     y = ((IGraphicalEditPart) editPart.getParent().getParent()).getFigure().getBounds().height / 2;
                 }
@@ -695,8 +692,9 @@ public class XYRepossition {
                     } else {
                         if (editPart instanceof MediatorFlowMediatorFlowCompartmentEditPart) {
                             // In&out sequence mediator.
-                            y = (int) (((IGraphicalEditPart) editPart.getParent().getParent()).getFigure().getBounds().height
-                                    * (inSequenceOutSequenceHeightRatio + (1-inSequenceOutSequenceHeightRatio)/2));
+                            y = (int) (((IGraphicalEditPart) editPart.getParent().getParent()).getFigure()
+                                    .getBounds().height
+                                    * (inSequenceOutSequenceHeightRatio + (1 - inSequenceOutSequenceHeightRatio) / 2));
                             y = y - node.getFigure().getBounds().height / 2 - verticalSpacing;
 
                             droppableElement.setX(x);

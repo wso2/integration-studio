@@ -32,6 +32,7 @@ public class APIResourceOutSequenceOutputConnectorImpl extends OutputConnectorIm
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected APIResourceOutSequenceOutputConnectorImpl() {
@@ -41,6 +42,7 @@ public class APIResourceOutSequenceOutputConnectorImpl extends OutputConnectorIm
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

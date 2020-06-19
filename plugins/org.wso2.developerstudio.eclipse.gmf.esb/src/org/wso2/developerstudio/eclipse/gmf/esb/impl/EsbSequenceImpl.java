@@ -37,10 +37,11 @@ import org.wso2.developerstudio.eclipse.gmf.esb.Mediator;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbSequenceImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbSequenceImpl#getInput <em>Input</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbSequenceImpl#getOutput <em>Output</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbSequenceImpl#getChildMediators <em>Child Mediators</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbSequenceImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbSequenceImpl#getInput <em>Input</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbSequenceImpl#getOutput <em>Output</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbSequenceImpl#getChildMediators <em>Child
+ * Mediators</em>}</li>
  * </ul>
  *
  * @generated
@@ -50,6 +51,7 @@ public class EsbSequenceImpl extends EsbNodeImpl implements EsbSequence {
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getName()
      * @generated
      * @ordered
@@ -60,6 +62,7 @@ public class EsbSequenceImpl extends EsbNodeImpl implements EsbSequence {
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getName()
      * @generated
      * @ordered
@@ -70,6 +73,7 @@ public class EsbSequenceImpl extends EsbNodeImpl implements EsbSequence {
      * The cached value of the '{@link #getInput() <em>Input</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getInput()
      * @generated
      * @ordered
@@ -80,6 +84,7 @@ public class EsbSequenceImpl extends EsbNodeImpl implements EsbSequence {
      * The cached value of the '{@link #getOutput() <em>Output</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getOutput()
      * @generated
      * @ordered
@@ -90,6 +95,7 @@ public class EsbSequenceImpl extends EsbNodeImpl implements EsbSequence {
      * The cached value of the '{@link #getChildMediators() <em>Child Mediators</em>}' containment reference list.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getChildMediators()
      * @generated
      * @ordered
@@ -99,6 +105,7 @@ public class EsbSequenceImpl extends EsbNodeImpl implements EsbSequence {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected EsbSequenceImpl() {
@@ -108,6 +115,7 @@ public class EsbSequenceImpl extends EsbNodeImpl implements EsbSequence {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -119,6 +127,7 @@ public class EsbSequenceImpl extends EsbNodeImpl implements EsbSequence {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getName() {
@@ -128,6 +137,7 @@ public class EsbSequenceImpl extends EsbNodeImpl implements EsbSequence {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setName(String newName) {
@@ -140,6 +150,7 @@ public class EsbSequenceImpl extends EsbNodeImpl implements EsbSequence {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public EsbSequenceInputConnector getInput() {
@@ -149,14 +160,19 @@ public class EsbSequenceImpl extends EsbNodeImpl implements EsbSequence {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public NotificationChain basicSetInput(EsbSequenceInputConnector newInput, NotificationChain msgs) {
         EsbSequenceInputConnector oldInput = input;
         input = newInput;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.ESB_SEQUENCE__INPUT, oldInput, newInput);
-            if (msgs == null) msgs = notification; else msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+                    EsbPackage.ESB_SEQUENCE__INPUT, oldInput, newInput);
+            if (msgs == null)
+                msgs = notification;
+            else
+                msgs.add(notification);
         }
         return msgs;
     }
@@ -164,25 +180,29 @@ public class EsbSequenceImpl extends EsbNodeImpl implements EsbSequence {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setInput(EsbSequenceInputConnector newInput) {
         if (newInput != input) {
             NotificationChain msgs = null;
             if (input != null)
-                msgs = ((InternalEObject)input).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.ESB_SEQUENCE__INPUT, null, msgs);
+                msgs = ((InternalEObject) input).eInverseRemove(this,
+                        EOPPOSITE_FEATURE_BASE - EsbPackage.ESB_SEQUENCE__INPUT, null, msgs);
             if (newInput != null)
-                msgs = ((InternalEObject)newInput).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.ESB_SEQUENCE__INPUT, null, msgs);
+                msgs = ((InternalEObject) newInput).eInverseAdd(this,
+                        EOPPOSITE_FEATURE_BASE - EsbPackage.ESB_SEQUENCE__INPUT, null, msgs);
             msgs = basicSetInput(newInput, msgs);
-            if (msgs != null) msgs.dispatch();
-        }
-        else if (eNotificationRequired())
+            if (msgs != null)
+                msgs.dispatch();
+        } else if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ESB_SEQUENCE__INPUT, newInput, newInput));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public EsbSequenceOutputConnector getOutput() {
@@ -192,14 +212,19 @@ public class EsbSequenceImpl extends EsbNodeImpl implements EsbSequence {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public NotificationChain basicSetOutput(EsbSequenceOutputConnector newOutput, NotificationChain msgs) {
         EsbSequenceOutputConnector oldOutput = output;
         output = newOutput;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.ESB_SEQUENCE__OUTPUT, oldOutput, newOutput);
-            if (msgs == null) msgs = notification; else msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+                    EsbPackage.ESB_SEQUENCE__OUTPUT, oldOutput, newOutput);
+            if (msgs == null)
+                msgs = notification;
+            else
+                msgs.add(notification);
         }
         return msgs;
     }
@@ -207,30 +232,36 @@ public class EsbSequenceImpl extends EsbNodeImpl implements EsbSequence {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setOutput(EsbSequenceOutputConnector newOutput) {
         if (newOutput != output) {
             NotificationChain msgs = null;
             if (output != null)
-                msgs = ((InternalEObject)output).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.ESB_SEQUENCE__OUTPUT, null, msgs);
+                msgs = ((InternalEObject) output).eInverseRemove(this,
+                        EOPPOSITE_FEATURE_BASE - EsbPackage.ESB_SEQUENCE__OUTPUT, null, msgs);
             if (newOutput != null)
-                msgs = ((InternalEObject)newOutput).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.ESB_SEQUENCE__OUTPUT, null, msgs);
+                msgs = ((InternalEObject) newOutput).eInverseAdd(this,
+                        EOPPOSITE_FEATURE_BASE - EsbPackage.ESB_SEQUENCE__OUTPUT, null, msgs);
             msgs = basicSetOutput(newOutput, msgs);
-            if (msgs != null) msgs.dispatch();
-        }
-        else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ESB_SEQUENCE__OUTPUT, newOutput, newOutput));
+            if (msgs != null)
+                msgs.dispatch();
+        } else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ESB_SEQUENCE__OUTPUT, newOutput,
+                    newOutput));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public EList<Mediator> getChildMediators() {
         if (childMediators == null) {
-            childMediators = new EObjectContainmentEList<Mediator>(Mediator.class, this, EsbPackage.ESB_SEQUENCE__CHILD_MEDIATORS);
+            childMediators = new EObjectContainmentEList<Mediator>(Mediator.class, this,
+                    EsbPackage.ESB_SEQUENCE__CHILD_MEDIATORS);
         }
         return childMediators;
     }
@@ -238,18 +269,19 @@ public class EsbSequenceImpl extends EsbNodeImpl implements EsbSequence {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-            case EsbPackage.ESB_SEQUENCE__INPUT:
-                return basicSetInput(null, msgs);
-            case EsbPackage.ESB_SEQUENCE__OUTPUT:
-                return basicSetOutput(null, msgs);
-            case EsbPackage.ESB_SEQUENCE__CHILD_MEDIATORS:
-                return ((InternalEList<?>)getChildMediators()).basicRemove(otherEnd, msgs);
+        case EsbPackage.ESB_SEQUENCE__INPUT:
+            return basicSetInput(null, msgs);
+        case EsbPackage.ESB_SEQUENCE__OUTPUT:
+            return basicSetOutput(null, msgs);
+        case EsbPackage.ESB_SEQUENCE__CHILD_MEDIATORS:
+            return ((InternalEList<?>) getChildMediators()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -257,20 +289,21 @@ public class EsbSequenceImpl extends EsbNodeImpl implements EsbSequence {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-            case EsbPackage.ESB_SEQUENCE__NAME:
-                return getName();
-            case EsbPackage.ESB_SEQUENCE__INPUT:
-                return getInput();
-            case EsbPackage.ESB_SEQUENCE__OUTPUT:
-                return getOutput();
-            case EsbPackage.ESB_SEQUENCE__CHILD_MEDIATORS:
-                return getChildMediators();
+        case EsbPackage.ESB_SEQUENCE__NAME:
+            return getName();
+        case EsbPackage.ESB_SEQUENCE__INPUT:
+            return getInput();
+        case EsbPackage.ESB_SEQUENCE__OUTPUT:
+            return getOutput();
+        case EsbPackage.ESB_SEQUENCE__CHILD_MEDIATORS:
+            return getChildMediators();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -278,6 +311,7 @@ public class EsbSequenceImpl extends EsbNodeImpl implements EsbSequence {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -285,19 +319,19 @@ public class EsbSequenceImpl extends EsbNodeImpl implements EsbSequence {
 
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-            case EsbPackage.ESB_SEQUENCE__NAME:
-                setName((String)newValue);
-                return;
-            case EsbPackage.ESB_SEQUENCE__INPUT:
-                setInput((EsbSequenceInputConnector)newValue);
-                return;
-            case EsbPackage.ESB_SEQUENCE__OUTPUT:
-                setOutput((EsbSequenceOutputConnector)newValue);
-                return;
-            case EsbPackage.ESB_SEQUENCE__CHILD_MEDIATORS:
-                getChildMediators().clear();
-                getChildMediators().addAll((Collection<? extends Mediator>)newValue);
-                return;
+        case EsbPackage.ESB_SEQUENCE__NAME:
+            setName((String) newValue);
+            return;
+        case EsbPackage.ESB_SEQUENCE__INPUT:
+            setInput((EsbSequenceInputConnector) newValue);
+            return;
+        case EsbPackage.ESB_SEQUENCE__OUTPUT:
+            setOutput((EsbSequenceOutputConnector) newValue);
+            return;
+        case EsbPackage.ESB_SEQUENCE__CHILD_MEDIATORS:
+            getChildMediators().clear();
+            getChildMediators().addAll((Collection<? extends Mediator>) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -305,24 +339,25 @@ public class EsbSequenceImpl extends EsbNodeImpl implements EsbSequence {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-            case EsbPackage.ESB_SEQUENCE__NAME:
-                setName(NAME_EDEFAULT);
-                return;
-            case EsbPackage.ESB_SEQUENCE__INPUT:
-                setInput((EsbSequenceInputConnector)null);
-                return;
-            case EsbPackage.ESB_SEQUENCE__OUTPUT:
-                setOutput((EsbSequenceOutputConnector)null);
-                return;
-            case EsbPackage.ESB_SEQUENCE__CHILD_MEDIATORS:
-                getChildMediators().clear();
-                return;
+        case EsbPackage.ESB_SEQUENCE__NAME:
+            setName(NAME_EDEFAULT);
+            return;
+        case EsbPackage.ESB_SEQUENCE__INPUT:
+            setInput((EsbSequenceInputConnector) null);
+            return;
+        case EsbPackage.ESB_SEQUENCE__OUTPUT:
+            setOutput((EsbSequenceOutputConnector) null);
+            return;
+        case EsbPackage.ESB_SEQUENCE__CHILD_MEDIATORS:
+            getChildMediators().clear();
+            return;
         }
         super.eUnset(featureID);
     }
@@ -330,20 +365,21 @@ public class EsbSequenceImpl extends EsbNodeImpl implements EsbSequence {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-            case EsbPackage.ESB_SEQUENCE__NAME:
-                return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-            case EsbPackage.ESB_SEQUENCE__INPUT:
-                return input != null;
-            case EsbPackage.ESB_SEQUENCE__OUTPUT:
-                return output != null;
-            case EsbPackage.ESB_SEQUENCE__CHILD_MEDIATORS:
-                return childMediators != null && !childMediators.isEmpty();
+        case EsbPackage.ESB_SEQUENCE__NAME:
+            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+        case EsbPackage.ESB_SEQUENCE__INPUT:
+            return input != null;
+        case EsbPackage.ESB_SEQUENCE__OUTPUT:
+            return output != null;
+        case EsbPackage.ESB_SEQUENCE__CHILD_MEDIATORS:
+            return childMediators != null && !childMediators.isEmpty();
         }
         return super.eIsSet(featureID);
     }
@@ -351,12 +387,14 @@ public class EsbSequenceImpl extends EsbNodeImpl implements EsbSequence {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public String toString() {
-        if (eIsProxy()) return super.toString();
+        if (eIsProxy())
+            return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (name: ");

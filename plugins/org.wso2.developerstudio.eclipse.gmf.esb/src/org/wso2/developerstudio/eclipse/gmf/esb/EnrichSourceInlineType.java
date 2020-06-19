@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Enrich Source Inline Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
+ * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEnrichSourceInlineType()
  * @model
  * @generated
@@ -35,6 +36,7 @@ public enum EnrichSourceInlineType implements Enumerator {
      * The '<em><b>CONTENT</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #CONTENT_VALUE
      * @generated
      * @ordered
@@ -45,6 +47,7 @@ public enum EnrichSourceInlineType implements Enumerator {
      * The '<em><b>KEY</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #KEY_VALUE
      * @generated
      * @ordered
@@ -59,6 +62,7 @@ public enum EnrichSourceInlineType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #CONTENT
      * @model literal="SourceXML"
      * @generated
@@ -74,6 +78,7 @@ public enum EnrichSourceInlineType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #KEY
      * @model literal="RegistryKey"
      * @generated
@@ -85,17 +90,16 @@ public enum EnrichSourceInlineType implements Enumerator {
      * An array of all the '<em><b>Enrich Source Inline Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
-    private static final EnrichSourceInlineType[] VALUES_ARRAY = new EnrichSourceInlineType[] {
-            CONTENT,
-            KEY,
-        };
+    private static final EnrichSourceInlineType[] VALUES_ARRAY = new EnrichSourceInlineType[] { CONTENT, KEY, };
 
     /**
      * A public read-only list of all the '<em><b>Enrich Source Inline Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public static final List<EnrichSourceInlineType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -104,6 +108,7 @@ public enum EnrichSourceInlineType implements Enumerator {
      * Returns the '<em><b>Enrich Source Inline Type</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -122,6 +127,7 @@ public enum EnrichSourceInlineType implements Enumerator {
      * Returns the '<em><b>Enrich Source Inline Type</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -140,14 +146,17 @@ public enum EnrichSourceInlineType implements Enumerator {
      * Returns the '<em><b>Enrich Source Inline Type</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static EnrichSourceInlineType get(int value) {
         switch (value) {
-            case CONTENT_VALUE: return CONTENT;
-            case KEY_VALUE: return KEY;
+        case CONTENT_VALUE:
+            return CONTENT;
+        case KEY_VALUE:
+            return KEY;
         }
         return null;
     }
@@ -155,6 +164,7 @@ public enum EnrichSourceInlineType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final int value;
@@ -162,6 +172,7 @@ public enum EnrichSourceInlineType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String name;
@@ -169,6 +180,7 @@ public enum EnrichSourceInlineType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String literal;
@@ -177,6 +189,7 @@ public enum EnrichSourceInlineType implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private EnrichSourceInlineType(int value, String name, String literal) {
@@ -188,34 +201,38 @@ public enum EnrichSourceInlineType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public int getValue() {
-      return value;
+        return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getName() {
-      return name;
+        return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getLiteral() {
-      return literal;
+        return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

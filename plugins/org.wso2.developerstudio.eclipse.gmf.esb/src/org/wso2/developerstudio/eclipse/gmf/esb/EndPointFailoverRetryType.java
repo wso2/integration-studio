@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>End Point Failover Retry Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
+ * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEndPointFailoverRetryType()
  * @model
  * @generated
@@ -35,6 +36,7 @@ public enum EndPointFailoverRetryType implements Enumerator {
      * The '<em><b>RETRY ERROR CODES</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #RETRY_ERROR_CODES_VALUE
      * @generated
      * @ordered
@@ -45,6 +47,7 @@ public enum EndPointFailoverRetryType implements Enumerator {
      * The '<em><b>NON RETRY ERROR CODES</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #NON_RETRY_ERROR_CODES_VALUE
      * @generated
      * @ordered
@@ -59,6 +62,7 @@ public enum EndPointFailoverRetryType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #RETRY_ERROR_CODES
      * @model
      * @generated
@@ -74,6 +78,7 @@ public enum EndPointFailoverRetryType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #NON_RETRY_ERROR_CODES
      * @model
      * @generated
@@ -85,26 +90,27 @@ public enum EndPointFailoverRetryType implements Enumerator {
      * An array of all the '<em><b>End Point Failover Retry Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
-    private static final EndPointFailoverRetryType[] VALUES_ARRAY =
-        new EndPointFailoverRetryType[] {
-            RETRY_ERROR_CODES,
-            NON_RETRY_ERROR_CODES,
-        };
+    private static final EndPointFailoverRetryType[] VALUES_ARRAY = new EndPointFailoverRetryType[] { RETRY_ERROR_CODES,
+            NON_RETRY_ERROR_CODES, };
 
     /**
      * A public read-only list of all the '<em><b>End Point Failover Retry Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
-    public static final List<EndPointFailoverRetryType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<EndPointFailoverRetryType> VALUES = Collections
+            .unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
     /**
      * Returns the '<em><b>End Point Failover Retry Type</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -123,6 +129,7 @@ public enum EndPointFailoverRetryType implements Enumerator {
      * Returns the '<em><b>End Point Failover Retry Type</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -141,14 +148,17 @@ public enum EndPointFailoverRetryType implements Enumerator {
      * Returns the '<em><b>End Point Failover Retry Type</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static EndPointFailoverRetryType get(int value) {
         switch (value) {
-            case RETRY_ERROR_CODES_VALUE: return RETRY_ERROR_CODES;
-            case NON_RETRY_ERROR_CODES_VALUE: return NON_RETRY_ERROR_CODES;
+        case RETRY_ERROR_CODES_VALUE:
+            return RETRY_ERROR_CODES;
+        case NON_RETRY_ERROR_CODES_VALUE:
+            return NON_RETRY_ERROR_CODES;
         }
         return null;
     }
@@ -156,6 +166,7 @@ public enum EndPointFailoverRetryType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final int value;
@@ -163,6 +174,7 @@ public enum EndPointFailoverRetryType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String name;
@@ -170,6 +182,7 @@ public enum EndPointFailoverRetryType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String literal;
@@ -178,6 +191,7 @@ public enum EndPointFailoverRetryType implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private EndPointFailoverRetryType(int value, String name, String literal) {
@@ -189,39 +203,43 @@ public enum EndPointFailoverRetryType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public int getValue() {
-      return value;
+        return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getName() {
-      return name;
+        return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getLiteral() {
-      return literal;
+        return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public String toString() {
         return literal;
     }
-    
-} //EndPointFailoverRetryType
+
+} // EndPointFailoverRetryType

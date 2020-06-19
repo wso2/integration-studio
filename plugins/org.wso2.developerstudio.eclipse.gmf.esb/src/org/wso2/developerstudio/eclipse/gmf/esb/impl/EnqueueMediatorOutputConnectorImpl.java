@@ -22,6 +22,7 @@ public class EnqueueMediatorOutputConnectorImpl extends OutputConnectorImpl impl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected EnqueueMediatorOutputConnectorImpl() {
@@ -31,6 +32,7 @@ public class EnqueueMediatorOutputConnectorImpl extends OutputConnectorImpl impl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

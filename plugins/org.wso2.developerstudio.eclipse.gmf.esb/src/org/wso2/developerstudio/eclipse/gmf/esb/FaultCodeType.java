@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Fault Code Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
+ * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFaultCodeType()
  * @model
  * @generated
@@ -35,6 +36,7 @@ public enum FaultCodeType implements Enumerator {
      * The '<em><b>VALUE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #VALUE_VALUE
      * @generated
      * @ordered
@@ -45,6 +47,7 @@ public enum FaultCodeType implements Enumerator {
      * The '<em><b>EXPRESSION</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #EXPRESSION_VALUE
      * @generated
      * @ordered
@@ -59,6 +62,7 @@ public enum FaultCodeType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #VALUE
      * @model
      * @generated
@@ -74,6 +78,7 @@ public enum FaultCodeType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #EXPRESSION
      * @model
      * @generated
@@ -85,17 +90,16 @@ public enum FaultCodeType implements Enumerator {
      * An array of all the '<em><b>Fault Code Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
-    private static final FaultCodeType[] VALUES_ARRAY = new FaultCodeType[] {
-            VALUE,
-            EXPRESSION,
-        };
+    private static final FaultCodeType[] VALUES_ARRAY = new FaultCodeType[] { VALUE, EXPRESSION, };
 
     /**
      * A public read-only list of all the '<em><b>Fault Code Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public static final List<FaultCodeType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -104,6 +108,7 @@ public enum FaultCodeType implements Enumerator {
      * Returns the '<em><b>Fault Code Type</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -122,6 +127,7 @@ public enum FaultCodeType implements Enumerator {
      * Returns the '<em><b>Fault Code Type</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -140,14 +146,17 @@ public enum FaultCodeType implements Enumerator {
      * Returns the '<em><b>Fault Code Type</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static FaultCodeType get(int value) {
         switch (value) {
-            case VALUE_VALUE: return VALUE;
-            case EXPRESSION_VALUE: return EXPRESSION;
+        case VALUE_VALUE:
+            return VALUE;
+        case EXPRESSION_VALUE:
+            return EXPRESSION;
         }
         return null;
     }
@@ -155,6 +164,7 @@ public enum FaultCodeType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final int value;
@@ -162,6 +172,7 @@ public enum FaultCodeType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String name;
@@ -169,6 +180,7 @@ public enum FaultCodeType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String literal;
@@ -177,6 +189,7 @@ public enum FaultCodeType implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private FaultCodeType(int value, String name, String literal) {
@@ -188,34 +201,38 @@ public enum FaultCodeType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public int getValue() {
-      return value;
+        return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getName() {
-      return name;
+        return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getLiteral() {
-      return literal;
+        return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

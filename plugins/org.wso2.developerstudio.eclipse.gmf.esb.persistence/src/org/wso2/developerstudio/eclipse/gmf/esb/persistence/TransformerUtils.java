@@ -28,7 +28,7 @@ public class TransformerUtils {
 
         return information;
     }
-    
+
     public static Endpoint getSynapseEndpoint(org.wso2.developerstudio.eclipse.gmf.esb.EndPoint viEndpoint)
             throws TransformerException {
         Endpoint endpoint = null;
@@ -37,14 +37,14 @@ public class TransformerUtils {
             endpoint = transformer.create((AddressEndPoint) viEndpoint, "");
 
         } else if (viEndpoint instanceof TemplateEndpointImpl) {
-        	TemplateEndPointTransformer transformer = new TemplateEndPointTransformer();
-        	endpoint = transformer.create((TemplateEndpoint) viEndpoint, "");
-        	
+            TemplateEndPointTransformer transformer = new TemplateEndPointTransformer();
+            endpoint = transformer.create((TemplateEndpoint) viEndpoint, "");
+
         } else if (viEndpoint instanceof FailoverEndPointImpl) {
-        	FailoverEndPointTransformer transformer = new FailoverEndPointTransformer();
-        	endpoint = transformer.create(null, (FailoverEndPoint) viEndpoint, "", null);
+            FailoverEndPointTransformer transformer = new FailoverEndPointTransformer();
+            endpoint = transformer.create(null, (FailoverEndPoint) viEndpoint, "", null);
         }
-        
+
         return endpoint;
     }
 

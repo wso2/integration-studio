@@ -94,7 +94,7 @@ public class DataMapperMediatorDeserializer extends AbstractEsbNodeDeserializer<
                     + "\n \n Please double click on the datamapper to create a new configuration or add an existing configuration key before saving the ESB Config.");
         }
     }
-    
+
     private void setXSLTStyleSheetKey(org.wso2.carbon.mediator.datamapper.DataMapperMediator carbonDataMapperMediator)
             throws DeserializerException {
         if (carbonDataMapperMediator.getXsltStyleSheetKey() != null) {

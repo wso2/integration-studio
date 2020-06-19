@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Data Mapper Mediator Data Types</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
+ * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getDataMapperMediatorDataTypes()
  * @model
  * @generated
@@ -35,6 +36,7 @@ public enum DataMapperMediatorDataTypes implements Enumerator {
      * The '<em><b>XML</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #XML_VALUE
      * @generated
      * @ordered
@@ -45,6 +47,7 @@ public enum DataMapperMediatorDataTypes implements Enumerator {
      * The '<em><b>CSV</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #CSV_VALUE
      * @generated
      * @ordered
@@ -55,6 +58,7 @@ public enum DataMapperMediatorDataTypes implements Enumerator {
      * The '<em><b>JSON</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #JSON_VALUE
      * @generated
      * @ordered
@@ -69,6 +73,7 @@ public enum DataMapperMediatorDataTypes implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #XML
      * @model
      * @generated
@@ -84,6 +89,7 @@ public enum DataMapperMediatorDataTypes implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #CSV
      * @model
      * @generated
@@ -99,6 +105,7 @@ public enum DataMapperMediatorDataTypes implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #JSON
      * @model
      * @generated
@@ -110,26 +117,27 @@ public enum DataMapperMediatorDataTypes implements Enumerator {
      * An array of all the '<em><b>Data Mapper Mediator Data Types</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
-    private static final DataMapperMediatorDataTypes[] VALUES_ARRAY = new DataMapperMediatorDataTypes[] {
-            XML,
-            CSV,
-            JSON,
-        };
+    private static final DataMapperMediatorDataTypes[] VALUES_ARRAY = new DataMapperMediatorDataTypes[] { XML, CSV,
+            JSON, };
 
     /**
      * A public read-only list of all the '<em><b>Data Mapper Mediator Data Types</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
-    public static final List<DataMapperMediatorDataTypes> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<DataMapperMediatorDataTypes> VALUES = Collections
+            .unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
     /**
      * Returns the '<em><b>Data Mapper Mediator Data Types</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -148,6 +156,7 @@ public enum DataMapperMediatorDataTypes implements Enumerator {
      * Returns the '<em><b>Data Mapper Mediator Data Types</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -166,15 +175,19 @@ public enum DataMapperMediatorDataTypes implements Enumerator {
      * Returns the '<em><b>Data Mapper Mediator Data Types</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static DataMapperMediatorDataTypes get(int value) {
         switch (value) {
-            case XML_VALUE: return XML;
-            case CSV_VALUE: return CSV;
-            case JSON_VALUE: return JSON;
+        case XML_VALUE:
+            return XML;
+        case CSV_VALUE:
+            return CSV;
+        case JSON_VALUE:
+            return JSON;
         }
         return null;
     }
@@ -182,6 +195,7 @@ public enum DataMapperMediatorDataTypes implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final int value;
@@ -189,6 +203,7 @@ public enum DataMapperMediatorDataTypes implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String name;
@@ -196,6 +211,7 @@ public enum DataMapperMediatorDataTypes implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String literal;
@@ -204,6 +220,7 @@ public enum DataMapperMediatorDataTypes implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private DataMapperMediatorDataTypes(int value, String name, String literal) {
@@ -215,34 +232,38 @@ public enum DataMapperMediatorDataTypes implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public int getValue() {
-      return value;
+        return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getName() {
-      return name;
+        return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getLiteral() {
-      return literal;
+        return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

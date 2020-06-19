@@ -17,15 +17,18 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#getSourceXpath <em>Source Xpath</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#getFeatures <em>Features</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#getSchemas <em>Schemas</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#getOnFailOutputConnector <em>On Fail Output Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#getMediatorFlow <em>Mediator Flow</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#getResources <em>Resources</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#isEnableCacheSchema <em>Enable Cache Schema</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#getSourceXpath <em>Source Xpath</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#getFeatures <em>Features</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#getSchemas <em>Schemas</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#getInputConnector <em>Input Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#getOutputConnector <em>Output
+ * Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#getOnFailOutputConnector <em>On Fail Output
+ * Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#getMediatorFlow <em>Mediator Flow</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#getResources <em>Resources</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#isEnableCacheSchema <em>Enable Cache
+ * Schema</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getValidateMediator()
@@ -41,6 +44,7 @@ public interface ValidateMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Source Xpath</em>' containment reference.
      * @see #setSourceXpath(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getValidateMediator_SourceXpath()
@@ -50,9 +54,11 @@ public interface ValidateMediator extends Mediator {
     NamespacedProperty getSourceXpath();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#getSourceXpath <em>Source Xpath</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#getSourceXpath <em>Source
+     * Xpath</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Source Xpath</em>' containment reference.
      * @see #getSourceXpath()
      * @generated
@@ -68,6 +74,7 @@ public interface ValidateMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Features</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getValidateMediator_Features()
      * @model containment="true"
@@ -84,6 +91,7 @@ public interface ValidateMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Schemas</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getValidateMediator_Schemas()
      * @model containment="true"
@@ -99,6 +107,7 @@ public interface ValidateMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(ValidateMediatorInputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getValidateMediator_InputConnector()
@@ -108,9 +117,11 @@ public interface ValidateMediator extends Mediator {
     ValidateMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#getInputConnector
+     * <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
      * @see #getInputConnector()
      * @generated
@@ -125,6 +136,7 @@ public interface ValidateMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(ValidateMediatorOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getValidateMediator_OutputConnector()
@@ -134,9 +146,11 @@ public interface ValidateMediator extends Mediator {
     ValidateMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#getOutputConnector
+     * <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
      * @see #getOutputConnector()
      * @generated
@@ -151,6 +165,7 @@ public interface ValidateMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>On Fail Output Connector</em>' containment reference.
      * @see #setOnFailOutputConnector(ValidateMediatorOnFailOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getValidateMediator_OnFailOutputConnector()
@@ -160,9 +175,11 @@ public interface ValidateMediator extends Mediator {
     ValidateMediatorOnFailOutputConnector getOnFailOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#getOnFailOutputConnector <em>On Fail Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#getOnFailOutputConnector
+     * <em>On Fail Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>On Fail Output Connector</em>' containment reference.
      * @see #getOnFailOutputConnector()
      * @generated
@@ -177,6 +194,7 @@ public interface ValidateMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Mediator Flow</em>' containment reference.
      * @see #setMediatorFlow(MediatorFlow)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getValidateMediator_MediatorFlow()
@@ -186,9 +204,11 @@ public interface ValidateMediator extends Mediator {
     MediatorFlow getMediatorFlow();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#getMediatorFlow <em>Mediator Flow</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#getMediatorFlow
+     * <em>Mediator Flow</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Mediator Flow</em>' containment reference.
      * @see #getMediatorFlow()
      * @generated
@@ -204,6 +224,7 @@ public interface ValidateMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Resources</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getValidateMediator_Resources()
      * @model containment="true"
@@ -220,6 +241,7 @@ public interface ValidateMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Enable Cache Schema</em>' attribute.
      * @see #setEnableCacheSchema(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getValidateMediator_EnableCacheSchema()
@@ -229,9 +251,11 @@ public interface ValidateMediator extends Mediator {
     boolean isEnableCacheSchema();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#isEnableCacheSchema <em>Enable Cache Schema</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#isEnableCacheSchema
+     * <em>Enable Cache Schema</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Enable Cache Schema</em>' attribute.
      * @see #isEnableCacheSchema()
      * @generated

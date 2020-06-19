@@ -23,6 +23,7 @@ public class RuleMediatorChildMediatorsOutputConnectorImpl extends OutputConnect
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected RuleMediatorChildMediatorsOutputConnectorImpl() {
@@ -32,6 +33,7 @@ public class RuleMediatorChildMediatorsOutputConnectorImpl extends OutputConnect
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

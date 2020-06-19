@@ -22,6 +22,7 @@ public class IterateMediatorOutputConnectorImpl extends OutputConnectorImpl impl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected IterateMediatorOutputConnectorImpl() {
@@ -31,6 +32,7 @@ public class IterateMediatorOutputConnectorImpl extends OutputConnectorImpl impl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

@@ -34,6 +34,7 @@ public class RuleSessionPropertyImpl extends AbstractNameValuePropertyImpl imple
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 

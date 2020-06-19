@@ -17,10 +17,10 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbSequence#getName <em>Name</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbSequence#getInput <em>Input</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbSequence#getOutput <em>Output</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbSequence#getChildMediators <em>Child Mediators</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbSequence#getName <em>Name</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbSequence#getInput <em>Input</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbSequence#getOutput <em>Output</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbSequence#getChildMediators <em>Child Mediators</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEsbSequence()
@@ -37,6 +37,7 @@ public interface EsbSequence extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEsbSequence_Name()
@@ -46,9 +47,11 @@ public interface EsbSequence extends EsbNode {
     String getName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbSequence#getName <em>Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbSequence#getName <em>Name</em>}'
+     * attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Name</em>' attribute.
      * @see #getName()
      * @generated
@@ -63,6 +66,7 @@ public interface EsbSequence extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Input</em>' containment reference.
      * @see #setInput(EsbSequenceInputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEsbSequence_Input()
@@ -72,9 +76,11 @@ public interface EsbSequence extends EsbNode {
     EsbSequenceInputConnector getInput();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbSequence#getInput <em>Input</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbSequence#getInput <em>Input</em>}'
+     * containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Input</em>' containment reference.
      * @see #getInput()
      * @generated
@@ -89,6 +95,7 @@ public interface EsbSequence extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Output</em>' containment reference.
      * @see #setOutput(EsbSequenceOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEsbSequence_Output()
@@ -98,9 +105,11 @@ public interface EsbSequence extends EsbNode {
     EsbSequenceOutputConnector getOutput();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbSequence#getOutput <em>Output</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbSequence#getOutput <em>Output</em>}'
+     * containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Output</em>' containment reference.
      * @see #getOutput()
      * @generated
@@ -116,6 +125,7 @@ public interface EsbSequence extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Child Mediators</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEsbSequence_ChildMediators()
      * @model containment="true"

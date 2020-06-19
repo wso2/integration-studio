@@ -103,8 +103,8 @@ public class EsbModelingAssistantProviderOfJsonTransformMediatorOutputConnectorE
         extends EsbModelingAssistantProvider {
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     @Override
 
     public List<IElementType> getRelTypesOnSource(IAdaptable source) {
@@ -113,8 +113,8 @@ public class EsbModelingAssistantProviderOfJsonTransformMediatorOutputConnectorE
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public List<IElementType> doGetRelTypesOnSource(JsonTransformMediatorOutputConnectorEditPart source) {
         List<IElementType> types = new ArrayList<IElementType>(1);
         types.add(EsbElementTypes.EsbLink_4001);
@@ -122,8 +122,8 @@ public class EsbModelingAssistantProviderOfJsonTransformMediatorOutputConnectorE
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     @Override
 
     public List<IElementType> getRelTypesOnSourceAndTarget(IAdaptable source, IAdaptable target) {
@@ -134,8 +134,8 @@ public class EsbModelingAssistantProviderOfJsonTransformMediatorOutputConnectorE
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public List<IElementType> doGetRelTypesOnSourceAndTarget(JsonTransformMediatorOutputConnectorEditPart source,
             IGraphicalEditPart targetEditPart) {
         List<IElementType> types = new LinkedList<IElementType>();
@@ -398,8 +398,8 @@ public class EsbModelingAssistantProviderOfJsonTransformMediatorOutputConnectorE
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     @Override
 
     public List<IElementType> getTypesForTarget(IAdaptable source, IElementType relationshipType) {
@@ -408,8 +408,8 @@ public class EsbModelingAssistantProviderOfJsonTransformMediatorOutputConnectorE
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public List<IElementType> doGetTypesForTarget(JsonTransformMediatorOutputConnectorEditPart source,
             IElementType relationshipType) {
         List<IElementType> types = new ArrayList<IElementType>();

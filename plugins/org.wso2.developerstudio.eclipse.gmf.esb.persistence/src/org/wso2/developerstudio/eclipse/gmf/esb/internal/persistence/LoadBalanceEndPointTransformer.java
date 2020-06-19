@@ -192,7 +192,7 @@ public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer 
         case NONE:
             break;
         }
-        
+
         synapseLBEP.setDefinition(synapseEPDef);
         saveProperties(visualEndPoint, synapseLBEP);
 
@@ -244,14 +244,15 @@ public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer 
             List<Endpoint> synapseChildren = new ArrayList<>();
             if (visualEndPoint.getChildren() != null && visualEndPoint.getChildren().size() > 0) {
                 for (org.wso2.developerstudio.eclipse.gmf.esb.EndPoint viEndpoint : visualEndPoint.getChildren()) {
-                    if (viEndpoint instanceof AddressEndPointImpl || viEndpoint instanceof TemplateEndpointImpl || viEndpoint instanceof FailoverEndPointImpl) {
+                    if (viEndpoint instanceof AddressEndPointImpl || viEndpoint instanceof TemplateEndpointImpl
+                            || viEndpoint instanceof FailoverEndPointImpl) {
                         synapseChildren.add(TransformerUtils.getSynapseEndpoint(viEndpoint));
                     }
                 }
 
             }
             synapseLBEP.setChildren(synapseChildren);
-            
+
         } else {
             if (endPointsList.size() > 0) {
                 synapseLBEP.setChildren(endPointsList);
@@ -276,17 +277,17 @@ public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer 
 
         return synapseLBEP;
     }
-    
+
     public SynapseArtifact create(LoadbalanceEndpointFormPage formPage) throws NumberFormatException, JaxenException {
 
         LoadbalanceEndpoint synapseLoadbalanceEP;
-        
+
         if (formPage.getEndpointSessionType() != null && formPage.getEndpointSessionType().getSelectionIndex() == 0) {
             synapseLoadbalanceEP = new LoadbalanceEndpoint();
         } else {
             synapseLoadbalanceEP = new SALoadbalanceEndpoint();
         }
-        
+
         if (StringUtils.isNotBlank(formPage.getEndpointName().getText())) {
             synapseLoadbalanceEP.setName(formPage.getEndpointName().getText());
         }
@@ -401,14 +402,14 @@ public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer 
 
         return synapseLoadbalanceEP;
     }
-    
+
     private Object getAlgorithmnClass(String className) {
         Object algorithm = null;
         try {
             Class<?> algorithmClass = Class.forName(className);
             algorithm = algorithmClass.newInstance();
             if (algorithm instanceof LoadbalanceAlgorithm) {
-                
+
             }
         } catch (ClassNotFoundException e1) {
             MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error in Loadbalance Endpoint ! ",
@@ -420,7 +421,7 @@ public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer 
             MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error in Loadbalance Endpoint ! ",
                     "Illegal access to " + className + " algorithm class.");
         }
-        
+
         return algorithm;
     }
 }

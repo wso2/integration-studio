@@ -15,10 +15,14 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractNameValueExpressionProperty#getPropertyName <em>Property Name</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractNameValueExpressionProperty#getPropertyValueType <em>Property Value Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractNameValueExpressionProperty#getPropertyValue <em>Property Value</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractNameValueExpressionProperty#getPropertyExpression <em>Property Expression</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractNameValueExpressionProperty#getPropertyName <em>Property
+ * Name</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractNameValueExpressionProperty#getPropertyValueType
+ * <em>Property Value Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractNameValueExpressionProperty#getPropertyValue <em>Property
+ * Value</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractNameValueExpressionProperty#getPropertyExpression
+ * <em>Property Expression</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractNameValueExpressionProperty()
@@ -35,6 +39,7 @@ public interface AbstractNameValueExpressionProperty extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Property Name</em>' attribute.
      * @see #setPropertyName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractNameValueExpressionProperty_PropertyName()
@@ -44,9 +49,12 @@ public interface AbstractNameValueExpressionProperty extends EsbNode {
     String getPropertyName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractNameValueExpressionProperty#getPropertyName <em>Property Name</em>}' attribute.
+     * Sets the value of the
+     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractNameValueExpressionProperty#getPropertyName <em>Property
+     * Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Property Name</em>' attribute.
      * @see #getPropertyName()
      * @generated
@@ -62,6 +70,7 @@ public interface AbstractNameValueExpressionProperty extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Property Value Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType
      * @see #setPropertyValueType(PropertyValueType)
@@ -72,9 +81,12 @@ public interface AbstractNameValueExpressionProperty extends EsbNode {
     PropertyValueType getPropertyValueType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractNameValueExpressionProperty#getPropertyValueType <em>Property Value Type</em>}' attribute.
+     * Sets the value of the
+     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractNameValueExpressionProperty#getPropertyValueType
+     * <em>Property Value Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Property Value Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType
      * @see #getPropertyValueType()
@@ -91,6 +103,7 @@ public interface AbstractNameValueExpressionProperty extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Property Value</em>' attribute.
      * @see #setPropertyValue(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractNameValueExpressionProperty_PropertyValue()
@@ -100,9 +113,12 @@ public interface AbstractNameValueExpressionProperty extends EsbNode {
     String getPropertyValue();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractNameValueExpressionProperty#getPropertyValue <em>Property Value</em>}' attribute.
+     * Sets the value of the
+     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractNameValueExpressionProperty#getPropertyValue
+     * <em>Property Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Property Value</em>' attribute.
      * @see #getPropertyValue()
      * @generated
@@ -117,6 +133,7 @@ public interface AbstractNameValueExpressionProperty extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Property Expression</em>' containment reference.
      * @see #setPropertyExpression(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractNameValueExpressionProperty_PropertyExpression()
@@ -126,9 +143,12 @@ public interface AbstractNameValueExpressionProperty extends EsbNode {
     NamespacedProperty getPropertyExpression();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractNameValueExpressionProperty#getPropertyExpression <em>Property Expression</em>}' containment reference.
+     * Sets the value of the
+     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractNameValueExpressionProperty#getPropertyExpression
+     * <em>Property Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Property Expression</em>' containment reference.
      * @see #getPropertyExpression()
      * @generated

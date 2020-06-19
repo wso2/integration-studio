@@ -67,272 +67,303 @@ import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
  * 
  * 
  */
-public class CloudConnectorInputConnectorPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, CloudConnectorInputConnectorPropertiesEditionPart {
+public class CloudConnectorInputConnectorPropertiesEditionPartForm extends SectionPropertiesEditingPart
+        implements IFormPropertiesEditionPart, CloudConnectorInputConnectorPropertiesEditionPart {
 
-	protected ReferencesTable incomingLinks;
-	protected List<ViewerFilter> incomingLinksBusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> incomingLinksFilters = new ArrayList<ViewerFilter>();
+    protected ReferencesTable incomingLinks;
+    protected List<ViewerFilter> incomingLinksBusinessFilters = new ArrayList<ViewerFilter>();
+    protected List<ViewerFilter> incomingLinksFilters = new ArrayList<ViewerFilter>();
 
+    /**
+     * For {@link ISection} use only.
+     */
+    public CloudConnectorInputConnectorPropertiesEditionPartForm() {
+        super();
+    }
 
+    /**
+     * Default constructor
+     * 
+     * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+     * 
+     */
+    public CloudConnectorInputConnectorPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
+        super(editionComponent);
+    }
 
-	/**
-	 * For {@link ISection} use only.
-	 */
-	public CloudConnectorInputConnectorPropertiesEditionPartForm() { super(); }
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+     *      createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+     * 
+     */
+    public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
+        ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
+        Form form = scrolledForm.getForm();
+        view = form.getBody();
+        GridLayout layout = new GridLayout();
+        layout.numColumns = 3;
+        view.setLayout(layout);
+        createControls(widgetFactory, view);
+        return scrolledForm;
+    }
 
-	/**
-	 * Default constructor
-	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
-	 */
-	public CloudConnectorInputConnectorPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+     *      createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+     * 
+     */
+    public void createControls(final FormToolkit widgetFactory, Composite view) {
+        CompositionSequence cloudConnectorInputConnectorStep = new BindingCompositionSequence(
+                propertiesEditionComponent);
+        cloudConnectorInputConnectorStep.addStep(EsbViewsRepository.CloudConnectorInputConnector.Properties.class)
+                .addStep(EsbViewsRepository.CloudConnectorInputConnector.Properties.incomingLinks);
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
-	 * 
-	 */
-	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
-		view = form.getBody();
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 3;
-		view.setLayout(layout);
-		createControls(widgetFactory, view);
-		return scrolledForm;
-	}
+        composer = new PartComposer(cloudConnectorInputConnectorStep) {
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
-	 * 
-	 */
-	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		CompositionSequence cloudConnectorInputConnectorStep = new BindingCompositionSequence(propertiesEditionComponent);
-		cloudConnectorInputConnectorStep
-			.addStep(EsbViewsRepository.CloudConnectorInputConnector.Properties.class)
-			.addStep(EsbViewsRepository.CloudConnectorInputConnector.Properties.incomingLinks);
-		
-		
-		composer = new PartComposer(cloudConnectorInputConnectorStep) {
+            @Override
+            public Composite addToPart(Composite parent, Object key) {
+                if (key == EsbViewsRepository.CloudConnectorInputConnector.Properties.class) {
+                    return createPropertiesGroup(widgetFactory, parent);
+                }
+                if (key == EsbViewsRepository.CloudConnectorInputConnector.Properties.incomingLinks) {
+                    return createIncomingLinksReferencesTable(widgetFactory, parent);
+                }
+                return parent;
+            }
+        };
+        composer.compose(view);
+    }
 
-			@Override
-			public Composite addToPart(Composite parent, Object key) {
-				if (key == EsbViewsRepository.CloudConnectorInputConnector.Properties.class) {
-					return createPropertiesGroup(widgetFactory, parent);
-				}
-				if (key == EsbViewsRepository.CloudConnectorInputConnector.Properties.incomingLinks) {
-					return createIncomingLinksReferencesTable(widgetFactory, parent);
-				}
-				return parent;
-			}
-		};
-		composer.compose(view);
-	}
-	/**
-	 * 
-	 */
-	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
-		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
-		propertiesSection.setText(EsbMessages.CloudConnectorInputConnectorPropertiesEditionPart_PropertiesGroupLabel);
-		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesSectionData.horizontalSpan = 3;
-		propertiesSection.setLayoutData(propertiesSectionData);
-		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
-		GridLayout propertiesGroupLayout = new GridLayout();
-		propertiesGroupLayout.numColumns = 3;
-		propertiesGroup.setLayout(propertiesGroupLayout);
-		propertiesSection.setClient(propertiesGroup);
-		return propertiesGroup;
-	}
+    /**
+     * 
+     */
+    protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
+        Section propertiesSection = widgetFactory.createSection(parent,
+                Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+        propertiesSection.setText(EsbMessages.CloudConnectorInputConnectorPropertiesEditionPart_PropertiesGroupLabel);
+        GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
+        propertiesSectionData.horizontalSpan = 3;
+        propertiesSection.setLayoutData(propertiesSectionData);
+        Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
+        GridLayout propertiesGroupLayout = new GridLayout();
+        propertiesGroupLayout.numColumns = 3;
+        propertiesGroup.setLayout(propertiesGroupLayout);
+        propertiesSection.setClient(propertiesGroup);
+        return propertiesGroup;
+    }
 
-	/**
-	 * 
-	 */
-	protected Composite createIncomingLinksReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		this.incomingLinks = new ReferencesTable(getDescription(EsbViewsRepository.CloudConnectorInputConnector.Properties.incomingLinks, EsbMessages.CloudConnectorInputConnectorPropertiesEditionPart_IncomingLinksLabel), new ReferencesTableListener	() {
-			public void handleAdd() { addIncomingLinks(); }
-			public void handleEdit(EObject element) { editIncomingLinks(element); }
-			public void handleMove(EObject element, int oldIndex, int newIndex) { moveIncomingLinks(element, oldIndex, newIndex); }
-			public void handleRemove(EObject element) { removeFromIncomingLinks(element); }
-			public void navigateTo(EObject element) { }
-		});
-		this.incomingLinks.setHelpText(propertiesEditionComponent.getHelpContent(EsbViewsRepository.CloudConnectorInputConnector.Properties.incomingLinks, EsbViewsRepository.FORM_KIND));
-		this.incomingLinks.createControls(parent, widgetFactory);
-		this.incomingLinks.addSelectionListener(new SelectionAdapter() {
-			
-			public void widgetSelected(SelectionEvent e) {
-				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CloudConnectorInputConnectorPropertiesEditionPartForm.this, EsbViewsRepository.CloudConnectorInputConnector.Properties.incomingLinks, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
-				}
-			}
-			
-		});
-		GridData incomingLinksData = new GridData(GridData.FILL_HORIZONTAL);
-		incomingLinksData.horizontalSpan = 3;
-		this.incomingLinks.setLayoutData(incomingLinksData);
-		this.incomingLinks.disableMove();
-		incomingLinks.setID(EsbViewsRepository.CloudConnectorInputConnector.Properties.incomingLinks);
-		incomingLinks.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
-		// Start of user code for createIncomingLinksReferencesTable
+    /**
+     * 
+     */
+    protected Composite createIncomingLinksReferencesTable(FormToolkit widgetFactory, Composite parent) {
+        this.incomingLinks = new ReferencesTable(
+                getDescription(EsbViewsRepository.CloudConnectorInputConnector.Properties.incomingLinks,
+                        EsbMessages.CloudConnectorInputConnectorPropertiesEditionPart_IncomingLinksLabel),
+                new ReferencesTableListener() {
+                    public void handleAdd() {
+                        addIncomingLinks();
+                    }
 
-		// End of user code
-		return parent;
-	}
+                    public void handleEdit(EObject element) {
+                        editIncomingLinks(element);
+                    }
 
-	/**
-	 * 
-	 */
-	protected void addIncomingLinks() {
-		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(incomingLinks.getInput(), incomingLinksFilters, incomingLinksBusinessFilters,
-		"incomingLinks", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
-			@Override
-			public void process(IStructuredSelection selection) {
-				for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
-					EObject elem = (EObject) iter.next();
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CloudConnectorInputConnectorPropertiesEditionPartForm.this, EsbViewsRepository.CloudConnectorInputConnector.Properties.incomingLinks,
-						PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
-				}
-				incomingLinks.refresh();
-			}
-		};
-		dialog.open();
-	}
+                    public void handleMove(EObject element, int oldIndex, int newIndex) {
+                        moveIncomingLinks(element, oldIndex, newIndex);
+                    }
 
-	/**
-	 * 
-	 */
-	protected void moveIncomingLinks(EObject element, int oldIndex, int newIndex) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CloudConnectorInputConnectorPropertiesEditionPartForm.this, EsbViewsRepository.CloudConnectorInputConnector.Properties.incomingLinks, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		incomingLinks.refresh();
-	}
+                    public void handleRemove(EObject element) {
+                        removeFromIncomingLinks(element);
+                    }
 
-	/**
-	 * 
-	 */
-	protected void removeFromIncomingLinks(EObject element) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CloudConnectorInputConnectorPropertiesEditionPartForm.this, EsbViewsRepository.CloudConnectorInputConnector.Properties.incomingLinks, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-		incomingLinks.refresh();
-	}
+                    public void navigateTo(EObject element) {
+                    }
+                });
+        this.incomingLinks.setHelpText(propertiesEditionComponent.getHelpContent(
+                EsbViewsRepository.CloudConnectorInputConnector.Properties.incomingLinks,
+                EsbViewsRepository.FORM_KIND));
+        this.incomingLinks.createControls(parent, widgetFactory);
+        this.incomingLinks.addSelectionListener(new SelectionAdapter() {
 
-	/**
-	 * 
-	 */
-	protected void editIncomingLinks(EObject element) {
-		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
-		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
-		if (provider != null) {
-			PropertiesEditingPolicy policy = provider.getPolicy(context);
-			if (policy != null) {
-				policy.execute();
-				incomingLinks.refresh();
-			}
-		}
-	}
+            public void widgetSelected(SelectionEvent e) {
+                if (e.item != null && e.item.getData() instanceof EObject) {
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(CloudConnectorInputConnectorPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.CloudConnectorInputConnector.Properties.incomingLinks,
+                                    PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null,
+                                    e.item.getData()));
+                }
+            }
 
+        });
+        GridData incomingLinksData = new GridData(GridData.FILL_HORIZONTAL);
+        incomingLinksData.horizontalSpan = 3;
+        this.incomingLinks.setLayoutData(incomingLinksData);
+        this.incomingLinks.disableMove();
+        incomingLinks.setID(EsbViewsRepository.CloudConnectorInputConnector.Properties.incomingLinks);
+        incomingLinks.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
+        // Start of user code for createIncomingLinksReferencesTable
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
-	 */
-	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-		
-		// End of user code
-	}
+        // End of user code
+        return parent;
+    }
 
+    /**
+     * 
+     */
+    protected void addIncomingLinks() {
+        TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(incomingLinks.getInput(),
+                incomingLinksFilters, incomingLinksBusinessFilters, "incomingLinks",
+                propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
+            @Override
+            public void process(IStructuredSelection selection) {
+                for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
+                    EObject elem = (EObject) iter.next();
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(CloudConnectorInputConnectorPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.CloudConnectorInputConnector.Properties.incomingLinks,
+                                    PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+                }
+                incomingLinks.refresh();
+            }
+        };
+        dialog.open();
+    }
 
+    /**
+     * 
+     */
+    protected void moveIncomingLinks(EObject element, int oldIndex, int newIndex) {
+        propertiesEditionComponent.firePropertiesChanged(
+                new PropertiesEditionEvent(CloudConnectorInputConnectorPropertiesEditionPartForm.this,
+                        EsbViewsRepository.CloudConnectorInputConnector.Properties.incomingLinks,
+                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+        incomingLinks.refresh();
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CloudConnectorInputConnectorPropertiesEditionPart#initIncomingLinks(org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings)
-	 */
-	public void initIncomingLinks(ReferencesTableSettings settings) {
-		if (current.eResource() != null && current.eResource().getResourceSet() != null)
-			this.resourceSet = current.eResource().getResourceSet();
-		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
-		incomingLinks.setContentProvider(contentProvider);
-		incomingLinks.setInput(settings);
-		incomingLinksBusinessFilters.clear();
-		incomingLinksFilters.clear();
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.CloudConnectorInputConnector.Properties.incomingLinks);
-		if (eefElementEditorReadOnlyState && incomingLinks.getTable().isEnabled()) {
-			incomingLinks.setEnabled(false);
-			incomingLinks.setToolTipText(EsbMessages.CloudConnectorInputConnector_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !incomingLinks.getTable().isEnabled()) {
-			incomingLinks.setEnabled(true);
-		}
-		
-	}
+    /**
+     * 
+     */
+    protected void removeFromIncomingLinks(EObject element) {
+        propertiesEditionComponent.firePropertiesChanged(
+                new PropertiesEditionEvent(CloudConnectorInputConnectorPropertiesEditionPartForm.this,
+                        EsbViewsRepository.CloudConnectorInputConnector.Properties.incomingLinks,
+                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+        incomingLinks.refresh();
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CloudConnectorInputConnectorPropertiesEditionPart#updateIncomingLinks()
-	 * 
-	 */
-	public void updateIncomingLinks() {
-	incomingLinks.refresh();
-}
+    /**
+     * 
+     */
+    protected void editIncomingLinks(EObject element) {
+        EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(
+                propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
+        PropertiesEditingProvider provider = (PropertiesEditingProvider) adapterFactory.adapt(element,
+                PropertiesEditingProvider.class);
+        if (provider != null) {
+            PropertiesEditingPolicy policy = provider.getPolicy(context);
+            if (policy != null) {
+                policy.execute();
+                incomingLinks.refresh();
+            }
+        }
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CloudConnectorInputConnectorPropertiesEditionPart#addFilterIncomingLinks(ViewerFilter filter)
-	 * 
-	 */
-	public void addFilterToIncomingLinks(ViewerFilter filter) {
-		incomingLinksFilters.add(filter);
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+     * 
+     */
+    public void firePropertiesChanged(IPropertiesEditionEvent event) {
+        // Start of user code for tab synchronization
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CloudConnectorInputConnectorPropertiesEditionPart#addBusinessFilterIncomingLinks(ViewerFilter filter)
-	 * 
-	 */
-	public void addBusinessFilterToIncomingLinks(ViewerFilter filter) {
-		incomingLinksBusinessFilters.add(filter);
-	}
+        // End of user code
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CloudConnectorInputConnectorPropertiesEditionPart#isContainedInIncomingLinksTable(EObject element)
-	 * 
-	 */
-	public boolean isContainedInIncomingLinksTable(EObject element) {
-		return ((ReferencesTableSettings)incomingLinks.getInput()).contains(element);
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CloudConnectorInputConnectorPropertiesEditionPart#initIncomingLinks(org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings)
+     */
+    public void initIncomingLinks(ReferencesTableSettings settings) {
+        if (current.eResource() != null && current.eResource().getResourceSet() != null)
+            this.resourceSet = current.eResource().getResourceSet();
+        ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+        incomingLinks.setContentProvider(contentProvider);
+        incomingLinks.setInput(settings);
+        incomingLinksBusinessFilters.clear();
+        incomingLinksFilters.clear();
+        boolean eefElementEditorReadOnlyState = isReadOnly(
+                EsbViewsRepository.CloudConnectorInputConnector.Properties.incomingLinks);
+        if (eefElementEditorReadOnlyState && incomingLinks.getTable().isEnabled()) {
+            incomingLinks.setEnabled(false);
+            incomingLinks.setToolTipText(EsbMessages.CloudConnectorInputConnector_ReadOnly);
+        } else if (!eefElementEditorReadOnlyState && !incomingLinks.getTable().isEnabled()) {
+            incomingLinks.setEnabled(true);
+        }
 
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CloudConnectorInputConnectorPropertiesEditionPart#updateIncomingLinks()
+     * 
+     */
+    public void updateIncomingLinks() {
+        incomingLinks.refresh();
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CloudConnectorInputConnectorPropertiesEditionPart#addFilterIncomingLinks(ViewerFilter
+     *      filter)
+     * 
+     */
+    public void addFilterToIncomingLinks(ViewerFilter filter) {
+        incomingLinksFilters.add(filter);
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CloudConnectorInputConnectorPropertiesEditionPart#addBusinessFilterIncomingLinks(ViewerFilter
+     *      filter)
+     * 
+     */
+    public void addBusinessFilterToIncomingLinks(ViewerFilter filter) {
+        incomingLinksBusinessFilters.add(filter);
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CloudConnectorInputConnectorPropertiesEditionPart#isContainedInIncomingLinksTable(EObject
+     *      element)
+     * 
+     */
+    public boolean isContainedInIncomingLinksTable(EObject element) {
+        return ((ReferencesTableSettings) incomingLinks.getInput()).contains(element);
+    }
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
-	 */
-	public String getTitle() {
-		return EsbMessages.CloudConnectorInputConnector_Part_Title;
-	}
+    /**
+     * {@inheritDoc}
+     *
+     * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+     * 
+     */
+    public String getTitle() {
+        return EsbMessages.CloudConnectorInputConnector_Part_Title;
+    }
 
-	// Start of user code additional methods
-	
-	// End of user code
+    // Start of user code additional methods
 
+    // End of user code
 
 }

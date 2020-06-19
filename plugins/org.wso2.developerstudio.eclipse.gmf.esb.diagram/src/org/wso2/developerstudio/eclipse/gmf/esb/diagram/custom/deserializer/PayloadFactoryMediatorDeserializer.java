@@ -54,7 +54,7 @@ public class PayloadFactoryMediatorDeserializer
                 executeSetValueCommand(PAYLOAD_FACTORY_MEDIATOR__MEDIA_TYPE, MediaType.TEXT);
             }
         }
-        
+
         if (payloadFactoryMediator.getFormatKey() != null) {
             executeSetValueCommand(PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_FORMAT, PayloadFormatType.REGISTRY_REFERENCE);
             RegistryKeyProperty payloadFormatKey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
@@ -76,9 +76,11 @@ public class PayloadFactoryMediatorDeserializer
                 executeSetValueCommand(payloadFactoryArgument, PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_TYPE,
                         PayloadFactoryArgumentType.EXPRESSION);
                 if (argument.getExpression().getPathType() == SynapsePath.X_PATH) {
-                    executeSetValueCommand(payloadFactoryArgument, PAYLOAD_FACTORY_ARGUMENT__EVALUATOR, PayloadFactoryEvaluatorType.XML);
+                    executeSetValueCommand(payloadFactoryArgument, PAYLOAD_FACTORY_ARGUMENT__EVALUATOR,
+                            PayloadFactoryEvaluatorType.XML);
                 } else if (argument.getExpression().getPathType() == SynapsePath.JSON_PATH) {
-                    executeSetValueCommand(payloadFactoryArgument, PAYLOAD_FACTORY_ARGUMENT__EVALUATOR, PayloadFactoryEvaluatorType.JSON);
+                    executeSetValueCommand(payloadFactoryArgument, PAYLOAD_FACTORY_ARGUMENT__EVALUATOR,
+                            PayloadFactoryEvaluatorType.JSON);
                 }
 
             } else {

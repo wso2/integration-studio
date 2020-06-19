@@ -20,9 +20,11 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPointInputConnector} object.
+ * This is the item provider adapter for a
+ * {@link org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPointInputConnector} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class LoadBalanceEndPointInputConnectorItemProvider extends InputConnectorItemProvider {
@@ -30,6 +32,7 @@ public class LoadBalanceEndPointInputConnectorItemProvider extends InputConnecto
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public LoadBalanceEndPointInputConnectorItemProvider(AdapterFactory adapterFactory) {
@@ -40,6 +43,7 @@ public class LoadBalanceEndPointInputConnectorItemProvider extends InputConnecto
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -55,6 +59,7 @@ public class LoadBalanceEndPointInputConnectorItemProvider extends InputConnecto
      * This returns LoadBalanceEndPointInputConnector.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -66,6 +71,7 @@ public class LoadBalanceEndPointInputConnectorItemProvider extends InputConnecto
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -78,6 +84,7 @@ public class LoadBalanceEndPointInputConnectorItemProvider extends InputConnecto
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -91,6 +98,7 @@ public class LoadBalanceEndPointInputConnectorItemProvider extends InputConnecto
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

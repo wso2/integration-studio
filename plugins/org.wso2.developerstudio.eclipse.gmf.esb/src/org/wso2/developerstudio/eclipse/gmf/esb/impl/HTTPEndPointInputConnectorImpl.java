@@ -31,6 +31,7 @@ public class HTTPEndPointInputConnectorImpl extends InputConnectorImpl implement
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected HTTPEndPointInputConnectorImpl() {
@@ -40,6 +41,7 @@ public class HTTPEndPointInputConnectorImpl extends InputConnectorImpl implement
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

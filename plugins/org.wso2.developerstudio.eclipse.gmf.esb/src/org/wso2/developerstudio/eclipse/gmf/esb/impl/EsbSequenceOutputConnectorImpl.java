@@ -22,6 +22,7 @@ public class EsbSequenceOutputConnectorImpl extends InputConnectorImpl implement
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected EsbSequenceOutputConnectorImpl() {
@@ -31,6 +32,7 @@ public class EsbSequenceOutputConnectorImpl extends InputConnectorImpl implement
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 

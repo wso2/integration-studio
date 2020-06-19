@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>RM Spec Version</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
+ * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRMSpecVersion()
  * @model
  * @generated
@@ -26,6 +27,7 @@ public enum RMSpecVersion implements Enumerator {
      * The '<em><b>VERSION 10</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #VERSION_10_VALUE
      * @generated
      * @ordered
@@ -36,6 +38,7 @@ public enum RMSpecVersion implements Enumerator {
      * The '<em><b>VERSION 11</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #VERSION_11_VALUE
      * @generated
      * @ordered
@@ -50,6 +53,7 @@ public enum RMSpecVersion implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #VERSION_10
      * @model name="VERSION_1_0" literal="1.0"
      * @generated
@@ -65,6 +69,7 @@ public enum RMSpecVersion implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #VERSION_11
      * @model name="VERSION_1_1" literal="1.1"
      * @generated
@@ -76,17 +81,16 @@ public enum RMSpecVersion implements Enumerator {
      * An array of all the '<em><b>RM Spec Version</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
-    private static final RMSpecVersion[] VALUES_ARRAY = new RMSpecVersion[] {
-            VERSION_10,
-            VERSION_11,
-        };
+    private static final RMSpecVersion[] VALUES_ARRAY = new RMSpecVersion[] { VERSION_10, VERSION_11, };
 
     /**
      * A public read-only list of all the '<em><b>RM Spec Version</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public static final List<RMSpecVersion> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -95,6 +99,7 @@ public enum RMSpecVersion implements Enumerator {
      * Returns the '<em><b>RM Spec Version</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -113,6 +118,7 @@ public enum RMSpecVersion implements Enumerator {
      * Returns the '<em><b>RM Spec Version</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -131,14 +137,17 @@ public enum RMSpecVersion implements Enumerator {
      * Returns the '<em><b>RM Spec Version</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static RMSpecVersion get(int value) {
         switch (value) {
-            case VERSION_10_VALUE: return VERSION_10;
-            case VERSION_11_VALUE: return VERSION_11;
+        case VERSION_10_VALUE:
+            return VERSION_10;
+        case VERSION_11_VALUE:
+            return VERSION_11;
         }
         return null;
     }
@@ -146,6 +155,7 @@ public enum RMSpecVersion implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final int value;
@@ -153,6 +163,7 @@ public enum RMSpecVersion implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String name;
@@ -160,6 +171,7 @@ public enum RMSpecVersion implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String literal;
@@ -168,6 +180,7 @@ public enum RMSpecVersion implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private RMSpecVersion(int value, String name, String literal) {
@@ -179,34 +192,38 @@ public enum RMSpecVersion implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public int getValue() {
-      return value;
+        return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getName() {
-      return name;
+        return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getLiteral() {
-      return literal;
+        return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 

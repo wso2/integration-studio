@@ -17,13 +17,15 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CommandProperty#getPropertyName <em>Property Name</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CommandProperty#getValueType <em>Value Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CommandProperty#getValueLiteral <em>Value Literal</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CommandProperty#getValueContextPropertyName <em>Value Context Property Name</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CommandProperty#getValueMessageElementXpath <em>Value Message Element Xpath</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CommandProperty#getContextAction <em>Context Action</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CommandProperty#getMessageAction <em>Message Action</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CommandProperty#getPropertyName <em>Property Name</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CommandProperty#getValueType <em>Value Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CommandProperty#getValueLiteral <em>Value Literal</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CommandProperty#getValueContextPropertyName <em>Value Context
+ * Property Name</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CommandProperty#getValueMessageElementXpath <em>Value Message
+ * Element Xpath</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CommandProperty#getContextAction <em>Context Action</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CommandProperty#getMessageAction <em>Message Action</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCommandProperty()
@@ -40,6 +42,7 @@ public interface CommandProperty extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Property Name</em>' attribute.
      * @see #setPropertyName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCommandProperty_PropertyName()
@@ -49,9 +52,11 @@ public interface CommandProperty extends EObject {
     String getPropertyName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CommandProperty#getPropertyName <em>Property Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CommandProperty#getPropertyName
+     * <em>Property Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Property Name</em>' attribute.
      * @see #getPropertyName()
      * @generated
@@ -68,6 +73,7 @@ public interface CommandProperty extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Value Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.CommandPropertyValueType
      * @see #setValueType(CommandPropertyValueType)
@@ -78,9 +84,11 @@ public interface CommandProperty extends EObject {
     CommandPropertyValueType getValueType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CommandProperty#getValueType <em>Value Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CommandProperty#getValueType <em>Value
+     * Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Value Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.CommandPropertyValueType
      * @see #getValueType()
@@ -97,6 +105,7 @@ public interface CommandProperty extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Value Literal</em>' attribute.
      * @see #setValueLiteral(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCommandProperty_ValueLiteral()
@@ -106,9 +115,11 @@ public interface CommandProperty extends EObject {
     String getValueLiteral();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CommandProperty#getValueLiteral <em>Value Literal</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CommandProperty#getValueLiteral <em>Value
+     * Literal</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Value Literal</em>' attribute.
      * @see #getValueLiteral()
      * @generated
@@ -124,6 +135,7 @@ public interface CommandProperty extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Value Context Property Name</em>' attribute.
      * @see #setValueContextPropertyName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCommandProperty_ValueContextPropertyName()
@@ -133,9 +145,12 @@ public interface CommandProperty extends EObject {
     String getValueContextPropertyName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CommandProperty#getValueContextPropertyName <em>Value Context Property Name</em>}' attribute.
+     * Sets the value of the
+     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.CommandProperty#getValueContextPropertyName <em>Value Context
+     * Property Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Value Context Property Name</em>' attribute.
      * @see #getValueContextPropertyName()
      * @generated
@@ -150,6 +165,7 @@ public interface CommandProperty extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Value Message Element Xpath</em>' containment reference.
      * @see #setValueMessageElementXpath(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCommandProperty_ValueMessageElementXpath()
@@ -159,9 +175,12 @@ public interface CommandProperty extends EObject {
     NamespacedProperty getValueMessageElementXpath();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CommandProperty#getValueMessageElementXpath <em>Value Message Element Xpath</em>}' containment reference.
+     * Sets the value of the
+     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.CommandProperty#getValueMessageElementXpath <em>Value Message
+     * Element Xpath</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Value Message Element Xpath</em>' containment reference.
      * @see #getValueMessageElementXpath()
      * @generated
@@ -170,13 +189,15 @@ public interface CommandProperty extends EObject {
 
     /**
      * Returns the value of the '<em><b>Context Action</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.CommandPropertyContextAction}.
+     * The literals are from the enumeration
+     * {@link org.wso2.developerstudio.eclipse.gmf.esb.CommandPropertyContextAction}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Context Action</em>' attribute isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Context Action</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.CommandPropertyContextAction
      * @see #setContextAction(CommandPropertyContextAction)
@@ -187,9 +208,11 @@ public interface CommandProperty extends EObject {
     CommandPropertyContextAction getContextAction();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CommandProperty#getContextAction <em>Context Action</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CommandProperty#getContextAction
+     * <em>Context Action</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Context Action</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.CommandPropertyContextAction
      * @see #getContextAction()
@@ -199,13 +222,15 @@ public interface CommandProperty extends EObject {
 
     /**
      * Returns the value of the '<em><b>Message Action</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.CommandPropertyMessageAction}.
+     * The literals are from the enumeration
+     * {@link org.wso2.developerstudio.eclipse.gmf.esb.CommandPropertyMessageAction}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Message Action</em>' attribute isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Message Action</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.CommandPropertyMessageAction
      * @see #setMessageAction(CommandPropertyMessageAction)
@@ -216,9 +241,11 @@ public interface CommandProperty extends EObject {
     CommandPropertyMessageAction getMessageAction();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CommandProperty#getMessageAction <em>Message Action</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CommandProperty#getMessageAction
+     * <em>Message Action</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Message Action</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.CommandPropertyMessageAction
      * @see #getMessageAction()

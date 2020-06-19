@@ -36,11 +36,16 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractNameValueExpressionAttributeImpl#getAttributeName <em>Attribute Name</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractNameValueExpressionAttributeImpl#getAttributeValueType <em>Attribute Value Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractNameValueExpressionAttributeImpl#getAttributeValue <em>Attribute Value</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractNameValueExpressionAttributeImpl#getAttributeType <em>Attribute Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractNameValueExpressionAttributeImpl#getAttributeExpression <em>Attribute Expression</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractNameValueExpressionAttributeImpl#getAttributeName
+ * <em>Attribute Name</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractNameValueExpressionAttributeImpl#getAttributeValueType
+ * <em>Attribute Value Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractNameValueExpressionAttributeImpl#getAttributeValue
+ * <em>Attribute Value</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractNameValueExpressionAttributeImpl#getAttributeType
+ * <em>Attribute Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractNameValueExpressionAttributeImpl#getAttributeExpression
+ * <em>Attribute Expression</em>}</li>
  * </ul>
  *
  * @generated
@@ -51,6 +56,7 @@ public abstract class AbstractNameValueExpressionAttributeImpl extends EsbNodeIm
      * The default value of the '{@link #getAttributeName() <em>Attribute Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getAttributeName()
      * @generated
      * @ordered
@@ -60,6 +66,7 @@ public abstract class AbstractNameValueExpressionAttributeImpl extends EsbNodeIm
      * The cached value of the '{@link #getAttributeName() <em>Attribute Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getAttributeName()
      * @generated
      * @ordered
@@ -69,6 +76,7 @@ public abstract class AbstractNameValueExpressionAttributeImpl extends EsbNodeIm
      * The default value of the '{@link #getAttributeValueType() <em>Attribute Value Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getAttributeValueType()
      * @generated
      * @ordered
@@ -78,6 +86,7 @@ public abstract class AbstractNameValueExpressionAttributeImpl extends EsbNodeIm
      * The cached value of the '{@link #getAttributeValueType() <em>Attribute Value Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getAttributeValueType()
      * @generated
      * @ordered
@@ -87,6 +96,7 @@ public abstract class AbstractNameValueExpressionAttributeImpl extends EsbNodeIm
      * The default value of the '{@link #getAttributeValue() <em>Attribute Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getAttributeValue()
      * @generated
      * @ordered
@@ -96,6 +106,7 @@ public abstract class AbstractNameValueExpressionAttributeImpl extends EsbNodeIm
      * The cached value of the '{@link #getAttributeValue() <em>Attribute Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getAttributeValue()
      * @generated
      * @ordered
@@ -105,6 +116,7 @@ public abstract class AbstractNameValueExpressionAttributeImpl extends EsbNodeIm
      * The default value of the '{@link #getAttributeType() <em>Attribute Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getAttributeType()
      * @generated
      * @ordered
@@ -114,6 +126,7 @@ public abstract class AbstractNameValueExpressionAttributeImpl extends EsbNodeIm
      * The cached value of the '{@link #getAttributeType() <em>Attribute Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getAttributeType()
      * @generated
      * @ordered
@@ -123,6 +136,7 @@ public abstract class AbstractNameValueExpressionAttributeImpl extends EsbNodeIm
      * The cached value of the '{@link #getAttributeExpression() <em>Attribute Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getAttributeExpression()
      * @generated
      * @ordered
@@ -132,6 +146,7 @@ public abstract class AbstractNameValueExpressionAttributeImpl extends EsbNodeIm
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected AbstractNameValueExpressionAttributeImpl() {
@@ -141,6 +156,7 @@ public abstract class AbstractNameValueExpressionAttributeImpl extends EsbNodeIm
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -151,6 +167,7 @@ public abstract class AbstractNameValueExpressionAttributeImpl extends EsbNodeIm
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getAttributeName() {
@@ -160,18 +177,22 @@ public abstract class AbstractNameValueExpressionAttributeImpl extends EsbNodeIm
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setAttributeName(String newAttributeName) {
         String oldAttributeName = attributeName;
         attributeName = newAttributeName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_NAME, oldAttributeName, attributeName));
+            eNotify(new ENotificationImpl(this, Notification.SET,
+                    EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_NAME, oldAttributeName,
+                    attributeName));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public AttributeValueType getAttributeValueType() {
@@ -181,18 +202,22 @@ public abstract class AbstractNameValueExpressionAttributeImpl extends EsbNodeIm
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setAttributeValueType(AttributeValueType newAttributeValueType) {
         AttributeValueType oldAttributeValueType = attributeValueType;
         attributeValueType = newAttributeValueType == null ? ATTRIBUTE_VALUE_TYPE_EDEFAULT : newAttributeValueType;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE_TYPE, oldAttributeValueType, attributeValueType));
+            eNotify(new ENotificationImpl(this, Notification.SET,
+                    EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE_TYPE, oldAttributeValueType,
+                    attributeValueType));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getAttributeValue() {
@@ -202,18 +227,22 @@ public abstract class AbstractNameValueExpressionAttributeImpl extends EsbNodeIm
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setAttributeValue(String newAttributeValue) {
         String oldAttributeValue = attributeValue;
         attributeValue = newAttributeValue;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE, oldAttributeValue, attributeValue));
+            eNotify(new ENotificationImpl(this, Notification.SET,
+                    EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE, oldAttributeValue,
+                    attributeValue));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public AttributeType getAttributeType() {
@@ -223,18 +252,22 @@ public abstract class AbstractNameValueExpressionAttributeImpl extends EsbNodeIm
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setAttributeType(AttributeType newAttributeType) {
         AttributeType oldAttributeType = attributeType;
         attributeType = newAttributeType == null ? ATTRIBUTE_TYPE_EDEFAULT : newAttributeType;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_TYPE, oldAttributeType, attributeType));
+            eNotify(new ENotificationImpl(this, Notification.SET,
+                    EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_TYPE, oldAttributeType,
+                    attributeType));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public NamespacedProperty getAttributeExpression() {
@@ -244,6 +277,7 @@ public abstract class AbstractNameValueExpressionAttributeImpl extends EsbNodeIm
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public NotificationChain basicSetAttributeExpression(NamespacedProperty newAttributeExpression,
@@ -251,8 +285,13 @@ public abstract class AbstractNameValueExpressionAttributeImpl extends EsbNodeIm
         NamespacedProperty oldAttributeExpression = attributeExpression;
         attributeExpression = newAttributeExpression;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_EXPRESSION, oldAttributeExpression, newAttributeExpression);
-            if (msgs == null) msgs = notification; else msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+                    EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_EXPRESSION, oldAttributeExpression,
+                    newAttributeExpression);
+            if (msgs == null)
+                msgs = notification;
+            else
+                msgs.add(notification);
         }
         return msgs;
     }
@@ -260,32 +299,42 @@ public abstract class AbstractNameValueExpressionAttributeImpl extends EsbNodeIm
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setAttributeExpression(NamespacedProperty newAttributeExpression) {
         if (newAttributeExpression != attributeExpression) {
             NotificationChain msgs = null;
             if (attributeExpression != null)
-                msgs = ((InternalEObject)attributeExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_EXPRESSION, null, msgs);
+                msgs = ((InternalEObject) attributeExpression).eInverseRemove(this,
+                        EOPPOSITE_FEATURE_BASE
+                                - EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_EXPRESSION,
+                        null, msgs);
             if (newAttributeExpression != null)
-                msgs = ((InternalEObject)newAttributeExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_EXPRESSION, null, msgs);
+                msgs = ((InternalEObject) newAttributeExpression).eInverseAdd(this,
+                        EOPPOSITE_FEATURE_BASE
+                                - EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_EXPRESSION,
+                        null, msgs);
             msgs = basicSetAttributeExpression(newAttributeExpression, msgs);
-            if (msgs != null) msgs.dispatch();
-        }
-        else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_EXPRESSION, newAttributeExpression, newAttributeExpression));
+            if (msgs != null)
+                msgs.dispatch();
+        } else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET,
+                    EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_EXPRESSION, newAttributeExpression,
+                    newAttributeExpression));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-            case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_EXPRESSION:
-                return basicSetAttributeExpression(null, msgs);
+        case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_EXPRESSION:
+            return basicSetAttributeExpression(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -293,21 +342,22 @@ public abstract class AbstractNameValueExpressionAttributeImpl extends EsbNodeIm
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-            case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_NAME:
-                return getAttributeName();
-            case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE_TYPE:
-                return getAttributeValueType();
-            case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE:
-                return getAttributeValue();
-            case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_TYPE:
-                return getAttributeType();
-            case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_EXPRESSION:
-                return getAttributeExpression();
+        case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_NAME:
+            return getAttributeName();
+        case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE_TYPE:
+            return getAttributeValueType();
+        case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE:
+            return getAttributeValue();
+        case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_TYPE:
+            return getAttributeType();
+        case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_EXPRESSION:
+            return getAttributeExpression();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -315,26 +365,27 @@ public abstract class AbstractNameValueExpressionAttributeImpl extends EsbNodeIm
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-            case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_NAME:
-                setAttributeName((String)newValue);
-                return;
-            case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE_TYPE:
-                setAttributeValueType((AttributeValueType)newValue);
-                return;
-            case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE:
-                setAttributeValue((String)newValue);
-                return;
-            case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_TYPE:
-                setAttributeType((AttributeType)newValue);
-                return;
-            case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_EXPRESSION:
-                setAttributeExpression((NamespacedProperty)newValue);
-                return;
+        case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_NAME:
+            setAttributeName((String) newValue);
+            return;
+        case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE_TYPE:
+            setAttributeValueType((AttributeValueType) newValue);
+            return;
+        case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE:
+            setAttributeValue((String) newValue);
+            return;
+        case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_TYPE:
+            setAttributeType((AttributeType) newValue);
+            return;
+        case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_EXPRESSION:
+            setAttributeExpression((NamespacedProperty) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -342,26 +393,27 @@ public abstract class AbstractNameValueExpressionAttributeImpl extends EsbNodeIm
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-            case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_NAME:
-                setAttributeName(ATTRIBUTE_NAME_EDEFAULT);
-                return;
-            case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE_TYPE:
-                setAttributeValueType(ATTRIBUTE_VALUE_TYPE_EDEFAULT);
-                return;
-            case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE:
-                setAttributeValue(ATTRIBUTE_VALUE_EDEFAULT);
-                return;
-            case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_TYPE:
-                setAttributeType(ATTRIBUTE_TYPE_EDEFAULT);
-                return;
-            case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_EXPRESSION:
-                setAttributeExpression((NamespacedProperty)null);
-                return;
+        case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_NAME:
+            setAttributeName(ATTRIBUTE_NAME_EDEFAULT);
+            return;
+        case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE_TYPE:
+            setAttributeValueType(ATTRIBUTE_VALUE_TYPE_EDEFAULT);
+            return;
+        case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE:
+            setAttributeValue(ATTRIBUTE_VALUE_EDEFAULT);
+            return;
+        case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_TYPE:
+            setAttributeType(ATTRIBUTE_TYPE_EDEFAULT);
+            return;
+        case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_EXPRESSION:
+            setAttributeExpression((NamespacedProperty) null);
+            return;
         }
         super.eUnset(featureID);
     }
@@ -369,21 +421,24 @@ public abstract class AbstractNameValueExpressionAttributeImpl extends EsbNodeIm
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-            case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_NAME:
-                return ATTRIBUTE_NAME_EDEFAULT == null ? attributeName != null : !ATTRIBUTE_NAME_EDEFAULT.equals(attributeName);
-            case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE_TYPE:
-                return attributeValueType != ATTRIBUTE_VALUE_TYPE_EDEFAULT;
-            case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE:
-                return ATTRIBUTE_VALUE_EDEFAULT == null ? attributeValue != null : !ATTRIBUTE_VALUE_EDEFAULT.equals(attributeValue);
-            case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_TYPE:
-                return attributeType != ATTRIBUTE_TYPE_EDEFAULT;
-            case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_EXPRESSION:
-                return attributeExpression != null;
+        case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_NAME:
+            return ATTRIBUTE_NAME_EDEFAULT == null ? attributeName != null
+                    : !ATTRIBUTE_NAME_EDEFAULT.equals(attributeName);
+        case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE_TYPE:
+            return attributeValueType != ATTRIBUTE_VALUE_TYPE_EDEFAULT;
+        case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE:
+            return ATTRIBUTE_VALUE_EDEFAULT == null ? attributeValue != null
+                    : !ATTRIBUTE_VALUE_EDEFAULT.equals(attributeValue);
+        case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_TYPE:
+            return attributeType != ATTRIBUTE_TYPE_EDEFAULT;
+        case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_EXPRESSION:
+            return attributeExpression != null;
         }
         return super.eIsSet(featureID);
     }
@@ -391,11 +446,13 @@ public abstract class AbstractNameValueExpressionAttributeImpl extends EsbNodeIm
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy()) return super.toString();
+        if (eIsProxy())
+            return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (attributeName: ");

@@ -67,68 +67,73 @@ public class OpenSeparatelyEditPolicy extends OpenEditPolicy {
                 ((NamedEndpointEditPart) getTargetEditPart(request)).createDialogBox();
             }
 
-  /**      } else if (getTargetEditPart(request) instanceof ComplexFiguredAbstractEndpoint) {
-            Object endpointImpl = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl)((ComplexFiguredAbstractEndpoint) getTargetEditPart(request)).getModel()).getElement();
-            String name = null;
-            
-            if (endpointImpl instanceof LoadBalanceEndPointImpl) {
-
-                LoadBalanceEndPointImpl lbEndpoint = (LoadBalanceEndPointImpl) ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) ((ComplexFiguredAbstractEndpoint) getTargetEditPart(
-                        request)).getModel()).getElement();
-                if (lbEndpoint.getName() != null) {
-                    name = lbEndpoint.getName();
-                } else {
-                    name = lbEndpoint.getEndPointName();
-                }
-
-            } else if (endpointImpl instanceof FailoverEndPointImpl) {
-
-                FailoverEndPointImpl foEndpoint = (FailoverEndPointImpl) ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) ((ComplexFiguredAbstractEndpoint) getTargetEditPart(
-                        request)).getModel()).getElement();
-                if (foEndpoint.getName() != null) {
-                    name = foEndpoint.getName();
-                } else {
-                    name = foEndpoint.getEndPointName();
-                }
-
-            } else if (endpointImpl instanceof RecipientListEndPointImpl) {
-
-                RecipientListEndPointImpl rlEndpoint = (RecipientListEndPointImpl) ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) ((ComplexFiguredAbstractEndpoint) getTargetEditPart(
-                        request)).getModel()).getElement();
-                if (rlEndpoint.getName() != null) {
-                    name = rlEndpoint.getName();
-                } else {
-                    name = rlEndpoint.getEndPointName();
-                }
-
-            }
-            
-            if (name == null || (name != null && name.isEmpty())) {
-
-                try {
-                    if (getTargetEditPart(request) instanceof LoadBalanceEndPointEditPart) {
-                        ((LoadBalanceEndPointEditPart) getTargetEditPart(request))
-                                .createDialogBox(((ComplexFiguredAbstractEndpoint) getTargetEditPart(request)));
-
-                    } else if (getTargetEditPart(request) instanceof FailoverEndPointEditPart) {
-                        ((FailoverEndPointEditPart) getTargetEditPart(request))
-                                .createDialogBox(((ComplexFiguredAbstractEndpoint) getTargetEditPart(request)));
-
-                    } else if (getTargetEditPart(request) instanceof RecipientListEndPointEditPart) {
-                        ((RecipientListEndPointEditPart) getTargetEditPart(request))
-                                .createDialogBox(((ComplexFiguredAbstractEndpoint) getTargetEditPart(request)));
-
-                    }
-
-                } catch (Exception e) {
-                    log.error("Cannot open sequence file ", e);
-                    MessageDialog.openError(Display.getCurrent().getActiveShell(), "Cannot open endpoint file ",
-                            e.getLocalizedMessage());
-                }
-            } else {
-                ((ComplexFiguredAbstractEndpoint) getTargetEditPart(request)).openPage(name);
-            }
-            */
+            /**
+             * } else if (getTargetEditPart(request) instanceof ComplexFiguredAbstractEndpoint) {
+             * Object endpointImpl = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl)((ComplexFiguredAbstractEndpoint)
+             * getTargetEditPart(request)).getModel()).getElement();
+             * String name = null;
+             * 
+             * if (endpointImpl instanceof LoadBalanceEndPointImpl) {
+             * 
+             * LoadBalanceEndPointImpl lbEndpoint = (LoadBalanceEndPointImpl)
+             * ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) ((ComplexFiguredAbstractEndpoint) getTargetEditPart(
+             * request)).getModel()).getElement();
+             * if (lbEndpoint.getName() != null) {
+             * name = lbEndpoint.getName();
+             * } else {
+             * name = lbEndpoint.getEndPointName();
+             * }
+             * 
+             * } else if (endpointImpl instanceof FailoverEndPointImpl) {
+             * 
+             * FailoverEndPointImpl foEndpoint = (FailoverEndPointImpl)
+             * ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) ((ComplexFiguredAbstractEndpoint) getTargetEditPart(
+             * request)).getModel()).getElement();
+             * if (foEndpoint.getName() != null) {
+             * name = foEndpoint.getName();
+             * } else {
+             * name = foEndpoint.getEndPointName();
+             * }
+             * 
+             * } else if (endpointImpl instanceof RecipientListEndPointImpl) {
+             * 
+             * RecipientListEndPointImpl rlEndpoint = (RecipientListEndPointImpl)
+             * ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) ((ComplexFiguredAbstractEndpoint) getTargetEditPart(
+             * request)).getModel()).getElement();
+             * if (rlEndpoint.getName() != null) {
+             * name = rlEndpoint.getName();
+             * } else {
+             * name = rlEndpoint.getEndPointName();
+             * }
+             * 
+             * }
+             * 
+             * if (name == null || (name != null && name.isEmpty())) {
+             * 
+             * try {
+             * if (getTargetEditPart(request) instanceof LoadBalanceEndPointEditPart) {
+             * ((LoadBalanceEndPointEditPart) getTargetEditPart(request))
+             * .createDialogBox(((ComplexFiguredAbstractEndpoint) getTargetEditPart(request)));
+             * 
+             * } else if (getTargetEditPart(request) instanceof FailoverEndPointEditPart) {
+             * ((FailoverEndPointEditPart) getTargetEditPart(request))
+             * .createDialogBox(((ComplexFiguredAbstractEndpoint) getTargetEditPart(request)));
+             * 
+             * } else if (getTargetEditPart(request) instanceof RecipientListEndPointEditPart) {
+             * ((RecipientListEndPointEditPart) getTargetEditPart(request))
+             * .createDialogBox(((ComplexFiguredAbstractEndpoint) getTargetEditPart(request)));
+             * 
+             * }
+             * 
+             * } catch (Exception e) {
+             * log.error("Cannot open sequence file ", e);
+             * MessageDialog.openError(Display.getCurrent().getActiveShell(), "Cannot open endpoint file ",
+             * e.getLocalizedMessage());
+             * }
+             * } else {
+             * ((ComplexFiguredAbstractEndpoint) getTargetEditPart(request)).openPage(name);
+             * }
+             */
         } else if (getTargetEditPart(request) instanceof CallTemplateMediatorEditPart) {
             String targetTemplate = ((CallTemplateMediator) ((Node) ((CallTemplateMediatorEditPart) getTargetEditPart(
                     request)).getModel()).getElement()).getTargetTemplate();

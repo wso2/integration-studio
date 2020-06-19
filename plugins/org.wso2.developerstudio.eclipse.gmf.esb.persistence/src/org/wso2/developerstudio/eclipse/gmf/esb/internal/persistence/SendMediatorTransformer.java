@@ -80,8 +80,8 @@ public class SendMediatorTransformer extends AbstractEsbNodeTransformer {
         }
     }
 
-    public static org.apache.synapse.mediators.builtin.SendMediator createSendMediator(EsbNode subject, boolean isForValidation)
-            throws JaxenException {
+    public static org.apache.synapse.mediators.builtin.SendMediator createSendMediator(EsbNode subject,
+            boolean isForValidation) throws JaxenException {
         // Check subject.
         Assert.isTrue(subject instanceof SendMediator, "Invalid subject.");
         SendMediator visualSend = (SendMediator) subject;

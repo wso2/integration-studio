@@ -32,6 +32,7 @@ public class InboundEndpointOnErrorSequenceInputConnectorImpl extends InputConne
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected InboundEndpointOnErrorSequenceInputConnectorImpl() {
@@ -41,6 +42,7 @@ public class InboundEndpointOnErrorSequenceInputConnectorImpl extends InputConne
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

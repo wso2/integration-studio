@@ -32,6 +32,7 @@ public class ComplexEndpointsOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected ComplexEndpointsOutputConnectorImpl() {
@@ -41,6 +42,7 @@ public class ComplexEndpointsOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

@@ -15,27 +15,35 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getSoapVersion <em>Soap Version</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#isSerializeResponse <em>Serialize Response</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#isMarkAsResponse <em>Mark As Response</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultCodeSoap11 <em>Fault Code Soap11</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultCodeType <em>Fault Code Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultCodeExpression <em>Fault Code Expression</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultStringType <em>Fault String Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultStringValue <em>Fault String Value</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultStringExpression <em>Fault String Expression</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultActor <em>Fault Actor</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultCodeSoap12 <em>Fault Code Soap12</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultReasonType <em>Fault Reason Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultReasonValue <em>Fault Reason Value</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultReasonExpression <em>Fault Reason Expression</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getRoleName <em>Role Name</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getNodeName <em>Node Name</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultDetailType <em>Fault Detail Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultDetailValue <em>Fault Detail Value</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultDetailExpression <em>Fault Detail Expression</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getOutputConnector <em>Output Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getSoapVersion <em>Soap Version</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#isSerializeResponse <em>Serialize
+ * Response</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#isMarkAsResponse <em>Mark As Response</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultCodeSoap11 <em>Fault Code Soap11</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultCodeType <em>Fault Code Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultCodeExpression <em>Fault Code
+ * Expression</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultStringType <em>Fault String Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultStringValue <em>Fault String
+ * Value</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultStringExpression <em>Fault String
+ * Expression</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultActor <em>Fault Actor</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultCodeSoap12 <em>Fault Code Soap12</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultReasonType <em>Fault Reason Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultReasonValue <em>Fault Reason
+ * Value</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultReasonExpression <em>Fault Reason
+ * Expression</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getRoleName <em>Role Name</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getNodeName <em>Node Name</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultDetailType <em>Fault Detail Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultDetailValue <em>Fault Detail
+ * Value</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultDetailExpression <em>Fault Detail
+ * Expression</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getInputConnector <em>Input Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFaultMediator()
@@ -52,6 +60,7 @@ public interface FaultMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Soap Version</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.FaultSoapVersion
      * @see #setSoapVersion(FaultSoapVersion)
@@ -62,9 +71,11 @@ public interface FaultMediator extends Mediator {
     FaultSoapVersion getSoapVersion();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getSoapVersion <em>Soap Version</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getSoapVersion <em>Soap
+     * Version</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Soap Version</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.FaultSoapVersion
      * @see #getSoapVersion()
@@ -80,6 +91,7 @@ public interface FaultMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Serialize Response</em>' attribute.
      * @see #setSerializeResponse(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFaultMediator_SerializeResponse()
@@ -89,9 +101,11 @@ public interface FaultMediator extends Mediator {
     boolean isSerializeResponse();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#isSerializeResponse <em>Serialize Response</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#isSerializeResponse
+     * <em>Serialize Response</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Serialize Response</em>' attribute.
      * @see #isSerializeResponse()
      * @generated
@@ -106,6 +120,7 @@ public interface FaultMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Mark As Response</em>' attribute.
      * @see #setMarkAsResponse(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFaultMediator_MarkAsResponse()
@@ -115,9 +130,11 @@ public interface FaultMediator extends Mediator {
     boolean isMarkAsResponse();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#isMarkAsResponse <em>Mark As Response</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#isMarkAsResponse <em>Mark As
+     * Response</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Mark As Response</em>' attribute.
      * @see #isMarkAsResponse()
      * @generated
@@ -133,6 +150,7 @@ public interface FaultMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Fault Code Soap11</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.FaultCodeSoap11
      * @see #setFaultCodeSoap11(FaultCodeSoap11)
@@ -143,9 +161,11 @@ public interface FaultMediator extends Mediator {
     FaultCodeSoap11 getFaultCodeSoap11();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultCodeSoap11 <em>Fault Code Soap11</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultCodeSoap11 <em>Fault
+     * Code Soap11</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Fault Code Soap11</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.FaultCodeSoap11
      * @see #getFaultCodeSoap11()
@@ -162,6 +182,7 @@ public interface FaultMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Fault Code Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.FaultCodeType
      * @see #setFaultCodeType(FaultCodeType)
@@ -172,9 +193,11 @@ public interface FaultMediator extends Mediator {
     FaultCodeType getFaultCodeType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultCodeType <em>Fault Code Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultCodeType <em>Fault
+     * Code Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Fault Code Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.FaultCodeType
      * @see #getFaultCodeType()
@@ -190,6 +213,7 @@ public interface FaultMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Fault Code Expression</em>' containment reference.
      * @see #setFaultCodeExpression(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFaultMediator_FaultCodeExpression()
@@ -199,9 +223,11 @@ public interface FaultMediator extends Mediator {
     NamespacedProperty getFaultCodeExpression();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultCodeExpression <em>Fault Code Expression</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultCodeExpression
+     * <em>Fault Code Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Fault Code Expression</em>' containment reference.
      * @see #getFaultCodeExpression()
      * @generated
@@ -217,6 +243,7 @@ public interface FaultMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Fault String Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.FaultStringType
      * @see #setFaultStringType(FaultStringType)
@@ -227,9 +254,11 @@ public interface FaultMediator extends Mediator {
     FaultStringType getFaultStringType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultStringType <em>Fault String Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultStringType <em>Fault
+     * String Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Fault String Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.FaultStringType
      * @see #getFaultStringType()
@@ -246,6 +275,7 @@ public interface FaultMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Fault String Value</em>' attribute.
      * @see #setFaultStringValue(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFaultMediator_FaultStringValue()
@@ -255,9 +285,11 @@ public interface FaultMediator extends Mediator {
     String getFaultStringValue();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultStringValue <em>Fault String Value</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultStringValue
+     * <em>Fault String Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Fault String Value</em>' attribute.
      * @see #getFaultStringValue()
      * @generated
@@ -272,6 +304,7 @@ public interface FaultMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Fault String Expression</em>' containment reference.
      * @see #setFaultStringExpression(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFaultMediator_FaultStringExpression()
@@ -281,9 +314,11 @@ public interface FaultMediator extends Mediator {
     NamespacedProperty getFaultStringExpression();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultStringExpression <em>Fault String Expression</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultStringExpression
+     * <em>Fault String Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Fault String Expression</em>' containment reference.
      * @see #getFaultStringExpression()
      * @generated
@@ -298,6 +333,7 @@ public interface FaultMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Fault Actor</em>' attribute.
      * @see #setFaultActor(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFaultMediator_FaultActor()
@@ -307,9 +343,11 @@ public interface FaultMediator extends Mediator {
     String getFaultActor();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultActor <em>Fault Actor</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultActor <em>Fault
+     * Actor</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Fault Actor</em>' attribute.
      * @see #getFaultActor()
      * @generated
@@ -325,6 +363,7 @@ public interface FaultMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Fault Code Soap12</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.FaultCodeSoap12
      * @see #setFaultCodeSoap12(FaultCodeSoap12)
@@ -335,9 +374,11 @@ public interface FaultMediator extends Mediator {
     FaultCodeSoap12 getFaultCodeSoap12();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultCodeSoap12 <em>Fault Code Soap12</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultCodeSoap12 <em>Fault
+     * Code Soap12</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Fault Code Soap12</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.FaultCodeSoap12
      * @see #getFaultCodeSoap12()
@@ -354,6 +395,7 @@ public interface FaultMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Fault Reason Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.FaultReasonType
      * @see #setFaultReasonType(FaultReasonType)
@@ -364,9 +406,11 @@ public interface FaultMediator extends Mediator {
     FaultReasonType getFaultReasonType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultReasonType <em>Fault Reason Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultReasonType <em>Fault
+     * Reason Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Fault Reason Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.FaultReasonType
      * @see #getFaultReasonType()
@@ -383,6 +427,7 @@ public interface FaultMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Fault Reason Value</em>' attribute.
      * @see #setFaultReasonValue(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFaultMediator_FaultReasonValue()
@@ -392,9 +437,11 @@ public interface FaultMediator extends Mediator {
     String getFaultReasonValue();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultReasonValue <em>Fault Reason Value</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultReasonValue
+     * <em>Fault Reason Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Fault Reason Value</em>' attribute.
      * @see #getFaultReasonValue()
      * @generated
@@ -409,6 +456,7 @@ public interface FaultMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Fault Reason Expression</em>' containment reference.
      * @see #setFaultReasonExpression(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFaultMediator_FaultReasonExpression()
@@ -418,9 +466,11 @@ public interface FaultMediator extends Mediator {
     NamespacedProperty getFaultReasonExpression();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultReasonExpression <em>Fault Reason Expression</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultReasonExpression
+     * <em>Fault Reason Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Fault Reason Expression</em>' containment reference.
      * @see #getFaultReasonExpression()
      * @generated
@@ -435,6 +485,7 @@ public interface FaultMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Role Name</em>' attribute.
      * @see #setRoleName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFaultMediator_RoleName()
@@ -444,9 +495,11 @@ public interface FaultMediator extends Mediator {
     String getRoleName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getRoleName <em>Role Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getRoleName <em>Role
+     * Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Role Name</em>' attribute.
      * @see #getRoleName()
      * @generated
@@ -461,6 +514,7 @@ public interface FaultMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Node Name</em>' attribute.
      * @see #setNodeName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFaultMediator_NodeName()
@@ -470,9 +524,11 @@ public interface FaultMediator extends Mediator {
     String getNodeName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getNodeName <em>Node Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getNodeName <em>Node
+     * Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Node Name</em>' attribute.
      * @see #getNodeName()
      * @generated
@@ -488,6 +544,7 @@ public interface FaultMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Fault Detail Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.FaultDetailType
      * @see #setFaultDetailType(FaultDetailType)
@@ -498,9 +555,11 @@ public interface FaultMediator extends Mediator {
     FaultDetailType getFaultDetailType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultDetailType <em>Fault Detail Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultDetailType <em>Fault
+     * Detail Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Fault Detail Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.FaultDetailType
      * @see #getFaultDetailType()
@@ -516,6 +575,7 @@ public interface FaultMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Fault Detail Value</em>' attribute.
      * @see #setFaultDetailValue(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFaultMediator_FaultDetailValue()
@@ -525,9 +585,11 @@ public interface FaultMediator extends Mediator {
     String getFaultDetailValue();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultDetailValue <em>Fault Detail Value</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultDetailValue
+     * <em>Fault Detail Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Fault Detail Value</em>' attribute.
      * @see #getFaultDetailValue()
      * @generated
@@ -542,6 +604,7 @@ public interface FaultMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Fault Detail Expression</em>' containment reference.
      * @see #setFaultDetailExpression(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFaultMediator_FaultDetailExpression()
@@ -551,9 +614,11 @@ public interface FaultMediator extends Mediator {
     NamespacedProperty getFaultDetailExpression();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultDetailExpression <em>Fault Detail Expression</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getFaultDetailExpression
+     * <em>Fault Detail Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Fault Detail Expression</em>' containment reference.
      * @see #getFaultDetailExpression()
      * @generated
@@ -568,6 +633,7 @@ public interface FaultMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(FaultMediatorInputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFaultMediator_InputConnector()
@@ -577,9 +643,11 @@ public interface FaultMediator extends Mediator {
     FaultMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getInputConnector <em>Input
+     * Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
      * @see #getInputConnector()
      * @generated
@@ -594,6 +662,7 @@ public interface FaultMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(FaultMediatorOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFaultMediator_OutputConnector()
@@ -603,9 +672,11 @@ public interface FaultMediator extends Mediator {
     FaultMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator#getOutputConnector
+     * <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
      * @see #getOutputConnector()
      * @generated

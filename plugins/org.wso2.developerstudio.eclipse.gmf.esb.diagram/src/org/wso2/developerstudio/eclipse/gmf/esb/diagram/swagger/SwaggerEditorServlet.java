@@ -37,40 +37,40 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
  */
 public class SwaggerEditorServlet extends HttpServlet {
 
-	EsbMultiPageEditor editor = null;
+    EsbMultiPageEditor editor = null;
 
-	static final String PAYLOAD_XML_CONTENT_PARAM_NAME = "xmlcontent";
+    static final String PAYLOAD_XML_CONTENT_PARAM_NAME = "xmlcontent";
 
-	/**
-	 * This method will return the Swagger Editor configuration
-	 * 
-	 */
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    /**
+     * This method will return the Swagger Editor configuration
+     * 
+     */
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		Display.getDefault().syncExec(new Runnable() {
-			public void run() {
-				IEditorPart editorPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-						.getActiveEditor();
-				editor = (EsbMultiPageEditor) editorPart;
-			}
-		});
-		response.setContentType("application/json");
-		PrintWriter out = response.getWriter();
-		out.println((editor.getSource()));
-	}
+        Display.getDefault().syncExec(new Runnable() {
+            public void run() {
+                IEditorPart editorPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+                        .getActiveEditor();
+                editor = (EsbMultiPageEditor) editorPart;
+            }
+        });
+        response.setContentType("application/json");
+        PrintWriter out = response.getWriter();
+        out.println((editor.getSource()));
+    }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-		final String swagJson = request.getParameter("swagJson");
-		Display.getDefault().syncExec(new Runnable() {
-			public void run() {
-				IEditorPart editorPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-						.getActiveEditor();
-				editor = (EsbMultiPageEditor) editorPart;
-				editor.setSwaggerSource(swagJson);
-			}
-		});
-		response.setStatus(HttpServletResponse.SC_OK);
-	}
+        final String swagJson = request.getParameter("swagJson");
+        Display.getDefault().syncExec(new Runnable() {
+            public void run() {
+                IEditorPart editorPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+                        .getActiveEditor();
+                editor = (EsbMultiPageEditor) editorPart;
+                editor.setSwaggerSource(swagJson);
+            }
+        });
+        response.setStatus(HttpServletResponse.SC_OK);
+    }
 }

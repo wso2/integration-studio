@@ -22,6 +22,7 @@ public class XSLTMediatorInputConnectorImpl extends InputConnectorImpl implement
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected XSLTMediatorInputConnectorImpl() {
@@ -31,6 +32,7 @@ public class XSLTMediatorInputConnectorImpl extends InputConnectorImpl implement
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 

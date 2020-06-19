@@ -32,43 +32,44 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 public class JsonTransformMediatorInputConnectorEditPart extends AbstractMediatorInputConnectorEditPart {
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static final int VISUAL_ID = 3792;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     protected IFigure contentPane;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     protected IFigure primaryShape;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public JsonTransformMediatorInputConnectorEditPart(View view) {
         super(view);
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     protected void createDefaultEditPolicies() {
         super.createDefaultEditPolicies();
         installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, getPrimaryDragEditPolicy());
         installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
                 new JsonTransformMediatorInputConnectorItemSemanticEditPolicy());
         installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
-        // XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
+        // XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable
+        // editpolicies
         removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     protected LayoutEditPolicy createLayoutEditPolicy() {
         org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
@@ -92,38 +93,38 @@ public class JsonTransformMediatorInputConnectorEditPart extends AbstractMediato
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     protected IFigure createNodeShape() {
         return primaryShape = new EastPointerFigure();
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public EastPointerFigure getPrimaryShape() {
         return (EastPointerFigure) primaryShape;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     protected NodeFigure createNodePlate() {
         DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(12, 10);
 
-        //FIXME: workaround for #154536
+        // FIXME: workaround for #154536
         result.getBounds().setSize(result.getPreferredSize());
         return result;
     }
 
     /**
-    * Creates figure for this edit part.
-    * 
-    * Body of this method does not depend on settings in generation model
-    * so you may safely remove <i>generated</i> tag and modify it.
-    * 
-    * @generated NOT
-    */
+     * Creates figure for this edit part.
+     * 
+     * Body of this method does not depend on settings in generation model
+     * so you may safely remove <i>generated</i> tag and modify it.
+     * 
+     * @generated NOT
+     */
     protected NodeFigure createNodeFigure() {
         NodeFigure figure = createNodePlate();
         figure.setLayoutManager(new StackLayout());
@@ -131,25 +132,26 @@ public class JsonTransformMediatorInputConnectorEditPart extends AbstractMediato
         figure.add(shape);
         contentPane = setupContentPane(shape);
         figure_ = figure;
-        
+
         createNodeShapeReverse();
-        
+
         return figure;
     }
 
     /**
-    * Default implementation treats passed figure as content pane.
-    * Respects layout one may have set for generated figure.
-    * @param nodeShape instance of generated figure class
-    * @generated
-    */
+     * Default implementation treats passed figure as content pane.
+     * Respects layout one may have set for generated figure.
+     * 
+     * @param nodeShape instance of generated figure class
+     * @generated
+     */
     protected IFigure setupContentPane(IFigure nodeShape) {
         return nodeShape; // use nodeShape itself as contentPane
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public IFigure getContentPane() {
         if (contentPane != null) {
             return contentPane;
@@ -158,8 +160,8 @@ public class JsonTransformMediatorInputConnectorEditPart extends AbstractMediato
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     protected void setForegroundColor(Color color) {
         if (primaryShape != null) {
             primaryShape.setForegroundColor(color);
@@ -167,8 +169,8 @@ public class JsonTransformMediatorInputConnectorEditPart extends AbstractMediato
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     protected void setBackgroundColor(Color color) {
         if (primaryShape != null) {
             primaryShape.setBackgroundColor(color);
@@ -176,8 +178,8 @@ public class JsonTransformMediatorInputConnectorEditPart extends AbstractMediato
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     protected void setLineWidth(int width) {
         if (primaryShape instanceof Shape) {
             ((Shape) primaryShape).setLineWidth(width);
@@ -185,8 +187,8 @@ public class JsonTransformMediatorInputConnectorEditPart extends AbstractMediato
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     protected void setLineType(int style) {
         if (primaryShape instanceof Shape) {
             ((Shape) primaryShape).setLineStyle(style);
@@ -201,7 +203,7 @@ public class JsonTransformMediatorInputConnectorEditPart extends AbstractMediato
         types.add(EsbElementTypes.EsbLink_4001);
         return types;
     }
-    
+
     /**
      * @generated
      */
@@ -258,7 +260,7 @@ public class JsonTransformMediatorInputConnectorEditPart extends AbstractMediato
         }
         return types;
     }
-    
+
     /**
      * @generated
      */

@@ -30,6 +30,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.DBLookupMediator} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class DBLookupMediatorItemProvider extends AbstractSqlExecutorMediatorItemProvider {
@@ -37,6 +38,7 @@ public class DBLookupMediatorItemProvider extends AbstractSqlExecutorMediatorIte
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public DBLookupMediatorItemProvider(AdapterFactory adapterFactory) {
@@ -68,6 +70,7 @@ public class DBLookupMediatorItemProvider extends AbstractSqlExecutorMediatorIte
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -84,6 +87,7 @@ public class DBLookupMediatorItemProvider extends AbstractSqlExecutorMediatorIte
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -99,6 +103,7 @@ public class DBLookupMediatorItemProvider extends AbstractSqlExecutorMediatorIte
      * This returns DBLookupMediator.png.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated NOT
      */
 
@@ -111,15 +116,15 @@ public class DBLookupMediatorItemProvider extends AbstractSqlExecutorMediatorIte
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((DBLookupMediator)object).getConnectionDsName();
-        return label == null || label.length() == 0 ?
-            getString("_UI_DBLookupMediator_type") :
-            getString("_UI_DBLookupMediator_type") + " " + label;
+        String label = ((DBLookupMediator) object).getConnectionDsName();
+        return label == null || label.length() == 0 ? getString("_UI_DBLookupMediator_type")
+                : getString("_UI_DBLookupMediator_type") + " " + label;
     }
 
     /**
@@ -127,6 +132,7 @@ public class DBLookupMediatorItemProvider extends AbstractSqlExecutorMediatorIte
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -135,10 +141,10 @@ public class DBLookupMediatorItemProvider extends AbstractSqlExecutorMediatorIte
         updateChildren(notification);
 
         switch (notification.getFeatureID(DBLookupMediator.class)) {
-            case EsbPackage.DB_LOOKUP_MEDIATOR__INPUT_CONNECTOR:
-            case EsbPackage.DB_LOOKUP_MEDIATOR__OUTPUT_CONNECTOR:
-                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-                return;
+        case EsbPackage.DB_LOOKUP_MEDIATOR__INPUT_CONNECTOR:
+        case EsbPackage.DB_LOOKUP_MEDIATOR__OUTPUT_CONNECTOR:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+            return;
         }
         super.notifyChanged(notification);
     }
@@ -148,6 +154,7 @@ public class DBLookupMediatorItemProvider extends AbstractSqlExecutorMediatorIte
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -155,15 +162,11 @@ public class DBLookupMediatorItemProvider extends AbstractSqlExecutorMediatorIte
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add
-            (createChildParameter
-                (EsbPackage.Literals.DB_LOOKUP_MEDIATOR__INPUT_CONNECTOR,
-                 EsbFactory.eINSTANCE.createDBLookupMediatorInputConnector()));
+        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.DB_LOOKUP_MEDIATOR__INPUT_CONNECTOR,
+                EsbFactory.eINSTANCE.createDBLookupMediatorInputConnector()));
 
-        newChildDescriptors.add
-            (createChildParameter
-                (EsbPackage.Literals.DB_LOOKUP_MEDIATOR__OUTPUT_CONNECTOR,
-                 EsbFactory.eINSTANCE.createDBLookupMediatorOutputConnector()));
+        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.DB_LOOKUP_MEDIATOR__OUTPUT_CONNECTOR,
+                EsbFactory.eINSTANCE.createDBLookupMediatorOutputConnector()));
     }
 
 }

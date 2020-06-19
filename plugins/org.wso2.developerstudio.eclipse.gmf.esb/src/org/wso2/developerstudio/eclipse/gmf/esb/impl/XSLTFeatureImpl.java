@@ -22,6 +22,7 @@ public class XSLTFeatureImpl extends AbstractBooleanFeatureImpl implements XSLTF
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected XSLTFeatureImpl() {
@@ -31,6 +32,7 @@ public class XSLTFeatureImpl extends AbstractBooleanFeatureImpl implements XSLTF
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 

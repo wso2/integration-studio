@@ -27,10 +27,14 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RuleOptionType;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallTemplateParameterImpl#getParameterName <em>Parameter Name</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallTemplateParameterImpl#getTemplateParameterType <em>Template Parameter Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallTemplateParameterImpl#getParameterValue <em>Parameter Value</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallTemplateParameterImpl#getParameterExpression <em>Parameter Expression</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallTemplateParameterImpl#getParameterName <em>Parameter
+ * Name</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallTemplateParameterImpl#getTemplateParameterType
+ * <em>Template Parameter Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallTemplateParameterImpl#getParameterValue <em>Parameter
+ * Value</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallTemplateParameterImpl#getParameterExpression
+ * <em>Parameter Expression</em>}</li>
  * </ul>
  *
  * @generated
@@ -40,6 +44,7 @@ public class CallTemplateParameterImpl extends EsbNodeImpl implements CallTempla
      * The default value of the '{@link #getParameterName() <em>Parameter Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getParameterName()
      * @generated
      * @ordered
@@ -50,6 +55,7 @@ public class CallTemplateParameterImpl extends EsbNodeImpl implements CallTempla
      * The cached value of the '{@link #getParameterName() <em>Parameter Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getParameterName()
      * @generated
      * @ordered
@@ -60,6 +66,7 @@ public class CallTemplateParameterImpl extends EsbNodeImpl implements CallTempla
      * The default value of the '{@link #getTemplateParameterType() <em>Template Parameter Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getTemplateParameterType()
      * @generated
      * @ordered
@@ -70,6 +77,7 @@ public class CallTemplateParameterImpl extends EsbNodeImpl implements CallTempla
      * The cached value of the '{@link #getTemplateParameterType() <em>Template Parameter Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getTemplateParameterType()
      * @generated
      * @ordered
@@ -80,6 +88,7 @@ public class CallTemplateParameterImpl extends EsbNodeImpl implements CallTempla
      * The default value of the '{@link #getParameterValue() <em>Parameter Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getParameterValue()
      * @generated
      * @ordered
@@ -90,6 +99,7 @@ public class CallTemplateParameterImpl extends EsbNodeImpl implements CallTempla
      * The cached value of the '{@link #getParameterValue() <em>Parameter Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getParameterValue()
      * @generated
      * @ordered
@@ -100,6 +110,7 @@ public class CallTemplateParameterImpl extends EsbNodeImpl implements CallTempla
      * The cached value of the '{@link #getParameterExpression() <em>Parameter Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getParameterExpression()
      * @generated
      * @ordered
@@ -109,6 +120,7 @@ public class CallTemplateParameterImpl extends EsbNodeImpl implements CallTempla
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected CallTemplateParameterImpl() {
@@ -118,6 +130,7 @@ public class CallTemplateParameterImpl extends EsbNodeImpl implements CallTempla
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -128,6 +141,7 @@ public class CallTemplateParameterImpl extends EsbNodeImpl implements CallTempla
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getParameterName() {
@@ -137,18 +151,21 @@ public class CallTemplateParameterImpl extends EsbNodeImpl implements CallTempla
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setParameterName(String newParameterName) {
         String oldParameterName = parameterName;
         parameterName = newParameterName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_NAME, oldParameterName, parameterName));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_NAME,
+                    oldParameterName, parameterName));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public RuleOptionType getTemplateParameterType() {
@@ -158,18 +175,23 @@ public class CallTemplateParameterImpl extends EsbNodeImpl implements CallTempla
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setTemplateParameterType(RuleOptionType newTemplateParameterType) {
         RuleOptionType oldTemplateParameterType = templateParameterType;
-        templateParameterType = newTemplateParameterType == null ? TEMPLATE_PARAMETER_TYPE_EDEFAULT : newTemplateParameterType;
+        templateParameterType = newTemplateParameterType == null ? TEMPLATE_PARAMETER_TYPE_EDEFAULT
+                : newTemplateParameterType;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CALL_TEMPLATE_PARAMETER__TEMPLATE_PARAMETER_TYPE, oldTemplateParameterType, templateParameterType));
+            eNotify(new ENotificationImpl(this, Notification.SET,
+                    EsbPackage.CALL_TEMPLATE_PARAMETER__TEMPLATE_PARAMETER_TYPE, oldTemplateParameterType,
+                    templateParameterType));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getParameterValue() {
@@ -179,18 +201,21 @@ public class CallTemplateParameterImpl extends EsbNodeImpl implements CallTempla
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setParameterValue(String newParameterValue) {
         String oldParameterValue = parameterValue;
         parameterValue = newParameterValue;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_VALUE, oldParameterValue, parameterValue));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_VALUE,
+                    oldParameterValue, parameterValue));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public NamespacedProperty getParameterExpression() {
@@ -200,6 +225,7 @@ public class CallTemplateParameterImpl extends EsbNodeImpl implements CallTempla
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public NotificationChain basicSetParameterExpression(NamespacedProperty newParameterExpression,
@@ -207,8 +233,13 @@ public class CallTemplateParameterImpl extends EsbNodeImpl implements CallTempla
         NamespacedProperty oldParameterExpression = parameterExpression;
         parameterExpression = newParameterExpression;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_EXPRESSION, oldParameterExpression, newParameterExpression);
-            if (msgs == null) msgs = notification; else msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+                    EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_EXPRESSION, oldParameterExpression,
+                    newParameterExpression);
+            if (msgs == null)
+                msgs = notification;
+            else
+                msgs.add(notification);
         }
         return msgs;
     }
@@ -216,32 +247,38 @@ public class CallTemplateParameterImpl extends EsbNodeImpl implements CallTempla
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setParameterExpression(NamespacedProperty newParameterExpression) {
         if (newParameterExpression != parameterExpression) {
             NotificationChain msgs = null;
             if (parameterExpression != null)
-                msgs = ((InternalEObject)parameterExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_EXPRESSION, null, msgs);
+                msgs = ((InternalEObject) parameterExpression).eInverseRemove(this,
+                        EOPPOSITE_FEATURE_BASE - EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_EXPRESSION, null, msgs);
             if (newParameterExpression != null)
-                msgs = ((InternalEObject)newParameterExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_EXPRESSION, null, msgs);
+                msgs = ((InternalEObject) newParameterExpression).eInverseAdd(this,
+                        EOPPOSITE_FEATURE_BASE - EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_EXPRESSION, null, msgs);
             msgs = basicSetParameterExpression(newParameterExpression, msgs);
-            if (msgs != null) msgs.dispatch();
-        }
-        else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_EXPRESSION, newParameterExpression, newParameterExpression));
+            if (msgs != null)
+                msgs.dispatch();
+        } else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET,
+                    EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_EXPRESSION, newParameterExpression,
+                    newParameterExpression));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-            case EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_EXPRESSION:
-                return basicSetParameterExpression(null, msgs);
+        case EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_EXPRESSION:
+            return basicSetParameterExpression(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -249,19 +286,20 @@ public class CallTemplateParameterImpl extends EsbNodeImpl implements CallTempla
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-            case EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_NAME:
-                return getParameterName();
-            case EsbPackage.CALL_TEMPLATE_PARAMETER__TEMPLATE_PARAMETER_TYPE:
-                return getTemplateParameterType();
-            case EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_VALUE:
-                return getParameterValue();
-            case EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_EXPRESSION:
-                return getParameterExpression();
+        case EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_NAME:
+            return getParameterName();
+        case EsbPackage.CALL_TEMPLATE_PARAMETER__TEMPLATE_PARAMETER_TYPE:
+            return getTemplateParameterType();
+        case EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_VALUE:
+            return getParameterValue();
+        case EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_EXPRESSION:
+            return getParameterExpression();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -269,23 +307,24 @@ public class CallTemplateParameterImpl extends EsbNodeImpl implements CallTempla
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-            case EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_NAME:
-                setParameterName((String)newValue);
-                return;
-            case EsbPackage.CALL_TEMPLATE_PARAMETER__TEMPLATE_PARAMETER_TYPE:
-                setTemplateParameterType((RuleOptionType)newValue);
-                return;
-            case EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_VALUE:
-                setParameterValue((String)newValue);
-                return;
-            case EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_EXPRESSION:
-                setParameterExpression((NamespacedProperty)newValue);
-                return;
+        case EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_NAME:
+            setParameterName((String) newValue);
+            return;
+        case EsbPackage.CALL_TEMPLATE_PARAMETER__TEMPLATE_PARAMETER_TYPE:
+            setTemplateParameterType((RuleOptionType) newValue);
+            return;
+        case EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_VALUE:
+            setParameterValue((String) newValue);
+            return;
+        case EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_EXPRESSION:
+            setParameterExpression((NamespacedProperty) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -293,23 +332,24 @@ public class CallTemplateParameterImpl extends EsbNodeImpl implements CallTempla
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-            case EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_NAME:
-                setParameterName(PARAMETER_NAME_EDEFAULT);
-                return;
-            case EsbPackage.CALL_TEMPLATE_PARAMETER__TEMPLATE_PARAMETER_TYPE:
-                setTemplateParameterType(TEMPLATE_PARAMETER_TYPE_EDEFAULT);
-                return;
-            case EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_VALUE:
-                setParameterValue(PARAMETER_VALUE_EDEFAULT);
-                return;
-            case EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_EXPRESSION:
-                setParameterExpression((NamespacedProperty)null);
-                return;
+        case EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_NAME:
+            setParameterName(PARAMETER_NAME_EDEFAULT);
+            return;
+        case EsbPackage.CALL_TEMPLATE_PARAMETER__TEMPLATE_PARAMETER_TYPE:
+            setTemplateParameterType(TEMPLATE_PARAMETER_TYPE_EDEFAULT);
+            return;
+        case EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_VALUE:
+            setParameterValue(PARAMETER_VALUE_EDEFAULT);
+            return;
+        case EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_EXPRESSION:
+            setParameterExpression((NamespacedProperty) null);
+            return;
         }
         super.eUnset(featureID);
     }
@@ -317,19 +357,22 @@ public class CallTemplateParameterImpl extends EsbNodeImpl implements CallTempla
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-            case EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_NAME:
-                return PARAMETER_NAME_EDEFAULT == null ? parameterName != null : !PARAMETER_NAME_EDEFAULT.equals(parameterName);
-            case EsbPackage.CALL_TEMPLATE_PARAMETER__TEMPLATE_PARAMETER_TYPE:
-                return templateParameterType != TEMPLATE_PARAMETER_TYPE_EDEFAULT;
-            case EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_VALUE:
-                return PARAMETER_VALUE_EDEFAULT == null ? parameterValue != null : !PARAMETER_VALUE_EDEFAULT.equals(parameterValue);
-            case EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_EXPRESSION:
-                return parameterExpression != null;
+        case EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_NAME:
+            return PARAMETER_NAME_EDEFAULT == null ? parameterName != null
+                    : !PARAMETER_NAME_EDEFAULT.equals(parameterName);
+        case EsbPackage.CALL_TEMPLATE_PARAMETER__TEMPLATE_PARAMETER_TYPE:
+            return templateParameterType != TEMPLATE_PARAMETER_TYPE_EDEFAULT;
+        case EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_VALUE:
+            return PARAMETER_VALUE_EDEFAULT == null ? parameterValue != null
+                    : !PARAMETER_VALUE_EDEFAULT.equals(parameterValue);
+        case EsbPackage.CALL_TEMPLATE_PARAMETER__PARAMETER_EXPRESSION:
+            return parameterExpression != null;
         }
         return super.eIsSet(featureID);
     }
@@ -337,11 +380,13 @@ public class CallTemplateParameterImpl extends EsbNodeImpl implements CallTempla
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy()) return super.toString();
+        if (eIsProxy())
+            return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (parameterName: ");

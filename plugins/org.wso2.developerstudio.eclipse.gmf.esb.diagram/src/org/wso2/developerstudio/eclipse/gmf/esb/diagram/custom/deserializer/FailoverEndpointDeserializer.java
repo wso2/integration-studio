@@ -74,7 +74,7 @@ public class FailoverEndpointDeserializer extends AbstractEndpointDeserializer {
             }
             executeAddValueCommand(endPoint.getProperties(), property, false);
         }
-        
+
         if (failoverEndpoint.getChildren() != null && failoverEndpoint.getChildren().size() > 0) {
             List<Endpoint> synpaseChildren = failoverEndpoint.getChildren();
 
@@ -102,9 +102,9 @@ public class FailoverEndpointDeserializer extends AbstractEndpointDeserializer {
         if (StringUtils.isNotBlank(failoverEndpoint.getName())) {
             executeSetValueCommand(END_POINT__END_POINT_NAME, failoverEndpoint.getName());
         }
-        
+
         executeSetValueCommand(FAILOVER_END_POINT__BUILD_MESSAGE, failoverEndpoint.isBuildMessageAtt());
-        
+
         return endPoint;
     }
 
@@ -147,7 +147,7 @@ public class FailoverEndpointDeserializer extends AbstractEndpointDeserializer {
 
         super.createNode(formEditor, endpointObject);
     }
-    
+
     public org.wso2.developerstudio.eclipse.gmf.esb.EndPoint createUIEndpoint(Endpoint synapseEndpoint) {
         Assert.isTrue(synapseEndpoint instanceof org.apache.synapse.endpoints.FailoverEndpoint,
                 "Unsupported endpoint has been passed to create the UI object at " + this.getClass());
@@ -171,11 +171,11 @@ public class FailoverEndpointDeserializer extends AbstractEndpointDeserializer {
 
                         @Override
                         protected void doExecute() {
-                        	((FailoverEndPointImpl) endpoint).getChildren().add(child);
+                            ((FailoverEndPointImpl) endpoint).getChildren().add(child);
                         }
                     });
                 } else {
-                	((FailoverEndPointImpl) endpoint).getChildren().add(child);
+                    ((FailoverEndPointImpl) endpoint).getChildren().add(child);
                 }
             }
         }

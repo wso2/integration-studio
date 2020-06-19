@@ -39,16 +39,19 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SwitchCaseParentContainer;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SwitchCaseParentContainerImpl#getSwitchCaseContainer <em>Switch Case Container</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SwitchCaseParentContainerImpl#getSwitchCaseContainer
+ * <em>Switch Case Container</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class SwitchCaseParentContainerImpl extends EsbNodeImpl implements SwitchCaseParentContainer {
     /**
-     * The cached value of the '{@link #getSwitchCaseContainer() <em>Switch Case Container</em>}' containment reference list.
+     * The cached value of the '{@link #getSwitchCaseContainer() <em>Switch Case Container</em>}' containment reference
+     * list.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getSwitchCaseContainer()
      * @generated
      * @ordered
@@ -58,6 +61,7 @@ public class SwitchCaseParentContainerImpl extends EsbNodeImpl implements Switch
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected SwitchCaseParentContainerImpl() {
@@ -67,6 +71,7 @@ public class SwitchCaseParentContainerImpl extends EsbNodeImpl implements Switch
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -77,11 +82,13 @@ public class SwitchCaseParentContainerImpl extends EsbNodeImpl implements Switch
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public EList<SwitchCaseContainer> getSwitchCaseContainer() {
         if (switchCaseContainer == null) {
-            switchCaseContainer = new EObjectContainmentEList<SwitchCaseContainer>(SwitchCaseContainer.class, this, EsbPackage.SWITCH_CASE_PARENT_CONTAINER__SWITCH_CASE_CONTAINER);
+            switchCaseContainer = new EObjectContainmentEList<SwitchCaseContainer>(SwitchCaseContainer.class, this,
+                    EsbPackage.SWITCH_CASE_PARENT_CONTAINER__SWITCH_CASE_CONTAINER);
         }
         return switchCaseContainer;
     }
@@ -89,13 +96,14 @@ public class SwitchCaseParentContainerImpl extends EsbNodeImpl implements Switch
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-            case EsbPackage.SWITCH_CASE_PARENT_CONTAINER__SWITCH_CASE_CONTAINER:
-                return ((InternalEList<?>)getSwitchCaseContainer()).basicRemove(otherEnd, msgs);
+        case EsbPackage.SWITCH_CASE_PARENT_CONTAINER__SWITCH_CASE_CONTAINER:
+            return ((InternalEList<?>) getSwitchCaseContainer()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -103,13 +111,14 @@ public class SwitchCaseParentContainerImpl extends EsbNodeImpl implements Switch
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-            case EsbPackage.SWITCH_CASE_PARENT_CONTAINER__SWITCH_CASE_CONTAINER:
-                return getSwitchCaseContainer();
+        case EsbPackage.SWITCH_CASE_PARENT_CONTAINER__SWITCH_CASE_CONTAINER:
+            return getSwitchCaseContainer();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -117,16 +126,17 @@ public class SwitchCaseParentContainerImpl extends EsbNodeImpl implements Switch
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-            case EsbPackage.SWITCH_CASE_PARENT_CONTAINER__SWITCH_CASE_CONTAINER:
-                getSwitchCaseContainer().clear();
-                getSwitchCaseContainer().addAll((Collection<? extends SwitchCaseContainer>)newValue);
-                return;
+        case EsbPackage.SWITCH_CASE_PARENT_CONTAINER__SWITCH_CASE_CONTAINER:
+            getSwitchCaseContainer().clear();
+            getSwitchCaseContainer().addAll((Collection<? extends SwitchCaseContainer>) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -134,14 +144,15 @@ public class SwitchCaseParentContainerImpl extends EsbNodeImpl implements Switch
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-            case EsbPackage.SWITCH_CASE_PARENT_CONTAINER__SWITCH_CASE_CONTAINER:
-                getSwitchCaseContainer().clear();
-                return;
+        case EsbPackage.SWITCH_CASE_PARENT_CONTAINER__SWITCH_CASE_CONTAINER:
+            getSwitchCaseContainer().clear();
+            return;
         }
         super.eUnset(featureID);
     }
@@ -149,13 +160,14 @@ public class SwitchCaseParentContainerImpl extends EsbNodeImpl implements Switch
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-            case EsbPackage.SWITCH_CASE_PARENT_CONTAINER__SWITCH_CASE_CONTAINER:
-                return switchCaseContainer != null && !switchCaseContainer.isEmpty();
+        case EsbPackage.SWITCH_CASE_PARENT_CONTAINER__SWITCH_CASE_CONTAINER:
+            return switchCaseContainer != null && !switchCaseContainer.isEmpty();
         }
         return super.eIsSet(featureID);
     }

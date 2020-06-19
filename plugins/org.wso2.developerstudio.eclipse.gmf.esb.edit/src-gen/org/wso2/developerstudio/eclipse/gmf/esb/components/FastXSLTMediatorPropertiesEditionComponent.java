@@ -252,7 +252,7 @@ public class FastXSLTMediatorPropertiesEditionComponent extends SinglePartProper
                     && msg.getNotifier().equals(semanticObject) && basePart != null
                     && isAccessible(EsbViewsRepository.FastXSLTMediator.Basic.fastXsltStaticSchemaKey)) {
                 if (msg.getNewValue() != null) {
-                    basePart.setFastXsltStaticSchemaKey((RegistryKeyProperty)msg.getNewValue());
+                    basePart.setFastXsltStaticSchemaKey((RegistryKeyProperty) msg.getNewValue());
                 } else {
                     basePart.setFastXsltStaticSchemaKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
                 }
@@ -264,7 +264,7 @@ public class FastXSLTMediatorPropertiesEditionComponent extends SinglePartProper
                     && msg.getNotifier().equals(semanticObject) && basePart != null
                     && isAccessible(EsbViewsRepository.FastXSLTMediator.Basic.fastXsltDynamicSchemaKey)) {
                 if (msg.getNewValue() != null) {
-                    basePart.setFastXsltDynamicSchemaKey((NamespacedProperty)msg.getNewValue());
+                    basePart.setFastXsltDynamicSchemaKey((NamespacedProperty) msg.getNewValue());
                 } else {
                     basePart.setFastXsltDynamicSchemaKey(EsbFactoryImpl.eINSTANCE.createNamespacedProperty());
                 }

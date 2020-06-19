@@ -20,9 +20,11 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.MessageOutputConnector} object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.MessageOutputConnector}
+ * object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class MessageOutputConnectorItemProvider extends OutputConnectorItemProvider {
@@ -30,6 +32,7 @@ public class MessageOutputConnectorItemProvider extends OutputConnectorItemProvi
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public MessageOutputConnectorItemProvider(AdapterFactory adapterFactory) {
@@ -40,6 +43,7 @@ public class MessageOutputConnectorItemProvider extends OutputConnectorItemProvi
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -56,6 +60,7 @@ public class MessageOutputConnectorItemProvider extends OutputConnectorItemProvi
      * This returns MessageOutputConnector.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -68,6 +73,7 @@ public class MessageOutputConnectorItemProvider extends OutputConnectorItemProvi
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -81,6 +87,7 @@ public class MessageOutputConnectorItemProvider extends OutputConnectorItemProvi
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -95,6 +102,7 @@ public class MessageOutputConnectorItemProvider extends OutputConnectorItemProvi
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 

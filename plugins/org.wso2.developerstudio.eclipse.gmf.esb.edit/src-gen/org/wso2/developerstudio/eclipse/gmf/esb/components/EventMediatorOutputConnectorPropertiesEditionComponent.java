@@ -50,7 +50,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EventMediatorOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EventMediatorOutputConnectorPropertiesEditionPart;
 
-
 // End of user code
 
 /**
@@ -59,167 +58,168 @@ import org.wso2.developerstudio.eclipse.gmf.esb.parts.EventMediatorOutputConnect
  */
 public class EventMediatorOutputConnectorPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
-	
-	public static String BASE_PART = "Base"; //$NON-NLS-1$
+    public static String BASE_PART = "Base"; //$NON-NLS-1$
 
-	
-	/**
-	 * Settings for commentMediators ReferencesTable
-	 */
-	protected ReferencesTableSettings commentMediatorsSettings;
-	
-	
-	/**
-	 * Default constructor
-	 * 
-	 */
-	public EventMediatorOutputConnectorPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject eventMediatorOutputConnector, String editing_mode) {
-		super(editingContext, eventMediatorOutputConnector, editing_mode);
-		parts = new String[] { BASE_PART };
-		repositoryKey = EsbViewsRepository.class;
-		partKey = EsbViewsRepository.EventMediatorOutputConnector.class;
-	}
+    /**
+     * Settings for commentMediators ReferencesTable
+     */
+    protected ReferencesTableSettings commentMediatorsSettings;
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
-	 *      org.eclipse.emf.ecore.resource.ResourceSet)
-	 * 
-	 */
-	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
-			
-			final EventMediatorOutputConnector eventMediatorOutputConnector = (EventMediatorOutputConnector)elt;
-			final EventMediatorOutputConnectorPropertiesEditionPart basePart = (EventMediatorOutputConnectorPropertiesEditionPart)editingPart;
-			// init values
-			if (isAccessible(EsbViewsRepository.EventMediatorOutputConnector.Properties.commentMediators)) {
-				commentMediatorsSettings = new ReferencesTableSettings(eventMediatorOutputConnector, EsbPackage.eINSTANCE.getOutputConnector_CommentMediators());
-				basePart.initCommentMediators(commentMediatorsSettings);
-			}
-			// init filters
-			if (isAccessible(EsbViewsRepository.EventMediatorOutputConnector.Properties.commentMediators)) {
-				basePart.addFilterToCommentMediators(new ViewerFilter() {
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof String && element.equals("")) || (element instanceof CommentMediator); //$NON-NLS-1$ 
-					}
-			
-				});
-				// Start of user code for additional businessfilters for commentMediators
-				// End of user code
-			}
-			// init values for referenced views
-			
-			// init filters for referenced views
-			
-		}
-		setInitializing(false);
-	}
+    /**
+     * Default constructor
+     * 
+     */
+    public EventMediatorOutputConnectorPropertiesEditionComponent(PropertiesEditingContext editingContext,
+            EObject eventMediatorOutputConnector, String editing_mode) {
+        super(editingContext, eventMediatorOutputConnector, editing_mode);
+        parts = new String[] { BASE_PART };
+        repositoryKey = EsbViewsRepository.class;
+        partKey = EsbViewsRepository.EventMediatorOutputConnector.class;
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int,
+     *      org.eclipse.emf.ecore.EObject,
+     *      org.eclipse.emf.ecore.resource.ResourceSet)
+     * 
+     */
+    public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
+        setInitializing(true);
+        if (editingPart != null && key == partKey) {
+            editingPart.setContext(elt, allResource);
 
+            final EventMediatorOutputConnector eventMediatorOutputConnector = (EventMediatorOutputConnector) elt;
+            final EventMediatorOutputConnectorPropertiesEditionPart basePart = (EventMediatorOutputConnectorPropertiesEditionPart) editingPart;
+            // init values
+            if (isAccessible(EsbViewsRepository.EventMediatorOutputConnector.Properties.commentMediators)) {
+                commentMediatorsSettings = new ReferencesTableSettings(eventMediatorOutputConnector,
+                        EsbPackage.eINSTANCE.getOutputConnector_CommentMediators());
+                basePart.initCommentMediators(commentMediatorsSettings);
+            }
+            // init filters
+            if (isAccessible(EsbViewsRepository.EventMediatorOutputConnector.Properties.commentMediators)) {
+                basePart.addFilterToCommentMediators(new ViewerFilter() {
+                    /**
+                     * {@inheritDoc}
+                     * 
+                     * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer,
+                     *      java.lang.Object, java.lang.Object)
+                     */
+                    public boolean select(Viewer viewer, Object parentElement, Object element) {
+                        return (element instanceof String && element.equals("")) //$NON-NLS-1$
+                                || (element instanceof CommentMediator);
+                    }
 
+                });
+                // Start of user code for additional businessfilters for commentMediators
+                // End of user code
+            }
+            // init values for referenced views
 
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
-	 */
-	public EStructuralFeature associatedFeature(Object editorKey) {
-		if (editorKey == EsbViewsRepository.EventMediatorOutputConnector.Properties.commentMediators) {
-			return EsbPackage.eINSTANCE.getOutputConnector_CommentMediators();
-		}
-		return super.associatedFeature(editorKey);
-	}
+            // init filters for referenced views
 
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
-	 */
-	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		EventMediatorOutputConnector eventMediatorOutputConnector = (EventMediatorOutputConnector)semanticObject;
-		if (EsbViewsRepository.EventMediatorOutputConnector.Properties.commentMediators == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD) {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, commentMediatorsSettings, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy instanceof CreateEditingPolicy) {
-						policy.execute();
-					}
-				}
-			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
-					if (editionPolicy != null) {
-						editionPolicy.execute();
-					}
-				}
-			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				commentMediatorsSettings.removeFromReference((EObject) event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-				commentMediatorsSettings.move(event.getNewIndex(), (CommentMediator) event.getNewValue());
-			}
-		}
-	}
+        }
+        setInitializing(false);
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
-	 */
-	public void updatePart(Notification msg) {
-		super.updatePart(msg);
-		if (editingPart.isVisible()) {
-			EventMediatorOutputConnectorPropertiesEditionPart basePart = (EventMediatorOutputConnectorPropertiesEditionPart)editingPart;
-			if (EsbPackage.eINSTANCE.getOutputConnector_CommentMediators().equals(msg.getFeature()) && isAccessible(EsbViewsRepository.EventMediatorOutputConnector.Properties.commentMediators))
-				basePart.updateCommentMediators();
-			
-		}
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+     */
+    public EStructuralFeature associatedFeature(Object editorKey) {
+        if (editorKey == EsbViewsRepository.EventMediatorOutputConnector.Properties.commentMediators) {
+            return EsbPackage.eINSTANCE.getOutputConnector_CommentMediators();
+        }
+        return super.associatedFeature(editorKey);
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
-	 */
-	@Override
-	protected NotificationFilter[] getNotificationFilters() {
-		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			EsbPackage.eINSTANCE.getOutputConnector_CommentMediators()		);
-		return new NotificationFilter[] {filter,};
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+     * 
+     */
+    public void updateSemanticModel(final IPropertiesEditionEvent event) {
+        EventMediatorOutputConnector eventMediatorOutputConnector = (EventMediatorOutputConnector) semanticObject;
+        if (EsbViewsRepository.EventMediatorOutputConnector.Properties.commentMediators == event.getAffectedEditor()) {
+            if (event.getKind() == PropertiesEditionEvent.ADD) {
+                EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext,
+                        this, commentMediatorsSettings, editingContext.getAdapterFactory());
+                PropertiesEditingProvider provider = (PropertiesEditingProvider) editingContext.getAdapterFactory()
+                        .adapt(semanticObject, PropertiesEditingProvider.class);
+                if (provider != null) {
+                    PropertiesEditingPolicy policy = provider.getPolicy(context);
+                    if (policy instanceof CreateEditingPolicy) {
+                        policy.execute();
+                    }
+                }
+            } else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+                EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this,
+                        (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+                PropertiesEditingProvider provider = (PropertiesEditingProvider) editingContext.getAdapterFactory()
+                        .adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+                if (provider != null) {
+                    PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+                    if (editionPolicy != null) {
+                        editionPolicy.execute();
+                    }
+                }
+            } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+                commentMediatorsSettings.removeFromReference((EObject) event.getNewValue());
+            } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+                commentMediatorsSettings.move(event.getNewIndex(), (CommentMediator) event.getNewValue());
+            }
+        }
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
+     */
+    public void updatePart(Notification msg) {
+        super.updatePart(msg);
+        if (editingPart.isVisible()) {
+            EventMediatorOutputConnectorPropertiesEditionPart basePart = (EventMediatorOutputConnectorPropertiesEditionPart) editingPart;
+            if (EsbPackage.eINSTANCE.getOutputConnector_CommentMediators().equals(msg.getFeature())
+                    && isAccessible(EsbViewsRepository.EventMediatorOutputConnector.Properties.commentMediators))
+                basePart.updateCommentMediators();
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
-	 */
-	public Diagnostic validateValue(IPropertiesEditionEvent event) {
-		Diagnostic ret = Diagnostic.OK_INSTANCE;
-		if (event.getNewValue() != null) {
-			try {
-			} catch (IllegalArgumentException iae) {
-				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (WrappedException we) {
-				ret = BasicDiagnostic.toDiagnostic(we);
-			}
-		}
-		return ret;
-	}
+        }
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+     */
+    @Override
+    protected NotificationFilter[] getNotificationFilters() {
+        NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+                EsbPackage.eINSTANCE.getOutputConnector_CommentMediators());
+        return new NotificationFilter[] { filter, };
+    }
 
-	
-
-	
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+     * 
+     */
+    public Diagnostic validateValue(IPropertiesEditionEvent event) {
+        Diagnostic ret = Diagnostic.OK_INSTANCE;
+        if (event.getNewValue() != null) {
+            try {
+            } catch (IllegalArgumentException iae) {
+                ret = BasicDiagnostic.toDiagnostic(iae);
+            } catch (WrappedException we) {
+                ret = BasicDiagnostic.toDiagnostic(we);
+            }
+        }
+        return ret;
+    }
 
 }

@@ -33,9 +33,11 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyConfiguration;
 import org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyType;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyConfiguration} object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyConfiguration}
+ * object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class ThrottlePolicyConfigurationItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
@@ -44,6 +46,7 @@ public class ThrottlePolicyConfigurationItemProvider extends ItemProviderAdapter
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public ThrottlePolicyConfigurationItemProvider(AdapterFactory adapterFactory) {
@@ -54,6 +57,7 @@ public class ThrottlePolicyConfigurationItemProvider extends ItemProviderAdapter
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -72,44 +76,35 @@ public class ThrottlePolicyConfigurationItemProvider extends ItemProviderAdapter
      * This adds a property descriptor for the Policy Type feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addPolicyTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_ThrottlePolicyConfiguration_policyType_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_ThrottlePolicyConfiguration_policyType_feature", "_UI_ThrottlePolicyConfiguration_type"),
-                 EsbPackage.Literals.THROTTLE_POLICY_CONFIGURATION__POLICY_TYPE,
-                 true,
-                 false,
-                 false,
-                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                 null,
-                 null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(
+                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_ThrottlePolicyConfiguration_policyType_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_ThrottlePolicyConfiguration_policyType_feature",
+                        "_UI_ThrottlePolicyConfiguration_type"),
+                EsbPackage.Literals.THROTTLE_POLICY_CONFIGURATION__POLICY_TYPE, true, false, false,
+                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This adds a property descriptor for the Max Concurrent Access Count feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addMaxConcurrentAccessCountPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_ThrottlePolicyConfiguration_maxConcurrentAccessCount_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_ThrottlePolicyConfiguration_maxConcurrentAccessCount_feature", "_UI_ThrottlePolicyConfiguration_type"),
-                 EsbPackage.Literals.THROTTLE_POLICY_CONFIGURATION__MAX_CONCURRENT_ACCESS_COUNT,
-                 true,
-                 false,
-                 false,
-                 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-                 null,
-                 null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(
+                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_ThrottlePolicyConfiguration_maxConcurrentAccessCount_feature"),
+                getString("_UI_PropertyDescriptor_description",
+                        "_UI_ThrottlePolicyConfiguration_maxConcurrentAccessCount_feature",
+                        "_UI_ThrottlePolicyConfiguration_type"),
+                EsbPackage.Literals.THROTTLE_POLICY_CONFIGURATION__MAX_CONCURRENT_ACCESS_COUNT, true, false, false,
+                ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -118,6 +113,7 @@ public class ThrottlePolicyConfigurationItemProvider extends ItemProviderAdapter
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -134,6 +130,7 @@ public class ThrottlePolicyConfigurationItemProvider extends ItemProviderAdapter
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -149,6 +146,7 @@ public class ThrottlePolicyConfigurationItemProvider extends ItemProviderAdapter
      * This returns ThrottlePolicyConfiguration.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -161,16 +159,16 @@ public class ThrottlePolicyConfigurationItemProvider extends ItemProviderAdapter
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        ThrottlePolicyType labelValue = ((ThrottlePolicyConfiguration)object).getPolicyType();
+        ThrottlePolicyType labelValue = ((ThrottlePolicyConfiguration) object).getPolicyType();
         String label = labelValue == null ? null : labelValue.toString();
-        return label == null || label.length() == 0 ?
-            getString("_UI_ThrottlePolicyConfiguration_type") :
-            getString("_UI_ThrottlePolicyConfiguration_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_ThrottlePolicyConfiguration_type")
+                : getString("_UI_ThrottlePolicyConfiguration_type") + " " + label;
     }
 
     /**
@@ -178,6 +176,7 @@ public class ThrottlePolicyConfigurationItemProvider extends ItemProviderAdapter
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -186,14 +185,14 @@ public class ThrottlePolicyConfigurationItemProvider extends ItemProviderAdapter
         updateChildren(notification);
 
         switch (notification.getFeatureID(ThrottlePolicyConfiguration.class)) {
-            case EsbPackage.THROTTLE_POLICY_CONFIGURATION__POLICY_TYPE:
-            case EsbPackage.THROTTLE_POLICY_CONFIGURATION__MAX_CONCURRENT_ACCESS_COUNT:
-                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-                return;
-            case EsbPackage.THROTTLE_POLICY_CONFIGURATION__POLICY_KEY:
-            case EsbPackage.THROTTLE_POLICY_CONFIGURATION__POLICY_ENTRIES:
-                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-                return;
+        case EsbPackage.THROTTLE_POLICY_CONFIGURATION__POLICY_TYPE:
+        case EsbPackage.THROTTLE_POLICY_CONFIGURATION__MAX_CONCURRENT_ACCESS_COUNT:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+            return;
+        case EsbPackage.THROTTLE_POLICY_CONFIGURATION__POLICY_KEY:
+        case EsbPackage.THROTTLE_POLICY_CONFIGURATION__POLICY_ENTRIES:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+            return;
         }
         super.notifyChanged(notification);
     }
@@ -203,6 +202,7 @@ public class ThrottlePolicyConfigurationItemProvider extends ItemProviderAdapter
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -210,21 +210,18 @@ public class ThrottlePolicyConfigurationItemProvider extends ItemProviderAdapter
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add
-            (createChildParameter
-                (EsbPackage.Literals.THROTTLE_POLICY_CONFIGURATION__POLICY_KEY,
-                 EsbFactory.eINSTANCE.createRegistryKeyProperty()));
+        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.THROTTLE_POLICY_CONFIGURATION__POLICY_KEY,
+                EsbFactory.eINSTANCE.createRegistryKeyProperty()));
 
-        newChildDescriptors.add
-            (createChildParameter
-                (EsbPackage.Literals.THROTTLE_POLICY_CONFIGURATION__POLICY_ENTRIES,
-                 EsbFactory.eINSTANCE.createThrottlePolicyEntry()));
+        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.THROTTLE_POLICY_CONFIGURATION__POLICY_ENTRIES,
+                EsbFactory.eINSTANCE.createThrottlePolicyEntry()));
     }
 
     /**
      * Return the resource locator for this item provider's resources.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 

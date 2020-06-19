@@ -28,6 +28,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>API Version Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
+ * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAPIVersionType()
  * @model
  * @generated
@@ -37,6 +38,7 @@ public enum APIVersionType implements Enumerator {
      * The '<em><b>None</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #NONE_VALUE
      * @generated
      * @ordered
@@ -47,6 +49,7 @@ public enum APIVersionType implements Enumerator {
      * The '<em><b>Context</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #CONTEXT_VALUE
      * @generated
      * @ordered
@@ -57,6 +60,7 @@ public enum APIVersionType implements Enumerator {
      * The '<em><b>URL</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #URL_VALUE
      * @generated
      * @ordered
@@ -71,6 +75,7 @@ public enum APIVersionType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #NONE
      * @model name="None" literal="none"
      * @generated
@@ -86,6 +91,7 @@ public enum APIVersionType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #CONTEXT
      * @model name="Context" literal="context"
      * @generated
@@ -101,6 +107,7 @@ public enum APIVersionType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #URL
      * @model literal="url"
      * @generated
@@ -112,18 +119,16 @@ public enum APIVersionType implements Enumerator {
      * An array of all the '<em><b>API Version Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
-    private static final APIVersionType[] VALUES_ARRAY = new APIVersionType[] {
-            NONE,
-            CONTEXT,
-            URL,
-        };
+    private static final APIVersionType[] VALUES_ARRAY = new APIVersionType[] { NONE, CONTEXT, URL, };
 
     /**
      * A public read-only list of all the '<em><b>API Version Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public static final List<APIVersionType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -132,6 +137,7 @@ public enum APIVersionType implements Enumerator {
      * Returns the '<em><b>API Version Type</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -150,6 +156,7 @@ public enum APIVersionType implements Enumerator {
      * Returns the '<em><b>API Version Type</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -168,15 +175,19 @@ public enum APIVersionType implements Enumerator {
      * Returns the '<em><b>API Version Type</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static APIVersionType get(int value) {
         switch (value) {
-            case NONE_VALUE: return NONE;
-            case CONTEXT_VALUE: return CONTEXT;
-            case URL_VALUE: return URL;
+        case NONE_VALUE:
+            return NONE;
+        case CONTEXT_VALUE:
+            return CONTEXT;
+        case URL_VALUE:
+            return URL;
         }
         return null;
     }
@@ -184,6 +195,7 @@ public enum APIVersionType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final int value;
@@ -191,6 +203,7 @@ public enum APIVersionType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String name;
@@ -198,6 +211,7 @@ public enum APIVersionType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String literal;
@@ -206,6 +220,7 @@ public enum APIVersionType implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private APIVersionType(int value, String name, String literal) {
@@ -217,34 +232,38 @@ public enum APIVersionType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public int getValue() {
-      return value;
+        return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getName() {
-      return name;
+        return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getLiteral() {
-      return literal;
+        return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

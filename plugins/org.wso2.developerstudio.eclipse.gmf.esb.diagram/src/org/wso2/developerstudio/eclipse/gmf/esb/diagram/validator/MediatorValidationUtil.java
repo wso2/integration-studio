@@ -61,9 +61,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.Dumm
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.EJBMediatorExtFactory;
 
 public class MediatorValidationUtil {
-    
+
     private static final String SYNAPSE_NAMESPACE = "http://ws.apache.org/ns/synapse";
-    
+
     private static SequenceMediatorFactory sequenceMediatorFactory;
     private static LogMediatorFactory logMediatorFactory;
     private static EnqueueMediatorFactory enqueueMediatorFactory;
@@ -147,57 +147,57 @@ public class MediatorValidationUtil {
      */
     public static String validateMediatorsFromOEMElement(OMElement omElement, String qTag) {
         try {
-        	switch (qTag) {
-			case "log":
-				if (logMediatorFactory == null) {
+            switch (qTag) {
+            case "log":
+                if (logMediatorFactory == null) {
                     logMediatorFactory = new LogMediatorFactory();
                 }
                 logMediatorFactory.createMediator(omElement, null);
-				break;
-			case "enqueue":
-				if (enqueueMediatorFactory == null) {
+                break;
+            case "enqueue":
+                if (enqueueMediatorFactory == null) {
                     enqueueMediatorFactory = new EnqueueMediatorFactory();
                 }
                 enqueueMediatorFactory.createMediator(omElement, null);
-				break;
-			case "send":
-				if (sendMediatorFactory == null) {
+                break;
+            case "send":
+                if (sendMediatorFactory == null) {
                     sendMediatorFactory = new SendMediatorFactory();
                 }
                 sendMediatorFactory.createMediator(omElement, null);
-				break;
-			case "loopback":
-				if (loopBackMediatorFactory == null) {
+                break;
+            case "loopback":
+                if (loopBackMediatorFactory == null) {
                     loopBackMediatorFactory = new LoopBackMediatorFactory();
                 }
                 loopBackMediatorFactory.createMediator(omElement, null);
-				break;
-			case "call":
-				if (callMediatorFactory == null) {
+                break;
+            case "call":
+                if (callMediatorFactory == null) {
                     callMediatorFactory = new CallMediatorFactory();
                 }
                 callMediatorFactory.createMediator(omElement, null);
-				break;
-			case "respond":
-				if (respondMediatorFactory == null) {
+                break;
+            case "respond":
+                if (respondMediatorFactory == null) {
                     respondMediatorFactory = new RespondMediatorFactory();
                 }
                 respondMediatorFactory.createMediator(omElement, null);
-				break;
-			case "event":
-				if (eventMediatorFactory == null) {
+                break;
+            case "event":
+                if (eventMediatorFactory == null) {
                     eventMediatorFactory = new EventMediatorFactory();
                 }
                 eventMediatorFactory.createMediator(omElement, null);
-				break;
-			case "drop":
-				if (dropMediatorFactory == null) {
+                break;
+            case "drop":
+                if (dropMediatorFactory == null) {
                     dropMediatorFactory = new DropMediatorFactory();
                 }
                 dropMediatorFactory.createMediator(omElement, null);
-				break;
-			case "enrich":
-				if (enrichMediatorFactory == null) {
+                break;
+            case "enrich":
+                if (enrichMediatorFactory == null) {
                     enrichMediatorFactory = new EnrichMediatorFactory();
                 }
                 omElement.setNamespace(new OMNamespaceImpl(SYNAPSE_NAMESPACE, ""));
@@ -214,28 +214,28 @@ public class MediatorValidationUtil {
                     target.setNamespace(new OMNamespaceImpl(SYNAPSE_NAMESPACE, ""));
                 }
                 enrichMediatorFactory.createMediator(omElement, null);
-				break;
-			case "property":
-				if (propertyMediatorFactory == null) {
+                break;
+            case "property":
+                if (propertyMediatorFactory == null) {
                     propertyMediatorFactory = new PropertyMediatorFactory();
                 }
                 propertyMediatorFactory.createMediator(omElement, null);
-				break;
-			case "propertyGroup":
-				if (propertyGroupMediatorFactory == null) {
+                break;
+            case "propertyGroup":
+                if (propertyGroupMediatorFactory == null) {
                     propertyGroupMediatorFactory = new PropertyGroupMediatorFactory();
                 }
-				propertyGroupMediatorFactory.createMediator(omElement, null);
-				break;
-			case "filter":
-				if (filterMediatorFactory == null) {
+                propertyGroupMediatorFactory.createMediator(omElement, null);
+                break;
+            case "filter":
+                if (filterMediatorFactory == null) {
                     filterMediatorFactory = new FilterMediatorFactory();
                 }
                 setNamespaceForChildren(omElement);
                 filterMediatorFactory.createMediator(omElement, null);
-				break;
-			case "call-template":
-				if (invokeMediatorFactory == null) {
+                break;
+            case "call-template":
+                if (invokeMediatorFactory == null) {
                     invokeMediatorFactory = new InvokeMediatorFactory();
                 }
                 Iterator children = omElement.getChildrenWithLocalName("with-param");
@@ -244,52 +244,52 @@ public class MediatorValidationUtil {
                     paramElement.setNamespace(new OMNamespaceImpl(SYNAPSE_NAMESPACE, ""));
                 }
                 invokeMediatorFactory.createMediator(omElement, null);
-				break;
-			case "sequence":
-				if (sequenceMediatorFactory == null) {
+                break;
+            case "sequence":
+                if (sequenceMediatorFactory == null) {
                     sequenceMediatorFactory = new SequenceMediatorFactory();
                 }
                 sequenceMediatorFactory.createAnonymousSequence(omElement, null);
-				break;
-			case "store":
-				if (messageStoreMediatorFactory == null) {
+                break;
+            case "store":
+                if (messageStoreMediatorFactory == null) {
                     messageStoreMediatorFactory = new MessageStoreMediatorFactory();
                 }
                 messageStoreMediatorFactory.createMediator(omElement, null);
-				break;
-			case "switch":
-				if (switchMediatorFactory == null) {
+                break;
+            case "switch":
+                if (switchMediatorFactory == null) {
                     switchMediatorFactory = new SwitchMediatorFactory();
                 }
                 switchMediatorFactory.createMediator(omElement, null);
-				break;
-			case "validate":
-				if (validateMediatorFactory == null) {
+                break;
+            case "validate":
+                if (validateMediatorFactory == null) {
                     validateMediatorFactory = new ValidateMediatorFactory();
                 }
                 setNamespaceForChildren(omElement);
                 validateMediatorFactory.createMediator(omElement, null);
-				break;
-			case "conditionalRouter":
-				if (conditionalRouterMediatorFactory == null) {
+                break;
+            case "conditionalRouter":
+                if (conditionalRouterMediatorFactory == null) {
                     conditionalRouterMediatorFactory = new ConditionalRouterMediatorFactory();
                 }
                 conditionalRouterMediatorFactory.createMediator(omElement, null);
-				break;
-			case "bean":
-				if (beanMediatorExtFactory == null) {
+                break;
+            case "bean":
+                if (beanMediatorExtFactory == null) {
                     beanMediatorExtFactory = new BeanMediatorExtFactory();
                 }
                 beanMediatorExtFactory.createSpecificMediatorForValidation(omElement, null);
-				break;
-			case "class":
-				if (classMediatorExtFactory == null) {
+                break;
+            case "class":
+                if (classMediatorExtFactory == null) {
                     classMediatorExtFactory = new ClassMediatorExtFactory();
                 }
                 classMediatorExtFactory.createMediator(omElement, null);
-				break;
-			case "pojoCommand":
-				if (pojoCommandMediatorFactory == null) {
+                break;
+            case "pojoCommand":
+                if (pojoCommandMediatorFactory == null) {
                     pojoCommandMediatorFactory = new DummyPOJOCommandMediatorFactory();
                 }
                 Iterator pojoChildren = omElement.getChildrenWithLocalName("property");
@@ -299,21 +299,21 @@ public class MediatorValidationUtil {
                 }
                 pojoCommandMediatorFactory.createMediator(omElement, null);
                 break;
-			case "ejb":
-				if (ejbMediatorExtFactory == null) {
+            case "ejb":
+                if (ejbMediatorExtFactory == null) {
                     ejbMediatorExtFactory = new EJBMediatorExtFactory();
                 }
                 ejbMediatorExtFactory.createSpecificMediatorForValidation(omElement, null);
-				break;
-			case "script":
-				Properties properties = new Properties();
+                break;
+            case "script":
+                Properties properties = new Properties();
                 if (scriptMediatorFactory == null) {
                     scriptMediatorFactory = new DummyScriptMediatorFactory();
                 }
                 scriptMediatorFactory.createMediator(omElement, properties);
-				break;
-			case "spring":
-				if (springMediatorFactory == null) {
+                break;
+            case "spring":
+                if (springMediatorFactory == null) {
                     springMediatorFactory = new SpringMediatorFactory();
                 }
                 Iterator springChildren = omElement.getChildrenWithLocalName("spring");
@@ -322,9 +322,9 @@ public class MediatorValidationUtil {
                     codeElement.setNamespace(new OMNamespaceImpl(SYNAPSE_NAMESPACE, "spring"));
                 }
                 springMediatorFactory.createMediator(omElement, null);
-				break;
-			case "makefault":
-				if (faultMediatorFactory == null) {
+                break;
+            case "makefault":
+                if (faultMediatorFactory == null) {
                     faultMediatorFactory = new FaultMediatorFactory();
                 }
                 Iterator faultChildren = omElement.getChildrenWithLocalName("code");
@@ -338,15 +338,15 @@ public class MediatorValidationUtil {
                     reasonElement.setNamespace(new OMNamespaceImpl(SYNAPSE_NAMESPACE, ""));
                 }
                 faultMediatorFactory.createMediator(omElement, null);
-				break;
-			case "header":
-				if (headerMediatorFactory == null) {
+                break;
+            case "header":
+                if (headerMediatorFactory == null) {
                     headerMediatorFactory = new HeaderMediatorFactory();
                 }
                 headerMediatorFactory.createMediator(omElement, null);
-				break;
-			case "payloadFactory":
-				if (payloadFactoryMediatorFactory == null) {
+                break;
+            case "payloadFactory":
+                if (payloadFactoryMediatorFactory == null) {
                     payloadFactoryMediatorFactory = new PayloadFactoryMediatorFactory();
                 }
                 omElement.setNamespace(new OMNamespaceImpl(SYNAPSE_NAMESPACE, ""));
@@ -361,97 +361,97 @@ public class MediatorValidationUtil {
                     argElement.setNamespace(new OMNamespaceImpl(SYNAPSE_NAMESPACE, ""));
                 }
                 payloadFactoryMediatorFactory.createMediator(omElement, null);
-				break;
-			case "smooks":
-				if (smooksMediatorFactory == null) {
+                break;
+            case "smooks":
+                if (smooksMediatorFactory == null) {
                     smooksMediatorFactory = new SmooksMediatorFactory();
                 }
                 smooksMediatorFactory.createMediator(omElement, null);
-				break;
-			case "rewrite":
-				if (urlRewriteMediatorFactory == null) {
+                break;
+            case "rewrite":
+                if (urlRewriteMediatorFactory == null) {
                     urlRewriteMediatorFactory = new URLRewriteMediatorFactory();
                 }
                 urlRewriteMediatorFactory.createMediator(omElement, null);
-				break;
-			case "xquery":
-				if (xQueryMediatorFactory == null) {
+                break;
+            case "xquery":
+                if (xQueryMediatorFactory == null) {
                     xQueryMediatorFactory = new XQueryMediatorFactory();
                 }
                 xQueryMediatorFactory.createMediator(omElement, null);
-				break;
-			case "xslt":
-				if (xsltMediatorFactory == null) {
+                break;
+            case "xslt":
+                if (xsltMediatorFactory == null) {
                     xsltMediatorFactory = new XSLTMediatorFactory();
                 }
                 xsltMediatorFactory.createMediator(omElement, null);
-				break;
-			case "datamapper":
-				if (dataMapperMediatorFactory == null) {
+                break;
+            case "datamapper":
+                if (dataMapperMediatorFactory == null) {
                     dataMapperMediatorFactory = new DataMapperMediatorFactory();
                 }
                 dataMapperMediatorFactory.createMediator(omElement, null);
-				break;
-			case "fastXSLT":
-				if (fastXSLTMediatorFactory == null) {
+                break;
+            case "fastXSLT":
+                if (fastXSLTMediatorFactory == null) {
                     fastXSLTMediatorFactory = new FastXSLTMediatorFactory();
                 }
                 fastXSLTMediatorFactory.createMediator(omElement, null);
-				break;
-			case "cache":
-				if (cacheMediatorFactory == null) {
+                break;
+            case "cache":
+                if (cacheMediatorFactory == null) {
                     cacheMediatorFactory = new CacheMediatorFactory();
                 }
                 omElement.setNamespace(new OMNamespaceImpl(SYNAPSE_NAMESPACE, ""));
                 cacheMediatorFactory.createMediator(omElement, null);
-				break;
-			case "dbreport":
-				if (dbReportMediatorFactory == null) {
+                break;
+            case "dbreport":
+                if (dbReportMediatorFactory == null) {
                     dbReportMediatorFactory = new DBReportMediatorFactory();
                 }
                 setNamespaceForChildren(omElement);
                 dbReportMediatorFactory.createMediator(omElement, null);
-				break;
-			case "dblookup":
-				if (dbLookupMediatorFactory == null) {
+                break;
+            case "dblookup":
+                if (dbLookupMediatorFactory == null) {
                     dbLookupMediatorFactory = new DBLookupMediatorFactory();
                 }
                 setNamespaceForChildren(omElement);
                 dbLookupMediatorFactory.createMediator(omElement, null);
-				break;
-			case "throttle":
-				if (throttleMediatorFactory == null) {
+                break;
+            case "throttle":
+                if (throttleMediatorFactory == null) {
                     throttleMediatorFactory = new ThrottleMediatorFactory();
                 }
                 throttleMediatorFactory.createMediator(omElement, null);
-				break;
-			case "transaction":
-				if (transactionMediatorFactory == null) {
+                break;
+            case "transaction":
+                if (transactionMediatorFactory == null) {
                     transactionMediatorFactory = new TransactionMediatorFactory();
                 }
                 transactionMediatorFactory.createMediator(omElement, null);
-				break;
-			case "aggregate":
-				if (aggregateMediatorFactory == null) {
+                break;
+            case "aggregate":
+                if (aggregateMediatorFactory == null) {
                     aggregateMediatorFactory = new AggregateMediatorFactory();
                 }
                 setNamespaceForChildren(omElement);
                 aggregateMediatorFactory.createMediator(omElement, null);
-				break;
-			case "callout":
-				if (calloutMediatorFactory == null) {
+                break;
+            case "callout":
+                if (calloutMediatorFactory == null) {
                     calloutMediatorFactory = new CalloutMediatorFactory();
                 }
                 calloutMediatorFactory.createMediator(omElement, null);
-				break;
-			case "clone":
-				if (cloneMediatorFactory == null) {
+                break;
+            case "clone":
+                if (cloneMediatorFactory == null) {
                     cloneMediatorFactory = new CloneMediatorFactory();
                 }
                 cloneMediatorFactory.createMediator(omElement, null);
-				break;
-			case "iterate":
-				if (iterateMediatorFactory == null) {
+                break;
+            case "iterate":
+                if (iterateMediatorFactory == null) {
                     iterateMediatorFactory = new IterateMediatorFactory();
                 }
                 Iterator iteratorChildren = omElement.getChildrenWithLocalName("target");
@@ -460,62 +460,62 @@ public class MediatorValidationUtil {
                     source.setNamespace(new OMNamespaceImpl(SYNAPSE_NAMESPACE, ""));
                 }
                 iterateMediatorFactory.createMediator(omElement, null);
-				break;
-			case "foreach":
-				if (forEachMediatorFactory == null) {
+                break;
+            case "foreach":
+                if (forEachMediatorFactory == null) {
                     forEachMediatorFactory = new ForEachMediatorFactory();
                 }
                 forEachMediatorFactory.createMediator(omElement, null);
-				break;
-			case "entitlementService":
-				if (entitlementMediatorFactory == null) {
+                break;
+            case "entitlementService":
+                if (entitlementMediatorFactory == null) {
                     entitlementMediatorFactory = new EntitlementMediatorFactory();
                 }
                 omElement.setNamespace(new OMNamespaceImpl(SYNAPSE_NAMESPACE, ""));
                 entitlementMediatorFactory.createMediator(omElement, null);
-				break;
-			case "oauthService":
-				if (oAuthMediatorFactory == null) {
+                break;
+            case "oauthService":
+                if (oAuthMediatorFactory == null) {
                     oAuthMediatorFactory = new OAuthMediatorFactory();
                 }
                 omElement.setNamespace(new OMNamespaceImpl(SYNAPSE_NAMESPACE, ""));
                 oAuthMediatorFactory.createMediator(omElement, null);
-				break;
-			case "builder":
-				if (builderMediatorExtFactory == null) {
+                break;
+            case "builder":
+                if (builderMediatorExtFactory == null) {
                     builderMediatorExtFactory = new BuilderMediatorExtFactory();
                 }
                 builderMediatorExtFactory.createMediator(omElement, null);
-				break;
-			case "rule":
-				if (ruleMediatorFactory == null) {
+                break;
+            case "rule":
+                if (ruleMediatorFactory == null) {
                     ruleMediatorFactory = new RuleMediatorFactory();
                 }
                 ruleMediatorFactory.createMediator(omElement, null);
-				break;
-			case "bam":
-				if (bamMediatorExtFactory == null) {
+                break;
+            case "bam":
+                if (bamMediatorExtFactory == null) {
                     bamMediatorExtFactory = new BamMediatorExtFactory();
                 }
                 bamMediatorExtFactory.createMediator(omElement, null);
-				break;
-			case "publishEvent":
-				if (publishEventMediatorFactory == null) {
+                break;
+            case "publishEvent":
+                if (publishEventMediatorFactory == null) {
                     publishEventMediatorFactory = new PublishEventMediatorFactory();
                 }
                 setNamespaceForChildren(omElement);
                 publishEventMediatorFactory.createMediator(omElement, null);
-				break;
-			case "jsontransform":
-			    if (jsonTransformMediatorFactory == null) {
-			        jsonTransformMediatorFactory = new JSONTransformMediatorFactory();
-			    }
-			    setNamespaceForChildren(omElement);
-			    jsonTransformMediatorFactory.createMediator(omElement, null);
-			    break;
-			default:
-				break;
-			}
+                break;
+            case "jsontransform":
+                if (jsonTransformMediatorFactory == null) {
+                    jsonTransformMediatorFactory = new JSONTransformMediatorFactory();
+                }
+                setNamespaceForChildren(omElement);
+                jsonTransformMediatorFactory.createMediator(omElement, null);
+                break;
+            default:
+                break;
+            }
 
         } catch (SynapseException | MediatorException e) {
             return e.getMessage();

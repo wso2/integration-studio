@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Call Mediator Endpoint Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
+ * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCallMediatorEndpointType()
  * @model
  * @generated
@@ -35,6 +36,7 @@ public enum CallMediatorEndpointType implements Enumerator {
      * The '<em><b>INLINE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #INLINE_VALUE
      * @generated
      * @ordered
@@ -44,6 +46,7 @@ public enum CallMediatorEndpointType implements Enumerator {
      * The '<em><b>NONE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #NONE_VALUE
      * @generated
      * @ordered
@@ -54,6 +57,7 @@ public enum CallMediatorEndpointType implements Enumerator {
      * The '<em><b>REGISRTYKEY</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #REGISRTYKEY_VALUE
      * @generated
      * @ordered
@@ -64,6 +68,7 @@ public enum CallMediatorEndpointType implements Enumerator {
      * The '<em><b>XPATH</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #XPATH_VALUE
      * @generated
      * @ordered
@@ -78,6 +83,7 @@ public enum CallMediatorEndpointType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #INLINE
      * @model
      * @generated
@@ -93,6 +99,7 @@ public enum CallMediatorEndpointType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #NONE
      * @model
      * @generated
@@ -108,6 +115,7 @@ public enum CallMediatorEndpointType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #REGISRTYKEY
      * @model
      * @generated
@@ -123,6 +131,7 @@ public enum CallMediatorEndpointType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #XPATH
      * @model
      * @generated
@@ -134,27 +143,27 @@ public enum CallMediatorEndpointType implements Enumerator {
      * An array of all the '<em><b>Call Mediator Endpoint Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
-    private static final CallMediatorEndpointType[] VALUES_ARRAY = new CallMediatorEndpointType[] {
-            INLINE,
-            NONE,
-            REGISRTYKEY,
-            XPATH,
-        };
+    private static final CallMediatorEndpointType[] VALUES_ARRAY = new CallMediatorEndpointType[] { INLINE, NONE,
+            REGISRTYKEY, XPATH, };
 
     /**
      * A public read-only list of all the '<em><b>Call Mediator Endpoint Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
-    public static final List<CallMediatorEndpointType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<CallMediatorEndpointType> VALUES = Collections
+            .unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
     /**
      * Returns the '<em><b>Call Mediator Endpoint Type</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -173,6 +182,7 @@ public enum CallMediatorEndpointType implements Enumerator {
      * Returns the '<em><b>Call Mediator Endpoint Type</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -191,16 +201,21 @@ public enum CallMediatorEndpointType implements Enumerator {
      * Returns the '<em><b>Call Mediator Endpoint Type</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static CallMediatorEndpointType get(int value) {
         switch (value) {
-            case INLINE_VALUE: return INLINE;
-            case NONE_VALUE: return NONE;
-            case REGISRTYKEY_VALUE: return REGISRTYKEY;
-            case XPATH_VALUE: return XPATH;
+        case INLINE_VALUE:
+            return INLINE;
+        case NONE_VALUE:
+            return NONE;
+        case REGISRTYKEY_VALUE:
+            return REGISRTYKEY;
+        case XPATH_VALUE:
+            return XPATH;
         }
         return null;
     }
@@ -208,6 +223,7 @@ public enum CallMediatorEndpointType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final int value;
@@ -215,6 +231,7 @@ public enum CallMediatorEndpointType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String name;
@@ -222,6 +239,7 @@ public enum CallMediatorEndpointType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String literal;
@@ -230,6 +248,7 @@ public enum CallMediatorEndpointType implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private CallMediatorEndpointType(int value, String name, String literal) {
@@ -241,34 +260,38 @@ public enum CallMediatorEndpointType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public int getValue() {
-      return value;
+        return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getName() {
-      return name;
+        return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getLiteral() {
-      return literal;
+        return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

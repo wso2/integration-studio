@@ -144,15 +144,15 @@ public class EsbObjectSourceEditor {
      *            {@link ModelObject} to be edited.
      */
     public void update(FormPage formPage, ArtifactType artifactType) throws Exception {
-    	String newSource;
-    	if (artifactType.toString().equals("MOCK_SERVICE")) {
-    		newSource = MockServiceFormToSourceTransformer.generateMockServiceTemplate(formPage);
-    	} else if (artifactType.toString().equals("SYNAPSE_UNIT_TEST")) {
-    		newSource = SynapseUnitTestFormToSourceTransformer.generateUnitTestTemplate(formPage);
-    	} else {
-    		newSource = EsbModelTransformer.instance.formToSource(formPage, artifactType);
-    	}
-        
+        String newSource;
+        if (artifactType.toString().equals("MOCK_SERVICE")) {
+            newSource = MockServiceFormToSourceTransformer.generateMockServiceTemplate(formPage);
+        } else if (artifactType.toString().equals("SYNAPSE_UNIT_TEST")) {
+            newSource = SynapseUnitTestFormToSourceTransformer.generateUnitTestTemplate(formPage);
+        } else {
+            newSource = EsbModelTransformer.instance.formToSource(formPage, artifactType);
+        }
+
         getDocument().set(newSource);
     }
 

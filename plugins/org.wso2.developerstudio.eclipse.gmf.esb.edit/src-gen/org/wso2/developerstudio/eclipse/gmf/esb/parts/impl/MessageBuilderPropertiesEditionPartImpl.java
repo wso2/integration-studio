@@ -49,98 +49,97 @@ import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
  * 
  * 
  */
-public class MessageBuilderPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, MessageBuilderPropertiesEditionPart {
+public class MessageBuilderPropertiesEditionPartImpl extends CompositePropertiesEditionPart
+        implements ISWTPropertiesEditionPart, MessageBuilderPropertiesEditionPart {
 
-	protected Text contentType;
-	protected Text builderClass;
-	protected Text formatterClass;
+    protected Text contentType;
+    protected Text builderClass;
+    protected Text formatterClass;
 
+    /**
+     * Default constructor
+     * 
+     * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+     * 
+     */
+    public MessageBuilderPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
+        super(editionComponent);
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+     *      createFigure(org.eclipse.swt.widgets.Composite)
+     * 
+     */
+    public Composite createFigure(final Composite parent) {
+        view = new Composite(parent, SWT.NONE);
+        GridLayout layout = new GridLayout();
+        layout.numColumns = 3;
+        view.setLayout(layout);
+        createControls(view);
+        return view;
+    }
 
-	/**
-	 * Default constructor
-	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
-	 */
-	public MessageBuilderPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+     *      createControls(org.eclipse.swt.widgets.Composite)
+     * 
+     */
+    public void createControls(Composite view) {
+        CompositionSequence messageBuilderStep = new BindingCompositionSequence(propertiesEditionComponent);
+        CompositionStep propertiesStep = messageBuilderStep.addStep(EsbViewsRepository.MessageBuilder.Properties.class);
+        propertiesStep.addStep(EsbViewsRepository.MessageBuilder.Properties.contentType);
+        propertiesStep.addStep(EsbViewsRepository.MessageBuilder.Properties.builderClass);
+        propertiesStep.addStep(EsbViewsRepository.MessageBuilder.Properties.formatterClass);
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
-	 * 			createFigure(org.eclipse.swt.widgets.Composite)
-	 * 
-	 */
-	public Composite createFigure(final Composite parent) {
-		view = new Composite(parent, SWT.NONE);
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 3;
-		view.setLayout(layout);
-		createControls(view);
-		return view;
-	}
+        composer = new PartComposer(messageBuilderStep) {
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
-	 * 			createControls(org.eclipse.swt.widgets.Composite)
-	 * 
-	 */
-	public void createControls(Composite view) { 
-		CompositionSequence messageBuilderStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep propertiesStep = messageBuilderStep.addStep(EsbViewsRepository.MessageBuilder.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.MessageBuilder.Properties.contentType);
-		propertiesStep.addStep(EsbViewsRepository.MessageBuilder.Properties.builderClass);
-		propertiesStep.addStep(EsbViewsRepository.MessageBuilder.Properties.formatterClass);
-		
-		
-		composer = new PartComposer(messageBuilderStep) {
+            @Override
+            public Composite addToPart(Composite parent, Object key) {
+                if (key == EsbViewsRepository.MessageBuilder.Properties.class) {
+                    return createPropertiesGroup(parent);
+                }
+                if (key == EsbViewsRepository.MessageBuilder.Properties.contentType) {
+                    return createContentTypeText(parent);
+                }
+                if (key == EsbViewsRepository.MessageBuilder.Properties.builderClass) {
+                    return createBuilderClassText(parent);
+                }
+                if (key == EsbViewsRepository.MessageBuilder.Properties.formatterClass) {
+                    return createFormatterClassText(parent);
+                }
+                return parent;
+            }
+        };
+        composer.compose(view);
+    }
 
-			@Override
-			public Composite addToPart(Composite parent, Object key) {
-				if (key == EsbViewsRepository.MessageBuilder.Properties.class) {
-					return createPropertiesGroup(parent);
-				}
-				if (key == EsbViewsRepository.MessageBuilder.Properties.contentType) {
-					return createContentTypeText(parent);
-				}
-				if (key == EsbViewsRepository.MessageBuilder.Properties.builderClass) {
-					return createBuilderClassText(parent);
-				}
-				if (key == EsbViewsRepository.MessageBuilder.Properties.formatterClass) {
-					return createFormatterClassText(parent);
-				}
-				return parent;
-			}
-		};
-		composer.compose(view);
-	}
+    /**
+     * 
+     */
+    protected Composite createPropertiesGroup(Composite parent) {
+        Group propertiesGroup = new Group(parent, SWT.NONE);
+        propertiesGroup.setText(EsbMessages.MessageBuilderPropertiesEditionPart_PropertiesGroupLabel);
+        GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
+        propertiesGroupData.horizontalSpan = 3;
+        propertiesGroup.setLayoutData(propertiesGroupData);
+        GridLayout propertiesGroupLayout = new GridLayout();
+        propertiesGroupLayout.numColumns = 3;
+        propertiesGroup.setLayout(propertiesGroupLayout);
+        return propertiesGroup;
+    }
 
-	/**
-	 * 
-	 */
-	protected Composite createPropertiesGroup(Composite parent) {
-		Group propertiesGroup = new Group(parent, SWT.NONE);
-		propertiesGroup.setText(EsbMessages.MessageBuilderPropertiesEditionPart_PropertiesGroupLabel);
-		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesGroupData.horizontalSpan = 3;
-		propertiesGroup.setLayoutData(propertiesGroupData);
-		GridLayout propertiesGroupLayout = new GridLayout();
-		propertiesGroupLayout.numColumns = 3;
-		propertiesGroup.setLayout(propertiesGroupLayout);
-		return propertiesGroup;
-	}
+    protected Composite createContentTypeText(Composite parent) {
+        createDescription(parent, EsbViewsRepository.MessageBuilder.Properties.contentType,
+                EsbMessages.MessageBuilderPropertiesEditionPart_ContentTypeLabel);
+        contentType = SWTUtils.createScrollableText(parent, SWT.BORDER);
+        GridData contentTypeData = new GridData(GridData.FILL_HORIZONTAL);
+        contentType.setLayoutData(contentTypeData);
 
-	
-	protected Composite createContentTypeText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.MessageBuilder.Properties.contentType, EsbMessages.MessageBuilderPropertiesEditionPart_ContentTypeLabel);
-		contentType = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		GridData contentTypeData = new GridData(GridData.FILL_HORIZONTAL);
-		contentType.setLayoutData(contentTypeData);
-		
         contentType.addFocusListener(new FocusAdapter() {
 
             /**
@@ -180,24 +179,25 @@ public class MessageBuilderPropertiesEditionPartImpl extends CompositeProperties
                 }
             }
 
-		});
-        
-		EditingUtils.setID(contentType, EsbViewsRepository.MessageBuilder.Properties.contentType);
-		EditingUtils.setEEFtype(contentType, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.MessageBuilder.Properties.contentType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createContentTypeText
+        });
 
-		// End of user code
-		return parent;
-	}
+        EditingUtils.setID(contentType, EsbViewsRepository.MessageBuilder.Properties.contentType);
+        EditingUtils.setEEFtype(contentType, "eef::Text"); //$NON-NLS-1$
+        SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(
+                EsbViewsRepository.MessageBuilder.Properties.contentType, EsbViewsRepository.SWT_KIND), null); // $NON-NLS-1$
+        // Start of user code for createContentTypeText
 
-	
-	protected Composite createBuilderClassText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.MessageBuilder.Properties.builderClass, EsbMessages.MessageBuilderPropertiesEditionPart_BuilderClassLabel);
-		builderClass = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		GridData builderClassData = new GridData(GridData.FILL_HORIZONTAL);
-		builderClass.setLayoutData(builderClassData);
-		
+        // End of user code
+        return parent;
+    }
+
+    protected Composite createBuilderClassText(Composite parent) {
+        createDescription(parent, EsbViewsRepository.MessageBuilder.Properties.builderClass,
+                EsbMessages.MessageBuilderPropertiesEditionPart_BuilderClassLabel);
+        builderClass = SWTUtils.createScrollableText(parent, SWT.BORDER);
+        GridData builderClassData = new GridData(GridData.FILL_HORIZONTAL);
+        builderClass.setLayoutData(builderClassData);
+
         builderClass.addFocusListener(new FocusAdapter() {
 
             /**
@@ -239,23 +239,24 @@ public class MessageBuilderPropertiesEditionPartImpl extends CompositeProperties
             }
 
         });
-		
-		EditingUtils.setID(builderClass, EsbViewsRepository.MessageBuilder.Properties.builderClass);
-		EditingUtils.setEEFtype(builderClass, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.MessageBuilder.Properties.builderClass, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createBuilderClassText
 
-		// End of user code
-		return parent;
-	}
+        EditingUtils.setID(builderClass, EsbViewsRepository.MessageBuilder.Properties.builderClass);
+        EditingUtils.setEEFtype(builderClass, "eef::Text"); //$NON-NLS-1$
+        SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(
+                EsbViewsRepository.MessageBuilder.Properties.builderClass, EsbViewsRepository.SWT_KIND), null); // $NON-NLS-1$
+        // Start of user code for createBuilderClassText
 
-	
-	protected Composite createFormatterClassText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.MessageBuilder.Properties.formatterClass, EsbMessages.MessageBuilderPropertiesEditionPart_FormatterClassLabel);
-		formatterClass = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		GridData formatterClassData = new GridData(GridData.FILL_HORIZONTAL);
-		formatterClass.setLayoutData(formatterClassData);
-		
+        // End of user code
+        return parent;
+    }
+
+    protected Composite createFormatterClassText(Composite parent) {
+        createDescription(parent, EsbViewsRepository.MessageBuilder.Properties.formatterClass,
+                EsbMessages.MessageBuilderPropertiesEditionPart_FormatterClassLabel);
+        formatterClass = SWTUtils.createScrollableText(parent, SWT.BORDER);
+        GridData formatterClassData = new GridData(GridData.FILL_HORIZONTAL);
+        formatterClass.setLayoutData(formatterClassData);
+
         formatterClass.addFocusListener(new FocusAdapter() {
 
             /**
@@ -297,143 +298,140 @@ public class MessageBuilderPropertiesEditionPartImpl extends CompositeProperties
             }
 
         });
-		
-		EditingUtils.setID(formatterClass, EsbViewsRepository.MessageBuilder.Properties.formatterClass);
-		EditingUtils.setEEFtype(formatterClass, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.MessageBuilder.Properties.formatterClass, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createFormatterClassText
 
-		// End of user code
-		return parent;
-	}
+        EditingUtils.setID(formatterClass, EsbViewsRepository.MessageBuilder.Properties.formatterClass);
+        EditingUtils.setEEFtype(formatterClass, "eef::Text"); //$NON-NLS-1$
+        SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(
+                EsbViewsRepository.MessageBuilder.Properties.formatterClass, EsbViewsRepository.SWT_KIND), null); // $NON-NLS-1$
+        // Start of user code for createFormatterClassText
 
+        // End of user code
+        return parent;
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
-	 */
-	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-		
-		// End of user code
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+     * 
+     */
+    public void firePropertiesChanged(IPropertiesEditionEvent event) {
+        // Start of user code for tab synchronization
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.MessageBuilderPropertiesEditionPart#getContentType()
-	 * 
-	 */
-	public String getContentType() {
-		return contentType.getText();
-	}
+        // End of user code
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.MessageBuilderPropertiesEditionPart#setContentType(String newValue)
-	 * 
-	 */
-	public void setContentType(String newValue) {
-		if (newValue != null) {
-			contentType.setText(newValue);
-		} else {
-			contentType.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.MessageBuilder.Properties.contentType);
-		if (eefElementEditorReadOnlyState && contentType.isEnabled()) {
-			contentType.setEnabled(false);
-			contentType.setToolTipText(EsbMessages.MessageBuilder_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !contentType.isEnabled()) {
-			contentType.setEnabled(true);
-		}	
-		
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.MessageBuilderPropertiesEditionPart#getContentType()
+     * 
+     */
+    public String getContentType() {
+        return contentType.getText();
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.MessageBuilderPropertiesEditionPart#getBuilderClass()
-	 * 
-	 */
-	public String getBuilderClass() {
-		return builderClass.getText();
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.MessageBuilderPropertiesEditionPart#setContentType(String
+     *      newValue)
+     * 
+     */
+    public void setContentType(String newValue) {
+        if (newValue != null) {
+            contentType.setText(newValue);
+        } else {
+            contentType.setText(""); //$NON-NLS-1$
+        }
+        boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.MessageBuilder.Properties.contentType);
+        if (eefElementEditorReadOnlyState && contentType.isEnabled()) {
+            contentType.setEnabled(false);
+            contentType.setToolTipText(EsbMessages.MessageBuilder_ReadOnly);
+        } else if (!eefElementEditorReadOnlyState && !contentType.isEnabled()) {
+            contentType.setEnabled(true);
+        }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.MessageBuilderPropertiesEditionPart#setBuilderClass(String newValue)
-	 * 
-	 */
-	public void setBuilderClass(String newValue) {
-		if (newValue != null) {
-			builderClass.setText(newValue);
-		} else {
-			builderClass.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.MessageBuilder.Properties.builderClass);
-		if (eefElementEditorReadOnlyState && builderClass.isEnabled()) {
-			builderClass.setEnabled(false);
-			builderClass.setToolTipText(EsbMessages.MessageBuilder_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !builderClass.isEnabled()) {
-			builderClass.setEnabled(true);
-		}	
-		
-	}
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.MessageBuilderPropertiesEditionPart#getFormatterClass()
-	 * 
-	 */
-	public String getFormatterClass() {
-		return formatterClass.getText();
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.MessageBuilderPropertiesEditionPart#getBuilderClass()
+     * 
+     */
+    public String getBuilderClass() {
+        return builderClass.getText();
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.MessageBuilderPropertiesEditionPart#setFormatterClass(String newValue)
-	 * 
-	 */
-	public void setFormatterClass(String newValue) {
-		if (newValue != null) {
-			formatterClass.setText(newValue);
-		} else {
-			formatterClass.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.MessageBuilder.Properties.formatterClass);
-		if (eefElementEditorReadOnlyState && formatterClass.isEnabled()) {
-			formatterClass.setEnabled(false);
-			formatterClass.setToolTipText(EsbMessages.MessageBuilder_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !formatterClass.isEnabled()) {
-			formatterClass.setEnabled(true);
-		}	
-		
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.MessageBuilderPropertiesEditionPart#setBuilderClass(String
+     *      newValue)
+     * 
+     */
+    public void setBuilderClass(String newValue) {
+        if (newValue != null) {
+            builderClass.setText(newValue);
+        } else {
+            builderClass.setText(""); //$NON-NLS-1$
+        }
+        boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.MessageBuilder.Properties.builderClass);
+        if (eefElementEditorReadOnlyState && builderClass.isEnabled()) {
+            builderClass.setEnabled(false);
+            builderClass.setToolTipText(EsbMessages.MessageBuilder_ReadOnly);
+        } else if (!eefElementEditorReadOnlyState && !builderClass.isEnabled()) {
+            builderClass.setEnabled(true);
+        }
 
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.MessageBuilderPropertiesEditionPart#getFormatterClass()
+     * 
+     */
+    public String getFormatterClass() {
+        return formatterClass.getText();
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.MessageBuilderPropertiesEditionPart#setFormatterClass(String
+     *      newValue)
+     * 
+     */
+    public void setFormatterClass(String newValue) {
+        if (newValue != null) {
+            formatterClass.setText(newValue);
+        } else {
+            formatterClass.setText(""); //$NON-NLS-1$
+        }
+        boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.MessageBuilder.Properties.formatterClass);
+        if (eefElementEditorReadOnlyState && formatterClass.isEnabled()) {
+            formatterClass.setEnabled(false);
+            formatterClass.setToolTipText(EsbMessages.MessageBuilder_ReadOnly);
+        } else if (!eefElementEditorReadOnlyState && !formatterClass.isEnabled()) {
+            formatterClass.setEnabled(true);
+        }
 
+    }
 
+    /**
+     * {@inheritDoc}
+     *
+     * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+     * 
+     */
+    public String getTitle() {
+        return EsbMessages.MessageBuilder_Part_Title;
+    }
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
-	 */
-	public String getTitle() {
-		return EsbMessages.MessageBuilder_Part_Title;
-	}
+    // Start of user code additional methods
 
-	// Start of user code additional methods
-	
-	// End of user code
-
+    // End of user code
 
 }

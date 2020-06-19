@@ -87,7 +87,7 @@ public class AddressEndpointDeserializer extends AbstractEndpointDeserializer {
 
         return endpoint;
     }
-    
+
     @Override
     public void createNode(FormEditor formEditor, AbstractEndpoint endpointObject) {
 

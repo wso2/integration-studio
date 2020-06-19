@@ -22,6 +22,7 @@ public class MessageInputConnectorImpl extends InputConnectorImpl implements Mes
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected MessageInputConnectorImpl() {
@@ -31,6 +32,7 @@ public class MessageInputConnectorImpl extends InputConnectorImpl implements Mes
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 

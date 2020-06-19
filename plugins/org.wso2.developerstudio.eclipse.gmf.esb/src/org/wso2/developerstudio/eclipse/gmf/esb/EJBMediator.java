@@ -26,18 +26,19 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getBeanstalk <em>Beanstalk</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getClass_ <em>Class</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getMethod <em>Method</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getSessionIdType <em>Session Id Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getSessionIdLiteral <em>Session Id Literal</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getSessionIdExpression <em>Session Id Expression</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#isRemove <em>Remove</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getTarget <em>Target</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getJNDIName <em>JNDI Name</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getMethodArguments <em>Method Arguments</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getInputConnector <em>Input Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getOutputConnector <em>Output Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getBeanstalk <em>Beanstalk</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getClass_ <em>Class</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getMethod <em>Method</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getSessionIdType <em>Session Id Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getSessionIdLiteral <em>Session Id Literal</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getSessionIdExpression <em>Session Id
+ * Expression</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#isRemove <em>Remove</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getTarget <em>Target</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getJNDIName <em>JNDI Name</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getMethodArguments <em>Method Arguments</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEJBMediator()
@@ -53,6 +54,7 @@ public interface EJBMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(EJBMediatorInputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEJBMediator_InputConnector()
@@ -62,9 +64,11 @@ public interface EJBMediator extends Mediator {
     EJBMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getInputConnector <em>Input
+     * Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
      * @see #getInputConnector()
      * @generated
@@ -79,6 +83,7 @@ public interface EJBMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(EJBMediatorOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEJBMediator_OutputConnector()
@@ -88,9 +93,11 @@ public interface EJBMediator extends Mediator {
     EJBMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getOutputConnector <em>Output
+     * Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
      * @see #getOutputConnector()
      * @generated
@@ -105,6 +112,7 @@ public interface EJBMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Beanstalk</em>' attribute.
      * @see #setBeanstalk(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEJBMediator_Beanstalk()
@@ -114,9 +122,11 @@ public interface EJBMediator extends Mediator {
     String getBeanstalk();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getBeanstalk <em>Beanstalk</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getBeanstalk
+     * <em>Beanstalk</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Beanstalk</em>' attribute.
      * @see #getBeanstalk()
      * @generated
@@ -131,6 +141,7 @@ public interface EJBMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Class</em>' attribute.
      * @see #setClass(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEJBMediator_Class()
@@ -140,9 +151,11 @@ public interface EJBMediator extends Mediator {
     String getClass_();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getClass_ <em>Class</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getClass_ <em>Class</em>}'
+     * attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Class</em>' attribute.
      * @see #getClass_()
      * @generated
@@ -157,6 +170,7 @@ public interface EJBMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Method</em>' attribute.
      * @see #setMethod(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEJBMediator_Method()
@@ -166,9 +180,11 @@ public interface EJBMediator extends Mediator {
     String getMethod();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getMethod <em>Method</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getMethod <em>Method</em>}'
+     * attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Method</em>' attribute.
      * @see #getMethod()
      * @generated
@@ -184,6 +200,7 @@ public interface EJBMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Session Id Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType
      * @see #setSessionIdType(PropertyValueType)
@@ -194,9 +211,11 @@ public interface EJBMediator extends Mediator {
     PropertyValueType getSessionIdType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getSessionIdType <em>Session Id Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getSessionIdType <em>Session
+     * Id Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Session Id Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType
      * @see #getSessionIdType()
@@ -212,6 +231,7 @@ public interface EJBMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Session Id Literal</em>' attribute.
      * @see #setSessionIdLiteral(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEJBMediator_SessionIdLiteral()
@@ -221,9 +241,11 @@ public interface EJBMediator extends Mediator {
     String getSessionIdLiteral();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getSessionIdLiteral <em>Session Id Literal</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getSessionIdLiteral
+     * <em>Session Id Literal</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Session Id Literal</em>' attribute.
      * @see #getSessionIdLiteral()
      * @generated
@@ -238,6 +260,7 @@ public interface EJBMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Session Id Expression</em>' containment reference.
      * @see #setSessionIdExpression(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEJBMediator_SessionIdExpression()
@@ -247,9 +270,11 @@ public interface EJBMediator extends Mediator {
     NamespacedProperty getSessionIdExpression();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getSessionIdExpression <em>Session Id Expression</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getSessionIdExpression
+     * <em>Session Id Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Session Id Expression</em>' containment reference.
      * @see #getSessionIdExpression()
      * @generated
@@ -264,6 +289,7 @@ public interface EJBMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Remove</em>' attribute.
      * @see #setRemove(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEJBMediator_Remove()
@@ -273,9 +299,11 @@ public interface EJBMediator extends Mediator {
     boolean isRemove();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#isRemove <em>Remove</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#isRemove <em>Remove</em>}'
+     * attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Remove</em>' attribute.
      * @see #isRemove()
      * @generated
@@ -290,6 +318,7 @@ public interface EJBMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Target</em>' attribute.
      * @see #setTarget(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEJBMediator_Target()
@@ -299,9 +328,11 @@ public interface EJBMediator extends Mediator {
     String getTarget();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getTarget <em>Target</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getTarget <em>Target</em>}'
+     * attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Target</em>' attribute.
      * @see #getTarget()
      * @generated
@@ -316,6 +347,7 @@ public interface EJBMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>JNDI Name</em>' attribute.
      * @see #setJNDIName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEJBMediator_JNDIName()
@@ -325,9 +357,11 @@ public interface EJBMediator extends Mediator {
     String getJNDIName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getJNDIName <em>JNDI Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator#getJNDIName <em>JNDI
+     * Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>JNDI Name</em>' attribute.
      * @see #getJNDIName()
      * @generated
@@ -343,6 +377,7 @@ public interface EJBMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Method Arguments</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEJBMediator_MethodArguments()
      * @model containment="true"

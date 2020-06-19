@@ -37,12 +37,12 @@ import org.apache.synapse.util.xpath.SynapseXPath;
 import org.jaxen.JaxenException;
 
 public class IterateMediatorExtFactory extends IterateMediatorFactory {
-    
+
     private static IterateMediatorExtFactory instance;
-    
+
     private IterateMediatorExtFactory() {
     }
-    
+
     public static synchronized IterateMediatorExtFactory getInstance() {
         if (instance == null) {
             instance = new IterateMediatorExtFactory();
@@ -59,7 +59,7 @@ public class IterateMediatorExtFactory extends IterateMediatorFactory {
         QName ATT_ATTACHPATH = new QName("attachPath");
         QName ATT_SEQUENCIAL = new QName("sequential");
         QName ID_Q = new QName(XMLConfigConstants.NULL_NAMESPACE, "id");
-        
+
         final String DEFAULT_JSON_ATTACHPATH = "$";
         final String DEFAULT_XML_ATTACHPATH = ".";
 
@@ -92,25 +92,25 @@ public class IterateMediatorExtFactory extends IterateMediatorFactory {
         OMAttribute attachPath = omElement.getAttribute(ATT_ATTACHPATH);
 
         try {
-        	SynapsePath attachSynapsePath;
+            SynapsePath attachSynapsePath;
 
             if (attachPath != null) {
                 attachSynapsePath = SynapsePathFactory.getSynapsePath(omElement, ATT_ATTACHPATH);
-                ((IterateMediator)mediator).setAttachPathPresent(true);
+                ((IterateMediator) mediator).setAttachPathPresent(true);
 
             } else {
-                if (((IterateMediator)mediator).getExpression() instanceof  SynapseJsonPath){
+                if (((IterateMediator) mediator).getExpression() instanceof SynapseJsonPath) {
                     attachSynapsePath = new SynapseJsonPath(DEFAULT_JSON_ATTACHPATH);
                 } else {
                     attachSynapsePath = new SynapseXPath(DEFAULT_XML_ATTACHPATH);
                 }
-                ((IterateMediator)mediator).setAttachPathPresent(false);
+                ((IterateMediator) mediator).setAttachPathPresent(false);
             }
 
             Log log = LogFactory.getLog(IterateMediatorFactory.class);
             OMElementUtils.addNameSpaces(attachSynapsePath, omElement, log);
             ((IterateMediator) mediator).setAttachPath(attachSynapsePath);
-            
+
         } catch (JaxenException e) {
             // ignore
         }

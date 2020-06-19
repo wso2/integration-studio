@@ -623,20 +623,20 @@ public class EsbElementTypes {
             "org.wso2.developerstudio.eclipse.gmf.esb.diagram.PropertyMediatorOutputConnector_3034"); //$NON-NLS-1$
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static final IElementType PropertyGroupMediator_3788 = getElementType(
             "org.wso2.developerstudio.eclipse.gmf.esb.diagram.PropertyGroupMediator_3788"); //$NON-NLS-1$
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static final IElementType PropertyGroupMediatorInputConnector_3789 = getElementType(
             "org.wso2.developerstudio.eclipse.gmf.esb.diagram.PropertyGroupMediatorInputConnector_3789"); //$NON-NLS-1$
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static final IElementType PropertyGroupMediatorOutputConnector_3790 = getElementType(
             "org.wso2.developerstudio.eclipse.gmf.esb.diagram.PropertyGroupMediatorOutputConnector_3790"); //$NON-NLS-1$
 
@@ -1385,20 +1385,20 @@ public class EsbElementTypes {
             "org.wso2.developerstudio.eclipse.gmf.esb.diagram.PublishEventMediatorOutputConnector_3787"); //$NON-NLS-1$
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static final IElementType JsonTransformMediator_3791 = getElementType(
             "org.wso2.developerstudio.eclipse.gmf.esb.diagram.JsonTransformMediator_3791"); //$NON-NLS-1$
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static final IElementType JsonTransformMediatorInputConnector_3792 = getElementType(
             "org.wso2.developerstudio.eclipse.gmf.esb.diagram.JsonTransformMediatorInputConnector_3792"); //$NON-NLS-1$
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static final IElementType JsonTransformMediatorOutputConnector_3793 = getElementType(
             "org.wso2.developerstudio.eclipse.gmf.esb.diagram.JsonTransformMediatorOutputConnector_3793"); //$NON-NLS-1$
 
@@ -3980,8 +3980,8 @@ public class EsbElementTypes {
     public static final DiagramElementTypes TYPED_INSTANCE = new DiagramElementTypes(elementTypeImages) {
 
         /**
-        * @generated
-        */
+         * @generated
+         */
         @Override
 
         public boolean isKnownElementType(IElementType elementType) {
@@ -3990,8 +3990,8 @@ public class EsbElementTypes {
         }
 
         /**
-        * @generated
-        */
+         * @generated
+         */
         @Override
 
         public IElementType getElementTypeForVisualId(int visualID) {
@@ -3999,8 +3999,8 @@ public class EsbElementTypes {
         }
 
         /**
-        * @generated
-        */
+         * @generated
+         */
         @Override
 
         public ENamedElement getDefiningNamedElement(IAdaptable elementTypeAdapter) {

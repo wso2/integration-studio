@@ -32,6 +32,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.DBReportMediator} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class DBReportMediatorItemProvider extends AbstractSqlExecutorMediatorItemProvider {
@@ -39,6 +40,7 @@ public class DBReportMediatorItemProvider extends AbstractSqlExecutorMediatorIte
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public DBReportMediatorItemProvider(AdapterFactory adapterFactory) {
@@ -89,6 +91,7 @@ public class DBReportMediatorItemProvider extends AbstractSqlExecutorMediatorIte
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -105,6 +108,7 @@ public class DBReportMediatorItemProvider extends AbstractSqlExecutorMediatorIte
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -120,6 +124,7 @@ public class DBReportMediatorItemProvider extends AbstractSqlExecutorMediatorIte
      * This returns DBReportMediator.png.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated NOT
      */
 
@@ -132,15 +137,15 @@ public class DBReportMediatorItemProvider extends AbstractSqlExecutorMediatorIte
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((DBReportMediator)object).getConnectionDsName();
-        return label == null || label.length() == 0 ?
-            getString("_UI_DBReportMediator_type") :
-            getString("_UI_DBReportMediator_type") + " " + label;
+        String label = ((DBReportMediator) object).getConnectionDsName();
+        return label == null || label.length() == 0 ? getString("_UI_DBReportMediator_type")
+                : getString("_UI_DBReportMediator_type") + " " + label;
     }
 
     /**
@@ -148,6 +153,7 @@ public class DBReportMediatorItemProvider extends AbstractSqlExecutorMediatorIte
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -156,13 +162,13 @@ public class DBReportMediatorItemProvider extends AbstractSqlExecutorMediatorIte
         updateChildren(notification);
 
         switch (notification.getFeatureID(DBReportMediator.class)) {
-            case EsbPackage.DB_REPORT_MEDIATOR__CONNECTION_USE_TRANSACTION:
-                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-                return;
-            case EsbPackage.DB_REPORT_MEDIATOR__INPUT_CONNECTOR:
-            case EsbPackage.DB_REPORT_MEDIATOR__OUTPUT_CONNECTOR:
-                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-                return;
+        case EsbPackage.DB_REPORT_MEDIATOR__CONNECTION_USE_TRANSACTION:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+            return;
+        case EsbPackage.DB_REPORT_MEDIATOR__INPUT_CONNECTOR:
+        case EsbPackage.DB_REPORT_MEDIATOR__OUTPUT_CONNECTOR:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+            return;
         }
         super.notifyChanged(notification);
     }
@@ -172,6 +178,7 @@ public class DBReportMediatorItemProvider extends AbstractSqlExecutorMediatorIte
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -179,15 +186,11 @@ public class DBReportMediatorItemProvider extends AbstractSqlExecutorMediatorIte
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add
-            (createChildParameter
-                (EsbPackage.Literals.DB_REPORT_MEDIATOR__INPUT_CONNECTOR,
-                 EsbFactory.eINSTANCE.createDBReportMediatorInputConnector()));
+        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.DB_REPORT_MEDIATOR__INPUT_CONNECTOR,
+                EsbFactory.eINSTANCE.createDBReportMediatorInputConnector()));
 
-        newChildDescriptors.add
-            (createChildParameter
-                (EsbPackage.Literals.DB_REPORT_MEDIATOR__OUTPUT_CONNECTOR,
-                 EsbFactory.eINSTANCE.createDBReportMediatorOutputConnector()));
+        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.DB_REPORT_MEDIATOR__OUTPUT_CONNECTOR,
+                EsbFactory.eINSTANCE.createDBReportMediatorOutputConnector()));
     }
 
 }

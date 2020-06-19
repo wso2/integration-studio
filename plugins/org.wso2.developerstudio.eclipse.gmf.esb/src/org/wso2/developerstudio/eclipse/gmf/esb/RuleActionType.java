@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Rule Action Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
+ * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleActionType()
  * @model
  * @generated
@@ -26,6 +27,7 @@ public enum RuleActionType implements Enumerator {
      * The '<em><b>REPLACE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #REPLACE_VALUE
      * @generated
      * @ordered
@@ -36,6 +38,7 @@ public enum RuleActionType implements Enumerator {
      * The '<em><b>REMOVE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #REMOVE_VALUE
      * @generated
      * @ordered
@@ -46,6 +49,7 @@ public enum RuleActionType implements Enumerator {
      * The '<em><b>APPEND</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #APPEND_VALUE
      * @generated
      * @ordered
@@ -56,6 +60,7 @@ public enum RuleActionType implements Enumerator {
      * The '<em><b>PREPEND</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #PREPEND_VALUE
      * @generated
      * @ordered
@@ -66,6 +71,7 @@ public enum RuleActionType implements Enumerator {
      * The '<em><b>SET</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #SET_VALUE
      * @generated
      * @ordered
@@ -80,6 +86,7 @@ public enum RuleActionType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #REPLACE
      * @model literal="Replace"
      * @generated
@@ -95,6 +102,7 @@ public enum RuleActionType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #REMOVE
      * @model literal="Remove"
      * @generated
@@ -110,6 +118,7 @@ public enum RuleActionType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #APPEND
      * @model literal="Append"
      * @generated
@@ -125,6 +134,7 @@ public enum RuleActionType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #PREPEND
      * @model literal="Prepend"
      * @generated
@@ -140,6 +150,7 @@ public enum RuleActionType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #SET
      * @model literal="Set"
      * @generated
@@ -151,20 +162,17 @@ public enum RuleActionType implements Enumerator {
      * An array of all the '<em><b>Rule Action Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
-    private static final RuleActionType[] VALUES_ARRAY = new RuleActionType[] {
-            REPLACE,
-            REMOVE,
-            APPEND,
-            PREPEND,
-            SET,
-        };
+    private static final RuleActionType[] VALUES_ARRAY = new RuleActionType[] { REPLACE, REMOVE, APPEND, PREPEND,
+            SET, };
 
     /**
      * A public read-only list of all the '<em><b>Rule Action Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public static final List<RuleActionType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -173,6 +181,7 @@ public enum RuleActionType implements Enumerator {
      * Returns the '<em><b>Rule Action Type</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -191,6 +200,7 @@ public enum RuleActionType implements Enumerator {
      * Returns the '<em><b>Rule Action Type</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -209,17 +219,23 @@ public enum RuleActionType implements Enumerator {
      * Returns the '<em><b>Rule Action Type</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static RuleActionType get(int value) {
         switch (value) {
-            case REPLACE_VALUE: return REPLACE;
-            case REMOVE_VALUE: return REMOVE;
-            case APPEND_VALUE: return APPEND;
-            case PREPEND_VALUE: return PREPEND;
-            case SET_VALUE: return SET;
+        case REPLACE_VALUE:
+            return REPLACE;
+        case REMOVE_VALUE:
+            return REMOVE;
+        case APPEND_VALUE:
+            return APPEND;
+        case PREPEND_VALUE:
+            return PREPEND;
+        case SET_VALUE:
+            return SET;
         }
         return null;
     }
@@ -227,6 +243,7 @@ public enum RuleActionType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final int value;
@@ -234,6 +251,7 @@ public enum RuleActionType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String name;
@@ -241,6 +259,7 @@ public enum RuleActionType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String literal;
@@ -249,6 +268,7 @@ public enum RuleActionType implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private RuleActionType(int value, String name, String literal) {
@@ -260,34 +280,38 @@ public enum RuleActionType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public int getValue() {
-      return value;
+        return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getName() {
-      return name;
+        return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getLiteral() {
-      return literal;
+        return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

@@ -38,6 +38,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediator;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediator} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class FastXSLTMediatorItemProvider extends MediatorItemProvider {
@@ -45,6 +46,7 @@ public class FastXSLTMediatorItemProvider extends MediatorItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public FastXSLTMediatorItemProvider(AdapterFactory adapterFactory) {
@@ -119,44 +121,34 @@ public class FastXSLTMediatorItemProvider extends MediatorItemProvider {
      * This adds a property descriptor for the Fast Xslt Static Schema Key feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addFastXsltStaticSchemaKeyPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_FastXSLTMediator_fastXsltStaticSchemaKey_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_FastXSLTMediator_fastXsltStaticSchemaKey_feature", "_UI_FastXSLTMediator_type"),
-                 EsbPackage.Literals.FAST_XSLT_MEDIATOR__FAST_XSLT_STATIC_SCHEMA_KEY,
-                 true,
-                 false,
-                 false,
-                 null,
-                 null,
-                 null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                        getResourceLocator(), getString("_UI_FastXSLTMediator_fastXsltStaticSchemaKey_feature"),
+                        getString("_UI_PropertyDescriptor_description",
+                                "_UI_FastXSLTMediator_fastXsltStaticSchemaKey_feature", "_UI_FastXSLTMediator_type"),
+                        EsbPackage.Literals.FAST_XSLT_MEDIATOR__FAST_XSLT_STATIC_SCHEMA_KEY, true, false, false, null,
+                        null, null));
     }
 
     /**
      * This adds a property descriptor for the Fast Xslt Dynamic Schema Key feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addFastXsltDynamicSchemaKeyPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_FastXSLTMediator_fastXsltDynamicSchemaKey_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_FastXSLTMediator_fastXsltDynamicSchemaKey_feature", "_UI_FastXSLTMediator_type"),
-                 EsbPackage.Literals.FAST_XSLT_MEDIATOR__FAST_XSLT_DYNAMIC_SCHEMA_KEY,
-                 true,
-                 false,
-                 false,
-                 null,
-                 null,
-                 null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                        getResourceLocator(), getString("_UI_FastXSLTMediator_fastXsltDynamicSchemaKey_feature"),
+                        getString("_UI_PropertyDescriptor_description",
+                                "_UI_FastXSLTMediator_fastXsltDynamicSchemaKey_feature", "_UI_FastXSLTMediator_type"),
+                        EsbPackage.Literals.FAST_XSLT_MEDIATOR__FAST_XSLT_DYNAMIC_SCHEMA_KEY, true, false, false, null,
+                        null, null));
     }
 
     /**
@@ -165,6 +157,7 @@ public class FastXSLTMediatorItemProvider extends MediatorItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -182,6 +175,7 @@ public class FastXSLTMediatorItemProvider extends MediatorItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -196,6 +190,7 @@ public class FastXSLTMediatorItemProvider extends MediatorItemProvider {
      * This returns FastXSLTMediator.png.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated NOT
      */
     @Override
@@ -207,14 +202,14 @@ public class FastXSLTMediatorItemProvider extends MediatorItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((FastXSLTMediator)object).getDescription();
-        return label == null || label.length() == 0 ?
-            getString("_UI_FastXSLTMediator_type") :
-            getString("_UI_FastXSLTMediator_type") + " " + label;
+        String label = ((FastXSLTMediator) object).getDescription();
+        return label == null || label.length() == 0 ? getString("_UI_FastXSLTMediator_type")
+                : getString("_UI_FastXSLTMediator_type") + " " + label;
     }
 
     /**
@@ -222,6 +217,7 @@ public class FastXSLTMediatorItemProvider extends MediatorItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -229,15 +225,15 @@ public class FastXSLTMediatorItemProvider extends MediatorItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(FastXSLTMediator.class)) {
-            case EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_SCHEMA_KEY_TYPE:
-                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-                return;
-            case EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_STATIC_SCHEMA_KEY:
-            case EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_DYNAMIC_SCHEMA_KEY:
-            case EsbPackage.FAST_XSLT_MEDIATOR__INPUT_CONNECTOR:
-            case EsbPackage.FAST_XSLT_MEDIATOR__OUTPUT_CONNECTOR:
-                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-                return;
+        case EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_SCHEMA_KEY_TYPE:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+            return;
+        case EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_STATIC_SCHEMA_KEY:
+        case EsbPackage.FAST_XSLT_MEDIATOR__FAST_XSLT_DYNAMIC_SCHEMA_KEY:
+        case EsbPackage.FAST_XSLT_MEDIATOR__INPUT_CONNECTOR:
+        case EsbPackage.FAST_XSLT_MEDIATOR__OUTPUT_CONNECTOR:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+            return;
         }
         super.notifyChanged(notification);
     }
@@ -247,31 +243,26 @@ public class FastXSLTMediatorItemProvider extends MediatorItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add
-            (createChildParameter
-                (EsbPackage.Literals.FAST_XSLT_MEDIATOR__FAST_XSLT_STATIC_SCHEMA_KEY,
-                 EsbFactory.eINSTANCE.createRegistryKeyProperty()));
+        newChildDescriptors
+                .add(createChildParameter(EsbPackage.Literals.FAST_XSLT_MEDIATOR__FAST_XSLT_STATIC_SCHEMA_KEY,
+                        EsbFactory.eINSTANCE.createRegistryKeyProperty()));
 
-        newChildDescriptors.add
-            (createChildParameter
-                (EsbPackage.Literals.FAST_XSLT_MEDIATOR__FAST_XSLT_DYNAMIC_SCHEMA_KEY,
-                 EsbFactory.eINSTANCE.createNamespacedProperty()));
+        newChildDescriptors
+                .add(createChildParameter(EsbPackage.Literals.FAST_XSLT_MEDIATOR__FAST_XSLT_DYNAMIC_SCHEMA_KEY,
+                        EsbFactory.eINSTANCE.createNamespacedProperty()));
 
-        newChildDescriptors.add
-            (createChildParameter
-                (EsbPackage.Literals.FAST_XSLT_MEDIATOR__INPUT_CONNECTOR,
-                 EsbFactory.eINSTANCE.createFastXSLTMediatorInputConnector()));
+        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.FAST_XSLT_MEDIATOR__INPUT_CONNECTOR,
+                EsbFactory.eINSTANCE.createFastXSLTMediatorInputConnector()));
 
-        newChildDescriptors.add
-            (createChildParameter
-                (EsbPackage.Literals.FAST_XSLT_MEDIATOR__OUTPUT_CONNECTOR,
-                 EsbFactory.eINSTANCE.createFastXSLTMediatorOutputConnector()));
+        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.FAST_XSLT_MEDIATOR__OUTPUT_CONNECTOR,
+                EsbFactory.eINSTANCE.createFastXSLTMediatorOutputConnector()));
     }
 
     /**

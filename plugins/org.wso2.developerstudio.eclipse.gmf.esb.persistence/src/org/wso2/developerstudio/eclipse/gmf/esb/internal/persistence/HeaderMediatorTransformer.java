@@ -51,8 +51,8 @@ public class HeaderMediatorTransformer extends AbstractEsbNodeTransformer {
         }
     }
 
-    public static org.apache.synapse.mediators.transform.HeaderMediator createHeaderMediator(EsbNode subject, boolean isForValidation)
-            throws JaxenException {
+    public static org.apache.synapse.mediators.transform.HeaderMediator createHeaderMediator(EsbNode subject,
+            boolean isForValidation) throws JaxenException {
         /*
          * Check subject.
          */
@@ -101,7 +101,8 @@ public class HeaderMediatorTransformer extends AbstractEsbNodeTransformer {
                     // Fill the XPath with a default values, so that we can use synapse serializer
                     synapseXPath = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
                 } else {
-                    synapseXPath = (SynapseXPath) SynapseXPathExt.createSynapsePath(visualHeader.getValueExpression().getPropertyValue());
+                    synapseXPath = (SynapseXPath) SynapseXPathExt
+                            .createSynapsePath(visualHeader.getValueExpression().getPropertyValue());
                 }
                 for (int i = 0; i < visualHeader.getValueExpression().getNamespaces().keySet().size(); ++i) {
                     String prefix = (String) visualHeader.getValueExpression().getNamespaces().keySet().toArray()[i];

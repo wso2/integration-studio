@@ -24,18 +24,18 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getClass_ <em>Class</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getAction <em>Action</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getVar <em>Var</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getProperty <em>Property</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getValueType <em>Value Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getValueLiteral <em>Value Literal</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getValueExpression <em>Value Expression</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getTargetType <em>Target Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getTargetLiteral <em>Target Literal</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getTargetExpression <em>Target Expression</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getInputConnector <em>Input Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getOutputConnector <em>Output Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getClass_ <em>Class</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getAction <em>Action</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getVar <em>Var</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getProperty <em>Property</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getValueType <em>Value Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getValueLiteral <em>Value Literal</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getValueExpression <em>Value Expression</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getTargetType <em>Target Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getTargetLiteral <em>Target Literal</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getTargetExpression <em>Target Expression</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getBeanMediator()
@@ -51,6 +51,7 @@ public interface BeanMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(BeanMediatorInputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getBeanMediator_InputConnector()
@@ -60,9 +61,11 @@ public interface BeanMediator extends Mediator {
     BeanMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getInputConnector <em>Input
+     * Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
      * @see #getInputConnector()
      * @generated
@@ -77,6 +80,7 @@ public interface BeanMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(BeanMediatorOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getBeanMediator_OutputConnector()
@@ -86,9 +90,11 @@ public interface BeanMediator extends Mediator {
     BeanMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getOutputConnector <em>Output
+     * Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
      * @see #getOutputConnector()
      * @generated
@@ -103,6 +109,7 @@ public interface BeanMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Class</em>' attribute.
      * @see #setClass(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getBeanMediator_Class()
@@ -112,9 +119,11 @@ public interface BeanMediator extends Mediator {
     String getClass_();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getClass_ <em>Class</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getClass_ <em>Class</em>}'
+     * attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Class</em>' attribute.
      * @see #getClass_()
      * @generated
@@ -130,6 +139,7 @@ public interface BeanMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Action</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.BeanMediatorAction
      * @see #setAction(BeanMediatorAction)
@@ -140,9 +150,11 @@ public interface BeanMediator extends Mediator {
     BeanMediatorAction getAction();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getAction <em>Action</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getAction <em>Action</em>}'
+     * attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Action</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.BeanMediatorAction
      * @see #getAction()
@@ -158,6 +170,7 @@ public interface BeanMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Var</em>' attribute.
      * @see #setVar(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getBeanMediator_Var()
@@ -167,9 +180,11 @@ public interface BeanMediator extends Mediator {
     String getVar();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getVar <em>Var</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getVar <em>Var</em>}'
+     * attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Var</em>' attribute.
      * @see #getVar()
      * @generated
@@ -184,6 +199,7 @@ public interface BeanMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Property</em>' attribute.
      * @see #setProperty(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getBeanMediator_Property()
@@ -193,9 +209,11 @@ public interface BeanMediator extends Mediator {
     String getProperty();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getProperty <em>Property</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getProperty
+     * <em>Property</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Property</em>' attribute.
      * @see #getProperty()
      * @generated
@@ -211,6 +229,7 @@ public interface BeanMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Value Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType
      * @see #setValueType(PropertyValueType)
@@ -221,9 +240,11 @@ public interface BeanMediator extends Mediator {
     PropertyValueType getValueType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getValueType <em>Value Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getValueType <em>Value
+     * Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Value Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType
      * @see #getValueType()
@@ -239,6 +260,7 @@ public interface BeanMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Value Literal</em>' attribute.
      * @see #setValueLiteral(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getBeanMediator_ValueLiteral()
@@ -248,9 +270,11 @@ public interface BeanMediator extends Mediator {
     String getValueLiteral();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getValueLiteral <em>Value Literal</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getValueLiteral <em>Value
+     * Literal</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Value Literal</em>' attribute.
      * @see #getValueLiteral()
      * @generated
@@ -265,6 +289,7 @@ public interface BeanMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Value Expression</em>' containment reference.
      * @see #setValueExpression(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getBeanMediator_ValueExpression()
@@ -274,9 +299,11 @@ public interface BeanMediator extends Mediator {
     NamespacedProperty getValueExpression();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getValueExpression <em>Value Expression</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getValueExpression <em>Value
+     * Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Value Expression</em>' containment reference.
      * @see #getValueExpression()
      * @generated
@@ -292,6 +319,7 @@ public interface BeanMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Target Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType
      * @see #setTargetType(PropertyValueType)
@@ -302,9 +330,11 @@ public interface BeanMediator extends Mediator {
     PropertyValueType getTargetType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getTargetType <em>Target Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getTargetType <em>Target
+     * Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Target Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType
      * @see #getTargetType()
@@ -320,6 +350,7 @@ public interface BeanMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Target Literal</em>' attribute.
      * @see #setTargetLiteral(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getBeanMediator_TargetLiteral()
@@ -329,9 +360,11 @@ public interface BeanMediator extends Mediator {
     String getTargetLiteral();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getTargetLiteral <em>Target Literal</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getTargetLiteral <em>Target
+     * Literal</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Target Literal</em>' attribute.
      * @see #getTargetLiteral()
      * @generated
@@ -346,6 +379,7 @@ public interface BeanMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Target Expression</em>' containment reference.
      * @see #setTargetExpression(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getBeanMediator_TargetExpression()
@@ -355,9 +389,11 @@ public interface BeanMediator extends Mediator {
     NamespacedProperty getTargetExpression();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getTargetExpression <em>Target Expression</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getTargetExpression
+     * <em>Target Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Target Expression</em>' containment reference.
      * @see #getTargetExpression()
      * @generated

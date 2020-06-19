@@ -31,6 +31,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.EndPoint} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class EndPointItemProvider extends EsbElementItemProvider {
@@ -38,6 +39,7 @@ public class EndPointItemProvider extends EsbElementItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public EndPointItemProvider(AdapterFactory adapterFactory) {
@@ -101,22 +103,17 @@ public class EndPointItemProvider extends EsbElementItemProvider {
      * This adds a property descriptor for the Anonymous feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addAnonymousPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_EndPoint_anonymous_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_EndPoint_anonymous_feature", "_UI_EndPoint_type"),
-                 EsbPackage.Literals.END_POINT__ANONYMOUS,
-                 true,
-                 false,
-                 false,
-                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-                 null,
-                 null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                        getResourceLocator(), getString("_UI_EndPoint_anonymous_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_EndPoint_anonymous_feature",
+                                "_UI_EndPoint_type"),
+                        EsbPackage.Literals.END_POINT__ANONYMOUS, true, false, false,
+                        ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -140,72 +137,57 @@ public class EndPointItemProvider extends EsbElementItemProvider {
      * This adds a property descriptor for the Duplicate feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addDuplicatePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_EndPoint_duplicate_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_EndPoint_duplicate_feature", "_UI_EndPoint_type"),
-                 EsbPackage.Literals.END_POINT__DUPLICATE,
-                 true,
-                 false,
-                 false,
-                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-                 null,
-                 null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                        getResourceLocator(), getString("_UI_EndPoint_duplicate_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_EndPoint_duplicate_feature",
+                                "_UI_EndPoint_type"),
+                        EsbPackage.Literals.END_POINT__DUPLICATE, true, false, false,
+                        ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
     /**
      * This adds a property descriptor for the Properties feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addPropertiesPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_EndPoint_properties_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_EndPoint_properties_feature", "_UI_EndPoint_type"),
-                 EsbPackage.Literals.END_POINT__PROPERTIES,
-                 true,
-                 false,
-                 true,
-                 null,
-                 null,
-                 null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                        getResourceLocator(), getString("_UI_EndPoint_properties_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_EndPoint_properties_feature",
+                                "_UI_EndPoint_type"),
+                        EsbPackage.Literals.END_POINT__PROPERTIES, true, false, true, null, null, null));
     }
 
     /**
      * This adds a property descriptor for the Reversed feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addReversedPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_EndPoint_reversed_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_EndPoint_reversed_feature", "_UI_EndPoint_type"),
-                 EsbPackage.Literals.END_POINT__REVERSED,
-                 true,
-                 false,
-                 false,
-                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-                 null,
-                 null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                        getResourceLocator(), getString("_UI_EndPoint_reversed_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_EndPoint_reversed_feature",
+                                "_UI_EndPoint_type"),
+                        EsbPackage.Literals.END_POINT__REVERSED, true, false, false,
+                        ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
     /**
      * This returns EndPoint.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -218,15 +200,15 @@ public class EndPointItemProvider extends EsbElementItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((EndPoint)object).getEndPointName();
-        return label == null || label.length() == 0 ?
-            getString("_UI_EndPoint_type") :
-            getString("_UI_EndPoint_type") + " " + label;
+        String label = ((EndPoint) object).getEndPointName();
+        return label == null || label.length() == 0 ? getString("_UI_EndPoint_type")
+                : getString("_UI_EndPoint_type") + " " + label;
     }
 
     /**
@@ -234,6 +216,7 @@ public class EndPointItemProvider extends EsbElementItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -242,13 +225,13 @@ public class EndPointItemProvider extends EsbElementItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(EndPoint.class)) {
-            case EsbPackage.END_POINT__END_POINT_NAME:
-            case EsbPackage.END_POINT__ANONYMOUS:
-            case EsbPackage.END_POINT__IN_LINE:
-            case EsbPackage.END_POINT__DUPLICATE:
-            case EsbPackage.END_POINT__REVERSED:
-                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-                return;
+        case EsbPackage.END_POINT__END_POINT_NAME:
+        case EsbPackage.END_POINT__ANONYMOUS:
+        case EsbPackage.END_POINT__IN_LINE:
+        case EsbPackage.END_POINT__DUPLICATE:
+        case EsbPackage.END_POINT__REVERSED:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+            return;
         }
         super.notifyChanged(notification);
     }
@@ -258,6 +241,7 @@ public class EndPointItemProvider extends EsbElementItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 

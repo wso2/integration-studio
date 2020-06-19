@@ -79,7 +79,7 @@ public class ProcessSourceView {
     private static final String FAULT_SEQUENCE = "faultSequence";
     private static final String START_COMMENT = "<!--";
     private static final String END_COMMENT = "-->";
-    
+
     private static SourceError sourceError = new SourceError();
     private static Stack<XMLTag> xmlTags;
     private static Queue<XMLTag> xmlTagsQueue = new LinkedList<>();
@@ -108,14 +108,16 @@ public class ProcessSourceView {
             "result", "messageCount", "correlateOn", "completeCondition", "onComplete", "configuration", "source",
             "messageBuilder", "target", "ruleSet", "properties", "input", "output", "attribute", "arg", "fact",
             "trigger", "in", "out", "handlers", "handler", "session", "match", "role"));
-    
-    private static Set<String> graphicalEndpoint = new HashSet<>(Arrays.asList("loadbalance", "failover", "recipientlist"));
-    
-    private static Set<String> proxySequence = new HashSet<>(Arrays.asList("inSequence", "outSequence", "faultSequence"));
-    
-    private static Set<String> dbMediatorImtermediary = new HashSet<>(Arrays.asList("driver", "url", "user", "password",
-            "connection", "statement", "pool", "sql", "result"));
-    
+
+    private static Set<String> graphicalEndpoint = new HashSet<>(
+            Arrays.asList("loadbalance", "failover", "recipientlist"));
+
+    private static Set<String> proxySequence = new HashSet<>(
+            Arrays.asList("inSequence", "outSequence", "faultSequence"));
+
+    private static Set<String> dbMediatorImtermediary = new HashSet<>(
+            Arrays.asList("driver", "url", "user", "password", "connection", "statement", "pool", "sql", "result"));
+
     private static SequenceMediatorFactory sequenceMediatorFactory;
     private static TemplateMediatorFactory templateMediatorFactory;
 
@@ -385,7 +387,7 @@ public class ProcessSourceView {
             return null;
         }
     }
-    
+
     /**
      * Validate for the xml parser errors in the source content
      * 
@@ -608,24 +610,24 @@ public class ProcessSourceView {
                 }
 
                 if (!insidePublishWSDL && tempTag.getqName().equals("publishWSDL")) {
-                	insidePublishWSDL = true;
-                	continue;
+                    insidePublishWSDL = true;
+                    continue;
                 } else if (insidePublishWSDL) {
-                	continue;
+                    continue;
                 }
-                
+
                 if (tempTag.getqName().equals("target")) {
                     insideTargetTag = true;
                 }
 
                 if (tempTag.getqName().equals("template")) {
-                	insideTemplate = true;
+                    insideTemplate = true;
                 }
-                
+
                 if (insideTargetTag && proxySequence.contains(tempTag.getqName())) {
                     insideProxySequence = true;
                 }
-                
+
                 if (artifactType.equals("") && artifacts.contains(tempTag.getqName())) {
                     artifactType = tempTag.getqName();
                 }
@@ -647,7 +649,8 @@ public class ProcessSourceView {
                         if (intermediaryStack.size() > 0) {
                             XMLTag next = intermediaryStack.pop();
                             intermediaryStack.push(next);
-                            if (next != null && !next.getqName().equals("payloadFactory") && !next.getqName().equals("validate")) {
+                            if (next != null && !next.getqName().equals("payloadFactory")
+                                    && !next.getqName().equals("validate")) {
                                 intermediaryStack.push(tempTag);
                             }
                         } else {
@@ -682,46 +685,47 @@ public class ProcessSourceView {
                 } else if (isComment && tempTag.getValue().trim().endsWith(END_COMMENT)) {
                     isComment = false;
                 }
-            	
+
                 if (insidePublishWSDL && tempTag.getqName().equals("publishWSDL")) {
-                	insidePublishWSDL = false;
-                	xmlTags.push(tempTag);
-                	continue;
+                    insidePublishWSDL = false;
+                    xmlTags.push(tempTag);
+                    continue;
                 } else if (insidePublishWSDL) {
-                	xmlTags.push(tempTag);
-                	continue;
+                    xmlTags.push(tempTag);
+                    continue;
                 }
-                
+
                 if (insideTargetTag && tempTag.getqName().equals("target")) {
                     insideTargetTag = false;
                 }
-                
+
                 if (insideTemplate && tempTag.getqName().equals("template")) {
-                	insideTemplate = false;
+                    insideTemplate = false;
                 }
 
                 if (insideTargetTag && proxySequence.contains(tempTag.getqName())) {
                     insideProxySequence = false;
                 }
-                
+
                 if (tempTag.getqName().equals("ruleSet")) {
                     insideRuleSet = false;
                 }
 
-                if (artifactType.equals("endpoint") && insideGraphicalEp && graphicalEndpoint.contains(tempTag.getqName())) {
+                if (artifactType.equals("endpoint") && insideGraphicalEp
+                        && graphicalEndpoint.contains(tempTag.getqName())) {
                     insideGraphicalEp = false;
                 }
-                
+
                 if (graphicalEpInsideArtifact && graphicalEndpoint.contains(tempTag.getqName())) {
                     graphicalEpInsideArtifact = false;
                 }
 
                 if (prev != null && prev.getTagType() != 8) {
-                	if (!isComment) {
-                		xmlTags.push(tempTag);
-                	} else if (isComment && tempTag.getValue().trim().endsWith(END_COMMENT)) {
-                		isComment = false;
-                	}
+                    if (!isComment) {
+                        xmlTags.push(tempTag);
+                    } else if (isComment && tempTag.getValue().trim().endsWith(END_COMMENT)) {
+                        isComment = false;
+                    }
                     XMLTag currentMediator = null;
 
                     if (intermediaryStack.size() > 0) {
@@ -730,16 +734,22 @@ public class ProcessSourceView {
 
                     if (!intermediary.contains(tempTag.getqName()) && ((tempTag.getTagType() == 3)
                             || (currentMediator != null && currentMediator.getqName().equals(tempTag.getqName()))
-                            || artifacts.contains(tempTag.getqName()) || (currentMediator != null && currentMediator.getqName().equals("property") && intermediary.size() > 0))) {
+                            || artifacts.contains(tempTag.getqName()) || (currentMediator != null
+                                    && currentMediator.getqName().equals("property") && intermediary.size() > 0))) {
 
                         if (tempTag.getTagType() == 3 && currentMediator != null
                                 && ((currentMediator.getqName().equals("payloadFactory")
                                         && !tempTag.getqName().equals("payloadFactory"))
-                                        || (currentMediator.getqName().equals("throttle") && !tempTag.getqName().equals("throttle")) 
-                                        || (currentMediator.getqName().equals("pojoCommand") && !tempTag.getqName().equals("pojoCommand")) 
-                                        || (currentMediator.getqName().equals("validate") && !tempTag.getqName().equals("validate"))
-                                        || (currentMediator.getqName().equals("enrich") && !tempTag.getqName().equals("enrich"))
-                                        || (currentMediator.getqName().equals("header") && !tempTag.getqName().equals("header")))) {
+                                        || (currentMediator.getqName().equals("throttle")
+                                                && !tempTag.getqName().equals("throttle"))
+                                        || (currentMediator.getqName().equals("pojoCommand")
+                                                && !tempTag.getqName().equals("pojoCommand"))
+                                        || (currentMediator.getqName().equals("validate")
+                                                && !tempTag.getqName().equals("validate"))
+                                        || (currentMediator.getqName().equals("enrich")
+                                                && !tempTag.getqName().equals("enrich"))
+                                        || (currentMediator.getqName().equals("header")
+                                                && !tempTag.getqName().equals("header")))) {
                             intermediaryStack.push(currentMediator);
 
                         } else if (currentMediator != null && currentMediator.getqName().equals("rule")) {
@@ -797,7 +807,8 @@ public class ProcessSourceView {
                                     && (currentMediator.getqName().equals("foreach")
                                             || currentMediator.getqName().equals("clone")
                                             || currentMediator.getqName().equals("iterate")
-                                            || currentMediator.getqName().equals("property") || currentMediator.getqName().equals("jsontransform"))
+                                            || currentMediator.getqName().equals("property")
+                                            || currentMediator.getqName().equals("jsontransform"))
                                     && !tempTag.getqName().equals(currentMediator.getqName())) {
                                 intermediaryStack.push(currentMediator);
 
@@ -813,18 +824,21 @@ public class ProcessSourceView {
                                                 || currentMediator.getqName().equals("dbreport"))
                                         && dbMediatorImtermediary.contains(tempTag.getqName())) {
                                     intermediaryStack.push(currentMediator);
-	
-                            	} else if (((!tempTag.getqName().equals("endpoint") && !isGraphicalEP(tempTag.getqName()))
-                                        || (tempTag.getqName().equals("endpoint") && !insideGraphicalEp && !graphicalEpInsideArtifact && !insideTemplate))
-                                		&& (!insideTargetTag || (insideTargetTag && insideProxySequence))) {
-                            		if (!isComment) {
-	                                    sourceError = mediatorValidation();
-	                                    if (sourceError != null) {
-	                                        return sourceError;
-	                                    }
-                            		}
-                                    if (currentMediator != null && !currentMediator.getqName().equals(tempTag.getqName())) {
-                                    	intermediaryStack.push(currentMediator);
+
+                                } else if (((!tempTag.getqName().equals("endpoint")
+                                        && !isGraphicalEP(tempTag.getqName()))
+                                        || (tempTag.getqName().equals("endpoint") && !insideGraphicalEp
+                                                && !graphicalEpInsideArtifact && !insideTemplate))
+                                        && (!insideTargetTag || (insideTargetTag && insideProxySequence))) {
+                                    if (!isComment) {
+                                        sourceError = mediatorValidation();
+                                        if (sourceError != null) {
+                                            return sourceError;
+                                        }
+                                    }
+                                    if (currentMediator != null
+                                            && !currentMediator.getqName().equals(tempTag.getqName())) {
+                                        intermediaryStack.push(currentMediator);
                                     }
                                 }
                             } else if (currentMediator != null) {
@@ -834,13 +848,13 @@ public class ProcessSourceView {
 
                     } else {
                         if (currentMediator != null && !isComment) {
-                            if (currentMediator.getTagType() == 4 && tempTag.getTagType() == 5 
+                            if (currentMediator.getTagType() == 4 && tempTag.getTagType() == 5
                                     && currentMediator.getValue().equals(prev.getValue())) {
                                 sourceError = mediatorValidation();
                                 if (sourceError != null) {
                                     return sourceError;
                                 }
-                                
+
                             } else {
                                 intermediaryStack.push(currentMediator);
                             }
@@ -869,8 +883,9 @@ public class ProcessSourceView {
                 } else if (isComment && tempTag.getValue().trim().endsWith(END_COMMENT)) {
                     isComment = false;
                 }
-            	
-                if (!isComment && prev != null && (prev.getTagType() == 4 || prev.getTagType() == 7 || prev.getTagType() == 1)) {
+
+                if (!isComment && prev != null
+                        && (prev.getTagType() == 4 || prev.getTagType() == 7 || prev.getTagType() == 1)) {
                     xmlTags.push(tempTag);
 
                 } else if (!isComment && intermediaryStack.size() > 0) {
@@ -905,7 +920,7 @@ public class ProcessSourceView {
         String firstMediatorQTag = "";
         boolean insideRuleSet = false;
         boolean insideGraphiclEP = false;
-        boolean isFirstType5 = false;//type 5 eg: "abc />"
+        boolean isFirstType5 = false;// type 5 eg: "abc />"
 
         if (xmlTags.size() > 0) {
 
@@ -946,10 +961,10 @@ public class ProcessSourceView {
 
                             } else if (xmlTag.getqName().equals("ruleSet")) {
                                 insideRuleSet = false;
-                                
+
                             } else if (insideGraphiclEP && graphicalEndpoint.contains(xmlTag.getqName())) {
                                 insideGraphiclEP = false;
-                                
+
                             } else if (!insideGraphiclEP) {
 
                                 error = validate(mediatorVal, xmlTag.getqName());
@@ -966,7 +981,8 @@ public class ProcessSourceView {
                                 insideRuleSet = true;
                             } else if (xmlTag.isEndTag() && graphicalEndpoint.contains(xmlTag.getqName())) {
                                 insideGraphiclEP = true;
-                            } else if (xmlTag.isStartTag() && insideGraphiclEP && graphicalEndpoint.contains(xmlTag.getqName())) {
+                            } else if (xmlTag.isStartTag() && insideGraphiclEP
+                                    && graphicalEndpoint.contains(xmlTag.getqName())) {
                                 insideGraphiclEP = false;
                             }
                             insideTag = true;
@@ -1036,51 +1052,51 @@ public class ProcessSourceView {
             OMElement omElement = AXIOMUtil.stringToOM(mediator);
 
             switch (qTag) {
-			case "api":
-				DummyAPIFactory.createAPI(omElement, true);
-				break;
-			case "proxy":
-				ProxyServiceFactory.createProxy(omElement, null);
-				break;
-			case "endpoint":
-				if (omElement.getFirstElement() != null) {
+            case "api":
+                DummyAPIFactory.createAPI(omElement, true);
+                break;
+            case "proxy":
+                ProxyServiceFactory.createProxy(omElement, null);
+                break;
+            case "endpoint":
+                if (omElement.getFirstElement() != null) {
                     setNamespaceForChildren(omElement);
                 } else {
                     omElement.setNamespace(new OMNamespaceImpl(SynapseConstants.SYNAPSE_NAMESPACE, ""));
                 }
                 EndpointFactory.getEndpointFromElement(omElement, false, null);
-				break;
-			case "inboundEndpoint":
-				DummyInboundEndpointFactory.createInboundEndpointDev(omElement);
-				break;
-			case "localEntry":
-				EntryExtFactory.createEntry(omElement, null);
-				break;
-			case "messageProcessor":
-				DummyMessageProcessorFactory.createMessageProcessor(omElement, null);
-				break;
-			case "messageStore":
-				DummyMessageStoreFactory.createMessageStore(omElement, null);
-				break;
-			case "sequence":
-				if (sequenceMediatorFactory == null) {
+                break;
+            case "inboundEndpoint":
+                DummyInboundEndpointFactory.createInboundEndpointDev(omElement);
+                break;
+            case "localEntry":
+                EntryExtFactory.createEntry(omElement, null);
+                break;
+            case "messageProcessor":
+                DummyMessageProcessorFactory.createMessageProcessor(omElement, null);
+                break;
+            case "messageStore":
+                DummyMessageStoreFactory.createMessageStore(omElement, null);
+                break;
+            case "sequence":
+                if (sequenceMediatorFactory == null) {
                     sequenceMediatorFactory = new SequenceMediatorFactory();
                 }
                 sequenceMediatorFactory.createSpecificMediator(omElement, null);
-				break;
-			case "task":
-				DummyTaskDescriptionFactory.createTaskDescription(omElement,
+                break;
+            case "task":
+                DummyTaskDescriptionFactory.createTaskDescription(omElement,
                         OMAbstractFactory.getOMFactory().createOMNamespace(SYNAPSE_NAMESPACE, ""));
-				break;
-			case "template":
-				if (templateMediatorFactory == null) {
+                break;
+            case "template":
+                if (templateMediatorFactory == null) {
                     templateMediatorFactory = new TemplateMediatorFactory();
                 }
                 templateMediatorFactory.createMediator(omElement, null);
-				break;
-			default:
-				break;
-			}
+                break;
+            default:
+                break;
+            }
 
         } catch (SynapseException | MediatorException | SynapseTaskException | NullPointerException e) {
             return e.getMessage();
@@ -1160,7 +1176,7 @@ public class ProcessSourceView {
         }
         return false;
     }
-    
+
     /**
      * Calculate the current length of the source view.
      * 

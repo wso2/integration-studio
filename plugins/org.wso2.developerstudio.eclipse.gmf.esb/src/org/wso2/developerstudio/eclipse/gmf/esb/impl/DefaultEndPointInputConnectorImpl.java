@@ -23,6 +23,7 @@ public class DefaultEndPointInputConnectorImpl extends InputConnectorImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected DefaultEndPointInputConnectorImpl() {
@@ -32,6 +33,7 @@ public class DefaultEndPointInputConnectorImpl extends InputConnectorImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 

@@ -35,93 +35,89 @@ import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
  * 
  * 
  */
-public class RuleChildMediatorsConfigurationPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, RuleChildMediatorsConfigurationPropertiesEditionPart {
+public class RuleChildMediatorsConfigurationPropertiesEditionPartForm extends SectionPropertiesEditingPart
+        implements IFormPropertiesEditionPart, RuleChildMediatorsConfigurationPropertiesEditionPart {
 
+    /**
+     * For {@link ISection} use only.
+     */
+    public RuleChildMediatorsConfigurationPropertiesEditionPartForm() {
+        super();
+    }
 
+    /**
+     * Default constructor
+     * 
+     * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+     * 
+     */
+    public RuleChildMediatorsConfigurationPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
+        super(editionComponent);
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+     *      createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+     * 
+     */
+    public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
+        ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
+        Form form = scrolledForm.getForm();
+        view = form.getBody();
+        GridLayout layout = new GridLayout();
+        layout.numColumns = 3;
+        view.setLayout(layout);
+        createControls(widgetFactory, view);
+        return scrolledForm;
+    }
 
-	/**
-	 * For {@link ISection} use only.
-	 */
-	public RuleChildMediatorsConfigurationPropertiesEditionPartForm() { super(); }
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+     *      createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+     * 
+     */
+    public void createControls(final FormToolkit widgetFactory, Composite view) {
+        CompositionSequence ruleChildMediatorsConfigurationStep = new BindingCompositionSequence(
+                propertiesEditionComponent);
 
-	/**
-	 * Default constructor
-	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
-	 */
-	public RuleChildMediatorsConfigurationPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-	}
+        composer = new PartComposer(ruleChildMediatorsConfigurationStep) {
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
-	 * 
-	 */
-	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
-		view = form.getBody();
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 3;
-		view.setLayout(layout);
-		createControls(widgetFactory, view);
-		return scrolledForm;
-	}
+            @Override
+            public Composite addToPart(Composite parent, Object key) {
+                return parent;
+            }
+        };
+        composer.compose(view);
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
-	 * 
-	 */
-	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		CompositionSequence ruleChildMediatorsConfigurationStep = new BindingCompositionSequence(propertiesEditionComponent);
-		
-		composer = new PartComposer(ruleChildMediatorsConfigurationStep) {
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+     * 
+     */
+    public void firePropertiesChanged(IPropertiesEditionEvent event) {
+        // Start of user code for tab synchronization
 
-			@Override
-			public Composite addToPart(Composite parent, Object key) {
-				return parent;
-			}
-		};
-		composer.compose(view);
-	}
+        // End of user code
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
-	 */
-	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-		
-		// End of user code
-	}
+    /**
+     * {@inheritDoc}
+     *
+     * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+     * 
+     */
+    public String getTitle() {
+        return EsbMessages.RuleChildMediatorsConfiguration_Part_Title;
+    }
 
+    // Start of user code additional methods
 
-
-
-
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
-	 */
-	public String getTitle() {
-		return EsbMessages.RuleChildMediatorsConfiguration_Part_Title;
-	}
-
-	// Start of user code additional methods
-	
-	// End of user code
-
+    // End of user code
 
 }

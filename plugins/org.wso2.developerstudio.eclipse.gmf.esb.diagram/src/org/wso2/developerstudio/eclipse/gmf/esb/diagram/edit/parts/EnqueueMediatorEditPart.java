@@ -342,7 +342,7 @@ public class EnqueueMediatorEditPart extends FixedSizedAbstractMediator {
         }
 
     }
-    
+
     @Override
     public void notifyChanged(Notification notification) {
         // this.getModel() will get EMF datamodel of the enqueue mediator datamodel

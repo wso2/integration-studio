@@ -28,22 +28,24 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PropertyGroupMediatorOutputConne
  */
 public class PropertyGroupMediatorOutputConnectorImpl extends OutputConnectorImpl
         implements PropertyGroupMediatorOutputConnector {
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @generated
      */
-	protected PropertyGroupMediatorOutputConnectorImpl() {
+    protected PropertyGroupMediatorOutputConnectorImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @generated
      */
-	@Override
-	protected EClass eStaticClass() {
+    @Override
+    protected EClass eStaticClass() {
         return EsbPackage.Literals.PROPERTY_GROUP_MEDIATOR_OUTPUT_CONNECTOR;
     }
-} //PropertyGroupMediatorOutputConnectorImpl
+} // PropertyGroupMediatorOutputConnectorImpl

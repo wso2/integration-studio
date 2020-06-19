@@ -232,14 +232,18 @@ public class MediatorFlowMediatorFlowCompartment30CanonicalEditPolicy extends Ca
         }
         // alternative to #cleanCanonicalSemanticChildren(getViewChildren(), semanticChildren)
         //
-        // iteration happens over list of desired semantic elements, trying to find best matching View, while original CEP
-        // iterates views, potentially losing view (size/bounds) information - i.e. if there are few views to reference same EObject, only last one 
-        // to answer isOrphaned == true will be used for the domain element representation, see #cleanCanonicalSemanticChildren()
+        // iteration happens over list of desired semantic elements, trying to find best matching View, while original
+        // CEP
+        // iterates views, potentially losing view (size/bounds) information - i.e. if there are few views to reference
+        // same EObject, only last one
+        // to answer isOrphaned == true will be used for the domain element representation, see
+        // #cleanCanonicalSemanticChildren()
         for (Iterator<EsbNodeDescriptor> descriptorsIterator = childDescriptors.iterator(); descriptorsIterator
                 .hasNext();) {
             EsbNodeDescriptor next = descriptorsIterator.next();
             String hint = EsbVisualIDRegistry.getType(next.getVisualID());
-            LinkedList<View> perfectMatch = new LinkedList<View>(); // both semanticElement and hint match that of NodeDescriptor
+            LinkedList<View> perfectMatch = new LinkedList<View>(); // both semanticElement and hint match that of
+                                                                    // NodeDescriptor
             for (View childView : getViewChildren()) {
                 EObject semanticElement = childView.getElement();
                 if (next.getModelElement().equals(semanticElement)) {
@@ -257,7 +261,8 @@ public class MediatorFlowMediatorFlowCompartment30CanonicalEditPolicy extends Ca
                 knownViewChildren.remove(perfectMatch.getFirst());
             }
         }
-        // those left in knownViewChildren are subject to removal - they are our diagram elements we didn't find match to,
+        // those left in knownViewChildren are subject to removal - they are our diagram elements we didn't find match
+        // to,
         // or those we have potential matches to, and thus need to be recreated, preserving size/location information.
         orphaned.addAll(knownViewChildren);
         //

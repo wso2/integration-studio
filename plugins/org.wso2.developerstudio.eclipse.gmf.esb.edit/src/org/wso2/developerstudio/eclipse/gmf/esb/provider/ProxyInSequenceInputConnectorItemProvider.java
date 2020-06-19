@@ -29,9 +29,11 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyInSequenceInputConnector} object.
+ * This is the item provider adapter for a
+ * {@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyInSequenceInputConnector} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class ProxyInSequenceInputConnectorItemProvider extends InputConnectorItemProvider {
@@ -39,6 +41,7 @@ public class ProxyInSequenceInputConnectorItemProvider extends InputConnectorIte
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public ProxyInSequenceInputConnectorItemProvider(AdapterFactory adapterFactory) {
@@ -49,6 +52,7 @@ public class ProxyInSequenceInputConnectorItemProvider extends InputConnectorIte
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -64,6 +68,7 @@ public class ProxyInSequenceInputConnectorItemProvider extends InputConnectorIte
      * This returns ProxyInSequenceInputConnector.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -75,6 +80,7 @@ public class ProxyInSequenceInputConnectorItemProvider extends InputConnectorIte
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -87,6 +93,7 @@ public class ProxyInSequenceInputConnectorItemProvider extends InputConnectorIte
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -100,6 +107,7 @@ public class ProxyInSequenceInputConnectorItemProvider extends InputConnectorIte
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

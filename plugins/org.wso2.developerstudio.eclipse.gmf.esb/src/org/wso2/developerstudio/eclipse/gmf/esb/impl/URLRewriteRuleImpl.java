@@ -34,17 +34,21 @@ import org.wso2.developerstudio.eclipse.gmf.esb.URLRewriteRuleAction;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.URLRewriteRuleImpl#getUrlRewriteRuleCondition <em>Url Rewrite Rule Condition</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.URLRewriteRuleImpl#getRewriteRuleAction <em>Rewrite Rule Action</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.URLRewriteRuleImpl#getUrlRewriteRuleCondition <em>Url
+ * Rewrite Rule Condition</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.URLRewriteRuleImpl#getRewriteRuleAction <em>Rewrite Rule
+ * Action</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class URLRewriteRuleImpl extends EsbNodeImpl implements URLRewriteRule {
     /**
-     * The cached value of the '{@link #getUrlRewriteRuleCondition() <em>Url Rewrite Rule Condition</em>}' containment reference.
+     * The cached value of the '{@link #getUrlRewriteRuleCondition() <em>Url Rewrite Rule Condition</em>}' containment
+     * reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getUrlRewriteRuleCondition()
      * @generated
      * @ordered
@@ -52,9 +56,11 @@ public class URLRewriteRuleImpl extends EsbNodeImpl implements URLRewriteRule {
     protected EvaluatorExpressionProperty urlRewriteRuleCondition;
 
     /**
-     * The cached value of the '{@link #getRewriteRuleAction() <em>Rewrite Rule Action</em>}' containment reference list.
+     * The cached value of the '{@link #getRewriteRuleAction() <em>Rewrite Rule Action</em>}' containment reference
+     * list.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getRewriteRuleAction()
      * @generated
      * @ordered
@@ -64,6 +70,7 @@ public class URLRewriteRuleImpl extends EsbNodeImpl implements URLRewriteRule {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected URLRewriteRuleImpl() {
@@ -73,6 +80,7 @@ public class URLRewriteRuleImpl extends EsbNodeImpl implements URLRewriteRule {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -83,6 +91,7 @@ public class URLRewriteRuleImpl extends EsbNodeImpl implements URLRewriteRule {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public EvaluatorExpressionProperty getUrlRewriteRuleCondition() {
@@ -92,6 +101,7 @@ public class URLRewriteRuleImpl extends EsbNodeImpl implements URLRewriteRule {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public NotificationChain basicSetUrlRewriteRuleCondition(EvaluatorExpressionProperty newUrlRewriteRuleCondition,
@@ -99,8 +109,13 @@ public class URLRewriteRuleImpl extends EsbNodeImpl implements URLRewriteRule {
         EvaluatorExpressionProperty oldUrlRewriteRuleCondition = urlRewriteRuleCondition;
         urlRewriteRuleCondition = newUrlRewriteRuleCondition;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.URL_REWRITE_RULE__URL_REWRITE_RULE_CONDITION, oldUrlRewriteRuleCondition, newUrlRewriteRuleCondition);
-            if (msgs == null) msgs = notification; else msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+                    EsbPackage.URL_REWRITE_RULE__URL_REWRITE_RULE_CONDITION, oldUrlRewriteRuleCondition,
+                    newUrlRewriteRuleCondition);
+            if (msgs == null)
+                msgs = notification;
+            else
+                msgs.add(notification);
         }
         return msgs;
     }
@@ -108,30 +123,37 @@ public class URLRewriteRuleImpl extends EsbNodeImpl implements URLRewriteRule {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setUrlRewriteRuleCondition(EvaluatorExpressionProperty newUrlRewriteRuleCondition) {
         if (newUrlRewriteRuleCondition != urlRewriteRuleCondition) {
             NotificationChain msgs = null;
             if (urlRewriteRuleCondition != null)
-                msgs = ((InternalEObject)urlRewriteRuleCondition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.URL_REWRITE_RULE__URL_REWRITE_RULE_CONDITION, null, msgs);
+                msgs = ((InternalEObject) urlRewriteRuleCondition).eInverseRemove(this,
+                        EOPPOSITE_FEATURE_BASE - EsbPackage.URL_REWRITE_RULE__URL_REWRITE_RULE_CONDITION, null, msgs);
             if (newUrlRewriteRuleCondition != null)
-                msgs = ((InternalEObject)newUrlRewriteRuleCondition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.URL_REWRITE_RULE__URL_REWRITE_RULE_CONDITION, null, msgs);
+                msgs = ((InternalEObject) newUrlRewriteRuleCondition).eInverseAdd(this,
+                        EOPPOSITE_FEATURE_BASE - EsbPackage.URL_REWRITE_RULE__URL_REWRITE_RULE_CONDITION, null, msgs);
             msgs = basicSetUrlRewriteRuleCondition(newUrlRewriteRuleCondition, msgs);
-            if (msgs != null) msgs.dispatch();
-        }
-        else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.URL_REWRITE_RULE__URL_REWRITE_RULE_CONDITION, newUrlRewriteRuleCondition, newUrlRewriteRuleCondition));
+            if (msgs != null)
+                msgs.dispatch();
+        } else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET,
+                    EsbPackage.URL_REWRITE_RULE__URL_REWRITE_RULE_CONDITION, newUrlRewriteRuleCondition,
+                    newUrlRewriteRuleCondition));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public EList<URLRewriteRuleAction> getRewriteRuleAction() {
         if (rewriteRuleAction == null) {
-            rewriteRuleAction = new EObjectContainmentEList<URLRewriteRuleAction>(URLRewriteRuleAction.class, this, EsbPackage.URL_REWRITE_RULE__REWRITE_RULE_ACTION);
+            rewriteRuleAction = new EObjectContainmentEList<URLRewriteRuleAction>(URLRewriteRuleAction.class, this,
+                    EsbPackage.URL_REWRITE_RULE__REWRITE_RULE_ACTION);
         }
         return rewriteRuleAction;
     }
@@ -139,15 +161,16 @@ public class URLRewriteRuleImpl extends EsbNodeImpl implements URLRewriteRule {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-            case EsbPackage.URL_REWRITE_RULE__URL_REWRITE_RULE_CONDITION:
-                return basicSetUrlRewriteRuleCondition(null, msgs);
-            case EsbPackage.URL_REWRITE_RULE__REWRITE_RULE_ACTION:
-                return ((InternalEList<?>)getRewriteRuleAction()).basicRemove(otherEnd, msgs);
+        case EsbPackage.URL_REWRITE_RULE__URL_REWRITE_RULE_CONDITION:
+            return basicSetUrlRewriteRuleCondition(null, msgs);
+        case EsbPackage.URL_REWRITE_RULE__REWRITE_RULE_ACTION:
+            return ((InternalEList<?>) getRewriteRuleAction()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -155,15 +178,16 @@ public class URLRewriteRuleImpl extends EsbNodeImpl implements URLRewriteRule {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-            case EsbPackage.URL_REWRITE_RULE__URL_REWRITE_RULE_CONDITION:
-                return getUrlRewriteRuleCondition();
-            case EsbPackage.URL_REWRITE_RULE__REWRITE_RULE_ACTION:
-                return getRewriteRuleAction();
+        case EsbPackage.URL_REWRITE_RULE__URL_REWRITE_RULE_CONDITION:
+            return getUrlRewriteRuleCondition();
+        case EsbPackage.URL_REWRITE_RULE__REWRITE_RULE_ACTION:
+            return getRewriteRuleAction();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -171,19 +195,20 @@ public class URLRewriteRuleImpl extends EsbNodeImpl implements URLRewriteRule {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-            case EsbPackage.URL_REWRITE_RULE__URL_REWRITE_RULE_CONDITION:
-                setUrlRewriteRuleCondition((EvaluatorExpressionProperty)newValue);
-                return;
-            case EsbPackage.URL_REWRITE_RULE__REWRITE_RULE_ACTION:
-                getRewriteRuleAction().clear();
-                getRewriteRuleAction().addAll((Collection<? extends URLRewriteRuleAction>)newValue);
-                return;
+        case EsbPackage.URL_REWRITE_RULE__URL_REWRITE_RULE_CONDITION:
+            setUrlRewriteRuleCondition((EvaluatorExpressionProperty) newValue);
+            return;
+        case EsbPackage.URL_REWRITE_RULE__REWRITE_RULE_ACTION:
+            getRewriteRuleAction().clear();
+            getRewriteRuleAction().addAll((Collection<? extends URLRewriteRuleAction>) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -191,17 +216,18 @@ public class URLRewriteRuleImpl extends EsbNodeImpl implements URLRewriteRule {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-            case EsbPackage.URL_REWRITE_RULE__URL_REWRITE_RULE_CONDITION:
-                setUrlRewriteRuleCondition((EvaluatorExpressionProperty)null);
-                return;
-            case EsbPackage.URL_REWRITE_RULE__REWRITE_RULE_ACTION:
-                getRewriteRuleAction().clear();
-                return;
+        case EsbPackage.URL_REWRITE_RULE__URL_REWRITE_RULE_CONDITION:
+            setUrlRewriteRuleCondition((EvaluatorExpressionProperty) null);
+            return;
+        case EsbPackage.URL_REWRITE_RULE__REWRITE_RULE_ACTION:
+            getRewriteRuleAction().clear();
+            return;
         }
         super.eUnset(featureID);
     }
@@ -209,15 +235,16 @@ public class URLRewriteRuleImpl extends EsbNodeImpl implements URLRewriteRule {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-            case EsbPackage.URL_REWRITE_RULE__URL_REWRITE_RULE_CONDITION:
-                return urlRewriteRuleCondition != null;
-            case EsbPackage.URL_REWRITE_RULE__REWRITE_RULE_ACTION:
-                return rewriteRuleAction != null && !rewriteRuleAction.isEmpty();
+        case EsbPackage.URL_REWRITE_RULE__URL_REWRITE_RULE_CONDITION:
+            return urlRewriteRuleCondition != null;
+        case EsbPackage.URL_REWRITE_RULE__REWRITE_RULE_ACTION:
+            return rewriteRuleAction != null && !rewriteRuleAction.isEmpty();
         }
         return super.eIsSet(featureID);
     }

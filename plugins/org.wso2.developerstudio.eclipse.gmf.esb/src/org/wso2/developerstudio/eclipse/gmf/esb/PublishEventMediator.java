@@ -26,17 +26,24 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getOutputconnector <em>Outputconnector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getStreamName <em>Stream Name</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getStreamVersion <em>Stream Version</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getEventSink <em>Event Sink</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getMetaAttributes <em>Meta Attributes</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getCorrelationAttributes <em>Correlation Attributes</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getPayloadAttributes <em>Payload Attributes</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getArbitraryAttributes <em>Arbitrary Attributes</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#isAsync <em>Async</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getAsyncTimeout <em>Async Timeout</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getInputConnector <em>Input
+ * Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getOutputconnector
+ * <em>Outputconnector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getStreamName <em>Stream Name</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getStreamVersion <em>Stream
+ * Version</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getEventSink <em>Event Sink</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getMetaAttributes <em>Meta
+ * Attributes</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getCorrelationAttributes <em>Correlation
+ * Attributes</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getPayloadAttributes <em>Payload
+ * Attributes</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getArbitraryAttributes <em>Arbitrary
+ * Attributes</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#isAsync <em>Async</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getAsyncTimeout <em>Async Timeout</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPublishEventMediator()
@@ -52,6 +59,7 @@ public interface PublishEventMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(PublishEventMediatorInputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPublishEventMediator_InputConnector()
@@ -61,9 +69,11 @@ public interface PublishEventMediator extends Mediator {
     PublishEventMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getInputConnector
+     * <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
      * @see #getInputConnector()
      * @generated
@@ -78,6 +88,7 @@ public interface PublishEventMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Outputconnector</em>' containment reference.
      * @see #setOutputconnector(PublishEventMediatorOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPublishEventMediator_Outputconnector()
@@ -87,9 +98,11 @@ public interface PublishEventMediator extends Mediator {
     PublishEventMediatorOutputConnector getOutputconnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getOutputconnector <em>Outputconnector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getOutputconnector
+     * <em>Outputconnector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Outputconnector</em>' containment reference.
      * @see #getOutputconnector()
      * @generated
@@ -104,6 +117,7 @@ public interface PublishEventMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Stream Name</em>' attribute.
      * @see #setStreamName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPublishEventMediator_StreamName()
@@ -113,9 +127,11 @@ public interface PublishEventMediator extends Mediator {
     String getStreamName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getStreamName <em>Stream Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getStreamName
+     * <em>Stream Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Stream Name</em>' attribute.
      * @see #getStreamName()
      * @generated
@@ -130,6 +146,7 @@ public interface PublishEventMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Stream Version</em>' attribute.
      * @see #setStreamVersion(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPublishEventMediator_StreamVersion()
@@ -139,9 +156,11 @@ public interface PublishEventMediator extends Mediator {
     String getStreamVersion();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getStreamVersion <em>Stream Version</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getStreamVersion
+     * <em>Stream Version</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Stream Version</em>' attribute.
      * @see #getStreamVersion()
      * @generated
@@ -156,6 +175,7 @@ public interface PublishEventMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Event Sink</em>' attribute.
      * @see #setEventSink(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPublishEventMediator_EventSink()
@@ -165,9 +185,11 @@ public interface PublishEventMediator extends Mediator {
     String getEventSink();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getEventSink <em>Event Sink</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getEventSink
+     * <em>Event Sink</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Event Sink</em>' attribute.
      * @see #getEventSink()
      * @generated
@@ -183,6 +205,7 @@ public interface PublishEventMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Meta Attributes</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPublishEventMediator_MetaAttributes()
      * @model containment="true"
@@ -199,6 +222,7 @@ public interface PublishEventMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Correlation Attributes</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPublishEventMediator_CorrelationAttributes()
      * @model containment="true"
@@ -215,6 +239,7 @@ public interface PublishEventMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Payload Attributes</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPublishEventMediator_PayloadAttributes()
      * @model containment="true"
@@ -231,6 +256,7 @@ public interface PublishEventMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Arbitrary Attributes</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPublishEventMediator_ArbitraryAttributes()
      * @model containment="true"
@@ -247,6 +273,7 @@ public interface PublishEventMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Async</em>' attribute.
      * @see #setAsync(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPublishEventMediator_Async()
@@ -256,9 +283,11 @@ public interface PublishEventMediator extends Mediator {
     boolean isAsync();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#isAsync <em>Async</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#isAsync
+     * <em>Async</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Async</em>' attribute.
      * @see #isAsync()
      * @generated
@@ -274,6 +303,7 @@ public interface PublishEventMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Async Timeout</em>' attribute.
      * @see #setAsyncTimeout(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPublishEventMediator_AsyncTimeout()
@@ -283,9 +313,11 @@ public interface PublishEventMediator extends Mediator {
     String getAsyncTimeout();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getAsyncTimeout <em>Async Timeout</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getAsyncTimeout
+     * <em>Async Timeout</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Async Timeout</em>' attribute.
      * @see #getAsyncTimeout()
      * @generated

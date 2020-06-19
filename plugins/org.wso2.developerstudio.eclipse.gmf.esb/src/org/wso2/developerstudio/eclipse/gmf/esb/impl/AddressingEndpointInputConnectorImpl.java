@@ -32,6 +32,7 @@ public class AddressingEndpointInputConnectorImpl extends InputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected AddressingEndpointInputConnectorImpl() {
@@ -41,6 +42,7 @@ public class AddressingEndpointInputConnectorImpl extends InputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

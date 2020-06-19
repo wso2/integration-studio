@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Inbound Endpoint Behaviour Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
+ * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpointBehaviourType()
  * @model
  * @generated
@@ -35,6 +36,7 @@ public enum InboundEndpointBehaviourType implements Enumerator {
      * The '<em><b>Polling Inbound Endpoint</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #POLLING_INBOUND_ENDPOINT_VALUE
      * @generated
      * @ordered
@@ -45,6 +47,7 @@ public enum InboundEndpointBehaviourType implements Enumerator {
      * The '<em><b>Listening Inbound Endpoint</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #LISTENING_INBOUND_ENDPOINT_VALUE
      * @generated
      * @ordered
@@ -55,6 +58,7 @@ public enum InboundEndpointBehaviourType implements Enumerator {
      * The '<em><b>Event Based Inbound Endpoint</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #EVENT_BASED_INBOUND_ENDPOINT_VALUE
      * @generated
      * @ordered
@@ -69,6 +73,7 @@ public enum InboundEndpointBehaviourType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #POLLING_INBOUND_ENDPOINT
      * @model name="pollingInboundEndpoint"
      * @generated
@@ -84,6 +89,7 @@ public enum InboundEndpointBehaviourType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #LISTENING_INBOUND_ENDPOINT
      * @model name="listeningInboundEndpoint"
      * @generated
@@ -99,6 +105,7 @@ public enum InboundEndpointBehaviourType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #EVENT_BASED_INBOUND_ENDPOINT
      * @model name="eventBasedInboundEndpoint"
      * @generated
@@ -110,26 +117,27 @@ public enum InboundEndpointBehaviourType implements Enumerator {
      * An array of all the '<em><b>Inbound Endpoint Behaviour Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private static final InboundEndpointBehaviourType[] VALUES_ARRAY = new InboundEndpointBehaviourType[] {
-            POLLING_INBOUND_ENDPOINT,
-            LISTENING_INBOUND_ENDPOINT,
-            EVENT_BASED_INBOUND_ENDPOINT,
-        };
+            POLLING_INBOUND_ENDPOINT, LISTENING_INBOUND_ENDPOINT, EVENT_BASED_INBOUND_ENDPOINT, };
 
     /**
      * A public read-only list of all the '<em><b>Inbound Endpoint Behaviour Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
-    public static final List<InboundEndpointBehaviourType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<InboundEndpointBehaviourType> VALUES = Collections
+            .unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
     /**
      * Returns the '<em><b>Inbound Endpoint Behaviour Type</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -148,6 +156,7 @@ public enum InboundEndpointBehaviourType implements Enumerator {
      * Returns the '<em><b>Inbound Endpoint Behaviour Type</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -166,15 +175,19 @@ public enum InboundEndpointBehaviourType implements Enumerator {
      * Returns the '<em><b>Inbound Endpoint Behaviour Type</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static InboundEndpointBehaviourType get(int value) {
         switch (value) {
-            case POLLING_INBOUND_ENDPOINT_VALUE: return POLLING_INBOUND_ENDPOINT;
-            case LISTENING_INBOUND_ENDPOINT_VALUE: return LISTENING_INBOUND_ENDPOINT;
-            case EVENT_BASED_INBOUND_ENDPOINT_VALUE: return EVENT_BASED_INBOUND_ENDPOINT;
+        case POLLING_INBOUND_ENDPOINT_VALUE:
+            return POLLING_INBOUND_ENDPOINT;
+        case LISTENING_INBOUND_ENDPOINT_VALUE:
+            return LISTENING_INBOUND_ENDPOINT;
+        case EVENT_BASED_INBOUND_ENDPOINT_VALUE:
+            return EVENT_BASED_INBOUND_ENDPOINT;
         }
         return null;
     }
@@ -182,6 +195,7 @@ public enum InboundEndpointBehaviourType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final int value;
@@ -189,6 +203,7 @@ public enum InboundEndpointBehaviourType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String name;
@@ -196,6 +211,7 @@ public enum InboundEndpointBehaviourType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String literal;
@@ -204,6 +220,7 @@ public enum InboundEndpointBehaviourType implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private InboundEndpointBehaviourType(int value, String name, String literal) {
@@ -215,34 +232,38 @@ public enum InboundEndpointBehaviourType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public int getValue() {
-      return value;
+        return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getName() {
-      return name;
+        return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getLiteral() {
-      return literal;
+        return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

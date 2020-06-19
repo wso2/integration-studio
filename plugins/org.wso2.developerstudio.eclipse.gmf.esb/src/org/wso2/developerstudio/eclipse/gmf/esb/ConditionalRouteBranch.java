@@ -17,9 +17,12 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouteBranch#isBreakAfterRoute <em>Break After Route</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouteBranch#getEvaluatorExpression <em>Evaluator Expression</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouteBranch#getTargetSequence <em>Target Sequence</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouteBranch#isBreakAfterRoute <em>Break After
+ * Route</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouteBranch#getEvaluatorExpression <em>Evaluator
+ * Expression</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouteBranch#getTargetSequence <em>Target
+ * Sequence</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getConditionalRouteBranch()
@@ -35,6 +38,7 @@ public interface ConditionalRouteBranch extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Break After Route</em>' attribute.
      * @see #setBreakAfterRoute(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getConditionalRouteBranch_BreakAfterRoute()
@@ -44,9 +48,11 @@ public interface ConditionalRouteBranch extends EsbNode {
     boolean isBreakAfterRoute();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouteBranch#isBreakAfterRoute <em>Break After Route</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouteBranch#isBreakAfterRoute
+     * <em>Break After Route</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Break After Route</em>' attribute.
      * @see #isBreakAfterRoute()
      * @generated
@@ -61,6 +67,7 @@ public interface ConditionalRouteBranch extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Evaluator Expression</em>' containment reference.
      * @see #setEvaluatorExpression(EvaluatorExpressionProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getConditionalRouteBranch_EvaluatorExpression()
@@ -70,9 +77,12 @@ public interface ConditionalRouteBranch extends EsbNode {
     EvaluatorExpressionProperty getEvaluatorExpression();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouteBranch#getEvaluatorExpression <em>Evaluator Expression</em>}' containment reference.
+     * Sets the value of the
+     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouteBranch#getEvaluatorExpression <em>Evaluator
+     * Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Evaluator Expression</em>' containment reference.
      * @see #getEvaluatorExpression()
      * @generated
@@ -87,6 +97,7 @@ public interface ConditionalRouteBranch extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Target Sequence</em>' containment reference.
      * @see #setTargetSequence(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getConditionalRouteBranch_TargetSequence()
@@ -96,9 +107,11 @@ public interface ConditionalRouteBranch extends EsbNode {
     RegistryKeyProperty getTargetSequence();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouteBranch#getTargetSequence <em>Target Sequence</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouteBranch#getTargetSequence
+     * <em>Target Sequence</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Target Sequence</em>' containment reference.
      * @see #getTargetSequence()
      * @generated

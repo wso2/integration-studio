@@ -12,7 +12,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
- package org.wso2.developerstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.developerstudio.eclipse.gmf.esb.parts.forms;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -109,6 +109,7 @@ public class PropertyGroupMediatorPropertiesEditionPartForm extends SectionPrope
 
     /**
      * Default constructor
+     * 
      * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
      */
     public PropertyGroupMediatorPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
@@ -117,8 +118,9 @@ public class PropertyGroupMediatorPropertiesEditionPartForm extends SectionPrope
 
     /**
      * {@inheritDoc}
+     * 
      * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-     *      createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit) 
+     *      createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
      */
     public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
         ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -133,6 +135,7 @@ public class PropertyGroupMediatorPropertiesEditionPartForm extends SectionPrope
 
     /**
      * {@inheritDoc}
+     * 
      * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
      *      createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
      */
@@ -197,7 +200,7 @@ public class PropertyGroupMediatorPropertiesEditionPartForm extends SectionPrope
         GridData descriptionData = new GridData(GridData.FILL_HORIZONTAL);
         description.setLayoutData(descriptionData);
         description.addFocusListener(new FocusAdapter() {
-            
+
             /**
              * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
              */
@@ -280,6 +283,7 @@ public class PropertyGroupMediatorPropertiesEditionPartForm extends SectionPrope
 
             /**
              * {@inheritDoc}
+             * 
              * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
              */
             public void widgetSelected(SelectionEvent e) {
@@ -324,6 +328,7 @@ public class PropertyGroupMediatorPropertiesEditionPartForm extends SectionPrope
 
             /**
              * {@inheritDoc}
+             * 
              * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
              */
             public void widgetSelected(SelectionEvent e) {
@@ -425,7 +430,8 @@ public class PropertyGroupMediatorPropertiesEditionPartForm extends SectionPrope
     }
 
     /**
-     * {@inheritDoc} 
+     * {@inheritDoc}
+     * 
      * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
      */
     public void firePropertiesChanged(IPropertiesEditionEvent event) {
@@ -436,6 +442,7 @@ public class PropertyGroupMediatorPropertiesEditionPartForm extends SectionPrope
 
     /**
      * {@inheritDoc}
+     * 
      * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart#getDescription()
      */
     public String getDescription() {
@@ -444,6 +451,7 @@ public class PropertyGroupMediatorPropertiesEditionPartForm extends SectionPrope
 
     /**
      * {@inheritDoc}
+     * 
      * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart#setDescription(String
      *      newValue)
      */
@@ -466,6 +474,7 @@ public class PropertyGroupMediatorPropertiesEditionPartForm extends SectionPrope
 
     /**
      * {@inheritDoc}
+     * 
      * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart#getCommentsList()
      */
     public EList getCommentsList() {
@@ -473,7 +482,8 @@ public class PropertyGroupMediatorPropertiesEditionPartForm extends SectionPrope
     }
 
     /**
-     * {@inheritDoc} 
+     * {@inheritDoc}
+     * 
      * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart#setCommentsList(EList
      *      newValue)
      */
@@ -515,7 +525,8 @@ public class PropertyGroupMediatorPropertiesEditionPartForm extends SectionPrope
 
     /**
      * {@inheritDoc}
-     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart#getReverse() 
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart#getReverse()
      */
     public Boolean getReverse() {
         return Boolean.valueOf(reverse.getSelection());
@@ -523,8 +534,9 @@ public class PropertyGroupMediatorPropertiesEditionPartForm extends SectionPrope
 
     /**
      * {@inheritDoc}
+     * 
      * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart#setReverse(Boolean
-     *      newValue) 
+     *      newValue)
      */
     public void setReverse(Boolean newValue) {
         if (newValue != null) {
@@ -542,7 +554,8 @@ public class PropertyGroupMediatorPropertiesEditionPartForm extends SectionPrope
     }
 
     /**
-     * {@inheritDoc} 
+     * {@inheritDoc}
+     * 
      * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart#initProperties(EObject
      *      current, EReference containingFeature, EReference feature)
      */
@@ -564,6 +577,7 @@ public class PropertyGroupMediatorPropertiesEditionPartForm extends SectionPrope
 
     /**
      * {@inheritDoc}
+     * 
      * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart#updateProperties()
      */
     public void updateProperties() {
@@ -572,6 +586,7 @@ public class PropertyGroupMediatorPropertiesEditionPartForm extends SectionPrope
 
     /**
      * {@inheritDoc}
+     * 
      * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart#addFilterProperties(ViewerFilter
      *      filter)
      */
@@ -583,7 +598,8 @@ public class PropertyGroupMediatorPropertiesEditionPartForm extends SectionPrope
     }
 
     /**
-     * {@inheritDoc} 
+     * {@inheritDoc}
+     * 
      * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart#addBusinessFilterProperties(ViewerFilter
      *      filter)
      */
@@ -593,8 +609,9 @@ public class PropertyGroupMediatorPropertiesEditionPartForm extends SectionPrope
 
     /**
      * {@inheritDoc}
+     * 
      * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart#isContainedInPropertiesTable(EObject
-     *      element) 
+     *      element)
      */
     public boolean isContainedInPropertiesTable(EObject element) {
         return ((ReferencesTableSettings) properties.getInput()).contains(element);
@@ -602,6 +619,7 @@ public class PropertyGroupMediatorPropertiesEditionPartForm extends SectionPrope
 
     /**
      * {@inheritDoc}
+     * 
      * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
      */
     public String getTitle() {

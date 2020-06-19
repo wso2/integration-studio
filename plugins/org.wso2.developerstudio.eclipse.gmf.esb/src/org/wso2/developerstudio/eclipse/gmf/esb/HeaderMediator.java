@@ -15,15 +15,15 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getHeaderName <em>Header Name</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getHeaderAction <em>Header Action</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getValueType <em>Value Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getScope <em>Scope</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getValueLiteral <em>Value Literal</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getValueExpression <em>Value Expression</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getValueInline <em>Value Inline</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getHeaderName <em>Header Name</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getHeaderAction <em>Header Action</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getValueType <em>Value Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getScope <em>Scope</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getValueLiteral <em>Value Literal</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getValueExpression <em>Value Expression</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getInputConnector <em>Input Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getOutputConnector <em>Output Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getValueInline <em>Value Inline</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getHeaderMediator()
@@ -39,6 +39,7 @@ public interface HeaderMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Header Name</em>' containment reference.
      * @see #setHeaderName(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getHeaderMediator_HeaderName()
@@ -48,9 +49,11 @@ public interface HeaderMediator extends Mediator {
     NamespacedProperty getHeaderName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getHeaderName <em>Header Name</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getHeaderName <em>Header
+     * Name</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Header Name</em>' containment reference.
      * @see #getHeaderName()
      * @generated
@@ -66,6 +69,7 @@ public interface HeaderMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Header Action</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.HeaderAction
      * @see #setHeaderAction(HeaderAction)
@@ -76,9 +80,11 @@ public interface HeaderMediator extends Mediator {
     HeaderAction getHeaderAction();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getHeaderAction <em>Header Action</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getHeaderAction <em>Header
+     * Action</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Header Action</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.HeaderAction
      * @see #getHeaderAction()
@@ -95,6 +101,7 @@ public interface HeaderMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Value Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.HeaderValueType
      * @see #setValueType(HeaderValueType)
@@ -105,9 +112,11 @@ public interface HeaderMediator extends Mediator {
     HeaderValueType getValueType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getValueType <em>Value Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getValueType <em>Value
+     * Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Value Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.HeaderValueType
      * @see #getValueType()
@@ -124,6 +133,7 @@ public interface HeaderMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Scope</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.ScopeType
      * @see #setScope(ScopeType)
@@ -134,9 +144,11 @@ public interface HeaderMediator extends Mediator {
     ScopeType getScope();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getScope <em>Scope</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getScope <em>Scope</em>}'
+     * attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Scope</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.ScopeType
      * @see #getScope()
@@ -153,6 +165,7 @@ public interface HeaderMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Value Literal</em>' attribute.
      * @see #setValueLiteral(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getHeaderMediator_ValueLiteral()
@@ -162,9 +175,11 @@ public interface HeaderMediator extends Mediator {
     String getValueLiteral();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getValueLiteral <em>Value Literal</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getValueLiteral <em>Value
+     * Literal</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Value Literal</em>' attribute.
      * @see #getValueLiteral()
      * @generated
@@ -179,6 +194,7 @@ public interface HeaderMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Value Expression</em>' containment reference.
      * @see #setValueExpression(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getHeaderMediator_ValueExpression()
@@ -188,9 +204,11 @@ public interface HeaderMediator extends Mediator {
     NamespacedProperty getValueExpression();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getValueExpression <em>Value Expression</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getValueExpression
+     * <em>Value Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Value Expression</em>' containment reference.
      * @see #getValueExpression()
      * @generated
@@ -205,6 +223,7 @@ public interface HeaderMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(HeaderMediatorInputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getHeaderMediator_InputConnector()
@@ -214,9 +233,11 @@ public interface HeaderMediator extends Mediator {
     HeaderMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getInputConnector <em>Input
+     * Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
      * @see #getInputConnector()
      * @generated
@@ -231,6 +252,7 @@ public interface HeaderMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(HeaderMediatorOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getHeaderMediator_OutputConnector()
@@ -240,9 +262,11 @@ public interface HeaderMediator extends Mediator {
     HeaderMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getOutputConnector
+     * <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
      * @see #getOutputConnector()
      * @generated
@@ -257,6 +281,7 @@ public interface HeaderMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Value Inline</em>' attribute.
      * @see #setValueInline(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getHeaderMediator_ValueInline()
@@ -266,9 +291,11 @@ public interface HeaderMediator extends Mediator {
     String getValueInline();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getValueInline <em>Value Inline</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getValueInline <em>Value
+     * Inline</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Value Inline</em>' attribute.
      * @see #getValueInline()
      * @generated

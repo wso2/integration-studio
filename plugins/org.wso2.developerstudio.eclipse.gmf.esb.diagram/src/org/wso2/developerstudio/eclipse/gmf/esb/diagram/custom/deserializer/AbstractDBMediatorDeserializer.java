@@ -42,7 +42,7 @@ public abstract class AbstractDBMediatorDeserializer
 
         executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DS_NAME,
                 dbMediator.getDataSourceProps().get(DSNAME_Q));
-        
+
         executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_URL_CONFIG,
                 dbMediator.isRegistryBasedUrlConfig());
         if (dbMediator.isRegistryBasedUrlConfig()) {
@@ -54,7 +54,7 @@ public abstract class AbstractDBMediatorDeserializer
             executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_URL,
                     dbMediator.getDataSourceProps().get(URL_Q));
         }
-        
+
         executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_USER_CONFIG,
                 dbMediator.isRegistryBasedUserConfig());
         if (dbMediator.isRegistryBasedUserConfig()) {
@@ -66,7 +66,7 @@ public abstract class AbstractDBMediatorDeserializer
             executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_USERNAME,
                     dbMediator.getDataSourceProps().get(USER_Q));
         }
-        
+
         executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_PASS_CONFIG,
                 dbMediator.isRegistryBasedPassConfig());
         if (dbMediator.isRegistryBasedPassConfig()) {
@@ -78,7 +78,7 @@ public abstract class AbstractDBMediatorDeserializer
             executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_PASSWORD,
                     dbMediator.getDataSourceProps().get(PASS_Q));
         }
-        
+
         executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__IS_REGISTRY_BASED_DRIVER_CONFIG,
                 dbMediator.isRegistryBasedDriverConfig());
         if (dbMediator.isRegistryBasedDriverConfig()) {
@@ -90,10 +90,10 @@ public abstract class AbstractDBMediatorDeserializer
             executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_DRIVER,
                     dbMediator.getDataSourceProps().get(DRIVER_Q));
         }
-        
+
         executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DS_INITIAL_CONTEXT,
                 dbMediator.getDataSourceProps().get(ICCLASS_Q));
-        
+
         if (dbMediator.getDataSourceProps().get(DRIVER_Q) != null && dbMediator.getDataSourceProps().get(DRIVER_Q)
                 .toLowerCase().contains(Constants.TXT_DATABASE_TYPE_MYSQL)) {
             executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_TYPE, SqlDatabaseType.MYSQL);
@@ -108,7 +108,8 @@ public abstract class AbstractDBMediatorDeserializer
         }
         if (dbMediator.getDataSourceProps().get(DRIVER_Q) != null && dbMediator.getDataSourceProps().get(DRIVER_Q)
                 .toLowerCase().contains(Constants.TXT_DATABASE_TYPE_POSTGRESQL)) {
-            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_TYPE, SqlDatabaseType.POSTGRESQL);
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_TYPE,
+                    SqlDatabaseType.POSTGRESQL);
         }
 
         if (dbMediator.getDataSourceProps().get(DRIVER_Q) != null) {
@@ -201,10 +202,12 @@ public abstract class AbstractDBMediatorDeserializer
                     SqlExecutorBooleanValue.DEFAULT);
         } else if (SqlExecutorBooleanValue.FALSE.getLiteral()
                 .equals(dbMediator.getDataSourceProps().get("autocommit"))) {
-            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_AUTOCOMMIT, SqlExecutorBooleanValue.FALSE);
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_AUTOCOMMIT,
+                    SqlExecutorBooleanValue.FALSE);
         } else if (SqlExecutorBooleanValue.TRUE.getLiteral()
                 .equals(dbMediator.getDataSourceProps().get("autocommit"))) {
-            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_AUTOCOMMIT, SqlExecutorBooleanValue.TRUE);
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_AUTOCOMMIT,
+                    SqlExecutorBooleanValue.TRUE);
         }
 
         if (dbMediator.getDataSourceProps().get("isolation") == null) {
@@ -279,7 +282,8 @@ public abstract class AbstractDBMediatorDeserializer
                     SqlExecutorBooleanValue.FALSE);
         } else if (SqlExecutorBooleanValue.TRUE.getLiteral()
                 .equals(dbMediator.getDataSourceProps().get("testonborrow"))) {
-            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_TESTONBORROW, SqlExecutorBooleanValue.TRUE);
+            executeSetValueCommand(Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__PROPERTY_TESTONBORROW,
+                    SqlExecutorBooleanValue.TRUE);
         }
 
         if (dbMediator.getDataSourceProps().get("testwhileidle") == null) {

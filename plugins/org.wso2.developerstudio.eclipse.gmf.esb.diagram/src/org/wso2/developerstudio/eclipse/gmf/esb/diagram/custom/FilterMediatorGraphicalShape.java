@@ -162,7 +162,7 @@ public class FilterMediatorGraphicalShape extends RoundedRectangle {
             validationMarkLayer = null;
         }
     }
-    
+
     public void removeBreakpointMark() {
         if (breakpointLayer != null) {
             pane.remove(breakpointLayer);

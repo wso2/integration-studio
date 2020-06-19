@@ -23,6 +23,7 @@ public class CallTemplateMediatorOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected CallTemplateMediatorOutputConnectorImpl() {
@@ -32,6 +33,7 @@ public class CallTemplateMediatorOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

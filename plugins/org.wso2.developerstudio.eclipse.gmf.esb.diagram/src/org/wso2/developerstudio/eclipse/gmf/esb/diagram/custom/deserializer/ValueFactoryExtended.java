@@ -178,7 +178,7 @@ public class ValueFactoryExtended {
         try {
             synapseXPath = SynapseXPathFactory.getSynapseXPath(elem, xpathExpr);
         } catch (JaxenException e) {
-            log.error("Can not create Synapse Xpath from given key" + e );
+            log.error("Can not create Synapse Xpath from given key" + e);
             synapseXPath = (SynapseXPath) SynapseXPathExt.createSynapsePath("");
         }
 

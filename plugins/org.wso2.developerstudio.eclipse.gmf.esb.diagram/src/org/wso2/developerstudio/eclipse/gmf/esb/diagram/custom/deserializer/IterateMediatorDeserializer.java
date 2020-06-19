@@ -49,8 +49,9 @@ public class IterateMediatorDeserializer extends AbstractEsbNodeDeserializer<Abs
         setCommonProperties(mediator, mediatorModel);
 
         executeSetValueCommand(ITERATE_MEDIATOR__ITERATE_EXPRESSION,
-        		createNamespacedPropertyWithJsonPathSupport(mediator.getExpression()));
-        executeSetValueCommand(ITERATE_MEDIATOR__ATTACH_PATH, createNamespacedPropertyWithJsonPathSupport(mediator.getAttachPath()));
+                createNamespacedPropertyWithJsonPathSupport(mediator.getExpression()));
+        executeSetValueCommand(ITERATE_MEDIATOR__ATTACH_PATH,
+                createNamespacedPropertyWithJsonPathSupport(mediator.getAttachPath()));
         executeSetValueCommand(ITERATE_MEDIATOR__PRESERVE_PAYLOAD, mediator.isPreservePayload());
         executeSetValueCommand(ITERATE_MEDIATOR__CONTINUE_PARENT, mediator.isContinueParent());
         executeSetValueCommand(ITERATE_MEDIATOR__ITERATE_ID, mediator.getId());
@@ -94,19 +95,19 @@ public class IterateMediatorDeserializer extends AbstractEsbNodeDeserializer<Abs
 
         return mediatorModel;
     }
-    
+
     private NamespacedProperty createNamespacedPropertyWithJsonPathSupport(SynapsePath path) {
-		NamespacedProperty nsp = EsbFactory.eINSTANCE.createNamespacedProperty();
-		nsp.setPropertyValue(path.toString());
-		nsp.setSupportJsonPaths(true);
-		if (path.getPathType() == SynapsePath.X_PATH) {
-			if (path.getNamespaces() != null) {
-				@SuppressWarnings("unchecked")
-				Map<String, String> map = path.getNamespaces();
-				nsp.setNamespaces(map);
-			}
-		}
-		return nsp;
-	}
+        NamespacedProperty nsp = EsbFactory.eINSTANCE.createNamespacedProperty();
+        nsp.setPropertyValue(path.toString());
+        nsp.setSupportJsonPaths(true);
+        if (path.getPathType() == SynapsePath.X_PATH) {
+            if (path.getNamespaces() != null) {
+                @SuppressWarnings("unchecked")
+                Map<String, String> map = path.getNamespaces();
+                nsp.setNamespaces(map);
+            }
+        }
+        return nsp;
+    }
 
 }

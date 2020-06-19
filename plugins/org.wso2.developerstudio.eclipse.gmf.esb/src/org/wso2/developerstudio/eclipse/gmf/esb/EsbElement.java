@@ -17,8 +17,8 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbElement#getDescription <em>Description</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbElement#getCommentsList <em>Comments List</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbElement#getDescription <em>Description</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbElement#getCommentsList <em>Comments List</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEsbElement()
@@ -34,6 +34,7 @@ public interface EsbElement extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Description</em>' attribute.
      * @see #setDescription(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEsbElement_Description()
@@ -43,9 +44,11 @@ public interface EsbElement extends EsbNode {
     String getDescription();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbElement#getDescription <em>Description</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbElement#getDescription
+     * <em>Description</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Description</em>' attribute.
      * @see #getDescription()
      * @generated
@@ -61,6 +64,7 @@ public interface EsbElement extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Comments List</em>' attribute list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEsbElement_CommentsList()
      * @model unique="false"

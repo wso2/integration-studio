@@ -125,7 +125,7 @@ public class APITransformer extends AbstractEsbNodeTransformer {
                 throw new TransformerException("Unable to create the OMelement for API VersionStrategy.", e);
             }
         }
-        
+
         if (visualAPI.getPublishSwagger() != null && !visualAPI.getPublishSwagger().getKeyValue().equals("")) {
             api.setSwaggerResourcePath(visualAPI.getPublishSwagger().getKeyValue());
         }

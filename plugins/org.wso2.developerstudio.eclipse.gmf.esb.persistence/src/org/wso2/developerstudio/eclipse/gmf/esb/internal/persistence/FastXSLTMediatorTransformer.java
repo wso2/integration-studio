@@ -73,7 +73,8 @@ public class FastXSLTMediatorTransformer extends AbstractEsbNodeTransformer {
 
     }
 
-    public static org.wso2.carbon.mediator.fastXSLT.FastXSLTMediator createFastXSLTMediator(EsbNode subject, boolean isForValidation) {
+    public static org.wso2.carbon.mediator.fastXSLT.FastXSLTMediator createFastXSLTMediator(EsbNode subject,
+            boolean isForValidation) {
         Assert.isTrue(subject instanceof FastXSLTMediator, INVALID_SUBJECT);
         FastXSLTMediator visualFastXSLT = (FastXSLTMediator) subject;
         org.wso2.carbon.mediator.fastXSLT.FastXSLTMediator fastXsltMediator = new org.wso2.carbon.mediator.fastXSLT.FastXSLTMediator();
@@ -84,8 +85,7 @@ public class FastXSLTMediatorTransformer extends AbstractEsbNodeTransformer {
             String key = visualFastXSLT.getFastXsltStaticSchemaKey().getKeyValue();
             if (key != null && !key.equals("")) {
                 fastXsltKey = new Value(key);
-            }
-            else if (key != null && !isForValidation) {
+            } else if (key != null && !isForValidation) {
                 // Fill the XPath with a default values, so that we can use synapse serializer
                 fastXsltKey = new Value(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
             }
@@ -94,11 +94,10 @@ public class FastXSLTMediatorTransformer extends AbstractEsbNodeTransformer {
             if (key.getPropertyValue() != null) {
                 SynapseXPath expression = null;
                 try {
-                    if(!isForValidation && StringUtils.isEmpty(key.getPropertyValue())) {
+                    if (!isForValidation && StringUtils.isEmpty(key.getPropertyValue())) {
                         // Fill the XPath with a default values, so that we can use synapse serializer
                         expression = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
-                    }
-                    else {
+                    } else {
                         expression = new SynapseXPath(key.getPropertyValue());
                     }
                 } catch (JaxenException e) {

@@ -89,8 +89,8 @@ public class PropertyMediatorTransformer extends AbstractEsbNodeTransformer {
         }
     }
 
-    public static org.apache.synapse.mediators.builtin.PropertyMediator createPropertyMediator(EsbNode subject, boolean isForValidation)
-            throws XMLStreamException, JaxenException, TransformerException {
+    public static org.apache.synapse.mediators.builtin.PropertyMediator createPropertyMediator(EsbNode subject,
+            boolean isForValidation) throws XMLStreamException, JaxenException, TransformerException {
         // Check subject.
         Assert.isTrue(subject instanceof PropertyMediator, "Invalid subject.");
         PropertyMediator visualProp = (PropertyMediator) subject;
@@ -105,7 +105,7 @@ public class PropertyMediatorTransformer extends AbstractEsbNodeTransformer {
                     String newPropertyName = visualProp.getNewPropertyName();
                     if (newPropertyName != null && !"".equals(newPropertyName)) {
                         propMediator.setName(newPropertyName);
-                    } else if (!isForValidation){
+                    } else if (!isForValidation) {
                         propMediator.setName(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
                     }
                 } else {
@@ -163,8 +163,8 @@ public class PropertyMediatorTransformer extends AbstractEsbNodeTransformer {
                     }
                 } else {
                     if (visualProp.getValueExpression() != null) {
-                        SynapsePath xpath = SynapseXPathExt.createSynapsePath(visualProp
-                                .getValueExpression().getPropertyValue());
+                        SynapsePath xpath = SynapseXPathExt
+                                .createSynapsePath(visualProp.getValueExpression().getPropertyValue());
 
                         // SynapseJsonPath doesn't allow namespaces
                         if (visualProp.getValueExpression().getNamespaces() != null

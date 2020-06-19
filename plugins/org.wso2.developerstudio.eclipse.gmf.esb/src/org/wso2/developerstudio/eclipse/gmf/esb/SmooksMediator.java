@@ -15,16 +15,18 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getConfigurationKey <em>Configuration Key</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getInputType <em>Input Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getInputExpression <em>Input Expression</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getOutputType <em>Output Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getOutputExpression <em>Output Expression</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getOutputProperty <em>Output Property</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getOutputAction <em>Output Action</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getOutputMethod <em>Output Method</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getOutputConnector <em>Output Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getConfigurationKey <em>Configuration
+ * Key</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getInputType <em>Input Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getInputExpression <em>Input Expression</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getOutputType <em>Output Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getOutputExpression <em>Output
+ * Expression</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getOutputProperty <em>Output Property</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getOutputAction <em>Output Action</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getOutputMethod <em>Output Method</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getInputConnector <em>Input Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSmooksMediator()
@@ -40,6 +42,7 @@ public interface SmooksMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Configuration Key</em>' containment reference.
      * @see #setConfigurationKey(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSmooksMediator_ConfigurationKey()
@@ -49,9 +52,11 @@ public interface SmooksMediator extends Mediator {
     RegistryKeyProperty getConfigurationKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getConfigurationKey <em>Configuration Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getConfigurationKey
+     * <em>Configuration Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Configuration Key</em>' containment reference.
      * @see #getConfigurationKey()
      * @generated
@@ -67,6 +72,7 @@ public interface SmooksMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Input Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.SmooksIODataType
      * @see #setInputType(SmooksIODataType)
@@ -77,9 +83,11 @@ public interface SmooksMediator extends Mediator {
     SmooksIODataType getInputType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getInputType <em>Input Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getInputType <em>Input
+     * Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Input Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.SmooksIODataType
      * @see #getInputType()
@@ -95,6 +103,7 @@ public interface SmooksMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Input Expression</em>' containment reference.
      * @see #setInputExpression(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSmooksMediator_InputExpression()
@@ -104,9 +113,11 @@ public interface SmooksMediator extends Mediator {
     NamespacedProperty getInputExpression();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getInputExpression <em>Input Expression</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getInputExpression
+     * <em>Input Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Input Expression</em>' containment reference.
      * @see #getInputExpression()
      * @generated
@@ -122,6 +133,7 @@ public interface SmooksMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Output Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.SmooksOutputDataType
      * @see #setOutputType(SmooksOutputDataType)
@@ -132,9 +144,11 @@ public interface SmooksMediator extends Mediator {
     SmooksOutputDataType getOutputType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getOutputType <em>Output Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getOutputType <em>Output
+     * Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Output Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.SmooksOutputDataType
      * @see #getOutputType()
@@ -150,6 +164,7 @@ public interface SmooksMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Output Expression</em>' containment reference.
      * @see #setOutputExpression(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSmooksMediator_OutputExpression()
@@ -159,9 +174,11 @@ public interface SmooksMediator extends Mediator {
     NamespacedProperty getOutputExpression();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getOutputExpression <em>Output Expression</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getOutputExpression
+     * <em>Output Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Output Expression</em>' containment reference.
      * @see #getOutputExpression()
      * @generated
@@ -176,6 +193,7 @@ public interface SmooksMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Output Property</em>' attribute.
      * @see #setOutputProperty(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSmooksMediator_OutputProperty()
@@ -185,9 +203,11 @@ public interface SmooksMediator extends Mediator {
     String getOutputProperty();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getOutputProperty <em>Output Property</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getOutputProperty
+     * <em>Output Property</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Output Property</em>' attribute.
      * @see #getOutputProperty()
      * @generated
@@ -203,6 +223,7 @@ public interface SmooksMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Output Action</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.ExpressionAction
      * @see #setOutputAction(ExpressionAction)
@@ -213,9 +234,11 @@ public interface SmooksMediator extends Mediator {
     ExpressionAction getOutputAction();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getOutputAction <em>Output Action</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getOutputAction <em>Output
+     * Action</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Output Action</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.ExpressionAction
      * @see #getOutputAction()
@@ -232,6 +255,7 @@ public interface SmooksMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Output Method</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.OutputMethod
      * @see #setOutputMethod(OutputMethod)
@@ -242,9 +266,11 @@ public interface SmooksMediator extends Mediator {
     OutputMethod getOutputMethod();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getOutputMethod <em>Output Method</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getOutputMethod <em>Output
+     * Method</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Output Method</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.OutputMethod
      * @see #getOutputMethod()
@@ -260,6 +286,7 @@ public interface SmooksMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(SmooksMediatorInputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSmooksMediator_InputConnector()
@@ -269,9 +296,11 @@ public interface SmooksMediator extends Mediator {
     SmooksMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getInputConnector <em>Input
+     * Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
      * @see #getInputConnector()
      * @generated
@@ -286,6 +315,7 @@ public interface SmooksMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(SmooksMediatorOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSmooksMediator_OutputConnector()
@@ -295,9 +325,11 @@ public interface SmooksMediator extends Mediator {
     SmooksMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getOutputConnector
+     * <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
      * @see #getOutputConnector()
      * @generated

@@ -22,6 +22,7 @@ public class EnqueueMediatorInputConnectorImpl extends InputConnectorImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected EnqueueMediatorInputConnectorImpl() {
@@ -31,6 +32,7 @@ public class EnqueueMediatorInputConnectorImpl extends InputConnectorImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

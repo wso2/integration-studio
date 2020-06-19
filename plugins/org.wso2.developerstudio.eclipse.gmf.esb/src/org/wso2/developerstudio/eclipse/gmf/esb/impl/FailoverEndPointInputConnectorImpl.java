@@ -22,6 +22,7 @@ public class FailoverEndPointInputConnectorImpl extends InputConnectorImpl imple
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected FailoverEndPointInputConnectorImpl() {
@@ -31,6 +32,7 @@ public class FailoverEndPointInputConnectorImpl extends InputConnectorImpl imple
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

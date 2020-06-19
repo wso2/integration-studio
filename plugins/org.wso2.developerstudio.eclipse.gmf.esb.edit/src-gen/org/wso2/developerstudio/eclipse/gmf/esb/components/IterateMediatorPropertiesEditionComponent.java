@@ -521,7 +521,7 @@ public class IterateMediatorPropertiesEditionComponent extends SinglePartPropert
         }
         return ret;
     }
-    
+
     /**
      * @generated NOT
      */

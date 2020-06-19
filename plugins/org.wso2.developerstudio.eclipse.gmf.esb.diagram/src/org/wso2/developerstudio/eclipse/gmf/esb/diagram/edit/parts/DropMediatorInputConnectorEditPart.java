@@ -285,8 +285,8 @@ public class DropMediatorInputConnectorEditPart extends AbstractMediatorInputCon
      * public class EastPointerFigure extends EastPointerShape {
      * 
      *//**
-             * @generated
-             */
+        * @generated
+        */
     /*
      * public EastPointerFigure() {
      * 

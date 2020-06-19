@@ -23,6 +23,7 @@ public class FailoverEndPointWestOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected FailoverEndPointWestOutputConnectorImpl() {
@@ -32,6 +33,7 @@ public class FailoverEndPointWestOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

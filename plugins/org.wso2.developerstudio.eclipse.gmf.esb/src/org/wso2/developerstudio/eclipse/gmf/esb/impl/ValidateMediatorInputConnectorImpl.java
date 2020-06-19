@@ -22,6 +22,7 @@ public class ValidateMediatorInputConnectorImpl extends InputConnectorImpl imple
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected ValidateMediatorInputConnectorImpl() {
@@ -31,6 +32,7 @@ public class ValidateMediatorInputConnectorImpl extends InputConnectorImpl imple
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

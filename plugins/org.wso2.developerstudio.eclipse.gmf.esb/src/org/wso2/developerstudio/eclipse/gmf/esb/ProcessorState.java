@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Processor State</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
+ * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getProcessorState()
  * @model
  * @generated
@@ -35,6 +36,7 @@ public enum ProcessorState implements Enumerator {
      * The '<em><b>ACTIVATE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #ACTIVATE_VALUE
      * @generated
      * @ordered
@@ -45,6 +47,7 @@ public enum ProcessorState implements Enumerator {
      * The '<em><b>DEACTIVATE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #DEACTIVATE_VALUE
      * @generated
      * @ordered
@@ -59,6 +62,7 @@ public enum ProcessorState implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #ACTIVATE
      * @model literal="Activate"
      * @generated
@@ -74,6 +78,7 @@ public enum ProcessorState implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #DEACTIVATE
      * @model literal="Deactivate"
      * @generated
@@ -85,17 +90,16 @@ public enum ProcessorState implements Enumerator {
      * An array of all the '<em><b>Processor State</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
-    private static final ProcessorState[] VALUES_ARRAY = new ProcessorState[] {
-            ACTIVATE,
-            DEACTIVATE,
-        };
+    private static final ProcessorState[] VALUES_ARRAY = new ProcessorState[] { ACTIVATE, DEACTIVATE, };
 
     /**
      * A public read-only list of all the '<em><b>Processor State</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public static final List<ProcessorState> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -104,6 +108,7 @@ public enum ProcessorState implements Enumerator {
      * Returns the '<em><b>Processor State</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -122,6 +127,7 @@ public enum ProcessorState implements Enumerator {
      * Returns the '<em><b>Processor State</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -140,14 +146,17 @@ public enum ProcessorState implements Enumerator {
      * Returns the '<em><b>Processor State</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static ProcessorState get(int value) {
         switch (value) {
-            case ACTIVATE_VALUE: return ACTIVATE;
-            case DEACTIVATE_VALUE: return DEACTIVATE;
+        case ACTIVATE_VALUE:
+            return ACTIVATE;
+        case DEACTIVATE_VALUE:
+            return DEACTIVATE;
         }
         return null;
     }
@@ -155,6 +164,7 @@ public enum ProcessorState implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final int value;
@@ -162,6 +172,7 @@ public enum ProcessorState implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String name;
@@ -169,6 +180,7 @@ public enum ProcessorState implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String literal;
@@ -177,6 +189,7 @@ public enum ProcessorState implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private ProcessorState(int value, String name, String literal) {
@@ -188,34 +201,38 @@ public enum ProcessorState implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public int getValue() {
-      return value;
+        return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getName() {
-      return name;
+        return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getLiteral() {
-      return literal;
+        return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

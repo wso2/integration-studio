@@ -30,19 +30,24 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ValidateSchema;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ValidateSchemaImpl#getValidateStaticSchemaKey <em>Validate Static Schema Key</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ValidateSchemaImpl#getValidateDynamicSchemaKey <em>Validate Dynamic Schema Key</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ValidateSchemaImpl#getValidateSchemaKeyType <em>Validate Schema Key Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ValidateSchemaImpl#getSchemaKey <em>Schema Key</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ValidateSchemaImpl#getValidateStaticSchemaKey <em>Validate
+ * Static Schema Key</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ValidateSchemaImpl#getValidateDynamicSchemaKey <em>Validate
+ * Dynamic Schema Key</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ValidateSchemaImpl#getValidateSchemaKeyType <em>Validate
+ * Schema Key Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ValidateSchemaImpl#getSchemaKey <em>Schema Key</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class ValidateSchemaImpl extends EsbNodeImpl implements ValidateSchema {
     /**
-     * The cached value of the '{@link #getValidateStaticSchemaKey() <em>Validate Static Schema Key</em>}' containment reference.
+     * The cached value of the '{@link #getValidateStaticSchemaKey() <em>Validate Static Schema Key</em>}' containment
+     * reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getValidateStaticSchemaKey()
      * @generated
      * @ordered
@@ -50,9 +55,11 @@ public class ValidateSchemaImpl extends EsbNodeImpl implements ValidateSchema {
     protected RegistryKeyProperty validateStaticSchemaKey;
 
     /**
-     * The cached value of the '{@link #getValidateDynamicSchemaKey() <em>Validate Dynamic Schema Key</em>}' containment reference.
+     * The cached value of the '{@link #getValidateDynamicSchemaKey() <em>Validate Dynamic Schema Key</em>}' containment
+     * reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getValidateDynamicSchemaKey()
      * @generated
      * @ordered
@@ -63,6 +70,7 @@ public class ValidateSchemaImpl extends EsbNodeImpl implements ValidateSchema {
      * The default value of the '{@link #getValidateSchemaKeyType() <em>Validate Schema Key Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getValidateSchemaKeyType()
      * @generated
      * @ordered
@@ -73,6 +81,7 @@ public class ValidateSchemaImpl extends EsbNodeImpl implements ValidateSchema {
      * The cached value of the '{@link #getValidateSchemaKeyType() <em>Validate Schema Key Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getValidateSchemaKeyType()
      * @generated
      * @ordered
@@ -83,6 +92,7 @@ public class ValidateSchemaImpl extends EsbNodeImpl implements ValidateSchema {
      * The cached value of the '{@link #getSchemaKey() <em>Schema Key</em>}' reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getSchemaKey()
      * @generated
      * @ordered
@@ -116,6 +126,7 @@ public class ValidateSchemaImpl extends EsbNodeImpl implements ValidateSchema {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -127,6 +138,7 @@ public class ValidateSchemaImpl extends EsbNodeImpl implements ValidateSchema {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public RegistryKeyProperty getValidateStaticSchemaKey() {
@@ -136,6 +148,7 @@ public class ValidateSchemaImpl extends EsbNodeImpl implements ValidateSchema {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public NotificationChain basicSetValidateStaticSchemaKey(RegistryKeyProperty newValidateStaticSchemaKey,
@@ -143,8 +156,13 @@ public class ValidateSchemaImpl extends EsbNodeImpl implements ValidateSchema {
         RegistryKeyProperty oldValidateStaticSchemaKey = validateStaticSchemaKey;
         validateStaticSchemaKey = newValidateStaticSchemaKey;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.VALIDATE_SCHEMA__VALIDATE_STATIC_SCHEMA_KEY, oldValidateStaticSchemaKey, newValidateStaticSchemaKey);
-            if (msgs == null) msgs = notification; else msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+                    EsbPackage.VALIDATE_SCHEMA__VALIDATE_STATIC_SCHEMA_KEY, oldValidateStaticSchemaKey,
+                    newValidateStaticSchemaKey);
+            if (msgs == null)
+                msgs = notification;
+            else
+                msgs.add(notification);
         }
         return msgs;
     }
@@ -152,25 +170,31 @@ public class ValidateSchemaImpl extends EsbNodeImpl implements ValidateSchema {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setValidateStaticSchemaKey(RegistryKeyProperty newValidateStaticSchemaKey) {
         if (newValidateStaticSchemaKey != validateStaticSchemaKey) {
             NotificationChain msgs = null;
             if (validateStaticSchemaKey != null)
-                msgs = ((InternalEObject)validateStaticSchemaKey).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.VALIDATE_SCHEMA__VALIDATE_STATIC_SCHEMA_KEY, null, msgs);
+                msgs = ((InternalEObject) validateStaticSchemaKey).eInverseRemove(this,
+                        EOPPOSITE_FEATURE_BASE - EsbPackage.VALIDATE_SCHEMA__VALIDATE_STATIC_SCHEMA_KEY, null, msgs);
             if (newValidateStaticSchemaKey != null)
-                msgs = ((InternalEObject)newValidateStaticSchemaKey).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.VALIDATE_SCHEMA__VALIDATE_STATIC_SCHEMA_KEY, null, msgs);
+                msgs = ((InternalEObject) newValidateStaticSchemaKey).eInverseAdd(this,
+                        EOPPOSITE_FEATURE_BASE - EsbPackage.VALIDATE_SCHEMA__VALIDATE_STATIC_SCHEMA_KEY, null, msgs);
             msgs = basicSetValidateStaticSchemaKey(newValidateStaticSchemaKey, msgs);
-            if (msgs != null) msgs.dispatch();
-        }
-        else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.VALIDATE_SCHEMA__VALIDATE_STATIC_SCHEMA_KEY, newValidateStaticSchemaKey, newValidateStaticSchemaKey));
+            if (msgs != null)
+                msgs.dispatch();
+        } else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET,
+                    EsbPackage.VALIDATE_SCHEMA__VALIDATE_STATIC_SCHEMA_KEY, newValidateStaticSchemaKey,
+                    newValidateStaticSchemaKey));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public NamespacedProperty getValidateDynamicSchemaKey() {
@@ -180,6 +204,7 @@ public class ValidateSchemaImpl extends EsbNodeImpl implements ValidateSchema {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public NotificationChain basicSetValidateDynamicSchemaKey(NamespacedProperty newValidateDynamicSchemaKey,
@@ -187,8 +212,13 @@ public class ValidateSchemaImpl extends EsbNodeImpl implements ValidateSchema {
         NamespacedProperty oldValidateDynamicSchemaKey = validateDynamicSchemaKey;
         validateDynamicSchemaKey = newValidateDynamicSchemaKey;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.VALIDATE_SCHEMA__VALIDATE_DYNAMIC_SCHEMA_KEY, oldValidateDynamicSchemaKey, newValidateDynamicSchemaKey);
-            if (msgs == null) msgs = notification; else msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+                    EsbPackage.VALIDATE_SCHEMA__VALIDATE_DYNAMIC_SCHEMA_KEY, oldValidateDynamicSchemaKey,
+                    newValidateDynamicSchemaKey);
+            if (msgs == null)
+                msgs = notification;
+            else
+                msgs.add(notification);
         }
         return msgs;
     }
@@ -196,25 +226,31 @@ public class ValidateSchemaImpl extends EsbNodeImpl implements ValidateSchema {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setValidateDynamicSchemaKey(NamespacedProperty newValidateDynamicSchemaKey) {
         if (newValidateDynamicSchemaKey != validateDynamicSchemaKey) {
             NotificationChain msgs = null;
             if (validateDynamicSchemaKey != null)
-                msgs = ((InternalEObject)validateDynamicSchemaKey).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.VALIDATE_SCHEMA__VALIDATE_DYNAMIC_SCHEMA_KEY, null, msgs);
+                msgs = ((InternalEObject) validateDynamicSchemaKey).eInverseRemove(this,
+                        EOPPOSITE_FEATURE_BASE - EsbPackage.VALIDATE_SCHEMA__VALIDATE_DYNAMIC_SCHEMA_KEY, null, msgs);
             if (newValidateDynamicSchemaKey != null)
-                msgs = ((InternalEObject)newValidateDynamicSchemaKey).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.VALIDATE_SCHEMA__VALIDATE_DYNAMIC_SCHEMA_KEY, null, msgs);
+                msgs = ((InternalEObject) newValidateDynamicSchemaKey).eInverseAdd(this,
+                        EOPPOSITE_FEATURE_BASE - EsbPackage.VALIDATE_SCHEMA__VALIDATE_DYNAMIC_SCHEMA_KEY, null, msgs);
             msgs = basicSetValidateDynamicSchemaKey(newValidateDynamicSchemaKey, msgs);
-            if (msgs != null) msgs.dispatch();
-        }
-        else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.VALIDATE_SCHEMA__VALIDATE_DYNAMIC_SCHEMA_KEY, newValidateDynamicSchemaKey, newValidateDynamicSchemaKey));
+            if (msgs != null)
+                msgs.dispatch();
+        } else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET,
+                    EsbPackage.VALIDATE_SCHEMA__VALIDATE_DYNAMIC_SCHEMA_KEY, newValidateDynamicSchemaKey,
+                    newValidateDynamicSchemaKey));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public KeyType getValidateSchemaKeyType() {
@@ -224,27 +260,32 @@ public class ValidateSchemaImpl extends EsbNodeImpl implements ValidateSchema {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setValidateSchemaKeyType(KeyType newValidateSchemaKeyType) {
         KeyType oldValidateSchemaKeyType = validateSchemaKeyType;
-        validateSchemaKeyType = newValidateSchemaKeyType == null ? VALIDATE_SCHEMA_KEY_TYPE_EDEFAULT : newValidateSchemaKeyType;
+        validateSchemaKeyType = newValidateSchemaKeyType == null ? VALIDATE_SCHEMA_KEY_TYPE_EDEFAULT
+                : newValidateSchemaKeyType;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.VALIDATE_SCHEMA__VALIDATE_SCHEMA_KEY_TYPE, oldValidateSchemaKeyType, validateSchemaKeyType));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.VALIDATE_SCHEMA__VALIDATE_SCHEMA_KEY_TYPE,
+                    oldValidateSchemaKeyType, validateSchemaKeyType));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public RegistryKeyProperty getSchemaKey() {
         if (schemaKey != null && schemaKey.eIsProxy()) {
-            InternalEObject oldSchemaKey = (InternalEObject)schemaKey;
-            schemaKey = (RegistryKeyProperty)eResolveProxy(oldSchemaKey);
+            InternalEObject oldSchemaKey = (InternalEObject) schemaKey;
+            schemaKey = (RegistryKeyProperty) eResolveProxy(oldSchemaKey);
             if (schemaKey != oldSchemaKey) {
                 if (eNotificationRequired())
-                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, EsbPackage.VALIDATE_SCHEMA__SCHEMA_KEY, oldSchemaKey, schemaKey));
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, EsbPackage.VALIDATE_SCHEMA__SCHEMA_KEY,
+                            oldSchemaKey, schemaKey));
             }
         }
         return schemaKey;
@@ -253,6 +294,7 @@ public class ValidateSchemaImpl extends EsbNodeImpl implements ValidateSchema {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public RegistryKeyProperty basicGetSchemaKey() {
@@ -262,27 +304,30 @@ public class ValidateSchemaImpl extends EsbNodeImpl implements ValidateSchema {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setSchemaKey(RegistryKeyProperty newSchemaKey) {
         RegistryKeyProperty oldSchemaKey = schemaKey;
         schemaKey = newSchemaKey;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.VALIDATE_SCHEMA__SCHEMA_KEY, oldSchemaKey, schemaKey));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.VALIDATE_SCHEMA__SCHEMA_KEY, oldSchemaKey,
+                    schemaKey));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-            case EsbPackage.VALIDATE_SCHEMA__VALIDATE_STATIC_SCHEMA_KEY:
-                return basicSetValidateStaticSchemaKey(null, msgs);
-            case EsbPackage.VALIDATE_SCHEMA__VALIDATE_DYNAMIC_SCHEMA_KEY:
-                return basicSetValidateDynamicSchemaKey(null, msgs);
+        case EsbPackage.VALIDATE_SCHEMA__VALIDATE_STATIC_SCHEMA_KEY:
+            return basicSetValidateStaticSchemaKey(null, msgs);
+        case EsbPackage.VALIDATE_SCHEMA__VALIDATE_DYNAMIC_SCHEMA_KEY:
+            return basicSetValidateDynamicSchemaKey(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -290,21 +335,23 @@ public class ValidateSchemaImpl extends EsbNodeImpl implements ValidateSchema {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-            case EsbPackage.VALIDATE_SCHEMA__VALIDATE_STATIC_SCHEMA_KEY:
-                return getValidateStaticSchemaKey();
-            case EsbPackage.VALIDATE_SCHEMA__VALIDATE_DYNAMIC_SCHEMA_KEY:
-                return getValidateDynamicSchemaKey();
-            case EsbPackage.VALIDATE_SCHEMA__VALIDATE_SCHEMA_KEY_TYPE:
-                return getValidateSchemaKeyType();
-            case EsbPackage.VALIDATE_SCHEMA__SCHEMA_KEY:
-                if (resolve) return getSchemaKey();
-                return basicGetSchemaKey();
+        case EsbPackage.VALIDATE_SCHEMA__VALIDATE_STATIC_SCHEMA_KEY:
+            return getValidateStaticSchemaKey();
+        case EsbPackage.VALIDATE_SCHEMA__VALIDATE_DYNAMIC_SCHEMA_KEY:
+            return getValidateDynamicSchemaKey();
+        case EsbPackage.VALIDATE_SCHEMA__VALIDATE_SCHEMA_KEY_TYPE:
+            return getValidateSchemaKeyType();
+        case EsbPackage.VALIDATE_SCHEMA__SCHEMA_KEY:
+            if (resolve)
+                return getSchemaKey();
+            return basicGetSchemaKey();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -312,24 +359,25 @@ public class ValidateSchemaImpl extends EsbNodeImpl implements ValidateSchema {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-            case EsbPackage.VALIDATE_SCHEMA__VALIDATE_STATIC_SCHEMA_KEY:
-                setValidateStaticSchemaKey((RegistryKeyProperty)newValue);
-                return;
-            case EsbPackage.VALIDATE_SCHEMA__VALIDATE_DYNAMIC_SCHEMA_KEY:
-                setValidateDynamicSchemaKey((NamespacedProperty)newValue);
-                return;
-            case EsbPackage.VALIDATE_SCHEMA__VALIDATE_SCHEMA_KEY_TYPE:
-                setValidateSchemaKeyType((KeyType)newValue);
-                return;
-            case EsbPackage.VALIDATE_SCHEMA__SCHEMA_KEY:
-                setSchemaKey((RegistryKeyProperty)newValue);
-                return;
+        case EsbPackage.VALIDATE_SCHEMA__VALIDATE_STATIC_SCHEMA_KEY:
+            setValidateStaticSchemaKey((RegistryKeyProperty) newValue);
+            return;
+        case EsbPackage.VALIDATE_SCHEMA__VALIDATE_DYNAMIC_SCHEMA_KEY:
+            setValidateDynamicSchemaKey((NamespacedProperty) newValue);
+            return;
+        case EsbPackage.VALIDATE_SCHEMA__VALIDATE_SCHEMA_KEY_TYPE:
+            setValidateSchemaKeyType((KeyType) newValue);
+            return;
+        case EsbPackage.VALIDATE_SCHEMA__SCHEMA_KEY:
+            setSchemaKey((RegistryKeyProperty) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -337,24 +385,25 @@ public class ValidateSchemaImpl extends EsbNodeImpl implements ValidateSchema {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-            case EsbPackage.VALIDATE_SCHEMA__VALIDATE_STATIC_SCHEMA_KEY:
-                setValidateStaticSchemaKey((RegistryKeyProperty)null);
-                return;
-            case EsbPackage.VALIDATE_SCHEMA__VALIDATE_DYNAMIC_SCHEMA_KEY:
-                setValidateDynamicSchemaKey((NamespacedProperty)null);
-                return;
-            case EsbPackage.VALIDATE_SCHEMA__VALIDATE_SCHEMA_KEY_TYPE:
-                setValidateSchemaKeyType(VALIDATE_SCHEMA_KEY_TYPE_EDEFAULT);
-                return;
-            case EsbPackage.VALIDATE_SCHEMA__SCHEMA_KEY:
-                setSchemaKey((RegistryKeyProperty)null);
-                return;
+        case EsbPackage.VALIDATE_SCHEMA__VALIDATE_STATIC_SCHEMA_KEY:
+            setValidateStaticSchemaKey((RegistryKeyProperty) null);
+            return;
+        case EsbPackage.VALIDATE_SCHEMA__VALIDATE_DYNAMIC_SCHEMA_KEY:
+            setValidateDynamicSchemaKey((NamespacedProperty) null);
+            return;
+        case EsbPackage.VALIDATE_SCHEMA__VALIDATE_SCHEMA_KEY_TYPE:
+            setValidateSchemaKeyType(VALIDATE_SCHEMA_KEY_TYPE_EDEFAULT);
+            return;
+        case EsbPackage.VALIDATE_SCHEMA__SCHEMA_KEY:
+            setSchemaKey((RegistryKeyProperty) null);
+            return;
         }
         super.eUnset(featureID);
     }
@@ -362,20 +411,21 @@ public class ValidateSchemaImpl extends EsbNodeImpl implements ValidateSchema {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-            case EsbPackage.VALIDATE_SCHEMA__VALIDATE_STATIC_SCHEMA_KEY:
-                return validateStaticSchemaKey != null;
-            case EsbPackage.VALIDATE_SCHEMA__VALIDATE_DYNAMIC_SCHEMA_KEY:
-                return validateDynamicSchemaKey != null;
-            case EsbPackage.VALIDATE_SCHEMA__VALIDATE_SCHEMA_KEY_TYPE:
-                return validateSchemaKeyType != VALIDATE_SCHEMA_KEY_TYPE_EDEFAULT;
-            case EsbPackage.VALIDATE_SCHEMA__SCHEMA_KEY:
-                return schemaKey != null;
+        case EsbPackage.VALIDATE_SCHEMA__VALIDATE_STATIC_SCHEMA_KEY:
+            return validateStaticSchemaKey != null;
+        case EsbPackage.VALIDATE_SCHEMA__VALIDATE_DYNAMIC_SCHEMA_KEY:
+            return validateDynamicSchemaKey != null;
+        case EsbPackage.VALIDATE_SCHEMA__VALIDATE_SCHEMA_KEY_TYPE:
+            return validateSchemaKeyType != VALIDATE_SCHEMA_KEY_TYPE_EDEFAULT;
+        case EsbPackage.VALIDATE_SCHEMA__SCHEMA_KEY:
+            return schemaKey != null;
         }
         return super.eIsSet(featureID);
     }
@@ -383,12 +433,14 @@ public class ValidateSchemaImpl extends EsbNodeImpl implements ValidateSchema {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public String toString() {
-        if (eIsProxy()) return super.toString();
+        if (eIsProxy())
+            return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (validateSchemaKeyType: ");

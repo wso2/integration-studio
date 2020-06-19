@@ -55,232 +55,253 @@ import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
  * 
  * 
  */
-public class CalloutMediatorOutputConnectorPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, CalloutMediatorOutputConnectorPropertiesEditionPart {
+public class CalloutMediatorOutputConnectorPropertiesEditionPartImpl extends CompositePropertiesEditionPart
+        implements ISWTPropertiesEditionPart, CalloutMediatorOutputConnectorPropertiesEditionPart {
 
-	protected ReferencesTable commentMediators;
-	protected List<ViewerFilter> commentMediatorsBusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> commentMediatorsFilters = new ArrayList<ViewerFilter>();
+    protected ReferencesTable commentMediators;
+    protected List<ViewerFilter> commentMediatorsBusinessFilters = new ArrayList<ViewerFilter>();
+    protected List<ViewerFilter> commentMediatorsFilters = new ArrayList<ViewerFilter>();
 
+    /**
+     * Default constructor
+     * 
+     * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+     * 
+     */
+    public CalloutMediatorOutputConnectorPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
+        super(editionComponent);
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+     *      createFigure(org.eclipse.swt.widgets.Composite)
+     * 
+     */
+    public Composite createFigure(final Composite parent) {
+        view = new Composite(parent, SWT.NONE);
+        GridLayout layout = new GridLayout();
+        layout.numColumns = 3;
+        view.setLayout(layout);
+        createControls(view);
+        return view;
+    }
 
-	/**
-	 * Default constructor
-	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
-	 */
-	public CalloutMediatorOutputConnectorPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+     *      createControls(org.eclipse.swt.widgets.Composite)
+     * 
+     */
+    public void createControls(Composite view) {
+        CompositionSequence calloutMediatorOutputConnectorStep = new BindingCompositionSequence(
+                propertiesEditionComponent);
+        calloutMediatorOutputConnectorStep.addStep(EsbViewsRepository.CalloutMediatorOutputConnector.Properties.class)
+                .addStep(EsbViewsRepository.CalloutMediatorOutputConnector.Properties.commentMediators);
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
-	 * 			createFigure(org.eclipse.swt.widgets.Composite)
-	 * 
-	 */
-	public Composite createFigure(final Composite parent) {
-		view = new Composite(parent, SWT.NONE);
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 3;
-		view.setLayout(layout);
-		createControls(view);
-		return view;
-	}
+        composer = new PartComposer(calloutMediatorOutputConnectorStep) {
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
-	 * 			createControls(org.eclipse.swt.widgets.Composite)
-	 * 
-	 */
-	public void createControls(Composite view) { 
-		CompositionSequence calloutMediatorOutputConnectorStep = new BindingCompositionSequence(propertiesEditionComponent);
-		calloutMediatorOutputConnectorStep
-			.addStep(EsbViewsRepository.CalloutMediatorOutputConnector.Properties.class)
-			.addStep(EsbViewsRepository.CalloutMediatorOutputConnector.Properties.commentMediators);
-		
-		
-		composer = new PartComposer(calloutMediatorOutputConnectorStep) {
+            @Override
+            public Composite addToPart(Composite parent, Object key) {
+                if (key == EsbViewsRepository.CalloutMediatorOutputConnector.Properties.class) {
+                    return createPropertiesGroup(parent);
+                }
+                if (key == EsbViewsRepository.CalloutMediatorOutputConnector.Properties.commentMediators) {
+                    return createCommentMediatorsAdvancedTableComposition(parent);
+                }
+                return parent;
+            }
+        };
+        composer.compose(view);
+    }
 
-			@Override
-			public Composite addToPart(Composite parent, Object key) {
-				if (key == EsbViewsRepository.CalloutMediatorOutputConnector.Properties.class) {
-					return createPropertiesGroup(parent);
-				}
-				if (key == EsbViewsRepository.CalloutMediatorOutputConnector.Properties.commentMediators) {
-					return createCommentMediatorsAdvancedTableComposition(parent);
-				}
-				return parent;
-			}
-		};
-		composer.compose(view);
-	}
+    /**
+     * 
+     */
+    protected Composite createPropertiesGroup(Composite parent) {
+        Group propertiesGroup = new Group(parent, SWT.NONE);
+        propertiesGroup.setText(EsbMessages.CalloutMediatorOutputConnectorPropertiesEditionPart_PropertiesGroupLabel);
+        GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
+        propertiesGroupData.horizontalSpan = 3;
+        propertiesGroup.setLayoutData(propertiesGroupData);
+        GridLayout propertiesGroupLayout = new GridLayout();
+        propertiesGroupLayout.numColumns = 3;
+        propertiesGroup.setLayout(propertiesGroupLayout);
+        return propertiesGroup;
+    }
 
-	/**
-	 * 
-	 */
-	protected Composite createPropertiesGroup(Composite parent) {
-		Group propertiesGroup = new Group(parent, SWT.NONE);
-		propertiesGroup.setText(EsbMessages.CalloutMediatorOutputConnectorPropertiesEditionPart_PropertiesGroupLabel);
-		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesGroupData.horizontalSpan = 3;
-		propertiesGroup.setLayoutData(propertiesGroupData);
-		GridLayout propertiesGroupLayout = new GridLayout();
-		propertiesGroupLayout.numColumns = 3;
-		propertiesGroup.setLayout(propertiesGroupLayout);
-		return propertiesGroup;
-	}
+    /**
+     * @param container
+     * 
+     */
+    protected Composite createCommentMediatorsAdvancedTableComposition(Composite parent) {
+        this.commentMediators = new ReferencesTable(
+                getDescription(EsbViewsRepository.CalloutMediatorOutputConnector.Properties.commentMediators,
+                        EsbMessages.CalloutMediatorOutputConnectorPropertiesEditionPart_CommentMediatorsLabel),
+                new ReferencesTableListener() {
+                    public void handleAdd() {
+                        propertiesEditionComponent.firePropertiesChanged(
+                                new PropertiesEditionEvent(CalloutMediatorOutputConnectorPropertiesEditionPartImpl.this,
+                                        EsbViewsRepository.CalloutMediatorOutputConnector.Properties.commentMediators,
+                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+                        commentMediators.refresh();
+                    }
 
-	/**
-	 * @param container
-	 * 
-	 */
-	protected Composite createCommentMediatorsAdvancedTableComposition(Composite parent) {
-		this.commentMediators = new ReferencesTable(getDescription(EsbViewsRepository.CalloutMediatorOutputConnector.Properties.commentMediators, EsbMessages.CalloutMediatorOutputConnectorPropertiesEditionPart_CommentMediatorsLabel), new ReferencesTableListener() {
-			public void handleAdd() { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CalloutMediatorOutputConnectorPropertiesEditionPartImpl.this, EsbViewsRepository.CalloutMediatorOutputConnector.Properties.commentMediators, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
-				commentMediators.refresh();
-			}
-			public void handleEdit(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CalloutMediatorOutputConnectorPropertiesEditionPartImpl.this, EsbViewsRepository.CalloutMediatorOutputConnector.Properties.commentMediators, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
-				commentMediators.refresh();
-			}
-			public void handleMove(EObject element, int oldIndex, int newIndex) { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CalloutMediatorOutputConnectorPropertiesEditionPartImpl.this, EsbViewsRepository.CalloutMediatorOutputConnector.Properties.commentMediators, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-				commentMediators.refresh();
-			}
-			public void handleRemove(EObject element) { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CalloutMediatorOutputConnectorPropertiesEditionPartImpl.this, EsbViewsRepository.CalloutMediatorOutputConnector.Properties.commentMediators, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-				commentMediators.refresh();
-			}
-			public void navigateTo(EObject element) { }
-		});
-		for (ViewerFilter filter : this.commentMediatorsFilters) {
-			this.commentMediators.addFilter(filter);
-		}
-		this.commentMediators.setHelpText(propertiesEditionComponent.getHelpContent(EsbViewsRepository.CalloutMediatorOutputConnector.Properties.commentMediators, EsbViewsRepository.SWT_KIND));
-		this.commentMediators.createControls(parent);
-		this.commentMediators.addSelectionListener(new SelectionAdapter() {
-			
-			public void widgetSelected(SelectionEvent e) {
-				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CalloutMediatorOutputConnectorPropertiesEditionPartImpl.this, EsbViewsRepository.CalloutMediatorOutputConnector.Properties.commentMediators, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
-				}
-			}
-			
-		});
-		GridData commentMediatorsData = new GridData(GridData.FILL_HORIZONTAL);
-		commentMediatorsData.horizontalSpan = 3;
-		this.commentMediators.setLayoutData(commentMediatorsData);
-		this.commentMediators.setLowerBound(0);
-		this.commentMediators.setUpperBound(-1);
-		commentMediators.setID(EsbViewsRepository.CalloutMediatorOutputConnector.Properties.commentMediators);
-		commentMediators.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
-		// Start of user code for createCommentMediatorsAdvancedTableComposition
+                    public void handleEdit(EObject element) {
+                        propertiesEditionComponent.firePropertiesChanged(
+                                new PropertiesEditionEvent(CalloutMediatorOutputConnectorPropertiesEditionPartImpl.this,
+                                        EsbViewsRepository.CalloutMediatorOutputConnector.Properties.commentMediators,
+                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+                        commentMediators.refresh();
+                    }
 
-		// End of user code
-		return parent;
-	}
+                    public void handleMove(EObject element, int oldIndex, int newIndex) {
+                        propertiesEditionComponent.firePropertiesChanged(
+                                new PropertiesEditionEvent(CalloutMediatorOutputConnectorPropertiesEditionPartImpl.this,
+                                        EsbViewsRepository.CalloutMediatorOutputConnector.Properties.commentMediators,
+                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+                        commentMediators.refresh();
+                    }
 
+                    public void handleRemove(EObject element) {
+                        propertiesEditionComponent.firePropertiesChanged(
+                                new PropertiesEditionEvent(CalloutMediatorOutputConnectorPropertiesEditionPartImpl.this,
+                                        EsbViewsRepository.CalloutMediatorOutputConnector.Properties.commentMediators,
+                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+                        commentMediators.refresh();
+                    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
-	 */
-	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-		
-		// End of user code
-	}
+                    public void navigateTo(EObject element) {
+                    }
+                });
+        for (ViewerFilter filter : this.commentMediatorsFilters) {
+            this.commentMediators.addFilter(filter);
+        }
+        this.commentMediators.setHelpText(propertiesEditionComponent.getHelpContent(
+                EsbViewsRepository.CalloutMediatorOutputConnector.Properties.commentMediators,
+                EsbViewsRepository.SWT_KIND));
+        this.commentMediators.createControls(parent);
+        this.commentMediators.addSelectionListener(new SelectionAdapter() {
 
+            public void widgetSelected(SelectionEvent e) {
+                if (e.item != null && e.item.getData() instanceof EObject) {
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(CalloutMediatorOutputConnectorPropertiesEditionPartImpl.this,
+                                    EsbViewsRepository.CalloutMediatorOutputConnector.Properties.commentMediators,
+                                    PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null,
+                                    e.item.getData()));
+                }
+            }
 
+        });
+        GridData commentMediatorsData = new GridData(GridData.FILL_HORIZONTAL);
+        commentMediatorsData.horizontalSpan = 3;
+        this.commentMediators.setLayoutData(commentMediatorsData);
+        this.commentMediators.setLowerBound(0);
+        this.commentMediators.setUpperBound(-1);
+        commentMediators.setID(EsbViewsRepository.CalloutMediatorOutputConnector.Properties.commentMediators);
+        commentMediators.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+        // Start of user code for createCommentMediatorsAdvancedTableComposition
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CalloutMediatorOutputConnectorPropertiesEditionPart#initCommentMediators(EObject current, EReference containingFeature, EReference feature)
-	 */
-	public void initCommentMediators(ReferencesTableSettings settings) {
-		if (current.eResource() != null && current.eResource().getResourceSet() != null)
-			this.resourceSet = current.eResource().getResourceSet();
-		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
-		commentMediators.setContentProvider(contentProvider);
-		commentMediators.setInput(settings);
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.CalloutMediatorOutputConnector.Properties.commentMediators);
-		if (eefElementEditorReadOnlyState && commentMediators.isEnabled()) {
-			commentMediators.setEnabled(false);
-			commentMediators.setToolTipText(EsbMessages.CalloutMediatorOutputConnector_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !commentMediators.isEnabled()) {
-			commentMediators.setEnabled(true);
-		}	
-		
-	}
+        // End of user code
+        return parent;
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CalloutMediatorOutputConnectorPropertiesEditionPart#updateCommentMediators()
-	 * 
-	 */
-	public void updateCommentMediators() {
-	commentMediators.refresh();
-}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+     * 
+     */
+    public void firePropertiesChanged(IPropertiesEditionEvent event) {
+        // Start of user code for tab synchronization
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CalloutMediatorOutputConnectorPropertiesEditionPart#addFilterCommentMediators(ViewerFilter filter)
-	 * 
-	 */
-	public void addFilterToCommentMediators(ViewerFilter filter) {
-		commentMediatorsFilters.add(filter);
-		if (this.commentMediators != null) {
-			this.commentMediators.addFilter(filter);
-		}
-	}
+        // End of user code
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CalloutMediatorOutputConnectorPropertiesEditionPart#addBusinessFilterCommentMediators(ViewerFilter filter)
-	 * 
-	 */
-	public void addBusinessFilterToCommentMediators(ViewerFilter filter) {
-		commentMediatorsBusinessFilters.add(filter);
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CalloutMediatorOutputConnectorPropertiesEditionPart#initCommentMediators(EObject
+     *      current, EReference containingFeature, EReference feature)
+     */
+    public void initCommentMediators(ReferencesTableSettings settings) {
+        if (current.eResource() != null && current.eResource().getResourceSet() != null)
+            this.resourceSet = current.eResource().getResourceSet();
+        ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+        commentMediators.setContentProvider(contentProvider);
+        commentMediators.setInput(settings);
+        boolean eefElementEditorReadOnlyState = isReadOnly(
+                EsbViewsRepository.CalloutMediatorOutputConnector.Properties.commentMediators);
+        if (eefElementEditorReadOnlyState && commentMediators.isEnabled()) {
+            commentMediators.setEnabled(false);
+            commentMediators.setToolTipText(EsbMessages.CalloutMediatorOutputConnector_ReadOnly);
+        } else if (!eefElementEditorReadOnlyState && !commentMediators.isEnabled()) {
+            commentMediators.setEnabled(true);
+        }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CalloutMediatorOutputConnectorPropertiesEditionPart#isContainedInCommentMediatorsTable(EObject element)
-	 * 
-	 */
-	public boolean isContainedInCommentMediatorsTable(EObject element) {
-		return ((ReferencesTableSettings)commentMediators.getInput()).contains(element);
-	}
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CalloutMediatorOutputConnectorPropertiesEditionPart#updateCommentMediators()
+     * 
+     */
+    public void updateCommentMediators() {
+        commentMediators.refresh();
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CalloutMediatorOutputConnectorPropertiesEditionPart#addFilterCommentMediators(ViewerFilter
+     *      filter)
+     * 
+     */
+    public void addFilterToCommentMediators(ViewerFilter filter) {
+        commentMediatorsFilters.add(filter);
+        if (this.commentMediators != null) {
+            this.commentMediators.addFilter(filter);
+        }
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CalloutMediatorOutputConnectorPropertiesEditionPart#addBusinessFilterCommentMediators(ViewerFilter
+     *      filter)
+     * 
+     */
+    public void addBusinessFilterToCommentMediators(ViewerFilter filter) {
+        commentMediatorsBusinessFilters.add(filter);
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CalloutMediatorOutputConnectorPropertiesEditionPart#isContainedInCommentMediatorsTable(EObject
+     *      element)
+     * 
+     */
+    public boolean isContainedInCommentMediatorsTable(EObject element) {
+        return ((ReferencesTableSettings) commentMediators.getInput()).contains(element);
+    }
 
+    /**
+     * {@inheritDoc}
+     *
+     * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+     * 
+     */
+    public String getTitle() {
+        return EsbMessages.CalloutMediatorOutputConnector_Part_Title;
+    }
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
-	 */
-	public String getTitle() {
-		return EsbMessages.CalloutMediatorOutputConnector_Part_Title;
-	}
+    // Start of user code additional methods
 
-	// Start of user code additional methods
-	
-	// End of user code
-
+    // End of user code
 
 }

@@ -95,7 +95,6 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     protected List<ViewerFilter> targetsOutputConnectorBusinessFilters = new ArrayList<ViewerFilter>();
     protected List<ViewerFilter> targetsOutputConnectorFilters = new ArrayList<ViewerFilter>();
 
-    
     protected Control[] descriptionElements;
     protected Control[] commentListElements;
     protected Control[] cloneIDElements;
@@ -127,12 +126,12 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
      * 
      * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
      *      createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
-     *      
-     * @generated NOT    
+     * 
+     * @generated NOT
      * 
      */
     public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-    	Form form = widgetFactory.createForm(parent);
+        Form form = widgetFactory.createForm(parent);
         view = form.getBody();
         GridLayout layout = new GridLayout();
         layout.numColumns = 3;
@@ -151,7 +150,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     public void createControls(final FormToolkit widgetFactory, Composite view) {
         CompositionSequence cloneMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
         CompositionStep propertiesStep = cloneMediatorStep.addStep(EsbViewsRepository.CloneMediator.Properties.class);
-        // Start of user code 
+        // Start of user code
         propertiesStep.addStep(EsbViewsRepository.CloneMediator.Properties.commentsList);
         propertiesStep.addStep(EsbViewsRepository.CloneMediator.Properties.reverse);
         propertiesStep.addStep(EsbViewsRepository.CloneMediator.Properties.cloneID);
@@ -282,7 +281,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         Control itemHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(
                 EsbViewsRepository.CloneMediator.Properties.description, EsbViewsRepository.FORM_KIND), null); // $NON-NLS-1$
         // Start of user code for createDescriptionText
-        descriptionElements = new Control [] {itemLabel, description, itemHelp};
+        descriptionElements = new Control[] { itemLabel, description, itemHelp };
         // End of user code
         return parent;
     }
@@ -291,7 +290,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
      * @generated NOT
      */
     protected Composite createCommentsListMultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
-        Control [] previousControls = propertiesGroup.getChildren();
+        Control[] previousControls = propertiesGroup.getChildren();
         commentsList = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
         GridData commentsListData = new GridData(GridData.FILL_HORIZONTAL);
         commentsListData.horizontalSpan = 2;
@@ -314,8 +313,8 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
              */
             public void widgetSelected(SelectionEvent e) {
                 EEFFeatureEditorDialog dialog = new EEFFeatureEditorDialog(commentsList.getShell(), "CloneMediator", //$NON-NLS-1$
-                        new AdapterFactoryLabelProvider(adapterFactory), commentsListList, EsbPackage.eINSTANCE.getEsbElement_CommentsList().getEType(), null, false,
-                        true, null, null);
+                        new AdapterFactoryLabelProvider(adapterFactory), commentsListList,
+                        EsbPackage.eINSTANCE.getEsbElement_CommentsList().getEType(), null, false, true, null, null);
                 if (dialog.open() == Window.OK) {
                     commentsListList = dialog.getResult();
                     if (commentsListList == null) {
@@ -333,11 +332,12 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         EditingUtils.setID(editCommentsList, EsbViewsRepository.CloneMediator.Properties.commentsList);
         EditingUtils.setEEFtype(editCommentsList, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
         // Start of user code for createCommentsListMultiValuedEditor
-        Control [] newControls = propertiesGroup.getChildren();
+        Control[] newControls = propertiesGroup.getChildren();
         commentListElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
         // End of user code
         return parent;
     }
+
     /**
      * @generated NOT
      */
@@ -369,10 +369,11 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(
                 EsbViewsRepository.CloneMediator.Properties.reverse, EsbViewsRepository.FORM_KIND), null); // $NON-NLS-1$
         // Start of user code for createReverseCheckbox
-        
+
         // End of user code
         return parent;
     }
+
     /**
      * @generated NOT
      */
@@ -438,12 +439,12 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         Control itemHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(
                 EsbViewsRepository.CloneMediator.Properties.cloneID, EsbViewsRepository.FORM_KIND), null); // $NON-NLS-1$
         // Start of user code for createCloneIDText
-        cloneIDElements = new Control[] {itemLabel, cloneID, itemHelp};
-        
+        cloneIDElements = new Control[] { itemLabel, cloneID, itemHelp };
+
         // End of user code
         return parent;
     }
-    
+
     /**
      * @generated NOT
      */
@@ -480,10 +481,11 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
                         EsbViewsRepository.CloneMediator.Properties.sequentialMediation, EsbViewsRepository.FORM_KIND),
                 null); // $NON-NLS-1$
         // Start of user code for createSequentialMediationCheckbox
-        sequencialMediationElements = new Control [] {sequentialMediation, itemHelp};
+        sequencialMediationElements = new Control[] { sequentialMediation, itemHelp };
         // End of user code
         return parent;
     }
+
     /**
      * @generated NOT
      */
@@ -514,10 +516,12 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         continueParent.setLayoutData(continueParentData);
         EditingUtils.setID(continueParent, EsbViewsRepository.CloneMediator.Properties.continueParent);
         EditingUtils.setEEFtype(continueParent, "eef::Checkbox"); //$NON-NLS-1$
-        Control continueHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(
-                EsbViewsRepository.CloneMediator.Properties.continueParent, EsbViewsRepository.FORM_KIND), null); // $NON-NLS-1$
+        Control continueHelp = FormUtils.createHelpButton(widgetFactory, parent,
+                propertiesEditionComponent.getHelpContent(EsbViewsRepository.CloneMediator.Properties.continueParent,
+                        EsbViewsRepository.FORM_KIND),
+                null); // $NON-NLS-1$
         // Start of user code for createContinueParentCheckbox
-        continueParentElements = new Control [] {continueParent,continueHelp};
+        continueParentElements = new Control[] { continueParent, continueHelp };
         // End of user code
         return parent;
     }
@@ -607,44 +611,42 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         Control[] previousControls = propertiesGroup.getChildren();
         Label itemLabel = createDescription(parent, EsbViewsRepository.CloneMediator.Properties.targetsOutputConnector,
                 EsbMessages.CloneMediatorPropertiesEditionPart_TargetsOutputConnectorLabel);
-        this.targetsOutputConnector = new ReferencesTable(
-                itemLabel.getText(),
-                new ReferencesTableListener() {
-                    public void handleAdd() {
-                        propertiesEditionComponent.firePropertiesChanged(
-                                new PropertiesEditionEvent(CloneMediatorPropertiesEditionPartForm.this,
-                                        EsbViewsRepository.CloneMediator.Properties.targetsOutputConnector,
-                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
-                        targetsOutputConnector.refresh();
-                    }
+        this.targetsOutputConnector = new ReferencesTable(itemLabel.getText(), new ReferencesTableListener() {
+            public void handleAdd() {
+                propertiesEditionComponent
+                        .firePropertiesChanged(new PropertiesEditionEvent(CloneMediatorPropertiesEditionPartForm.this,
+                                EsbViewsRepository.CloneMediator.Properties.targetsOutputConnector,
+                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+                targetsOutputConnector.refresh();
+            }
 
-                    public void handleEdit(EObject element) {
-                        propertiesEditionComponent.firePropertiesChanged(
-                                new PropertiesEditionEvent(CloneMediatorPropertiesEditionPartForm.this,
-                                        EsbViewsRepository.CloneMediator.Properties.targetsOutputConnector,
-                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
-                        targetsOutputConnector.refresh();
-                    }
+            public void handleEdit(EObject element) {
+                propertiesEditionComponent
+                        .firePropertiesChanged(new PropertiesEditionEvent(CloneMediatorPropertiesEditionPartForm.this,
+                                EsbViewsRepository.CloneMediator.Properties.targetsOutputConnector,
+                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+                targetsOutputConnector.refresh();
+            }
 
-                    public void handleMove(EObject element, int oldIndex, int newIndex) {
-                        propertiesEditionComponent.firePropertiesChanged(
-                                new PropertiesEditionEvent(CloneMediatorPropertiesEditionPartForm.this,
-                                        EsbViewsRepository.CloneMediator.Properties.targetsOutputConnector,
-                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-                        targetsOutputConnector.refresh();
-                    }
+            public void handleMove(EObject element, int oldIndex, int newIndex) {
+                propertiesEditionComponent
+                        .firePropertiesChanged(new PropertiesEditionEvent(CloneMediatorPropertiesEditionPartForm.this,
+                                EsbViewsRepository.CloneMediator.Properties.targetsOutputConnector,
+                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+                targetsOutputConnector.refresh();
+            }
 
-                    public void handleRemove(EObject element) {
-                        propertiesEditionComponent.firePropertiesChanged(
-                                new PropertiesEditionEvent(CloneMediatorPropertiesEditionPartForm.this,
-                                        EsbViewsRepository.CloneMediator.Properties.targetsOutputConnector,
-                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-                        targetsOutputConnector.refresh();
-                    }
+            public void handleRemove(EObject element) {
+                propertiesEditionComponent
+                        .firePropertiesChanged(new PropertiesEditionEvent(CloneMediatorPropertiesEditionPartForm.this,
+                                EsbViewsRepository.CloneMediator.Properties.targetsOutputConnector,
+                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+                targetsOutputConnector.refresh();
+            }
 
-                    public void navigateTo(EObject element) {
-                    }
-                });
+            public void navigateTo(EObject element) {
+            }
+        });
         for (ViewerFilter filter : this.targetsOutputConnectorFilters) {
             this.targetsOutputConnector.addFilter(filter);
         }
@@ -1064,7 +1066,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 
     public void validate() {
         EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
-        epv.clearElements(new Composite[] {propertiesGroup});
+        epv.clearElements(new Composite[] { propertiesGroup });
         epv.showEntry(descriptionElements, false);
         epv.showEntry(cloneIDElements, false);
         epv.showEntry(sequencialMediationElements, false);

@@ -21,16 +21,17 @@ import org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediatorOutputConne
 public class JsonTransformMediatorOutputConnectorCreateCommand extends EditElementCommand {
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public JsonTransformMediatorOutputConnectorCreateCommand(CreateElementRequest req) {
         super(req.getLabel(), null, req);
     }
 
     /**
-    * FIXME: replace with setElementToEdit()
-    * @generated
-    */
+     * FIXME: replace with setElementToEdit()
+     * 
+     * @generated
+     */
     protected EObject getElementToEdit() {
         EObject container = ((CreateElementRequest) getRequest()).getContainer();
         if (container instanceof View) {
@@ -40,8 +41,8 @@ public class JsonTransformMediatorOutputConnectorCreateCommand extends EditEleme
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public boolean canExecute() {
         JsonTransformMediator container = (JsonTransformMediator) getElementToEdit();
         if (container.getOutputConnector() != null) {
@@ -52,8 +53,8 @@ public class JsonTransformMediatorOutputConnectorCreateCommand extends EditEleme
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
         JsonTransformMediatorOutputConnector newElement = EsbFactory.eINSTANCE
                 .createJsonTransformMediatorOutputConnector();
@@ -68,8 +69,8 @@ public class JsonTransformMediatorOutputConnectorCreateCommand extends EditEleme
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     protected void doConfigure(JsonTransformMediatorOutputConnector newElement, IProgressMonitor monitor,
             IAdaptable info) throws ExecutionException {
         IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();

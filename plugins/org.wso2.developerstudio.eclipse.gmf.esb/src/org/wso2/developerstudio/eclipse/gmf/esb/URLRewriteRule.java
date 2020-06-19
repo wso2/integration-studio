@@ -17,8 +17,10 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.URLRewriteRule#getUrlRewriteRuleCondition <em>Url Rewrite Rule Condition</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.URLRewriteRule#getRewriteRuleAction <em>Rewrite Rule Action</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.URLRewriteRule#getUrlRewriteRuleCondition <em>Url Rewrite Rule
+ * Condition</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.URLRewriteRule#getRewriteRuleAction <em>Rewrite Rule
+ * Action</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getURLRewriteRule()
@@ -34,6 +36,7 @@ public interface URLRewriteRule extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Url Rewrite Rule Condition</em>' containment reference.
      * @see #setUrlRewriteRuleCondition(EvaluatorExpressionProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getURLRewriteRule_UrlRewriteRuleCondition()
@@ -43,9 +46,11 @@ public interface URLRewriteRule extends EsbNode {
     EvaluatorExpressionProperty getUrlRewriteRuleCondition();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.URLRewriteRule#getUrlRewriteRuleCondition <em>Url Rewrite Rule Condition</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.URLRewriteRule#getUrlRewriteRuleCondition
+     * <em>Url Rewrite Rule Condition</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Url Rewrite Rule Condition</em>' containment reference.
      * @see #getUrlRewriteRuleCondition()
      * @generated
@@ -61,6 +66,7 @@ public interface URLRewriteRule extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Rewrite Rule Action</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getURLRewriteRule_RewriteRuleAction()
      * @model containment="true"

@@ -86,8 +86,8 @@ public class CloneMediatorTransformer extends AbstractEsbNodeTransformer {
         }
     }
 
-    public static org.apache.synapse.mediators.eip.splitter.CloneMediator createCloneMediator(TransformationInfo information,
-            EsbNode subject) throws TransformerException, JaxenException {
+    public static org.apache.synapse.mediators.eip.splitter.CloneMediator createCloneMediator(
+            TransformationInfo information, EsbNode subject) throws TransformerException, JaxenException {
         /*
          * Check subject.
          */
@@ -124,9 +124,9 @@ public class CloneMediatorTransformer extends AbstractEsbNodeTransformer {
                     target.setToAddress(null);
                 }
 
-                if (visualTarget.getSequenceType().equals(TargetSequenceType.ANONYMOUS) 
-                		&& visualClone.getTargetsOutputConnector().size() -1 >= i) { // handle if target sequence
-                                                                                           // type anonymous.
+                if (visualTarget.getSequenceType().equals(TargetSequenceType.ANONYMOUS)
+                        && visualClone.getTargetsOutputConnector().size() - 1 >= i) { // handle if target sequence
+                                                                                      // type anonymous.
 
                     CloneMediatorTargetOutputConnector outputConnector = visualClone.getTargetsOutputConnector().get(i);
                     SequenceMediator targetSequence = new SequenceMediator();
@@ -152,8 +152,8 @@ public class CloneMediatorTransformer extends AbstractEsbNodeTransformer {
                     target.setSequenceRef(visualTarget.getSequenceKey().getKeyValue());
                 }
 
-                if (visualTarget.getEndpointType().equals(TargetEndpointType.ANONYMOUS) 
-                		&& visualClone.getTargetsOutputConnector().size() -1 >= i) {
+                if (visualTarget.getEndpointType().equals(TargetEndpointType.ANONYMOUS)
+                        && visualClone.getTargetsOutputConnector().size() - 1 >= i) {
 
                     EObject endpoint = null;
                     CloneMediatorTargetOutputConnector outputConnector = visualClone.getTargetsOutputConnector().get(i);

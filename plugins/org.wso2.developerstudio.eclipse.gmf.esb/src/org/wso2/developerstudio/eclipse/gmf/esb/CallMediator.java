@@ -26,15 +26,18 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getEndpoint <em>Endpoint</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getEndpointOutputConnector <em>Endpoint Output Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getMediatorFlow <em>Mediator Flow</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getEndpointType <em>Endpoint Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#isEnableBlockingCalls <em>Enable Blocking Calls</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getEndpointRegistrykey <em>Endpoint Registrykey</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getEndpointXpath <em>Endpoint Xpath</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getInputConnector <em>Input Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getOutputConnector <em>Output Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getEndpoint <em>Endpoint</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getEndpointOutputConnector <em>Endpoint Output
+ * Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getMediatorFlow <em>Mediator Flow</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getEndpointType <em>Endpoint Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#isEnableBlockingCalls <em>Enable Blocking
+ * Calls</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getEndpointRegistrykey <em>Endpoint
+ * Registrykey</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getEndpointXpath <em>Endpoint Xpath</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCallMediator()
@@ -50,6 +53,7 @@ public interface CallMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(CallMediatorInputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCallMediator_InputConnector()
@@ -59,9 +63,11 @@ public interface CallMediator extends Mediator {
     CallMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getInputConnector <em>Input
+     * Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
      * @see #getInputConnector()
      * @generated
@@ -76,6 +82,7 @@ public interface CallMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(CallMediatorOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCallMediator_OutputConnector()
@@ -85,9 +92,11 @@ public interface CallMediator extends Mediator {
     CallMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getOutputConnector <em>Output
+     * Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
      * @see #getOutputConnector()
      * @generated
@@ -103,6 +112,7 @@ public interface CallMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Endpoint</em>' reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCallMediator_Endpoint()
      * @model
@@ -118,6 +128,7 @@ public interface CallMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Endpoint Output Connector</em>' containment reference.
      * @see #setEndpointOutputConnector(CallMediatorEndpointOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCallMediator_EndpointOutputConnector()
@@ -127,9 +138,11 @@ public interface CallMediator extends Mediator {
     CallMediatorEndpointOutputConnector getEndpointOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getEndpointOutputConnector <em>Endpoint Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getEndpointOutputConnector
+     * <em>Endpoint Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Endpoint Output Connector</em>' containment reference.
      * @see #getEndpointOutputConnector()
      * @generated
@@ -144,6 +157,7 @@ public interface CallMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Mediator Flow</em>' containment reference.
      * @see #setMediatorFlow(MediatorFlow)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCallMediator_MediatorFlow()
@@ -153,9 +167,11 @@ public interface CallMediator extends Mediator {
     MediatorFlow getMediatorFlow();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getMediatorFlow <em>Mediator Flow</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getMediatorFlow <em>Mediator
+     * Flow</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Mediator Flow</em>' containment reference.
      * @see #getMediatorFlow()
      * @generated
@@ -171,6 +187,7 @@ public interface CallMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Endpoint Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.CallMediatorEndpointType
      * @see #setEndpointType(CallMediatorEndpointType)
@@ -181,9 +198,11 @@ public interface CallMediator extends Mediator {
     CallMediatorEndpointType getEndpointType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getEndpointType <em>Endpoint Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getEndpointType <em>Endpoint
+     * Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Endpoint Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.CallMediatorEndpointType
      * @see #getEndpointType()
@@ -200,6 +219,7 @@ public interface CallMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Enable Blocking Calls</em>' attribute.
      * @see #setEnableBlockingCalls(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCallMediator_EnableBlockingCalls()
@@ -209,9 +229,11 @@ public interface CallMediator extends Mediator {
     boolean isEnableBlockingCalls();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#isEnableBlockingCalls <em>Enable Blocking Calls</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#isEnableBlockingCalls
+     * <em>Enable Blocking Calls</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Enable Blocking Calls</em>' attribute.
      * @see #isEnableBlockingCalls()
      * @generated
@@ -226,6 +248,7 @@ public interface CallMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Endpoint Registrykey</em>' containment reference.
      * @see #setEndpointRegistrykey(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCallMediator_EndpointRegistrykey()
@@ -235,9 +258,11 @@ public interface CallMediator extends Mediator {
     RegistryKeyProperty getEndpointRegistrykey();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getEndpointRegistrykey <em>Endpoint Registrykey</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getEndpointRegistrykey
+     * <em>Endpoint Registrykey</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Endpoint Registrykey</em>' containment reference.
      * @see #getEndpointRegistrykey()
      * @generated
@@ -252,6 +277,7 @@ public interface CallMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Endpoint Xpath</em>' containment reference.
      * @see #setEndpointXpath(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCallMediator_EndpointXpath()
@@ -261,9 +287,11 @@ public interface CallMediator extends Mediator {
     NamespacedProperty getEndpointXpath();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getEndpointXpath <em>Endpoint Xpath</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getEndpointXpath <em>Endpoint
+     * Xpath</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Endpoint Xpath</em>' containment reference.
      * @see #getEndpointXpath()
      * @generated

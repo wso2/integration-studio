@@ -41,6 +41,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TemplateParameter;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.TemplateParameter} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class TemplateParameterItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
@@ -49,6 +50,7 @@ public class TemplateParameterItemProvider extends ItemProviderAdapter implement
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public TemplateParameterItemProvider(AdapterFactory adapterFactory) {
@@ -59,6 +61,7 @@ public class TemplateParameterItemProvider extends ItemProviderAdapter implement
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -75,28 +78,24 @@ public class TemplateParameterItemProvider extends ItemProviderAdapter implement
      * This adds a property descriptor for the Name feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_TemplateParameter_name_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_TemplateParameter_name_feature", "_UI_TemplateParameter_type"),
-                 EsbPackage.Literals.TEMPLATE_PARAMETER__NAME,
-                 true,
-                 false,
-                 false,
-                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                 null,
-                 null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                        getResourceLocator(), getString("_UI_TemplateParameter_name_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_TemplateParameter_name_feature",
+                                "_UI_TemplateParameter_type"),
+                        EsbPackage.Literals.TEMPLATE_PARAMETER__NAME, true, false, false,
+                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This returns TemplateParameter.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -108,14 +107,14 @@ public class TemplateParameterItemProvider extends ItemProviderAdapter implement
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((TemplateParameter)object).getName();
-        return label == null || label.length() == 0 ?
-            getString("_UI_TemplateParameter_type") :
-            getString("_UI_TemplateParameter_type") + " " + label;
+        String label = ((TemplateParameter) object).getName();
+        return label == null || label.length() == 0 ? getString("_UI_TemplateParameter_type")
+                : getString("_UI_TemplateParameter_type") + " " + label;
     }
 
     /**
@@ -123,6 +122,7 @@ public class TemplateParameterItemProvider extends ItemProviderAdapter implement
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -130,9 +130,9 @@ public class TemplateParameterItemProvider extends ItemProviderAdapter implement
         updateChildren(notification);
 
         switch (notification.getFeatureID(TemplateParameter.class)) {
-            case EsbPackage.TEMPLATE_PARAMETER__NAME:
-                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-                return;
+        case EsbPackage.TEMPLATE_PARAMETER__NAME:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+            return;
         }
         super.notifyChanged(notification);
     }
@@ -142,6 +142,7 @@ public class TemplateParameterItemProvider extends ItemProviderAdapter implement
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -153,6 +154,7 @@ public class TemplateParameterItemProvider extends ItemProviderAdapter implement
      * Return the resource locator for this item provider's resources.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

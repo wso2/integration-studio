@@ -31,6 +31,7 @@ public class HTTPEndPointOutputConnectorImpl extends OutputConnectorImpl impleme
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected HTTPEndPointOutputConnectorImpl() {
@@ -40,6 +41,7 @@ public class HTTPEndPointOutputConnectorImpl extends OutputConnectorImpl impleme
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

@@ -26,6 +26,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.EsbLink} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class EsbLinkItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
@@ -34,6 +35,7 @@ public class EsbLinkItemProvider extends ItemProviderAdapter implements IEditing
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public EsbLinkItemProvider(AdapterFactory adapterFactory) {
@@ -63,28 +65,23 @@ public class EsbLinkItemProvider extends ItemProviderAdapter implements IEditing
      * This adds a property descriptor for the Target feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addTargetPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_EsbLink_target_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_EsbLink_target_feature", "_UI_EsbLink_type"),
-                 EsbPackage.Literals.ESB_LINK__TARGET,
-                 true,
-                 false,
-                 true,
-                 null,
-                 null,
-                 null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                        getResourceLocator(), getString("_UI_EsbLink_target_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_EsbLink_target_feature",
+                                "_UI_EsbLink_type"),
+                        EsbPackage.Literals.ESB_LINK__TARGET, true, false, true, null, null, null));
     }
 
     /**
      * This returns EsbLink.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -97,6 +94,7 @@ public class EsbLinkItemProvider extends ItemProviderAdapter implements IEditing
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -110,6 +108,7 @@ public class EsbLinkItemProvider extends ItemProviderAdapter implements IEditing
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -124,6 +123,7 @@ public class EsbLinkItemProvider extends ItemProviderAdapter implements IEditing
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -136,6 +136,7 @@ public class EsbLinkItemProvider extends ItemProviderAdapter implements IEditing
      * Return the resource locator for this item provider's resources.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 

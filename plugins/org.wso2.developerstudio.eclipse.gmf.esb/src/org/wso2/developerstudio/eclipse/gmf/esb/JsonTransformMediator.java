@@ -26,10 +26,13 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator#getJsonTransformProperties <em>Json Transform Properties</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator#getSchema <em>Schema</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator#getInputConnector <em>Input
+ * Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator#getOutputConnector <em>Output
+ * Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator#getJsonTransformProperties <em>Json
+ * Transform Properties</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator#getSchema <em>Schema</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getJsonTransformMediator()
@@ -45,6 +48,7 @@ public interface JsonTransformMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(JsonTransformMediatorInputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getJsonTransformMediator_InputConnector()
@@ -54,9 +58,11 @@ public interface JsonTransformMediator extends Mediator {
     JsonTransformMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator#getInputConnector
+     * <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
      * @see #getInputConnector()
      * @generated
@@ -71,6 +77,7 @@ public interface JsonTransformMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(JsonTransformMediatorOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getJsonTransformMediator_OutputConnector()
@@ -80,9 +87,11 @@ public interface JsonTransformMediator extends Mediator {
     JsonTransformMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator#getOutputConnector
+     * <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
      * @see #getOutputConnector()
      * @generated
@@ -98,6 +107,7 @@ public interface JsonTransformMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Json Transform Properties</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getJsonTransformMediator_JsonTransformProperties()
      * @model containment="true"
@@ -113,6 +123,7 @@ public interface JsonTransformMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Schema</em>' containment reference.
      * @see #setSchema(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getJsonTransformMediator_Schema()
@@ -122,9 +133,11 @@ public interface JsonTransformMediator extends Mediator {
     RegistryKeyProperty getSchema();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator#getSchema <em>Schema</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediator#getSchema
+     * <em>Schema</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Schema</em>' containment reference.
      * @see #getSchema()
      * @generated

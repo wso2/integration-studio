@@ -169,17 +169,17 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
      * @param allowDrop
      *            true if, host is acceptable area for a certain node.
      */
-	private void showFeedBackFigure(boolean allowDrop) {
-		int FEEDBACK_IMAGE_OFFSET = 15;
-		IFigure feedbackFigure = getFeedbackFigure(allowDrop);
-		Control ctrl = getHost().getViewer().getControl();
-		org.eclipse.swt.graphics.Point cursorPoint = getRelativeMousePointer(ctrl);
-		int x = cursorPoint.x + FEEDBACK_IMAGE_OFFSET;
-		int y = cursorPoint.y - FEEDBACK_IMAGE_OFFSET;
+    private void showFeedBackFigure(boolean allowDrop) {
+        int FEEDBACK_IMAGE_OFFSET = 15;
+        IFigure feedbackFigure = getFeedbackFigure(allowDrop);
+        Control ctrl = getHost().getViewer().getControl();
+        org.eclipse.swt.graphics.Point cursorPoint = getRelativeMousePointer(ctrl);
+        int x = cursorPoint.x + FEEDBACK_IMAGE_OFFSET;
+        int y = cursorPoint.y - FEEDBACK_IMAGE_OFFSET;
 
-		feedbackFigure.setBounds(new Rectangle(x, y, feedbackImageGreen.getBounds().width,
-				feedbackImageGreen.getBounds().height));
-	}
+        feedbackFigure.setBounds(
+                new Rectangle(x, y, feedbackImageGreen.getBounds().width, feedbackImageGreen.getBounds().height));
+    }
 
     /**
      * This will update the 'currentFigureLocation' variable to the given EditPart
@@ -189,30 +189,30 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
      * @param childEditPart
      *            EditPart that contains the canvas information.
      */
-	private void updateCurrentStatesForConnectors(EditPart childEditPart) {
+    private void updateCurrentStatesForConnectors(EditPart childEditPart) {
 
-		int offSetX = 0;
-		int offSetY = 0;
+        int offSetX = 0;
+        int offSetY = 0;
 
-		// MediatorFlowMediatorFlowCompartmentEditPart logic is written to use relative
-		// coordinates for calculations
-		// So, the offset values are needed for mimic the locaion in the drag and drop
-		// policy
-		if (childEditPart instanceof MediatorFlowMediatorFlowCompartmentEditPart) {
-			offSetX = ((MediatorFlowMediatorFlowCompartmentEditPart) childEditPart).getBorderedNodeFigure()
-					.getLocation().x;
-			offSetY = ((MediatorFlowMediatorFlowCompartmentEditPart) childEditPart).getBorderedNodeFigure()
-					.getLocation().y;
-		}
-		EsbMultiPageEditor esbMultiPageEditor = (EsbMultiPageEditor) EditorUtils.getActiveEditor();
-		double zoom = esbMultiPageEditor.getZoom();
-		Control ctrl = getHost().getViewer().getControl();
-		Point cursorPoint = getRelativeMousePointer(ctrl);
-		int x = (int) ((cursorPoint.x - (offSetX * zoom)) / zoom);
-		int y = (int) ((cursorPoint.y - (offSetY * zoom)) / zoom);
+        // MediatorFlowMediatorFlowCompartmentEditPart logic is written to use relative
+        // coordinates for calculations
+        // So, the offset values are needed for mimic the locaion in the drag and drop
+        // policy
+        if (childEditPart instanceof MediatorFlowMediatorFlowCompartmentEditPart) {
+            offSetX = ((MediatorFlowMediatorFlowCompartmentEditPart) childEditPart).getBorderedNodeFigure()
+                    .getLocation().x;
+            offSetY = ((MediatorFlowMediatorFlowCompartmentEditPart) childEditPart).getBorderedNodeFigure()
+                    .getLocation().y;
+        }
+        EsbMultiPageEditor esbMultiPageEditor = (EsbMultiPageEditor) EditorUtils.getActiveEditor();
+        double zoom = esbMultiPageEditor.getZoom();
+        Control ctrl = getHost().getViewer().getControl();
+        Point cursorPoint = getRelativeMousePointer(ctrl);
+        int x = (int) ((cursorPoint.x - (offSetX * zoom)) / zoom);
+        int y = (int) ((cursorPoint.y - (offSetY * zoom)) / zoom);
 
-		currentFigureLocation = new Point(x, y);
-	}
+        currentFigureLocation = new Point(x, y);
+    }
 
     /**
      * This will update the 'currentFigureLocation' variable to the given EditPart
@@ -222,30 +222,30 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
      * @param childEditPart
      *            EditPart that contains the canvas information.
      */
-	private void updateCurrentStatesForLinks(EditPart childEditPart) {
-		EsbMultiPageEditor esbMultiPageEditor = (EsbMultiPageEditor) EditorUtils.getActiveEditor();
-		double zoom = esbMultiPageEditor.getZoom();
-		Control ctrl = getHost().getViewer().getControl();
-		Point cursorPoint = getRelativeMousePointer(ctrl);
-		currentFigureLocation = new Point((int) (cursorPoint.x / zoom), (int) (cursorPoint.y / zoom));
-	}
+    private void updateCurrentStatesForLinks(EditPart childEditPart) {
+        EsbMultiPageEditor esbMultiPageEditor = (EsbMultiPageEditor) EditorUtils.getActiveEditor();
+        double zoom = esbMultiPageEditor.getZoom();
+        Control ctrl = getHost().getViewer().getControl();
+        Point cursorPoint = getRelativeMousePointer(ctrl);
+        currentFigureLocation = new Point((int) (cursorPoint.x / zoom), (int) (cursorPoint.y / zoom));
+    }
 
-	/**
-	 * This will update get the mouse cursor location relative to the canvas
-	 * 
-	 * @param ctrl
-	 *            EditPart that contains the canvas information.
-	 * @return The cursor pointer location
-	 */
-	public static Point getRelativeMousePointer(Control ctrl) {
-		FigureCanvas canvas = (FigureCanvas) ctrl;
-		Display display = Display.getDefault();
-		Point point = ctrl.toControl(display.getCursorLocation());
-		org.eclipse.draw2d.geometry.Point location = canvas.getViewport().getViewLocation();
-		point = new Point(point.x + location.x , point.y + location.y );
-		return point;
-	}
-	
+    /**
+     * This will update get the mouse cursor location relative to the canvas
+     * 
+     * @param ctrl
+     *            EditPart that contains the canvas information.
+     * @return The cursor pointer location
+     */
+    public static Point getRelativeMousePointer(Control ctrl) {
+        FigureCanvas canvas = (FigureCanvas) ctrl;
+        Display display = Display.getDefault();
+        Point point = ctrl.toControl(display.getCursorLocation());
+        org.eclipse.draw2d.geometry.Point location = canvas.getViewport().getViewLocation();
+        point = new Point(point.x + location.x, point.y + location.y);
+        return point;
+    }
+
     /**
      * This will update the 'connectorFigureLocation' variable to the EditPart's
      * location.
@@ -291,23 +291,15 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
                 double xLeft = connectorFigureLocation.x;
                 // If the current connector is East Pointer
                 if ((figure instanceof EastPointerFigure)
-                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom
-                                .AbstractMediatorInputConnectorEditPart.EastPointerFigure)
-                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit
-                                .parts.ProxyOutputConnectorEditPart.EastPointerFigure)
-                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit
-                                .parts.APIResourceOutputConnectorEditPart.EastPointerFigure)
-                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit
-                                .parts.SequencesOutputConnectorEditPart.EastPointerFigure)
-                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit
-                                .parts.SequencesInputConnectorEditPart.EastPointerFigure)
-                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram
-                                .custom.AdditionalOutputConnector.EastPointerFigure)) {
+                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorInputConnectorEditPart.EastPointerFigure)
+                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyOutputConnectorEditPart.EastPointerFigure)
+                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceOutputConnectorEditPart.EastPointerFigure)
+                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SequencesOutputConnectorEditPart.EastPointerFigure)
+                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SequencesInputConnectorEditPart.EastPointerFigure)
+                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AdditionalOutputConnector.EastPointerFigure)) {
 
-                    if ((figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit
-                            .parts.ProxyOutputConnectorEditPart.EastPointerFigure)
-                            || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram
-                                    .edit.parts.APIResourceOutputConnectorEditPart.EastPointerFigure)) {
+                    if ((figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyOutputConnectorEditPart.EastPointerFigure)
+                            || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceOutputConnectorEditPart.EastPointerFigure)) {
                         // WIDH_OF_PROXYCONNECTOR is the x position of a proxy or API Connector . the
                         // inside container is
                         // starting from (0,0) but API and proxy compartments are at different container
@@ -328,20 +320,13 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
 
                     // If the current connector is West Pointer
                 } else if ((figure instanceof WestPointerFigure)
-                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom
-                                .AbstractMediatorInputConnectorEditPart.WestPointerFigure)
-                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts
-                                .ProxyInputConnectorEditPart.WestPointerFigure)
-                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts
-                                .APIResourceInputConnectorEditPart.WestPointerFigure)
-                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom
-                                .AbstractEndpointOutputConnectorEditPart.WestPointerFigure)
-                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts
-                                .ProxyFaultInputConnectorEditPart.WestPointerFigure)
-                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts
-                                .ProxyOutSequenceOutputConnectorEditPart.WestPointerFigure)
-                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts
-                                .APIResourceOutSequenceOutputConnectorEditPart.WestPointerFigure)) {
+                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorInputConnectorEditPart.WestPointerFigure)
+                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyInputConnectorEditPart.WestPointerFigure)
+                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceInputConnectorEditPart.WestPointerFigure)
+                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpointOutputConnectorEditPart.WestPointerFigure)
+                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyFaultInputConnectorEditPart.WestPointerFigure)
+                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyOutSequenceOutputConnectorEditPart.WestPointerFigure)
+                        || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceOutSequenceOutputConnectorEditPart.WestPointerFigure)) {
 
                     WestDistance = Math.abs(xLeft - actualCurrentPosition);
                     if (((connectors.get(i) instanceof AbstractOutputConnectorEditPart)
@@ -399,7 +384,7 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
         }
         // This will restrict adding new connectors if the Y distance(in pixels) is more
         // than 35 (half the height of a mediator)
-        if (yCurrent > MEDIATOR_HEIGHT_IN_PIXELS/2) {
+        if (yCurrent > MEDIATOR_HEIGHT_IN_PIXELS / 2) {
             return false;
         }
 
@@ -507,7 +492,7 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
         // more than 35
         // this will return false as the main calculation logic in the
         // ConnectionCalculator class
-        if (current > ((MEDIATOR_HEIGHT_IN_PIXELS/2) * zoom)) {
+        if (current > ((MEDIATOR_HEIGHT_IN_PIXELS / 2) * zoom)) {
             return false;
         }
 

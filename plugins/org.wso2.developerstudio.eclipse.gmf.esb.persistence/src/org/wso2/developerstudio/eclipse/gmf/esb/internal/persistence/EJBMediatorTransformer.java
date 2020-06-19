@@ -90,10 +90,9 @@ public class EJBMediatorTransformer extends AbstractEsbNodeTransformer {
             NamespacedProperty sessionExpression = mediatorModel.getSessionIdExpression();
             if (sessionExpression != null && sessionExpression.getPropertyValue() != null) {
                 SynapseXPath expression;
-                if(!isForValidation && StringUtils.isEmpty(sessionExpression.getPropertyValue())) {
+                if (!isForValidation && StringUtils.isEmpty(sessionExpression.getPropertyValue())) {
                     expression = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
-                }
-                else {
+                } else {
                     expression = new SynapseXPath(sessionExpression.getPropertyValue());
                 }
                 for (Entry<String, String> entry : sessionExpression.getNamespaces().entrySet()) {

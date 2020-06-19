@@ -32,11 +32,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MediatorSequenceImpl#isAnonymous <em>Anonymous</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MediatorSequenceImpl#getSequenceName <em>Sequence Name</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MediatorSequenceImpl#getMediators <em>Mediators</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MediatorSequenceImpl#getOnError <em>On Error</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MediatorSequenceImpl#getDescription <em>Description</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MediatorSequenceImpl#isAnonymous <em>Anonymous</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MediatorSequenceImpl#getSequenceName <em>Sequence
+ * Name</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MediatorSequenceImpl#getMediators <em>Mediators</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MediatorSequenceImpl#getOnError <em>On Error</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MediatorSequenceImpl#getDescription
+ * <em>Description</em>}</li>
  * </ul>
  *
  * @generated
@@ -46,6 +48,7 @@ public class MediatorSequenceImpl extends EsbNodeImpl implements MediatorSequenc
      * The default value of the '{@link #isAnonymous() <em>Anonymous</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #isAnonymous()
      * @generated
      * @ordered
@@ -56,6 +59,7 @@ public class MediatorSequenceImpl extends EsbNodeImpl implements MediatorSequenc
      * The cached value of the '{@link #isAnonymous() <em>Anonymous</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #isAnonymous()
      * @generated
      * @ordered
@@ -66,6 +70,7 @@ public class MediatorSequenceImpl extends EsbNodeImpl implements MediatorSequenc
      * The default value of the '{@link #getSequenceName() <em>Sequence Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getSequenceName()
      * @generated
      * @ordered
@@ -76,6 +81,7 @@ public class MediatorSequenceImpl extends EsbNodeImpl implements MediatorSequenc
      * The cached value of the '{@link #getSequenceName() <em>Sequence Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getSequenceName()
      * @generated
      * @ordered
@@ -86,6 +92,7 @@ public class MediatorSequenceImpl extends EsbNodeImpl implements MediatorSequenc
      * The cached value of the '{@link #getMediators() <em>Mediators</em>}' reference list.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getMediators()
      * @generated
      * @ordered
@@ -96,6 +103,7 @@ public class MediatorSequenceImpl extends EsbNodeImpl implements MediatorSequenc
      * The cached value of the '{@link #getOnError() <em>On Error</em>}' reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getOnError()
      * @generated
      * @ordered
@@ -106,6 +114,7 @@ public class MediatorSequenceImpl extends EsbNodeImpl implements MediatorSequenc
      * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getDescription()
      * @generated
      * @ordered
@@ -116,6 +125,7 @@ public class MediatorSequenceImpl extends EsbNodeImpl implements MediatorSequenc
      * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getDescription()
      * @generated
      * @ordered
@@ -125,6 +135,7 @@ public class MediatorSequenceImpl extends EsbNodeImpl implements MediatorSequenc
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected MediatorSequenceImpl() {
@@ -134,6 +145,7 @@ public class MediatorSequenceImpl extends EsbNodeImpl implements MediatorSequenc
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -144,6 +156,7 @@ public class MediatorSequenceImpl extends EsbNodeImpl implements MediatorSequenc
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public boolean isAnonymous() {
@@ -153,18 +166,21 @@ public class MediatorSequenceImpl extends EsbNodeImpl implements MediatorSequenc
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setAnonymous(boolean newAnonymous) {
         boolean oldAnonymous = anonymous;
         anonymous = newAnonymous;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MEDIATOR_SEQUENCE__ANONYMOUS, oldAnonymous, anonymous));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MEDIATOR_SEQUENCE__ANONYMOUS, oldAnonymous,
+                    anonymous));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getSequenceName() {
@@ -174,23 +190,27 @@ public class MediatorSequenceImpl extends EsbNodeImpl implements MediatorSequenc
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setSequenceName(String newSequenceName) {
         String oldSequenceName = sequenceName;
         sequenceName = newSequenceName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MEDIATOR_SEQUENCE__SEQUENCE_NAME, oldSequenceName, sequenceName));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MEDIATOR_SEQUENCE__SEQUENCE_NAME,
+                    oldSequenceName, sequenceName));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public EList<Mediator> getMediators() {
         if (mediators == null) {
-            mediators = new EObjectResolvingEList<Mediator>(Mediator.class, this, EsbPackage.MEDIATOR_SEQUENCE__MEDIATORS);
+            mediators = new EObjectResolvingEList<Mediator>(Mediator.class, this,
+                    EsbPackage.MEDIATOR_SEQUENCE__MEDIATORS);
         }
         return mediators;
     }
@@ -198,15 +218,17 @@ public class MediatorSequenceImpl extends EsbNodeImpl implements MediatorSequenc
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public RegistryKeyProperty getOnError() {
         if (onError != null && onError.eIsProxy()) {
-            InternalEObject oldOnError = (InternalEObject)onError;
-            onError = (RegistryKeyProperty)eResolveProxy(oldOnError);
+            InternalEObject oldOnError = (InternalEObject) onError;
+            onError = (RegistryKeyProperty) eResolveProxy(oldOnError);
             if (onError != oldOnError) {
                 if (eNotificationRequired())
-                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, EsbPackage.MEDIATOR_SEQUENCE__ON_ERROR, oldOnError, onError));
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, EsbPackage.MEDIATOR_SEQUENCE__ON_ERROR,
+                            oldOnError, onError));
             }
         }
         return onError;
@@ -215,6 +237,7 @@ public class MediatorSequenceImpl extends EsbNodeImpl implements MediatorSequenc
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public RegistryKeyProperty basicGetOnError() {
@@ -224,18 +247,21 @@ public class MediatorSequenceImpl extends EsbNodeImpl implements MediatorSequenc
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setOnError(RegistryKeyProperty newOnError) {
         RegistryKeyProperty oldOnError = onError;
         onError = newOnError;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MEDIATOR_SEQUENCE__ON_ERROR, oldOnError, onError));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MEDIATOR_SEQUENCE__ON_ERROR, oldOnError,
+                    onError));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getDescription() {
@@ -245,34 +271,38 @@ public class MediatorSequenceImpl extends EsbNodeImpl implements MediatorSequenc
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setDescription(String newDescription) {
         String oldDescription = description;
         description = newDescription;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MEDIATOR_SEQUENCE__DESCRIPTION, oldDescription, description));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MEDIATOR_SEQUENCE__DESCRIPTION,
+                    oldDescription, description));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-            case EsbPackage.MEDIATOR_SEQUENCE__ANONYMOUS:
-                return isAnonymous();
-            case EsbPackage.MEDIATOR_SEQUENCE__SEQUENCE_NAME:
-                return getSequenceName();
-            case EsbPackage.MEDIATOR_SEQUENCE__MEDIATORS:
-                return getMediators();
-            case EsbPackage.MEDIATOR_SEQUENCE__ON_ERROR:
-                if (resolve) return getOnError();
-                return basicGetOnError();
-            case EsbPackage.MEDIATOR_SEQUENCE__DESCRIPTION:
-                return getDescription();
+        case EsbPackage.MEDIATOR_SEQUENCE__ANONYMOUS:
+            return isAnonymous();
+        case EsbPackage.MEDIATOR_SEQUENCE__SEQUENCE_NAME:
+            return getSequenceName();
+        case EsbPackage.MEDIATOR_SEQUENCE__MEDIATORS:
+            return getMediators();
+        case EsbPackage.MEDIATOR_SEQUENCE__ON_ERROR:
+            if (resolve)
+                return getOnError();
+            return basicGetOnError();
+        case EsbPackage.MEDIATOR_SEQUENCE__DESCRIPTION:
+            return getDescription();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -280,28 +310,29 @@ public class MediatorSequenceImpl extends EsbNodeImpl implements MediatorSequenc
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-            case EsbPackage.MEDIATOR_SEQUENCE__ANONYMOUS:
-                setAnonymous((Boolean)newValue);
-                return;
-            case EsbPackage.MEDIATOR_SEQUENCE__SEQUENCE_NAME:
-                setSequenceName((String)newValue);
-                return;
-            case EsbPackage.MEDIATOR_SEQUENCE__MEDIATORS:
-                getMediators().clear();
-                getMediators().addAll((Collection<? extends Mediator>)newValue);
-                return;
-            case EsbPackage.MEDIATOR_SEQUENCE__ON_ERROR:
-                setOnError((RegistryKeyProperty)newValue);
-                return;
-            case EsbPackage.MEDIATOR_SEQUENCE__DESCRIPTION:
-                setDescription((String)newValue);
-                return;
+        case EsbPackage.MEDIATOR_SEQUENCE__ANONYMOUS:
+            setAnonymous((Boolean) newValue);
+            return;
+        case EsbPackage.MEDIATOR_SEQUENCE__SEQUENCE_NAME:
+            setSequenceName((String) newValue);
+            return;
+        case EsbPackage.MEDIATOR_SEQUENCE__MEDIATORS:
+            getMediators().clear();
+            getMediators().addAll((Collection<? extends Mediator>) newValue);
+            return;
+        case EsbPackage.MEDIATOR_SEQUENCE__ON_ERROR:
+            setOnError((RegistryKeyProperty) newValue);
+            return;
+        case EsbPackage.MEDIATOR_SEQUENCE__DESCRIPTION:
+            setDescription((String) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -309,26 +340,27 @@ public class MediatorSequenceImpl extends EsbNodeImpl implements MediatorSequenc
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-            case EsbPackage.MEDIATOR_SEQUENCE__ANONYMOUS:
-                setAnonymous(ANONYMOUS_EDEFAULT);
-                return;
-            case EsbPackage.MEDIATOR_SEQUENCE__SEQUENCE_NAME:
-                setSequenceName(SEQUENCE_NAME_EDEFAULT);
-                return;
-            case EsbPackage.MEDIATOR_SEQUENCE__MEDIATORS:
-                getMediators().clear();
-                return;
-            case EsbPackage.MEDIATOR_SEQUENCE__ON_ERROR:
-                setOnError((RegistryKeyProperty)null);
-                return;
-            case EsbPackage.MEDIATOR_SEQUENCE__DESCRIPTION:
-                setDescription(DESCRIPTION_EDEFAULT);
-                return;
+        case EsbPackage.MEDIATOR_SEQUENCE__ANONYMOUS:
+            setAnonymous(ANONYMOUS_EDEFAULT);
+            return;
+        case EsbPackage.MEDIATOR_SEQUENCE__SEQUENCE_NAME:
+            setSequenceName(SEQUENCE_NAME_EDEFAULT);
+            return;
+        case EsbPackage.MEDIATOR_SEQUENCE__MEDIATORS:
+            getMediators().clear();
+            return;
+        case EsbPackage.MEDIATOR_SEQUENCE__ON_ERROR:
+            setOnError((RegistryKeyProperty) null);
+            return;
+        case EsbPackage.MEDIATOR_SEQUENCE__DESCRIPTION:
+            setDescription(DESCRIPTION_EDEFAULT);
+            return;
         }
         super.eUnset(featureID);
     }
@@ -336,21 +368,22 @@ public class MediatorSequenceImpl extends EsbNodeImpl implements MediatorSequenc
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-            case EsbPackage.MEDIATOR_SEQUENCE__ANONYMOUS:
-                return anonymous != ANONYMOUS_EDEFAULT;
-            case EsbPackage.MEDIATOR_SEQUENCE__SEQUENCE_NAME:
-                return SEQUENCE_NAME_EDEFAULT == null ? sequenceName != null : !SEQUENCE_NAME_EDEFAULT.equals(sequenceName);
-            case EsbPackage.MEDIATOR_SEQUENCE__MEDIATORS:
-                return mediators != null && !mediators.isEmpty();
-            case EsbPackage.MEDIATOR_SEQUENCE__ON_ERROR:
-                return onError != null;
-            case EsbPackage.MEDIATOR_SEQUENCE__DESCRIPTION:
-                return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
+        case EsbPackage.MEDIATOR_SEQUENCE__ANONYMOUS:
+            return anonymous != ANONYMOUS_EDEFAULT;
+        case EsbPackage.MEDIATOR_SEQUENCE__SEQUENCE_NAME:
+            return SEQUENCE_NAME_EDEFAULT == null ? sequenceName != null : !SEQUENCE_NAME_EDEFAULT.equals(sequenceName);
+        case EsbPackage.MEDIATOR_SEQUENCE__MEDIATORS:
+            return mediators != null && !mediators.isEmpty();
+        case EsbPackage.MEDIATOR_SEQUENCE__ON_ERROR:
+            return onError != null;
+        case EsbPackage.MEDIATOR_SEQUENCE__DESCRIPTION:
+            return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
         }
         return super.eIsSet(featureID);
     }
@@ -358,11 +391,13 @@ public class MediatorSequenceImpl extends EsbNodeImpl implements MediatorSequenc
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy()) return super.toString();
+        if (eIsProxy())
+            return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (anonymous: ");

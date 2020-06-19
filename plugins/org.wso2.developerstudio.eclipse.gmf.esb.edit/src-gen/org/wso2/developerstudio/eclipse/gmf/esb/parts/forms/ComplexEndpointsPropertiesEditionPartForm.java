@@ -79,553 +79,585 @@ import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
  * 
  * 
  */
-public class ComplexEndpointsPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, ComplexEndpointsPropertiesEditionPart {
+public class ComplexEndpointsPropertiesEditionPartForm extends SectionPropertiesEditingPart
+        implements IFormPropertiesEditionPart, ComplexEndpointsPropertiesEditionPart {
 
-	protected Text description;
-	protected Text commentsList;
-	protected Button editCommentsList;
-	protected EList commentsListList;
-	protected ReferencesTable outputConnector;
-	protected List<ViewerFilter> outputConnectorBusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> outputConnectorFilters = new ArrayList<ViewerFilter>();
-	protected Text name;
+    protected Text description;
+    protected Text commentsList;
+    protected Button editCommentsList;
+    protected EList commentsListList;
+    protected ReferencesTable outputConnector;
+    protected List<ViewerFilter> outputConnectorBusinessFilters = new ArrayList<ViewerFilter>();
+    protected List<ViewerFilter> outputConnectorFilters = new ArrayList<ViewerFilter>();
+    protected Text name;
 
+    /**
+     * For {@link ISection} use only.
+     */
+    public ComplexEndpointsPropertiesEditionPartForm() {
+        super();
+    }
 
+    /**
+     * Default constructor
+     * 
+     * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+     * 
+     */
+    public ComplexEndpointsPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
+        super(editionComponent);
+    }
 
-	/**
-	 * For {@link ISection} use only.
-	 */
-	public ComplexEndpointsPropertiesEditionPartForm() { super(); }
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+     *      createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+     * 
+     */
+    public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
+        ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
+        Form form = scrolledForm.getForm();
+        view = form.getBody();
+        GridLayout layout = new GridLayout();
+        layout.numColumns = 3;
+        view.setLayout(layout);
+        createControls(widgetFactory, view);
+        return scrolledForm;
+    }
 
-	/**
-	 * Default constructor
-	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
-	 */
-	public ComplexEndpointsPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+     *      createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+     * 
+     */
+    public void createControls(final FormToolkit widgetFactory, Composite view) {
+        CompositionSequence complexEndpointsStep = new BindingCompositionSequence(propertiesEditionComponent);
+        CompositionStep propertiesStep = complexEndpointsStep
+                .addStep(EsbViewsRepository.ComplexEndpoints.Properties.class);
+        propertiesStep.addStep(EsbViewsRepository.ComplexEndpoints.Properties.description);
+        propertiesStep.addStep(EsbViewsRepository.ComplexEndpoints.Properties.commentsList);
+        propertiesStep.addStep(EsbViewsRepository.ComplexEndpoints.Properties.outputConnector);
+        propertiesStep.addStep(EsbViewsRepository.ComplexEndpoints.Properties.name);
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
-	 * 
-	 */
-	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
-		view = form.getBody();
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 3;
-		view.setLayout(layout);
-		createControls(widgetFactory, view);
-		return scrolledForm;
-	}
+        composer = new PartComposer(complexEndpointsStep) {
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
-	 * 
-	 */
-	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		CompositionSequence complexEndpointsStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep propertiesStep = complexEndpointsStep.addStep(EsbViewsRepository.ComplexEndpoints.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.ComplexEndpoints.Properties.description);
-		propertiesStep.addStep(EsbViewsRepository.ComplexEndpoints.Properties.commentsList);
-		propertiesStep.addStep(EsbViewsRepository.ComplexEndpoints.Properties.outputConnector);
-		propertiesStep.addStep(EsbViewsRepository.ComplexEndpoints.Properties.name);
-		
-		
-		composer = new PartComposer(complexEndpointsStep) {
+            @Override
+            public Composite addToPart(Composite parent, Object key) {
+                if (key == EsbViewsRepository.ComplexEndpoints.Properties.class) {
+                    return createPropertiesGroup(widgetFactory, parent);
+                }
+                if (key == EsbViewsRepository.ComplexEndpoints.Properties.description) {
+                    return createDescriptionText(widgetFactory, parent);
+                }
+                if (key == EsbViewsRepository.ComplexEndpoints.Properties.commentsList) {
+                    return createCommentsListMultiValuedEditor(widgetFactory, parent);
+                }
+                if (key == EsbViewsRepository.ComplexEndpoints.Properties.outputConnector) {
+                    return createOutputConnectorTableComposition(widgetFactory, parent);
+                }
+                if (key == EsbViewsRepository.ComplexEndpoints.Properties.name) {
+                    return createNameText(widgetFactory, parent);
+                }
+                return parent;
+            }
+        };
+        composer.compose(view);
+    }
 
-			@Override
-			public Composite addToPart(Composite parent, Object key) {
-				if (key == EsbViewsRepository.ComplexEndpoints.Properties.class) {
-					return createPropertiesGroup(widgetFactory, parent);
-				}
-				if (key == EsbViewsRepository.ComplexEndpoints.Properties.description) {
-					return createDescriptionText(widgetFactory, parent);
-				}
-				if (key == EsbViewsRepository.ComplexEndpoints.Properties.commentsList) {
-					return createCommentsListMultiValuedEditor(widgetFactory, parent);
-				}
-				if (key == EsbViewsRepository.ComplexEndpoints.Properties.outputConnector) {
-					return createOutputConnectorTableComposition(widgetFactory, parent);
-				}
-				if (key == EsbViewsRepository.ComplexEndpoints.Properties.name) {
-					return createNameText(widgetFactory, parent);
-				}
-				return parent;
-			}
-		};
-		composer.compose(view);
-	}
-	/**
-	 * 
-	 */
-	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
-		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
-		propertiesSection.setText(EsbMessages.ComplexEndpointsPropertiesEditionPart_PropertiesGroupLabel);
-		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesSectionData.horizontalSpan = 3;
-		propertiesSection.setLayoutData(propertiesSectionData);
-		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
-		GridLayout propertiesGroupLayout = new GridLayout();
-		propertiesGroupLayout.numColumns = 3;
-		propertiesGroup.setLayout(propertiesGroupLayout);
-		propertiesSection.setClient(propertiesGroup);
-		return propertiesGroup;
-	}
+    /**
+     * 
+     */
+    protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
+        Section propertiesSection = widgetFactory.createSection(parent,
+                Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+        propertiesSection.setText(EsbMessages.ComplexEndpointsPropertiesEditionPart_PropertiesGroupLabel);
+        GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
+        propertiesSectionData.horizontalSpan = 3;
+        propertiesSection.setLayoutData(propertiesSectionData);
+        Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
+        GridLayout propertiesGroupLayout = new GridLayout();
+        propertiesGroupLayout.numColumns = 3;
+        propertiesGroup.setLayout(propertiesGroupLayout);
+        propertiesSection.setClient(propertiesGroup);
+        return propertiesGroup;
+    }
 
-	
-	protected Composite createDescriptionText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.ComplexEndpoints.Properties.description, EsbMessages.ComplexEndpointsPropertiesEditionPart_DescriptionLabel);
-		description = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		description.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-		widgetFactory.paintBordersFor(parent);
-		GridData descriptionData = new GridData(GridData.FILL_HORIZONTAL);
-		description.setLayoutData(descriptionData);
-		description.addFocusListener(new FocusAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-							ComplexEndpointsPropertiesEditionPartForm.this,
-							EsbViewsRepository.ComplexEndpoints.Properties.description,
-							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									ComplexEndpointsPropertiesEditionPartForm.this,
-									EsbViewsRepository.ComplexEndpoints.Properties.description,
-									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, description.getText()));
-				}
-			}
+    protected Composite createDescriptionText(FormToolkit widgetFactory, Composite parent) {
+        createDescription(parent, EsbViewsRepository.ComplexEndpoints.Properties.description,
+                EsbMessages.ComplexEndpointsPropertiesEditionPart_DescriptionLabel);
+        description = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+        description.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        widgetFactory.paintBordersFor(parent);
+        GridData descriptionData = new GridData(GridData.FILL_HORIZONTAL);
+        description.setLayoutData(descriptionData);
+        description.addFocusListener(new FocusAdapter() {
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void focusLost(FocusEvent e) {
+                if (propertiesEditionComponent != null) {
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            ComplexEndpointsPropertiesEditionPartForm.this,
+                            EsbViewsRepository.ComplexEndpoints.Properties.description, PropertiesEditionEvent.COMMIT,
+                            PropertiesEditionEvent.SET, null, description.getText()));
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(ComplexEndpointsPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.ComplexEndpoints.Properties.description,
+                                    PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST, null,
+                                    description.getText()));
+                }
+            }
 
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-			 */
-			@Override
-			public void focusGained(FocusEvent e) {
-				if (propertiesEditionComponent != null) {
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									ComplexEndpointsPropertiesEditionPartForm.this,
-									null,
-									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
-									null, null));
-				}
-			}
-		});
-		description.addKeyListener(new KeyAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ComplexEndpointsPropertiesEditionPartForm.this, EsbViewsRepository.ComplexEndpoints.Properties.description, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
-				}
-			}
-		});
-		EditingUtils.setID(description, EsbViewsRepository.ComplexEndpoints.Properties.description);
-		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ComplexEndpoints.Properties.description, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		// Start of user code for createDescriptionText
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+             */
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (propertiesEditionComponent != null) {
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            ComplexEndpointsPropertiesEditionPartForm.this, null, PropertiesEditionEvent.FOCUS_CHANGED,
+                            PropertiesEditionEvent.FOCUS_GAINED, null, null));
+                }
+            }
+        });
+        description.addKeyListener(new KeyAdapter() {
+            /**
+             * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void keyPressed(KeyEvent e) {
+                if (e.character == SWT.CR) {
+                    if (propertiesEditionComponent != null)
+                        propertiesEditionComponent.firePropertiesChanged(
+                                new PropertiesEditionEvent(ComplexEndpointsPropertiesEditionPartForm.this,
+                                        EsbViewsRepository.ComplexEndpoints.Properties.description,
+                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                        description.getText()));
+                }
+            }
+        });
+        EditingUtils.setID(description, EsbViewsRepository.ComplexEndpoints.Properties.description);
+        EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
+        FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(
+                EsbViewsRepository.ComplexEndpoints.Properties.description, EsbViewsRepository.FORM_KIND), null); // $NON-NLS-1$
+        // Start of user code for createDescriptionText
 
-		// End of user code
-		return parent;
-	}
+        // End of user code
+        return parent;
+    }
 
-	/**
-	 * 
-	 */
-	protected Composite createCommentsListMultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
-		commentsList = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
-		GridData commentsListData = new GridData(GridData.FILL_HORIZONTAL);
-		commentsListData.horizontalSpan = 2;
-		commentsList.setLayoutData(commentsListData);
-		EditingUtils.setID(commentsList, EsbViewsRepository.ComplexEndpoints.Properties.commentsList);
-		EditingUtils.setEEFtype(commentsList, "eef::MultiValuedEditor::field"); //$NON-NLS-1$
-		editCommentsList = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.ComplexEndpoints.Properties.commentsList, EsbMessages.ComplexEndpointsPropertiesEditionPart_CommentsListLabel), SWT.NONE);
-		GridData editCommentsListData = new GridData();
-		editCommentsList.setLayoutData(editCommentsListData);
-		editCommentsList.addSelectionListener(new SelectionAdapter() {
+    /**
+     * 
+     */
+    protected Composite createCommentsListMultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
+        commentsList = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
+        GridData commentsListData = new GridData(GridData.FILL_HORIZONTAL);
+        commentsListData.horizontalSpan = 2;
+        commentsList.setLayoutData(commentsListData);
+        EditingUtils.setID(commentsList, EsbViewsRepository.ComplexEndpoints.Properties.commentsList);
+        EditingUtils.setEEFtype(commentsList, "eef::MultiValuedEditor::field"); //$NON-NLS-1$
+        editCommentsList = widgetFactory.createButton(parent,
+                getDescription(EsbViewsRepository.ComplexEndpoints.Properties.commentsList,
+                        EsbMessages.ComplexEndpointsPropertiesEditionPart_CommentsListLabel),
+                SWT.NONE);
+        GridData editCommentsListData = new GridData();
+        editCommentsList.setLayoutData(editCommentsListData);
+        editCommentsList.addSelectionListener(new SelectionAdapter() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 
-			 */
-			public void widgetSelected(SelectionEvent e) {
-				EEFFeatureEditorDialog dialog = new EEFFeatureEditorDialog(
-						commentsList.getShell(), "ComplexEndpoints", new AdapterFactoryLabelProvider(adapterFactory), //$NON-NLS-1$
-						commentsListList, EsbPackage.eINSTANCE.getEsbElement_CommentsList().getEType(), null,
-						false, true, 
-						null, null);
-				if (dialog.open() == Window.OK) {
-					commentsListList = dialog.getResult();
-					if (commentsListList == null) {
-						commentsListList = new BasicEList();
-					}
-					commentsList.setText(commentsListList.toString());
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ComplexEndpointsPropertiesEditionPartForm.this, EsbViewsRepository.ComplexEndpoints.Properties.commentsList, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new BasicEList(commentsListList)));
-					setHasChanged(true);
-				}
-			}
-		});
-		EditingUtils.setID(editCommentsList, EsbViewsRepository.ComplexEndpoints.Properties.commentsList);
-		EditingUtils.setEEFtype(editCommentsList, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
-		// Start of user code for createCommentsListMultiValuedEditor
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+             * 
+             */
+            public void widgetSelected(SelectionEvent e) {
+                EEFFeatureEditorDialog dialog = new EEFFeatureEditorDialog(commentsList.getShell(), "ComplexEndpoints", //$NON-NLS-1$
+                        new AdapterFactoryLabelProvider(adapterFactory), commentsListList, EsbPackage.eINSTANCE.getEsbElement_CommentsList().getEType(), null, false,
+                        true, null, null);
+                if (dialog.open() == Window.OK) {
+                    commentsListList = dialog.getResult();
+                    if (commentsListList == null) {
+                        commentsListList = new BasicEList();
+                    }
+                    commentsList.setText(commentsListList.toString());
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            ComplexEndpointsPropertiesEditionPartForm.this,
+                            EsbViewsRepository.ComplexEndpoints.Properties.commentsList, PropertiesEditionEvent.COMMIT,
+                            PropertiesEditionEvent.SET, null, new BasicEList(commentsListList)));
+                    setHasChanged(true);
+                }
+            }
+        });
+        EditingUtils.setID(editCommentsList, EsbViewsRepository.ComplexEndpoints.Properties.commentsList);
+        EditingUtils.setEEFtype(editCommentsList, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
+        // Start of user code for createCommentsListMultiValuedEditor
 
-		// End of user code
-		return parent;
-	}
+        // End of user code
+        return parent;
+    }
 
-	/**
-	 * @param container
-	 * 
-	 */
-	protected Composite createOutputConnectorTableComposition(FormToolkit widgetFactory, Composite parent) {
-		this.outputConnector = new ReferencesTable(getDescription(EsbViewsRepository.ComplexEndpoints.Properties.outputConnector, EsbMessages.ComplexEndpointsPropertiesEditionPart_OutputConnectorLabel), new ReferencesTableListener() {
-			public void handleAdd() {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ComplexEndpointsPropertiesEditionPartForm.this, EsbViewsRepository.ComplexEndpoints.Properties.outputConnector, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
-				outputConnector.refresh();
-			}
-			public void handleEdit(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ComplexEndpointsPropertiesEditionPartForm.this, EsbViewsRepository.ComplexEndpoints.Properties.outputConnector, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
-				outputConnector.refresh();
-			}
-			public void handleMove(EObject element, int oldIndex, int newIndex) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ComplexEndpointsPropertiesEditionPartForm.this, EsbViewsRepository.ComplexEndpoints.Properties.outputConnector, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-				outputConnector.refresh();
-			}
-			public void handleRemove(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ComplexEndpointsPropertiesEditionPartForm.this, EsbViewsRepository.ComplexEndpoints.Properties.outputConnector, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-				outputConnector.refresh();
-			}
-			public void navigateTo(EObject element) { }
-		});
-		for (ViewerFilter filter : this.outputConnectorFilters) {
-			this.outputConnector.addFilter(filter);
-		}
-		this.outputConnector.setHelpText(propertiesEditionComponent.getHelpContent(EsbViewsRepository.ComplexEndpoints.Properties.outputConnector, EsbViewsRepository.FORM_KIND));
-		this.outputConnector.createControls(parent, widgetFactory);
-		this.outputConnector.addSelectionListener(new SelectionAdapter() {
-			
-			public void widgetSelected(SelectionEvent e) {
-				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ComplexEndpointsPropertiesEditionPartForm.this, EsbViewsRepository.ComplexEndpoints.Properties.outputConnector, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
-				}
-			}
-			
-		});
-		GridData outputConnectorData = new GridData(GridData.FILL_HORIZONTAL);
-		outputConnectorData.horizontalSpan = 3;
-		this.outputConnector.setLayoutData(outputConnectorData);
-		this.outputConnector.setLowerBound(0);
-		this.outputConnector.setUpperBound(-1);
-		outputConnector.setID(EsbViewsRepository.ComplexEndpoints.Properties.outputConnector);
-		outputConnector.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
-		// Start of user code for createOutputConnectorTableComposition
+    /**
+     * @param container
+     * 
+     */
+    protected Composite createOutputConnectorTableComposition(FormToolkit widgetFactory, Composite parent) {
+        this.outputConnector = new ReferencesTable(
+                getDescription(EsbViewsRepository.ComplexEndpoints.Properties.outputConnector,
+                        EsbMessages.ComplexEndpointsPropertiesEditionPart_OutputConnectorLabel),
+                new ReferencesTableListener() {
+                    public void handleAdd() {
+                        propertiesEditionComponent.firePropertiesChanged(
+                                new PropertiesEditionEvent(ComplexEndpointsPropertiesEditionPartForm.this,
+                                        EsbViewsRepository.ComplexEndpoints.Properties.outputConnector,
+                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+                        outputConnector.refresh();
+                    }
 
-		// End of user code
-		return parent;
-	}
+                    public void handleEdit(EObject element) {
+                        propertiesEditionComponent.firePropertiesChanged(
+                                new PropertiesEditionEvent(ComplexEndpointsPropertiesEditionPartForm.this,
+                                        EsbViewsRepository.ComplexEndpoints.Properties.outputConnector,
+                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+                        outputConnector.refresh();
+                    }
 
-	
-	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.ComplexEndpoints.Properties.name, EsbMessages.ComplexEndpointsPropertiesEditionPart_NameLabel);
-		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-		widgetFactory.paintBordersFor(parent);
-		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
-		name.setLayoutData(nameData);
-		name.addFocusListener(new FocusAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-							ComplexEndpointsPropertiesEditionPartForm.this,
-							EsbViewsRepository.ComplexEndpoints.Properties.name,
-							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									ComplexEndpointsPropertiesEditionPartForm.this,
-									EsbViewsRepository.ComplexEndpoints.Properties.name,
-									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, name.getText()));
-				}
-			}
+                    public void handleMove(EObject element, int oldIndex, int newIndex) {
+                        propertiesEditionComponent.firePropertiesChanged(
+                                new PropertiesEditionEvent(ComplexEndpointsPropertiesEditionPartForm.this,
+                                        EsbViewsRepository.ComplexEndpoints.Properties.outputConnector,
+                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+                        outputConnector.refresh();
+                    }
 
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-			 */
-			@Override
-			public void focusGained(FocusEvent e) {
-				if (propertiesEditionComponent != null) {
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									ComplexEndpointsPropertiesEditionPartForm.this,
-									null,
-									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
-									null, null));
-				}
-			}
-		});
-		name.addKeyListener(new KeyAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ComplexEndpointsPropertiesEditionPartForm.this, EsbViewsRepository.ComplexEndpoints.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
-				}
-			}
-		});
-		EditingUtils.setID(name, EsbViewsRepository.ComplexEndpoints.Properties.name);
-		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ComplexEndpoints.Properties.name, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		// Start of user code for createNameText
+                    public void handleRemove(EObject element) {
+                        propertiesEditionComponent.firePropertiesChanged(
+                                new PropertiesEditionEvent(ComplexEndpointsPropertiesEditionPartForm.this,
+                                        EsbViewsRepository.ComplexEndpoints.Properties.outputConnector,
+                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+                        outputConnector.refresh();
+                    }
 
-		// End of user code
-		return parent;
-	}
+                    public void navigateTo(EObject element) {
+                    }
+                });
+        for (ViewerFilter filter : this.outputConnectorFilters) {
+            this.outputConnector.addFilter(filter);
+        }
+        this.outputConnector.setHelpText(propertiesEditionComponent.getHelpContent(
+                EsbViewsRepository.ComplexEndpoints.Properties.outputConnector, EsbViewsRepository.FORM_KIND));
+        this.outputConnector.createControls(parent, widgetFactory);
+        this.outputConnector.addSelectionListener(new SelectionAdapter() {
 
+            public void widgetSelected(SelectionEvent e) {
+                if (e.item != null && e.item.getData() instanceof EObject) {
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(ComplexEndpointsPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.ComplexEndpoints.Properties.outputConnector,
+                                    PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null,
+                                    e.item.getData()));
+                }
+            }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
-	 */
-	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-		
-		// End of user code
-	}
+        });
+        GridData outputConnectorData = new GridData(GridData.FILL_HORIZONTAL);
+        outputConnectorData.horizontalSpan = 3;
+        this.outputConnector.setLayoutData(outputConnectorData);
+        this.outputConnector.setLowerBound(0);
+        this.outputConnector.setUpperBound(-1);
+        outputConnector.setID(EsbViewsRepository.ComplexEndpoints.Properties.outputConnector);
+        outputConnector.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+        // Start of user code for createOutputConnectorTableComposition
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#getDescription()
-	 * 
-	 */
-	public String getDescription() {
-		return description.getText();
-	}
+        // End of user code
+        return parent;
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#setDescription(String newValue)
-	 * 
-	 */
-	public void setDescription(String newValue) {
-		if (newValue != null) {
-			description.setText(newValue);
-		} else {
-			description.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ComplexEndpoints.Properties.description);
-		if (eefElementEditorReadOnlyState && description.isEnabled()) {
-			description.setEnabled(false);
-			description.setToolTipText(EsbMessages.ComplexEndpoints_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !description.isEnabled()) {
-			description.setEnabled(true);
-		}	
-		
-	}
+    protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
+        createDescription(parent, EsbViewsRepository.ComplexEndpoints.Properties.name,
+                EsbMessages.ComplexEndpointsPropertiesEditionPart_NameLabel);
+        name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+        name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        widgetFactory.paintBordersFor(parent);
+        GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
+        name.setLayoutData(nameData);
+        name.addFocusListener(new FocusAdapter() {
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void focusLost(FocusEvent e) {
+                if (propertiesEditionComponent != null) {
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(ComplexEndpointsPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.ComplexEndpoints.Properties.name, PropertiesEditionEvent.COMMIT,
+                                    PropertiesEditionEvent.SET, null, name.getText()));
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            ComplexEndpointsPropertiesEditionPartForm.this,
+                            EsbViewsRepository.ComplexEndpoints.Properties.name, PropertiesEditionEvent.FOCUS_CHANGED,
+                            PropertiesEditionEvent.FOCUS_LOST, null, name.getText()));
+                }
+            }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#getCommentsList()
-	 * 
-	 */
-	public EList getCommentsList() {
-		return commentsListList;
-	}
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+             */
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (propertiesEditionComponent != null) {
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            ComplexEndpointsPropertiesEditionPartForm.this, null, PropertiesEditionEvent.FOCUS_CHANGED,
+                            PropertiesEditionEvent.FOCUS_GAINED, null, null));
+                }
+            }
+        });
+        name.addKeyListener(new KeyAdapter() {
+            /**
+             * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void keyPressed(KeyEvent e) {
+                if (e.character == SWT.CR) {
+                    if (propertiesEditionComponent != null)
+                        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                                ComplexEndpointsPropertiesEditionPartForm.this,
+                                EsbViewsRepository.ComplexEndpoints.Properties.name, PropertiesEditionEvent.COMMIT,
+                                PropertiesEditionEvent.SET, null, name.getText()));
+                }
+            }
+        });
+        EditingUtils.setID(name, EsbViewsRepository.ComplexEndpoints.Properties.name);
+        EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
+        FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(
+                EsbViewsRepository.ComplexEndpoints.Properties.name, EsbViewsRepository.FORM_KIND), null); // $NON-NLS-1$
+        // Start of user code for createNameText
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#setCommentsList(EList newValue)
-	 * 
-	 */
-	public void setCommentsList(EList newValue) {
-		commentsListList = newValue;
-		if (newValue != null) {
-			commentsList.setText(commentsListList.toString());
-		} else {
-			commentsList.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ComplexEndpoints.Properties.commentsList);
-		if (eefElementEditorReadOnlyState && commentsList.isEnabled()) {
-			commentsList.setEnabled(false);
-			commentsList.setToolTipText(EsbMessages.ComplexEndpoints_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !commentsList.isEnabled()) {
-			commentsList.setEnabled(true);
-		}	
-		
-	}
+        // End of user code
+        return parent;
+    }
 
-	public void addToCommentsList(Object newValue) {
-		commentsListList.add(newValue);
-		if (newValue != null) {
-			commentsList.setText(commentsListList.toString());
-		} else {
-			commentsList.setText(""); //$NON-NLS-1$
-		}
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+     * 
+     */
+    public void firePropertiesChanged(IPropertiesEditionEvent event) {
+        // Start of user code for tab synchronization
 
-	public void removeToCommentsList(Object newValue) {
-		commentsListList.remove(newValue);
-		if (newValue != null) {
-			commentsList.setText(commentsListList.toString());
-		} else {
-			commentsList.setText(""); //$NON-NLS-1$
-		}
-	}
+        // End of user code
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#getDescription()
+     * 
+     */
+    public String getDescription() {
+        return description.getText();
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#setDescription(String
+     *      newValue)
+     * 
+     */
+    public void setDescription(String newValue) {
+        if (newValue != null) {
+            description.setText(newValue);
+        } else {
+            description.setText(""); //$NON-NLS-1$
+        }
+        boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ComplexEndpoints.Properties.description);
+        if (eefElementEditorReadOnlyState && description.isEnabled()) {
+            description.setEnabled(false);
+            description.setToolTipText(EsbMessages.ComplexEndpoints_ReadOnly);
+        } else if (!eefElementEditorReadOnlyState && !description.isEnabled()) {
+            description.setEnabled(true);
+        }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#initOutputConnector(EObject current, EReference containingFeature, EReference feature)
-	 */
-	public void initOutputConnector(ReferencesTableSettings settings) {
-		if (current.eResource() != null && current.eResource().getResourceSet() != null)
-			this.resourceSet = current.eResource().getResourceSet();
-		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
-		outputConnector.setContentProvider(contentProvider);
-		outputConnector.setInput(settings);
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ComplexEndpoints.Properties.outputConnector);
-		if (eefElementEditorReadOnlyState && outputConnector.isEnabled()) {
-			outputConnector.setEnabled(false);
-			outputConnector.setToolTipText(EsbMessages.ComplexEndpoints_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !outputConnector.isEnabled()) {
-			outputConnector.setEnabled(true);
-		}	
-		
-	}
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#updateOutputConnector()
-	 * 
-	 */
-	public void updateOutputConnector() {
-	outputConnector.refresh();
-}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#getCommentsList()
+     * 
+     */
+    public EList getCommentsList() {
+        return commentsListList;
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#addFilterOutputConnector(ViewerFilter filter)
-	 * 
-	 */
-	public void addFilterToOutputConnector(ViewerFilter filter) {
-		outputConnectorFilters.add(filter);
-		if (this.outputConnector != null) {
-			this.outputConnector.addFilter(filter);
-		}
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#setCommentsList(EList
+     *      newValue)
+     * 
+     */
+    public void setCommentsList(EList newValue) {
+        commentsListList = newValue;
+        if (newValue != null) {
+            commentsList.setText(commentsListList.toString());
+        } else {
+            commentsList.setText(""); //$NON-NLS-1$
+        }
+        boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ComplexEndpoints.Properties.commentsList);
+        if (eefElementEditorReadOnlyState && commentsList.isEnabled()) {
+            commentsList.setEnabled(false);
+            commentsList.setToolTipText(EsbMessages.ComplexEndpoints_ReadOnly);
+        } else if (!eefElementEditorReadOnlyState && !commentsList.isEnabled()) {
+            commentsList.setEnabled(true);
+        }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#addBusinessFilterOutputConnector(ViewerFilter filter)
-	 * 
-	 */
-	public void addBusinessFilterToOutputConnector(ViewerFilter filter) {
-		outputConnectorBusinessFilters.add(filter);
-	}
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#isContainedInOutputConnectorTable(EObject element)
-	 * 
-	 */
-	public boolean isContainedInOutputConnectorTable(EObject element) {
-		return ((ReferencesTableSettings)outputConnector.getInput()).contains(element);
-	}
+    public void addToCommentsList(Object newValue) {
+        commentsListList.add(newValue);
+        if (newValue != null) {
+            commentsList.setText(commentsListList.toString());
+        } else {
+            commentsList.setText(""); //$NON-NLS-1$
+        }
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#getName()
-	 * 
-	 */
-	public String getName() {
-		return name.getText();
-	}
+    public void removeToCommentsList(Object newValue) {
+        commentsListList.remove(newValue);
+        if (newValue != null) {
+            commentsList.setText(commentsListList.toString());
+        } else {
+            commentsList.setText(""); //$NON-NLS-1$
+        }
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#setName(String newValue)
-	 * 
-	 */
-	public void setName(String newValue) {
-		if (newValue != null) {
-			name.setText(newValue);
-		} else {
-			name.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ComplexEndpoints.Properties.name);
-		if (eefElementEditorReadOnlyState && name.isEnabled()) {
-			name.setEnabled(false);
-			name.setToolTipText(EsbMessages.ComplexEndpoints_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
-			name.setEnabled(true);
-		}	
-		
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#initOutputConnector(EObject
+     *      current, EReference containingFeature, EReference feature)
+     */
+    public void initOutputConnector(ReferencesTableSettings settings) {
+        if (current.eResource() != null && current.eResource().getResourceSet() != null)
+            this.resourceSet = current.eResource().getResourceSet();
+        ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+        outputConnector.setContentProvider(contentProvider);
+        outputConnector.setInput(settings);
+        boolean eefElementEditorReadOnlyState = isReadOnly(
+                EsbViewsRepository.ComplexEndpoints.Properties.outputConnector);
+        if (eefElementEditorReadOnlyState && outputConnector.isEnabled()) {
+            outputConnector.setEnabled(false);
+            outputConnector.setToolTipText(EsbMessages.ComplexEndpoints_ReadOnly);
+        } else if (!eefElementEditorReadOnlyState && !outputConnector.isEnabled()) {
+            outputConnector.setEnabled(true);
+        }
 
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#updateOutputConnector()
+     * 
+     */
+    public void updateOutputConnector() {
+        outputConnector.refresh();
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#addFilterOutputConnector(ViewerFilter
+     *      filter)
+     * 
+     */
+    public void addFilterToOutputConnector(ViewerFilter filter) {
+        outputConnectorFilters.add(filter);
+        if (this.outputConnector != null) {
+            this.outputConnector.addFilter(filter);
+        }
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#addBusinessFilterOutputConnector(ViewerFilter
+     *      filter)
+     * 
+     */
+    public void addBusinessFilterToOutputConnector(ViewerFilter filter) {
+        outputConnectorBusinessFilters.add(filter);
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#isContainedInOutputConnectorTable(EObject
+     *      element)
+     * 
+     */
+    public boolean isContainedInOutputConnectorTable(EObject element) {
+        return ((ReferencesTableSettings) outputConnector.getInput()).contains(element);
+    }
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
-	 */
-	public String getTitle() {
-		return EsbMessages.ComplexEndpoints_Part_Title;
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#getName()
+     * 
+     */
+    public String getName() {
+        return name.getText();
+    }
 
-	// Start of user code additional methods
-	
-	// End of user code
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#setName(String
+     *      newValue)
+     * 
+     */
+    public void setName(String newValue) {
+        if (newValue != null) {
+            name.setText(newValue);
+        } else {
+            name.setText(""); //$NON-NLS-1$
+        }
+        boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ComplexEndpoints.Properties.name);
+        if (eefElementEditorReadOnlyState && name.isEnabled()) {
+            name.setEnabled(false);
+            name.setToolTipText(EsbMessages.ComplexEndpoints_ReadOnly);
+        } else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
+            name.setEnabled(true);
+        }
 
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+     * 
+     */
+    public String getTitle() {
+        return EsbMessages.ComplexEndpoints_Part_Title;
+    }
+
+    // Start of user code additional methods
+
+    // End of user code
 
 }

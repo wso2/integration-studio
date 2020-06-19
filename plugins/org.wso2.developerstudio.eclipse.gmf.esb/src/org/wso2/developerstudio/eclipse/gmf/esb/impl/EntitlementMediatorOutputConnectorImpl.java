@@ -23,6 +23,7 @@ public class EntitlementMediatorOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected EntitlementMediatorOutputConnectorImpl() {
@@ -32,6 +33,7 @@ public class EntitlementMediatorOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 

@@ -32,6 +32,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.AddressEndPoint} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class AddressEndPointItemProvider extends AbstractEndPointItemProvider {
@@ -39,6 +40,7 @@ public class AddressEndPointItemProvider extends AbstractEndPointItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public AddressEndPointItemProvider(AdapterFactory adapterFactory) {
@@ -86,6 +88,7 @@ public class AddressEndPointItemProvider extends AbstractEndPointItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -102,6 +105,7 @@ public class AddressEndPointItemProvider extends AbstractEndPointItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -117,6 +121,7 @@ public class AddressEndPointItemProvider extends AbstractEndPointItemProvider {
      * This returns AddressEndPoint.png.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated NOT
      */
 
@@ -129,15 +134,15 @@ public class AddressEndPointItemProvider extends AbstractEndPointItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((AddressEndPoint)object).getEndPointName();
-        return label == null || label.length() == 0 ?
-            getString("_UI_AddressEndPoint_type") :
-            getString("_UI_AddressEndPoint_type") + " " + label;
+        String label = ((AddressEndPoint) object).getEndPointName();
+        return label == null || label.length() == 0 ? getString("_UI_AddressEndPoint_type")
+                : getString("_UI_AddressEndPoint_type") + " " + label;
     }
 
     /**
@@ -145,6 +150,7 @@ public class AddressEndPointItemProvider extends AbstractEndPointItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -153,13 +159,13 @@ public class AddressEndPointItemProvider extends AbstractEndPointItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(AddressEndPoint.class)) {
-            case EsbPackage.ADDRESS_END_POINT__URI:
-                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-                return;
-            case EsbPackage.ADDRESS_END_POINT__INPUT_CONNECTOR:
-            case EsbPackage.ADDRESS_END_POINT__OUTPUT_CONNECTOR:
-                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-                return;
+        case EsbPackage.ADDRESS_END_POINT__URI:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+            return;
+        case EsbPackage.ADDRESS_END_POINT__INPUT_CONNECTOR:
+        case EsbPackage.ADDRESS_END_POINT__OUTPUT_CONNECTOR:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+            return;
         }
         super.notifyChanged(notification);
     }
@@ -169,6 +175,7 @@ public class AddressEndPointItemProvider extends AbstractEndPointItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -176,21 +183,18 @@ public class AddressEndPointItemProvider extends AbstractEndPointItemProvider {
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add
-            (createChildParameter
-                (EsbPackage.Literals.ADDRESS_END_POINT__INPUT_CONNECTOR,
-                 EsbFactory.eINSTANCE.createAddressEndPointInputConnector()));
+        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.ADDRESS_END_POINT__INPUT_CONNECTOR,
+                EsbFactory.eINSTANCE.createAddressEndPointInputConnector()));
 
-        newChildDescriptors.add
-            (createChildParameter
-                (EsbPackage.Literals.ADDRESS_END_POINT__OUTPUT_CONNECTOR,
-                 EsbFactory.eINSTANCE.createAddressEndPointOutputConnector()));
+        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.ADDRESS_END_POINT__OUTPUT_CONNECTOR,
+                EsbFactory.eINSTANCE.createAddressEndPointOutputConnector()));
     }
 
     /**
      * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -198,14 +202,12 @@ public class AddressEndPointItemProvider extends AbstractEndPointItemProvider {
         Object childFeature = feature;
         Object childObject = child;
 
-        boolean qualify =
-            childFeature == EsbPackage.Literals.ABSTRACT_END_POINT__INBOUND_POLICY ||
-            childFeature == EsbPackage.Literals.ABSTRACT_END_POINT__OUTBOUND_POLICY;
+        boolean qualify = childFeature == EsbPackage.Literals.ABSTRACT_END_POINT__INBOUND_POLICY
+                || childFeature == EsbPackage.Literals.ABSTRACT_END_POINT__OUTBOUND_POLICY;
 
         if (qualify) {
-            return getString
-                ("_UI_CreateChild_text2",
-                 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+            return getString("_UI_CreateChild_text2",
+                    new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }

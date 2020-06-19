@@ -200,8 +200,7 @@ public class DependencyProvider extends Dialog {
     public DependencyProvider(Shell parent, int style, String activeProjectName, String[] dataBaseTypes) {
         super(parent, style);
         eclipseWorkspace = ResourcesPlugin.getWorkspace().getRoot().getLocation().toString();
-        IEditorPart editorPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-                .getActivePage().getActiveEditor();
+        IEditorPart editorPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
         if (dataBaseTypes != null) {
             this.databaseArr = dataBaseTypes;
         }
@@ -1208,17 +1207,17 @@ public class DependencyProvider extends Dialog {
     }
 
     private String generateDbUrl(String dbType) {
-        if (dbType.equals(ApacheDerby)){
-            return databaseConnectionPrefix + hostTextField.getText() +":"
-                    + portTextField.getText()+"/"+databaseTextField.getText()+";create=true";
+        if (dbType.equals(ApacheDerby)) {
+            return databaseConnectionPrefix + hostTextField.getText() + ":" + portTextField.getText() + "/"
+                    + databaseTextField.getText() + ";create=true";
         }
-        if (dbType.equals(INFORMIX)){
-            return databaseConnectionPrefix + hostTextField.getText() +":"
-                    + portTextField.getText()+"/"+databaseTextField.getText()+":INFORMIXSERVER="+serverName;
+        if (dbType.equals(INFORMIX)) {
+            return databaseConnectionPrefix + hostTextField.getText() + ":" + portTextField.getText() + "/"
+                    + databaseTextField.getText() + ":INFORMIXSERVER=" + serverName;
         }
         if (dbType.equals(MSSQL)) {
-            return databaseConnectionPrefix + hostTextField.getText() + ":" + portTextField.getText() 
-                    + ";databaseName="+ databaseTextField.getText() + ";";
+            return databaseConnectionPrefix + hostTextField.getText() + ":" + portTextField.getText() + ";databaseName="
+                    + databaseTextField.getText() + ";";
         } else {
             return databaseConnectionPrefix + hostTextField.getText() + ":" + portTextField.getText() + "/"
                     + databaseTextField.getText();
@@ -1295,10 +1294,10 @@ public class DependencyProvider extends Dialog {
                     break;
 
                 case INFORMIX:
-                    //TODO: need to change UI of dependency provider for ServerName input
-                    //TODO: jdbc:informix-sqli://[HOST]:[PORT]/[database]:INFORMIXSERVER=[server-name]
-                    //TODO: default serverName will be set to 'server'
-                    //TODO: test connection function is available comment off if not required
+                    // TODO: need to change UI of dependency provider for ServerName input
+                    // TODO: jdbc:informix-sqli://[HOST]:[PORT]/[database]:INFORMIXSERVER=[server-name]
+                    // TODO: default serverName will be set to 'server'
+                    // TODO: test connection function is available comment off if not required
                     newBundle = bundle.getBundleContext().installBundle(path);
                     newBundle.start();
                     Class.forName(this.jdbcDriver);

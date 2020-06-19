@@ -31,6 +31,7 @@ public class RespondMediatorOutputConnectorImpl extends OutputConnectorImpl impl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected RespondMediatorOutputConnectorImpl() {
@@ -40,6 +41,7 @@ public class RespondMediatorOutputConnectorImpl extends OutputConnectorImpl impl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

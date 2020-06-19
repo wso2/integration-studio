@@ -36,12 +36,12 @@ import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.mediators.builtin.CommentMediator;
 
 public class SequenceMediatorExtFactory extends SequenceMediatorFactory {
-    
+
     private static SequenceMediatorExtFactory instance;
-    
+
     private SequenceMediatorExtFactory() {
     }
-    
+
     public static synchronized SequenceMediatorExtFactory getInstance() {
         if (instance == null) {
             instance = new SequenceMediatorExtFactory();
@@ -84,7 +84,7 @@ public class SequenceMediatorExtFactory extends SequenceMediatorFactory {
 
         return mediator;
     }
-    
+
     public SequenceMediator createAnonymousSequence(OMElement elem, Properties properties) {
         SequenceMediator seqMediator = new SequenceMediator();
         OMAttribute e = elem.getAttribute(ATT_ONERROR);
@@ -100,7 +100,7 @@ public class SequenceMediatorExtFactory extends SequenceMediatorFactory {
         seqMediator.setSequenceType(SequenceType.ANON);
         return seqMediator;
     }
-    
+
     protected static void addChildren(OMElement el, ListMediator m, Properties properties) {
         Iterator it = el.getChildren();
 

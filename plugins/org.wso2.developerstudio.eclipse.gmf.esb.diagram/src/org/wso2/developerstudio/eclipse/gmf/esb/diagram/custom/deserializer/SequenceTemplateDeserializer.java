@@ -47,7 +47,7 @@ public class SequenceTemplateDeserializer extends AbstractEsbNodeDeserializer<Te
         Template templateModel = (Template) DeserializerUtils.createNode(part, EsbElementTypes.Template_3664);
         setElementToEdit(templateModel);
         executeSetValueCommand(TEMPLATE__NAME, template.getName());
-        
+
         TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(templateModel);
         if (domain != null) {
             domain.getCommandStack().execute(new RecordingCommand(domain) {
@@ -60,7 +60,7 @@ public class SequenceTemplateDeserializer extends AbstractEsbNodeDeserializer<Te
         } else {
             templateModel.setDescription(template.getDescription());
         }
-        
+
         executeSetValueCommand(TEMPLATE__TEMPLATE_TYPE, TemplateType.SEQUENCE);
 
         if (template.getParameters() != null) {
@@ -74,7 +74,7 @@ public class SequenceTemplateDeserializer extends AbstractEsbNodeDeserializer<Te
         SequenceMediator sequenceMediator = new SequenceMediator();
         sequenceMediator.addAll(template.getList());
         sequenceMediator.setName(template.getName());
-        
+
         refreshEditPartMap();
         @SuppressWarnings("rawtypes")
         IEsbNodeDeserializer deserializer = EsbDeserializerRegistry.getInstance().getDeserializer(sequenceMediator);
@@ -95,7 +95,7 @@ public class SequenceTemplateDeserializer extends AbstractEsbNodeDeserializer<Te
             }
         }
         executeAddAllCommand(templateModel.getCommentsList(), template.getCommentsList());
-        
+
         return templateModel;
     }
 

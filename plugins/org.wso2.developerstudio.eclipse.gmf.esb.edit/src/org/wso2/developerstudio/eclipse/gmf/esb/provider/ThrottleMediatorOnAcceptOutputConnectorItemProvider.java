@@ -20,9 +20,11 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottleMediatorOnAcceptOutputConnector} object.
+ * This is the item provider adapter for a
+ * {@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottleMediatorOnAcceptOutputConnector} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class ThrottleMediatorOnAcceptOutputConnectorItemProvider extends OutputConnectorItemProvider {
@@ -30,6 +32,7 @@ public class ThrottleMediatorOnAcceptOutputConnectorItemProvider extends OutputC
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public ThrottleMediatorOnAcceptOutputConnectorItemProvider(AdapterFactory adapterFactory) {
@@ -40,6 +43,7 @@ public class ThrottleMediatorOnAcceptOutputConnectorItemProvider extends OutputC
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -55,17 +59,20 @@ public class ThrottleMediatorOnAcceptOutputConnectorItemProvider extends OutputC
      * This returns ThrottleMediatorOnAcceptOutputConnector.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ThrottleMediatorOnAcceptOutputConnector"));
+        return overlayImage(object,
+                getResourceLocator().getImage("full/obj16/ThrottleMediatorOnAcceptOutputConnector"));
     }
 
     /**
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -78,6 +85,7 @@ public class ThrottleMediatorOnAcceptOutputConnectorItemProvider extends OutputC
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -91,6 +99,7 @@ public class ThrottleMediatorOnAcceptOutputConnectorItemProvider extends OutputC
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

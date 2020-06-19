@@ -15,7 +15,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbSequenceOutput#getConnector <em>Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbSequenceOutput#getConnector <em>Connector</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEsbSequenceOutput()
@@ -31,6 +31,7 @@ public interface EsbSequenceOutput extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Connector</em>' containment reference.
      * @see #setConnector(EsbSequenceOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEsbSequenceOutput_Connector()
@@ -40,9 +41,11 @@ public interface EsbSequenceOutput extends EsbNode {
     EsbSequenceOutputConnector getConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbSequenceOutput#getConnector <em>Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbSequenceOutput#getConnector
+     * <em>Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Connector</em>' containment reference.
      * @see #getConnector()
      * @generated

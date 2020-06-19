@@ -69,51 +69,75 @@ public class EndpointDiagram2ItemSemanticEditPolicy extends EsbBaseItemSemanticE
                     switch (EsbVisualIDRegistry.getVisualID(cnode)) {
                     case DefaultEndPoint2EditPart.VISUAL_ID:
                         cmd.add(new DestroyElementCommand(
-                                new DestroyElementRequest(getEditingDomain(), cnode.getElement(), false))); // directlyOwned: true
-                        // don't need explicit deletion of cnode as parent's view deletion would clean child views as well 
-                        // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
+                                new DestroyElementRequest(getEditingDomain(), cnode.getElement(), false))); // directlyOwned:
+                                                                                                            // true
+                        // don't need explicit deletion of cnode as parent's view deletion would clean child views as
+                        // well
+                        // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(),
+                        // cnode));
                         break;
                     case AddressEndPoint2EditPart.VISUAL_ID:
                         cmd.add(new DestroyElementCommand(
-                                new DestroyElementRequest(getEditingDomain(), cnode.getElement(), false))); // directlyOwned: true
-                        // don't need explicit deletion of cnode as parent's view deletion would clean child views as well 
-                        // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
+                                new DestroyElementRequest(getEditingDomain(), cnode.getElement(), false))); // directlyOwned:
+                                                                                                            // true
+                        // don't need explicit deletion of cnode as parent's view deletion would clean child views as
+                        // well
+                        // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(),
+                        // cnode));
                         break;
                     case FailoverEndPoint2EditPart.VISUAL_ID:
                         cmd.add(new DestroyElementCommand(
-                                new DestroyElementRequest(getEditingDomain(), cnode.getElement(), false))); // directlyOwned: true
-                        // don't need explicit deletion of cnode as parent's view deletion would clean child views as well 
-                        // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
+                                new DestroyElementRequest(getEditingDomain(), cnode.getElement(), false))); // directlyOwned:
+                                                                                                            // true
+                        // don't need explicit deletion of cnode as parent's view deletion would clean child views as
+                        // well
+                        // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(),
+                        // cnode));
                         break;
                     case RecipientListEndPoint2EditPart.VISUAL_ID:
                         cmd.add(new DestroyElementCommand(
-                                new DestroyElementRequest(getEditingDomain(), cnode.getElement(), false))); // directlyOwned: true
-                        // don't need explicit deletion of cnode as parent's view deletion would clean child views as well 
-                        // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
+                                new DestroyElementRequest(getEditingDomain(), cnode.getElement(), false))); // directlyOwned:
+                                                                                                            // true
+                        // don't need explicit deletion of cnode as parent's view deletion would clean child views as
+                        // well
+                        // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(),
+                        // cnode));
                         break;
                     case WSDLEndPoint2EditPart.VISUAL_ID:
                         cmd.add(new DestroyElementCommand(
-                                new DestroyElementRequest(getEditingDomain(), cnode.getElement(), false))); // directlyOwned: true
-                        // don't need explicit deletion of cnode as parent's view deletion would clean child views as well 
-                        // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
+                                new DestroyElementRequest(getEditingDomain(), cnode.getElement(), false))); // directlyOwned:
+                                                                                                            // true
+                        // don't need explicit deletion of cnode as parent's view deletion would clean child views as
+                        // well
+                        // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(),
+                        // cnode));
                         break;
                     case LoadBalanceEndPoint2EditPart.VISUAL_ID:
                         cmd.add(new DestroyElementCommand(
-                                new DestroyElementRequest(getEditingDomain(), cnode.getElement(), false))); // directlyOwned: true
-                        // don't need explicit deletion of cnode as parent's view deletion would clean child views as well 
-                        // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
+                                new DestroyElementRequest(getEditingDomain(), cnode.getElement(), false))); // directlyOwned:
+                                                                                                            // true
+                        // don't need explicit deletion of cnode as parent's view deletion would clean child views as
+                        // well
+                        // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(),
+                        // cnode));
                         break;
                     case HTTPEndpoint2EditPart.VISUAL_ID:
                         cmd.add(new DestroyElementCommand(
-                                new DestroyElementRequest(getEditingDomain(), cnode.getElement(), false))); // directlyOwned: true
-                        // don't need explicit deletion of cnode as parent's view deletion would clean child views as well 
-                        // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
+                                new DestroyElementRequest(getEditingDomain(), cnode.getElement(), false))); // directlyOwned:
+                                                                                                            // true
+                        // don't need explicit deletion of cnode as parent's view deletion would clean child views as
+                        // well
+                        // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(),
+                        // cnode));
                         break;
                     case TemplateEndpoint2EditPart.VISUAL_ID:
                         cmd.add(new DestroyElementCommand(
-                                new DestroyElementRequest(getEditingDomain(), cnode.getElement(), false))); // directlyOwned: true
-                        // don't need explicit deletion of cnode as parent's view deletion would clean child views as well 
-                        // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
+                                new DestroyElementRequest(getEditingDomain(), cnode.getElement(), false))); // directlyOwned:
+                                                                                                            // true
+                        // don't need explicit deletion of cnode as parent's view deletion would clean child views as
+                        // well
+                        // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(),
+                        // cnode));
                         break;
                     }
                 }

@@ -87,6 +87,7 @@ public class FaultMediatorEditPart extends FixedSizedAbstractMediator {
     protected IFigure contentPane;
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+
     /**
      * @generated
      */
@@ -443,7 +444,7 @@ public class FaultMediatorEditPart extends FixedSizedAbstractMediator {
         }
         super.notifyChanged(notification);
     }
-    
+
     /**
      * @generated
      */

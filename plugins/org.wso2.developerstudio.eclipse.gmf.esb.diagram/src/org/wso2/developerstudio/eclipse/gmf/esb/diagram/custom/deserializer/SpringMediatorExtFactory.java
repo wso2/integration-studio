@@ -28,12 +28,12 @@ import org.apache.synapse.mediators.spring.SpringMediator;
 import org.apache.synapse.mediators.spring.SpringMediatorFactory;
 
 public class SpringMediatorExtFactory extends SpringMediatorFactory {
-    
+
     private static SpringMediatorExtFactory instance;
-    
+
     private SpringMediatorExtFactory() {
     }
-    
+
     public static synchronized SpringMediatorExtFactory getInstance() {
         if (instance == null) {
             instance = new SpringMediatorExtFactory();

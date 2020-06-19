@@ -30,6 +30,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ThrottleContainer;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottleContainer} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class ThrottleContainerItemProvider extends EsbNodeItemProvider {
@@ -37,6 +38,7 @@ public class ThrottleContainerItemProvider extends EsbNodeItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public ThrottleContainerItemProvider(AdapterFactory adapterFactory) {
@@ -47,6 +49,7 @@ public class ThrottleContainerItemProvider extends EsbNodeItemProvider {
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -64,6 +67,7 @@ public class ThrottleContainerItemProvider extends EsbNodeItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -79,6 +83,7 @@ public class ThrottleContainerItemProvider extends EsbNodeItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -93,6 +98,7 @@ public class ThrottleContainerItemProvider extends EsbNodeItemProvider {
      * This returns ThrottleContainer.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -104,6 +110,7 @@ public class ThrottleContainerItemProvider extends EsbNodeItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -116,6 +123,7 @@ public class ThrottleContainerItemProvider extends EsbNodeItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -123,10 +131,10 @@ public class ThrottleContainerItemProvider extends EsbNodeItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(ThrottleContainer.class)) {
-            case EsbPackage.THROTTLE_CONTAINER__ON_ACCEPT_CONTAINER:
-            case EsbPackage.THROTTLE_CONTAINER__ON_REJECT_CONTAINER:
-                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-                return;
+        case EsbPackage.THROTTLE_CONTAINER__ON_ACCEPT_CONTAINER:
+        case EsbPackage.THROTTLE_CONTAINER__ON_REJECT_CONTAINER:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+            return;
         }
         super.notifyChanged(notification);
     }
@@ -136,21 +144,18 @@ public class ThrottleContainerItemProvider extends EsbNodeItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add
-            (createChildParameter
-                (EsbPackage.Literals.THROTTLE_CONTAINER__ON_ACCEPT_CONTAINER,
-                 EsbFactory.eINSTANCE.createThrottleOnAcceptContainer()));
+        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.THROTTLE_CONTAINER__ON_ACCEPT_CONTAINER,
+                EsbFactory.eINSTANCE.createThrottleOnAcceptContainer()));
 
-        newChildDescriptors.add
-            (createChildParameter
-                (EsbPackage.Literals.THROTTLE_CONTAINER__ON_REJECT_CONTAINER,
-                 EsbFactory.eINSTANCE.createThrottleOnRejectContainer()));
+        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.THROTTLE_CONTAINER__ON_REJECT_CONTAINER,
+                EsbFactory.eINSTANCE.createThrottleOnRejectContainer()));
     }
 
 }

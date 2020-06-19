@@ -219,30 +219,30 @@ public class Deserializer {
         OMElement element = AXIOMUtil.stringToOM(source);
         String localName = element.getLocalName();
         switch (localName) {
-		case "definitions":
-			artifactType = ArtifactType.SYNAPSE_CONFIG;
-			break;
-		case "proxy":
-			artifactType = ArtifactType.PROXY;
-			break;
-		case "sequence":
-			if ("main".equals(element.getAttributeValue(new javax.xml.namespace.QName("name")))) {
+        case "definitions":
+            artifactType = ArtifactType.SYNAPSE_CONFIG;
+            break;
+        case "proxy":
+            artifactType = ArtifactType.PROXY;
+            break;
+        case "sequence":
+            if ("main".equals(element.getAttributeValue(new javax.xml.namespace.QName("name")))) {
                 artifactType = ArtifactType.MAIN_SEQUENCE;
             } else {
                 artifactType = ArtifactType.SEQUENCE;
             }
-			break;
-		case "localEntry":
-			artifactType = ArtifactType.LOCAL_ENTRY;
-			break;
-		case "task":
-			artifactType = ArtifactType.TASK;
-			break;
-		case "api":
-			artifactType = ArtifactType.API;
-			break;
-		case "template":
-			Iterator children = element.getChildElements();
+            break;
+        case "localEntry":
+            artifactType = ArtifactType.LOCAL_ENTRY;
+            break;
+        case "task":
+            artifactType = ArtifactType.TASK;
+            break;
+        case "api":
+            artifactType = ArtifactType.API;
+            break;
+        case "template":
+            Iterator children = element.getChildElements();
             while (children.hasNext()) {
                 OMElement child1 = (OMElement) children.next();
                 String child1LocalName = child1.getLocalName();
@@ -264,12 +264,12 @@ public class Deserializer {
                     }
                 }
             }
-			break;
-		case "endpoint":
-			OMAttribute templateAtr = element.getAttribute(new javax.xml.namespace.QName("template"));
+            break;
+        case "endpoint":
+            OMAttribute templateAtr = element.getAttribute(new javax.xml.namespace.QName("template"));
             if (templateAtr != null) {
                 artifactType = ArtifactType.TEMPLATE_ENDPOINT;
-                
+
             } else {
                 if (element.getChildElements().hasNext()) {
 
@@ -290,25 +290,25 @@ public class Deserializer {
                     }
                 }
             }
-			break;
-		case "messageStore":
-			artifactType = ArtifactType.MESSAGE_STORE;
-			break;
-		case "messageProcessor":
-			artifactType = ArtifactType.MESSAGE_PROCESSOR;
-			break;
-		case "inboundEndpoint":
-			artifactType = ArtifactType.INBOUND_ENDPOINT;
-			break;
-		case "mock-service":
-			artifactType = ArtifactType.MOCK_SERVICE;
-			break;
-		case "unit-test":
-			artifactType = ArtifactType.SYNAPSE_UNIT_TEST;
-			break;
-		default:
-			throw new UnrecogizedArtifactTypeException("Unrecognized source configuration section " + localName);
-		}
+            break;
+        case "messageStore":
+            artifactType = ArtifactType.MESSAGE_STORE;
+            break;
+        case "messageProcessor":
+            artifactType = ArtifactType.MESSAGE_PROCESSOR;
+            break;
+        case "inboundEndpoint":
+            artifactType = ArtifactType.INBOUND_ENDPOINT;
+            break;
+        case "mock-service":
+            artifactType = ArtifactType.MOCK_SERVICE;
+            break;
+        case "unit-test":
+            artifactType = ArtifactType.SYNAPSE_UNIT_TEST;
+            break;
+        default:
+            throw new UnrecogizedArtifactTypeException("Unrecognized source configuration section " + localName);
+        }
         return artifactType;
     }
 

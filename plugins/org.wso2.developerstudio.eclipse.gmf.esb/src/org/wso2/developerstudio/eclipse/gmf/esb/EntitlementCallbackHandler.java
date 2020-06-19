@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Entitlement Callback Handler</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
+ * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEntitlementCallbackHandler()
  * @model
  * @generated
@@ -35,6 +36,7 @@ public enum EntitlementCallbackHandler implements Enumerator {
      * The '<em><b>UT</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #UT_VALUE
      * @generated
      * @ordered
@@ -44,6 +46,7 @@ public enum EntitlementCallbackHandler implements Enumerator {
      * The '<em><b>X509</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #X509_VALUE
      * @generated
      * @ordered
@@ -53,6 +56,7 @@ public enum EntitlementCallbackHandler implements Enumerator {
      * The '<em><b>SAML</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #SAML_VALUE
      * @generated
      * @ordered
@@ -62,6 +66,7 @@ public enum EntitlementCallbackHandler implements Enumerator {
      * The '<em><b>Kerberos</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #KERBEROS_VALUE
      * @generated
      * @ordered
@@ -71,6 +76,7 @@ public enum EntitlementCallbackHandler implements Enumerator {
      * The '<em><b>Custom</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #CUSTOM_VALUE
      * @generated
      * @ordered
@@ -85,6 +91,7 @@ public enum EntitlementCallbackHandler implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #UT
      * @model
      * @generated
@@ -100,6 +107,7 @@ public enum EntitlementCallbackHandler implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #X509
      * @model
      * @generated
@@ -115,6 +123,7 @@ public enum EntitlementCallbackHandler implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #SAML
      * @model
      * @generated
@@ -130,6 +139,7 @@ public enum EntitlementCallbackHandler implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #KERBEROS
      * @model name="Kerberos"
      * @generated
@@ -145,6 +155,7 @@ public enum EntitlementCallbackHandler implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #CUSTOM
      * @model name="Custom"
      * @generated
@@ -156,28 +167,27 @@ public enum EntitlementCallbackHandler implements Enumerator {
      * An array of all the '<em><b>Entitlement Callback Handler</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
-    private static final EntitlementCallbackHandler[] VALUES_ARRAY = new EntitlementCallbackHandler[] {
-            UT,
-            X509,
-            SAML,
-            KERBEROS,
-            CUSTOM,
-        };
+    private static final EntitlementCallbackHandler[] VALUES_ARRAY = new EntitlementCallbackHandler[] { UT, X509, SAML,
+            KERBEROS, CUSTOM, };
 
     /**
      * A public read-only list of all the '<em><b>Entitlement Callback Handler</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
-    public static final List<EntitlementCallbackHandler> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<EntitlementCallbackHandler> VALUES = Collections
+            .unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
     /**
      * Returns the '<em><b>Entitlement Callback Handler</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -196,6 +206,7 @@ public enum EntitlementCallbackHandler implements Enumerator {
      * Returns the '<em><b>Entitlement Callback Handler</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -214,17 +225,23 @@ public enum EntitlementCallbackHandler implements Enumerator {
      * Returns the '<em><b>Entitlement Callback Handler</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static EntitlementCallbackHandler get(int value) {
         switch (value) {
-            case UT_VALUE: return UT;
-            case X509_VALUE: return X509;
-            case SAML_VALUE: return SAML;
-            case KERBEROS_VALUE: return KERBEROS;
-            case CUSTOM_VALUE: return CUSTOM;
+        case UT_VALUE:
+            return UT;
+        case X509_VALUE:
+            return X509;
+        case SAML_VALUE:
+            return SAML;
+        case KERBEROS_VALUE:
+            return KERBEROS;
+        case CUSTOM_VALUE:
+            return CUSTOM;
         }
         return null;
     }
@@ -232,6 +249,7 @@ public enum EntitlementCallbackHandler implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final int value;
@@ -239,6 +257,7 @@ public enum EntitlementCallbackHandler implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String name;
@@ -246,6 +265,7 @@ public enum EntitlementCallbackHandler implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String literal;
@@ -254,6 +274,7 @@ public enum EntitlementCallbackHandler implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private EntitlementCallbackHandler(int value, String name, String literal) {
@@ -265,34 +286,38 @@ public enum EntitlementCallbackHandler implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public int getValue() {
-      return value;
+        return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getName() {
-      return name;
+        return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getLiteral() {
-      return literal;
+        return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

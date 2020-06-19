@@ -26,14 +26,21 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint#getWestOutputConnector <em>West Output Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint#getEndpointType <em>Endpoint Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint#getEndpointsValue <em>Endpoints Value</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint#getEndpointsExpression <em>Endpoints Expression</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint#getMaxCache <em>Max Cache</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint#getMediatorFlow <em>Mediator Flow</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint#getInputConnector <em>Input
+ * Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint#getOutputConnector <em>Output
+ * Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint#getWestOutputConnector <em>West Output
+ * Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint#getEndpointType <em>Endpoint
+ * Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint#getEndpointsValue <em>Endpoints
+ * Value</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint#getEndpointsExpression <em>Endpoints
+ * Expression</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint#getMaxCache <em>Max Cache</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint#getMediatorFlow <em>Mediator
+ * Flow</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRecipientListEndPoint()
@@ -49,6 +56,7 @@ public interface RecipientListEndPoint extends ParentEndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(RecipientListEndPointInputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRecipientListEndPoint_InputConnector()
@@ -58,9 +66,11 @@ public interface RecipientListEndPoint extends ParentEndPoint {
     RecipientListEndPointInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint#getInputConnector
+     * <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
      * @see #getInputConnector()
      * @generated
@@ -69,13 +79,15 @@ public interface RecipientListEndPoint extends ParentEndPoint {
 
     /**
      * Returns the value of the '<em><b>Output Connector</b></em>' containment reference list.
-     * The list contents are of type {@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPointOutputConnector}.
+     * The list contents are of type
+     * {@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPointOutputConnector}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Output Connector</em>' containment reference list isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Output Connector</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRecipientListEndPoint_OutputConnector()
      * @model containment="true"
@@ -91,6 +103,7 @@ public interface RecipientListEndPoint extends ParentEndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>West Output Connector</em>' containment reference.
      * @see #setWestOutputConnector(RecipientListEndPointWestOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRecipientListEndPoint_WestOutputConnector()
@@ -100,9 +113,12 @@ public interface RecipientListEndPoint extends ParentEndPoint {
     RecipientListEndPointWestOutputConnector getWestOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint#getWestOutputConnector <em>West Output Connector</em>}' containment reference.
+     * Sets the value of the
+     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint#getWestOutputConnector <em>West Output
+     * Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>West Output Connector</em>' containment reference.
      * @see #getWestOutputConnector()
      * @generated
@@ -118,6 +134,7 @@ public interface RecipientListEndPoint extends ParentEndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Endpoint Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndpointType
      * @see #setEndpointType(RecipientListEndpointType)
@@ -128,9 +145,11 @@ public interface RecipientListEndPoint extends ParentEndPoint {
     RecipientListEndpointType getEndpointType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint#getEndpointType <em>Endpoint Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint#getEndpointType
+     * <em>Endpoint Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Endpoint Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndpointType
      * @see #getEndpointType()
@@ -146,6 +165,7 @@ public interface RecipientListEndPoint extends ParentEndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Endpoints Value</em>' attribute.
      * @see #setEndpointsValue(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRecipientListEndPoint_EndpointsValue()
@@ -155,9 +175,11 @@ public interface RecipientListEndPoint extends ParentEndPoint {
     String getEndpointsValue();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint#getEndpointsValue <em>Endpoints Value</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint#getEndpointsValue
+     * <em>Endpoints Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Endpoints Value</em>' attribute.
      * @see #getEndpointsValue()
      * @generated
@@ -172,6 +194,7 @@ public interface RecipientListEndPoint extends ParentEndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Endpoints Expression</em>' containment reference.
      * @see #setEndpointsExpression(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRecipientListEndPoint_EndpointsExpression()
@@ -181,9 +204,12 @@ public interface RecipientListEndPoint extends ParentEndPoint {
     NamespacedProperty getEndpointsExpression();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint#getEndpointsExpression <em>Endpoints Expression</em>}' containment reference.
+     * Sets the value of the
+     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint#getEndpointsExpression <em>Endpoints
+     * Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Endpoints Expression</em>' containment reference.
      * @see #getEndpointsExpression()
      * @generated
@@ -199,6 +225,7 @@ public interface RecipientListEndPoint extends ParentEndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Max Cache</em>' attribute.
      * @see #setMaxCache(int)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRecipientListEndPoint_MaxCache()
@@ -208,9 +235,11 @@ public interface RecipientListEndPoint extends ParentEndPoint {
     int getMaxCache();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint#getMaxCache <em>Max Cache</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint#getMaxCache <em>Max
+     * Cache</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Max Cache</em>' attribute.
      * @see #getMaxCache()
      * @generated
@@ -225,6 +254,7 @@ public interface RecipientListEndPoint extends ParentEndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Mediator Flow</em>' containment reference.
      * @see #setMediatorFlow(MediatorFlow)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRecipientListEndPoint_MediatorFlow()
@@ -234,9 +264,11 @@ public interface RecipientListEndPoint extends ParentEndPoint {
     MediatorFlow getMediatorFlow();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint#getMediatorFlow <em>Mediator Flow</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint#getMediatorFlow
+     * <em>Mediator Flow</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Mediator Flow</em>' containment reference.
      * @see #getMediatorFlow()
      * @generated

@@ -22,6 +22,7 @@ public class NamedEndpointInputConnectorImpl extends InputConnectorImpl implemen
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected NamedEndpointInputConnectorImpl() {
@@ -31,6 +32,7 @@ public class NamedEndpointInputConnectorImpl extends InputConnectorImpl implemen
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

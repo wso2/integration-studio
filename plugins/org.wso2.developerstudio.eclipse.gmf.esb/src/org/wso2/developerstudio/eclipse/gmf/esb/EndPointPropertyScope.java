@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>End Point Property Scope</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
+ * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEndPointPropertyScope()
  * @model
  * @generated
@@ -35,6 +36,7 @@ public enum EndPointPropertyScope implements Enumerator {
      * The '<em><b>SYNAPSE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #SYNAPSE_VALUE
      * @generated
      * @ordered
@@ -45,6 +47,7 @@ public enum EndPointPropertyScope implements Enumerator {
      * The '<em><b>TRANSPORT</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #TRANSPORT_VALUE
      * @generated
      * @ordered
@@ -55,6 +58,7 @@ public enum EndPointPropertyScope implements Enumerator {
      * The '<em><b>AXIS2</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #AXIS2_VALUE
      * @generated
      * @ordered
@@ -65,6 +69,7 @@ public enum EndPointPropertyScope implements Enumerator {
      * The '<em><b>AXIS2 CLIENT</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #AXIS2_CLIENT_VALUE
      * @generated
      * @ordered
@@ -79,6 +84,7 @@ public enum EndPointPropertyScope implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #SYNAPSE
      * @model literal="default"
      * @generated
@@ -94,6 +100,7 @@ public enum EndPointPropertyScope implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #TRANSPORT
      * @model literal="transport"
      * @generated
@@ -109,6 +116,7 @@ public enum EndPointPropertyScope implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #AXIS2
      * @model literal="axis2"
      * @generated
@@ -124,6 +132,7 @@ public enum EndPointPropertyScope implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #AXIS2_CLIENT
      * @model literal="axis2-client"
      * @generated
@@ -135,19 +144,17 @@ public enum EndPointPropertyScope implements Enumerator {
      * An array of all the '<em><b>End Point Property Scope</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
-    private static final EndPointPropertyScope[] VALUES_ARRAY = new EndPointPropertyScope[] {
-            SYNAPSE,
-            TRANSPORT,
-            AXIS2,
-            AXIS2_CLIENT,
-        };
+    private static final EndPointPropertyScope[] VALUES_ARRAY = new EndPointPropertyScope[] { SYNAPSE, TRANSPORT, AXIS2,
+            AXIS2_CLIENT, };
 
     /**
      * A public read-only list of all the '<em><b>End Point Property Scope</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public static final List<EndPointPropertyScope> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -156,6 +163,7 @@ public enum EndPointPropertyScope implements Enumerator {
      * Returns the '<em><b>End Point Property Scope</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -174,6 +182,7 @@ public enum EndPointPropertyScope implements Enumerator {
      * Returns the '<em><b>End Point Property Scope</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -192,16 +201,21 @@ public enum EndPointPropertyScope implements Enumerator {
      * Returns the '<em><b>End Point Property Scope</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static EndPointPropertyScope get(int value) {
         switch (value) {
-            case SYNAPSE_VALUE: return SYNAPSE;
-            case TRANSPORT_VALUE: return TRANSPORT;
-            case AXIS2_VALUE: return AXIS2;
-            case AXIS2_CLIENT_VALUE: return AXIS2_CLIENT;
+        case SYNAPSE_VALUE:
+            return SYNAPSE;
+        case TRANSPORT_VALUE:
+            return TRANSPORT;
+        case AXIS2_VALUE:
+            return AXIS2;
+        case AXIS2_CLIENT_VALUE:
+            return AXIS2_CLIENT;
         }
         return null;
     }
@@ -209,6 +223,7 @@ public enum EndPointPropertyScope implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final int value;
@@ -216,6 +231,7 @@ public enum EndPointPropertyScope implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String name;
@@ -223,6 +239,7 @@ public enum EndPointPropertyScope implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String literal;
@@ -231,6 +248,7 @@ public enum EndPointPropertyScope implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private EndPointPropertyScope(int value, String name, String literal) {
@@ -242,34 +260,38 @@ public enum EndPointPropertyScope implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public int getValue() {
-      return value;
+        return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getName() {
-      return name;
+        return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getLiteral() {
-      return literal;
+        return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

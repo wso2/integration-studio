@@ -36,9 +36,11 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementObligationsContainer} object.
+ * This is the item provider adapter for a
+ * {@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementObligationsContainer} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class EntitlementObligationsContainerItemProvider extends EsbNodeItemProvider {
@@ -46,6 +48,7 @@ public class EntitlementObligationsContainerItemProvider extends EsbNodeItemProv
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public EntitlementObligationsContainerItemProvider(AdapterFactory adapterFactory) {
@@ -56,6 +59,7 @@ public class EntitlementObligationsContainerItemProvider extends EsbNodeItemProv
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -73,6 +77,7 @@ public class EntitlementObligationsContainerItemProvider extends EsbNodeItemProv
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -87,6 +92,7 @@ public class EntitlementObligationsContainerItemProvider extends EsbNodeItemProv
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -101,6 +107,7 @@ public class EntitlementObligationsContainerItemProvider extends EsbNodeItemProv
      * This returns EntitlementObligationsContainer.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -112,6 +119,7 @@ public class EntitlementObligationsContainerItemProvider extends EsbNodeItemProv
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -124,6 +132,7 @@ public class EntitlementObligationsContainerItemProvider extends EsbNodeItemProv
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -131,9 +140,9 @@ public class EntitlementObligationsContainerItemProvider extends EsbNodeItemProv
         updateChildren(notification);
 
         switch (notification.getFeatureID(EntitlementObligationsContainer.class)) {
-            case EsbPackage.ENTITLEMENT_OBLIGATIONS_CONTAINER__MEDIATOR_FLOW:
-                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-                return;
+        case EsbPackage.ENTITLEMENT_OBLIGATIONS_CONTAINER__MEDIATOR_FLOW:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+            return;
         }
         super.notifyChanged(notification);
     }
@@ -143,16 +152,16 @@ public class EntitlementObligationsContainerItemProvider extends EsbNodeItemProv
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add
-            (createChildParameter
-                (EsbPackage.Literals.ENTITLEMENT_OBLIGATIONS_CONTAINER__MEDIATOR_FLOW,
-                 EsbFactory.eINSTANCE.createMediatorFlow()));
+        newChildDescriptors
+                .add(createChildParameter(EsbPackage.Literals.ENTITLEMENT_OBLIGATIONS_CONTAINER__MEDIATOR_FLOW,
+                        EsbFactory.eINSTANCE.createMediatorFlow()));
     }
 
 }

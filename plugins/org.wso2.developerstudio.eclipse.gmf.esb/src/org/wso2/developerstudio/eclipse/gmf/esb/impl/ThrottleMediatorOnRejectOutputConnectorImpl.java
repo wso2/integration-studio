@@ -23,6 +23,7 @@ public class ThrottleMediatorOnRejectOutputConnectorImpl extends OutputConnector
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected ThrottleMediatorOnRejectOutputConnectorImpl() {
@@ -32,6 +33,7 @@ public class ThrottleMediatorOnRejectOutputConnectorImpl extends OutputConnector
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

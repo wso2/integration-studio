@@ -27,6 +27,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MergeNode;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.MergeNode} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class MergeNodeItemProvider extends MediatorItemProvider {
@@ -34,6 +35,7 @@ public class MergeNodeItemProvider extends MediatorItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public MergeNodeItemProvider(AdapterFactory adapterFactory) {
@@ -44,6 +46,7 @@ public class MergeNodeItemProvider extends MediatorItemProvider {
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -62,6 +65,7 @@ public class MergeNodeItemProvider extends MediatorItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -79,6 +83,7 @@ public class MergeNodeItemProvider extends MediatorItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -94,6 +99,7 @@ public class MergeNodeItemProvider extends MediatorItemProvider {
      * This returns MergeNode.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -106,15 +112,15 @@ public class MergeNodeItemProvider extends MediatorItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((MergeNode)object).getDescription();
-        return label == null || label.length() == 0 ?
-            getString("_UI_MergeNode_type") :
-            getString("_UI_MergeNode_type") + " " + label;
+        String label = ((MergeNode) object).getDescription();
+        return label == null || label.length() == 0 ? getString("_UI_MergeNode_type")
+                : getString("_UI_MergeNode_type") + " " + label;
     }
 
     /**
@@ -122,6 +128,7 @@ public class MergeNodeItemProvider extends MediatorItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -130,11 +137,11 @@ public class MergeNodeItemProvider extends MediatorItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(MergeNode.class)) {
-            case EsbPackage.MERGE_NODE__FIRST_INPUT_CONNECTOR:
-            case EsbPackage.MERGE_NODE__SECOND_INPUT_CONNECTOR:
-            case EsbPackage.MERGE_NODE__OUTPUT_CONNECTOR:
-                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-                return;
+        case EsbPackage.MERGE_NODE__FIRST_INPUT_CONNECTOR:
+        case EsbPackage.MERGE_NODE__SECOND_INPUT_CONNECTOR:
+        case EsbPackage.MERGE_NODE__OUTPUT_CONNECTOR:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+            return;
         }
         super.notifyChanged(notification);
     }
@@ -144,6 +151,7 @@ public class MergeNodeItemProvider extends MediatorItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -151,20 +159,14 @@ public class MergeNodeItemProvider extends MediatorItemProvider {
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add
-            (createChildParameter
-                (EsbPackage.Literals.MERGE_NODE__FIRST_INPUT_CONNECTOR,
-                 EsbFactory.eINSTANCE.createMergeNodeFirstInputConnector()));
+        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MERGE_NODE__FIRST_INPUT_CONNECTOR,
+                EsbFactory.eINSTANCE.createMergeNodeFirstInputConnector()));
 
-        newChildDescriptors.add
-            (createChildParameter
-                (EsbPackage.Literals.MERGE_NODE__SECOND_INPUT_CONNECTOR,
-                 EsbFactory.eINSTANCE.createMergeNodeSecondInputConnector()));
+        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MERGE_NODE__SECOND_INPUT_CONNECTOR,
+                EsbFactory.eINSTANCE.createMergeNodeSecondInputConnector()));
 
-        newChildDescriptors.add
-            (createChildParameter
-                (EsbPackage.Literals.MERGE_NODE__OUTPUT_CONNECTOR,
-                 EsbFactory.eINSTANCE.createMergeNodeOutputConnector()));
+        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MERGE_NODE__OUTPUT_CONNECTOR,
+                EsbFactory.eINSTANCE.createMergeNodeOutputConnector()));
     }
 
 }

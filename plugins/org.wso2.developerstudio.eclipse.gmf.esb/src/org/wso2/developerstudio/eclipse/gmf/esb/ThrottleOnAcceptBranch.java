@@ -17,8 +17,9 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottleOnAcceptBranch#getSequenceType <em>Sequence Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottleOnAcceptBranch#getSequenceKey <em>Sequence Key</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottleOnAcceptBranch#getSequenceType <em>Sequence
+ * Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottleOnAcceptBranch#getSequenceKey <em>Sequence Key</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getThrottleOnAcceptBranch()
@@ -36,6 +37,7 @@ public interface ThrottleOnAcceptBranch extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Sequence Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.ThrottleSequenceType
      * @see #setSequenceType(ThrottleSequenceType)
@@ -46,9 +48,11 @@ public interface ThrottleOnAcceptBranch extends EObject {
     ThrottleSequenceType getSequenceType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottleOnAcceptBranch#getSequenceType <em>Sequence Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottleOnAcceptBranch#getSequenceType
+     * <em>Sequence Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Sequence Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.ThrottleSequenceType
      * @see #getSequenceType()
@@ -64,6 +68,7 @@ public interface ThrottleOnAcceptBranch extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Sequence Key</em>' containment reference.
      * @see #setSequenceKey(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getThrottleOnAcceptBranch_SequenceKey()
@@ -73,9 +78,11 @@ public interface ThrottleOnAcceptBranch extends EObject {
     RegistryKeyProperty getSequenceKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottleOnAcceptBranch#getSequenceKey <em>Sequence Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottleOnAcceptBranch#getSequenceKey
+     * <em>Sequence Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Sequence Key</em>' containment reference.
      * @see #getSequenceKey()
      * @generated

@@ -22,6 +22,7 @@ public class TaskPropertyImpl extends NameValueTypePropertyImpl implements TaskP
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected TaskPropertyImpl() {
@@ -31,6 +32,7 @@ public class TaskPropertyImpl extends NameValueTypePropertyImpl implements TaskP
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

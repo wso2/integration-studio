@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>End Point Addressing Version</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
+ * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEndPointAddressingVersion()
  * @model
  * @generated
@@ -26,6 +27,7 @@ public enum EndPointAddressingVersion implements Enumerator {
      * The '<em><b>FINAL</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #FINAL_VALUE
      * @generated
      * @ordered
@@ -36,6 +38,7 @@ public enum EndPointAddressingVersion implements Enumerator {
      * The '<em><b>SUBMISSION</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #SUBMISSION_VALUE
      * @generated
      * @ordered
@@ -50,6 +53,7 @@ public enum EndPointAddressingVersion implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #FINAL
      * @model literal="final"
      * @generated
@@ -65,6 +69,7 @@ public enum EndPointAddressingVersion implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #SUBMISSION
      * @model literal="submission"
      * @generated
@@ -76,25 +81,27 @@ public enum EndPointAddressingVersion implements Enumerator {
      * An array of all the '<em><b>End Point Addressing Version</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
-    private static final EndPointAddressingVersion[] VALUES_ARRAY = new EndPointAddressingVersion[] {
-            FINAL,
-            SUBMISSION,
-        };
+    private static final EndPointAddressingVersion[] VALUES_ARRAY = new EndPointAddressingVersion[] { FINAL,
+            SUBMISSION, };
 
     /**
      * A public read-only list of all the '<em><b>End Point Addressing Version</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
-    public static final List<EndPointAddressingVersion> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<EndPointAddressingVersion> VALUES = Collections
+            .unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
     /**
      * Returns the '<em><b>End Point Addressing Version</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -113,6 +120,7 @@ public enum EndPointAddressingVersion implements Enumerator {
      * Returns the '<em><b>End Point Addressing Version</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -131,14 +139,17 @@ public enum EndPointAddressingVersion implements Enumerator {
      * Returns the '<em><b>End Point Addressing Version</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static EndPointAddressingVersion get(int value) {
         switch (value) {
-            case FINAL_VALUE: return FINAL;
-            case SUBMISSION_VALUE: return SUBMISSION;
+        case FINAL_VALUE:
+            return FINAL;
+        case SUBMISSION_VALUE:
+            return SUBMISSION;
         }
         return null;
     }
@@ -146,6 +157,7 @@ public enum EndPointAddressingVersion implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final int value;
@@ -153,6 +165,7 @@ public enum EndPointAddressingVersion implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String name;
@@ -160,6 +173,7 @@ public enum EndPointAddressingVersion implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String literal;
@@ -168,6 +182,7 @@ public enum EndPointAddressingVersion implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private EndPointAddressingVersion(int value, String name, String literal) {
@@ -179,34 +194,38 @@ public enum EndPointAddressingVersion implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public int getValue() {
-      return value;
+        return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getName() {
-      return name;
+        return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getLiteral() {
-      return literal;
+        return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 

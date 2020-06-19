@@ -29,9 +29,11 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.RouterMediatorContainer;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.RouterMediatorContainer} object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.RouterMediatorContainer}
+ * object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class RouterMediatorContainerItemProvider extends EsbNodeItemProvider {
@@ -39,6 +41,7 @@ public class RouterMediatorContainerItemProvider extends EsbNodeItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public RouterMediatorContainerItemProvider(AdapterFactory adapterFactory) {
@@ -49,6 +52,7 @@ public class RouterMediatorContainerItemProvider extends EsbNodeItemProvider {
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -66,6 +70,7 @@ public class RouterMediatorContainerItemProvider extends EsbNodeItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -80,6 +85,7 @@ public class RouterMediatorContainerItemProvider extends EsbNodeItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -94,6 +100,7 @@ public class RouterMediatorContainerItemProvider extends EsbNodeItemProvider {
      * This returns RouterMediatorContainer.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -118,6 +125,7 @@ public class RouterMediatorContainerItemProvider extends EsbNodeItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -125,9 +133,9 @@ public class RouterMediatorContainerItemProvider extends EsbNodeItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(RouterMediatorContainer.class)) {
-            case EsbPackage.ROUTER_MEDIATOR_CONTAINER__ROUTER_TARGET_CONTAINER:
-                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-                return;
+        case EsbPackage.ROUTER_MEDIATOR_CONTAINER__ROUTER_TARGET_CONTAINER:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+            return;
         }
         super.notifyChanged(notification);
     }
@@ -137,16 +145,16 @@ public class RouterMediatorContainerItemProvider extends EsbNodeItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add
-            (createChildParameter
-                (EsbPackage.Literals.ROUTER_MEDIATOR_CONTAINER__ROUTER_TARGET_CONTAINER,
-                 EsbFactory.eINSTANCE.createRouterTargetContainer()));
+        newChildDescriptors
+                .add(createChildParameter(EsbPackage.Literals.ROUTER_MEDIATOR_CONTAINER__ROUTER_TARGET_CONTAINER,
+                        EsbFactory.eINSTANCE.createRouterTargetContainer()));
     }
 
 }

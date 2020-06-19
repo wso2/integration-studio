@@ -22,6 +22,7 @@ public class RuleMediatorOutputConnectorImpl extends OutputConnectorImpl impleme
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected RuleMediatorOutputConnectorImpl() {
@@ -31,6 +32,7 @@ public class RuleMediatorOutputConnectorImpl extends OutputConnectorImpl impleme
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

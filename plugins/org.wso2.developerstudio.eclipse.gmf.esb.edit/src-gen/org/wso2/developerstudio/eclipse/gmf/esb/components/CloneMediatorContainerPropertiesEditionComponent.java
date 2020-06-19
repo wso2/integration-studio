@@ -50,7 +50,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.CloneMediatorContainerPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 
-
 // End of user code
 
 /**
@@ -59,167 +58,168 @@ import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
  */
 public class CloneMediatorContainerPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
-	
-	public static String BASE_PART = "Base"; //$NON-NLS-1$
+    public static String BASE_PART = "Base"; //$NON-NLS-1$
 
-	
-	/**
-	 * Settings for cloneTargetContainer ReferencesTable
-	 */
-	protected ReferencesTableSettings cloneTargetContainerSettings;
-	
-	
-	/**
-	 * Default constructor
-	 * 
-	 */
-	public CloneMediatorContainerPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject cloneMediatorContainer, String editing_mode) {
-		super(editingContext, cloneMediatorContainer, editing_mode);
-		parts = new String[] { BASE_PART };
-		repositoryKey = EsbViewsRepository.class;
-		partKey = EsbViewsRepository.CloneMediatorContainer.class;
-	}
+    /**
+     * Settings for cloneTargetContainer ReferencesTable
+     */
+    protected ReferencesTableSettings cloneTargetContainerSettings;
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
-	 *      org.eclipse.emf.ecore.resource.ResourceSet)
-	 * 
-	 */
-	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
-			
-			final CloneMediatorContainer cloneMediatorContainer = (CloneMediatorContainer)elt;
-			final CloneMediatorContainerPropertiesEditionPart basePart = (CloneMediatorContainerPropertiesEditionPart)editingPart;
-			// init values
-			if (isAccessible(EsbViewsRepository.CloneMediatorContainer.Properties.cloneTargetContainer)) {
-				cloneTargetContainerSettings = new ReferencesTableSettings(cloneMediatorContainer, EsbPackage.eINSTANCE.getCloneMediatorContainer_CloneTargetContainer());
-				basePart.initCloneTargetContainer(cloneTargetContainerSettings);
-			}
-			// init filters
-			if (isAccessible(EsbViewsRepository.CloneMediatorContainer.Properties.cloneTargetContainer)) {
-				basePart.addFilterToCloneTargetContainer(new ViewerFilter() {
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof String && element.equals("")) || (element instanceof CloneTargetContainer); //$NON-NLS-1$ 
-					}
-			
-				});
-				// Start of user code for additional businessfilters for cloneTargetContainer
-				// End of user code
-			}
-			// init values for referenced views
-			
-			// init filters for referenced views
-			
-		}
-		setInitializing(false);
-	}
+    /**
+     * Default constructor
+     * 
+     */
+    public CloneMediatorContainerPropertiesEditionComponent(PropertiesEditingContext editingContext,
+            EObject cloneMediatorContainer, String editing_mode) {
+        super(editingContext, cloneMediatorContainer, editing_mode);
+        parts = new String[] { BASE_PART };
+        repositoryKey = EsbViewsRepository.class;
+        partKey = EsbViewsRepository.CloneMediatorContainer.class;
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int,
+     *      org.eclipse.emf.ecore.EObject,
+     *      org.eclipse.emf.ecore.resource.ResourceSet)
+     * 
+     */
+    public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
+        setInitializing(true);
+        if (editingPart != null && key == partKey) {
+            editingPart.setContext(elt, allResource);
 
+            final CloneMediatorContainer cloneMediatorContainer = (CloneMediatorContainer) elt;
+            final CloneMediatorContainerPropertiesEditionPart basePart = (CloneMediatorContainerPropertiesEditionPart) editingPart;
+            // init values
+            if (isAccessible(EsbViewsRepository.CloneMediatorContainer.Properties.cloneTargetContainer)) {
+                cloneTargetContainerSettings = new ReferencesTableSettings(cloneMediatorContainer,
+                        EsbPackage.eINSTANCE.getCloneMediatorContainer_CloneTargetContainer());
+                basePart.initCloneTargetContainer(cloneTargetContainerSettings);
+            }
+            // init filters
+            if (isAccessible(EsbViewsRepository.CloneMediatorContainer.Properties.cloneTargetContainer)) {
+                basePart.addFilterToCloneTargetContainer(new ViewerFilter() {
+                    /**
+                     * {@inheritDoc}
+                     * 
+                     * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer,
+                     *      java.lang.Object, java.lang.Object)
+                     */
+                    public boolean select(Viewer viewer, Object parentElement, Object element) {
+                        return (element instanceof String && element.equals("")) //$NON-NLS-1$
+                                || (element instanceof CloneTargetContainer);
+                    }
 
+                });
+                // Start of user code for additional businessfilters for cloneTargetContainer
+                // End of user code
+            }
+            // init values for referenced views
 
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
-	 */
-	public EStructuralFeature associatedFeature(Object editorKey) {
-		if (editorKey == EsbViewsRepository.CloneMediatorContainer.Properties.cloneTargetContainer) {
-			return EsbPackage.eINSTANCE.getCloneMediatorContainer_CloneTargetContainer();
-		}
-		return super.associatedFeature(editorKey);
-	}
+            // init filters for referenced views
 
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
-	 */
-	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		CloneMediatorContainer cloneMediatorContainer = (CloneMediatorContainer)semanticObject;
-		if (EsbViewsRepository.CloneMediatorContainer.Properties.cloneTargetContainer == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD) {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, cloneTargetContainerSettings, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy instanceof CreateEditingPolicy) {
-						policy.execute();
-					}
-				}
-			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
-					if (editionPolicy != null) {
-						editionPolicy.execute();
-					}
-				}
-			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				cloneTargetContainerSettings.removeFromReference((EObject) event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-				cloneTargetContainerSettings.move(event.getNewIndex(), (CloneTargetContainer) event.getNewValue());
-			}
-		}
-	}
+        }
+        setInitializing(false);
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
-	 */
-	public void updatePart(Notification msg) {
-		super.updatePart(msg);
-		if (editingPart.isVisible()) {
-			CloneMediatorContainerPropertiesEditionPart basePart = (CloneMediatorContainerPropertiesEditionPart)editingPart;
-			if (EsbPackage.eINSTANCE.getCloneMediatorContainer_CloneTargetContainer().equals(msg.getFeature()) && isAccessible(EsbViewsRepository.CloneMediatorContainer.Properties.cloneTargetContainer))
-				basePart.updateCloneTargetContainer();
-			
-		}
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+     */
+    public EStructuralFeature associatedFeature(Object editorKey) {
+        if (editorKey == EsbViewsRepository.CloneMediatorContainer.Properties.cloneTargetContainer) {
+            return EsbPackage.eINSTANCE.getCloneMediatorContainer_CloneTargetContainer();
+        }
+        return super.associatedFeature(editorKey);
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
-	 */
-	@Override
-	protected NotificationFilter[] getNotificationFilters() {
-		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			EsbPackage.eINSTANCE.getCloneMediatorContainer_CloneTargetContainer()		);
-		return new NotificationFilter[] {filter,};
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+     * 
+     */
+    public void updateSemanticModel(final IPropertiesEditionEvent event) {
+        CloneMediatorContainer cloneMediatorContainer = (CloneMediatorContainer) semanticObject;
+        if (EsbViewsRepository.CloneMediatorContainer.Properties.cloneTargetContainer == event.getAffectedEditor()) {
+            if (event.getKind() == PropertiesEditionEvent.ADD) {
+                EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext,
+                        this, cloneTargetContainerSettings, editingContext.getAdapterFactory());
+                PropertiesEditingProvider provider = (PropertiesEditingProvider) editingContext.getAdapterFactory()
+                        .adapt(semanticObject, PropertiesEditingProvider.class);
+                if (provider != null) {
+                    PropertiesEditingPolicy policy = provider.getPolicy(context);
+                    if (policy instanceof CreateEditingPolicy) {
+                        policy.execute();
+                    }
+                }
+            } else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+                EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this,
+                        (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+                PropertiesEditingProvider provider = (PropertiesEditingProvider) editingContext.getAdapterFactory()
+                        .adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+                if (provider != null) {
+                    PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+                    if (editionPolicy != null) {
+                        editionPolicy.execute();
+                    }
+                }
+            } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+                cloneTargetContainerSettings.removeFromReference((EObject) event.getNewValue());
+            } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+                cloneTargetContainerSettings.move(event.getNewIndex(), (CloneTargetContainer) event.getNewValue());
+            }
+        }
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
+     */
+    public void updatePart(Notification msg) {
+        super.updatePart(msg);
+        if (editingPart.isVisible()) {
+            CloneMediatorContainerPropertiesEditionPart basePart = (CloneMediatorContainerPropertiesEditionPart) editingPart;
+            if (EsbPackage.eINSTANCE.getCloneMediatorContainer_CloneTargetContainer().equals(msg.getFeature())
+                    && isAccessible(EsbViewsRepository.CloneMediatorContainer.Properties.cloneTargetContainer))
+                basePart.updateCloneTargetContainer();
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
-	 */
-	public Diagnostic validateValue(IPropertiesEditionEvent event) {
-		Diagnostic ret = Diagnostic.OK_INSTANCE;
-		if (event.getNewValue() != null) {
-			try {
-			} catch (IllegalArgumentException iae) {
-				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (WrappedException we) {
-				ret = BasicDiagnostic.toDiagnostic(we);
-			}
-		}
-		return ret;
-	}
+        }
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+     */
+    @Override
+    protected NotificationFilter[] getNotificationFilters() {
+        NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+                EsbPackage.eINSTANCE.getCloneMediatorContainer_CloneTargetContainer());
+        return new NotificationFilter[] { filter, };
+    }
 
-	
-
-	
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+     * 
+     */
+    public Diagnostic validateValue(IPropertiesEditionEvent event) {
+        Diagnostic ret = Diagnostic.OK_INSTANCE;
+        if (event.getNewValue() != null) {
+            try {
+            } catch (IllegalArgumentException iae) {
+                ret = BasicDiagnostic.toDiagnostic(iae);
+            } catch (WrappedException we) {
+                ret = BasicDiagnostic.toDiagnostic(we);
+            }
+        }
+        return ret;
+    }
 
 }

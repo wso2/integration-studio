@@ -91,10 +91,11 @@ public class ESBDebugLaunchDelegate implements ILaunchConfigurationDelegate {
     private IWorkbenchWindow activeWorkBenchWindow;
     private int statusCode = Window.CANCEL;
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-    private static int commandPort ;
+    private static int commandPort;
     private static int eventPort;
     private static String hostName;
     private static final int MAX_RETRY_COUNT = 30;
+
     @Override
     public void launch(final ILaunchConfiguration configuration, final String mode, final ILaunch launch,
             final IProgressMonitor monitor) throws CoreException {
@@ -135,23 +136,23 @@ public class ESBDebugLaunchDelegate implements ILaunchConfigurationDelegate {
                 // project explorer
                 IResource selectedCARAppResource = selectedProject.getParent()
                         .findMember(currentProjectName + "CompositeApplication");
-                
-                //check selected project is created from new Integration Wizard
+
+                // check selected project is created from new Integration Wizard
                 if (selectedCARAppResource == null) {
                     selectedCARAppResource = selectedProject.getParent()
                             .findMember(currentProjectName.split("ConfigProject")[0] + "CompositeApplication");
                 }
-                
+
                 boolean isCompositeSelectionPageNeeded = false;
                 if (selectedCARAppResource == null && currentProjectName != null
                         && !currentProjectName.contains("CompositeApplication")
-                                && !selectedProject.hasNature(Constants.DISTRIBUTION_PROJECT_NATURE)) {
+                        && !selectedProject.hasNature(Constants.DISTRIBUTION_PROJECT_NATURE)) {
                     isCompositeSelectionPageNeeded = true;
                 }
 
                 // Create the wizard for creating CAPP with the user selected artifacts
-				CompositeApplicationArtifactUpdateWizard wizard = new CompositeApplicationArtifactUpdateWizard(
-						isCompositeSelectionPageNeeded);
+                CompositeApplicationArtifactUpdateWizard wizard = new CompositeApplicationArtifactUpdateWizard(
+                        isCompositeSelectionPageNeeded);
 
                 if (currentProjectName != null && (currentProjectName.contains("CompositeApplication")
                         || selectedProject.hasNature(Constants.DISTRIBUTION_PROJECT_NATURE))) {
@@ -206,7 +207,7 @@ public class ESBDebugLaunchDelegate implements ILaunchConfigurationDelegate {
 
                         }
                     }.start();
-                    
+
                     // The following thread will re-send the existing debug points to the server once the server
                     // is up and running
                     new Thread() {

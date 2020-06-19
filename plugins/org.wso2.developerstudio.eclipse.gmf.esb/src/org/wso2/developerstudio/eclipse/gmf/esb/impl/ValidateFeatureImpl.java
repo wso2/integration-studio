@@ -35,6 +35,7 @@ public class ValidateFeatureImpl extends AbstractBooleanFeatureImpl implements V
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 

@@ -65,14 +65,14 @@ public class JsonTransformMediatorTransformer extends AbstractEsbNodeTransformer
                     .getJsonTransformProperties()) {
                 MediatorProperty mediatorProperty = new MediatorProperty();
                 if (jsonTransformMediatorProperty.getPropertyName() != null) {
-                	mediatorProperty.setName(jsonTransformMediatorProperty.getPropertyName());
+                    mediatorProperty.setName(jsonTransformMediatorProperty.getPropertyName());
                 } else {
-                	mediatorProperty.setName(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+                    mediatorProperty.setName(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
                 }
                 if (jsonTransformMediatorProperty.getPropertyValue() != null) {
-                	mediatorProperty.setValue(jsonTransformMediatorProperty.getPropertyValue());
+                    mediatorProperty.setValue(jsonTransformMediatorProperty.getPropertyValue());
                 } else {
-                	mediatorProperty.setValue(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+                    mediatorProperty.setValue(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
                 }
                 mediatorPropertyList.add(mediatorProperty);
             }
@@ -80,7 +80,7 @@ public class JsonTransformMediatorTransformer extends AbstractEsbNodeTransformer
         } else {
             hasNoProperties = true;
         }
-        
+
         if (hasNoSchema && hasNoProperties) {
             jsonTransformMediator.setSchemaKey(new Value(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION));
         }

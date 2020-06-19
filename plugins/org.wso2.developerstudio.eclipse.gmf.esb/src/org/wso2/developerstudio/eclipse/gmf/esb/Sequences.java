@@ -17,16 +17,17 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#getMediatorFlow <em>Mediator Flow</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#getName <em>Name</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#isRecieveSequence <em>Recieve Sequence</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#getAssociatedProxy <em>Associated Proxy</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#getOnError <em>On Error</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#getTemplateParameters <em>Template Parameters</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#isTraceEnabled <em>Trace Enabled</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#getOutputConnector <em>Output Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#getInputConnector <em>Input Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#getMediatorFlow <em>Mediator Flow</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#getName <em>Name</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#isRecieveSequence <em>Recieve Sequence</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#getAssociatedProxy <em>Associated Proxy</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#getOnError <em>On Error</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#getTemplateParameters <em>Template
+ * Parameters</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#isTraceEnabled <em>Trace Enabled</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSequences()
@@ -43,6 +44,7 @@ public interface Sequences extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Mediator Flow</em>' containment reference.
      * @see #setMediatorFlow(MediatorFlow)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSequences_MediatorFlow()
@@ -52,9 +54,11 @@ public interface Sequences extends EsbElement {
     MediatorFlow getMediatorFlow();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#getMediatorFlow <em>Mediator Flow</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#getMediatorFlow <em>Mediator
+     * Flow</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Mediator Flow</em>' containment reference.
      * @see #getMediatorFlow()
      * @generated
@@ -69,6 +73,7 @@ public interface Sequences extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSequences_Name()
@@ -78,9 +83,11 @@ public interface Sequences extends EsbElement {
     String getName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#getName <em>Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#getName <em>Name</em>}'
+     * attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Name</em>' attribute.
      * @see #getName()
      * @generated
@@ -95,6 +102,7 @@ public interface Sequences extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Recieve Sequence</em>' attribute.
      * @see #setRecieveSequence(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSequences_RecieveSequence()
@@ -104,9 +112,11 @@ public interface Sequences extends EsbElement {
     boolean isRecieveSequence();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#isRecieveSequence <em>Recieve Sequence</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#isRecieveSequence <em>Recieve
+     * Sequence</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Recieve Sequence</em>' attribute.
      * @see #isRecieveSequence()
      * @generated
@@ -122,6 +132,7 @@ public interface Sequences extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Associated Proxy</em>' attribute list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSequences_AssociatedProxy()
      * @model
@@ -137,6 +148,7 @@ public interface Sequences extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>On Error</em>' containment reference.
      * @see #setOnError(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSequences_OnError()
@@ -146,9 +158,11 @@ public interface Sequences extends EsbElement {
     RegistryKeyProperty getOnError();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#getOnError <em>On Error</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#getOnError <em>On Error</em>}'
+     * containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>On Error</em>' containment reference.
      * @see #getOnError()
      * @generated
@@ -164,6 +178,7 @@ public interface Sequences extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Template Parameters</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSequences_TemplateParameters()
      * @model containment="true"
@@ -179,6 +194,7 @@ public interface Sequences extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Trace Enabled</em>' attribute.
      * @see #setTraceEnabled(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSequences_TraceEnabled()
@@ -188,9 +204,11 @@ public interface Sequences extends EsbElement {
     boolean isTraceEnabled();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#isTraceEnabled <em>Trace Enabled</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#isTraceEnabled <em>Trace
+     * Enabled</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Trace Enabled</em>' attribute.
      * @see #isTraceEnabled()
      * @generated
@@ -205,6 +223,7 @@ public interface Sequences extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Statistics Enabled</em>' attribute.
      * @see #setStatisticsEnabled(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSequences_StatisticsEnabled()
@@ -214,9 +233,11 @@ public interface Sequences extends EsbElement {
     boolean isStatisticsEnabled();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#isStatisticsEnabled <em>Statistics Enabled</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#isStatisticsEnabled
+     * <em>Statistics Enabled</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Statistics Enabled</em>' attribute.
      * @see #isStatisticsEnabled()
      * @generated
@@ -231,6 +252,7 @@ public interface Sequences extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(SequencesOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSequences_OutputConnector()
@@ -240,9 +262,11 @@ public interface Sequences extends EsbElement {
     SequencesOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#getOutputConnector <em>Output
+     * Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
      * @see #getOutputConnector()
      * @generated
@@ -257,6 +281,7 @@ public interface Sequences extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(SequencesInputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSequences_InputConnector()
@@ -266,9 +291,11 @@ public interface Sequences extends EsbElement {
     SequencesInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#getInputConnector <em>Input
+     * Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
      * @see #getInputConnector()
      * @generated

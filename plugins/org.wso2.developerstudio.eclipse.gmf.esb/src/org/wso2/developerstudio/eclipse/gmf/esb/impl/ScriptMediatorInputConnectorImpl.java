@@ -22,6 +22,7 @@ public class ScriptMediatorInputConnectorImpl extends InputConnectorImpl impleme
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected ScriptMediatorInputConnectorImpl() {
@@ -31,6 +32,7 @@ public class ScriptMediatorInputConnectorImpl extends InputConnectorImpl impleme
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 

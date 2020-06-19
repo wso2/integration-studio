@@ -24,8 +24,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractNameValuePropertyImpl#getPropertyName <em>Property Name</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractNameValuePropertyImpl#getPropertyValue <em>Property Value</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractNameValuePropertyImpl#getPropertyName <em>Property
+ * Name</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractNameValuePropertyImpl#getPropertyValue <em>Property
+ * Value</em>}</li>
  * </ul>
  *
  * @generated
@@ -35,6 +37,7 @@ public abstract class AbstractNameValuePropertyImpl extends EObjectImpl implemen
      * The default value of the '{@link #getPropertyName() <em>Property Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getPropertyName()
      * @generated
      * @ordered
@@ -45,6 +48,7 @@ public abstract class AbstractNameValuePropertyImpl extends EObjectImpl implemen
      * The cached value of the '{@link #getPropertyName() <em>Property Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getPropertyName()
      * @generated
      * @ordered
@@ -55,6 +59,7 @@ public abstract class AbstractNameValuePropertyImpl extends EObjectImpl implemen
      * The default value of the '{@link #getPropertyValue() <em>Property Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getPropertyValue()
      * @generated
      * @ordered
@@ -65,6 +70,7 @@ public abstract class AbstractNameValuePropertyImpl extends EObjectImpl implemen
      * The cached value of the '{@link #getPropertyValue() <em>Property Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getPropertyValue()
      * @generated
      * @ordered
@@ -74,6 +80,7 @@ public abstract class AbstractNameValuePropertyImpl extends EObjectImpl implemen
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected AbstractNameValuePropertyImpl() {
@@ -83,6 +90,7 @@ public abstract class AbstractNameValuePropertyImpl extends EObjectImpl implemen
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -94,6 +102,7 @@ public abstract class AbstractNameValuePropertyImpl extends EObjectImpl implemen
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getPropertyName() {
@@ -103,18 +112,21 @@ public abstract class AbstractNameValuePropertyImpl extends EObjectImpl implemen
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setPropertyName(String newPropertyName) {
         String oldPropertyName = propertyName;
         propertyName = newPropertyName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_NAME_VALUE_PROPERTY__PROPERTY_NAME, oldPropertyName, propertyName));
+            eNotify(new ENotificationImpl(this, Notification.SET,
+                    EsbPackage.ABSTRACT_NAME_VALUE_PROPERTY__PROPERTY_NAME, oldPropertyName, propertyName));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getPropertyValue() {
@@ -124,28 +136,31 @@ public abstract class AbstractNameValuePropertyImpl extends EObjectImpl implemen
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setPropertyValue(String newPropertyValue) {
         String oldPropertyValue = propertyValue;
         propertyValue = newPropertyValue;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_NAME_VALUE_PROPERTY__PROPERTY_VALUE, oldPropertyValue, propertyValue));
+            eNotify(new ENotificationImpl(this, Notification.SET,
+                    EsbPackage.ABSTRACT_NAME_VALUE_PROPERTY__PROPERTY_VALUE, oldPropertyValue, propertyValue));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-            case EsbPackage.ABSTRACT_NAME_VALUE_PROPERTY__PROPERTY_NAME:
-                return getPropertyName();
-            case EsbPackage.ABSTRACT_NAME_VALUE_PROPERTY__PROPERTY_VALUE:
-                return getPropertyValue();
+        case EsbPackage.ABSTRACT_NAME_VALUE_PROPERTY__PROPERTY_NAME:
+            return getPropertyName();
+        case EsbPackage.ABSTRACT_NAME_VALUE_PROPERTY__PROPERTY_VALUE:
+            return getPropertyValue();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -153,18 +168,19 @@ public abstract class AbstractNameValuePropertyImpl extends EObjectImpl implemen
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-            case EsbPackage.ABSTRACT_NAME_VALUE_PROPERTY__PROPERTY_NAME:
-                setPropertyName((String)newValue);
-                return;
-            case EsbPackage.ABSTRACT_NAME_VALUE_PROPERTY__PROPERTY_VALUE:
-                setPropertyValue((String)newValue);
-                return;
+        case EsbPackage.ABSTRACT_NAME_VALUE_PROPERTY__PROPERTY_NAME:
+            setPropertyName((String) newValue);
+            return;
+        case EsbPackage.ABSTRACT_NAME_VALUE_PROPERTY__PROPERTY_VALUE:
+            setPropertyValue((String) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -172,18 +188,19 @@ public abstract class AbstractNameValuePropertyImpl extends EObjectImpl implemen
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-            case EsbPackage.ABSTRACT_NAME_VALUE_PROPERTY__PROPERTY_NAME:
-                setPropertyName(PROPERTY_NAME_EDEFAULT);
-                return;
-            case EsbPackage.ABSTRACT_NAME_VALUE_PROPERTY__PROPERTY_VALUE:
-                setPropertyValue(PROPERTY_VALUE_EDEFAULT);
-                return;
+        case EsbPackage.ABSTRACT_NAME_VALUE_PROPERTY__PROPERTY_NAME:
+            setPropertyName(PROPERTY_NAME_EDEFAULT);
+            return;
+        case EsbPackage.ABSTRACT_NAME_VALUE_PROPERTY__PROPERTY_VALUE:
+            setPropertyValue(PROPERTY_VALUE_EDEFAULT);
+            return;
         }
         super.eUnset(featureID);
     }
@@ -191,16 +208,18 @@ public abstract class AbstractNameValuePropertyImpl extends EObjectImpl implemen
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-            case EsbPackage.ABSTRACT_NAME_VALUE_PROPERTY__PROPERTY_NAME:
-                return PROPERTY_NAME_EDEFAULT == null ? propertyName != null : !PROPERTY_NAME_EDEFAULT.equals(propertyName);
-            case EsbPackage.ABSTRACT_NAME_VALUE_PROPERTY__PROPERTY_VALUE:
-                return PROPERTY_VALUE_EDEFAULT == null ? propertyValue != null : !PROPERTY_VALUE_EDEFAULT.equals(propertyValue);
+        case EsbPackage.ABSTRACT_NAME_VALUE_PROPERTY__PROPERTY_NAME:
+            return PROPERTY_NAME_EDEFAULT == null ? propertyName != null : !PROPERTY_NAME_EDEFAULT.equals(propertyName);
+        case EsbPackage.ABSTRACT_NAME_VALUE_PROPERTY__PROPERTY_VALUE:
+            return PROPERTY_VALUE_EDEFAULT == null ? propertyValue != null
+                    : !PROPERTY_VALUE_EDEFAULT.equals(propertyValue);
         }
         return super.eIsSet(featureID);
     }
@@ -208,12 +227,14 @@ public abstract class AbstractNameValuePropertyImpl extends EObjectImpl implemen
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public String toString() {
-        if (eIsProxy()) return super.toString();
+        if (eIsProxy())
+            return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (propertyName: ");

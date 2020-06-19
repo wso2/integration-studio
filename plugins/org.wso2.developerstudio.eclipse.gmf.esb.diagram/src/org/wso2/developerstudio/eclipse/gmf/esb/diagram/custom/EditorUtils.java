@@ -885,7 +885,7 @@ public class EditorUtils {
                         esbPaletteFactory.updateToolPaletteItems(((EsbMultiPageEditor) editor).getGraphicalEditor());
                     }
                 }
-                // Update Cloud Connector UI model 
+                // Update Cloud Connector UI model
                 EEFPropertyViewUtil.loadConnectorSchemas();
             }
         });

@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Task Trigger Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
+ * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getTaskTriggerType()
  * @model
  * @generated
@@ -26,6 +27,7 @@ public enum TaskTriggerType implements Enumerator {
      * The '<em><b>Simple</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #SIMPLE_VALUE
      * @generated
      * @ordered
@@ -36,6 +38,7 @@ public enum TaskTriggerType implements Enumerator {
      * The '<em><b>Cron</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #CRON_VALUE
      * @generated
      * @ordered
@@ -50,6 +53,7 @@ public enum TaskTriggerType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #SIMPLE
      * @model name="Simple"
      * @generated
@@ -65,6 +69,7 @@ public enum TaskTriggerType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #CRON
      * @model name="Cron"
      * @generated
@@ -76,17 +81,16 @@ public enum TaskTriggerType implements Enumerator {
      * An array of all the '<em><b>Task Trigger Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
-    private static final TaskTriggerType[] VALUES_ARRAY = new TaskTriggerType[] {
-            SIMPLE,
-            CRON,
-        };
+    private static final TaskTriggerType[] VALUES_ARRAY = new TaskTriggerType[] { SIMPLE, CRON, };
 
     /**
      * A public read-only list of all the '<em><b>Task Trigger Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public static final List<TaskTriggerType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -95,6 +99,7 @@ public enum TaskTriggerType implements Enumerator {
      * Returns the '<em><b>Task Trigger Type</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -113,6 +118,7 @@ public enum TaskTriggerType implements Enumerator {
      * Returns the '<em><b>Task Trigger Type</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -131,14 +137,17 @@ public enum TaskTriggerType implements Enumerator {
      * Returns the '<em><b>Task Trigger Type</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static TaskTriggerType get(int value) {
         switch (value) {
-            case SIMPLE_VALUE: return SIMPLE;
-            case CRON_VALUE: return CRON;
+        case SIMPLE_VALUE:
+            return SIMPLE;
+        case CRON_VALUE:
+            return CRON;
         }
         return null;
     }
@@ -146,6 +155,7 @@ public enum TaskTriggerType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final int value;
@@ -153,6 +163,7 @@ public enum TaskTriggerType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String name;
@@ -160,6 +171,7 @@ public enum TaskTriggerType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String literal;
@@ -168,6 +180,7 @@ public enum TaskTriggerType implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private TaskTriggerType(int value, String name, String literal) {
@@ -179,34 +192,38 @@ public enum TaskTriggerType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public int getValue() {
-      return value;
+        return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getName() {
-      return name;
+        return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getLiteral() {
-      return literal;
+        return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

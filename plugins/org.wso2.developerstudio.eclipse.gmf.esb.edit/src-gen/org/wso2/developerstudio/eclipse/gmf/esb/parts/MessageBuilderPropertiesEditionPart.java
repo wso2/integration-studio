@@ -5,8 +5,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb.parts;
 
 // Start of user code for imports
 
-
-
 // End of user code
 
 /**
@@ -15,61 +13,58 @@ package org.wso2.developerstudio.eclipse.gmf.esb.parts;
  */
 public interface MessageBuilderPropertiesEditionPart {
 
-	/**
-	 * @return the contentType
-	 * 
-	 */
-	public String getContentType();
+    /**
+     * @return the contentType
+     * 
+     */
+    public String getContentType();
 
-	/**
-	 * Defines a new contentType
-	 * @param newValue the new contentType to set
-	 * 
-	 */
-	public void setContentType(String newValue);
+    /**
+     * Defines a new contentType
+     * 
+     * @param newValue the new contentType to set
+     * 
+     */
+    public void setContentType(String newValue);
 
+    /**
+     * @return the builderClass
+     * 
+     */
+    public String getBuilderClass();
 
-	/**
-	 * @return the builderClass
-	 * 
-	 */
-	public String getBuilderClass();
+    /**
+     * Defines a new builderClass
+     * 
+     * @param newValue the new builderClass to set
+     * 
+     */
+    public void setBuilderClass(String newValue);
 
-	/**
-	 * Defines a new builderClass
-	 * @param newValue the new builderClass to set
-	 * 
-	 */
-	public void setBuilderClass(String newValue);
+    /**
+     * @return the formatterClass
+     * 
+     */
+    public String getFormatterClass();
 
+    /**
+     * Defines a new formatterClass
+     * 
+     * @param newValue the new formatterClass to set
+     * 
+     */
+    public void setFormatterClass(String newValue);
 
-	/**
-	 * @return the formatterClass
-	 * 
-	 */
-	public String getFormatterClass();
+    /**
+     * Returns the internationalized title text.
+     * 
+     * @return the internationalized title text.
+     * 
+     */
+    public String getTitle();
 
-	/**
-	 * Defines a new formatterClass
-	 * @param newValue the new formatterClass to set
-	 * 
-	 */
-	public void setFormatterClass(String newValue);
+    // Start of user code for additional methods
 
-
-
-
-
-	/**
-	 * Returns the internationalized title text.
-	 * 
-	 * @return the internationalized title text.
-	 * 
-	 */
-	public String getTitle();
-
-	// Start of user code for additional methods
-	
-	// End of user code
+    // End of user code
 
 }

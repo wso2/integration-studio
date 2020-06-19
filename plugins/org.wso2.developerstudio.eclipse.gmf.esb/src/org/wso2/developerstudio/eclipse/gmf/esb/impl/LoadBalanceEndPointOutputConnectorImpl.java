@@ -23,6 +23,7 @@ public class LoadBalanceEndPointOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected LoadBalanceEndPointOutputConnectorImpl() {
@@ -32,6 +33,7 @@ public class LoadBalanceEndPointOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

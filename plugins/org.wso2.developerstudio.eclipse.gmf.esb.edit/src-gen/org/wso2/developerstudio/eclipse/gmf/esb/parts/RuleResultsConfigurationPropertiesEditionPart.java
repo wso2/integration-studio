@@ -10,7 +10,6 @@ import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSet
 
 import org.eclipse.jface.viewers.ViewerFilter;
 
-
 // End of user code
 
 /**
@@ -19,63 +18,59 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public interface RuleResultsConfigurationPropertiesEditionPart {
 
+    /**
+     * Init the results
+     * 
+     * @param current the current value
+     * @param containgFeature the feature where to navigate if necessary
+     * @param feature the feature to manage
+     */
+    public void initResults(ReferencesTableSettings settings);
 
+    /**
+     * Update the results
+     * 
+     * @param newValue the results to update
+     * 
+     */
+    public void updateResults();
 
-	/**
-	 * Init the results
-	 * @param current the current value
-	 * @param containgFeature the feature where to navigate if necessary
-	 * @param feature the feature to manage
-	 */
-	public void initResults(ReferencesTableSettings settings);
+    /**
+     * Adds the given filter to the results edition editor.
+     * 
+     * @param filter
+     *            a viewer filter
+     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+     * 
+     */
+    public void addFilterToResults(ViewerFilter filter);
 
-	/**
-	 * Update the results
-	 * @param newValue the results to update
-	 * 
-	 */
-	public void updateResults();
+    /**
+     * Adds the given filter to the results edition editor.
+     * 
+     * @param filter
+     *            a viewer filter
+     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+     * 
+     */
+    public void addBusinessFilterToResults(ViewerFilter filter);
 
-	/**
-	 * Adds the given filter to the results edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addFilterToResults(ViewerFilter filter);
+    /**
+     * @return true if the given element is contained inside the results table
+     * 
+     */
+    public boolean isContainedInResultsTable(EObject element);
 
-	/**
-	 * Adds the given filter to the results edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addBusinessFilterToResults(ViewerFilter filter);
+    /**
+     * Returns the internationalized title text.
+     * 
+     * @return the internationalized title text.
+     * 
+     */
+    public String getTitle();
 
-	/**
-	 * @return true if the given element is contained inside the results table
-	 * 
-	 */
-	public boolean isContainedInResultsTable(EObject element);
+    // Start of user code for additional methods
 
-
-
-
-
-	/**
-	 * Returns the internationalized title text.
-	 * 
-	 * @return the internationalized title text.
-	 * 
-	 */
-	public String getTitle();
-
-	// Start of user code for additional methods
-	
-	// End of user code
+    // End of user code
 
 }

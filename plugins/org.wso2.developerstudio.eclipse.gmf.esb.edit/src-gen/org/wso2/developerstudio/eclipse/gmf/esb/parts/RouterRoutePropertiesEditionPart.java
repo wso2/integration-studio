@@ -12,7 +12,6 @@ import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSett
 
 import org.eclipse.jface.viewers.ViewerFilter;
 
-
 // End of user code
 
 /**
@@ -21,94 +20,93 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public interface RouterRoutePropertiesEditionPart {
 
-	/**
-	 * @return the breakAfterRoute
-	 * 
-	 */
-	public Boolean getBreakAfterRoute();
+    /**
+     * @return the breakAfterRoute
+     * 
+     */
+    public Boolean getBreakAfterRoute();
 
-	/**
-	 * Defines a new breakAfterRoute
-	 * @param newValue the new breakAfterRoute to set
-	 * 
-	 */
-	public void setBreakAfterRoute(Boolean newValue);
+    /**
+     * Defines a new breakAfterRoute
+     * 
+     * @param newValue the new breakAfterRoute to set
+     * 
+     */
+    public void setBreakAfterRoute(Boolean newValue);
 
+    /**
+     * @return the routeExpression
+     * 
+     */
+    public EObject getRouteExpression();
 
-	/**
-	 * @return the routeExpression
-	 * 
-	 */
-	public EObject getRouteExpression();
+    /**
+     * Init the routeExpression
+     * 
+     * @param settings the combo setting
+     */
+    public void initRouteExpression(EObjectFlatComboSettings settings);
 
-	/**
-	 * Init the routeExpression
-	 * @param settings the combo setting
-	 */
-	public void initRouteExpression(EObjectFlatComboSettings settings);
+    /**
+     * Defines a new routeExpression
+     * 
+     * @param newValue the new routeExpression to set
+     * 
+     */
+    public void setRouteExpression(EObject newValue);
 
-	/**
-	 * Defines a new routeExpression
-	 * @param newValue the new routeExpression to set
-	 * 
-	 */
-	public void setRouteExpression(EObject newValue);
+    /**
+     * Defines the button mode
+     * 
+     * @param newValue the new mode to set
+     * 
+     */
+    public void setRouteExpressionButtonMode(ButtonsModeEnum newValue);
 
-	/**
-	 * Defines the button mode
-	 * @param newValue the new mode to set
-	 * 
-	 */
-	public void setRouteExpressionButtonMode(ButtonsModeEnum newValue);
+    /**
+     * Adds the given filter to the routeExpression edition editor.
+     * 
+     * @param filter
+     *            a viewer filter
+     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+     * 
+     */
+    public void addFilterToRouteExpression(ViewerFilter filter);
 
-	/**
-	 * Adds the given filter to the routeExpression edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addFilterToRouteExpression(ViewerFilter filter);
+    /**
+     * Adds the given filter to the routeExpression edition editor.
+     * 
+     * @param filter
+     *            a viewer filter
+     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+     * 
+     */
+    public void addBusinessFilterToRouteExpression(ViewerFilter filter);
 
-	/**
-	 * Adds the given filter to the routeExpression edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addBusinessFilterToRouteExpression(ViewerFilter filter);
+    /**
+     * @return the routePattern
+     * 
+     */
+    public String getRoutePattern();
 
+    /**
+     * Defines a new routePattern
+     * 
+     * @param newValue the new routePattern to set
+     * 
+     */
+    public void setRoutePattern(String newValue);
 
-	/**
-	 * @return the routePattern
-	 * 
-	 */
-	public String getRoutePattern();
+    /**
+     * Returns the internationalized title text.
+     * 
+     * @return the internationalized title text.
+     * 
+     */
+    public String getTitle();
 
-	/**
-	 * Defines a new routePattern
-	 * @param newValue the new routePattern to set
-	 * 
-	 */
-	public void setRoutePattern(String newValue);
+    // Start of user code for additional methods
 
-
-
-
-
-	/**
-	 * Returns the internationalized title text.
-	 * 
-	 * @return the internationalized title text.
-	 * 
-	 */
-	public String getTitle();
-
-	// Start of user code for additional methods
-	
-	// End of user code
+    // End of user code
 
 }

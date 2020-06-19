@@ -28,12 +28,12 @@ import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.mediators.transaction.TransactionMediator;
 
 public class TransactionMediatorExtFactory extends TransactionMediatorFactory {
-    
+
     private static TransactionMediatorExtFactory instance;
-    
+
     private TransactionMediatorExtFactory() {
     }
-    
+
     public static synchronized TransactionMediatorExtFactory getInstance() {
         if (instance == null) {
             instance = new TransactionMediatorExtFactory();

@@ -23,6 +23,7 @@ public class CallTemplateMediatorInputConnectorImpl extends InputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected CallTemplateMediatorInputConnectorImpl() {
@@ -32,6 +33,7 @@ public class CallTemplateMediatorInputConnectorImpl extends InputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

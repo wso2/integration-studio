@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>JMS Session Acknowledgement</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
+ * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getJMSSessionAcknowledgement()
  * @model
  * @generated
@@ -35,6 +36,7 @@ public enum JMSSessionAcknowledgement implements Enumerator {
      * The '<em><b>AUTO ACKNOWLEDGE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #AUTO_ACKNOWLEDGE_VALUE
      * @generated
      * @ordered
@@ -45,6 +47,7 @@ public enum JMSSessionAcknowledgement implements Enumerator {
      * The '<em><b>CLIENT ACKNOWLEDGE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #CLIENT_ACKNOWLEDGE_VALUE
      * @generated
      * @ordered
@@ -55,6 +58,7 @@ public enum JMSSessionAcknowledgement implements Enumerator {
      * The '<em><b>DUPS OK ACKNOWLEDGE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #DUPS_OK_ACKNOWLEDGE_VALUE
      * @generated
      * @ordered
@@ -65,6 +69,7 @@ public enum JMSSessionAcknowledgement implements Enumerator {
      * The '<em><b>SESSION TRANSACTED</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #SESSION_TRANSACTED_VALUE
      * @generated
      * @ordered
@@ -79,6 +84,7 @@ public enum JMSSessionAcknowledgement implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #AUTO_ACKNOWLEDGE
      * @model
      * @generated
@@ -94,6 +100,7 @@ public enum JMSSessionAcknowledgement implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #CLIENT_ACKNOWLEDGE
      * @model
      * @generated
@@ -109,6 +116,7 @@ public enum JMSSessionAcknowledgement implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #DUPS_OK_ACKNOWLEDGE
      * @model
      * @generated
@@ -124,6 +132,7 @@ public enum JMSSessionAcknowledgement implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #SESSION_TRANSACTED
      * @model
      * @generated
@@ -135,27 +144,27 @@ public enum JMSSessionAcknowledgement implements Enumerator {
      * An array of all the '<em><b>JMS Session Acknowledgement</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
-    private static final JMSSessionAcknowledgement[] VALUES_ARRAY = new JMSSessionAcknowledgement[] {
-            AUTO_ACKNOWLEDGE,
-            CLIENT_ACKNOWLEDGE,
-            DUPS_OK_ACKNOWLEDGE,
-            SESSION_TRANSACTED,
-        };
+    private static final JMSSessionAcknowledgement[] VALUES_ARRAY = new JMSSessionAcknowledgement[] { AUTO_ACKNOWLEDGE,
+            CLIENT_ACKNOWLEDGE, DUPS_OK_ACKNOWLEDGE, SESSION_TRANSACTED, };
 
     /**
      * A public read-only list of all the '<em><b>JMS Session Acknowledgement</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
-    public static final List<JMSSessionAcknowledgement> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<JMSSessionAcknowledgement> VALUES = Collections
+            .unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
     /**
      * Returns the '<em><b>JMS Session Acknowledgement</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -174,6 +183,7 @@ public enum JMSSessionAcknowledgement implements Enumerator {
      * Returns the '<em><b>JMS Session Acknowledgement</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -192,16 +202,21 @@ public enum JMSSessionAcknowledgement implements Enumerator {
      * Returns the '<em><b>JMS Session Acknowledgement</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static JMSSessionAcknowledgement get(int value) {
         switch (value) {
-            case AUTO_ACKNOWLEDGE_VALUE: return AUTO_ACKNOWLEDGE;
-            case CLIENT_ACKNOWLEDGE_VALUE: return CLIENT_ACKNOWLEDGE;
-            case DUPS_OK_ACKNOWLEDGE_VALUE: return DUPS_OK_ACKNOWLEDGE;
-            case SESSION_TRANSACTED_VALUE: return SESSION_TRANSACTED;
+        case AUTO_ACKNOWLEDGE_VALUE:
+            return AUTO_ACKNOWLEDGE;
+        case CLIENT_ACKNOWLEDGE_VALUE:
+            return CLIENT_ACKNOWLEDGE;
+        case DUPS_OK_ACKNOWLEDGE_VALUE:
+            return DUPS_OK_ACKNOWLEDGE;
+        case SESSION_TRANSACTED_VALUE:
+            return SESSION_TRANSACTED;
         }
         return null;
     }
@@ -209,6 +224,7 @@ public enum JMSSessionAcknowledgement implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final int value;
@@ -216,6 +232,7 @@ public enum JMSSessionAcknowledgement implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String name;
@@ -223,6 +240,7 @@ public enum JMSSessionAcknowledgement implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String literal;
@@ -231,6 +249,7 @@ public enum JMSSessionAcknowledgement implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private JMSSessionAcknowledgement(int value, String name, String literal) {
@@ -242,34 +261,38 @@ public enum JMSSessionAcknowledgement implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public int getValue() {
-      return value;
+        return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getName() {
-      return name;
+        return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getLiteral() {
-      return literal;
+        return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

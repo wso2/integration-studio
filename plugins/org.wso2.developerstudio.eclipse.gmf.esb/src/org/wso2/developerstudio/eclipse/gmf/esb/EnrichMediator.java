@@ -15,19 +15,20 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#isCloneSource <em>Clone Source</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getSourceType <em>Source Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getSourceXpath <em>Source Xpath</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getSourceProperty <em>Source Property</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getSourceXML <em>Source XML</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getTargetAction <em>Target Action</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getTargetType <em>Target Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getTargetXpath <em>Target Xpath</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getTargetProperty <em>Target Property</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getInlineType <em>Inline Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getInlineRegistryKey <em>Inline Registry Key</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getOutputConnector <em>Output Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#isCloneSource <em>Clone Source</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getSourceType <em>Source Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getSourceXpath <em>Source Xpath</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getSourceProperty <em>Source Property</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getSourceXML <em>Source XML</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getTargetAction <em>Target Action</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getTargetType <em>Target Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getTargetXpath <em>Target Xpath</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getTargetProperty <em>Target Property</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getInlineType <em>Inline Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getInlineRegistryKey <em>Inline Registry
+ * Key</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getInputConnector <em>Input Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEnrichMediator()
@@ -44,6 +45,7 @@ public interface EnrichMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Clone Source</em>' attribute.
      * @see #setCloneSource(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEnrichMediator_CloneSource()
@@ -53,9 +55,11 @@ public interface EnrichMediator extends Mediator {
     boolean isCloneSource();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#isCloneSource <em>Clone Source</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#isCloneSource <em>Clone
+     * Source</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Clone Source</em>' attribute.
      * @see #isCloneSource()
      * @generated
@@ -72,6 +76,7 @@ public interface EnrichMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Source Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EnrichSourceType
      * @see #setSourceType(EnrichSourceType)
@@ -82,9 +87,11 @@ public interface EnrichMediator extends Mediator {
     EnrichSourceType getSourceType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getSourceType <em>Source Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getSourceType <em>Source
+     * Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Source Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EnrichSourceType
      * @see #getSourceType()
@@ -100,6 +107,7 @@ public interface EnrichMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Source Xpath</em>' containment reference.
      * @see #setSourceXpath(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEnrichMediator_SourceXpath()
@@ -109,9 +117,11 @@ public interface EnrichMediator extends Mediator {
     NamespacedProperty getSourceXpath();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getSourceXpath <em>Source Xpath</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getSourceXpath <em>Source
+     * Xpath</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Source Xpath</em>' containment reference.
      * @see #getSourceXpath()
      * @generated
@@ -127,6 +137,7 @@ public interface EnrichMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Source Property</em>' attribute.
      * @see #setSourceProperty(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEnrichMediator_SourceProperty()
@@ -136,9 +147,11 @@ public interface EnrichMediator extends Mediator {
     String getSourceProperty();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getSourceProperty <em>Source Property</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getSourceProperty
+     * <em>Source Property</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Source Property</em>' attribute.
      * @see #getSourceProperty()
      * @generated
@@ -154,6 +167,7 @@ public interface EnrichMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Source XML</em>' attribute.
      * @see #setSourceXML(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEnrichMediator_SourceXML()
@@ -163,9 +177,11 @@ public interface EnrichMediator extends Mediator {
     String getSourceXML();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getSourceXML <em>Source XML</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getSourceXML <em>Source
+     * XML</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Source XML</em>' attribute.
      * @see #getSourceXML()
      * @generated
@@ -181,6 +197,7 @@ public interface EnrichMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Target Action</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EnrichTargetAction
      * @see #setTargetAction(EnrichTargetAction)
@@ -191,9 +208,11 @@ public interface EnrichMediator extends Mediator {
     EnrichTargetAction getTargetAction();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getTargetAction <em>Target Action</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getTargetAction <em>Target
+     * Action</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Target Action</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EnrichTargetAction
      * @see #getTargetAction()
@@ -211,6 +230,7 @@ public interface EnrichMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Target Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EnrichTargetType
      * @see #setTargetType(EnrichTargetType)
@@ -221,9 +241,11 @@ public interface EnrichMediator extends Mediator {
     EnrichTargetType getTargetType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getTargetType <em>Target Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getTargetType <em>Target
+     * Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Target Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EnrichTargetType
      * @see #getTargetType()
@@ -239,6 +261,7 @@ public interface EnrichMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Target Xpath</em>' containment reference.
      * @see #setTargetXpath(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEnrichMediator_TargetXpath()
@@ -248,9 +271,11 @@ public interface EnrichMediator extends Mediator {
     NamespacedProperty getTargetXpath();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getTargetXpath <em>Target Xpath</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getTargetXpath <em>Target
+     * Xpath</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Target Xpath</em>' containment reference.
      * @see #getTargetXpath()
      * @generated
@@ -266,6 +291,7 @@ public interface EnrichMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Target Property</em>' attribute.
      * @see #setTargetProperty(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEnrichMediator_TargetProperty()
@@ -275,9 +301,11 @@ public interface EnrichMediator extends Mediator {
     String getTargetProperty();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getTargetProperty <em>Target Property</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getTargetProperty
+     * <em>Target Property</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Target Property</em>' attribute.
      * @see #getTargetProperty()
      * @generated
@@ -293,6 +321,7 @@ public interface EnrichMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Inline Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EnrichSourceInlineType
      * @see #setInlineType(EnrichSourceInlineType)
@@ -303,9 +332,11 @@ public interface EnrichMediator extends Mediator {
     EnrichSourceInlineType getInlineType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getInlineType <em>Inline Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getInlineType <em>Inline
+     * Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Inline Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EnrichSourceInlineType
      * @see #getInlineType()
@@ -321,6 +352,7 @@ public interface EnrichMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Inline Registry Key</em>' containment reference.
      * @see #setInlineRegistryKey(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEnrichMediator_InlineRegistryKey()
@@ -330,9 +362,11 @@ public interface EnrichMediator extends Mediator {
     RegistryKeyProperty getInlineRegistryKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getInlineRegistryKey <em>Inline Registry Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getInlineRegistryKey
+     * <em>Inline Registry Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Inline Registry Key</em>' containment reference.
      * @see #getInlineRegistryKey()
      * @generated
@@ -347,6 +381,7 @@ public interface EnrichMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(EnrichMediatorInputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEnrichMediator_InputConnector()
@@ -356,9 +391,11 @@ public interface EnrichMediator extends Mediator {
     EnrichMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getInputConnector <em>Input
+     * Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
      * @see #getInputConnector()
      * @generated
@@ -373,6 +410,7 @@ public interface EnrichMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(EnrichMediatorOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEnrichMediator_OutputConnector()
@@ -382,9 +420,11 @@ public interface EnrichMediator extends Mediator {
     EnrichMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator#getOutputConnector
+     * <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
      * @see #getOutputConnector()
      * @generated

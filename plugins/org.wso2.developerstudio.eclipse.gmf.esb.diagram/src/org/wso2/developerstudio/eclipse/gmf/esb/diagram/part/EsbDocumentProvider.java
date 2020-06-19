@@ -338,7 +338,8 @@ public class EsbDocumentProvider extends AbstractDocumentProvider implements IDi
                     updateCache(element);
                 } catch (CoreException ex) {
                     EsbDiagramEditorPlugin.getInstance().logError(Messages.EsbDocumentProvider_isModifiable, ex);
-                    // Error message to log was initially taken from org.eclipse.gmf.runtime.diagram.ui.resources.editor.ide.internal.l10n.EditorMessages.StorageDocumentProvider_isModifiable
+                    // Error message to log was initially taken from
+                    // org.eclipse.gmf.runtime.diagram.ui.resources.editor.ide.internal.l10n.EditorMessages.StorageDocumentProvider_isModifiable
                 }
             }
             return info.isReadOnly();
@@ -362,7 +363,8 @@ public class EsbDocumentProvider extends AbstractDocumentProvider implements IDi
                     updateCache(element);
                 } catch (CoreException ex) {
                     EsbDiagramEditorPlugin.getInstance().logError(Messages.EsbDocumentProvider_isModifiable, ex);
-                    // Error message to log was initially taken from org.eclipse.gmf.runtime.diagram.ui.resources.editor.ide.internal.l10n.EditorMessages.StorageDocumentProvider_isModifiable
+                    // Error message to log was initially taken from
+                    // org.eclipse.gmf.runtime.diagram.ui.resources.editor.ide.internal.l10n.EditorMessages.StorageDocumentProvider_isModifiable
                 }
             }
             return info.isModifiable();
@@ -543,7 +545,7 @@ public class EsbDocumentProvider extends AbstractDocumentProvider implements IDi
             fireElementStateChanging(element);
             try {
                 monitor.beginTask(Messages.EsbDocumentProvider_SaveDiagramTask,
-                        info.getResourceSet().getResources().size() + 1); //"Saving diagram"
+                        info.getResourceSet().getResources().size() + 1); // "Saving diagram"
                 for (Iterator<Resource> it = info.getLoadedResourcesIterator(); it.hasNext();) {
                     Resource nextResource = it.next();
                     monitor.setTaskName(
@@ -581,7 +583,7 @@ public class EsbDocumentProvider extends AbstractDocumentProvider implements IDi
                 throw new CoreException(new Status(IStatus.ERROR, EsbDiagramEditorPlugin.ID, 0,
                         NLS.bind(Messages.EsbDocumentProvider_IncorrectInputError,
                                 new Object[] { element, "org.eclipse.ui.part.FileEditorInput", //$NON-NLS-1$
-                                        "org.eclipse.emf.common.ui.URIEditorInput" }), //$NON-NLS-1$ 
+                                        "org.eclipse.emf.common.ui.URIEditorInput" }), //$NON-NLS-1$
                         null));
             }
             if (false == document instanceof IDiagramDocument) {
@@ -629,7 +631,8 @@ public class EsbDocumentProvider extends AbstractDocumentProvider implements IDi
             } catch (CoreException ex) {
                 EsbDiagramEditorPlugin.getInstance().logError(Messages.EsbDocumentProvider_handleElementContentChanged,
                         ex);
-                // Error message to log was initially taken from org.eclipse.gmf.runtime.diagram.ui.resources.editor.ide.internal.l10n.EditorMessages.FileDocumentProvider_handleElementContentChanged
+                // Error message to log was initially taken from
+                // org.eclipse.gmf.runtime.diagram.ui.resources.editor.ide.internal.l10n.EditorMessages.FileDocumentProvider_handleElementContentChanged
             }
         }
         changedResource.unload();
@@ -993,7 +996,7 @@ public class EsbDocumentProvider extends AbstractDocumentProvider implements IDi
                     Resource resource = (Resource) notification.getNotifier();
                     if (resource.isLoaded()) {
                         boolean modified = false;
-                        for (Iterator /*<org.eclipse.emf.ecore.resource.Resource>*/ it = myInfo
+                        for (Iterator /* <org.eclipse.emf.ecore.resource.Resource> */ it = myInfo
                                 .getLoadedResourcesIterator(); it.hasNext() && !modified;) {
                             Resource nextResource = (Resource) it.next();
                             if (nextResource.isLoaded()) {

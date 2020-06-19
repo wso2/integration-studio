@@ -35,6 +35,7 @@ public class RuleSetCreationPropertyImpl extends AbstractNameValuePropertyImpl i
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 

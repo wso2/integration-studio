@@ -24,6 +24,7 @@ public abstract class EsbConnectorImpl extends EObjectImpl implements EsbConnect
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected EsbConnectorImpl() {
@@ -33,6 +34,7 @@ public abstract class EsbConnectorImpl extends EObjectImpl implements EsbConnect
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 

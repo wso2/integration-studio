@@ -30,6 +30,7 @@ public class CacheOnHitBranchImpl extends EObjectImpl implements CacheOnHitBranc
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected CacheOnHitBranchImpl() {
@@ -39,6 +40,7 @@ public class CacheOnHitBranchImpl extends EObjectImpl implements CacheOnHitBranc
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 

@@ -53,325 +53,325 @@ import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
  * 
  * 
  */
-public class InboundEndpointParameterPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, InboundEndpointParameterPropertiesEditionPart {
+public class InboundEndpointParameterPropertiesEditionPartForm extends SectionPropertiesEditingPart
+        implements IFormPropertiesEditionPart, InboundEndpointParameterPropertiesEditionPart {
 
-	protected Text name;
-	protected Text value;
+    protected Text name;
+    protected Text value;
 
+    /**
+     * For {@link ISection} use only.
+     */
+    public InboundEndpointParameterPropertiesEditionPartForm() {
+        super();
+    }
 
+    /**
+     * Default constructor
+     * 
+     * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+     * 
+     */
+    public InboundEndpointParameterPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
+        super(editionComponent);
+    }
 
-	/**
-	 * For {@link ISection} use only.
-	 */
-	public InboundEndpointParameterPropertiesEditionPartForm() { super(); }
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+     *      createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+     * 
+     */
+    public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
+        ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
+        Form form = scrolledForm.getForm();
+        view = form.getBody();
+        GridLayout layout = new GridLayout();
+        layout.numColumns = 3;
+        view.setLayout(layout);
+        createControls(widgetFactory, view);
+        return scrolledForm;
+    }
 
-	/**
-	 * Default constructor
-	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
-	 */
-	public InboundEndpointParameterPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+     *      createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+     * 
+     */
+    public void createControls(final FormToolkit widgetFactory, Composite view) {
+        CompositionSequence inboundEndpointParameterStep = new BindingCompositionSequence(propertiesEditionComponent);
+        CompositionStep propertiesStep = inboundEndpointParameterStep
+                .addStep(EsbViewsRepository.InboundEndpointParameter.Properties.class);
+        propertiesStep.addStep(EsbViewsRepository.InboundEndpointParameter.Properties.name);
+        propertiesStep.addStep(EsbViewsRepository.InboundEndpointParameter.Properties.value);
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
-	 * 
-	 */
-	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
-		view = form.getBody();
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 3;
-		view.setLayout(layout);
-		createControls(widgetFactory, view);
-		return scrolledForm;
-	}
+        composer = new PartComposer(inboundEndpointParameterStep) {
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
-	 * 
-	 */
-	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		CompositionSequence inboundEndpointParameterStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep propertiesStep = inboundEndpointParameterStep.addStep(EsbViewsRepository.InboundEndpointParameter.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.InboundEndpointParameter.Properties.name);
-		propertiesStep.addStep(EsbViewsRepository.InboundEndpointParameter.Properties.value);
-		
-		
-		composer = new PartComposer(inboundEndpointParameterStep) {
+            @Override
+            public Composite addToPart(Composite parent, Object key) {
+                if (key == EsbViewsRepository.InboundEndpointParameter.Properties.class) {
+                    return createPropertiesGroup(widgetFactory, parent);
+                }
+                if (key == EsbViewsRepository.InboundEndpointParameter.Properties.name) {
+                    return createNameText(widgetFactory, parent);
+                }
+                if (key == EsbViewsRepository.InboundEndpointParameter.Properties.value) {
+                    return createValueText(widgetFactory, parent);
+                }
+                return parent;
+            }
+        };
+        composer.compose(view);
+    }
 
-			@Override
-			public Composite addToPart(Composite parent, Object key) {
-				if (key == EsbViewsRepository.InboundEndpointParameter.Properties.class) {
-					return createPropertiesGroup(widgetFactory, parent);
-				}
-				if (key == EsbViewsRepository.InboundEndpointParameter.Properties.name) {
-					return createNameText(widgetFactory, parent);
-				}
-				if (key == EsbViewsRepository.InboundEndpointParameter.Properties.value) {
-					return createValueText(widgetFactory, parent);
-				}
-				return parent;
-			}
-		};
-		composer.compose(view);
-	}
-	/**
-	 * 
-	 */
-	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
-		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
-		propertiesSection.setText(EsbMessages.InboundEndpointParameterPropertiesEditionPart_PropertiesGroupLabel);
-		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesSectionData.horizontalSpan = 3;
-		propertiesSection.setLayoutData(propertiesSectionData);
-		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
-		GridLayout propertiesGroupLayout = new GridLayout();
-		propertiesGroupLayout.numColumns = 3;
-		propertiesGroup.setLayout(propertiesGroupLayout);
-		propertiesSection.setClient(propertiesGroup);
-		return propertiesGroup;
-	}
+    /**
+     * 
+     */
+    protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
+        Section propertiesSection = widgetFactory.createSection(parent,
+                Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+        propertiesSection.setText(EsbMessages.InboundEndpointParameterPropertiesEditionPart_PropertiesGroupLabel);
+        GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
+        propertiesSectionData.horizontalSpan = 3;
+        propertiesSection.setLayoutData(propertiesSectionData);
+        Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
+        GridLayout propertiesGroupLayout = new GridLayout();
+        propertiesGroupLayout.numColumns = 3;
+        propertiesGroup.setLayout(propertiesGroupLayout);
+        propertiesSection.setClient(propertiesGroup);
+        return propertiesGroup;
+    }
 
-	
-	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.InboundEndpointParameter.Properties.name, EsbMessages.InboundEndpointParameterPropertiesEditionPart_NameLabel);
-		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-		widgetFactory.paintBordersFor(parent);
-		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
-		name.setLayoutData(nameData);
-		name.addFocusListener(new FocusAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-							InboundEndpointParameterPropertiesEditionPartForm.this,
-							EsbViewsRepository.InboundEndpointParameter.Properties.name,
-							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									InboundEndpointParameterPropertiesEditionPartForm.this,
-									EsbViewsRepository.InboundEndpointParameter.Properties.name,
-									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, name.getText()));
-				}
-			}
+    protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
+        createDescription(parent, EsbViewsRepository.InboundEndpointParameter.Properties.name,
+                EsbMessages.InboundEndpointParameterPropertiesEditionPart_NameLabel);
+        name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+        name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        widgetFactory.paintBordersFor(parent);
+        GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
+        name.setLayoutData(nameData);
+        name.addFocusListener(new FocusAdapter() {
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void focusLost(FocusEvent e) {
+                if (propertiesEditionComponent != null) {
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(InboundEndpointParameterPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.InboundEndpointParameter.Properties.name,
+                                    PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(InboundEndpointParameterPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.InboundEndpointParameter.Properties.name,
+                                    PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST, null,
+                                    name.getText()));
+                }
+            }
 
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-			 */
-			@Override
-			public void focusGained(FocusEvent e) {
-				if (propertiesEditionComponent != null) {
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									InboundEndpointParameterPropertiesEditionPartForm.this,
-									null,
-									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
-									null, null));
-				}
-			}
-		});
-		name.addKeyListener(new KeyAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InboundEndpointParameterPropertiesEditionPartForm.this, EsbViewsRepository.InboundEndpointParameter.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
-				}
-			}
-		});
-		EditingUtils.setID(name, EsbViewsRepository.InboundEndpointParameter.Properties.name);
-		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.InboundEndpointParameter.Properties.name, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		// Start of user code for createNameText
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+             */
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (propertiesEditionComponent != null) {
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            InboundEndpointParameterPropertiesEditionPartForm.this, null,
+                            PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED, null, null));
+                }
+            }
+        });
+        name.addKeyListener(new KeyAdapter() {
+            /**
+             * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void keyPressed(KeyEvent e) {
+                if (e.character == SWT.CR) {
+                    if (propertiesEditionComponent != null)
+                        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                                InboundEndpointParameterPropertiesEditionPartForm.this,
+                                EsbViewsRepository.InboundEndpointParameter.Properties.name,
+                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+                }
+            }
+        });
+        EditingUtils.setID(name, EsbViewsRepository.InboundEndpointParameter.Properties.name);
+        EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
+        FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(
+                EsbViewsRepository.InboundEndpointParameter.Properties.name, EsbViewsRepository.FORM_KIND), null); // $NON-NLS-1$
+        // Start of user code for createNameText
 
-		// End of user code
-		return parent;
-	}
+        // End of user code
+        return parent;
+    }
 
-	
-	protected Composite createValueText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.InboundEndpointParameter.Properties.value, EsbMessages.InboundEndpointParameterPropertiesEditionPart_ValueLabel);
-		value = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		value.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-		widgetFactory.paintBordersFor(parent);
-		GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
-		value.setLayoutData(valueData);
-		value.addFocusListener(new FocusAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-							InboundEndpointParameterPropertiesEditionPartForm.this,
-							EsbViewsRepository.InboundEndpointParameter.Properties.value,
-							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, value.getText()));
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									InboundEndpointParameterPropertiesEditionPartForm.this,
-									EsbViewsRepository.InboundEndpointParameter.Properties.value,
-									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, value.getText()));
-				}
-			}
+    protected Composite createValueText(FormToolkit widgetFactory, Composite parent) {
+        createDescription(parent, EsbViewsRepository.InboundEndpointParameter.Properties.value,
+                EsbMessages.InboundEndpointParameterPropertiesEditionPart_ValueLabel);
+        value = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+        value.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        widgetFactory.paintBordersFor(parent);
+        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+        value.setLayoutData(valueData);
+        value.addFocusListener(new FocusAdapter() {
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void focusLost(FocusEvent e) {
+                if (propertiesEditionComponent != null) {
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(InboundEndpointParameterPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.InboundEndpointParameter.Properties.value,
+                                    PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, value.getText()));
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(InboundEndpointParameterPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.InboundEndpointParameter.Properties.value,
+                                    PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST, null,
+                                    value.getText()));
+                }
+            }
 
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-			 */
-			@Override
-			public void focusGained(FocusEvent e) {
-				if (propertiesEditionComponent != null) {
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									InboundEndpointParameterPropertiesEditionPartForm.this,
-									null,
-									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
-									null, null));
-				}
-			}
-		});
-		value.addKeyListener(new KeyAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InboundEndpointParameterPropertiesEditionPartForm.this, EsbViewsRepository.InboundEndpointParameter.Properties.value, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, value.getText()));
-				}
-			}
-		});
-		EditingUtils.setID(value, EsbViewsRepository.InboundEndpointParameter.Properties.value);
-		EditingUtils.setEEFtype(value, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.InboundEndpointParameter.Properties.value, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		// Start of user code for createValueText
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+             */
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (propertiesEditionComponent != null) {
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            InboundEndpointParameterPropertiesEditionPartForm.this, null,
+                            PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED, null, null));
+                }
+            }
+        });
+        value.addKeyListener(new KeyAdapter() {
+            /**
+             * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void keyPressed(KeyEvent e) {
+                if (e.character == SWT.CR) {
+                    if (propertiesEditionComponent != null)
+                        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                                InboundEndpointParameterPropertiesEditionPartForm.this,
+                                EsbViewsRepository.InboundEndpointParameter.Properties.value,
+                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, value.getText()));
+                }
+            }
+        });
+        EditingUtils.setID(value, EsbViewsRepository.InboundEndpointParameter.Properties.value);
+        EditingUtils.setEEFtype(value, "eef::Text"); //$NON-NLS-1$
+        FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(
+                EsbViewsRepository.InboundEndpointParameter.Properties.value, EsbViewsRepository.FORM_KIND), null); // $NON-NLS-1$
+        // Start of user code for createValueText
 
-		// End of user code
-		return parent;
-	}
+        // End of user code
+        return parent;
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+     * 
+     */
+    public void firePropertiesChanged(IPropertiesEditionEvent event) {
+        // Start of user code for tab synchronization
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
-	 */
-	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-		
-		// End of user code
-	}
+        // End of user code
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointParameterPropertiesEditionPart#getName()
-	 * 
-	 */
-	public String getName() {
-		return name.getText();
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointParameterPropertiesEditionPart#getName()
+     * 
+     */
+    public String getName() {
+        return name.getText();
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointParameterPropertiesEditionPart#setName(String newValue)
-	 * 
-	 */
-	public void setName(String newValue) {
-		if (newValue != null) {
-			name.setText(newValue);
-		} else {
-			name.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.InboundEndpointParameter.Properties.name);
-		if (eefElementEditorReadOnlyState && name.isEnabled()) {
-			name.setEnabled(false);
-			name.setToolTipText(EsbMessages.InboundEndpointParameter_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
-			name.setEnabled(true);
-		}	
-		
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointParameterPropertiesEditionPart#setName(String
+     *      newValue)
+     * 
+     */
+    public void setName(String newValue) {
+        if (newValue != null) {
+            name.setText(newValue);
+        } else {
+            name.setText(""); //$NON-NLS-1$
+        }
+        boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.InboundEndpointParameter.Properties.name);
+        if (eefElementEditorReadOnlyState && name.isEnabled()) {
+            name.setEnabled(false);
+            name.setToolTipText(EsbMessages.InboundEndpointParameter_ReadOnly);
+        } else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
+            name.setEnabled(true);
+        }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointParameterPropertiesEditionPart#getValue()
-	 * 
-	 */
-	public String getValue() {
-		return value.getText();
-	}
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointParameterPropertiesEditionPart#setValue(String newValue)
-	 * 
-	 */
-	public void setValue(String newValue) {
-		if (newValue != null) {
-			value.setText(newValue);
-		} else {
-			value.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.InboundEndpointParameter.Properties.value);
-		if (eefElementEditorReadOnlyState && value.isEnabled()) {
-			value.setEnabled(false);
-			value.setToolTipText(EsbMessages.InboundEndpointParameter_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !value.isEnabled()) {
-			value.setEnabled(true);
-		}	
-		
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointParameterPropertiesEditionPart#getValue()
+     * 
+     */
+    public String getValue() {
+        return value.getText();
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointParameterPropertiesEditionPart#setValue(String
+     *      newValue)
+     * 
+     */
+    public void setValue(String newValue) {
+        if (newValue != null) {
+            value.setText(newValue);
+        } else {
+            value.setText(""); //$NON-NLS-1$
+        }
+        boolean eefElementEditorReadOnlyState = isReadOnly(
+                EsbViewsRepository.InboundEndpointParameter.Properties.value);
+        if (eefElementEditorReadOnlyState && value.isEnabled()) {
+            value.setEnabled(false);
+            value.setToolTipText(EsbMessages.InboundEndpointParameter_ReadOnly);
+        } else if (!eefElementEditorReadOnlyState && !value.isEnabled()) {
+            value.setEnabled(true);
+        }
 
+    }
 
+    /**
+     * {@inheritDoc}
+     *
+     * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+     * 
+     */
+    public String getTitle() {
+        return EsbMessages.InboundEndpointParameter_Part_Title;
+    }
 
+    // Start of user code additional methods
 
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
-	 */
-	public String getTitle() {
-		return EsbMessages.InboundEndpointParameter_Part_Title;
-	}
-
-	// Start of user code additional methods
-	
-	// End of user code
-
+    // End of user code
 
 }

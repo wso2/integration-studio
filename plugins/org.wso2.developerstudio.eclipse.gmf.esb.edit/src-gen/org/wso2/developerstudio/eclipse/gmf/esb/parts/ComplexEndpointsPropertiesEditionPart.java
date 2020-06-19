@@ -12,7 +12,6 @@ import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSet
 
 import org.eclipse.jface.viewers.ViewerFilter;
 
-
 // End of user code
 
 /**
@@ -21,117 +20,115 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public interface ComplexEndpointsPropertiesEditionPart {
 
-	/**
-	 * @return the description
-	 * 
-	 */
-	public String getDescription();
+    /**
+     * @return the description
+     * 
+     */
+    public String getDescription();
 
-	/**
-	 * Defines a new description
-	 * @param newValue the new description to set
-	 * 
-	 */
-	public void setDescription(String newValue);
+    /**
+     * Defines a new description
+     * 
+     * @param newValue the new description to set
+     * 
+     */
+    public void setDescription(String newValue);
 
+    /**
+     * @return the commentsList
+     * 
+     */
+    public EList getCommentsList();
 
-	/**
-	 * @return the commentsList
-	 * 
-	 */
-	public EList getCommentsList();
+    /**
+     * Defines a new commentsList
+     * 
+     * @param newValue the new commentsList to set
+     * 
+     */
+    public void setCommentsList(EList newValue);
 
-	/**
-	 * Defines a new commentsList
-	 * @param newValue the new commentsList to set
-	 * 
-	 */
-	public void setCommentsList(EList newValue);
+    /**
+     * Add a value to the commentsList multivalued attribute.
+     * 
+     * @param newValue the value to add
+     */
+    public void addToCommentsList(Object newValue);
 
-	/**
-	 * Add a value to the commentsList multivalued attribute.
-	 * @param newValue the value to add
-	 */
-	public void addToCommentsList(Object newValue);
+    /**
+     * Remove a value to the commentsList multivalued attribute.
+     * 
+     * @param newValue the value to remove
+     */
+    public void removeToCommentsList(Object newValue);
 
-	/**
-	 * Remove a value to the commentsList multivalued attribute.
-	 * @param newValue the value to remove
-	 */
-	public void removeToCommentsList(Object newValue);
+    /**
+     * Init the outputConnector
+     * 
+     * @param current the current value
+     * @param containgFeature the feature where to navigate if necessary
+     * @param feature the feature to manage
+     */
+    public void initOutputConnector(ReferencesTableSettings settings);
 
+    /**
+     * Update the outputConnector
+     * 
+     * @param newValue the outputConnector to update
+     * 
+     */
+    public void updateOutputConnector();
 
+    /**
+     * Adds the given filter to the outputConnector edition editor.
+     * 
+     * @param filter
+     *            a viewer filter
+     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+     * 
+     */
+    public void addFilterToOutputConnector(ViewerFilter filter);
 
+    /**
+     * Adds the given filter to the outputConnector edition editor.
+     * 
+     * @param filter
+     *            a viewer filter
+     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+     * 
+     */
+    public void addBusinessFilterToOutputConnector(ViewerFilter filter);
 
-	/**
-	 * Init the outputConnector
-	 * @param current the current value
-	 * @param containgFeature the feature where to navigate if necessary
-	 * @param feature the feature to manage
-	 */
-	public void initOutputConnector(ReferencesTableSettings settings);
+    /**
+     * @return true if the given element is contained inside the outputConnector table
+     * 
+     */
+    public boolean isContainedInOutputConnectorTable(EObject element);
 
-	/**
-	 * Update the outputConnector
-	 * @param newValue the outputConnector to update
-	 * 
-	 */
-	public void updateOutputConnector();
+    /**
+     * @return the name
+     * 
+     */
+    public String getName();
 
-	/**
-	 * Adds the given filter to the outputConnector edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addFilterToOutputConnector(ViewerFilter filter);
+    /**
+     * Defines a new name
+     * 
+     * @param newValue the new name to set
+     * 
+     */
+    public void setName(String newValue);
 
-	/**
-	 * Adds the given filter to the outputConnector edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addBusinessFilterToOutputConnector(ViewerFilter filter);
+    /**
+     * Returns the internationalized title text.
+     * 
+     * @return the internationalized title text.
+     * 
+     */
+    public String getTitle();
 
-	/**
-	 * @return true if the given element is contained inside the outputConnector table
-	 * 
-	 */
-	public boolean isContainedInOutputConnectorTable(EObject element);
+    // Start of user code for additional methods
 
-
-	/**
-	 * @return the name
-	 * 
-	 */
-	public String getName();
-
-	/**
-	 * Defines a new name
-	 * @param newValue the new name to set
-	 * 
-	 */
-	public void setName(String newValue);
-
-
-
-
-
-	/**
-	 * Returns the internationalized title text.
-	 * 
-	 * @return the internationalized title text.
-	 * 
-	 */
-	public String getTitle();
-
-	// Start of user code for additional methods
-	
-	// End of user code
+    // End of user code
 
 }

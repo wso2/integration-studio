@@ -494,8 +494,8 @@ public class EsbDiagramUpdater {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static List<EsbNodeDescriptor> getPropertyGroupMediator_3788SemanticChildren(View view) {
         if (!view.isSetElement()) {
             return Collections.emptyList();
@@ -2679,8 +2679,8 @@ public class EsbDiagramUpdater {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static List<EsbNodeDescriptor> getJsonTransformMediator_3791SemanticChildren(View view) {
         if (!view.isSetElement()) {
             return Collections.emptyList();
@@ -14911,22 +14911,22 @@ public class EsbDiagramUpdater {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static List<EsbLinkDescriptor> getPropertyGroupMediator_3788ContainedLinks(View view) {
         return Collections.emptyList();
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static List<EsbLinkDescriptor> getPropertyGroupMediatorInputConnector_3789ContainedLinks(View view) {
         return Collections.emptyList();
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static List<EsbLinkDescriptor> getPropertyGroupMediatorOutputConnector_3790ContainedLinks(View view) {
         PropertyGroupMediatorOutputConnector modelElement = (PropertyGroupMediatorOutputConnector) view.getElement();
         LinkedList<EsbLinkDescriptor> result = new LinkedList<EsbLinkDescriptor>();
@@ -15949,22 +15949,22 @@ public class EsbDiagramUpdater {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static List<EsbLinkDescriptor> getJsonTransformMediator_3791ContainedLinks(View view) {
         return Collections.emptyList();
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static List<EsbLinkDescriptor> getJsonTransformMediatorInputConnector_3792ContainedLinks(View view) {
         return Collections.emptyList();
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static List<EsbLinkDescriptor> getJsonTransformMediatorOutputConnector_3793ContainedLinks(View view) {
         JsonTransformMediatorOutputConnector modelElement = (JsonTransformMediatorOutputConnector) view.getElement();
         LinkedList<EsbLinkDescriptor> result = new LinkedList<EsbLinkDescriptor>();
@@ -17694,15 +17694,15 @@ public class EsbDiagramUpdater {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static List<EsbLinkDescriptor> getPropertyGroupMediator_3788IncomingLinks(View view) {
         return Collections.emptyList();
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static List<EsbLinkDescriptor> getPropertyGroupMediatorInputConnector_3789IncomingLinks(View view) {
         PropertyGroupMediatorInputConnector modelElement = (PropertyGroupMediatorInputConnector) view.getElement();
         Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
@@ -17713,8 +17713,8 @@ public class EsbDiagramUpdater {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static List<EsbLinkDescriptor> getPropertyGroupMediatorOutputConnector_3790IncomingLinks(View view) {
         return Collections.emptyList();
     }
@@ -18759,15 +18759,15 @@ public class EsbDiagramUpdater {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static List<EsbLinkDescriptor> getJsonTransformMediator_3791IncomingLinks(View view) {
         return Collections.emptyList();
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static List<EsbLinkDescriptor> getJsonTransformMediatorInputConnector_3792IncomingLinks(View view) {
         JsonTransformMediatorInputConnector modelElement = (JsonTransformMediatorInputConnector) view.getElement();
         Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
@@ -18778,8 +18778,8 @@ public class EsbDiagramUpdater {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static List<EsbLinkDescriptor> getJsonTransformMediatorOutputConnector_3793IncomingLinks(View view) {
         return Collections.emptyList();
     }
@@ -20476,22 +20476,22 @@ public class EsbDiagramUpdater {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static List<EsbLinkDescriptor> getPropertyGroupMediator_3788OutgoingLinks(View view) {
         return Collections.emptyList();
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static List<EsbLinkDescriptor> getPropertyGroupMediatorInputConnector_3789OutgoingLinks(View view) {
         return Collections.emptyList();
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static List<EsbLinkDescriptor> getPropertyGroupMediatorOutputConnector_3790OutgoingLinks(View view) {
         PropertyGroupMediatorOutputConnector modelElement = (PropertyGroupMediatorOutputConnector) view.getElement();
         LinkedList<EsbLinkDescriptor> result = new LinkedList<EsbLinkDescriptor>();
@@ -21514,22 +21514,22 @@ public class EsbDiagramUpdater {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static List<EsbLinkDescriptor> getJsonTransformMediator_3791OutgoingLinks(View view) {
         return Collections.emptyList();
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static List<EsbLinkDescriptor> getJsonTransformMediatorInputConnector_3792OutgoingLinks(View view) {
         return Collections.emptyList();
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public static List<EsbLinkDescriptor> getJsonTransformMediatorOutputConnector_3793OutgoingLinks(View view) {
         JsonTransformMediatorOutputConnector modelElement = (JsonTransformMediatorOutputConnector) view.getElement();
         LinkedList<EsbLinkDescriptor> result = new LinkedList<EsbLinkDescriptor>();
@@ -22545,32 +22545,32 @@ public class EsbDiagramUpdater {
      */
     public static final DiagramUpdater TYPED_INSTANCE = new DiagramUpdater() {
         /**
-        * @generated
-        */
+         * @generated
+         */
 
         public List<EsbNodeDescriptor> getSemanticChildren(View view) {
             return EsbDiagramUpdater.getSemanticChildren(view);
         }
 
         /**
-        * @generated
-        */
+         * @generated
+         */
 
         public List<EsbLinkDescriptor> getContainedLinks(View view) {
             return EsbDiagramUpdater.getContainedLinks(view);
         }
 
         /**
-        * @generated
-        */
+         * @generated
+         */
 
         public List<EsbLinkDescriptor> getIncomingLinks(View view) {
             return EsbDiagramUpdater.getIncomingLinks(view);
         }
 
         /**
-        * @generated
-        */
+         * @generated
+         */
 
         public List<EsbLinkDescriptor> getOutgoingLinks(View view) {
             return EsbDiagramUpdater.getOutgoingLinks(view);

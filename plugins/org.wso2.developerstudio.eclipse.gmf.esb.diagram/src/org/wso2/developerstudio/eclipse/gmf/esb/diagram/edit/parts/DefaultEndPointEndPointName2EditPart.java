@@ -637,46 +637,46 @@ public class DefaultEndPointEndPointName2EditPart extends CompartmentEditPart im
  * ITextAwareEditPart {
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * public static final int VISUAL_ID = 5099;
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * private DirectEditManager manager;
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * private IParser parser;
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * private List<?> parserElements;
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * private String defaultText;
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * public DefaultEndPointEndPointName2EditPart(View view) {
  * super(view);
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * protected void createDefaultEditPolicies() {
  * super.createDefaultEditPolicies();
@@ -687,8 +687,8 @@ public class DefaultEndPointEndPointName2EditPart extends CompartmentEditPart im
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * protected String getLabelTextHelper(IFigure figure) {
  * if (figure instanceof WrappingLabel) {
@@ -699,8 +699,8 @@ public class DefaultEndPointEndPointName2EditPart extends CompartmentEditPart im
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * protected void setLabelTextHelper(IFigure figure, String text) {
  * if (figure instanceof WrappingLabel) {
@@ -711,8 +711,8 @@ public class DefaultEndPointEndPointName2EditPart extends CompartmentEditPart im
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * protected Image getLabelIconHelper(IFigure figure) {
  * if (figure instanceof WrappingLabel) {
@@ -723,8 +723,8 @@ public class DefaultEndPointEndPointName2EditPart extends CompartmentEditPart im
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * protected void setLabelIconHelper(IFigure figure, Image icon) {
  * if (figure instanceof WrappingLabel) {
@@ -735,8 +735,8 @@ public class DefaultEndPointEndPointName2EditPart extends CompartmentEditPart im
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * public void setLabel(WrappingLabel figure) {
  * unregisterVisuals();
@@ -747,8 +747,8 @@ public class DefaultEndPointEndPointName2EditPart extends CompartmentEditPart im
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * @SuppressWarnings("rawtypes")
  * protected List getModelChildren() {
@@ -756,32 +756,32 @@ public class DefaultEndPointEndPointName2EditPart extends CompartmentEditPart im
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * public IGraphicalEditPart getChildBySemanticHint(String semanticHint) {
  * return null;
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * protected EObject getParserElement() {
  * return resolveSemanticElement();
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * protected Image getLabelIcon() {
  * return null;
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * protected String getLabelText() {
  * String text = null;
@@ -798,8 +798,8 @@ public class DefaultEndPointEndPointName2EditPart extends CompartmentEditPart im
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * public void setLabelText(String text) {
  * setLabelTextHelper(getFigure(), text);
@@ -814,8 +814,8 @@ public class DefaultEndPointEndPointName2EditPart extends CompartmentEditPart im
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * public String getEditText() {
  * if (getParserElement() == null || getParser() == null) {
@@ -826,16 +826,16 @@ public class DefaultEndPointEndPointName2EditPart extends CompartmentEditPart im
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * protected boolean isEditable() {
  * return false;
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * public ICellEditorValidator getEditTextValidator() {
  * return new ICellEditorValidator() {
@@ -868,8 +868,8 @@ public class DefaultEndPointEndPointName2EditPart extends CompartmentEditPart im
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * public IContentAssistProcessor getCompletionProcessor() {
  * if (getParserElement() == null || getParser() == null) {
@@ -879,16 +879,16 @@ public class DefaultEndPointEndPointName2EditPart extends CompartmentEditPart im
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * public ParserOptions getParserOptions() {
  * return ParserOptions.NONE;
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * public IParser getParser() {
  * if (parser == null) {
@@ -902,8 +902,8 @@ public class DefaultEndPointEndPointName2EditPart extends CompartmentEditPart im
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * protected DirectEditManager getManager() {
  * if (manager == null) {
@@ -916,24 +916,24 @@ public class DefaultEndPointEndPointName2EditPart extends CompartmentEditPart im
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * protected void setManager(DirectEditManager manager) {
  * this.manager = manager;
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * protected void performDirectEdit() {
  * getManager().show();
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * protected void performDirectEdit(Point eventLocation) {
  * if (getManager().getClass() == TextDirectEditManager.class) {
@@ -942,8 +942,8 @@ public class DefaultEndPointEndPointName2EditPart extends CompartmentEditPart im
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * private void performDirectEdit(char initialCharacter) {
  * if (getManager() instanceof TextDirectEditManager) {
@@ -954,8 +954,8 @@ public class DefaultEndPointEndPointName2EditPart extends CompartmentEditPart im
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * protected void performDirectEditRequest(Request request) {
  * final Request theRequest = request;
@@ -986,8 +986,8 @@ public class DefaultEndPointEndPointName2EditPart extends CompartmentEditPart im
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * protected void refreshVisuals() {
  * super.refreshVisuals();
@@ -999,8 +999,8 @@ public class DefaultEndPointEndPointName2EditPart extends CompartmentEditPart im
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * protected void refreshLabel() {
  * setLabelTextHelper(getFigure(), getLabelText());
@@ -1016,8 +1016,8 @@ public class DefaultEndPointEndPointName2EditPart extends CompartmentEditPart im
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * protected void refreshUnderline() {
  * FontStyle style =
@@ -1028,8 +1028,8 @@ public class DefaultEndPointEndPointName2EditPart extends CompartmentEditPart im
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * protected void refreshStrikeThrough() {
  * FontStyle style =
@@ -1040,8 +1040,8 @@ public class DefaultEndPointEndPointName2EditPart extends CompartmentEditPart im
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * protected void refreshFont() {
  * FontStyle style =
@@ -1056,16 +1056,16 @@ public class DefaultEndPointEndPointName2EditPart extends CompartmentEditPart im
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * protected void setFontColor(Color color) {
  * getFigure().setForegroundColor(color);
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * protected void addSemanticListeners() {
  * if (getParser() instanceof ISemanticParser) {
@@ -1081,8 +1081,8 @@ public class DefaultEndPointEndPointName2EditPart extends CompartmentEditPart im
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * protected void removeSemanticListeners() {
  * if (parserElements != null) {
@@ -1095,8 +1095,8 @@ public class DefaultEndPointEndPointName2EditPart extends CompartmentEditPart im
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * protected AccessibleEditPart getAccessibleEditPart() {
  * if (accessibleEP == null) {
@@ -1111,16 +1111,16 @@ public class DefaultEndPointEndPointName2EditPart extends CompartmentEditPart im
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * private View getFontStyleOwnerView() {
  * return getPrimaryView();
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * protected void addNotationalListeners() {
  * super.addNotationalListeners();
@@ -1128,8 +1128,8 @@ public class DefaultEndPointEndPointName2EditPart extends CompartmentEditPart im
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * protected void removeNotationalListeners() {
  * super.removeNotationalListeners();
@@ -1137,8 +1137,8 @@ public class DefaultEndPointEndPointName2EditPart extends CompartmentEditPart im
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * protected void handleNotificationEvent(Notification event) {
  * Object feature = event.getFeature();
@@ -1174,8 +1174,8 @@ public class DefaultEndPointEndPointName2EditPart extends CompartmentEditPart im
  * }
  * 
  *//**
-         * @generated
-         */
+    * @generated
+    */
 /*
  * protected IFigure createFigure() {
  * // Parent should assign one using setLabel() method

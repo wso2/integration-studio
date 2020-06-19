@@ -32,6 +32,7 @@ public class RecipientListEndPointOutputConnectorImpl extends OutputConnectorImp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected RecipientListEndPointOutputConnectorImpl() {
@@ -41,6 +42,7 @@ public class RecipientListEndPointOutputConnectorImpl extends OutputConnectorImp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

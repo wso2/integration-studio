@@ -30,7 +30,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EndpointFlowImpl#getChildren <em>Children</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EndpointFlowImpl#getChildren <em>Children</em>}</li>
  * </ul>
  *
  * @generated
@@ -40,6 +40,7 @@ public class EndpointFlowImpl extends EsbNodeImpl implements EndpointFlow {
      * The cached value of the '{@link #getChildren() <em>Children</em>}' containment reference list.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getChildren()
      * @generated
      * @ordered
@@ -49,6 +50,7 @@ public class EndpointFlowImpl extends EsbNodeImpl implements EndpointFlow {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected EndpointFlowImpl() {
@@ -58,6 +60,7 @@ public class EndpointFlowImpl extends EsbNodeImpl implements EndpointFlow {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -68,11 +71,13 @@ public class EndpointFlowImpl extends EsbNodeImpl implements EndpointFlow {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public EList<EsbElement> getChildren() {
         if (children == null) {
-            children = new EObjectContainmentEList<EsbElement>(EsbElement.class, this, EsbPackage.ENDPOINT_FLOW__CHILDREN);
+            children = new EObjectContainmentEList<EsbElement>(EsbElement.class, this,
+                    EsbPackage.ENDPOINT_FLOW__CHILDREN);
         }
         return children;
     }
@@ -80,13 +85,14 @@ public class EndpointFlowImpl extends EsbNodeImpl implements EndpointFlow {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-            case EsbPackage.ENDPOINT_FLOW__CHILDREN:
-                return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
+        case EsbPackage.ENDPOINT_FLOW__CHILDREN:
+            return ((InternalEList<?>) getChildren()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -94,13 +100,14 @@ public class EndpointFlowImpl extends EsbNodeImpl implements EndpointFlow {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-            case EsbPackage.ENDPOINT_FLOW__CHILDREN:
-                return getChildren();
+        case EsbPackage.ENDPOINT_FLOW__CHILDREN:
+            return getChildren();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -108,16 +115,17 @@ public class EndpointFlowImpl extends EsbNodeImpl implements EndpointFlow {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-            case EsbPackage.ENDPOINT_FLOW__CHILDREN:
-                getChildren().clear();
-                getChildren().addAll((Collection<? extends EsbElement>)newValue);
-                return;
+        case EsbPackage.ENDPOINT_FLOW__CHILDREN:
+            getChildren().clear();
+            getChildren().addAll((Collection<? extends EsbElement>) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -125,14 +133,15 @@ public class EndpointFlowImpl extends EsbNodeImpl implements EndpointFlow {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-            case EsbPackage.ENDPOINT_FLOW__CHILDREN:
-                getChildren().clear();
-                return;
+        case EsbPackage.ENDPOINT_FLOW__CHILDREN:
+            getChildren().clear();
+            return;
         }
         super.eUnset(featureID);
     }
@@ -140,13 +149,14 @@ public class EndpointFlowImpl extends EsbNodeImpl implements EndpointFlow {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-            case EsbPackage.ENDPOINT_FLOW__CHILDREN:
-                return children != null && !children.isEmpty();
+        case EsbPackage.ENDPOINT_FLOW__CHILDREN:
+            return children != null && !children.isEmpty();
         }
         return super.eIsSet(featureID);
     }

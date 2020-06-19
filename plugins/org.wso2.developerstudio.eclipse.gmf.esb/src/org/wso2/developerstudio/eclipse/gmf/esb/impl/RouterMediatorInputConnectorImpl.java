@@ -22,6 +22,7 @@ public class RouterMediatorInputConnectorImpl extends InputConnectorImpl impleme
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected RouterMediatorInputConnectorImpl() {
@@ -31,6 +32,7 @@ public class RouterMediatorInputConnectorImpl extends InputConnectorImpl impleme
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

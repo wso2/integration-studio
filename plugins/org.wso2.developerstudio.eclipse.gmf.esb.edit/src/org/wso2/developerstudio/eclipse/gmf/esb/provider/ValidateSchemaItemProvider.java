@@ -34,6 +34,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateSchema} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class ValidateSchemaItemProvider extends EsbNodeItemProvider {
@@ -41,6 +42,7 @@ public class ValidateSchemaItemProvider extends EsbNodeItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public ValidateSchemaItemProvider(AdapterFactory adapterFactory) {
@@ -51,6 +53,7 @@ public class ValidateSchemaItemProvider extends EsbNodeItemProvider {
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -71,94 +74,72 @@ public class ValidateSchemaItemProvider extends EsbNodeItemProvider {
      * This adds a property descriptor for the Validate Static Schema Key feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addValidateStaticSchemaKeyPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_ValidateSchema_validateStaticSchemaKey_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_ValidateSchema_validateStaticSchemaKey_feature", "_UI_ValidateSchema_type"),
-                 EsbPackage.Literals.VALIDATE_SCHEMA__VALIDATE_STATIC_SCHEMA_KEY,
-                 true,
-                 false,
-                 true,
-                 null,
-                 null,
-                 null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(
+                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_ValidateSchema_validateStaticSchemaKey_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_ValidateSchema_validateStaticSchemaKey_feature",
+                        "_UI_ValidateSchema_type"),
+                EsbPackage.Literals.VALIDATE_SCHEMA__VALIDATE_STATIC_SCHEMA_KEY, true, false, true, null, null, null));
     }
 
     /**
      * This adds a property descriptor for the Validate Dynamic Schema Key feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addValidateDynamicSchemaKeyPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_ValidateSchema_validateDynamicSchemaKey_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_ValidateSchema_validateDynamicSchemaKey_feature", "_UI_ValidateSchema_type"),
-                 EsbPackage.Literals.VALIDATE_SCHEMA__VALIDATE_DYNAMIC_SCHEMA_KEY,
-                 true,
-                 false,
-                 true,
-                 null,
-                 null,
-                 null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(
+                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_ValidateSchema_validateDynamicSchemaKey_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_ValidateSchema_validateDynamicSchemaKey_feature",
+                        "_UI_ValidateSchema_type"),
+                EsbPackage.Literals.VALIDATE_SCHEMA__VALIDATE_DYNAMIC_SCHEMA_KEY, true, false, true, null, null, null));
     }
 
     /**
      * This adds a property descriptor for the Validate Schema Key Type feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addValidateSchemaKeyTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_ValidateSchema_validateSchemaKeyType_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_ValidateSchema_validateSchemaKeyType_feature", "_UI_ValidateSchema_type"),
-                 EsbPackage.Literals.VALIDATE_SCHEMA__VALIDATE_SCHEMA_KEY_TYPE,
-                 true,
-                 false,
-                 false,
-                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                 null,
-                 null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(
+                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_ValidateSchema_validateSchemaKeyType_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_ValidateSchema_validateSchemaKeyType_feature",
+                        "_UI_ValidateSchema_type"),
+                EsbPackage.Literals.VALIDATE_SCHEMA__VALIDATE_SCHEMA_KEY_TYPE, true, false, false,
+                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This adds a property descriptor for the Schema Key feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addSchemaKeyPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_ValidateSchema_schemaKey_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_ValidateSchema_schemaKey_feature", "_UI_ValidateSchema_type"),
-                 EsbPackage.Literals.VALIDATE_SCHEMA__SCHEMA_KEY,
-                 true,
-                 false,
-                 true,
-                 null,
-                 null,
-                 null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                        getResourceLocator(), getString("_UI_ValidateSchema_schemaKey_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_ValidateSchema_schemaKey_feature",
+                                "_UI_ValidateSchema_type"),
+                        EsbPackage.Literals.VALIDATE_SCHEMA__SCHEMA_KEY, true, false, true, null, null, null));
     }
 
     /**
      * This returns ValidateSchema.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -171,6 +152,7 @@ public class ValidateSchemaItemProvider extends EsbNodeItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated NOT
      */
 
@@ -197,6 +179,7 @@ public class ValidateSchemaItemProvider extends EsbNodeItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -205,9 +188,9 @@ public class ValidateSchemaItemProvider extends EsbNodeItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(ValidateSchema.class)) {
-            case EsbPackage.VALIDATE_SCHEMA__VALIDATE_SCHEMA_KEY_TYPE:
-                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-                return;
+        case EsbPackage.VALIDATE_SCHEMA__VALIDATE_SCHEMA_KEY_TYPE:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+            return;
         }
         super.notifyChanged(notification);
     }
@@ -217,6 +200,7 @@ public class ValidateSchemaItemProvider extends EsbNodeItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 

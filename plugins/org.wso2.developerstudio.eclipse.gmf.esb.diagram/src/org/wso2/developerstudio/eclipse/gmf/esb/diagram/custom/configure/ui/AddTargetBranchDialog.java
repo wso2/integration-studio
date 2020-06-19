@@ -163,8 +163,6 @@ public class AddTargetBranchDialog extends Dialog {
 
                 targetOutputConnectors.remove(lastTargetOutputConnector);
 
-
-
             }
         }
         if (editpart instanceof CloneMediatorEditPart) {

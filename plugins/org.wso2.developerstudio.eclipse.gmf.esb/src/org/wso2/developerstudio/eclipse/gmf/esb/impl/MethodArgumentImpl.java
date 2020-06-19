@@ -31,6 +31,7 @@ public class MethodArgumentImpl extends AbstractNameValueExpressionPropertyImpl 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected MethodArgumentImpl() {
@@ -40,6 +41,7 @@ public class MethodArgumentImpl extends AbstractNameValueExpressionPropertyImpl 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

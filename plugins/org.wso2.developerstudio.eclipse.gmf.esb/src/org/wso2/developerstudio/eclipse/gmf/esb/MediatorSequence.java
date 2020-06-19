@@ -17,11 +17,11 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MediatorSequence#isAnonymous <em>Anonymous</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MediatorSequence#getSequenceName <em>Sequence Name</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MediatorSequence#getMediators <em>Mediators</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MediatorSequence#getOnError <em>On Error</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MediatorSequence#getDescription <em>Description</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MediatorSequence#isAnonymous <em>Anonymous</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MediatorSequence#getSequenceName <em>Sequence Name</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MediatorSequence#getMediators <em>Mediators</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MediatorSequence#getOnError <em>On Error</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MediatorSequence#getDescription <em>Description</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMediatorSequence()
@@ -38,6 +38,7 @@ public interface MediatorSequence extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Anonymous</em>' attribute.
      * @see #setAnonymous(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMediatorSequence_Anonymous()
@@ -47,9 +48,11 @@ public interface MediatorSequence extends EsbNode {
     boolean isAnonymous();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MediatorSequence#isAnonymous <em>Anonymous</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MediatorSequence#isAnonymous
+     * <em>Anonymous</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Anonymous</em>' attribute.
      * @see #isAnonymous()
      * @generated
@@ -65,6 +68,7 @@ public interface MediatorSequence extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Sequence Name</em>' attribute.
      * @see #setSequenceName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMediatorSequence_SequenceName()
@@ -74,9 +78,11 @@ public interface MediatorSequence extends EsbNode {
     String getSequenceName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MediatorSequence#getSequenceName <em>Sequence Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MediatorSequence#getSequenceName
+     * <em>Sequence Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Sequence Name</em>' attribute.
      * @see #getSequenceName()
      * @generated
@@ -92,6 +98,7 @@ public interface MediatorSequence extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Mediators</em>' reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMediatorSequence_Mediators()
      * @model
@@ -107,6 +114,7 @@ public interface MediatorSequence extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>On Error</em>' reference.
      * @see #setOnError(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMediatorSequence_OnError()
@@ -116,9 +124,11 @@ public interface MediatorSequence extends EsbNode {
     RegistryKeyProperty getOnError();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MediatorSequence#getOnError <em>On Error</em>}' reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MediatorSequence#getOnError <em>On
+     * Error</em>}' reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>On Error</em>' reference.
      * @see #getOnError()
      * @generated
@@ -133,6 +143,7 @@ public interface MediatorSequence extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Description</em>' attribute.
      * @see #setDescription(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMediatorSequence_Description()
@@ -142,9 +153,11 @@ public interface MediatorSequence extends EsbNode {
     String getDescription();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MediatorSequence#getDescription <em>Description</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MediatorSequence#getDescription
+     * <em>Description</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Description</em>' attribute.
      * @see #getDescription()
      * @generated

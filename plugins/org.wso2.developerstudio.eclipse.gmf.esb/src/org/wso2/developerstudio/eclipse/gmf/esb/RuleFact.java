@@ -17,13 +17,13 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleFact#getFactType <em>Fact Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleFact#getFactCustomType <em>Fact Custom Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleFact#getFactName <em>Fact Name</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleFact#getValueType <em>Value Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleFact#getValueLiteral <em>Value Literal</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleFact#getValueExpression <em>Value Expression</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleFact#getValueKey <em>Value Key</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleFact#getFactType <em>Fact Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleFact#getFactCustomType <em>Fact Custom Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleFact#getFactName <em>Fact Name</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleFact#getValueType <em>Value Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleFact#getValueLiteral <em>Value Literal</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleFact#getValueExpression <em>Value Expression</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleFact#getValueKey <em>Value Key</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleFact()
@@ -41,6 +41,7 @@ public interface RuleFact extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Fact Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.RuleFactType
      * @see #setFactType(RuleFactType)
@@ -51,9 +52,11 @@ public interface RuleFact extends EObject {
     RuleFactType getFactType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleFact#getFactType <em>Fact Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleFact#getFactType <em>Fact Type</em>}'
+     * attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Fact Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.RuleFactType
      * @see #getFactType()
@@ -70,6 +73,7 @@ public interface RuleFact extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Fact Custom Type</em>' attribute.
      * @see #setFactCustomType(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleFact_FactCustomType()
@@ -79,9 +83,11 @@ public interface RuleFact extends EObject {
     String getFactCustomType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleFact#getFactCustomType <em>Fact Custom Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleFact#getFactCustomType <em>Fact Custom
+     * Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Fact Custom Type</em>' attribute.
      * @see #getFactCustomType()
      * @generated
@@ -97,6 +103,7 @@ public interface RuleFact extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Fact Name</em>' attribute.
      * @see #setFactName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleFact_FactName()
@@ -106,9 +113,11 @@ public interface RuleFact extends EObject {
     String getFactName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleFact#getFactName <em>Fact Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleFact#getFactName <em>Fact Name</em>}'
+     * attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Fact Name</em>' attribute.
      * @see #getFactName()
      * @generated
@@ -125,6 +134,7 @@ public interface RuleFact extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Value Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.RuleFactValueType
      * @see #setValueType(RuleFactValueType)
@@ -135,9 +145,11 @@ public interface RuleFact extends EObject {
     RuleFactValueType getValueType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleFact#getValueType <em>Value Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleFact#getValueType <em>Value
+     * Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Value Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.RuleFactValueType
      * @see #getValueType()
@@ -154,6 +166,7 @@ public interface RuleFact extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Value Literal</em>' attribute.
      * @see #setValueLiteral(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleFact_ValueLiteral()
@@ -163,9 +176,11 @@ public interface RuleFact extends EObject {
     String getValueLiteral();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleFact#getValueLiteral <em>Value Literal</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleFact#getValueLiteral <em>Value
+     * Literal</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Value Literal</em>' attribute.
      * @see #getValueLiteral()
      * @generated
@@ -180,6 +195,7 @@ public interface RuleFact extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Value Expression</em>' containment reference.
      * @see #setValueExpression(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleFact_ValueExpression()
@@ -189,9 +205,11 @@ public interface RuleFact extends EObject {
     NamespacedProperty getValueExpression();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleFact#getValueExpression <em>Value Expression</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleFact#getValueExpression <em>Value
+     * Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Value Expression</em>' containment reference.
      * @see #getValueExpression()
      * @generated
@@ -206,6 +224,7 @@ public interface RuleFact extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Value Key</em>' containment reference.
      * @see #setValueKey(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleFact_ValueKey()
@@ -215,9 +234,11 @@ public interface RuleFact extends EObject {
     RegistryKeyProperty getValueKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleFact#getValueKey <em>Value Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleFact#getValueKey <em>Value Key</em>}'
+     * containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Value Key</em>' containment reference.
      * @see #getValueKey()
      * @generated

@@ -74,21 +74,22 @@ public class ConnectionParameterWizardPage extends WizardPage {
         GridLayout propertiesGroupLayout = new GridLayout();
         composite.setLayout(propertiesGroupLayout);
         this.connectionParameters = new ReferenceGroup(new ConnectionParameterRenderer(widgetFactory));
-        elements = this.connectionParameters.createControls(composite, root, updateConfigMap, allowedConnectionTypes, connectorName);
+        elements = this.connectionParameters.createControls(composite, root, updateConfigMap, allowedConnectionTypes,
+                connectorName);
         setPageComplete(false);
-        Text connectionNameText = (Text)getGeneratedElements().get("connectionName");
-        if(connectionNameText != null) {
+        Text connectionNameText = (Text) getGeneratedElements().get("connectionName");
+        if (connectionNameText != null) {
             connectionNameText.addKeyListener(new KeyAdapter() {
 
                 @Override
                 @SuppressWarnings("synthetic-access")
                 public void keyReleased(KeyEvent e) {
-                     String value = ((Text)e.getSource()).getText();
-                     if(value != null && !value.isEmpty()) {
-                         setPageComplete(true);
-                     } else {
-                         setPageComplete(false);
-                     }
+                    String value = ((Text) e.getSource()).getText();
+                    if (value != null && !value.isEmpty()) {
+                        setPageComplete(true);
+                    } else {
+                        setPageComplete(false);
+                    }
                 }
             });
         }

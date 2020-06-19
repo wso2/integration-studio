@@ -22,6 +22,7 @@ public class AutoscaleOutMediatorImpl extends MediatorImpl implements AutoscaleO
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected AutoscaleOutMediatorImpl() {
@@ -31,6 +32,7 @@ public class AutoscaleOutMediatorImpl extends MediatorImpl implements AutoscaleO
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 

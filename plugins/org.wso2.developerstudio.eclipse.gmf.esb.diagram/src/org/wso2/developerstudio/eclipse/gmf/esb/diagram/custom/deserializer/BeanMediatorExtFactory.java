@@ -68,54 +68,55 @@ public class BeanMediatorExtFactory extends AbstractMediatorFactory {
             }
         }
         addAllCommentChildrenToList(elem, mediator.getCommentsList());
-        
+
         return mediator;
     }
 
-        /**
-         * This method will create a Bean mediator for the validation purposes. This will try 
-         * to create the bean mediator with the given OMElement, if it fails to create a mediator
-         * this will throw synapse excpetions, otherwise this will return a valid bean mediator
-         * @param elem OMElement of the mediator
-         * @param properties
-         * @return
-         */
-        public Mediator createSpecificMediatorForValidation(OMElement elem, Properties properties) {
+    /**
+     * This method will create a Bean mediator for the validation purposes. This will try
+     * to create the bean mediator with the given OMElement, if it fails to create a mediator
+     * this will throw synapse excpetions, otherwise this will return a valid bean mediator
+     * 
+     * @param elem OMElement of the mediator
+     * @param properties
+     * @return
+     */
+    public Mediator createSpecificMediatorForValidation(OMElement elem, Properties properties) {
 
-            BeanMediatorExt mediator = new BeanMediatorExt();
+        BeanMediatorExt mediator = new BeanMediatorExt();
 
-            String attributeValue;
+        String attributeValue;
 
-            attributeValue = elem.getAttributeValue(new QName(BeanConstants.VAR));
-            if (attributeValue != null) {
-                mediator.setVarName(attributeValue);
-            }
+        attributeValue = elem.getAttributeValue(new QName(BeanConstants.VAR));
+        if (attributeValue != null) {
+            mediator.setVarName(attributeValue);
+        }
 
-            attributeValue = elem.getAttributeValue(new QName(BeanConstants.ACTION));
-            if (attributeValue != null) {
-                try {
-                    switch (Action.valueOf(attributeValue.toUpperCase())) {
-                    case CREATE:
-                        populateCreateBeanCase(mediator, elem);
-                        break;
-                    case REMOVE:
-                        mediator.setAction(Action.REMOVE);
-                        break;
-                    case SET_PROPERTY:
-                        populateSetPropertyCaseForValidation(mediator, elem);
-                        break;
-                    case GET_PROPERTY:
-                        populateGetPropertyCaseForValidation(mediator, elem);
-                        break;
-                    default:
-                        assert false;
-                    }
-                } catch (IllegalArgumentException e) {
-                    // The purpose of this method is to create a dummy bean mediator synapse 
-                    // object. So if there are exceptions the EI-tooling, we can proceed with
-                    // the already created mediator object, hence ignoring
+        attributeValue = elem.getAttributeValue(new QName(BeanConstants.ACTION));
+        if (attributeValue != null) {
+            try {
+                switch (Action.valueOf(attributeValue.toUpperCase())) {
+                case CREATE:
+                    populateCreateBeanCase(mediator, elem);
+                    break;
+                case REMOVE:
+                    mediator.setAction(Action.REMOVE);
+                    break;
+                case SET_PROPERTY:
+                    populateSetPropertyCaseForValidation(mediator, elem);
+                    break;
+                case GET_PROPERTY:
+                    populateGetPropertyCaseForValidation(mediator, elem);
+                    break;
+                default:
+                    assert false;
                 }
+            } catch (IllegalArgumentException e) {
+                // The purpose of this method is to create a dummy bean mediator synapse
+                // object. So if there are exceptions the EI-tooling, we can proceed with
+                // the already created mediator object, hence ignoring
             }
+        }
 
         return mediator;
     }
@@ -148,12 +149,13 @@ public class BeanMediatorExtFactory extends AbstractMediatorFactory {
             mediator.setValue(new ValueFactoryExtended().createValue(BeanConstants.VALUE, elem));
         }
     }
-    
+
     /**
-     * This method will populate the SetPropertyCase parameter with the use the synapse 
+     * This method will populate the SetPropertyCase parameter with the use the synapse
      * ValueFactory() class which will throw synapse exceptions if the mediator contains invalid parameters.
-     * This is useful for the validation of the 
+     * This is useful for the validation of the
      * bean mediator
+     * 
      * @param mediator
      * @param elem
      */
@@ -178,12 +180,13 @@ public class BeanMediatorExtFactory extends AbstractMediatorFactory {
             mediator.setTargetValue(new ValueFactoryExtended().createValue(BeanConstants.TARGET, elem));
         }
     }
-    
+
     /**
-     * This method will populate the GetPropertyCase parameter with the use the synapse 
+     * This method will populate the GetPropertyCase parameter with the use the synapse
      * ValueFactory() class which will throw synapse exceptions if the mediator contains invalid parameters.
-     * This is useful for the validation of the 
+     * This is useful for the validation of the
      * bean mediator
+     * 
      * @param mediator
      * @param elem
      */

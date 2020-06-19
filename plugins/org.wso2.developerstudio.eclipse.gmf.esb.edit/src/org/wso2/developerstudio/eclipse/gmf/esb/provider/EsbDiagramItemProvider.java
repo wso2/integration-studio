@@ -31,6 +31,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.EsbDiagram} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class EsbDiagramItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
@@ -39,6 +40,7 @@ public class EsbDiagramItemProvider extends ItemProviderAdapter implements IEdit
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public EsbDiagramItemProvider(AdapterFactory adapterFactory) {
@@ -67,22 +69,17 @@ public class EsbDiagramItemProvider extends ItemProviderAdapter implements IEdit
      * This adds a property descriptor for the Test feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addTestPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_EsbDiagram_Test_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_EsbDiagram_Test_feature", "_UI_EsbDiagram_type"),
-                 EsbPackage.Literals.ESB_DIAGRAM__TEST,
-                 true,
-                 false,
-                 false,
-                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                 null,
-                 null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                        getResourceLocator(), getString("_UI_EsbDiagram_Test_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_EsbDiagram_Test_feature",
+                                "_UI_EsbDiagram_type"),
+                        EsbPackage.Literals.ESB_DIAGRAM__TEST, true, false, false,
+                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -91,6 +88,7 @@ public class EsbDiagramItemProvider extends ItemProviderAdapter implements IEdit
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -106,6 +104,7 @@ public class EsbDiagramItemProvider extends ItemProviderAdapter implements IEdit
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -121,6 +120,7 @@ public class EsbDiagramItemProvider extends ItemProviderAdapter implements IEdit
      * This returns EsbDiagram.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -133,16 +133,16 @@ public class EsbDiagramItemProvider extends ItemProviderAdapter implements IEdit
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        Integer labelValue = ((EsbDiagram)object).getTest();
+        Integer labelValue = ((EsbDiagram) object).getTest();
         String label = labelValue == null ? null : labelValue.toString();
-        return label == null || label.length() == 0 ?
-            getString("_UI_EsbDiagram_type") :
-            getString("_UI_EsbDiagram_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_EsbDiagram_type")
+                : getString("_UI_EsbDiagram_type") + " " + label;
     }
 
     /**
@@ -150,6 +150,7 @@ public class EsbDiagramItemProvider extends ItemProviderAdapter implements IEdit
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -158,12 +159,12 @@ public class EsbDiagramItemProvider extends ItemProviderAdapter implements IEdit
         updateChildren(notification);
 
         switch (notification.getFeatureID(EsbDiagram.class)) {
-            case EsbPackage.ESB_DIAGRAM__TEST:
-                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-                return;
-            case EsbPackage.ESB_DIAGRAM__SERVER:
-                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-                return;
+        case EsbPackage.ESB_DIAGRAM__TEST:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+            return;
+        case EsbPackage.ESB_DIAGRAM__SERVER:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+            return;
         }
         super.notifyChanged(notification);
     }
@@ -173,6 +174,7 @@ public class EsbDiagramItemProvider extends ItemProviderAdapter implements IEdit
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -180,16 +182,15 @@ public class EsbDiagramItemProvider extends ItemProviderAdapter implements IEdit
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add
-            (createChildParameter
-                (EsbPackage.Literals.ESB_DIAGRAM__SERVER,
-                 EsbFactory.eINSTANCE.createEsbServer()));
+        newChildDescriptors.add(
+                createChildParameter(EsbPackage.Literals.ESB_DIAGRAM__SERVER, EsbFactory.eINSTANCE.createEsbServer()));
     }
 
     /**
      * Return the resource locator for this item provider's resources.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 

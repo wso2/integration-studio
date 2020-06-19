@@ -10,6 +10,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Scope Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
+ * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getScopeType()
  * @model
  * @generated
@@ -19,6 +20,7 @@ public enum ScopeType implements Enumerator {
      * The '<em><b>DEFAULT</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #DEFAULT_VALUE
      * @generated
      * @ordered
@@ -29,6 +31,7 @@ public enum ScopeType implements Enumerator {
      * The '<em><b>TRANSPORT</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #TRANSPORT_VALUE
      * @generated
      * @ordered
@@ -43,6 +46,7 @@ public enum ScopeType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #DEFAULT
      * @model literal="default"
      * @generated
@@ -58,6 +62,7 @@ public enum ScopeType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #TRANSPORT
      * @model literal="transport"
      * @generated
@@ -69,17 +74,16 @@ public enum ScopeType implements Enumerator {
      * An array of all the '<em><b>Scope Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
-    private static final ScopeType[] VALUES_ARRAY = new ScopeType[] {
-            DEFAULT,
-            TRANSPORT,
-        };
+    private static final ScopeType[] VALUES_ARRAY = new ScopeType[] { DEFAULT, TRANSPORT, };
 
     /**
      * A public read-only list of all the '<em><b>Scope Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public static final List<ScopeType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -88,6 +92,7 @@ public enum ScopeType implements Enumerator {
      * Returns the '<em><b>Scope Type</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -106,6 +111,7 @@ public enum ScopeType implements Enumerator {
      * Returns the '<em><b>Scope Type</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -124,14 +130,17 @@ public enum ScopeType implements Enumerator {
      * Returns the '<em><b>Scope Type</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static ScopeType get(int value) {
         switch (value) {
-            case DEFAULT_VALUE: return DEFAULT;
-            case TRANSPORT_VALUE: return TRANSPORT;
+        case DEFAULT_VALUE:
+            return DEFAULT;
+        case TRANSPORT_VALUE:
+            return TRANSPORT;
         }
         return null;
     }
@@ -139,6 +148,7 @@ public enum ScopeType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final int value;
@@ -146,6 +156,7 @@ public enum ScopeType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String name;
@@ -153,6 +164,7 @@ public enum ScopeType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String literal;
@@ -161,6 +173,7 @@ public enum ScopeType implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private ScopeType(int value, String name, String literal) {
@@ -172,34 +185,38 @@ public enum ScopeType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public int getValue() {
-      return value;
+        return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getName() {
-      return name;
+        return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getLiteral() {
-      return literal;
+        return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

@@ -30,8 +30,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.OutputConnector;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbLinkImpl#getSource <em>Source</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbLinkImpl#getTarget <em>Target</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbLinkImpl#getSource <em>Source</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbLinkImpl#getTarget <em>Target</em>}</li>
  * </ul>
  *
  * @generated
@@ -41,6 +41,7 @@ public class EsbLinkImpl extends EObjectImpl implements EsbLink {
      * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getTarget()
      * @generated
      * @ordered
@@ -50,6 +51,7 @@ public class EsbLinkImpl extends EObjectImpl implements EsbLink {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected EsbLinkImpl() {
@@ -59,6 +61,7 @@ public class EsbLinkImpl extends EObjectImpl implements EsbLink {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -70,56 +73,64 @@ public class EsbLinkImpl extends EObjectImpl implements EsbLink {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public OutputConnector getSource() {
-        if (eContainerFeatureID() != EsbPackage.ESB_LINK__SOURCE) return null;
-        return (OutputConnector)eInternalContainer();
+        if (eContainerFeatureID() != EsbPackage.ESB_LINK__SOURCE)
+            return null;
+        return (OutputConnector) eInternalContainer();
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public NotificationChain basicSetSource(OutputConnector newSource, NotificationChain msgs) {
-        msgs = eBasicSetContainer((InternalEObject)newSource, EsbPackage.ESB_LINK__SOURCE, msgs);
+        msgs = eBasicSetContainer((InternalEObject) newSource, EsbPackage.ESB_LINK__SOURCE, msgs);
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setSource(OutputConnector newSource) {
-        if (newSource != eInternalContainer() || (eContainerFeatureID() != EsbPackage.ESB_LINK__SOURCE && newSource != null)) {
+        if (newSource != eInternalContainer()
+                || (eContainerFeatureID() != EsbPackage.ESB_LINK__SOURCE && newSource != null)) {
             if (EcoreUtil.isAncestor(this, newSource))
                 throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
             NotificationChain msgs = null;
             if (eInternalContainer() != null)
                 msgs = eBasicRemoveFromContainer(msgs);
             if (newSource != null)
-                msgs = ((InternalEObject)newSource).eInverseAdd(this, EsbPackage.OUTPUT_CONNECTOR__OUTGOING_LINK, OutputConnector.class, msgs);
+                msgs = ((InternalEObject) newSource).eInverseAdd(this, EsbPackage.OUTPUT_CONNECTOR__OUTGOING_LINK,
+                        OutputConnector.class, msgs);
             msgs = basicSetSource(newSource, msgs);
-            if (msgs != null) msgs.dispatch();
-        }
-        else if (eNotificationRequired())
+            if (msgs != null)
+                msgs.dispatch();
+        } else if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ESB_LINK__SOURCE, newSource, newSource));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public InputConnector getTarget() {
         if (target != null && target.eIsProxy()) {
-            InternalEObject oldTarget = (InternalEObject)target;
-            target = (InputConnector)eResolveProxy(oldTarget);
+            InternalEObject oldTarget = (InternalEObject) target;
+            target = (InputConnector) eResolveProxy(oldTarget);
             if (target != oldTarget) {
                 if (eNotificationRequired())
-                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, EsbPackage.ESB_LINK__TARGET, oldTarget, target));
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, EsbPackage.ESB_LINK__TARGET, oldTarget,
+                            target));
             }
         }
         return target;
@@ -128,6 +139,7 @@ public class EsbLinkImpl extends EObjectImpl implements EsbLink {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public InputConnector basicGetTarget() {
@@ -137,14 +149,19 @@ public class EsbLinkImpl extends EObjectImpl implements EsbLink {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public NotificationChain basicSetTarget(InputConnector newTarget, NotificationChain msgs) {
         InputConnector oldTarget = target;
         target = newTarget;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.ESB_LINK__TARGET, oldTarget, newTarget);
-            if (msgs == null) msgs = notification; else msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.ESB_LINK__TARGET,
+                    oldTarget, newTarget);
+            if (msgs == null)
+                msgs = notification;
+            else
+                msgs.add(notification);
         }
         return msgs;
     }
@@ -152,39 +169,44 @@ public class EsbLinkImpl extends EObjectImpl implements EsbLink {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setTarget(InputConnector newTarget) {
         if (newTarget != target) {
             NotificationChain msgs = null;
             if (target != null)
-                msgs = ((InternalEObject)target).eInverseRemove(this, EsbPackage.INPUT_CONNECTOR__INCOMING_LINKS, InputConnector.class, msgs);
+                msgs = ((InternalEObject) target).eInverseRemove(this, EsbPackage.INPUT_CONNECTOR__INCOMING_LINKS,
+                        InputConnector.class, msgs);
             if (newTarget != null)
-                msgs = ((InternalEObject)newTarget).eInverseAdd(this, EsbPackage.INPUT_CONNECTOR__INCOMING_LINKS, InputConnector.class, msgs);
+                msgs = ((InternalEObject) newTarget).eInverseAdd(this, EsbPackage.INPUT_CONNECTOR__INCOMING_LINKS,
+                        InputConnector.class, msgs);
             msgs = basicSetTarget(newTarget, msgs);
-            if (msgs != null) msgs.dispatch();
-        }
-        else if (eNotificationRequired())
+            if (msgs != null)
+                msgs.dispatch();
+        } else if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ESB_LINK__TARGET, newTarget, newTarget));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-            case EsbPackage.ESB_LINK__SOURCE:
-                if (eInternalContainer() != null)
-                    msgs = eBasicRemoveFromContainer(msgs);
-                return basicSetSource((OutputConnector)otherEnd, msgs);
-            case EsbPackage.ESB_LINK__TARGET:
-                if (target != null)
-                    msgs = ((InternalEObject)target).eInverseRemove(this, EsbPackage.INPUT_CONNECTOR__INCOMING_LINKS, InputConnector.class, msgs);
-                return basicSetTarget((InputConnector)otherEnd, msgs);
+        case EsbPackage.ESB_LINK__SOURCE:
+            if (eInternalContainer() != null)
+                msgs = eBasicRemoveFromContainer(msgs);
+            return basicSetSource((OutputConnector) otherEnd, msgs);
+        case EsbPackage.ESB_LINK__TARGET:
+            if (target != null)
+                msgs = ((InternalEObject) target).eInverseRemove(this, EsbPackage.INPUT_CONNECTOR__INCOMING_LINKS,
+                        InputConnector.class, msgs);
+            return basicSetTarget((InputConnector) otherEnd, msgs);
         }
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
@@ -192,16 +214,17 @@ public class EsbLinkImpl extends EObjectImpl implements EsbLink {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-            case EsbPackage.ESB_LINK__SOURCE:
-                return basicSetSource(null, msgs);
-            case EsbPackage.ESB_LINK__TARGET:
-                return basicSetTarget(null, msgs);
+        case EsbPackage.ESB_LINK__SOURCE:
+            return basicSetSource(null, msgs);
+        case EsbPackage.ESB_LINK__TARGET:
+            return basicSetTarget(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -209,14 +232,16 @@ public class EsbLinkImpl extends EObjectImpl implements EsbLink {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
         switch (eContainerFeatureID()) {
-            case EsbPackage.ESB_LINK__SOURCE:
-                return eInternalContainer().eInverseRemove(this, EsbPackage.OUTPUT_CONNECTOR__OUTGOING_LINK, OutputConnector.class, msgs);
+        case EsbPackage.ESB_LINK__SOURCE:
+            return eInternalContainer().eInverseRemove(this, EsbPackage.OUTPUT_CONNECTOR__OUTGOING_LINK,
+                    OutputConnector.class, msgs);
         }
         return super.eBasicRemoveFromContainerFeature(msgs);
     }
@@ -224,17 +249,19 @@ public class EsbLinkImpl extends EObjectImpl implements EsbLink {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-            case EsbPackage.ESB_LINK__SOURCE:
-                return getSource();
-            case EsbPackage.ESB_LINK__TARGET:
-                if (resolve) return getTarget();
-                return basicGetTarget();
+        case EsbPackage.ESB_LINK__SOURCE:
+            return getSource();
+        case EsbPackage.ESB_LINK__TARGET:
+            if (resolve)
+                return getTarget();
+            return basicGetTarget();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -242,18 +269,19 @@ public class EsbLinkImpl extends EObjectImpl implements EsbLink {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-            case EsbPackage.ESB_LINK__SOURCE:
-                setSource((OutputConnector)newValue);
-                return;
-            case EsbPackage.ESB_LINK__TARGET:
-                setTarget((InputConnector)newValue);
-                return;
+        case EsbPackage.ESB_LINK__SOURCE:
+            setSource((OutputConnector) newValue);
+            return;
+        case EsbPackage.ESB_LINK__TARGET:
+            setTarget((InputConnector) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -261,18 +289,19 @@ public class EsbLinkImpl extends EObjectImpl implements EsbLink {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-            case EsbPackage.ESB_LINK__SOURCE:
-                setSource((OutputConnector)null);
-                return;
-            case EsbPackage.ESB_LINK__TARGET:
-                setTarget((InputConnector)null);
-                return;
+        case EsbPackage.ESB_LINK__SOURCE:
+            setSource((OutputConnector) null);
+            return;
+        case EsbPackage.ESB_LINK__TARGET:
+            setTarget((InputConnector) null);
+            return;
         }
         super.eUnset(featureID);
     }
@@ -280,16 +309,17 @@ public class EsbLinkImpl extends EObjectImpl implements EsbLink {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-            case EsbPackage.ESB_LINK__SOURCE:
-                return getSource() != null;
-            case EsbPackage.ESB_LINK__TARGET:
-                return target != null;
+        case EsbPackage.ESB_LINK__SOURCE:
+            return getSource() != null;
+        case EsbPackage.ESB_LINK__TARGET:
+            return target != null;
         }
         return super.eIsSet(featureID);
     }

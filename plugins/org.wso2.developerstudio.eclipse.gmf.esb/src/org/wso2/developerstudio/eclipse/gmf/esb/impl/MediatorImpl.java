@@ -21,7 +21,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.Mediator;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MediatorImpl#isReverse <em>Reverse</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MediatorImpl#isReverse <em>Reverse</em>}</li>
  * </ul>
  *
  * @generated
@@ -31,6 +31,7 @@ public abstract class MediatorImpl extends EsbElementImpl implements Mediator {
      * The default value of the '{@link #isReverse() <em>Reverse</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #isReverse()
      * @generated
      * @ordered
@@ -40,6 +41,7 @@ public abstract class MediatorImpl extends EsbElementImpl implements Mediator {
      * The cached value of the '{@link #isReverse() <em>Reverse</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #isReverse()
      * @generated
      * @ordered
@@ -49,6 +51,7 @@ public abstract class MediatorImpl extends EsbElementImpl implements Mediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected MediatorImpl() {
@@ -58,6 +61,7 @@ public abstract class MediatorImpl extends EsbElementImpl implements Mediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -69,6 +73,7 @@ public abstract class MediatorImpl extends EsbElementImpl implements Mediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public boolean isReverse() {
@@ -78,6 +83,7 @@ public abstract class MediatorImpl extends EsbElementImpl implements Mediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setReverse(boolean newReverse) {
@@ -90,13 +96,14 @@ public abstract class MediatorImpl extends EsbElementImpl implements Mediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-            case EsbPackage.MEDIATOR__REVERSE:
-                return isReverse();
+        case EsbPackage.MEDIATOR__REVERSE:
+            return isReverse();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -104,14 +111,15 @@ public abstract class MediatorImpl extends EsbElementImpl implements Mediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-            case EsbPackage.MEDIATOR__REVERSE:
-                setReverse((Boolean)newValue);
-                return;
+        case EsbPackage.MEDIATOR__REVERSE:
+            setReverse((Boolean) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -119,14 +127,15 @@ public abstract class MediatorImpl extends EsbElementImpl implements Mediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-            case EsbPackage.MEDIATOR__REVERSE:
-                setReverse(REVERSE_EDEFAULT);
-                return;
+        case EsbPackage.MEDIATOR__REVERSE:
+            setReverse(REVERSE_EDEFAULT);
+            return;
         }
         super.eUnset(featureID);
     }
@@ -134,13 +143,14 @@ public abstract class MediatorImpl extends EsbElementImpl implements Mediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-            case EsbPackage.MEDIATOR__REVERSE:
-                return reverse != REVERSE_EDEFAULT;
+        case EsbPackage.MEDIATOR__REVERSE:
+            return reverse != REVERSE_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -148,11 +158,13 @@ public abstract class MediatorImpl extends EsbElementImpl implements Mediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy()) return super.toString();
+        if (eIsProxy())
+            return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (Reverse: ");

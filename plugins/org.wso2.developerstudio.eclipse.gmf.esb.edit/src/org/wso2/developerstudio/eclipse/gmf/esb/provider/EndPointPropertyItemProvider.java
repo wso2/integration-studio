@@ -46,6 +46,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class EndPointPropertyItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
@@ -54,6 +55,7 @@ public class EndPointPropertyItemProvider extends ItemProviderAdapter implements
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public EndPointPropertyItemProvider(AdapterFactory adapterFactory) {
@@ -64,6 +66,7 @@ public class EndPointPropertyItemProvider extends ItemProviderAdapter implements
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -83,88 +86,68 @@ public class EndPointPropertyItemProvider extends ItemProviderAdapter implements
      * This adds a property descriptor for the Name feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_EndPointProperty_name_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_EndPointProperty_name_feature", "_UI_EndPointProperty_type"),
-                 EsbPackage.Literals.END_POINT_PROPERTY__NAME,
-                 true,
-                 false,
-                 false,
-                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                 null,
-                 null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                        getResourceLocator(), getString("_UI_EndPointProperty_name_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_EndPointProperty_name_feature",
+                                "_UI_EndPointProperty_type"),
+                        EsbPackage.Literals.END_POINT_PROPERTY__NAME, true, false, false,
+                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This adds a property descriptor for the Value feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addValuePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_EndPointProperty_value_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_EndPointProperty_value_feature", "_UI_EndPointProperty_type"),
-                 EsbPackage.Literals.END_POINT_PROPERTY__VALUE,
-                 true,
-                 false,
-                 false,
-                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                 null,
-                 null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                        getResourceLocator(), getString("_UI_EndPointProperty_value_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_EndPointProperty_value_feature",
+                                "_UI_EndPointProperty_type"),
+                        EsbPackage.Literals.END_POINT_PROPERTY__VALUE, true, false, false,
+                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This adds a property descriptor for the Scope feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addScopePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_EndPointProperty_scope_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_EndPointProperty_scope_feature", "_UI_EndPointProperty_type"),
-                 EsbPackage.Literals.END_POINT_PROPERTY__SCOPE,
-                 true,
-                 false,
-                 false,
-                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                 null,
-                 null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                        getResourceLocator(), getString("_UI_EndPointProperty_scope_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_EndPointProperty_scope_feature",
+                                "_UI_EndPointProperty_type"),
+                        EsbPackage.Literals.END_POINT_PROPERTY__SCOPE, true, false, false,
+                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This adds a property descriptor for the Value Type feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addValueTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_EndPointProperty_valueType_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_EndPointProperty_valueType_feature", "_UI_EndPointProperty_type"),
-                 EsbPackage.Literals.END_POINT_PROPERTY__VALUE_TYPE,
-                 true,
-                 false,
-                 false,
-                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                 null,
-                 null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                        getResourceLocator(), getString("_UI_EndPointProperty_valueType_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_EndPointProperty_valueType_feature",
+                                "_UI_EndPointProperty_type"),
+                        EsbPackage.Literals.END_POINT_PROPERTY__VALUE_TYPE, true, false, false,
+                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -173,6 +156,7 @@ public class EndPointPropertyItemProvider extends ItemProviderAdapter implements
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -187,6 +171,7 @@ public class EndPointPropertyItemProvider extends ItemProviderAdapter implements
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -201,6 +186,7 @@ public class EndPointPropertyItemProvider extends ItemProviderAdapter implements
      * This returns EndPointProperty.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -212,6 +198,7 @@ public class EndPointPropertyItemProvider extends ItemProviderAdapter implements
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated NOT
      */
     @Override
@@ -246,6 +233,7 @@ public class EndPointPropertyItemProvider extends ItemProviderAdapter implements
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -253,15 +241,15 @@ public class EndPointPropertyItemProvider extends ItemProviderAdapter implements
         updateChildren(notification);
 
         switch (notification.getFeatureID(EndPointProperty.class)) {
-            case EsbPackage.END_POINT_PROPERTY__NAME:
-            case EsbPackage.END_POINT_PROPERTY__VALUE:
-            case EsbPackage.END_POINT_PROPERTY__SCOPE:
-            case EsbPackage.END_POINT_PROPERTY__VALUE_TYPE:
-                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-                return;
-            case EsbPackage.END_POINT_PROPERTY__VALUE_EXPRESSION:
-                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-                return;
+        case EsbPackage.END_POINT_PROPERTY__NAME:
+        case EsbPackage.END_POINT_PROPERTY__VALUE:
+        case EsbPackage.END_POINT_PROPERTY__SCOPE:
+        case EsbPackage.END_POINT_PROPERTY__VALUE_TYPE:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+            return;
+        case EsbPackage.END_POINT_PROPERTY__VALUE_EXPRESSION:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+            return;
         }
         super.notifyChanged(notification);
     }
@@ -271,22 +259,22 @@ public class EndPointPropertyItemProvider extends ItemProviderAdapter implements
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add
-            (createChildParameter
-                (EsbPackage.Literals.END_POINT_PROPERTY__VALUE_EXPRESSION,
-                 EsbFactory.eINSTANCE.createNamespacedProperty()));
+        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.END_POINT_PROPERTY__VALUE_EXPRESSION,
+                EsbFactory.eINSTANCE.createNamespacedProperty()));
     }
 
     /**
      * Return the resource locator for this item provider's resources.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

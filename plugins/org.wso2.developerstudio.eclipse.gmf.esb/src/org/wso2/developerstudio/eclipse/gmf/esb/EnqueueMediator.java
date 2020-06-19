@@ -15,11 +15,12 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnqueueMediator#getExecutor <em>Executor</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnqueueMediator#getPriority <em>Priority</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnqueueMediator#getSequenceKey <em>Sequence Key</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnqueueMediator#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnqueueMediator#getOutputConnector <em>Output Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnqueueMediator#getExecutor <em>Executor</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnqueueMediator#getPriority <em>Priority</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnqueueMediator#getSequenceKey <em>Sequence Key</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnqueueMediator#getInputConnector <em>Input Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnqueueMediator#getOutputConnector <em>Output
+ * Connector</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEnqueueMediator()
@@ -36,6 +37,7 @@ public interface EnqueueMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Executor</em>' attribute.
      * @see #setExecutor(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEnqueueMediator_Executor()
@@ -45,9 +47,11 @@ public interface EnqueueMediator extends Mediator {
     String getExecutor();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnqueueMediator#getExecutor <em>Executor</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnqueueMediator#getExecutor
+     * <em>Executor</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Executor</em>' attribute.
      * @see #getExecutor()
      * @generated
@@ -63,6 +67,7 @@ public interface EnqueueMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Priority</em>' attribute.
      * @see #setPriority(int)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEnqueueMediator_Priority()
@@ -72,9 +77,11 @@ public interface EnqueueMediator extends Mediator {
     int getPriority();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnqueueMediator#getPriority <em>Priority</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnqueueMediator#getPriority
+     * <em>Priority</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Priority</em>' attribute.
      * @see #getPriority()
      * @generated
@@ -89,6 +96,7 @@ public interface EnqueueMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Sequence Key</em>' containment reference.
      * @see #setSequenceKey(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEnqueueMediator_SequenceKey()
@@ -98,9 +106,11 @@ public interface EnqueueMediator extends Mediator {
     RegistryKeyProperty getSequenceKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnqueueMediator#getSequenceKey <em>Sequence Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnqueueMediator#getSequenceKey
+     * <em>Sequence Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Sequence Key</em>' containment reference.
      * @see #getSequenceKey()
      * @generated
@@ -115,6 +125,7 @@ public interface EnqueueMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(EnqueueMediatorInputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEnqueueMediator_InputConnector()
@@ -124,9 +135,11 @@ public interface EnqueueMediator extends Mediator {
     EnqueueMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnqueueMediator#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnqueueMediator#getInputConnector
+     * <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
      * @see #getInputConnector()
      * @generated
@@ -141,6 +154,7 @@ public interface EnqueueMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(EnqueueMediatorOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEnqueueMediator_OutputConnector()
@@ -150,9 +164,11 @@ public interface EnqueueMediator extends Mediator {
     EnqueueMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnqueueMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnqueueMediator#getOutputConnector
+     * <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
      * @see #getOutputConnector()
      * @generated

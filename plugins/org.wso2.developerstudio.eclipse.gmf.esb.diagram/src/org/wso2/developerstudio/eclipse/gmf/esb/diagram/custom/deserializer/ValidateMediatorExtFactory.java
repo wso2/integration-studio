@@ -40,12 +40,12 @@ import org.jaxen.JaxenException;
 import org.xml.sax.SAXException;
 
 public class ValidateMediatorExtFactory extends ValidateMediatorFactory {
-    
+
     private static ValidateMediatorExtFactory instance;
-    
+
     private ValidateMediatorExtFactory() {
     }
-    
+
     public static synchronized ValidateMediatorExtFactory getInstance() {
         if (instance == null) {
             instance = new ValidateMediatorExtFactory();
@@ -126,7 +126,7 @@ public class ValidateMediatorExtFactory extends ValidateMediatorFactory {
             }
         }
         addAllCommentChildrenToList(omElement, ((ValidateMediator) mediator).getCommentsList());
-        
+
         return mediator;
     }
 

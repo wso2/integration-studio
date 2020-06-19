@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Entitlement Client Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
+ * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEntitlementClientType()
  * @model
  * @generated
@@ -35,6 +36,7 @@ public enum EntitlementClientType implements Enumerator {
      * The '<em><b>BASIC AUTH</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #BASIC_AUTH_VALUE
      * @generated
      * @ordered
@@ -44,6 +46,7 @@ public enum EntitlementClientType implements Enumerator {
      * The '<em><b>THRIFT</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #THRIFT_VALUE
      * @generated
      * @ordered
@@ -54,6 +57,7 @@ public enum EntitlementClientType implements Enumerator {
      * The '<em><b>SOAP</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #SOAP_VALUE
      * @generated
      * @ordered
@@ -63,6 +67,7 @@ public enum EntitlementClientType implements Enumerator {
      * The '<em><b>WSXACML</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #WSXACML_VALUE
      * @generated
      * @ordered
@@ -77,6 +82,7 @@ public enum EntitlementClientType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #BASIC_AUTH
      * @model literal=" SOAP - Basic Auth (WSO2 IS 4.0.0 or later)"
      * @generated
@@ -92,6 +98,7 @@ public enum EntitlementClientType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #THRIFT
      * @model
      * @generated
@@ -107,6 +114,7 @@ public enum EntitlementClientType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #SOAP
      * @model literal="SOAP - Authentication Admin (WSO2 IS 3.2.3 or earlier) "
      * @generated
@@ -122,6 +130,7 @@ public enum EntitlementClientType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #WSXACML
      * @model
      * @generated
@@ -133,19 +142,17 @@ public enum EntitlementClientType implements Enumerator {
      * An array of all the '<em><b>Entitlement Client Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
-    private static final EntitlementClientType[] VALUES_ARRAY = new EntitlementClientType[] {
-            BASIC_AUTH,
-            THRIFT,
-            SOAP,
-            WSXACML,
-        };
+    private static final EntitlementClientType[] VALUES_ARRAY = new EntitlementClientType[] { BASIC_AUTH, THRIFT, SOAP,
+            WSXACML, };
 
     /**
      * A public read-only list of all the '<em><b>Entitlement Client Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public static final List<EntitlementClientType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -154,6 +161,7 @@ public enum EntitlementClientType implements Enumerator {
      * Returns the '<em><b>Entitlement Client Type</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -172,6 +180,7 @@ public enum EntitlementClientType implements Enumerator {
      * Returns the '<em><b>Entitlement Client Type</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -190,16 +199,21 @@ public enum EntitlementClientType implements Enumerator {
      * Returns the '<em><b>Entitlement Client Type</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static EntitlementClientType get(int value) {
         switch (value) {
-            case BASIC_AUTH_VALUE: return BASIC_AUTH;
-            case THRIFT_VALUE: return THRIFT;
-            case SOAP_VALUE: return SOAP;
-            case WSXACML_VALUE: return WSXACML;
+        case BASIC_AUTH_VALUE:
+            return BASIC_AUTH;
+        case THRIFT_VALUE:
+            return THRIFT;
+        case SOAP_VALUE:
+            return SOAP;
+        case WSXACML_VALUE:
+            return WSXACML;
         }
         return null;
     }
@@ -207,6 +221,7 @@ public enum EntitlementClientType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final int value;
@@ -214,6 +229,7 @@ public enum EntitlementClientType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String name;
@@ -221,6 +237,7 @@ public enum EntitlementClientType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String literal;
@@ -229,6 +246,7 @@ public enum EntitlementClientType implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private EntitlementClientType(int value, String name, String literal) {
@@ -240,34 +258,38 @@ public enum EntitlementClientType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public int getValue() {
-      return value;
+        return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getName() {
-      return name;
+        return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getLiteral() {
-      return literal;
+        return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

@@ -15,7 +15,8 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AdditionalOutputConnector#getAdditionalOutgoingLink <em>Additional Outgoing Link</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AdditionalOutputConnector#getAdditionalOutgoingLink
+ * <em>Additional Outgoing Link</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAdditionalOutputConnector()
@@ -31,6 +32,7 @@ public interface AdditionalOutputConnector extends EsbConnector {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Additional Outgoing Link</em>' containment reference.
      * @see #setAdditionalOutgoingLink(EsbLink)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAdditionalOutputConnector_AdditionalOutgoingLink()
@@ -40,9 +42,12 @@ public interface AdditionalOutputConnector extends EsbConnector {
     EsbLink getAdditionalOutgoingLink();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AdditionalOutputConnector#getAdditionalOutgoingLink <em>Additional Outgoing Link</em>}' containment reference.
+     * Sets the value of the
+     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AdditionalOutputConnector#getAdditionalOutgoingLink
+     * <em>Additional Outgoing Link</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Additional Outgoing Link</em>' containment reference.
      * @see #getAdditionalOutgoingLink()
      * @generated
@@ -52,6 +57,7 @@ public interface AdditionalOutputConnector extends EsbConnector {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @model
      * @generated
      */

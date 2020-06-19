@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Log Level</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
+ * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getLogLevel()
  * @model
  * @generated
@@ -26,6 +27,7 @@ public enum LogLevel implements Enumerator {
      * The '<em><b>SIMPLE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #SIMPLE_VALUE
      * @generated
      * @ordered
@@ -36,6 +38,7 @@ public enum LogLevel implements Enumerator {
      * The '<em><b>HEADERS</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #HEADERS_VALUE
      * @generated
      * @ordered
@@ -46,6 +49,7 @@ public enum LogLevel implements Enumerator {
      * The '<em><b>FULL</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #FULL_VALUE
      * @generated
      * @ordered
@@ -56,6 +60,7 @@ public enum LogLevel implements Enumerator {
      * The '<em><b>CUSTOM</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #CUSTOM_VALUE
      * @generated
      * @ordered
@@ -70,6 +75,7 @@ public enum LogLevel implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #SIMPLE
      * @model
      * @generated
@@ -85,6 +91,7 @@ public enum LogLevel implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #HEADERS
      * @model
      * @generated
@@ -100,6 +107,7 @@ public enum LogLevel implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #FULL
      * @model
      * @generated
@@ -115,6 +123,7 @@ public enum LogLevel implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #CUSTOM
      * @model
      * @generated
@@ -126,19 +135,16 @@ public enum LogLevel implements Enumerator {
      * An array of all the '<em><b>Log Level</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
-    private static final LogLevel[] VALUES_ARRAY = new LogLevel[] {
-            SIMPLE,
-            HEADERS,
-            FULL,
-            CUSTOM,
-        };
+    private static final LogLevel[] VALUES_ARRAY = new LogLevel[] { SIMPLE, HEADERS, FULL, CUSTOM, };
 
     /**
      * A public read-only list of all the '<em><b>Log Level</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public static final List<LogLevel> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -147,6 +153,7 @@ public enum LogLevel implements Enumerator {
      * Returns the '<em><b>Log Level</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -165,6 +172,7 @@ public enum LogLevel implements Enumerator {
      * Returns the '<em><b>Log Level</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -183,16 +191,21 @@ public enum LogLevel implements Enumerator {
      * Returns the '<em><b>Log Level</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static LogLevel get(int value) {
         switch (value) {
-            case SIMPLE_VALUE: return SIMPLE;
-            case HEADERS_VALUE: return HEADERS;
-            case FULL_VALUE: return FULL;
-            case CUSTOM_VALUE: return CUSTOM;
+        case SIMPLE_VALUE:
+            return SIMPLE;
+        case HEADERS_VALUE:
+            return HEADERS;
+        case FULL_VALUE:
+            return FULL;
+        case CUSTOM_VALUE:
+            return CUSTOM;
         }
         return null;
     }
@@ -200,6 +213,7 @@ public enum LogLevel implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final int value;
@@ -207,6 +221,7 @@ public enum LogLevel implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String name;
@@ -214,6 +229,7 @@ public enum LogLevel implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String literal;
@@ -222,6 +238,7 @@ public enum LogLevel implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private LogLevel(int value, String name, String literal) {
@@ -233,34 +250,38 @@ public enum LogLevel implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public int getValue() {
-      return value;
+        return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getName() {
-      return name;
+        return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getLiteral() {
-      return literal;
+        return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 

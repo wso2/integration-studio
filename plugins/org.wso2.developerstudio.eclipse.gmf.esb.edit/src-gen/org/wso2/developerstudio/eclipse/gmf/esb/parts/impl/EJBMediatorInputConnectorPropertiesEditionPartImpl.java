@@ -65,262 +65,285 @@ import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
  * 
  * 
  */
-public class EJBMediatorInputConnectorPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, EJBMediatorInputConnectorPropertiesEditionPart {
+public class EJBMediatorInputConnectorPropertiesEditionPartImpl extends CompositePropertiesEditionPart
+        implements ISWTPropertiesEditionPart, EJBMediatorInputConnectorPropertiesEditionPart {
 
-	protected ReferencesTable incomingLinks;
-	protected List<ViewerFilter> incomingLinksBusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> incomingLinksFilters = new ArrayList<ViewerFilter>();
+    protected ReferencesTable incomingLinks;
+    protected List<ViewerFilter> incomingLinksBusinessFilters = new ArrayList<ViewerFilter>();
+    protected List<ViewerFilter> incomingLinksFilters = new ArrayList<ViewerFilter>();
 
+    /**
+     * Default constructor
+     * 
+     * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+     * 
+     */
+    public EJBMediatorInputConnectorPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
+        super(editionComponent);
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+     *      createFigure(org.eclipse.swt.widgets.Composite)
+     * 
+     */
+    public Composite createFigure(final Composite parent) {
+        view = new Composite(parent, SWT.NONE);
+        GridLayout layout = new GridLayout();
+        layout.numColumns = 3;
+        view.setLayout(layout);
+        createControls(view);
+        return view;
+    }
 
-	/**
-	 * Default constructor
-	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
-	 */
-	public EJBMediatorInputConnectorPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+     *      createControls(org.eclipse.swt.widgets.Composite)
+     * 
+     */
+    public void createControls(Composite view) {
+        CompositionSequence eJBMediatorInputConnectorStep = new BindingCompositionSequence(propertiesEditionComponent);
+        eJBMediatorInputConnectorStep.addStep(EsbViewsRepository.EJBMediatorInputConnector.Properties.class)
+                .addStep(EsbViewsRepository.EJBMediatorInputConnector.Properties.incomingLinks);
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
-	 * 			createFigure(org.eclipse.swt.widgets.Composite)
-	 * 
-	 */
-	public Composite createFigure(final Composite parent) {
-		view = new Composite(parent, SWT.NONE);
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 3;
-		view.setLayout(layout);
-		createControls(view);
-		return view;
-	}
+        composer = new PartComposer(eJBMediatorInputConnectorStep) {
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
-	 * 			createControls(org.eclipse.swt.widgets.Composite)
-	 * 
-	 */
-	public void createControls(Composite view) { 
-		CompositionSequence eJBMediatorInputConnectorStep = new BindingCompositionSequence(propertiesEditionComponent);
-		eJBMediatorInputConnectorStep
-			.addStep(EsbViewsRepository.EJBMediatorInputConnector.Properties.class)
-			.addStep(EsbViewsRepository.EJBMediatorInputConnector.Properties.incomingLinks);
-		
-		
-		composer = new PartComposer(eJBMediatorInputConnectorStep) {
+            @Override
+            public Composite addToPart(Composite parent, Object key) {
+                if (key == EsbViewsRepository.EJBMediatorInputConnector.Properties.class) {
+                    return createPropertiesGroup(parent);
+                }
+                if (key == EsbViewsRepository.EJBMediatorInputConnector.Properties.incomingLinks) {
+                    return createIncomingLinksAdvancedReferencesTable(parent);
+                }
+                return parent;
+            }
+        };
+        composer.compose(view);
+    }
 
-			@Override
-			public Composite addToPart(Composite parent, Object key) {
-				if (key == EsbViewsRepository.EJBMediatorInputConnector.Properties.class) {
-					return createPropertiesGroup(parent);
-				}
-				if (key == EsbViewsRepository.EJBMediatorInputConnector.Properties.incomingLinks) {
-					return createIncomingLinksAdvancedReferencesTable(parent);
-				}
-				return parent;
-			}
-		};
-		composer.compose(view);
-	}
+    /**
+     * 
+     */
+    protected Composite createPropertiesGroup(Composite parent) {
+        Group propertiesGroup = new Group(parent, SWT.NONE);
+        propertiesGroup.setText(EsbMessages.EJBMediatorInputConnectorPropertiesEditionPart_PropertiesGroupLabel);
+        GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
+        propertiesGroupData.horizontalSpan = 3;
+        propertiesGroup.setLayoutData(propertiesGroupData);
+        GridLayout propertiesGroupLayout = new GridLayout();
+        propertiesGroupLayout.numColumns = 3;
+        propertiesGroup.setLayout(propertiesGroupLayout);
+        return propertiesGroup;
+    }
 
-	/**
-	 * 
-	 */
-	protected Composite createPropertiesGroup(Composite parent) {
-		Group propertiesGroup = new Group(parent, SWT.NONE);
-		propertiesGroup.setText(EsbMessages.EJBMediatorInputConnectorPropertiesEditionPart_PropertiesGroupLabel);
-		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesGroupData.horizontalSpan = 3;
-		propertiesGroup.setLayoutData(propertiesGroupData);
-		GridLayout propertiesGroupLayout = new GridLayout();
-		propertiesGroupLayout.numColumns = 3;
-		propertiesGroup.setLayout(propertiesGroupLayout);
-		return propertiesGroup;
-	}
+    /**
+     * 
+     */
+    protected Composite createIncomingLinksAdvancedReferencesTable(Composite parent) {
+        String label = getDescription(EsbViewsRepository.EJBMediatorInputConnector.Properties.incomingLinks,
+                EsbMessages.EJBMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel);
+        this.incomingLinks = new ReferencesTable(label, new ReferencesTableListener() {
+            public void handleAdd() {
+                addIncomingLinks();
+            }
 
-	/**
-	 * 
-	 */
-	protected Composite createIncomingLinksAdvancedReferencesTable(Composite parent) {
-		String label = getDescription(EsbViewsRepository.EJBMediatorInputConnector.Properties.incomingLinks, EsbMessages.EJBMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel);		 
-		this.incomingLinks = new ReferencesTable(label, new ReferencesTableListener() {
-			public void handleAdd() { addIncomingLinks(); }
-			public void handleEdit(EObject element) { editIncomingLinks(element); }
-			public void handleMove(EObject element, int oldIndex, int newIndex) { moveIncomingLinks(element, oldIndex, newIndex); }
-			public void handleRemove(EObject element) { removeFromIncomingLinks(element); }
-			public void navigateTo(EObject element) { }
-		});
-		this.incomingLinks.setHelpText(propertiesEditionComponent.getHelpContent(EsbViewsRepository.EJBMediatorInputConnector.Properties.incomingLinks, EsbViewsRepository.SWT_KIND));
-		this.incomingLinks.createControls(parent);
-		this.incomingLinks.addSelectionListener(new SelectionAdapter() {
-			
-			public void widgetSelected(SelectionEvent e) {
-				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EJBMediatorInputConnectorPropertiesEditionPartImpl.this, EsbViewsRepository.EJBMediatorInputConnector.Properties.incomingLinks, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
-				}
-			}
-			
-		});
-		GridData incomingLinksData = new GridData(GridData.FILL_HORIZONTAL);
-		incomingLinksData.horizontalSpan = 3;
-		this.incomingLinks.setLayoutData(incomingLinksData);
-		this.incomingLinks.disableMove();
-		incomingLinks.setID(EsbViewsRepository.EJBMediatorInputConnector.Properties.incomingLinks);
-		incomingLinks.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
-		return parent;
-	}
+            public void handleEdit(EObject element) {
+                editIncomingLinks(element);
+            }
 
-	/**
-	 * 
-	 */
-	protected void addIncomingLinks() {
-		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(incomingLinks.getInput(), incomingLinksFilters, incomingLinksBusinessFilters,
-		"incomingLinks", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
-			@Override
-			public void process(IStructuredSelection selection) {
-				for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
-					EObject elem = (EObject) iter.next();
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EJBMediatorInputConnectorPropertiesEditionPartImpl.this, EsbViewsRepository.EJBMediatorInputConnector.Properties.incomingLinks,
-						PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
-				}
-				incomingLinks.refresh();
-			}
-		};
-		dialog.open();
-	}
+            public void handleMove(EObject element, int oldIndex, int newIndex) {
+                moveIncomingLinks(element, oldIndex, newIndex);
+            }
 
-	/**
-	 * 
-	 */
-	protected void moveIncomingLinks(EObject element, int oldIndex, int newIndex) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EJBMediatorInputConnectorPropertiesEditionPartImpl.this, EsbViewsRepository.EJBMediatorInputConnector.Properties.incomingLinks, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		incomingLinks.refresh();
-	}
+            public void handleRemove(EObject element) {
+                removeFromIncomingLinks(element);
+            }
 
-	/**
-	 * 
-	 */
-	protected void removeFromIncomingLinks(EObject element) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EJBMediatorInputConnectorPropertiesEditionPartImpl.this, EsbViewsRepository.EJBMediatorInputConnector.Properties.incomingLinks, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-		incomingLinks.refresh();
-	}
+            public void navigateTo(EObject element) {
+            }
+        });
+        this.incomingLinks.setHelpText(propertiesEditionComponent.getHelpContent(
+                EsbViewsRepository.EJBMediatorInputConnector.Properties.incomingLinks, EsbViewsRepository.SWT_KIND));
+        this.incomingLinks.createControls(parent);
+        this.incomingLinks.addSelectionListener(new SelectionAdapter() {
 
-	/**
-	 * 
-	 */
-	protected void editIncomingLinks(EObject element) {
-		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
-		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
-		if (provider != null) {
-			PropertiesEditingPolicy policy = provider.getPolicy(context);
-			if (policy != null) {
-				policy.execute();
-				incomingLinks.refresh();
-			}
-		}
-	}
+            public void widgetSelected(SelectionEvent e) {
+                if (e.item != null && e.item.getData() instanceof EObject) {
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(EJBMediatorInputConnectorPropertiesEditionPartImpl.this,
+                                    EsbViewsRepository.EJBMediatorInputConnector.Properties.incomingLinks,
+                                    PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null,
+                                    e.item.getData()));
+                }
+            }
 
+        });
+        GridData incomingLinksData = new GridData(GridData.FILL_HORIZONTAL);
+        incomingLinksData.horizontalSpan = 3;
+        this.incomingLinks.setLayoutData(incomingLinksData);
+        this.incomingLinks.disableMove();
+        incomingLinks.setID(EsbViewsRepository.EJBMediatorInputConnector.Properties.incomingLinks);
+        incomingLinks.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
+        return parent;
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
-	 */
-	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-		
-		// End of user code
-	}
+    /**
+     * 
+     */
+    protected void addIncomingLinks() {
+        TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(incomingLinks.getInput(),
+                incomingLinksFilters, incomingLinksBusinessFilters, "incomingLinks",
+                propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
+            @Override
+            public void process(IStructuredSelection selection) {
+                for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
+                    EObject elem = (EObject) iter.next();
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(EJBMediatorInputConnectorPropertiesEditionPartImpl.this,
+                                    EsbViewsRepository.EJBMediatorInputConnector.Properties.incomingLinks,
+                                    PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+                }
+                incomingLinks.refresh();
+            }
+        };
+        dialog.open();
+    }
 
+    /**
+     * 
+     */
+    protected void moveIncomingLinks(EObject element, int oldIndex, int newIndex) {
+        propertiesEditionComponent.firePropertiesChanged(
+                new PropertiesEditionEvent(EJBMediatorInputConnectorPropertiesEditionPartImpl.this,
+                        EsbViewsRepository.EJBMediatorInputConnector.Properties.incomingLinks,
+                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+        incomingLinks.refresh();
+    }
 
+    /**
+     * 
+     */
+    protected void removeFromIncomingLinks(EObject element) {
+        propertiesEditionComponent.firePropertiesChanged(
+                new PropertiesEditionEvent(EJBMediatorInputConnectorPropertiesEditionPartImpl.this,
+                        EsbViewsRepository.EJBMediatorInputConnector.Properties.incomingLinks,
+                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+        incomingLinks.refresh();
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.EJBMediatorInputConnectorPropertiesEditionPart#initIncomingLinks(org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings)
-	 */
-	public void initIncomingLinks(ReferencesTableSettings settings) {
-		if (current.eResource() != null && current.eResource().getResourceSet() != null)
-			this.resourceSet = current.eResource().getResourceSet();
-		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
-		incomingLinks.setContentProvider(contentProvider);
-		incomingLinks.setInput(settings);
-		incomingLinksBusinessFilters.clear();
-		incomingLinksFilters.clear();
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.EJBMediatorInputConnector.Properties.incomingLinks);
-		if (eefElementEditorReadOnlyState && incomingLinks.getTable().isEnabled()) {
-			incomingLinks.setEnabled(false);
-			incomingLinks.setToolTipText(EsbMessages.EJBMediatorInputConnector_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !incomingLinks.getTable().isEnabled()) {
-			incomingLinks.setEnabled(true);
-		}
-		
-	}
+    /**
+     * 
+     */
+    protected void editIncomingLinks(EObject element) {
+        EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(
+                propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
+        PropertiesEditingProvider provider = (PropertiesEditingProvider) adapterFactory.adapt(element,
+                PropertiesEditingProvider.class);
+        if (provider != null) {
+            PropertiesEditingPolicy policy = provider.getPolicy(context);
+            if (policy != null) {
+                policy.execute();
+                incomingLinks.refresh();
+            }
+        }
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.EJBMediatorInputConnectorPropertiesEditionPart#updateIncomingLinks()
-	 * 
-	 */
-	public void updateIncomingLinks() {
-	incomingLinks.refresh();
-}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+     * 
+     */
+    public void firePropertiesChanged(IPropertiesEditionEvent event) {
+        // Start of user code for tab synchronization
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.EJBMediatorInputConnectorPropertiesEditionPart#addFilterIncomingLinks(ViewerFilter filter)
-	 * 
-	 */
-	public void addFilterToIncomingLinks(ViewerFilter filter) {
-		incomingLinksFilters.add(filter);
-	}
+        // End of user code
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.EJBMediatorInputConnectorPropertiesEditionPart#addBusinessFilterIncomingLinks(ViewerFilter filter)
-	 * 
-	 */
-	public void addBusinessFilterToIncomingLinks(ViewerFilter filter) {
-		incomingLinksBusinessFilters.add(filter);
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.EJBMediatorInputConnectorPropertiesEditionPart#initIncomingLinks(org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings)
+     */
+    public void initIncomingLinks(ReferencesTableSettings settings) {
+        if (current.eResource() != null && current.eResource().getResourceSet() != null)
+            this.resourceSet = current.eResource().getResourceSet();
+        ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+        incomingLinks.setContentProvider(contentProvider);
+        incomingLinks.setInput(settings);
+        incomingLinksBusinessFilters.clear();
+        incomingLinksFilters.clear();
+        boolean eefElementEditorReadOnlyState = isReadOnly(
+                EsbViewsRepository.EJBMediatorInputConnector.Properties.incomingLinks);
+        if (eefElementEditorReadOnlyState && incomingLinks.getTable().isEnabled()) {
+            incomingLinks.setEnabled(false);
+            incomingLinks.setToolTipText(EsbMessages.EJBMediatorInputConnector_ReadOnly);
+        } else if (!eefElementEditorReadOnlyState && !incomingLinks.getTable().isEnabled()) {
+            incomingLinks.setEnabled(true);
+        }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.EJBMediatorInputConnectorPropertiesEditionPart#isContainedInIncomingLinksTable(EObject element)
-	 * 
-	 */
-	public boolean isContainedInIncomingLinksTable(EObject element) {
-		return ((ReferencesTableSettings)incomingLinks.getInput()).contains(element);
-	}
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.EJBMediatorInputConnectorPropertiesEditionPart#updateIncomingLinks()
+     * 
+     */
+    public void updateIncomingLinks() {
+        incomingLinks.refresh();
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.EJBMediatorInputConnectorPropertiesEditionPart#addFilterIncomingLinks(ViewerFilter
+     *      filter)
+     * 
+     */
+    public void addFilterToIncomingLinks(ViewerFilter filter) {
+        incomingLinksFilters.add(filter);
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.EJBMediatorInputConnectorPropertiesEditionPart#addBusinessFilterIncomingLinks(ViewerFilter
+     *      filter)
+     * 
+     */
+    public void addBusinessFilterToIncomingLinks(ViewerFilter filter) {
+        incomingLinksBusinessFilters.add(filter);
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.EJBMediatorInputConnectorPropertiesEditionPart#isContainedInIncomingLinksTable(EObject
+     *      element)
+     * 
+     */
+    public boolean isContainedInIncomingLinksTable(EObject element) {
+        return ((ReferencesTableSettings) incomingLinks.getInput()).contains(element);
+    }
 
+    /**
+     * {@inheritDoc}
+     *
+     * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+     * 
+     */
+    public String getTitle() {
+        return EsbMessages.EJBMediatorInputConnector_Part_Title;
+    }
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
-	 */
-	public String getTitle() {
-		return EsbMessages.EJBMediatorInputConnector_Part_Title;
-	}
+    // Start of user code additional methods
 
-	// Start of user code additional methods
-	
-	// End of user code
-
+    // End of user code
 
 }

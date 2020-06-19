@@ -17,8 +17,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyServiceParameter#getName <em>Name</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyServiceParameter#getValue <em>Value</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyServiceParameter#getName <em>Name</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyServiceParameter#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getProxyServiceParameter()
@@ -35,6 +35,7 @@ public interface ProxyServiceParameter extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getProxyServiceParameter_Name()
@@ -44,9 +45,11 @@ public interface ProxyServiceParameter extends EObject {
     String getName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyServiceParameter#getName <em>Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyServiceParameter#getName
+     * <em>Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Name</em>' attribute.
      * @see #getName()
      * @generated
@@ -62,6 +65,7 @@ public interface ProxyServiceParameter extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Value</em>' attribute.
      * @see #setValue(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getProxyServiceParameter_Value()
@@ -71,9 +75,11 @@ public interface ProxyServiceParameter extends EObject {
     String getValue();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyServiceParameter#getValue <em>Value</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyServiceParameter#getValue
+     * <em>Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Value</em>' attribute.
      * @see #getValue()
      * @generated

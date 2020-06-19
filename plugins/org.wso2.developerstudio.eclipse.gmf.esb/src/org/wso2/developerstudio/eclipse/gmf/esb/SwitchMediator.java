@@ -17,15 +17,15 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator#getSourceXpath <em>Source Xpath</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator#getSource <em>Source</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator#getNamespace <em>Namespace</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator#getNamespacePrefix <em>Namespace Prefix</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator#getCaseBranches <em>Case Branches</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator#getDefaultBranch <em>Default Branch</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator#getSwitchContainer <em>Switch Container</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator#getSourceXpath <em>Source Xpath</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator#getSource <em>Source</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator#getNamespace <em>Namespace</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator#getNamespacePrefix <em>Namespace Prefix</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator#getCaseBranches <em>Case Branches</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator#getDefaultBranch <em>Default Branch</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator#getInputConnector <em>Input Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator#getOutputConnector <em>Output Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator#getSwitchContainer <em>Switch Container</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSwitchMediator()
@@ -41,6 +41,7 @@ public interface SwitchMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Source Xpath</em>' containment reference.
      * @see #setSourceXpath(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSwitchMediator_SourceXpath()
@@ -50,9 +51,11 @@ public interface SwitchMediator extends Mediator {
     NamespacedProperty getSourceXpath();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator#getSourceXpath <em>Source Xpath</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator#getSourceXpath <em>Source
+     * Xpath</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Source Xpath</em>' containment reference.
      * @see #getSourceXpath()
      * @generated
@@ -67,6 +70,7 @@ public interface SwitchMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Source</em>' attribute.
      * @see #setSource(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSwitchMediator_Source()
@@ -76,9 +80,11 @@ public interface SwitchMediator extends Mediator {
     String getSource();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator#getSource <em>Source</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator#getSource <em>Source</em>}'
+     * attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Source</em>' attribute.
      * @see #getSource()
      * @generated
@@ -93,6 +99,7 @@ public interface SwitchMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Namespace</em>' attribute.
      * @see #setNamespace(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSwitchMediator_Namespace()
@@ -102,9 +109,11 @@ public interface SwitchMediator extends Mediator {
     String getNamespace();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator#getNamespace <em>Namespace</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator#getNamespace
+     * <em>Namespace</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Namespace</em>' attribute.
      * @see #getNamespace()
      * @generated
@@ -119,6 +128,7 @@ public interface SwitchMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Namespace Prefix</em>' attribute.
      * @see #setNamespacePrefix(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSwitchMediator_NamespacePrefix()
@@ -128,9 +138,11 @@ public interface SwitchMediator extends Mediator {
     String getNamespacePrefix();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator#getNamespacePrefix <em>Namespace Prefix</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator#getNamespacePrefix
+     * <em>Namespace Prefix</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Namespace Prefix</em>' attribute.
      * @see #getNamespacePrefix()
      * @generated
@@ -146,6 +158,7 @@ public interface SwitchMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Case Branches</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSwitchMediator_CaseBranches()
      * @model containment="true"
@@ -161,6 +174,7 @@ public interface SwitchMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Default Branch</em>' containment reference.
      * @see #setDefaultBranch(SwitchDefaultBranchOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSwitchMediator_DefaultBranch()
@@ -170,9 +184,11 @@ public interface SwitchMediator extends Mediator {
     SwitchDefaultBranchOutputConnector getDefaultBranch();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator#getDefaultBranch <em>Default Branch</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator#getDefaultBranch
+     * <em>Default Branch</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Default Branch</em>' containment reference.
      * @see #getDefaultBranch()
      * @generated
@@ -187,6 +203,7 @@ public interface SwitchMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(SwitchMediatorInputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSwitchMediator_InputConnector()
@@ -196,9 +213,11 @@ public interface SwitchMediator extends Mediator {
     SwitchMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator#getInputConnector <em>Input
+     * Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
      * @see #getInputConnector()
      * @generated
@@ -213,6 +232,7 @@ public interface SwitchMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(SwitchMediatorOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSwitchMediator_OutputConnector()
@@ -222,9 +242,11 @@ public interface SwitchMediator extends Mediator {
     SwitchMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator#getOutputConnector
+     * <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
      * @see #getOutputConnector()
      * @generated
@@ -239,6 +261,7 @@ public interface SwitchMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Switch Container</em>' containment reference.
      * @see #setSwitchContainer(SwitchMediatorContainer)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSwitchMediator_SwitchContainer()
@@ -248,9 +271,11 @@ public interface SwitchMediator extends Mediator {
     SwitchMediatorContainer getSwitchContainer();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator#getSwitchContainer <em>Switch Container</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator#getSwitchContainer
+     * <em>Switch Container</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Switch Container</em>' containment reference.
      * @see #getSwitchContainer()
      * @generated

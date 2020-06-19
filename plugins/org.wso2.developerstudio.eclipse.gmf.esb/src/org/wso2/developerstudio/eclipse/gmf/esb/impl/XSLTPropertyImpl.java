@@ -22,6 +22,7 @@ public class XSLTPropertyImpl extends AbstractNameValueExpressionPropertyImpl im
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected XSLTPropertyImpl() {
@@ -31,6 +32,7 @@ public class XSLTPropertyImpl extends AbstractNameValueExpressionPropertyImpl im
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 

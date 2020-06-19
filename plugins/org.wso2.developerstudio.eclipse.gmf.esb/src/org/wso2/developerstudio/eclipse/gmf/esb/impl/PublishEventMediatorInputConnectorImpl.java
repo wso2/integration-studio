@@ -32,6 +32,7 @@ public class PublishEventMediatorInputConnectorImpl extends InputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected PublishEventMediatorInputConnectorImpl() {
@@ -41,6 +42,7 @@ public class PublishEventMediatorInputConnectorImpl extends InputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

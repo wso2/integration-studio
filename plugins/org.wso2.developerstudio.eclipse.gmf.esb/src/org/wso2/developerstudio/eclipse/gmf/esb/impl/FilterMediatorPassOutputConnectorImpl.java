@@ -23,6 +23,7 @@ public class FilterMediatorPassOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected FilterMediatorPassOutputConnectorImpl() {
@@ -32,6 +33,7 @@ public class FilterMediatorPassOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 

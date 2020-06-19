@@ -35,7 +35,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MediatorFlow;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointOnErrorSequenceContainerImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointOnErrorSequenceContainerImpl#getMediatorFlow
+ * <em>Mediator Flow</em>}</li>
  * </ul>
  *
  * @generated
@@ -46,6 +47,7 @@ public class InboundEndpointOnErrorSequenceContainerImpl extends EsbNodeImpl
      * The cached value of the '{@link #getMediatorFlow() <em>Mediator Flow</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getMediatorFlow()
      * @generated
      * @ordered
@@ -55,6 +57,7 @@ public class InboundEndpointOnErrorSequenceContainerImpl extends EsbNodeImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected InboundEndpointOnErrorSequenceContainerImpl() {
@@ -64,6 +67,7 @@ public class InboundEndpointOnErrorSequenceContainerImpl extends EsbNodeImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -74,6 +78,7 @@ public class InboundEndpointOnErrorSequenceContainerImpl extends EsbNodeImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public MediatorFlow getMediatorFlow() {
@@ -83,14 +88,20 @@ public class InboundEndpointOnErrorSequenceContainerImpl extends EsbNodeImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public NotificationChain basicSetMediatorFlow(MediatorFlow newMediatorFlow, NotificationChain msgs) {
         MediatorFlow oldMediatorFlow = mediatorFlow;
         mediatorFlow = newMediatorFlow;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_CONTAINER__MEDIATOR_FLOW, oldMediatorFlow, newMediatorFlow);
-            if (msgs == null) msgs = notification; else msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+                    EsbPackage.INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_CONTAINER__MEDIATOR_FLOW, oldMediatorFlow,
+                    newMediatorFlow);
+            if (msgs == null)
+                msgs = notification;
+            else
+                msgs.add(notification);
         }
         return msgs;
     }
@@ -98,32 +109,40 @@ public class InboundEndpointOnErrorSequenceContainerImpl extends EsbNodeImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setMediatorFlow(MediatorFlow newMediatorFlow) {
         if (newMediatorFlow != mediatorFlow) {
             NotificationChain msgs = null;
             if (mediatorFlow != null)
-                msgs = ((InternalEObject)mediatorFlow).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_CONTAINER__MEDIATOR_FLOW, null, msgs);
+                msgs = ((InternalEObject) mediatorFlow).eInverseRemove(this,
+                        EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_CONTAINER__MEDIATOR_FLOW,
+                        null, msgs);
             if (newMediatorFlow != null)
-                msgs = ((InternalEObject)newMediatorFlow).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_CONTAINER__MEDIATOR_FLOW, null, msgs);
+                msgs = ((InternalEObject) newMediatorFlow).eInverseAdd(this,
+                        EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_CONTAINER__MEDIATOR_FLOW,
+                        null, msgs);
             msgs = basicSetMediatorFlow(newMediatorFlow, msgs);
-            if (msgs != null) msgs.dispatch();
-        }
-        else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_CONTAINER__MEDIATOR_FLOW, newMediatorFlow, newMediatorFlow));
+            if (msgs != null)
+                msgs.dispatch();
+        } else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET,
+                    EsbPackage.INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_CONTAINER__MEDIATOR_FLOW, newMediatorFlow,
+                    newMediatorFlow));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-            case EsbPackage.INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_CONTAINER__MEDIATOR_FLOW:
-                return basicSetMediatorFlow(null, msgs);
+        case EsbPackage.INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_CONTAINER__MEDIATOR_FLOW:
+            return basicSetMediatorFlow(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -131,13 +150,14 @@ public class InboundEndpointOnErrorSequenceContainerImpl extends EsbNodeImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-            case EsbPackage.INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_CONTAINER__MEDIATOR_FLOW:
-                return getMediatorFlow();
+        case EsbPackage.INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_CONTAINER__MEDIATOR_FLOW:
+            return getMediatorFlow();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -145,14 +165,15 @@ public class InboundEndpointOnErrorSequenceContainerImpl extends EsbNodeImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-            case EsbPackage.INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_CONTAINER__MEDIATOR_FLOW:
-                setMediatorFlow((MediatorFlow)newValue);
-                return;
+        case EsbPackage.INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_CONTAINER__MEDIATOR_FLOW:
+            setMediatorFlow((MediatorFlow) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -160,14 +181,15 @@ public class InboundEndpointOnErrorSequenceContainerImpl extends EsbNodeImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-            case EsbPackage.INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_CONTAINER__MEDIATOR_FLOW:
-                setMediatorFlow((MediatorFlow)null);
-                return;
+        case EsbPackage.INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_CONTAINER__MEDIATOR_FLOW:
+            setMediatorFlow((MediatorFlow) null);
+            return;
         }
         super.eUnset(featureID);
     }
@@ -175,13 +197,14 @@ public class InboundEndpointOnErrorSequenceContainerImpl extends EsbNodeImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-            case EsbPackage.INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_CONTAINER__MEDIATOR_FLOW:
-                return mediatorFlow != null;
+        case EsbPackage.INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_CONTAINER__MEDIATOR_FLOW:
+            return mediatorFlow != null;
         }
         return super.eIsSet(featureID);
     }

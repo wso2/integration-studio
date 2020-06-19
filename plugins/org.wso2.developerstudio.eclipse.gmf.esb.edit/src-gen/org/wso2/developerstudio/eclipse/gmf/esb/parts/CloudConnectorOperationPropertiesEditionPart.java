@@ -13,7 +13,6 @@ import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSet
 
 import org.eclipse.jface.viewers.ViewerFilter;
 
-
 // End of user code
 
 /**
@@ -22,208 +21,207 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public interface CloudConnectorOperationPropertiesEditionPart {
 
-	/**
-	 * @return the description
-	 * 
-	 */
-	public String getDescription();
+    /**
+     * @return the description
+     * 
+     */
+    public String getDescription();
 
-	/**
-	 * Defines a new description
-	 * @param newValue the new description to set
-	 * 
-	 */
-	public void setDescription(String newValue);
+    /**
+     * Defines a new description
+     * 
+     * @param newValue the new description to set
+     * 
+     */
+    public void setDescription(String newValue);
 
+    /**
+     * @return the commentsList
+     * 
+     */
+    public EList getCommentsList();
 
-	/**
-	 * @return the commentsList
-	 * 
-	 */
-	public EList getCommentsList();
+    /**
+     * Defines a new commentsList
+     * 
+     * @param newValue the new commentsList to set
+     * 
+     */
+    public void setCommentsList(EList newValue);
 
-	/**
-	 * Defines a new commentsList
-	 * @param newValue the new commentsList to set
-	 * 
-	 */
-	public void setCommentsList(EList newValue);
+    /**
+     * Add a value to the commentsList multivalued attribute.
+     * 
+     * @param newValue the value to add
+     */
+    public void addToCommentsList(Object newValue);
 
-	/**
-	 * Add a value to the commentsList multivalued attribute.
-	 * @param newValue the value to add
-	 */
-	public void addToCommentsList(Object newValue);
+    /**
+     * Remove a value to the commentsList multivalued attribute.
+     * 
+     * @param newValue the value to remove
+     */
+    public void removeToCommentsList(Object newValue);
 
-	/**
-	 * Remove a value to the commentsList multivalued attribute.
-	 * @param newValue the value to remove
-	 */
-	public void removeToCommentsList(Object newValue);
+    /**
+     * @return the Reverse
+     * 
+     */
+    public Boolean getReverse();
 
+    /**
+     * Defines a new Reverse
+     * 
+     * @param newValue the new Reverse to set
+     * 
+     */
+    public void setReverse(Boolean newValue);
 
-	/**
-	 * @return the Reverse
-	 * 
-	 */
-	public Boolean getReverse();
+    /**
+     * Init the connectorParameters
+     * 
+     * @param current the current value
+     * @param containgFeature the feature where to navigate if necessary
+     * @param feature the feature to manage
+     */
+    public void initConnectorParameters(ReferencesTableSettings settings);
 
-	/**
-	 * Defines a new Reverse
-	 * @param newValue the new Reverse to set
-	 * 
-	 */
-	public void setReverse(Boolean newValue);
+    /**
+     * Update the connectorParameters
+     * 
+     * @param newValue the connectorParameters to update
+     * 
+     */
+    public void updateConnectorParameters();
 
+    /**
+     * Adds the given filter to the connectorParameters edition editor.
+     * 
+     * @param filter
+     *            a viewer filter
+     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+     * 
+     */
+    public void addFilterToConnectorParameters(ViewerFilter filter);
 
+    /**
+     * Adds the given filter to the connectorParameters edition editor.
+     * 
+     * @param filter
+     *            a viewer filter
+     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+     * 
+     */
+    public void addBusinessFilterToConnectorParameters(ViewerFilter filter);
 
+    /**
+     * @return true if the given element is contained inside the connectorParameters table
+     * 
+     */
+    public boolean isContainedInConnectorParametersTable(EObject element);
 
-	/**
-	 * Init the connectorParameters
-	 * @param current the current value
-	 * @param containgFeature the feature where to navigate if necessary
-	 * @param feature the feature to manage
-	 */
-	public void initConnectorParameters(ReferencesTableSettings settings);
+    /**
+     * @return the configRef
+     * 
+     */
+    public String getConfigRef();
 
-	/**
-	 * Update the connectorParameters
-	 * @param newValue the connectorParameters to update
-	 * 
-	 */
-	public void updateConnectorParameters();
+    /**
+     * Defines a new configRef
+     * 
+     * @param newValue the new configRef to set
+     * 
+     */
+    public void setConfigRef(String newValue);
 
-	/**
-	 * Adds the given filter to the connectorParameters edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addFilterToConnectorParameters(ViewerFilter filter);
+    /**
+     * @return the connectorName
+     * 
+     */
+    public String getConnectorName();
 
-	/**
-	 * Adds the given filter to the connectorParameters edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addBusinessFilterToConnectorParameters(ViewerFilter filter);
+    /**
+     * Defines a new connectorName
+     * 
+     * @param newValue the new connectorName to set
+     * 
+     */
+    public void setConnectorName(String newValue);
 
-	/**
-	 * @return true if the given element is contained inside the connectorParameters table
-	 * 
-	 */
-	public boolean isContainedInConnectorParametersTable(EObject element);
+    /**
+     * @return the operationName
+     * 
+     */
+    public String getOperationName();
 
+    /**
+     * Defines a new operationName
+     * 
+     * @param newValue the new operationName to set
+     * 
+     */
+    public void setOperationName(String newValue);
 
-	/**
-	 * @return the configRef
-	 * 
-	 */
-	public String getConfigRef();
+    /**
+     * @return the cloudConnectorName
+     * 
+     */
+    public String getCloudConnectorName();
 
-	/**
-	 * Defines a new configRef
-	 * @param newValue the new configRef to set
-	 * 
-	 */
-	public void setConfigRef(String newValue);
+    /**
+     * Defines a new cloudConnectorName
+     * 
+     * @param newValue the new cloudConnectorName to set
+     * 
+     */
+    public void setCloudConnectorName(String newValue);
 
+    /**
+     * @return the availableConfigs
+     * 
+     */
+    public String getAvailableConfigs();
 
-	/**
-	 * @return the connectorName
-	 * 
-	 */
-	public String getConnectorName();
+    /**
+     * Defines a new availableConfigs
+     * 
+     * @param newValue the new availableConfigs to set
+     * 
+     */
+    public void setAvailableConfigs(String newValue);
 
-	/**
-	 * Defines a new connectorName
-	 * @param newValue the new connectorName to set
-	 * 
-	 */
-	public void setConnectorName(String newValue);
+    /**
+     * @return the parameterEditorType
+     * 
+     */
+    public Enumerator getParameterEditorType();
 
+    /**
+     * Init the parameterEditorType
+     * 
+     * @param input the viewer input
+     * @param current the current value
+     */
+    public void initParameterEditorType(Object input, Enumerator current);
 
-	/**
-	 * @return the operationName
-	 * 
-	 */
-	public String getOperationName();
+    /**
+     * Defines a new parameterEditorType
+     * 
+     * @param newValue the new parameterEditorType to set
+     * 
+     */
+    public void setParameterEditorType(Enumerator newValue);
 
-	/**
-	 * Defines a new operationName
-	 * @param newValue the new operationName to set
-	 * 
-	 */
-	public void setOperationName(String newValue);
+    /**
+     * Returns the internationalized title text.
+     * 
+     * @return the internationalized title text.
+     * 
+     */
+    public String getTitle();
 
+    // Start of user code for additional methods
 
-	/**
-	 * @return the cloudConnectorName
-	 * 
-	 */
-	public String getCloudConnectorName();
-
-	/**
-	 * Defines a new cloudConnectorName
-	 * @param newValue the new cloudConnectorName to set
-	 * 
-	 */
-	public void setCloudConnectorName(String newValue);
-
-
-	/**
-	 * @return the availableConfigs
-	 * 
-	 */
-	public String getAvailableConfigs();
-
-	/**
-	 * Defines a new availableConfigs
-	 * @param newValue the new availableConfigs to set
-	 * 
-	 */
-	public void setAvailableConfigs(String newValue);
-
-
-	/**
-	 * @return the parameterEditorType
-	 * 
-	 */
-	public Enumerator getParameterEditorType();
-
-	/**
-	 * Init the parameterEditorType
-	 * @param input the viewer input
-	 * @param current the current value
-	 */
-	public void initParameterEditorType(Object input, Enumerator current);
-
-	/**
-	 * Defines a new parameterEditorType
-	 * @param newValue the new parameterEditorType to set
-	 * 
-	 */
-	public void setParameterEditorType(Enumerator newValue);
-
-
-
-
-
-	/**
-	 * Returns the internationalized title text.
-	 * 
-	 * @return the internationalized title text.
-	 * 
-	 */
-	public String getTitle();
-
-	// Start of user code for additional methods
-	
-	// End of user code
+    // End of user code
 
 }

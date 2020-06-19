@@ -53,325 +53,332 @@ import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
  * 
  * 
  */
-public class RuleSessionPropertyPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, RuleSessionPropertyPropertiesEditionPart {
+public class RuleSessionPropertyPropertiesEditionPartForm extends SectionPropertiesEditingPart
+        implements IFormPropertiesEditionPart, RuleSessionPropertyPropertiesEditionPart {
 
-	protected Text propertyName;
-	protected Text propertyValue;
+    protected Text propertyName;
+    protected Text propertyValue;
 
+    /**
+     * For {@link ISection} use only.
+     */
+    public RuleSessionPropertyPropertiesEditionPartForm() {
+        super();
+    }
 
+    /**
+     * Default constructor
+     * 
+     * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+     * 
+     */
+    public RuleSessionPropertyPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
+        super(editionComponent);
+    }
 
-	/**
-	 * For {@link ISection} use only.
-	 */
-	public RuleSessionPropertyPropertiesEditionPartForm() { super(); }
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+     *      createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+     * 
+     */
+    public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
+        ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
+        Form form = scrolledForm.getForm();
+        view = form.getBody();
+        GridLayout layout = new GridLayout();
+        layout.numColumns = 3;
+        view.setLayout(layout);
+        createControls(widgetFactory, view);
+        return scrolledForm;
+    }
 
-	/**
-	 * Default constructor
-	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
-	 */
-	public RuleSessionPropertyPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+     *      createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+     * 
+     */
+    public void createControls(final FormToolkit widgetFactory, Composite view) {
+        CompositionSequence ruleSessionPropertyStep = new BindingCompositionSequence(propertiesEditionComponent);
+        CompositionStep propertiesStep = ruleSessionPropertyStep
+                .addStep(EsbViewsRepository.RuleSessionProperty.Properties.class);
+        propertiesStep.addStep(EsbViewsRepository.RuleSessionProperty.Properties.propertyName);
+        propertiesStep.addStep(EsbViewsRepository.RuleSessionProperty.Properties.propertyValue);
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
-	 * 
-	 */
-	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
-		view = form.getBody();
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 3;
-		view.setLayout(layout);
-		createControls(widgetFactory, view);
-		return scrolledForm;
-	}
+        composer = new PartComposer(ruleSessionPropertyStep) {
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
-	 * 
-	 */
-	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		CompositionSequence ruleSessionPropertyStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep propertiesStep = ruleSessionPropertyStep.addStep(EsbViewsRepository.RuleSessionProperty.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.RuleSessionProperty.Properties.propertyName);
-		propertiesStep.addStep(EsbViewsRepository.RuleSessionProperty.Properties.propertyValue);
-		
-		
-		composer = new PartComposer(ruleSessionPropertyStep) {
+            @Override
+            public Composite addToPart(Composite parent, Object key) {
+                if (key == EsbViewsRepository.RuleSessionProperty.Properties.class) {
+                    return createPropertiesGroup(widgetFactory, parent);
+                }
+                if (key == EsbViewsRepository.RuleSessionProperty.Properties.propertyName) {
+                    return createPropertyNameText(widgetFactory, parent);
+                }
+                if (key == EsbViewsRepository.RuleSessionProperty.Properties.propertyValue) {
+                    return createPropertyValueText(widgetFactory, parent);
+                }
+                return parent;
+            }
+        };
+        composer.compose(view);
+    }
 
-			@Override
-			public Composite addToPart(Composite parent, Object key) {
-				if (key == EsbViewsRepository.RuleSessionProperty.Properties.class) {
-					return createPropertiesGroup(widgetFactory, parent);
-				}
-				if (key == EsbViewsRepository.RuleSessionProperty.Properties.propertyName) {
-					return createPropertyNameText(widgetFactory, parent);
-				}
-				if (key == EsbViewsRepository.RuleSessionProperty.Properties.propertyValue) {
-					return createPropertyValueText(widgetFactory, parent);
-				}
-				return parent;
-			}
-		};
-		composer.compose(view);
-	}
-	/**
-	 * 
-	 */
-	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
-		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
-		propertiesSection.setText(EsbMessages.RuleSessionPropertyPropertiesEditionPart_PropertiesGroupLabel);
-		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesSectionData.horizontalSpan = 3;
-		propertiesSection.setLayoutData(propertiesSectionData);
-		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
-		GridLayout propertiesGroupLayout = new GridLayout();
-		propertiesGroupLayout.numColumns = 3;
-		propertiesGroup.setLayout(propertiesGroupLayout);
-		propertiesSection.setClient(propertiesGroup);
-		return propertiesGroup;
-	}
+    /**
+     * 
+     */
+    protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
+        Section propertiesSection = widgetFactory.createSection(parent,
+                Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+        propertiesSection.setText(EsbMessages.RuleSessionPropertyPropertiesEditionPart_PropertiesGroupLabel);
+        GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
+        propertiesSectionData.horizontalSpan = 3;
+        propertiesSection.setLayoutData(propertiesSectionData);
+        Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
+        GridLayout propertiesGroupLayout = new GridLayout();
+        propertiesGroupLayout.numColumns = 3;
+        propertiesGroup.setLayout(propertiesGroupLayout);
+        propertiesSection.setClient(propertiesGroup);
+        return propertiesGroup;
+    }
 
-	
-	protected Composite createPropertyNameText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.RuleSessionProperty.Properties.propertyName, EsbMessages.RuleSessionPropertyPropertiesEditionPart_PropertyNameLabel);
-		propertyName = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		propertyName.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-		widgetFactory.paintBordersFor(parent);
-		GridData propertyNameData = new GridData(GridData.FILL_HORIZONTAL);
-		propertyName.setLayoutData(propertyNameData);
-		propertyName.addFocusListener(new FocusAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-							RuleSessionPropertyPropertiesEditionPartForm.this,
-							EsbViewsRepository.RuleSessionProperty.Properties.propertyName,
-							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertyName.getText()));
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									RuleSessionPropertyPropertiesEditionPartForm.this,
-									EsbViewsRepository.RuleSessionProperty.Properties.propertyName,
-									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, propertyName.getText()));
-				}
-			}
+    protected Composite createPropertyNameText(FormToolkit widgetFactory, Composite parent) {
+        createDescription(parent, EsbViewsRepository.RuleSessionProperty.Properties.propertyName,
+                EsbMessages.RuleSessionPropertyPropertiesEditionPart_PropertyNameLabel);
+        propertyName = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+        propertyName.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        widgetFactory.paintBordersFor(parent);
+        GridData propertyNameData = new GridData(GridData.FILL_HORIZONTAL);
+        propertyName.setLayoutData(propertyNameData);
+        propertyName.addFocusListener(new FocusAdapter() {
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void focusLost(FocusEvent e) {
+                if (propertiesEditionComponent != null) {
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            RuleSessionPropertyPropertiesEditionPartForm.this,
+                            EsbViewsRepository.RuleSessionProperty.Properties.propertyName,
+                            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertyName.getText()));
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(RuleSessionPropertyPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.RuleSessionProperty.Properties.propertyName,
+                                    PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST, null,
+                                    propertyName.getText()));
+                }
+            }
 
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-			 */
-			@Override
-			public void focusGained(FocusEvent e) {
-				if (propertiesEditionComponent != null) {
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									RuleSessionPropertyPropertiesEditionPartForm.this,
-									null,
-									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
-									null, null));
-				}
-			}
-		});
-		propertyName.addKeyListener(new KeyAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RuleSessionPropertyPropertiesEditionPartForm.this, EsbViewsRepository.RuleSessionProperty.Properties.propertyName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertyName.getText()));
-				}
-			}
-		});
-		EditingUtils.setID(propertyName, EsbViewsRepository.RuleSessionProperty.Properties.propertyName);
-		EditingUtils.setEEFtype(propertyName, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.RuleSessionProperty.Properties.propertyName, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		// Start of user code for createPropertyNameText
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+             */
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (propertiesEditionComponent != null) {
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            RuleSessionPropertyPropertiesEditionPartForm.this, null,
+                            PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED, null, null));
+                }
+            }
+        });
+        propertyName.addKeyListener(new KeyAdapter() {
+            /**
+             * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void keyPressed(KeyEvent e) {
+                if (e.character == SWT.CR) {
+                    if (propertiesEditionComponent != null)
+                        propertiesEditionComponent.firePropertiesChanged(
+                                new PropertiesEditionEvent(RuleSessionPropertyPropertiesEditionPartForm.this,
+                                        EsbViewsRepository.RuleSessionProperty.Properties.propertyName,
+                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                        propertyName.getText()));
+                }
+            }
+        });
+        EditingUtils.setID(propertyName, EsbViewsRepository.RuleSessionProperty.Properties.propertyName);
+        EditingUtils.setEEFtype(propertyName, "eef::Text"); //$NON-NLS-1$
+        FormUtils.createHelpButton(widgetFactory, parent,
+                propertiesEditionComponent.getHelpContent(
+                        EsbViewsRepository.RuleSessionProperty.Properties.propertyName, EsbViewsRepository.FORM_KIND),
+                null); // $NON-NLS-1$
+        // Start of user code for createPropertyNameText
 
-		// End of user code
-		return parent;
-	}
+        // End of user code
+        return parent;
+    }
 
-	
-	protected Composite createPropertyValueText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.RuleSessionProperty.Properties.propertyValue, EsbMessages.RuleSessionPropertyPropertiesEditionPart_PropertyValueLabel);
-		propertyValue = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		propertyValue.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-		widgetFactory.paintBordersFor(parent);
-		GridData propertyValueData = new GridData(GridData.FILL_HORIZONTAL);
-		propertyValue.setLayoutData(propertyValueData);
-		propertyValue.addFocusListener(new FocusAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-							RuleSessionPropertyPropertiesEditionPartForm.this,
-							EsbViewsRepository.RuleSessionProperty.Properties.propertyValue,
-							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertyValue.getText()));
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									RuleSessionPropertyPropertiesEditionPartForm.this,
-									EsbViewsRepository.RuleSessionProperty.Properties.propertyValue,
-									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, propertyValue.getText()));
-				}
-			}
+    protected Composite createPropertyValueText(FormToolkit widgetFactory, Composite parent) {
+        createDescription(parent, EsbViewsRepository.RuleSessionProperty.Properties.propertyValue,
+                EsbMessages.RuleSessionPropertyPropertiesEditionPart_PropertyValueLabel);
+        propertyValue = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+        propertyValue.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        widgetFactory.paintBordersFor(parent);
+        GridData propertyValueData = new GridData(GridData.FILL_HORIZONTAL);
+        propertyValue.setLayoutData(propertyValueData);
+        propertyValue.addFocusListener(new FocusAdapter() {
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void focusLost(FocusEvent e) {
+                if (propertiesEditionComponent != null) {
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            RuleSessionPropertyPropertiesEditionPartForm.this,
+                            EsbViewsRepository.RuleSessionProperty.Properties.propertyValue,
+                            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertyValue.getText()));
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(RuleSessionPropertyPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.RuleSessionProperty.Properties.propertyValue,
+                                    PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST, null,
+                                    propertyValue.getText()));
+                }
+            }
 
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-			 */
-			@Override
-			public void focusGained(FocusEvent e) {
-				if (propertiesEditionComponent != null) {
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									RuleSessionPropertyPropertiesEditionPartForm.this,
-									null,
-									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
-									null, null));
-				}
-			}
-		});
-		propertyValue.addKeyListener(new KeyAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RuleSessionPropertyPropertiesEditionPartForm.this, EsbViewsRepository.RuleSessionProperty.Properties.propertyValue, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertyValue.getText()));
-				}
-			}
-		});
-		EditingUtils.setID(propertyValue, EsbViewsRepository.RuleSessionProperty.Properties.propertyValue);
-		EditingUtils.setEEFtype(propertyValue, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.RuleSessionProperty.Properties.propertyValue, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		// Start of user code for createPropertyValueText
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+             */
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (propertiesEditionComponent != null) {
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            RuleSessionPropertyPropertiesEditionPartForm.this, null,
+                            PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED, null, null));
+                }
+            }
+        });
+        propertyValue.addKeyListener(new KeyAdapter() {
+            /**
+             * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void keyPressed(KeyEvent e) {
+                if (e.character == SWT.CR) {
+                    if (propertiesEditionComponent != null)
+                        propertiesEditionComponent.firePropertiesChanged(
+                                new PropertiesEditionEvent(RuleSessionPropertyPropertiesEditionPartForm.this,
+                                        EsbViewsRepository.RuleSessionProperty.Properties.propertyValue,
+                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                        propertyValue.getText()));
+                }
+            }
+        });
+        EditingUtils.setID(propertyValue, EsbViewsRepository.RuleSessionProperty.Properties.propertyValue);
+        EditingUtils.setEEFtype(propertyValue, "eef::Text"); //$NON-NLS-1$
+        FormUtils.createHelpButton(widgetFactory, parent,
+                propertiesEditionComponent.getHelpContent(
+                        EsbViewsRepository.RuleSessionProperty.Properties.propertyValue, EsbViewsRepository.FORM_KIND),
+                null); // $NON-NLS-1$
+        // Start of user code for createPropertyValueText
 
-		// End of user code
-		return parent;
-	}
+        // End of user code
+        return parent;
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+     * 
+     */
+    public void firePropertiesChanged(IPropertiesEditionEvent event) {
+        // Start of user code for tab synchronization
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
-	 */
-	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-		
-		// End of user code
-	}
+        // End of user code
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.RuleSessionPropertyPropertiesEditionPart#getPropertyName()
-	 * 
-	 */
-	public String getPropertyName() {
-		return propertyName.getText();
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.RuleSessionPropertyPropertiesEditionPart#getPropertyName()
+     * 
+     */
+    public String getPropertyName() {
+        return propertyName.getText();
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.RuleSessionPropertyPropertiesEditionPart#setPropertyName(String newValue)
-	 * 
-	 */
-	public void setPropertyName(String newValue) {
-		if (newValue != null) {
-			propertyName.setText(newValue);
-		} else {
-			propertyName.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.RuleSessionProperty.Properties.propertyName);
-		if (eefElementEditorReadOnlyState && propertyName.isEnabled()) {
-			propertyName.setEnabled(false);
-			propertyName.setToolTipText(EsbMessages.RuleSessionProperty_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !propertyName.isEnabled()) {
-			propertyName.setEnabled(true);
-		}	
-		
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.RuleSessionPropertyPropertiesEditionPart#setPropertyName(String
+     *      newValue)
+     * 
+     */
+    public void setPropertyName(String newValue) {
+        if (newValue != null) {
+            propertyName.setText(newValue);
+        } else {
+            propertyName.setText(""); //$NON-NLS-1$
+        }
+        boolean eefElementEditorReadOnlyState = isReadOnly(
+                EsbViewsRepository.RuleSessionProperty.Properties.propertyName);
+        if (eefElementEditorReadOnlyState && propertyName.isEnabled()) {
+            propertyName.setEnabled(false);
+            propertyName.setToolTipText(EsbMessages.RuleSessionProperty_ReadOnly);
+        } else if (!eefElementEditorReadOnlyState && !propertyName.isEnabled()) {
+            propertyName.setEnabled(true);
+        }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.RuleSessionPropertyPropertiesEditionPart#getPropertyValue()
-	 * 
-	 */
-	public String getPropertyValue() {
-		return propertyValue.getText();
-	}
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.RuleSessionPropertyPropertiesEditionPart#setPropertyValue(String newValue)
-	 * 
-	 */
-	public void setPropertyValue(String newValue) {
-		if (newValue != null) {
-			propertyValue.setText(newValue);
-		} else {
-			propertyValue.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.RuleSessionProperty.Properties.propertyValue);
-		if (eefElementEditorReadOnlyState && propertyValue.isEnabled()) {
-			propertyValue.setEnabled(false);
-			propertyValue.setToolTipText(EsbMessages.RuleSessionProperty_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !propertyValue.isEnabled()) {
-			propertyValue.setEnabled(true);
-		}	
-		
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.RuleSessionPropertyPropertiesEditionPart#getPropertyValue()
+     * 
+     */
+    public String getPropertyValue() {
+        return propertyValue.getText();
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.RuleSessionPropertyPropertiesEditionPart#setPropertyValue(String
+     *      newValue)
+     * 
+     */
+    public void setPropertyValue(String newValue) {
+        if (newValue != null) {
+            propertyValue.setText(newValue);
+        } else {
+            propertyValue.setText(""); //$NON-NLS-1$
+        }
+        boolean eefElementEditorReadOnlyState = isReadOnly(
+                EsbViewsRepository.RuleSessionProperty.Properties.propertyValue);
+        if (eefElementEditorReadOnlyState && propertyValue.isEnabled()) {
+            propertyValue.setEnabled(false);
+            propertyValue.setToolTipText(EsbMessages.RuleSessionProperty_ReadOnly);
+        } else if (!eefElementEditorReadOnlyState && !propertyValue.isEnabled()) {
+            propertyValue.setEnabled(true);
+        }
 
+    }
 
+    /**
+     * {@inheritDoc}
+     *
+     * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+     * 
+     */
+    public String getTitle() {
+        return EsbMessages.RuleSessionProperty_Part_Title;
+    }
 
+    // Start of user code additional methods
 
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
-	 */
-	public String getTitle() {
-		return EsbMessages.RuleSessionProperty_Part_Title;
-	}
-
-	// Start of user code additional methods
-	
-	// End of user code
-
+    // End of user code
 
 }

@@ -24,11 +24,15 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediator#getFastXsltSchemaKeyType <em>Fast Xslt Schema Key Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediator#getFastXsltStaticSchemaKey <em>Fast Xslt Static Schema Key</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediator#getFastXsltDynamicSchemaKey <em>Fast Xslt Dynamic Schema Key</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediator#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediator#getOutputConnector <em>Output Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediator#getFastXsltSchemaKeyType <em>Fast Xslt Schema
+ * Key Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediator#getFastXsltStaticSchemaKey <em>Fast Xslt Static
+ * Schema Key</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediator#getFastXsltDynamicSchemaKey <em>Fast Xslt
+ * Dynamic Schema Key</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediator#getInputConnector <em>Input Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediator#getOutputConnector <em>Output
+ * Connector</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFastXSLTMediator()
@@ -45,6 +49,7 @@ public interface FastXSLTMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Fast Xslt Schema Key Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.KeyType
      * @see #setFastXsltSchemaKeyType(KeyType)
@@ -55,9 +60,11 @@ public interface FastXSLTMediator extends Mediator {
     KeyType getFastXsltSchemaKeyType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediator#getFastXsltSchemaKeyType <em>Fast Xslt Schema Key Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediator#getFastXsltSchemaKeyType
+     * <em>Fast Xslt Schema Key Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Fast Xslt Schema Key Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.KeyType
      * @see #getFastXsltSchemaKeyType()
@@ -73,6 +80,7 @@ public interface FastXSLTMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Fast Xslt Static Schema Key</em>' containment reference.
      * @see #setFastXsltStaticSchemaKey(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFastXSLTMediator_FastXsltStaticSchemaKey()
@@ -82,9 +90,12 @@ public interface FastXSLTMediator extends Mediator {
     RegistryKeyProperty getFastXsltStaticSchemaKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediator#getFastXsltStaticSchemaKey <em>Fast Xslt Static Schema Key</em>}' containment reference.
+     * Sets the value of the
+     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediator#getFastXsltStaticSchemaKey <em>Fast Xslt Static
+     * Schema Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Fast Xslt Static Schema Key</em>' containment reference.
      * @see #getFastXsltStaticSchemaKey()
      * @generated
@@ -99,6 +110,7 @@ public interface FastXSLTMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Fast Xslt Dynamic Schema Key</em>' containment reference.
      * @see #setFastXsltDynamicSchemaKey(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFastXSLTMediator_FastXsltDynamicSchemaKey()
@@ -108,9 +120,12 @@ public interface FastXSLTMediator extends Mediator {
     NamespacedProperty getFastXsltDynamicSchemaKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediator#getFastXsltDynamicSchemaKey <em>Fast Xslt Dynamic Schema Key</em>}' containment reference.
+     * Sets the value of the
+     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediator#getFastXsltDynamicSchemaKey <em>Fast Xslt
+     * Dynamic Schema Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Fast Xslt Dynamic Schema Key</em>' containment reference.
      * @see #getFastXsltDynamicSchemaKey()
      * @generated
@@ -125,6 +140,7 @@ public interface FastXSLTMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(FastXSLTMediatorInputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFastXSLTMediator_InputConnector()
@@ -134,9 +150,11 @@ public interface FastXSLTMediator extends Mediator {
     FastXSLTMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediator#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediator#getInputConnector
+     * <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
      * @see #getInputConnector()
      * @generated
@@ -151,6 +169,7 @@ public interface FastXSLTMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(FastXSLTMediatorOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFastXSLTMediator_OutputConnector()
@@ -160,9 +179,11 @@ public interface FastXSLTMediator extends Mediator {
     FastXSLTMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediator#getOutputConnector
+     * <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
      * @see #getOutputConnector()
      * @generated

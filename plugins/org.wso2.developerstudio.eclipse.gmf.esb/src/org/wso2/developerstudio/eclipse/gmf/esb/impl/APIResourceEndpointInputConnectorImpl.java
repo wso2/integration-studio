@@ -23,6 +23,7 @@ public class APIResourceEndpointInputConnectorImpl extends InputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected APIResourceEndpointInputConnectorImpl() {
@@ -32,6 +33,7 @@ public class APIResourceEndpointInputConnectorImpl extends InputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

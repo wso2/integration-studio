@@ -17,13 +17,15 @@ import java.util.Map;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#getPrettyName <em>Pretty Name</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#getPropertyName <em>Property Name</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#getPropertyValue <em>Property Value</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#getNamespaces <em>Namespaces</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#isSupportsDynamicXPaths <em>Supports Dynamic XPaths</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#isDynamic <em>Dynamic</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#isSupportJsonPaths <em>Support Json Paths</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#getPrettyName <em>Pretty Name</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#getPropertyName <em>Property Name</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#getPropertyValue <em>Property Value</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#getNamespaces <em>Namespaces</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#isSupportsDynamicXPaths <em>Supports Dynamic
+ * XPaths</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#isDynamic <em>Dynamic</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#isSupportJsonPaths <em>Support Json
+ * Paths</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getNamespacedProperty()
@@ -40,6 +42,7 @@ public interface NamespacedProperty extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Pretty Name</em>' attribute.
      * @see #setPrettyName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getNamespacedProperty_PrettyName()
@@ -49,9 +52,11 @@ public interface NamespacedProperty extends EsbNode {
     String getPrettyName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#getPrettyName <em>Pretty Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#getPrettyName
+     * <em>Pretty Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Pretty Name</em>' attribute.
      * @see #getPrettyName()
      * @generated
@@ -67,6 +72,7 @@ public interface NamespacedProperty extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Property Name</em>' attribute.
      * @see #setPropertyName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getNamespacedProperty_PropertyName()
@@ -76,9 +82,11 @@ public interface NamespacedProperty extends EsbNode {
     String getPropertyName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#getPropertyName <em>Property Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#getPropertyName
+     * <em>Property Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Property Name</em>' attribute.
      * @see #getPropertyName()
      * @generated
@@ -93,6 +101,7 @@ public interface NamespacedProperty extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Property Value</em>' attribute.
      * @see #setPropertyValue(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getNamespacedProperty_PropertyValue()
@@ -102,9 +111,11 @@ public interface NamespacedProperty extends EsbNode {
     String getPropertyValue();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#getPropertyValue <em>Property Value</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#getPropertyValue
+     * <em>Property Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Property Value</em>' attribute.
      * @see #getPropertyValue()
      * @generated
@@ -119,18 +130,22 @@ public interface NamespacedProperty extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Namespaces</em>' attribute.
      * @see #setNamespaces(Map)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getNamespacedProperty_Namespaces()
-     * @model dataType="org.wso2.developerstudio.eclipse.gmf.esb.Map&lt;org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString&gt;"
+     * @model dataType="org.wso2.developerstudio.eclipse.gmf.esb.Map&lt;org.eclipse.emf.ecore.EString,
+     *        org.eclipse.emf.ecore.EString&gt;"
      * @generated
      */
     Map<String, String> getNamespaces();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#getNamespaces <em>Namespaces</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#getNamespaces
+     * <em>Namespaces</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Namespaces</em>' attribute.
      * @see #getNamespaces()
      * @generated
@@ -145,6 +160,7 @@ public interface NamespacedProperty extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Supports Dynamic XPaths</em>' attribute.
      * @see #setSupportsDynamicXPaths(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getNamespacedProperty_SupportsDynamicXPaths()
@@ -154,9 +170,11 @@ public interface NamespacedProperty extends EsbNode {
     boolean isSupportsDynamicXPaths();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#isSupportsDynamicXPaths <em>Supports Dynamic XPaths</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#isSupportsDynamicXPaths
+     * <em>Supports Dynamic XPaths</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Supports Dynamic XPaths</em>' attribute.
      * @see #isSupportsDynamicXPaths()
      * @generated
@@ -171,6 +189,7 @@ public interface NamespacedProperty extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Dynamic</em>' attribute.
      * @see #setDynamic(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getNamespacedProperty_Dynamic()
@@ -180,39 +199,44 @@ public interface NamespacedProperty extends EsbNode {
     boolean isDynamic();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#isDynamic <em>Dynamic</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#isDynamic
+     * <em>Dynamic</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Dynamic</em>' attribute.
      * @see #isDynamic()
      * @generated
      */
     void setDynamic(boolean value);
 
-	/**
+    /**
      * Returns the value of the '<em><b>Support Json Paths</b></em>' attribute.
      * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Support Json Paths</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Support Json Paths</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Support Json Paths</em>' attribute.
      * @see #setSupportJsonPaths(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getNamespacedProperty_SupportJsonPaths()
      * @model
      * @generated
      */
-	boolean isSupportJsonPaths();
+    boolean isSupportJsonPaths();
 
-	/**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#isSupportJsonPaths <em>Support Json Paths</em>}' attribute.
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#isSupportJsonPaths
+     * <em>Support Json Paths</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Support Json Paths</em>' attribute.
      * @see #isSupportJsonPaths()
      * @generated
      */
-	void setSupportJsonPaths(boolean value);
+    void setSupportJsonPaths(boolean value);
 
 } // NamespacedProperty

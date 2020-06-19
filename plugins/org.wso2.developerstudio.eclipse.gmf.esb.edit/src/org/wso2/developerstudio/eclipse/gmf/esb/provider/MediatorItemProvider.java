@@ -28,6 +28,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.Mediator;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.Mediator} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class MediatorItemProvider extends EsbElementItemProvider {
@@ -35,6 +36,7 @@ public class MediatorItemProvider extends EsbElementItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public MediatorItemProvider(AdapterFactory adapterFactory) {
@@ -45,6 +47,7 @@ public class MediatorItemProvider extends EsbElementItemProvider {
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -62,37 +65,32 @@ public class MediatorItemProvider extends EsbElementItemProvider {
      * This adds a property descriptor for the Reverse feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addReversePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_Mediator_Reverse_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_Mediator_Reverse_feature", "_UI_Mediator_type"),
-                 EsbPackage.Literals.MEDIATOR__REVERSE,
-                 true,
-                 false,
-                 false,
-                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-                 null,
-                 null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                        getResourceLocator(), getString("_UI_Mediator_Reverse_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_Mediator_Reverse_feature",
+                                "_UI_Mediator_type"),
+                        EsbPackage.Literals.MEDIATOR__REVERSE, true, false, false,
+                        ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
     /**
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((Mediator)object).getDescription();
-        return label == null || label.length() == 0 ?
-            getString("_UI_Mediator_type") :
-            getString("_UI_Mediator_type") + " " + label;
+        String label = ((Mediator) object).getDescription();
+        return label == null || label.length() == 0 ? getString("_UI_Mediator_type")
+                : getString("_UI_Mediator_type") + " " + label;
     }
 
     /**
@@ -100,6 +98,7 @@ public class MediatorItemProvider extends EsbElementItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -108,9 +107,9 @@ public class MediatorItemProvider extends EsbElementItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(Mediator.class)) {
-            case EsbPackage.MEDIATOR__REVERSE:
-                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-                return;
+        case EsbPackage.MEDIATOR__REVERSE:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+            return;
         }
         super.notifyChanged(notification);
     }
@@ -120,6 +119,7 @@ public class MediatorItemProvider extends EsbElementItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 

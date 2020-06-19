@@ -51,7 +51,8 @@ public abstract class AbstractEsbNodeTransformer implements EsbNodeTransformer {
      * @throws TransformerException
      * @throws Exception
      */
-    protected static void doTransform(TransformationInfo info, OutputConnector outputConnector) throws TransformerException {
+    protected static void doTransform(TransformationInfo info, OutputConnector outputConnector)
+            throws TransformerException {
         if (null != outputConnector) {
             EObject previousNode = outputConnector.eContainer();
             info.setPreviousNode(previousNode);
@@ -105,7 +106,7 @@ public abstract class AbstractEsbNodeTransformer implements EsbNodeTransformer {
             EsbNodeTransformer transformer = EsbTransformerRegistry.getInstance().getTransformer(esbNode);
             Assert.isNotNull(transformer, "No registered transformer for given node.");
 
-            if (inputConnector instanceof SequencesInputConnector ) {
+            if (inputConnector instanceof SequencesInputConnector) {
                 info.setParentSequence(sequence);
                 // Adding XML comments into synapse config.
                 addXMLComments(info, outgoingLink.getSource().getCommentMediators(), sequence);
@@ -113,14 +114,14 @@ public abstract class AbstractEsbNodeTransformer implements EsbNodeTransformer {
             } else {
                 // Adding XML comments into synapse config.
                 CommentMediatorTransformer commentMediatorTransformer = new CommentMediatorTransformer();
-                
+
                 for (CommentMediator mediator : outgoingLink.getSource().getCommentMediators()) {
                     commentMediatorTransformer.transformWithinSequence(info, mediator, sequence);
                     sequence.getCommentsList().remove(mediator.getCommentText());
                 }
                 transformer.transformWithinSequence(info, esbNode, sequence);
             }
-            
+
         } else {
             // TODO: Might be better to automatically log the message before dropping.
         }
@@ -154,7 +155,7 @@ public abstract class AbstractEsbNodeTransformer implements EsbNodeTransformer {
             sequence.getCommentsList().remove(mediator.getCommentText());
         }
     }
-    
+
     private static void addXMLCommnets(TransformationInfo info, EList<CommentMediator> commentMediators) {
         CommentMediatorTransformer commentMediatorTransformer = new CommentMediatorTransformer();
         for (CommentMediator mediator : commentMediators) {

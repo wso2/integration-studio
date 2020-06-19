@@ -35,7 +35,8 @@ public class EnqueueMediatorTransformer extends AbstractEsbNodeTransformer {
 
     }
 
-    public static org.apache.synapse.mediators.builtin.EnqueueMediator createEnqueueMediator(EsbNode subject, boolean isForValidation) {
+    public static org.apache.synapse.mediators.builtin.EnqueueMediator createEnqueueMediator(EsbNode subject,
+            boolean isForValidation) {
 
         // Check subject.
         Assert.isTrue(subject instanceof EnqueueMediator, "Invalid subject.");
@@ -43,16 +44,16 @@ public class EnqueueMediatorTransformer extends AbstractEsbNodeTransformer {
 
         org.apache.synapse.mediators.builtin.EnqueueMediator enqueueMediator = new org.apache.synapse.mediators.builtin.EnqueueMediator();
         setCommonProperties(enqueueMediator, visualEnqueue);
-        if(!isForValidation && StringUtils.isEmpty(visualEnqueue.getExecutor())) {
+        if (!isForValidation && StringUtils.isEmpty(visualEnqueue.getExecutor())) {
             // Set default values for the property since we need to use synapse serializer
             enqueueMediator.setExecutorName(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
-        }else {
+        } else {
             enqueueMediator.setExecutorName(visualEnqueue.getExecutor());
         }
-        if(!isForValidation && StringUtils.isEmpty(visualEnqueue.getSequenceKey().getKeyValue())) {
-         // Set default values for the property since we need to use synapse serializer
+        if (!isForValidation && StringUtils.isEmpty(visualEnqueue.getSequenceKey().getKeyValue())) {
+            // Set default values for the property since we need to use synapse serializer
             enqueueMediator.setSequenceName(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
-        }else {
+        } else {
             enqueueMediator.setSequenceName(visualEnqueue.getSequenceKey().getKeyValue());
         }
         enqueueMediator.setPriority(visualEnqueue.getPriority());

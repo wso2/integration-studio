@@ -15,7 +15,6 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -25,9 +24,11 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediatorOutputConnector} object.
+ * This is the item provider adapter for a
+ * {@link org.wso2.developerstudio.eclipse.gmf.esb.JsonTransformMediatorOutputConnector} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class JsonTransformMediatorOutputConnectorItemProvider extends OutputConnectorItemProvider {
@@ -35,6 +36,7 @@ public class JsonTransformMediatorOutputConnectorItemProvider extends OutputConn
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public JsonTransformMediatorOutputConnectorItemProvider(AdapterFactory adapterFactory) {
@@ -45,6 +47,7 @@ public class JsonTransformMediatorOutputConnectorItemProvider extends OutputConn
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -60,6 +63,7 @@ public class JsonTransformMediatorOutputConnectorItemProvider extends OutputConn
      * This returns JsonTransformMediatorOutputConnector.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -71,19 +75,20 @@ public class JsonTransformMediatorOutputConnectorItemProvider extends OutputConn
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
         return getString("_UI_JsonTransformMediatorOutputConnector_type");
     }
-    
 
     /**
      * This handles model notifications by calling {@link #updateChildren} to update any cached
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -97,6 +102,7 @@ public class JsonTransformMediatorOutputConnectorItemProvider extends OutputConn
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

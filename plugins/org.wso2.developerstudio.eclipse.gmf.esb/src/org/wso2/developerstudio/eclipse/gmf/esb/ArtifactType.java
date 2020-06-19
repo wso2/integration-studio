@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Artifact Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
+ * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getArtifactType()
  * @model
  * @generated
@@ -26,6 +27,7 @@ public enum ArtifactType implements Enumerator {
      * The '<em><b>SYNAPSE CONFIG</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #SYNAPSE_CONFIG_VALUE
      * @generated
      * @ordered
@@ -36,6 +38,7 @@ public enum ArtifactType implements Enumerator {
      * The '<em><b>PROXY</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #PROXY_VALUE
      * @generated
      * @ordered
@@ -46,6 +49,7 @@ public enum ArtifactType implements Enumerator {
      * The '<em><b>SEQUENCE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #SEQUENCE_VALUE
      * @generated
      * @ordered
@@ -56,6 +60,7 @@ public enum ArtifactType implements Enumerator {
      * The '<em><b>ENDPOINT</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #ENDPOINT_VALUE
      * @generated
      * @ordered
@@ -66,6 +71,7 @@ public enum ArtifactType implements Enumerator {
      * The '<em><b>LOCAL ENTRY</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #LOCAL_ENTRY_VALUE
      * @generated
      * @ordered
@@ -76,6 +82,7 @@ public enum ArtifactType implements Enumerator {
      * The '<em><b>TASK</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #TASK_VALUE
      * @generated
      * @ordered
@@ -86,6 +93,7 @@ public enum ArtifactType implements Enumerator {
      * The '<em><b>TEMPLATE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #TEMPLATE_VALUE
      * @generated
      * @ordered
@@ -95,6 +103,7 @@ public enum ArtifactType implements Enumerator {
      * The '<em><b>API</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #API_VALUE
      * @generated
      * @ordered
@@ -104,6 +113,7 @@ public enum ArtifactType implements Enumerator {
      * The '<em><b>MAIN SEQUENCE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #MAIN_SEQUENCE_VALUE
      * @generated
      * @ordered
@@ -113,6 +123,7 @@ public enum ArtifactType implements Enumerator {
      * The '<em><b>COMPLEX ENDPOINT</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #COMPLEX_ENDPOINT_VALUE
      * @generated
      * @ordered
@@ -122,6 +133,7 @@ public enum ArtifactType implements Enumerator {
      * The '<em><b>MESSAGE STORE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #MESSAGE_STORE_VALUE
      * @generated
      * @ordered
@@ -131,6 +143,7 @@ public enum ArtifactType implements Enumerator {
      * The '<em><b>MESSAGE PROCESSOR</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #MESSAGE_PROCESSOR_VALUE
      * @generated
      * @ordered
@@ -140,6 +153,7 @@ public enum ArtifactType implements Enumerator {
      * The '<em><b>INBOUND ENDPOINT</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #INBOUND_ENDPOINT_VALUE
      * @generated
      * @ordered
@@ -156,6 +170,7 @@ public enum ArtifactType implements Enumerator {
      * The '<em><b>ENDPOINT ADDRESS</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #ENDPOINT_ADDRESS_VALUE
      * @generated
      * @ordered
@@ -165,6 +180,7 @@ public enum ArtifactType implements Enumerator {
      * The '<em><b>ENDPOINT DEFAULT</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #ENDPOINT_DEFAULT_VALUE
      * @generated
      * @ordered
@@ -174,6 +190,7 @@ public enum ArtifactType implements Enumerator {
      * The '<em><b>ENDPOINT HTTP</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #ENDPOINT_HTTP_VALUE
      * @generated
      * @ordered
@@ -183,39 +200,46 @@ public enum ArtifactType implements Enumerator {
      * The '<em><b>ENDPOINT WSDL</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #ENDPOINT_WSDL_VALUE
      * @generated
      * @ordered
      */
-    ENDPOINT_WSDL(22, "ENDPOINT_WSDL", "ENDPOINT_WSDL"), /**
+    ENDPOINT_WSDL(22, "ENDPOINT_WSDL", "ENDPOINT_WSDL"),
+    /**
      * The '<em><b>ENDPOINT LOADBALANCE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #ENDPOINT_LOADBALANCE_VALUE
      * @generated
      * @ordered
      */
-    ENDPOINT_LOADBALANCE(23, "ENDPOINT_LOADBALANCE", "ENDPOINT_LOADBALANCE"), /**
+    ENDPOINT_LOADBALANCE(23, "ENDPOINT_LOADBALANCE", "ENDPOINT_LOADBALANCE"),
+    /**
      * The '<em><b>ENDPOINT FAILOVER</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #ENDPOINT_FAILOVER_VALUE
      * @generated
      * @ordered
      */
-    ENDPOINT_FAILOVER(24, "ENDPOINT_FAILOVER", "ENDPOINT_FAILOVER"), /**
+    ENDPOINT_FAILOVER(24, "ENDPOINT_FAILOVER", "ENDPOINT_FAILOVER"),
+    /**
      * The '<em><b>ENDPOINT RECIPIENTLIST</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #ENDPOINT_RECIPIENTLIST_VALUE
      * @generated
      * @ordered
      */
     ENDPOINT_RECIPIENTLIST(25, "ENDPOINT_RECIPIENTLIST", "ENDPOINT_RECIPIENTLIST"),
-    
+
     MOCK_SERVICE(26, "MOCK_SERVICE", "MOCK_SERVICE"),
-	
-	SYNAPSE_UNIT_TEST(27, "SYNAPSE_UNIT_TEST", "SYNAPSE_UNIT_TEST");
+
+    SYNAPSE_UNIT_TEST(27, "SYNAPSE_UNIT_TEST", "SYNAPSE_UNIT_TEST");
 
     /**
      * The '<em><b>SYNAPSE CONFIG</b></em>' literal value.
@@ -225,6 +249,7 @@ public enum ArtifactType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #SYNAPSE_CONFIG
      * @model
      * @generated
@@ -240,6 +265,7 @@ public enum ArtifactType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #PROXY
      * @model
      * @generated
@@ -255,6 +281,7 @@ public enum ArtifactType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #SEQUENCE
      * @model
      * @generated
@@ -270,6 +297,7 @@ public enum ArtifactType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #ENDPOINT
      * @model
      * @generated
@@ -285,6 +313,7 @@ public enum ArtifactType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #LOCAL_ENTRY
      * @model
      * @generated
@@ -300,6 +329,7 @@ public enum ArtifactType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #TASK
      * @model
      * @generated
@@ -315,6 +345,7 @@ public enum ArtifactType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #TEMPLATE
      * @model
      * @generated
@@ -330,6 +361,7 @@ public enum ArtifactType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #API
      * @model
      * @generated
@@ -345,6 +377,7 @@ public enum ArtifactType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #MAIN_SEQUENCE
      * @model
      * @generated
@@ -360,6 +393,7 @@ public enum ArtifactType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #COMPLEX_ENDPOINT
      * @model
      * @generated
@@ -375,6 +409,7 @@ public enum ArtifactType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #MESSAGE_STORE
      * @model
      * @generated
@@ -390,6 +425,7 @@ public enum ArtifactType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #MESSAGE_PROCESSOR
      * @model
      * @generated
@@ -405,6 +441,7 @@ public enum ArtifactType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #INBOUND_ENDPOINT
      * @model
      * @generated
@@ -420,6 +457,7 @@ public enum ArtifactType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #TEMPLATE_ENDPOINT
      * @model
      * @generated
@@ -435,6 +473,7 @@ public enum ArtifactType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #TEMPLATE_ENDPOINT_ADDRESS
      * @model
      * @generated
@@ -450,6 +489,7 @@ public enum ArtifactType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #TEMPLATE_ENDPOINT_WSDL
      * @model
      * @generated
@@ -465,6 +505,7 @@ public enum ArtifactType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #TEMPLATE_ENDPOINT_DEFAULT
      * @model
      * @generated
@@ -480,6 +521,7 @@ public enum ArtifactType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #TEMPLATE_ENDPOINT_HTTP
      * @model
      * @generated
@@ -495,6 +537,7 @@ public enum ArtifactType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #TEMPLATE_SEQUENCE
      * @model
      * @generated
@@ -510,6 +553,7 @@ public enum ArtifactType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #ENDPOINT_ADDRESS
      * @model
      * @generated
@@ -525,6 +569,7 @@ public enum ArtifactType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #ENDPOINT_DEFAULT
      * @model
      * @generated
@@ -540,6 +585,7 @@ public enum ArtifactType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #ENDPOINT_HTTP
      * @model
      * @generated
@@ -555,6 +601,7 @@ public enum ArtifactType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #ENDPOINT_WSDL
      * @model
      * @generated
@@ -570,6 +617,7 @@ public enum ArtifactType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #ENDPOINT_LOADBALANCE
      * @model
      * @generated
@@ -585,6 +633,7 @@ public enum ArtifactType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #ENDPOINT_FAILOVER
      * @model
      * @generated
@@ -600,58 +649,37 @@ public enum ArtifactType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #ENDPOINT_RECIPIENTLIST
      * @model
      * @generated
      * @ordered
      */
     public static final int ENDPOINT_RECIPIENTLIST_VALUE = 25;
-    
+
     public static final int MOCK_SERVICE_VALUE = 26;
-    
+
     public static final int SYNAPSE_UNIT_TEST_VALUE = 27;
 
     /**
      * An array of all the '<em><b>Artifact Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
-    private static final ArtifactType[] VALUES_ARRAY = new ArtifactType[] {
-            SYNAPSE_CONFIG,
-            PROXY,
-            SEQUENCE,
-            ENDPOINT,
-            LOCAL_ENTRY,
-            TASK,
-            TEMPLATE,
-            API,
-            MAIN_SEQUENCE,
-            COMPLEX_ENDPOINT,
-            MESSAGE_STORE,
-            MESSAGE_PROCESSOR,
-            INBOUND_ENDPOINT,
-            TEMPLATE_ENDPOINT,
-            TEMPLATE_ENDPOINT_ADDRESS,
-            TEMPLATE_ENDPOINT_WSDL,
-            TEMPLATE_ENDPOINT_DEFAULT,
-            TEMPLATE_ENDPOINT_HTTP,
-            TEMPLATE_SEQUENCE,
-            ENDPOINT_ADDRESS,
-            ENDPOINT_DEFAULT,
-            ENDPOINT_HTTP,
-            ENDPOINT_WSDL,
-            ENDPOINT_LOADBALANCE,
-            ENDPOINT_FAILOVER,
-            ENDPOINT_RECIPIENTLIST,
-            MOCK_SERVICE,
-            SYNAPSE_UNIT_TEST,
-        };
+    private static final ArtifactType[] VALUES_ARRAY = new ArtifactType[] { SYNAPSE_CONFIG, PROXY, SEQUENCE, ENDPOINT,
+            LOCAL_ENTRY, TASK, TEMPLATE, API, MAIN_SEQUENCE, COMPLEX_ENDPOINT, MESSAGE_STORE, MESSAGE_PROCESSOR,
+            INBOUND_ENDPOINT, TEMPLATE_ENDPOINT, TEMPLATE_ENDPOINT_ADDRESS, TEMPLATE_ENDPOINT_WSDL,
+            TEMPLATE_ENDPOINT_DEFAULT, TEMPLATE_ENDPOINT_HTTP, TEMPLATE_SEQUENCE, ENDPOINT_ADDRESS, ENDPOINT_DEFAULT,
+            ENDPOINT_HTTP, ENDPOINT_WSDL, ENDPOINT_LOADBALANCE, ENDPOINT_FAILOVER, ENDPOINT_RECIPIENTLIST, MOCK_SERVICE,
+            SYNAPSE_UNIT_TEST, };
 
     /**
      * A public read-only list of all the '<em><b>Artifact Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public static final List<ArtifactType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -660,6 +688,7 @@ public enum ArtifactType implements Enumerator {
      * Returns the '<em><b>Artifact Type</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -678,6 +707,7 @@ public enum ArtifactType implements Enumerator {
      * Returns the '<em><b>Artifact Type</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -696,40 +726,69 @@ public enum ArtifactType implements Enumerator {
      * Returns the '<em><b>Artifact Type</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static ArtifactType get(int value) {
         switch (value) {
-            case SYNAPSE_CONFIG_VALUE: return SYNAPSE_CONFIG;
-            case PROXY_VALUE: return PROXY;
-            case SEQUENCE_VALUE: return SEQUENCE;
-            case ENDPOINT_VALUE: return ENDPOINT;
-            case LOCAL_ENTRY_VALUE: return LOCAL_ENTRY;
-            case TASK_VALUE: return TASK;
-            case TEMPLATE_VALUE: return TEMPLATE;
-            case API_VALUE: return API;
-            case MAIN_SEQUENCE_VALUE: return MAIN_SEQUENCE;
-            case COMPLEX_ENDPOINT_VALUE: return COMPLEX_ENDPOINT;
-            case MESSAGE_STORE_VALUE: return MESSAGE_STORE;
-            case MESSAGE_PROCESSOR_VALUE: return MESSAGE_PROCESSOR;
-            case INBOUND_ENDPOINT_VALUE: return INBOUND_ENDPOINT;
-            case TEMPLATE_ENDPOINT_VALUE: return TEMPLATE_ENDPOINT;
-            case TEMPLATE_ENDPOINT_ADDRESS_VALUE: return TEMPLATE_ENDPOINT_ADDRESS;
-            case TEMPLATE_ENDPOINT_WSDL_VALUE: return TEMPLATE_ENDPOINT_WSDL;
-            case TEMPLATE_ENDPOINT_DEFAULT_VALUE: return TEMPLATE_ENDPOINT_DEFAULT;
-            case TEMPLATE_ENDPOINT_HTTP_VALUE: return TEMPLATE_ENDPOINT_HTTP;
-            case TEMPLATE_SEQUENCE_VALUE: return TEMPLATE_SEQUENCE;
-            case ENDPOINT_ADDRESS_VALUE: return ENDPOINT_ADDRESS;
-            case ENDPOINT_DEFAULT_VALUE: return ENDPOINT_DEFAULT;
-            case ENDPOINT_HTTP_VALUE: return ENDPOINT_HTTP;
-            case ENDPOINT_WSDL_VALUE: return ENDPOINT_WSDL;
-            case ENDPOINT_LOADBALANCE_VALUE: return ENDPOINT_LOADBALANCE;
-            case ENDPOINT_FAILOVER_VALUE: return ENDPOINT_FAILOVER;
-            case ENDPOINT_RECIPIENTLIST_VALUE: return ENDPOINT_RECIPIENTLIST;
-            case MOCK_SERVICE_VALUE:return MOCK_SERVICE;
-            case SYNAPSE_UNIT_TEST_VALUE:return SYNAPSE_UNIT_TEST;
+        case SYNAPSE_CONFIG_VALUE:
+            return SYNAPSE_CONFIG;
+        case PROXY_VALUE:
+            return PROXY;
+        case SEQUENCE_VALUE:
+            return SEQUENCE;
+        case ENDPOINT_VALUE:
+            return ENDPOINT;
+        case LOCAL_ENTRY_VALUE:
+            return LOCAL_ENTRY;
+        case TASK_VALUE:
+            return TASK;
+        case TEMPLATE_VALUE:
+            return TEMPLATE;
+        case API_VALUE:
+            return API;
+        case MAIN_SEQUENCE_VALUE:
+            return MAIN_SEQUENCE;
+        case COMPLEX_ENDPOINT_VALUE:
+            return COMPLEX_ENDPOINT;
+        case MESSAGE_STORE_VALUE:
+            return MESSAGE_STORE;
+        case MESSAGE_PROCESSOR_VALUE:
+            return MESSAGE_PROCESSOR;
+        case INBOUND_ENDPOINT_VALUE:
+            return INBOUND_ENDPOINT;
+        case TEMPLATE_ENDPOINT_VALUE:
+            return TEMPLATE_ENDPOINT;
+        case TEMPLATE_ENDPOINT_ADDRESS_VALUE:
+            return TEMPLATE_ENDPOINT_ADDRESS;
+        case TEMPLATE_ENDPOINT_WSDL_VALUE:
+            return TEMPLATE_ENDPOINT_WSDL;
+        case TEMPLATE_ENDPOINT_DEFAULT_VALUE:
+            return TEMPLATE_ENDPOINT_DEFAULT;
+        case TEMPLATE_ENDPOINT_HTTP_VALUE:
+            return TEMPLATE_ENDPOINT_HTTP;
+        case TEMPLATE_SEQUENCE_VALUE:
+            return TEMPLATE_SEQUENCE;
+        case ENDPOINT_ADDRESS_VALUE:
+            return ENDPOINT_ADDRESS;
+        case ENDPOINT_DEFAULT_VALUE:
+            return ENDPOINT_DEFAULT;
+        case ENDPOINT_HTTP_VALUE:
+            return ENDPOINT_HTTP;
+        case ENDPOINT_WSDL_VALUE:
+            return ENDPOINT_WSDL;
+        case ENDPOINT_LOADBALANCE_VALUE:
+            return ENDPOINT_LOADBALANCE;
+        case ENDPOINT_FAILOVER_VALUE:
+            return ENDPOINT_FAILOVER;
+        case ENDPOINT_RECIPIENTLIST_VALUE:
+            return ENDPOINT_RECIPIENTLIST;
+        case MOCK_SERVICE_VALUE:
+            return MOCK_SERVICE;
+        case SYNAPSE_UNIT_TEST_VALUE:
+            return SYNAPSE_UNIT_TEST;
         }
         return null;
     }
@@ -737,6 +796,7 @@ public enum ArtifactType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final int value;
@@ -744,6 +804,7 @@ public enum ArtifactType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String name;
@@ -751,6 +812,7 @@ public enum ArtifactType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String literal;
@@ -759,6 +821,7 @@ public enum ArtifactType implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private ArtifactType(int value, String name, String literal) {
@@ -770,34 +833,38 @@ public enum ArtifactType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public int getValue() {
-      return value;
+        return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getName() {
-      return name;
+        return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getLiteral() {
-      return literal;
+        return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

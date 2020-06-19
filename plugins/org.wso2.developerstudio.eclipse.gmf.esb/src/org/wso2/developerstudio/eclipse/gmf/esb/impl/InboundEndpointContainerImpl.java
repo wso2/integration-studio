@@ -36,8 +36,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointSequenceContainer
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointContainerImpl#getSequenceContainer <em>Sequence Container</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointContainerImpl#getOnErrorSequenceContainer <em>On Error Sequence Container</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointContainerImpl#getSequenceContainer
+ * <em>Sequence Container</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointContainerImpl#getOnErrorSequenceContainer
+ * <em>On Error Sequence Container</em>}</li>
  * </ul>
  *
  * @generated
@@ -47,6 +49,7 @@ public class InboundEndpointContainerImpl extends EsbElementImpl implements Inbo
      * The cached value of the '{@link #getSequenceContainer() <em>Sequence Container</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getSequenceContainer()
      * @generated
      * @ordered
@@ -54,9 +57,11 @@ public class InboundEndpointContainerImpl extends EsbElementImpl implements Inbo
     protected InboundEndpointSequenceContainer sequenceContainer;
 
     /**
-     * The cached value of the '{@link #getOnErrorSequenceContainer() <em>On Error Sequence Container</em>}' containment reference.
+     * The cached value of the '{@link #getOnErrorSequenceContainer() <em>On Error Sequence Container</em>}' containment
+     * reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getOnErrorSequenceContainer()
      * @generated
      * @ordered
@@ -66,6 +71,7 @@ public class InboundEndpointContainerImpl extends EsbElementImpl implements Inbo
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected InboundEndpointContainerImpl() {
@@ -75,6 +81,7 @@ public class InboundEndpointContainerImpl extends EsbElementImpl implements Inbo
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -85,6 +92,7 @@ public class InboundEndpointContainerImpl extends EsbElementImpl implements Inbo
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public InboundEndpointSequenceContainer getSequenceContainer() {
@@ -94,6 +102,7 @@ public class InboundEndpointContainerImpl extends EsbElementImpl implements Inbo
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public NotificationChain basicSetSequenceContainer(InboundEndpointSequenceContainer newSequenceContainer,
@@ -101,8 +110,13 @@ public class InboundEndpointContainerImpl extends EsbElementImpl implements Inbo
         InboundEndpointSequenceContainer oldSequenceContainer = sequenceContainer;
         sequenceContainer = newSequenceContainer;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT_CONTAINER__SEQUENCE_CONTAINER, oldSequenceContainer, newSequenceContainer);
-            if (msgs == null) msgs = notification; else msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+                    EsbPackage.INBOUND_ENDPOINT_CONTAINER__SEQUENCE_CONTAINER, oldSequenceContainer,
+                    newSequenceContainer);
+            if (msgs == null)
+                msgs = notification;
+            else
+                msgs.add(notification);
         }
         return msgs;
     }
@@ -110,25 +124,31 @@ public class InboundEndpointContainerImpl extends EsbElementImpl implements Inbo
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setSequenceContainer(InboundEndpointSequenceContainer newSequenceContainer) {
         if (newSequenceContainer != sequenceContainer) {
             NotificationChain msgs = null;
             if (sequenceContainer != null)
-                msgs = ((InternalEObject)sequenceContainer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT_CONTAINER__SEQUENCE_CONTAINER, null, msgs);
+                msgs = ((InternalEObject) sequenceContainer).eInverseRemove(this,
+                        EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT_CONTAINER__SEQUENCE_CONTAINER, null, msgs);
             if (newSequenceContainer != null)
-                msgs = ((InternalEObject)newSequenceContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT_CONTAINER__SEQUENCE_CONTAINER, null, msgs);
+                msgs = ((InternalEObject) newSequenceContainer).eInverseAdd(this,
+                        EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT_CONTAINER__SEQUENCE_CONTAINER, null, msgs);
             msgs = basicSetSequenceContainer(newSequenceContainer, msgs);
-            if (msgs != null) msgs.dispatch();
-        }
-        else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT_CONTAINER__SEQUENCE_CONTAINER, newSequenceContainer, newSequenceContainer));
+            if (msgs != null)
+                msgs.dispatch();
+        } else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET,
+                    EsbPackage.INBOUND_ENDPOINT_CONTAINER__SEQUENCE_CONTAINER, newSequenceContainer,
+                    newSequenceContainer));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public InboundEndpointOnErrorSequenceContainer getOnErrorSequenceContainer() {
@@ -138,6 +158,7 @@ public class InboundEndpointContainerImpl extends EsbElementImpl implements Inbo
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public NotificationChain basicSetOnErrorSequenceContainer(
@@ -145,8 +166,13 @@ public class InboundEndpointContainerImpl extends EsbElementImpl implements Inbo
         InboundEndpointOnErrorSequenceContainer oldOnErrorSequenceContainer = onErrorSequenceContainer;
         onErrorSequenceContainer = newOnErrorSequenceContainer;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT_CONTAINER__ON_ERROR_SEQUENCE_CONTAINER, oldOnErrorSequenceContainer, newOnErrorSequenceContainer);
-            if (msgs == null) msgs = notification; else msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+                    EsbPackage.INBOUND_ENDPOINT_CONTAINER__ON_ERROR_SEQUENCE_CONTAINER, oldOnErrorSequenceContainer,
+                    newOnErrorSequenceContainer);
+            if (msgs == null)
+                msgs = notification;
+            else
+                msgs.add(notification);
         }
         return msgs;
     }
@@ -154,34 +180,42 @@ public class InboundEndpointContainerImpl extends EsbElementImpl implements Inbo
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setOnErrorSequenceContainer(InboundEndpointOnErrorSequenceContainer newOnErrorSequenceContainer) {
         if (newOnErrorSequenceContainer != onErrorSequenceContainer) {
             NotificationChain msgs = null;
             if (onErrorSequenceContainer != null)
-                msgs = ((InternalEObject)onErrorSequenceContainer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT_CONTAINER__ON_ERROR_SEQUENCE_CONTAINER, null, msgs);
+                msgs = ((InternalEObject) onErrorSequenceContainer).eInverseRemove(this,
+                        EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT_CONTAINER__ON_ERROR_SEQUENCE_CONTAINER,
+                        null, msgs);
             if (newOnErrorSequenceContainer != null)
-                msgs = ((InternalEObject)newOnErrorSequenceContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT_CONTAINER__ON_ERROR_SEQUENCE_CONTAINER, null, msgs);
+                msgs = ((InternalEObject) newOnErrorSequenceContainer).eInverseAdd(this,
+                        EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT_CONTAINER__ON_ERROR_SEQUENCE_CONTAINER,
+                        null, msgs);
             msgs = basicSetOnErrorSequenceContainer(newOnErrorSequenceContainer, msgs);
-            if (msgs != null) msgs.dispatch();
-        }
-        else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT_CONTAINER__ON_ERROR_SEQUENCE_CONTAINER, newOnErrorSequenceContainer, newOnErrorSequenceContainer));
+            if (msgs != null)
+                msgs.dispatch();
+        } else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET,
+                    EsbPackage.INBOUND_ENDPOINT_CONTAINER__ON_ERROR_SEQUENCE_CONTAINER, newOnErrorSequenceContainer,
+                    newOnErrorSequenceContainer));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-            case EsbPackage.INBOUND_ENDPOINT_CONTAINER__SEQUENCE_CONTAINER:
-                return basicSetSequenceContainer(null, msgs);
-            case EsbPackage.INBOUND_ENDPOINT_CONTAINER__ON_ERROR_SEQUENCE_CONTAINER:
-                return basicSetOnErrorSequenceContainer(null, msgs);
+        case EsbPackage.INBOUND_ENDPOINT_CONTAINER__SEQUENCE_CONTAINER:
+            return basicSetSequenceContainer(null, msgs);
+        case EsbPackage.INBOUND_ENDPOINT_CONTAINER__ON_ERROR_SEQUENCE_CONTAINER:
+            return basicSetOnErrorSequenceContainer(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -189,15 +223,16 @@ public class InboundEndpointContainerImpl extends EsbElementImpl implements Inbo
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-            case EsbPackage.INBOUND_ENDPOINT_CONTAINER__SEQUENCE_CONTAINER:
-                return getSequenceContainer();
-            case EsbPackage.INBOUND_ENDPOINT_CONTAINER__ON_ERROR_SEQUENCE_CONTAINER:
-                return getOnErrorSequenceContainer();
+        case EsbPackage.INBOUND_ENDPOINT_CONTAINER__SEQUENCE_CONTAINER:
+            return getSequenceContainer();
+        case EsbPackage.INBOUND_ENDPOINT_CONTAINER__ON_ERROR_SEQUENCE_CONTAINER:
+            return getOnErrorSequenceContainer();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -205,17 +240,18 @@ public class InboundEndpointContainerImpl extends EsbElementImpl implements Inbo
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-            case EsbPackage.INBOUND_ENDPOINT_CONTAINER__SEQUENCE_CONTAINER:
-                setSequenceContainer((InboundEndpointSequenceContainer)newValue);
-                return;
-            case EsbPackage.INBOUND_ENDPOINT_CONTAINER__ON_ERROR_SEQUENCE_CONTAINER:
-                setOnErrorSequenceContainer((InboundEndpointOnErrorSequenceContainer)newValue);
-                return;
+        case EsbPackage.INBOUND_ENDPOINT_CONTAINER__SEQUENCE_CONTAINER:
+            setSequenceContainer((InboundEndpointSequenceContainer) newValue);
+            return;
+        case EsbPackage.INBOUND_ENDPOINT_CONTAINER__ON_ERROR_SEQUENCE_CONTAINER:
+            setOnErrorSequenceContainer((InboundEndpointOnErrorSequenceContainer) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -223,17 +259,18 @@ public class InboundEndpointContainerImpl extends EsbElementImpl implements Inbo
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-            case EsbPackage.INBOUND_ENDPOINT_CONTAINER__SEQUENCE_CONTAINER:
-                setSequenceContainer((InboundEndpointSequenceContainer)null);
-                return;
-            case EsbPackage.INBOUND_ENDPOINT_CONTAINER__ON_ERROR_SEQUENCE_CONTAINER:
-                setOnErrorSequenceContainer((InboundEndpointOnErrorSequenceContainer)null);
-                return;
+        case EsbPackage.INBOUND_ENDPOINT_CONTAINER__SEQUENCE_CONTAINER:
+            setSequenceContainer((InboundEndpointSequenceContainer) null);
+            return;
+        case EsbPackage.INBOUND_ENDPOINT_CONTAINER__ON_ERROR_SEQUENCE_CONTAINER:
+            setOnErrorSequenceContainer((InboundEndpointOnErrorSequenceContainer) null);
+            return;
         }
         super.eUnset(featureID);
     }
@@ -241,15 +278,16 @@ public class InboundEndpointContainerImpl extends EsbElementImpl implements Inbo
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-            case EsbPackage.INBOUND_ENDPOINT_CONTAINER__SEQUENCE_CONTAINER:
-                return sequenceContainer != null;
-            case EsbPackage.INBOUND_ENDPOINT_CONTAINER__ON_ERROR_SEQUENCE_CONTAINER:
-                return onErrorSequenceContainer != null;
+        case EsbPackage.INBOUND_ENDPOINT_CONTAINER__SEQUENCE_CONTAINER:
+            return sequenceContainer != null;
+        case EsbPackage.INBOUND_ENDPOINT_CONTAINER__ON_ERROR_SEQUENCE_CONTAINER:
+            return onErrorSequenceContainer != null;
         }
         return super.eIsSet(featureID);
     }

@@ -38,6 +38,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.APIHandlerProperty} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class APIHandlerPropertyItemProvider extends EsbNodeItemProvider {
@@ -45,6 +46,7 @@ public class APIHandlerPropertyItemProvider extends EsbNodeItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public APIHandlerPropertyItemProvider(AdapterFactory adapterFactory) {
@@ -55,6 +57,7 @@ public class APIHandlerPropertyItemProvider extends EsbNodeItemProvider {
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -72,50 +75,41 @@ public class APIHandlerPropertyItemProvider extends EsbNodeItemProvider {
      * This adds a property descriptor for the Name feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_APIHandlerProperty_name_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_APIHandlerProperty_name_feature", "_UI_APIHandlerProperty_type"),
-                 EsbPackage.Literals.API_HANDLER_PROPERTY__NAME,
-                 true,
-                 false,
-                 false,
-                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                 null,
-                 null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                        getResourceLocator(), getString("_UI_APIHandlerProperty_name_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_APIHandlerProperty_name_feature",
+                                "_UI_APIHandlerProperty_type"),
+                        EsbPackage.Literals.API_HANDLER_PROPERTY__NAME, true, false, false,
+                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This adds a property descriptor for the Value feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addValuePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_APIHandlerProperty_value_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_APIHandlerProperty_value_feature", "_UI_APIHandlerProperty_type"),
-                 EsbPackage.Literals.API_HANDLER_PROPERTY__VALUE,
-                 true,
-                 false,
-                 false,
-                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                 null,
-                 null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                        getResourceLocator(), getString("_UI_APIHandlerProperty_value_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_APIHandlerProperty_value_feature",
+                                "_UI_APIHandlerProperty_type"),
+                        EsbPackage.Literals.API_HANDLER_PROPERTY__VALUE, true, false, false,
+                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This returns APIHandlerProperty.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -127,14 +121,14 @@ public class APIHandlerPropertyItemProvider extends EsbNodeItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((APIHandlerProperty)object).getName();
-        return label == null || label.length() == 0 ?
-            getString("_UI_APIHandlerProperty_type") :
-            getString("_UI_APIHandlerProperty_type") + " " + label;
+        String label = ((APIHandlerProperty) object).getName();
+        return label == null || label.length() == 0 ? getString("_UI_APIHandlerProperty_type")
+                : getString("_UI_APIHandlerProperty_type") + " " + label;
     }
 
     /**
@@ -142,6 +136,7 @@ public class APIHandlerPropertyItemProvider extends EsbNodeItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -149,10 +144,10 @@ public class APIHandlerPropertyItemProvider extends EsbNodeItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(APIHandlerProperty.class)) {
-            case EsbPackage.API_HANDLER_PROPERTY__NAME:
-            case EsbPackage.API_HANDLER_PROPERTY__VALUE:
-                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-                return;
+        case EsbPackage.API_HANDLER_PROPERTY__NAME:
+        case EsbPackage.API_HANDLER_PROPERTY__VALUE:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+            return;
         }
         super.notifyChanged(notification);
     }
@@ -162,6 +157,7 @@ public class APIHandlerPropertyItemProvider extends EsbNodeItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

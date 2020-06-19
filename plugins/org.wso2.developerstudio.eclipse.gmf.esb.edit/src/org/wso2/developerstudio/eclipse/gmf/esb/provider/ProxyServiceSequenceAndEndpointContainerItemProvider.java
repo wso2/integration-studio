@@ -27,9 +27,11 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.ProxyServiceSequenceAndEndpointContainer;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyServiceSequenceAndEndpointContainer} object.
+ * This is the item provider adapter for a
+ * {@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyServiceSequenceAndEndpointContainer} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class ProxyServiceSequenceAndEndpointContainerItemProvider extends EsbNodeItemProvider {
@@ -37,6 +39,7 @@ public class ProxyServiceSequenceAndEndpointContainerItemProvider extends EsbNod
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public ProxyServiceSequenceAndEndpointContainerItemProvider(AdapterFactory adapterFactory) {
@@ -47,6 +50,7 @@ public class ProxyServiceSequenceAndEndpointContainerItemProvider extends EsbNod
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -64,6 +68,7 @@ public class ProxyServiceSequenceAndEndpointContainerItemProvider extends EsbNod
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -78,6 +83,7 @@ public class ProxyServiceSequenceAndEndpointContainerItemProvider extends EsbNod
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -92,17 +98,20 @@ public class ProxyServiceSequenceAndEndpointContainerItemProvider extends EsbNod
      * This returns ProxyServiceSequenceAndEndpointContainer.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ProxyServiceSequenceAndEndpointContainer"));
+        return overlayImage(object,
+                getResourceLocator().getImage("full/obj16/ProxyServiceSequenceAndEndpointContainer"));
     }
 
     /**
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -115,6 +124,7 @@ public class ProxyServiceSequenceAndEndpointContainerItemProvider extends EsbNod
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -122,9 +132,9 @@ public class ProxyServiceSequenceAndEndpointContainerItemProvider extends EsbNod
         updateChildren(notification);
 
         switch (notification.getFeatureID(ProxyServiceSequenceAndEndpointContainer.class)) {
-            case EsbPackage.PROXY_SERVICE_SEQUENCE_AND_ENDPOINT_CONTAINER__MEDIATOR_FLOW:
-                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-                return;
+        case EsbPackage.PROXY_SERVICE_SEQUENCE_AND_ENDPOINT_CONTAINER__MEDIATOR_FLOW:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+            return;
         }
         super.notifyChanged(notification);
     }
@@ -134,16 +144,16 @@ public class ProxyServiceSequenceAndEndpointContainerItemProvider extends EsbNod
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add
-            (createChildParameter
-                (EsbPackage.Literals.PROXY_SERVICE_SEQUENCE_AND_ENDPOINT_CONTAINER__MEDIATOR_FLOW,
-                 EsbFactory.eINSTANCE.createMediatorFlow()));
+        newChildDescriptors.add(
+                createChildParameter(EsbPackage.Literals.PROXY_SERVICE_SEQUENCE_AND_ENDPOINT_CONTAINER__MEDIATOR_FLOW,
+                        EsbFactory.eINSTANCE.createMediatorFlow()));
     }
 
 }

@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Rule Fact Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
+ * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleFactType()
  * @model
  * @generated
@@ -26,6 +27,7 @@ public enum RuleFactType implements Enumerator {
      * The '<em><b>CUSTOM</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #CUSTOM_VALUE
      * @generated
      * @ordered
@@ -36,6 +38,7 @@ public enum RuleFactType implements Enumerator {
      * The '<em><b>DOM</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #DOM_VALUE
      * @generated
      * @ordered
@@ -46,6 +49,7 @@ public enum RuleFactType implements Enumerator {
      * The '<em><b>MESSAGE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #MESSAGE_VALUE
      * @generated
      * @ordered
@@ -56,6 +60,7 @@ public enum RuleFactType implements Enumerator {
      * The '<em><b>CONTEXT</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #CONTEXT_VALUE
      * @generated
      * @ordered
@@ -66,6 +71,7 @@ public enum RuleFactType implements Enumerator {
      * The '<em><b>OMELEMENT</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #OMELEMENT_VALUE
      * @generated
      * @ordered
@@ -76,6 +82,7 @@ public enum RuleFactType implements Enumerator {
      * The '<em><b>MEDIATOR</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #MEDIATOR_VALUE
      * @generated
      * @ordered
@@ -90,6 +97,7 @@ public enum RuleFactType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #CUSTOM
      * @model
      * @generated
@@ -105,6 +113,7 @@ public enum RuleFactType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #DOM
      * @model literal="dom"
      * @generated
@@ -120,6 +129,7 @@ public enum RuleFactType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #MESSAGE
      * @model literal="message"
      * @generated
@@ -135,6 +145,7 @@ public enum RuleFactType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #CONTEXT
      * @model literal="context"
      * @generated
@@ -150,6 +161,7 @@ public enum RuleFactType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #OMELEMENT
      * @model literal="omelement"
      * @generated
@@ -165,6 +177,7 @@ public enum RuleFactType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #MEDIATOR
      * @model literal="mediator"
      * @generated
@@ -176,21 +189,17 @@ public enum RuleFactType implements Enumerator {
      * An array of all the '<em><b>Rule Fact Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
-    private static final RuleFactType[] VALUES_ARRAY = new RuleFactType[] {
-            CUSTOM,
-            DOM,
-            MESSAGE,
-            CONTEXT,
-            OMELEMENT,
-            MEDIATOR,
-        };
+    private static final RuleFactType[] VALUES_ARRAY = new RuleFactType[] { CUSTOM, DOM, MESSAGE, CONTEXT, OMELEMENT,
+            MEDIATOR, };
 
     /**
      * A public read-only list of all the '<em><b>Rule Fact Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public static final List<RuleFactType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -199,6 +208,7 @@ public enum RuleFactType implements Enumerator {
      * Returns the '<em><b>Rule Fact Type</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -217,6 +227,7 @@ public enum RuleFactType implements Enumerator {
      * Returns the '<em><b>Rule Fact Type</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -235,18 +246,25 @@ public enum RuleFactType implements Enumerator {
      * Returns the '<em><b>Rule Fact Type</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static RuleFactType get(int value) {
         switch (value) {
-            case CUSTOM_VALUE: return CUSTOM;
-            case DOM_VALUE: return DOM;
-            case MESSAGE_VALUE: return MESSAGE;
-            case CONTEXT_VALUE: return CONTEXT;
-            case OMELEMENT_VALUE: return OMELEMENT;
-            case MEDIATOR_VALUE: return MEDIATOR;
+        case CUSTOM_VALUE:
+            return CUSTOM;
+        case DOM_VALUE:
+            return DOM;
+        case MESSAGE_VALUE:
+            return MESSAGE;
+        case CONTEXT_VALUE:
+            return CONTEXT;
+        case OMELEMENT_VALUE:
+            return OMELEMENT;
+        case MEDIATOR_VALUE:
+            return MEDIATOR;
         }
         return null;
     }
@@ -254,6 +272,7 @@ public enum RuleFactType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final int value;
@@ -261,6 +280,7 @@ public enum RuleFactType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String name;
@@ -268,6 +288,7 @@ public enum RuleFactType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String literal;
@@ -276,6 +297,7 @@ public enum RuleFactType implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private RuleFactType(int value, String name, String literal) {
@@ -287,34 +309,38 @@ public enum RuleFactType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public int getValue() {
-      return value;
+        return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getName() {
-      return name;
+        return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getLiteral() {
-      return literal;
+        return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 

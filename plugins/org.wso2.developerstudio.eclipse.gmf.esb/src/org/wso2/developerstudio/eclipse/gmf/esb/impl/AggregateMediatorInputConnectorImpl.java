@@ -25,6 +25,7 @@ public class AggregateMediatorInputConnectorImpl extends InputConnectorImpl impl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected AggregateMediatorInputConnectorImpl() {
@@ -47,6 +48,7 @@ public class AggregateMediatorInputConnectorImpl extends InputConnectorImpl impl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

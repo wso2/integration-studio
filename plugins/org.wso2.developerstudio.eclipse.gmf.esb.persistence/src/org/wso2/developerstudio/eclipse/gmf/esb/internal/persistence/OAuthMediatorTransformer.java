@@ -36,7 +36,8 @@ public class OAuthMediatorTransformer extends AbstractEsbNodeTransformer {
 
     }
 
-    public static org.wso2.carbon.identity.oauth.mediator.OAuthMediator createOAuthMediator(EsbNode subject, boolean isForValidation) {
+    public static org.wso2.carbon.identity.oauth.mediator.OAuthMediator createOAuthMediator(EsbNode subject,
+            boolean isForValidation) {
 
         if (subject instanceof OAuthMediator) {
             OAuthMediator visualOauth = (OAuthMediator) subject;

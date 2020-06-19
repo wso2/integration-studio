@@ -33,6 +33,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.Template;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class AbstractEndPointItemProvider extends EndPointItemProvider {
@@ -40,6 +41,7 @@ public class AbstractEndPointItemProvider extends EndPointItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public AbstractEndPointItemProvider(AdapterFactory adapterFactory) {
@@ -128,7 +130,7 @@ public class AbstractEndPointItemProvider extends EndPointItemProvider {
                 }
             }
         }
-        
+
         addFailoverRetryTypePropertyDescriptor(object);
         addFailoverRetryErrorCodesPropertyDescriptor(object);
         addFailoverNonRetryErrorCodesPropertyDescriptor(object);
@@ -460,44 +462,33 @@ public class AbstractEndPointItemProvider extends EndPointItemProvider {
      * This adds a property descriptor for the Optimize feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addOptimizePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_AbstractEndPoint_optimize_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_AbstractEndPoint_optimize_feature", "_UI_AbstractEndPoint_type"),
-                 EsbPackage.Literals.ABSTRACT_END_POINT__OPTIMIZE,
-                 true,
-                 false,
-                 false,
-                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                 null,
-                 null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                        getResourceLocator(), getString("_UI_AbstractEndPoint_optimize_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_AbstractEndPoint_optimize_feature",
+                                "_UI_AbstractEndPoint_type"),
+                        EsbPackage.Literals.ABSTRACT_END_POINT__OPTIMIZE, true, false, false,
+                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This adds a property descriptor for the Template Parameters feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addTemplateParametersPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_AbstractEndPoint_templateParameters_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_AbstractEndPoint_templateParameters_feature", "_UI_AbstractEndPoint_type"),
-                 EsbPackage.Literals.ABSTRACT_END_POINT__TEMPLATE_PARAMETERS,
-                 true,
-                 false,
-                 false,
-                 null,
-                 null,
-                 null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(
+                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_AbstractEndPoint_templateParameters_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_AbstractEndPoint_templateParameters_feature",
+                        "_UI_AbstractEndPoint_type"),
+                EsbPackage.Literals.ABSTRACT_END_POINT__TEMPLATE_PARAMETERS, true, false, false, null, null, null));
     }
 
     /**
@@ -538,66 +529,51 @@ public class AbstractEndPointItemProvider extends EndPointItemProvider {
      * This adds a property descriptor for the Failover Retry Type feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addFailoverRetryTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_AbstractEndPoint_failoverRetryType_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_AbstractEndPoint_failoverRetryType_feature", "_UI_AbstractEndPoint_type"),
-                 EsbPackage.Literals.ABSTRACT_END_POINT__FAILOVER_RETRY_TYPE,
-                 true,
-                 false,
-                 false,
-                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                 null,
-                 null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(
+                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_AbstractEndPoint_failoverRetryType_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_AbstractEndPoint_failoverRetryType_feature",
+                        "_UI_AbstractEndPoint_type"),
+                EsbPackage.Literals.ABSTRACT_END_POINT__FAILOVER_RETRY_TYPE, true, false, false,
+                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This adds a property descriptor for the Failover Retry Error Codes feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addFailoverRetryErrorCodesPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_AbstractEndPoint_failoverRetryErrorCodes_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_AbstractEndPoint_failoverRetryErrorCodes_feature", "_UI_AbstractEndPoint_type"),
-                 EsbPackage.Literals.ABSTRACT_END_POINT__FAILOVER_RETRY_ERROR_CODES,
-                 true,
-                 false,
-                 false,
-                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                 null,
-                 null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                        getResourceLocator(), getString("_UI_AbstractEndPoint_failoverRetryErrorCodes_feature"),
+                        getString("_UI_PropertyDescriptor_description",
+                                "_UI_AbstractEndPoint_failoverRetryErrorCodes_feature", "_UI_AbstractEndPoint_type"),
+                        EsbPackage.Literals.ABSTRACT_END_POINT__FAILOVER_RETRY_ERROR_CODES, true, false, false,
+                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This adds a property descriptor for the Failover Non Retry Error Codes feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addFailoverNonRetryErrorCodesPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_AbstractEndPoint_failoverNonRetryErrorCodes_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_AbstractEndPoint_failoverNonRetryErrorCodes_feature", "_UI_AbstractEndPoint_type"),
-                 EsbPackage.Literals.ABSTRACT_END_POINT__FAILOVER_NON_RETRY_ERROR_CODES,
-                 true,
-                 false,
-                 false,
-                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                 null,
-                 null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                        getResourceLocator(), getString("_UI_AbstractEndPoint_failoverNonRetryErrorCodes_feature"),
+                        getString("_UI_PropertyDescriptor_description",
+                                "_UI_AbstractEndPoint_failoverNonRetryErrorCodes_feature", "_UI_AbstractEndPoint_type"),
+                        EsbPackage.Literals.ABSTRACT_END_POINT__FAILOVER_NON_RETRY_ERROR_CODES, true, false, false,
+                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -606,6 +582,7 @@ public class AbstractEndPointItemProvider extends EndPointItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -622,6 +599,7 @@ public class AbstractEndPointItemProvider extends EndPointItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -636,15 +614,15 @@ public class AbstractEndPointItemProvider extends EndPointItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((AbstractEndPoint)object).getEndPointName();
-        return label == null || label.length() == 0 ?
-            getString("_UI_AbstractEndPoint_type") :
-            getString("_UI_AbstractEndPoint_type") + " " + label;
+        String label = ((AbstractEndPoint) object).getEndPointName();
+        return label == null || label.length() == 0 ? getString("_UI_AbstractEndPoint_type")
+                : getString("_UI_AbstractEndPoint_type") + " " + label;
     }
 
     /**
@@ -652,6 +630,7 @@ public class AbstractEndPointItemProvider extends EndPointItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -660,34 +639,34 @@ public class AbstractEndPointItemProvider extends EndPointItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(AbstractEndPoint.class)) {
-            case EsbPackage.ABSTRACT_END_POINT__RELIABLE_MESSAGING_ENABLED:
-            case EsbPackage.ABSTRACT_END_POINT__SECURITY_ENABLED:
-            case EsbPackage.ABSTRACT_END_POINT__ADDRESSING_ENABLED:
-            case EsbPackage.ABSTRACT_END_POINT__ADDRESSING_VERSION:
-            case EsbPackage.ABSTRACT_END_POINT__ADDRESSING_SEPARATE_LISTENER:
-            case EsbPackage.ABSTRACT_END_POINT__TIME_OUT_DURATION:
-            case EsbPackage.ABSTRACT_END_POINT__TIME_OUT_ACTION:
-            case EsbPackage.ABSTRACT_END_POINT__RETRY_ERROR_CODES:
-            case EsbPackage.ABSTRACT_END_POINT__RETRY_COUNT:
-            case EsbPackage.ABSTRACT_END_POINT__RETRY_DELAY:
-            case EsbPackage.ABSTRACT_END_POINT__SUSPEND_ERROR_CODES:
-            case EsbPackage.ABSTRACT_END_POINT__SUSPEND_INITIAL_DURATION:
-            case EsbPackage.ABSTRACT_END_POINT__SUSPEND_MAXIMUM_DURATION:
-            case EsbPackage.ABSTRACT_END_POINT__SUSPEND_PROGRESSION_FACTOR:
-            case EsbPackage.ABSTRACT_END_POINT__FORMAT:
-            case EsbPackage.ABSTRACT_END_POINT__OPTIMIZE:
-            case EsbPackage.ABSTRACT_END_POINT__STATISTICS_ENABLED:
-            case EsbPackage.ABSTRACT_END_POINT__TRACE_ENABLED:
-            case EsbPackage.ABSTRACT_END_POINT__FAILOVER_RETRY_TYPE:
-            case EsbPackage.ABSTRACT_END_POINT__FAILOVER_RETRY_ERROR_CODES:
-            case EsbPackage.ABSTRACT_END_POINT__FAILOVER_NON_RETRY_ERROR_CODES:
-                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-                return;
-            case EsbPackage.ABSTRACT_END_POINT__TEMPLATE_PARAMETERS:
-            case EsbPackage.ABSTRACT_END_POINT__INBOUND_POLICY:
-            case EsbPackage.ABSTRACT_END_POINT__OUTBOUND_POLICY:
-                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-                return;
+        case EsbPackage.ABSTRACT_END_POINT__RELIABLE_MESSAGING_ENABLED:
+        case EsbPackage.ABSTRACT_END_POINT__SECURITY_ENABLED:
+        case EsbPackage.ABSTRACT_END_POINT__ADDRESSING_ENABLED:
+        case EsbPackage.ABSTRACT_END_POINT__ADDRESSING_VERSION:
+        case EsbPackage.ABSTRACT_END_POINT__ADDRESSING_SEPARATE_LISTENER:
+        case EsbPackage.ABSTRACT_END_POINT__TIME_OUT_DURATION:
+        case EsbPackage.ABSTRACT_END_POINT__TIME_OUT_ACTION:
+        case EsbPackage.ABSTRACT_END_POINT__RETRY_ERROR_CODES:
+        case EsbPackage.ABSTRACT_END_POINT__RETRY_COUNT:
+        case EsbPackage.ABSTRACT_END_POINT__RETRY_DELAY:
+        case EsbPackage.ABSTRACT_END_POINT__SUSPEND_ERROR_CODES:
+        case EsbPackage.ABSTRACT_END_POINT__SUSPEND_INITIAL_DURATION:
+        case EsbPackage.ABSTRACT_END_POINT__SUSPEND_MAXIMUM_DURATION:
+        case EsbPackage.ABSTRACT_END_POINT__SUSPEND_PROGRESSION_FACTOR:
+        case EsbPackage.ABSTRACT_END_POINT__FORMAT:
+        case EsbPackage.ABSTRACT_END_POINT__OPTIMIZE:
+        case EsbPackage.ABSTRACT_END_POINT__STATISTICS_ENABLED:
+        case EsbPackage.ABSTRACT_END_POINT__TRACE_ENABLED:
+        case EsbPackage.ABSTRACT_END_POINT__FAILOVER_RETRY_TYPE:
+        case EsbPackage.ABSTRACT_END_POINT__FAILOVER_RETRY_ERROR_CODES:
+        case EsbPackage.ABSTRACT_END_POINT__FAILOVER_NON_RETRY_ERROR_CODES:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+            return;
+        case EsbPackage.ABSTRACT_END_POINT__TEMPLATE_PARAMETERS:
+        case EsbPackage.ABSTRACT_END_POINT__INBOUND_POLICY:
+        case EsbPackage.ABSTRACT_END_POINT__OUTBOUND_POLICY:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+            return;
         }
         super.notifyChanged(notification);
     }
@@ -697,6 +676,7 @@ public class AbstractEndPointItemProvider extends EndPointItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -704,26 +684,21 @@ public class AbstractEndPointItemProvider extends EndPointItemProvider {
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add
-            (createChildParameter
-                (EsbPackage.Literals.ABSTRACT_END_POINT__TEMPLATE_PARAMETERS,
-                 EsbFactory.eINSTANCE.createTemplateParameter()));
+        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.ABSTRACT_END_POINT__TEMPLATE_PARAMETERS,
+                EsbFactory.eINSTANCE.createTemplateParameter()));
 
-        newChildDescriptors.add
-            (createChildParameter
-                (EsbPackage.Literals.ABSTRACT_END_POINT__INBOUND_POLICY,
-                 EsbFactory.eINSTANCE.createRegistryKeyProperty()));
+        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.ABSTRACT_END_POINT__INBOUND_POLICY,
+                EsbFactory.eINSTANCE.createRegistryKeyProperty()));
 
-        newChildDescriptors.add
-            (createChildParameter
-                (EsbPackage.Literals.ABSTRACT_END_POINT__OUTBOUND_POLICY,
-                 EsbFactory.eINSTANCE.createRegistryKeyProperty()));
+        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.ABSTRACT_END_POINT__OUTBOUND_POLICY,
+                EsbFactory.eINSTANCE.createRegistryKeyProperty()));
     }
 
     /**
      * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -731,14 +706,12 @@ public class AbstractEndPointItemProvider extends EndPointItemProvider {
         Object childFeature = feature;
         Object childObject = child;
 
-        boolean qualify =
-            childFeature == EsbPackage.Literals.ABSTRACT_END_POINT__INBOUND_POLICY ||
-            childFeature == EsbPackage.Literals.ABSTRACT_END_POINT__OUTBOUND_POLICY;
+        boolean qualify = childFeature == EsbPackage.Literals.ABSTRACT_END_POINT__INBOUND_POLICY
+                || childFeature == EsbPackage.Literals.ABSTRACT_END_POINT__OUTBOUND_POLICY;
 
         if (qualify) {
-            return getString
-                ("_UI_CreateChild_text2",
-                 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+            return getString("_UI_CreateChild_text2",
+                    new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }

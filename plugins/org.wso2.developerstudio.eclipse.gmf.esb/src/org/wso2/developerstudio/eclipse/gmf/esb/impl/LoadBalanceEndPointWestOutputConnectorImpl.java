@@ -23,6 +23,7 @@ public class LoadBalanceEndPointWestOutputConnectorImpl extends OutputConnectorI
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected LoadBalanceEndPointWestOutputConnectorImpl() {
@@ -32,6 +33,7 @@ public class LoadBalanceEndPointWestOutputConnectorImpl extends OutputConnectorI
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

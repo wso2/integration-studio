@@ -31,6 +31,7 @@ public class FastXSLTMediatorInputConnectorImpl extends InputConnectorImpl imple
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected FastXSLTMediatorInputConnectorImpl() {
@@ -40,6 +41,7 @@ public class FastXSLTMediatorInputConnectorImpl extends InputConnectorImpl imple
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

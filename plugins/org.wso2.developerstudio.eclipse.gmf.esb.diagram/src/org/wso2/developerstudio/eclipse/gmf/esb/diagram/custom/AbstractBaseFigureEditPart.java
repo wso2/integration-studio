@@ -23,8 +23,7 @@ public class AbstractBaseFigureEditPart extends AbstractBorderedShapeEditPart {
 
     public IFigure inSequenceInputConnectorFigure;
 
-    public Map<InputConnector, SendMediatorEditPart> sendMediatorAndInSequenceInputConnectorMap = 
-            new HashMap<InputConnector, SendMediatorEditPart>();
+    public Map<InputConnector, SendMediatorEditPart> sendMediatorAndInSequenceInputConnectorMap = new HashMap<InputConnector, SendMediatorEditPart>();
 
     protected int y = 0;
     protected int x = 0;

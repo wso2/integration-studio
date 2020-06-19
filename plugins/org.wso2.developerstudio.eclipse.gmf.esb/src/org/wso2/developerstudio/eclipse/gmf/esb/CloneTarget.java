@@ -17,8 +17,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CloneTarget#getSoapAction <em>Soap Action</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CloneTarget#getToAddress <em>To Address</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CloneTarget#getSoapAction <em>Soap Action</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CloneTarget#getToAddress <em>To Address</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCloneTarget()
@@ -35,6 +35,7 @@ public interface CloneTarget extends AbstractCommonTarget {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Soap Action</em>' attribute.
      * @see #setSoapAction(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCloneTarget_SoapAction()
@@ -44,9 +45,11 @@ public interface CloneTarget extends AbstractCommonTarget {
     String getSoapAction();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CloneTarget#getSoapAction <em>Soap Action</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CloneTarget#getSoapAction <em>Soap
+     * Action</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Soap Action</em>' attribute.
      * @see #getSoapAction()
      * @generated
@@ -62,6 +65,7 @@ public interface CloneTarget extends AbstractCommonTarget {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>To Address</em>' attribute.
      * @see #setToAddress(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCloneTarget_ToAddress()
@@ -71,9 +75,11 @@ public interface CloneTarget extends AbstractCommonTarget {
     String getToAddress();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CloneTarget#getToAddress <em>To Address</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CloneTarget#getToAddress <em>To
+     * Address</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>To Address</em>' attribute.
      * @see #getToAddress()
      * @generated

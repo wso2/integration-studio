@@ -17,8 +17,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbLink#getSource <em>Source</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbLink#getTarget <em>Target</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbLink#getSource <em>Source</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbLink#getTarget <em>Target</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEsbLink()
@@ -28,13 +28,15 @@ import org.eclipse.emf.ecore.EObject;
 public interface EsbLink extends EObject {
     /**
      * Returns the value of the '<em><b>Source</b></em>' container reference.
-     * It is bidirectional and its opposite is '{@link org.wso2.developerstudio.eclipse.gmf.esb.OutputConnector#getOutgoingLink <em>Outgoing Link</em>}'.
+     * It is bidirectional and its opposite is
+     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.OutputConnector#getOutgoingLink <em>Outgoing Link</em>}'.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Source</em>' container reference isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Source</em>' container reference.
      * @see #setSource(OutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEsbLink_Source()
@@ -45,9 +47,11 @@ public interface EsbLink extends EObject {
     OutputConnector getSource();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbLink#getSource <em>Source</em>}' container reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbLink#getSource <em>Source</em>}'
+     * container reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Source</em>' container reference.
      * @see #getSource()
      * @generated
@@ -56,13 +60,15 @@ public interface EsbLink extends EObject {
 
     /**
      * Returns the value of the '<em><b>Target</b></em>' reference.
-     * It is bidirectional and its opposite is '{@link org.wso2.developerstudio.eclipse.gmf.esb.InputConnector#getIncomingLinks <em>Incoming Links</em>}'.
+     * It is bidirectional and its opposite is
+     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.InputConnector#getIncomingLinks <em>Incoming Links</em>}'.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Target</em>' reference isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Target</em>' reference.
      * @see #setTarget(InputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEsbLink_Target()
@@ -73,9 +79,11 @@ public interface EsbLink extends EObject {
     InputConnector getTarget();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbLink#getTarget <em>Target</em>}' reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbLink#getTarget <em>Target</em>}'
+     * reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Target</em>' reference.
      * @see #getTarget()
      * @generated

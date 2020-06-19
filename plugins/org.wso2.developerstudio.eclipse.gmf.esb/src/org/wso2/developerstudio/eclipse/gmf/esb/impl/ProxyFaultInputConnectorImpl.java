@@ -22,6 +22,7 @@ public class ProxyFaultInputConnectorImpl extends InputConnectorImpl implements 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected ProxyFaultInputConnectorImpl() {
@@ -31,6 +32,7 @@ public class ProxyFaultInputConnectorImpl extends InputConnectorImpl implements 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

@@ -93,7 +93,7 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 public class EsbPaletteFactory {
 
     public static final int INITIAL_STATE_OPEN = 0, INITIAL_STATE_CLOSED = 1, INITIAL_STATE_PINNED_OPEN = 2;
-    
+
     private static final String CLOUD_CONNECTOR_PREFIX = "CloudConnector-";
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
@@ -495,8 +495,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createPublishEventMediatorInputConnector8CreationTool() {
         ToolEntry entry = new ToolEntry(Messages.PublishEventMediatorInputConnector8CreationTool_title,
                 Messages.PublishEventMediatorInputConnector8CreationTool_desc, null, null) {
@@ -506,8 +506,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createPublishEventMediatorOutputConnector9CreationTool() {
         ToolEntry entry = new ToolEntry(Messages.PublishEventMediatorOutputConnector9CreationTool_title,
                 Messages.PublishEventMediatorOutputConnector9CreationTool_desc, null, null) {
@@ -567,8 +567,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated NOT
-    */
+     * @generated NOT
+     */
     private ToolEntry createPropertyGroupMediator5CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.PropertyGroupMediator5CreationTool_title,
                 Messages.PropertyGroupMediator5CreationTool_desc,
@@ -580,8 +580,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createEnrichMediator6CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.EnrichMediator6CreationTool_title,
                 Messages.EnrichMediator6CreationTool_desc,
@@ -593,12 +593,11 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createXSLTMediator7CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.XSLTMediator7CreationTool_title,
-                Messages.XSLTMediator7CreationTool_desc,
-                Collections.singletonList(EsbElementTypes.XSLTMediator_3497));
+                Messages.XSLTMediator7CreationTool_desc, Collections.singletonList(EsbElementTypes.XSLTMediator_3497));
         entry.setId("createXSLTMediator7CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.XSLTMediator_3497));
         entry.setLargeIcon(entry.getSmallIcon());
@@ -606,8 +605,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createSwitchMediator8CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.SwitchMediator8CreationTool_title,
                 Messages.SwitchMediator8CreationTool_desc,
@@ -619,8 +618,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createEventMediator9CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.EventMediator9CreationTool_title,
                 Messages.EventMediator9CreationTool_desc,
@@ -632,8 +631,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createEntitlementMediator10CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.EntitlementMediator10CreationTool_title,
                 Messages.EntitlementMediator10CreationTool_desc,
@@ -645,8 +644,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createClassMediator11CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.ClassMediator11CreationTool_title,
                 Messages.ClassMediator11CreationTool_desc,
@@ -658,8 +657,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createSpringMediator12CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.SpringMediator12CreationTool_title,
                 Messages.SpringMediator12CreationTool_desc,
@@ -671,8 +670,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createScriptMediator13CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.ScriptMediator13CreationTool_title,
                 Messages.ScriptMediator13CreationTool_desc,
@@ -684,8 +683,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createFaultMediator14CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.FaultMediator14CreationTool_title,
                 Messages.FaultMediator14CreationTool_desc,
@@ -697,8 +696,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createXQueryMediator15CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.XQueryMediator15CreationTool_title,
                 Messages.XQueryMediator15CreationTool_desc,
@@ -710,8 +709,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createCommandMediator16CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.CommandMediator16CreationTool_title,
                 Messages.CommandMediator16CreationTool_desc,
@@ -723,8 +722,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createDBLookupMediator17CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.DBLookupMediator17CreationTool_title,
                 Messages.DBLookupMediator17CreationTool_desc,
@@ -736,8 +735,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createDBReportMediator18CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.DBReportMediator18CreationTool_title,
                 Messages.DBReportMediator18CreationTool_desc,
@@ -749,8 +748,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createSmooksMediator19CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.SmooksMediator19CreationTool_title,
                 Messages.SmooksMediator19CreationTool_desc,
@@ -762,12 +761,11 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createSendMediator20CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.SendMediator20CreationTool_title,
-                Messages.SendMediator20CreationTool_desc,
-                Collections.singletonList(EsbElementTypes.SendMediator_3515));
+                Messages.SendMediator20CreationTool_desc, Collections.singletonList(EsbElementTypes.SendMediator_3515));
         entry.setId("createSendMediator20CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.SendMediator_3515));
         entry.setLargeIcon(entry.getSmallIcon());
@@ -775,8 +773,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createHeaderMediator21CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.HeaderMediator21CreationTool_title,
                 Messages.HeaderMediator21CreationTool_desc,
@@ -788,8 +786,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createCloneMediator22CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.CloneMediator22CreationTool_title,
                 Messages.CloneMediator22CreationTool_desc,
@@ -801,8 +799,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createIterateMediator23CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.IterateMediator23CreationTool_title,
                 Messages.IterateMediator23CreationTool_desc,
@@ -814,8 +812,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createCacheMediator24CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.CacheMediator24CreationTool_title,
                 Messages.CacheMediator24CreationTool_desc,
@@ -827,8 +825,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createAggregateMediator25CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.AggregateMediator25CreationTool_title,
                 Messages.AggregateMediator25CreationTool_desc,
@@ -840,8 +838,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createCalloutMediator26CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.CalloutMediator26CreationTool_title,
                 Messages.CalloutMediator26CreationTool_desc,
@@ -853,8 +851,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createTransactionMediator27CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.TransactionMediator27CreationTool_title,
                 Messages.TransactionMediator27CreationTool_desc,
@@ -866,8 +864,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createThrottleMediator28CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.ThrottleMediator28CreationTool_title,
                 Messages.ThrottleMediator28CreationTool_desc,
@@ -879,8 +877,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createRMSequenceMediator29CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.RMSequenceMediator29CreationTool_title,
                 Messages.RMSequenceMediator29CreationTool_desc,
@@ -892,8 +890,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createOAuthMediator30CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.OAuthMediator30CreationTool_title,
                 Messages.OAuthMediator30CreationTool_desc,
@@ -905,8 +903,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createRuleMediator31CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.RuleMediator31CreationTool_title,
                 Messages.RuleMediator31CreationTool_desc, Collections.singletonList(EsbElementTypes.RuleMediator_3523));
@@ -917,8 +915,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createStoreMediator32CreationTool() {
         ToolEntry entry = new ToolEntry(Messages.StoreMediator32CreationTool_title,
                 Messages.StoreMediator32CreationTool_desc, null, null) {
@@ -928,8 +926,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createBuilderMediator33CreationTool() {
         ToolEntry entry = new ToolEntry(Messages.BuilderMediator33CreationTool_title,
                 Messages.BuilderMediator33CreationTool_desc, null, null) {
@@ -939,8 +937,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createCallTemplateMediator34CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.CallTemplateMediator34CreationTool_title,
                 Messages.CallTemplateMediator34CreationTool_desc,
@@ -952,8 +950,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createPayloadFactoryMediator35CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.PayloadFactoryMediator35CreationTool_title,
                 Messages.PayloadFactoryMediator35CreationTool_desc,
@@ -965,8 +963,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createEnqueueMediator36CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.EnqueueMediator36CreationTool_title,
                 Messages.EnqueueMediator36CreationTool_desc,
@@ -978,8 +976,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createURLRewriteMediator37CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.URLRewriteMediator37CreationTool_title,
                 Messages.URLRewriteMediator37CreationTool_desc,
@@ -991,8 +989,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createValidateMediator38CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.ValidateMediator38CreationTool_title,
                 Messages.ValidateMediator38CreationTool_desc,
@@ -1004,8 +1002,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createRouterMediator39CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.RouterMediator39CreationTool_title,
                 Messages.RouterMediator39CreationTool_desc,
@@ -1017,8 +1015,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createConditionalRouterMediator40CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.ConditionalRouterMediator40CreationTool_title,
                 Messages.ConditionalRouterMediator40CreationTool_desc,
@@ -1030,8 +1028,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createBAMMediator41CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.BAMMediator41CreationTool_title,
                 Messages.BAMMediator41CreationTool_desc, Collections.singletonList(EsbElementTypes.BAMMediator_3680));
@@ -1042,8 +1040,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createBeanMediator42CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.BeanMediator42CreationTool_title,
                 Messages.BeanMediator42CreationTool_desc, Collections.singletonList(EsbElementTypes.BeanMediator_3683));
@@ -1054,12 +1052,11 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createEJBMediator43CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.EJBMediator43CreationTool_title,
-                Messages.EJBMediator43CreationTool_desc,
-                Collections.singletonList(EsbElementTypes.EJBMediator_3686));
+                Messages.EJBMediator43CreationTool_desc, Collections.singletonList(EsbElementTypes.EJBMediator_3686));
         entry.setId("createEJBMediator43CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.EJBMediator_3686));
         entry.setLargeIcon(entry.getSmallIcon());
@@ -1067,8 +1064,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createLoopBackMediator44CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.LoopBackMediator44CreationTool_title,
                 Messages.LoopBackMediator44CreationTool_desc,
@@ -1080,8 +1077,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createRespondMediator45CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.RespondMediator45CreationTool_title,
                 Messages.RespondMediator45CreationTool_desc,
@@ -1093,12 +1090,11 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createCallMediator46CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.CallMediator46CreationTool_title,
-                Messages.CallMediator46CreationTool_desc,
-                Collections.singletonList(EsbElementTypes.CallMediator_3742));
+                Messages.CallMediator46CreationTool_desc, Collections.singletonList(EsbElementTypes.CallMediator_3742));
         entry.setId("createCallMediator46CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.CallMediator_3742));
         entry.setLargeIcon(entry.getSmallIcon());
@@ -1106,8 +1102,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createDataMapperMediator47CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.DataMapperMediator47CreationTool_title,
                 Messages.DataMapperMediator47CreationTool_desc,
@@ -1119,8 +1115,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createFastXSLTMediator48CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.FastXSLTMediator48CreationTool_title,
                 Messages.FastXSLTMediator48CreationTool_desc,
@@ -1132,8 +1128,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createPublishEventMediator49CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.PublishEventMediator49CreationTool_title,
                 Messages.PublishEventMediator49CreationTool_desc,
@@ -1145,8 +1141,8 @@ public class EsbPaletteFactory {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ToolEntry createJsonTransformMediator50CreationTool() {
         NodeToolEntry entry = new NodeToolEntry(Messages.JsonTransformMediator50CreationTool_title,
                 Messages.JsonTransformMediator50CreationTool_desc,
@@ -1346,8 +1342,8 @@ public class EsbPaletteFactory {
      * @generated
      */
     private ToolEntry createEsbLink1CreationTool() {
-        LinkToolEntry entry = new LinkToolEntry(Messages.EsbLink1CreationTool_title,
-                Messages.EsbLink1CreationTool_desc, Collections.singletonList(EsbElementTypes.EsbLink_4001));
+        LinkToolEntry entry = new LinkToolEntry(Messages.EsbLink1CreationTool_title, Messages.EsbLink1CreationTool_desc,
+                Collections.singletonList(EsbElementTypes.EsbLink_4001));
         entry.setId("createEsbLink1CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.EsbLink_4001));
         entry.setLargeIcon(entry.getSmallIcon());
@@ -1521,7 +1517,7 @@ public class EsbPaletteFactory {
             }
         }
     }
-    
+
     /**
      * This method removes connector palettes from editor if the connector is not in the given list.
      * 

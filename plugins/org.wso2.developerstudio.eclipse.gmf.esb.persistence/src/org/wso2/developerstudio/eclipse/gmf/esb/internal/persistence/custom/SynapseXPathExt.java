@@ -23,9 +23,9 @@ import org.jaxen.JaxenException;
 
 /**
  * This class is use to create a SynapsePath by skipping the synapse validations.
- * This is useful when building the synapse model from the source to the diagram. 
+ * This is useful when building the synapse model from the source to the diagram.
  * (by skipping the exceptions if certain properties are empty by default)
- *  
+ * 
  */
 public class SynapseXPathExt {
 

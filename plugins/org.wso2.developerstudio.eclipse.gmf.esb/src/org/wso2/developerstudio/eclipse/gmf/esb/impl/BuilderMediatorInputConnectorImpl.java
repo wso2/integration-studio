@@ -22,6 +22,7 @@ public class BuilderMediatorInputConnectorImpl extends InputConnectorImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected BuilderMediatorInputConnectorImpl() {
@@ -31,6 +32,7 @@ public class BuilderMediatorInputConnectorImpl extends InputConnectorImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

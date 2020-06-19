@@ -22,6 +22,7 @@ public class RuleMediatorInputConnectorImpl extends InputConnectorImpl implement
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected RuleMediatorInputConnectorImpl() {
@@ -31,6 +32,7 @@ public class RuleMediatorInputConnectorImpl extends InputConnectorImpl implement
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

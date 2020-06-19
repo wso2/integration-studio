@@ -83,7 +83,7 @@ public class ComplexFiguredAbstractEndpoint extends AbstractEndpoint {
         String name;
 
         long lDateTime = new Date().getTime();
-        
+
         final String endpointName;
         if (epName == null || epName.isEmpty()) {
             endpointName = String.valueOf(lDateTime);
@@ -124,11 +124,10 @@ public class ComplexFiguredAbstractEndpoint extends AbstractEndpoint {
     }
 
     public String getName() {
-        EObject tempEP = (ParentEndPoint) ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel())
-                .getElement();
+        EObject tempEP = (ParentEndPoint) ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel()).getElement();
         return ((ParentEndPoint) tempEP).getName();
     }
-    
+
     public boolean createFiles(EObject endpoint, String name, String fileURI1, String fileURI2) {
         /*
          * Resource diagram;
@@ -171,14 +170,14 @@ public class ComplexFiguredAbstractEndpoint extends AbstractEndpoint {
                 source = source.replaceAll("\\{", "<").replaceAll("\\}", ">");
                 source = StringUtils.replace(source, "<ep.name>", name);
                 source = MessageFormat.format(source, name);
-                
+
                 InputStream is = new ByteArrayInputStream(source.getBytes());
                 if (fileTobeOpened.exists()) {
                     fileTobeOpened.setContents(is, true, true, null);
                 } else {
                     fileTobeOpened.create(is, true, null);
                 }
-                
+
                 Openable openable = ESBGraphicalEditor.getOpenable();
                 openable.editorOpen(fileTobeOpened.getName(), ArtifactType.ENDPOINT.getLiteral(), path, source);
             }

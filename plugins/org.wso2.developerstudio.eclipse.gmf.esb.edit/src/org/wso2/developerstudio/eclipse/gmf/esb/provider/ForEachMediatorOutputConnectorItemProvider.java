@@ -24,9 +24,11 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediatorOutputConnector} object.
+ * This is the item provider adapter for a
+ * {@link org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediatorOutputConnector} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class ForEachMediatorOutputConnectorItemProvider extends OutputConnectorItemProvider {
@@ -34,6 +36,7 @@ public class ForEachMediatorOutputConnectorItemProvider extends OutputConnectorI
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public ForEachMediatorOutputConnectorItemProvider(AdapterFactory adapterFactory) {
@@ -44,6 +47,7 @@ public class ForEachMediatorOutputConnectorItemProvider extends OutputConnectorI
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -59,6 +63,7 @@ public class ForEachMediatorOutputConnectorItemProvider extends OutputConnectorI
      * This returns ForEachMediatorOutputConnector.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -70,6 +75,7 @@ public class ForEachMediatorOutputConnectorItemProvider extends OutputConnectorI
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -82,6 +88,7 @@ public class ForEachMediatorOutputConnectorItemProvider extends OutputConnectorI
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -95,6 +102,7 @@ public class ForEachMediatorOutputConnectorItemProvider extends OutputConnectorI
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

@@ -159,13 +159,13 @@ public class EsbParserProvider extends AbstractProvider implements IParserProvid
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private IParser propertyGroupMediatorDescription_5215Parser;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private IParser getPropertyGroupMediatorDescription_5215Parser() {
         if (propertyGroupMediatorDescription_5215Parser == null) {
             EAttribute[] features = new EAttribute[] { EsbPackage.eINSTANCE.getEsbElement_Description() };
@@ -1079,13 +1079,13 @@ public class EsbParserProvider extends AbstractProvider implements IParserProvid
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private IParser jsonTransformMediatorDescription_5216Parser;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private IParser getJsonTransformMediatorDescription_5216Parser() {
         if (jsonTransformMediatorDescription_5216Parser == null) {
             EAttribute[] features = new EAttribute[] { EsbPackage.eINSTANCE.getEsbElement_Description() };

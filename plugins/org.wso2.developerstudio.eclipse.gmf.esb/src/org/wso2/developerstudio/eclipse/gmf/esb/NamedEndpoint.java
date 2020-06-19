@@ -15,12 +15,15 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint#getName <em>Name</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint#getReferringEndpointType <em>Referring Endpoint Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint#getDynamicReferenceKey <em>Dynamic Reference Key</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint#getStaticReferenceKey <em>Static Reference Key</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint#getInputConnector <em>Input Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint#getOutputConnector <em>Output Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint#getName <em>Name</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint#getReferringEndpointType <em>Referring Endpoint
+ * Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint#getDynamicReferenceKey <em>Dynamic Reference
+ * Key</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint#getStaticReferenceKey <em>Static Reference
+ * Key</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getNamedEndpoint()
@@ -36,6 +39,7 @@ public interface NamedEndpoint extends AbstractEndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(NamedEndpointInputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getNamedEndpoint_InputConnector()
@@ -45,9 +49,11 @@ public interface NamedEndpoint extends AbstractEndPoint {
     NamedEndpointInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint#getInputConnector <em>Input
+     * Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
      * @see #getInputConnector()
      * @generated
@@ -62,6 +68,7 @@ public interface NamedEndpoint extends AbstractEndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(NamedEndpointOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getNamedEndpoint_OutputConnector()
@@ -71,9 +78,11 @@ public interface NamedEndpoint extends AbstractEndPoint {
     NamedEndpointOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint#getOutputConnector
+     * <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
      * @see #getOutputConnector()
      * @generated
@@ -88,6 +97,7 @@ public interface NamedEndpoint extends AbstractEndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getNamedEndpoint_Name()
@@ -97,9 +107,11 @@ public interface NamedEndpoint extends AbstractEndPoint {
     String getName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint#getName <em>Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint#getName <em>Name</em>}'
+     * attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Name</em>' attribute.
      * @see #getName()
      * @generated
@@ -115,6 +127,7 @@ public interface NamedEndpoint extends AbstractEndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Referring Endpoint Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.KeyType
      * @see #setReferringEndpointType(KeyType)
@@ -125,9 +138,11 @@ public interface NamedEndpoint extends AbstractEndPoint {
     KeyType getReferringEndpointType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint#getReferringEndpointType <em>Referring Endpoint Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint#getReferringEndpointType
+     * <em>Referring Endpoint Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Referring Endpoint Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.KeyType
      * @see #getReferringEndpointType()
@@ -143,6 +158,7 @@ public interface NamedEndpoint extends AbstractEndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Dynamic Reference Key</em>' containment reference.
      * @see #setDynamicReferenceKey(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getNamedEndpoint_DynamicReferenceKey()
@@ -152,9 +168,11 @@ public interface NamedEndpoint extends AbstractEndPoint {
     NamespacedProperty getDynamicReferenceKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint#getDynamicReferenceKey <em>Dynamic Reference Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint#getDynamicReferenceKey
+     * <em>Dynamic Reference Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Dynamic Reference Key</em>' containment reference.
      * @see #getDynamicReferenceKey()
      * @generated
@@ -169,6 +187,7 @@ public interface NamedEndpoint extends AbstractEndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Static Reference Key</em>' containment reference.
      * @see #setStaticReferenceKey(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getNamedEndpoint_StaticReferenceKey()
@@ -178,9 +197,11 @@ public interface NamedEndpoint extends AbstractEndPoint {
     RegistryKeyProperty getStaticReferenceKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint#getStaticReferenceKey <em>Static Reference Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint#getStaticReferenceKey
+     * <em>Static Reference Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Static Reference Key</em>' containment reference.
      * @see #getStaticReferenceKey()
      * @generated

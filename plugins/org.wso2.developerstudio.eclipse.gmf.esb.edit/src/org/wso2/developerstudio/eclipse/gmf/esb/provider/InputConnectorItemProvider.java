@@ -27,6 +27,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.InputConnector;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.InputConnector} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class InputConnectorItemProvider extends EsbConnectorItemProvider {
@@ -34,6 +35,7 @@ public class InputConnectorItemProvider extends EsbConnectorItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public InputConnectorItemProvider(AdapterFactory adapterFactory) {
@@ -44,6 +46,7 @@ public class InputConnectorItemProvider extends EsbConnectorItemProvider {
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -62,6 +65,7 @@ public class InputConnectorItemProvider extends EsbConnectorItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -77,6 +81,7 @@ public class InputConnectorItemProvider extends EsbConnectorItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -92,6 +97,7 @@ public class InputConnectorItemProvider extends EsbConnectorItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -105,6 +111,7 @@ public class InputConnectorItemProvider extends EsbConnectorItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -113,9 +120,9 @@ public class InputConnectorItemProvider extends EsbConnectorItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(InputConnector.class)) {
-            case EsbPackage.INPUT_CONNECTOR__INCOMING_LINKS:
-                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-                return;
+        case EsbPackage.INPUT_CONNECTOR__INCOMING_LINKS:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+            return;
         }
         super.notifyChanged(notification);
     }
@@ -125,6 +132,7 @@ public class InputConnectorItemProvider extends EsbConnectorItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -132,10 +140,8 @@ public class InputConnectorItemProvider extends EsbConnectorItemProvider {
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add
-            (createChildParameter
-                (EsbPackage.Literals.INPUT_CONNECTOR__INCOMING_LINKS,
-                 EsbFactory.eINSTANCE.createEsbLink()));
+        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.INPUT_CONNECTOR__INCOMING_LINKS,
+                EsbFactory.eINSTANCE.createEsbLink()));
     }
 
 }

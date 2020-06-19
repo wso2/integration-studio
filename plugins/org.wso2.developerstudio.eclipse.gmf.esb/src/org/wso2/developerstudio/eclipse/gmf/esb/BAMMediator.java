@@ -24,11 +24,11 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BAMMediator#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BAMMediator#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BAMMediator#getServerProfile <em>Server Profile</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BAMMediator#getStreamName <em>Stream Name</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BAMMediator#getStreamVersion <em>Stream Version</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BAMMediator#getInputConnector <em>Input Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BAMMediator#getOutputConnector <em>Output Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BAMMediator#getServerProfile <em>Server Profile</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BAMMediator#getStreamName <em>Stream Name</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BAMMediator#getStreamVersion <em>Stream Version</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getBAMMediator()
@@ -44,6 +44,7 @@ public interface BAMMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(BAMMediatorInputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getBAMMediator_InputConnector()
@@ -53,9 +54,11 @@ public interface BAMMediator extends Mediator {
     BAMMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.BAMMediator#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.BAMMediator#getInputConnector <em>Input
+     * Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
      * @see #getInputConnector()
      * @generated
@@ -70,6 +73,7 @@ public interface BAMMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(BAMMediatorOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getBAMMediator_OutputConnector()
@@ -79,9 +83,11 @@ public interface BAMMediator extends Mediator {
     BAMMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.BAMMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.BAMMediator#getOutputConnector <em>Output
+     * Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
      * @see #getOutputConnector()
      * @generated
@@ -97,6 +103,7 @@ public interface BAMMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Server Profile</em>' attribute.
      * @see #setServerProfile(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getBAMMediator_ServerProfile()
@@ -106,9 +113,11 @@ public interface BAMMediator extends Mediator {
     String getServerProfile();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.BAMMediator#getServerProfile <em>Server Profile</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.BAMMediator#getServerProfile <em>Server
+     * Profile</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Server Profile</em>' attribute.
      * @see #getServerProfile()
      * @generated
@@ -123,6 +132,7 @@ public interface BAMMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Stream Name</em>' attribute.
      * @see #setStreamName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getBAMMediator_StreamName()
@@ -132,9 +142,11 @@ public interface BAMMediator extends Mediator {
     String getStreamName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.BAMMediator#getStreamName <em>Stream Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.BAMMediator#getStreamName <em>Stream
+     * Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Stream Name</em>' attribute.
      * @see #getStreamName()
      * @generated
@@ -149,6 +161,7 @@ public interface BAMMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Stream Version</em>' attribute.
      * @see #setStreamVersion(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getBAMMediator_StreamVersion()
@@ -158,9 +171,11 @@ public interface BAMMediator extends Mediator {
     String getStreamVersion();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.BAMMediator#getStreamVersion <em>Stream Version</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.BAMMediator#getStreamVersion <em>Stream
+     * Version</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Stream Version</em>' attribute.
      * @see #getStreamVersion()
      * @generated

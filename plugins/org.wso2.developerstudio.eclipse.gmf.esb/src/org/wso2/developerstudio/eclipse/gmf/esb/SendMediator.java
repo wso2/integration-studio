@@ -17,16 +17,22 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#getEndPoint <em>End Point</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#getReceivingSequenceType <em>Receiving Sequence Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#getStaticReceivingSequence <em>Static Receiving Sequence</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#getDynamicReceivingSequence <em>Dynamic Receiving Sequence</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#getEndpointOutputConnector <em>Endpoint Output Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#getMediatorFlow <em>Mediator Flow</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#isSkipSerialization <em>Skip Serialization</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#isBuildMessageBeforeSending <em>Build Message Before Sending</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#getEndPoint <em>End Point</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#getInputConnector <em>Input Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#getOutputConnector <em>Output Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#getReceivingSequenceType <em>Receiving Sequence
+ * Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#getStaticReceivingSequence <em>Static Receiving
+ * Sequence</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#getDynamicReceivingSequence <em>Dynamic Receiving
+ * Sequence</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#getEndpointOutputConnector <em>Endpoint Output
+ * Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#getMediatorFlow <em>Mediator Flow</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#isSkipSerialization <em>Skip
+ * Serialization</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#isBuildMessageBeforeSending <em>Build Message Before
+ * Sending</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSendMediator()
@@ -43,6 +49,7 @@ public interface SendMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>End Point</em>' reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSendMediator_EndPoint()
      * @model
@@ -58,6 +65,7 @@ public interface SendMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(SendMediatorInputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSendMediator_InputConnector()
@@ -67,9 +75,11 @@ public interface SendMediator extends Mediator {
     SendMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#getInputConnector <em>Input
+     * Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
      * @see #getInputConnector()
      * @generated
@@ -84,6 +94,7 @@ public interface SendMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(SendMediatorOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSendMediator_OutputConnector()
@@ -93,9 +104,11 @@ public interface SendMediator extends Mediator {
     SendMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#getOutputConnector <em>Output
+     * Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
      * @see #getOutputConnector()
      * @generated
@@ -111,6 +124,7 @@ public interface SendMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Receiving Sequence Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.ReceivingSequenceType
      * @see #setReceivingSequenceType(ReceivingSequenceType)
@@ -121,9 +135,11 @@ public interface SendMediator extends Mediator {
     ReceivingSequenceType getReceivingSequenceType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#getReceivingSequenceType <em>Receiving Sequence Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#getReceivingSequenceType
+     * <em>Receiving Sequence Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Receiving Sequence Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.ReceivingSequenceType
      * @see #getReceivingSequenceType()
@@ -139,6 +155,7 @@ public interface SendMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Static Receiving Sequence</em>' containment reference.
      * @see #setStaticReceivingSequence(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSendMediator_StaticReceivingSequence()
@@ -148,9 +165,11 @@ public interface SendMediator extends Mediator {
     RegistryKeyProperty getStaticReceivingSequence();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#getStaticReceivingSequence <em>Static Receiving Sequence</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#getStaticReceivingSequence
+     * <em>Static Receiving Sequence</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Static Receiving Sequence</em>' containment reference.
      * @see #getStaticReceivingSequence()
      * @generated
@@ -165,6 +184,7 @@ public interface SendMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Dynamic Receiving Sequence</em>' containment reference.
      * @see #setDynamicReceivingSequence(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSendMediator_DynamicReceivingSequence()
@@ -174,9 +194,11 @@ public interface SendMediator extends Mediator {
     NamespacedProperty getDynamicReceivingSequence();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#getDynamicReceivingSequence <em>Dynamic Receiving Sequence</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#getDynamicReceivingSequence
+     * <em>Dynamic Receiving Sequence</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Dynamic Receiving Sequence</em>' containment reference.
      * @see #getDynamicReceivingSequence()
      * @generated
@@ -191,6 +213,7 @@ public interface SendMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Endpoint Output Connector</em>' containment reference.
      * @see #setEndpointOutputConnector(SendMediatorEndpointOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSendMediator_EndpointOutputConnector()
@@ -200,9 +223,11 @@ public interface SendMediator extends Mediator {
     SendMediatorEndpointOutputConnector getEndpointOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#getEndpointOutputConnector <em>Endpoint Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#getEndpointOutputConnector
+     * <em>Endpoint Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Endpoint Output Connector</em>' containment reference.
      * @see #getEndpointOutputConnector()
      * @generated
@@ -217,6 +242,7 @@ public interface SendMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Mediator Flow</em>' containment reference.
      * @see #setMediatorFlow(MediatorFlow)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSendMediator_MediatorFlow()
@@ -226,9 +252,11 @@ public interface SendMediator extends Mediator {
     MediatorFlow getMediatorFlow();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#getMediatorFlow <em>Mediator Flow</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#getMediatorFlow <em>Mediator
+     * Flow</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Mediator Flow</em>' containment reference.
      * @see #getMediatorFlow()
      * @generated
@@ -243,6 +271,7 @@ public interface SendMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Skip Serialization</em>' attribute.
      * @see #setSkipSerialization(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSendMediator_SkipSerialization()
@@ -252,9 +281,11 @@ public interface SendMediator extends Mediator {
     boolean isSkipSerialization();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#isSkipSerialization <em>Skip Serialization</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#isSkipSerialization <em>Skip
+     * Serialization</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Skip Serialization</em>' attribute.
      * @see #isSkipSerialization()
      * @generated
@@ -269,6 +300,7 @@ public interface SendMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Build Message Before Sending</em>' attribute.
      * @see #setBuildMessageBeforeSending(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSendMediator_BuildMessageBeforeSending()
@@ -278,9 +310,11 @@ public interface SendMediator extends Mediator {
     boolean isBuildMessageBeforeSending();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#isBuildMessageBeforeSending <em>Build Message Before Sending</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator#isBuildMessageBeforeSending
+     * <em>Build Message Before Sending</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Build Message Before Sending</em>' attribute.
      * @see #isBuildMessageBeforeSending()
      * @generated

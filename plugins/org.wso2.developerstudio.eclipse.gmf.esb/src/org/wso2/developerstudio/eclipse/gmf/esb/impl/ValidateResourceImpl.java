@@ -48,6 +48,7 @@ public class ValidateResourceImpl extends AbstractLocationKeyResourceImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

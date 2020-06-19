@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>VFS File Sort</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
+ * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getVFSFileSort()
  * @model
  * @generated
@@ -35,6 +36,7 @@ public enum VFSFileSort implements Enumerator {
      * The '<em><b>None</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #NONE_VALUE
      * @generated
      * @ordered
@@ -45,6 +47,7 @@ public enum VFSFileSort implements Enumerator {
      * The '<em><b>Name</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #NAME_VALUE
      * @generated
      * @ordered
@@ -55,6 +58,7 @@ public enum VFSFileSort implements Enumerator {
      * The '<em><b>Size</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #SIZE_VALUE
      * @generated
      * @ordered
@@ -65,6 +69,7 @@ public enum VFSFileSort implements Enumerator {
      * The '<em><b>Lastmodifiedtimestamp</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #LASTMODIFIEDTIMESTAMP_VALUE
      * @generated
      * @ordered
@@ -79,6 +84,7 @@ public enum VFSFileSort implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #NONE
      * @model name="none"
      * @generated
@@ -94,6 +100,7 @@ public enum VFSFileSort implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #NAME
      * @model name="name"
      * @generated
@@ -109,6 +116,7 @@ public enum VFSFileSort implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #SIZE
      * @model name="size"
      * @generated
@@ -124,6 +132,7 @@ public enum VFSFileSort implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @see #LASTMODIFIEDTIMESTAMP
      * @model name="lastmodifiedtimestamp"
      * @generated
@@ -135,19 +144,16 @@ public enum VFSFileSort implements Enumerator {
      * An array of all the '<em><b>VFS File Sort</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
-    private static final VFSFileSort[] VALUES_ARRAY = new VFSFileSort[] {
-            NONE,
-            NAME,
-            SIZE,
-            LASTMODIFIEDTIMESTAMP,
-        };
+    private static final VFSFileSort[] VALUES_ARRAY = new VFSFileSort[] { NONE, NAME, SIZE, LASTMODIFIEDTIMESTAMP, };
 
     /**
      * A public read-only list of all the '<em><b>VFS File Sort</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public static final List<VFSFileSort> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -156,6 +162,7 @@ public enum VFSFileSort implements Enumerator {
      * Returns the '<em><b>VFS File Sort</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -174,6 +181,7 @@ public enum VFSFileSort implements Enumerator {
      * Returns the '<em><b>VFS File Sort</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -192,16 +200,21 @@ public enum VFSFileSort implements Enumerator {
      * Returns the '<em><b>VFS File Sort</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static VFSFileSort get(int value) {
         switch (value) {
-            case NONE_VALUE: return NONE;
-            case NAME_VALUE: return NAME;
-            case SIZE_VALUE: return SIZE;
-            case LASTMODIFIEDTIMESTAMP_VALUE: return LASTMODIFIEDTIMESTAMP;
+        case NONE_VALUE:
+            return NONE;
+        case NAME_VALUE:
+            return NAME;
+        case SIZE_VALUE:
+            return SIZE;
+        case LASTMODIFIEDTIMESTAMP_VALUE:
+            return LASTMODIFIEDTIMESTAMP;
         }
         return null;
     }
@@ -209,6 +222,7 @@ public enum VFSFileSort implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final int value;
@@ -216,6 +230,7 @@ public enum VFSFileSort implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String name;
@@ -223,6 +238,7 @@ public enum VFSFileSort implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private final String literal;
@@ -231,6 +247,7 @@ public enum VFSFileSort implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     private VFSFileSort(int value, String name, String literal) {
@@ -242,34 +259,38 @@ public enum VFSFileSort implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public int getValue() {
-      return value;
+        return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getName() {
-      return name;
+        return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getLiteral() {
-      return literal;
+        return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

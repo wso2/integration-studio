@@ -24,6 +24,7 @@ public class RuleChildMediatorsConfigurationImpl extends EObjectImpl implements 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected RuleChildMediatorsConfigurationImpl() {
@@ -33,6 +34,7 @@ public class RuleChildMediatorsConfigurationImpl extends EObjectImpl implements 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 

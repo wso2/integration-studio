@@ -124,41 +124,43 @@ public abstract class AbstractMediatorOutputConnectorEditPart extends AbstractOu
             this.setOutline(false);
             // this.setBackgroundColor(get);
             this.setPreferredSize(new Dimension(22, 18));
-/*            this.addMouseMotionListener(new MouseMotionListener() {
-
-                public void mouseMoved(MouseEvent arg0) {
-                    // TODO Auto-generated method stub
-
-                }
-
-                public void mouseHover(MouseEvent arg0) {
-                    // TODO Auto-generated method stub
-
-                }
-
-                public void mouseExited(MouseEvent arg0) {
-                    if (getEditDomain().getPaletteViewer().getActiveTool().getId()
-                            .equals("createEsbLink1CreationTool")) {
-                        //getEditDomain().getPaletteViewer().setActiveTool(null);
-                    }
-
-                }
-
-                public void mouseEntered(MouseEvent arg0) {
-                    // TODO Auto-generated method stub
-                    if (getEditDomain().getPaletteViewer().getActiveTool().getId().equals("selectionTool")) {
-                        getEditDomain().getPaletteViewer()
-                                .setActiveTool((ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer()
-                                        .getPaletteRoot().getChildren().get(4)).getChildren().get(0)));
-                    }
-
-                }
-
-                public void mouseDragged(MouseEvent arg0) {
-                    // TODO Auto-generated method stub
-
-                }
-            });*/
+            /*
+             * this.addMouseMotionListener(new MouseMotionListener() {
+             * 
+             * public void mouseMoved(MouseEvent arg0) {
+             * // TODO Auto-generated method stub
+             * 
+             * }
+             * 
+             * public void mouseHover(MouseEvent arg0) {
+             * // TODO Auto-generated method stub
+             * 
+             * }
+             * 
+             * public void mouseExited(MouseEvent arg0) {
+             * if (getEditDomain().getPaletteViewer().getActiveTool().getId()
+             * .equals("createEsbLink1CreationTool")) {
+             * //getEditDomain().getPaletteViewer().setActiveTool(null);
+             * }
+             * 
+             * }
+             * 
+             * public void mouseEntered(MouseEvent arg0) {
+             * // TODO Auto-generated method stub
+             * if (getEditDomain().getPaletteViewer().getActiveTool().getId().equals("selectionTool")) {
+             * getEditDomain().getPaletteViewer()
+             * .setActiveTool((ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer()
+             * .getPaletteRoot().getChildren().get(4)).getChildren().get(0)));
+             * }
+             * 
+             * }
+             * 
+             * public void mouseDragged(MouseEvent arg0) {
+             * // TODO Auto-generated method stub
+             * 
+             * }
+             * });
+             */
             createContents(true);
         }
 
@@ -177,7 +179,7 @@ public abstract class AbstractMediatorOutputConnectorEditPart extends AbstractOu
             this.setPreferredSize(new Dimension(22, 18));
             createContents(visible);
         }
-        
+
         public void createContents(boolean visible) {
             GridData constraintImageRectangle11 = new GridData();
             constraintImageRectangle11.verticalAlignment = GridData.FILL;
@@ -217,44 +219,46 @@ public abstract class AbstractMediatorOutputConnectorEditPart extends AbstractOu
             this.setOutline(false);
             // this.setBackgroundColor(get);
             this.setPreferredSize(new Dimension(22, 18));
-/*            this.addMouseMotionListener(new MouseMotionListener() {
-
-                public void mouseMoved(MouseEvent me) {
-                    // TODO Auto-generated method stub
-
-                }
-
-                public void mouseHover(MouseEvent me) {
-                    // TODO Auto-generated method stub
-
-                }
-
-                public void mouseExited(MouseEvent me) {
-                    if (getEditDomain().getPaletteViewer().getActiveTool().getId()
-                            .equals("createEsbLink1CreationTool")) {
-                        //getEditDomain().getPaletteViewer().setActiveTool(null);
-                    }
-
-                }
-
-                public void mouseEntered(MouseEvent me) {
-                    // TODO Auto-generated method stub
-                    if (getEditDomain().getPaletteViewer().getActiveTool().getId().equals("selectionTool")) {
-                        getEditDomain().getPaletteViewer()
-                                .setActiveTool((ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer()
-                                        .getPaletteRoot().getChildren().get(4)).getChildren().get(0)));
-
-                    }
-                }
-
-                public void mouseDragged(MouseEvent me) {
-                    // TODO Auto-generated method stub
-
-                }
-            });*/
+            /*
+             * this.addMouseMotionListener(new MouseMotionListener() {
+             * 
+             * public void mouseMoved(MouseEvent me) {
+             * // TODO Auto-generated method stub
+             * 
+             * }
+             * 
+             * public void mouseHover(MouseEvent me) {
+             * // TODO Auto-generated method stub
+             * 
+             * }
+             * 
+             * public void mouseExited(MouseEvent me) {
+             * if (getEditDomain().getPaletteViewer().getActiveTool().getId()
+             * .equals("createEsbLink1CreationTool")) {
+             * //getEditDomain().getPaletteViewer().setActiveTool(null);
+             * }
+             * 
+             * }
+             * 
+             * public void mouseEntered(MouseEvent me) {
+             * // TODO Auto-generated method stub
+             * if (getEditDomain().getPaletteViewer().getActiveTool().getId().equals("selectionTool")) {
+             * getEditDomain().getPaletteViewer()
+             * .setActiveTool((ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer()
+             * .getPaletteRoot().getChildren().get(4)).getChildren().get(0)));
+             * 
+             * }
+             * }
+             * 
+             * public void mouseDragged(MouseEvent me) {
+             * // TODO Auto-generated method stub
+             * 
+             * }
+             * });
+             */
             createContents(true);
         }
-        
+
         public WestPointerFigure(boolean visible) {
 
             GridLayout layoutThis = new GridLayout();
@@ -287,7 +291,6 @@ public abstract class AbstractMediatorOutputConnectorEditPart extends AbstractOu
         }
 
     }
-    
 
     static final Color THIS_BACK = new Color(null, 50, 50, 50);
 

@@ -132,7 +132,7 @@ public class EsbGroupingShape extends RoundedRectangle {
             containerInsideLeftRectangle.add(pane);
         }
     }
-    
+
     public void removeBreakpointMark() {
         if (breakpointLayer != null) {
             pane.remove(breakpointLayer);

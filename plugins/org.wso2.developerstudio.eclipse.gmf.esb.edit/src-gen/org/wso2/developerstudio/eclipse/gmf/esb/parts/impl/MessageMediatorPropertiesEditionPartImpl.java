@@ -62,294 +62,299 @@ import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
  * 
  * 
  */
-public class MessageMediatorPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, MessageMediatorPropertiesEditionPart {
+public class MessageMediatorPropertiesEditionPartImpl extends CompositePropertiesEditionPart
+        implements ISWTPropertiesEditionPart, MessageMediatorPropertiesEditionPart {
 
-	protected Text description;
-	protected Text commentsList;
-	protected Button editCommentsList;
-	protected EList commentsListList;
+    protected Text description;
+    protected Text commentsList;
+    protected Button editCommentsList;
+    protected EList commentsListList;
 
+    /**
+     * Default constructor
+     * 
+     * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+     * 
+     */
+    public MessageMediatorPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
+        super(editionComponent);
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+     *      createFigure(org.eclipse.swt.widgets.Composite)
+     * 
+     */
+    public Composite createFigure(final Composite parent) {
+        view = new Composite(parent, SWT.NONE);
+        GridLayout layout = new GridLayout();
+        layout.numColumns = 3;
+        view.setLayout(layout);
+        createControls(view);
+        return view;
+    }
 
-	/**
-	 * Default constructor
-	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
-	 */
-	public MessageMediatorPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+     *      createControls(org.eclipse.swt.widgets.Composite)
+     * 
+     */
+    public void createControls(Composite view) {
+        CompositionSequence messageMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
+        CompositionStep propertiesStep = messageMediatorStep
+                .addStep(EsbViewsRepository.MessageMediator.Properties.class);
+        propertiesStep.addStep(EsbViewsRepository.MessageMediator.Properties.description);
+        propertiesStep.addStep(EsbViewsRepository.MessageMediator.Properties.commentsList);
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
-	 * 			createFigure(org.eclipse.swt.widgets.Composite)
-	 * 
-	 */
-	public Composite createFigure(final Composite parent) {
-		view = new Composite(parent, SWT.NONE);
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 3;
-		view.setLayout(layout);
-		createControls(view);
-		return view;
-	}
+        composer = new PartComposer(messageMediatorStep) {
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
-	 * 			createControls(org.eclipse.swt.widgets.Composite)
-	 * 
-	 */
-	public void createControls(Composite view) { 
-		CompositionSequence messageMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep propertiesStep = messageMediatorStep.addStep(EsbViewsRepository.MessageMediator.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.MessageMediator.Properties.description);
-		propertiesStep.addStep(EsbViewsRepository.MessageMediator.Properties.commentsList);
-		
-		
-		composer = new PartComposer(messageMediatorStep) {
+            @Override
+            public Composite addToPart(Composite parent, Object key) {
+                if (key == EsbViewsRepository.MessageMediator.Properties.class) {
+                    return createPropertiesGroup(parent);
+                }
+                if (key == EsbViewsRepository.MessageMediator.Properties.description) {
+                    return createDescriptionText(parent);
+                }
+                if (key == EsbViewsRepository.MessageMediator.Properties.commentsList) {
+                    return createCommentsListMultiValuedEditor(parent);
+                }
+                return parent;
+            }
+        };
+        composer.compose(view);
+    }
 
-			@Override
-			public Composite addToPart(Composite parent, Object key) {
-				if (key == EsbViewsRepository.MessageMediator.Properties.class) {
-					return createPropertiesGroup(parent);
-				}
-				if (key == EsbViewsRepository.MessageMediator.Properties.description) {
-					return createDescriptionText(parent);
-				}
-				if (key == EsbViewsRepository.MessageMediator.Properties.commentsList) {
-					return createCommentsListMultiValuedEditor(parent);
-				}
-				return parent;
-			}
-		};
-		composer.compose(view);
-	}
+    /**
+     * 
+     */
+    protected Composite createPropertiesGroup(Composite parent) {
+        Group propertiesGroup = new Group(parent, SWT.NONE);
+        propertiesGroup.setText(EsbMessages.MessageMediatorPropertiesEditionPart_PropertiesGroupLabel);
+        GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
+        propertiesGroupData.horizontalSpan = 3;
+        propertiesGroup.setLayoutData(propertiesGroupData);
+        GridLayout propertiesGroupLayout = new GridLayout();
+        propertiesGroupLayout.numColumns = 3;
+        propertiesGroup.setLayout(propertiesGroupLayout);
+        return propertiesGroup;
+    }
 
-	/**
-	 * 
-	 */
-	protected Composite createPropertiesGroup(Composite parent) {
-		Group propertiesGroup = new Group(parent, SWT.NONE);
-		propertiesGroup.setText(EsbMessages.MessageMediatorPropertiesEditionPart_PropertiesGroupLabel);
-		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesGroupData.horizontalSpan = 3;
-		propertiesGroup.setLayoutData(propertiesGroupData);
-		GridLayout propertiesGroupLayout = new GridLayout();
-		propertiesGroupLayout.numColumns = 3;
-		propertiesGroup.setLayout(propertiesGroupLayout);
-		return propertiesGroup;
-	}
+    protected Composite createDescriptionText(Composite parent) {
+        createDescription(parent, EsbViewsRepository.MessageMediator.Properties.description,
+                EsbMessages.MessageMediatorPropertiesEditionPart_DescriptionLabel);
+        description = SWTUtils.createScrollableText(parent, SWT.BORDER);
+        GridData descriptionData = new GridData(GridData.FILL_HORIZONTAL);
+        description.setLayoutData(descriptionData);
+        description.addFocusListener(new FocusAdapter() {
 
-	
-	protected Composite createDescriptionText(Composite parent) {
-		createDescription(parent, EsbViewsRepository.MessageMediator.Properties.description, EsbMessages.MessageMediatorPropertiesEditionPart_DescriptionLabel);
-		description = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		GridData descriptionData = new GridData(GridData.FILL_HORIZONTAL);
-		description.setLayoutData(descriptionData);
-		description.addFocusListener(new FocusAdapter() {
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void focusLost(FocusEvent e) {
+                if (propertiesEditionComponent != null)
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            MessageMediatorPropertiesEditionPartImpl.this,
+                            EsbViewsRepository.MessageMediator.Properties.description, PropertiesEditionEvent.COMMIT,
+                            PropertiesEditionEvent.SET, null, description.getText()));
+            }
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(MessageMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.MessageMediator.Properties.description, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
-			}
+        });
+        description.addKeyListener(new KeyAdapter() {
 
-		});
-		description.addKeyListener(new KeyAdapter() {
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void keyPressed(KeyEvent e) {
+                if (e.character == SWT.CR) {
+                    if (propertiesEditionComponent != null)
+                        propertiesEditionComponent.firePropertiesChanged(
+                                new PropertiesEditionEvent(MessageMediatorPropertiesEditionPartImpl.this,
+                                        EsbViewsRepository.MessageMediator.Properties.description,
+                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                        description.getText()));
+                }
+            }
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(MessageMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.MessageMediator.Properties.description, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
-				}
-			}
+        });
+        EditingUtils.setID(description, EsbViewsRepository.MessageMediator.Properties.description);
+        EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
+        SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(
+                EsbViewsRepository.MessageMediator.Properties.description, EsbViewsRepository.SWT_KIND), null); // $NON-NLS-1$
+        // Start of user code for createDescriptionText
 
-		});
-		EditingUtils.setID(description, EsbViewsRepository.MessageMediator.Properties.description);
-		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.MessageMediator.Properties.description, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createDescriptionText
+        // End of user code
+        return parent;
+    }
 
-		// End of user code
-		return parent;
-	}
+    protected Composite createCommentsListMultiValuedEditor(Composite parent) {
+        commentsList = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
+        GridData commentsListData = new GridData(GridData.FILL_HORIZONTAL);
+        commentsListData.horizontalSpan = 2;
+        commentsList.setLayoutData(commentsListData);
+        EditingUtils.setID(commentsList, EsbViewsRepository.MessageMediator.Properties.commentsList);
+        EditingUtils.setEEFtype(commentsList, "eef::MultiValuedEditor::field"); //$NON-NLS-1$
+        editCommentsList = new Button(parent, SWT.NONE);
+        editCommentsList.setText(getDescription(EsbViewsRepository.MessageMediator.Properties.commentsList,
+                EsbMessages.MessageMediatorPropertiesEditionPart_CommentsListLabel));
+        GridData editCommentsListData = new GridData();
+        editCommentsList.setLayoutData(editCommentsListData);
+        editCommentsList.addSelectionListener(new SelectionAdapter() {
 
-	protected Composite createCommentsListMultiValuedEditor(Composite parent) {
-		commentsList = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
-		GridData commentsListData = new GridData(GridData.FILL_HORIZONTAL);
-		commentsListData.horizontalSpan = 2;
-		commentsList.setLayoutData(commentsListData);
-		EditingUtils.setID(commentsList, EsbViewsRepository.MessageMediator.Properties.commentsList);
-		EditingUtils.setEEFtype(commentsList, "eef::MultiValuedEditor::field"); //$NON-NLS-1$
-		editCommentsList = new Button(parent, SWT.NONE);
-		editCommentsList.setText(getDescription(EsbViewsRepository.MessageMediator.Properties.commentsList, EsbMessages.MessageMediatorPropertiesEditionPart_CommentsListLabel));
-		GridData editCommentsListData = new GridData();
-		editCommentsList.setLayoutData(editCommentsListData);
-		editCommentsList.addSelectionListener(new SelectionAdapter() {
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+             */
+            public void widgetSelected(SelectionEvent e) {
+                EEFFeatureEditorDialog dialog = new EEFFeatureEditorDialog(commentsList.getShell(), "MessageMediator", //$NON-NLS-1$
+                        new AdapterFactoryLabelProvider(adapterFactory), commentsListList, EsbPackage.eINSTANCE.getEsbElement_CommentsList().getEType(), null, false,
+                        true, null, null);
+                if (dialog.open() == Window.OK) {
+                    commentsListList = dialog.getResult();
+                    if (commentsListList == null) {
+                        commentsListList = new BasicEList();
+                    }
+                    commentsList.setText(commentsListList.toString());
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            MessageMediatorPropertiesEditionPartImpl.this,
+                            EsbViewsRepository.MessageMediator.Properties.commentsList, PropertiesEditionEvent.COMMIT,
+                            PropertiesEditionEvent.SET, null, new BasicEList(commentsListList)));
+                    setHasChanged(true);
+                }
+            }
+        });
+        EditingUtils.setID(editCommentsList, EsbViewsRepository.MessageMediator.Properties.commentsList);
+        EditingUtils.setEEFtype(editCommentsList, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
+        // Start of user code for createCommentsListMultiValuedEditor
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 */
-			public void widgetSelected(SelectionEvent e) {
-				EEFFeatureEditorDialog dialog = new EEFFeatureEditorDialog(
-						commentsList.getShell(), "MessageMediator", new AdapterFactoryLabelProvider(adapterFactory), //$NON-NLS-1$
-						commentsListList, EsbPackage.eINSTANCE.getEsbElement_CommentsList().getEType(), null,
-						false, true, 
-						null, null);
-				if (dialog.open() == Window.OK) {
-					commentsListList = dialog.getResult();
-					if (commentsListList == null) {
-						commentsListList = new BasicEList();
-					}
-					commentsList.setText(commentsListList.toString());
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(MessageMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.MessageMediator.Properties.commentsList, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new BasicEList(commentsListList)));
-					setHasChanged(true);
-				}
-			}
-		});
-		EditingUtils.setID(editCommentsList, EsbViewsRepository.MessageMediator.Properties.commentsList);
-		EditingUtils.setEEFtype(editCommentsList, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
-		// Start of user code for createCommentsListMultiValuedEditor
+        // End of user code
+        return parent;
+    }
 
-		// End of user code
-		return parent;
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+     * 
+     */
+    public void firePropertiesChanged(IPropertiesEditionEvent event) {
+        // Start of user code for tab synchronization
 
+        // End of user code
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
-	 */
-	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-		
-		// End of user code
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.MessageMediatorPropertiesEditionPart#getDescription()
+     * 
+     */
+    public String getDescription() {
+        return description.getText();
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.MessageMediatorPropertiesEditionPart#getDescription()
-	 * 
-	 */
-	public String getDescription() {
-		return description.getText();
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.MessageMediatorPropertiesEditionPart#setDescription(String
+     *      newValue)
+     * 
+     */
+    public void setDescription(String newValue) {
+        if (newValue != null) {
+            description.setText(newValue);
+        } else {
+            description.setText(""); //$NON-NLS-1$
+        }
+        boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.MessageMediator.Properties.description);
+        if (eefElementEditorReadOnlyState && description.isEnabled()) {
+            description.setEnabled(false);
+            description.setToolTipText(EsbMessages.MessageMediator_ReadOnly);
+        } else if (!eefElementEditorReadOnlyState && !description.isEnabled()) {
+            description.setEnabled(true);
+        }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.MessageMediatorPropertiesEditionPart#setDescription(String newValue)
-	 * 
-	 */
-	public void setDescription(String newValue) {
-		if (newValue != null) {
-			description.setText(newValue);
-		} else {
-			description.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.MessageMediator.Properties.description);
-		if (eefElementEditorReadOnlyState && description.isEnabled()) {
-			description.setEnabled(false);
-			description.setToolTipText(EsbMessages.MessageMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !description.isEnabled()) {
-			description.setEnabled(true);
-		}	
-		
-	}
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.MessageMediatorPropertiesEditionPart#getCommentsList()
-	 * 
-	 */
-	public EList getCommentsList() {
-		return commentsListList;
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.MessageMediatorPropertiesEditionPart#getCommentsList()
+     * 
+     */
+    public EList getCommentsList() {
+        return commentsListList;
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.MessageMediatorPropertiesEditionPart#setCommentsList(EList newValue)
-	 * 
-	 */
-	public void setCommentsList(EList newValue) {
-		commentsListList = newValue;
-		if (newValue != null) {
-			commentsList.setText(commentsListList.toString());
-		} else {
-			commentsList.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.MessageMediator.Properties.commentsList);
-		if (eefElementEditorReadOnlyState && commentsList.isEnabled()) {
-			commentsList.setEnabled(false);
-			commentsList.setToolTipText(EsbMessages.MessageMediator_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !commentsList.isEnabled()) {
-			commentsList.setEnabled(true);
-		}	
-		
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.MessageMediatorPropertiesEditionPart#setCommentsList(EList
+     *      newValue)
+     * 
+     */
+    public void setCommentsList(EList newValue) {
+        commentsListList = newValue;
+        if (newValue != null) {
+            commentsList.setText(commentsListList.toString());
+        } else {
+            commentsList.setText(""); //$NON-NLS-1$
+        }
+        boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.MessageMediator.Properties.commentsList);
+        if (eefElementEditorReadOnlyState && commentsList.isEnabled()) {
+            commentsList.setEnabled(false);
+            commentsList.setToolTipText(EsbMessages.MessageMediator_ReadOnly);
+        } else if (!eefElementEditorReadOnlyState && !commentsList.isEnabled()) {
+            commentsList.setEnabled(true);
+        }
 
-	public void addToCommentsList(Object newValue) {
-		commentsListList.add(newValue);
-		if (newValue != null) {
-			commentsList.setText(commentsListList.toString());
-		} else {
-			commentsList.setText(""); //$NON-NLS-1$
-		}
-	}
+    }
 
-	public void removeToCommentsList(Object newValue) {
-		commentsListList.remove(newValue);
-		if (newValue != null) {
-			commentsList.setText(commentsListList.toString());
-		} else {
-			commentsList.setText(""); //$NON-NLS-1$
-		}
-	}
+    public void addToCommentsList(Object newValue) {
+        commentsListList.add(newValue);
+        if (newValue != null) {
+            commentsList.setText(commentsListList.toString());
+        } else {
+            commentsList.setText(""); //$NON-NLS-1$
+        }
+    }
 
+    public void removeToCommentsList(Object newValue) {
+        commentsListList.remove(newValue);
+        if (newValue != null) {
+            commentsList.setText(commentsListList.toString());
+        } else {
+            commentsList.setText(""); //$NON-NLS-1$
+        }
+    }
 
+    /**
+     * {@inheritDoc}
+     *
+     * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+     * 
+     */
+    public String getTitle() {
+        return EsbMessages.MessageMediator_Part_Title;
+    }
 
+    // Start of user code additional methods
 
-
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
-	 */
-	public String getTitle() {
-		return EsbMessages.MessageMediator_Part_Title;
-	}
-
-	// Start of user code additional methods
-	
-	// End of user code
-
+    // End of user code
 
 }

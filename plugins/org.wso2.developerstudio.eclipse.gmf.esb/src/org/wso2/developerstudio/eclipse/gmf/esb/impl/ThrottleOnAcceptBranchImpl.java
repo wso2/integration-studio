@@ -28,8 +28,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ThrottleSequenceType;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottleOnAcceptBranchImpl#getSequenceType <em>Sequence Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottleOnAcceptBranchImpl#getSequenceKey <em>Sequence Key</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottleOnAcceptBranchImpl#getSequenceType <em>Sequence
+ * Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottleOnAcceptBranchImpl#getSequenceKey <em>Sequence
+ * Key</em>}</li>
  * </ul>
  *
  * @generated
@@ -39,6 +41,7 @@ public class ThrottleOnAcceptBranchImpl extends EObjectImpl implements ThrottleO
      * The default value of the '{@link #getSequenceType() <em>Sequence Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getSequenceType()
      * @generated
      * @ordered
@@ -49,6 +52,7 @@ public class ThrottleOnAcceptBranchImpl extends EObjectImpl implements ThrottleO
      * The cached value of the '{@link #getSequenceType() <em>Sequence Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getSequenceType()
      * @generated
      * @ordered
@@ -59,6 +63,7 @@ public class ThrottleOnAcceptBranchImpl extends EObjectImpl implements ThrottleO
      * The cached value of the '{@link #getSequenceKey() <em>Sequence Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #getSequenceKey()
      * @generated
      * @ordered
@@ -68,6 +73,7 @@ public class ThrottleOnAcceptBranchImpl extends EObjectImpl implements ThrottleO
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected ThrottleOnAcceptBranchImpl() {
@@ -77,6 +83,7 @@ public class ThrottleOnAcceptBranchImpl extends EObjectImpl implements ThrottleO
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -88,6 +95,7 @@ public class ThrottleOnAcceptBranchImpl extends EObjectImpl implements ThrottleO
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public ThrottleSequenceType getSequenceType() {
@@ -97,18 +105,21 @@ public class ThrottleOnAcceptBranchImpl extends EObjectImpl implements ThrottleO
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setSequenceType(ThrottleSequenceType newSequenceType) {
         ThrottleSequenceType oldSequenceType = sequenceType;
         sequenceType = newSequenceType == null ? SEQUENCE_TYPE_EDEFAULT : newSequenceType;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.THROTTLE_ON_ACCEPT_BRANCH__SEQUENCE_TYPE, oldSequenceType, sequenceType));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.THROTTLE_ON_ACCEPT_BRANCH__SEQUENCE_TYPE,
+                    oldSequenceType, sequenceType));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public RegistryKeyProperty getSequenceKey() {
@@ -118,14 +129,19 @@ public class ThrottleOnAcceptBranchImpl extends EObjectImpl implements ThrottleO
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public NotificationChain basicSetSequenceKey(RegistryKeyProperty newSequenceKey, NotificationChain msgs) {
         RegistryKeyProperty oldSequenceKey = sequenceKey;
         sequenceKey = newSequenceKey;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.THROTTLE_ON_ACCEPT_BRANCH__SEQUENCE_KEY, oldSequenceKey, newSequenceKey);
-            if (msgs == null) msgs = notification; else msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+                    EsbPackage.THROTTLE_ON_ACCEPT_BRANCH__SEQUENCE_KEY, oldSequenceKey, newSequenceKey);
+            if (msgs == null)
+                msgs = notification;
+            else
+                msgs.add(notification);
         }
         return msgs;
     }
@@ -133,33 +149,38 @@ public class ThrottleOnAcceptBranchImpl extends EObjectImpl implements ThrottleO
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setSequenceKey(RegistryKeyProperty newSequenceKey) {
         if (newSequenceKey != sequenceKey) {
             NotificationChain msgs = null;
             if (sequenceKey != null)
-                msgs = ((InternalEObject)sequenceKey).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.THROTTLE_ON_ACCEPT_BRANCH__SEQUENCE_KEY, null, msgs);
+                msgs = ((InternalEObject) sequenceKey).eInverseRemove(this,
+                        EOPPOSITE_FEATURE_BASE - EsbPackage.THROTTLE_ON_ACCEPT_BRANCH__SEQUENCE_KEY, null, msgs);
             if (newSequenceKey != null)
-                msgs = ((InternalEObject)newSequenceKey).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.THROTTLE_ON_ACCEPT_BRANCH__SEQUENCE_KEY, null, msgs);
+                msgs = ((InternalEObject) newSequenceKey).eInverseAdd(this,
+                        EOPPOSITE_FEATURE_BASE - EsbPackage.THROTTLE_ON_ACCEPT_BRANCH__SEQUENCE_KEY, null, msgs);
             msgs = basicSetSequenceKey(newSequenceKey, msgs);
-            if (msgs != null) msgs.dispatch();
-        }
-        else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.THROTTLE_ON_ACCEPT_BRANCH__SEQUENCE_KEY, newSequenceKey, newSequenceKey));
+            if (msgs != null)
+                msgs.dispatch();
+        } else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.THROTTLE_ON_ACCEPT_BRANCH__SEQUENCE_KEY,
+                    newSequenceKey, newSequenceKey));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-            case EsbPackage.THROTTLE_ON_ACCEPT_BRANCH__SEQUENCE_KEY:
-                return basicSetSequenceKey(null, msgs);
+        case EsbPackage.THROTTLE_ON_ACCEPT_BRANCH__SEQUENCE_KEY:
+            return basicSetSequenceKey(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -167,16 +188,17 @@ public class ThrottleOnAcceptBranchImpl extends EObjectImpl implements ThrottleO
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-            case EsbPackage.THROTTLE_ON_ACCEPT_BRANCH__SEQUENCE_TYPE:
-                return getSequenceType();
-            case EsbPackage.THROTTLE_ON_ACCEPT_BRANCH__SEQUENCE_KEY:
-                return getSequenceKey();
+        case EsbPackage.THROTTLE_ON_ACCEPT_BRANCH__SEQUENCE_TYPE:
+            return getSequenceType();
+        case EsbPackage.THROTTLE_ON_ACCEPT_BRANCH__SEQUENCE_KEY:
+            return getSequenceKey();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -184,18 +206,19 @@ public class ThrottleOnAcceptBranchImpl extends EObjectImpl implements ThrottleO
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-            case EsbPackage.THROTTLE_ON_ACCEPT_BRANCH__SEQUENCE_TYPE:
-                setSequenceType((ThrottleSequenceType)newValue);
-                return;
-            case EsbPackage.THROTTLE_ON_ACCEPT_BRANCH__SEQUENCE_KEY:
-                setSequenceKey((RegistryKeyProperty)newValue);
-                return;
+        case EsbPackage.THROTTLE_ON_ACCEPT_BRANCH__SEQUENCE_TYPE:
+            setSequenceType((ThrottleSequenceType) newValue);
+            return;
+        case EsbPackage.THROTTLE_ON_ACCEPT_BRANCH__SEQUENCE_KEY:
+            setSequenceKey((RegistryKeyProperty) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -203,18 +226,19 @@ public class ThrottleOnAcceptBranchImpl extends EObjectImpl implements ThrottleO
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-            case EsbPackage.THROTTLE_ON_ACCEPT_BRANCH__SEQUENCE_TYPE:
-                setSequenceType(SEQUENCE_TYPE_EDEFAULT);
-                return;
-            case EsbPackage.THROTTLE_ON_ACCEPT_BRANCH__SEQUENCE_KEY:
-                setSequenceKey((RegistryKeyProperty)null);
-                return;
+        case EsbPackage.THROTTLE_ON_ACCEPT_BRANCH__SEQUENCE_TYPE:
+            setSequenceType(SEQUENCE_TYPE_EDEFAULT);
+            return;
+        case EsbPackage.THROTTLE_ON_ACCEPT_BRANCH__SEQUENCE_KEY:
+            setSequenceKey((RegistryKeyProperty) null);
+            return;
         }
         super.eUnset(featureID);
     }
@@ -222,16 +246,17 @@ public class ThrottleOnAcceptBranchImpl extends EObjectImpl implements ThrottleO
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-            case EsbPackage.THROTTLE_ON_ACCEPT_BRANCH__SEQUENCE_TYPE:
-                return sequenceType != SEQUENCE_TYPE_EDEFAULT;
-            case EsbPackage.THROTTLE_ON_ACCEPT_BRANCH__SEQUENCE_KEY:
-                return sequenceKey != null;
+        case EsbPackage.THROTTLE_ON_ACCEPT_BRANCH__SEQUENCE_TYPE:
+            return sequenceType != SEQUENCE_TYPE_EDEFAULT;
+        case EsbPackage.THROTTLE_ON_ACCEPT_BRANCH__SEQUENCE_KEY:
+            return sequenceKey != null;
         }
         return super.eIsSet(featureID);
     }
@@ -239,12 +264,14 @@ public class ThrottleOnAcceptBranchImpl extends EObjectImpl implements ThrottleO
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public String toString() {
-        if (eIsProxy()) return super.toString();
+        if (eIsProxy())
+            return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (sequenceType: ");

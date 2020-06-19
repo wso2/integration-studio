@@ -3,8 +3,6 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.parts;
 
-
-
 // Start of user code for imports
 
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
@@ -17,24 +15,22 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
  */
 public interface ProxyServicePolicyPropertiesEditionPart {
 
+    // Start of user code for policyKey specific getters and setters declaration
+    public void setPolicyKey(RegistryKeyProperty registryKeyProperty);
 
+    public RegistryKeyProperty getPolicyKey();
+    // End of user code
 
-	// Start of user code for policyKey specific getters and setters declaration
-	public void setPolicyKey(RegistryKeyProperty registryKeyProperty);
-	
-	public RegistryKeyProperty getPolicyKey();
-	// End of user code
+    /**
+     * Returns the internationalized title text.
+     * 
+     * @return the internationalized title text.
+     * 
+     */
+    public String getTitle();
 
-	/**
-	 * Returns the internationalized title text.
-	 * 
-	 * @return the internationalized title text.
-	 * 
-	 */
-	public String getTitle();
+    // Start of user code for additional methods
 
-	// Start of user code for additional methods
-	
-	// End of user code
+    // End of user code
 
 }

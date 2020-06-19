@@ -991,8 +991,8 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
      * @generated NOT
      */
     protected Composite createOnRejectSequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-        filterOnRejectionSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "On Rejection",
-                true);
+        filterOnRejectionSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent,
+                "On Rejection", true);
         Control onRejectSequenceTypeLabel = createDescription(filterOnRejectionSubPropertiesGroup,
                 EsbViewsRepository.EntitlementMediator.Properties.onRejectSequenceType,
                 EsbMessages.EntitlementMediatorPropertiesEditionPart_OnRejectSequenceTypeLabel);
@@ -1028,7 +1028,8 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
 
         });
         onRejectSequenceType.setID(EsbViewsRepository.EntitlementMediator.Properties.onRejectSequenceType);
-        Control onRejectSequenceTypeHelp = FormUtils.createHelpButton(widgetFactory, filterOnRejectionSubPropertiesGroup,
+        Control onRejectSequenceTypeHelp = FormUtils.createHelpButton(widgetFactory,
+                filterOnRejectionSubPropertiesGroup,
                 propertiesEditionComponent.getHelpContent(
                         EsbViewsRepository.EntitlementMediator.Properties.onRejectSequenceType,
                         EsbViewsRepository.FORM_KIND),
@@ -1057,8 +1058,8 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
      * @generated NOT
      */
     protected Composite createOnAcceptSequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-        filterOnAcceptanceSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "On Acceptance",
-                true);
+        filterOnAcceptanceSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent,
+                "On Acceptance", true);
         Control onAcceptSequenceTypeLabel = createDescription(filterOnAcceptanceSubPropertiesGroup,
                 EsbViewsRepository.EntitlementMediator.Properties.onAcceptSequenceType,
                 EsbMessages.EntitlementMediatorPropertiesEditionPart_OnAcceptSequenceTypeLabel);
@@ -1094,7 +1095,8 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
 
         });
         onAcceptSequenceType.setID(EsbViewsRepository.EntitlementMediator.Properties.onAcceptSequenceType);
-        Control onAcceptSequenceTypeHelp = FormUtils.createHelpButton(widgetFactory, filterOnAcceptanceSubPropertiesGroup,
+        Control onAcceptSequenceTypeHelp = FormUtils.createHelpButton(widgetFactory,
+                filterOnAcceptanceSubPropertiesGroup,
                 propertiesEditionComponent.getHelpContent(
                         EsbViewsRepository.EntitlementMediator.Properties.onAcceptSequenceType,
                         EsbViewsRepository.FORM_KIND),
@@ -1188,8 +1190,8 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
      * @generated NOT
      */
     protected Composite createObligationsSequenceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-        filterObligationsSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Obligation",
-                true);
+        filterObligationsSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent,
+                "Obligation", true);
         Control obligationSequenceTypeLabel = createDescription(filterObligationsSubPropertiesGroup,
                 EsbViewsRepository.EntitlementMediator.Properties.obligationsSequenceType,
                 EsbMessages.EntitlementMediatorPropertiesEditionPart_ObligationsSequenceTypeLabel);
@@ -1225,7 +1227,8 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
 
         });
         obligationsSequenceType.setID(EsbViewsRepository.EntitlementMediator.Properties.obligationsSequenceType);
-        Control obligationSequenceTypeHelp = FormUtils.createHelpButton(widgetFactory, filterObligationsSubPropertiesGroup,
+        Control obligationSequenceTypeHelp = FormUtils.createHelpButton(widgetFactory,
+                filterObligationsSubPropertiesGroup,
                 propertiesEditionComponent.getHelpContent(
                         EsbViewsRepository.EntitlementMediator.Properties.obligationsSequenceType,
                         EsbViewsRepository.FORM_KIND),
@@ -2265,7 +2268,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
         EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
         epv.hideEntry(reverseElements, false);
         epv.hideEntry(commentListElements, false);
-        
+
         epv.showEntry(new Control[] { filterOnAcceptanceSubPropertiesGroup.getParent() }, false);
         epv.clearElements(new Composite[] { filterOnAcceptanceSubPropertiesGroup });
         epv.showEntry(new Control[] { filterOnRejectionSubPropertiesGroup.getParent() }, false);

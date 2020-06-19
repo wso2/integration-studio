@@ -71,9 +71,9 @@ public class LoadBalanceEndpointDeserializer extends AbstractEndpointDeserialize
                 || part instanceof EndpointDiagramEndpointCompartmentEditPart)
                         ? EsbElementTypes.LoadBalanceEndPoint_3656
                         : EsbElementTypes.LoadBalanceEndPoint_3613;
-        
-        
-        org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPoint visualEndPoint = (org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPoint) DeserializerUtils.createNode(part, endpointType);
+
+        org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPoint visualEndPoint = (org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPoint) DeserializerUtils
+                .createNode(part, endpointType);
         setElementToEdit(visualEndPoint);
 
         if (object instanceof org.apache.synapse.endpoints.SALoadbalanceEndpoint) {
@@ -104,14 +104,14 @@ public class LoadBalanceEndpointDeserializer extends AbstractEndpointDeserialize
         }
 
         executeSetValueCommand(LOAD_BALANCE_END_POINT__BUILD_MESSAGE, loadbalanceEndpoint.isBuildMessageAtt());
-        
+
         executeSetValueCommand(LOAD_BALANCE_END_POINT__FAILOVER, loadbalanceEndpoint.isFailover());
-        
+
         if (loadbalanceEndpoint.getAlgorithm() != null) {
             executeSetValueCommand(LOAD_BALANCE_END_POINT__ALGORITHM,
-                loadbalanceEndpoint.getAlgorithm().getClass().getName());
+                    loadbalanceEndpoint.getAlgorithm().getClass().getName());
         }
-        
+
         if (loadbalanceEndpoint.getChildren() != null && !loadbalanceEndpoint.getChildren().isEmpty()) {
 
             List<Endpoint> synpaseChildren = loadbalanceEndpoint.getChildren();
@@ -179,16 +179,16 @@ public class LoadBalanceEndpointDeserializer extends AbstractEndpointDeserialize
 
         if (endpoint.getAlgorithm() instanceof org.apache.synapse.endpoints.algorithms.RoundRobin) {
             loadEndpointPage.getEndpointAlgorithmn().select(0);
-            
+
         } else if (endpoint.getAlgorithm() instanceof org.apache.synapse.endpoints.algorithms.WeightedRRLCAlgorithm) {
             loadEndpointPage.getEndpointAlgorithmn().select(1);
-            
+
         } else if (endpoint.getAlgorithm() instanceof org.apache.synapse.endpoints.algorithms.WeightedRoundRobin) {
             loadEndpointPage.getEndpointAlgorithmn().select(2);
-            
+
         } else {
             loadEndpointPage.getEndpointAlgorithmn().select(0);
-            
+
         }
 
         if (endpoint.isFailover()) {
@@ -204,30 +204,29 @@ public class LoadBalanceEndpointDeserializer extends AbstractEndpointDeserialize
         }
 
         setTextValue(loadEndpointPage.getEP_Description(), endpoint.getDescription());
-        
+
         if (endpoint instanceof org.apache.synapse.endpoints.SALoadbalanceEndpoint) {
-            org.apache.synapse.endpoints.SALoadbalanceEndpoint saloadbalanceEndpoint = 
-                    (org.apache.synapse.endpoints.SALoadbalanceEndpoint) endpoint;
+            org.apache.synapse.endpoints.SALoadbalanceEndpoint saloadbalanceEndpoint = (org.apache.synapse.endpoints.SALoadbalanceEndpoint) endpoint;
             Long sessionTimeout = saloadbalanceEndpoint.getSessionTimeout();
             Dispatcher dispatcher = saloadbalanceEndpoint.getDispatcher();
-            
+
             if (dispatcher instanceof SoapSessionDispatcher) {
                 loadEndpointPage.getEndpointSessionType().select(2);
                 setTextValue(loadEndpointPage.getSessionTimeout(), sessionTimeout.toString());
-                
+
             } else if (dispatcher instanceof HttpSessionDispatcher) {
                 loadEndpointPage.getEndpointSessionType().select(1);
                 setTextValue(loadEndpointPage.getSessionTimeout(), sessionTimeout.toString());
-                
+
             } else if (dispatcher instanceof SimpleClientSessionDispatcher) {
                 loadEndpointPage.getEndpointSessionType().select(3);
                 setTextValue(loadEndpointPage.getSessionTimeout(), sessionTimeout.toString());
-                
+
             } else {
                 loadEndpointPage.getEndpointSessionType().select(0);
                 setTextValue(loadEndpointPage.getSessionTimeout(), "");
             }
-            
+
         } else {
             loadEndpointPage.getEndpointSessionType().select(0);
             setTextValue(loadEndpointPage.getSessionTimeout(), "");

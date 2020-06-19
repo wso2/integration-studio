@@ -15,15 +15,17 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getConditionType <em>Condition Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getRegex <em>Regex</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getPassOutputConnector <em>Pass Output Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getFailOutputConnector <em>Fail Output Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getXpath <em>Xpath</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getSource <em>Source</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getFilterContainer <em>Filter Container</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getConditionType <em>Condition Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getRegex <em>Regex</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getInputConnector <em>Input Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getOutputConnector <em>Output Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getPassOutputConnector <em>Pass Output
+ * Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getFailOutputConnector <em>Fail Output
+ * Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getXpath <em>Xpath</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getSource <em>Source</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getFilterContainer <em>Filter Container</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFilterMediator()
@@ -33,13 +35,15 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
 public interface FilterMediator extends Mediator {
     /**
      * Returns the value of the '<em><b>Condition Type</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediatorConditionType}.
+     * The literals are from the enumeration
+     * {@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediatorConditionType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Condition Type</em>' attribute isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Condition Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.FilterMediatorConditionType
      * @see #setConditionType(FilterMediatorConditionType)
@@ -50,9 +54,11 @@ public interface FilterMediator extends Mediator {
     FilterMediatorConditionType getConditionType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getConditionType <em>Condition Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getConditionType
+     * <em>Condition Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Condition Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.FilterMediatorConditionType
      * @see #getConditionType()
@@ -68,6 +74,7 @@ public interface FilterMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Source</em>' containment reference.
      * @see #setSource(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFilterMediator_Source()
@@ -77,9 +84,11 @@ public interface FilterMediator extends Mediator {
     NamespacedProperty getSource();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getSource <em>Source</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getSource <em>Source</em>}'
+     * containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Source</em>' containment reference.
      * @see #getSource()
      * @generated
@@ -94,6 +103,7 @@ public interface FilterMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Filter Container</em>' containment reference.
      * @see #setFilterContainer(FilterContainer)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFilterMediator_FilterContainer()
@@ -103,9 +113,11 @@ public interface FilterMediator extends Mediator {
     FilterContainer getFilterContainer();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getFilterContainer <em>Filter Container</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getFilterContainer
+     * <em>Filter Container</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Filter Container</em>' containment reference.
      * @see #getFilterContainer()
      * @generated
@@ -121,6 +133,7 @@ public interface FilterMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Regex</em>' attribute.
      * @see #setRegex(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFilterMediator_Regex()
@@ -130,9 +143,11 @@ public interface FilterMediator extends Mediator {
     String getRegex();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getRegex <em>Regex</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getRegex <em>Regex</em>}'
+     * attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Regex</em>' attribute.
      * @see #getRegex()
      * @generated
@@ -147,6 +162,7 @@ public interface FilterMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Xpath</em>' containment reference.
      * @see #setXpath(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFilterMediator_Xpath()
@@ -156,9 +172,11 @@ public interface FilterMediator extends Mediator {
     NamespacedProperty getXpath();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getXpath <em>Xpath</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getXpath <em>Xpath</em>}'
+     * containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Xpath</em>' containment reference.
      * @see #getXpath()
      * @generated
@@ -173,6 +191,7 @@ public interface FilterMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(FilterMediatorInputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFilterMediator_InputConnector()
@@ -182,9 +201,11 @@ public interface FilterMediator extends Mediator {
     FilterMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getInputConnector <em>Input
+     * Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
      * @see #getInputConnector()
      * @generated
@@ -199,6 +220,7 @@ public interface FilterMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(FilterMediatorOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFilterMediator_OutputConnector()
@@ -208,9 +230,11 @@ public interface FilterMediator extends Mediator {
     FilterMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getOutputConnector
+     * <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
      * @see #getOutputConnector()
      * @generated
@@ -225,6 +249,7 @@ public interface FilterMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Pass Output Connector</em>' containment reference.
      * @see #setPassOutputConnector(FilterMediatorPassOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFilterMediator_PassOutputConnector()
@@ -234,9 +259,11 @@ public interface FilterMediator extends Mediator {
     FilterMediatorPassOutputConnector getPassOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getPassOutputConnector <em>Pass Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getPassOutputConnector
+     * <em>Pass Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Pass Output Connector</em>' containment reference.
      * @see #getPassOutputConnector()
      * @generated
@@ -251,6 +278,7 @@ public interface FilterMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Fail Output Connector</em>' containment reference.
      * @see #setFailOutputConnector(FilterMediatorFailOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFilterMediator_FailOutputConnector()
@@ -260,9 +288,11 @@ public interface FilterMediator extends Mediator {
     FilterMediatorFailOutputConnector getFailOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getFailOutputConnector <em>Fail Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getFailOutputConnector
+     * <em>Fail Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Fail Output Connector</em>' containment reference.
      * @see #getFailOutputConnector()
      * @generated

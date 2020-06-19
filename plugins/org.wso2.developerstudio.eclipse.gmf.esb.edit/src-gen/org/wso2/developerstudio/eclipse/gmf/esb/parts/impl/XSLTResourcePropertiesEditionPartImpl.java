@@ -3,7 +3,6 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.parts.impl;
 
-
 // Start of user code for imports
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 
@@ -58,223 +57,224 @@ import java.util.ArrayList;
  * 
  * 
  */
-public class XSLTResourcePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, XSLTResourcePropertiesEditionPart {
+public class XSLTResourcePropertiesEditionPartImpl extends CompositePropertiesEditionPart
+        implements ISWTPropertiesEditionPart, XSLTResourcePropertiesEditionPart {
 
-	protected Text location;
-	// Start of user code  for resourceRegistryKey widgets declarations
-	protected Text resourceRegistryKeyText;
-	protected RegistryKeyProperty registryKey;
+    protected Text location;
+    // Start of user code for resourceRegistryKey widgets declarations
+    protected Text resourceRegistryKeyText;
+    protected RegistryKeyProperty registryKey;
     protected Control[] resourceRegistryKeyElements;
     protected Control[] locationElements;
-    protected Group propertiesGroup; 
-	// End of user code
+    protected Group propertiesGroup;
+    // End of user code
 
+    /**
+     * Default constructor
+     * 
+     * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+     * 
+     */
+    public XSLTResourcePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
+        super(editionComponent);
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+     *      createFigure(org.eclipse.swt.widgets.Composite)
+     * 
+     */
+    public Composite createFigure(final Composite parent) {
+        view = new Composite(parent, SWT.NONE);
+        GridLayout layout = new GridLayout();
+        layout.numColumns = 3;
+        view.setLayout(layout);
+        createControls(view);
+        return view;
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+     *      createControls(org.eclipse.swt.widgets.Composite)
+     * 
+     */
+    public void createControls(Composite view) {
+        CompositionSequence xSLTResourceStep = new BindingCompositionSequence(propertiesEditionComponent);
+        CompositionStep propertiesStep = xSLTResourceStep.addStep(EsbViewsRepository.XSLTResource.Properties.class);
+        propertiesStep.addStep(EsbViewsRepository.XSLTResource.Properties.location);
+        propertiesStep.addStep(EsbViewsRepository.XSLTResource.Properties.resourceRegistryKey);
 
-	/**
-	 * Default constructor
-	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
-	 */
-	public XSLTResourcePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-	}
+        composer = new PartComposer(xSLTResourceStep) {
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
-	 * 			createFigure(org.eclipse.swt.widgets.Composite)
-	 * 
-	 */
-	public Composite createFigure(final Composite parent) {
-		view = new Composite(parent, SWT.NONE);
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 3;
-		view.setLayout(layout);
-		createControls(view);
-		return view;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
-	 * 			createControls(org.eclipse.swt.widgets.Composite)
-	 * 
-	 */
-	public void createControls(Composite view) { 
-		CompositionSequence xSLTResourceStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep propertiesStep = xSLTResourceStep.addStep(EsbViewsRepository.XSLTResource.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.XSLTResource.Properties.location);
-		propertiesStep.addStep(EsbViewsRepository.XSLTResource.Properties.resourceRegistryKey);
-		
-		
-		composer = new PartComposer(xSLTResourceStep) {
-
-			@Override
-			public Composite addToPart(Composite parent, Object key) {
-				if (key == EsbViewsRepository.XSLTResource.Properties.class) {
-					return createPropertiesGroup(parent);
-				}
-				if (key == EsbViewsRepository.XSLTResource.Properties.location) {
-					return createLocationText(parent);
-				}
-				// Start of user code for resourceRegistryKey addToPart creation
-			    if (key == EsbViewsRepository.XSLTResource.Properties.resourceRegistryKey) {
+            @Override
+            public Composite addToPart(Composite parent, Object key) {
+                if (key == EsbViewsRepository.XSLTResource.Properties.class) {
+                    return createPropertiesGroup(parent);
+                }
+                if (key == EsbViewsRepository.XSLTResource.Properties.location) {
+                    return createLocationText(parent);
+                }
+                // Start of user code for resourceRegistryKey addToPart creation
+                if (key == EsbViewsRepository.XSLTResource.Properties.resourceRegistryKey) {
                     return createRegistryKeyText(parent);
                 }
-				// End of user code
-				return parent;
-			}
-		};
-		composer.compose(view);
-	}
+                // End of user code
+                return parent;
+            }
+        };
+        composer.compose(view);
+    }
 
-	/**
+    /**
      * @generated NOT
      */
-	protected Composite createPropertiesGroup(Composite parent) {
-		propertiesGroup = new Group(parent, SWT.NONE);
-		propertiesGroup.setText(EsbMessages.XSLTResourcePropertiesEditionPart_PropertiesGroupLabel);
-		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesGroupData.horizontalSpan = 3;
-		propertiesGroup.setLayoutData(propertiesGroupData);
-		GridLayout propertiesGroupLayout = new GridLayout();
-		propertiesGroupLayout.numColumns = 3;
-		propertiesGroup.setLayout(propertiesGroupLayout);
-		return propertiesGroup;
-	}
+    protected Composite createPropertiesGroup(Composite parent) {
+        propertiesGroup = new Group(parent, SWT.NONE);
+        propertiesGroup.setText(EsbMessages.XSLTResourcePropertiesEditionPart_PropertiesGroupLabel);
+        GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
+        propertiesGroupData.horizontalSpan = 3;
+        propertiesGroup.setLayoutData(propertiesGroupData);
+        GridLayout propertiesGroupLayout = new GridLayout();
+        propertiesGroupLayout.numColumns = 3;
+        propertiesGroup.setLayout(propertiesGroupLayout);
+        return propertiesGroup;
+    }
 
-	/**
+    /**
      * @generated NOT
      */
-	protected Composite createLocationText(Composite parent) {
-		Control locationTextLabel = createDescription(parent, EsbViewsRepository.XSLTResource.Properties.location, EsbMessages.XSLTResourcePropertiesEditionPart_LocationLabel);
-		location = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		GridData locationData = new GridData(GridData.FILL_HORIZONTAL);
-		location.setLayoutData(locationData);
-		location.addFocusListener(new FocusAdapter() {
+    protected Composite createLocationText(Composite parent) {
+        Control locationTextLabel = createDescription(parent, EsbViewsRepository.XSLTResource.Properties.location,
+                EsbMessages.XSLTResourcePropertiesEditionPart_LocationLabel);
+        location = SWTUtils.createScrollableText(parent, SWT.BORDER);
+        GridData locationData = new GridData(GridData.FILL_HORIZONTAL);
+        location.setLayoutData(locationData);
+        location.addFocusListener(new FocusAdapter() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(XSLTResourcePropertiesEditionPartImpl.this, EsbViewsRepository.XSLTResource.Properties.location, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, location.getText()));
-			}
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void focusLost(FocusEvent e) {
+                if (propertiesEditionComponent != null)
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(XSLTResourcePropertiesEditionPartImpl.this,
+                                    EsbViewsRepository.XSLTResource.Properties.location, PropertiesEditionEvent.COMMIT,
+                                    PropertiesEditionEvent.SET, null, location.getText()));
+            }
 
-		});
-		location.addKeyListener(new KeyAdapter() {
+        });
+        location.addKeyListener(new KeyAdapter() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyReleased(KeyEvent e) {
-				if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(XSLTResourcePropertiesEditionPartImpl.this, EsbViewsRepository.XSLTResource.Properties.location, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, location.getText()));
-				}
-			}
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    if (propertiesEditionComponent != null)
+                        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                                XSLTResourcePropertiesEditionPartImpl.this,
+                                EsbViewsRepository.XSLTResource.Properties.location, PropertiesEditionEvent.COMMIT,
+                                PropertiesEditionEvent.SET, null, location.getText()));
+                }
+            }
 
-		});
-		EditingUtils.setID(location, EsbViewsRepository.XSLTResource.Properties.location);
-		EditingUtils.setEEFtype(location, "eef::Text"); //$NON-NLS-1$
-		Control locationHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.XSLTResource.Properties.location, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createLocationText
-		locationElements = new Control [] {locationTextLabel, location, locationHelp};
-		// End of user code
-		return parent;
-	}
+        });
+        EditingUtils.setID(location, EsbViewsRepository.XSLTResource.Properties.location);
+        EditingUtils.setEEFtype(location, "eef::Text"); //$NON-NLS-1$
+        Control locationHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(
+                EsbViewsRepository.XSLTResource.Properties.location, EsbViewsRepository.SWT_KIND), null); // $NON-NLS-1$
+        // Start of user code for createLocationText
+        locationElements = new Control[] { locationTextLabel, location, locationHelp };
+        // End of user code
+        return parent;
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+     * 
+     */
+    public void firePropertiesChanged(IPropertiesEditionEvent event) {
+        // Start of user code for tab synchronization
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
-	 */
-	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-		
-		// End of user code
-	}
+        // End of user code
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.XSLTResourcePropertiesEditionPart#getLocation()
-	 * 
-	 */
-	public String getLocation() {
-		return location.getText();
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.XSLTResourcePropertiesEditionPart#getLocation()
+     * 
+     */
+    public String getLocation() {
+        return location.getText();
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.XSLTResourcePropertiesEditionPart#setLocation(String newValue)
-	 * 
-	 */
-	public void setLocation(String newValue) {
-		if (newValue != null) {
-			location.setText(newValue);
-		} else {
-			location.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.XSLTResource.Properties.location);
-		if (eefElementEditorReadOnlyState && location.isEnabled()) {
-			location.setEnabled(false);
-			location.setToolTipText(EsbMessages.XSLTResource_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !location.isEnabled()) {
-			location.setEnabled(true);
-		}	
-		
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.XSLTResourcePropertiesEditionPart#setLocation(String
+     *      newValue)
+     * 
+     */
+    public void setLocation(String newValue) {
+        if (newValue != null) {
+            location.setText(newValue);
+        } else {
+            location.setText(""); //$NON-NLS-1$
+        }
+        boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.XSLTResource.Properties.location);
+        if (eefElementEditorReadOnlyState && location.isEnabled()) {
+            location.setEnabled(false);
+            location.setToolTipText(EsbMessages.XSLTResource_ReadOnly);
+        } else if (!eefElementEditorReadOnlyState && !location.isEnabled()) {
+            location.setEnabled(true);
+        }
 
+    }
 
+    // Start of user code for resourceRegistryKey specific getters and setters implementation
+    @Override
+    public RegistryKeyProperty getResourceRegistryKey() {
+        return registryKey;
+    }
 
+    @Override
+    public void setResourceRegistryKey(RegistryKeyProperty regKey) {
+        if (regKey != null) {
+            resourceRegistryKeyText.setText(regKey.getKeyValue());
+            registryKey = regKey;
+        }
+    }
+    // End of user code
 
+    /**
+     * {@inheritDoc}
+     *
+     * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+     * 
+     */
+    public String getTitle() {
+        return EsbMessages.XSLTResource_Part_Title;
+    }
 
-
-	// Start of user code for resourceRegistryKey specific getters and setters implementation
-	   @Override
-       public RegistryKeyProperty getResourceRegistryKey() {
-           return registryKey;
-       }
-
-       @Override
-       public void setResourceRegistryKey(RegistryKeyProperty regKey) {
-           if (regKey != null) {
-               resourceRegistryKeyText.setText(regKey.getKeyValue());
-               registryKey = regKey;
-           }
-       }
-	// End of user code
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
-	 */
-	public String getTitle() {
-		return EsbMessages.XSLTResource_Part_Title;
-	}
-
-	// Start of user code additional methods
-	/**
+    // Start of user code additional methods
+    /**
      * @generated NOT
      */
     protected Composite createRegistryKeyText(Composite parent) {
@@ -285,7 +285,7 @@ public class XSLTResourcePropertiesEditionPartImpl extends CompositePropertiesEd
         resourceRegistryKeyText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         GridData propertyValueData = new GridData(GridData.FILL_HORIZONTAL);
         resourceRegistryKeyText.setLayoutData(propertyValueData);
-        if(registryKey==null) {
+        if (registryKey == null) {
             registryKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         }
         resourceRegistryKeyText.addFocusListener(new FocusAdapter() {
@@ -299,10 +299,10 @@ public class XSLTResourcePropertiesEditionPartImpl extends CompositePropertiesEd
                 if (propertiesEditionComponent != null) {
                     propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
                             XSLTResourcePropertiesEditionPartImpl.this,
-                            EsbViewsRepository.XSLTResource.Properties.resourceRegistryKey, PropertiesEditionEvent.COMMIT,
-                            PropertiesEditionEvent.SET, null, getResourceRegistryKey()));
-                    propertiesEditionComponent
-                            .firePropertiesChanged(new PropertiesEditionEvent(XSLTResourcePropertiesEditionPartImpl.this,
+                            EsbViewsRepository.XSLTResource.Properties.resourceRegistryKey,
+                            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getResourceRegistryKey()));
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(XSLTResourcePropertiesEditionPartImpl.this,
                                     EsbViewsRepository.XSLTResource.Properties.resourceRegistryKey,
                                     PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST, null,
                                     getResourceRegistryKey()));
@@ -337,15 +337,17 @@ public class XSLTResourcePropertiesEditionPartImpl extends CompositePropertiesEd
 
                     propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
                             XSLTResourcePropertiesEditionPartImpl.this,
-                            EsbViewsRepository.XSLTResource.Properties.resourceRegistryKey, PropertiesEditionEvent.COMMIT,
-                            PropertiesEditionEvent.SET, null, getResourceRegistryKey()));
+                            EsbViewsRepository.XSLTResource.Properties.resourceRegistryKey,
+                            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getResourceRegistryKey()));
                 }
             }
         });
         EditingUtils.setID(resourceRegistryKeyText, EsbViewsRepository.XSLTResource.Properties.resourceRegistryKey);
         EditingUtils.setEEFtype(resourceRegistryKeyText, "eef::Text"); //$NON-NLS-1$
-        Control propertyExpressionHelp = SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(
-                EsbViewsRepository.XSLTResource.Properties.resourceRegistryKey, EsbViewsRepository.FORM_KIND), null); // $NON-NLS-1$
+        Control propertyExpressionHelp = SWTUtils.createHelpButton(parent,
+                propertiesEditionComponent.getHelpContent(
+                        EsbViewsRepository.XSLTResource.Properties.resourceRegistryKey, EsbViewsRepository.FORM_KIND),
+                null); // $NON-NLS-1$
         // Start of user code for createPropertyValueText
         resourceRegistryKeyElements = new Control[] { registryTextLabel, resourceRegistryKeyText,
                 propertyExpressionHelp };// mouse
@@ -378,7 +380,7 @@ public class XSLTResourcePropertiesEditionPartImpl extends CompositePropertiesEd
         });
         return parent;
     }
-    
+
     @Override
     public void refresh() {
         super.refresh();
@@ -394,7 +396,6 @@ public class XSLTResourcePropertiesEditionPartImpl extends CompositePropertiesEd
         view.layout(true, true);
     }
 
-        // End of user code
-
+    // End of user code
 
 }

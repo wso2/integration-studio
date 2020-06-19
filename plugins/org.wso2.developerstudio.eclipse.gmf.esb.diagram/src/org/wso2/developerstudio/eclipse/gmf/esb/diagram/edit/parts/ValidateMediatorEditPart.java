@@ -408,7 +408,7 @@ public class ValidateMediatorEditPart extends SingleCompartmentComplexFiguredAbs
         }
         super.notifyChanged(notification);
     }
-    
+
     /**
      * @generated NOT
      */

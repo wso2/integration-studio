@@ -22,6 +22,7 @@ public class AutoscaleInMediatorImpl extends MediatorImpl implements AutoscaleIn
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected AutoscaleInMediatorImpl() {
@@ -31,6 +32,7 @@ public class AutoscaleInMediatorImpl extends MediatorImpl implements AutoscaleIn
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 

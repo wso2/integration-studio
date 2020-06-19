@@ -32,6 +32,7 @@ public class CallMediatorEndpointOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected CallMediatorEndpointOutputConnectorImpl() {
@@ -41,6 +42,7 @@ public class CallMediatorEndpointOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

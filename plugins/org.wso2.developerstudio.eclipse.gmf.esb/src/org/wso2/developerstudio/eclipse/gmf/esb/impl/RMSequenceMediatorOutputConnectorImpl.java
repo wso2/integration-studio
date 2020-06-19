@@ -23,6 +23,7 @@ public class RMSequenceMediatorOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected RMSequenceMediatorOutputConnectorImpl() {
@@ -32,6 +33,7 @@ public class RMSequenceMediatorOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

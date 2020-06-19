@@ -17,8 +17,8 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ParentEndPoint#getChildren <em>Children</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ParentEndPoint#getName <em>Name</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ParentEndPoint#getChildren <em>Children</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ParentEndPoint#getName <em>Name</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getParentEndPoint()
@@ -35,6 +35,7 @@ public interface ParentEndPoint extends EndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Children</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getParentEndPoint_Children()
      * @model containment="true"
@@ -50,6 +51,7 @@ public interface ParentEndPoint extends EndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getParentEndPoint_Name()
@@ -59,9 +61,11 @@ public interface ParentEndPoint extends EndPoint {
     String getName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ParentEndPoint#getName <em>Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ParentEndPoint#getName <em>Name</em>}'
+     * attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Name</em>' attribute.
      * @see #getName()
      * @generated

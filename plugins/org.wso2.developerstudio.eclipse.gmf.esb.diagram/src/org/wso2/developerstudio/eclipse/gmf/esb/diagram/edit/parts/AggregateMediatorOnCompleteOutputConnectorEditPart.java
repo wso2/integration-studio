@@ -117,16 +117,16 @@ public class AggregateMediatorOnCompleteOutputConnectorEditPart extends Addition
      * }
      * 
      *//**
-             * @generated NOT
-             */
+        * @generated NOT
+        */
     /*
      * protected IFigure createNodeShapeForward() {
      * return primaryShapeForward = new EastPointerFigure();
      * }
      * 
      *//**
-             * @generated NOT
-             */
+        * @generated NOT
+        */
     /*
      * public EastPointerFigure getPrimaryShapeForward() {
      * return (EastPointerFigure) primaryShapeForward;

@@ -25,6 +25,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.XSLTFeature;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTFeature} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class XSLTFeatureItemProvider extends AbstractBooleanFeatureItemProvider {
@@ -32,6 +33,7 @@ public class XSLTFeatureItemProvider extends AbstractBooleanFeatureItemProvider 
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public XSLTFeatureItemProvider(AdapterFactory adapterFactory) {
@@ -42,6 +44,7 @@ public class XSLTFeatureItemProvider extends AbstractBooleanFeatureItemProvider 
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -58,6 +61,7 @@ public class XSLTFeatureItemProvider extends AbstractBooleanFeatureItemProvider 
      * This returns XSLTFeature.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -70,15 +74,15 @@ public class XSLTFeatureItemProvider extends AbstractBooleanFeatureItemProvider 
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((XSLTFeature)object).getFeatureName();
-        return label == null || label.length() == 0 ?
-            getString("_UI_XSLTFeature_type") :
-            getString("_UI_XSLTFeature_type") + " " + label;
+        String label = ((XSLTFeature) object).getFeatureName();
+        return label == null || label.length() == 0 ? getString("_UI_XSLTFeature_type")
+                : getString("_UI_XSLTFeature_type") + " " + label;
     }
 
     /**
@@ -86,6 +90,7 @@ public class XSLTFeatureItemProvider extends AbstractBooleanFeatureItemProvider 
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 
@@ -100,6 +105,7 @@ public class XSLTFeatureItemProvider extends AbstractBooleanFeatureItemProvider 
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 

@@ -458,22 +458,24 @@ public class InboundEndpointDeserializer
                 if (parameterType.isMatchedWithParameterName(paramEntry.getKey())) {
                     if (parameterType.canHoldKeyValue()) {
                         if (ParameterKeyValueType.VALUE.equals(type)) {
-                            
+
                             // The following checks are to persist the values set under different broker types
                             if (paramEntry.getKey().equals(InboundEndpointConstants.JMS_JAVA_NAMING_FACTORY_INITIAL)) {
-                                if (paramEntry.getValue().toLowerCase().contains(InboundEndpointConstants.JMS_BROKER_TYPE_IDENTIFIER_ACTIVEMQ)) {
-                                    executeSetValueCommand(
-                                            INBOUND_ENDPOINT__TRANSPORT_JMS_BROKER_TYPE, JMSBrokerType.ACTIVE_MQ);
+                                if (paramEntry.getValue().toLowerCase()
+                                        .contains(InboundEndpointConstants.JMS_BROKER_TYPE_IDENTIFIER_ACTIVEMQ)) {
+                                    executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_BROKER_TYPE,
+                                            JMSBrokerType.ACTIVE_MQ);
                                 }
                             }
-                            
+
                             if (paramEntry.getKey().equals(InboundEndpointConstants.JMS_JAVA_NAMING_FACTORY_INITIAL)) {
-                                if (paramEntry.getValue().toLowerCase().contains(InboundEndpointConstants.JMS_BROKER_TYPE_IDENTIFIER_WSO2MB)) {
-                                    executeSetValueCommand(
-                                            INBOUND_ENDPOINT__TRANSPORT_JMS_BROKER_TYPE, JMSBrokerType.WSO2_BROKER_PROFILE);
+                                if (paramEntry.getValue().toLowerCase()
+                                        .contains(InboundEndpointConstants.JMS_BROKER_TYPE_IDENTIFIER_WSO2MB)) {
+                                    executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_BROKER_TYPE,
+                                            JMSBrokerType.WSO2_BROKER_PROFILE);
                                 }
                             }
-                            
+
                             executeSetValueCommand(parameterType.getEAttributeValue(), paramEntry.getValue());
                         } else if (ParameterKeyValueType.KEY.equals(type)) {
                             executeSetValueCommand(parameterType.getEAttributeValue(),

@@ -22,6 +22,7 @@ public class MergeNodeFirstInputConnectorImpl extends InputConnectorImpl impleme
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected MergeNodeFirstInputConnectorImpl() {
@@ -31,6 +32,7 @@ public class MergeNodeFirstInputConnectorImpl extends InputConnectorImpl impleme
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
 

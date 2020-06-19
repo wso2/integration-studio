@@ -78,8 +78,8 @@ public class FaultMediatorTransformer extends AbstractEsbNodeTransformer {
         }
     }
 
-    public static org.apache.synapse.mediators.transform.FaultMediator createFaultMediator(EsbNode subject, boolean isForValidation)
-            throws JaxenException, URISyntaxException {
+    public static org.apache.synapse.mediators.transform.FaultMediator createFaultMediator(EsbNode subject,
+            boolean isForValidation) throws JaxenException, URISyntaxException {
         // Check subject.
         Assert.isTrue(subject instanceof FaultMediator, "Invalid subject.");
         FaultMediator visualFault = (FaultMediator) subject;
@@ -175,11 +175,11 @@ public class FaultMediatorTransformer extends AbstractEsbNodeTransformer {
 
                 if (visualFault.getFaultCodeType().equals(FaultCodeType.EXPRESSION)) {
                     SynapseXPath codeTypeExpression;
-                    if(!isForValidation && StringUtils.isEmpty(visualFault.getFaultCodeExpression().getPropertyValue())) {
+                    if (!isForValidation
+                            && StringUtils.isEmpty(visualFault.getFaultCodeExpression().getPropertyValue())) {
                         // Fill the XPath with a default values, so that we can use synapse serializer
                         codeTypeExpression = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
-                    }
-                    else {
+                    } else {
                         codeTypeExpression = new SynapseXPath(visualFault.getFaultCodeExpression().getPropertyValue());
                     }
                     for (int i = 0; i < visualFault.getFaultCodeExpression().getNamespaces().keySet().size(); ++i) {
@@ -215,11 +215,11 @@ public class FaultMediatorTransformer extends AbstractEsbNodeTransformer {
                     break;
                 case EXPRESSION:
                     SynapseXPath reasonExpression;
-                    if(!isForValidation && StringUtils.isEmpty(visualFault.getFaultReasonExpression().getPropertyValue())) {
+                    if (!isForValidation
+                            && StringUtils.isEmpty(visualFault.getFaultReasonExpression().getPropertyValue())) {
                         // Fill the XPath with a default values, so that we can use synapse serializer
                         reasonExpression = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
-                    }
-                    else {
+                    } else {
                         reasonExpression = new SynapseXPath(visualFault.getFaultReasonExpression().getPropertyValue());
                     }
                     for (int i = 0; i < visualFault.getFaultReasonExpression().getNamespaces().keySet().size(); ++i) {
@@ -238,11 +238,11 @@ public class FaultMediatorTransformer extends AbstractEsbNodeTransformer {
                     break;
                 case EXPRESSION:
                     SynapseXPath detailExpression;
-                    if(!isForValidation && StringUtils.isEmpty(visualFault.getFaultDetailExpression().getPropertyValue())) {
+                    if (!isForValidation
+                            && StringUtils.isEmpty(visualFault.getFaultDetailExpression().getPropertyValue())) {
                         // Fill the XPath with a default values, so that we can use synapse serializer
                         detailExpression = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
-                    }
-                    else {
+                    } else {
                         detailExpression = new SynapseXPath(visualFault.getFaultDetailExpression().getPropertyValue());
                     }
                     for (int i = 0; i < visualFault.getFaultDetailExpression().getNamespaces().keySet().size(); ++i) {
@@ -270,11 +270,11 @@ public class FaultMediatorTransformer extends AbstractEsbNodeTransformer {
                     break;
                 case EXPRESSION:
                     SynapseXPath reasonExpression;
-                    if(!isForValidation && StringUtils.isEmpty(visualFault.getFaultReasonExpression().getPropertyValue())) {
+                    if (!isForValidation
+                            && StringUtils.isEmpty(visualFault.getFaultReasonExpression().getPropertyValue())) {
                         // Fill the XPath with a default values, so that we can use synapse serializer
                         reasonExpression = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
-                    }
-                    else {
+                    } else {
                         reasonExpression = new SynapseXPath(visualFault.getFaultReasonExpression().getPropertyValue());
                     }
                     for (int i = 0; i < visualFault.getFaultReasonExpression().getNamespaces().keySet().size(); ++i) {
@@ -294,11 +294,11 @@ public class FaultMediatorTransformer extends AbstractEsbNodeTransformer {
                     break;
                 case EXPRESSION:
                     SynapseXPath detailExpression;
-                    if(!isForValidation && StringUtils.isEmpty(visualFault.getFaultDetailExpression().getPropertyValue())) {
+                    if (!isForValidation
+                            && StringUtils.isEmpty(visualFault.getFaultDetailExpression().getPropertyValue())) {
                         // Fill the XPath with a default values, so that we can use synapse serializer
                         detailExpression = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
-                    }
-                    else {
+                    } else {
                         detailExpression = new SynapseXPath(visualFault.getFaultDetailExpression().getPropertyValue());
                     }
                     for (int i = 0; i < visualFault.getFaultDetailExpression().getNamespaces().keySet().size(); ++i) {

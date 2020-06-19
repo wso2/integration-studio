@@ -95,8 +95,9 @@ public class ForEachMediatorItemSemanticEditPolicy extends EsbBaseItemSemanticEd
                     }
                 }
                 cmd.add(new DestroyElementCommand(
-                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned: true
-                // don't need explicit deletion of node as parent's view deletion would clean child views as well 
+                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned:
+                                                                                                   // true
+                // don't need explicit deletion of node as parent's view deletion would clean child views as well
                 // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
                 break;
             case ForEachMediatorOutputConnectorEditPart.VISUAL_ID:
@@ -110,8 +111,9 @@ public class ForEachMediatorItemSemanticEditPolicy extends EsbBaseItemSemanticEd
                     }
                 }
                 cmd.add(new DestroyElementCommand(
-                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned: true
-                // don't need explicit deletion of node as parent's view deletion would clean child views as well 
+                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned:
+                                                                                                   // true
+                // don't need explicit deletion of node as parent's view deletion would clean child views as well
                 // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
                 break;
             case ForEachMediatorTargetOutputConnectorEditPart.VISUAL_ID:
@@ -125,14 +127,16 @@ public class ForEachMediatorItemSemanticEditPolicy extends EsbBaseItemSemanticEd
                     }
                 }
                 cmd.add(new DestroyElementCommand(
-                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned: true
-                // don't need explicit deletion of node as parent's view deletion would clean child views as well 
+                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned:
+                                                                                                   // true
+                // don't need explicit deletion of node as parent's view deletion would clean child views as well
                 // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
                 break;
             case MediatorFlow30EditPart.VISUAL_ID:
                 cmd.add(new DestroyElementCommand(
-                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned: true
-                // don't need explicit deletion of node as parent's view deletion would clean child views as well 
+                        new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned:
+                                                                                                   // true
+                // don't need explicit deletion of node as parent's view deletion would clean child views as well
                 // cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
                 break;
             }

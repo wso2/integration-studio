@@ -23,6 +23,7 @@ public class URLRewriteMediatorOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected URLRewriteMediatorOutputConnectorImpl() {
@@ -32,6 +33,7 @@ public class URLRewriteMediatorOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

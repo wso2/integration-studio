@@ -126,7 +126,7 @@ public class CallTemplateMediatorTransformer extends AbstractEsbNodeTransformer 
             } else {
                 invokeMediator.getpName2ExpressionMap().put(parameterName, new Value(param.getParameterValue()));
             }
-            
+
         }
         return invokeMediator;
     }

@@ -212,24 +212,24 @@ public class EsbGraphicalShapeWithLabel extends RoundedRectangle {
         GridData constraintMainImageRectangle = new GridData();
         constraintMainImageRectangle.verticalAlignment = GridData.BEGINNING;
         constraintMainImageRectangle.verticalSpan = 1;
-        
+
         mainImageRectangle = new RoundedRectangle();
         mainImageRectangle.setCornerDimensions(new Dimension(8, 8));
         mainImageRectangle.setOutline(false);
-        
+
         if (this.isEndpoint) {
             iconImageFigure = EditPartDrawingHelper.getIconImageFigure(getIconPath(), Image_PreferredWidth,
                     EndpointImage_PreferredHeight);
-            mainImageRectangle.setPreferredSize(new Dimension(Image_PreferredWidth , EndpointImage_PreferredHeight));
+            mainImageRectangle.setPreferredSize(new Dimension(Image_PreferredWidth, EndpointImage_PreferredHeight));
         } else {
             constraintMainImageRectangle.horizontalAlignment = GridData.CENTER;
             iconImageFigure = EditPartDrawingHelper.getIconImageFigure(getIconPath(), Image_PreferredWidth,
                     Image_PreferredHeight);
             mainImageRectangle.setPreferredSize(new Dimension(Image_PreferredWidth, Image_PreferredHeight));
         }
-        
+
         mainImageRectangle.add(iconImageFigure);
-        RoundedRectangleBorder border = new RoundedRectangleBorder(0,0);
+        RoundedRectangleBorder border = new RoundedRectangleBorder(0, 0);
         border.setColor(borderColor);
         mainImageRectangle.setBorder(border);
         figureLayer.add(mainImageRectangle, constraintMainImageRectangle);
@@ -263,7 +263,7 @@ public class EsbGraphicalShapeWithLabel extends RoundedRectangle {
         propertyNameLabel.setAlignment(SWT.CENTER);
         propertyNameLabel.setPreferredSize(new Dimension(FixedSizedAbstractMediator.maxFigureWidth, 20));
         propertyNameLabel.setTextWrap(true);
-        
+
         propertyValueRectangle1.add(propertyNameLabel);
         figureLayer.add(propertyValueRectangle1, constraintPropertyValueRectangle);
         tempPropertyValueRectangle1 = propertyValueRectangle1;

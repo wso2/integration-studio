@@ -83,8 +83,12 @@ public class RunUpdaterRootJob extends Job {
     }
 
     public static void checkUpdatesAvailable() {
-        if (checkUpdateAvailability()) {
-            loadUpdateNotificationPopup();
+        try {
+            if (checkUpdateAvailability()) {
+                loadUpdateNotificationPopup();
+            }
+        } catch(Exception e) {
+            log.error("Exception while running updater tool process", e);
         }
     }
 

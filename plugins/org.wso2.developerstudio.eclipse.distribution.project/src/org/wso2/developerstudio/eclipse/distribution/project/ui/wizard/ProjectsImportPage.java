@@ -136,6 +136,7 @@ import org.rauschig.jarchivelib.Archiver;
 import org.rauschig.jarchivelib.ArchiverFactory;
 import org.w3c.dom.Document;
 import org.wso2.developerstudio.eclipse.distribution.project.Activator;
+import org.wso2.developerstudio.eclipse.distribution.project.util.MavenMultiModuleImportUtils;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
@@ -1477,7 +1478,7 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 			if (directory.getParentFile().getAbsolutePath().equals(archiveImportDestDir.getAbsolutePath())) {
 				File projectFile = new File(directory.getAbsolutePath() + File.separator + ".project");
 				if (projectFile.exists()) {
-					String projectNature = readProjectNatureFromProjectFile(projectFile);
+					String projectNature = MavenMultiModuleImportUtils.readProjectNatureFromProjectFile(projectFile);
 					if (projectNature != null && projectNature.equals(MAVEN_MULTI_MODULE_NATURE)) {
 						isMMMArchive = true;
 						break;
@@ -1503,7 +1504,7 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 				// read nature of the directory
 				File projectFile = new File(directory.getAbsolutePath() + File.separator + ".project");
 				if (projectFile.exists()) {
-					String projectNature = readProjectNatureFromProjectFile(projectFile);
+					String projectNature = MavenMultiModuleImportUtils.readProjectNatureFromProjectFile(projectFile);
 					IProject mainProject = workspace.getRoot().getProject(directory.getName());
 					try {
 						IProjectDescription newProjectDescription = workspace
@@ -1520,7 +1521,7 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 						mainProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 
 						// If this is not a maven project, try to import connectors
-						importConnectorsFromConnectorExporterProject(mainProject);
+						MavenMultiModuleImportUtils.importConnectorsFromConnectorExporterProject(mainProject);
 						// create sub projects/directories under the created parent project
 						createProjectsInWorkspaceReadingNature(selectedProjectsWithoutMMM, directory, mainProject, monitor);
 					} catch (CoreException e) {
@@ -1567,7 +1568,7 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 					File[] subProjectList = resourceFile.listFiles();
 					for (File file : subProjectList) {
 						if (file.getName().equals(".project")) {
-							String[] subNatureIds = { readProjectNatureFromProjectFile(file) };
+							String[] subNatureIds = { MavenMultiModuleImportUtils.readProjectNatureFromProjectFile(file) };
 							newSubProjectDescription.setNatureIds(subNatureIds);
 							break;
 						}
@@ -1586,7 +1587,7 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 					operation.run(monitor);
 					
 					// If this is a connector exporter project, import connectors.
-					importConnectorsFromConnectorExporterProject(subIProject);
+					MavenMultiModuleImportUtils.importConnectorsFromConnectorExporterProject(subIProject);
 				} else {
 					Files.copy(
 							resourceFile.toPath(), (new File(projectWhichWantToCopy.getLocation().toOSString()
@@ -1605,52 +1606,7 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 		}
 	}
 	
-	/**
-	 * This method import connectors inside a given connector project.
-	 * 
-	 * @param project project to import connectors
-	 */
-	private void importConnectorsFromConnectorExporterProject(
-			IProject project) {
-		try {
-			if (project.hasNature(Constants.CONNECTOR_PROJECT_NATURE)) {
-				List fileList = FileSystemStructureProvider.INSTANCE.getChildren(new File(project.getLocationURI()));
-				String parentDirectoryPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString()
-						+ File.separator + DIR_DOT_METADATA + File.separator + DIR_CONNECTORS;
-				File parentDirectory = new File(parentDirectoryPath);
-				if (!parentDirectory.exists()) {
-					parentDirectory.mkdir();
-				}
-				for (Object resource : fileList) {
-					File resourceFile = (File) resource;
-					String source = resourceFile.getAbsolutePath();
-					// Check if the file is a connector.
-					if ((source.length() > 4) && source.substring(source.length() - 4).equals(ZIP_FILE_EXTENSION)) {
-						// Copy zip file.
-						FileUtils.copyFileToDirectory(resourceFile, parentDirectory);
-
-						// Extract the zip file.
-						String[] segments = source.split(Pattern.quote(File.separator));
-						String zipFileName = segments[segments.length - 1].split(ZIP_FILE_EXTENSION)[0];
-						String zipDestination = parentDirectoryPath + File.separator + zipFileName;
-						Archiver archiver = ArchiverFactory.createArchiver(ArchiveFormat.ZIP);
-						archiver.extract(resourceFile, new File(zipDestination));
-
-						// Refresh the project.
-						project.refreshLocal(IResource.DEPTH_INFINITE, null);
-						
-						// Set ConnectorAdded flag to true.
-						IEclipsePreferences rootNode = Platform.getPreferencesService().getRootNode();
-						rootNode.put("ConnectorAdded", String.valueOf(true));
-					}
-				}
-			}
-		} catch (CoreException e) {
-			log.error("Connector import : Failed to check project nature : ", e);
-		} catch (IOException e) {
-			log.error("Error while copying the connector file : ", e);
-		}
-	}
+	
 
 	class FilePathComparator implements Comparator {
 
@@ -1718,7 +1674,7 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 			operation.setContext(getShell());
 			operation.run(monitor);
 			// If this is a connector exporter project, import connectors.
-			importConnectorsFromConnectorExporterProject(project);
+			MavenMultiModuleImportUtils.importConnectorsFromConnectorExporterProject(project);
 			return true;
 		}
 		// import from file system
@@ -1763,7 +1719,7 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 				operation.setCreateContainerStructure(false);
 				operation.run(monitor);
 				// If this is a connector exporter project, import connectors.
-				importConnectorsFromConnectorExporterProject(project);
+				MavenMultiModuleImportUtils.importConnectorsFromConnectorExporterProject(project);
 			} else if (copyFiles && importSource != null && project.hasNature(MAVEN_MULTI_MODULE_NATURE)) {
 				createProjectsInWorkspaceReadingNature(selectedAllProjects, importSource, project, monitor);
 			}
@@ -1772,27 +1728,6 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 		}
 
 		return true;
-	}
-
-	private String readProjectNatureFromProjectFile(File projectFile) {
-		String nature = "";
-		try {
-			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder builder = factory.newDocumentBuilder();
-			Document doc = builder.parse(projectFile);
-			XPathExpression xpRepo = XPathFactory.newInstance().newXPath()
-					.compile("/projectDescription/natures/nature");
-			nature = xpRepo.evaluate(doc);
-		} catch (ParserConfigurationException e) {
-			log.error("ParserConfigurationException exception while importing", e);
-		} catch (XPathExpressionException e) {
-			log.error("XPathExpressionException exception while importing", e);
-		} catch (SAXException e) {
-			log.error("SAXException exception while importing", e);
-		} catch (IOException e) {
-			log.error("IOException exception while importing", e);
-		}
-		return nature;
 	}
 
 	/**

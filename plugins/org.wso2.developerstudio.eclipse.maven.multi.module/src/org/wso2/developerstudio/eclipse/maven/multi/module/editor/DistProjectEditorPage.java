@@ -507,7 +507,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
         Section sctnDependencies = managedForm.getToolkit().createSection(managedForm.getForm().getBody(),
                 Section.TWISTIE | Section.TITLE_BAR);
         GridData gd_sctnNewSection = new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1);
-        gd_sctnNewSection.heightHint = 450;
+        gd_sctnNewSection.heightHint = 350;
         gd_sctnNewSection.widthHint = 411;
         sctnDependencies.setLayoutData(gd_sctnNewSection);
         managedForm.getToolkit().paintBordersFor(sctnDependencies);

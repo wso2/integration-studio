@@ -29,58 +29,55 @@ public class ESBProjectFieldController extends AbstractFieldController {
     public void validate(String modelProperty, Object value, ProjectDataModel model) throws FieldValidationException {
         if (modelProperty.equals("mmm.project.name")) {
             CommonFieldValidator.validateProjectField(value, "Integration Project");
-        } else if (modelProperty.equals("project.name")) {
-            if (model instanceof ESBSolutionProjectModel
-                    && ((ESBSolutionProjectModel) model).isConfigProjectChecked()) {
-                CommonFieldValidator.validateProjectField(value, "ESB Configs");
-            }
-        } else if (modelProperty.equals("solution.capp")) {
-            if (model instanceof ESBSolutionProjectModel && ((ESBSolutionProjectModel) model).isCappProjectChecked()) {
-                CommonFieldValidator.validateProjectField(value, "Composite Application Exporter");
-            }
-        } else if (modelProperty.equals("solution.registry")) {
-            if (model instanceof ESBSolutionProjectModel
-                    && ((ESBSolutionProjectModel) model).isRegistryProjectChecked()) {
-                CommonFieldValidator.validateProjectField(value, "Registry Resources");
-            }
-        } else if (modelProperty.equals("solution.connector")) {
-            if (model instanceof ESBSolutionProjectModel
-                    && ((ESBSolutionProjectModel) model).isConnectorExporterProjectChecked()) {
-                CommonFieldValidator.validateProjectField(value, "Connector Exporter");
-            }
-        } else if (modelProperty.equals("solution.docker")) {
-            if (model instanceof ESBSolutionProjectModel
-                    && ((ESBSolutionProjectModel) model).isDockerExporterProjectChecked()) {
-                CommonFieldValidator.validateProjectField(value, "Docker Exporter");
-            }
-        } else if (modelProperty.equals("solution.kubernetes")) {
-            if (model instanceof ESBSolutionProjectModel
-                    && ((ESBSolutionProjectModel) model).isKubernetesExporterProjectChecked()) {
-                CommonFieldValidator.validateProjectField(value, "Kubernetes Exporter");
-            }
-        } else if (modelProperty.equals("synapseConfig.location")) {
-            if (value == null) {
-                throw new FieldValidationException("Specified folder location is invalid");
-            }
-            String name = value.toString();
-            if (name.trim().equals("")) {
-                throw new FieldValidationException("Specified folder location is invalid");
-            } else {
-                File folderLocation = (File) value;
-                if (!folderLocation.exists()) {
-                    throw new FieldValidationException("Specified folder doesn't exist");
+        } else if (model instanceof ESBSolutionProjectModel) {
+            ESBSolutionProjectModel esbSolutionProjectModel = (ESBSolutionProjectModel) model;
+            if (modelProperty.equals("project.name")) {
+                if (esbSolutionProjectModel.isConfigProjectChecked()) {
+                    CommonFieldValidator.validateProjectField(value, "ESB Configs");
+                }
+            } else if (modelProperty.equals("solution.capp")) {
+                if (esbSolutionProjectModel.isCappProjectChecked()) {
+                    CommonFieldValidator.validateProjectField(value, "Composite Application Exporter");
+                }
+            } else if (modelProperty.equals("solution.registry")) {
+                if (esbSolutionProjectModel.isRegistryProjectChecked()) {
+                    CommonFieldValidator.validateProjectField(value, "Registry Resources");
+                }
+            } else if (modelProperty.equals("solution.connector")) {
+                if (esbSolutionProjectModel.isConnectorExporterProjectChecked()) {
+                    CommonFieldValidator.validateProjectField(value, "Connector Exporter");
+                }
+            } else if (modelProperty.equals("solution.docker")) {
+                if (esbSolutionProjectModel.isDockerExporterProjectChecked()) {
+                    CommonFieldValidator.validateProjectField(value, "Docker Exporter");
+                }
+            } else if (modelProperty.equals("solution.kubernetes")) {
+                if (esbSolutionProjectModel.isKubernetesExporterProjectChecked()) {
+                    CommonFieldValidator.validateProjectField(value, "Kubernetes Exporter");
+                }
+            } else if (modelProperty.equals("synapseConfig.location")) {
+                if (value == null) {
+                    throw new FieldValidationException("Specified folder location is invalid");
+                }
+                String name = value.toString();
+                if (name.trim().equals("")) {
+                    throw new FieldValidationException("Specified folder location is invalid");
+                } else {
+                    File folderLocation = (File) value;
+                    if (!folderLocation.exists()) {
+                        throw new FieldValidationException("Specified folder doesn't exist");
+                    }
                 }
             }
-        }
-        if (model instanceof ESBSolutionProjectModel && doProjectsHaveSameName(modelProperty, value, model)) {
-            throw new FieldValidationException("Two modules cannot have the same name.");
+            if (doProjectsHaveSameName(modelProperty, value, esbSolutionProjectModel)) {
+                throw new FieldValidationException("Two modules cannot have the same name.");
+            }
         }
     }
 
-    private boolean doProjectsHaveSameName(String modelProperty, Object value, ProjectDataModel model) {
+    private boolean doProjectsHaveSameName(String modelProperty, Object value,
+            ESBSolutionProjectModel esbSolutionProjectModel) {
         String projectName = value.toString();
-        ESBSolutionProjectModel esbSolutionProjectModel = (ESBSolutionProjectModel) model;
-
         if (!modelProperty.equals("mmm.project.name") && esbSolutionProjectModel.isMMMProjectChecked()
                 && projectName.equals(esbSolutionProjectModel.getMMMProjectName())) {
             return true;

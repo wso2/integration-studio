@@ -1174,7 +1174,11 @@ public class ProjectOptionsDataPage extends WizardPage implements Observer {
 				} catch (Exception e) {
 					LOG.error("An unexpected error has occurred", e);
 				}
-				doPostFieldModificationAction(optionData);
+				Display.getDefault().asyncExec(new Runnable() {
+					public void run() {
+						doPostFieldModificationAction(optionData);
+					}
+				});
 			}
 		});
 		fieldControllers.put(optionData.getModelProperty(), fieldExecutor);

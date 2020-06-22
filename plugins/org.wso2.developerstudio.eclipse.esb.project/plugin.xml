@@ -76,6 +76,48 @@
                      </with>
                   </visibleWhen>
             </command>
+            <separator
+             	name="org.wso2.developerstudio.eclipse.esb.project.main.group.stop"
+             	visible="true">
+            </separator>
+      </menuContribution>
+   </extension>
+   
+   <!-- Adding handler to open the MMM project wizard-->
+   <extension point="org.eclipse.ui.handlers">
+      <handler
+            commandId="developerstudio.commands.new.mavenMultiModuleProject"
+            class="org.wso2.developerstudio.eclipse.esb.project.keyhandlers.ESBProjectKeyHandler">
+      </handler>
+   </extension>
+ 
+   <!-- Adding menus extension-->
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:common.new.menu?after=new">
+            <command
+                  commandId="developerstudio.commands.new.mavenMultiModuleProject"
+                  icon="icons/maven-16x16.png"
+                  label="Maven Multi Module Project">
+                  <!-- Adding visibleWhen to visible the item only when clicking on the project explorer-->
+                  <visibleWhen
+                     checkEnabled="false">
+                     <with
+                       variable="activeMenuSelection">
+                      <iterate>
+                        <adapt
+                          type="org.eclipse.core.resources.IResource">
+                         <test
+                            property="org.wso2.developerstudio.eclipse.esb.project.propertytesters.checkResourceType"
+                            value="true" 
+                            forcePluginActivation="true">          
+                         </test>
+                       </adapt>
+                      </iterate>
+                     </with>
+                  </visibleWhen>
+            </command>
       </menuContribution>
    </extension>
    
@@ -526,6 +568,10 @@
          point="org.eclipse.ui.menus">
       <menuContribution
             locationURI="popup:common.new.menu?after=new">
+            <separator
+             	name="org.wso2.developerstudio.eclipse.esb.project.main.group.start"
+             	visible="true">
+            </separator>
             <command
                   commandId="developerstudio.commands.new.esbSolutionProject"
                   icon="icons/esb-project-12.png"

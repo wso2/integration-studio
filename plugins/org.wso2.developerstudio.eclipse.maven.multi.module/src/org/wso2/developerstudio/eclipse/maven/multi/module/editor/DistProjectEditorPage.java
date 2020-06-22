@@ -809,6 +809,9 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
             public void run() {
                 Display.getDefault().asyncExec(new Runnable() {
                     public void run() {
+                        if (trDependencies.isDisposed()) {
+                            return;
+                        }
                         createTreeContent();
                         txtVersion.setText(getVersion());
                         txtArtifactId.setText(getArtifactId());

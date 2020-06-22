@@ -20,6 +20,8 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.IActionDelegate;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 
 public class ImportToMMMProjectAction implements IActionDelegate {
@@ -29,6 +31,18 @@ public class ImportToMMMProjectAction implements IActionDelegate {
      * Method of running ILauncher with maven dependencies.
      */
     public void run(IAction action) {
+        
+        // save all the existing editors
+        IWorkbenchPage[] pages = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPages();
+        if (pages != null) {
+            for (IWorkbenchPage page : pages) {
+                IEditorPart editor = page.getActiveEditor();
+                if (editor != null) {
+                    page.saveEditor(editor, true);
+                }
+            }
+        }
+        
         MMMProjectSelectionWizard wizard = new MMMProjectSelectionWizard();
         wizard.init(PlatformUI.getWorkbench(), selection);
         WizardDialog dilog = new WizardDialog(

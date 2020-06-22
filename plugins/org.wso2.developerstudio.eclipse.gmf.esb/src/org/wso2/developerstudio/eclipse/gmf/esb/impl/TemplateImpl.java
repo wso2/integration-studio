@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbElement;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.Template;
 import org.wso2.developerstudio.eclipse.gmf.esb.TemplateParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.TemplateType;
@@ -36,6 +37,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TemplateType;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateImpl#getTemplateType <em>Template Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateImpl#getChild <em>Child</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateImpl#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateImpl#getOnError <em>On Error</em>}</li>
  * </ul>
  *
  * @generated
@@ -100,6 +102,16 @@ public class TemplateImpl extends EsbElementImpl implements Template {
      * @ordered
      */
     protected EList<TemplateParameter> parameters;
+
+    /**
+     * The cached value of the '{@link #getOnError() <em>On Error</em>}' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getOnError()
+     * @generated
+     * @ordered
+     */
+    protected RegistryKeyProperty onError;
 
     /**
      * <!-- begin-user-doc -->
@@ -222,6 +234,49 @@ public class TemplateImpl extends EsbElementImpl implements Template {
      * <!-- end-user-doc -->
      * @generated
      */
+    public RegistryKeyProperty getOnError() {
+        return onError;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public NotificationChain basicSetOnError(RegistryKeyProperty newOnError, NotificationChain msgs) {
+        RegistryKeyProperty oldOnError = onError;
+        onError = newOnError;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.TEMPLATE__ON_ERROR, oldOnError, newOnError);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
+        }
+        return msgs;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setOnError(RegistryKeyProperty newOnError) {
+        if (newOnError != onError) {
+            NotificationChain msgs = null;
+            if (onError != null)
+                msgs = ((InternalEObject)onError).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.TEMPLATE__ON_ERROR, null, msgs);
+            if (newOnError != null)
+                msgs = ((InternalEObject)newOnError).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.TEMPLATE__ON_ERROR, null, msgs);
+            msgs = basicSetOnError(newOnError, msgs);
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.TEMPLATE__ON_ERROR, newOnError, newOnError));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
@@ -229,6 +284,8 @@ public class TemplateImpl extends EsbElementImpl implements Template {
                 return basicSetChild(null, msgs);
             case EsbPackage.TEMPLATE__PARAMETERS:
                 return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
+            case EsbPackage.TEMPLATE__ON_ERROR:
+                return basicSetOnError(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -249,6 +306,8 @@ public class TemplateImpl extends EsbElementImpl implements Template {
                 return getChild();
             case EsbPackage.TEMPLATE__PARAMETERS:
                 return getParameters();
+            case EsbPackage.TEMPLATE__ON_ERROR:
+                return getOnError();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -275,6 +334,9 @@ public class TemplateImpl extends EsbElementImpl implements Template {
                 getParameters().clear();
                 getParameters().addAll((Collection<? extends TemplateParameter>)newValue);
                 return;
+            case EsbPackage.TEMPLATE__ON_ERROR:
+                setOnError((RegistryKeyProperty)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -299,6 +361,9 @@ public class TemplateImpl extends EsbElementImpl implements Template {
             case EsbPackage.TEMPLATE__PARAMETERS:
                 getParameters().clear();
                 return;
+            case EsbPackage.TEMPLATE__ON_ERROR:
+                setOnError((RegistryKeyProperty)null);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -319,6 +384,8 @@ public class TemplateImpl extends EsbElementImpl implements Template {
                 return child != null;
             case EsbPackage.TEMPLATE__PARAMETERS:
                 return parameters != null && !parameters.isEmpty();
+            case EsbPackage.TEMPLATE__ON_ERROR:
+                return onError != null;
         }
         return super.eIsSet(featureID);
     }

@@ -8907,6 +8907,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
+    public EReference getTemplate_OnError() {
+        return (EReference)templateEClass.getEStructuralFeatures().get(4);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EClass getTemplateParameter() {
         return templateParameterEClass;
     }
@@ -8918,6 +8927,24 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      */
     public EAttribute getTemplateParameter_Name() {
         return (EAttribute)templateParameterEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getTemplateParameter_IsMandatory() {
+        return (EAttribute)templateParameterEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getTemplateParameter_DefaultValue() {
+        return (EAttribute)templateParameterEClass.getEStructuralFeatures().get(2);
     }
 
     /**
@@ -17007,6 +17034,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
+    public EReference getCallTemplateMediator_OnError() {
+        return (EReference)callTemplateMediatorEClass.getEStructuralFeatures().get(5);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EClass getCallTemplateMediatorInputConnector() {
         return callTemplateMediatorInputConnectorEClass;
     }
@@ -20951,6 +20987,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         createEReference(callTemplateMediatorEClass, CALL_TEMPLATE_MEDIATOR__INPUT_CONNECTOR);
         createEReference(callTemplateMediatorEClass, CALL_TEMPLATE_MEDIATOR__OUTPUT_CONNECTOR);
         createEAttribute(callTemplateMediatorEClass, CALL_TEMPLATE_MEDIATOR__TARGET_TEMPLATE);
+        createEReference(callTemplateMediatorEClass, CALL_TEMPLATE_MEDIATOR__ON_ERROR);
 
         callTemplateMediatorInputConnectorEClass = createEClass(CALL_TEMPLATE_MEDIATOR_INPUT_CONNECTOR);
 
@@ -21229,9 +21266,12 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         createEAttribute(templateEClass, TEMPLATE__TEMPLATE_TYPE);
         createEReference(templateEClass, TEMPLATE__CHILD);
         createEReference(templateEClass, TEMPLATE__PARAMETERS);
+        createEReference(templateEClass, TEMPLATE__ON_ERROR);
 
         templateParameterEClass = createEClass(TEMPLATE_PARAMETER);
         createEAttribute(templateParameterEClass, TEMPLATE_PARAMETER__NAME);
+        createEAttribute(templateParameterEClass, TEMPLATE_PARAMETER__IS_MANDATORY);
+        createEAttribute(templateParameterEClass, TEMPLATE_PARAMETER__DEFAULT_VALUE);
 
         taskEClass = createEClass(TASK);
         createEAttribute(taskEClass, TASK__TASK_NAME);
@@ -23450,6 +23490,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         initEReference(getCallTemplateMediator_InputConnector(), this.getCallTemplateMediatorInputConnector(), null, "inputConnector", null, 0, 1, CallTemplateMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getCallTemplateMediator_OutputConnector(), this.getCallTemplateMediatorOutputConnector(), null, "outputConnector", null, 0, 1, CallTemplateMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getCallTemplateMediator_TargetTemplate(), ecorePackage.getEString(), "targetTemplate", null, 0, 1, CallTemplateMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getCallTemplateMediator_OnError(), this.getRegistryKeyProperty(), null, "onError", null, 0, 1, CallTemplateMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(callTemplateMediatorInputConnectorEClass, CallTemplateMediatorInputConnector.class, "CallTemplateMediatorInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -23728,9 +23769,12 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         initEAttribute(getTemplate_TemplateType(), this.getTemplateType(), "templateType", null, 0, 1, Template.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getTemplate_Child(), this.getEsbElement(), null, "child", null, 0, 1, Template.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getTemplate_Parameters(), this.getTemplateParameter(), null, "parameters", null, 0, -1, Template.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getTemplate_OnError(), this.getRegistryKeyProperty(), null, "onError", null, 0, 1, Template.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(templateParameterEClass, TemplateParameter.class, "TemplateParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getTemplateParameter_Name(), ecorePackage.getEString(), "name", null, 1, 1, TemplateParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getTemplateParameter_IsMandatory(), ecorePackage.getEBoolean(), "isMandatory", "false", 0, 1, TemplateParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getTemplateParameter_DefaultValue(), ecorePackage.getEString(), "defaultValue", null, 0, 1, TemplateParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(taskEClass, Task.class, "Task", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getTask_TaskName(), ecorePackage.getEString(), "taskName", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

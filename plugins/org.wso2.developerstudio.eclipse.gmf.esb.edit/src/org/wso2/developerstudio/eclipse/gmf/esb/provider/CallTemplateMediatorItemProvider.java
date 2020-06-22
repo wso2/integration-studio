@@ -140,6 +140,7 @@ public class CallTemplateMediatorItemProvider extends MediatorItemProvider {
             childrenFeatures.add(EsbPackage.Literals.CALL_TEMPLATE_MEDIATOR__TEMPLATE_PARAMETERS);
             childrenFeatures.add(EsbPackage.Literals.CALL_TEMPLATE_MEDIATOR__INPUT_CONNECTOR);
             childrenFeatures.add(EsbPackage.Literals.CALL_TEMPLATE_MEDIATOR__OUTPUT_CONNECTOR);
+            childrenFeatures.add(EsbPackage.Literals.CALL_TEMPLATE_MEDIATOR__ON_ERROR);
         }
         return childrenFeatures;
     }
@@ -201,6 +202,7 @@ public class CallTemplateMediatorItemProvider extends MediatorItemProvider {
             case EsbPackage.CALL_TEMPLATE_MEDIATOR__TEMPLATE_PARAMETERS:
             case EsbPackage.CALL_TEMPLATE_MEDIATOR__INPUT_CONNECTOR:
             case EsbPackage.CALL_TEMPLATE_MEDIATOR__OUTPUT_CONNECTOR:
+            case EsbPackage.CALL_TEMPLATE_MEDIATOR__ON_ERROR:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                 return;
         }
@@ -232,6 +234,11 @@ public class CallTemplateMediatorItemProvider extends MediatorItemProvider {
             (createChildParameter
                 (EsbPackage.Literals.CALL_TEMPLATE_MEDIATOR__OUTPUT_CONNECTOR,
                  EsbFactory.eINSTANCE.createCallTemplateMediatorOutputConnector()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.CALL_TEMPLATE_MEDIATOR__ON_ERROR,
+                 EsbFactory.eINSTANCE.createRegistryKeyProperty()));
     }
 
 }

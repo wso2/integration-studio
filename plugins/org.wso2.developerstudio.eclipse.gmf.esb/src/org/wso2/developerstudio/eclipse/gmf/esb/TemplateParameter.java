@@ -27,6 +27,8 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.TemplateParameter#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.TemplateParameter#isIsMandatory <em>Is Mandatory</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.TemplateParameter#getDefaultValue <em>Default Value</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getTemplateParameter()
@@ -59,5 +61,58 @@ public interface TemplateParameter extends EObject {
      * @generated
      */
     void setName(String value);
+
+    /**
+     * Returns the value of the '<em><b>Is Mandatory</b></em>' attribute.
+     * The default value is <code>"false"</code>.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Is Mandatory</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Is Mandatory</em>' attribute.
+     * @see #setIsMandatory(boolean)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getTemplateParameter_IsMandatory()
+     * @model default="false"
+     * @generated
+     */
+    boolean isIsMandatory();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.TemplateParameter#isIsMandatory <em>Is Mandatory</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Is Mandatory</em>' attribute.
+     * @see #isIsMandatory()
+     * @generated
+     */
+    void setIsMandatory(boolean value);
+
+    /**
+     * Returns the value of the '<em><b>Default Value</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Default Value</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Default Value</em>' attribute.
+     * @see #setDefaultValue(String)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getTemplateParameter_DefaultValue()
+     * @model
+     * @generated
+     */
+    String getDefaultValue();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.TemplateParameter#getDefaultValue <em>Default Value</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Default Value</em>' attribute.
+     * @see #getDefaultValue()
+     * @generated
+     */
+    void setDefaultValue(String value);
 
 } // TemplateParameter

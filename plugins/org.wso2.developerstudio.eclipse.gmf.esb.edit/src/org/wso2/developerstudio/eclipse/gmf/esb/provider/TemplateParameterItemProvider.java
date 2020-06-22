@@ -67,6 +67,8 @@ public class TemplateParameterItemProvider extends ItemProviderAdapter implement
             super.getPropertyDescriptors(object);
 
             addNamePropertyDescriptor(object);
+            addIsMandatoryPropertyDescriptor(object);
+            addDefaultValuePropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -85,6 +87,50 @@ public class TemplateParameterItemProvider extends ItemProviderAdapter implement
                  getString("_UI_TemplateParameter_name_feature"),
                  getString("_UI_PropertyDescriptor_description", "_UI_TemplateParameter_name_feature", "_UI_TemplateParameter_type"),
                  EsbPackage.Literals.TEMPLATE_PARAMETER__NAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Is Mandatory feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addIsMandatoryPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_TemplateParameter_isMandatory_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_TemplateParameter_isMandatory_feature", "_UI_TemplateParameter_type"),
+                 EsbPackage.Literals.TEMPLATE_PARAMETER__IS_MANDATORY,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Default Value feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addDefaultValuePropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_TemplateParameter_defaultValue_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_TemplateParameter_defaultValue_feature", "_UI_TemplateParameter_type"),
+                 EsbPackage.Literals.TEMPLATE_PARAMETER__DEFAULT_VALUE,
                  true,
                  false,
                  false,
@@ -131,6 +177,8 @@ public class TemplateParameterItemProvider extends ItemProviderAdapter implement
 
         switch (notification.getFeatureID(TemplateParameter.class)) {
             case EsbPackage.TEMPLATE_PARAMETER__NAME:
+            case EsbPackage.TEMPLATE_PARAMETER__IS_MANDATORY:
+            case EsbPackage.TEMPLATE_PARAMETER__DEFAULT_VALUE:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
         }

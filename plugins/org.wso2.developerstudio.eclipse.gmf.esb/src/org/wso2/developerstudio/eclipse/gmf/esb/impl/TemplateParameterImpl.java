@@ -34,6 +34,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TemplateParameter;
  * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateParameterImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateParameterImpl#isIsMandatory <em>Is Mandatory</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateParameterImpl#getDefaultValue <em>Default Value</em>}</li>
  * </ul>
  *
  * @generated
@@ -58,6 +60,46 @@ public class TemplateParameterImpl extends EObjectImpl implements TemplateParame
      * @ordered
      */
     protected String name = NAME_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #isIsMandatory() <em>Is Mandatory</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isIsMandatory()
+     * @generated
+     * @ordered
+     */
+    protected static final boolean IS_MANDATORY_EDEFAULT = false;
+
+    /**
+     * The cached value of the '{@link #isIsMandatory() <em>Is Mandatory</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isIsMandatory()
+     * @generated
+     * @ordered
+     */
+    protected boolean isMandatory = IS_MANDATORY_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getDefaultValue() <em>Default Value</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getDefaultValue()
+     * @generated
+     * @ordered
+     */
+    protected static final String DEFAULT_VALUE_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getDefaultValue() <em>Default Value</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getDefaultValue()
+     * @generated
+     * @ordered
+     */
+    protected String defaultValue = DEFAULT_VALUE_EDEFAULT;
 
     /**
      * <!-- begin-user-doc -->
@@ -104,11 +146,57 @@ public class TemplateParameterImpl extends EObjectImpl implements TemplateParame
      * <!-- end-user-doc -->
      * @generated
      */
+    public boolean isIsMandatory() {
+        return isMandatory;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setIsMandatory(boolean newIsMandatory) {
+        boolean oldIsMandatory = isMandatory;
+        isMandatory = newIsMandatory;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.TEMPLATE_PARAMETER__IS_MANDATORY, oldIsMandatory, isMandatory));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getDefaultValue() {
+        return defaultValue;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setDefaultValue(String newDefaultValue) {
+        String oldDefaultValue = defaultValue;
+        defaultValue = newDefaultValue;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.TEMPLATE_PARAMETER__DEFAULT_VALUE, oldDefaultValue, defaultValue));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case EsbPackage.TEMPLATE_PARAMETER__NAME:
                 return getName();
+            case EsbPackage.TEMPLATE_PARAMETER__IS_MANDATORY:
+                return isIsMandatory();
+            case EsbPackage.TEMPLATE_PARAMETER__DEFAULT_VALUE:
+                return getDefaultValue();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -123,6 +211,12 @@ public class TemplateParameterImpl extends EObjectImpl implements TemplateParame
         switch (featureID) {
             case EsbPackage.TEMPLATE_PARAMETER__NAME:
                 setName((String)newValue);
+                return;
+            case EsbPackage.TEMPLATE_PARAMETER__IS_MANDATORY:
+                setIsMandatory((Boolean)newValue);
+                return;
+            case EsbPackage.TEMPLATE_PARAMETER__DEFAULT_VALUE:
+                setDefaultValue((String)newValue);
                 return;
         }
         super.eSet(featureID, newValue);
@@ -139,6 +233,12 @@ public class TemplateParameterImpl extends EObjectImpl implements TemplateParame
             case EsbPackage.TEMPLATE_PARAMETER__NAME:
                 setName(NAME_EDEFAULT);
                 return;
+            case EsbPackage.TEMPLATE_PARAMETER__IS_MANDATORY:
+                setIsMandatory(IS_MANDATORY_EDEFAULT);
+                return;
+            case EsbPackage.TEMPLATE_PARAMETER__DEFAULT_VALUE:
+                setDefaultValue(DEFAULT_VALUE_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -153,6 +253,10 @@ public class TemplateParameterImpl extends EObjectImpl implements TemplateParame
         switch (featureID) {
             case EsbPackage.TEMPLATE_PARAMETER__NAME:
                 return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            case EsbPackage.TEMPLATE_PARAMETER__IS_MANDATORY:
+                return isMandatory != IS_MANDATORY_EDEFAULT;
+            case EsbPackage.TEMPLATE_PARAMETER__DEFAULT_VALUE:
+                return DEFAULT_VALUE_EDEFAULT == null ? defaultValue != null : !DEFAULT_VALUE_EDEFAULT.equals(defaultValue);
         }
         return super.eIsSet(featureID);
     }
@@ -169,6 +273,10 @@ public class TemplateParameterImpl extends EObjectImpl implements TemplateParame
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (name: ");
         result.append(name);
+        result.append(", isMandatory: ");
+        result.append(isMandatory);
+        result.append(", defaultValue: ");
+        result.append(defaultValue);
         result.append(')');
         return result.toString();
     }

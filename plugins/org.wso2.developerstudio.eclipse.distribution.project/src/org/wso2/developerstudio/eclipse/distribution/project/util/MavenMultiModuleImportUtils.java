@@ -37,6 +37,7 @@ import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.maven.model.Profile;
 import org.apache.maven.project.MavenProject;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -50,8 +51,13 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
+import org.eclipse.ui.IPageLayout;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.IOverwriteQuery;
+import org.eclipse.ui.navigator.CommonNavigator;
+import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.wizards.datatransfer.FileSystemStructureProvider;
 import org.eclipse.ui.wizards.datatransfer.ImportOperation;
 import org.rauschig.jarchivelib.ArchiveFormat;
@@ -72,6 +78,7 @@ public class MavenMultiModuleImportUtils {
     private static final String DIR_DOT_METADATA = ".metadata";
     private static final String DIR_CONNECTORS = ".Connectors";
     private static final String ZIP_FILE_EXTENSION = ".zip";
+    private static final String MMM_EDITOR_ID = "org.wso2.developerstudio.eclipse.maven.multi.module.editor.DistProjectEditor";
 
     public static boolean importMavenMultiModuleProjectToWorkspace(File importingMMMProject) {
         boolean isMavenMultiModuleCreatedSuccessfully = true;
@@ -275,8 +282,15 @@ public class MavenMultiModuleImportUtils {
                     mavenProject.getModules().add(module);
                 }
             }
+            createMavenProfiles(projectModules, mavenProject);
             MavenUtils.saveMavenProject(mavenProject, pomFile);
             pomIFile.getProject().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+            
+            IFile pom = mavenProjectNewModule.getFile("pom.xml");
+            IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+            IWorkbenchPage page = window.getActivePage();
+            ((CommonNavigator) page.findViewReference(IPageLayout.ID_PROJECT_EXPLORER, null).getView(true)).setLinkingEnabled(true);
+            page.openEditor(new FileEditorInput(pom), MMM_EDITOR_ID);
         } catch (Exception e) {
             log.error("Error while reading MMM pomfile", e);
         }
@@ -291,7 +305,7 @@ public class MavenMultiModuleImportUtils {
     private static List<String> sortProjectsInBuildOrder(Map<String, String> modules) {
         List<List<String>> moduleMap = new ArrayList<>();
 
-        for (int i = 0; i < 11; i++) {
+        for (int i = 0; i < 9; i++) {
             moduleMap.add(new ArrayList<String>());
         }
 
@@ -314,11 +328,8 @@ public class MavenMultiModuleImportUtils {
                 moduleMap.get(7).add(module);
             } else if (nature.equals(Constants.DISTRIBUTION_PROJECT_NATURE)) {
                 moduleMap.get(8).add(module);
-            } else if (nature.equals(Constants.DOCKER_EXPORTER_PROJECT_NATURE)) {
-                moduleMap.get(9).add(module);
-            } else if (nature.equals(Constants.KUBERNETES_EXPORTER_PROJECT_NATURE)) {
-                moduleMap.get(10).add(module);
-            } else {
+            } else if (!nature.equals(Constants.DOCKER_EXPORTER_PROJECT_NATURE)
+                    && !nature.equals(Constants.KUBERNETES_EXPORTER_PROJECT_NATURE)) {
                 moduleMap.get(0).add(module);
             }
         }
@@ -328,5 +339,58 @@ public class MavenMultiModuleImportUtils {
             sortedModules.addAll(list);
         }
         return sortedModules;
+    }
+    
+    private static void createMavenProfiles(Map<String, String> modules, MavenProject mavenProject) {
+        List<String> dockerModules = new ArrayList<>();
+        List<String> kubernetesModules = new ArrayList<>();
+        
+        Profile dockerProfile = null;
+        Profile kubernetesProfile = null;
+        Profile defaultProfile = null;
+        
+        for (Map.Entry<String, String> moduleItem : modules.entrySet()) {
+            String nature = moduleItem.getValue();
+            String module = moduleItem.getKey();
+            
+            if (nature.equals(Constants.DOCKER_EXPORTER_PROJECT_NATURE)) {
+                dockerModules.add(module);
+            } else if (nature.equals(Constants.KUBERNETES_EXPORTER_PROJECT_NATURE)) {
+                kubernetesModules.add(module);
+            }
+        }
+        
+        for (Profile profile : mavenProject.getModel().getProfiles()) {
+            if (profile.getId().equals(Constants.DOCKER_PROFILE)) {
+                dockerProfile = profile;
+            } else if (profile.getId().equals(Constants.KUBERNETES_PROFILE)) {
+                kubernetesProfile = profile;
+            } else {
+                defaultProfile = profile;
+            }
+        }
+        
+        dockerProfile.getModules().clear();
+        kubernetesProfile.getModules().clear();
+        defaultProfile.getModules().clear();
+
+        for (String module : dockerModules) {
+            if (!dockerProfile.getModules().contains(module)) {
+                dockerProfile.getModules().add(module);
+            }
+            if (!defaultProfile.getModules().contains(module)) {
+                defaultProfile.getModules().add(module);
+            }
+        }
+
+        for (String module : kubernetesModules) {
+            if (!kubernetesProfile.getModules().contains(module)) {
+                kubernetesProfile.getModules().add(module);
+                defaultProfile.getModules().add(module);
+            }
+            if (!defaultProfile.getModules().contains(module)) {
+                defaultProfile.getModules().add(module);
+            }
+        }
     }
 }

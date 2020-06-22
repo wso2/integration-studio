@@ -120,6 +120,9 @@ public class TemplatePropertiesEditionComponent extends SinglePartPropertiesEdit
 				parametersSettings = new ReferencesTableSettings(template, EsbPackage.eINSTANCE.getTemplate_Parameters());
 				basePart.initParameters(parametersSettings);
 			}
+			// Start of user code  for onError command update
+			// End of user code
+			
 			// init filters
 			
 			
@@ -140,6 +143,9 @@ public class TemplatePropertiesEditionComponent extends SinglePartPropertiesEdit
 				// Start of user code for additional businessfilters for parameters
 				// End of user code
 			}
+			// Start of user code  for onError filter update
+			// End of user code
+			
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -147,6 +153,7 @@ public class TemplatePropertiesEditionComponent extends SinglePartPropertiesEdit
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -174,6 +181,9 @@ public class TemplatePropertiesEditionComponent extends SinglePartPropertiesEdit
 		}
 		if (editorKey == EsbViewsRepository.Template.Properties.parameters) {
 			return EsbPackage.eINSTANCE.getTemplate_Parameters();
+		}
+		if (editorKey == EsbViewsRepository.Template.Properties.onError) {
+			return EsbPackage.eINSTANCE.getTemplate_OnError();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -225,6 +235,11 @@ public class TemplatePropertiesEditionComponent extends SinglePartPropertiesEdit
 				parametersSettings.move(event.getNewIndex(), (TemplateParameter) event.getNewValue());
 			}
 		}
+		if (EsbViewsRepository.Template.Properties.onError == event.getAffectedEditor()) {
+			// Start of user code for updateOnError method body
+			// End of user code
+			
+		}
 	}
 
 	/**
@@ -266,6 +281,10 @@ public class TemplatePropertiesEditionComponent extends SinglePartPropertiesEdit
 			
 			if (EsbPackage.eINSTANCE.getTemplate_Parameters().equals(msg.getFeature()) && isAccessible(EsbViewsRepository.Template.Properties.parameters))
 				basePart.updateParameters();
+					// Start of user code for onError live update
+					
+					// End of user code
+			
 			
 		}
 	}
@@ -282,7 +301,8 @@ public class TemplatePropertiesEditionComponent extends SinglePartPropertiesEdit
 			EsbPackage.eINSTANCE.getEsbElement_CommentsList(),
 			EsbPackage.eINSTANCE.getTemplate_Name(),
 			EsbPackage.eINSTANCE.getTemplate_TemplateType(),
-			EsbPackage.eINSTANCE.getTemplate_Parameters()		);
+			EsbPackage.eINSTANCE.getTemplate_Parameters(),
+			EsbPackage.eINSTANCE.getTemplate_OnError()		);
 		return new NotificationFilter[] {filter,};
 	}
 

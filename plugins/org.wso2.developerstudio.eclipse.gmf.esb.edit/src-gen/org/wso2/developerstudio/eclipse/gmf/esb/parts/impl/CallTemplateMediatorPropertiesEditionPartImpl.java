@@ -88,6 +88,10 @@ public class CallTemplateMediatorPropertiesEditionPartImpl extends CompositeProp
 	protected List<ViewerFilter> templateParametersBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> templateParametersFilters = new ArrayList<ViewerFilter>();
 	protected Text targetTemplate;
+	// Start of user code  for onError widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -132,6 +136,7 @@ public class CallTemplateMediatorPropertiesEditionPartImpl extends CompositeProp
 		propertiesStep.addStep(EsbViewsRepository.CallTemplateMediator.Properties.availableTemplates);
 		propertiesStep.addStep(EsbViewsRepository.CallTemplateMediator.Properties.templateParameters);
 		propertiesStep.addStep(EsbViewsRepository.CallTemplateMediator.Properties.targetTemplate);
+		propertiesStep.addStep(EsbViewsRepository.CallTemplateMediator.Properties.onError);
 		
 		
 		composer = new PartComposer(callTemplateMediatorStep) {
@@ -159,6 +164,9 @@ public class CallTemplateMediatorPropertiesEditionPartImpl extends CompositeProp
 				if (key == EsbViewsRepository.CallTemplateMediator.Properties.targetTemplate) {
 					return createTargetTemplateText(parent);
 				}
+				// Start of user code for onError addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -713,6 +721,10 @@ public class CallTemplateMediatorPropertiesEditionPartImpl extends CompositeProp
 
 
 
+
+	// Start of user code for onError specific getters and setters implementation
+	
+	// End of user code
 
 	/**
 	 * {@inheritDoc}

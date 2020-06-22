@@ -306,6 +306,14 @@ public class CallTemplateMediatorPropertiesEditionComponent extends SinglePartPr
 
 
 	/**
+   * {@inheritDoc}
+   * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#mustBeComposed(java.lang.Object, int)
+   */
+  public boolean mustBeComposed(Object key, int kind) {
+    return key == EsbViewsRepository.CallTemplateMediator.Properties.description || key == EsbViewsRepository.CallTemplateMediator.Properties.commentsList || key == EsbViewsRepository.CallTemplateMediator.Properties.reverse || key == EsbViewsRepository.CallTemplateMediator.Properties.availableTemplates || key == EsbViewsRepository.CallTemplateMediator.Properties.templateParameters || key == EsbViewsRepository.CallTemplateMediator.Properties.targetTemplate || key == EsbViewsRepository.CallTemplateMediator.Properties.class;
+  }
+
+  /**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)

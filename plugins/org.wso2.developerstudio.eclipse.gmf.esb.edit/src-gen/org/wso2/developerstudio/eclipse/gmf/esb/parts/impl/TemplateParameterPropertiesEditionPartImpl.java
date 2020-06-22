@@ -29,10 +29,11 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
-
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
@@ -54,7 +55,12 @@ public class TemplateParameterPropertiesEditionPartImpl extends CompositePropert
 
 
 
-	/**
+	protected Button isMandatory;
+  protected Text defaultValue;
+
+
+
+  /**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
 	 * 
@@ -176,7 +182,84 @@ public class TemplateParameterPropertiesEditionPartImpl extends CompositePropert
 	}
 
 
-	/**
+	protected Composite createIsMandatoryCheckbox(Composite parent) {
+    isMandatory = new Button(parent, SWT.CHECK);
+    isMandatory.setText(getDescription(EsbViewsRepository.TemplateParameter.Properties.isMandatory, EsbMessages.TemplateParameterPropertiesEditionPart_IsMandatoryLabel));
+    isMandatory.addSelectionListener(new SelectionAdapter() {
+
+      /**
+       * {@inheritDoc}
+       *
+       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+       * 	
+       */
+      public void widgetSelected(SelectionEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TemplateParameterPropertiesEditionPartImpl.this, EsbViewsRepository.TemplateParameter.Properties.isMandatory, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(isMandatory.getSelection())));
+      }
+
+    });
+    GridData isMandatoryData = new GridData(GridData.FILL_HORIZONTAL);
+    isMandatoryData.horizontalSpan = 2;
+    isMandatory.setLayoutData(isMandatoryData);
+    EditingUtils.setID(isMandatory, EsbViewsRepository.TemplateParameter.Properties.isMandatory);
+    EditingUtils.setEEFtype(isMandatory, "eef::Checkbox"); //$NON-NLS-1$
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.TemplateParameter.Properties.isMandatory, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    // Start of user code for createIsMandatoryCheckbox
+
+    // End of user code
+    return parent;
+  }
+
+  protected Composite createDefaultValueText(Composite parent) {
+    createDescription(parent, EsbViewsRepository.TemplateParameter.Properties.defaultValue, EsbMessages.TemplateParameterPropertiesEditionPart_DefaultValueLabel);
+    defaultValue = SWTUtils.createScrollableText(parent, SWT.BORDER);
+    GridData defaultValueData = new GridData(GridData.FILL_HORIZONTAL);
+    defaultValue.setLayoutData(defaultValueData);
+    defaultValue.addFocusListener(new FocusAdapter() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void focusLost(FocusEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TemplateParameterPropertiesEditionPartImpl.this, EsbViewsRepository.TemplateParameter.Properties.defaultValue, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, defaultValue.getText()));
+      }
+
+    });
+    defaultValue.addKeyListener(new KeyAdapter() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void keyPressed(KeyEvent e) {
+        if (e.character == SWT.CR) {
+          if (propertiesEditionComponent != null)
+            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TemplateParameterPropertiesEditionPartImpl.this, EsbViewsRepository.TemplateParameter.Properties.defaultValue, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, defaultValue.getText()));
+        }
+      }
+
+    });
+    EditingUtils.setID(defaultValue, EsbViewsRepository.TemplateParameter.Properties.defaultValue);
+    EditingUtils.setEEFtype(defaultValue, "eef::Text"); //$NON-NLS-1$
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.TemplateParameter.Properties.defaultValue, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    // Start of user code for createDefaultValueText
+
+    // End of user code
+    return parent;
+  }
+
+  /**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
@@ -226,6 +309,70 @@ public class TemplateParameterPropertiesEditionPartImpl extends CompositePropert
 
 
 	/**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.TemplateParameterPropertiesEditionPart#getIsMandatory()
+   * 
+   */
+  public Boolean getIsMandatory() {
+    return Boolean.valueOf(isMandatory.getSelection());
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.TemplateParameterPropertiesEditionPart#setIsMandatory(Boolean newValue)
+   * 
+   */
+  public void setIsMandatory(Boolean newValue) {
+    if (newValue != null) {
+      isMandatory.setSelection(newValue.booleanValue());
+    } else {
+      isMandatory.setSelection(false);
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.TemplateParameter.Properties.isMandatory);
+    if (eefElementEditorReadOnlyState && isMandatory.isEnabled()) {
+      isMandatory.setEnabled(false);
+      isMandatory.setToolTipText(EsbMessages.TemplateParameter_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !isMandatory.isEnabled()) {
+      isMandatory.setEnabled(true);
+    }	
+    
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.TemplateParameterPropertiesEditionPart#getDefaultValue()
+   * 
+   */
+  public String getDefaultValue() {
+    return defaultValue.getText();
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.TemplateParameterPropertiesEditionPart#setDefaultValue(String newValue)
+   * 
+   */
+  public void setDefaultValue(String newValue) {
+    if (newValue != null) {
+      defaultValue.setText(newValue);
+    } else {
+      defaultValue.setText(""); //$NON-NLS-1$
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.TemplateParameter.Properties.defaultValue);
+    if (eefElementEditorReadOnlyState && defaultValue.isEnabled()) {
+      defaultValue.setEnabled(false);
+      defaultValue.setToolTipText(EsbMessages.TemplateParameter_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !defaultValue.isEnabled()) {
+      defaultValue.setEnabled(true);
+    }	
+    
+  }
+
+  /**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()

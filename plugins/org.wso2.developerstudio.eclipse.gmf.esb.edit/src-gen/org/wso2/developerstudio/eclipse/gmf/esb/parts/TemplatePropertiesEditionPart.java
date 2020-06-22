@@ -143,6 +143,9 @@ public interface TemplatePropertiesEditionPart {
 
 
 
+	// Start of user code for onError specific getters and setters declaration
+	
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

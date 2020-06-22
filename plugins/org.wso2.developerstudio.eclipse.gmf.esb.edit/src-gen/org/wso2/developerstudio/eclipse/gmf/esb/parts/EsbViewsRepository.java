@@ -1579,7 +1579,7 @@ public class EsbViewsRepository {
 			public static String propertyValue = "esb::LogProperty::properties::propertyValue";
 			
 			// Start of user code for propertyExpression ElementEditor key
-			public static String propertyExpression = "esb::LogProperty::properties::propertyExpression";
+			public static String propertyExpression = "esb::RuleFact::properties::propertyExpression";
 			// End of user code
 			
 	
@@ -5250,7 +5250,7 @@ public class EsbViewsRepository {
 			public static String connectionPassword = "esb::DBLookupMediator::connection::connectionPassword";
 			
 			// Start of user code for Database Configuration ElementEditor key
-			public static String databaseConfiguration = "esb::DBLookupMediator::connection::Database Configuration";
+			public static String databaseConfiguration = "esb::DBReportMediator::connection::Database Configuration";
 			// End of user code
 			
 			
@@ -5266,19 +5266,19 @@ public class EsbViewsRepository {
 			public static String isRegistryBasedPassConfig = "esb::DBLookupMediator::connection::isRegistryBasedPassConfig";
 			
 			// Start of user code for registryBasedDriverConfigKey ElementEditor key
-			public static String registryBasedDriverConfigKey = "esb::DBLookupMediator::connection::registryBasedDriverConfigKey";
+			public static String registryBasedDriverConfigKey = "esb::DBReportMediator::connection::registryBasedDriverConfigKey";
 			// End of user code
 			
 			// Start of user code for registryBasedUrlConfigKey ElementEditor key
-			public static String registryBasedUrlConfigKey = "esb::DBLookupMediator::connection::registryBasedUrlConfigKey";
+			public static String registryBasedUrlConfigKey = "esb::DBReportMediator::connection::registryBasedUrlConfigKey";
 			// End of user code
 			
 			// Start of user code for registryBasedUserConfigKey ElementEditor key
-			public static String registryBasedUserConfigKey = "esb::DBLookupMediator::connection::registryBasedUserConfigKey";
+			public static String registryBasedUserConfigKey = "esb::DBReportMediator::connection::registryBasedUserConfigKey";
 			// End of user code
 			
 			// Start of user code for registryBasedPassConfigKey ElementEditor key
-			public static String registryBasedPassConfigKey = "esb::DBLookupMediator::connection::registryBasedPassConfigKey";
+			public static String registryBasedPassConfigKey = "esb::DBReportMediator::connection::registryBasedPassConfigKey";
 			// End of user code
 			
 	
@@ -5827,6 +5827,10 @@ public class EsbViewsRepository {
 			
 			
 			public static String targetTemplate = "esb::CallTemplateMediator::properties::targetTemplate";
+			
+			// Start of user code for onError ElementEditor key
+			public static String onError = "esb::CallTemplateMediator::properties::onError";
+			// End of user code
 			
 	
 		}
@@ -7521,6 +7525,10 @@ public class EsbViewsRepository {
 			
 			public static String parameters = "esb::Template::properties::parameters";
 			
+			// Start of user code for onError ElementEditor key
+			public static String onError = "esb::Template::properties::onError";
+			// End of user code
+			
 	
 		}
 	
@@ -7535,6 +7543,12 @@ public class EsbViewsRepository {
 	
 			
 			public static String name = "esb::TemplateParameter::properties::name";
+			
+			
+			public static String isMandatory = "esb::TemplateParameter::properties::isMandatory";
+			
+			
+			public static String defaultValue = "esb::TemplateParameter::properties::defaultValue";
 			
 	
 		}

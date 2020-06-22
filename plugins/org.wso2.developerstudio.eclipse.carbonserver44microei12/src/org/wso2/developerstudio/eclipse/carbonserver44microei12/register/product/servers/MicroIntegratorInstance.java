@@ -362,10 +362,9 @@ public class MicroIntegratorInstance {
             public void run() {
                 try {
                     IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-                    IViewPart view = page
-                            .findView("org.wso2.developerstudio.eclipse.esb.project.deployed.endpoint.view");
+                    IViewPart view = page.findView(ServerConstants.DEPLOYED_SERVICES_VIEW);
                     page.hideView(view);
-                    page.showView("org.wso2.developerstudio.eclipse.esb.project.deployed.endpoint.view");
+                    page.showView(ServerConstants.DEPLOYED_SERVICES_VIEW);
 
                 } catch (PartInitException e) {
                     log.error("Error while initializing deployed services view.", e);

@@ -24,6 +24,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.Activator;
@@ -56,6 +57,12 @@ public class ExportDistributionAndRunAction implements IActionDelegate {
                     if (CarbonServer44eiUtils.hasEmbeddedConfigsChanged() || !microIntegratorInstance.isServerStarted()
                             || !CarbonServer44eiUtils.isHotDeploymentEnabled(microIntegratorInstance)) {
                         microIntegratorInstance.restart();
+                    } else {
+                        Display.getDefault().asyncExec(new Runnable() {
+                            public void run() {
+                                CarbonServer44eiUtils.updateDeployedServices();
+                            }
+                        });
                     }
                 } catch (CoreException e) {
                     log.error("Error occured while restarting the micro-integrator", e);

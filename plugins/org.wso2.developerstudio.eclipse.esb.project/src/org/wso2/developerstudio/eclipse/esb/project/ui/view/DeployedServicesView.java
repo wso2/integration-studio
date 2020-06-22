@@ -19,25 +19,33 @@ package org.wso2.developerstudio.eclipse.esb.project.ui.view;
 
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.security.SecureRandom;
 import java.security.cert.X509Certificate;
 import java.util.Base64;
+import java.util.Properties;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
@@ -46,31 +54,40 @@ import org.wso2.developerstudio.eclipse.esb.project.servlets.FunctionServerConst
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
+import net.consensys.cava.toml.Toml;
+import net.consensys.cava.toml.TomlParseResult;
+
 public class DeployedServicesView extends ViewPart {
     
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-    private static final String MI_LOGIN_API_URL= "https://localhost:9164/management/login";
-    private static final String MI_API_API_URL= "https://localhost:9164/management/apis";
-    private static final String MI_PROXY_API_URL= "https://localhost:9164/management/proxy-services";
-    private static final String MI_DATASERVICES_API_URL= "https://localhost:9164/management/data-services";
-    private static final String API_DETAILS_GET_PARAM= "apidetails";
-    private static final String PROXY_DETAILS_GET_PARAM= "proxydetails";
-    private static final String DATASERVICE_DETAILS_GET_PARAM= "dataservicedetails";
+    private static final String URL_PREFIX = "https://localhost:";
+    private static final String MI_LOGIN_API_URL = "/management/login";
+    private static final String MI_API_API_URL = "/management/apis";
+    private static final String MI_PROXY_API_URL = "/management/proxy-services";
+    private static final String MI_DATASERVICES_API_URL = "/management/data-services";
+    private static final String API_DETAILS_GET_PARAM = "apidetails";
+    private static final String PROXY_DETAILS_GET_PARAM = "proxydetails";
+    private static final String DATASERVICE_DETAILS_GET_PARAM = "dataservicedetails";
     private static final String DEFAULT_USERNAME = "admin";
     private static final String DEFAULT_PASSWORD = "admin";
-    
+    private static final String DEP_SERVICES_PROPERTIES_PATH = ResourcesPlugin.getWorkspace().getRoot().getLocation()
+            .toOSString() + File.separator + ".metadata" + File.separator + "deployed_services.properties";
+
     private Browser browser;
     private String accessToken;
+    private int offSet = 10;
 
     @Override
     public void createPartControl(Composite arg0) {
         browser = new Browser(arg0, SWT.NONE);
 
         try {
+            setOffset();
             generateAccessToken();
-            String apiList = getDeployedServices(MI_API_API_URL);
-            String proxyList = getDeployedServices(MI_PROXY_API_URL);
-            String dataServiceList = getDeployedServices(MI_DATASERVICES_API_URL);
+            String apiList = getDeployedServices(URL_PREFIX + getManagamentAPIPort() + MI_API_API_URL);
+            String proxyList = getDeployedServices(URL_PREFIX + getManagamentAPIPort() + MI_PROXY_API_URL);
+            String dataServiceList = getDeployedServices(URL_PREFIX + getManagamentAPIPort() + MI_DATASERVICES_API_URL);
+            updateDeployedServicesMetadata(apiList, proxyList, dataServiceList);
             browser.setUrl(getDefaultPage(apiList, proxyList, dataServiceList));
         } catch (Exception ex) {
             log.error("Failed to start deployed services page", ex);
@@ -97,7 +114,7 @@ public class DeployedServicesView extends ViewPart {
     }
     
     private String generateAccessToken() throws IOException {
-        URL url = new URL (MI_LOGIN_API_URL);
+        URL url = new URL (URL_PREFIX + getManagamentAPIPort() + MI_LOGIN_API_URL);
         String encoding = Base64.getEncoder().encodeToString((DEFAULT_USERNAME + ":" + DEFAULT_PASSWORD).getBytes());
         ignoreCertValidation();
         
@@ -116,7 +133,6 @@ public class DeployedServicesView extends ViewPart {
         String accessToken = "";
         try {
             JSONObject obj = new JSONObject(responseJson.toString().trim());
-            System.out.println(obj.toString());
             accessToken = obj.getString("AccessToken");
         } catch (JSONException e) {
             log.error("Could not parse recieved login json", e);
@@ -159,7 +175,6 @@ public class DeployedServicesView extends ViewPart {
         
         return responseJson.toString();
     }
-   
     
     private void setAccessToken(String accessToken) {
         this.accessToken = accessToken;
@@ -169,5 +184,47 @@ public class DeployedServicesView extends ViewPart {
         return accessToken;
     }
     
+    private int getOffSet() {
+        return this.offSet;
+    }
 
+    private void setOffset() {
+        String workspace = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString();
+        try {
+            String serverConfigDirectoryPath = workspace + File.separator + ".metadata" + File.separator
+                    + "ServerConfigs";
+            File serverConfigurationDirectory = new File(serverConfigDirectoryPath);
+            String tomlFilePath = serverConfigDirectoryPath + File.separator + "deployment.toml";
+            File customizedTomlFile = new File(tomlFilePath);
+            if (serverConfigurationDirectory.exists() && customizedTomlFile.exists()) {
+                TomlParseResult tomlResults = Toml.parse(Paths.get(tomlFilePath));
+                Object offsetObject = tomlResults.get("server.offset");
+                if (offsetObject != null) {
+                    if (offsetObject instanceof String) {
+                        this.offSet = Integer.valueOf((String) offsetObject);
+                    } else if (offsetObject instanceof Long) {
+                        this.offSet = ((Long) offsetObject).intValue();
+                    }
+                }
+            }
+        } catch (IOException e) {
+            log.error("An error occured while backup default server configurations", e);
+        }
+    }
+
+    private String getManagamentAPIPort() {
+        return String.valueOf(9154 + getOffSet());
+    }
+
+    private void updateDeployedServicesMetadata(String apiList, String proxyList, String dataServiceList) {
+        Properties properties = new Properties();
+        properties.setProperty("deployed.md5sum.api", DigestUtils.md5Hex(apiList));
+        properties.setProperty("deployed.md5sum.proxy", DigestUtils.md5Hex(proxyList));
+        properties.setProperty("deployed.md5sum.dataservice", DigestUtils.md5Hex(dataServiceList));
+        try (OutputStream outputStream = new FileOutputStream(DEP_SERVICES_PROPERTIES_PATH)) {
+            properties.store(outputStream, null);
+        } catch (IOException e) {
+            log.error("Error while writing to the conf.properties file.", e);
+        }
+    }
 }

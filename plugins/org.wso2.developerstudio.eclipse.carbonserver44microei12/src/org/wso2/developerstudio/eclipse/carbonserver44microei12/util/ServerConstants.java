@@ -71,4 +71,7 @@ public class ServerConstants {
     public static final String CURRENT_TOML_MD5SUM = "current.toml.md5sum";
     public static final String NEW_JAR_MD5SUM = "new.jar.md5sum";
     public static final String CURRENT_JAR_MD5SUM = "current.jar.md5sum";
+    
+    //deployed services
+    public static final String DEPLOYED_SERVICES_VIEW = "org.wso2.developerstudio.eclipse.esb.project.deployed.endpoint.view";
 }

@@ -41,12 +41,17 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jst.server.generic.core.internal.GenericServer;
 import org.eclipse.jst.server.generic.servertype.definition.ServerRuntime;
+import org.eclipse.ui.IViewPart;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.wst.server.core.IServer;
 import org.eclipse.wst.server.core.ServerPort;
 import org.eclipse.wst.server.core.model.ServerDelegate;
@@ -59,6 +64,7 @@ import org.wso2.developerstudio.eclipse.carbon.server.model.util.CarbonServerXUt
 import org.wso2.developerstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.Activator;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.register.product.servers.MicroIntegratorInstance;
+import org.wso2.developerstudio.eclipse.carbonserver44microei12.util.EmbeddedServerManagementAPIUtils;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
@@ -78,6 +84,11 @@ public class CarbonServer44eiUtils implements CarbonServerXUtils {
             + "ServerConfigs";
     private static final String TEMP_SERVER_CONFIGURATION_PATH = ResourcesPlugin.getWorkspace().getRoot().getLocation()
             .toOSString() + SERVER_CONFIG_LOCATION;
+    private static final String MI_API_API_URL= "/management/apis";
+    private static final String MI_PROXY_API_URL= "/management/proxy-services";
+    private static final String MI_DATASERVICES_API_URL= "/management/data-services";
+    private static final String DEP_SERVICES_PROPERTIES_PATH = ResourcesPlugin.getWorkspace().getRoot().getLocation()
+            .toOSString() + File.separator + ".metadata" + File.separator + "deployed_services.properties";
 
     @Override
     public String getServerVersion() {
@@ -391,5 +402,101 @@ public class CarbonServer44eiUtils implements CarbonServerXUtils {
             log.error("An error occured while backup default server configurations", e);
         }
         return true;
+    }
+    
+    public static void updateDeployedServices() {
+        String deployedApiMd5sum = null;
+        String deployedProxyMd5sum = null;
+        String deployedDataserviceMd5sum = null;
+        try (InputStream propertiesFileStream = Files.newInputStream(Paths.get(DEP_SERVICES_PROPERTIES_PATH))) {
+            if (propertiesFileStream != null) {
+                Properties existingProperties = new Properties();
+                existingProperties.load(propertiesFileStream);
+
+                deployedApiMd5sum = existingProperties.getProperty("deployed.md5sum.api");
+                deployedProxyMd5sum = existingProperties.getProperty("deployed.md5sum.proxy");
+                deployedDataserviceMd5sum = existingProperties.getProperty("deployed.md5sum.dataservice");
+            }
+        } catch (IOException | IllegalArgumentException e) {
+            log.error("Error while setting the md5sum values of embedded server configurations.", e);
+        }
+
+        int offSet = EmbeddedServerManagementAPIUtils.getOffset(10);
+        String newDeployedApiMd5sum = null;
+        String newDeployedProxyMd5sum = null;
+        String newDeployedDataserviceMd5sum = null;
+        String currentDeployedApiMd5sum = null;
+        String currentDeployedProxyMd5sum = null;
+        String currentDeployedDataserviceMd5sum = null;
+        String port = String.valueOf(9154 + offSet);
+        boolean hasChanged = false;
+        boolean hasNewChanges = false;
+        boolean exitLoop = false;
+        try {
+            String accessToken = EmbeddedServerManagementAPIUtils.generateAccessToken(port);
+            Thread.sleep(1000);
+            int count = 0;
+            do {
+                Thread.sleep(1000);
+                count++;
+                currentDeployedApiMd5sum = DigestUtils.md5Hex(
+                        EmbeddedServerManagementAPIUtils.getDeployedServices(port, MI_API_API_URL, accessToken));
+                currentDeployedProxyMd5sum = DigestUtils.md5Hex(
+                        EmbeddedServerManagementAPIUtils.getDeployedServices(port, MI_PROXY_API_URL, accessToken));
+                currentDeployedDataserviceMd5sum = DigestUtils.md5Hex(EmbeddedServerManagementAPIUtils
+                        .getDeployedServices(port, MI_DATASERVICES_API_URL, accessToken));
+
+                hasChanged = md5HasChanged(deployedApiMd5sum, deployedProxyMd5sum, deployedDataserviceMd5sum,
+                        currentDeployedApiMd5sum, currentDeployedProxyMd5sum, currentDeployedDataserviceMd5sum);
+
+                if (hasChanged) {
+                    do {
+                        Thread.sleep(1000);
+                        count++;
+                        newDeployedApiMd5sum = DigestUtils.md5Hex(EmbeddedServerManagementAPIUtils
+                                .getDeployedServices(port, MI_API_API_URL, accessToken));
+                        newDeployedProxyMd5sum = DigestUtils.md5Hex(EmbeddedServerManagementAPIUtils
+                                .getDeployedServices(port, MI_PROXY_API_URL, accessToken));
+                        newDeployedDataserviceMd5sum = DigestUtils.md5Hex(EmbeddedServerManagementAPIUtils
+                                .getDeployedServices(port, MI_DATASERVICES_API_URL, accessToken));
+
+                        hasNewChanges = md5HasChanged(currentDeployedApiMd5sum, currentDeployedProxyMd5sum,
+                                currentDeployedDataserviceMd5sum, newDeployedApiMd5sum, newDeployedProxyMd5sum,
+                                newDeployedDataserviceMd5sum);
+                        if (!hasNewChanges) {
+                            exitLoop = true;
+                        }
+                    } while (hasNewChanges && count < 5);
+                }
+            } while (!exitLoop && count < 10);
+        } catch (IOException | InterruptedException e) {
+            log.error("Error while invoking the embedded integrator management API.", e);
+        }
+
+        if (hasChanged) {
+            IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+            IViewPart view = page.findView(ServerConstants.DEPLOYED_SERVICES_VIEW);
+            page.hideView(view);
+            try {
+                page.showView(ServerConstants.DEPLOYED_SERVICES_VIEW);
+            } catch (PartInitException e) {
+                log.error("Error while initializing deployed services view.", e);
+            }
+        }
+    }
+
+    private static boolean md5HasChanged(String deployedApiMd5sum, String deployedProxyMd5sum,
+            String deployedDataserviceMd5sum, String currentDeployedApiMd5sum, String currentDeployedProxyMd5sum,
+            String currentDeployedDataserviceMd5sum) {
+        if (!deployedApiMd5sum.equals(currentDeployedApiMd5sum)) {
+            return true;
+        }
+        if (!deployedProxyMd5sum.equals(currentDeployedProxyMd5sum)) {
+            return true;
+        }
+        if (!deployedDataserviceMd5sum.equals(currentDeployedDataserviceMd5sum)) {
+            return true;
+        }
+        return false;
     }
 }

@@ -112,7 +112,10 @@ public class EndpointProjectFieldController extends AbstractFieldController {
 		} else if (modelProperty.equals("templ.wsdl.ep.uri") && isWSDlEP) {	
 			if (value == null || value.toString().trim().isEmpty()) {		
 				throw new FieldValidationException("WSDL url cannot be empty");				
-			} else{
+			} else if (value.toString().trim().startsWith("$")) {
+				// Skip system variables starting with $ sign
+				return;
+			} else {
 				CommonFieldValidator.isValidUrl(value.toString().trim(), "WSDL url");
 			}
 		} else if (modelProperty.equals("templ.wsdl.ep.service") && isWSDlEP) {	

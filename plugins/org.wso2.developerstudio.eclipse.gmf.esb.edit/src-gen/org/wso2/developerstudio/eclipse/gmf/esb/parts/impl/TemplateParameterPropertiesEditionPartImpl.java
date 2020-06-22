@@ -96,7 +96,9 @@ public class TemplateParameterPropertiesEditionPartImpl extends CompositePropert
 		CompositionSequence templateParameterStep = new BindingCompositionSequence(propertiesEditionComponent);
 		templateParameterStep
 			.addStep(EsbViewsRepository.TemplateParameter.Properties.class)
-			.addStep(EsbViewsRepository.TemplateParameter.Properties.name);
+			.addStep(EsbViewsRepository.TemplateParameter.Properties.name)
+			.addStep(EsbViewsRepository.TemplateParameter.Properties.isMandatory)
+			.addStep(EsbViewsRepository.TemplateParameter.Properties.defaultValue);
 		
 		
 		composer = new PartComposer(templateParameterStep) {
@@ -109,6 +111,12 @@ public class TemplateParameterPropertiesEditionPartImpl extends CompositePropert
 				if (key == EsbViewsRepository.TemplateParameter.Properties.name) {
 					return createNameText(parent);
 				}
+				if (key == EsbViewsRepository.TemplateParameter.Properties.isMandatory) {
+                    return createIsMandatoryCheckbox(parent);
+                }
+                if (key == EsbViewsRepository.TemplateParameter.Properties.defaultValue) {
+                    return createDefaultValueText(parent);
+                }
 				return parent;
 			}
 		};

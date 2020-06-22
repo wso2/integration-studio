@@ -30,10 +30,13 @@ import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.notation.View;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.Template;
 import org.wso2.developerstudio.eclipse.gmf.esb.TemplateParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.TemplateType;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
+
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
 /**
@@ -70,6 +73,27 @@ public class SequenceTemplateDeserializer extends AbstractEsbNodeDeserializer<Te
                 executeAddValueCommand(templateModel.getParameters(), templateParameter, false);
             }
         }
+        
+        executeSetValueCommand(TEMPLATE__ON_ERROR, template.getErrorHandler());
+
+        TransactionalEditingDomain domain1 = TransactionUtil.getEditingDomain(templateModel);
+        if (domain1 != null) {
+            domain1.getCommandStack().execute(new RecordingCommand(domain1) {
+
+                @Override
+                protected void doExecute() {
+                    RegistryKeyProperty rk = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+                    rk.setKeyValue(template.getErrorHandler());
+                    templateModel.setOnError(rk);
+                }
+            });
+        } else {
+            RegistryKeyProperty rk = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+            rk.setKeyValue(template.getErrorHandler());
+            templateModel.setOnError(rk);
+        }
+        
+        
 
         SequenceMediator sequenceMediator = new SequenceMediator();
         sequenceMediator.addAll(template.getList());

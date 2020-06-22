@@ -60,6 +60,10 @@ public class TemplateTransformer extends AbstractEsbNodeTransformer {
             SequenceTransformer transformer = new SequenceTransformer();
             transformer.transformWithinSequence(info, visualSequence, sequence);
             templateMediator.addAll(sequence.getList());
+            if (template.getOnError() != null && template.getOnError().getKeyValue() != null
+                    && !template.getOnError().getKeyValue().equals("")) {
+                templateMediator.setErrorHandler(template.getOnError().getKeyValue());
+            }
             if (template.getName() != null && !template.getName().equals("")) {
                 info.getSynapseConfiguration().addSequenceTemplate(template.getName(), templateMediator);
             } else {

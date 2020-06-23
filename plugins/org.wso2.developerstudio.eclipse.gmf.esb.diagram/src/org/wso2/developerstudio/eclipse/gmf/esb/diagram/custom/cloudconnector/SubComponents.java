@@ -20,10 +20,17 @@ public class SubComponents {
 
     private String name;
     private String fileName;
+    private String hidden;
 
     public SubComponents(String name, String fileName) {
         this.name = name;
         this.fileName = fileName;
+    }
+    
+    public SubComponents(String name, String fileName, String hidden) {
+        this.name = name;
+        this.fileName = fileName;
+        this.setHidden(hidden);
     }
 
     public String getFileName() {
@@ -41,4 +48,13 @@ public class SubComponents {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getHidden() {
+        return hidden;
+    }
+
+    public void setHidden(String hidden) {
+        this.hidden = hidden;
+    }
+    
 }

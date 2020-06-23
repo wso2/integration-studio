@@ -250,7 +250,9 @@ public class CloudConnectorDirectoryTraverser {
             Component subComponent = new Component();
             subComponent.deserialize(artifactContent);
             for (SubComponents subComponents : subComponent.getSubComponents()) {
-                operationNamesAndFileNamesMap.put(subComponents.getName(), subComponents.getFileName());
+                if (subComponents.getHidden().equals("false")) {
+                    operationNamesAndFileNamesMap.put(subComponents.getName(), subComponents.getFileName());
+                }
             }
 
         }

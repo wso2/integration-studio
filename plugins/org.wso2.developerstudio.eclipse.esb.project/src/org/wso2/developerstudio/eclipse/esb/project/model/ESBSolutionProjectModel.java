@@ -143,15 +143,15 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
             if (value != null && !value.isEmpty()) {
                 if (this.isConfigProjectChecked) {
                     if (this.isMMMProjectChecked) {
-                        setEsbProjectName(value + "ConfigProject");
+                        setEsbProjectName(value + "Configs");
                     } else {
                         setEsbProjectName(value);
                     }
                 }
                 
-                setRegistryProjectName(value + "Registry");
+                setRegistryProjectName(value + "RegistryResources");
                 setConnectorExporterProjectName(value + "ConnectorExporter");
-                setCompositeApplicationProjectName(value + "CompositeApplication");
+                setCompositeApplicationProjectName(value + "CompositeExporter");
                 setDockerExporterProjectName(value + "DockerExporter");
                 setKubernetesExporterProjectName(value + "KubernetesExporter");
             } else {

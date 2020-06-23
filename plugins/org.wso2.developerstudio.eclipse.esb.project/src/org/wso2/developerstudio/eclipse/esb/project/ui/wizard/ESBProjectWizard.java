@@ -72,7 +72,7 @@ public class ESBProjectWizard extends AbstractWSO2ProjectCreationWizard {
 	public boolean performFinish() {
 		try {
 			List<OMElement> esbArtiList = null; 
-			if (esbProjectModel.getSelectedOption().equals("new.esb.synapseConfig")) {
+			if (esbProjectModel.getSelectedOption() != null && esbProjectModel.getSelectedOption().equals("new.esb.synapseConfig")) {
 				esbArtiList =SynapseUtils.synapseConfigFolderContentProcessing(esbProjectModel.getSynapseConfigLocation().getPath());
 			}
 			setProjectNature(ESB_PROJECT_NATURE);
@@ -106,7 +106,7 @@ public class ESBProjectWizard extends AbstractWSO2ProjectCreationWizard {
 				file.setHidden(true);
 			}
 			String groupId = getMavenGroupId(pomfile);
-			if (esbProjectModel.getSelectedOption().equals("new.esb.synapseConfig")) {				
+			if (esbProjectModel.getSelectedOption() != null && esbProjectModel.getSelectedOption().equals("new.esb.synapseConfig")) {				
 				ESBProjectUtils.createESBArtifacts(esbArtiList,project,pomfile,fileList,groupId);
 				
 				ESBProjectUtils.updatePom(project);

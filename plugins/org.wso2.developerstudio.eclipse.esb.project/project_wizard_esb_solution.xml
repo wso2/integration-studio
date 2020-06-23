@@ -28,7 +28,7 @@
 				
 			<data modelProperty="solution.capp.choice" type="choice"
 				fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBSolutionProjectFieldController"
-				group="solution.projects.group">Create Composite Application Exporter</data>
+				group="solution.projects.group">Create Composite Exporter</data>
 			
 			<data modelProperty="solution.capp" type="string"
 				fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBSolutionProjectFieldController"

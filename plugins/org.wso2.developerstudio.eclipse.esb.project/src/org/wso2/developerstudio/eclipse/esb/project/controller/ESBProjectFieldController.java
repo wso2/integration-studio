@@ -37,7 +37,7 @@ public class ESBProjectFieldController extends AbstractFieldController {
                 }
             } else if (modelProperty.equals("solution.capp")) {
                 if (esbSolutionProjectModel.isCappProjectChecked()) {
-                    CommonFieldValidator.validateProjectField(value, "Composite Application Exporter");
+                    CommonFieldValidator.validateProjectField(value, "Composite Exporter");
                 }
             } else if (modelProperty.equals("solution.registry")) {
                 if (esbSolutionProjectModel.isRegistryProjectChecked()) {

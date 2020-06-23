@@ -618,15 +618,19 @@ public class MavenDetailsPage extends WizardPage implements Observer {
 	}
 	
 	public void setArtifactIDLabel() {
-
 		if (dataModel.getProjectName() != null && !dataModel.getProjectName().equals("")) {
 			MavenInfo newmavenProjectInfo = dataModel.getMavenInfo();
-			newmavenProjectInfo.setGroupId(dataModel.getGroupId() + "." + dataModel.getProjectName());
+			newmavenProjectInfo.setGroupId(dataModel.getGroupId());
 			newmavenProjectInfo.setArtifactId(dataModel.getProjectName());
-			txtGroupId.setText(dataModel.getGroupId() + "." + dataModel.getProjectName());
+			txtGroupId.setText(dataModel.getGroupId());
 			lblArtifactIdValue.setText(newmavenProjectInfo.getArtifactId());
 			txtVersion.setText(newmavenProjectInfo.getVersion());
 		}
 	}
 
+	public void updateArtifactId(String artifactId) {
+		lblArtifactIdValue.setText(artifactId);
+		lblArtifactIdValue.setEditable(false);
+		lblArtifactIdValue.setEnabled(false);
+	}
 }

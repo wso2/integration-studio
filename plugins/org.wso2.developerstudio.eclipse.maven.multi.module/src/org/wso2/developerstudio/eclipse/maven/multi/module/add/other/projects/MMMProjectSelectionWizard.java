@@ -139,7 +139,7 @@ public class MMMProjectSelectionWizard extends AbstractWSO2ProjectCreationWizard
                 Display display = PlatformUI.getWorkbench().getDisplay();
                 Shell shell = display.getActiveShell();
 
-                MessageBox exportMsg = new MessageBox(shell, SWT.ICON_ERROR);
+                final MessageBox exportMsg = new MessageBox(shell, SWT.ICON_ERROR);
                 exportMsg.setText(title);
                 exportMsg.setMessage(message);
 

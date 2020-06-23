@@ -33,6 +33,7 @@ import org.wso2.developerstudio.eclipse.distribution.project.ui.wizard.Distribut
 import org.wso2.developerstudio.eclipse.docker.distribution.model.DockerModel;
 import org.wso2.developerstudio.eclipse.docker.distribution.ui.wizard.ContainerProjectCreationWizard;
 import org.wso2.developerstudio.eclipse.esb.project.Activator;
+import org.wso2.developerstudio.eclipse.esb.project.model.ESBProjectModel;
 import org.wso2.developerstudio.eclipse.esb.project.model.ESBSolutionProjectModel;
 import org.wso2.developerstudio.eclipse.esb.project.utils.ESBImageUtils;
 import org.wso2.developerstudio.eclipse.general.project.model.GeneralProjectModel;
@@ -59,11 +60,6 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 	private IProject project;
 	private ESBSolutionProjectModel esbSolutionProjectModel;
 	private File pomFile;
-	private String CAPP_ARTIFACT_ID = "CompositeApplication";
-	private String CONNECTOR_ARTIFACT_ID = "ConnectorExporter";
-	private String DOCKER_ARTIFACT_ID = "DockerExporter";
-	private String KUBERNETES_ARTIFACT_ID = "KubernetsExporter";
-	private String REGISTRY_ARTIFACT_ID = "Registry";
 	private String PROJECT_WIZARD_TITLE = "New Integration Project";
 	private DockerDetailsPage dockerDetailPage;
 	private KubernetesDetailsPage kubernetesDetailPage;
@@ -83,6 +79,11 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 				|| (currentPage == dockerDetailPage && getModel().isKubernetesExporterProjectChecked())) {
 			return kubernetesDetailPage;
 		} else {
+			if (esbSolutionProjectModel.isMMMProjectChecked()) {
+				this.getMavenDetailPage().updateArtifactId(esbSolutionProjectModel.getMMMProjectName());
+			} else {
+				this.getMavenDetailPage().updateArtifactId(esbSolutionProjectModel.getEsbProjectName());
+			}
 			return getMavenDetailPage();
 		}
 	}
@@ -136,9 +137,9 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 			try {
 				mmmModel.setProjectName(mmmProjectName);
 				mmmModel.setArtifactId(mmmProjectName);
+				mmmModel.setVersion(version);
 				mmmModel.setGroupId(esbSolutionProjectModel.getGroupId());
 				mmmModel.setLocation(location);
-				mmmModel.setGroupId(esbSolutionProjectModel.getGroupId());
 				mmmModel.setMavenInfo(esbSolutionProjectModel.getMavenInfo());
 				mmmModel.setIsUserDefine(esbSolutionProjectModel.isUserSet());
 				mmmModel.setSelectedWorkingSets(esbSolutionProjectModel.getSelectedWorkingSets());
@@ -153,21 +154,31 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 		if (esbSolutionProjectModel.isConfigProjectChecked()) {
 			// Creating ESB config project
 			ESBProjectWizard esbProjectWizard = new ESBProjectWizard();
-			esbProjectWizard.setEsbProjectModel(esbSolutionProjectModel);
+			ESBProjectModel esbProjectModel = new ESBProjectModel();
+			String esbProjectName = esbSolutionProjectModel.getEsbProjectName();
 			try {
-				esbSolutionProjectModel.setProjectName(esbSolutionProjectModel.getEsbProjectName());
+				esbProjectModel.setProjectName(esbProjectName);
 			} catch (ObserverFailedException e) {
-				log.error("Failed to set project name : " + esbSolutionProjectModel.getEsbProjectName(), e);
+				log.error("Error while setting the configs project name.", e);
 			}
-			if (isMMMChecked) {
-				esbSolutionProjectModel.setLocation(
-						new File(projectRootPath + File.separator + esbSolutionProjectModel.getEsbProjectName()));
+			esbProjectModel.setLocation(
+					new File(projectRootPath + File.separator + esbSolutionProjectModel.getEsbProjectName()));
+			try {
+				esbProjectModel.setGroupId(esbSolutionProjectModel.getGroupId());
+			} catch (ObserverFailedException e) {
+				log.error("Error while setting the configs project groupId.", e);
 			}
-			esbProjectWizard.setModel(esbSolutionProjectModel);
+			esbProjectModel.setMavenInfo(esbSolutionProjectModel.getMavenInfo());
+			esbProjectModel.getMavenInfo().setArtifactId(esbProjectName);
+			esbProjectModel.setIsUserDefine(esbSolutionProjectModel.isUserSet());
+			esbProjectModel.setSelectedWorkingSets(esbSolutionProjectModel.getSelectedWorkingSets());
+			esbProjectWizard.setEsbProjectModel(esbProjectModel);
+			esbProjectWizard.setModel(esbProjectModel);
 			esbProjectWizard.performFinish();
 			if (!isMMMChecked) {
 				pomFile = esbProjectWizard.getPomFile();
 			}
+			updateMavenInformation(pomFile, esbSolutionProjectModel.getEsbProjectName());
 		}
 		
 		// Creating Registry Project
@@ -178,7 +189,7 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 			try {
 				generalProjectModel.setProjectName(registryProjectName);
 				generalProjectModel.setLocation(new File(projectRootPath + File.separator + registryProjectName));
-				updateMavenInformation(pomFile, REGISTRY_ARTIFACT_ID);
+				updateMavenInformation(pomFile, esbSolutionProjectModel.getRegistryProjectName());
 				generalProjectModel.setGroupId(esbSolutionProjectModel.getGroupId());
 				generalProjectModel.setMavenInfo(esbSolutionProjectModel.getMavenInfo());
 				generalProjectModel.setIsUserDefine(esbSolutionProjectModel.isUserSet());
@@ -198,7 +209,7 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 			try {
 				connectorModel.setProjectName(connectorProjectName);
 				connectorModel.setLocation(new File(projectRootPath + File.separator + connectorProjectName));
-				updateMavenInformation(pomFile,CONNECTOR_ARTIFACT_ID);
+				updateMavenInformation(pomFile, esbSolutionProjectModel.getConnectorExporterProjectName());
 				connectorModel.setGroupId(esbSolutionProjectModel.getGroupId());
 				connectorModel.setMavenInfo(esbSolutionProjectModel.getMavenInfo());
 				connectorModel.setIsUserDefine(esbSolutionProjectModel.isUserSet());
@@ -218,7 +229,7 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
             try {
                 dockerModel.setProjectName(dockerProjectName);
                 dockerModel.setLocation(new File(projectRootPath + File.separator + dockerProjectName));
-                updateMavenInformation(pomFile, DOCKER_ARTIFACT_ID);
+                updateMavenInformation(pomFile, esbSolutionProjectModel.getDockerExporterProjectName());
                 dockerModel.setGroupId(esbSolutionProjectModel.getGroupId());
                 dockerModel.setMavenInfo(esbSolutionProjectModel.getMavenInfo());
                 dockerModel.setIsUserDefine(esbSolutionProjectModel.isUserSet());
@@ -248,7 +259,7 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 			try {
 				kubeModel.setProjectName(kubeProjectName);
 				kubeModel.setLocation(new File(projectRootPath + File.separator + kubeProjectName));
-				updateMavenInformation(pomFile, KUBERNETES_ARTIFACT_ID);
+				updateMavenInformation(pomFile, esbSolutionProjectModel.getKubernetesExporterProjectName());
 				kubeModel.setGroupId(esbSolutionProjectModel.getGroupId());
 				kubeModel.setMavenInfo(esbSolutionProjectModel.getMavenInfo());
 				kubeModel.setIsUserDefine(esbSolutionProjectModel.isUserSet());
@@ -286,7 +297,7 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 				distributionModel.setProjectName(distributionProjectName);
 				distributionModel.setLocation(new File(projectRootPath + File.separator + distributionProjectName));
 				distributionModel.setIsUserDefine(esbSolutionProjectModel.isUserSet());
-				updateMavenInformation(pomFile, CAPP_ARTIFACT_ID);
+				updateMavenInformation(pomFile, distributionProjectName);
 				distributionModel.setGroupId(esbSolutionProjectModel.getGroupId());
 				distributionModel.setMavenInfo(esbSolutionProjectModel.getMavenInfo());
 				distributionModel.setSelectedOption(esbSolutionProjectModel.getSelectedOption());
@@ -318,7 +329,7 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 	private void updateMavenInformation(File pomLocation, String name) {
 		MavenProject mavenProject = getMavenProject(pomLocation);
 		esbSolutionProjectModel.getMavenInfo().setGroupId(mavenProject.getGroupId());
-		esbSolutionProjectModel.getMavenInfo().setArtifactId(mavenProject.getArtifactId() + name);
+		esbSolutionProjectModel.getMavenInfo().setArtifactId(name);
 		esbSolutionProjectModel.getMavenInfo().setVersion(mavenProject.getVersion());
 	}
 

@@ -29,7 +29,7 @@ public class DataServiceProjectFieldController extends AbstractFieldController {
 	public void validate(String modelProperty, Object value, ProjectDataModel model)
 			throws FieldValidationException {
 		if (modelProperty.equals(DataServiceProjectConstants.WIZARD_OPTION_PROJECT_NAME)) {
-			CommonFieldValidator.validateProjectField(value);
+			CommonFieldValidator.validateProjectField(value, "Data Service Configs");
 		} else if (modelProperty.equals(DataServiceProjectConstants.WIZARD_OPTION_IMPORT_FILE)) {
 			if (value == null) {
 				throw new FieldValidationException(DataServiceProjectConstants.ERROR_DBS_LOCATION);

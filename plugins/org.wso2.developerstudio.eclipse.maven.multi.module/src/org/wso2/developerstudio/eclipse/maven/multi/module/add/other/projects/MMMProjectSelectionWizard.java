@@ -133,13 +133,13 @@ public class MMMProjectSelectionWizard extends AbstractWSO2ProjectCreationWizard
      * @param message
      * @param title
      */
-    private void showErrorMessage(String message, String title) {
+    private void showErrorMessage(final String message, final String title) {
         Display.getDefault().asyncExec(new Runnable() {
             public void run() {
                 Display display = PlatformUI.getWorkbench().getDisplay();
                 Shell shell = display.getActiveShell();
 
-                final MessageBox exportMsg = new MessageBox(shell, SWT.ICON_ERROR);
+                MessageBox exportMsg = new MessageBox(shell, SWT.ICON_ERROR);
                 exportMsg.setText(title);
                 exportMsg.setMessage(message);
 

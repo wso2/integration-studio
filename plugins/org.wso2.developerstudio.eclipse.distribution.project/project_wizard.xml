@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <wizard>
-	<projectOptions title="New Composite Application Exporter" 
-					description="Create new Composite Application Exporter" 
+	<projectOptions title="New Composite Exporter" 
+					description="Create new Composite Exporter" 
 					error="">
-		<option id="new.distribution" default="true">New Composite Application Exporter</option>
+		<option id="new.distribution" default="true">New Composite Exporter</option>
 	</projectOptions>
 	<projectOptionSettings>
 		<settings optionId="new.distribution" 
-				  title="New Composite Application Exporter" 
-				  description="Create new Composite Application Exporter" 
+				  title="New Composite Exporter" 
+				  description="Create new Composite Exporter" 
 				  error="Please give a name for the exporter">
 			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.distribution.project.validator.DistributionProjectFieldController">Module Name</data>
 			

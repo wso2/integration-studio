@@ -26,7 +26,7 @@ public class DistributionProjectFieldController extends AbstractFieldController 
 	public void validate(String modelProperty, Object value,
 			ProjectDataModel model) throws FieldValidationException {
 		if (modelProperty.equals("project.name")) {
-			CommonFieldValidator.validateProjectField(value, "Composite Application Exporter");
+			CommonFieldValidator.validateProjectField(value, "Composite Exporter");
 		}
 	}
 

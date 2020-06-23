@@ -6088,6 +6088,9 @@ public class EsbMessages extends NLS {
 	public static String CallTemplateMediatorPropertiesEditionPart_TargetTemplateLabel;
 
 	
+	public static String CallTemplateMediatorPropertiesEditionPart_OnErrorLabel;
+
+	
 	public static String CallTemplateMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
 
 	
@@ -6886,7 +6889,16 @@ public class EsbMessages extends NLS {
 	public static String TemplatePropertiesEditionPart_ParametersLabel;
 
 	
+	public static String TemplatePropertiesEditionPart_OnErrorLabel;
+
+	
 	public static String TemplateParameterPropertiesEditionPart_NameLabel;
+
+	
+	public static String TemplateParameterPropertiesEditionPart_IsMandatoryLabel;
+
+	
+	public static String TemplateParameterPropertiesEditionPart_DefaultValueLabel;
 
 	
 	public static String TaskPropertiesEditionPart_DescriptionLabel;

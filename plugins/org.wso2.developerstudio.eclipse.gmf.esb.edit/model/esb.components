@@ -3357,6 +3357,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v9QfJnEei6boXzpRIfnA" name="targetTemplate" views="_E7wm9fJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CallTemplateMediator/targetTemplate"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_C7YucLSfEeqog9pZVLatrA" name="onError" views="_KtsnQLRqEeqUU8qPcjrXHQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CallTemplateMediator/onError"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CallTemplateMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v9QvJnEei6boXzpRIfnA" name="CallTemplateMediatorInputConnector" views="_E7wm9vJnEei6boXzpRIfnA">
@@ -4359,11 +4362,20 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v-dfJnEei6boXzpRIfnA" name="parameters" views="_E7xKdPJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Template/parameters"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_q1hNYLRsEeqUU8qPcjrXHQ" name="onError" views="_EveqcLRsEeqUU8qPcjrXHQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Template/onError"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//Template"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v-dvJnEei6boXzpRIfnA" name="TemplateParameter" views="_E7xKdfJnEei6boXzpRIfnA">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v-d_JnEei6boXzpRIfnA" name="name" views="_E7xKd_JnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//TemplateParameter/name"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_2T4uILRsEeqUU8qPcjrXHQ" name="isMandatory" views="_WUqN4LRrEeqUU8qPcjrXHQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//TemplateParameter/isMandatory"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_70zZALRsEeqUU8qPcjrXHQ" name="defaultValue" views="_bm5jkLRrEeqUU8qPcjrXHQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//TemplateParameter/defaultValue"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//TemplateParameter"/>
       </bindings>
@@ -9755,6 +9767,7 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wm9fJnEei6boXzpRIfnA" name="targetTemplate">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_KtsnQLRqEeqUU8qPcjrXHQ" name="onError"/>
         </elements>
       </views>
       <views xmi:id="_E7wm9vJnEei6boXzpRIfnA" name="CallTemplateMediatorInputConnector">
@@ -10878,12 +10891,19 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKdPJnEei6boXzpRIfnA" name="parameters">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_EveqcLRsEeqUU8qPcjrXHQ" name="onError"/>
         </elements>
       </views>
       <views xmi:id="_E7xKdfJnEei6boXzpRIfnA" name="TemplateParameter">
         <elements xsi:type="eef-views:Container" xmi:id="_E7xKdvJnEei6boXzpRIfnA" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xKd_JnEei6boXzpRIfnA" name="name">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_WUqN4LRrEeqUU8qPcjrXHQ" name="isMandatory">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_bm5jkLRrEeqUU8qPcjrXHQ" name="defaultValue">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
         </elements>

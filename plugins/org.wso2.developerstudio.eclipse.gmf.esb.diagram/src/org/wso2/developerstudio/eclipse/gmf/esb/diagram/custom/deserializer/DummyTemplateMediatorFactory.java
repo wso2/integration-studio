@@ -32,6 +32,7 @@ import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.mediators.ListMediator;
 import org.apache.synapse.mediators.builtin.CommentMediator;
 import org.apache.synapse.mediators.template.TemplateMediator;
+import org.apache.synapse.mediators.template.TemplateParam;
 
 import javax.xml.namespace.QName;
 import java.util.ArrayList;
@@ -74,13 +75,14 @@ public class DummyTemplateMediatorFactory extends AbstractListMediatorFactory {
 
     private void initParameters(OMElement templateElem, TemplateMediator templateMediator) {
         Iterator subElements = templateElem.getChildElements();
-        Collection<String> paramNames = new ArrayList<String>();
+        Collection<TemplateParam> paramNames = new ArrayList<TemplateParam>();
         while (subElements.hasNext()) {
             OMElement child = (OMElement) subElements.next();
             if (child.getQName().equals(PARAMETER_Q)) {
                 OMAttribute paramNameAttr = child.getAttribute(ATT_NAME);
                 if (paramNameAttr != null) {
-                    paramNames.add(paramNameAttr.getAttributeValue());
+                    TemplateParam tempParam = new TemplateParam(paramNameAttr.getAttributeValue(), false, "");
+                    paramNames.add(tempParam);
                 }
                 // child.detach();
             }

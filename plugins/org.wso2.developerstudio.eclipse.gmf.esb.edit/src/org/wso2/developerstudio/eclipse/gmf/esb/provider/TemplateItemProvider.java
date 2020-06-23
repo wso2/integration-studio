@@ -140,6 +140,7 @@ public class TemplateItemProvider extends EsbElementItemProvider {
             super.getChildrenFeatures(object);
             childrenFeatures.add(EsbPackage.Literals.TEMPLATE__CHILD);
             childrenFeatures.add(EsbPackage.Literals.TEMPLATE__PARAMETERS);
+            childrenFeatures.add(EsbPackage.Literals.TEMPLATE__ON_ERROR);
         }
         return childrenFeatures;
     }
@@ -200,6 +201,7 @@ public class TemplateItemProvider extends EsbElementItemProvider {
                 return;
             case EsbPackage.TEMPLATE__CHILD:
             case EsbPackage.TEMPLATE__PARAMETERS:
+            case EsbPackage.TEMPLATE__ON_ERROR:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                 return;
         }
@@ -636,6 +638,11 @@ public class TemplateItemProvider extends EsbElementItemProvider {
             (createChildParameter
                 (EsbPackage.Literals.TEMPLATE__PARAMETERS,
                  EsbFactory.eINSTANCE.createTemplateParameter()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.TEMPLATE__ON_ERROR,
+                 EsbFactory.eINSTANCE.createRegistryKeyProperty()));
     }
 
 }

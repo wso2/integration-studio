@@ -18,6 +18,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.mediators.template.TemplateMediator;
+import org.apache.synapse.mediators.template.TemplateParam;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.transaction.RecordingCommand;
@@ -30,10 +31,13 @@ import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.notation.View;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.Template;
 import org.wso2.developerstudio.eclipse.gmf.esb.TemplateParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.TemplateType;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
+
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
 /**
@@ -64,12 +68,35 @@ public class SequenceTemplateDeserializer extends AbstractEsbNodeDeserializer<Te
         executeSetValueCommand(TEMPLATE__TEMPLATE_TYPE, TemplateType.SEQUENCE);
 
         if (template.getParameters() != null) {
-            for (String parameter : template.getParameters()) {
+            for (TemplateParam parameter : template.getParameters()) {
                 TemplateParameter templateParameter = EsbFactory.eINSTANCE.createTemplateParameter();
-                templateParameter.setName(parameter);
+                templateParameter.setName(parameter.getName());
+                templateParameter.setDefaultValue((String)parameter.getDefaultValue());
+                templateParameter.setIsMandatory(templateParameter.isIsMandatory());
                 executeAddValueCommand(templateModel.getParameters(), templateParameter, false);
             }
         }
+        
+        executeSetValueCommand(TEMPLATE__ON_ERROR, template.getErrorHandler());
+
+        TransactionalEditingDomain domain1 = TransactionUtil.getEditingDomain(templateModel);
+        if (domain1 != null) {
+            domain1.getCommandStack().execute(new RecordingCommand(domain1) {
+
+                @Override
+                protected void doExecute() {
+                    RegistryKeyProperty rk = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+                    rk.setKeyValue(template.getErrorHandler());
+                    templateModel.setOnError(rk);
+                }
+            });
+        } else {
+            RegistryKeyProperty rk = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+            rk.setKeyValue(template.getErrorHandler());
+            templateModel.setOnError(rk);
+        }
+        
+        
 
         SequenceMediator sequenceMediator = new SequenceMediator();
         sequenceMediator.addAll(template.getList());

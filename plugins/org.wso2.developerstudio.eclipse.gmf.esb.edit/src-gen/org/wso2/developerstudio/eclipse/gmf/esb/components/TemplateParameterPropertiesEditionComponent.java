@@ -78,7 +78,15 @@ public class TemplateParameterPropertiesEditionComponent extends SinglePartPrope
 			if (isAccessible(EsbViewsRepository.TemplateParameter.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, templateParameter.getName()));
 			
+			if (isAccessible(EsbViewsRepository.TemplateParameter.Properties.isMandatory)) {
+				basePart.setIsMandatory(templateParameter.isIsMandatory());
+			}
+			if (isAccessible(EsbViewsRepository.TemplateParameter.Properties.defaultValue))
+				basePart.setDefaultValue(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, templateParameter.getDefaultValue()));
+			
 			// init filters
+			
+			
 			
 			// init values for referenced views
 			
@@ -91,6 +99,8 @@ public class TemplateParameterPropertiesEditionComponent extends SinglePartPrope
 
 
 
+
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
@@ -98,6 +108,12 @@ public class TemplateParameterPropertiesEditionComponent extends SinglePartPrope
 	public EStructuralFeature associatedFeature(Object editorKey) {
 		if (editorKey == EsbViewsRepository.TemplateParameter.Properties.name) {
 			return EsbPackage.eINSTANCE.getTemplateParameter_Name();
+		}
+		if (editorKey == EsbViewsRepository.TemplateParameter.Properties.isMandatory) {
+			return EsbPackage.eINSTANCE.getTemplateParameter_IsMandatory();
+		}
+		if (editorKey == EsbViewsRepository.TemplateParameter.Properties.defaultValue) {
+			return EsbPackage.eINSTANCE.getTemplateParameter_DefaultValue();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -111,6 +127,12 @@ public class TemplateParameterPropertiesEditionComponent extends SinglePartPrope
 		TemplateParameter templateParameter = (TemplateParameter)semanticObject;
 		if (EsbViewsRepository.TemplateParameter.Properties.name == event.getAffectedEditor()) {
 			templateParameter.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
+		if (EsbViewsRepository.TemplateParameter.Properties.isMandatory == event.getAffectedEditor()) {
+			templateParameter.setIsMandatory((Boolean)event.getNewValue());
+		}
+		if (EsbViewsRepository.TemplateParameter.Properties.defaultValue == event.getAffectedEditor()) {
+			templateParameter.setDefaultValue((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -129,6 +151,16 @@ public class TemplateParameterPropertiesEditionComponent extends SinglePartPrope
 					basePart.setName("");
 				}
 			}
+			if (EsbPackage.eINSTANCE.getTemplateParameter_IsMandatory().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.TemplateParameter.Properties.isMandatory))
+				basePart.setIsMandatory((Boolean)msg.getNewValue());
+			
+			if (EsbPackage.eINSTANCE.getTemplateParameter_DefaultValue().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.TemplateParameter.Properties.defaultValue)) {
+				if (msg.getNewValue() != null) {
+					basePart.setDefaultValue(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+				} else {
+					basePart.setDefaultValue("");
+				}
+			}
 			
 		}
 	}
@@ -141,7 +173,9 @@ public class TemplateParameterPropertiesEditionComponent extends SinglePartPrope
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			EsbPackage.eINSTANCE.getTemplateParameter_Name()		);
+			EsbPackage.eINSTANCE.getTemplateParameter_Name(),
+			EsbPackage.eINSTANCE.getTemplateParameter_IsMandatory(),
+			EsbPackage.eINSTANCE.getTemplateParameter_DefaultValue()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -172,6 +206,20 @@ public class TemplateParameterPropertiesEditionComponent extends SinglePartPrope
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getTemplateParameter_Name().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getTemplateParameter_Name().getEAttributeType(), newValue);
+				}
+				if (EsbViewsRepository.TemplateParameter.Properties.isMandatory == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getTemplateParameter_IsMandatory().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getTemplateParameter_IsMandatory().getEAttributeType(), newValue);
+				}
+				if (EsbViewsRepository.TemplateParameter.Properties.defaultValue == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getTemplateParameter_DefaultValue().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getTemplateParameter_DefaultValue().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

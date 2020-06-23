@@ -24,6 +24,7 @@ import org.apache.synapse.config.xml.endpoints.EndpointSerializer;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.mediators.template.TemplateMediator;
+import org.apache.synapse.mediators.template.TemplateParam;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
 import org.wso2.developerstudio.eclipse.gmf.esb.AddressEndPoint;
@@ -53,13 +54,17 @@ public class TemplateTransformer extends AbstractEsbNodeTransformer {
             TemplateMediator templateMediator = new TemplateMediator();
             templateMediator.setName(template.getName());
             templateMediator.setDescription(template.getDescription());
-            templateMediator.setParameters(new ArrayList<String>());
-            saveParameters(template, templateMediator.getParameters());
+            templateMediator.setParameters(new ArrayList<TemplateParam>());
+            saveParametersForSequenceTemplate(template, templateMediator.getParameters());
             SequenceMediator sequence = new SequenceMediator();
             Sequences visualSequence = (Sequences) template.getChild();
             SequenceTransformer transformer = new SequenceTransformer();
             transformer.transformWithinSequence(info, visualSequence, sequence);
             templateMediator.addAll(sequence.getList());
+            if (template.getOnError() != null && template.getOnError().getKeyValue() != null
+                    && !template.getOnError().getKeyValue().equals("")) {
+                templateMediator.setErrorHandler(template.getOnError().getKeyValue());
+            }
             if (template.getName() != null && !template.getName().equals("")) {
                 info.getSynapseConfiguration().addSequenceTemplate(template.getName(), templateMediator);
             } else {
@@ -98,6 +103,17 @@ public class TemplateTransformer extends AbstractEsbNodeTransformer {
             
             if (template.getCommentsList() != null) {
                 endpointTemplate.getCommentsList().addAll(template.getCommentsList());
+            }
+        }
+
+    }
+
+    private void saveParametersForSequenceTemplate(Template template, Collection<TemplateParam> parameters) {
+        for (TemplateParameter templateParameter : template.getParameters()) {
+            if (templateParameter != null && templateParameter.getName() != null) {
+                TemplateParam tempParam = new TemplateParam(templateParameter.getName(),
+                        templateParameter.isIsMandatory(), templateParameter.getDefaultValue());
+                parameters.add(tempParam);
             }
         }
 

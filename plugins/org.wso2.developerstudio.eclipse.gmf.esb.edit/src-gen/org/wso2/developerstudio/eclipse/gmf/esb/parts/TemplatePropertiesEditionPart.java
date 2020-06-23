@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 
 
 // End of user code
@@ -143,6 +144,11 @@ public interface TemplatePropertiesEditionPart {
 
 
 
+	// Start of user code for onError specific getters and setters declaration
+    public void setOnError(RegistryKeyProperty registryKeyProperty);
+
+    public RegistryKeyProperty getOnError();
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

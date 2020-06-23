@@ -52,10 +52,11 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.Template;
 import org.wso2.developerstudio.eclipse.gmf.esb.TemplateParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.TemplateType;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.TemplatePropertiesEditionPart;
 
@@ -120,6 +121,12 @@ public class TemplatePropertiesEditionComponent extends SinglePartPropertiesEdit
 				parametersSettings = new ReferencesTableSettings(template, EsbPackage.eINSTANCE.getTemplate_Parameters());
 				basePart.initParameters(parametersSettings);
 			}
+			// Start of user code  for onError command update
+			if (isAccessible(EsbViewsRepository.Template.Properties.onError)) {
+                basePart.setOnError(template.getOnError());
+            }
+			// End of user code
+			
 			// init filters
 			
 			
@@ -140,6 +147,9 @@ public class TemplatePropertiesEditionComponent extends SinglePartPropertiesEdit
 				// Start of user code for additional businessfilters for parameters
 				// End of user code
 			}
+			// Start of user code  for onError filter update
+			// End of user code
+			
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -147,6 +157,7 @@ public class TemplatePropertiesEditionComponent extends SinglePartPropertiesEdit
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -174,6 +185,9 @@ public class TemplatePropertiesEditionComponent extends SinglePartPropertiesEdit
 		}
 		if (editorKey == EsbViewsRepository.Template.Properties.parameters) {
 			return EsbPackage.eINSTANCE.getTemplate_Parameters();
+		}
+		if (editorKey == EsbViewsRepository.Template.Properties.onError) {
+			return EsbPackage.eINSTANCE.getTemplate_OnError();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -225,6 +239,17 @@ public class TemplatePropertiesEditionComponent extends SinglePartPropertiesEdit
 				parametersSettings.move(event.getNewIndex(), (TemplateParameter) event.getNewValue());
 			}
 		}
+		if (EsbViewsRepository.Template.Properties.onError == event.getAffectedEditor()) {
+			// Start of user code for updateOnError method body
+		    if (event.getNewValue() != null) {
+                RegistryKeyProperty rkp = (RegistryKeyProperty) event.getNewValue();
+                template.setOnError(rkp);
+            } else {
+                template.setOnError(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+            }
+			// End of user code
+			
+		}
 	}
 
 	/**
@@ -266,6 +291,18 @@ public class TemplatePropertiesEditionComponent extends SinglePartPropertiesEdit
 			
 			if (EsbPackage.eINSTANCE.getTemplate_Parameters().equals(msg.getFeature()) && isAccessible(EsbViewsRepository.Template.Properties.parameters))
 				basePart.updateParameters();
+            // Start of user code for onError live update
+            if (EsbPackage.eINSTANCE.getTemplate_OnError().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject) && basePart != null
+                    && isAccessible(EsbViewsRepository.Template.Properties.onError)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setOnError((RegistryKeyProperty) msg.getNewValue());
+                } else {
+                    basePart.setOnError(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+                }
+            }
+            // End of user code
+			
 			
 		}
 	}
@@ -282,7 +319,8 @@ public class TemplatePropertiesEditionComponent extends SinglePartPropertiesEdit
 			EsbPackage.eINSTANCE.getEsbElement_CommentsList(),
 			EsbPackage.eINSTANCE.getTemplate_Name(),
 			EsbPackage.eINSTANCE.getTemplate_TemplateType(),
-			EsbPackage.eINSTANCE.getTemplate_Parameters()		);
+			EsbPackage.eINSTANCE.getTemplate_Parameters(),
+			EsbPackage.eINSTANCE.getTemplate_OnError()		);
 		return new NotificationFilter[] {filter,};
 	}
 

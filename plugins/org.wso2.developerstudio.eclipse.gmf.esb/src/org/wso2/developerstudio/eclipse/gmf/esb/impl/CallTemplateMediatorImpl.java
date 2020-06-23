@@ -26,6 +26,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateMediatorInputConnect
 import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateMediatorOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 
 /**
  * <!-- begin-user-doc -->
@@ -40,6 +41,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallTemplateMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallTemplateMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallTemplateMediatorImpl#getTargetTemplate <em>Target Template</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallTemplateMediatorImpl#getOnError <em>On Error</em>}</li>
  * </ul>
  *
  * @generated
@@ -115,6 +117,16 @@ public class CallTemplateMediatorImpl extends MediatorImpl implements CallTempla
      * @ordered
      */
     protected String targetTemplate = TARGET_TEMPLATE_EDEFAULT;
+
+    /**
+     * The cached value of the '{@link #getOnError() <em>On Error</em>}' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getOnError()
+     * @generated
+     * @ordered
+     */
+    protected RegistryKeyProperty onError;
 
     /**
      * <!-- begin-user-doc -->
@@ -282,6 +294,49 @@ public class CallTemplateMediatorImpl extends MediatorImpl implements CallTempla
      * <!-- end-user-doc -->
      * @generated
      */
+    public RegistryKeyProperty getOnError() {
+        return onError;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public NotificationChain basicSetOnError(RegistryKeyProperty newOnError, NotificationChain msgs) {
+        RegistryKeyProperty oldOnError = onError;
+        onError = newOnError;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.CALL_TEMPLATE_MEDIATOR__ON_ERROR, oldOnError, newOnError);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
+        }
+        return msgs;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setOnError(RegistryKeyProperty newOnError) {
+        if (newOnError != onError) {
+            NotificationChain msgs = null;
+            if (onError != null)
+                msgs = ((InternalEObject)onError).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.CALL_TEMPLATE_MEDIATOR__ON_ERROR, null, msgs);
+            if (newOnError != null)
+                msgs = ((InternalEObject)newOnError).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.CALL_TEMPLATE_MEDIATOR__ON_ERROR, null, msgs);
+            msgs = basicSetOnError(newOnError, msgs);
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CALL_TEMPLATE_MEDIATOR__ON_ERROR, newOnError, newOnError));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
@@ -291,6 +346,8 @@ public class CallTemplateMediatorImpl extends MediatorImpl implements CallTempla
                 return basicSetInputConnector(null, msgs);
             case EsbPackage.CALL_TEMPLATE_MEDIATOR__OUTPUT_CONNECTOR:
                 return basicSetOutputConnector(null, msgs);
+            case EsbPackage.CALL_TEMPLATE_MEDIATOR__ON_ERROR:
+                return basicSetOnError(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -313,6 +370,8 @@ public class CallTemplateMediatorImpl extends MediatorImpl implements CallTempla
                 return getOutputConnector();
             case EsbPackage.CALL_TEMPLATE_MEDIATOR__TARGET_TEMPLATE:
                 return getTargetTemplate();
+            case EsbPackage.CALL_TEMPLATE_MEDIATOR__ON_ERROR:
+                return getOnError();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -342,6 +401,9 @@ public class CallTemplateMediatorImpl extends MediatorImpl implements CallTempla
             case EsbPackage.CALL_TEMPLATE_MEDIATOR__TARGET_TEMPLATE:
                 setTargetTemplate((String)newValue);
                 return;
+            case EsbPackage.CALL_TEMPLATE_MEDIATOR__ON_ERROR:
+                setOnError((RegistryKeyProperty)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -369,6 +431,9 @@ public class CallTemplateMediatorImpl extends MediatorImpl implements CallTempla
             case EsbPackage.CALL_TEMPLATE_MEDIATOR__TARGET_TEMPLATE:
                 setTargetTemplate(TARGET_TEMPLATE_EDEFAULT);
                 return;
+            case EsbPackage.CALL_TEMPLATE_MEDIATOR__ON_ERROR:
+                setOnError((RegistryKeyProperty)null);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -391,6 +456,8 @@ public class CallTemplateMediatorImpl extends MediatorImpl implements CallTempla
                 return outputConnector != null;
             case EsbPackage.CALL_TEMPLATE_MEDIATOR__TARGET_TEMPLATE:
                 return TARGET_TEMPLATE_EDEFAULT == null ? targetTemplate != null : !TARGET_TEMPLATE_EDEFAULT.equals(targetTemplate);
+            case EsbPackage.CALL_TEMPLATE_MEDIATOR__ON_ERROR:
+                return onError != null;
         }
         return super.eIsSet(featureID);
     }

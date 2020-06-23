@@ -1896,6 +1896,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//CallTemplateMediator/inputConnector"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//CallTemplateMediator/outputConnector"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CallTemplateMediator/targetTemplate"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//CallTemplateMediator/onError"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//CallTemplateMediatorInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//CallTemplateMediatorOutputConnector"/>
@@ -2145,9 +2146,12 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//Template/templateType"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//Template/child"/>
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//Template/parameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//Template/onError"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//TemplateParameter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//TemplateParameter/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//TemplateParameter/isMandatory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//TemplateParameter/defaultValue"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//Task">
       <genFeatures createChild="false" propertyCategory="Basic" ecoreFeature="ecore:EAttribute esb.ecore#//Task/taskName"/>

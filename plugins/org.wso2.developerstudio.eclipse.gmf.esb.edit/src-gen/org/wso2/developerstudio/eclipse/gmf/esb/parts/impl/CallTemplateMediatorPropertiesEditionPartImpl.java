@@ -64,7 +64,7 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 
@@ -88,6 +88,10 @@ public class CallTemplateMediatorPropertiesEditionPartImpl extends CompositeProp
 	protected List<ViewerFilter> templateParametersBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> templateParametersFilters = new ArrayList<ViewerFilter>();
 	protected Text targetTemplate;
+	// Start of user code  for onError widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -132,6 +136,7 @@ public class CallTemplateMediatorPropertiesEditionPartImpl extends CompositeProp
 		propertiesStep.addStep(EsbViewsRepository.CallTemplateMediator.Properties.availableTemplates);
 		propertiesStep.addStep(EsbViewsRepository.CallTemplateMediator.Properties.templateParameters);
 		propertiesStep.addStep(EsbViewsRepository.CallTemplateMediator.Properties.targetTemplate);
+		propertiesStep.addStep(EsbViewsRepository.CallTemplateMediator.Properties.onError);
 		
 		
 		composer = new PartComposer(callTemplateMediatorStep) {
@@ -159,6 +164,9 @@ public class CallTemplateMediatorPropertiesEditionPartImpl extends CompositeProp
 				if (key == EsbViewsRepository.CallTemplateMediator.Properties.targetTemplate) {
 					return createTargetTemplateText(parent);
 				}
+				// Start of user code for onError addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -714,6 +722,10 @@ public class CallTemplateMediatorPropertiesEditionPartImpl extends CompositeProp
 
 
 
+	// Start of user code for onError specific getters and setters implementation
+	
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -725,7 +737,18 @@ public class CallTemplateMediatorPropertiesEditionPartImpl extends CompositeProp
 	}
 
 	// Start of user code additional methods
-	
+    @Override
+    public void setOnError(RegistryKeyProperty registryKeyProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public RegistryKeyProperty getOnError() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 	// End of user code
 
 

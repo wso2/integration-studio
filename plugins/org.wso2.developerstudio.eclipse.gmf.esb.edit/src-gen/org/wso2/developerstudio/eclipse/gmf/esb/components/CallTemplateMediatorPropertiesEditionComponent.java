@@ -53,10 +53,10 @@ import org.eclipse.jface.viewers.ViewerFilter;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 
 
 // End of user code
@@ -122,6 +122,11 @@ public class CallTemplateMediatorPropertiesEditionComponent extends SinglePartPr
 			if (isAccessible(EsbViewsRepository.CallTemplateMediator.Properties.targetTemplate))
 				basePart.setTargetTemplate(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, callTemplateMediator.getTargetTemplate()));
 			
+			// Start of user code  for onError command update
+			if (isAccessible(EsbViewsRepository.CallTemplateMediator.Properties.onError))
+                basePart.setOnError(callTemplateMediator.getOnError());
+			// End of user code
+			
 			// init filters
 			
 			
@@ -143,6 +148,9 @@ public class CallTemplateMediatorPropertiesEditionComponent extends SinglePartPr
 				// End of user code
 			}
 			
+			// Start of user code  for onError filter update
+			// End of user code
+			
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -150,6 +158,7 @@ public class CallTemplateMediatorPropertiesEditionComponent extends SinglePartPr
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -181,6 +190,9 @@ public class CallTemplateMediatorPropertiesEditionComponent extends SinglePartPr
 		}
 		if (editorKey == EsbViewsRepository.CallTemplateMediator.Properties.targetTemplate) {
 			return EsbPackage.eINSTANCE.getCallTemplateMediator_TargetTemplate();
+		}
+		if (editorKey == EsbViewsRepository.CallTemplateMediator.Properties.onError) {
+			return EsbPackage.eINSTANCE.getCallTemplateMediator_OnError();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -235,6 +247,17 @@ public class CallTemplateMediatorPropertiesEditionComponent extends SinglePartPr
 		if (EsbViewsRepository.CallTemplateMediator.Properties.targetTemplate == event.getAffectedEditor()) {
 			callTemplateMediator.setTargetTemplate((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
+		if (EsbViewsRepository.CallTemplateMediator.Properties.onError == event.getAffectedEditor()) {
+			// Start of user code for updateOnError method body
+		    if (event.getNewValue() != null) {
+                RegistryKeyProperty rkp = (RegistryKeyProperty) event.getNewValue();
+                callTemplateMediator.setOnError(rkp);
+            } else {
+                callTemplateMediator.setOnError(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+            }
+			// End of user code
+			
+		}
 	}
 
 	/**
@@ -283,6 +306,19 @@ public class CallTemplateMediatorPropertiesEditionComponent extends SinglePartPr
 					basePart.setTargetTemplate("");
 				}
 			}
+            // Start of user code for onError live update
+            if (EsbPackage.eINSTANCE.getCallTemplateMediator_OnError().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject) && basePart != null
+                    && isAccessible(EsbViewsRepository.CallTemplateMediator.Properties.onError)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setOnError((RegistryKeyProperty) msg.getNewValue());
+                } else {
+                    basePart.setOnError(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+                }
+            }
+
+            // End of user code
+			
 			
 		}
 	}
@@ -300,7 +336,8 @@ public class CallTemplateMediatorPropertiesEditionComponent extends SinglePartPr
 			EsbPackage.eINSTANCE.getMediator_Reverse(),
 			EsbPackage.eINSTANCE.getCallTemplateMediator_AvailableTemplates(),
 			EsbPackage.eINSTANCE.getCallTemplateMediator_TemplateParameters(),
-			EsbPackage.eINSTANCE.getCallTemplateMediator_TargetTemplate()		);
+			EsbPackage.eINSTANCE.getCallTemplateMediator_TargetTemplate(),
+			EsbPackage.eINSTANCE.getCallTemplateMediator_OnError()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -360,13 +397,7 @@ public class CallTemplateMediatorPropertiesEditionComponent extends SinglePartPr
 	}
 
 
-	/**
-	 * @generated NOT
-	 */
-    @Override
-    public String getHelpContent(Object key, int kind) {
-        return EEFPropertyViewUtil.getHelpContent(key);
-    }
+	
 
 	
 

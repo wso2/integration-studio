@@ -19,6 +19,7 @@ import org.apache.axiom.om.OMNamespace;
 import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.SynapseConstants;
+import org.apache.synapse.mediators.template.TemplateParam;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.util.TransactionUtil;
@@ -103,7 +104,7 @@ public class CloudConnectorInitialConfigurationDialog extends TitleAreaDialog {
     private Text nameText;
     private Label configurationNameLabel;
     private String configName;
-    private Collection<String> parameters;
+    private Collection<TemplateParam> parameters;
     // private Label saveOptionLabel;
     private Combo saveOptionCombo;
 
@@ -112,9 +113,9 @@ public class CloudConnectorInitialConfigurationDialog extends TitleAreaDialog {
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     public CloudConnectorInitialConfigurationDialog(Shell parent, CloudConnectorOperation operation,
-            Collection<String> parameters, String cloudConnectorAuthenticationInfo) {
+            Collection<TemplateParam> cloudConnectorConfigurationParameters, String cloudConnectorAuthenticationInfo) {
         super(parent);
-        this.parameters = parameters;
+        this.parameters = cloudConnectorConfigurationParameters;
         this.operation = operation;
         this.cloudConnectorAuthenticationInfo = cloudConnectorAuthenticationInfo;
         setTitleImage(DiagramImageUtils.getInstance().getImageDescriptor("connectorInit.png").createImage());
@@ -267,9 +268,9 @@ public class CloudConnectorInitialConfigurationDialog extends TitleAreaDialog {
         paramTable.addListener(SWT.Selection, tblPropertiesListener);
 
         if (parameters != null) {
-            for (String param : parameters) {
+            for (TemplateParam param : parameters) {
                 CallTemplateParameter callTemplateParameter = EsbFactory.eINSTANCE.createCallTemplateParameter();
-                callTemplateParameter.setParameterName(param);
+                callTemplateParameter.setParameterName(param.getName());
                 callTemplateParameter.setParameterValue("");
                 callTemplateParameter.setTemplateParameterType(RuleOptionType.VALUE);
                 bindPram(callTemplateParameter);

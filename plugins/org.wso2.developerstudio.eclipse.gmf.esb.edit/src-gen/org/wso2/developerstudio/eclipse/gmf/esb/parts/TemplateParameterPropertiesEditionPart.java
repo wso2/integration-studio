@@ -29,6 +29,34 @@ public interface TemplateParameterPropertiesEditionPart {
 	public void setName(String newValue);
 
 
+	/**
+	 * @return the isMandatory
+	 * 
+	 */
+	public Boolean getIsMandatory();
+
+	/**
+	 * Defines a new isMandatory
+	 * @param newValue the new isMandatory to set
+	 * 
+	 */
+	public void setIsMandatory(Boolean newValue);
+
+
+	/**
+	 * @return the defaultValue
+	 * 
+	 */
+	public String getDefaultValue();
+
+	/**
+	 * Defines a new defaultValue
+	 * @param newValue the new defaultValue to set
+	 * 
+	 */
+	public void setDefaultValue(String newValue);
+
+
 
 
 

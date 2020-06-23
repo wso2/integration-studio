@@ -74,7 +74,7 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.TemplatePropertiesEditionPart;
 
@@ -672,8 +672,20 @@ public class TemplatePropertiesEditionPartImpl extends CompositePropertiesEditio
 		return EsbMessages.Template_Part_Title;
 	}
 
+
+
 	// Start of user code additional methods
-	
+    @Override
+    public void setOnError(RegistryKeyProperty registryKeyProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public RegistryKeyProperty getOnError() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 	// End of user code
 
 

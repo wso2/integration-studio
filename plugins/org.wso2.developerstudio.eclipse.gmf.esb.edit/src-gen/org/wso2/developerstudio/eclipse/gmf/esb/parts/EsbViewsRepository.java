@@ -5828,6 +5828,10 @@ public class EsbViewsRepository {
 			
 			public static String targetTemplate = "esb::CallTemplateMediator::properties::targetTemplate";
 			
+			// Start of user code for onError ElementEditor key
+			public static String onError = "esb::CallTemplateMediator::properties::onError";
+			// End of user code
+			
 	
 		}
 	
@@ -7521,6 +7525,10 @@ public class EsbViewsRepository {
 			
 			public static String parameters = "esb::Template::properties::parameters";
 			
+			// Start of user code for onError ElementEditor key
+			public static String onError = "esb::Template::properties::onError";
+			// End of user code
+			
 	
 		}
 	
@@ -7535,6 +7543,12 @@ public class EsbViewsRepository {
 	
 			
 			public static String name = "esb::TemplateParameter::properties::name";
+			
+			
+			public static String isMandatory = "esb::TemplateParameter::properties::isMandatory";
+			
+			
+			public static String defaultValue = "esb::TemplateParameter::properties::defaultValue";
 			
 	
 		}

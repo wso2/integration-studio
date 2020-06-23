@@ -16110,13 +16110,22 @@ public interface EsbPackage extends EPackage {
     int CALL_TEMPLATE_MEDIATOR__TARGET_TEMPLATE = MEDIATOR_FEATURE_COUNT + 4;
 
     /**
+     * The feature id for the '<em><b>On Error</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int CALL_TEMPLATE_MEDIATOR__ON_ERROR = MEDIATOR_FEATURE_COUNT + 5;
+
+    /**
      * The number of structural features of the '<em>Call Template Mediator</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int CALL_TEMPLATE_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 5;
+    int CALL_TEMPLATE_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 6;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallTemplateMediatorInputConnectorImpl <em>Call Template Mediator Input Connector</em>}' class.
@@ -20384,13 +20393,22 @@ public interface EsbPackage extends EPackage {
     int TEMPLATE__PARAMETERS = ESB_ELEMENT_FEATURE_COUNT + 3;
 
     /**
+     * The feature id for the '<em><b>On Error</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int TEMPLATE__ON_ERROR = ESB_ELEMENT_FEATURE_COUNT + 4;
+
+    /**
      * The number of structural features of the '<em>Template</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int TEMPLATE_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 4;
+    int TEMPLATE_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 5;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateParameterImpl <em>Template Parameter</em>}' class.
@@ -20412,13 +20430,31 @@ public interface EsbPackage extends EPackage {
     int TEMPLATE_PARAMETER__NAME = 0;
 
     /**
+     * The feature id for the '<em><b>Is Mandatory</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int TEMPLATE_PARAMETER__IS_MANDATORY = 1;
+
+    /**
+     * The feature id for the '<em><b>Default Value</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int TEMPLATE_PARAMETER__DEFAULT_VALUE = 2;
+
+    /**
      * The number of structural features of the '<em>Template Parameter</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int TEMPLATE_PARAMETER_FEATURE_COUNT = 1;
+    int TEMPLATE_PARAMETER_FEATURE_COUNT = 3;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.TaskImpl <em>Task</em>}' class.
@@ -33461,6 +33497,17 @@ public interface EsbPackage extends EPackage {
     EReference getTemplate_Parameters();
 
     /**
+     * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.Template#getOnError <em>On Error</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference '<em>On Error</em>'.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.Template#getOnError()
+     * @see #getTemplate()
+     * @generated
+     */
+    EReference getTemplate_OnError();
+
+    /**
      * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.TemplateParameter <em>Template Parameter</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -33480,6 +33527,28 @@ public interface EsbPackage extends EPackage {
      * @generated
      */
     EAttribute getTemplateParameter_Name();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.TemplateParameter#isIsMandatory <em>Is Mandatory</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Is Mandatory</em>'.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.TemplateParameter#isIsMandatory()
+     * @see #getTemplateParameter()
+     * @generated
+     */
+    EAttribute getTemplateParameter_IsMandatory();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.TemplateParameter#getDefaultValue <em>Default Value</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Default Value</em>'.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.TemplateParameter#getDefaultValue()
+     * @see #getTemplateParameter()
+     * @generated
+     */
+    EAttribute getTemplateParameter_DefaultValue();
 
     /**
      * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.Task <em>Task</em>}'.
@@ -43200,6 +43269,17 @@ public interface EsbPackage extends EPackage {
     EAttribute getCallTemplateMediator_TargetTemplate();
 
     /**
+     * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateMediator#getOnError <em>On Error</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference '<em>On Error</em>'.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateMediator#getOnError()
+     * @see #getCallTemplateMediator()
+     * @generated
+     */
+    EReference getCallTemplateMediator_OnError();
+
+    /**
      * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateMediatorInputConnector <em>Call Template Mediator Input Connector</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -50920,6 +51000,14 @@ public interface EsbPackage extends EPackage {
         EReference TEMPLATE__PARAMETERS = eINSTANCE.getTemplate_Parameters();
 
         /**
+         * The meta object literal for the '<em><b>On Error</b></em>' containment reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference TEMPLATE__ON_ERROR = eINSTANCE.getTemplate_OnError();
+
+        /**
          * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateParameterImpl <em>Template Parameter</em>}' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -50936,6 +51024,22 @@ public interface EsbPackage extends EPackage {
          * @generated
          */
         EAttribute TEMPLATE_PARAMETER__NAME = eINSTANCE.getTemplateParameter_Name();
+
+        /**
+         * The meta object literal for the '<em><b>Is Mandatory</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute TEMPLATE_PARAMETER__IS_MANDATORY = eINSTANCE.getTemplateParameter_IsMandatory();
+
+        /**
+         * The meta object literal for the '<em><b>Default Value</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute TEMPLATE_PARAMETER__DEFAULT_VALUE = eINSTANCE.getTemplateParameter_DefaultValue();
 
         /**
          * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.TaskImpl <em>Task</em>}' class.
@@ -58440,6 +58544,14 @@ public interface EsbPackage extends EPackage {
          * @generated
          */
         EAttribute CALL_TEMPLATE_MEDIATOR__TARGET_TEMPLATE = eINSTANCE.getCallTemplateMediator_TargetTemplate();
+
+        /**
+         * The meta object literal for the '<em><b>On Error</b></em>' containment reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference CALL_TEMPLATE_MEDIATOR__ON_ERROR = eINSTANCE.getCallTemplateMediator_OnError();
 
         /**
          * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallTemplateMediatorInputConnectorImpl <em>Call Template Mediator Input Connector</em>}' class.

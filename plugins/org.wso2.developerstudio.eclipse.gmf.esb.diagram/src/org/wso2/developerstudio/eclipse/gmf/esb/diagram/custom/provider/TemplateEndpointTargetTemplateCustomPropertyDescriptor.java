@@ -28,6 +28,7 @@ import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.synapse.config.xml.TemplateMediatorFactory;
 import org.apache.synapse.mediators.template.TemplateMediator;
+import org.apache.synapse.mediators.template.TemplateParam;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
@@ -144,10 +145,10 @@ public class TemplateEndpointTargetTemplateCustomPropertyDescriptor extends Prop
                             if (modelDeleteCommand.canExecute()) {
                                 editingDomain.getCommandStack().execute(modelDeleteCommand);
                             }
-                            for (String parameter : templateMediator.getParameters()) {
+                            for (TemplateParam parameter : templateMediator.getParameters()) {
                                 final TemplateEndpointParameter templateEndpointParameter = EsbFactory.eINSTANCE
                                         .createTemplateEndpointParameter();
-                                templateEndpointParameter.setParameterName(parameter);
+                                templateEndpointParameter.setParameterName(parameter.getName());
                                 if (editor instanceof EsbMultiPageEditor) {
                                     RecordingCommand command = new RecordingCommand(editingDomain) {
                                         protected void doExecute() {

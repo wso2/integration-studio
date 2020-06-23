@@ -38,17 +38,16 @@ button, input {
 
 .mb-0, .my-0 {
   margin-bottom: 0 !important;
-  color: #666 !important;
 }
 
 input {
-  padding: 0.15rem !important;
-  border: 0;
+  padding: 0.30rem !important;
+  border: solid 1px #efefef;
+  border-radius: 5px;
 }
 
 input:focus {
-  border: 0 !important;
-  border-bottom: 1px solid #48CCFF !important;
+  border: solid 1px #efefef;
   outline: none !important;
   color: #495057;
 }
@@ -70,8 +69,9 @@ input:placeholder-shown + label {
   overflow: hidden;
   text-overflow: ellipsis;
   transform-origin: left bottom;
-  transform: translate(0, 1.5rem) scale(1);
+  transform: translate(10px, 1.8rem) scale(1);
   font-weight: 500;
+  color: #cccccc;
 }
 
 input:not(:placeholder-shown) + label, input:focus + label {
@@ -99,10 +99,7 @@ input:invalid {
 }
 
 input:valid {
-  border-bottom: 1px solid #E0E0E0 !important;
-  border-right: 0;
-  border-left: 0;
-  border-top: 0 !important;
+  border: solid 1px #ccc;
 }
 
 select:invalid {

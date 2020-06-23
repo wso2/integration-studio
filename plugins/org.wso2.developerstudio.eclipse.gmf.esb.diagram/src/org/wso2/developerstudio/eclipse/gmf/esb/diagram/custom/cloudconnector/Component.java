@@ -22,6 +22,7 @@ import java.util.List;
 import javax.xml.namespace.QName;
 
 import org.apache.axiom.om.OMElement;
+import org.apache.axiom.om.impl.llom.OMElementImpl;
 import org.wso2.developerstudio.eclipse.platform.core.manifest.AbstractXMLDoc;
 
 public class Component extends AbstractXMLDoc {
@@ -42,9 +43,14 @@ public class Component extends AbstractXMLDoc {
         for (OMElement omElement : artifactsElements) {
             List<OMElement> artifactElements = getChildElements(omElement, "component");
             for (OMElement omElement2 : artifactElements) {
+                OMElement hiddenElemet = new OMElementImpl("false", null, null);
+                hiddenElemet.setText("false");
                 OMElement fileElement = (OMElement) omElement2.getChildrenWithLocalName("file").next();
+                if(omElement2.getChildrenWithLocalName("hidden").hasNext()) {
+                    hiddenElemet = (OMElement) omElement2.getChildrenWithLocalName("hidden").next();
+                }
                 SubComponents artifactDependency = new SubComponents(omElement2.getAttributeValue(new QName("name")),
-                        fileElement.getText().split(".xml")[0]);
+                        fileElement.getText().split(".xml")[0], hiddenElemet.getText());
                 subComponents.add(artifactDependency);
             }
         }

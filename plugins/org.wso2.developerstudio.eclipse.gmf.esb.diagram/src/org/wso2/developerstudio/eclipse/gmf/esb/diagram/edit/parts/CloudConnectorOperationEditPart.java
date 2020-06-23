@@ -10,6 +10,7 @@ import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.synapse.config.xml.TemplateMediatorFactory;
 import org.apache.synapse.mediators.template.TemplateMediator;
+import org.apache.synapse.mediators.template.TemplateParam;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.draw2d.GridData;
@@ -204,10 +205,10 @@ public class CloudConnectorOperationEditPart extends FixedSizedAbstractMediator 
                         if (modelDeleteCommand.canExecute()) {
                             editingDomain.getCommandStack().execute(modelDeleteCommand);
                         }
-                        for (String parameter : templateMediator.getParameters()) {
+                        for (TemplateParam parameter : templateMediator.getParameters()) {
                             final CallTemplateParameter callTemplateParameter = EsbFactory.eINSTANCE
                                     .createCallTemplateParameter();
-                            callTemplateParameter.setParameterName(parameter);
+                            callTemplateParameter.setParameterName(parameter.getName());
                             RecordingCommand command = new RecordingCommand(editingDomain) {
                                 protected void doExecute() {
                                     ((CloudConnectorOperation) ((Node) getModel()).getElement())

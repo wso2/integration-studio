@@ -37,6 +37,7 @@ import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.synapse.config.xml.TemplateMediatorFactory;
 import org.apache.synapse.mediators.template.TemplateMediator;
+import org.apache.synapse.mediators.template.TemplateParam;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.emf.ecore.xml.type.internal.QName;
@@ -110,7 +111,7 @@ public class CloudConnectorDirectoryTraverser {
         return templateMediator;
     }
 
-    public Collection<String> getCloudConnectorConfigurationParameters() throws Exception {
+    public Collection<TemplateParam> getCloudConnectorConfigurationParameters() throws Exception {
         return readTemplateConfiguration(getConfigurationFileLocation(getOperationFileNamesMap())).getParameters();
     }
 

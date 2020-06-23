@@ -2,6 +2,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider;
 
 import java.util.Collection;
 
+import org.apache.synapse.mediators.template.TemplateParam;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.emf.common.ui.celleditor.ExtendedDialogCellEditor;
@@ -61,7 +62,7 @@ public class CloudConnectorNewConfigPropertyDescriptor extends PropertyDescripto
                  * callTemplateParamDialog.open();
                  */
 
-                Collection<String> cloudConnectorConfigurationParameters = null;
+                Collection<TemplateParam> cloudConnectorConfigurationParameters = null;
                 String cloudConnectorAuthenticationInfo = null;
                 try {
                     cloudConnectorConfigurationParameters = getCloudConnectorDirectoryTraverser(

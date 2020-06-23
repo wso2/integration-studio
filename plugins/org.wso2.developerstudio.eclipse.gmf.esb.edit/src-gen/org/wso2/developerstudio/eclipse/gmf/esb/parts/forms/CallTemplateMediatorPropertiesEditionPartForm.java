@@ -55,6 +55,9 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
@@ -72,11 +75,14 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
 
@@ -102,6 +108,10 @@ public class CallTemplateMediatorPropertiesEditionPartForm extends SectionProper
     protected Control[] descriptionElements;
     protected Composite propertiesGroup;
     private Control[] templateParametersElements;
+    protected Control[] onErrorElements;
+
+    protected RegistryKeyProperty onError;
+    protected Text onErrorText;
 
 	/**
 	 * For {@link ISection} use only.
@@ -152,6 +162,7 @@ public class CallTemplateMediatorPropertiesEditionPartForm extends SectionProper
 		propertiesStep.addStep(EsbViewsRepository.CallTemplateMediator.Properties.availableTemplates);
 		propertiesStep.addStep(EsbViewsRepository.CallTemplateMediator.Properties.templateParameters);
 		propertiesStep.addStep(EsbViewsRepository.CallTemplateMediator.Properties.targetTemplate);
+        propertiesStep.addStep(EsbViewsRepository.CallTemplateMediator.Properties.onError);
 		propertiesStep.addStep(EsbViewsRepository.CallTemplateMediator.Properties.description);
 		
 		composer = new PartComposer(callTemplateMediatorStep) {
@@ -173,6 +184,9 @@ public class CallTemplateMediatorPropertiesEditionPartForm extends SectionProper
 				if (key == EsbViewsRepository.CallTemplateMediator.Properties.templateParameters) {
 					return createTemplateParametersTableComposition(widgetFactory, parent);
 				}
+				if (key == EsbViewsRepository.CallTemplateMediator.Properties.onError) {
+                    return createOnErrorWidget(widgetFactory, parent);
+                }
 				if (key == EsbViewsRepository.CallTemplateMediator.Properties.targetTemplate) {
 					return createTargetTemplateText(widgetFactory, parent);
 				}
@@ -516,6 +530,74 @@ public class CallTemplateMediatorPropertiesEditionPartForm extends SectionProper
 		return parent;
 	}
 
+    /**
+     * @generated NOT
+     */
+	protected Composite createOnErrorWidget(FormToolkit widgetFactory, Composite parent) {
+        Control onErrorLabel = createDescription(parent,
+                EsbViewsRepository.CallTemplateMediator.Properties.onError, EsbMessages.CallTemplateMediatorPropertiesEditionPart_OnErrorLabel);
+        widgetFactory.paintBordersFor(parent);
+        if (onError == null) {
+            onError = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+        }
+        String initValueExpression = onError.getKeyValue().isEmpty() ? ""
+                : onError.getKeyValue();
+        onErrorText = widgetFactory.createText(parent, initValueExpression, SWT.READ_ONLY);
+        onErrorText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        widgetFactory.paintBordersFor(parent);
+        GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+        onErrorText.setLayoutData(valueData);
+        onErrorText.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mouseDown(MouseEvent event) {
+                EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+                        SWT.NULL, onError, new ArrayList<NamedEntityDescriptor>());
+                dialog.open();
+                onErrorText.setText(onError.getKeyValue());
+                propertiesEditionComponent.firePropertiesChanged(
+                        new PropertiesEditionEvent(CallTemplateMediatorPropertiesEditionPartForm.this,
+                                EsbViewsRepository.CallTemplateMediator.Properties.onError,
+                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                getOnError()));
+            }
+
+        });
+
+        onErrorText.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (!EEFPropertyViewUtil.isReservedKeyCombination(e)) {
+                    EEFRegistryKeyPropertyEditorDialog dialog = new EEFRegistryKeyPropertyEditorDialog(view.getShell(),
+                            SWT.NULL, onError, new ArrayList<NamedEntityDescriptor>());
+                    dialog.open();
+                    onErrorText.setText(onError.getKeyValue());
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(CallTemplateMediatorPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.CallTemplateMediator.Properties.onError,
+                                    PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                    getOnError()));
+                }
+            }
+
+        });
+        EditingUtils.setID(onErrorText,
+                EsbViewsRepository.CallTemplateMediator.Properties.onError);
+        EditingUtils.setEEFtype(onErrorText, "eef::Text");
+        Control onErrorHelp = FormUtils.createHelpButton(widgetFactory, parent,
+                propertiesEditionComponent.getHelpContent(
+                        EsbViewsRepository.CallTemplateMediator.Properties.onError,
+                        EsbViewsRepository.FORM_KIND),
+                null); // $NON-NLS-1$
+        onErrorElements = new Control[] { onErrorLabel,
+                onErrorText, onErrorHelp };
+        return parent;
+    }
 
 	/**
 	 * {@inheritDoc}
@@ -816,6 +898,7 @@ public class CallTemplateMediatorPropertiesEditionPartForm extends SectionProper
         epv.showEntry(availableTemplatesElements, false);
         epv.showEntry(templateParametersElements, false);
         epv.showEntry(targetTemplateElements, false);
+        epv.showEntry(onErrorElements, false);
         view.layout(true, true);
     }
 
@@ -827,6 +910,19 @@ public class CallTemplateMediatorPropertiesEditionPartForm extends SectionProper
                availableTemplates.getCombo().select(i);
             }
         }
+    }
+
+    @Override
+    public void setOnError(RegistryKeyProperty registryKeyProperty) {
+        if (registryKeyProperty != null) {
+            onErrorText.setText(registryKeyProperty.getKeyValue());
+            onError = registryKeyProperty;
+        }        
+    }
+
+    @Override
+    public RegistryKeyProperty getOnError() {
+        return onError;
     }
 
 	// End of user code

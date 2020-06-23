@@ -251,11 +251,9 @@ public class TemplateParameterPropertiesEditionPartImpl extends CompositePropert
       @Override
       @SuppressWarnings("synthetic-access")
       public void keyPressed(KeyEvent e) {
-        if (e.character == SWT.CR) {
           if (propertiesEditionComponent != null)
             propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TemplateParameterPropertiesEditionPartImpl.this, EsbViewsRepository.TemplateParameter.Properties.defaultValue, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, defaultValue.getText()));
         }
-      }
 
     });
     EditingUtils.setID(defaultValue, EsbViewsRepository.TemplateParameter.Properties.defaultValue);

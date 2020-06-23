@@ -54,6 +54,7 @@ import org.apache.synapse.config.xml.inbound.InboundEndpointSerializer;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.mediators.template.TemplateMediator;
+import org.apache.synapse.mediators.template.TemplateParam;
 import org.apache.synapse.rest.API;
 import org.apache.synapse.task.TaskDescriptionSerializer;
 import org.apache.xml.serialize.OutputFormat;
@@ -344,7 +345,7 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
         info.setSynapseConfiguration(configuration);
         TemplateMediator templateMediator = new TemplateMediator();
         templateMediator.setName(template.getName());
-        templateMediator.setParameters(new ArrayList<String>());
+        templateMediator.setParameters(new ArrayList<TemplateParam>());
         TemplateTransformer transformer = new TemplateTransformer();
         info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_IN);
         transformer.transform(info, template);

@@ -81,7 +81,10 @@ public class CallTemplateMediatorTransformer extends AbstractEsbNodeTransformer 
         InvokeMediator invokeMediator = new InvokeMediator();
         setCommonProperties(invokeMediator, obj);
         invokeMediator.setTargetTemplate(obj.getTargetTemplate());
-
+        if (obj.getOnError() != null && obj.getOnError().getKeyValue() != null
+                && !obj.getOnError().getKeyValue().isEmpty()) {
+            invokeMediator.setErrorHandler(obj.getOnError().getKeyValue());
+        }
         for (CallTemplateParameter param : obj.getTemplateParameters()) {
             String parameterName = "";
             if (param.getParameterName() != null && !param.getParameterName().isEmpty()) {

@@ -205,7 +205,7 @@ public class EsbViewsRepository {
 			public static String transports = "esb::ProxyService::basic::transports";
 			
 			// Start of user code for onError ElementEditor key
-			public static String onError = "esb::Sequences::properties::onError";
+			public static String onError = "esb::Template::properties::onError";
 			// End of user code
 			
 	

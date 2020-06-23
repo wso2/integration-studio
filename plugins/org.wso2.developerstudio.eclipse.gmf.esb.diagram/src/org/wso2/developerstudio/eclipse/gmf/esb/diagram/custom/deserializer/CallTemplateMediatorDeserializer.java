@@ -28,6 +28,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleOptionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
@@ -48,6 +49,10 @@ public class CallTemplateMediatorDeserializer
         executeSetValueCommand(CALL_TEMPLATE_MEDIATOR__TARGET_TEMPLATE, mediator.getTargetTemplate());
         executeSetValueCommand(CALL_TEMPLATE_MEDIATOR__AVAILABLE_TEMPLATES, "");
 
+        RegistryKeyProperty regkey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+        regkey.setKeyValue(mediator.getErrorHandler());
+        executeSetValueCommand(CALL_TEMPLATE_MEDIATOR__ON_ERROR, regkey);
+    
         Map<String, Value> parameters = mediator.getpName2ExpressionMap();
         for (Map.Entry<String, Value> entry : parameters.entrySet()) {
             CallTemplateParameter parameter = EsbFactory.eINSTANCE.createCallTemplateParameter();

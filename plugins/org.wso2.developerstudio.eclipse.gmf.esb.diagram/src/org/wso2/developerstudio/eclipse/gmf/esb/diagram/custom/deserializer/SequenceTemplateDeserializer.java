@@ -18,6 +18,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.mediators.template.TemplateMediator;
+import org.apache.synapse.mediators.template.TemplateParam;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.transaction.RecordingCommand;
@@ -67,9 +68,11 @@ public class SequenceTemplateDeserializer extends AbstractEsbNodeDeserializer<Te
         executeSetValueCommand(TEMPLATE__TEMPLATE_TYPE, TemplateType.SEQUENCE);
 
         if (template.getParameters() != null) {
-            for (String parameter : template.getParameters()) {
+            for (TemplateParam parameter : template.getParameters()) {
                 TemplateParameter templateParameter = EsbFactory.eINSTANCE.createTemplateParameter();
-                templateParameter.setName(parameter);
+                templateParameter.setName(parameter.getName());
+                templateParameter.setDefaultValue((String)parameter.getDefaultValue());
+                templateParameter.setIsMandatory(templateParameter.isIsMandatory());
                 executeAddValueCommand(templateModel.getParameters(), templateParameter, false);
             }
         }

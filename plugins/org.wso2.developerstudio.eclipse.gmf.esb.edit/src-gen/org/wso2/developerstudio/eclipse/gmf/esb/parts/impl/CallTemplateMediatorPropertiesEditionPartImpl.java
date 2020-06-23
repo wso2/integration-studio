@@ -64,7 +64,7 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 
@@ -737,7 +737,18 @@ public class CallTemplateMediatorPropertiesEditionPartImpl extends CompositeProp
 	}
 
 	// Start of user code additional methods
-	
+    @Override
+    public void setOnError(RegistryKeyProperty registryKeyProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public RegistryKeyProperty getOnError() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 	// End of user code
 
 

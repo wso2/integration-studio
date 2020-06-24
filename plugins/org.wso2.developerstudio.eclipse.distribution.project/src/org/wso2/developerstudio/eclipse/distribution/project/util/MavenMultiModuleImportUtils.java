@@ -51,12 +51,12 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
-import org.eclipse.ui.IPageLayout;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.IOverwriteQuery;
-import org.eclipse.ui.navigator.CommonNavigator;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.wizards.datatransfer.FileSystemStructureProvider;
 import org.eclipse.ui.wizards.datatransfer.ImportOperation;
@@ -79,6 +79,7 @@ public class MavenMultiModuleImportUtils {
     private static final String DIR_CONNECTORS = ".Connectors";
     private static final String ZIP_FILE_EXTENSION = ".zip";
     private static final String MMM_EDITOR_ID = "org.wso2.developerstudio.eclipse.maven.multi.module.editor.DistProjectEditor";
+    public static IProject IMPORTED_ESB_PROJECT;
 
     public static boolean importMavenMultiModuleProjectToWorkspace(File importingMMMProject) {
         boolean isMavenMultiModuleCreatedSuccessfully = true;
@@ -145,6 +146,9 @@ public class MavenMultiModuleImportUtils {
                     IProject subIProject = root.getProject(resourceFile.getName());
                     subIProject.create(newSubProjectDescription, new NullProgressMonitor());
                     subIProject.open(new NullProgressMonitor());
+                    if (newSubProjectDescription.getNatureIds()[0].equals(Constants.ESB_PROJECT_NATURE)) {
+                        IMPORTED_ESB_PROJECT = subIProject;
+                    }
 
                     IOverwriteQuery overwriteQuery = new IOverwriteQuery() {
                         public String queryOverwrite(String file) {
@@ -155,7 +159,7 @@ public class MavenMultiModuleImportUtils {
                     List subImportFiles = FileSystemStructureProvider.INSTANCE.getChildren(resourceFile);
                     ImportOperation operation = new ImportOperation(subIProject.getFullPath(), resourceFile,
                             FileSystemStructureProvider.INSTANCE, overwriteQuery, subImportFiles);
-                    operation.setContext(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+                    operation.setContext(getShell());
                     operation.setOverwriteResources(true);
                     operation.setCreateContainerStructure(false);
                     operation.run(monitor);
@@ -286,11 +290,17 @@ public class MavenMultiModuleImportUtils {
             MavenUtils.saveMavenProject(mavenProject, pomFile);
             pomIFile.getProject().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
             
-            IFile pom = mavenProjectNewModule.getFile("pom.xml");
-            IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-            IWorkbenchPage page = window.getActivePage();
-            ((CommonNavigator) page.findViewReference(IPageLayout.ID_PROJECT_EXPLORER, null).getView(true)).setLinkingEnabled(true);
-            page.openEditor(new FileEditorInput(pom), MMM_EDITOR_ID);
+            Display.getDefault().asyncExec(new Runnable() {
+                public void run() {
+                    try {
+                        IFile pom = mavenProjectNewModule.getFile("pom.xml");
+                        IWorkbenchPage page = getWorkbenchWindow().getActivePage();
+                        page.openEditor(new FileEditorInput(pom), MMM_EDITOR_ID);
+                    } catch (Exception e) {
+                        log.error("Error while loading MMM Editor", e);
+                    }
+                }
+            });
         } catch (Exception e) {
             log.error("Error while reading MMM pomfile", e);
         }
@@ -392,5 +402,31 @@ public class MavenMultiModuleImportUtils {
                 defaultProfile.getModules().add(module);
             }
         }
+    }
+    
+    private static Shell getShell() {
+        IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+        if (window == null) {
+            IWorkbenchWindow[] windows = PlatformUI.getWorkbench().getWorkbenchWindows();
+            if (windows.length > 0) {
+                return windows[0].getShell();
+            }
+        } else {
+            return window.getShell();
+        }
+        return null;
+    }
+    
+    private static IWorkbenchWindow getWorkbenchWindow() {
+        IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+        if (window == null) {
+            IWorkbenchWindow[] windows = PlatformUI.getWorkbench().getWorkbenchWindows();
+            if (windows.length > 0) {
+                return windows[0];
+            }
+        } else {
+            return window;
+        }
+        return null;
     }
 }

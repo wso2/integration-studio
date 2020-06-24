@@ -32,6 +32,7 @@ import org.wso2.developerstudio.eclipse.carbonserver.base.console.CarbonServerCo
 import org.wso2.developerstudio.eclipse.carbonserver.base.interfaces.ICarbonServerMonitor;
 import org.wso2.developerstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.Activator;
+import org.wso2.developerstudio.eclipse.carbonserver44microei12.monitoring.dashboard.MonitoringDashboard;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.register.product.servers.MicroIntegratorInstance;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.util.CarbonServer44eiUtils;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -125,6 +126,8 @@ public class CarbonServerListener implements IServerListener {
                 log.error(e);
             }
         }
+        // If running, stop MI monitoring dashboard app.
+        MonitoringDashboard.getInstance().stopMonitoringDashboard();
     }
     
     /**

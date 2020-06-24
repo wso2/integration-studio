@@ -51,13 +51,17 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IPageLayout;
+import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.IOverwriteQuery;
 import org.eclipse.ui.part.FileEditorInput;
+import org.eclipse.ui.part.ISetSelectionTarget;
 import org.eclipse.ui.wizards.datatransfer.FileSystemStructureProvider;
 import org.eclipse.ui.wizards.datatransfer.ImportOperation;
 import org.rauschig.jarchivelib.ArchiveFormat;
@@ -289,13 +293,16 @@ public class MavenMultiModuleImportUtils {
             createMavenProfiles(projectModules, mavenProject);
             MavenUtils.saveMavenProject(mavenProject, pomFile);
             pomIFile.getProject().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
-            
+
             Display.getDefault().asyncExec(new Runnable() {
                 public void run() {
                     try {
+                        setPerspective(getShell());
                         IFile pom = mavenProjectNewModule.getFile("pom.xml");
                         IWorkbenchPage page = getWorkbenchWindow().getActivePage();
                         page.openEditor(new FileEditorInput(pom), MMM_EDITOR_ID);
+                        IViewPart view = page.findView(IPageLayout.ID_PROJECT_EXPLORER);
+                        ((ISetSelectionTarget) view).selectReveal(new StructuredSelection(pom));
                     } catch (Exception e) {
                         log.error("Error while loading MMM Editor", e);
                     }
@@ -428,5 +435,29 @@ public class MavenMultiModuleImportUtils {
             return window;
         }
         return null;
+    }
+    
+    /**
+     * This method sets the perspective to ESB
+     *
+     * @param shell shell object that should be switched to ESB perspective
+     */
+    public static void setPerspective(Shell shell) {
+        shell.getDisplay().syncExec(new Runnable() {
+            @Override
+            public void run() {
+                IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+                if (!"org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.perspective"
+                        .equals(window.getActivePage().getPerspective().getId())) {
+                    try {
+                        PlatformUI.getWorkbench().showPerspective("org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.perspective",
+                                window);
+                    } catch (Exception e) {
+                        log.error("Cannot switch to ESB Graphical Perspective", e);
+                    }
+                }
+            }
+        });
+
     }
 }

@@ -71,7 +71,8 @@ public class FileDecorator extends LabelProvider implements ILightweightLabelDec
 
             IFile iFile = (IFile) element;
             String fileName = iFile.getName();
-            if (!fileName.equals("pom.xml") && iFile.getFileExtension().equals("xml")
+            if (!fileName.equals("pom.xml") && iFile.getFileExtension() != null
+                    && iFile.getFileExtension().equals("xml")
                     && getProjectType(iFile.getFullPath().toString(), iFile.getProject().getName(), fileName)) {
 
                 try {

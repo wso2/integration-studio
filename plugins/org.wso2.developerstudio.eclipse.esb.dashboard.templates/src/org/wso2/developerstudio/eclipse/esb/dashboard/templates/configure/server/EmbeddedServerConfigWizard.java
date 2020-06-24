@@ -243,7 +243,7 @@ public class EmbeddedServerConfigWizard extends Wizard implements INewWizard, IE
 				}
 			}
 		} catch (IOException | IllegalArgumentException e) {
-			log.error("Error while setting the md5sum values of embedded server configurations.", e);
+			//ignore the error log until the config.properties file is available
 		}
 
 		try (InputStream inStream = Files.newInputStream(Paths.get(serverConfigDeploymentTomlPath))) {

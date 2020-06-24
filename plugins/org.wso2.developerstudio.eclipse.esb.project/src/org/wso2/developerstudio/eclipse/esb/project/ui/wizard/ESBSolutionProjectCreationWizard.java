@@ -247,6 +247,7 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
             } catch (ObserverFailedException e1) {
                 log.error("Failed to set project name : " + dockerProjectName, e1);
             }
+            dockerWizard.setOpenEditor(false);
             dockerWizard.setModel(dockerModel);
             dockerWizard.performFinish();
         }
@@ -284,6 +285,7 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 			} catch (ObserverFailedException e1) {
 				log.error("Failed to set project name : " + kubeProjectName, e1);
 			}
+			containerWizard.setOpenEditor(false);
 			containerWizard.setModel(kubeModel);
 			containerWizard.performFinish();
 		}

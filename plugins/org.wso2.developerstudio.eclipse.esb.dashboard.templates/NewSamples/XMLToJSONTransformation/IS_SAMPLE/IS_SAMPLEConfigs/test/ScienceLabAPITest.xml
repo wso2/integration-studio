@@ -1,0 +1,31 @@
+<unit-test>
+    <artifacts>
+        <test-artifact>
+            <artifact>/IS_SAMPLEConfigs/src/main/synapse-config/api/ScienceLabAPI.xml</artifact>
+        </test-artifact>
+        <supportive-artifacts>
+            <artifact>/IS_SAMPLEConfigs/src/main/synapse-config/endpoints/ScienceLabEP.xml</artifact>
+        </supportive-artifacts>
+        <registry-resources/>
+        <connector-resources/>
+    </artifacts>
+    <test-cases>
+        <test-case name="XmlToJson">
+            <input>
+                <request-path>/users</request-path>
+                <request-method>POST</request-method>
+                <payload><![CDATA[<user><name>Sam</name><job>Scientist</job></user>]]></payload>
+            </input>
+            <assertions>
+                <assertEquals>
+                    <actual>$body</actual>
+                    <expected><![CDATA[<response><status>successful</status><id>454</id><name>Sam</name><job>Scientist</job><createdAt>2019-09-26T18:45:30.501Z</createdAt></response>]]></expected>
+                    <message>Xml to json test case failed.</message>
+                </assertEquals>
+            </assertions>
+        </test-case>
+    </test-cases>
+    <mock-services>
+        <mock-service>/IS_SAMPLEConfigs/test/resources/mock-services/XmlToJsonMockService.xml</mock-service>
+    </mock-services>
+</unit-test>

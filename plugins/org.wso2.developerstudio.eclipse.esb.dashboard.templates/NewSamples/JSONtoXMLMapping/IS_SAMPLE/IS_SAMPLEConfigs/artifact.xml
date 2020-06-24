@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="SalesforceLeads" groupId="wso2.sampleJsonToXmlMappingTemplate.IS_SAMPLEConfigs.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/SalesforceLeads.xml</file>
+    </artifact>
+</artifacts>

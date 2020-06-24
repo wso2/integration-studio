@@ -44,6 +44,9 @@ public class ConnectorProjectNature extends AbstractWSO2ProjectNature {
 	private void updatePom() {
 		// TODO update the pom with the relavant packaging types & maven pligins
 		File mavenProjectPomLocation = getProject().getFile("pom.xml").getLocation().toFile();
+		if (!mavenProjectPomLocation.exists()) {
+		    return;
+		}
 		try {
 			MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
 			// Adding typrLidt property

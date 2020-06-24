@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="ArithmaticOperationService" groupId="wso2.sampleContentBasedRoutingTemplate.IS_SAMPLEConfigs.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/ArithmaticOperationService.xml</file>
+    </artifact>
+    <artifact name="NumberAdditionEP" groupId="wso2.sampleContentBasedRoutingTemplate.IS_SAMPLEConfigs.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/NumberAdditionEP.xml</file>
+    </artifact>
+    <artifact name="NumberDivisionEP" groupId="wso2.sampleContentBasedRoutingTemplate.IS_SAMPLEConfigs.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/NumberDivisionEP.xml</file>
+    </artifact>
+</artifacts>

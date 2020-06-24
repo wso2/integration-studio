@@ -1,0 +1,49 @@
+<unit-test>
+    <artifacts>
+        <test-artifact>
+            <artifact>/IS_SAMPLEConfigs/src/main/synapse-config/api/SalesforceLeads.xml</artifact>
+        </test-artifact>
+        <supportive-artifacts/>
+        <registry-resources>
+            <registry-resource>
+                <file-name>SalesforceLeadsMappingConfig_inputSchema.json</file-name>
+                <artifact>/IS_SAMPLEConfigsRegistryResource/SalesforceLeadsMappingConfig_inputSchema.json</artifact>
+                <registry-path>/_system/governance/datamapper</registry-path>
+                <media-type>text/plain</media-type>
+            </registry-resource>
+            <registry-resource>
+                <file-name>SalesforceLeadsMappingConfig_outputSchema.json</file-name>
+                <artifact>/IS_SAMPLEConfigsRegistryResource/SalesforceLeadsMappingConfig_outputSchema.json</artifact>
+                <registry-path>/_system/governance/datamapper</registry-path>
+                <media-type>text/plain</media-type>
+            </registry-resource>
+            <registry-resource>
+                <file-name>SalesforceLeadsMappingConfig.dmc</file-name>
+                <artifact>/IS_SAMPLEConfigsRegistryResource/SalesforceLeadsMappingConfig.dmc</artifact>
+                <registry-path>/_system/governance/datamapper</registry-path>
+                <media-type>text/plain</media-type>
+            </registry-resource>
+        </registry-resources>
+        <connector-resources/>
+    </artifacts>
+    <test-cases>
+        <test-case name="JsonToXmlMapping">
+            <input>
+                <request-path>/convertToLead</request-path>
+                <request-method>POST</request-method>
+                <payload><![CDATA[{"owner":[{"ID":"005D0000000nVYVIA3","name":"Paul","city":"CA","code":"94041", "country":"US"},{"ID":"005D0000000nVYVIA2","name":"Smith","city":"CA","code":"94041","country":"US"}],"lead":[{"ID":"00QD000000FP14JMAU","name":"Carl","city":"NC","code":"97788","country":"US"},{"ID":"00QD000000FP14JMAT","name":"Carl","city":"NC","code":"97788","country":"US"}],"sendNotificationEmail":"true","convertedStatus":"Qualified","doNotCreateOpportunity":"true","opportunityName":"Partner Opportunity","overwriteLeadSource":"true","sessionId":"QwWsHJyTPW.1pd0_jXlNKOSU"}]]></payload>
+                <properties>
+                    <property name="Content-Type" scope="transport" value="application/json"/>
+                </properties>
+            </input>
+            <assertions>
+                <assertEquals>
+                    <actual>$body</actual>
+                    <expected><![CDATA[<soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope/" xmlns:urn="urn:enterprise.soap.sforce.com"><soapenv:Header><urn:SessionHeader><urn:sessionId>QwWsHJyTPW.1pd0_jXlNKOSU</urn:sessionId></urn:SessionHeader></soapenv:Header><soapenv:Body><urn:convertLead><urn:leadConverts><urn:convertedStatus>Qualified</urn:convertedStatus><urn:doNotCreateOpportunity>true</urn:doNotCreateOpportunity><urn:leadId>00QD000000FP14JMAU</urn:leadId><urn:opportunityName>Partner Opportunity</urn:opportunityName><urn:ownerId>005D0000000nVYVIA3</urn:ownerId><urn:sendNotificationEmail>true</urn:sendNotificationEmail></urn:leadConverts><urn:leadConverts><urn:convertedStatus>Qualified</urn:convertedStatus><urn:doNotCreateOpportunity>true</urn:doNotCreateOpportunity><urn:leadId>00QD000000FP14JMAT</urn:leadId><urn:opportunityName>Partner Opportunity</urn:opportunityName><urn:ownerId>005D0000000nVYVIA2</urn:ownerId><urn:sendNotificationEmail>true</urn:sendNotificationEmail></urn:leadConverts></urn:convertLead></soapenv:Body></soapenv:Envelope>]]></expected>
+                    <message>JSON to XML mapping test case failed.</message>
+                </assertEquals>
+            </assertions>
+        </test-case>
+    </test-cases>
+    <mock-services/>
+</unit-test>

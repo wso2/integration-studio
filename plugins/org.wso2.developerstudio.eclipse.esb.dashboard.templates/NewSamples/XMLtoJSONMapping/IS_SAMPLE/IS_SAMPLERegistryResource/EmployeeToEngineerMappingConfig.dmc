@@ -1,0 +1,47 @@
+map_S_employees_S_root = function(){ 
+var outputroot={};
+var CONCAT_12_0 = '';
+
+var count_i_ns1_employee = 0;
+var count_i_ns2_address_i_ns1_employee = 0;
+outputroot =  {};
+outputroot.engineers =  {};
+outputroot.engineers.engineerList =  [];
+
+for(i_ns1_employee in inputns1_employees.ns1_employee){
+var count_i_ns2_address = 0;
+CONCAT_12_0 = inputns1_employees.ns1_employee[i_ns1_employee].ns1_firstname.toString().concat(' ',inputns1_employees.ns1_employee[i_ns1_employee].ns1_lastname);
+outputroot.engineers.engineerList[count_i_ns1_employee] =  {};
+outputroot.engineers.engineerList[count_i_ns1_employee].fullname = CONCAT_12_0;
+outputroot.engineers.engineerList[count_i_ns1_employee].addresses =  {};
+outputroot.engineers.engineerList[count_i_ns1_employee].addresses.address =  [];
+
+for(i_ns2_address in inputns1_employees.ns1_employee[i_ns1_employee].ns2_addresses.ns2_address){
+outputroot.engineers.engineerList[count_i_ns1_employee].addresses.address[count_i_ns2_address] =  {};
+outputroot.engineers.engineerList[count_i_ns1_employee].addresses.address[count_i_ns2_address].location = inputns1_employees.ns1_employee[i_ns1_employee].ns2_addresses.ns2_address[i_ns2_address].attr_location.toString().toUpperCase();
+outputroot.engineers.engineerList[count_i_ns1_employee].addresses.address[count_i_ns2_address].city =  {};
+outputroot.engineers.engineerList[count_i_ns1_employee].addresses.address[count_i_ns2_address].city.postalcode = inputns1_employees.ns1_employee[i_ns1_employee].ns2_addresses.ns2_address[i_ns2_address].ns2_city.attr_postalcode;
+outputroot.engineers.engineerList[count_i_ns1_employee].addresses.address[count_i_ns2_address].city.name = inputns1_employees.ns1_employee[i_ns1_employee].ns2_addresses.ns2_address[i_ns2_address].ns2_city._ELEMVAL;
+outputroot.engineers.engineerList[count_i_ns1_employee].addresses.address[count_i_ns2_address].road = inputns1_employees.ns1_employee[i_ns1_employee].ns2_addresses.ns2_address[i_ns2_address].ns2_road;
+
+count_i_ns2_address++;
+count_i_ns2_address_i_ns1_employee++;
+}
+
+count_i_ns1_employee++;
+}
+return outputroot;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="StudentRegistrationService" groupId="wso2.sampleProtocolSwitchingTemplate.IS_SAMPLEConfigs.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/StudentRegistrationService.xml</file>
+    </artifact>
+    <artifact name="StudentQueueEP" groupId="wso2.sampleProtocolSwitchingTemplate.IS_SAMPLEConfigs.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/StudentQueueEP.xml</file>
+    </artifact>
+</artifacts>

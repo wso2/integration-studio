@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="HelloWorld" groupId="wso2.sampleHelloWorld.IS_SAMPLEConfigs.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/HelloWorld.xml</file>
+    </artifact>
+</artifacts>

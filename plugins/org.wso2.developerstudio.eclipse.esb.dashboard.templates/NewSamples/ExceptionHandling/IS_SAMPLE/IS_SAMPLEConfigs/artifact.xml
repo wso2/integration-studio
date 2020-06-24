@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="TimeoutAPI" groupId="wso2.sampleExceptionHandlingTemplate.IS_SAMPLEConfigs.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/TimeoutAPI.xml</file>
+    </artifact>
+    <artifact name="TimeoutFailureSeq" groupId="wso2.sampleExceptionHandlingTemplate.IS_SAMPLEConfigs.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/TimeoutFailureSeq.xml</file>
+    </artifact>
+    <artifact name="DelayHttpEP" groupId="wso2.sampleExceptionHandlingTemplate.IS_SAMPLEConfigs.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/DelayHttpEP.xml</file>
+    </artifact>
+</artifacts>

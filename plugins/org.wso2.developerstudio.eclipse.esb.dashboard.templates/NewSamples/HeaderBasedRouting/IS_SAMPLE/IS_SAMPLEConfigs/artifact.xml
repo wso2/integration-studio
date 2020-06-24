@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="CalculatorAPI" groupId="wso2.sampleHeaderBasedRoutingTemplate.IS_SAMPLEConfigs.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/CalculatorAPI.xml</file>
+    </artifact>
+    <artifact name="CalculatorAddEP" groupId="wso2.sampleHeaderBasedRoutingTemplate.IS_SAMPLEConfigs.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/CalculatorAddEP.xml</file>
+    </artifact>
+    <artifact name="CalculatorDivideEP" groupId="wso2.sampleHeaderBasedRoutingTemplate.IS_SAMPLEConfigs.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/CalculatorDivideEP.xml</file>
+    </artifact>
+</artifacts>

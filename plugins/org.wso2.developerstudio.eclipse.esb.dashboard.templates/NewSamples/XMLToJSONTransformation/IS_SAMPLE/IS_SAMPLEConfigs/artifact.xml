@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="ScienceLabAPI" groupId="wso2.sampleXmlToJsonTransformationTemplate.IS_SAMPLEConfigs.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/ScienceLabAPI.xml</file>
+    </artifact>
+    <artifact name="ScienceLabEP" groupId="wso2.sampleXmlToJsonTransformationTemplate.IS_SAMPLEConfigs.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/ScienceLabEP.xml</file>
+    </artifact>
+</artifacts>

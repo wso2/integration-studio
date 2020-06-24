@@ -1,0 +1,81 @@
+{
+  "$schema" : "http://wso2.org/json-schema/wso2-data-mapper-v5.0.0/schema#",
+  "id" : "http://wso2jsonschema.org",
+  "title" : "soapenv:Envelope",
+  "type" : "object",
+  "properties" : {
+    "soapenv:Header" : {
+      "id" : "http://wso2jsonschema.org/soapenv:Header",
+      "type" : "object",
+      "properties" : {
+        "urn:SessionHeader" : {
+          "id" : "http://wso2jsonschema.org/soapenv:Header/urn:SessionHeader",
+          "type" : "object",
+          "properties" : {
+            "urn:sessionId" : {
+              "id" : "http://wso2jsonschema.org/soapenv:Header/urn:SessionHeader/urn:sessionId",
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "soapenv:Body" : {
+      "id" : "http://wso2jsonschema.org/soapenv:Body",
+      "type" : "object",
+      "properties" : {
+        "urn:convertLead" : {
+          "id" : "http://wso2jsonschema.org/soapenv:Body/urn:convertLead",
+          "type" : "object",
+          "properties" : {
+            "urn:leadConverts" : {
+              "id" : "http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts",
+              "type" : "array",
+              "items" : [ {
+                "id" : "http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0",
+                "type" : "object",
+                "properties" : {
+                  "urn:convertedStatus" : {
+                    "id" : "http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0/urn:convertedStatus",
+                    "type" : "string"
+                  },
+                  "urn:doNotCreateOpportunity" : {
+                    "id" : "http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0/urn:doNotCreateOpportunity",
+                    "type" : "boolean"
+                  },
+                  "urn:leadId" : {
+                    "id" : "http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0/urn:leadId",
+                    "type" : "string"
+                  },
+                  "urn:opportunityName" : {
+                    "id" : "http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0/urn:opportunityName",
+                    "type" : "string"
+                  },
+                  "urn:overwriteLeadSource" : {
+                    "id" : "http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0/urn:overwriteLeadSource",
+                    "type" : "boolean"
+                  },
+                  "urn:ownerId" : {
+                    "id" : "http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0/urn:ownerId",
+                    "type" : "string"
+                  },
+                  "urn:sendNotificationEmail" : {
+                    "id" : "http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0/urn:sendNotificationEmail",
+                    "type" : "boolean"
+                  }
+                }
+              } ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "namespaces" : [ {
+    "prefix" : "soapenv",
+    "url" : "http://www.w3.org/2003/05/soap-envelope/"
+  }, {
+    "prefix" : "urn",
+    "url" : "urn:enterprise.soap.sforce.com"
+  } ]
+}

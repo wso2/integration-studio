@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inboundEndpoint name="WeatherDataTransmitInboundEP" onError="WeatherDataErrorSeq" protocol="kafka" sequence="WeatherDataProcessSeq" suspend="false" xmlns="http://ws.apache.org/ns/synapse">
+    <parameters>
+        <parameter name="interval">1000</parameter>
+        <parameter name="sequential">true</parameter>
+        <parameter name="coordination">true</parameter>
+        <parameter name="zookeeper.connect">localhost:2181</parameter>
+        <parameter name="group.id">weatherdatagroup</parameter>
+        <parameter name="content.type">application/json</parameter>
+        <parameter name="consumer.type">highlevel</parameter>
+        <parameter name="topics">weatherdatatopic</parameter>
+        <parameter name="auto.commit.enable">false</parameter>
+        <parameter name="auto.offset.reset">smallest</parameter>
+        <parameter name="exclude.internal.topics">false</parameter>
+        <parameter name="partition.assignment.strategy">roundrobin</parameter>
+        <parameter name="offsets.storage">zookeeper</parameter>
+        <parameter name="dual.commit.enabled">false</parameter>
+    </parameters>
+</inboundEndpoint>

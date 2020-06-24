@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="MissionService" groupId="wso2.sampleScatterGatherTemplate.IS_SAMPLEConfigs.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/MissionService.xml</file>
+    </artifact>
+    <artifact name="MissionEP1" groupId="wso2.sampleScatterGatherTemplate.IS_SAMPLEConfigs.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/MissionEP1.xml</file>
+    </artifact>
+    <artifact name="MissionEP2" groupId="wso2.sampleScatterGatherTemplate.IS_SAMPLEConfigs.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/MissionEP2.xml</file>
+    </artifact>
+    <artifact name="MissionEP3" groupId="wso2.sampleScatterGatherTemplate.IS_SAMPLEConfigs.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/MissionEP3.xml</file>
+    </artifact>
+</artifacts>

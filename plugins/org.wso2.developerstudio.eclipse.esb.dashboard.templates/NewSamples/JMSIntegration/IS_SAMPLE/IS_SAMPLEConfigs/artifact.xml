@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="OrderPaymentService" groupId="wso2.sampleJMSProxyTemplate.IS_SAMPLEConfigs.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/OrderPaymentService.xml</file>
+    </artifact>
+    <artifact name="OrderPaymentQueueProcessSeq" groupId="wso2.sampleJMSProxyTemplate.IS_SAMPLEConfigs.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/OrderPaymentQueueProcessSeq.xml</file>
+    </artifact>
+    <artifact name="OrderPaymentQueueErrorSeq" groupId="wso2.sampleJMSProxyTemplate.IS_SAMPLEConfigs.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/OrderPaymentQueueErrorSeq.xml</file>
+    </artifact>
+    <artifact name="OrderPaymentQueueEP" groupId="wso2.sampleJMSProxyTemplate.IS_SAMPLEConfigs.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/OrderPaymentQueueEP.xml</file>
+    </artifact>
+    <artifact name="OrderPaymentQueueInboundEP" groupId="wso2.sampleJMSProxyTemplate.IS_SAMPLEConfigs.inbound-endpoint" version="1.0.0" type="synapse/inbound-endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/inbound-endpoints/OrderPaymentQueueInboundEP.xml</file>
+    </artifact>
+</artifacts>

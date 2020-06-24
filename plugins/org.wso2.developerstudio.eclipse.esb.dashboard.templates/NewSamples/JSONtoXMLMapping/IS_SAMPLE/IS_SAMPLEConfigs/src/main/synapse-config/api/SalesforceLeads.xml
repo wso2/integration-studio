@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/leads" name="SalesforceLeads" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST" url-mapping="/convertToLead">
+        <inSequence>
+            <datamapper config="gov:datamapper/SalesforceLeadsMappingConfig.dmc" description="Transform leads payload JSON to XML" inputSchema="gov:datamapper/SalesforceLeadsMappingConfig_inputSchema.json" inputType="JSON" outputSchema="gov:datamapper/SalesforceLeadsMappingConfig_outputSchema.json" outputType="XML"/>
+            <respond description="Respond back with transformed payload"/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>

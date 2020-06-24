@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="MockAPI" groupId="wso2.sampleGuaranteedDeliveryTemplate.IS_SAMPLEConfigs.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/MockAPI.xml</file>
+    </artifact>
+    <artifact name="UserRegistrationService" groupId="wso2.sampleGuaranteedDeliveryTemplate.IS_SAMPLEConfigs.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/UserRegistrationService.xml</file>
+    </artifact>
+    <artifact name="UserRegistrationErrorSeq" groupId="wso2.sampleGuaranteedDeliveryTemplate.IS_SAMPLEConfigs.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/UserRegistrationErrorSeq.xml</file>
+    </artifact>
+    <artifact name="UserRegistrationResponseSeq" groupId="wso2.sampleGuaranteedDeliveryTemplate.IS_SAMPLEConfigs.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/UserRegistrationResponseSeq.xml</file>
+    </artifact>
+    <artifact name="UserRegistrationEP" groupId="wso2.sampleGuaranteedDeliveryTemplate.IS_SAMPLEConfigs.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/UserRegistrationEP.xml</file>
+    </artifact>
+    <artifact name="UserRegistrationMS" groupId="wso2.sampleGuaranteedDeliveryTemplate.IS_SAMPLEConfigs.message-store" version="1.0.0" type="synapse/message-store" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-stores/UserRegistrationMS.xml</file>
+    </artifact>
+    <artifact name="UserRegistrationMP" groupId="wso2.sampleGuaranteedDeliveryTemplate.IS_SAMPLEConfigs.message-processors" version="1.0.0" type="synapse/message-processors" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-processors/UserRegistrationMP.xml</file>
+    </artifact>
+</artifacts>

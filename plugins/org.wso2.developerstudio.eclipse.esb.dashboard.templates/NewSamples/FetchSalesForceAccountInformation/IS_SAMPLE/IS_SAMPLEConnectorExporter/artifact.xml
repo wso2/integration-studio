@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="salesforce-connector" groupId="wso2.sampleReadSalesforceAccountsTemplate.IS_SAMPLEConfigs.lib" version="2.0.2" type="synapse/lib" serverRole="EnterpriseServiceBus">
+        <file>salesforce-connector-2.0.2.zip</file>
+    </artifact>
+</artifacts>

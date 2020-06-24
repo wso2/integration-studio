@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="PhoneVerifyAPI" groupId="wso2.sampleMessageFilteringTemplate.IS_SAMPLEConfigs.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/PhoneVerifyAPI.xml</file>
+    </artifact>
+    <artifact name="PhoneVerifyEP" groupId="wso2.sampleMessageFilteringTemplate.IS_SAMPLEConfigs.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/PhoneVerifyEP.xml</file>
+    </artifact>
+</artifacts>

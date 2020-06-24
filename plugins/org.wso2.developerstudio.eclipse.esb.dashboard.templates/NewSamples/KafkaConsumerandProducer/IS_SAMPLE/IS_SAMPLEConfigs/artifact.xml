@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="WeatherDataPublishService" groupId="wso2.sampleKafkaTemplate.IS_SAMPLEConfigs.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/WeatherDataPublishService.xml</file>
+    </artifact>
+    <artifact name="WeatherDataProcessSeq" groupId="wso2.sampleKafkaTemplate.IS_SAMPLEConfigs.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/WeatherDataProcessSeq.xml</file>
+    </artifact>
+    <artifact name="WeatherDataErrorSeq" groupId="wso2.sampleKafkaTemplate.IS_SAMPLEConfigs.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/WeatherDataErrorSeq.xml</file>
+    </artifact>
+    <artifact name="WeatherDataTransmitInboundEP" groupId="wso2.sampleKafkaTemplate.IS_SAMPLEConfigs.inbound-endpoint" version="1.0.0" type="synapse/inbound-endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/inbound-endpoints/WeatherDataTransmitInboundEP.xml</file>
+    </artifact>
+</artifacts>

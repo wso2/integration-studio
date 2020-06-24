@@ -1,0 +1,44 @@
+map_S_root_S_Envelope = function(){ 
+var outputsoapenv_Envelope={};
+
+var count_i_lead = 0;
+var count_i_owner = 0;
+outputsoapenv_Envelope =  {};
+outputsoapenv_Envelope.soapenv_Header =  {};
+outputsoapenv_Envelope.soapenv_Header.urn_SessionHeader =  {};
+outputsoapenv_Envelope.soapenv_Header.urn_SessionHeader.urn_sessionId = inputroot.sessionId;
+outputsoapenv_Envelope.soapenv_Body =  {};
+outputsoapenv_Envelope.soapenv_Body.urn_convertLead =  {};
+outputsoapenv_Envelope.soapenv_Body.urn_convertLead.urn_leadConverts =  [];
+
+for(i_lead in inputroot.lead){
+
+count_i_lead++;
+}
+
+for(i_owner in inputroot.owner){
+outputsoapenv_Envelope.soapenv_Body.urn_convertLead.urn_leadConverts[count_i_owner] =  {};
+outputsoapenv_Envelope.soapenv_Body.urn_convertLead.urn_leadConverts[count_i_owner].urn_convertedStatus = inputroot.convertedStatus;
+outputsoapenv_Envelope.soapenv_Body.urn_convertLead.urn_leadConverts[count_i_owner].urn_doNotCreateOpportunity = inputroot.doNotCreateOpportunity;
+outputsoapenv_Envelope.soapenv_Body.urn_convertLead.urn_leadConverts[count_i_owner].urn_leadId = inputroot.lead[i_owner].ID;
+outputsoapenv_Envelope.soapenv_Body.urn_convertLead.urn_leadConverts[count_i_owner].urn_opportunityName = inputroot.opportunityName;
+outputsoapenv_Envelope.soapenv_Body.urn_convertLead.urn_leadConverts[count_i_owner].urn_ownerId = inputroot.owner[i_owner].ID;
+outputsoapenv_Envelope.soapenv_Body.urn_convertLead.urn_leadConverts[count_i_owner].urn_sendNotificationEmail = inputroot.overwriteLeadSource;
+
+count_i_owner++;
+}
+return outputsoapenv_Envelope;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+

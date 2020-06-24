@@ -1,6 +1,12 @@
 var apijson = resolveGetParam("apidetails");
 var proxyjson = resolveGetParam("proxydetails");
 var dataservicejson = resolveGetParam("dataservicedetails");
+var port = resolveGetParam("port");
+var HIDDEN = "hidden";
+var SHOW = "show";
+var HIDE = "hide";
+var FAILED_ALERT = "#failed-alert";
+var LOADING_ALERT = "#open-dashboard-modal";
 
 function resolveGetParam(param) {
     var paramValue = null,
@@ -59,3 +65,50 @@ function populateDataServiceList() {
 
 	return dataserviceList;
 }
+
+/**
+ * Extract error message in AJAX response.
+ */
+function getErrorMessage(jqXHR, errorThrown) {
+	if (jqXHR.responseJSON != null && jqXHR.responseJSON.error != null) {
+		return jqXHR.responseJSON.error;
+	} else {
+		return errorThrown;
+	}
+}
+
+/**
+ * Send request to open dashboard.
+ */
+function openDashboard() {
+	$(LOADING_ALERT).modal(SHOW);
+	$.ajax({
+		url: "http://127.0.0.1:" + port + "/project/endpoints/services",
+		type: "GET",
+		dataType: "text",
+		cache: true,
+		success: function(data) {
+			$(LOADING_ALERT).modal(HIDE);
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			$(LOADING_ALERT).modal(HIDE);
+			$(FAILED_ALERT).prop(HIDDEN, false);
+			$(FAILED_ALERT)[0].innerText = getErrorMessage(jqXHR, errorThrown);
+			setTimeout(function() {
+				$(FAILED_ALERT).prop(HIDDEN, true);
+			}, 10000);
+		},
+	});
+}
+
+$(document).ready(function($) {
+	document.onclick = function(e) {
+		e = e || window.event;
+		var element = e.target || e.srcElement;
+		// catch event of open monitoring dashboard.
+		if (element.tagName == "A" && element.id && element.id == "open-monitoring-dashboard") {
+			openDashboard();
+			return false;
+		}
+	};
+});

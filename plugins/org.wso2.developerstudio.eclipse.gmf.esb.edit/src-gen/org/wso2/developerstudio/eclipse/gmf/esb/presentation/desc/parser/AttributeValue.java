@@ -110,4 +110,14 @@ public class AttributeValue extends Value {
         this.comboValues.add(comboValue);
     }
 
+
+    public String getValidation() {
+        return validation;
+    }
+
+
+    public void setValidation(String validation) {
+        this.validation = validation;
+    }
+
 }

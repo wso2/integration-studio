@@ -66,6 +66,16 @@ mv $PRODUCT_PATH_LINUX_64/runtime/wso2mi-$PRODUCT_DIRECTORY $PRODUCT_PATH_LINUX_
 mv $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse/runtime/wso2mi-$PRODUCT_DIRECTORY $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse/runtime/microesb
 mv $PRODUCT_PATH_WIN_64/runtime/wso2mi-$PRODUCT_DIRECTORY $PRODUCT_PATH_WIN_64/runtime/microesb
 
+# Unzip mi-monitoring-dashboard to relevant packages
+unzip $PRODUCT_PATH_ROOT/wso2mi-monitoring-dashboard-${PRODUCT_VERSION}.zip -d $PRODUCT_PATH_LINUX_64/
+unzip $PRODUCT_PATH_ROOT/wso2mi-monitoring-dashboard-${PRODUCT_VERSION}.zip -d $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse/
+unzip $PRODUCT_PATH_ROOT/wso2mi-monitoring-dashboard-${PRODUCT_VERSION}.zip -d $PRODUCT_PATH_WIN_64/
+
+# Rename as "mi-monitoring-dashboard" (this is the static name used in EI Tooling code)
+mv $PRODUCT_PATH_LINUX_64/wso2mi-monitoring-dashboard-$PRODUCT_DIRECTORY $PRODUCT_PATH_LINUX_64/mi-monitoring-dashboard
+mv $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse/wso2mi-monitoring-dashboard-$PRODUCT_DIRECTORY $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse/mi-monitoring-dashboard
+mv $PRODUCT_PATH_WIN_64/wso2mi-monitoring-dashboard-$PRODUCT_DIRECTORY $PRODUCT_PATH_WIN_64/mi-monitoring-dashboard
+
 # Unzip apche maven to relevant packages
 unzip $PRODUCT_PATH_ROOT/apache-maven-${APACHE_MAVEN_VERSION}-bin.zip -d $PRODUCT_PATH_LINUX_64/
 unzip $PRODUCT_PATH_ROOT/apache-maven-${APACHE_MAVEN_VERSION}-bin.zip -d $PRODUCT_PATH_MACOS/DeveloperStudio.app/Contents/Eclipse/
@@ -190,6 +200,7 @@ popd
 
 # Cleanup
 rm $PRODUCT_PATH_ROOT/wso2mi-$PRODUCT_VERSION.zip
+rm $PRODUCT_PATH_ROOT/wso2mi-monitoring-dashboard-$PRODUCT_VERSION.zip
 rm $PRODUCT_PATH_ROOT/apache-maven-${APACHE_MAVEN_VERSION}-bin.zip
 rm -rf $APICTL_DISTRIBUTION_PATH
 rm -rf $PRODUCT_PATH_ROOT/temp

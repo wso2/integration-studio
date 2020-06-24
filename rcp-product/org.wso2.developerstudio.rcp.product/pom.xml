@@ -66,6 +66,25 @@
                 <version>1.3.0</version>
                 <executions>
                     <execution>
+                        <id>download-mi-monitoring-dashboard</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>wget</goal>
+                        </goals>
+                        <configuration>
+                            <url>https://github.com/wso2/micro-integrator/releases/download/v${mi.product.version}/wso2mi-monitoring-dashboard-${mi.product.version}.zip</url>
+                            <unpack>false</unpack>
+                            <outputDirectory>${project.build.directory}/products</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.googlecode.maven-download-plugin</groupId>
+                <artifactId>download-maven-plugin</artifactId>
+                <version>1.3.0</version>
+                <executions>
+                    <execution>
                         <id>download-latest-apache-maven</id>
                         <phase>prepare-package</phase>
                         <goals>

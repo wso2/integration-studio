@@ -32,7 +32,6 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.TemplateProjectConstants;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

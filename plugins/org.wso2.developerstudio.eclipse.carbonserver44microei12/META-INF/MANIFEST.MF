@@ -70,5 +70,6 @@ Import-Package: javax.xml.stream;version="1.0.1.wso2v1",
  org.wso2.developerstudio.eclipse.utils.file;version="[4.1.0,8.0.0)",
  org.wso2.developerstudio.eclipse.utils.wst;version="[4.1.0,8.0.0)"
 Bundle-Vendor: WSO2
-Export-Package: org.wso2.developerstudio.eclipse.carbonserver44microei12.register.product.servers;version="7.0.0",
+Export-Package: org.wso2.developerstudio.eclipse.carbonserver44microei12.monitoring.dashboard,
+ org.wso2.developerstudio.eclipse.carbonserver44microei12.register.product.servers;version="7.0.0",
  org.wso2.developerstudio.eclipse.carbonserver44microei12.wizard;version="7.0.0"

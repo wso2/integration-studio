@@ -53,7 +53,7 @@ public class TemplateGuideView extends ViewPart {
         if (bundle == null) {
             return null;
         }
-        URL webAppURL = bundle.getEntry("Samples");
+        URL webAppURL = bundle.getEntry("NewSamples");
         URL resolvedFolderURL = FileLocator.toFileURL(webAppURL);
         URI resolvedFolderURI = new URI(resolvedFolderURL.getProtocol(), resolvedFolderURL.getPath(), null);
         File resolvedWebAppFolder = new File(resolvedFolderURI);

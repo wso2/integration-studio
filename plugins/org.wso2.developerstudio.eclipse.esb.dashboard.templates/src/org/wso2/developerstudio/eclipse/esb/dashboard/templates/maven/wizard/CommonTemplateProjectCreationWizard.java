@@ -184,7 +184,6 @@ public class CommonTemplateProjectCreationWizard extends Wizard implements INewW
 
         TemplateCreationUtil.openEditor(shell, artifactFileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID,
                 readmeUrl);
-        TemplateCreationUtil.setPerspective(shell);
     }
 
     private String loadWizardDetails(String id) throws CoreException {

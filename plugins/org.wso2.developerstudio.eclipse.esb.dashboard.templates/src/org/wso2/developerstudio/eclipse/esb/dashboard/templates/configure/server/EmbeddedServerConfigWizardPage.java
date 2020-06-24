@@ -199,6 +199,7 @@ public class EmbeddedServerConfigWizardPage extends WizardPage {
         data.top = new FormAttachment(textGroup, 10);
         data.left = new FormAttachment(3);
         data.right = new FormAttachment(97);
+        data.height = 32;
         secureGroup.setLayoutData(data);
         secureGroup.setLayout(new FormLayout());
 
@@ -212,7 +213,7 @@ public class EmbeddedServerConfigWizardPage extends WizardPage {
 
         Button encryptButton = new Button(secureGroup, SWT.NONE);
         data = new FormData();
-        data.top = new FormAttachment(15);
+        data.top = new FormAttachment(19);
         data.right = new FormAttachment(97);
         encryptButton.setLayoutData(data);
         encryptButton.setText("Encrypt Secrets");
@@ -528,6 +529,7 @@ public class EmbeddedServerConfigWizardPage extends WizardPage {
         data.left = new FormAttachment(3);
         data.right = new FormAttachment(97);
         data.bottom = new FormAttachment(98);
+        data.height = 35;
         restoreGroup.setLayoutData(data);
         restoreGroup.setLayout(new FormLayout());
 
@@ -540,7 +542,7 @@ public class EmbeddedServerConfigWizardPage extends WizardPage {
         
         Button restoreButton = new Button(restoreGroup, SWT.NONE);
         data = new FormData();
-        data.top = new FormAttachment(15);
+        data.top = new FormAttachment(19);
         data.right = new FormAttachment(97);
         restoreButton.setLayoutData(data);
         restoreButton.setText("Restore Defaults");

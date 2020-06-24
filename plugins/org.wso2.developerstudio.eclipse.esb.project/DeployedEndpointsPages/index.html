@@ -8,6 +8,19 @@
 <link href="./css/style.css" rel="stylesheet">
 </head>
 <body>
+	<div class="modal fade" id="open-dashboard-modal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+		<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle">Starting the dashboard..</h5>
+				</div>
+				<div class="modal-body">
+					<div class="loader" id="loader"></div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="row container-body">
 		<div class="section-two col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<h2>Embedded MI Deployed Endpoints</h2>
@@ -68,6 +81,17 @@
 					    <tbody>
 					    </tbody>
 					</table>
+				</div>
+			</div>
+		</div>
+		<div class="section-two col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div class="row template-list scrollbar-macosx" id="ds-table">
+				<div class="container" id="table-container-more">
+					<h2>More information</h2>
+					<div class="alert alert-danger" role="alert" id="failed-alert" hidden="true">
+						Open failed.
+					</div>
+					<a href="#" id="open-monitoring-dashboard">More Information</a>
 				</div>
 			</div>
 		</div>

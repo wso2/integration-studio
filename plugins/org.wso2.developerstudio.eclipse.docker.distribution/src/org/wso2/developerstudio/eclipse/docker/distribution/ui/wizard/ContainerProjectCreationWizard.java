@@ -90,6 +90,7 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
     private static final String POM_FILE = "pom.xml";
     private IProject project;
     private DockerModel dockerModel;
+    private boolean openEditor = true;
     
     private static final String TOOLING_PATH_MAC = "/Applications/IntegrationStudio.app/Contents/Eclipse";
     private static final String EMPTY_STRING = "";
@@ -476,7 +477,9 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
 
             MavenUtils.saveMavenProject(mavenProject, pomfile);
             project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
-            openEditor();
+            if (openEditor) {
+                openEditor();
+            }
             setPerspective(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
         } catch (Exception e) {
             log.error("An error occurred generating a project: ", e);
@@ -591,6 +594,10 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
 
     public void setModel(DockerModel model) {
         this.dockerModel = model;
+    }
+    
+    public void setOpenEditor(boolean openEditor) {
+        this.openEditor = openEditor;
     }
 
     public void openEditor() {

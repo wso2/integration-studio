@@ -75,10 +75,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.developerstudio.eclipse.gmf.esb.parts.SequencesPropertiesEditionPart;
+    import org.wso2.developerstudio.eclipse.gmf.esb.parts.SequencesPropertiesEditionPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
@@ -115,6 +118,9 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
     protected Control[] createTemplateParameterElements;
  
     protected Composite propertiesGroup;
+    
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+
 	// End of user code
 
 
@@ -1056,12 +1062,20 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
     			viewUtil.clearElement(control);
     		}
     	}*/
-    	
-    	viewUtil.showEntry(nameElements, false);
-    	viewUtil.showEntry(onErrorElements, false);
-    	viewUtil.showEntry(traceEnabledElements, false);
-    	viewUtil.showEntry(staticsEnabledElements, false);
-    	
+
+        // Hide the sequence properties if the parent component is Template sequence
+        EObject container = null;
+        try {
+            container = propertiesEditionComponent.getEditingContext().getEObject().eContainer();
+        } catch (Exception e) {
+            log.error(e);
+        }
+        if (!(container instanceof org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateImpl)) {
+            viewUtil.showEntry(nameElements, false);
+            viewUtil.showEntry(onErrorElements, false);
+            viewUtil.showEntry(traceEnabledElements, false);
+            viewUtil.showEntry(staticsEnabledElements, false);
+        }
         view.layout(true, true);
     }
 

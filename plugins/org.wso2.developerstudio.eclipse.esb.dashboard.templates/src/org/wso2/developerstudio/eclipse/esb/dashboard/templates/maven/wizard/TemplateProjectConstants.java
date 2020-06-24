@@ -18,6 +18,16 @@
 package org.wso2.developerstudio.eclipse.esb.dashboard.templates.maven.wizard;
 
 public class TemplateProjectConstants {
+    
+    public static final String WIZARD_PAGE_NAME = "wizardPage";
+    
+    public static final String PROJECT_WIZARD_PAGE_TITLE = "Create Project Using ";
+    
+    public static final String PROJECT_WIZARD_PAGE_DESCRIPTION = "Create Sample Template";
+    
+    public static final String WIZARD_PROJECT_NAME_LABEL = "&Project Name :";
+    
+    public static final String WIZARD_PAGE_TEXT = "Template Artifact";
 
     public static final String WIZARD_PARAM = "wizardId";
 

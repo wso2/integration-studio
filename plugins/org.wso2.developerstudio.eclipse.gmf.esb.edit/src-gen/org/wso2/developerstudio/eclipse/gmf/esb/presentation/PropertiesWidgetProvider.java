@@ -1,12 +1,27 @@
+/*
+ * Copyright (c) 2020, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * 
+ * WSO2 Inc. licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing,
+ * 
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
 package org.wso2.developerstudio.eclipse.gmf.esb.presentation;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.regex.Pattern;
 
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
@@ -16,23 +31,31 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.Bullet;
+import org.eclipse.swt.custom.LineStyleEvent;
+import org.eclipse.swt.custom.LineStyleListener;
+import org.eclipse.swt.custom.ST;
+import org.eclipse.swt.custom.StyleRange;
+import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
-import org.eclipse.swt.events.PaintEvent;
-import org.eclipse.swt.events.PaintListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Device;
+import org.eclipse.swt.graphics.GlyphMetrics;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
@@ -53,17 +76,28 @@ import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.Attribu
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
+/**
+ * Widget Provider class for the new properties framework.
+ */
 public class PropertiesWidgetProvider {
 
-    protected static String UI_SCHEMA_OBJECT_KEY = "uischema";
     protected IPropertiesEditionComponent propertiesEditionComponent;
     protected SectionPropertiesEditingPart partForm;
     protected HashMap<String, Control> controlList;
     protected HashMap<String, Composite> compositeList;
-    private boolean isConnectionWidgetProvider = false;
     protected HashMap<String, Control> requiredList;
+    private boolean isConnectionWidgetProvider = false;
     private static IDeveloperStudioLog log = Logger.getLog(EEFPropertyViewUtil.PLUGIN_ID);
 
+    /**
+     * General constructor to initialize properties widget provider
+     * 
+     * @param partForm Properties Editing Part Form which holds the relevent properties composite in the view
+     * @param propertiesEditionComponent Component object which uses to manipulate ecore model
+     * @param controlList Map which holds each SWT input widget against its property name
+     * @param compositeList Map which holds each composite of the property against its property name
+     * @param requiredList Map which holds the required composite list based on the 'required' parameter of json schema
+     */
     public PropertiesWidgetProvider(SectionPropertiesEditingPart partForm,
             IPropertiesEditionComponent propertiesEditionComponent, HashMap<String, Control> controlList,
             HashMap<String, Composite> compositeList, HashMap<String, Control> requiredList) {
@@ -73,14 +107,29 @@ public class PropertiesWidgetProvider {
         this.compositeList = compositeList;
         this.requiredList = requiredList;
     }
-    
-    public PropertiesWidgetProvider(HashMap<String, Control> controlList, HashMap<String, Composite> compositeList, HashMap<String, Control> requiredList) {
+
+    /**
+     * Special constructor to be used with connection dialog box property generation
+     * 
+     * @param controlList Map which holds each SWT input widget against its property name
+     * @param compositeList Map which holds each composite of the property against its property name
+     * @param requiredList Map which holds the required composite list based on the 'required' parameter of json schema
+     */
+    public PropertiesWidgetProvider(HashMap<String, Control> controlList, HashMap<String, Composite> compositeList,
+            HashMap<String, Control> requiredList) {
         this.controlList = controlList;
         this.compositeList = compositeList;
         this.isConnectionWidgetProvider = true;
         this.requiredList = requiredList;
     }
 
+    /**
+     * Provides a new group inside the provided composite
+     * 
+     * @param parent parent composite
+     * @param label label of the group
+     * @return Generated Group widget
+     */
     public Group createGroup(Composite parent, String label) {
         Group propertiesSection = new Group(parent, SWT.SHADOW_ETCHED_IN);
         propertiesSection.setBackgroundMode(SWT.INHERIT_FORCE);
@@ -97,95 +146,516 @@ public class PropertiesWidgetProvider {
         return propertiesSection;
     }
 
-    public Composite createTextBoxField(FormToolkit widgetFactory, Composite parent, final AttributeValue value) {
-        Composite textBoxComposite = createComposite(value.getName(), widgetFactory, parent, 2, 2);
-        Label label = new Label(textBoxComposite, SWT.TRANSPARENT);
-        label.setText(value.getDisplayName());
-        GridData labelRefData = new GridData();
-        labelRefData.widthHint = 120;
-        label.setLayoutData(labelRefData);
-        setToolTip(label, value.getHelpTip());
-        final Text configRef = widgetFactory.createText(textBoxComposite, "", SWT.BORDER);
-        controlList.put(value.getName(), configRef);
-        if(value.getRequired()) {
-            requiredList.put(value.getName(), configRef);
-        }
-        configRef.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-        GridData configRefData = new GridData(GridData.FILL_HORIZONTAL);
-        configRef.setLayoutData(configRefData);
+    /**
+     * Provide a composite with plain text box widget and a label
+     * 
+     * @param widgetFactory widget factory instance
+     * @param parent parent composite
+     * @param jsonSchemaObject JSONSchema object of the property
+     * @return composite with plain text box widget and a label
+     */
+    public Composite createTextBoxField(FormToolkit widgetFactory, Composite parent,
+            final AttributeValue jsonSchemaObject) {
+        // Create wrapping composite of 2 elements
+        Composite textBoxComposite = createComposite(jsonSchemaObject.getName(), widgetFactory, parent, 2, 2);
 
-        configRef.addKeyListener(new KeyAdapter() {
-            /**
-             * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-             * 
-             */
+        // Create label for the property
+        Label propertyLabel = new Label(textBoxComposite, SWT.TRANSPARENT);
+        propertyLabel.setText(jsonSchemaObject.getDisplayName());
+        GridData labelRefData = new GridData();
+        labelRefData.widthHint = EEFPropertyConstants.LABEL_WIDTH;
+        propertyLabel.setLayoutData(labelRefData);
+        // Add tooltip to the label
+        setToolTip(propertyLabel, jsonSchemaObject.getHelpTip());
+
+        // Create Text box widget
+        final Text valueTextBox = widgetFactory.createText(textBoxComposite, "", SWT.BORDER);
+        valueTextBox.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        GridData configRefData = new GridData(GridData.FILL_HORIZONTAL);
+        valueTextBox.setLayoutData(configRefData);
+        valueTextBox.addKeyListener(new KeyAdapter() {
+
             @Override
             @SuppressWarnings("synthetic-access")
             public void keyPressed(KeyEvent e) {
-                if (!isConnectionWidgetProvider) {
-                    if(value.getName().equals("description")) { 
+                if (!isConnectionWidgetProvider) { // Connection widgets are not notified to ecore model
+                    if (jsonSchemaObject.getName().equals("description")) { // Notify ecore model directly since
+                                                                            // description is not a connector param
                         propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(partForm,
-                                EsbViewsRepository.CloudConnectorOperation.Properties.description, PropertiesEditionEvent.COMMIT,
-                                PropertiesEditionEvent.EDIT, null, configRef.getText()));
+                                EsbViewsRepository.CloudConnectorOperation.Properties.description,
+                                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null,
+                                valueTextBox.getText()));
                     } else {
-        
                         CallTemplateParameter ctp = (CallTemplateParameter) ((Text) e.getSource()).getData();
                         setParameterType(RuleOptionType.VALUE, ctp);
-                        AttributeValue uiSchemaValue = (AttributeValue) ((Text) e.getSource()).getData(UI_SCHEMA_OBJECT_KEY);
-                        updateModel(ctp, configRef, uiSchemaValue);
-        
-                     }
+                        AttributeValue uiSchemaValue = (AttributeValue) ((Text) e.getSource())
+                                .getData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY);
+                        updateModel(ctp, valueTextBox, uiSchemaValue);
+                    }
 
                 }
             }
         });
-        setItemFocus(configRef);
+        // Register created widget in notify lists
+        controlList.put(jsonSchemaObject.getName(), valueTextBox);
+        if (jsonSchemaObject.getRequired()) {
+            requiredList.put(jsonSchemaObject.getName(), valueTextBox);
+        }
         return parent;
     }
 
+    /**
+     * Provide a composite with text box widget with expression support and a label
+     * 
+     * @param widgetFactory widget factory instance
+     * @param parent parent composite
+     * @param jsonSchemaObject JSONSchema object of the property
+     * @return composite
+     */
     public Composite createTextBoxFieldWithButton(FormToolkit widgetFactory, final Composite parent,
-            AttributeValue value) {
-        Composite textBoxComposite = createComposite(value.getName(), widgetFactory, parent, 3, 3);
-        Label label = new Label(textBoxComposite, SWT.TRANSPARENT);
-        label.setText(value.getDisplayName() + ":");
-        GridData labelRefData = new GridData();
-        labelRefData.widthHint = 120;
-        label.setLayoutData(labelRefData);
-        // label.setToolTipText(Label);
-        setToolTip(label, value.getHelpTip());
-        final Text configRef = widgetFactory.createText(textBoxComposite, "", SWT.BORDER);
-        configRef.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-        configRef.setData(UI_SCHEMA_OBJECT_KEY, value);
-        controlList.put(value.getName(), configRef);
-        if(value.getRequired()) {
-            requiredList.put(value.getName(), configRef);
+            AttributeValue jsonSchemaObject) {
+        // Create wrapping composite of 3 elements
+        Composite textBoxComposite = createComposite(jsonSchemaObject.getName(), widgetFactory, parent, 3, 3);
+
+        // Create label for the property
+        Label propertyLabel = new Label(textBoxComposite, SWT.TRANSPARENT);
+        // Append * If required field
+        String displayName = jsonSchemaObject.getDisplayName();
+        if (jsonSchemaObject.getRequired()) {
+            displayName = displayName.concat(EEFPropertyConstants.REQUIRED_FIELD_INDICATOR);
         }
-        GridData configRefData = new GridData(GridData.FILL_HORIZONTAL);
-        Button configButton = new Button(textBoxComposite, SWT.PUSH);
-        // configButton.setText(buttonText);
-        configRef.setLayoutData(configRefData);
-        configButton.addListener(SWT.Selection, new Listener() {
-            @Override
-            public void handleEvent(Event event) {
-                if (!isConnectionWidgetProvider) {
-                CallTemplateParameter ctp = (CallTemplateParameter) configRef.getData();
-                boolean saved = openValueExpressionWidgetNamespacedPropertyEditor(parent, configRef, ctp.getParameterExpression());
-                if(saved) {
-                    setParameterType(RuleOptionType.EXPRESSION, ctp);
-                    AttributeValue uiSchemaValue = (AttributeValue) configRef.getData(UI_SCHEMA_OBJECT_KEY);
-                    updateModel(ctp, configRef, uiSchemaValue);
-                }
-              }
-            }
-        });
-        Image image = null;
+        propertyLabel.setText(displayName + ":");
+        GridData labelRefData = new GridData();
+        labelRefData.widthHint = EEFPropertyConstants.LABEL_WIDTH;
+        propertyLabel.setLayoutData(labelRefData);
+        // Add tooltip to the label
+        setToolTip(propertyLabel, jsonSchemaObject.getHelpTip());
+
+        // Create expression toggle button
+        Button expressionToggleButton = new Button(textBoxComposite, SWT.TOGGLE);
+        Image expressionToggleButtonImage = null;
         try {
-            image = new Image(parent.getShell().getDisplay(), EEFPropertyViewUtil.getIconPath("icons/full/obj16/Artboard_2exp.png"));
+            expressionToggleButtonImage = new Image(parent.getShell().getDisplay(),
+                    EEFPropertyViewUtil.getIconPath(EEFPropertyConstants.EXPRESSION_TOGGLE_BUTTON_IMAGE));
+            expressionToggleButton.setImage(expressionToggleButtonImage);
         } catch (URISyntaxException | IOException e1) {
             log.error("Couldn't fetch property field icon", e1);
         }
-        configButton.setImage(image);
-        configRef.addKeyListener(new KeyAdapter() {
+
+        // Create Text box widget
+        final Text valueTextBox = widgetFactory.createText(textBoxComposite, "", SWT.BORDER);
+        valueTextBox.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        GridData configRefData = new GridData(GridData.FILL_HORIZONTAL);
+        valueTextBox.setLayoutData(configRefData);
+        valueTextBox.setData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY, jsonSchemaObject); // Set UI schema object as
+                                                                                           // control data
+        valueTextBox.addKeyListener(new KeyAdapter() {
+
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void keyReleased(KeyEvent e) {
+                if (!isConnectionWidgetProvider) {
+                    CallTemplateParameter ctp = (CallTemplateParameter) ((Text) e.getSource()).getData();
+                    setParameterType(RuleOptionType.VALUE, ctp);
+                    AttributeValue uiSchemaValue = (AttributeValue) ((Text) e.getSource())
+                            .getData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY);
+                    updateModel(ctp, valueTextBox, uiSchemaValue);
+                }
+            }
+        });
+
+        // Create expression compsite(Which has text box and exp button)
+        Composite expressionComposite = createExpressionComposite(jsonSchemaObject.getName(), widgetFactory,
+                textBoxComposite, jsonSchemaObject);
+        expressionComposite.setVisible(false);
+        ((GridData) expressionComposite.getLayoutData()).exclude = true; // Hide the expression composite first
+
+        // Bind toggle button events
+        expressionToggleButton.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                if (!isConnectionWidgetProvider) {
+                    Button source = (Button) e.getSource();
+                    if (source.getSelection()) { // If pressed
+                        // Hide value text box
+                        valueTextBox.setVisible(false);
+                        ((GridData) valueTextBox.getLayoutData()).exclude = true;
+                        // Show expression composite
+                        expressionComposite.setVisible(true);
+                        ((GridData) expressionComposite.getLayoutData()).exclude = false;
+                        parent.layout();
+                        // update ecore object to expression
+                        CallTemplateParameter ctp = (CallTemplateParameter) valueTextBox.getData();
+                        setParameterType(RuleOptionType.EXPRESSION, ctp);
+                    } else {
+                        // Show value text box
+                        valueTextBox.setVisible(true);
+                        ((GridData) valueTextBox.getLayoutData()).exclude = false;
+                        // Hide expression composite
+                        expressionComposite.setVisible(false);
+                        ((GridData) expressionComposite.getLayoutData()).exclude = true;
+                        parent.layout();
+                        // update ecore object to value
+                        CallTemplateParameter ctp = (CallTemplateParameter) valueTextBox.getData();
+                        setParameterType(RuleOptionType.VALUE, ctp);
+                    }
+                }
+            }
+        });
+        valueTextBox.setData(EEFPropertyConstants.ASSOCIATED_BUTTON, expressionToggleButton); // Add associated button
+                                                                                              // to
+        setItemFocus(valueTextBox);
+        // Register created widget in notify lists
+        controlList.put(jsonSchemaObject.getName(), valueTextBox);
+        if (jsonSchemaObject.getRequired()) {
+            requiredList.put(jsonSchemaObject.getName(), valueTextBox);
+        }
+        return parent;
+    }
+
+    /**
+     * Provide a composite with Drop down Combo widget with expression support and a label
+     * 
+     * @param widgetFactory widget factory instance
+     * @param parent parent composite
+     * @param options options array for drop down menu
+     * @param jsonSchemaObject JSONSchema object of the property
+     * @return Composite
+     */
+    public Composite createDropDownField(FormToolkit widgetFactory, final Composite parent, String[] options,
+            AttributeValue jsonSchemaObject) {
+        // Create wrapping composite of 3 elements
+        Composite textBoxComposite = createComposite(jsonSchemaObject.getName(), widgetFactory, parent, 3, 3);
+
+        // Create label for the property
+        Label propertyLabel = new Label(textBoxComposite, SWT.TRANSPARENT);
+        // Append * If required field
+        String displayName = jsonSchemaObject.getDisplayName();
+        if (jsonSchemaObject.getRequired()) {
+            displayName = displayName.concat(EEFPropertyConstants.REQUIRED_FIELD_INDICATOR);
+        }
+        propertyLabel.setText(displayName + ":");
+        GridData labelRefData = new GridData();
+        propertyLabel.setLayoutData(labelRefData);
+        labelRefData.widthHint = EEFPropertyConstants.LABEL_WIDTH;
+        setToolTip(propertyLabel, jsonSchemaObject.getHelpTip());
+
+        // Create expression toggle button
+        Button expressionToggleButton = new Button(textBoxComposite, SWT.TOGGLE);
+        Image expressionToggleButtonImage = null;
+        try {
+            expressionToggleButtonImage = new Image(parent.getShell().getDisplay(),
+                    EEFPropertyViewUtil.getIconPath(EEFPropertyConstants.EXPRESSION_TOGGLE_BUTTON_IMAGE));
+        } catch (URISyntaxException | IOException e1) {
+            log.error("Couldn't fetch property field icon", e1);
+        }
+        expressionToggleButton.setImage(expressionToggleButtonImage);
+
+        // Create expression compsite(Which has text box and exp button)
+        Composite expressionComposite = createExpressionComposite(jsonSchemaObject.getName(), widgetFactory,
+                textBoxComposite, jsonSchemaObject);
+        expressionComposite.setVisible(false);
+        ((GridData) expressionComposite.getLayoutData()).exclude = true; // hide
+
+        // Create combo box
+        final Combo valueComboBox = new Combo(textBoxComposite, SWT.DROP_DOWN | SWT.READ_ONLY);
+        Color colorWhite = new Color(null, 255, 255, 255);
+        valueComboBox.setBackground(colorWhite);
+        valueComboBox.setItems(options);
+        valueComboBox.setData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY, jsonSchemaObject);
+        GridData configRefData = new GridData(GridData.FILL_HORIZONTAL);
+        valueComboBox.setLayoutData(configRefData);
+        valueComboBox.addSelectionListener(new SelectionAdapter() {
+            public void widgetSelected(SelectionEvent event) {
+                if (!isConnectionWidgetProvider) {
+                    CallTemplateParameter ctp = (CallTemplateParameter) ((Combo) event.getSource()).getData();
+                    setParameterType(RuleOptionType.VALUE, ctp);
+                    AttributeValue uiSchemaValue = (AttributeValue) ((Combo) event.getSource())
+                            .getData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY);
+                    updateModel(ctp, valueComboBox, uiSchemaValue);
+                }
+            }
+        });
+
+        // Bind events to toggle button
+        expressionToggleButton.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                if (!isConnectionWidgetProvider) {
+                    Button source = (Button) e.getSource();
+
+                    if (source.getSelection()) {
+                        valueComboBox.setVisible(false);
+                        ((GridData) valueComboBox.getLayoutData()).exclude = true;
+                        expressionComposite.setVisible(true);
+                        ((GridData) expressionComposite.getLayoutData()).exclude = false;
+                        parent.layout();
+                        CallTemplateParameter ctp = (CallTemplateParameter) valueComboBox.getData();
+                        setParameterType(RuleOptionType.EXPRESSION, ctp);
+                    } else {
+                        valueComboBox.setVisible(true);
+                        ((GridData) valueComboBox.getLayoutData()).exclude = false;
+                        expressionComposite.setVisible(false);
+                        ((GridData) expressionComposite.getLayoutData()).exclude = true;
+                        parent.layout();
+                        CallTemplateParameter ctp = (CallTemplateParameter) valueComboBox.getData();
+                        setParameterType(RuleOptionType.VALUE, ctp);
+                    }
+
+                }
+            }
+        });
+        valueComboBox.setData(EEFPropertyConstants.ASSOCIATED_BUTTON, expressionToggleButton);
+        setItemFocus(valueComboBox);
+        // Register created widget in notify lists
+        controlList.put(jsonSchemaObject.getName(), valueComboBox);
+        if (jsonSchemaObject.getRequired()) {
+            requiredList.put(jsonSchemaObject.getName(), valueComboBox);
+        }
+        return parent;
+    }
+
+    /**
+     * Create expression composite which shows when expression toggle button is pressed
+     * 
+     * @param id Property Field Name
+     * @param widgetFactory widget factory instance
+     * @param parent parent composite
+     * @param jsonSchemaObject JSONSchema object of the property
+     * @return Composite
+     */
+    public Composite createExpressionComposite(String id, FormToolkit widgetFactory, Composite parent,
+            AttributeValue jsonSchemaObject) {
+        // Create wrapping composite of 2 elements and 1 span
+        Composite textComposite = createComposite(id, widgetFactory, parent, 2, 1);
+
+        // Create expression Text box
+        final StyledText expressionTextBox = new StyledText(textComposite, SWT.SINGLE);
+        expressionTextBox.setBackground(new Color(null, 255, 255, 255));
+        expressionTextBox.addLineStyleListener(new LineStyleListener() {
+            public void lineGetStyle(LineStyleEvent e) {
+                // Set the line number
+                e.bulletIndex = expressionTextBox.getLineAtOffset(e.lineOffset);
+
+                // Set the style, 12 pixles wide for each digit
+                StyleRange style = new StyleRange();
+                Device device = Display.getCurrent();
+                final RGB LINE_NUMBER_BG = new RGB(0, 0, 0);
+                final RGB LINE_NUMBER_FG = new RGB(201, 208, 211);
+
+                // style.background = new Color(device, LINE_NUMBER_BG);
+                style.foreground = new Color(device, LINE_NUMBER_FG);
+                style.metrics = new GlyphMetrics(0, 0, "expr ".length() * 5);
+
+                e.bullet = new Bullet(ST.BULLET_TEXT, style);
+                e.bullet.text = "expr ";
+
+            }
+        });
+        expressionTextBox.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        expressionTextBox.setData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY, jsonSchemaObject);
+        GridData configRefData = new GridData(GridData.FILL_HORIZONTAL);
+        expressionTextBox.setLayoutData(configRefData);
+        expressionTextBox.addKeyListener(new KeyAdapter() {
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void keyReleased(KeyEvent e) {
+                if (!isConnectionWidgetProvider) {
+                    CallTemplateParameter ctp = (CallTemplateParameter) ((StyledText) e.getSource()).getData();
+                    setParameterType(RuleOptionType.EXPRESSION, ctp);
+                    AttributeValue uiSchemaValue = (AttributeValue) ((StyledText) e.getSource())
+                            .getData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY);
+                    setExpressionValue(ctp, expressionTextBox.getText());
+                    updateModel(ctp, expressionTextBox, uiSchemaValue);
+                }
+            }
+        });
+
+        // Create Expression Dialog Box Button
+        // Button expressionDialogBoxButton = widgetFactory.createButton(textComposite, "", SWT.PUSH);
+        Button expressionDialogBoxButton = new Button(textComposite, SWT.PUSH);
+
+        Image expressionDialogBoxButtonImage = null;
+        try {
+            expressionDialogBoxButtonImage = new Image(parent.getShell().getDisplay(),
+                    EEFPropertyViewUtil.getIconPath(EEFPropertyConstants.EXPRESSION_DIALOG_BOX_BUTTON_IMAGE));
+        } catch (URISyntaxException | IOException e1) {
+            log.error("Couldn't fetch property field icon", e1);
+        }
+        expressionDialogBoxButton.setImage(expressionDialogBoxButtonImage);
+        expressionDialogBoxButton.addListener(SWT.Selection, new Listener() {
+            @Override
+            public void handleEvent(Event event) {
+                if (!isConnectionWidgetProvider) {
+                    CallTemplateParameter ctp = (CallTemplateParameter) expressionTextBox.getData();
+                    boolean saved = openValueExpressionWidgetNamespacedPropertyEditor(parent, expressionTextBox,
+                            ctp.getParameterExpression());
+                    if (saved) { // update only if the value is saved
+                        setParameterType(RuleOptionType.EXPRESSION, ctp);
+                        AttributeValue uiSchemaValue = (AttributeValue) expressionTextBox
+                                .getData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY);
+                        updateModel(ctp, expressionTextBox, uiSchemaValue);
+                    }
+                }
+            }
+        });
+        setItemFocus(expressionTextBox);
+        // Register created widget in notify lists
+        controlList.put(jsonSchemaObject.getName() + EEFPropertyConstants.EXPRESSION_FIELD_SUFFIX, expressionTextBox);
+        if (jsonSchemaObject.getRequired()) {
+            requiredList.put(jsonSchemaObject.getName() + EEFPropertyConstants.EXPRESSION_FIELD_SUFFIX,
+                    expressionTextBox);
+        }
+        return textComposite;
+    }
+
+    /**
+     * Creates connection field for the config Ref
+     * 
+     * @param widgetFactory widget factory instance
+     * @param parent parent composite
+     * @param jsonSchemaObject JSONSchema object of the property
+     * @param options options array for drop down menu
+     * @return Composite
+     */
+    public Composite createConnectionField(final FormToolkit widgetFactory, final Composite parent,
+            final AttributeValue jsonSchemaObject, String[] options) {
+        // Fetch images for add and edit connection buttons
+        Image newElementImage = EEFRuntimePlugin.getImage(EEFRuntimePlugin.ICONS_16x16 + "Add_16x16.gif");
+        Image deleteElementImage = null;
+        try {
+            deleteElementImage = new Image(parent.getShell().getDisplay(),
+                    EEFPropertyViewUtil.getIconPath(EEFPropertyConstants.CONNECTION_EDIT_ELEMENT_IMG));
+        } catch (URISyntaxException | IOException e1) {
+            log.error("Couldn't fetch property field icon", e1);
+        }
+
+        // Create composite with 4 elements
+        Composite textBoxComposite = createComposite(jsonSchemaObject.getName(), widgetFactory, parent, 4, 4);
+
+        // Create label
+        Label connectionLabel = new Label(textBoxComposite, SWT.TRANSPARENT);
+        String displayName = jsonSchemaObject.getDisplayName();
+        if (jsonSchemaObject.getRequired()) {
+            displayName = displayName.concat(EEFPropertyConstants.REQUIRED_FIELD_INDICATOR);
+        }
+        connectionLabel.setText(displayName + ":");
+        GridData labelRefData = new GridData();
+        labelRefData.widthHint = EEFPropertyConstants.LABEL_WIDTH;
+        connectionLabel.setLayoutData(labelRefData);
+        setToolTip(connectionLabel, jsonSchemaObject.getHelpTip());
+
+        // Create connection combo box
+        final Combo connectionComboBox = new Combo(textBoxComposite, SWT.READ_ONLY | SWT.DROP_DOWN);
+        connectionComboBox.setItems(options);
+        connectionComboBox.setData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY, jsonSchemaObject);
+        GridData configRefData = new GridData(GridData.FILL_HORIZONTAL);
+        connectionComboBox.setLayoutData(configRefData);
+
+        // Create Add Connection Button
+        Button addConnectionButton = widgetFactory.createButton(textBoxComposite, "", SWT.PUSH | SWT.TRANSPARENT);
+        addConnectionButton.setImage(newElementImage);
+        addConnectionButton.addListener(SWT.Selection, new Listener() {
+
+            @Override
+            public void handleEvent(Event event) {
+                if (!isConnectionWidgetProvider) {
+                    openConnectionEditor(widgetFactory, parent, connectionComboBox, null, jsonSchemaObject);
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(partForm,
+                            EsbViewsRepository.CloudConnectorOperation.Properties.configRef,
+                            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null,
+                            connectionComboBox.getText()));
+                }
+
+            }
+        });
+
+        // Create edit connection button
+        Button editConnectionButton = widgetFactory.createButton(textBoxComposite, "", SWT.PUSH | SWT.TRANSPARENT);
+        editConnectionButton.setImage(deleteElementImage);
+        editConnectionButton.setEnabled(false);
+        editConnectionButton.addListener(SWT.Selection, new Listener() {
+            @Override
+            public void handleEvent(Event event) {
+                openConnectionUpdateEditor(widgetFactory, parent, connectionComboBox, null, jsonSchemaObject);
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(partForm,
+                        EsbViewsRepository.CloudConnectorOperation.Properties.configRef, PropertiesEditionEvent.COMMIT,
+                        PropertiesEditionEvent.EDIT, null, connectionComboBox.getText()));
+            }
+        });
+
+        // Add connection combo box selection listener
+        connectionComboBox.addSelectionListener(new SelectionAdapter() {
+            public void widgetSelected(SelectionEvent event) {
+                if (!isConnectionWidgetProvider) {
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(partForm,
+                            EsbViewsRepository.CloudConnectorOperation.Properties.configRef,
+                            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null,
+                            connectionComboBox.getText()));
+                }
+
+                if (!connectionComboBox.getText().isEmpty()) {
+                    editConnectionButton.setEnabled(true);
+                } else {
+                    editConnectionButton.setEnabled(false);
+                }
+            }
+        });
+
+        // Register created widget in notify lists
+        setItemFocus(connectionComboBox);
+        controlList.put(jsonSchemaObject.getName(), connectionComboBox);
+        if (jsonSchemaObject.getRequired()) {
+            requiredList.put(jsonSchemaObject.getName(), connectionComboBox);
+        }
+        return parent;
+    }
+
+    /**
+     * Creates composite with text area
+     * 
+     * @param widgetFactory widget factory instance
+     * @param parent parent composite
+     * @param jsonSchemaObject JSONSchema object of the property
+     * @return Composite
+     */
+    public Composite createTextAreaFieldWithButton(FormToolkit widgetFactory, final Composite parent,
+            AttributeValue jsonSchemaObject) {
+        // Create composite with 3 elements
+        Composite textAreaComposite = createComposite(jsonSchemaObject.getName(), widgetFactory, parent, 3, 3);
+
+        // Create label
+        Label propertyLabel = new Label(textAreaComposite, SWT.TRANSPARENT);
+        String displayName = jsonSchemaObject.getDisplayName();
+        if (jsonSchemaObject.getRequired()) {
+            displayName = displayName.concat(EEFPropertyConstants.REQUIRED_FIELD_INDICATOR);
+        }
+        propertyLabel.setText(displayName + ":");
+        GridData labelRefData = new GridData();
+        labelRefData.widthHint = EEFPropertyConstants.LABEL_WIDTH;
+        propertyLabel.setLayoutData(labelRefData);
+        setToolTip(propertyLabel, jsonSchemaObject.getHelpTip());
+
+        // Create expression Button
+        Button expressionButton = new Button(textAreaComposite, SWT.TOGGLE);
+        Image expressionButtonImage = null;
+        try {
+            expressionButtonImage = new Image(parent.getShell().getDisplay(),
+                    EEFPropertyViewUtil.getIconPath(EEFPropertyConstants.EXPRESSION_TOGGLE_BUTTON_IMAGE));
+        } catch (URISyntaxException | IOException e1) {
+            log.error("Couldn't fetch property field icon", e1);
+        }
+        expressionButton.setImage(expressionButtonImage);
+
+        // Create Text Area
+        final Text valueTextArea = widgetFactory.createText(textAreaComposite, "",
+                SWT.MULTI | SWT.BORDER | SWT.WRAP | SWT.V_SCROLL);
+        valueTextArea.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        valueTextArea.setData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY, jsonSchemaObject);
+        GridData configRefData = new GridData(GridData.FILL_BOTH);
+        configRefData.heightHint = EEFPropertyConstants.TEXT_AREA_DEFAULT_HEIGHT;
+        valueTextArea.setLayoutData(configRefData);
+        valueTextArea.addKeyListener(new KeyAdapter() {
             /**
              * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
              * 
@@ -194,167 +664,55 @@ public class PropertiesWidgetProvider {
             @SuppressWarnings("synthetic-access")
             public void keyReleased(KeyEvent e) {
                 if (!isConnectionWidgetProvider) {
-                 // if (e.character == SWT.CR) {
-                    // ((CallTemplateParameter)configRef.getData()).setParameterValue(configRef.getText());
                     CallTemplateParameter ctp = (CallTemplateParameter) ((Text) e.getSource()).getData();
-                    // ctp.setParameterValue(configRef.getText());
                     setParameterType(RuleOptionType.VALUE, ctp);
-                    AttributeValue uiSchemaValue = (AttributeValue) ((Text) e.getSource()).getData(UI_SCHEMA_OBJECT_KEY);
-                    updateModel(ctp, configRef, uiSchemaValue);
-                    // }
+                    AttributeValue uiSchemaValue = (AttributeValue) ((Text) e.getSource())
+                            .getData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY);
+                    updateModel(ctp, valueTextArea, uiSchemaValue);
                 }
             }
         });
-        setItemFocus(configRef);
-        return parent;
-    }
 
-    public Composite createDropDownField(FormToolkit widgetFactory, final Composite parent, String[] options,
-            AttributeValue value) {
-        Composite textBoxComposite = createComposite(value.getName(), widgetFactory, parent, 3, 3);
-        Label label = new Label(textBoxComposite, SWT.TRANSPARENT);
-        label.setText(value.getDisplayName() + ":");
-        GridData labelRefData = new GridData();
-        labelRefData.widthHint = 120;
-        label.setLayoutData(labelRefData);
-        final Combo configRef = new Combo(textBoxComposite, SWT.DROP_DOWN);
-        Color colorWhite = new Color(null, 255, 255, 255);
-        configRef.setBackground(colorWhite);
-        controlList.put(value.getName(), configRef);
-        if(value.getRequired()) {
-            requiredList.put(value.getName(), configRef);
-        }
-        configRef.setItems(options);
-        configRef.setData(UI_SCHEMA_OBJECT_KEY, value);
-        setToolTip(label, value.getHelpTip());
-        GridData configRefData = new GridData(GridData.FILL_HORIZONTAL);
-        configRef.setLayoutData(configRefData);
-        configRef.addSelectionListener(new SelectionAdapter() {
-            public void widgetSelected(SelectionEvent event) {
-                if (!isConnectionWidgetProvider) {
-                    CallTemplateParameter ctp = (CallTemplateParameter) ((Combo) event.getSource()).getData();
-                    setParameterType(RuleOptionType.VALUE, ctp);
-                    AttributeValue uiSchemaValue = (AttributeValue) ((Combo) event.getSource())
-                            .getData(UI_SCHEMA_OBJECT_KEY);
-                    updateModel(ctp, configRef, uiSchemaValue);
-                }
-            }
-        });
-        
-        Button configButton = new Button(textBoxComposite, SWT.PUSH);
-        Image image = null;
-        try {
-            image = new Image(parent.getShell().getDisplay(), EEFPropertyViewUtil.getIconPath("icons/full/obj16/Artboard_2exp.png"));
-        } catch (URISyntaxException | IOException e1) {
-            log.error("Couldn't fetch property field icon", e1);
-        }
-        configButton.setImage(image);
-        configButton.addListener(SWT.Selection, new Listener() {
+        // Create Expression Composite
+        Composite expressionComposite = createExpressionComposite(jsonSchemaObject.getName(), widgetFactory,
+                textAreaComposite, jsonSchemaObject);
+        expressionComposite.setVisible(false);
+        ((GridData) expressionComposite.getLayoutData()).exclude = true;
+
+        // Bind events to toggle button
+        expressionButton.addSelectionListener(new SelectionAdapter() {
             @Override
-            public void handleEvent(Event event) {
-                CallTemplateParameter ctp = (CallTemplateParameter) configRef.getData();
-                boolean saved = openValueExpressionWidgetNamespacedPropertyEditor(parent, configRef, ctp.getParameterExpression());
-                if(saved) {
+            public void widgetSelected(SelectionEvent e) {
+                Button source = (Button) e.getSource();
+
+                if (source.getSelection()) {
+                    valueTextArea.setVisible(false);
+                    ((GridData) valueTextArea.getLayoutData()).exclude = true;
+                    expressionComposite.setVisible(true);
+                    ((GridData) expressionComposite.getLayoutData()).exclude = false;
+                    CallTemplateParameter ctp = (CallTemplateParameter) valueTextArea.getData();
+                    parent.layout();
                     setParameterType(RuleOptionType.EXPRESSION, ctp);
-                    AttributeValue uiSchemaValue = (AttributeValue) configRef.getData(UI_SCHEMA_OBJECT_KEY);
-                    updateModel(ctp, configRef, uiSchemaValue);
-                }
-            }
-        });
-        configRef.addKeyListener(new KeyAdapter() {
-            /**
-             * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-             * 
-             */
-            @Override
-            @SuppressWarnings("synthetic-access")
-            public void keyPressed(KeyEvent e) {
-               e.doit = false;
-            }
-        });
-        setItemFocus(configRef);
-        return parent;
-    }
-
-    public Composite createConnectionField(final FormToolkit widgetFactory, final Composite parent, final AttributeValue value,
-            String[] options) {
-        Image NEW_ELEMENT_IMG = EEFRuntimePlugin.getImage(EEFRuntimePlugin.ICONS_16x16 + "Add_16x16.gif");
-        Image DELETE_ELEMENT_IMG = null;
-        try {
-            DELETE_ELEMENT_IMG = new Image(parent.getShell().getDisplay(), EEFPropertyViewUtil.getIconPath("icons/full/obj16/edit-icon-16x16.png"));
-        } catch (URISyntaxException | IOException e1) {
-            log.error("Couldn't fetch property field icon", e1);
-        }
-        Composite textBoxComposite = createComposite(value.getName(), widgetFactory, parent, 4, 4);
-        Label label = new Label(textBoxComposite, SWT.TRANSPARENT);
-        label.setText(value.getDisplayName());
-        GridData labelRefData = new GridData();
-        labelRefData.widthHint = 120;
-        label.setLayoutData(labelRefData);
-        final Combo configRef = new Combo(textBoxComposite, SWT.READ_ONLY | SWT.DROP_DOWN);
-        controlList.put(value.getName(), configRef);
-        configRef.setItems(options);
-        configRef.setData(UI_SCHEMA_OBJECT_KEY, value);
-        if(value.getRequired()) {
-            requiredList.put(value.getName(), configRef);
-        }
-        setToolTip(label, value.getHelpTip());
-        GridData configRefData = new GridData(GridData.FILL_HORIZONTAL);
-        configRef.setLayoutData(configRefData);
-        
-        Button configButton = widgetFactory.createButton(textBoxComposite, "", SWT.PUSH | SWT.TRANSPARENT);
-        configButton.setImage(NEW_ELEMENT_IMG);
-        configButton.addListener(SWT.Selection, new Listener() {
-
-            @Override
-            public void handleEvent(Event event) {
-                if (!isConnectionWidgetProvider) {
-                    openConnectionEditor(widgetFactory, parent, configRef, null, value);
-                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(partForm,
-                            EsbViewsRepository.CloudConnectorOperation.Properties.configRef, PropertiesEditionEvent.COMMIT,
-                            PropertiesEditionEvent.EDIT, null, configRef.getText()));
-//                    ArrayList<String> availableConnections = null;
-//                    try {
-//                        availableConnections = EEFPropertyViewUtil.getAvailableConnectionEntriesList();
-//                    } catch (CoreException e) {
-//                        e.printStackTrace();
-//                    }
-//                    configRef.setItems(availableConnections.toArray(new String[]{}));
-                }
-                
-            }
-        });
-        setItemFocus(configRef);
-        
-        final Button editConnectionButton = widgetFactory.createButton(textBoxComposite, "", SWT.PUSH | SWT.TRANSPARENT);
-        editConnectionButton.setImage(DELETE_ELEMENT_IMG);
-        editConnectionButton.setEnabled(false);
-        editConnectionButton.addListener(SWT.Selection, new Listener() {
-            @Override
-            public void handleEvent(Event event) {
-                openConnectionUpdateEditor(widgetFactory, parent, configRef, null, value);
-                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(partForm,
-                        EsbViewsRepository.CloudConnectorOperation.Properties.configRef, PropertiesEditionEvent.COMMIT,
-                        PropertiesEditionEvent.EDIT, null, configRef.getText()));
-            }
-        });
-        
-        configRef.addSelectionListener(new SelectionAdapter() {
-            public void widgetSelected(SelectionEvent event) {
-                if (!isConnectionWidgetProvider) {
-                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(partForm,
-                            EsbViewsRepository.CloudConnectorOperation.Properties.configRef, PropertiesEditionEvent.COMMIT,
-                            PropertiesEditionEvent.EDIT, null, configRef.getText()));
-                }
-                
-                if (!configRef.getText().isEmpty()) {
-                    editConnectionButton.setEnabled(true);
                 } else {
-                    editConnectionButton.setEnabled(false);
+                    valueTextArea.setVisible(true);
+                    ((GridData) valueTextArea.getLayoutData()).exclude = false;
+                    expressionComposite.setVisible(false);
+                    ((GridData) expressionComposite.getLayoutData()).exclude = true;
+                    CallTemplateParameter ctp = (CallTemplateParameter) valueTextArea.getData();
+                    parent.layout();
+                    setParameterType(RuleOptionType.VALUE, ctp);
                 }
+
             }
         });
-        
+        valueTextArea.setData(EEFPropertyConstants.ASSOCIATED_BUTTON, expressionButton);
+
+        // Register created widget in notify lists
+        setItemFocus(valueTextArea);
+        controlList.put(jsonSchemaObject.getName(), valueTextArea);
+        if (jsonSchemaObject.getRequired()) {
+            requiredList.put(jsonSchemaObject.getName(), valueTextArea);
+        }
         return parent;
     }
 
@@ -374,13 +732,20 @@ public class PropertiesWidgetProvider {
         return parent;
     }
 
+    /**
+     * Creates composite with fixed(2) number of columns
+     * 
+     * @param widgetFactory widgetFactory instance
+     * @param parent parent composite
+     * @return Composite
+     */
     public Composite createComposite(FormToolkit widgetFactory, Composite parent) {
         Composite composite = widgetFactory.createComposite(parent);
         GridLayout propertiesGroupLayout = new GridLayout();
         propertiesGroupLayout.numColumns = 2;
         propertiesGroupLayout.marginLeft = 15;
         propertiesGroupLayout.horizontalSpacing = 20;
-        propertiesGroupLayout.verticalSpacing = 10;
+        propertiesGroupLayout.verticalSpacing = 0;
         composite.setLayout(propertiesGroupLayout);
         GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
         propertiesSectionData.horizontalSpan = 2;
@@ -389,13 +754,23 @@ public class PropertiesWidgetProvider {
 
     }
 
+    /**
+     * Creates composite with given number of columns and span
+     * 
+     * @param id Field name of the property
+     * @param widgetFactory widgetFactory instance
+     * @param parent parent composite
+     * @param columns number of columns of the field
+     * @param span span of the field
+     * @return composite
+     */
     public Composite createComposite(String id, FormToolkit widgetFactory, Composite parent, int columns, int span) {
         Composite composite = widgetFactory.createComposite(parent, SWT.TRANSPARENT);
-        composite.setBackground(new Color (parent.getShell().getDisplay(), 245, 245, 245));
+        composite.setBackground(new Color(parent.getShell().getDisplay(), 245, 245, 245));
         GridLayout propertiesGroupLayout = new GridLayout();
         propertiesGroupLayout.numColumns = columns;
         propertiesGroupLayout.marginLeft = 0;
-        propertiesGroupLayout.horizontalSpacing = 20;
+        propertiesGroupLayout.horizontalSpacing = 10;
         propertiesGroupLayout.verticalSpacing = 0;
         composite.setLayout(propertiesGroupLayout);
         GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
@@ -408,8 +783,16 @@ public class PropertiesWidgetProvider {
 
     //////////////// Dialog Box open methods////////////////////
 
-    public boolean openValueExpressionWidgetNamespacedPropertyEditor(final Composite parent, Control valueExpressionText,
-            NamespacedProperty valueExpression) {
+    /**
+     * Open expression dialog box
+     * 
+     * @param parent parent
+     * @param valueExpressionText expression text box
+     * @param valueExpression Name spaced property instance
+     * @return
+     */
+    public boolean openValueExpressionWidgetNamespacedPropertyEditor(final Composite parent,
+            Control valueExpressionText, NamespacedProperty valueExpression) {
         if (valueExpression == null) {
             valueExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
             ((CallTemplateParameter) valueExpressionText.getData()).setParameterExpression(valueExpression);
@@ -417,24 +800,36 @@ public class PropertiesWidgetProvider {
         EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
                 valueExpression);
         valueExpression = nspd.open();
-        if(nspd.isSaved()) {
-            if(valueExpressionText instanceof Text) {
-                ((Text)valueExpressionText).setText(valueExpression.getPropertyValue());
+        if (nspd.isSaved()) {
+            if (valueExpressionText instanceof Text) {
+                ((Text) valueExpressionText).setText(valueExpression.getPropertyValue());
             } else if (valueExpressionText instanceof Combo) {
-                ((Combo)valueExpressionText).setText(valueExpression.getPropertyValue());
+                ((Combo) valueExpressionText).setText(valueExpression.getPropertyValue());
             }
         }
         return nspd.isSaved();
     }
 
+    /**
+     * Open add connection dialog box
+     * 
+     * @param widgetFactory widgetFactory instance
+     * @param parent parent composite
+     * @param valueExpressionCombo connection selector combo box
+     * @param valueExpression Namespaced property object
+     * @param jsonSchemaObject json Shema UI object
+     */
     public void openConnectionEditor(FormToolkit widgetFactory, final Composite parent, Combo valueExpressionCombo,
-            NamespacedProperty valueExpression, AttributeValue value) {
+            NamespacedProperty valueExpression, AttributeValue jsonSchemaObject) {
+        // Get connector semantic object from component
         CloudConnectorOperationImpl connectorObject = (CloudConnectorOperationImpl) propertiesEditionComponent
                 .getEditingContext().getEObject();
-        String connectorName = connectorObject.getConnectorName().split("connector")[0];
+        String connectorName = connectorObject.getConnectorName()
+                .split(EEFPropertyConstants.ECORE_CONNECTOR_NAME_SUFFIX)[0]; // Ecore connector name has connector
+                                                                             // suffix
         IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
         ConnectionParameterWizard wizard = new ConnectionParameterWizard(widgetFactory, connectorName,
-                valueExpressionCombo, value);
+                valueExpressionCombo, jsonSchemaObject);
         wizard.init(PlatformUI.getWorkbench(), null);
         WizardDialog connectionWizard = new WizardDialog(window.getShell(), wizard);
         connectionWizard.setHelpAvailable(false);
@@ -442,11 +837,23 @@ public class PropertiesWidgetProvider {
         connectionWizard.open();
     }
 
-    public void openConnectionUpdateEditor(FormToolkit widgetFactory, final Composite parent, Combo valueExpressionCombo,
-            NamespacedProperty valueExpression, AttributeValue value) {
+    /**
+     * Open edit connection dialog box
+     * 
+     * @param widgetFactory widgetFactory instance
+     * @param parent parent composite
+     * @param valueExpressionCombo connection selector combo box
+     * @param valueExpression Namespaced property object
+     * @param jsonSchemaObject json Shema UI object
+     */
+    public void openConnectionUpdateEditor(FormToolkit widgetFactory, final Composite parent,
+            Combo valueExpressionCombo, NamespacedProperty valueExpression, AttributeValue value) {
+        // Get connector semantic object from component
         CloudConnectorOperationImpl connectorObject = (CloudConnectorOperationImpl) propertiesEditionComponent
                 .getEditingContext().getEObject();
-        String connectorName = connectorObject.getConnectorName().split("connector")[0];
+        String connectorName = connectorObject.getConnectorName()
+                .split(EEFPropertyConstants.ECORE_CONNECTOR_NAME_SUFFIX)[0]; // Ecore connector name has connector
+                                                                             // suffix
         IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
         ConnectionParameterWizard wizard = new ConnectionParameterWizard(widgetFactory, connectorName,
                 valueExpressionCombo.getText(), value);
@@ -459,6 +866,12 @@ public class PropertiesWidgetProvider {
 
     //////////////// Widget util Methods////////////////////////
 
+    /**
+     * Update parameter type to VALUE or EXPRESSION
+     * 
+     * @param ruleType parameter type value/expression
+     * @param ctp Call template param
+     */
     public void setParameterType(final RuleOptionType ruleType, final CallTemplateParameter ctp) {
         TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(ctp);
         domain.getCommandStack().execute(new RecordingCommand(domain) {
@@ -470,6 +883,29 @@ public class PropertiesWidgetProvider {
         });
     }
 
+    /**
+     * Set value of expression, this will not change the namespace of the expr
+     * 
+     * @param ctp Calltemplate parameter
+     * @param value local value
+     */
+    public void setExpressionValue(final CallTemplateParameter ctp, String value) {
+        TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(ctp);
+        domain.getCommandStack().execute(new RecordingCommand(domain) {
+
+            @Override
+            protected void doExecute() {
+                ctp.getParameterExpression().setPropertyValue(value);
+            }
+        });
+    }
+
+    /**
+     * Add a tooltip to the control
+     * 
+     * @param control Control which tool tip should be added
+     * @param text tooltip message
+     */
     public void setToolTip(Control control, String text) {
         final ToolTip tip = new ToolTip(control.getShell(), SWT.BALLOON);
         tip.setMessage(text);
@@ -510,72 +946,101 @@ public class PropertiesWidgetProvider {
         });
     }
 
-    /////////Subclass according to usage
-    public void updateModel(CallTemplateParameter ctp, Control configRef, AttributeValue uiSchameValue) {
+    /**
+     * update ecore model
+     * 
+     * @param ctp call template param
+     * @param targetControl updated control
+     * @param uiSchameValue uischema object
+     */
+    public void updateModel(CallTemplateParameter ctp, Control targetControl, AttributeValue uiSchameValue) {
         String value = "";
-        if (configRef instanceof Text) {
-            value = ((Text) configRef).getText();
-        } else if (configRef instanceof Combo) {
-            value = ((Combo) configRef).getText();
+        if (targetControl instanceof Text) {
+            value = ((Text) targetControl).getText();
+        } else if (targetControl instanceof Combo) {
+            value = ((Combo) targetControl).getText();
         }
-        if (validateValue("", value, uiSchameValue.getRequired(), uiSchameValue.getDisplayName())) { // Validation
-                                                                                                           // regex
-                                                                                                           // model
-                                                                                                           // support
+        if (validateValue(uiSchameValue.getValidation(), value, uiSchameValue.getRequired(),
+                uiSchameValue.getDisplayName())) {
             propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(partForm,
                     EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters,
                     PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, ctp, value));
-        } else {
-            // Update message box
         }
     }
 
     public boolean validateValue(String regex, String value, boolean required, String fieldName) {
         // Do required validation
-        if(regex.isEmpty()) {
+        checkRequired();
+        if (regex.isEmpty()) {
             return true;
         }
         // Do xpath validation
         boolean result = Pattern.matches(regex, value);
         if (!result) {
-            try {
-                ((CloudConnectorOperationPropertiesEditionPartForm) partForm).updateMessage("regexerror", "", fieldName,
-                        regex);
-            } catch (URISyntaxException | IOException e) {
-                e.printStackTrace();
-            }
-            // return false;
-            return true;
+            updateBanner("regexerror", "", fieldName, regex);
+            return false;
         }
-        try {
-            ((CloudConnectorOperationPropertiesEditionPartForm) partForm).updateMessage("ok", "", fieldName, regex);
-        } catch (URISyntaxException | IOException e) {
-            e.printStackTrace();
-        }
+        updateBanner("ok", "", fieldName, regex);
         return true;
     }
-    
+
     public void checkRequired() {
         boolean isError = false;
         String fieldName = "";
-        for(String key: requiredList.keySet()) {
-            Control control = requiredList.get(key);
-            if(control instanceof Text) {
-                String value = ((Text)control).getText();
-                if(value == null || value.isEmpty()) {
-                    isError = true;
-                    AttributeValue va = (AttributeValue)control.getData(UI_SCHEMA_OBJECT_KEY);
-                    fieldName = va.getDisplayName();
-                } 
+        for (String key : requiredList.keySet()) {
+            if (!key.contains(EEFPropertyConstants.EXPRESSION_FIELD_SUFFIX)) {
+                Control control = requiredList.get(key);
+                Control expControl = requiredList.get(key + EEFPropertyConstants.EXPRESSION_FIELD_SUFFIX);
+                if (control instanceof Text) {
+                    String value = ((Text) control).getText();
+                    if ((value == null || value.isEmpty())) {
+                        if (expControl != null) {
+                            String expValue = ((StyledText) expControl).getText();
+                            if ((expValue == null || expValue.isEmpty())) {
+                                isError = true;
+                                AttributeValue va = (AttributeValue) control
+                                        .getData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY);
+                                fieldName = va.getDisplayName();
+                            }
+                        } else {
+                            isError = true;
+                            AttributeValue va = (AttributeValue) control
+                                    .getData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY);
+                            fieldName = va.getDisplayName();
+                        }
+                    }
+                } else if (control instanceof Combo) {
+                    String value = ((Combo) control).getText();
+                    if ((value == null || value.isEmpty())) {
+                        if (expControl != null) {
+                            String expValue = ((StyledText) expControl).getText();
+                            if ((expValue == null || expValue.isEmpty())) {
+                                isError = true;
+                                AttributeValue va = (AttributeValue) control
+                                        .getData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY);
+                                fieldName = va.getDisplayName();
+                            }
+                        } else {
+                            isError = true;
+                            AttributeValue va = (AttributeValue) control
+                                    .getData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY);
+                            fieldName = va.getDisplayName();
+                        }
+                    }
+                }
             }
-        
+
         }
-        if(isError) {
-            try {
-                ((CloudConnectorOperationPropertiesEditionPartForm) partForm).updateMessage("requirederror", "", fieldName, "");
-            } catch (URISyntaxException | IOException e) {
-                e.printStackTrace();
-            }
+        if (isError) {
+            updateBanner("requirederror", "", fieldName, "");
+        }
+    }
+
+    public void updateBanner(String kind, String message, String field, String regex) {
+        try {
+            ((CloudConnectorOperationPropertiesEditionPartForm) partForm).updateMessage(kind, message, field, regex);
+        } catch (URISyntaxException | IOException e) {
+            log.error("Error updating message banner", e);
         }
     }
 

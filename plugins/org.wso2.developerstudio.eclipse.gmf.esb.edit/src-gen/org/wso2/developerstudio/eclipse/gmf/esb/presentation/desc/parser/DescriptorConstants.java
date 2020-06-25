@@ -53,6 +53,7 @@ public class DescriptorConstants {
     public static final String STRING = "string";
     public static final String STRING_OR_EXPRESSION = "stringOrExpression";
     public static final String TEXT_OR_EXPRESSION = "textOrExpression";
+    public static final String TEXTAREA_OR_EXPRESSION = "textAreaOrExpression";
     public static final String BOOLEAN_OR_EXPRESSION = "booleanOrExpression";
     public static final String CONNECTION = "connection";
     public static final String COMBO_OR_EXPRESSION = "comboOrExpression";

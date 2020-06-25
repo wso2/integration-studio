@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><artifacts>
-    <artifact name="kafkaTransport-connector" groupId="wso2.sampleKafkaTemplate.IS_SAMPLEConfigs.lib" version="2.0.5" type="synapse/lib" serverRole="EnterpriseServiceBus">
-        <file>kafkaTransport-connector-2.0.5.zip</file>
-    </artifact>
-</artifacts>

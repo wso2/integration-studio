@@ -159,7 +159,8 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 	    String schemaName = EEFPropertyViewUtil.generateSchemaName(propertiesEditionComponent);
-        if(ConnectorSchemaHolder.getInstance().hasConnectorOperationSchema(schemaName)) {
+        if(ConnectorSchemaHolder.getInstance().hasConnectorOperationSchema(schemaName)
+                && (!EEFPropertyViewUtil.isLegacyPropertiesViewSet())) {
 	        hasConnectorSchema = true;
 	    } else {
 	        hasConnectorSchema = false;

@@ -31,6 +31,7 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.ui.IStartup;
 import org.osgi.framework.Bundle;
 import org.wso2.developerstudio.eclipse.esb.project.Activator;
+import org.wso2.developerstudio.eclipse.esb.project.servlets.DeployedServicesServlet;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.templates.dashboard.handlers.JettyServerHandler;
@@ -44,6 +45,7 @@ public class DeployedServicesEarlyStartupHandler implements IStartup {
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     private static final String ENDPOINTS_CONTEXT_PATH = "/project/endpoints";
     private static final String ENDPOINTS_WEB_APP_LOCATION = "DeployedEndpointsPages";
+    private static final String DEPLOYED_ENDPOINTS_SERVICES_PATH = "/services";
     
     /*
      * (non-Javadoc)
@@ -69,6 +71,7 @@ public class DeployedServicesEarlyStartupHandler implements IStartup {
         endpointsContext.setContextPath(ENDPOINTS_CONTEXT_PATH);
 
         // Adding Default servlet and Connector servlet
+        endpointsContext.addServlet(DeployedServicesServlet.class, DEPLOYED_ENDPOINTS_SERVICES_PATH);
         endpointsContext.addServlet(DefaultServlet.class, "/");
         endpointsContext.setResourceBase(endpointWebAppPath);
         

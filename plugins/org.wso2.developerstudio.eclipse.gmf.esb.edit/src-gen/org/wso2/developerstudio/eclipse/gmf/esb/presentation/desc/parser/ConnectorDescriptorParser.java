@@ -55,7 +55,9 @@ public class ConnectorDescriptorParser {
                 AttributeValue value = new AttributeValue();
                 JSONObject attrObj = obj.getJSONObject(DescriptorConstants.VALUE);
                 value.setName(attrObj.getString(DescriptorConstants.NAME));
-                value.setDefaultValue(attrObj.getString(DescriptorConstants.DEFAULT_VALUE));
+                if(attrObj.has(DescriptorConstants.DEFAULT_VALUE)) {
+                    value.setDefaultValue(attrObj.getString(DescriptorConstants.DEFAULT_VALUE));
+                }
                 value.setRequired(Boolean.parseBoolean(attrObj.getString(DescriptorConstants.REQUIRED)));
                 value.setHelpTip(attrObj.getString(DescriptorConstants.HELP_TIP));
                 value.setDisplayName(attrObj.getString(DescriptorConstants.DISPLAY_NAME));
@@ -77,6 +79,9 @@ public class ConnectorDescriptorParser {
                     break;
                 case DescriptorConstants.BOOLEAN_OR_EXPRESSION:
                     value.setType(AttributeValueType.BOOLEANOREXPRESSION);
+                    break;
+                case DescriptorConstants.TEXTAREA_OR_EXPRESSION:
+                    value.setType(AttributeValueType.TEXTAREAOREXPRESSION);
                     break;
                 case DescriptorConstants.CONNECTION:
 
@@ -112,7 +117,9 @@ public class ConnectorDescriptorParser {
                 AttributeValue value = new AttributeValue();
                 JSONObject attrObj = obj.getJSONObject(DescriptorConstants.VALUE);
                 value.setName(attrObj.getString(DescriptorConstants.NAME));
-                value.setDefaultValue(attrObj.getString(DescriptorConstants.DEFAULT_VALUE));
+                if(attrObj.has(DescriptorConstants.DEFAULT_VALUE)) {
+                    value.setDefaultValue(attrObj.getString(DescriptorConstants.DEFAULT_VALUE));
+                }
                 value.setRequired(Boolean.parseBoolean(attrObj.getString(DescriptorConstants.REQUIRED)));
                 value.setHelpTip(attrObj.getString(DescriptorConstants.HELP_TIP));
                 value.setDisplayName(attrObj.getString(DescriptorConstants.DISPLAY_NAME));
@@ -123,6 +130,9 @@ public class ConnectorDescriptorParser {
                     break;
                 case DescriptorConstants.TEXT_OR_EXPRESSION:
                     value.setType(AttributeValueType.STRING);
+                    break;
+                case DescriptorConstants.TEXTAREA_OR_EXPRESSION:
+                    value.setType(AttributeValueType.TEXTAREAOREXPRESSION);
                     break;
                 case DescriptorConstants.COMBO_OR_EXPRESSION:
                     value.setType(AttributeValueType.COMBO);

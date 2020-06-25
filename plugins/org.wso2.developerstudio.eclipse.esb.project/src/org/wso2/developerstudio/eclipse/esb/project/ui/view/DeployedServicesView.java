@@ -101,7 +101,7 @@ public class DeployedServicesView extends ViewPart {
         String port = rootNode.get("portDetails", String.valueOf(FunctionServerConstants.EMBEDDED_SERVER_PORT));
         return "http://localhost:" + port + "/project/endpoints?" + API_DETAILS_GET_PARAM + "=" + apiList + "&"
                 + PROXY_DETAILS_GET_PARAM + "=" + proxyList + "&" + DATASERVICE_DETAILS_GET_PARAM + "="
-                + dataServiceList;
+                + dataServiceList + "&port=" + port;
     }
 
     @Override

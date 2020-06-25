@@ -17,59 +17,29 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.presentation;
 
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.regex.Pattern;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
-import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
-import org.eclipse.emf.transaction.RecordingCommand;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.KeyAdapter;
-import org.eclipse.swt.events.KeyEvent;
-import org.eclipse.swt.events.MouseEvent;
-import org.eclipse.swt.events.MouseListener;
-import org.eclipse.swt.events.PaintEvent;
-import org.eclipse.swt.events.PaintListener;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.graphics.Point;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.swt.widgets.ToolTip;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Event;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloudConnectorOperation;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleOptionType;
-import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.CloudConnectorOperationPropertiesEditionPartForm;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeGroupValue;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValue;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValueType;
@@ -79,7 +49,7 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public class ConnectorParameterRenderer extends PropertyParameterRenderer {
-    
+
     HashMap<String, Control> controlList;
     HashMap<String, Control> requiredList;
     HashMap<String, Composite> compositeList;
@@ -87,139 +57,165 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
     SectionPropertiesEditingPart partForm;
     PropertiesWidgetProvider widgetProvider;
     private static IDeveloperStudioLog log = Logger.getLog(EEFPropertyViewUtil.PLUGIN_ID);
-    
-    public ConnectorParameterRenderer(IPropertiesEditionComponent propertiesEditionComponent, SectionPropertiesEditingPart partForm) {
+
+    public ConnectorParameterRenderer(IPropertiesEditionComponent propertiesEditionComponent,
+            SectionPropertiesEditingPart partForm) {
         this.propertiesEditionComponent = propertiesEditionComponent;
         this.partForm = partForm;
         this.controlList = new HashMap<String, Control>();
         this.compositeList = new HashMap<String, Composite>();
         this.requiredList = new HashMap<String, Control>();
-        widgetProvider = new PropertiesWidgetProvider(partForm, propertiesEditionComponent, controlList, compositeList, requiredList);
+        widgetProvider = new PropertiesWidgetProvider(partForm, propertiesEditionComponent, controlList, compositeList,
+                requiredList);
     }
-    
+
     @Override
     public Composite generate(FormToolkit widgetFactory, Composite parent, ConnectorRoot connectorRoot) {
-        //Create main group
+        // Create main group
         Group generalGroup = widgetProvider.createGroup(parent, "General");
-        //Iterate over the ui schema
-        for(Element elem: connectorRoot.getElements()) {
+        // Iterate over the ui schema
+        for (Element elem : connectorRoot.getElements()) {
             recursive(elem, parent, generalGroup, widgetFactory, 0);
-        }       
+        }
         return parent;
 
     }
-    
-    public void recursive(Element element, Composite parent, Composite generalGroup, FormToolkit widgetFactory, int level) {
+
+    public void recursive(Element element, Composite parent, Composite generalGroup, FormToolkit widgetFactory,
+            int level) {
         ++level;
-        if(element.getType().equals("attribute")) {
-            if(level != 2) { //Will be 2 since ++ level
-                evaluateAttribute((AttributeValue)element.getValue(), parent, widgetFactory, level);
+        if (element.getType().equals("attribute")) {
+            if (level != 2) { // Will be 2 since ++ level
+                evaluateAttribute((AttributeValue) element.getValue(), parent, widgetFactory, level);
             } else {
-                evaluateAttribute((AttributeValue)element.getValue(), generalGroup, widgetFactory, level);
+                evaluateAttribute((AttributeValue) element.getValue(), generalGroup, widgetFactory, level);
             }
         } else {
-            AttributeGroupValue agv = (AttributeGroupValue)element.getValue();
+            AttributeGroupValue agv = (AttributeGroupValue) element.getValue();
             // Is group Name connection special????
-            if(level != 1) {
+            if (level != 1) {
                 Group subGroup = widgetProvider.createGroup(parent, agv.getGroupName());
-                for(Element elem: agv.getElements()) {
+                for (Element elem : agv.getElements()) {
                     recursive(elem, subGroup, generalGroup, widgetFactory, level);
                 }
             } else {
-                for(Element elem: agv.getElements()) {
+                for (Element elem : agv.getElements()) {
                     recursive(elem, parent, generalGroup, widgetFactory, level);
                 }
             }
 
         }
     }
-    
+
     public void evaluateAttribute(AttributeValue value, Composite parent, FormToolkit widgetFactory, int level) {
         if (AttributeValueType.STRING.equals(value.getType())) {
-            if(level == 2) {
+            if (level == 2) {
                 widgetProvider.createTextBoxField(widgetFactory, parent, value);
             } else {
                 widgetProvider.createTextBoxFieldWithButton(widgetFactory, parent, value);
             }
         } else if (AttributeValueType.BOOLEANOREXPRESSION.equals(value.getType())) {
-            widgetProvider.createDropDownField(widgetFactory, parent, new String[] {"true", "false"}, value);
+            widgetProvider.createDropDownField(widgetFactory, parent, new String[] { "true", "false" }, value);
         } else if (AttributeValueType.COMBO.equals(value.getType())) {
-            widgetProvider.createDropDownField(widgetFactory, parent, value.getComboValues().toArray(new String[0]), value);
+            widgetProvider.createDropDownField(widgetFactory, parent, value.getComboValues().toArray(new String[0]),
+                    value);
+        } else if (AttributeValueType.TEXTAREAOREXPRESSION.equals(value.getType())) {
+            widgetProvider.createTextAreaFieldWithButton(widgetFactory, parent, value);
         } else if (AttributeValueType.CONNECTION.equals(value.getType())) {
-            widgetProvider.createConnectionField(widgetFactory, parent, value, getConnectionEntriesList(value.getAllowedConnectionTypes()));
+            widgetProvider.createConnectionField(widgetFactory, parent, value,
+                    getConnectionEntriesList(value.getAllowedConnectionTypes()));
         }
     }
-    
 
-  //mock values
-    public String[] getConnectionEntriesList (List<String> allowedTypes) {
+    public String[] getConnectionEntriesList(List<String> allowedTypes) {
         ArrayList<String> availableConnections = null;
         try {
             availableConnections = EEFPropertyViewUtil.getAvailableConnectionEntriesList(allowedTypes);
         } catch (CoreException e) {
-            e.printStackTrace();
+            log.error("Error loading available connections", e);
         }
-        if(availableConnections == null || availableConnections.isEmpty()) {
-            return new String[] {""};
+        if (availableConnections == null || availableConnections.isEmpty()) {
+            return new String[] { "" };
         } else {
             return availableConnections.toArray(new String[] {});
         }
     }
-    
-    
-    
-    
-    //Triggerred with ecore event bus
+
+    // Triggerred with ecore event bus
     @Override
     public void fillData(EObject dataObject) {
-        EList<CallTemplateParameter> parameterList = ((CloudConnectorOperation)dataObject).getConnectorParameters();
+        EList<CallTemplateParameter> parameterList = ((CloudConnectorOperation) dataObject).getConnectorParameters();
 
-        ///Not parameters
-        String configRefValue = ((CloudConnectorOperation)dataObject).getConfigRef();
-        Combo configRefCombo = (Combo)controlList.get("configRef");
-        if(configRefCombo != null && configRefValue != null) {
-            configRefCombo.select( configRefCombo.indexOf(configRefValue));
+        /// Exclude properties which are not parameters
+        String configRefValue = ((CloudConnectorOperation) dataObject).getConfigRef();
+        Combo configRefCombo = (Combo) controlList.get("configRef");
+        if (configRefCombo != null && configRefValue != null) {
+            configRefCombo.select(configRefCombo.indexOf(configRefValue));
         }
-        String descriptionValue = ((CloudConnectorOperation)dataObject).getDescription();
-        Text descriptionText = (Text)controlList.get("description");
-        if(descriptionText != null) {
+        String descriptionValue = ((CloudConnectorOperation) dataObject).getDescription();
+        Text descriptionText = (Text) controlList.get("description");
+        if (descriptionText != null) {
             descriptionText.setText(descriptionValue);
         }
-        //////
 
-       
-        for(String key: controlList.keySet()) {
-                CallTemplateParameter ctp = null;
-                for(Object parameter: parameterList) {
-                   CallTemplateParameter ctpi = (CallTemplateParameter)parameter;
-                   if(((String)key).equals(ctpi.getParameterName())) {
-                       ctp = ctpi;
-                   }
+        //Iterate through controlList and fill data
+        for (String key : controlList.keySet()) {
+            CallTemplateParameter ctp = null;
+            for (Object parameter : parameterList) {
+                CallTemplateParameter ctpi = (CallTemplateParameter) parameter;
+                if (((String) key).equals(ctpi.getParameterName())) {
+                    ctp = ctpi;
                 }
-                if (ctp != null) {
-                    String value = ctp.getParameterValue();
-                    if (ctp.getTemplateParameterType().equals(RuleOptionType.EXPRESSION)) {
-                        NamespacedProperty namespacedExpression = ctp.getParameterExpression();
-                        value = namespacedExpression.getPropertyValue();
-                    }
-                
-                    if(controlList.get(key) instanceof Text) {
-                        ((Text)controlList.get(key)).setText(value);
-                        ((Text)controlList.get(key)).setData(ctp);
+            }
+            if (ctp != null) {
+                String value = ctp.getParameterValue();
+                if (ctp.getTemplateParameterType().equals(RuleOptionType.EXPRESSION)) {
+                    NamespacedProperty namespacedExpression = ctp.getParameterExpression();
+                    value = namespacedExpression.getPropertyValue();
+                    if (controlList.get(key) instanceof Text) {
+                        StyledText expText = (StyledText) controlList
+                                .get(key + EEFPropertyConstants.EXPRESSION_FIELD_SUFFIX);
+                        expText.setText(value);
+                        expText.setData(ctp);
+                        ((Text) controlList.get(key)).setData(ctp);
                     } else if (controlList.get(key) instanceof Combo) {
-                        Combo combo = (Combo)controlList.get(key);
+                        StyledText expText = (StyledText) controlList
+                                .get(key + EEFPropertyConstants.EXPRESSION_FIELD_SUFFIX);
+                        expText.setText(value);
+                        expText.setData(ctp);
+                        Combo combo = (Combo) controlList.get(key);
+                        combo.setData(ctp);
+                    }
+                    Control exButton = (Control) controlList.get(key).getData(EEFPropertyConstants.ASSOCIATED_BUTTON);
+                    if (exButton != null && exButton instanceof Button) {
+                        ((Button) exButton).setSelection(true);
+                        ((Button) exButton).notifyListeners(SWT.Selection, new Event());
+                    }
+
+                } else {
+                    if (controlList.get(key) instanceof Text) {
+                        ((Text) controlList.get(key)).setText(value);
+                        ((Text) controlList.get(key)).setData(ctp);
+                    } else if (controlList.get(key) instanceof Combo) {
+                        Combo combo = (Combo) controlList.get(key);
                         combo.setText(value);
                         combo.setData(ctp);
                     }
+                    Control expControl = controlList.get(key + EEFPropertyConstants.EXPRESSION_FIELD_SUFFIX);
+                    if (expControl != null) {
+                        ((StyledText) expControl).setData(ctp);
+                    }
+
                 }
-            
+            }
+
         }
         validate();
         widgetProvider.checkRequired();
     }
-    
+
     public void validate() {
-        //Implement enableCondition Logic Here
+        // Todo: Enable condition logic
     }
 
 }

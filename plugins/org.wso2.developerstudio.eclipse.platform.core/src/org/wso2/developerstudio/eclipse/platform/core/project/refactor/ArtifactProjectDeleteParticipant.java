@@ -29,6 +29,13 @@ import org.eclipse.ltk.core.refactoring.CompositeChange;
 import org.eclipse.ltk.core.refactoring.RefactoringStatus;
 import org.eclipse.ltk.core.refactoring.participants.CheckConditionsContext;
 import org.eclipse.ltk.core.refactoring.participants.DeleteParticipant;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IEditorInput;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IEditorReference;
+import org.eclipse.ui.IFileEditorInput;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.Activator;
@@ -100,9 +107,51 @@ public class ArtifactProjectDeleteParticipant extends DeleteParticipant {
 				}
 			}
 		}
+		
+		// remove related active editors
+        Display.getDefault().asyncExec(new Runnable() {
+            public void run() {
+                try {
+                    IWorkbenchPage[] pages = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPages();
+                    if (pages != null) {
+                        for (IWorkbenchPage page : pages) {
+                            IEditorReference[] editorRefs = page.getEditorReferences();
+                            for (IEditorReference ref : editorRefs) {
+                                IEditorPart editor = ref.getEditor(true);
+                                if (editor != null) {
+                                    IEditorInput input = editor.getEditorInput();
+                                    IFile file = (IFile) input.getAdapter(IFile.class);
 
-		return deleteChange;
-	}
+                                    String projectLocation = originalProject.getLocation().toOSString();
+                                    if (file != null) {
+                                        String fileLocation = file.getLocation().toOSString();
+                                        if (fileLocation.contains(projectLocation)) {
+                                            page.closeEditor(editor, true);
+                                        }
+                                    } else {
+                                        try {
+                                            IFile filePath = ((IFileEditorInput) input).getFile();
+                                            if (filePath != null) {
+                                                String fileLocation = filePath.getLocation().toOSString();
+                                                if (fileLocation.contains(projectLocation)) {
+                                                    page.closeEditor(editor, true);
+                                                }
+                                            }
+                                        } catch (Exception e) {
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } catch (Exception e) {
+                    // TODO Auto-generated method stub
+                }
+            }
+        });
+
+        return deleteChange;
+    }
 
 	@Override
 	public String getName() {

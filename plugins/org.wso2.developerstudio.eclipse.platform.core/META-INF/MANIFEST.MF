@@ -10,7 +10,8 @@ Require-Bundle: org.eclipse.ltk.core.refactoring,
  org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="4.3.0",
  org.wso2.developerstudio.eclipse.utils;bundle-version="4.3.0";visibility:=reexport,
  org.wso2.developerstudio.eclipse.logging;bundle-version="4.3.0";visibility:=reexport,
- org.wso2.developerstudio.eclipse.maven;bundle-version="4.3.0";visibility:=reexport
+ org.wso2.developerstudio.eclipse.maven;bundle-version="4.3.0";visibility:=reexport,
+ org.eclipse.ui.ide;bundle-version="3.13.1"
 Export-Package: org.wso2.developerstudio.eclipse.platform.core;version="4.3.0",
  org.wso2.developerstudio.eclipse.platform.core.bundle;version="4.3.0",
  org.wso2.developerstudio.eclipse.platform.core.event;version="4.3.0",

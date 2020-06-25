@@ -265,7 +265,7 @@ public class PropertiesWidgetProvider {
         });
 
         // Create expression compsite(Which has text box and exp button)
-        Composite expressionComposite = createExpressionComposite(jsonSchemaObject.getName(), widgetFactory,
+        final Composite expressionComposite = createExpressionComposite(jsonSchemaObject.getName(), widgetFactory,
                 textBoxComposite, jsonSchemaObject);
         expressionComposite.setVisible(false);
         ((GridData) expressionComposite.getLayoutData()).exclude = true; // Hide the expression composite first
@@ -352,7 +352,7 @@ public class PropertiesWidgetProvider {
         expressionToggleButton.setImage(expressionToggleButtonImage);
 
         // Create expression compsite(Which has text box and exp button)
-        Composite expressionComposite = createExpressionComposite(jsonSchemaObject.getName(), widgetFactory,
+        final Composite expressionComposite = createExpressionComposite(jsonSchemaObject.getName(), widgetFactory,
                 textBoxComposite, jsonSchemaObject);
         expressionComposite.setVisible(false);
         ((GridData) expressionComposite.getLayoutData()).exclude = true; // hide
@@ -424,7 +424,7 @@ public class PropertiesWidgetProvider {
      * @param jsonSchemaObject JSONSchema object of the property
      * @return Composite
      */
-    public Composite createExpressionComposite(String id, FormToolkit widgetFactory, Composite parent,
+    public Composite createExpressionComposite(String id, FormToolkit widgetFactory, final Composite parent,
             AttributeValue jsonSchemaObject) {
         // Create wrapping composite of 2 elements and 1 span
         Composite textComposite = createComposite(id, widgetFactory, parent, 2, 1);
@@ -571,7 +571,7 @@ public class PropertiesWidgetProvider {
         });
 
         // Create edit connection button
-        Button editConnectionButton = widgetFactory.createButton(textBoxComposite, "", SWT.PUSH | SWT.TRANSPARENT);
+        final Button editConnectionButton = widgetFactory.createButton(textBoxComposite, "", SWT.PUSH | SWT.TRANSPARENT);
         editConnectionButton.setImage(deleteElementImage);
         editConnectionButton.setEnabled(false);
         editConnectionButton.addListener(SWT.Selection, new Listener() {
@@ -674,7 +674,7 @@ public class PropertiesWidgetProvider {
         });
 
         // Create Expression Composite
-        Composite expressionComposite = createExpressionComposite(jsonSchemaObject.getName(), widgetFactory,
+        final Composite expressionComposite = createExpressionComposite(jsonSchemaObject.getName(), widgetFactory,
                 textAreaComposite, jsonSchemaObject);
         expressionComposite.setVisible(false);
         ((GridData) expressionComposite.getLayoutData()).exclude = true;
@@ -889,7 +889,7 @@ public class PropertiesWidgetProvider {
      * @param ctp Calltemplate parameter
      * @param value local value
      */
-    public void setExpressionValue(final CallTemplateParameter ctp, String value) {
+    public void setExpressionValue(final CallTemplateParameter ctp, final String value) {
         TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(ctp);
         domain.getCommandStack().execute(new RecordingCommand(domain) {
 

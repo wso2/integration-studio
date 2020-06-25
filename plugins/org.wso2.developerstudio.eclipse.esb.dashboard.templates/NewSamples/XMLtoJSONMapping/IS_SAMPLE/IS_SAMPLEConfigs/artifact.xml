@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><artifacts>
-    <artifact name="EngineerEmployeeService" groupId="wso2.sampleXmlToJsonMappingTemplate.IS_SAMPLEConfigs.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
-        <file>src/main/synapse-config/proxy-services/EngineerEmployeeService.xml</file>
-    </artifact>
-</artifacts>

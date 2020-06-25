@@ -85,18 +85,20 @@ function openDashboard() {
 	$.ajax({
 		url: "http://127.0.0.1:" + port + "/project/endpoints/services",
 		type: "GET",
-		dataType: "text",
-		cache: true,
+		cache: false,
 		success: function(data) {
 			$(LOADING_ALERT).modal(HIDE);
 		},
 		error: function(jqXHR, textStatus, errorThrown) {
 			$(LOADING_ALERT).modal(HIDE);
-			$(FAILED_ALERT).prop(HIDDEN, false);
-			$(FAILED_ALERT)[0].innerText = getErrorMessage(jqXHR, errorThrown);
-			setTimeout(function() {
-				$(FAILED_ALERT).prop(HIDDEN, true);
-			}, 10000);
+			errorMessage = getErrorMessage(jqXHR, errorThrown);
+			if (errorMessage != null && errorMessage != "") {
+				$(FAILED_ALERT).prop(HIDDEN, false);
+				$(FAILED_ALERT)[0].innerText = errorMessage;
+				setTimeout(function() {
+					$(FAILED_ALERT).prop(HIDDEN, true);
+				}, 10000);
+			}
 		},
 	});
 }

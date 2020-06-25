@@ -36,8 +36,6 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public class DeployedServicesServlet extends HttpServlet {
 
-    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-
     /**
      * Handles get requests.
      * 
@@ -50,9 +48,9 @@ public class DeployedServicesServlet extends HttpServlet {
         try {
             String url = MonitoringDashboard.getInstance().getUrl();
             PlatformUI.getWorkbench().getBrowserSupport().getExternalBrowser().openURL(new URL(url));
+            DeployedServicesServletUtil.setMessage("message", "success", response);
             response.setStatus(HttpServletResponse.SC_OK);
         } catch (PartInitException | IOException e) {
-            log.error("Could not load the monitoring dashboard.", e);
             DeployedServicesServletUtil.setErrorMessage(e.getMessage(), response);
         }
     }

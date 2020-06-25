@@ -99,7 +99,7 @@ public class DeployedServicesView extends ViewPart {
             throws URISyntaxException, IOException {
         IEclipsePreferences rootNode = Platform.getPreferencesService().getRootNode();
         String port = rootNode.get("portDetails", String.valueOf(FunctionServerConstants.EMBEDDED_SERVER_PORT));
-        return "http://localhost:" + port + "/project/endpoints?" + API_DETAILS_GET_PARAM + "=" + apiList + "&"
+        return "http://127.0.0.1:" + port + "/project/endpoints?" + API_DETAILS_GET_PARAM + "=" + apiList + "&"
                 + PROXY_DETAILS_GET_PARAM + "=" + proxyList + "&" + DATASERVICE_DETAILS_GET_PARAM + "="
                 + dataServiceList + "&port=" + port;
     }

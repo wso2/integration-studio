@@ -103,12 +103,18 @@ public class MicroIntegratorRunLaunchDelegate implements ILaunchConfigurationDel
         //check selected project is created from new Integration Wizard
         if (selectedCARAppResource == null) {
             selectedCARAppResource = selectedProject.getParent()
-                    .findMember(currentProjectName.split("ConfigProject")[0] + "CompositeApplication");
+                    .findMember(currentProjectName.split("Configs")[0] + "CompositeExporter");
+        }
+        
+        //check selected project is created from new Integration Wizard
+        if (selectedCARAppResource == null) {
+            selectedCARAppResource = selectedProject.getParent()
+                    .findMember(currentProjectName.split("DataServiceConfigs")[0] + "CompositeExporter");
         }
         
         boolean isCompositeSelectionPageNeeded = false;
         if (selectedCARAppResource == null && currentProjectName != null
-                && !currentProjectName.contains("CompositeApplication")
+                && !currentProjectName.contains("CompositeApplication") && !currentProjectName.contains("CompositeExporter")
                         && !selectedProject.hasNature(Constants.DISTRIBUTION_PROJECT_NATURE)) {
             isCompositeSelectionPageNeeded = true;
         }
@@ -117,7 +123,8 @@ public class MicroIntegratorRunLaunchDelegate implements ILaunchConfigurationDel
         CompositeApplicationArtifactUpdateWizard wizard = new CompositeApplicationArtifactUpdateWizard(
                 isCompositeSelectionPageNeeded);
 
-        if (currentProjectName != null && (currentProjectName.contains("CompositeApplication")
+        if (currentProjectName != null && (currentProjectName.contains("CompositeApplication") 
+                || currentProjectName.contains("CompositeExporter")
                 || selectedProject.hasNature(Constants.DISTRIBUTION_PROJECT_NATURE))) {
             // Initialize the CAPP creation wizard using the user selection as it is a
             // carbon application

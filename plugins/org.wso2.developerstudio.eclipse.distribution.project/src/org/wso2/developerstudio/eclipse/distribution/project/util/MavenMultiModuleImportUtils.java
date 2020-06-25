@@ -84,6 +84,17 @@ public class MavenMultiModuleImportUtils {
     private static final String ZIP_FILE_EXTENSION = ".zip";
     private static final String MMM_EDITOR_ID = "org.wso2.developerstudio.eclipse.maven.multi.module.editor.DistProjectEditor";
     public static IProject IMPORTED_ESB_PROJECT;
+    
+    public static boolean extractZipFile(File sourceFile, File destination) {
+        Archiver archiver = ArchiverFactory.createArchiver(ArchiveFormat.ZIP);
+        try {
+            archiver.extract(sourceFile, destination);
+        } catch (IOException e) {
+            log.error("CError exception extracting archive file", e);
+            return false;
+        }
+        return true;
+    }
 
     public static boolean importMavenMultiModuleProjectToWorkspace(File importingMMMProject) {
         boolean isMavenMultiModuleCreatedSuccessfully = true;

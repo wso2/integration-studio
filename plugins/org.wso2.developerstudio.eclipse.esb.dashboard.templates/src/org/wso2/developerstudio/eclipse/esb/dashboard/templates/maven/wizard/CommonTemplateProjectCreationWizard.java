@@ -120,13 +120,13 @@ public class CommonTemplateProjectCreationWizard extends Wizard implements INewW
     private void replaceProjectNameOfSample(String selectedSample) throws Exception {
         Bundle bundle = Platform.getBundle(Activator.PLUGIN_ID);
         URL fileURL = bundle
-                .getEntry("NewSamples/" + selectedSample + "/" + TemplateProjectConstants.GENERAL_TEMPLATE_NAME);
+                .getEntry("NewSamples/" + selectedSample + "/" + TemplateProjectConstants.GENERAL_TEMPLATE_NAME + ".zip");
         URL resolvedFileURL = FileLocator.toFileURL(fileURL);
         URI resolvedURI = new URI(resolvedFileURL.getProtocol(), resolvedFileURL.getPath(), null);
         File sampleTemplateDirectory = new File(resolvedURI);
         File tmpSampleDirectory = new File(TEMP_DIRECTORY_PATH + File.separator + userEnteredProjectName);
 
-        FileUtils.copyDirectory(sampleTemplateDirectory, tmpSampleDirectory);
+        MavenMultiModuleImportUtils.extractZipFile(sampleTemplateDirectory, tmpSampleDirectory);
         replaceStringRecursively(tmpSampleDirectory);
 
         if (MavenMultiModuleImportUtils.importMavenMultiModuleProjectToWorkspace(tmpSampleDirectory)) {

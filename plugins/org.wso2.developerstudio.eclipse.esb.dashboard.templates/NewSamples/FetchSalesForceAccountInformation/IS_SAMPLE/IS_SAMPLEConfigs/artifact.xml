@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><artifacts>
-    <artifact name="SalesforceAccountService" groupId="wso2.sampleReadSalesforceAccountsTemplate.IS_SAMPLEConfigs.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
-        <file>src/main/synapse-config/proxy-services/SalesforceAccountService.xml</file>
-    </artifact>
-</artifacts>

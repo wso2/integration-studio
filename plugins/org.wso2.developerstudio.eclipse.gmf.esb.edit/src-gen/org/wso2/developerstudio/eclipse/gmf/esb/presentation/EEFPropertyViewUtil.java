@@ -533,4 +533,19 @@ public class EEFPropertyViewUtil {
         MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
         return mavenProject;
     }
+
+    /**
+     * Get whether the -Dorg.wso2.developerstudio.properties.legacy is set as a program argument in
+     * IntegrationStudio.ini file
+     * @return true if program argument is available
+     */
+    public static boolean isLegacyPropertiesViewSet() {
+        String [] args = Platform.getApplicationArgs();
+        for(String param:args) {
+            if(param.substring(2).equals(EEFPropertyConstants.ENABLE_LEGACY_PROPERTY_VIEW_PROGRAM_ARG)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -59,6 +59,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.ConnectorSchemaHolder;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 
 
 // End of user code
@@ -242,7 +243,7 @@ public class CloudConnectorOperationPropertiesEditionComponent extends SinglePar
 
 		if (EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters == event.getAffectedEditor()) {
 		      String schemaName = cloudConnectorOperation.getConnectorName().split("connector")[0] + "-" + cloudConnectorOperation.getOperationName();
-		      if(ConnectorSchemaHolder.getInstance().hasConnectorOperationSchema(schemaName)) {
+		      if(ConnectorSchemaHolder.getInstance().hasConnectorOperationSchema(schemaName) && (!EEFPropertyViewUtil.isLegacyPropertiesViewSet())) {
 		          EList connectorParams = cloudConnectorOperation.getConnectorParameters();
 	              int index = connectorParams.indexOf(event.getOldValue());
 	              CallTemplateParameter ctpi = (CallTemplateParameter)connectorParams.get(index);

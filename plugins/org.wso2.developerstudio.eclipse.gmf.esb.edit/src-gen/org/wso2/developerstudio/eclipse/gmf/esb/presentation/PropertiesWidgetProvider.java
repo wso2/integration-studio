@@ -22,6 +22,7 @@ import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.regex.Pattern;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
@@ -427,7 +428,8 @@ public class PropertiesWidgetProvider {
     public Composite createExpressionComposite(String id, FormToolkit widgetFactory, Composite parent,
             AttributeValue jsonSchemaObject) {
         // Create wrapping composite of 2 elements and 1 span
-        Composite textComposite = createComposite(id, widgetFactory, parent, 2, 1);
+        Composite textComposite = createComposite(id + EEFPropertyConstants.EXPRESSION_FIELD_SUFFIX,
+                widgetFactory, parent, 2, 1);
 
         // Create expression Text box
         final StyledText expressionTextBox = new StyledText(textComposite, SWT.SINGLE);
@@ -772,6 +774,7 @@ public class PropertiesWidgetProvider {
         propertiesGroupLayout.marginLeft = 0;
         propertiesGroupLayout.horizontalSpacing = 10;
         propertiesGroupLayout.verticalSpacing = 0;
+        propertiesGroupLayout.marginHeight = 1;
         composite.setLayout(propertiesGroupLayout);
         GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
         propertiesSectionData.horizontalSpan = span;
@@ -971,7 +974,7 @@ public class PropertiesWidgetProvider {
     public boolean validateValue(String regex, String value, boolean required, String fieldName) {
         // Do required validation
         checkRequired();
-        if (regex.isEmpty()) {
+        if (StringUtils.isEmpty(regex)) {
             return true;
         }
         // Do xpath validation

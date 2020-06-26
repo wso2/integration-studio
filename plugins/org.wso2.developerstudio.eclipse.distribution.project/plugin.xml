@@ -523,4 +523,34 @@
         artifactType="datasource/datasource"
         fileExtension="xml"/>
   </extension>
+  
+  <!-- extension point for configure embedded MI server configurations -->	
+	 <extension
+          point="org.eclipse.ui.commands">
+       <command
+             defaultHandler="org.wso2.developerstudio.eclipse.distribution.project.configure.embeddedserver.EmbeddedServerConfigHandler"
+             id="org.wso2.developerstudio.eclipse.distribution.project.configure.embeddedserver.command"
+             name="Server Configuration (Embedded Micro Integrator)">
+       </command>
+    </extension>
+    <extension
+          point="org.eclipse.ui.menus">
+       <menuContribution
+             locationURI="toolbar:org.eclipse.ui.main.toolbar">
+          <toolbar
+                id="org.eclipse.debug.ui.launchActionSet">
+          </toolbar>
+       </menuContribution>
+       <menuContribution
+             locationURI="toolbar:org.eclipse.debug.ui.launchActionSet">
+          <command
+                commandId="org.wso2.developerstudio.eclipse.distribution.project.configure.embeddedserver.command"
+                icon="icons/server-config-16x16.png"
+                style="push">
+             <visibleWhen
+                   checkEnabled="true">
+             </visibleWhen>
+          </command>
+       </menuContribution>
+    </extension>
 </plugin>

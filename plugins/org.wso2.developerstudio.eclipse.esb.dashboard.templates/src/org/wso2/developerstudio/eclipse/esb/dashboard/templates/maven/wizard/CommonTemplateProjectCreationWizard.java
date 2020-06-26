@@ -24,6 +24,7 @@ import java.net.URI;
 import java.net.URL;
 import java.util.Map;
 
+import org.apache.commons.io.FileUtils;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspaceRoot;
@@ -124,8 +125,16 @@ public class CommonTemplateProjectCreationWizard extends Wizard implements INewW
         URI resolvedURI = new URI(resolvedFileURL.getProtocol(), resolvedFileURL.getPath(), null);
         File sampleTemplateDirectory = new File(resolvedURI);
         File tmpSampleDirectory = new File(TEMP_DIRECTORY_PATH + File.separator + userEnteredProjectName);
+        
+        // get Readme.html file from NewSamples
+        URL readmeFileURL = bundle.getEntry("NewSamples/" + selectedSample + "/Readme.html");
+        URL resolvedReadmeFileURL = FileLocator.toFileURL(readmeFileURL);
+        URI resolvedReadmeURI = new URI(resolvedReadmeFileURL.getProtocol(), resolvedReadmeFileURL.getPath(), null);
+        File sampleReadmeFile = new File(resolvedReadmeURI);
 
         MavenMultiModuleImportUtils.extractZipFile(sampleTemplateDirectory, tmpSampleDirectory);
+        FileUtils.copyFile(sampleReadmeFile,  new File(TEMP_DIRECTORY_PATH + File.separator + userEnteredProjectName 
+                + File.separator + "IS_SAMPLEConfigs" + File.separator + "Readme.html"));
         replaceStringRecursively(tmpSampleDirectory);
 
         if (MavenMultiModuleImportUtils.importMavenMultiModuleProjectToWorkspace(tmpSampleDirectory)) {

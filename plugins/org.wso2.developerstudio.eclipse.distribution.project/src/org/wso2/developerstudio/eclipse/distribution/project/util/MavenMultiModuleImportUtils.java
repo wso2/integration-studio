@@ -84,6 +84,7 @@ public class MavenMultiModuleImportUtils {
     private static final String ZIP_FILE_EXTENSION = ".zip";
     private static final String MMM_EDITOR_ID = "org.wso2.developerstudio.eclipse.maven.multi.module.editor.DistProjectEditor";
     public static IProject IMPORTED_ESB_PROJECT;
+    public static IProject IMPORTED_DSS_PROJECT;
     
     public static boolean extractZipFile(File sourceFile, File destination) {
         Archiver archiver = ArchiverFactory.createArchiver(ArchiveFormat.ZIP);
@@ -163,6 +164,8 @@ public class MavenMultiModuleImportUtils {
                     subIProject.open(new NullProgressMonitor());
                     if (newSubProjectDescription.getNatureIds()[0].equals(Constants.ESB_PROJECT_NATURE)) {
                         IMPORTED_ESB_PROJECT = subIProject;
+                    } else if (newSubProjectDescription.getNatureIds()[0].equals(Constants.DS_PROJECT_NATURE)) {
+                        IMPORTED_DSS_PROJECT = subIProject;
                     }
 
                     IOverwriteQuery overwriteQuery = new IOverwriteQuery() {

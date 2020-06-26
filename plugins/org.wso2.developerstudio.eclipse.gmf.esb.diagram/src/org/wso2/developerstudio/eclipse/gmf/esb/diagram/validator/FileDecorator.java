@@ -28,13 +28,14 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 import org.eclipse.core.internal.resources.Folder;
 import org.eclipse.core.internal.resources.Project;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.emf.validation.internal.util.Log;
 import org.eclipse.jface.resource.ImageDescriptor;
 
 public class FileDecorator extends LabelProvider implements ILightweightLabelDecorator {
@@ -218,6 +219,16 @@ public class FileDecorator extends LabelProvider implements ILightweightLabelDec
 
         if (newFile.exists() && newFile.isDirectory() && !validSrc(newPath)) {
             return false;
+        } else {
+            File rootFile = new File(folderPath);
+            File projectFile = new File (folderPath + File.separator + ".project");
+            if (rootFile.isDirectory() && projectFile.exists()) {
+                for(File file : rootFile.listFiles()) {
+                    if (file.isDirectory() && Files.exists(Paths.get(file.getAbsolutePath() + File.separator + SRC))) {
+                        return validProject(file.getAbsolutePath());
+                    }
+                }
+            }
         }
         return true;
     }

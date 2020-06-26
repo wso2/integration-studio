@@ -161,7 +161,7 @@ public class PropertiesWidgetProvider {
         Composite textBoxComposite = createComposite(jsonSchemaObject.getName(), widgetFactory, parent, 2, 2);
 
         // Create label for the property
-        Label propertyLabel = new Label(textBoxComposite, SWT.TRANSPARENT);
+        Label propertyLabel = new Label(textBoxComposite, SWT.TRANSPARENT | SWT.WRAP);
         propertyLabel.setText(jsonSchemaObject.getDisplayName());
         GridData labelRefData = new GridData();
         labelRefData.widthHint = EEFPropertyConstants.LABEL_WIDTH;
@@ -219,7 +219,7 @@ public class PropertiesWidgetProvider {
         Composite textBoxComposite = createComposite(jsonSchemaObject.getName(), widgetFactory, parent, 3, 3);
 
         // Create label for the property
-        Label propertyLabel = new Label(textBoxComposite, SWT.TRANSPARENT);
+        Label propertyLabel = new Label(textBoxComposite, SWT.TRANSPARENT | SWT.WRAP);
         // Append * If required field
         String displayName = jsonSchemaObject.getDisplayName();
         if (jsonSchemaObject.getRequired()) {
@@ -329,7 +329,7 @@ public class PropertiesWidgetProvider {
         Composite textBoxComposite = createComposite(jsonSchemaObject.getName(), widgetFactory, parent, 3, 3);
 
         // Create label for the property
-        Label propertyLabel = new Label(textBoxComposite, SWT.TRANSPARENT);
+        Label propertyLabel = new Label(textBoxComposite, SWT.TRANSPARENT | SWT.WRAP);
         // Append * If required field
         String displayName = jsonSchemaObject.getDisplayName();
         if (jsonSchemaObject.getRequired()) {
@@ -536,7 +536,7 @@ public class PropertiesWidgetProvider {
         Composite textBoxComposite = createComposite(jsonSchemaObject.getName(), widgetFactory, parent, 4, 4);
 
         // Create label
-        Label connectionLabel = new Label(textBoxComposite, SWT.TRANSPARENT);
+        Label connectionLabel = new Label(textBoxComposite, SWT.TRANSPARENT | SWT.WRAP);
         String displayName = jsonSchemaObject.getDisplayName();
         if (jsonSchemaObject.getRequired()) {
             displayName = displayName.concat(EEFPropertyConstants.REQUIRED_FIELD_INDICATOR);
@@ -627,7 +627,7 @@ public class PropertiesWidgetProvider {
         Composite textAreaComposite = createComposite(jsonSchemaObject.getName(), widgetFactory, parent, 3, 3);
 
         // Create label
-        Label propertyLabel = new Label(textAreaComposite, SWT.TRANSPARENT);
+        Label propertyLabel = new Label(textAreaComposite, SWT.TRANSPARENT | SWT.WRAP);
         String displayName = jsonSchemaObject.getDisplayName();
         if (jsonSchemaObject.getRequired()) {
             displayName = displayName.concat(EEFPropertyConstants.REQUIRED_FIELD_INDICATOR);
@@ -721,7 +721,7 @@ public class PropertiesWidgetProvider {
     public Composite createCheckBoxField(FormToolkit widgetFactory, Composite parent, String Label, String[] options,
             String id) {
         Composite textBoxComposite = createComposite(id, widgetFactory, parent, options.length + 1, options.length + 1);
-        Label label = new Label(textBoxComposite, SWT.TRANSPARENT);
+        Label label = new Label(textBoxComposite, SWT.TRANSPARENT | SWT.WRAP);
         label.setText(Label);
         GridData configRefDatass = new GridData(GridData.FILL_HORIZONTAL);
         label.setLayoutData(configRefDatass);

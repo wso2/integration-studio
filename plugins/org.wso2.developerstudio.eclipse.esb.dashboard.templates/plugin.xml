@@ -236,12 +236,36 @@
 	                <parameter name="wizardId" value="org.wso2.developerstudio.wizards.esb.kafkaTemplate"/>
                 </class>
         </wizard>
+        <wizard
+                name="Students Data Service"
+                icon="icons/template-default.png"
+                project="true"
+                category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
+                id="org.wso2.developerstudio.wizards.ds.studentDataServiceTemplate">
+                <class class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+	                <parameter name="wizardId" value="org.wso2.developerstudio.wizards.ds.studentDataServiceTemplate"/>
+                </class>
+        </wizard>
+        <wizard
+                name="REST Data Service"
+                icon="icons/template-default.png"
+                project="true"
+                category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
+                id="org.wso2.developerstudio.wizards.ds.restDataServiceTemplate">
+                <class class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+	                <parameter name="wizardId" value="org.wso2.developerstudio.wizards.ds.restDataServiceTemplate"/>
+                </class>
+        </wizard>
     </extension>
     <extension
             point="org.wso2.developerstudio.eclipse.template.dashboad.link">
         <wizardCategory category="org.wso2.developerstudio.templates"/>
         <category id="dashboard.category.esb.template" showTitle="false"
                   title="ESB_Templates"
+                  priority="1">
+        </category>
+        <category id="dashboard.category.ds.template" showTitle="false"
+                  title="DSS_Templates"
                   priority="1">
         </category>
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.template.project"
@@ -357,6 +381,18 @@
                     id="dashboard.wizardLink.esb.kafkaTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.kafkaTemplate"
                     description="This sample demonstrates Kafka Consumer and Producer Scenario with ESB Kafka Conenctor"
+                    image="icons/template-default.png">
+        </wizardLink>
+        <wizardLink category="dashboard.category.ds.template"
+                    id="dashboard.wizardLink.ds.template.project.studentDataServiceTemplate"
+                    wizard="org.wso2.developerstudio.wizards.ds.studentDataServiceTemplate"
+                    description="Student Data Service"
+                    image="icons/template-default.png">
+        </wizardLink>
+        <wizardLink category="dashboard.category.ds.template"
+                    id="dashboard.wizardLink.ds.template.project.restDataServiceTemplate"
+                    wizard="org.wso2.developerstudio.wizards.ds.restDataServiceTemplate"
+                    description="REST Data Service"
                     image="icons/template-default.png">
         </wizardLink>
     </extension>

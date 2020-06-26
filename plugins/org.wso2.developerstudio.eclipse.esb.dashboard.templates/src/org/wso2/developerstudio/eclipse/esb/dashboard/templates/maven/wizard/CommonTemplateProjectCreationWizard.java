@@ -47,7 +47,6 @@ import org.osgi.framework.Bundle;
 import org.wso2.developerstudio.eclipse.distribution.project.util.MavenMultiModuleImportUtils;
 import org.wso2.developerstudio.eclipse.esb.dashboard.templates.Activator;
 import org.wso2.developerstudio.eclipse.esb.dashboard.templates.maven.wizard.TemplateProjectWizardPage;
-import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 public class CommonTemplateProjectCreationWizard extends Wizard implements INewWizard, IExecutableExtension {
 
@@ -173,7 +172,17 @@ public class CommonTemplateProjectCreationWizard extends Wizard implements INewW
     }
 
     private void openRespectiveEditorWithSample(String selectedSample) throws IOException {
+        String editorId;
         IProject project = MavenMultiModuleImportUtils.IMPORTED_ESB_PROJECT;
+        if (project == null) {
+            project = MavenMultiModuleImportUtils.IMPORTED_DSS_PROJECT;
+            MavenMultiModuleImportUtils.IMPORTED_DSS_PROJECT = null;
+            editorId = TemplateProjectConstants.DS_EDITOR_ID;
+        } else {
+            MavenMultiModuleImportUtils.IMPORTED_ESB_PROJECT = null;
+            editorId = TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID;
+        }
+        
         IFile artifactFileDesc = project.getFile(getFileToLinkWithEditor(selectedSample));
         Shell shell = getShell();
 
@@ -182,8 +191,7 @@ public class CommonTemplateProjectCreationWizard extends Wizard implements INewW
         File readmeFile = new File(readmeIFile.getLocation().toString());
         URL readmeUrl = readmeFile.toURI().toURL();
 
-        TemplateCreationUtil.openEditor(shell, artifactFileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID,
-                readmeUrl);
+        TemplateCreationUtil.openEditor(shell, artifactFileDesc, editorId, readmeUrl);
     }
 
     private String loadWizardDetails(String id) throws CoreException {
@@ -292,6 +300,12 @@ public class CommonTemplateProjectCreationWizard extends Wizard implements INewW
         case "KafkaConsumerandProducer":
             openFileName = "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator
                     + "proxy-services" + File.separator + "WeatherDataPublishService.xml";
+            break;
+        case "StudentsDataService":
+            openFileName = "dataservice" + File.separator + "StudentDataService.dbs";
+            break;
+        case "RESTDataService":
+            openFileName = "dataservice" + File.separator + "RESTDataService.dbs";
             break;
         }
 

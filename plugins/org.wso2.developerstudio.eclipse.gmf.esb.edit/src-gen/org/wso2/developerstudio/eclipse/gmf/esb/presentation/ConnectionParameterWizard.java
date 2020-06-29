@@ -192,6 +192,9 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
                         localEntryKey.setValue(value);
                         localEntryTag.setAttributeNode(localEntryKey);
 
+                        org.w3c.dom.Element configElement = doc.createElement("name");
+                        connectorRoot.appendChild(configElement);
+                        configElement.appendChild(doc.createTextNode(value));
                     } else if (!StringUtils.isEmpty(value)) {
                         org.w3c.dom.Element configElement = doc.createElement(elementId);
                         connectorRoot.appendChild(configElement);

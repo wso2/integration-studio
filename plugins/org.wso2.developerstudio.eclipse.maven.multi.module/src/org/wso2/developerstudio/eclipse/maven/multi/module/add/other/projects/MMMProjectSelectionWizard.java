@@ -30,6 +30,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.maven.multi.module.Activator;
+import org.wso2.developerstudio.eclipse.maven.multi.module.handlers.MavenMultiModuleProjectImageUtils;
 import org.wso2.developerstudio.eclipse.distribution.project.util.MavenMultiModuleImportUtils;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -45,6 +46,7 @@ public class MMMProjectSelectionWizard extends AbstractWSO2ProjectCreationWizard
     @Override
     public void init(IWorkbench workbench, IStructuredSelection selection) {
         setWindowTitle("Import to Maven Multi Module Project");
+        setDefaultPageImageDescriptor(MavenMultiModuleProjectImageUtils.getInstance().getImageDescriptor("mmm-import.png"));
         selectionPage = new MMMProjectSelectionWizardPage();
 
         try {

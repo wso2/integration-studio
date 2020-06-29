@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
-
+import org.eclipse.jface.dialogs.IDialogSettings;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.m2e.core.internal.MavenPluginActivator;
@@ -35,6 +35,7 @@ import org.eclipse.ui.IStartup;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.WorkbenchException;
+import org.eclipse.ui.internal.WorkbenchPlugin;
 import org.eclipse.ui.internal.dialogs.WorkbenchWizardElement;
 import org.eclipse.ui.internal.wizards.AbstractExtensionWizardRegistry;
 import org.eclipse.ui.wizards.IWizardCategory;
@@ -58,6 +59,15 @@ public class PlatformEarlyStartUpHandler implements IStartup {
     private static final String EMPTY_STRING = "";
     private static final String MAVEN_HOME = "apache-maven";
     private static final String TOOLING_PATH_MAC = "/Applications/IntegrationStudio.app/Contents/Eclipse";
+    private static final String IMPORT_EXPORT_SECTION = "ImportExportAction";
+    private static final String EXPORT_WIZARD_CATEGORY = "ImportExportPage.STORE_EXPANDED_EXPORT_CATEGORIES";
+    private static final String IMPORT_WIZARD_CATEGORY = "ImportExportPage.STORE_EXPANDED_IMPORT_CATEGORIES";
+    private static final String EXPORT_WIZARD_SELECT = "ImportExportPage.STORE_SELECTED_EXPORT_WIZARD_ID";
+    private static final String IMPORT_WIZARD_SELECT = "ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID";
+    private static final String EXPORT_WIZARD_SELCTED_CATEGORY = "org.wso2.developerstudio.eclipse.distribution.export";
+    private static final String IMPORT_WIZARD_SELCTED_CATEGORY = "org.wso2.developerstudio.eclipse.import";
+    private static final String EXPORT_SELECTED_WIZARD = "org.wso2.developerstudio.eclipse.distribution.exportAsArchiveFile";
+    private static final String IMPORT_SELECTED_WIZARD = "org.wso2.developerstudio.eclipse.distribution.importAsArtifact";
     
     @Override
     public void earlyStartup() {
@@ -72,6 +82,29 @@ public class PlatformEarlyStartUpHandler implements IStartup {
         removeWizardEntries();
         setFileAssociations();
         setDefaultMavenInstallation();
+        setDefaultImportAndExportOptions();
+    }
+    
+    /**
+     * Set the default options in Import and Export dialogs to WSO2 options.
+     */
+    private void setDefaultImportAndExportOptions() {
+        IDialogSettings workbenchSettings = WorkbenchPlugin.getDefault().getDialogSettings();
+        IDialogSettings wizardSettings = workbenchSettings.getSection(IMPORT_EXPORT_SECTION);
+        if (wizardSettings == null) {
+            wizardSettings = workbenchSettings.addNewSection(IMPORT_EXPORT_SECTION);
+            // Export wizard.
+            // Expand WSO2 category.
+            wizardSettings.put(EXPORT_WIZARD_CATEGORY, new String[] { EXPORT_WIZARD_SELCTED_CATEGORY });
+            // Set default option.
+            wizardSettings.put(EXPORT_WIZARD_SELECT, EXPORT_SELECTED_WIZARD);
+
+            // Import wizard.
+            // Expand WSO2 category.
+            wizardSettings.put(IMPORT_WIZARD_CATEGORY, new String[] { IMPORT_WIZARD_SELCTED_CATEGORY });
+            // Set default option.
+            wizardSettings.put(IMPORT_WIZARD_SELECT, IMPORT_SELECTED_WIZARD);
+        }
     }
 
     /**

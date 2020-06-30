@@ -252,7 +252,7 @@ public class CommonTemplateProjectCreationWizard extends Wizard implements INewW
             break;
         case "ContentBasedRouting":
             openFileName = "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator
-                    + "proxy-services" + File.separator + "ArithmaticOperationService.xml";
+                    + "api" + File.separator + "ArithmaticOperationServiceAPI.xml";
             break;
         case "HeaderBasedRouting":
             openFileName = "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator + "api"

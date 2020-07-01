@@ -28,6 +28,7 @@ public class EEFPropertyConstants {
     public static String ASSOCIATED_BUTTON = "associatedbutton";
     public static String REQUIRED_FIELD_INDICATOR = "*";
     public static String EXPRESSION_FIELD_SUFFIX = "exp";
+    public static String EXPRESSION_TEXTBOX_PREFIX = " expression: ";
     public static String ECORE_CONNECTOR_NAME_SUFFIX = "connector";
     public static String ENABLE_LEGACY_PROPERTY_VIEW_PROGRAM_ARG = "org.wso2.developerstudio.properties.legacy";
 }

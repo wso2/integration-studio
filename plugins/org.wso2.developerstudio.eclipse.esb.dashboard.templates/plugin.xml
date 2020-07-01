@@ -18,78 +18,7 @@
 
 <?eclipse version="3.4"?>
 <plugin>
-	<!-- extension point for configure embedded MI server configurations -->	
-	 <extension
-          point="org.eclipse.ui.commands">
-       <command
-             defaultHandler="org.wso2.developerstudio.eclipse.esb.dashboard.templates.configure.server.EmbeddedServerConfigHandler"
-             id="org.wso2.developerstudio.eclipse.esb.dashboard.templates.configure.server.command"
-             name="Server Configuration (Embedded Micro Integrator)">
-       </command>
-    </extension>
-    <extension
-          point="org.eclipse.ui.menus">
-       <menuContribution
-             locationURI="toolbar:org.eclipse.ui.main.toolbar">
-          <toolbar
-                id="org.eclipse.debug.ui.launchActionSet">
-          </toolbar>
-       </menuContribution>
-       <menuContribution
-             locationURI="toolbar:org.eclipse.debug.ui.launchActionSet">
-          <command
-                commandId="org.wso2.developerstudio.eclipse.esb.dashboard.templates.configure.server.command"
-                icon="icons/server-config-16x16.png"
-                style="push">
-             <visibleWhen
-                   checkEnabled="true">
-             </visibleWhen>
-          </command>
-       </menuContribution>
-    </extension>
-	
-	<!-- extension point for configure embedded MI server in RUN as dropdown -->
-	<extension
-            point="org.eclipse.debug.ui.launchShortcuts">
-        <shortcut
-                class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.configure.server.EmbeddedServerConfigLauncher"
-                icon="icons/server-config-16x16.png"
-                id="org.wso2.developerstudio.eclipse.configure.server.configuration"
-                label="Server Configuration (Embedded Micro Integrator)"
-                description="Configure the embedded WSO2 Micro Integrator Server"
-                modes="run">
-            <contextualLaunch>
-                <enablement>
-                    <with variable="selection">
-                        <count value="+">
-                        </count>
-                    </with>
-                </enablement>
-            </contextualLaunch>
-        </shortcut>
-    </extension>
-    
-    <!-- extension point for configure embedded MI server in DEBUG as dropdown -->
-    <extension
-            point="org.eclipse.debug.ui.launchShortcuts">
-        <shortcut
-                class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.configure.server.EmbeddedServerConfigLauncher"
-                icon="icons/server-config-16x16.png"
-                id="org.wso2.developerstudio.eclipse.configure.server.configuration.debug"
-                label="Server Configuration (Embedded Micro Integrator)"
-                description="Configure the embedded WSO2 Micro Integrator Server"
-                modes="debug">
-            <contextualLaunch>
-                <enablement>
-                    <with variable="selection">
-                        <count value="+">
-                        </count>
-                    </with>
-                </enablement>
-            </contextualLaunch>
-        </shortcut>
-    </extension>
-	
+
     <extension
             point="org.eclipse.ui.newWizards">
         <category
@@ -307,12 +236,36 @@
 	                <parameter name="wizardId" value="org.wso2.developerstudio.wizards.esb.kafkaTemplate"/>
                 </class>
         </wizard>
+        <wizard
+                name="Students Data Service"
+                icon="icons/template-default.png"
+                project="true"
+                category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
+                id="org.wso2.developerstudio.wizards.ds.studentDataServiceTemplate">
+                <class class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+	                <parameter name="wizardId" value="org.wso2.developerstudio.wizards.ds.studentDataServiceTemplate"/>
+                </class>
+        </wizard>
+        <wizard
+                name="REST Data Service"
+                icon="icons/template-default.png"
+                project="true"
+                category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
+                id="org.wso2.developerstudio.wizards.ds.restDataServiceTemplate">
+                <class class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+	                <parameter name="wizardId" value="org.wso2.developerstudio.wizards.ds.restDataServiceTemplate"/>
+                </class>
+        </wizard>
     </extension>
     <extension
             point="org.wso2.developerstudio.eclipse.template.dashboad.link">
         <wizardCategory category="org.wso2.developerstudio.templates"/>
         <category id="dashboard.category.esb.template" showTitle="false"
                   title="ESB_Templates"
+                  priority="1">
+        </category>
+        <category id="dashboard.category.ds.template" showTitle="false"
+                  title="DSS_Templates"
                   priority="1">
         </category>
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.template.project"
@@ -428,6 +381,18 @@
                     id="dashboard.wizardLink.esb.kafkaTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.kafkaTemplate"
                     description="This sample demonstrates Kafka Consumer and Producer Scenario with ESB Kafka Conenctor"
+                    image="icons/template-default.png">
+        </wizardLink>
+        <wizardLink category="dashboard.category.ds.template"
+                    id="dashboard.wizardLink.ds.template.project.studentDataServiceTemplate"
+                    wizard="org.wso2.developerstudio.wizards.ds.studentDataServiceTemplate"
+                    description="Student Data Service"
+                    image="icons/template-default.png">
+        </wizardLink>
+        <wizardLink category="dashboard.category.ds.template"
+                    id="dashboard.wizardLink.ds.template.project.restDataServiceTemplate"
+                    wizard="org.wso2.developerstudio.wizards.ds.restDataServiceTemplate"
+                    description="REST Data Service"
                     image="icons/template-default.png">
         </wizardLink>
     </extension>

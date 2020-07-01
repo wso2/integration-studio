@@ -22,6 +22,7 @@ import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.regex.Pattern;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
@@ -160,7 +161,7 @@ public class PropertiesWidgetProvider {
         Composite textBoxComposite = createComposite(jsonSchemaObject.getName(), widgetFactory, parent, 2, 2);
 
         // Create label for the property
-        Label propertyLabel = new Label(textBoxComposite, SWT.TRANSPARENT);
+        Label propertyLabel = new Label(textBoxComposite, SWT.TRANSPARENT | SWT.WRAP);
         propertyLabel.setText(jsonSchemaObject.getDisplayName());
         GridData labelRefData = new GridData();
         labelRefData.widthHint = EEFPropertyConstants.LABEL_WIDTH;
@@ -218,7 +219,7 @@ public class PropertiesWidgetProvider {
         Composite textBoxComposite = createComposite(jsonSchemaObject.getName(), widgetFactory, parent, 3, 3);
 
         // Create label for the property
-        Label propertyLabel = new Label(textBoxComposite, SWT.TRANSPARENT);
+        Label propertyLabel = new Label(textBoxComposite, SWT.TRANSPARENT | SWT.WRAP);
         // Append * If required field
         String displayName = jsonSchemaObject.getDisplayName();
         if (jsonSchemaObject.getRequired()) {
@@ -328,7 +329,7 @@ public class PropertiesWidgetProvider {
         Composite textBoxComposite = createComposite(jsonSchemaObject.getName(), widgetFactory, parent, 3, 3);
 
         // Create label for the property
-        Label propertyLabel = new Label(textBoxComposite, SWT.TRANSPARENT);
+        Label propertyLabel = new Label(textBoxComposite, SWT.TRANSPARENT | SWT.WRAP);
         // Append * If required field
         String displayName = jsonSchemaObject.getDisplayName();
         if (jsonSchemaObject.getRequired()) {
@@ -427,7 +428,8 @@ public class PropertiesWidgetProvider {
     public Composite createExpressionComposite(String id, FormToolkit widgetFactory, final Composite parent,
             AttributeValue jsonSchemaObject) {
         // Create wrapping composite of 2 elements and 1 span
-        Composite textComposite = createComposite(id, widgetFactory, parent, 2, 1);
+        Composite textComposite = createComposite(id + EEFPropertyConstants.EXPRESSION_FIELD_SUFFIX,
+                widgetFactory, parent, 2, 1);
 
         // Create expression Text box
         final StyledText expressionTextBox = new StyledText(textComposite, SWT.SINGLE);
@@ -534,7 +536,7 @@ public class PropertiesWidgetProvider {
         Composite textBoxComposite = createComposite(jsonSchemaObject.getName(), widgetFactory, parent, 4, 4);
 
         // Create label
-        Label connectionLabel = new Label(textBoxComposite, SWT.TRANSPARENT);
+        Label connectionLabel = new Label(textBoxComposite, SWT.TRANSPARENT | SWT.WRAP);
         String displayName = jsonSchemaObject.getDisplayName();
         if (jsonSchemaObject.getRequired()) {
             displayName = displayName.concat(EEFPropertyConstants.REQUIRED_FIELD_INDICATOR);
@@ -625,7 +627,7 @@ public class PropertiesWidgetProvider {
         Composite textAreaComposite = createComposite(jsonSchemaObject.getName(), widgetFactory, parent, 3, 3);
 
         // Create label
-        Label propertyLabel = new Label(textAreaComposite, SWT.TRANSPARENT);
+        Label propertyLabel = new Label(textAreaComposite, SWT.TRANSPARENT | SWT.WRAP);
         String displayName = jsonSchemaObject.getDisplayName();
         if (jsonSchemaObject.getRequired()) {
             displayName = displayName.concat(EEFPropertyConstants.REQUIRED_FIELD_INDICATOR);
@@ -719,7 +721,7 @@ public class PropertiesWidgetProvider {
     public Composite createCheckBoxField(FormToolkit widgetFactory, Composite parent, String Label, String[] options,
             String id) {
         Composite textBoxComposite = createComposite(id, widgetFactory, parent, options.length + 1, options.length + 1);
-        Label label = new Label(textBoxComposite, SWT.TRANSPARENT);
+        Label label = new Label(textBoxComposite, SWT.TRANSPARENT | SWT.WRAP);
         label.setText(Label);
         GridData configRefDatass = new GridData(GridData.FILL_HORIZONTAL);
         label.setLayoutData(configRefDatass);
@@ -772,6 +774,7 @@ public class PropertiesWidgetProvider {
         propertiesGroupLayout.marginLeft = 0;
         propertiesGroupLayout.horizontalSpacing = 10;
         propertiesGroupLayout.verticalSpacing = 0;
+        propertiesGroupLayout.marginHeight = 1;
         composite.setLayout(propertiesGroupLayout);
         GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
         propertiesSectionData.horizontalSpan = span;
@@ -971,7 +974,7 @@ public class PropertiesWidgetProvider {
     public boolean validateValue(String regex, String value, boolean required, String fieldName) {
         // Do required validation
         checkRequired();
-        if (regex.isEmpty()) {
+        if (StringUtils.isEmpty(regex)) {
             return true;
         }
         // Do xpath validation

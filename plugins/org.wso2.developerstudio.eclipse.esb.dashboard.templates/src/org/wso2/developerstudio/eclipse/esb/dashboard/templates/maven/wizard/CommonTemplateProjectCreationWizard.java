@@ -24,6 +24,7 @@ import java.net.URI;
 import java.net.URL;
 import java.util.Map;
 
+import org.apache.commons.io.FileUtils;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspaceRoot;
@@ -47,7 +48,6 @@ import org.osgi.framework.Bundle;
 import org.wso2.developerstudio.eclipse.distribution.project.util.MavenMultiModuleImportUtils;
 import org.wso2.developerstudio.eclipse.esb.dashboard.templates.Activator;
 import org.wso2.developerstudio.eclipse.esb.dashboard.templates.maven.wizard.TemplateProjectWizardPage;
-import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 public class CommonTemplateProjectCreationWizard extends Wizard implements INewWizard, IExecutableExtension {
 
@@ -125,8 +125,16 @@ public class CommonTemplateProjectCreationWizard extends Wizard implements INewW
         URI resolvedURI = new URI(resolvedFileURL.getProtocol(), resolvedFileURL.getPath(), null);
         File sampleTemplateDirectory = new File(resolvedURI);
         File tmpSampleDirectory = new File(TEMP_DIRECTORY_PATH + File.separator + userEnteredProjectName);
+        
+        // get Readme.html file from NewSamples
+        URL readmeFileURL = bundle.getEntry("NewSamples/" + selectedSample + "/Readme.html");
+        URL resolvedReadmeFileURL = FileLocator.toFileURL(readmeFileURL);
+        URI resolvedReadmeURI = new URI(resolvedReadmeFileURL.getProtocol(), resolvedReadmeFileURL.getPath(), null);
+        File sampleReadmeFile = new File(resolvedReadmeURI);
 
         MavenMultiModuleImportUtils.extractZipFile(sampleTemplateDirectory, tmpSampleDirectory);
+        FileUtils.copyFile(sampleReadmeFile,  new File(TEMP_DIRECTORY_PATH + File.separator + userEnteredProjectName 
+                + File.separator + "IS_SAMPLEConfigs" + File.separator + "Readme.html"));
         replaceStringRecursively(tmpSampleDirectory);
 
         if (MavenMultiModuleImportUtils.importMavenMultiModuleProjectToWorkspace(tmpSampleDirectory)) {
@@ -173,7 +181,17 @@ public class CommonTemplateProjectCreationWizard extends Wizard implements INewW
     }
 
     private void openRespectiveEditorWithSample(String selectedSample) throws IOException {
+        String editorId;
         IProject project = MavenMultiModuleImportUtils.IMPORTED_ESB_PROJECT;
+        if (project == null) {
+            project = MavenMultiModuleImportUtils.IMPORTED_DSS_PROJECT;
+            MavenMultiModuleImportUtils.IMPORTED_DSS_PROJECT = null;
+            editorId = TemplateProjectConstants.DS_EDITOR_ID;
+        } else {
+            MavenMultiModuleImportUtils.IMPORTED_ESB_PROJECT = null;
+            editorId = TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID;
+        }
+        
         IFile artifactFileDesc = project.getFile(getFileToLinkWithEditor(selectedSample));
         Shell shell = getShell();
 
@@ -182,8 +200,7 @@ public class CommonTemplateProjectCreationWizard extends Wizard implements INewW
         File readmeFile = new File(readmeIFile.getLocation().toString());
         URL readmeUrl = readmeFile.toURI().toURL();
 
-        TemplateCreationUtil.openEditor(shell, artifactFileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID,
-                readmeUrl);
+        TemplateCreationUtil.openEditor(shell, artifactFileDesc, editorId, readmeUrl);
     }
 
     private String loadWizardDetails(String id) throws CoreException {
@@ -235,7 +252,7 @@ public class CommonTemplateProjectCreationWizard extends Wizard implements INewW
             break;
         case "ContentBasedRouting":
             openFileName = "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator
-                    + "proxy-services" + File.separator + "ArithmaticOperationService.xml";
+                    + "api" + File.separator + "ArithmaticOperationServiceAPI.xml";
             break;
         case "HeaderBasedRouting":
             openFileName = "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator + "api"
@@ -292,6 +309,12 @@ public class CommonTemplateProjectCreationWizard extends Wizard implements INewW
         case "KafkaConsumerandProducer":
             openFileName = "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator
                     + "proxy-services" + File.separator + "WeatherDataPublishService.xml";
+            break;
+        case "StudentsDataService":
+            openFileName = "dataservice" + File.separator + "StudentDataService.dbs";
+            break;
+        case "RESTDataService":
+            openFileName = "dataservice" + File.separator + "RESTDataService.dbs";
             break;
         }
 

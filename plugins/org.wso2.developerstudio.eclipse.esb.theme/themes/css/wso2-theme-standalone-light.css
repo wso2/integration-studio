@@ -154,3 +154,16 @@ TabbedPropertyList {
 	width: 100;
 }
 
+#org-eclipse-ui-console-ConsoleView .MPart > Composite,
+#org-eclipse-ui-console-ConsoleView .MPart StyledText,
+#org-eclipse-ui-console-ConsoleView .MPart PageBook Label,
+#org-eclipse-dltk-debug-ui-ScriptDisplayView SashForm > * {
+    font: Monaco 11px;
+}
+
+.MPartStack.active #org-eclipse-ui-console-ConsoleView .MPart > Composite,
+.MPartStack.active #org-eclipse-ui-console-ConsoleView .MPart StyledText,
+.MPartStack.active #org-eclipse-ui-console-ConsoleView .MPart PageBook Label,
+.MPartStack.active #org-eclipse-dltk-debug-ui-ScriptDisplayView SashForm > * {
+    font: Monaco 11px;
+}

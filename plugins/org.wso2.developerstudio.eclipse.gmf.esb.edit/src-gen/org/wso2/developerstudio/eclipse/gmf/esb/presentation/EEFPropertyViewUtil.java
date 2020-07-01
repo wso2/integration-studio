@@ -105,6 +105,7 @@ public class EEFPropertyViewUtil {
             + "synapse-config" + File.separator + "local-entries";
     private static final String XML_EXTENSION = ".xml";
     private static final String CONNECTION_LOCAL_ENTRY_TYPE_XPATH = "//*[local-name()='connectionType']/text()";
+    private static final String CONNECTION_LOCAL_ENTRY_NAME_XPATH = "//*[local-name()='name']/text()";
 
     static {
         URL url;
@@ -430,8 +431,10 @@ public class EEFPropertyViewUtil {
         for(IResource resource:localEntriesDir.members()) {
             if (resource instanceof IFile && ((IFile)resource).getFileExtension().equals("xml")) {
                 try {
-                    if(isAllowedConnection(((IFile)resource), allowedConnectionTypes)) {
-                        definedTemplates.add(((IFile)resource).getName().split(XML_EXTENSION)[0]);
+                    String connectionName = getNameParameter((IFile)resource);
+                    if(isAllowedConnection(((IFile)resource), allowedConnectionTypes)
+                            && (!connectionName.isEmpty())) {
+                        definedTemplates.add(connectionName);
                     }
                 } catch (XPathExpressionException e) {
                     log.error("Connection Local Entry file is not well structured", e);
@@ -459,6 +462,21 @@ public class EEFPropertyViewUtil {
             valid = true;
         }
         return valid;
+    }
+
+    public static String getNameParameter(IFile file) throws SAXException, IOException, ParserConfigurationException, XPathExpressionException, CoreException {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        factory.setNamespaceAware(true);
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        Document doc = builder.parse(file.getContents());
+        XPathFactory xpathfactory = XPathFactory.newInstance();
+        XPath xpath = xpathfactory.newXPath();
+        XPathExpression expr = xpath.compile(CONNECTION_LOCAL_ENTRY_NAME_XPATH);
+        Object result = expr.evaluate(doc, XPathConstants.STRING);
+        if(result instanceof String && !((String) result).isEmpty()) {
+            return result.toString();
+        }
+        return "";
     }
 
     public static IFolder getLocalEntriesDir() {

@@ -1036,6 +1036,8 @@ public class PropertiesWidgetProvider {
         }
         if (isError) {
             updateBanner("requirederror", "", fieldName, "");
+        } else {
+            updateBanner("ok", "", fieldName, "");
         }
     }
 

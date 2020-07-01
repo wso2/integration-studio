@@ -23,6 +23,8 @@ import org.wso2.developerstudio.datamapper.DataMapperRoot;
 import org.wso2.developerstudio.datamapper.Input;
 import org.wso2.developerstudio.datamapper.Operator;
 import org.wso2.developerstudio.datamapper.Output;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 /**
  * <!-- begin-user-doc -->
@@ -75,6 +77,8 @@ public class DataMapperRootImpl extends EObjectImpl implements DataMapperRoot {
 	private boolean canAIBasedDataMappingButtonLoadToCanvas = true;
 	private FigureCanvas canvas;
 	
+    private IDeveloperStudioLog log = Logger.getLog(this.getClass().getName());
+	
 	public void setFigure(IFigure figure) {
 		this.figure = figure;
 	}
@@ -113,32 +117,35 @@ public class DataMapperRootImpl extends EObjectImpl implements DataMapperRoot {
 		this.aiDataMapperLabelBox = aiDataMapperLabelBox;
 	}
 
-	/**
-	 * This method set AI DataMapper functionality visible only if both input and
-	 * output trees are available.
-	 */
-	private void setAiButtonVisibility() {
-		if (!canAIBasedDataMappingButtonLoadToCanvas && figure != null
-				&& ((input.getTreeNode().size() == 0) || (output.getTreeNode().size() == 0))) {
-			aiDataMapperButton.setVisible(false);
-			aiDataMapperLabel.setVisible(false);
-			aiDataMapperLabelBox.setVisible(false);
-		} else if (figure != null && ((input.getTreeNode().size() > 0) && (output.getTreeNode().size() > 0))) {
-			if (canAIBasedDataMappingButtonLoadToCanvas) {
-				figure.add(aiDataMapperLabelBox);
-				figure.add(aiDataMapperLabel);
-				figure.add(aiDataMapperButton);
-				canvas.scrollToY(0);
-				canAIBasedDataMappingButtonLoadToCanvas = false;
-			}
-			if (!canAIBasedDataMappingButtonLoadToCanvas) {
-				canvas.scrollToY(0);
-				aiDataMapperButton.setVisible(true);
-				aiDataMapperLabel.setVisible(true);
-				aiDataMapperLabelBox.setVisible(true);
-			}
-		}
-	}
+    /**
+     * This method set AI DataMapper functionality visible only if both input and
+     * output trees are available.
+     */
+    private void setAiButtonVisibility() {
+        try {
+            if (!canAIBasedDataMappingButtonLoadToCanvas && figure != null
+                    && ((input.getTreeNode().size() == 0) || (output.getTreeNode().size() == 0))) {
+                aiDataMapperButton.setVisible(false);
+                aiDataMapperLabel.setVisible(false);
+                aiDataMapperLabelBox.setVisible(false);
+            } else if (figure != null && ((input.getTreeNode().size() > 0) && (output.getTreeNode().size() > 0))) {
+                if (canAIBasedDataMappingButtonLoadToCanvas) {
+                    figure.add(aiDataMapperLabelBox);
+                    figure.add(aiDataMapperLabel);
+                    figure.add(aiDataMapperButton);
+                    canvas.scrollToY(0);
+                    canAIBasedDataMappingButtonLoadToCanvas = false;
+                }
+                if (!canAIBasedDataMappingButtonLoadToCanvas) {
+                    aiDataMapperButton.setVisible(true);
+                    aiDataMapperLabel.setVisible(true);
+                    aiDataMapperLabelBox.setVisible(true);
+                }
+            }
+        } catch (Exception e) {
+            log.error("Exception occured while trying to display AI suggesions", e);
+        }
+    }
 
 	/**
 	 * <!-- begin-user-doc -->

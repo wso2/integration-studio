@@ -26,4 +26,5 @@ Import-Package: javax.servlet;version="3.1.0",
  org.eclipse.draw2d,
  org.eclipse.swt,
  org.eclipse.swt.browser,
- org.eclipse.swt.widgets
+ org.eclipse.swt.widgets,
+ org.wso2.developerstudio.eclipse.logging.core;version="4.3.0"

@@ -296,7 +296,7 @@ public class CommonTemplateProjectCreationWizard extends Wizard implements INewW
             break;
         case "FetchSalesForceAccountInformation":
             openFileName = "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator
-                    + "proxy-services" + File.separator + "SalesforceAccountService.xml";
+                    + "api" + File.separator + "SalesForceAccountServiceAPI.xml";
             break;
         case "JSONtoXMLMapping":
             openFileName = "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator + "api"

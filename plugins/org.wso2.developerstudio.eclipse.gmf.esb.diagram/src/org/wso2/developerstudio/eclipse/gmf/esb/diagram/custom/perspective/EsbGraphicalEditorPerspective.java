@@ -44,7 +44,7 @@ public class EsbGraphicalEditorPerspective implements IPerspectiveFactory {
         bottomLeft.addView(IPageLayout.ID_OUTLINE);
         // bottomLeft.addView(IPageLayout.ID_PROP_SHEET);
 
-        IFolderLayout rightPane = layout.createFolder("right", IPageLayout.RIGHT, 0.75f, editorArea);
+        IFolderLayout rightPane = layout.createFolder("right", IPageLayout.RIGHT, 0.74f, editorArea);
         rightPane.addView(TEMPLATE_GUIDE_VIEW);
 
         IFolderLayout rightArea = layout.createFolder("bottom", IPageLayout.BOTTOM, 0.65f, editorArea);

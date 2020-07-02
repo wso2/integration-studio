@@ -34,6 +34,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.TreeEditor;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -43,11 +44,15 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.swt.widgets.TreeItem;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.handlers.HandlerUtil;
 import org.wso2.developerstudio.eclipse.distribution.project.Activator;
+import org.wso2.developerstudio.eclipse.distribution.project.configure.embeddedserver.CustomConfigureWizardDialog;
+import org.wso2.developerstudio.eclipse.distribution.project.configure.embeddedserver.EmbeddedServerConfigWizard;
 import org.wso2.developerstudio.eclipse.distribution.project.model.DataTransferObject;
 import org.wso2.developerstudio.eclipse.distribution.project.model.DependencyData;
 import org.wso2.developerstudio.eclipse.distribution.project.model.NodeData;
@@ -57,7 +62,6 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.platform.core.model.AbstractListDataProvider.ListData;
-import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 import org.wso2.developerstudio.eclipse.platform.core.utils.SWTResourceManager;
 
 public class DistributionProjectExportWizardPage extends WizardPage {
@@ -234,10 +238,25 @@ public class DistributionProjectExportWizardPage extends WizardPage {
 			}
 		});
 		
-		Label lblEmpty = new Label(container, SWT.NONE);
-		GridData gdEmpty = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
-		lblEmpty.setLayoutData(gdEmpty);
-		
+		// Create link to navigate for the embedded server configuration
+        Button configureServerBtn = new Button(container, SWT.PUSH);
+        configureServerBtn.setText("Configure Embedded Micro Integrator Server");
+        Image image = new Image(container.getShell().getDisplay(),
+                getClass().getClassLoader().getResourceAsStream("icons/server-config-16x16.png"));
+        configureServerBtn.setImage(image);
+        GridData gdEmpty = new GridData(SWT.RIGHT, SWT.RIGHT, true, false, 1, 1);
+        configureServerBtn.setLayoutData(gdEmpty);
+
+        configureServerBtn.addListener(SWT.MouseDown, new Listener() {
+            public void handleEvent(Event evt) {
+                EmbeddedServerConfigWizard wizard = new EmbeddedServerConfigWizard();
+                wizard.init(PlatformUI.getWorkbench(), null);
+                CustomConfigureWizardDialog embeddedServerConfigWizard = new CustomConfigureWizardDialog(
+                        PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);
+                embeddedServerConfigWizard.setHelpAvailable(false);
+                embeddedServerConfigWizard.open();
+            }
+        });
 		
 		setControl(container);
 		controlCreated = true;

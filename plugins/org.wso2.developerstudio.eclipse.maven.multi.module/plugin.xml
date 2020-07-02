@@ -173,7 +173,7 @@
                                 id="org.wso2.developerstudio.eclipse.maven.multi.module.add.other.project.id">
                 <action
                         label="Import to a Maven Multi Module"
-                        icon="icons/cancel_16.png"
+                        icon="icons/mmm-import-16px.png"
                         class="org.wso2.developerstudio.eclipse.maven.multi.module.add.other.projects.ImportToMMMProjectAction"
                         id="org.wso2.developerstudio.eclipse.maven.multi.module.add.other.projects">
                 </action>
@@ -201,4 +201,20 @@
                 type="org.eclipse.core.resources.IProject">
         </propertyTester>
     </extension>
+
+	<!-- Adding Link with Editor for link Maven multimodule projects with project explorer view-->
+	<extension
+          point="org.eclipse.ui.navigator.linkHelper">
+       <linkHelper
+             class="org.wso2.developerstudio.eclipse.maven.multi.module.linkwitheditor.WSO2MavenMultimoduleLinkWithEditor"
+             id="org.eclipse.ui.navigator.resources.linkHelper">
+          <selectionEnablement>
+             <instanceof value="org.eclipse.core.resources.IFile"/>
+          </selectionEnablement>
+          <editorInputEnablement>
+             <instanceof value="org.eclipse.ui.IFileEditorInput"/>
+          </editorInputEnablement>
+       </linkHelper>
+	</extension>
+
 </plugin>

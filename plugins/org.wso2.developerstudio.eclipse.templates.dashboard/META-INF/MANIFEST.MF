@@ -10,7 +10,8 @@ Require-Bundle: org.eclipse.ui,
  org.wso2.developerstudio.eclipse.webui.core,
  org.eclipse.jetty.server;bundle-version="9.4.8",
  org.eclipse.jetty.servlet;bundle-version="9.4.8",
- org.eclipse.jetty.util;bundle-version="9.4.8"
+ org.eclipse.jetty.util;bundle-version="9.4.8",
+ org.eclipse.jface
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Import-Package: javax.servlet;version="3.1.0",

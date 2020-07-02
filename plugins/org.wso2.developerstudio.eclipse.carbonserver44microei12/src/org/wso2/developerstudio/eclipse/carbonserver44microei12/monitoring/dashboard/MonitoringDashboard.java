@@ -83,7 +83,7 @@ public class MonitoringDashboard {
 
                     // check port availability
                     while (!MonitoringDashboardUtil.checkPortAvailability(serverHost, serverPort)) {
-                        throw new IOException("Port " + serverPort + " is not available.");
+                        return;
                     }
 
                     // Starting the dashboard

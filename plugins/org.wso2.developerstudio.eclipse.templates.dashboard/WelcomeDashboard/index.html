@@ -33,13 +33,13 @@
                         <div class="row">
                         	<div class="col-9">
 	                        	<a id="createNewProject" class="gray-link" href="#">New Integration Project</a>
-		                        <a id="openExistingProject" class="gray-link" href="#">Open Existing Project...</a>
+		                        <a id="openExistingProject" class="gray-link" href="#">Open Project...</a>
 		                        <hr class="m-1" style="margin-top:10px !important; margin-bottom:10px !important;" />
-		                        <a id="DataServiceProject" class="gray-link" href="#">New Data Services Project</a>
-		                        <a id="DataSourceProject" class="gray-link" href="#">New Data Sources Project</a>
+		                        <a id="DataServiceProject" class="gray-link" href="#">New Data Service Configs</a>
+		                        <a id="DataSourceProject" class="gray-link" href="#">New Data Source Configs</a>
 		                        <hr class="m-1" style="margin-top:10px !important; margin-bottom:10px !important;" />
-		                        <a id="BPMNProject" class="gray-link" href="#">Create BPMN Project</a>
-		                        <a id="HumanTaskProject" class="gray-link" href="#">Create Human Task Project</a>
+		                        <a id="BPMNProject" class="gray-link" href="#">New BPMN Project</a>
+		                        <a id="HumanTaskProject" class="gray-link" href="#">New Human Task Project</a>
 		                        <hr class="m-1" style="margin-top:10px !important; margin-bottom:10px !important;" />
 		                        <a id='MediatorProject' class="gray-link" href="#">New Mediator Project</a>
 		                        <a id='MavenMultiModuleProject' class="gray-link" href="#">New Maven Multi-Module Project</a>
@@ -50,12 +50,12 @@
                     </div>
                     <div class="mt-1 mb-2">
                         <h5 class="mt-2" style="font-weight:600;">Help</h5>
-                        <a class="gray-link" href="#" id="ddd">Documentation</a>
-                        <a class="gray-link" href="#">GitHub</a>
-                        <a class="gray-link" href="#">Slack</a>
-                        <a class="gray-link" href="#">Video Tutorials</a>
+                        <a class="gray-link" href="#" id="doc-link">Documentation</a>
+                        <a class="gray-link" href="#" id="git-link">GitHub</a>
+                        <a class="gray-link" href="#" id="slack-link">Slack</a>
+                        <a class="gray-link" href="#" id="video-link">Video Tutorials</a>
                         <div class="form-check mt-3" style="font-weight:bold;">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <input class="form-check-input" type="checkbox" value="" id="show-welcome" checked>
                             <label class="form-check-label" for="defaultCheck1">
                                 Always show on startup
                             </label>
@@ -65,11 +65,11 @@
             </div>
             <div class="col-9">
                 <h5 class="mt-2 mb-0"  style="font-weight:bold; margin-top:32px !important;">Start with a Template</h5>
-                <p>Select a template to create a project</p>
+                <p>Select a template and provide a project name to tryout the template.</p>
                 <div class="d-flex">
                     <div class="form-group has-search" style="width:25%;">
                         <span class="fa fa-search form-control-feedback"></span>
-                        <input type="text" class="form-control" placeholder="Search template by name or mediator" autocorrect="off" autocapitalize="none" id="search" />
+                        <input type="text" class="form-control" placeholder="Search by template or mediator name" autocorrect="off" autocapitalize="none" id="search" />
                     </div>
                     <div class="dropdown ml-2" style="color:#707070; border-color:#707070;">
                         <a class="btn btn-secondary dropdown-toggle onlyborder" href="#" role="button"
@@ -82,12 +82,12 @@
                             <li class = "menu-item"><a id="routing-category" class="dropdown-item" href="#">Message Routing</a></li>
                             <li class = "menu-item"><a id="msg-transformation-category" class="dropdown-item" href="#">Message Transformation</a></li>
                             <li class = "menu-item"><a id="messaging-category" class="dropdown-item" href="#">Messaging</a></li>
-                            <li class = "menu-item"><a id="container-category" class="dropdown-item" href="#">Docker/Kubernetes</a></li>
                             <li class = "menu-item"><a id="saas-category" class="dropdown-item" href="#">SaaS Integration</a></li>
-                            <li class = "menu-item"><a id="error-category" class="dropdown-item" href="#">Error Handling</a></li>
                             <li class = "menu-item"><a id="data-category" class="dropdown-item" href="#">Data Integration</a></li>
-                            <li class = "menu-item"><a id="test-category" class="dropdown-item" href="#">Unit Testing</a></li>
                             <li class = "menu-item"><a id="task-category" class="dropdown-item" href="#">Scheduled Task</a></li>
+                            <li class = "menu-item"><a id="error-category" class="dropdown-item" href="#">Error Handling</a></li>
+                            <li class = "menu-item"><a id="container-category" class="dropdown-item" href="#">Docker/Kubernetes</a></li>
+                            <li class = "menu-item"><a id="test-category" class="dropdown-item" href="#">Synapse Unit Testing</a></li>
                         </ul>
                     </div>
                 </div>

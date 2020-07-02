@@ -260,136 +260,168 @@
     <extension
             point="org.wso2.developerstudio.eclipse.template.dashboad.link">
         <wizardCategory category="org.wso2.developerstudio.templates"/>
-        <category id="dashboard.category.esb.template" showTitle="false"
-                  title="ESB_Templates"
+        <category id="dashboard.category.template.miscellaneous" showTitle="false"
+                  title="Miscellaneous_Templates"
                   priority="1">
         </category>
-        <category id="dashboard.category.ds.template" showTitle="false"
-                  title="DSS_Templates"
+        <category id="dashboard.category.template.routing" showTitle="false"
+                  title="Routing_Templates"
                   priority="1">
         </category>
-        <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.template.project"
+        <category id="dashboard.category.template.messaging" showTitle="false"
+                  title="Messaging_Templates"
+                  priority="1">
+        </category>
+        <category id="dashboard.category.template.transformation" showTitle="false"
+                  title="Transformation_Templates"
+                  priority="1">
+        </category>
+        <category id="dashboard.category.template.dataintegration" showTitle="false"
+                  title="DataIntegration_Templates"
+                  priority="1">
+        </category>
+        <category id="dashboard.category.template.container" showTitle="false"
+                  title="Container_Templates"
+                  priority="1">
+        </category>
+        <category id="dashboard.category.template.errorhendling" showTitle="false"
+                  title="ErrorHandling_Templates"
+                  priority="1">
+        </category>
+         <category id="dashboard.category.template.unittesting" showTitle="false"
+                  title="Testing_Templates"
+                  priority="1">
+        </category>
+        <category id="dashboard.category.template.saas" showTitle="false"
+                  title="SaaS_Templates"
+                  priority="1">
+        </category>
+        <category id="dashboard.category.template.task" showTitle="false"
+                  title="Task_Templates"
+                  priority="1">
+        </category>
+        <wizardLink category="dashboard.category.template.miscellaneous" id="dashboard.wizardLink.esb.template.project"
                     wizard="org.wso2.developerstudio.wizards.esb.template"
                     description="Create a simple HTTP service"
                     image="icons/template-default.png">
         </wizardLink>
-        <wizardLink category="dashboard.category.esb.template"
+        <wizardLink category="dashboard.category.template.routing"
                     id="dashboard.wizardLink.esb.proxyingASoapService.project"
                     wizard="org.wso2.developerstudio.wizards.esb.proxyingASoapService"
                     description="Expose a virtual service which act as a proxy to an existing service that is exposed over a SOAP API"
                     image="icons/template-default.png">
         </wizardLink>
-        <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.proxyingARESTAPI.project"
+        <wizardLink category="dashboard.category.template.routing" id="dashboard.wizardLink.esb.proxyingARESTAPI.project"
                     wizard="org.wso2.developerstudio.wizards.esb.proxyingARESTAPI"
                     description="Expose a virtual service which act as a proxy to an existing service that is exposed over a RESTful API"
                     image="icons/template-default.png">
         </wizardLink>
-        <wizardLink category="dashboard.category.esb.template"
+        <wizardLink category="dashboard.category.template.routing"
                     id="dashboard.wizardLink.esb.contentBasedRoutingTemplate.project"
                     wizard="org.wso2.developerstudio.wizards.esb.contentBasedRoutingTemplate"
                     description="Demonstrates content-based message routing capability"
                     image="icons/template-default.png">
         </wizardLink>
-        <wizardLink category="dashboard.category.esb.template"
+        <wizardLink category="dashboard.category.template.routing"
                     id="dashboard.wizardLink.esb.headerBasedRoutingTemplate.project"
                     wizard="org.wso2.developerstudio.wizards.esb.headerBasedRoutingTemplate"
                     description="Demonstrates header-based message routing capability"
                     image="icons/template-default.png">
         </wizardLink>
-        <wizardLink category="dashboard.category.esb.template"
+        <wizardLink category="dashboard.category.template.routing"
                     id="dashboard.wizardLink.esb.messageFilteringTemplate.project"
                     wizard="org.wso2.developerstudio.wizards.esb.messageFilteringTemplate"
                     description="Demonstrates message filtering capability"
                     image="icons/template-default.png">
         </wizardLink>
-        <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.protocolSwitchingTemplate"
+        <wizardLink category="dashboard.category.template.routing" id="dashboard.wizardLink.esb.protocolSwitchingTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.protocolSwitchingTemplate"
                     description="Demonstrates protocol switching capability. Template contains a service which receive message over HTTP protocol and deliver over JMS protocol to a downstream service"
                     image="icons/template-default.png">
         </wizardLink>
-        <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.scatterGatherTemplate"
+        <wizardLink category="dashboard.category.template.routing" id="dashboard.wizardLink.esb.scatterGatherTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.scatterGatherTemplate"
                     description="Demonstrates how to implement Scatter-Gather enterprise integration pattern"
                     image="icons/template-default.png">
         </wizardLink>
-        <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.fileTransferTeamplate"
+        <wizardLink category="dashboard.category.template.messaging" id="dashboard.wizardLink.esb.fileTransferTeamplate"
                     wizard="org.wso2.developerstudio.wizards.esb.fileTransferTeamplate"
                     description="Demonstrates some of the file handling capabilities"
                     image="icons/template-default.png">
         </wizardLink>
-        <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.guaranteedDeliveryTemplate"
+        <wizardLink category="dashboard.category.template.messaging" id="dashboard.wizardLink.esb.guaranteedDeliveryTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.guaranteedDeliveryTemplate"
                     description="Demonstrates how to achieve guaranteed delivery using store and forward pattern"
                     image="icons/template-default.png">
         </wizardLink>
-        <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.restToSoapTemplate"
+        <wizardLink category="dashboard.category.template.transformation" id="dashboard.wizardLink.esb.restToSoapTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.restToSoapTemplate"
                     description="Exposes an existing SOAP service as a RESTful API"
                     image="icons/template-default.png">
         </wizardLink>
-        <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.exceptionHandlingTemplate"
+        <wizardLink category="dashboard.category.template.errorhendling" id="dashboard.wizardLink.esb.exceptionHandlingTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.exceptionHandlingTemplate"
                     description="Demonstrates the exception handling capabilities"
                     image="icons/template-default.png">
         </wizardLink>
-        <wizardLink category="dashboard.category.esb.template"
+        <wizardLink category="dashboard.category.template.transformation"
                     id="dashboard.wizardLink.esb.xmlToJsonTransformationTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.xmlToJsonTransformationTemplate"
                     description="Demonstrates some of the message transformation capabilities"
                     image="icons/template-default.png">
         </wizardLink>
-        <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.scheduleTaskTeamplate"
+        <wizardLink category="dashboard.category.template.task" id="dashboard.wizardLink.esb.scheduleTaskTeamplate"
                     wizard="org.wso2.developerstudio.wizards.esb.scheduleTaskTeamplate"
                     description="Periodical scheduled tasks"
                     image="icons/template-default.png">
         </wizardLink>
-        <wizardLink category="dashboard.category.esb.template"
+        <wizardLink category="dashboard.category.template.saas"
                     id="dashboard.wizardLink.esb.readSalesforceAccountsTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.readSalesforceAccountsTemplate"
                     description="Fetch leads records from Salesforce system"
                     image="icons/template-default.png">
         </wizardLink>
-        <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.dataPolling.project"
+        <wizardLink category="dashboard.category.template.task" id="dashboard.wizardLink.esb.dataPolling.project"
                     wizard="org.wso2.developerstudio.wizards.esb.dataPolling"
                     description="Poll data from a database periodically and trigger a message flow"
                     image="icons/template-default.png">
         </wizardLink>
-        <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.jmsProxyTemplate.project"
+        <wizardLink category="dashboard.category.template.messaging" id="dashboard.wizardLink.esb.jmsProxyTemplate.project"
                     wizard="org.wso2.developerstudio.wizards.esb.jmsProxyTemplate"
                     description="Demonstrates integration with JMS brokers"
                     image="icons/template-default.png">
         </wizardLink>
-        <wizardLink category="dashboard.category.esb.template"
+        <wizardLink category="dashboard.category.template.messaging"
                     id="dashboard.wizardLink.esb.rabbitMQSampleTemplate.project"
                     wizard="org.wso2.developerstudio.wizards.esb.rabbitMQSampleTemplate"
                     description="A sample which demonstrates the integration with RabbitMQ"
                     image="icons/template-default.png">
         </wizardLink>
-        <wizardLink category="dashboard.category.esb.template"
+        <wizardLink category="dashboard.category.template.transformation"
                     id="dashboard.wizardLink.esb.jsonToXmlMappingTemplate.project"
                     wizard="org.wso2.developerstudio.wizards.esb.jsonToXmlMappingTemplate"
                     description="This sample demonstrates JSON to XML Mapping"
                     image="icons/template-default.png">
         </wizardLink>
-        <wizardLink category="dashboard.category.esb.template"
+        <wizardLink category="dashboard.category.template.transformation"
                     id="dashboard.wizardLink.esb.xmlToJsonMappingTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.xmlToJsonMappingTemplate"
                     description="This sample demonstrates XML to JSON Mapping"
                     image="icons/template-default.png">
         </wizardLink>
-        <wizardLink category="dashboard.category.esb.template"
+        <wizardLink category="dashboard.category.template.messaging"
                     id="dashboard.wizardLink.esb.kafkaTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.kafkaTemplate"
                     description="This sample demonstrates Kafka Consumer and Producer Scenario with ESB Kafka Conenctor"
                     image="icons/template-default.png">
         </wizardLink>
-        <wizardLink category="dashboard.category.ds.template"
+        <wizardLink category="dashboard.category.template.dataintegration"
                     id="dashboard.wizardLink.ds.template.project.studentDataServiceTemplate"
                     wizard="org.wso2.developerstudio.wizards.ds.studentDataServiceTemplate"
                     description="Student Data Service"
                     image="icons/template-default.png">
         </wizardLink>
-        <wizardLink category="dashboard.category.ds.template"
+        <wizardLink category="dashboard.category.template.dataintegration"
                     id="dashboard.wizardLink.ds.template.project.restDataServiceTemplate"
                     wizard="org.wso2.developerstudio.wizards.ds.restDataServiceTemplate"
                     description="REST Data Service"

@@ -31,7 +31,7 @@
       	os="linux"
       	/>
       	<theme
-      	basestylesheeturi="themes/css/wso2-theme-standalone-light.css"
+      	basestylesheeturi="themes/css/wso2-theme-standalone-light-win.css"
       	id="org.wso2.developerstudio.eclipse.esb.light.theme"
       	label="WSO2EI Light"
       	os="win32"

@@ -447,10 +447,10 @@ public class PropertiesWidgetProvider {
 
                 // style.background = new Color(device, LINE_NUMBER_BG);
                 style.foreground = new Color(device, LINE_NUMBER_FG);
-                style.metrics = new GlyphMetrics(0, 0, "expr ".length() * 5);
+                style.metrics = new GlyphMetrics(0, 0, EEFPropertyConstants.EXPRESSION_TEXTBOX_PREFIX.length() * 5);
 
                 e.bullet = new Bullet(ST.BULLET_TEXT, style);
-                e.bullet.text = "expr ";
+                e.bullet.text = EEFPropertyConstants.EXPRESSION_TEXTBOX_PREFIX;
 
             }
         });
@@ -1036,6 +1036,8 @@ public class PropertiesWidgetProvider {
         }
         if (isError) {
             updateBanner("requirederror", "", fieldName, "");
+        } else {
+            updateBanner("ok", "", fieldName, "");
         }
     }
 

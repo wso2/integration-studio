@@ -103,31 +103,32 @@ public class MicroIntegratorInstance {
         try {
             IRuntime[] availableRuntimes = ServerCore.getRuntimes();
             for (IRuntime temRuntime : availableRuntimes) {
-                if (temRuntime.getRuntimeType().equals(runtimeType120)
+                if ((temRuntime.getRuntimeType().equals(runtimeType120) && temRuntime.getName()
+                        .equals(ServerConstants.MICRO_INTEGRATOR_RUNTIME + " " + ServerConstants.VERSION))
                         || (temRuntime.getRuntimeType().equals(runtimeType100)
                                 && temRuntime.getName().equals(ServerConstants.MICRO_INTEGRATOR_RUNTIME))
                         || (temRuntime.getRuntimeType().equals(runtimeType110)
-                                && temRuntime.getName().equals(ServerConstants.MICRO_INTEGRATOR_RUNTIME))) {
+                                && temRuntime.getName().contains(ServerConstants.MICRO_INTEGRATOR_RUNTIME))) {
                     temRuntime.delete();
                 }
             }
 
             IServer[] availableServers = ServerCore.getServers();
             for (IServer tempServers : availableServers) {
-                if (tempServers.getServerType().equals(serverType120)
+                if ((tempServers.getServerType().equals(serverType120) && tempServers.getName()
+                        .equals(ServerConstants.MICRO_INTEGRATOR_SERVER + " " + ServerConstants.VERSION))
                         || (tempServers.getServerType().equals(serverType100)
                                 && tempServers.getName().equals(ServerConstants.MICRO_INTEGRATOR_SERVER))
                         || (tempServers.getServerType().equals(serverType110)
-                                && tempServers.getName().equals(ServerConstants.MICRO_INTEGRATOR_SERVER))) {
+                                && tempServers.getName().contains(ServerConstants.MICRO_INTEGRATOR_SERVER))) {
                     tempServers.delete();
                 }
             }
         } catch (CoreException e) {
             log.error("Exception occured while trying to delete the old runtime", e);
         }
-
+        
         try {
-
             NullProgressMonitor progressMonitor = new NullProgressMonitor();
 
             IRuntimeWorkingCopy runtime = runtimeType120.createRuntime("org.wso2.micro.integrator.runtime12",
@@ -136,11 +137,9 @@ public class MicroIntegratorInstance {
             runtime.setLocation(new Path(getServerHome()));
 
             IRuntime microIntegratorRuntime = runtime.save(true, progressMonitor);
-
             server = serverType120.createServer("org.wso2.micro.integrator.server12", null, microIntegratorRuntime,
                     progressMonitor);
             server.setName(ServerConstants.MICRO_INTEGRATOR_SERVER + " " + ServerConstants.VERSION);
-
             readConfigs(server);
 
             microIntegratorServer = server.saveAll(false, progressMonitor);

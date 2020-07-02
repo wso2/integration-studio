@@ -23,6 +23,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -39,6 +40,7 @@ import org.eclipse.jface.wizard.IWizard;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.IWorkbenchWizard;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.wizards.IWizardDescriptor;
 import org.osgi.framework.Bundle;
@@ -217,37 +219,50 @@ public class JSEmbeddedFunctions {
 			setDisableWelcomePrameterValue(configFilePath, true);
 		}
 	}
-
-	private void setDisableWelcomePrameterValue(String configFilePath, boolean disableWelcomePage) {
-		
-        InputStream input = null;
-        OutputStream output = null;
-
+	
+    public void openExternalBrowser(String link) {
+        String url = "";
+        switch (link) {
+        case "documentation":
+            url = "https://ei.docs.wso2.com/en/latest/micro-integrator/develop/intro-integration-development/";
+            break;
+        case "github":
+            url = "https://github.com/wso2/devstudio-tooling-ei";
+            break;
+        case "slack":
+            url = "https://wso2-ei.slack.com";
+            break;
+        case "video":
+            url = "https://wso2.com/library/integration/";
+            break;
+        default:
+            url = "https://ei.docs.wso2.com/en/latest/micro-integrator/develop/intro-integration-development/";
+            break;
+        }
         try {
-            input = new FileInputStream(configFilePath);
-            Properties prop = new Properties();
-            prop.load(input);
-            input.close();
-            prop.setProperty(DISABLE_WELCOME_PAGE, String.valueOf(disableWelcomePage));
-            output = new FileOutputStream(configFilePath);
-            prop.store(output, null);
-            output.close();
+            PlatformUI.getWorkbench().getBrowserSupport().getExternalBrowser().openURL(new URL(url));
+        } catch (PartInitException | MalformedURLException e) {
+            log.error("Could not load the external browser.", e);
+        }
+    }
 
-        } catch (IOException e) {
-            log.error("Error ocuured while saving the ENABLE_AI_DATAMAPPER property.", e);
-        } finally {
-            try {
-                if (input != null) {
-                    input.close();
-                }
-                if (output != null) {
-                    output.close();
-                }
+    private void setDisableWelcomePrameterValue(String configFilePath, boolean disableWelcomePage) {
+        File configFile = new File(configFilePath);
+        Properties properties = new Properties();
+        if (configFile.exists()) {
+            try (InputStream input = new FileInputStream(configFilePath)) {
+                properties.load(input);
             } catch (IOException e) {
-                log.error("Error ocuured while saving the ENABLE_AI_DATAMAPPER property.", e);
+                log.error("Error ocuured while saving the DISABLE_WELCOME_PAGE property.", e);
             }
         }
-	}
+        properties.setProperty(DISABLE_WELCOME_PAGE, String.valueOf(disableWelcomePage));
+        try (OutputStream outputStream = new FileOutputStream(configFilePath)) {
+            properties.store(outputStream, null);
+        } catch (IOException e) {
+            log.error("Error ocuured while saving the DISABLE_WELCOME_PAGE property.", e);
+        }
+    }
 
 	public static String getDisableWelcomePrameterValue() {
 

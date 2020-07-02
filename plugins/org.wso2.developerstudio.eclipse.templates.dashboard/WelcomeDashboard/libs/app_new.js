@@ -281,6 +281,26 @@ $(".dropdown-menu .menu-item a").click(function () {
      selectedCategory = categoryList[this.id];
  });
 
+$("#doc-link").click(function() {
+	$.post("http://127.0.0.1:" + portValue + "/servlet/openbrowser", { link: "documentation" }, function(data, status){
+    });
+});
+
+$("#git-link").click(function() {
+	$.post("http://127.0.0.1:" + portValue + "/servlet/openbrowser", { link: "github" }, function(data, status){
+    });
+});
+
+$("#slack-link").click(function() {
+	$.post("http://127.0.0.1:" + portValue + "/servlet/openbrowser", { link: "slack" }, function(data, status){
+    });
+});
+
+$("#video-link").click(function() {
+	$.post("http://127.0.0.1:" + portValue + "/servlet/openbrowser", { link: "video" }, function(data, status){
+    });
+});
+
 function loadTemplatesByCategory(category) {
 	$('.template-list > .template').each(function(){
         var text = $(this).attr("data-category").toLowerCase();

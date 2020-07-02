@@ -32,6 +32,7 @@ import org.wso2.developerstudio.eclipse.templates.dashboard.web.function.server.
 import org.wso2.developerstudio.eclipse.templates.dashboard.web.function.server.GetWelcomeDisplayConfigServlet;
 import org.wso2.developerstudio.eclipse.templates.dashboard.web.function.server.GetWizardsFunctionServlet;
 import org.wso2.developerstudio.eclipse.templates.dashboard.web.function.server.JSEmbeddedFunctions;
+import org.wso2.developerstudio.eclipse.templates.dashboard.web.function.server.OpenBrowserServlet;
 import org.wso2.developerstudio.eclipse.templates.dashboard.web.function.server.OpenIDEFunctionServlet;
 import org.wso2.developerstudio.eclipse.templates.dashboard.web.function.server.UpdateWelcomeDisplayConfigServlet;
 
@@ -146,5 +147,6 @@ public class JettyServerHandler {
         wsContext.addServlet(GetWizardsFunctionServlet.class, "/getwizards");
         wsContext.addServlet(UpdateWelcomeDisplayConfigServlet.class, "/savewelcomeconfig");
         wsContext.addServlet(GetWelcomeDisplayConfigServlet.class, "/getwelcomeconfig");
+        wsContext.addServlet(OpenBrowserServlet.class, "/openbrowser");
     }
 }

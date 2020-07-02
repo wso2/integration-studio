@@ -47,7 +47,7 @@ import org.wso2.developerstudio.eclipse.webui.core.exception.WebUIException;
 public class WelcomePageEditor extends EditorPart {
 	
 	private static final String INDEX_HTML = "index.html";
-	private static final String WELCOME_PAGE_WEB_SITE_FOLDER = "TemplateDash"; //Folder of the web app
+	private static final String WELCOME_PAGE_WEB_SITE_FOLDER = "WelcomeDashboard"; //Folder of the web app
 	
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	

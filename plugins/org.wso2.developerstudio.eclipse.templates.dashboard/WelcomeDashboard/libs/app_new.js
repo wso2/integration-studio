@@ -72,6 +72,32 @@ var categoryList = {
 	    "task-category" : "Task_Templates"
 };
 
+var sampleMediatorList = {
+	    "hello world service": "proxy,payload-factory",
+	    "proxying a soap service": "proxy,payload-factory",
+	    "content based routing": "proxy,payload-factory",
+	    "header based routing": "proxy,payload-factory",
+	    "message filtering": "proxy,payload-factory",
+	    "protocol switching": "proxy,payload-factory",
+	    "scatter gather integration pattern": "proxy,payload-factory",
+	    "file transfer": "proxy,payload-factory",
+	    "guaranteed delivery": "proxy,payload-factory",
+	    "jms integration": "proxy,payload-factory",
+	    "rabbitmq integration": "proxy,payload-factory",
+	    "kafka consumer and producer": "proxy,payload-factory",
+	    "rest to soap conversion": "proxy,payload-factory",
+	    "xml to json transformation": "proxy,payload-factory",
+	    "json to xml mapping": "proxy,payload-factory",
+	    "xml to json mapping": "proxy,payload-factory",
+	    "students data service": "proxy,payload-factory",
+	    "rest data service": "proxy,payload-factory",
+	    "exception handling": "proxy,payload-factory",
+	    "fetch salesforce account information": "proxy,payload-factory",
+	    "periodical scheduled tasks": "proxy,payload-factory",
+	    "database polling": "proxy,payload-factory",
+	    "proxying a rest service": "proxy,payload-factory",
+};
+
 var esbNewProjectWizard = "org.wso2.developerstudio.eclipse.artifact.newesbsolutionproject";
 var projectExportWizard = "org.wso2.developerstudio.eclipse.distribution.importAsArtifact";
 
@@ -214,10 +240,11 @@ function searchTemplates(searchInput, templateList){
             $(templateList + ' > .template').each(function(){
                 var text = $(this).attr("data-title").toLowerCase();
                 var category = $(this).attr("data-category").toLowerCase();
-                if (selectedCategory == "all-category") {
-                	 (text.indexOf(valThis) >= 0) ? $(this).show() : $(this).hide();
+                if (selectedCategory == "all-category" || selectedCategory == undefined) {
+                	 (text.indexOf(valThis) >= 0 || sampleMediatorList[text].indexOf(valThis) >= 0) ? $(this).show() : $(this).hide();
                 } else {
-                	 (text.indexOf(valThis) >= 0 && category.indexOf(selectedCategory.toLowerCase()) >= 0) ? $(this).show() : $(this).hide();
+                	 ((text.indexOf(valThis) >= 0 || sampleMediatorList[text].indexOf(valThis) >= 0) 
+                			 && (category.indexOf(selectedCategory.toLowerCase()) >= 0)) ? $(this).show() : $(this).hide();
                 }
             });
         };

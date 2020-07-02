@@ -69,7 +69,7 @@
                 <div class="d-flex">
                     <div class="form-group has-search" style="width:25%;">
                         <span class="fa fa-search form-control-feedback"></span>
-                        <input type="text" class="form-control" placeholder="Search template" autocorrect="off" autocapitalize="none" id="search" />
+                        <input type="text" class="form-control" placeholder="Search template by name or mediator" autocorrect="off" autocapitalize="none" id="search" />
                     </div>
                     <div class="dropdown ml-2" style="color:#707070; border-color:#707070;">
                         <a class="btn btn-secondary dropdown-toggle onlyborder" href="#" role="button"
@@ -77,17 +77,18 @@
                             Category
                         </a>
 
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a id="all-category" class="dropdown-item" href="#">All</a>
-                            <a id="services-category" class="dropdown-item" href="#">Services</a>
-                            <a id="messaging-category" class="dropdown-item" href="#">Messaging</a>
-                            <a id="msg-transformation-category" class="dropdown-item" href="#">Message Transformation</a>
-                            <a id="container-category" class="dropdown-item" href="#">Docker/Kubernetes</a>
-                            <a id="saas-category" class="dropdown-item" href="#">SaaS Integration</a>
-                            <a id="error-category" class="dropdown-item" href="#">Error Handling</a>
-                            <a id="database-category" class="dropdown-item" href="#">Database Integration</a>
-                            <a id="miscellaneous-category" class="dropdown-item" href="#">Miscellaneous</a>
-                        </div>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <li class = "menu-item"><a id="all-category" class="dropdown-item active" href="#">All</a></li>
+                            <li class = "menu-item"><a id="routing-category" class="dropdown-item" href="#">Message Routing</a></li>
+                            <li class = "menu-item"><a id="msg-transformation-category" class="dropdown-item" href="#">Message Transformation</a></li>
+                            <li class = "menu-item"><a id="messaging-category" class="dropdown-item" href="#">Messaging</a></li>
+                            <li class = "menu-item"><a id="container-category" class="dropdown-item" href="#">Docker/Kubernetes</a></li>
+                            <li class = "menu-item"><a id="saas-category" class="dropdown-item" href="#">SaaS Integration</a></li>
+                            <li class = "menu-item"><a id="error-category" class="dropdown-item" href="#">Error Handling</a></li>
+                            <li class = "menu-item"><a id="data-category" class="dropdown-item" href="#">Data Integration</a></li>
+                            <li class = "menu-item"><a id="test-category" class="dropdown-item" href="#">Unit Testing</a></li>
+                            <li class = "menu-item"><a id="task-category" class="dropdown-item" href="#">Scheduled Task</a></li>
+                        </ul>
                     </div>
                 </div>
                 <div class="template-container">

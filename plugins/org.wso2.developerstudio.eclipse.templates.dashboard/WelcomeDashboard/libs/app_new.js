@@ -31,10 +31,8 @@ function setViewPortFullScreen(duration) {
     svgArea.animate({viewBox: (cx - 650 / 2) + ' ' + (cy - 650 / 2) + ' ' + 650 + ' ' + 650}, duration);
 }
 
-//This value is injected to this script at browser widget initialization
-//var portValue = serverDetails.port; 
-
 var welcomeNodeArray;
+var selectedCategory = "all-category";
 GetDashboardWizards();
 loadDisableWelcomePageParameter();
 function loadWelcomeNodes(contributionsString) {
@@ -62,6 +60,17 @@ function loadWelcomeNodes(contributionsString) {
     drawWelcomeNodes();
 }
 
+var categoryList = {
+	    "routing-category": "Routing_Templates",
+	    "messaging-category":"Messaging_Templates",
+	    "msg-transformation-category" : "Transformation_Templates",
+	    "data-category" : "DataIntegration_Templates",
+	    "container-category" : "Container_Templates",
+	    "error-category" : "ErrorHandling_Templates",
+	    "test-category" : "Testing_Templates",
+	    "saas-category" : "SaaS_Templates",
+	    "task-category" : "Task_Templates"
+};
 
 var esbNewProjectWizard = "org.wso2.developerstudio.eclipse.artifact.newesbsolutionproject";
 var projectExportWizard = "org.wso2.developerstudio.eclipse.distribution.importAsArtifact";
@@ -70,7 +79,6 @@ var dataSourceProject = "org.wso2.developerstudio.eclipse.artifact.newdatasource
 var dataServiceProject = "org.wso2.developerstudio.eclipse.artifact.newdsproject";
 
 $("#DataServiceProject").click(function(){
-	//OpenIDEWizard(esbNewProjectWizard);
 	openWizard(dataServiceProject);
 }); 
 
@@ -79,11 +87,9 @@ $("#DataSourceProject").click(function(){
 });
 
 var BPMNProject = "org.wso2.developerstudio.bpmn.wizards.CreateBPMNProjectWizard";
-var BPELProject = "org.wso2.developerstudio.eclipse.artifact.newbpelartifact";
 var HumanTaskProject = "org.wso2.developerstudio.humantaskeditor.wizards.HumanTaskProjectWizard";
 
 $("#BPMNProject").click(function(){
-	//OpenIDEWizard(esbNewProjectWizard);
 	openWizard(BPMNProject);
 }); 
 
@@ -91,26 +97,9 @@ $("#HumanTaskProject").click(function(){
 	openWizard(HumanTaskProject);
 });
 
-$("#BPELWorkFlowProject").click(function(){
-	openWizard(BPELProject);
-});
-
 var mavenWizard = "org.wso2.developerstudio.eclipse.platform.ui.mvn.wizard.MvnMultiModuleWizard";
-var cappWizard = 'org.wso2.developerstudio.eclipse.distribution.project';
 var serverWizard = 'org.eclipse.wst.server.ui.new.server';
-var registryWizard = 'org.wso2.developerstudio.eclipse.general.project';
-var configWizard = 'org.wso2.developerstudio.eclipse.artifact.newesbproject';
 var mediatorWizard = 'org.wso2.developerstudio.eclipse.artifact.newmediatorartifact';
-var dockerWizard = 'org.wso2.developerstudio.eclipse.artifact.newdockerproject';
-var kubernetesWizard = 'org.wso2.developerstudio.eclipse.artifact.newkubernetesproject';
-
-$("#CompositeApplicationProject").click(function(){
-	openWizard(cappWizard);
-});
-
-$("#RegistryProject").click(function(){
-	openWizard(registryWizard);
-});
 
 $("#MavenMultiModuleProject").click(function(){
 	openWizard(mavenWizard);
@@ -120,39 +109,9 @@ $("#Server").click(function(){
 	openWizard(serverWizard);
 });
 
-$("#ConfigProject").click(function(){
-	openWizard(configWizard);
-});
-
 $("#MediatorProject").click(function(){
 	openWizard(mediatorWizard);
 });
-
-$("#DockerProject").click(function(){
-	openWizard(dockerWizard);
-});
-
-$("#KubernetesProject").click(function(){
-	openWizard(kubernetesWizard);
-});
-
-/*if((GetWizardDescription(mavenWizard) != null)){
-    welcomeNodeArray.push({title: "Maven", nodes: [
-        {title: '', wizardID: mavenWizard}
-    ]});
-}
-
-if((GetWizardDescription(cappWizard) != null)){
-    welcomeNodeArray.push({title: "CApp", nodes: [
-        {title: '', wizardID: cappWizard}
-    ]});
-}
-
-if((GetWizardDescription(serverWizard) != null)){
-    welcomeNodeArray.push({title: "Add runtime", nodes: [
-        {title: '', wizardID: serverWizard}
-    ]});
-}*/
 
 $("#createNewProject").click(function(){
 	//OpenIDEWizard(esbNewProjectWizard);
@@ -179,16 +138,8 @@ function GetDashboardWizards() {
     });
 }
 
-/*function GetWizardDetails(wizardid) {
-    $.post("http://localhost:8680/getwizarddetails", { status: wizardid } ,function(data, status){
-        return data;
-    });
-}*/
-
 function drawWelcomeNodes(){
 	welcomeNodeArray.forEach(function (welcomeNode) {
-	//	 $("#root-container").append("<h1>" + welcomeNode.title + "</h1>" );
-		
 		 welcomeNode.nodes.forEach(function (childNode) {
 			escapedChildTitle = childNode.title.replace(/\./g, '');		
 			templateNode = createTemplateNode(escapedChildTitle, childNode.label, childNode.description, childNode.image, welcomeNode.title);
@@ -254,28 +205,81 @@ function searchTemplates(searchInput, templateList){
 	$(searchInput).keyup(function(){
         var valThis = $(this).val().toLowerCase();
         if(valThis == ""){
-            $(templateList +' > .template').show();
+        	if (selectedCategory == "all-category" || selectedCategory == undefined) {
+            	resetLoadTemplates();
+            } else {
+            	loadTemplatesByCategory(selectedCategory);
+            }
         } else {
             $(templateList + ' > .template').each(function(){
                 var text = $(this).attr("data-title").toLowerCase();
-                (text.indexOf(valThis) >= 0) ? $(this).show() : $(this).hide();
+                var category = $(this).attr("data-category").toLowerCase();
+                if (selectedCategory == "all-category") {
+                	 (text.indexOf(valThis) >= 0) ? $(this).show() : $(this).hide();
+                } else {
+                	 (text.indexOf(valThis) >= 0 && category.indexOf(selectedCategory.toLowerCase()) >= 0) ? $(this).show() : $(this).hide();
+                }
             });
         };
     });
 }
 
 // filter by category
-$("#services-category").click(function(){
-	loadTemplatesByCategory("Services_Templates");
+$("#routing-category").click(function(){
+	loadTemplatesByCategory("Routing_Templates");
+	document.getElementById('search').value = '';
+});
+
+$("#messaging-category").click(function(){
+	loadTemplatesByCategory("Messaging_Templates");
+	document.getElementById('search').value = '';
+});
+
+$("#msg-transformation-category").click(function(){
+	loadTemplatesByCategory("Transformation_Templates");
+	document.getElementById('search').value = '';
+});
+
+$("#data-category").click(function(){
+	loadTemplatesByCategory("DataIntegration_Templates");
+	document.getElementById('search').value = '';
+});
+
+$("#container-category").click(function(){
+	loadTemplatesByCategory("Container_Templates");
+	document.getElementById('search').value = '';
+});
+
+$("#error-category").click(function(){
+	loadTemplatesByCategory("ErrorHandling_Templates");
+	document.getElementById('search').value = '';
+});
+
+$("#test-category").click(function(){
+	loadTemplatesByCategory("Testing_Templates");
+	document.getElementById('search').value = '';
+});
+
+$("#saas-category").click(function(){
+	loadTemplatesByCategory("SaaS_Templates");
+	document.getElementById('search').value = '';
+});
+
+$("#task-category").click(function(){
+	loadTemplatesByCategory("Task_Templates");
+	document.getElementById('search').value = '';
 });
 
 $("#all-category").click(function(){
 	resetLoadTemplates();
+	document.getElementById('search').value = '';
 });
 
-$("#ddd").click(function(){
-	window.open("https://www.eclipse.org/ditto/protocol-examples-createattributes.html", "_blank");
-});
+$(".dropdown-menu .menu-item a").click(function () {
+     $(".dropdown-menu li > a").removeClass("active"); 
+     $(this).closest("li > a").addClass("active");
+     selectedCategory = categoryList[this.id];
+ });
 
 function loadTemplatesByCategory(category) {
 	$('.template-list > .template').each(function(){
@@ -288,6 +292,7 @@ function resetLoadTemplates() {
 	$('.template-list > .template').each(function(){
 		$(this).show(); 
     });
+	selectedCategory = "all-category";
 }
 
 function updateWelcomeDisplayConfiguration() {
@@ -321,5 +326,4 @@ $('#zoomInIconP').click(function () {
 $(document).ready(function(){
     $('.scrollbar-macosx').scrollbar();
     searchTemplates("#search", ".template-list");
-//    searchTemplates("#dss-search", ".dss-template-list");
 });

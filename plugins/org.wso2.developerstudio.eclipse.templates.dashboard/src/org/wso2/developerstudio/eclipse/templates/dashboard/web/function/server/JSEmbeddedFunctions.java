@@ -50,7 +50,7 @@ import org.wso2.developerstudio.eclipse.templates.dashboard.Activator;
 public class JSEmbeddedFunctions {
     
     private static final String PORT_PROPERTIES = "serverproperties.js";
-    private static final String WELCOME_PAGE_WEB_SITE_FOLDER = "TemplateDash";
+    private static final String WELCOME_PAGE_WEB_SITE_FOLDER = "WelcomeDashboard";
 	private static final String DISABLE_WELCOME_PAGE = "DISABLE_WELCOME_PAGE";
 	private static final String PROPERTIES_FILE_PATH = File.separator + ".metadata" + File.separator
 			+ "integration-studio.properties";

@@ -276,7 +276,7 @@ public class CommonTemplateProjectCreationWizard extends Wizard implements INewW
             break;
         case "GuaranteedDelivery":
             openFileName = "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator
-                    + "proxy-services" + File.separator + "UserRegistrationService.xml";
+                    + "api" + File.separator + "UserRegistrationAPI.xml";
             break;
         case "RESTtoSOAPConversion":
             openFileName = "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator + "api"

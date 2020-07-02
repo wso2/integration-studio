@@ -37,11 +37,11 @@
                which performs arithmetic operations. Based on the &ldquo;operation&rdquo; header of the message, the message
                needs to be routed to the relevant service.
             </p>
-            <p>This sample creates an <strong>ESB config project</strong>, which consists of an
+            <p>This sample creates an <strong>ESB Config</strong> module, which consists of an
                API called CalculatorAPI and two endpoints called
                CalculatorAddEP, CalculatorDivideEP, which represents the backend services in the ESB context.
-               <strong>Composite application project</strong> is used to package and export the synapse 
-               artifacts created within the ESB config project.
+               <strong>Composite Exporter</strong> module is used to package and export the synapse 
+               artifacts created within the ESB Config module.
             </p>
             <p>Routing happens based on the value of the HTTP header called &lsquo;Operation&rsquo;.</p>
             <p>Switch mediator does the routing by extracting the value of element by using an XPath expression. Then,
@@ -49,47 +49,87 @@
             </p>
          </div>
          <div class="accordion">
-            <div class="option">
+            <div class="option" style="border-left: 5px solid #ff9100;">
                <input type="checkbox" id="toggle1" class="toggle" checked/>
-               <label class="title" for="toggle1">Run using embeded WSO2 Micro Integrator
+               <label class="title" for="toggle1" 
+					style="border-bottom-color: rgba(255,145,0,.1);background-color: rgba(255,145,0,.1);
+						box-shadow: none !important;">
+				 Run using embeded WSO2 Micro Integrator
                </label>
-               <div class="content">
+               <div class="content" style="box-shadow: none !important;">
                   <ol>
                      <li>
                         <h3>Export project atrifacts & run</h3>
                         <p>
-                           - Right click on the respective <strong>Composite Application</strong> 
-                           project and select <strong>Export project atrifacts & run </strong> from menu.
+                           	Right click on the respective <strong>Composite Exporter</strong> 
+                           	module and select <strong>Export Project Atrifacts and Run </strong> from menu.
                         </p>
                      </li>
                      <li>
                         <h3>Invoke the service</h3>
-                        <p>Invoke the service using an HTTP client like cURL.</p>
-                        <pre><code class="language-bash">curl -X POST -d @request.xml http://localhost:8290/calculate -H "Content-Type: text/xml" -H "Operation: Add"</code></pre>
-                        <pre><code class="language-bash">curl -X POST -d @request.xml http://localhost:8290/calculate -H "Content-Type: text/xml" -H "Operation: Divide"</code></pre>
-                        <p>The request.xml can be a file which has the following content.</p>
+                        <p>Open the <strong>HTTP Client</strong> of WSO2 Integration Studio (If you don't 
+                        see the HTTP Client pane, go to <strong>Window -> Show View - Other</strong> and 
+                        select HTTP Client to enable the client pane).</p>                      
+                      
+                        <p>Enter the request information as given below and click the Send 
+                        <span>
+                        	<img src="../Resources/play-head-icon.png" 
+                        		style="width:20px; margin: 0 2px -5px 2px;" />
+                       	</span> icon.
+                        Use one set of headers at a time.</p>
+                        
+                        <p><b>Method:</b></p>
+                        <p style="margin-top:-40px;"><pre><code class="language-bash">POST</code></pre></p>
+                        
+                        <p style="margin-top:-15px;"><b>URL:</b></p>
+                        <p style="margin-top:-40px;">
+	                        <pre>
+	                        	<code class="language-bash">http://localhost:8290/calculate</code>
+	                        </pre>
+                        </p>
+                        
+                        <p style="margin-top:-15px;"><b>Payload:</b></p>
+                        <p style="margin-top:-40px;">
                         <pre><code class="language-xml">
 				&lt;ArithmaticOperation&gt;
 				&nbsp;&nbsp;&lt;Arg1&gt;10&lt;/Arg1&gt;
 				&nbsp;&nbsp;&lt;Arg2&gt;25&lt;/Arg2&gt;
 				&lt;/ArithmaticOperation&gt;</code></pre>
+						</p>
+						
+						<p style="margin-top:-15px;"><b>Headers 1:</b></p>
+                        <p style="margin-top:-40px;">
+                        	<pre>
+                        		<code class="language-bash">Content-Type: text/xml
+                        		Operation: Add</code>
+                       		</pre>
+                      		</p>
+                      		
+                     	<p style="margin-top:-15px;"><b>Headers 2:</b></p>
+                        <p style="margin-top:-40px;">
+                        	<pre>
+                        		<code class="language-bash">Content-Type: text/xml
+                        		Operation: Divide</code>
+                       		</pre>
+                      		</p>
                      </li>
                   </ol>
                </div>
             </div>
-            <div class="option">
+            <div class="option" style="border-left: 5px solid #448AFF;">
                <input type="checkbox" id="toggle2" class="toggle" />
-               <label class="title" for="toggle2">
-               Run using external WSO2 Enterprise Integrator
+               <label class="title" for="toggle2"  
+                   style="border-bottom-color: rgba(68, 138, 255,.1); 
+                       background-color: rgba(68, 138, 255,.1); box-shadow: none !important;">
+               Run using external WSO2 Enterprise Integrator 6X Series
                </label>
-               <div class="content">
+               <div class="content" style="box-shadow: none !important;">
                   <ol>
                      <li>
                         <h3>Connect the ESB server to WSO2 EI Tooling</h3>
                         <p>If you haven't already attached the WSO2 EI runtime to WSO2 EI Tooling, follow the instructions given below.</p>
-                        <p>- Open the <strong>Developer Studio Dashboard</strong> and click <strong>Server</strong>
-                           under <strong>Add Server</strong>.
-                        </p>
+                        <p>- Open the <strong>Integration Studio Getting Started</strong> and 
+                            click <strong>Add Server</strong>.
                         <p>- In the &lsquo;<strong>Define a New Server</strong>&rsquo; dialog box, expand the WSO2 folder,
                            and select the respective product and version.
                         </p>
@@ -118,7 +158,8 @@
                      </li>
                      <li>
                         <h3>Invoke the service</h3>
-                        <p>Use an HTTP client like cURL to invoke the service.</p>
+                        <p>Use the <strong>HTTP Client</strong> 
+                            as mentioned in above or following cURL command to invoke the service.</p>
                         <pre><code class="language-bash">curl -X POST -d @request.xml http://localhost:8280/calculate -H "Content-Type: text/xml" -H "Operation: Add"</code></pre>
                         <pre><code class="language-bash">curl -X POST -d @request.xml http://localhost:8280/calculate -H "Content-Type: text/xml" -H "Operation: Divide</code></pre>
                         <p>The request.xml can be a file which has the following content.</p>

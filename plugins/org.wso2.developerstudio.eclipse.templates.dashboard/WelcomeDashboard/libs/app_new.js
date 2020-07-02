@@ -41,7 +41,7 @@ function loadWelcomeNodes(contributionsString) {
     contributions.forEach(function (contribution) {
         var welcomeNode = {};
         welcomeNode.title = contribution.name;
-        //welcomeNode.title = welcomeNode.title.split(/ /g)[0];
+        // welcomeNode.title = welcomeNode.title.split(/ /g)[0];
         welcomeNode.icon = contribution.iconURL;
         welcomeNode.nodes = [];
         contribution.wizards.forEach(function (wizard) {
@@ -73,7 +73,7 @@ var categoryList = {
 };
 
 var sampleMediatorList = {
-	    "hello world service": "proxy,payload-factory",
+	    "hello world service": "proxy,payload-factory,log",
 	    "proxying a soap service": "proxy,payload-factory",
 	    "content based routing": "proxy,payload-factory",
 	    "header based routing": "proxy,payload-factory",
@@ -140,7 +140,7 @@ $("#MediatorProject").click(function(){
 });
 
 $("#createNewProject").click(function(){
-	//OpenIDEWizard(esbNewProjectWizard);
+	// OpenIDEWizard(esbNewProjectWizard);
 	openWizard(esbNewProjectWizard);
 }); 
 
@@ -185,8 +185,8 @@ function createTemplateNode(templateID, templateName, templateDescription, image
 	}
 	var html = "<div class='col-xs-6 col-sm-4 col-md-4 col-lg-3 col-xl-2 template' data-title='" + templateName + "' data-category=' " + category + "'>" +
 			"<div class='item-box' style='cursor: pointer;' id='" + templateID + "'><a class='mb-2'><i class='fab fa-docker icon-docker'>" +
-			"</i></a><a><h6 style='font-weight:600 !important; font-size:15px; margin-top:6px; text-align:center;'>" + templateName + "</h6></a>" +
-			"<div style='max-height:90px; height:90px; width: 100%; overflow-y: scroll;'><p style='font-weight:lighter;'>" + templateDescription + "</p></div></div></div>";
+			"</i></a><div style='width:100%'><a><h6 style='font-weight:600 !important; text-align:center;font-size:15px; margin-top:6px; '>" + templateName + "</h6></a></div>" +
+			"<div class='item-box-inner' style='max-height:90px; height:90px; width: 100%; overflow-y: hidden;'><p style='font-weight:lighter;'>" + templateDescription + "</p></div></div></div>";
 
 	return html;
 }

@@ -80,15 +80,14 @@ and (min-width: 10px) {
 
 .left-col-box {
   height: 100%;
-  display: flex; 
-  flex-direction: column;
+  display: relative; 
   border-right: solid 1px #ccc;
   -webkit-box-shadow: 3px 0px 3px -1px rgba(209,209,209,1);
   -moz-box-shadow: 3px 0px 3px -1px rgba(209,209,209,1);
   box-shadow: 3px 0px 3px -1px rgba(209,209,209,1);
 }
 .main-row {
-  height: 100vh;
+  height: 100%;
 }
 .container {
     max-width: 960px;
@@ -174,10 +173,10 @@ and (min-width: 10px) {
 }
 .template-container {
   height: 100vh;	
-  max-height: 82vh;
   padding-left: 20px;
   padding-right: 20px;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 .font-heading {
 	margin-top:30px !important;
@@ -188,11 +187,17 @@ and (min-width: 10px) {
 	height: 200px !important;
 }
 
+.item-box-inner:hover {
+	overflow-y: auto !important;
+	
+	}
+	
+	
+
 .row.item-box {
     padding-top: 1em;
     background: #e9eff24f;
     margin-left: 0;
-    overflow: auto;
 }
 .template {
     margin-bottom: 20px;

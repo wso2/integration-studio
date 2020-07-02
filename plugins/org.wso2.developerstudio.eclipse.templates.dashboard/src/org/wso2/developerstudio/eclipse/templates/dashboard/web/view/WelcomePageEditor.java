@@ -41,7 +41,6 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.templates.dashboard.Activator;
 import org.wso2.developerstudio.eclipse.templates.dashboard.web.function.server.FunctionServerConstants;
-import org.wso2.developerstudio.eclipse.webui.core.exception.WebUIException;
 
 
 public class WelcomePageEditor extends EditorPart {
@@ -85,11 +84,13 @@ public class WelcomePageEditor extends EditorPart {
 	@Override
 	public void createPartControl(Composite parent) {
 	    browser = createBrowser(parent);
+	    String port = getPortValueForJS();
+	    browser.setUrl("http://127.0.0.1:" + port + "/welcome?port=" + port);
+	     
+	    IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 	    try {
-	        browser.setUrl(getWelcomePageURL());
-	        IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 	        PlatformUI.getWorkbench().showPerspective("WELCOME_PERSPECTIVE", window);
-	    } catch (WorkbenchException | WebUIException e) {
+	    } catch (WorkbenchException e) {
 	        log.error("Could not load the perspective.", e);
 	    }
 	}
@@ -126,27 +127,6 @@ public class WelcomePageEditor extends EditorPart {
     private String getPortValueForJS() {
         IEclipsePreferences rootNode = Platform.getPreferencesService().getRootNode();
         return rootNode.get("portDetails", String.valueOf(FunctionServerConstants.EMBEDDED_SERVER_PORT));
-    }
-    
-    /**
-     * Returns the path of the welcome page.
-     * 
-     * @return path
-     * @throws WebUIException errors while retrieving path
-     */
-    public String getWelcomePageURL() throws WebUIException {
-        URL webAppURL = Activator.getDefault().getBundle().getEntry(WELCOME_PAGE_WEB_SITE_FOLDER);
-        File resolvedWebAppFolder;
-        File resolvedWebAppIndex;
-        try {
-            URL resolvedFolderURL = FileLocator.toFileURL(webAppURL);
-            URI resolvedFolderURI = new URI(resolvedFolderURL.getProtocol(), resolvedFolderURL.getPath(), null);
-            resolvedWebAppFolder = new File(resolvedFolderURI);
-            resolvedWebAppIndex = new File(resolvedWebAppFolder, INDEX_HTML);
-            return resolvedWebAppIndex.getAbsolutePath() + "?port=" + getPortValueForJS();
-        } catch (IOException | URISyntaxException e) {
-            throw new WebUIException("Error while resolving the file path of web app.", e);
-        }
     }
 
 	@Override

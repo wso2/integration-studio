@@ -134,7 +134,7 @@ public class CommonTemplateProjectCreationWizard extends Wizard implements INewW
 
         MavenMultiModuleImportUtils.extractZipFile(sampleTemplateDirectory, tmpSampleDirectory);
         FileUtils.copyFile(sampleReadmeFile,  new File(TEMP_DIRECTORY_PATH + File.separator + userEnteredProjectName 
-                + File.separator + "IS_SAMPLEConfigs" + File.separator + "Readme.html"));
+                + File.separator + "IS_SAMPLEConfigs" + File.separator + "ReadMe.html"));
         if (!userEnteredProjectName.equals(TemplateProjectConstants.GENERAL_TEMPLATE_NAME)) {
             replaceStringRecursively(tmpSampleDirectory);
         }
@@ -148,7 +148,7 @@ public class CommonTemplateProjectCreationWizard extends Wizard implements INewW
         }
 
         org.apache.commons.io.FileUtils.deleteDirectory(tmpSampleDirectory);
-        openRespectiveEditorWithSample(selectedSample);
+        openRespectiveEditorWithSample(selectedSample, sampleReadmeFile);
     }
 
     private void replaceStringRecursively(File file) throws IOException {
@@ -182,7 +182,7 @@ public class CommonTemplateProjectCreationWizard extends Wizard implements INewW
         }
     }
 
-    private void openRespectiveEditorWithSample(String selectedSample) throws IOException {
+    private void openRespectiveEditorWithSample(String selectedSample, File file) throws IOException {
         String editorId;
         IProject project = MavenMultiModuleImportUtils.IMPORTED_ESB_PROJECT;
         if (project == null) {
@@ -198,9 +198,7 @@ public class CommonTemplateProjectCreationWizard extends Wizard implements INewW
         Shell shell = getShell();
 
         // point Readme.html file to open
-        IFile readmeIFile = project.getFile("Readme.html");
-        File readmeFile = new File(readmeIFile.getLocation().toString());
-        URL readmeUrl = readmeFile.toURI().toURL();
+        URL readmeUrl = file.toURI().toURL();
 
         TemplateCreationUtil.openEditor(shell, artifactFileDesc, editorId, readmeUrl);
     }

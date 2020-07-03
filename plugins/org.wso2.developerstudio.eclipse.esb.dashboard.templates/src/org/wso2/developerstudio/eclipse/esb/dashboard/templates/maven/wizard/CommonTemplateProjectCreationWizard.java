@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URI;
 import java.net.URL;
+import java.util.AbstractMap;
 import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
@@ -48,6 +49,7 @@ import org.osgi.framework.Bundle;
 import org.wso2.developerstudio.eclipse.distribution.project.util.MavenMultiModuleImportUtils;
 import org.wso2.developerstudio.eclipse.esb.dashboard.templates.Activator;
 import org.wso2.developerstudio.eclipse.esb.dashboard.templates.maven.wizard.TemplateProjectWizardPage;
+import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 
 public class CommonTemplateProjectCreationWizard extends Wizard implements INewWizard, IExecutableExtension {
 
@@ -133,14 +135,14 @@ public class CommonTemplateProjectCreationWizard extends Wizard implements INewW
         File sampleReadmeFile = new File(resolvedReadmeURI);
 
         MavenMultiModuleImportUtils.extractZipFile(sampleTemplateDirectory, tmpSampleDirectory);
-        FileUtils.copyFile(sampleReadmeFile,  new File(TEMP_DIRECTORY_PATH + File.separator + userEnteredProjectName 
-                + File.separator + "IS_SAMPLEConfigs" + File.separator + "ReadMe.html"));
         if (!userEnteredProjectName.equals(TemplateProjectConstants.GENERAL_TEMPLATE_NAME)) {
             replaceStringRecursively(tmpSampleDirectory);
         }
 
+        MavenMultiModuleImportUtils.isProcessOfSampleCreating = true;
         if (MavenMultiModuleImportUtils.importMavenMultiModuleProjectToWorkspace(tmpSampleDirectory)) {
             // delete project in .tmp due to creation is success
+            MavenMultiModuleImportUtils.isProcessOfSampleCreating = false;
             IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
             MavenMultiModuleImportUtils.addModuleToParentPOM(root.getProject(userEnteredProjectName));
         } else {
@@ -177,30 +179,69 @@ public class CommonTemplateProjectCreationWizard extends Wizard implements INewW
                     //replace unit test plugin version
                     content = content.replaceAll("<version>5.2.27</version>", "<version>5.2.27</version>");
                 }
+                if (file.getName().equals("pom.xml") && (file.getParentFile().getName().contains("DockerExporter")
+                        || file.getParentFile().getName().contains("KubernetesExporter"))) {
+                    // replace mi base image
+                    content = content.replaceAll("<dockerfile.base.image>wso2/wso2mi:1.1.0</dockerfile.base.image>",
+                            "<dockerfile.base.image>wso2/wso2mi:1.1.0</dockerfile.base.image>");
+                    
+                    //replace config mapper plugin version
+                    content = content.replaceAll("<version>5.2.28</version>", "<version>5.2.28</version>");
+                    
+                    //replace config mapper plugin's mi version
+                    content = content.replaceAll("<miVersion>1.1.0</miVersion>", "<miVersion>1.1.0</miVersion>");
+                    
+                    //replace dockerfile-spotify plugin version
+                    content = content.replaceAll("<version>1.4.13</version>", "<version>1.4.13</version>");
+                }
                 org.apache.commons.io.FileUtils.writeStringToFile(file, content, "UTF-8");
             }
         }
     }
 
-    private void openRespectiveEditorWithSample(String selectedSample, File file) throws IOException {
-        String editorId;
-        IProject project = MavenMultiModuleImportUtils.IMPORTED_ESB_PROJECT;
-        if (project == null) {
-            project = MavenMultiModuleImportUtils.IMPORTED_DSS_PROJECT;
-            MavenMultiModuleImportUtils.IMPORTED_DSS_PROJECT = null;
-            editorId = TemplateProjectConstants.DS_EDITOR_ID;
-        } else {
-            MavenMultiModuleImportUtils.IMPORTED_ESB_PROJECT = null;
-            editorId = TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID;
-        }
+    private void openRespectiveEditorWithSample(String selectedSample, File sampleReadmeFile) throws Exception {
+        Map.Entry <IProject, String> entry = getMainLinkingSampleProject();
+        String editorId = entry.getValue();
+        IProject project = entry.getKey();
         
+        //copy sample readme file
+        FileUtils.copyFile(sampleReadmeFile,  new File(project.getLocation().toOSString() + File.separator + "ReadMe.html"));
         IFile artifactFileDesc = project.getFile(getFileToLinkWithEditor(selectedSample));
         Shell shell = getShell();
 
         // point Readme.html file to open
-        URL readmeUrl = file.toURI().toURL();
-
+        URL readmeUrl = sampleReadmeFile.toURI().toURL();
         TemplateCreationUtil.openEditor(shell, artifactFileDesc, editorId, readmeUrl);
+    }
+    
+    private Map.Entry<IProject, String> getMainLinkingSampleProject() {
+        IProject dockerProject = MavenMultiModuleImportUtils.IMPORTED_DOCKER_PROJECT;
+        IProject k8sProject = MavenMultiModuleImportUtils.IMPORTED_K8S_PROJECT;
+        if (dockerProject != null) {
+            MavenMultiModuleImportUtils.IMPORTED_DOCKER_PROJECT = null;
+            MavenMultiModuleImportUtils.IMPORTED_K8S_PROJECT = null;
+            return new AbstractMap.SimpleImmutableEntry<>(dockerProject, TemplateProjectConstants.DOCKER_EDITOR);
+        }
+
+        if (k8sProject != null) {
+            MavenMultiModuleImportUtils.IMPORTED_K8S_PROJECT = null;
+            return new AbstractMap.SimpleImmutableEntry<>(k8sProject, TemplateProjectConstants.DOCKER_EDITOR);
+        }
+
+        String editorId;
+        IProject selectedProject;
+        IProject project = MavenMultiModuleImportUtils.IMPORTED_ESB_PROJECT;
+        if (project == null) {
+            selectedProject = MavenMultiModuleImportUtils.IMPORTED_DSS_PROJECT;
+            MavenMultiModuleImportUtils.IMPORTED_DSS_PROJECT = null;
+            editorId = TemplateProjectConstants.DS_EDITOR_ID;
+        } else {
+            selectedProject = project;
+            MavenMultiModuleImportUtils.IMPORTED_ESB_PROJECT = null;
+            editorId = TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID;
+        }
+
+        return new AbstractMap.SimpleImmutableEntry<>(selectedProject, editorId);
     }
 
     private String loadWizardDetails(String id) throws CoreException {
@@ -315,6 +356,12 @@ public class CommonTemplateProjectCreationWizard extends Wizard implements INewW
             break;
         case "RESTDataService":
             openFileName = "dataservice" + File.separator + "RESTDataService.dbs";
+            break;
+        case "HelloDocker":
+            openFileName = "pom.xml";
+            break;
+        case "HelloKubernetes":
+            openFileName = "pom.xml";
             break;
         }
 

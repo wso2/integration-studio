@@ -135,7 +135,9 @@ public class CommonTemplateProjectCreationWizard extends Wizard implements INewW
         MavenMultiModuleImportUtils.extractZipFile(sampleTemplateDirectory, tmpSampleDirectory);
         FileUtils.copyFile(sampleReadmeFile,  new File(TEMP_DIRECTORY_PATH + File.separator + userEnteredProjectName 
                 + File.separator + "IS_SAMPLEConfigs" + File.separator + "Readme.html"));
-        replaceStringRecursively(tmpSampleDirectory);
+        if (!userEnteredProjectName.equals(TemplateProjectConstants.GENERAL_TEMPLATE_NAME)) {
+            replaceStringRecursively(tmpSampleDirectory);
+        }
 
         if (MavenMultiModuleImportUtils.importMavenMultiModuleProjectToWorkspace(tmpSampleDirectory)) {
             // delete project in .tmp due to creation is success

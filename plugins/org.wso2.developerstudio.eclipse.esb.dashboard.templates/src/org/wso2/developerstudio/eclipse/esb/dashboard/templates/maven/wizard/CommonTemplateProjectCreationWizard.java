@@ -240,7 +240,7 @@ public class CommonTemplateProjectCreationWizard extends Wizard implements INewW
             break;
         case "JMSIntegration":
             openFileName = "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator
-                    + "proxy-services" + File.separator + "OrderPaymentService.xml";
+                    + "api" + File.separator + "OrderPaymentServiceAPI.xml";
             break;
         case "DatabasePolling":
             openFileName = "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator

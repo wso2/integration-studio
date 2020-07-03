@@ -266,7 +266,7 @@ public class CommonTemplateProjectCreationWizard extends Wizard implements INewW
             break;
         case "ProtocolSwitching":
             openFileName = "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator
-                    + "proxy-services" + File.separator + "StudentRegistrationService.xml";
+                    + "api" + File.separator + "StudentRegistrationAPI.xml";
             break;
         case "ScatterGatherIntegrationPattern":
             openFileName = "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator

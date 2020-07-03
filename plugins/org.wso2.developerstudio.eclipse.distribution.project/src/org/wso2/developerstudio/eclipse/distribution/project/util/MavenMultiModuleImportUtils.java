@@ -85,6 +85,9 @@ public class MavenMultiModuleImportUtils {
     private static final String MMM_EDITOR_ID = "org.wso2.developerstudio.eclipse.maven.multi.module.editor.DistProjectEditor";
     public static IProject IMPORTED_ESB_PROJECT;
     public static IProject IMPORTED_DSS_PROJECT;
+    public static IProject IMPORTED_DOCKER_PROJECT;
+    public static IProject IMPORTED_K8S_PROJECT;
+    public static boolean isProcessOfSampleCreating = false;
     
     public static boolean extractZipFile(File sourceFile, File destination) {
         Archiver archiver = ArchiverFactory.createArchiver(ArchiveFormat.ZIP);
@@ -162,10 +165,18 @@ public class MavenMultiModuleImportUtils {
                     IProject subIProject = root.getProject(resourceFile.getName());
                     subIProject.create(newSubProjectDescription, new NullProgressMonitor());
                     subIProject.open(new NullProgressMonitor());
-                    if (newSubProjectDescription.getNatureIds()[0].equals(Constants.ESB_PROJECT_NATURE)) {
+                    if (newSubProjectDescription.getNatureIds()[0].equals(Constants.ESB_PROJECT_NATURE)
+                            && isProcessOfSampleCreating) {
                         IMPORTED_ESB_PROJECT = subIProject;
-                    } else if (newSubProjectDescription.getNatureIds()[0].equals(Constants.DS_PROJECT_NATURE)) {
+                    } else if (newSubProjectDescription.getNatureIds()[0].equals(Constants.DS_PROJECT_NATURE)
+                            && isProcessOfSampleCreating) {
                         IMPORTED_DSS_PROJECT = subIProject;
+                    } else if (newSubProjectDescription.getNatureIds()[0]
+                            .equals(Constants.DOCKER_EXPORTER_PROJECT_NATURE) && isProcessOfSampleCreating) {
+                        IMPORTED_DOCKER_PROJECT = subIProject;
+                    } else if (newSubProjectDescription.getNatureIds()[0]
+                            .equals(Constants.KUBERNETES_EXPORTER_PROJECT_NATURE) && isProcessOfSampleCreating) {
+                        IMPORTED_K8S_PROJECT = subIProject;
                     }
 
                     IOverwriteQuery overwriteQuery = new IOverwriteQuery() {

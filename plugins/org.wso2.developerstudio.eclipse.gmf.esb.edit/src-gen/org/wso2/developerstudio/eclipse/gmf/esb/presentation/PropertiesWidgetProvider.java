@@ -567,6 +567,7 @@ public class PropertiesWidgetProvider {
                             EsbViewsRepository.CloudConnectorOperation.Properties.configRef,
                             PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null,
                             connectionComboBox.getText()));
+                            checkRequired();
                 }
 
             }

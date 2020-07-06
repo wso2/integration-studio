@@ -21,9 +21,12 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtil
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils.updateToolpalette;
 
 import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
@@ -50,13 +53,10 @@ import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditDomain;
 import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeConnectionTool;
 import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeCreationTool;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
-import org.eclipse.gmf.tooling.runtime.part.DefaultLinkToolEntry;
-import org.eclipse.gmf.tooling.runtime.part.DefaultNodeToolEntry;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.SWTException;
 import org.eclipse.swt.events.MouseEvent;
-import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
@@ -95,8 +95,12 @@ public class EsbPaletteFactory {
     public static final int INITIAL_STATE_OPEN = 0, INITIAL_STATE_CLOSED = 1, INITIAL_STATE_PINNED_OPEN = 2;
     
     private static final String CLOUD_CONNECTOR_PREFIX = "CloudConnector-";
+    
+    private static final String FILE_PROTOCOL_PREFIX = "file://";
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    
+    private static HashMap<String, ImageDescriptor> imageDescriptorMap = new HashMap<String, ImageDescriptor>();
 
     /**
      * @generated NOT
@@ -1386,8 +1390,7 @@ public class EsbPaletteFactory {
         NodeToolEntry entry = new NodeToolEntry(name, Messages.CloudConnector1CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.CloudConnector_3719));
         entry.setId(ID); // $NON-NLS-1$
-        Image i = new Image(null, imagePath);
-        ImageDescriptor imgDesc = ImageDescriptor.createFromImage(i);
+        ImageDescriptor imgDesc = getImageDescriptor(imagePath);
         entry.setSmallIcon(imgDesc);
         // entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.CloudConnector_3719));
         entry.setLargeIcon(entry.getSmallIcon());
@@ -1965,8 +1968,7 @@ public class EsbPaletteFactory {
         NodeToolEntry entry = new NodeToolEntry(name, Messages.CloudConnectorOperation6CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.CloudConnectorOperation_3722));
         entry.setId(ID); // $NON-NLS-1$
-        Image i = new Image(null, imagePath);
-        ImageDescriptor imgDesc = ImageDescriptor.createFromImage(i);
+        ImageDescriptor imgDesc = getImageDescriptor(imagePath);
         entry.setSmallIcon(imgDesc);
         /*
          * entry.setSmallIcon(EsbElementTypes
@@ -2122,5 +2124,20 @@ public class EsbPaletteFactory {
             tool.setProperties(getToolProperties());
             return tool;
         }
+    }
+
+    private ImageDescriptor getImageDescriptor(String imagePath) {
+        ImageDescriptor imgDesc = null;
+        if (imageDescriptorMap.containsKey(imagePath)) {
+            return imageDescriptorMap.get(imagePath);
+        } else {
+            try {
+                imgDesc = ImageDescriptor.createFromURL(new URL(FILE_PROTOCOL_PREFIX + imagePath));
+                imageDescriptorMap.put(imagePath, imgDesc);
+            } catch (MalformedURLException e) {
+                log.error("Error while creating the cloud connector palette icon");
+            }
+        }
+        return imgDesc;
     }
 }

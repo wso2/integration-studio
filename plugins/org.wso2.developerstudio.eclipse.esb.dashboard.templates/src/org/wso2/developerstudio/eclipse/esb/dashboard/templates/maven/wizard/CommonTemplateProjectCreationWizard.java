@@ -349,7 +349,7 @@ public class CommonTemplateProjectCreationWizard extends Wizard implements INewW
             break;
         case "KafkaConsumerandProducer":
             openFileName = "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator
-                    + "proxy-services" + File.separator + "WeatherDataPublishService.xml";
+                    + "api" + File.separator + "WeatherDataPublishAPI.xml";
             break;
         case "StudentsDataService":
             openFileName = "dataservice" + File.separator + "StudentDataService.dbs";

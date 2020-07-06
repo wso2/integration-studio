@@ -31,9 +31,11 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.navigator.CommonNavigator;
 import org.eclipse.ui.part.FileEditorInput;
 import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.distribution.project.Activator;
@@ -156,6 +158,7 @@ public class DistributionProjectWizard extends
 			 IFile pom = project.getFile("pom.xml");
 		     IWorkbenchWindow window=PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 	         IWorkbenchPage page = window.getActivePage();
+	         ((CommonNavigator) page.findViewReference(IPageLayout.ID_PROJECT_EXPLORER, null).getView(true)).setLinkingEnabled(true);
 	      	 page.openEditor(new FileEditorInput(pom), "org.wso2.developerstudio.eclipse.distribution.project.editor.DistProjectEditor"); 
 		} catch (Exception e) { /* ignore */}
 	}

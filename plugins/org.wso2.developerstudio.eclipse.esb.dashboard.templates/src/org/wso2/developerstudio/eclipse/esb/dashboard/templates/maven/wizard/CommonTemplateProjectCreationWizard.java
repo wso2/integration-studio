@@ -28,6 +28,7 @@ import java.util.Map;
 import org.apache.commons.io.FileUtils;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
@@ -35,6 +36,7 @@ import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExecutableExtension;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
@@ -205,6 +207,7 @@ public class CommonTemplateProjectCreationWizard extends Wizard implements INewW
         
         //copy sample readme file
         FileUtils.copyFile(sampleReadmeFile,  new File(project.getLocation().toOSString() + File.separator + "ReadMe.html"));
+        project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
         IFile artifactFileDesc = project.getFile(getFileToLinkWithEditor(selectedSample));
         Shell shell = getShell();
 

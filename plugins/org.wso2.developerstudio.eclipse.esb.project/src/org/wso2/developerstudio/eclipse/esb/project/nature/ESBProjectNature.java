@@ -17,6 +17,7 @@
 package org.wso2.developerstudio.eclipse.esb.project.nature;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
@@ -135,6 +136,8 @@ public class ESBProjectNature extends AbstractWSO2ProjectNature {
 			}
 			MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
 			
+		} catch (FileNotFoundException e) {
+			// ignore
 		} catch (Exception e) {
 			// TODO Handle this properly.
 			e.printStackTrace();

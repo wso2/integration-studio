@@ -344,7 +344,7 @@ public class CommonTemplateProjectCreationWizard extends Wizard implements INewW
             break;
         case "XMLtoJSONMapping":
             openFileName = "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator
-                    + "proxy-services" + File.separator + "EngineerEmployeeService.xml";
+                    + "api" + File.separator + "EngineerEmployeeServiceAPI.xml";
             break;
         case "KafkaConsumerandProducer":
             openFileName = "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator

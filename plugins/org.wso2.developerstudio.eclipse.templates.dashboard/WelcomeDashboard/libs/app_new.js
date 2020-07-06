@@ -96,6 +96,10 @@ var sampleMediatorList = {
 	    "periodical scheduled tasks": "proxy,payload-factory",
 	    "database polling": "proxy,payload-factory",
 	    "proxying a rest service": "proxy,payload-factory",
+	    "hello docker": "proxy,payload-factory",
+	    "hello kubernetes": "proxy,payload-factory",
+	    "unit test tutorial": "proxy,payload-factory",
+	    "api testing": "proxy,payload-factory"
 };
 
 var esbNewProjectWizard = "org.wso2.developerstudio.eclipse.artifact.newesbsolutionproject";

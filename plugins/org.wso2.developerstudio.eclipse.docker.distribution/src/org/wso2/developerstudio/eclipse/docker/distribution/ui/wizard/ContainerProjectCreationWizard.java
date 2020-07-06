@@ -386,7 +386,7 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
             	deploymentTomlPluginExecution.setPhase("none");  
             }
             String deploymentTomlPluginConfig = "<configuration>\n" + ""
-                    + "                <miVersion>" + PlatformUIConstants.DOCKER_DEFAULT_BASE_TAG + "</miVersion>\n" 
+                    + "                <miVersion>" + PlatformUIConstants.MI_DEPLOYMENT_TOML_TEMPLATE_VERSION + "</miVersion>\n" 
                     + "                <executeCipherTool>${ciphertool.enable}</executeCipherTool>\n" 
                     + "                <keystoreName>${keystore.name}</keystoreName>\n" 
                     + "                <keystoreAlias>${keystore.alias}</keystoreAlias>\n" 

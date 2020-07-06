@@ -71,7 +71,7 @@ public class WorkspaceConnectorImportDialog extends Dialog {
 		gridData.verticalAlignment = GridData.FILL;
 		gridData.grabExcessVerticalSpace = true;
 		gridData.grabExcessHorizontalSpace = true;
-		gridData.heightHint = 400;
+		gridData.heightHint = 385;
 		gridData.widthHint = 250;
 		table = new Table(container, SWT.CHECK | SWT.BORDER | SWT.V_SCROLL | SWT.H_SCROLL);
 		table.setEnabled(true);

@@ -17,6 +17,7 @@
 package org.wso2.developerstudio.eclipse.maven.multi.module.handlers;
 
 import java.io.File;
+import java.net.URL;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -28,8 +29,19 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IPageLayout;
+import org.eclipse.ui.IViewPart;
+import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.WorkbenchException;
+import org.eclipse.ui.part.FileEditorInput;
+import org.eclipse.ui.part.ISetSelectionTarget;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.multi.module.Activator;
@@ -189,22 +201,33 @@ public class MvnMultiModuleWizard extends AbstractWSO2ProjectCreationWizard {
             }
         }
 
-        if (getShell() != null) {
-            getShell().getDisplay().asyncExec(new Runnable() {
-                @Override
-                public void run() {
-                    IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-                    if (!ESB_GRAPHICAL_PERSPECTIVE.equals(window.getActivePage().getPerspective().getId())) {
-                        try {
-                            PlatformUI.getWorkbench().showPerspective(ESB_GRAPHICAL_PERSPECTIVE, window);
-                        } catch (Exception e) {
-                            log.error("Cannot switch to ESB Graphical Perspective", e);
-                        }
-                    }
-                }
-            });
-        }
+        Shell shell = Display.getDefault().getActiveShell();
+		if (shell != null) {
+			shell.getDisplay().asyncExec(new Runnable() {
+				@Override
+				public void run() {
+					IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+					if (!ESB_GRAPHICAL_PERSPECTIVE.equals(window.getActivePage().getPerspective().getId())) {
+						try {
+							PlatformUI.getWorkbench().showPerspective(ESB_GRAPHICAL_PERSPECTIVE, window);
+						} catch (Exception e) {
+							log.error("Cannot switch to ESB Graphical Perspective", e);
+						}
+					}
 
+					try {
+						IFile pom = project.getFile("pom.xml");
+						IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+						page.openEditor(new FileEditorInput(pom),
+								"org.wso2.developerstudio.eclipse.maven.multi.module.editor.DistProjectEditor");
+						IViewPart view = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+								.findView(IPageLayout.ID_PROJECT_EXPLORER);
+						((ISetSelectionTarget) view).selectReveal(new StructuredSelection(pom));
+					} catch (PartInitException e) {}
+				}
+			});
+		}
+            
         return true;
     }
 

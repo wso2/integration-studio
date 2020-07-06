@@ -256,6 +256,26 @@
 	                <parameter name="wizardId" value="org.wso2.developerstudio.wizards.ds.restDataServiceTemplate"/>
                 </class>
         </wizard>
+        <wizard
+                name="Hello Docker"
+                icon="icons/template-default.png"
+                project="true"
+                category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
+                id="org.wso2.developerstudio.wizards.esb.helloDocker">
+                <class class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+	                <parameter name="wizardId" value="org.wso2.developerstudio.wizards.esb.helloDocker"/>
+                </class>
+        </wizard>
+        <wizard
+                name="Hello Kubernetes"
+                icon="icons/template-default.png"
+                project="true"
+                category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
+                id="org.wso2.developerstudio.wizards.esb.helloKubernetes">
+                <class class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+	                <parameter name="wizardId" value="org.wso2.developerstudio.wizards.esb.helloKubernetes"/>
+                </class>
+        </wizard>
     </extension>
     <extension
             point="org.wso2.developerstudio.eclipse.template.dashboad.link">
@@ -316,6 +336,11 @@
                     description="Expose a virtual service which act as a proxy to an existing service that is exposed over a RESTful API"
                     image="icons/template-default.png">
         </wizardLink>
+        <wizardLink category="dashboard.category.template.container" id="dashboard.wizardLink.esb.helloDocker.project"
+                    wizard="org.wso2.developerstudio.wizards.esb.helloDocker"
+                    description="Create and deploy a simple Hello World service in Docker environment"
+                    image="icons/template-default.png">
+        </wizardLink>
         <wizardLink category="dashboard.category.template.routing"
                     id="dashboard.wizardLink.esb.contentBasedRoutingTemplate.project"
                     wizard="org.wso2.developerstudio.wizards.esb.contentBasedRoutingTemplate"
@@ -326,6 +351,11 @@
                     id="dashboard.wizardLink.esb.headerBasedRoutingTemplate.project"
                     wizard="org.wso2.developerstudio.wizards.esb.headerBasedRoutingTemplate"
                     description="Demonstrates header-based message routing capability"
+                    image="icons/template-default.png">
+        </wizardLink>
+        <wizardLink category="dashboard.category.template.container" id="dashboard.wizardLink.esb.helloKubernetes.project"
+                    wizard="org.wso2.developerstudio.wizards.esb.helloKubernetes"
+                    description="Create and deploy a simple Hello World service in Kubernetes environment"
                     image="icons/template-default.png">
         </wizardLink>
         <wizardLink category="dashboard.category.template.routing"

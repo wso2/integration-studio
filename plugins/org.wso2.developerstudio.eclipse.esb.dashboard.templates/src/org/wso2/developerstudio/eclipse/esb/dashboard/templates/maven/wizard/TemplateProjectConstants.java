@@ -35,6 +35,8 @@ public class TemplateProjectConstants {
 
     public static final String SYNAPSE_CONFIG_EDITOR_ID = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorID";
     
+    public static final String DOCKER_EDITOR = "org.wso2.developerstudio.eclipse.docker.distribution.editor.DistProjectEditor";
+    
     public static final String DS_EDITOR_ID = "org.wso2.developerstudio.eclipse.ds.presentation.DsEditorID";
 
     public static final String ESB_GRAPHICAL_PERSPECTIVE = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.perspective";

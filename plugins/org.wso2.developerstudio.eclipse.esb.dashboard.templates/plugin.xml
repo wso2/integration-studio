@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+ https://github.com/wso2/devstudio-tooling-platform/pull/317<?xml version="1.0" encoding="UTF-8"?>
 <!--
   Copyright (c) 2018, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
 
@@ -276,6 +276,26 @@
 	                <parameter name="wizardId" value="org.wso2.developerstudio.wizards.esb.helloKubernetes"/>
                 </class>
         </wizard>
+        <wizard
+                name="Unit Test Tutorial"
+                icon="icons/template-default.png"
+                project="true"
+                category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
+                id="org.wso2.developerstudio.wizards.esb.unitTestTutorial">
+                <class class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+	                <parameter name="wizardId" value="org.wso2.developerstudio.wizards.esb.unitTestTutorial"/>
+                </class>
+        </wizard>
+        <wizard
+                name="API Testing"
+                icon="icons/template-default.png"
+                project="true"
+                category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
+                id="org.wso2.developerstudio.wizards.esb.apiTesting">
+                <class class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+	                <parameter name="wizardId" value="org.wso2.developerstudio.wizards.esb.apiTesting"/>
+                </class>
+        </wizard>
     </extension>
     <extension
             point="org.wso2.developerstudio.eclipse.template.dashboad.link">
@@ -455,6 +475,18 @@
                     id="dashboard.wizardLink.ds.template.project.restDataServiceTemplate"
                     wizard="org.wso2.developerstudio.wizards.ds.restDataServiceTemplate"
                     description="REST Data Service"
+                    image="icons/template-default.png">
+        </wizardLink>
+        <wizardLink category="dashboard.category.template.unittesting"
+                    id="dashboard.wizardLink.esb.template.project.unitTestTutorial"
+                    wizard="org.wso2.developerstudio.wizards.esb.unitTestTutorial"
+                    description="Demonstrate how to test sample API with Synapse unit testing framework"
+                    image="icons/template-default.png">
+        </wizardLink>
+        <wizardLink category="dashboard.category.template.unittesting"
+                    id="dashboard.wizardLink.esb.template.project.apiTesting"
+                    wizard="org.wso2.developerstudio.wizards.esb.apiTesting"
+                    description="Tutorial of Synapse unit testing framework for integration solutions"
                     image="icons/template-default.png">
         </wizardLink>
     </extension>

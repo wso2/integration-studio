@@ -36,7 +36,13 @@ function populateAPIList() {
 	for(var i = 0; i < apiList.length; i++) {
 	    var item = apiList[i];
 	    $table = $('#table-container-api table tbody');
-	    $table.append('<tr><td>' + item.name + '</td><td>' + item.url + '</td></tr>');
+	    $table.append('<tr><td><pre><code class="language-bash">' + item.name + '</code></pre></td><td><pre><code class="language-bash">' + item.url + '</code></pre></td></tr>');
+	}
+	
+	if (apiList.length == 0) {
+		$table = $('#table-container-api table tbody');
+		$table.append('<tr><td>No services</td><td>-</td><td>-</td>');
+		
 	}
 	
 	return apiList;
@@ -48,7 +54,14 @@ function populateProxyList() {
 	for(var i = 0; i < proxyList.length; i++) {
 	    var item = proxyList[i];
 	    $table = $('#table-container-proxy table tbody');
-		$table.append('<tr><td>' + item.name + '</td><td>' + item.wsdl1_1 + '</td><td>' + item.wsdl2_0 + '</td></tr>');
+		$table.append('<tr><td><pre><code class="language-bash">' + item.name + '</code></pre></td><td><pre><code class="language-bash">' + 
+				item.wsdl1_1 + '</code></pre></td><td><pre><code class="language-bash">' + item.wsdl2_0 + '</code></pre></td></tr>');
+	}
+	
+	if (proxyList.length == 0) {
+		$table = $('#table-container-proxy table tbody');
+		$table.append('<tr><td>No services</td><td>-</td><td>-</td>');
+		
 	}
 	
 	return apiList;
@@ -60,9 +73,16 @@ function populateDataServiceList() {
 	for(var i = 0; i < dataserviceList.length; i++) {
 	    var item = dataserviceList[i];
 	    $table = $('#table-container-ds table tbody');
-		$table.append('<tr><td>' + item.name + '</td><td>' + item.wsdl1_1 + '</td><td>' + item.wsdl2_0 + '</td></tr>');
+		$table.append('<tr><td><pre><code class="language-bash">' + item.name + '</code></pre></td><td><pre><code class="language-bash">' + 
+				item.wsdl1_1 + '</code></pre></td><td><pre><code class="language-bash">' + item.wsdl2_0 + '</code></pre></td></tr>');
 	}
 
+	if (dataserviceList.length == 0) {
+		$table = $('#table-container-ds table tbody');
+		$table.append('<tr><td>No services</td><td>-</td><td>-</td>');
+		
+	}
+	
 	return dataserviceList;
 }
 
@@ -103,14 +123,7 @@ function openDashboard() {
 	});
 }
 
-$(document).ready(function($) {
-	document.onclick = function(e) {
-		e = e || window.event;
-		var element = e.target || e.srcElement;
-		// catch event of open monitoring dashboard.
-		if (element.tagName == "A" && element.id && element.id == "open-monitoring-dashboard") {
-			openDashboard();
-			return false;
-		}
-	};
+
+$("#open-monitoring-dashboard").click(function(){
+	openDashboard();
 });

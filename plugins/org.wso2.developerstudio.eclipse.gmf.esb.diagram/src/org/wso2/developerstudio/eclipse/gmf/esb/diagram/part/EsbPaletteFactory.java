@@ -96,7 +96,7 @@ public class EsbPaletteFactory {
     
     private static final String CLOUD_CONNECTOR_PREFIX = "CloudConnector-";
     
-    private static final String FILE_PROTOCOL_PREFIX = "file://";
+    private static final String FILE_PROTOCOL_PREFIX = "file:///";
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     

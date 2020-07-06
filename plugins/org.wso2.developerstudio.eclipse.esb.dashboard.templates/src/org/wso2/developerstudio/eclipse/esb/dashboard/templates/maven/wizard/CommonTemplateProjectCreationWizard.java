@@ -49,7 +49,6 @@ import org.osgi.framework.Bundle;
 import org.wso2.developerstudio.eclipse.distribution.project.util.MavenMultiModuleImportUtils;
 import org.wso2.developerstudio.eclipse.esb.dashboard.templates.Activator;
 import org.wso2.developerstudio.eclipse.esb.dashboard.templates.maven.wizard.TemplateProjectWizardPage;
-import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 
 public class CommonTemplateProjectCreationWizard extends Wizard implements INewWizard, IExecutableExtension {
 
@@ -363,6 +362,14 @@ public class CommonTemplateProjectCreationWizard extends Wizard implements INewW
         case "HelloKubernetes":
             openFileName = "pom.xml";
             break;
+        case "UnitTestTutorial":
+        	openFileName = "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator
+            + "api" + File.separator + "business-logic.xml";
+        	break;
+        case "APITesting":
+        	openFileName = "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator
+            + "api" + File.separator + "RESTApi.xml";
+        	break;
         }
 
         return openFileName;

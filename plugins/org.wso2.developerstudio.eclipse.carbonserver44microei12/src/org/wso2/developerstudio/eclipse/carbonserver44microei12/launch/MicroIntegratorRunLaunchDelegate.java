@@ -93,6 +93,10 @@ public class MicroIntegratorRunLaunchDelegate implements ILaunchConfigurationDel
         IWorkbenchPart viewpart = activePage.findView("org.eclipse.ui.navigator.ProjectExplorer");
         IStructuredSelection selection = (IStructuredSelection) viewpart.getSite().getSelectionProvider()
                 .getSelection();
+        if (selection.isEmpty()) {
+        	popUpErrorDialogAndLogException("Please select a project to run with embedded Micro Integrator");
+        	return;
+        }
         IProject selectedProject = (IProject) ((IResource) selection.getFirstElement()).getProject();
         String currentProjectName = selectedProject.getName();
         // Get the associated carbon application for the selected project from the

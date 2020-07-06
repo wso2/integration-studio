@@ -309,7 +309,7 @@ public class CommonTemplateProjectCreationWizard extends Wizard implements INewW
             break;
         case "ScatterGatherIntegrationPattern":
             openFileName = "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator
-                    + "proxy-services" + File.separator + "MissionService.xml";
+                    + "api" + File.separator + "MissionServiceAPI.xml";
             break;
         case "FileTransfer":
             openFileName = "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator

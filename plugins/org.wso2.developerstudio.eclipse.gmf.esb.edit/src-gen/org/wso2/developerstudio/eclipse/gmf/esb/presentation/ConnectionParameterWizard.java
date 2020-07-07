@@ -186,7 +186,9 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
                     if (elementId.equals("connectionName") && !StringUtils.isEmpty(value)) {
                         localEntryPath = localEntryPath + value + XML_EXTENSION;
                         if (valueExpressionCombo != null) {
-                            ((Combo) valueExpressionCombo).add(value);
+                            Combo connectionCombo = (Combo) valueExpressionCombo;
+                            connectionCombo.add(value);
+                            connectionCombo.select(connectionCombo.getItemCount() - 1);
                         }
                         Attr localEntryKey = doc.createAttribute("key");
                         localEntryKey.setValue(value);

@@ -97,6 +97,10 @@ public class DockerNavigatorActionProvider extends CommonActionProvider {
                     } else if (fileTobeOpen.getFileExtension().equals("html")) {
                         page.openEditor(new FileEditorInput(fileTobeOpen),
                                 DockerProjectConstants.INTERNAL_BROWSER_EDITOR_ID);
+                    } else if (fileTobeOpen.getFileExtension().equals("properties")
+                            || fileTobeOpen.getFileExtension().equals("jks")) {
+                        page.openEditor(new FileEditorInput(fileTobeOpen),
+                                DockerProjectConstants.DEFAULT_TEXT_EDITOR_ID);
                     } else {
                         page.openEditor(new FileEditorInput(fileTobeOpen), DockerProjectConstants.DOCKER_EDITOR);
                     }

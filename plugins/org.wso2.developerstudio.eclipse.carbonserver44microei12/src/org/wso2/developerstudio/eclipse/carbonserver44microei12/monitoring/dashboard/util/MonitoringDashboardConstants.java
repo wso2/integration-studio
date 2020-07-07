@@ -36,4 +36,7 @@ public class MonitoringDashboardConstants {
     public static final String COLON = ":";
     public static final String MI_DASHBOARD_CONTEXT_PATH = "/dashboard";
     public static final int DEFAULT_PORT = 9390;
+    public static final String JDK_PATH = "jdk-home";
+    public static final String JDK_PATH_MAC = "jdk-home/Contents/Home";
+    public static final String JAVA_HOME_ENV_VAR = "JAVA_HOME";
 }

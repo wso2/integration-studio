@@ -99,4 +99,33 @@ public class MonitoringDashboardUtil {
         return (OS.indexOf(MonitoringDashboardConstants.MAC) >= 0)
                 || (OS.indexOf(MonitoringDashboardConstants.DARWIN) >= 0);
     }
+
+    /**
+     * Method of getting JAVA_HOME path based on the OS type.
+     *
+     * @return JAVA_HOME path
+     */
+    public static String getJavaHomePath() {
+        String OS = System.getProperty("os.name", "generic").toLowerCase(Locale.ENGLISH);
+        String microInteratorPath;
+
+        if ((OS.indexOf("mac") >= 0) || (OS.indexOf("darwin") >= 0)) {
+            // check if EI Tooling is in Application folder for MAC
+            File macOSEIToolingAppFile = new File(MonitoringDashboardConstants.TOOLING_PATH_MAC);
+            if (macOSEIToolingAppFile.exists()) {
+                microInteratorPath = MonitoringDashboardConstants.TOOLING_PATH_MAC + File.separator +
+                        MonitoringDashboardConstants.JDK_PATH_MAC;
+            } else {
+                java.nio.file.Path path = Paths.get("");
+                microInteratorPath = (path).toAbsolutePath().toString() + File.separator +
+                        MonitoringDashboardConstants.JDK_PATH_MAC;
+            }
+        } else {
+            java.nio.file.Path path = Paths.get("");
+            microInteratorPath = (path).toAbsolutePath().toString() + File.separator +
+                    MonitoringDashboardConstants.JDK_PATH;
+        }
+
+        return microInteratorPath;
+    }
 }

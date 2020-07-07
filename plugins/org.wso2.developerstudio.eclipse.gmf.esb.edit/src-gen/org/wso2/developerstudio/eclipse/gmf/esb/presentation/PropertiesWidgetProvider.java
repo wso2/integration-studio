@@ -46,6 +46,7 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Device;
+import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.GlyphMetrics;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
@@ -442,12 +443,13 @@ public class PropertiesWidgetProvider {
                 // Set the style, 12 pixles wide for each digit
                 StyleRange style = new StyleRange();
                 Device device = Display.getCurrent();
-                final RGB LINE_NUMBER_BG = new RGB(0, 0, 0);
-                final RGB LINE_NUMBER_FG = new RGB(201, 208, 211);
+                final RGB LINE_NUMBER_FG = new RGB(185, 193, 196);
 
-                // style.background = new Color(device, LINE_NUMBER_BG);
                 style.foreground = new Color(device, LINE_NUMBER_FG);
-                style.metrics = new GlyphMetrics(0, 0, EEFPropertyConstants.EXPRESSION_TEXTBOX_PREFIX.length() * 5);
+                GC gc = new GC(expressionTextBox);
+                Point textExtent = gc.stringExtent(EEFPropertyConstants.EXPRESSION_TEXTBOX_PREFIX);
+                gc.dispose();
+                style.metrics = new GlyphMetrics(0, 0, textExtent.x);
 
                 e.bullet = new Bullet(ST.BULLET_TEXT, style);
                 e.bullet.text = EEFPropertyConstants.EXPRESSION_TEXTBOX_PREFIX;

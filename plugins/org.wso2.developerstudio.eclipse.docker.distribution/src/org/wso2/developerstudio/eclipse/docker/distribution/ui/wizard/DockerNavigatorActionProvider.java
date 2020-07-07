@@ -94,7 +94,10 @@ public class DockerNavigatorActionProvider extends CommonActionProvider {
 						page.openEditor(new FileEditorInput(fileTobeOpen), DockerProjectConstants.DOCKER_FILE_EDITOR);
                     } else if (fileTobeOpen.getName().equals(DockerProjectConstants.KUBE_YAML_FILE_NAME)) {
                         page.openEditor(new FileEditorInput(fileTobeOpen), DockerProjectConstants.YAML_FILE_EDITOR);
-					} else {
+                    } else if (fileTobeOpen.getFileExtension().equals("html")) {
+                        page.openEditor(new FileEditorInput(fileTobeOpen),
+                                DockerProjectConstants.INTERNAL_BROWSER_EDITOR_ID);
+                    } else {
                         page.openEditor(new FileEditorInput(fileTobeOpen), DockerProjectConstants.DOCKER_EDITOR);
                     }
                 }

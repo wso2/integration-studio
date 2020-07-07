@@ -108,6 +108,7 @@ public class DockerProjectConstants extends NLS {
     public static final String DOCKER_FILE_AUTO_GENERATION_BEGIN = "#[DO NOT REMOVE] Auto generated Docker commands for config-map parser";
     public static final String DOCKER_FILE_AUTO_GENERATION_END = "#[DO NOT REMOVE] End of auto generated Docker commands for config-map parser";
     public static final String INTERNAL_BROWSER_EDITOR_ID = "org.eclipse.ui.browser.editor";
+    public static final String DEFAULT_TEXT_EDITOR_ID = "org.eclipse.ui.DefaultTextEditor";
     
     public static String KUBERNETES_PROJECT_TYPE;
     public static String DOCKER_PROJECT_TYPE;

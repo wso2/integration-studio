@@ -22,7 +22,7 @@
 <meta charset="utf-8">
 <meta content="IE=edge" http-equiv="X-UA-Compatible">
 <meta content="width=device-width, initial-scale=1" name="viewport">
-<title>Kubernetes User Guide</title>
+<title>Docker User Guide</title>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400"
 	rel="stylesheet">
 <style>
@@ -384,22 +384,18 @@ h1 span {
 </head>
 <body>
 	<div class="header">
-		<h2>
-			<span id="page_title">Kubernetes Project User Guide</span>
-		</h2>
+	    <h1>
+	        <a href="../DefaultReadMe.html" class="arrow" ></a>
+	        <span id="page_title">Docker Project User Guide</span>
+	    </h1>
 	</div>
 	<div id="content" style="margin-top: 40px;">
 
 		<div class="about-template">
 			<h3>About</h3>
-			<p>
-				This project leads you to build and push a Docker image to the
-				private or public Docker registry with the given registry
-				credentials, target repository name and the target repository tag.
-				Also, this will create the <b>integration_cr.yaml</b> file, which is
-				required for the <b>Native Kubernetes Deployment</b> with Kubernetes
-				EI Operator.
-			</p>
+			<p>This project leads you to build a docker image locally in your
+				machine with the given target repository name and the target
+				repository tag.</p>
 			<p>
 				You can change the Docker image name by changing the <b>Target
 					Repository</b> value and <b>Target Tag</b> value as desired.
@@ -424,8 +420,8 @@ h1 span {
 								Docker image during the build. These JARs are copied to the <b><i>wso2carbon/wso2mi/lib/</i></b>
 								path while building. <b>Uncomment</b> the following command in
 								Dockerfile once you add any JARs here.
-
-								<pre><code class="language-bash">#COPY Libs/*.jar /home/wso2carbon/wso2mi/lib/</code>
+							<pre>
+								<code class="language-bash">#COPY Libs/*.jar /home/wso2carbon/wso2mi/lib/</code>
 							</pre>
 							</p>
 						</li>
@@ -437,14 +433,9 @@ h1 span {
 							</p>
 						</li>
 						<li>
-							<h3>deployment.toml File</h3>
+							<h3>deployment.toml file</h3>
 							<p>- Update the deployment.toml file if you want to change
 								the configurations of the Micro Integrator.</p>
-						</li>
-						<li>
-							<h3>integration_cr.yaml file</h3>
-							<p>- This file is used to configure the Kubernetes
-								Integration deployment</p>
 						</li>
 						<li>
 							<h3>Dockerfile</h3>
@@ -461,36 +452,37 @@ h1 span {
 
 			<div class="option">
 				<input type="checkbox" id="toggle2" class="toggle" checked /> <label
-					class="title" for="toggle2"> Build and Push the Docker Image </label>
+					class="title" for="toggle2"> Build the Docker Image </label>
 				<div class="content" style="list-style-type: none;">
 					<p style="font-size: 15px;">
-						Open the <b>pom.xml</b> file and click the <b>Build & Push</b>
-						button in the top right corner. Then enter the Docker registry
-						credentials.
+						Open the <b>pom.xml</b> file and click the <b>Build</b> button in
+						the top right corner.
 					</p>
 					<div class="separator">or</div>
 					<p style="font-size: 15px;">
-						<b>Right click</b> on the Kubernetes Exporter project and select
-						the <b>Build and Push Docker Image</b> option. Then enter the
-						Docker registry credentials.
+						<b>Right click</b> the Docker Exporter project and select the <b>Build
+							Docker Image</b> option.
 					</p>
-				</div>
-			</div>
-
-			<div class="option">
-				<input type="checkbox" id="toggle2" class="toggle" checked /> <label
-					class="title" for="toggle2"> Kubernetes Deployment </label>
-				<div class="content" style="list-style-type: none;">
-					<p style="font-size: 15px;">
-						Install the <b>Kubernetes EI Operator</b> in your Kubernetes environment
-						once and run the following command to apply the native deployment.
-					</p>
-					<pre>
-						<code class="language-bash">kubectl apply -f path/to/integration_cr.yaml</code>
-					</pre>
 				</div>
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+	    Prism.plugins.NormalizeWhitespace.setDefaults({
+	        'remove-trailing': true,
+	        'remove-indent': true,
+	        'left-trim': true,
+	        'right-trim': true,
+	    });
+	
+	   var url = window.location.pathname;
+	   var filename = url.substring(url.lastIndexOf('/')+1);
+	   if (filename == 'ReadMe.html') {
+	      var arrow_element = document.getElementsByClassName('arrow')[0];
+	      var heading_title = document.getElementById('page_title');
+	      arrow_element.style.visibility = 'hidden';
+	      heading_title.style.paddingLeft = 0;
+	   }
+	</script>
 </body>
 </html>

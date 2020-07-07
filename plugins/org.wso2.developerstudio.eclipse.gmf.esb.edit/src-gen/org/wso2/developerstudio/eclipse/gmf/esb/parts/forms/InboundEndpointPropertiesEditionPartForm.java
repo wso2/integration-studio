@@ -148,6 +148,9 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
     protected Button transportVFSStreaming;
     protected Button transportVFSBuild;
     protected Text transportVFSDistributedTimeout;
+    protected Text transportVFSSFTPIdentities;
+    protected Text transportVFSSFTPIdentityPassPhrase;
+    protected Button transportVFSSFTPUserDirIsRoot;
     protected Text javaNamingFactoryInitial;
     protected Text javaNamingProviderUrl;
     protected Text transportJMSConnectionFactoryJNDIName;
@@ -451,6 +454,9 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportVFSStreaming);
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportVFSBuild);
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportVFSDistributedTimeout);
+        propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportVFSSFTPIdentities);
+        propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportVFSSFTPIdentityPassPhrase);
+        propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportVFSSFTPUserDirIsRoot);
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.javaNamingFactoryInitial);
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.javaNamingProviderUrl);
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportJMSConnectionFactoryJNDIName);
@@ -1009,6 +1015,27 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSDistributedTimeout) {
                     Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
                     Composite composite = createTransportVFSDistributedTimeoutText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
+                    return composite;
+                }
+                if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSSFTPIdentities) {
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportVFSSFTPIdentitiesText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
+                    return composite;
+                }
+                if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSSFTPIdentityPassPhrase) {
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportVFSSFTPIdentityPassPhraseText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
+                    return composite;
+                }
+                if (key == EsbViewsRepository.InboundEndpoint.Properties.transportVFSSFTPUserDirIsRoot) {
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportVFSSFTPUserDirIsRootCheckbox(widgetFactory, filterAdvanceSubPropertiesGroup);
                     Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(filePropertyIDs, previousControls, newControls);
                     return composite;
@@ -5454,6 +5481,168 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         // End of user code
         return parent;
     }
+
+    protected Composite createTransportVFSSFTPIdentitiesText(FormToolkit widgetFactory, Composite parent) {
+    createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportVFSSFTPIdentities, EsbMessages.InboundEndpointPropertiesEditionPart_TransportVFSSFTPIdentitiesLabel);
+    transportVFSSFTPIdentities = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+    transportVFSSFTPIdentities.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+    widgetFactory.paintBordersFor(parent);
+    GridData transportVFSSFTPIdentitiesData = new GridData(GridData.FILL_HORIZONTAL);
+    transportVFSSFTPIdentities.setLayoutData(transportVFSSFTPIdentitiesData);
+    transportVFSSFTPIdentities.addFocusListener(new FocusAdapter() {
+      /**
+       * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void focusLost(FocusEvent e) {
+        if (propertiesEditionComponent != null) {
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+              InboundEndpointPropertiesEditionPartForm.this,
+              EsbViewsRepository.InboundEndpoint.Properties.transportVFSSFTPIdentities,
+              PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, transportVFSSFTPIdentities.getText()));
+          propertiesEditionComponent
+              .firePropertiesChanged(new PropertiesEditionEvent(
+                  InboundEndpointPropertiesEditionPartForm.this,
+                  EsbViewsRepository.InboundEndpoint.Properties.transportVFSSFTPIdentities,
+                  PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+                  null, transportVFSSFTPIdentities.getText()));
+        }
+      }
+
+      /**
+       * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+       */
+      @Override
+      public void focusGained(FocusEvent e) {
+        if (propertiesEditionComponent != null) {
+          propertiesEditionComponent
+              .firePropertiesChanged(new PropertiesEditionEvent(
+                  InboundEndpointPropertiesEditionPartForm.this,
+                  null,
+                  PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+                  null, null));
+        }
+      }
+    });
+    transportVFSSFTPIdentities.addKeyListener(new KeyAdapter() {
+      /**
+       * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void keyPressed(KeyEvent e) {
+        if (e.character == SWT.CR) {
+          if (propertiesEditionComponent != null)
+            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InboundEndpointPropertiesEditionPartForm.this, EsbViewsRepository.InboundEndpoint.Properties.transportVFSSFTPIdentities, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, transportVFSSFTPIdentities.getText()));
+        }
+      }
+    });
+    EditingUtils.setID(transportVFSSFTPIdentities, EsbViewsRepository.InboundEndpoint.Properties.transportVFSSFTPIdentities);
+    EditingUtils.setEEFtype(transportVFSSFTPIdentities, "eef::Text"); //$NON-NLS-1$
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.InboundEndpoint.Properties.transportVFSSFTPIdentities, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    // Start of user code for createTransportVFSSFTPIdentitiesText
+
+    // End of user code
+    return parent;
+  }
+
+    protected Composite createTransportVFSSFTPIdentityPassPhraseText(FormToolkit widgetFactory, Composite parent) {
+    createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportVFSSFTPIdentityPassPhrase, EsbMessages.InboundEndpointPropertiesEditionPart_TransportVFSSFTPIdentityPassPhraseLabel);
+    transportVFSSFTPIdentityPassPhrase = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+    transportVFSSFTPIdentityPassPhrase.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+    widgetFactory.paintBordersFor(parent);
+    GridData transportVFSSFTPIdentityPassPhraseData = new GridData(GridData.FILL_HORIZONTAL);
+    transportVFSSFTPIdentityPassPhrase.setLayoutData(transportVFSSFTPIdentityPassPhraseData);
+    transportVFSSFTPIdentityPassPhrase.addFocusListener(new FocusAdapter() {
+      /**
+       * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void focusLost(FocusEvent e) {
+        if (propertiesEditionComponent != null) {
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+              InboundEndpointPropertiesEditionPartForm.this,
+              EsbViewsRepository.InboundEndpoint.Properties.transportVFSSFTPIdentityPassPhrase,
+              PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, transportVFSSFTPIdentityPassPhrase.getText()));
+          propertiesEditionComponent
+              .firePropertiesChanged(new PropertiesEditionEvent(
+                  InboundEndpointPropertiesEditionPartForm.this,
+                  EsbViewsRepository.InboundEndpoint.Properties.transportVFSSFTPIdentityPassPhrase,
+                  PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+                  null, transportVFSSFTPIdentityPassPhrase.getText()));
+        }
+      }
+
+      /**
+       * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+       */
+      @Override
+      public void focusGained(FocusEvent e) {
+        if (propertiesEditionComponent != null) {
+          propertiesEditionComponent
+              .firePropertiesChanged(new PropertiesEditionEvent(
+                  InboundEndpointPropertiesEditionPartForm.this,
+                  null,
+                  PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+                  null, null));
+        }
+      }
+    });
+    transportVFSSFTPIdentityPassPhrase.addKeyListener(new KeyAdapter() {
+      /**
+       * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void keyPressed(KeyEvent e) {
+        if (e.character == SWT.CR) {
+          if (propertiesEditionComponent != null)
+            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InboundEndpointPropertiesEditionPartForm.this, EsbViewsRepository.InboundEndpoint.Properties.transportVFSSFTPIdentityPassPhrase, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, transportVFSSFTPIdentityPassPhrase.getText()));
+        }
+      }
+    });
+    EditingUtils.setID(transportVFSSFTPIdentityPassPhrase, EsbViewsRepository.InboundEndpoint.Properties.transportVFSSFTPIdentityPassPhrase);
+    EditingUtils.setEEFtype(transportVFSSFTPIdentityPassPhrase, "eef::Text"); //$NON-NLS-1$
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.InboundEndpoint.Properties.transportVFSSFTPIdentityPassPhrase, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    // Start of user code for createTransportVFSSFTPIdentityPassPhraseText
+
+    // End of user code
+    return parent;
+  }
+
+    protected Composite createTransportVFSSFTPUserDirIsRootCheckbox(FormToolkit widgetFactory, Composite parent) {
+    transportVFSSFTPUserDirIsRoot = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.InboundEndpoint.Properties.transportVFSSFTPUserDirIsRoot, EsbMessages.InboundEndpointPropertiesEditionPart_TransportVFSSFTPUserDirIsRootLabel), SWT.CHECK);
+    transportVFSSFTPUserDirIsRoot.addSelectionListener(new SelectionAdapter() {
+
+      /**
+       * {@inheritDoc}
+       *
+       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+       * 	
+       */
+      public void widgetSelected(SelectionEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InboundEndpointPropertiesEditionPartForm.this, EsbViewsRepository.InboundEndpoint.Properties.transportVFSSFTPUserDirIsRoot, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(transportVFSSFTPUserDirIsRoot.getSelection())));
+      }
+
+    });
+    GridData transportVFSSFTPUserDirIsRootData = new GridData(GridData.FILL_HORIZONTAL);
+    transportVFSSFTPUserDirIsRootData.horizontalSpan = 2;
+    transportVFSSFTPUserDirIsRoot.setLayoutData(transportVFSSFTPUserDirIsRootData);
+    EditingUtils.setID(transportVFSSFTPUserDirIsRoot, EsbViewsRepository.InboundEndpoint.Properties.transportVFSSFTPUserDirIsRoot);
+    EditingUtils.setEEFtype(transportVFSSFTPUserDirIsRoot, "eef::Checkbox"); //$NON-NLS-1$
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.InboundEndpoint.Properties.transportVFSSFTPUserDirIsRoot, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    // Start of user code for createTransportVFSSFTPUserDirIsRootCheckbox
+
+    // End of user code
+    return parent;
+  }
 
     protected Composite createJavaNamingFactoryInitialText(FormToolkit widgetFactory, Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.javaNamingFactoryInitial,
@@ -18411,6 +18600,102 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         }
 
     }
+
+    /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSSFTPIdentities()
+   * 
+   */
+  public String getTransportVFSSFTPIdentities() {
+    return transportVFSSFTPIdentities.getText();
+  }
+
+    /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSSFTPIdentities(String newValue)
+   * 
+   */
+  public void setTransportVFSSFTPIdentities(String newValue) {
+    if (newValue != null) {
+      transportVFSSFTPIdentities.setText(newValue);
+    } else {
+      transportVFSSFTPIdentities.setText(""); //$NON-NLS-1$
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.InboundEndpoint.Properties.transportVFSSFTPIdentities);
+    if (eefElementEditorReadOnlyState && transportVFSSFTPIdentities.isEnabled()) {
+      transportVFSSFTPIdentities.setEnabled(false);
+      transportVFSSFTPIdentities.setToolTipText(EsbMessages.InboundEndpoint_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !transportVFSSFTPIdentities.isEnabled()) {
+      transportVFSSFTPIdentities.setEnabled(true);
+    }	
+    
+  }
+
+    /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSSFTPIdentityPassPhrase()
+   * 
+   */
+  public String getTransportVFSSFTPIdentityPassPhrase() {
+    return transportVFSSFTPIdentityPassPhrase.getText();
+  }
+
+    /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSSFTPIdentityPassPhrase(String newValue)
+   * 
+   */
+  public void setTransportVFSSFTPIdentityPassPhrase(String newValue) {
+    if (newValue != null) {
+      transportVFSSFTPIdentityPassPhrase.setText(newValue);
+    } else {
+      transportVFSSFTPIdentityPassPhrase.setText(""); //$NON-NLS-1$
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.InboundEndpoint.Properties.transportVFSSFTPIdentityPassPhrase);
+    if (eefElementEditorReadOnlyState && transportVFSSFTPIdentityPassPhrase.isEnabled()) {
+      transportVFSSFTPIdentityPassPhrase.setEnabled(false);
+      transportVFSSFTPIdentityPassPhrase.setToolTipText(EsbMessages.InboundEndpoint_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !transportVFSSFTPIdentityPassPhrase.isEnabled()) {
+      transportVFSSFTPIdentityPassPhrase.setEnabled(true);
+    }	
+    
+  }
+
+    /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSSFTPUserDirIsRoot()
+   * 
+   */
+  public Boolean getTransportVFSSFTPUserDirIsRoot() {
+    return Boolean.valueOf(transportVFSSFTPUserDirIsRoot.getSelection());
+  }
+
+    /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSSFTPUserDirIsRoot(Boolean newValue)
+   * 
+   */
+  public void setTransportVFSSFTPUserDirIsRoot(Boolean newValue) {
+    if (newValue != null) {
+      transportVFSSFTPUserDirIsRoot.setSelection(newValue.booleanValue());
+    } else {
+      transportVFSSFTPUserDirIsRoot.setSelection(false);
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.InboundEndpoint.Properties.transportVFSSFTPUserDirIsRoot);
+    if (eefElementEditorReadOnlyState && transportVFSSFTPUserDirIsRoot.isEnabled()) {
+      transportVFSSFTPUserDirIsRoot.setEnabled(false);
+      transportVFSSFTPUserDirIsRoot.setToolTipText(EsbMessages.InboundEndpoint_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !transportVFSSFTPUserDirIsRoot.isEnabled()) {
+      transportVFSSFTPUserDirIsRoot.setEnabled(true);
+    }	
+    
+  }
 
     /**
      * {@inheritDoc}

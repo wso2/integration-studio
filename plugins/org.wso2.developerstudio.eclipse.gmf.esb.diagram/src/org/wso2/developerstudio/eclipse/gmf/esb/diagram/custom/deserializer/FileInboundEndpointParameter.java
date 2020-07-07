@@ -49,6 +49,9 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOU
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFS_RECONNECT_TIMEOUT;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFS_STREAMING;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_IDENTITIES;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_IDENTITY_PASS_PHRASE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_USER_DIR_IS_ROOT;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.InboundEndpointConstants;
@@ -152,7 +155,16 @@ public enum FileInboundEndpointParameter {
                                                                                                                                                                                                                                                                     false), VFS_BUILD_TYPE(
                                                                                                                                                                                                                                                                             InboundEndpointConstants.VFS_BUILD,
                                                                                                                                                                                                                                                                             INBOUND_ENDPOINT__TRANSPORT_VFS_BUILD,
-                                                                                                                                                                                                                                                                            false);
+                                                                                                                                                                                                                                                                            false), VFS_SFTP_IDENTITIES_TYPE(
+                                                                                                                                                                                                                                                                                    InboundEndpointConstants.VFS_SFTP_IDENTITIES,
+                                                                                                                                                                                                                                                                                    INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_IDENTITIES,
+                                                                                                                                                                                                                                                                                    true), VFS_SFTP_IDENTITY_PASSPHRASE_TYPE(
+                                                                                                                                                                                                                                                                                            InboundEndpointConstants.VFS_SFTP_IDENTITY_PASSPHRASE,
+                                                                                                                                                                                                                                                                                            INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_IDENTITY_PASS_PHRASE,
+                                                                                                                                                                                                                                                                                            true), VFS_SFTP_USER_DIR_IS_ROOT_TYPE(
+                                                                                                                                                                                                                                                                                                    InboundEndpointConstants.VFS_SFTP_USER_DIR_IS_ROOT,
+                                                                                                                                                                                                                                                                                                    INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_USER_DIR_IS_ROOT,
+                                                                                                                                                                                                                                                                                                    false);
 
     private final String name;
     private final EAttribute eAttributeValue;

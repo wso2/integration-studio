@@ -79,6 +79,9 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportVFSStreaming <em>Transport VFS Streaming</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportVFSBuild <em>Transport VFS Build</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSDistributedTimeout <em>Transport VFS Distributed Timeout</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSSFTPIdentities <em>Transport VFSSFTP Identities</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSSFTPIdentityPassPhrase <em>Transport VFSSFTP Identity Pass Phrase</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportVFSSFTPUserDirIsRoot <em>Transport VFSSFTP User Dir Is Root</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getJavaNamingFactoryInitial <em>Java Naming Factory Initial</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getJavaNamingProviderUrl <em>Java Naming Provider Url</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSConnectionFactoryJNDIName <em>Transport JMS Connection Factory JNDI Name</em>}</li>
@@ -4891,6 +4894,84 @@ public interface InboundEndpoint extends EsbElement {
      * @generated
      */
     void setTransportVFSDistributedTimeout(String value);
+
+    /**
+     * Returns the value of the '<em><b>Transport VFSSFTP Identities</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Transport VFSSFTP Identities</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Transport VFSSFTP Identities</em>' attribute.
+     * @see #setTransportVFSSFTPIdentities(String)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSSFTPIdentities()
+     * @model
+     * @generated
+     */
+    String getTransportVFSSFTPIdentities();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSSFTPIdentities <em>Transport VFSSFTP Identities</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Transport VFSSFTP Identities</em>' attribute.
+     * @see #getTransportVFSSFTPIdentities()
+     * @generated
+     */
+    void setTransportVFSSFTPIdentities(String value);
+
+    /**
+     * Returns the value of the '<em><b>Transport VFSSFTP Identity Pass Phrase</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Transport VFSSFTP Identity Pass Phrase</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Transport VFSSFTP Identity Pass Phrase</em>' attribute.
+     * @see #setTransportVFSSFTPIdentityPassPhrase(String)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSSFTPIdentityPassPhrase()
+     * @model
+     * @generated
+     */
+    String getTransportVFSSFTPIdentityPassPhrase();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSSFTPIdentityPassPhrase <em>Transport VFSSFTP Identity Pass Phrase</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Transport VFSSFTP Identity Pass Phrase</em>' attribute.
+     * @see #getTransportVFSSFTPIdentityPassPhrase()
+     * @generated
+     */
+    void setTransportVFSSFTPIdentityPassPhrase(String value);
+
+    /**
+     * Returns the value of the '<em><b>Transport VFSSFTP User Dir Is Root</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Transport VFSSFTP User Dir Is Root</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Transport VFSSFTP User Dir Is Root</em>' attribute.
+     * @see #setTransportVFSSFTPUserDirIsRoot(boolean)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSSFTPUserDirIsRoot()
+     * @model
+     * @generated
+     */
+    boolean isTransportVFSSFTPUserDirIsRoot();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportVFSSFTPUserDirIsRoot <em>Transport VFSSFTP User Dir Is Root</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Transport VFSSFTP User Dir Is Root</em>' attribute.
+     * @see #isTransportVFSSFTPUserDirIsRoot()
+     * @generated
+     */
+    void setTransportVFSSFTPUserDirIsRoot(boolean value);
 
     /**
      * Returns the value of the '<em><b>Java Naming Factory Initial</b></em>' attribute.

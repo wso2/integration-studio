@@ -302,6 +302,18 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.VFS_DISTRIBUTED_TIMEOUT,
                         visualInboundEndpoint.getTransportVFSDistributedTimeout());
             }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportVFSSFTPIdentities())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.VFS_SFTP_IDENTITIES,
+                        visualInboundEndpoint.getTransportVFSSFTPIdentities());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportVFSSFTPIdentityPassPhrase())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.VFS_SFTP_IDENTITY_PASSPHRASE,
+                        visualInboundEndpoint.getTransportVFSSFTPIdentityPassPhrase());
+            }
+            if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isTransportVFSSFTPUserDirIsRoot()))) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.VFS_SFTP_USER_DIR_IS_ROOT,
+                        String.valueOf(visualInboundEndpoint.isTransportVFSSFTPUserDirIsRoot()));
+            }
             if (StringUtils.isNotBlank(
                     String.valueOf(visualInboundEndpoint.getTransportVFSFileSortAttribute().getLiteral()))) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.VFS_FILESORT_ATTRIBUTE,

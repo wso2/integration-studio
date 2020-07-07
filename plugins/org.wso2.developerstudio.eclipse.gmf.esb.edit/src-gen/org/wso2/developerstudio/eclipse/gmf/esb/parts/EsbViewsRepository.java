@@ -8977,6 +8977,15 @@ public class EsbViewsRepository {
 			public static String transportVFSDistributedTimeout = "esb::InboundEndpoint::properties::transportVFSDistributedTimeout";
 			
 			
+			public static String transportVFSSFTPIdentities = "esb::InboundEndpoint::properties::transportVFSSFTPIdentities";
+
+
+			public static String transportVFSSFTPIdentityPassPhrase = "esb::InboundEndpoint::properties::transportVFSSFTPIdentityPassPhrase";
+
+
+			public static String transportVFSSFTPUserDirIsRoot = "esb::InboundEndpoint::properties::transportVFSSFTPUserDirIsRoot";
+			
+			
 			public static String javaNamingFactoryInitial = "esb::InboundEndpoint::properties::javaNamingFactoryInitial";
 			
 			

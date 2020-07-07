@@ -7789,6 +7789,15 @@ public class EsbMessages extends NLS {
 	public static String InboundEndpointPropertiesEditionPart_TransportVFSDistributedTimeoutLabel;
 
 	
+	public static String InboundEndpointPropertiesEditionPart_TransportVFSSFTPIdentitiesLabel;
+
+	
+	public static String InboundEndpointPropertiesEditionPart_TransportVFSSFTPIdentityPassPhraseLabel;
+
+	
+	public static String InboundEndpointPropertiesEditionPart_TransportVFSSFTPUserDirIsRootLabel;
+
+	
 	public static String InboundEndpointPropertiesEditionPart_JavaNamingFactoryInitialLabel;
 
 	

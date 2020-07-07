@@ -74,6 +74,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOU
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__WS_USE_PORT_OFFSET;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__INBOUND_HL7_BUILD_INVALID_MESSAGES;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_USER_DIR_IS_ROOT;
 
 import java.util.Map;
 
@@ -411,6 +412,12 @@ public class InboundEndpointDeserializer
                             executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_LOCK, true);
                         } else {
                             executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_LOCK, false);
+                        }
+                    } else if (paramEntry.getKey().equals(InboundEndpointConstants.VFS_SFTP_USER_DIR_IS_ROOT)) {
+                        if (paramEntry.getValue().equals(InboundEndpointConstants.TRUE)) {
+                            executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_USER_DIR_IS_ROOT, true);
+                        } else {
+                            executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_USER_DIR_IS_ROOT, false);
                         }
                     } else if (paramEntry.getKey().equals(InboundEndpointConstants.VFS_FILESORT_ATTRIBUTE)) {
                         if (paramEntry.getValue().equals(InboundEndpointConstants.NONE)) {

@@ -88,8 +88,11 @@ public class MonitoringDashboard {
 
                     // Starting the dashboard
                     String miMonitoringDashboardPath = MonitoringDashboardUtil.getMIMonitoringDashboardPath();
+                    String javaHomeEnvVar = MonitoringDashboardConstants.JAVA_HOME_ENV_VAR +
+                            "=" + MonitoringDashboardUtil.getJavaHomePath();
                     String[] cmd = { miMonitoringDashboardPath };
-                    Process processor = Runtime.getRuntime().exec(cmd);
+                    String[] env = { javaHomeEnvVar };
+                    Process processor = Runtime.getRuntime().exec(cmd, env);
 
                     BufferedReader inputBuffer = new BufferedReader(new InputStreamReader(processor.getInputStream()));
                     String line = null;

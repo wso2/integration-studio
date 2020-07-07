@@ -337,23 +337,32 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
         EsbEditorInput input = (EsbEditorInput) getEditor(0).getEditorInput();
         IProject activeProject = input.getXmlResource().getProject();
 
-        if (CloudConnectorDirectoryTraverser.getInstance().validate(activeProject)) {
-            String connectorDirectory = activeProject.getLocation().toOSString() + File.separator + "cloudConnectors";
-            try {
-                File directory = new File(connectorDirectory);
-                if (directory.isDirectory()) {
-                    File[] children = directory.listFiles();
-                    for (int i = 0; i < children.length; ++i) {
-                        if (children[i].isDirectory()) {
-                            esbPaletteFactory.addCloudConnectorOperations(getEditor(0), children[i].getName());
+        new Thread( new Runnable() {
+            
+            @Override
+            public void run() {
+                // TODO Auto-generated method stub
+                if (CloudConnectorDirectoryTraverser.getInstance().validate(activeProject)) {
+                    String connectorDirectory = activeProject.getLocation().toOSString() + File.separator + "cloudConnectors";
+                    try {
+                        File directory = new File(connectorDirectory);
+                        if (directory.isDirectory()) {
+                            File[] children = directory.listFiles();
+                            for (int i = 0; i < children.length; ++i) {
+                                if (children[i].isDirectory()) {
+                                    esbPaletteFactory.addCloudConnectorOperations(getEditor(0), children[i].getName());
+                                }
+                            }
                         }
+                    } catch (Exception e1) {
+                        MessageDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+                                "Developer studio Error", "Error while loading the Connectors" + e1.getMessage());
                     }
                 }
-            } catch (Exception e1) {
-                MessageDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-                        "Developer studio Error", "Error while loading the Connectors" + e1.getMessage());
+                
             }
-        }
+        }).run();
+   
 
         String pathName = activeProject.getLocation().toOSString() + File.separator + "resources";
 

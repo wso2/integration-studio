@@ -101,7 +101,7 @@ public class TemplateEditPart extends ShapeNodeEditPart {
      * @generated NOT
      */
     protected NodeFigure createNodePlate() {
-        DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(30000, 30000);
+        DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(3000, 3000);
         return result;
     }
 

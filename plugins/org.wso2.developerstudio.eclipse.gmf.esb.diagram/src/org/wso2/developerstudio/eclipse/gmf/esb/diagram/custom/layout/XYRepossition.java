@@ -68,6 +68,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EntitlementOb
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EntitlementOnAcceptContainerEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EntitlementOnRejectContainerEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EsbLinkEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EsbServerContentsCompartmentEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EsbServerEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.FilterFailContainerEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.FilterMediatorEditPart;
@@ -109,6 +110,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SwitchDefault
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SwitchDefaultParentContainerEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SwitchMediatorContainerEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SwitchMediatorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.TemplateEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.TemplateTemplateCompartmentEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ThrottleMediatorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ThrottleOnAcceptContainerEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ThrottleOnRejectContainerEditPart;
@@ -552,6 +555,7 @@ public class XYRepossition {
      * @param parent
      */
     private static void resizeSequences(IGraphicalEditPart parent) {
+       
         int constantY = 60;
         int x = 2 * CONNECTOR_LENGTH + ARRWO_LENGTH;
         int y = 0;
@@ -592,6 +596,19 @@ public class XYRepossition {
         ((GraphicalEditPart) parent.getParent().getParent().getParent()).setLayoutConstraint(
                 parent.getParent().getParent(), ((GraphicalEditPart) parent.getParent().getParent()).getFigure(),
                 constraints);
+        
+        // Resize Sequence Template canvas
+        if (parent.getParent().getParent().getParent().getParent() instanceof TemplateEditPart) {
+            TemplateEditPart templateMediatorEditpart = (TemplateEditPart) parent.getParent().getParent().getParent()
+                    .getParent();
+            Rectangle templateSequenceConstraint = new Rectangle(0, 0, constraints.width + 3000,
+                    constraints.height + 3000);
+            EsbServerContentsCompartmentEditPart templateSequenceTemplateParent = (EsbServerContentsCompartmentEditPart) parent
+                    .getParent().getParent().getParent().getParent().getParent();
+            templateSequenceTemplateParent.setLayoutConstraint(templateMediatorEditpart,
+                    templateMediatorEditpart.getFigure(), templateSequenceConstraint);
+        }
+
     }
 
     public static void reArrange(IGraphicalEditPart editPart) {

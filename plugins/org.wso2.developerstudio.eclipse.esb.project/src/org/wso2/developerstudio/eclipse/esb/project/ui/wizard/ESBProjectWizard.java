@@ -75,7 +75,7 @@ public class ESBProjectWizard extends AbstractWSO2ProjectCreationWizard {
 			if (esbProjectModel.getSelectedOption() != null && esbProjectModel.getSelectedOption().equals("new.esb.synapseConfig")) {
 				esbArtiList =SynapseUtils.synapseConfigFolderContentProcessing(esbProjectModel.getSynapseConfigLocation().getPath());
 			}
-//			setProjectNature(ESB_PROJECT_NATURE);
+			setProjectNature(ESB_PROJECT_NATURE);
 			project = createNewProject();
 			pomfile = project.getFile("pom.xml").getLocation().toFile();
 			createPOM(pomfile,"pom");

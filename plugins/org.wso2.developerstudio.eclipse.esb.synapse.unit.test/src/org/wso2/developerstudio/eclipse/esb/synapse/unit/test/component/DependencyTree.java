@@ -81,7 +81,7 @@ public class DependencyTree {
     private String childTreeItemIcon = "/icons/artifact.png";
     private String parentTreeItemIcon = "/icons/root-folder.png";
     private String parentRegistryTreeItemIcon = "/icons/registry_project.png";
-    private String parentConnectorTreeItemIcon = "/icons/root-folder.png";
+    private String parentConnectorTreeItemIcon = "/icons/connector_project.png";
 
     /**
      * Class constructor.
@@ -547,6 +547,12 @@ public class DependencyTree {
                 for (TreeItem subitem : subItems) {
                     if (!subitem.getChecked()) {
                         CommonArtifactDataNode subNodeData = (CommonArtifactDataNode) subitem.getData();
+                        if (subitem.getText(1).startsWith("/_system/")) {
+                            isRegistryResource = true;
+                        }
+                        if (subitem.getText(1).endsWith(Constants.ZIP_EXTENSION)) {
+                            isConnectorResource = true;
+                        }
                         subNodeData.setRegistryDataNode(isRegistryResource);
                         subNodeData.setConnectorDataNode(isConnectorResource);
                         subitem.setChecked(true);
@@ -558,6 +564,12 @@ public class DependencyTree {
                     if (subitem.getChecked()) {
                         subitem.setChecked(false);
                         CommonArtifactDataNode subNodeData = (CommonArtifactDataNode) subitem.getData();
+                        if (subitem.getText(1).startsWith("/_system/")) {
+                            isRegistryResource = true;
+                        }
+                        if (subitem.getText(1).endsWith(Constants.ZIP_EXTENSION)) {
+                            isConnectorResource = true;
+                        }
                         subNodeData.setRegistryDataNode(isRegistryResource);
                         subNodeData.setConnectorDataNode(isConnectorResource);
                         removeDependency(subNodeData);

@@ -411,6 +411,10 @@ public class CloudConnectorDirectoryTraverser {
             return "";
         }
     }
+    
+    public String getConnectorType() {
+        return connector.getConnectorType();
+    }
 
     public String getCloudConnectorName() {
         try {

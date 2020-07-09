@@ -1556,6 +1556,7 @@ public class EsbPaletteFactory {
         Set<String> cloudConnectorOperations = Collections.emptySet();
         String connectorPath = null;
         String cloudConnectorName = connectorDirectoryName.split("-")[0];
+        String connectorType = "Connector";
 
         /*
          * IEditorPart editorpart = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
@@ -1568,9 +1569,12 @@ public class EsbPaletteFactory {
         // + "cloudConnectors" + File.separator + connectorDirectoryName;
         connectorPath = activeProject.getWorkspace().getRoot().getLocation().toOSString() + File.separator
                 + CloudConnectorDirectoryTraverser.connectorPathFromWorkspace + File.separator + connectorDirectoryName;
-        cloudConnectorOperations = CloudConnectorDirectoryTraverser.getInstance(connectorPath).getOperationsMap()
-                .keySet();
-
+        CloudConnectorDirectoryTraverser cloudConnectorTraverser = CloudConnectorDirectoryTraverser
+                .getInstance(connectorPath);
+        cloudConnectorOperations = cloudConnectorTraverser.getOperationsMap().keySet();
+        if (cloudConnectorTraverser.getConnectorType() != null) {
+            connectorType = cloudConnectorTraverser.getConnectorType();
+        }
         boolean definedEndpointsAdded = false;
         int indexOfDefinedEndpoints = 0;
 
@@ -1588,7 +1592,7 @@ public class EsbPaletteFactory {
 
         if (!definedEndpointsAdded) {
             ((DiagramEditDomain) ((EsbDiagramEditor) editor).getDiagramEditDomain()).getPaletteViewer().getPaletteRoot()
-                    .add(createCloudConnectorGroup(WordUtils.capitalize(cloudConnectorName) + " Connector",
+                    .add(createCloudConnectorGroup(WordUtils.capitalize(cloudConnectorName) + " " + WordUtils.capitalize(connectorType),
                             "CloudConnector-" + cloudConnectorName));
             indexOfDefinedEndpoints = list.size() - 1;
         } /*

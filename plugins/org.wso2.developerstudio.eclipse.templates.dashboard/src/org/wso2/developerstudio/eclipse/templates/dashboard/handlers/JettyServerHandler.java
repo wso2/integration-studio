@@ -53,6 +53,8 @@ public class JettyServerHandler {
 
     public static JettyServerHandler getInstance() {
         if (jettyServerHandler == null) {
+            org.eclipse.jetty.util.log.Log.setLog(new NoLogging());
+
             jettyServerHandler = new JettyServerHandler();
             // Once the server started handler collection becomes immutable.
             // We are using "true" here to keep it mutable

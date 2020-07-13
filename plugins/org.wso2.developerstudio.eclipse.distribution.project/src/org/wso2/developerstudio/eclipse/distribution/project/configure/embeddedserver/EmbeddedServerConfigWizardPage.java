@@ -146,10 +146,10 @@ public class EmbeddedServerConfigWizardPage extends WizardPage {
 
         StyledText inlineTomlTextArea = new StyledText(textGroup, SWT.MULTI | SWT.BORDER | SWT.V_SCROLL | SWT.H_SCROLL);
         data = new FormData();
-        data.top = new FormAttachment(3);
+        data.top = new FormAttachment(0, 5);
         data.left = new FormAttachment(2);
         data.right = new FormAttachment(98);
-        data.bottom = new FormAttachment(97);
+        data.bottom = new FormAttachment(100, -45);
         data.height = 300;
         data.width = 510;
         inlineTomlTextArea.setCaretOffset(inlineTomlTextArea.getText().length());
@@ -190,18 +190,31 @@ public class EmbeddedServerConfigWizardPage extends WizardPage {
             }
         });
         
+        Label restoreLabel = new Label(textGroup, SWT.NONE);
+        data = new FormData();
+        data.top = new FormAttachment(inlineTomlTextArea, 10, 5);
+        data.left = new FormAttachment(3);
+        restoreLabel.setText("Restore deployment.toml default configuration: ");
+        restoreLabel.setLayoutData(data);
+        
+        Button restoreButton = new Button(textGroup, SWT.NONE);
+        data = new FormData();
+        data.top = new FormAttachment(inlineTomlTextArea, 10, 5);
+        data.right = new FormAttachment(97);
+        restoreButton.setLayoutData(data);
+        restoreButton.setText("Restore Defaults");
+        
         Group secureGroup = new Group(container, SWT.NONE);
         data = new FormData();
         data.top = new FormAttachment(textGroup, 10);
         data.left = new FormAttachment(3);
         data.right = new FormAttachment(97);
-        data.height = 32;
         secureGroup.setLayoutData(data);
         secureGroup.setLayout(new FormLayout());
 
         Label secureLabel = new Label(secureGroup, SWT.NONE);
         data = new FormData();
-        data.top = new FormAttachment(25);
+        data.top = new FormAttachment(0, 5);
         data.left = new FormAttachment(3);
         //data.right = new FormAttachment(97);
         secureLabel.setText("Encrypt secrets by running cipher-tool: ");
@@ -209,7 +222,9 @@ public class EmbeddedServerConfigWizardPage extends WizardPage {
 
         Button encryptButton = new Button(secureGroup, SWT.NONE);
         data = new FormData();
-        data.top = new FormAttachment(10);
+        data.top = new FormAttachment(0, 0);
+        data.bottom = new FormAttachment(100, -5);
+        data.height = 30;
         data.right = new FormAttachment(97);
         encryptButton.setLayoutData(data);
         encryptButton.setText("Encrypt Secrets");
@@ -302,6 +317,7 @@ public class EmbeddedServerConfigWizardPage extends WizardPage {
         data.top = new FormAttachment(secureGroup, 10);
         data.left = new FormAttachment(3);
         data.right = new FormAttachment(97);
+        data.bottom = new FormAttachment(97);
         data.height = 225;
         libGroup.setLayoutData(data);
         libGroup.setLayout(new FormLayout());
@@ -336,9 +352,10 @@ public class EmbeddedServerConfigWizardPage extends WizardPage {
                         String[] pathSegments = importFile.split("\\"+File.separator);
                         String libraryName = pathSegments[pathSegments.length - 1];
                         FileUtils.copyFile(new File(importFile),
-                                new File(serverConfigPath + SERVER_CONFIG_LIBS + File.separator + libraryName));
+                                new File(serverConfigPath + SERVER_CONFIG_LIBS + SERVER_CONFIG_SELECTED_LIBS + 
+                                		File.separator + libraryName));
                         if (libraryName != null && !libraryName.isEmpty()) {
-                            librariesList.put(libraryName, false);
+                            librariesList.put(libraryName, true);
                             reloadLibraryList();
                         }
                     }
@@ -350,10 +367,11 @@ public class EmbeddedServerConfigWizardPage extends WizardPage {
 
         libTable = new Table(libGroup, SWT.CHECK | SWT.BORDER | SWT.V_SCROLL | SWT.MULTI);
         data = new FormData();
-        data.top = new FormAttachment(removeButton, 3);
+        data.top = new FormAttachment(removeButton, 5, 5);
         data.left = new FormAttachment(2);
         data.right = new FormAttachment(98);
-        data.height = 120;
+        data.height = 130;
+        data.bottom = new FormAttachment(100,-40);
         libTable.setLayoutData(data);
         libTable.setLinesVisible(true);
         libTable.setHeaderVisible(true);
@@ -440,7 +458,7 @@ public class EmbeddedServerConfigWizardPage extends WizardPage {
         Button selectAllButton = new Button(libGroup, SWT.NONE);
         data = new FormData();
         data.top = new FormAttachment(libTable, 5);
-        data.left = new FormAttachment(1);
+        data.left = new FormAttachment(2);
         selectAllButton.setLayoutData(data);
         selectAllButton.setText("Select All");
 
@@ -520,30 +538,6 @@ public class EmbeddedServerConfigWizardPage extends WizardPage {
                 }
             }
         });
-        
-        Group restoreGroup = new Group(container, SWT.NONE);
-        data = new FormData();
-        data.top = new FormAttachment(libGroup, 10);
-        data.left = new FormAttachment(3);
-        data.right = new FormAttachment(97);
-        data.bottom = new FormAttachment(98);
-        data.height = 35;
-        restoreGroup.setLayoutData(data);
-        restoreGroup.setLayout(new FormLayout());
-
-        Label restoreLabel = new Label(restoreGroup, SWT.NONE);
-        data = new FormData();
-        data.top = new FormAttachment(25);
-        data.left = new FormAttachment(3);
-        restoreLabel.setText("Restore deployment.toml default configuration: ");
-        restoreLabel.setLayoutData(data);
-        
-        Button restoreButton = new Button(restoreGroup, SWT.NONE);
-        data = new FormData();
-        data.top = new FormAttachment(19);
-        data.right = new FormAttachment(97);
-        restoreButton.setLayoutData(data);
-        restoreButton.setText("Restore Defaults");
         
         restoreButton.addSelectionListener(new SelectionAdapter() {
             public void widgetSelected(SelectionEvent e) {

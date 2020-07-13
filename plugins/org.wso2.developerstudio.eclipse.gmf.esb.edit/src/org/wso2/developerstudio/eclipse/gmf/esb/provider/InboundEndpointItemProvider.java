@@ -3420,6 +3420,60 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
     }
 
     /**
+     * This adds a property descriptor for the Transport VFSSFTP Identities feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated NOT
+     */
+    protected void addTransportVFSSFTPIdentitiesPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_InboundEndpoint_transportVFSSFTPIdentities_feature"),
+                 getString("_UI_PropertyDescriptor_description", 
+                		 "_UI_InboundEndpoint_transportVFSSFTPIdentities_feature", "_UI_InboundEndpoint_type"),
+                 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_IDENTITIES, true, false, false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
+
+    /**
+     * This adds a property descriptor for the Transport VFSSFTP Identity Pass Phrase feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated NOT
+     */
+    protected void addTransportVFSSFTPIdentityPassPhrasePropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_InboundEndpoint_transportVFSSFTPIdentityPassPhrase_feature"),
+                 getString("_UI_PropertyDescriptor_description", 
+                		 "_UI_InboundEndpoint_transportVFSSFTPIdentityPassPhrase_feature", "_UI_InboundEndpoint_type"),
+                 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_IDENTITY_PASS_PHRASE, true, false, false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
+
+    /**
+     * This adds a property descriptor for the Transport VFSSFTP User Dir Is Root feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated NOT
+     */
+    protected void addTransportVFSSFTPUserDirIsRootPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_InboundEndpoint_transportVFSSFTPUserDirIsRoot_feature"),
+                 getString("_UI_PropertyDescriptor_description", 
+                		 "_UI_InboundEndpoint_transportVFSSFTPUserDirIsRoot_feature", "_UI_InboundEndpoint_type"),
+                 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_USER_DIR_IS_ROOT, true, false, false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+    }
+
+    /**
      * This adds a property descriptor for the Java Naming Factory Initial
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -4283,6 +4337,9 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_STREAMING:
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_BUILD:
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_TIMEOUT:
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_IDENTITIES:
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_IDENTITY_PASS_PHRASE:
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_USER_DIR_IS_ROOT:
             case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_FACTORY_INITIAL:
             case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_PROVIDER_URL:
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME:

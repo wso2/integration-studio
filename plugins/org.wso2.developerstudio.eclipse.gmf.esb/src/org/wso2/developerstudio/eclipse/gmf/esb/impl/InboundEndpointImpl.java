@@ -118,6 +118,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportVFSStreaming <em>Transport VFS Streaming</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportVFSBuild <em>Transport VFS Build</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSDistributedTimeout <em>Transport VFS Distributed Timeout</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSSFTPIdentities <em>Transport VFSSFTP Identities</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSSFTPIdentityPassPhrase <em>Transport VFSSFTP Identity Pass Phrase</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportVFSSFTPUserDirIsRoot <em>Transport VFSSFTP User Dir Is Root</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getJavaNamingFactoryInitial <em>Java Naming Factory Initial</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getJavaNamingProviderUrl <em>Java Naming Provider Url</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSConnectionFactoryJNDIName <em>Transport JMS Connection Factory JNDI Name</em>}</li>
@@ -1314,6 +1317,66 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @ordered
      */
     protected String transportVFSDistributedTimeout = TRANSPORT_VFS_DISTRIBUTED_TIMEOUT_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getTransportVFSSFTPIdentities() <em>Transport VFSSFTP Identities</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTransportVFSSFTPIdentities()
+     * @generated
+     * @ordered
+     */
+    protected static final String TRANSPORT_VFSSFTP_IDENTITIES_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getTransportVFSSFTPIdentities() <em>Transport VFSSFTP Identities</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTransportVFSSFTPIdentities()
+     * @generated
+     * @ordered
+     */
+    protected String transportVFSSFTPIdentities = TRANSPORT_VFSSFTP_IDENTITIES_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getTransportVFSSFTPIdentityPassPhrase() <em>Transport VFSSFTP Identity Pass Phrase</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTransportVFSSFTPIdentityPassPhrase()
+     * @generated
+     * @ordered
+     */
+    protected static final String TRANSPORT_VFSSFTP_IDENTITY_PASS_PHRASE_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getTransportVFSSFTPIdentityPassPhrase() <em>Transport VFSSFTP Identity Pass Phrase</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTransportVFSSFTPIdentityPassPhrase()
+     * @generated
+     * @ordered
+     */
+    protected String transportVFSSFTPIdentityPassPhrase = TRANSPORT_VFSSFTP_IDENTITY_PASS_PHRASE_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #isTransportVFSSFTPUserDirIsRoot() <em>Transport VFSSFTP User Dir Is Root</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isTransportVFSSFTPUserDirIsRoot()
+     * @generated
+     * @ordered
+     */
+    protected static final boolean TRANSPORT_VFSSFTP_USER_DIR_IS_ROOT_EDEFAULT = false;
+
+    /**
+     * The cached value of the '{@link #isTransportVFSSFTPUserDirIsRoot() <em>Transport VFSSFTP User Dir Is Root</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isTransportVFSSFTPUserDirIsRoot()
+     * @generated
+     * @ordered
+     */
+    protected boolean transportVFSSFTPUserDirIsRoot = TRANSPORT_VFSSFTP_USER_DIR_IS_ROOT_EDEFAULT;
 
     /**
      * The default value of the '{@link #getJavaNamingFactoryInitial() <em>Java Naming Factory Initial</em>}' attribute.
@@ -8222,6 +8285,69 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     }
 
     /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getTransportVFSSFTPIdentities() {
+        return transportVFSSFTPIdentities;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setTransportVFSSFTPIdentities(String newTransportVFSSFTPIdentities) {
+        String oldTransportVFSSFTPIdentities = transportVFSSFTPIdentities;
+        transportVFSSFTPIdentities = newTransportVFSSFTPIdentities;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_IDENTITIES, oldTransportVFSSFTPIdentities, transportVFSSFTPIdentities));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getTransportVFSSFTPIdentityPassPhrase() {
+        return transportVFSSFTPIdentityPassPhrase;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setTransportVFSSFTPIdentityPassPhrase(String newTransportVFSSFTPIdentityPassPhrase) {
+        String oldTransportVFSSFTPIdentityPassPhrase = transportVFSSFTPIdentityPassPhrase;
+        transportVFSSFTPIdentityPassPhrase = newTransportVFSSFTPIdentityPassPhrase;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_IDENTITY_PASS_PHRASE, oldTransportVFSSFTPIdentityPassPhrase, transportVFSSFTPIdentityPassPhrase));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public boolean isTransportVFSSFTPUserDirIsRoot() {
+        return transportVFSSFTPUserDirIsRoot;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setTransportVFSSFTPUserDirIsRoot(boolean newTransportVFSSFTPUserDirIsRoot) {
+        boolean oldTransportVFSSFTPUserDirIsRoot = transportVFSSFTPUserDirIsRoot;
+        transportVFSSFTPUserDirIsRoot = newTransportVFSSFTPUserDirIsRoot;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_USER_DIR_IS_ROOT, oldTransportVFSSFTPUserDirIsRoot, transportVFSSFTPUserDirIsRoot));
+    }
+
+    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
@@ -9216,6 +9342,12 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
                 return isTransportVFSBuild();
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_TIMEOUT:
                 return getTransportVFSDistributedTimeout();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_IDENTITIES:
+                return getTransportVFSSFTPIdentities();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_IDENTITY_PASS_PHRASE:
+                return getTransportVFSSFTPIdentityPassPhrase();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_USER_DIR_IS_ROOT:
+                return isTransportVFSSFTPUserDirIsRoot();
             case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_FACTORY_INITIAL:
                 return getJavaNamingFactoryInitial();
             case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_PROVIDER_URL:
@@ -9718,6 +9850,15 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
                 return;
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_TIMEOUT:
                 setTransportVFSDistributedTimeout((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_IDENTITIES:
+                setTransportVFSSFTPIdentities((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_IDENTITY_PASS_PHRASE:
+                setTransportVFSSFTPIdentityPassPhrase((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_USER_DIR_IS_ROOT:
+                setTransportVFSSFTPUserDirIsRoot((Boolean)newValue);
                 return;
             case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_FACTORY_INITIAL:
                 setJavaNamingFactoryInitial((String)newValue);
@@ -10388,6 +10529,15 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_TIMEOUT:
                 setTransportVFSDistributedTimeout(TRANSPORT_VFS_DISTRIBUTED_TIMEOUT_EDEFAULT);
                 return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_IDENTITIES:
+                setTransportVFSSFTPIdentities(TRANSPORT_VFSSFTP_IDENTITIES_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_IDENTITY_PASS_PHRASE:
+                setTransportVFSSFTPIdentityPassPhrase(TRANSPORT_VFSSFTP_IDENTITY_PASS_PHRASE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_USER_DIR_IS_ROOT:
+                setTransportVFSSFTPUserDirIsRoot(TRANSPORT_VFSSFTP_USER_DIR_IS_ROOT_EDEFAULT);
+                return;
             case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_FACTORY_INITIAL:
                 setJavaNamingFactoryInitial(JAVA_NAMING_FACTORY_INITIAL_EDEFAULT);
                 return;
@@ -11003,6 +11153,12 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
                 return transportVFSBuild != TRANSPORT_VFS_BUILD_EDEFAULT;
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_TIMEOUT:
                 return TRANSPORT_VFS_DISTRIBUTED_TIMEOUT_EDEFAULT == null ? transportVFSDistributedTimeout != null : !TRANSPORT_VFS_DISTRIBUTED_TIMEOUT_EDEFAULT.equals(transportVFSDistributedTimeout);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_IDENTITIES:
+                return TRANSPORT_VFSSFTP_IDENTITIES_EDEFAULT == null ? transportVFSSFTPIdentities != null : !TRANSPORT_VFSSFTP_IDENTITIES_EDEFAULT.equals(transportVFSSFTPIdentities);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_IDENTITY_PASS_PHRASE:
+                return TRANSPORT_VFSSFTP_IDENTITY_PASS_PHRASE_EDEFAULT == null ? transportVFSSFTPIdentityPassPhrase != null : !TRANSPORT_VFSSFTP_IDENTITY_PASS_PHRASE_EDEFAULT.equals(transportVFSSFTPIdentityPassPhrase);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_USER_DIR_IS_ROOT:
+                return transportVFSSFTPUserDirIsRoot != TRANSPORT_VFSSFTP_USER_DIR_IS_ROOT_EDEFAULT;
             case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_FACTORY_INITIAL:
                 return JAVA_NAMING_FACTORY_INITIAL_EDEFAULT == null ? javaNamingFactoryInitial != null : !JAVA_NAMING_FACTORY_INITIAL_EDEFAULT.equals(javaNamingFactoryInitial);
             case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_PROVIDER_URL:
@@ -11444,6 +11600,12 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
         result.append(transportVFSBuild);
         result.append(", transportVFSDistributedTimeout: ");
         result.append(transportVFSDistributedTimeout);
+        result.append(", transportVFSSFTPIdentities: ");
+        result.append(transportVFSSFTPIdentities);
+        result.append(", transportVFSSFTPIdentityPassPhrase: ");
+        result.append(transportVFSSFTPIdentityPassPhrase);
+        result.append(", transportVFSSFTPUserDirIsRoot: ");
+        result.append(transportVFSSFTPUserDirIsRoot);
         result.append(", javaNamingFactoryInitial: ");
         result.append(javaNamingFactoryInitial);
         result.append(", javaNamingProviderUrl: ");

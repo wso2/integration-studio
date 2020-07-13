@@ -5388,6 +5388,15 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v_wvJnEei6boXzpRIfnA" name="transportVFSDistributedTimeout" views="_E7xL6_JnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//InboundEndpoint/transportVFSDistributedTimeout"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_3I4FgMDaEeqIA4Djj0qsug" name="transportVFSSFTPIdentities" views="_cNO-cMDaEeqIA4Djj0qsug">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//InboundEndpoint/transportVFSSFTPIdentities"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_IfXQMMDbEeqIA4Djj0qsug" name="transportVFSSFTPIdentityPassPhrase" views="_kWHxIMDaEeqIA4Djj0qsug">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//InboundEndpoint/transportVFSSFTPIdentityPassPhrase"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_QjOY8MDbEeqIA4Djj0qsug" name="transportVFSSFTPUserDirIsRoot" views="_opS2gMDaEeqIA4Djj0qsug">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//InboundEndpoint/transportVFSSFTPUserDirIsRoot"/>
+        </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v_w_JnEei6boXzpRIfnA" name="javaNamingFactoryInitial" views="_E7xL7PJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//InboundEndpoint/javaNamingFactoryInitial"/>
         </properties>
@@ -12010,6 +12019,15 @@
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xL6_JnEei6boXzpRIfnA" name="transportVFSDistributedTimeout">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_cNO-cMDaEeqIA4Djj0qsug" name="transportVFSSFTPIdentities">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_kWHxIMDaEeqIA4Djj0qsug" name="transportVFSSFTPIdentityPassPhrase">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_opS2gMDaEeqIA4Djj0qsug" name="transportVFSSFTPUserDirIsRoot">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xL7PJnEei6boXzpRIfnA" name="javaNamingFactoryInitial">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>

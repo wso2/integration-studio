@@ -778,6 +778,48 @@ public interface InboundEndpointPropertiesEditionPart {
 
 
 	/**
+	 * @return the transportVFSSFTPIdentities
+	 * 
+	 */
+	public String getTransportVFSSFTPIdentities();
+
+	/**
+	 * Defines a new transportVFSSFTPIdentities
+	 * @param newValue the new transportVFSSFTPIdentities to set
+	 * 
+	 */
+	public void setTransportVFSSFTPIdentities(String newValue);
+
+
+	/**
+	 * @return the transportVFSSFTPIdentityPassPhrase
+	 * 
+	 */
+	public String getTransportVFSSFTPIdentityPassPhrase();
+
+	/**
+	 * Defines a new transportVFSSFTPIdentityPassPhrase
+	 * @param newValue the new transportVFSSFTPIdentityPassPhrase to set
+	 * 
+	 */
+	public void setTransportVFSSFTPIdentityPassPhrase(String newValue);
+
+
+	/**
+	 * @return the transportVFSSFTPUserDirIsRoot
+	 * 
+	 */
+	public Boolean getTransportVFSSFTPUserDirIsRoot();
+
+	/**
+	 * Defines a new transportVFSSFTPUserDirIsRoot
+	 * @param newValue the new transportVFSSFTPUserDirIsRoot to set
+	 * 
+	 */
+	public void setTransportVFSSFTPUserDirIsRoot(Boolean newValue);
+
+
+	/**
 	 * @return the javaNamingFactoryInitial
 	 * 
 	 */

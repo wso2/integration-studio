@@ -95,6 +95,9 @@ public class InboundEndpointConstants {
     public static final String VFS_LOCK_RELEASE_SAME_NODE = "transport.vfs.LockReleaseSameNode";
     public static final String VFS_DISTRIBUTED_LOCK = "transport.vfs.DistributedLock";
     public static final String VFS_DISTRIBUTED_TIMEOUT = "transport.vfs.DistributedTimeout";
+    public static final String VFS_SFTP_IDENTITIES = "transport.vfs.SFTPIdentities";
+    public static final String VFS_SFTP_IDENTITY_PASSPHRASE = "transport.vfs.SFTPIdentityPassPhrase";
+    public static final String VFS_SFTP_USER_DIR_IS_ROOT = "transport.vfs.SFTPUserDirIsRoot";
     public static final String VFS_FILESORT_ATTRIBUTE = "transport.vfs.FileSortAttribute";
     public static final String VFS_FILESORT_ASCENDING = "transport.vfs.FileSortAscending";
     public static final String VFS_SUBFOLDER_TIMESTAMP_FORMAT = "transport.vfs.SubFolderTimestampFormat";

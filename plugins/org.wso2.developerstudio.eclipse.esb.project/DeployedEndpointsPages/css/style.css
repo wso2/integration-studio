@@ -22,8 +22,12 @@ body{
     -o-background-size: cover;
     background-size: cover;
     font-family: "Roboto", Arial, Helvetica, sans-serif;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 1.428571429;
+}
+
+tr {
+	font-size: 12px;
 }
 
 .container-main{

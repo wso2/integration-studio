@@ -64,7 +64,7 @@ function populateProxyList() {
 		
 	}
 	
-	return apiList;
+	return proxyList;
 }
 
 function populateDataServiceList() {

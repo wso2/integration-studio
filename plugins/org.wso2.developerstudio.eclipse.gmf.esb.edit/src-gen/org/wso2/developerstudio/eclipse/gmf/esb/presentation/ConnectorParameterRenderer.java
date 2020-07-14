@@ -124,6 +124,8 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
         } else if (AttributeValueType.CONNECTION.equals(value.getType())) {
             widgetProvider.createConnectionField(widgetFactory, parent, value,
                     getConnectionEntriesList(value.getAllowedConnectionTypes()));
+        } else if (AttributeValueType.PASSWORDTEXTOREXPRESSION.equals(value.getType())) {
+            widgetProvider.createPasswordTextBoxFieldWithButton(widgetFactory, parent, value);
         }
     }
 

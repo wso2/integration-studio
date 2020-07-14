@@ -67,9 +67,6 @@ public class ConnectorDescriptorParser {
                 case DescriptorConstants.STRING_OR_EXPRESSION:
                     value.setType(AttributeValueType.STRING);
                     break;
-                case DescriptorConstants.TEXT_OR_EXPRESSION:
-                    value.setType(AttributeValueType.STRING);
-                    break;
                 case DescriptorConstants.COMBO_OR_EXPRESSION:
                     value.setType(AttributeValueType.COMBO);
                     JSONArray comboArray = attrObj.getJSONArray(DescriptorConstants.COMBO_VALUES);
@@ -91,6 +88,9 @@ public class ConnectorDescriptorParser {
                     for (int k = 0; k < allowedConnectionType.length(); k++) {
                         value.addAllowedConnectionType(allowedConnectionType.getString(k));
                     }
+                    break;
+                case DescriptorConstants.PASSWORD_TEXT_OR_EXPRESSION:
+                    value.setType(AttributeValueType.PASSWORDTEXTOREXPRESSION);
                     break;
                 default:
                     value.setType(AttributeValueType.STRING);
@@ -128,9 +128,6 @@ public class ConnectorDescriptorParser {
                 case DescriptorConstants.STRING_OR_EXPRESSION:
                     value.setType(AttributeValueType.STRING);
                     break;
-                case DescriptorConstants.TEXT_OR_EXPRESSION:
-                    value.setType(AttributeValueType.STRING);
-                    break;
                 case DescriptorConstants.TEXTAREA_OR_EXPRESSION:
                     value.setType(AttributeValueType.TEXTAREAOREXPRESSION);
                     break;
@@ -152,6 +149,9 @@ public class ConnectorDescriptorParser {
                     for (int k = 0; k < allowedConnectionType.length(); k++) {
                         value.addAllowedConnectionType(allowedConnectionType.getString(k));
                     }
+                    break;
+                case DescriptorConstants.PASSWORD_TEXT_OR_EXPRESSION:
+                    value.setType(AttributeValueType.PASSWORDTEXTOREXPRESSION);
                     break;
                 default:
                     value.setType(AttributeValueType.STRING);

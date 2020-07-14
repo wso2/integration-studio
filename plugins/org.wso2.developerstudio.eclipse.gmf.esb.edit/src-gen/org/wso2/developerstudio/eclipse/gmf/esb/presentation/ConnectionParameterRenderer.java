@@ -240,6 +240,8 @@ public class ConnectionParameterRenderer {
         } else if (AttributeValueType.COMBO.equals(value.getType())) {
             widgetProvider.createDropDownField(widgetFactory, parent, value.getComboValues().toArray(new String[0]),
                     value);
+        } else if (AttributeValueType.PASSWORDTEXTOREXPRESSION.equals(value.getType())) {
+            widgetProvider.createPasswordTextBoxFieldWithButton(widgetFactory, parent, value);
         }
     }
 

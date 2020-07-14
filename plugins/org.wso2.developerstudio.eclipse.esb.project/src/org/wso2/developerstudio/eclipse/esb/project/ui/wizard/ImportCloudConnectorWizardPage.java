@@ -94,10 +94,10 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 
         Browser browser = new Browser(container, SWT.NONE);
         data = new FormData();
-        data.top = new FormAttachment(2);
+        data.top = new FormAttachment(0,2);
         data.left = new FormAttachment(3);
         data.right = new FormAttachment(96);
-        data.bottom = new FormAttachment(92);
+        data.bottom = new FormAttachment(100, -40);
         data.width = 600;
         data.height = 600;
         browser.setLayoutData(data);
@@ -106,9 +106,8 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
         fileSystem = new Button(container, SWT.NONE);
         fileSystem.setText("Add from File System");
         data = new FormData();
-        data.top = new FormAttachment(browser, 15);
+        data.top = new FormAttachment(browser, 8);
         data.left = new FormAttachment(4);
-        data.bottom = new FormAttachment(99);
         fileSystem.setLayoutData(data);
         fileSystem.addListener(SWT.Selection, new Listener() {
             @Override

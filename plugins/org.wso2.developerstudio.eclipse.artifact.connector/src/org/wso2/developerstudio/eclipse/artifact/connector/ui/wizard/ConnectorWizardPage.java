@@ -85,7 +85,7 @@ public class ConnectorWizardPage extends WizardPage {
 
 		tblLibraryInfoViewer = new TableViewer(container, SWT.BORDER | SWT.FULL_SELECTION);
 		Table tblLibraryInfo = tblLibraryInfoViewer.getTable();
-		GridData gd_tblLibraryInfo = new GridData(SWT.FILL, SWT.FILL, true, false, 3, 3);
+		GridData gd_tblLibraryInfo = new GridData(SWT.FILL, SWT.FILL, true, true, 3, 3);
 		gd_tblLibraryInfo.heightHint = 250;
 		tblLibraryInfo.setLayoutData(gd_tblLibraryInfo);
 

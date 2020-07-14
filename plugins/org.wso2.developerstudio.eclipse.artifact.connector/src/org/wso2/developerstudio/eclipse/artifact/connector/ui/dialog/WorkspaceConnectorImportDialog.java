@@ -65,7 +65,7 @@ public class WorkspaceConnectorImportDialog extends Dialog {
 	protected Control createDialogArea(Composite parent) {
 		final Composite container = new Composite(parent, SWT.NULL);
 		container.setLayout(new GridLayout(1, false));
-		container.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
+		container.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 		GridData gridData = new GridData();
 		gridData.horizontalAlignment = GridData.FILL;
 		gridData.verticalAlignment = GridData.FILL;

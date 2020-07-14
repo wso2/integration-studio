@@ -129,6 +129,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
     protected Control[] commentsElements;
     protected Control[] configRefElements;
     protected Control[] availableConfigsElements;
+    protected Control[] connectorParamElements;
     protected Composite filterConfigSubPropertiesGroup;
     private boolean hasConnectorSchema;
     protected CLabel infoLabel;
@@ -433,6 +434,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	 */
 	protected Composite createConnectorParametersTableComposition(FormToolkit widgetFactory, Composite parent) {
 	     // Start of user code for createConnectorParametersTableComposition
+        Control[] previousControls = propertiesGroup.getChildren();
 	    if(hasConnectorSchema) {
             CloudConnectorOperationImpl connectorObject = (CloudConnectorOperationImpl)propertiesEditionComponent.getEditingContext().getEObject();
             String schemaName = connectorObject.getConnectorName().split("connector")[0] + "-" + connectorObject.getOperationName();
@@ -493,6 +495,8 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	        connectorParameters.setID(EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters);
 	        connectorParameters.setEEFType("eef::AdvancedTableComposition");
 	    }
+        Control[] newControls = propertiesGroup.getChildren();
+        connectorParamElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
@@ -1328,6 +1332,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 
         epv.showEntry(configRefElements, false);
         epv.showEntry(availableConfigsElements, false);
+        epv.clearTableButtons(connectorParamElements);
         view.layout(true, true);
     }
     

@@ -316,6 +316,133 @@ public class PropertiesWidgetProvider {
     }
 
     /**
+     * Provide a composite with password text box widget with expression support and a label
+     *
+     * @param widgetFactory widget factory instance
+     * @param parent parent composite
+     * @param jsonSchemaObject JSONSchema object of the property
+     * @return composite
+     */
+    public Composite createPasswordTextBoxFieldWithButton(FormToolkit widgetFactory, final Composite parent,
+            AttributeValue jsonSchemaObject) {
+        // Create wrapping composite of 3 elements
+        Composite textBoxComposite = createComposite(jsonSchemaObject.getName(), widgetFactory, parent, 4, 3);
+
+        // Create label for the property
+        Label propertyLabel = new Label(textBoxComposite, SWT.TRANSPARENT | SWT.WRAP);
+        // Append * If required field
+        String displayName = jsonSchemaObject.getDisplayName();
+        if (jsonSchemaObject.getRequired()) {
+            displayName = displayName.concat(EEFPropertyConstants.REQUIRED_FIELD_INDICATOR);
+        }
+        propertyLabel.setText(displayName + ":");
+        GridData labelRefData = new GridData();
+        labelRefData.widthHint = EEFPropertyConstants.LABEL_WIDTH;
+        propertyLabel.setLayoutData(labelRefData);
+        // Add tooltip to the label
+        setToolTip(propertyLabel, jsonSchemaObject.getHelpTip());
+
+        // Create expression toggle button
+        Button expressionToggleButton = new Button(textBoxComposite, SWT.TOGGLE);
+        Image expressionToggleButtonImage = null;
+        try {
+            expressionToggleButtonImage = new Image(parent.getShell().getDisplay(),
+                    EEFPropertyViewUtil.getIconPath(EEFPropertyConstants.EXPRESSION_TOGGLE_BUTTON_IMAGE));
+            expressionToggleButton.setImage(expressionToggleButtonImage);
+        } catch (URISyntaxException | IOException e1) {
+            log.error("Couldn't fetch property field icon", e1);
+        }
+
+        // Create Text box widget
+        final Text valueTextBox = widgetFactory.createText(textBoxComposite, "", SWT.SINGLE | SWT.BORDER);
+        valueTextBox.setEchoChar('•');
+
+        valueTextBox.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        GridData configRefData = new GridData(GridData.FILL_HORIZONTAL);
+        valueTextBox.setLayoutData(configRefData);
+        valueTextBox.setData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY, jsonSchemaObject); // Set UI schema object as
+                                                                                           // control data
+        valueTextBox.addKeyListener(new KeyAdapter() {
+
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void keyReleased(KeyEvent e) {
+                if (!isConnectionWidgetProvider) {
+                    CallTemplateParameter ctp = (CallTemplateParameter) ((Text) e.getSource()).getData();
+                    setParameterType(RuleOptionType.VALUE, ctp);
+                    AttributeValue uiSchemaValue = (AttributeValue) ((Text) e.getSource())
+                            .getData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY);
+                    updateModel(ctp, valueTextBox, uiSchemaValue);
+                }
+            }
+        });
+
+        // Create expression compsite(Which has text box and exp button)
+        final Composite expressionComposite = createExpressionComposite(jsonSchemaObject.getName(), widgetFactory,
+                textBoxComposite, jsonSchemaObject);
+        expressionComposite.setVisible(false);
+        ((GridData) expressionComposite.getLayoutData()).exclude = true; // Hide the expression composite first
+
+        // Show hide password checkbox
+        final Button showPasswordCheckBox = new Button(textBoxComposite, SWT.CHECK);
+        showPasswordCheckBox.setText("Show Password");
+        showPasswordCheckBox.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                Button source = (Button) e.getSource();
+                if (source.getSelection()) { // If pressed
+                    valueTextBox.setEchoChar('\0');
+                } else {
+                    valueTextBox.setEchoChar('•');
+
+                }
+            }
+        });
+        // Bind toggle button events
+        expressionToggleButton.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                if (!isConnectionWidgetProvider) {
+                    Button source = (Button) e.getSource();
+                    if (source.getSelection()) { // If pressed
+                        // Hide value text box
+                        valueTextBox.setVisible(false);
+                        ((GridData) valueTextBox.getLayoutData()).exclude = true;
+                        // Show expression composite
+                        expressionComposite.setVisible(true);
+                        ((GridData) expressionComposite.getLayoutData()).exclude = false;
+                        parent.layout();
+                        // update ecore object to expression
+                        CallTemplateParameter ctp = (CallTemplateParameter) valueTextBox.getData();
+                        setParameterType(RuleOptionType.EXPRESSION, ctp);
+                        showPasswordCheckBox.setVisible(false);
+                    } else {
+                        // Show value text box
+                        valueTextBox.setVisible(true);
+                        ((GridData) valueTextBox.getLayoutData()).exclude = false;
+                        // Hide expression composite
+                        expressionComposite.setVisible(false);
+                        ((GridData) expressionComposite.getLayoutData()).exclude = true;
+                        parent.layout();
+                        // update ecore object to value
+                        CallTemplateParameter ctp = (CallTemplateParameter) valueTextBox.getData();
+                        setParameterType(RuleOptionType.VALUE, ctp);
+                        showPasswordCheckBox.setVisible(true);
+                    }
+                }
+            }
+        });
+        valueTextBox.setData(EEFPropertyConstants.ASSOCIATED_BUTTON, expressionToggleButton); // Add associated button
+        setItemFocus(valueTextBox);
+        // Register created widget in notify lists
+        controlList.put(jsonSchemaObject.getName(), valueTextBox);
+        if (jsonSchemaObject.getRequired()) {
+            requiredList.put(jsonSchemaObject.getName(), valueTextBox);
+        }
+        return parent;
+    }
+
+    /**
      * Provide a composite with Drop down Combo widget with expression support and a label
      * 
      * @param widgetFactory widget factory instance

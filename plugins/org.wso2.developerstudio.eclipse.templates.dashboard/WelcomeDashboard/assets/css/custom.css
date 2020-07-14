@@ -20,7 +20,7 @@
 
 @media screen 
 and (max-width: 1498px) 
-and (min-width: 1150px) {
+and (min-width: 1300px) {
     .is-label {
     	font-size:30px !important;
   	}
@@ -40,33 +40,65 @@ and (min-width: 1150px) {
 }
 
 @media screen 
-and (max-width: 1150px) 
-and (min-width: 850px) {
+and (max-width: 1300px) 
+and (min-width: 1000px) {
     .is-label {
-    	font-size:25px !important;
+    	font-size:20px !important;
   	}
   	
   	.getting-started {
-  		font-size:20px !important;
-  	}
-  	
-  	.gray-link {
   		font-size:14px !important;
   	}
-  	
-  	input,
+	
 	input::-webkit-input-placeholder {
-	    font-size: 12px !important;
+    	 font-size: 12px !important;
+    	 line-height: 1;
 	}
+	input::-moz-placeholder {
+	     font-size: 12px !important;
+	     line-height: 1;
+	}
+	input:-ms-input-placeholder {
+	     font-size: 12px !important;
+	     line-height: 1;
+	}
+	input::-ms-input-placeholder {
+	     font-size: 12px !important;
+	     line-height: 1;
+	}
+	input::placeholder {
+	     font-size: 12px !important;
+	     line-height: 1;
+	}
+		
+	.gray-link {
+	  		font-size:11px !important;
+  	}
 	
 	#search-icon {
-		margin-top: -3px !important;
+		margin-top: -4px !important;
+	}
+	
+	h5 {
+		font-size:15px !important;
+	}
+	
+	#dropdownMenuLink {
+		font-size:10px !important;
+	}
+	
+	.dropdown-item {
+		font-size:11px !important;
+	}
+	
+	.template-title {
+		font-size:12px !important;
 	}
 }
 
 @media screen 
-and (max-width: 850px) 
-and (min-width: 350px) {
+and (max-width: 1000px) 
+and (min-width: 850px) {
     .is-label {
     	font-size:20px !important;
   	}
@@ -76,16 +108,95 @@ and (min-width: 350px) {
   	}
   	
   	.gray-link {
+  		font-size:12px !important;
+  	}
+  	
+  	input::-webkit-input-placeholder {
+    	 font-size: 12px !important;
+	}
+	input::-moz-placeholder {
+	     font-size: 12px !important;
+	}
+	input:-ms-input-placeholder {
+	     font-size: 12px !important;
+	}
+	input::-ms-input-placeholder {
+	     font-size: 12px !important;
+	}
+	input::placeholder {
+	     font-size: 12px !important;
+	}
+	
+	h5 {
+		font-size:14px !important;
+	}
+	
+	#search-icon {
+		margin-top: -3px !important;
+	}
+	
+	#dropdownMenuLink {
+		font-size:10px !important;
+	}
+	
+	.dropdown-item {
+		font-size:11px !important;
+	}
+	
+	.template-title {
+		font-size:12px !important;
+	}
+}
+
+@media screen 
+and (max-width: 850px) 
+and (min-width: 350px) {
+    .is-label {
+    	font-size:17px !important;
+  	}
+  	
+  	.getting-started {
+  		font-size:13px !important;
+  	}
+  	
+  	.gray-link {
   		font-size:11px !important;
   	}
   	
-  	input,
-	input::-webkit-input-placeholder {
-	    font-size: 9px !important;
+  	input::-webkit-input-placeholder {
+    	 font-size: 9px !important;
+	}
+	input::-moz-placeholder {
+	     font-size: 9px !important;
+	}
+	input:-ms-input-placeholder {
+	     font-size: 9px !important;
+	}
+	input::-ms-input-placeholder {
+	     font-size: 9px !important;
+	}
+	input::placeholder {
+	     font-size: 9px !important;
+	}
+	
+	h5 {
+		font-size:12px !important;
 	}
 	
 	#search-icon {
 		margin-top: -5px !important;
+	}
+	
+	#dropdownMenuLink {
+		font-size:9px !important;
+	}
+	
+	.dropdown-item {
+		font-size:9px !important;
+	}
+	
+	.template-title {
+		font-size:11px !important;
 	}
 }
 
@@ -93,27 +204,54 @@ and (min-width: 350px) {
 and (max-width: 350px) 
 and (min-width: 10px) {
     .is-label {
-    	font-size:14px !important;
+    	font-size:12px !important;
   	}
   	
   	.getting-started {
-  		font-size:12px !important;
-  	}
-  	
-  	.gray-link {
   		font-size:10px !important;
   	}
   	
-  	input,
-	input::-webkit-input-placeholder {
+  	.gray-link {
+  		font-size:9px !important;
+  	}
+  	
+  	input::-webkit-input-placeholder {
+    	font-size: 7px !important;
+	    line-height: 3;
+	}
+	input::-moz-placeholder {
 	    font-size: 7px !important;
 	    line-height: 3;
+	}
+	input:-ms-input-placeholder {
+	    font-size: 7px !important;
+	    line-height: 3;
+	}
+	input::-ms-input-placeholder {
+	    font-size: 7px !important;
+	    line-height: 3;
+	}
+	input::placeholder {
+	    font-size: 7px !important;
+	    line-height: 3;
+	}
+	
+	#dropdownMenuLink {
+		font-size:7px !important;
+	}
+	
+	.dropdown-item {
+		font-size:7px !important;
+	}
+	
+	.template-title {
+		font-size:9px !important;
 	}
 }
 
 @media screen 
-and (max-height: 665px) 
-and (min-height: 10px) {
+and (max-height: 32.6em) 
+and (min-height: 1em) {
     .help-section {
     	display: none;
     }
@@ -150,7 +288,7 @@ and (min-height: 10px) {
     font-weight: 400;
   }
   body {
-    font-size: 14px;
+    font-size: 11px;
     color: #707070;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     background: url(../img/dashboard-background.png) no-repeat center center fixed;
@@ -260,6 +398,7 @@ and (min-height: 10px) {
 	position: fixed;
     left: 15px;
     top: 30px;
+    width:25%;
 }
 
 #dropdownMenuLink {

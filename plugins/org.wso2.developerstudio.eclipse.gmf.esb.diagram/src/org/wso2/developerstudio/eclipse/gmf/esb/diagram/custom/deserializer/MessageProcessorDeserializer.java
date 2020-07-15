@@ -809,6 +809,8 @@ public class MessageProcessorDeserializer extends
     private void setTextValue(Text textField, Object value) {
         if (value != null) {
             textField.setText(value.toString());
+        } else {
+            textField.setText("");
         }
     }
 

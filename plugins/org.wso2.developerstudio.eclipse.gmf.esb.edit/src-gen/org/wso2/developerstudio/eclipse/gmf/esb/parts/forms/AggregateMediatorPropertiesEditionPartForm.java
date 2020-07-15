@@ -107,7 +107,8 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 	protected Text completionMaxMessagesValue;
 	protected EMFComboViewer sequenceType;
 	protected Text enclosingElementProperty;
-	// Start of user code  for correlationExpression widgets declarations
+	protected EMFComboViewer aggregateElementType;
+    // Start of user code  for correlationExpression widgets declarations
     protected NamespacedProperty correlationExpression;
     protected Text correlationExpressionText;
 	// End of user code
@@ -146,6 +147,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
     protected Composite propertiesGroup;
     protected Composite onCompleteGroup;
     protected Composite completeConditionSubGroup;
+    protected Control[] aggregateElementTypeElements;
 
 	// End of user code
 
@@ -206,6 +208,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.aggregateID);
 		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.enclosingElementProperty);
 		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.correlationExpression);
+		propertiesStep.addStep(EsbViewsRepository.AggregateMediator.Properties.aggregateElementType);
         CompositionStep onCompleteStep = aggregateMediatorStep
                 .addStep(EsbViewsRepository.AggregateMediator.OnComplete.class);
         onCompleteStep.addStep(EsbViewsRepository.AggregateMediator.OnComplete.aggregationExpression);
@@ -259,6 +262,11 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 				// Start of user code for correlationExpression addToPart creation
 				if(key == EsbViewsRepository.AggregateMediator.Properties.correlationExpression) {
                     return createCorrelationExpressionWidget(widgetFactory, parent);
+                }
+				// End of user code
+				// Start of user code for aggregateElementType addToPart creation
+				if (key == EsbViewsRepository.AggregateMediator.Properties.aggregateElementType) {
+                    return createAggregateElementTypeEMFComboViewer(widgetFactory, parent);
                 }
 				// End of user code
 				// Start of user code for completionMinMessages addToPart creation
@@ -956,6 +964,59 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 		return parent;
 	}
 
+	/**
+	 * @generated NOT
+	 */
+    protected Composite createAggregateElementTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
+    	Control aggregateElementTypeLabel = createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.aggregateElementType, EsbMessages.AggregateMediatorPropertiesEditionPart_AggregateElementTypeLabel);
+        aggregateElementType = new EMFComboViewer(parent);
+        aggregateElementType.setContentProvider(new ArrayContentProvider());
+        aggregateElementType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+        GridData aggregateElementTypeData = new GridData(GridData.FILL_HORIZONTAL);
+        aggregateElementType.getCombo().setLayoutData(aggregateElementTypeData);
+        aggregateElementType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+
+            @Override
+            public void handleEvent(Event arg0) {
+                arg0.doit = false;
+            }
+        });
+        
+        aggregateElementType.addSelectionChangedListener(new ISelectionChangedListener() {
+    
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+           * 	
+           */
+          public void selectionChanged(SelectionChangedEvent event) {
+            if (propertiesEditionComponent != null)
+              propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AggregateMediatorPropertiesEditionPartForm.this, EsbViewsRepository.AggregateMediator.Properties.aggregateElementType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getAggregateElementType()));
+          }
+    
+        });
+        aggregateElementType.setID(EsbViewsRepository.AggregateMediator.Properties.aggregateElementType);
+        Control aggregateElementTypeHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.aggregateElementType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+        // Start of user code for createAggregateElementTypeEMFComboViewer
+        aggregateElementTypeElements = new Control[] {aggregateElementTypeLabel, aggregateElementType.getCombo(), aggregateElementTypeHelp};
+        aggregateElementType.addSelectionChangedListener(new ISelectionChangedListener() {
+            
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+             *  
+             */
+            public void selectionChanged(SelectionChangedEvent event) {
+                refresh();
+            }
+        });
+    
+        // End of user code
+        return parent;
+        
+      }
 
 /**
  * @generated NOT
@@ -1407,7 +1468,54 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 
 
 
-	// Start of user code for correlationExpression specific getters and setters implementation
+	/**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#getAggregateElementType()
+   * 
+   */
+  public Enumerator getAggregateElementType() {
+    Enumerator selection = (Enumerator) ((StructuredSelection) aggregateElementType.getSelection()).getFirstElement();
+    return selection;
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#initAggregateElementType(Object input, Enumerator current)
+   */
+  public void initAggregateElementType(Object input, Enumerator current) {
+    aggregateElementType.setInput(input);
+    aggregateElementType.modelUpdating(new StructuredSelection(current));
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.AggregateMediator.Properties.aggregateElementType);
+    if (eefElementEditorReadOnlyState && aggregateElementType.isEnabled()) {
+      aggregateElementType.setEnabled(false);
+      aggregateElementType.setToolTipText(EsbMessages.AggregateMediator_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !aggregateElementType.isEnabled()) {
+      aggregateElementType.setEnabled(true);
+    }	
+    
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#setAggregateElementType(Enumerator newValue)
+   * 
+   */
+  public void setAggregateElementType(Enumerator newValue) {
+    aggregateElementType.modelUpdating(new StructuredSelection(newValue));
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.AggregateMediator.Properties.aggregateElementType);
+    if (eefElementEditorReadOnlyState && aggregateElementType.isEnabled()) {
+      aggregateElementType.setEnabled(false);
+      aggregateElementType.setToolTipText(EsbMessages.AggregateMediator_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !aggregateElementType.isEnabled()) {
+      aggregateElementType.setEnabled(true);
+    }	
+    
+  }
+
+    // Start of user code for correlationExpression specific getters and setters implementation
 
     @Override
     public NamespacedProperty getCorrelationExpression() {
@@ -1788,6 +1896,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
         epv.clearElements(new Composite[] { completeConditionSubGroup });
         epv.showEntry(aggregateIDElements, false);
         epv.showEntry(correlationExpressionElements, false);
+        epv.showEntry(aggregateElementTypeElements, false);
         epv.showEntry(completionTimeoutElements, false);
         epv.showEntry(completionMinMessagesTypeElements, false);
         epv.showEntry(completionMaxMessagesTypeElements, false);

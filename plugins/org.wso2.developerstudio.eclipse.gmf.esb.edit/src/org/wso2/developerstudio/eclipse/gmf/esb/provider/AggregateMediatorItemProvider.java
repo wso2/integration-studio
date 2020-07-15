@@ -89,6 +89,7 @@ public class AggregateMediatorItemProvider extends MediatorItemProvider {
         }
 
         addEnclosingElementPropertyPropertyDescriptor(object);
+        addAggregateElementTypePropertyDescriptor(object);
         addDescriptionPropertyDescriptor(object);
 
         return itemPropertyDescriptors;
@@ -329,6 +330,28 @@ public class AggregateMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
+     * This adds a property descriptor for the Aggregate Element Type feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addAggregateElementTypePropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_AggregateMediator_aggregateElementType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_AggregateMediator_aggregateElementType_feature", "_UI_AggregateMediator_type"),
+                 EsbPackage.Literals.AGGREGATE_MEDIATOR__AGGREGATE_ELEMENT_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
      * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -416,6 +439,7 @@ public class AggregateMediatorItemProvider extends MediatorItemProvider {
             case EsbPackage.AGGREGATE_MEDIATOR__COMPLETION_MAX_MESSAGES_VALUE:
             case EsbPackage.AGGREGATE_MEDIATOR__SEQUENCE_TYPE:
             case EsbPackage.AGGREGATE_MEDIATOR__ENCLOSING_ELEMENT_PROPERTY:
+            case EsbPackage.AGGREGATE_MEDIATOR__AGGREGATE_ELEMENT_TYPE:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
             case EsbPackage.AGGREGATE_MEDIATOR__CORRELATION_EXPRESSION:

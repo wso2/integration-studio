@@ -1252,10 +1252,15 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="enclosingElementProperty"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="aggregateElementType" eType="#//AggregateElementType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="CompletionMessagesType">
     <eLiterals name="VALUE"/>
     <eLiterals name="EXPRESSION" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AggregateElementType">
+    <eLiterals name="ROOT" literal="ROOT"/>
+    <eLiterals name="CHILD" value="1" literal="CHILD"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AggregateMediatorInputConnector" eSuperTypes="#//InputConnector"/>
   <eClassifiers xsi:type="ecore:EClass" name="AggregateMediatorOutputConnector" eSuperTypes="#//OutputConnector"/>

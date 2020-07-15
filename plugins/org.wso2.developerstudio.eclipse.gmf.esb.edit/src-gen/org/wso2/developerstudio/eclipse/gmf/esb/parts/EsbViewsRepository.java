@@ -3425,6 +3425,9 @@ public class EsbViewsRepository {
 			public static String completionMaxMessages = "esb::AggregateMediator::properties::completionMaxMessages";
 			// End of user code
 			
+			// Start of user code for completionMaxMessages ElementEditor key
+			public static String aggregateElementType = "esb::AggregateMediator::properties::aggregateElementType";
+			// End of user code
 	
 		}
 	

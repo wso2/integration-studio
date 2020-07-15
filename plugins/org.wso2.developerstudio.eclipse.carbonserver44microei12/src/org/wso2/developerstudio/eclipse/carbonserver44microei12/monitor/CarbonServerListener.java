@@ -25,6 +25,10 @@ import java.util.List;
 import org.apache.commons.io.FileUtils;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IViewPart;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.wst.server.core.IServer;
 import org.eclipse.wst.server.core.IServerListener;
 import org.eclipse.wst.server.core.ServerEvent;
@@ -35,6 +39,7 @@ import org.wso2.developerstudio.eclipse.carbonserver44microei12.Activator;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.monitoring.dashboard.MonitoringDashboard;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.register.product.servers.MicroIntegratorInstance;
 import org.wso2.developerstudio.eclipse.carbonserver44microei12.util.CarbonServer44eiUtils;
+import org.wso2.developerstudio.eclipse.carbonserver44microei12.util.ServerConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
@@ -128,6 +133,16 @@ public class CarbonServerListener implements IServerListener {
         }
         // If running, stop MI monitoring dashboard app.
         MonitoringDashboard.getInstance().stopMonitoringDashboard();
+        
+        // Closing the deployed services view
+        Display.getDefault().asyncExec(new Runnable() {
+            @Override
+            public void run() {
+                IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+                IViewPart view = page.findView(ServerConstants.DEPLOYED_SERVICES_VIEW);
+                page.hideView(view);
+            }
+        });
     }
     
     /**

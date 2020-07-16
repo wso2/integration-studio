@@ -165,6 +165,11 @@ public class MavenMultiModuleImportUtils {
                     IProject subIProject = root.getProject(resourceFile.getName());
                     subIProject.create(newSubProjectDescription, new NullProgressMonitor());
                     subIProject.open(new NullProgressMonitor());
+                    
+                    try {
+                    	subIProject.create(newSubProjectDescription, new NullProgressMonitor());
+                    } catch(Exception e) {}
+                    
                     if (newSubProjectDescription.getNatureIds()[0].equals(Constants.ESB_PROJECT_NATURE)
                             && isProcessOfSampleCreating) {
                         IMPORTED_ESB_PROJECT = subIProject;
@@ -319,7 +324,7 @@ public class MavenMultiModuleImportUtils {
             MavenUtils.saveMavenProject(mavenProject, pomFile);
             pomIFile.getProject().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 
-            Display.getDefault().asyncExec(new Runnable() {
+            Display.getDefault().syncExec(new Runnable() {
                 public void run() {
                     try {
                         setPerspective(getShell());
@@ -472,13 +477,21 @@ public class MavenMultiModuleImportUtils {
             @Override
             public void run() {
                 IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-                if (!"org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.perspective"
-                        .equals(window.getActivePage().getPerspective().getId())) {
+                if ((!"org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.perspective"
+                        .equals(window.getActivePage().getPerspective().getId())) && IMPORTED_DSS_PROJECT == null) {
                     try {
-                        PlatformUI.getWorkbench().showPerspective("org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.perspective",
-                                window);
+                        PlatformUI.getWorkbench().showPerspective(
+                                "org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.perspective", window);
                     } catch (Exception e) {
                         log.error("Cannot switch to ESB Graphical Perspective", e);
+                    }
+                } else if ((!"org.wso2.developerstudio.eclipse.ds.presentation.custom.perspective"
+                        .equals(window.getActivePage().getPerspective().getId())) && IMPORTED_DSS_PROJECT != null) {
+                    try {
+                        PlatformUI.getWorkbench().showPerspective(
+                                "org.wso2.developerstudio.eclipse.ds.presentation.custom.perspective", window);
+                    } catch (Exception e) {
+                        log.error("Cannot switch to DSS Graphical Perspective", e);
                     }
                 }
             }

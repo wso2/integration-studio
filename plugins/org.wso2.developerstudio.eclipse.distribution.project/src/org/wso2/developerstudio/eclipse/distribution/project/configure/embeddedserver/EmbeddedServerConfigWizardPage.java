@@ -56,6 +56,7 @@ import org.eclipse.swt.custom.Bullet;
 import org.eclipse.swt.custom.LineStyleEvent;
 import org.eclipse.swt.custom.LineStyleListener;
 import org.eclipse.swt.custom.ST;
+import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.custom.StyleRange;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.ModifyEvent;
@@ -99,20 +100,24 @@ public class EmbeddedServerConfigWizardPage extends WizardPage {
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     private static final String DIALOG_TITLE = "Embedded Micro Integrator Server Configuration";
     private static final String SERVER_CONFIG_LIBS = File.separator + "lib";
+    private static final String SERVER_CONFIG_DROPINS = File.separator + "dropins";
     private static final String SERVER_CONFIG_SELECTED_LIBS = File.separator + "selected";
+    private static final String DELIMETER = "\\";
 
     private String tomlConfig;
     private Map<String, Boolean> librariesList = new HashMap<>();
+    private Map<String, Boolean> dropinLibrariesList = new HashMap<>();
     private String serverConfigPath;
     private String embeddedMILocation;
     private Table libTable;
+    private Table dropinLibTable;
     private boolean isTomlChanged = false;
 
     /**
      * Class constructor.
      */
     public EmbeddedServerConfigWizardPage(String tomlConfig, String serverConfigPath,
-            Map<String, Boolean> librariesList, String embeddedMILocation) {
+            Map<String, Boolean> librariesList, String embeddedMILocation, Map<String, Boolean> dropinLibrariesList) {
         super(DIALOG_TITLE);
         setTitle(DIALOG_TITLE);
         Bundle bundle = Platform.getBundle(Activator.PLUGIN_ID);
@@ -123,15 +128,35 @@ public class EmbeddedServerConfigWizardPage extends WizardPage {
         this.serverConfigPath = serverConfigPath;
         this.librariesList = librariesList;
         this.embeddedMILocation = embeddedMILocation;
+        this.dropinLibrariesList = dropinLibrariesList;
     }
 
     @Override
     public void createControl(Composite parent) {
-        Composite container = new Composite(parent, SWT.NULL);
+        parent.setLayout(new FormLayout());
 
-        setControl(container);
+        // Create the ScrolledComposite to scroll vertically
+        ScrolledComposite scrolledComposite = new ScrolledComposite(parent, SWT.H_SCROLL | SWT.V_SCROLL);
+        FormData data = new FormData();
+        data.top = new FormAttachment(0, 5);
+        data.left = new FormAttachment(0, 5);
+        data.bottom = new FormAttachment(100, -5);
+        data.right = new FormAttachment(100, -5);
+        scrolledComposite.setLayoutData(data);
+        scrolledComposite.setMinSize(500, 1000);
+        scrolledComposite.setExpandHorizontal(true);
+        scrolledComposite.setExpandVertical(true);
+        setControl(scrolledComposite);
+        
+        Composite container = new Composite(scrolledComposite, SWT.NONE);
         container.setLayout(new FormLayout());
-        FormData data;
+        data = new FormData();
+        data.top = new FormAttachment(0, 5);
+        data.left = new FormAttachment(0, 5);
+        data.bottom = new FormAttachment(100, -5);
+        data.right = new FormAttachment(100, -5);
+        container.setLayoutData(data);
+        scrolledComposite.setContent(container);
 
         Group textGroup = new Group(container, SWT.NONE);
         data = new FormData();
@@ -317,7 +342,6 @@ public class EmbeddedServerConfigWizardPage extends WizardPage {
         data.top = new FormAttachment(secureGroup, 10);
         data.left = new FormAttachment(3);
         data.right = new FormAttachment(97);
-        data.bottom = new FormAttachment(97);
         data.height = 225;
         libGroup.setLayoutData(data);
         libGroup.setLayout(new FormLayout());
@@ -564,12 +588,243 @@ public class EmbeddedServerConfigWizardPage extends WizardPage {
                 }
             }
         });
+        
+        Group dropingLibGroup = new Group(container, SWT.NONE);
+        data = new FormData();
+        data.top = new FormAttachment(libGroup, 10);
+        data.left = new FormAttachment(3);
+        data.right = new FormAttachment(97);
+        data.bottom = new FormAttachment(97);
+        data.height = 225;
+        dropingLibGroup.setLayoutData(data);
+        dropingLibGroup.setLayout(new FormLayout());
+        dropingLibGroup.setText("Select libraries(JARs) which are needed to copy to Dropin directory:");
+        Font bldLibFont = new Font(null, new FontData("Arial", 10, SWT.BOLD));
+        dropingLibGroup.setFont(bldLibFont);
+
+        Button dropinLibRemoveButton = new Button(dropingLibGroup, SWT.NONE);
+        dropinLibRemoveButton.setImage(LibImageUtils.getInstance().getImageDescriptor("delete.png").createImage());
+        data = new FormData();
+        data.top = new FormAttachment(2);
+        data.right = new FormAttachment(98);
+        dropinLibRemoveButton.setLayoutData(data);
+        dropinLibRemoveButton.setEnabled(false);
+
+        Button dropingLibAddButton = new Button(dropingLibGroup, SWT.NONE);
+        dropingLibAddButton.setImage(LibImageUtils.getInstance().getImageDescriptor("add.png").createImage());
+        data = new FormData();
+        data.top = new FormAttachment(2);
+        data.right = new FormAttachment(dropinLibRemoveButton, -3);
+        dropingLibAddButton.setLayoutData(data);
+        dropingLibAddButton.setEnabled(true);
+        
+        dropingLibAddButton.addSelectionListener(new SelectionAdapter() {
+            public void widgetSelected(SelectionEvent e) {
+                try {
+                    FileDialog fileDlg = new FileDialog(getShell());
+                    String[] filterExt = { "*.jar;*.JAR" };
+                    fileDlg.setFilterExtensions(filterExt);
+                    String importFile = fileDlg.open();
+                    if (importFile != null) {
+                        String[] pathSegments = importFile.split(DELIMETER + File.separator);
+                        String libraryName = pathSegments[pathSegments.length - 1];
+                        FileUtils.copyFile(new File(importFile),
+                                new File(serverConfigPath + SERVER_CONFIG_DROPINS + SERVER_CONFIG_SELECTED_LIBS + 
+                                        File.separator + libraryName));
+                        if (libraryName != null && !libraryName.isEmpty()) {
+                            dropinLibrariesList.put(libraryName, true);
+                            reloadLibraryList();
+                        }
+                    }
+                } catch (IOException err) {
+                    log.error("Error while loading selected jar file", err);
+                }
+            }
+        });
+        
+        dropinLibTable = new Table(dropingLibGroup, SWT.CHECK | SWT.BORDER | SWT.V_SCROLL | SWT.MULTI);
+        data = new FormData();
+        data.top = new FormAttachment(dropinLibRemoveButton, 5, 5);
+        data.left = new FormAttachment(2);
+        data.right = new FormAttachment(98);
+        data.height = 130;
+        data.bottom = new FormAttachment(100,-40);
+        dropinLibTable.setLayoutData(data);
+        dropinLibTable.setLinesVisible(true);
+        dropinLibTable.setHeaderVisible(true);
+
+        TableColumn dropingColumnLibName = new TableColumn(dropinLibTable, SWT.LEFT);
+        dropingColumnLibName.setText("Library Name");
+        dropingColumnLibName.setWidth(520);
+        
+        for (Map.Entry<String, Boolean> entry : dropinLibrariesList.entrySet()) {
+            TableItem item = new TableItem(dropinLibTable, SWT.NONE);
+            item.setText(0, entry.getKey());
+            item.setChecked(entry.getValue());
+        }
+        
+        dropinLibTable.addListener(SWT.Selection, new Listener() {
+            public void handleEvent(Event event) {
+                final TableItem item = (TableItem) event.item;
+                if (event.detail == SWT.CHECK && item != null) {
+                    String itemName = item.getText(0);
+                    String sourceDirectory;
+                    String destinationDirectory;
+                    try {
+                        if (item.getChecked()) {
+                            sourceDirectory = serverConfigPath + SERVER_CONFIG_DROPINS + File.separator + itemName;
+                            destinationDirectory = serverConfigPath + SERVER_CONFIG_DROPINS + SERVER_CONFIG_SELECTED_LIBS
+                                    + File.separator + itemName;
+                        } else {
+                            sourceDirectory = serverConfigPath + SERVER_CONFIG_DROPINS + SERVER_CONFIG_SELECTED_LIBS
+                                    + File.separator + itemName;
+                            destinationDirectory = serverConfigPath + SERVER_CONFIG_DROPINS + File.separator + itemName;
+                        }
+                        java.nio.file.Path movedFile = Files.move(java.nio.file.Paths.get(sourceDirectory),
+                                java.nio.file.Paths.get(destinationDirectory));
+                        if (movedFile == null) {
+                            throw new IOException("Error while 'moving as selected' the selected jar file");
+                        }
+
+                        if (dropinLibrariesList.containsKey(itemName)) {
+                            dropinLibrariesList.put(itemName, item.getChecked());
+                            reloadLibraryList();
+                        }
+                    } catch (IOException e) {
+                        log.error("Error while 'moving as selected' the selected jar file", e);
+                    }
+                } else {
+                    TableItem selectedItem = (TableItem) event.item;
+                    if (selectedItem != null) {
+                        dropinLibTable.setSelection(dropinLibTable.indexOf(selectedItem));
+                        dropinLibRemoveButton.setEnabled(true);
+                    } else {
+                        dropinLibRemoveButton.setEnabled(false);
+                    }
+                }
+            }
+        });
+
+        dropinLibRemoveButton.addListener(SWT.Selection, new Listener() {
+            public void handleEvent(Event event) {
+                if (dropinLibTable.getSelectionIndex() >= 0) {
+                    String propertyKey = dropinLibTable.getItem(dropinLibTable.getSelectionIndex()).getText(0);
+                    if (dropinLibrariesList.containsKey(propertyKey)) {
+                        String selectedJarLocatedPath;
+                        if (dropinLibrariesList.get(propertyKey)) {
+                            selectedJarLocatedPath = serverConfigPath + SERVER_CONFIG_DROPINS
+                                    + SERVER_CONFIG_SELECTED_LIBS;
+                        } else {
+                            selectedJarLocatedPath = serverConfigPath + SERVER_CONFIG_DROPINS;
+                        }
+                        try {
+                            Files.deleteIfExists(Paths.get(selectedJarLocatedPath + File.separator + propertyKey));
+                        } catch (IOException err) {
+                            log.error("Error while deleting selected jar file", err);
+                        }
+                        dropinLibrariesList.remove(propertyKey);
+                        dropinLibTable.remove(dropinLibTable.getSelectionIndices());
+                        dropinLibRemoveButton.setEnabled(false);
+                    }
+                }
+            }
+        });
+        
+        Button dropinSelectAllButton = new Button(dropingLibGroup, SWT.NONE);
+        data = new FormData();
+        data.top = new FormAttachment(dropinLibTable, 5);
+        data.left = new FormAttachment(2);
+        dropinSelectAllButton.setLayoutData(data);
+        dropinSelectAllButton.setText("Select All");
+
+        Button dropinDeselectAllButton = new Button(dropingLibGroup, SWT.NONE);
+        data = new FormData();
+        data.top = new FormAttachment(dropinLibTable, 5);
+        data.left = new FormAttachment(dropinSelectAllButton, 3);
+        dropinDeselectAllButton.setLayoutData(data);
+        dropinDeselectAllButton.setText("Deselect All");
+        
+        dropinSelectAllButton.addSelectionListener(new SelectionAdapter() {
+            public void widgetSelected(SelectionEvent e) {
+                dropinLibTable.removeAll();
+
+                for (Map.Entry<String, Boolean> entry : dropinLibrariesList.entrySet()) {
+                    String itemName = entry.getKey();
+                    String sourceDirectory = serverConfigPath + SERVER_CONFIG_DROPINS + File.separator + itemName;
+                    String destinationDirectory = serverConfigPath + SERVER_CONFIG_DROPINS + SERVER_CONFIG_SELECTED_LIBS
+                            + File.separator + itemName;
+
+                    File currentJar = new File(sourceDirectory);
+                    if (currentJar.exists()) {
+                        try {
+                            java.nio.file.Path movedFile = Files.move(java.nio.file.Paths.get(sourceDirectory),
+                                    java.nio.file.Paths.get(destinationDirectory));
+                            if (movedFile == null) {
+                                throw new IOException("Error while 'moving as selected' the selected jar file");
+                            }
+
+                        } catch (IOException err) {
+                            log.error("Error while 'moving as selected' the selected jar file", err);
+                        }
+                    }
+
+                    TableItem item = new TableItem(dropinLibTable, SWT.NONE);
+                    item.setText(0, entry.getKey());
+                    item.setChecked(true);
+
+                    if (dropinLibrariesList.containsKey(itemName)) {
+                        dropinLibrariesList.put(itemName, true);
+                    }
+                }
+            }
+        });
+
+        dropinDeselectAllButton.addSelectionListener(new SelectionAdapter() {
+            public void widgetSelected(SelectionEvent e) {
+                dropinLibTable.removeAll();
+
+                for (Map.Entry<String, Boolean> entry : dropinLibrariesList.entrySet()) {
+                    String itemName = entry.getKey();
+                    String sourceDirectory = serverConfigPath + SERVER_CONFIG_DROPINS + SERVER_CONFIG_SELECTED_LIBS
+                            + File.separator + itemName;
+                    String destinationDirectory = serverConfigPath + SERVER_CONFIG_DROPINS + File.separator + itemName;
+
+                    File currentJar = new File(sourceDirectory);
+                    if (currentJar.exists()) {
+                        try {
+                            java.nio.file.Path movedFile = Files.move(java.nio.file.Paths.get(sourceDirectory),
+                                    java.nio.file.Paths.get(destinationDirectory));
+                            if (movedFile == null) {
+                                throw new IOException("Error while 'moving as selected' the selected jar file");
+                            }
+
+                        } catch (IOException err) {
+                            log.error("Error while 'moving as selected' the selected jar file", err);
+                        }
+                    }
+
+                    TableItem item = new TableItem(dropinLibTable, SWT.NONE);
+                    item.setText(0, entry.getKey());
+                    item.setChecked(false);
+
+                    if (dropinLibrariesList.containsKey(itemName)) {
+                        dropinLibrariesList.put(itemName, false);
+                    }
+                }
+            }
+        });
     }
 
     private void reloadLibraryList() {
         libTable.removeAll();
         for (Map.Entry<String, Boolean> entry : librariesList.entrySet()) {
             TableItem item = new TableItem(libTable, SWT.NONE);
+            item.setText(0, entry.getKey());
+            item.setChecked(entry.getValue());
+        }
+        dropinLibTable.removeAll();
+        for (Map.Entry<String, Boolean> entry : dropinLibrariesList.entrySet()) {
+            TableItem item = new TableItem(dropinLibTable, SWT.NONE);
             item.setText(0, entry.getKey());
             item.setChecked(entry.getValue());
         }

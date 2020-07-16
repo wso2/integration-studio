@@ -366,6 +366,13 @@ public class CarbonServer44eiUtils implements CarbonServerXUtils {
                     properties.setProperty(ServerConstants.CURRENT_JAR_MD5SUM, newJarMd5sum);
                     updatePropertiesfile = true;
                 }
+                
+                String newDropinsMd5sum = properties.getProperty(ServerConstants.NEW_DROPINS_MD5SUM);
+                String currentDropinsMd5sum = properties.getProperty(ServerConstants.CURRENT_DROPINS_MD5SUM);
+                if (newDropinsMd5sum != null && !newDropinsMd5sum.equals(currentDropinsMd5sum)) {
+                    properties.setProperty(ServerConstants.CURRENT_DROPINS_MD5SUM, newDropinsMd5sum);
+                    updatePropertiesfile = true;
+                }
 
                 if (updatePropertiesfile) {
                     properties.store(new FileOutputStream(configPropertiesPath), null);

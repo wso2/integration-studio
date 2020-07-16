@@ -20,6 +20,8 @@ package org.wso2.developerstudio.eclipse.carbonserver44microei12.monitor;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
@@ -45,6 +47,11 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public class CarbonServerListener implements IServerListener {
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    
+    private static final String DROPINS_DIR = "dropins";
+    private static final String SELECTED = "selected";
+    private static final String JAR_EXTENSION = ".jar";
+    private static final String JAR_EXTENSION_UPPERCASE = ".JAR";
 
     private final List<ICarbonServerMonitor> serverMonitors;
 
@@ -309,7 +316,12 @@ public class CarbonServerListener implements IServerListener {
                 File selectedCheckedLibs = new File(selectedLibraryPath);
                 File[] listSelectedCheckedLibs = selectedCheckedLibs.listFiles();
                 
-                if (listSelectedCheckedLibs.length > 0) {
+                // obtain user selected dropins libraries list
+                Path selectedDropinsPath = Paths.get(serverConfigDirectoryPath, DROPINS_DIR, SELECTED);
+                File selectedCheckedDropins = selectedDropinsPath.toFile();
+                File[] listSelectedCheckedDropins = selectedCheckedDropins.listFiles();
+                
+                if (listSelectedCheckedLibs.length > 0 || listSelectedCheckedDropins.length > 0) {
                     // backup original lib and dropins resources
                     FileUtils.copyDirectory(runningLibDirectory, tempLibDirectory);
                     FileUtils.copyDirectory(runningDropinsDirectory, tempDropinsDirectory);
@@ -321,6 +333,16 @@ public class CarbonServerListener implements IServerListener {
                         File jarToLibDirectory = new File(
                                 miHomePath + File.separator + "lib" + File.separator + filename);
                         org.apache.commons.io.FileUtils.copyFile(jarFile, jarToLibDirectory);
+                    }
+                }
+                
+                // Copy user selected libraries to dropins directory
+                for (int i = 0; i < listSelectedCheckedDropins.length; i++) {
+                    String filename = listSelectedCheckedDropins[i].getName();
+                    if (filename.endsWith(JAR_EXTENSION) || filename.endsWith(JAR_EXTENSION_UPPERCASE)) {
+                        File jarFile = new File(selectedCheckedDropins, filename);
+                        File jarToLibDirectory = Paths.get(miHomePath, DROPINS_DIR, filename).toFile();
+                        FileUtils.copyFile(jarFile, jarToLibDirectory);
                     }
                 }
             }

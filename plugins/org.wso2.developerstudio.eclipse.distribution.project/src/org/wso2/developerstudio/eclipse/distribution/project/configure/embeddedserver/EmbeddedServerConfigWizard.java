@@ -27,6 +27,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.SequenceInputStream;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -71,6 +72,13 @@ public class EmbeddedServerConfigWizard extends Wizard implements INewWizard, IE
     private static final String WINDOW_OS = "WINDOWS";
     private static final String OTHER_OS = "OTHER";
     private static final String CONFIG_PROPERTIES_FILE = "config.properties";
+    public static final String NEW_DROPINS_MD5SUM = "new.dropins.md5sum";
+    public static final String CURRENT_DROPINS_MD5SUM = "current.dropins.md5sum";
+    private static final Path SERVER_CONFIG_DROPINS = Paths.get(TEMP_SERVER_CONFIGURATION_PATH,"dropins");
+    private static final Path SERVER_CONFIG_SELECTED_DROPINS = Paths.get(SERVER_CONFIG_DROPINS.toString(), 
+            "selected");
+    private static final String JAR_EXTENSION = ".jar";
+    private static final String JAR_EXTENSION_ALL_CAPS = ".JAR";
 
     private EmbeddedServerConfigWizardPage serverConfigPage;
     private String miDeploymentTomlPath;
@@ -78,6 +86,7 @@ public class EmbeddedServerConfigWizard extends Wizard implements INewWizard, IE
     private String miServerPath;
     private String osType;
     private Map<String, Boolean> librariesList = new HashMap<>();
+    private Map<String, Boolean> dropinLibrariesList = new HashMap<>();
 
     @Override
     public void init(IWorkbench workbench, IStructuredSelection selection) {
@@ -85,11 +94,12 @@ public class EmbeddedServerConfigWizard extends Wizard implements INewWizard, IE
         loadSelectedLibrarySets();
         setWindowTitle(WINDOW_TITLE);
         serverConfigPage = new EmbeddedServerConfigWizardPage(tomlConfiguration, TEMP_SERVER_CONFIGURATION_PATH,
-                librariesList, miServerPath);
+                librariesList, miServerPath, dropinLibrariesList);
     }
 
     private String checkAndLoadDeploymentToml() {
         File configDir = new File(TEMP_SERVER_CONFIGURATION_PATH);
+        File dropinsDir = SERVER_CONFIG_SELECTED_DROPINS.toFile();
         miServerPath = getMicroIntegratorPath();
         miDeploymentTomlPath = miServerPath + SERVER_CONF_DIRECTORY + DEPLOYMENT_TOML_FILE;
         serverConfigDeploymentTomlPath = TEMP_SERVER_CONFIGURATION_PATH + DEPLOYMENT_TOML_FILE;
@@ -98,6 +108,10 @@ public class EmbeddedServerConfigWizard extends Wizard implements INewWizard, IE
                 configDir.mkdirs();
                 new File(TEMP_SERVER_CONFIGURATION_PATH + SERVER_CONFIG_SELECTED_LIBS).mkdirs();
                 FileUtils.copyFile(new File(miDeploymentTomlPath), new File(serverConfigDeploymentTomlPath));
+            }
+            
+            if (!dropinsDir.exists()) {
+                dropinsDir.mkdirs();
             }
 
             String content = new String(Files.readAllBytes(Paths.get(serverConfigDeploymentTomlPath)));
@@ -124,6 +138,25 @@ public class EmbeddedServerConfigWizard extends Wizard implements INewWizard, IE
             String filename = listSelectedLibs[i].getName();
             if ((filename.endsWith(".jar") || filename.endsWith(".JAR")) && !librariesList.containsKey(filename)) {
                 librariesList.put(filename, false);
+            }
+        }
+        
+        selectedCheckedLibs = SERVER_CONFIG_SELECTED_DROPINS.toFile();
+        listSelectedCheckedLibs = selectedCheckedLibs.listFiles();
+        for (int i = 0; i < listSelectedCheckedLibs.length; i++) {
+            String filename = listSelectedCheckedLibs[i].getName();
+            if (filename.endsWith(JAR_EXTENSION) || filename.endsWith(JAR_EXTENSION_ALL_CAPS)) {
+                dropinLibrariesList.put(filename, true);
+            }
+        }
+
+        selectedLibs = SERVER_CONFIG_DROPINS.toFile();
+        listSelectedLibs = selectedLibs.listFiles();
+        for (int i = 0; i < listSelectedLibs.length; i++) {
+            String filename = listSelectedLibs[i].getName();
+            if ((filename.endsWith(JAR_EXTENSION) || filename.endsWith(JAR_EXTENSION_ALL_CAPS)) && 
+            		!dropinLibrariesList.containsKey(filename)) {
+                dropinLibrariesList.put(filename, false);
             }
         }
     }
@@ -218,9 +251,12 @@ public class EmbeddedServerConfigWizard extends Wizard implements INewWizard, IE
 		Properties properties = new Properties();
 
 		String selectedJarPath = TEMP_SERVER_CONFIGURATION_PATH + SERVER_CONFIG_SELECTED_LIBS;
+		String selectedDropinsPath = SERVER_CONFIG_SELECTED_DROPINS.toString();
 		try {
 			properties.setProperty("new.jar.md5sum", hashDirectory(selectedJarPath));
 			updatePropertiesfile = true;
+			
+			properties.setProperty(NEW_DROPINS_MD5SUM, hashDirectory(selectedDropinsPath));
 		} catch (IOException e) {
 			log.error("Error while setting the md5sum value of the selected directory.", e);
 		}
@@ -240,6 +276,12 @@ public class EmbeddedServerConfigWizard extends Wizard implements INewWizard, IE
 				if (currentJarMd5sum != null) {
 					properties.setProperty("current.jar.md5sum", currentJarMd5sum);
 					updatePropertiesfile = true;
+				}
+
+				String currentDropinsMd5sum = existingProperties.getProperty(CURRENT_DROPINS_MD5SUM);
+				if (currentDropinsMd5sum != null) {
+				    properties.setProperty(CURRENT_DROPINS_MD5SUM, currentDropinsMd5sum);
+				    updatePropertiesfile = true;
 				}
 			}
 		} catch (IOException | IllegalArgumentException e) {

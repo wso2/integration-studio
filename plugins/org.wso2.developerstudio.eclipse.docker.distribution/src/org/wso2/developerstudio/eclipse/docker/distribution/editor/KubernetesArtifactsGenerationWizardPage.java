@@ -164,11 +164,10 @@ public class KubernetesArtifactsGenerationWizardPage extends WizardPage {
         IWorkspaceRoot wroot = ResourcesPlugin.getWorkspace().getRoot();
         IProject[] allProjects = wroot.getProjects();
         List<String> k8sProjects = new ArrayList<>();
-        String workspacePath = wroot.getLocation().toString() + File.separator;
         for (IProject project : allProjects) {
             try {
                 if (project.hasNature(Constants.KUBERNETES_EXPORTER_PROJECT_NATURE)) {
-                    k8sProjects.add(project.getLocation().toString().replaceAll(workspacePath, ""));
+                    k8sProjects.add(project.getName());
                 }
             } catch (CoreException e) {
                 log.error("Exception while processing the workspace for find Kubernetes projects", e);

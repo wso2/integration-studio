@@ -64,7 +64,7 @@ public class KubernetesProjectCreationWizard extends Wizard implements IExportWi
             File location;
             if (project != null) {
                 if (dockerModel.isCompositeOnClickContainerCreation()) {
-                    location = project.getParent().getLocation().toFile();
+                    location = new File(project.getLocation().toOSString().replace(project.getName(), ""));
                     dockerModel.setSelectedCompositeProjectOnCreation(project);
                 } else {
                     location = project.getLocation().toFile();

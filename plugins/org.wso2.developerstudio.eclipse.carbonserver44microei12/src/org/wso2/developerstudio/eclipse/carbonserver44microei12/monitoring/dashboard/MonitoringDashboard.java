@@ -65,7 +65,7 @@ public class MonitoringDashboard {
      */
     public String getUrl() throws IOException {
         startMonitoringDashboard();
-        return MonitoringDashboardConstants.HTTP + serverHost + MonitoringDashboardConstants.COLON + serverPort
+        return MonitoringDashboardConstants.HTTPS + serverHost + MonitoringDashboardConstants.COLON + serverPort
                 + MonitoringDashboardConstants.MI_DASHBOARD_CONTEXT_PATH;
     }
 

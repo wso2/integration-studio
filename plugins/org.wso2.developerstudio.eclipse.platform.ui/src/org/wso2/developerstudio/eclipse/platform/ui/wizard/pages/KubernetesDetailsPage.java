@@ -87,7 +87,7 @@ public class KubernetesDetailsPage extends WizardPage {
 	 */
 	public KubernetesDetailsPage(ProjectDataModel projectDataModel) {
 		super("wizardPage");
-		setTitle("Kubernetes Exporter Information");
+		setTitle("Kubernetes Exporter for K8s EI Operator Information");
 		setDescription("Kubernetes deployment information for the project");
 		setImageDescriptor(PluginImageUtils.getInstance().getImageDescriptor("kubernetes64x64.png"));
 		this.dataModel = projectDataModel;

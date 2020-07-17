@@ -41,7 +41,7 @@ public class KubernetesProjectCreationWizard extends Wizard implements IExportWi
 
     private static final IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     
-    private static final String WINDOW_TITLE = "New Kubernetes Exporter";
+    private static final String WINDOW_TITLE = "New Kubernetes Exporter for K8s EI Operator";
     private boolean initError = false;
     private KubernetesDetailsPage kubernetesDetailPage;
     private MavenDetailsPage mavenDetailPage;

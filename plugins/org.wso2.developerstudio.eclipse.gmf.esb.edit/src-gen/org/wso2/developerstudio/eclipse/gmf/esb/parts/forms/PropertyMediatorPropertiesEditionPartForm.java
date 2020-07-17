@@ -3,9 +3,11 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.parts.forms;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
+
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
-
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
@@ -37,7 +39,12 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 
 import org.eclipse.swt.SWT;
-
+import org.eclipse.swt.custom.Bullet;
+import org.eclipse.swt.custom.LineStyleEvent;
+import org.eclipse.swt.custom.LineStyleListener;
+import org.eclipse.swt.custom.ST;
+import org.eclipse.swt.custom.StyleRange;
+import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
@@ -47,13 +54,20 @@ import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Device;
+import org.eclipse.swt.graphics.GC;
+import org.eclipse.swt.graphics.GlyphMetrics;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
@@ -61,7 +75,6 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
-
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyName;
@@ -70,8 +83,11 @@ import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.PropertyMediatorPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyConstants;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 // End of user code
 
@@ -96,6 +112,7 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 	protected Text valueStringCapturingGroup;
 	protected Text newPropertyName;
 	// Start of user code  for valueExpression widgets declarations
+	private static IDeveloperStudioLog log = Logger.getLog(EEFPropertyViewUtil.PLUGIN_ID);
 	protected NamespacedProperty valueExpression;
 	protected Text valueExpressionText;
 	protected Control[] propertyNameElements;
@@ -113,6 +130,7 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
     protected Control[] valueExpressionElements;
     protected Control[] descriptionElements;
     
+    protected Composite valueComposite;
     protected Composite propertiesGroup;
 	protected Text description;
 
@@ -522,73 +540,31 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 
     /**
      * @generated NOT
-     */ 
-	protected Composite createValueText(FormToolkit widgetFactory, Composite parent) {
-	    Control valueLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.value, EsbMessages.PropertyMediatorPropertiesEditionPart_ValueLabel);
-		value = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		value.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-		widgetFactory.paintBordersFor(parent);
-		GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
-		value.setLayoutData(valueData);
-		value.addFocusListener(new FocusAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-							PropertyMediatorPropertiesEditionPartForm.this,
-							EsbViewsRepository.PropertyMediator.Properties.value,
-							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, value.getText()));
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									PropertyMediatorPropertiesEditionPartForm.this,
-									EsbViewsRepository.PropertyMediator.Properties.value,
-									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, value.getText()));
-				}
-			}
+     */
+    protected Composite createValueText(FormToolkit widgetFactory, Composite parent) {
+        Control valueLabel = createDescription(parent, EsbViewsRepository.PropertyMediator.Properties.value,
+                EsbMessages.PropertyMediatorPropertiesEditionPart_ValueLabel);
+        value = widgetFactory.createText(parent, "");
+        value.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        widgetFactory.paintBordersFor(parent);
 
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-			 */
-			@Override
-			public void focusGained(FocusEvent e) {
-				if (propertiesEditionComponent != null) {
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									PropertyMediatorPropertiesEditionPartForm.this,
-									null,
-									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
-									null, null));
-				}
-			}
-		});
-		value.addKeyListener(new KeyAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertyMediatorPropertiesEditionPartForm.this, EsbViewsRepository.PropertyMediator.Properties.value, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, value.getText()));
-				}
-			}
-		});
-		EditingUtils.setID(value, EsbViewsRepository.PropertyMediator.Properties.value);
-		EditingUtils.setEEFtype(value, "eef::Text"); //$NON-NLS-1$
-	    Control valueHelpButton = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PropertyMediator.Properties.value, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		// Start of user code for createValueText
-	    valueElements = new Control[] {valueLabel, value, valueHelpButton};
-		// End of user code
-		return parent;
-	}
+        // Add new toggle expression widget
+        valueComposite = EEFPropertyViewUtil.createComposite(widgetFactory, parent, 1, 1);
+        createTextBoxFieldWithButton(widgetFactory, valueComposite,
+                EsbViewsRepository.PropertyMediator.Properties.value,
+                EsbViewsRepository.PropertyMediator.Properties.valueExpression,
+                EsbViewsRepository.PropertyMediator.Properties.valueType); // $NON-NLS-1$
+
+        EditingUtils.setID(value, EsbViewsRepository.PropertyMediator.Properties.value);
+        EditingUtils.setEEFtype(value, "eef::Text"); //$NON-NLS-1$
+        Control valueHelpButton = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent
+                .getHelpContent(EsbViewsRepository.PropertyMediator.Properties.value, EsbViewsRepository.FORM_KIND),
+                null); // $NON-NLS-1$
+        // Start of user code for createValueText
+        valueElements = new Control[] { valueLabel, valueComposite, valueHelpButton };
+        // End of user code
+        return parent;
+    }
 
 	/**
      * @generated NOT
@@ -1455,7 +1431,7 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 			value.setToolTipText(EsbMessages.PropertyMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !value.isEnabled()) {
 			value.setEnabled(true);
-		}	
+		}
 		
 	}
 
@@ -1855,7 +1831,7 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 	    }
 	    viewUtil.showEntry(propertyActionElements, false);
 	    if(getPropertyAction().getName().equals(PropertyAction.SET.getName())) {
-	        viewUtil.showEntry(valueTypeElements, false);
+	        //viewUtil.showEntry(valueTypeElements, false);
 	        viewUtil.showEntry(propertyDataTypeElements, false);
 	        if(getValueType().getName().equals(PropertyValueType.LITERAL.getName())) {
 	            switch (getPropertyDataType().getName()) {
@@ -1870,14 +1846,16 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
                     }
 	            }
 	        } else {
-	            viewUtil.showEntry(valueExpressionElements, false);
+	            //viewUtil.showEntry(valueExpressionElements, false);
                 switch (getPropertyDataType().getName()) {
                 case "STRING": {
+                    viewUtil.showEntry(valueElements, false);
                     viewUtil.showEntry(valueStringPatternElements, false);
                     viewUtil.showEntry(valueStringCapturingGroupElements, false);
                     break;
                 }
                 default:
+                    viewUtil.showEntry(valueElements, false);
                     break;
                 }
 	        }
@@ -1886,6 +1864,193 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 	    viewUtil.showEntry(descriptionElements, false);
         view.layout(true,true);
 	}
+
+	/**
+	 * This method sets the text of value or expression field accordingly(Considering the ecore model)
+	 * This should be invoked from component class initPart method after all the fields are init.
+	 */
+    public void updateValueField() {
+        if (PropertyValueType.EXPRESSION.getLiteral().equals(getValueType().getLiteral())) {
+            Control exButton = (Control) valueComposite.getData(EEFPropertyConstants.ASSOCIATED_BUTTON);
+            if (exButton != null && exButton instanceof Button) {
+                ((Button) exButton).setSelection(true);
+                ((Button) exButton).notifyListeners(SWT.Selection, new Event());
+            }
+            StyledText expressionTextBox = (StyledText) valueComposite
+                    .getData(EEFPropertyConstants.EXPRESSION_TEXT_BOX);
+            expressionTextBox.setText(getValueExpression().getPropertyValue());
+        } else {
+            Text valueTextBox = (Text) valueComposite.getData(EEFPropertyConstants.VALUE_TEXT_BOX);
+            valueTextBox.setText(getValue());
+        }
+    }
+
+    /**
+     * Creates textBox field with button(Expression supported)
+     * @param widgetFactory widget Factory
+     * @param parent parent composite
+     * @param updatedField updated value field
+     * @param updatedFieldExpression updated expression field
+     * @param updateFieldType updated type field
+     * @return composite which contains the expression supported field
+     */
+    public Composite createTextBoxFieldWithButton(FormToolkit widgetFactory,
+            final Composite parent, String updatedField, String updatedFieldExpression, String updateFieldType) {
+        // Create wrapping composite of 3 elements
+        Composite textBoxComposite = EEFPropertyViewUtil.createComposite(widgetFactory, parent, 3, 3);
+
+        // Create expression toggle button
+        Button expressionToggleButton = new Button(textBoxComposite, SWT.TOGGLE);
+        Image expressionToggleButtonImage = null;
+        try {
+            expressionToggleButtonImage = new Image(parent.getShell().getDisplay(),
+                    EEFPropertyViewUtil.getIconPath(EEFPropertyConstants.EXPRESSION_TOGGLE_BUTTON_IMAGE));
+            expressionToggleButton.setImage(expressionToggleButtonImage);
+        } catch (URISyntaxException | IOException e1) {
+            log.error("Couldn't fetch property field icon", e1);
+        }
+
+        // Create Text box widget
+        final Text valueTextBox = widgetFactory.createText(textBoxComposite, "", SWT.BORDER);
+        valueTextBox.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        GridData configRefData = new GridData(GridData.FILL_HORIZONTAL);
+        valueTextBox.setLayoutData(configRefData);
+        valueTextBox.addKeyListener(new KeyAdapter() {
+
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void keyReleased(KeyEvent e) {
+                if (propertiesEditionComponent != null)
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertyMediatorPropertiesEditionPartForm.this,
+                            updatedField, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, valueTextBox.getText()));
+            }
+        });
+
+        // Create expression compsite(Which has text box and exp button)
+        final Composite expressionComposite = createExpressionComposite(widgetFactory, textBoxComposite,
+                updatedFieldExpression);
+        expressionComposite.setVisible(false);
+        ((GridData) expressionComposite.getLayoutData()).exclude = true; // Hide the expression composite first
+
+        // Bind toggle button events
+        expressionToggleButton.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                Button source = (Button) e.getSource();
+                if (source.getSelection()) { // If pressed
+                    // Hide value text box
+                    valueTextBox.setVisible(false);
+                    ((GridData) valueTextBox.getLayoutData()).exclude = true;
+                    // Show expression composite
+                    expressionComposite.setVisible(true);
+                    ((GridData) expressionComposite.getLayoutData()).exclude = false;
+                    parent.layout();
+                    valueType.getCombo().select(1); // Assumes 1 is expression
+                    // update ecore object to expression
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertyMediatorPropertiesEditionPartForm.this,
+                            updateFieldType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getValueType()));
+                } else {
+                    // Show value text box
+                    valueTextBox.setVisible(true);
+                    ((GridData) valueTextBox.getLayoutData()).exclude = false;
+                    // Hide expression composite
+                    expressionComposite.setVisible(false);
+                    ((GridData) expressionComposite.getLayoutData()).exclude = true;
+                    parent.layout();
+                    valueType.getCombo().select(0); // Assumes 0 is value
+                    // update ecore object to value
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertyMediatorPropertiesEditionPartForm.this,
+                            updateFieldType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getValueType()));
+                }
+            }
+        });
+        //Set control widgets as data of parent composite
+        parent.setData(EEFPropertyConstants.ASSOCIATED_BUTTON, expressionToggleButton); // Add associated button
+        StyledText expressionTextBox = (StyledText) expressionComposite
+                .getData(EEFPropertyConstants.EXPRESSION_TEXT_BOX);
+        parent.setData(EEFPropertyConstants.EXPRESSION_TEXT_BOX, expressionTextBox);
+        parent.setData(EEFPropertyConstants.VALUE_TEXT_BOX, valueTextBox);
+        return parent;
+    }
+
+    /**
+     * Creates expression sub composite
+     * @param widgetFactory widget factory
+     * @param parent parent composite
+     * @param updatedFieldExpression 
+     * @return expression composite
+     */
+    public Composite createExpressionComposite(FormToolkit widgetFactory, final Composite parent,
+            String updatedFieldExpression) {
+        // Create wrapping composite of 2 elements and 1 span
+        Composite textComposite = EEFPropertyViewUtil.createComposite(widgetFactory, parent, 2, 1);
+
+        // Create expression Text box
+        final StyledText expressionTextBox = new StyledText(textComposite, SWT.SINGLE);
+        expressionTextBox.setBackground(new Color(null, 255, 255, 255));
+        expressionTextBox.addLineStyleListener(new LineStyleListener() {
+            public void lineGetStyle(LineStyleEvent e) {
+                // Set the line number
+                e.bulletIndex = expressionTextBox.getLineAtOffset(e.lineOffset);
+
+                // Set the style, 12 pixles wide for each digit
+                StyleRange style = new StyleRange();
+                Device device = Display.getCurrent();
+                final RGB LINE_NUMBER_FG = new RGB(185, 193, 196);
+
+                style.foreground = new Color(device, LINE_NUMBER_FG);
+                GC gc = new GC(expressionTextBox);
+                Point textExtent = gc.stringExtent(EEFPropertyConstants.EXPRESSION_TEXTBOX_PREFIX);
+                gc.dispose();
+                style.metrics = new GlyphMetrics(0, 0, textExtent.x);
+
+                e.bullet = new Bullet(ST.BULLET_TEXT, style);
+                e.bullet.text = EEFPropertyConstants.EXPRESSION_TEXTBOX_PREFIX;
+
+            }
+        });
+        expressionTextBox.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        GridData configRefData = new GridData(GridData.FILL_HORIZONTAL);
+        expressionTextBox.setLayoutData(configRefData);
+        expressionTextBox.addKeyListener(new KeyAdapter() {
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void keyReleased(KeyEvent e) {
+                EEFPropertyViewUtil.setExpressionValue(expressionTextBox.getText(), getValueExpression());
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertyMediatorPropertiesEditionPartForm.this,
+                        EsbViewsRepository.PropertyMediator.Properties.valueExpression, PropertiesEditionEvent.COMMIT,
+                        PropertiesEditionEvent.SET, null, getValueExpression()));
+            }
+        });
+
+        // Create Expression Dialog Box Button
+        Button expressionDialogBoxButton = new Button(textComposite, SWT.PUSH);
+
+        Image expressionDialogBoxButtonImage = null;
+        try {
+            expressionDialogBoxButtonImage = new Image(parent.getShell().getDisplay(),
+                    EEFPropertyViewUtil.getIconPath(EEFPropertyConstants.EXPRESSION_DIALOG_BOX_BUTTON_IMAGE));
+        } catch (URISyntaxException | IOException e1) {
+            log.error("Couldn't fetch property field icon", e1);
+        }
+        expressionDialogBoxButton.setImage(expressionDialogBoxButtonImage);
+        expressionDialogBoxButton.addListener(SWT.Selection, new Listener() {
+            @Override
+            public void handleEvent(Event event) {
+                boolean saved = EEFPropertyViewUtil.openValueExpressionWidgetNamespacedPropertyEditor(parent,
+                        expressionTextBox, getValueExpression());
+                if (saved) { // update only if the value is saved
+                    expressionTextBox.setText(getValueExpression().getPropertyValue());
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertyMediatorPropertiesEditionPartForm.this,
+                            EsbViewsRepository.PropertyMediator.Properties.valueExpression,
+                            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                            getValueExpression()));
+                }
+            }
+        });
+        textComposite.setData(EEFPropertyConstants.EXPRESSION_TEXT_BOX, expressionTextBox); // Add associated button
+        return textComposite;
+    }
 
 	// End of user code
 

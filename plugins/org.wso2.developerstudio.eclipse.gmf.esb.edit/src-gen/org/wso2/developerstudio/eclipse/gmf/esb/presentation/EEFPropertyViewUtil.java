@@ -60,10 +60,15 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
@@ -79,7 +84,10 @@ import org.osgi.framework.Bundle;
 import org.w3c.dom.Document;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.CloudConnectorOperationImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorConnectionRoot;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorDescriptorParser;
@@ -565,5 +573,76 @@ public class EEFPropertyViewUtil {
             }
         }
         return false;
+    }
+
+    /**
+     * Creates composite with given number of columns and span
+     * 
+     * @param id Field name of the property
+     * @param widgetFactory widgetFactory instance
+     * @param parent parent composite
+     * @param columns number of columns of the field
+     * @param span span of the field
+     * @return composite
+     */
+    public static Composite createComposite(FormToolkit widgetFactory, Composite parent, int columns, int span) {
+        Composite composite = widgetFactory.createComposite(parent, SWT.TRANSPARENT);
+        composite.setBackground(new Color(parent.getShell().getDisplay(), 255, 255, 255));
+        GridLayout propertiesGroupLayout = new GridLayout();
+        propertiesGroupLayout.numColumns = columns;
+        propertiesGroupLayout.marginLeft = 0;
+        propertiesGroupLayout.horizontalSpacing = 0;
+        propertiesGroupLayout.verticalSpacing = 0;
+        propertiesGroupLayout.marginHeight = 1;
+        propertiesGroupLayout.marginWidth = 1;
+        composite.setLayout(propertiesGroupLayout);
+        GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
+        propertiesSectionData.horizontalSpan = span;
+        composite.setLayoutData(propertiesSectionData);
+        return composite;
+
+    }
+
+    /**
+     * Opens namespaced property editor for expression widgets
+     * 
+     * @param parent parent composite
+     * @param valueExpressionText expression text box
+     * @param valueExpression namespaced property instance
+     * @return isSaved
+     */
+    public static boolean openValueExpressionWidgetNamespacedPropertyEditor(final Composite parent,
+            Control valueExpressionText, NamespacedProperty valueExpression) {
+        if (valueExpression == null) {
+            valueExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+            ((CallTemplateParameter) valueExpressionText.getData()).setParameterExpression(valueExpression);
+        }
+        EEFNameSpacedPropertyEditorDialog nspd = new EEFNameSpacedPropertyEditorDialog(parent.getShell(), SWT.NULL,
+                valueExpression);
+        valueExpression = nspd.open();
+        if (nspd.isSaved()) {
+            if (valueExpressionText instanceof Text) {
+                ((Text) valueExpressionText).setText(valueExpression.getPropertyValue());
+            } else if (valueExpressionText instanceof Combo) {
+                ((Combo) valueExpressionText).setText(valueExpression.getPropertyValue());
+            }
+        }
+        return nspd.isSaved();
+    }
+
+    /**
+     * Sets value for expressions(Namespaced property instances)
+     * @param value value to be set
+     * @param nsp namespace property editor instance
+     */
+    public static void setExpressionValue(String value, final NamespacedProperty nsp) {
+        TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(nsp);
+        domain.getCommandStack().execute(new RecordingCommand(domain) {
+
+            @Override
+            protected void doExecute() {
+                nsp.setPropertyValue(value);
+            }
+        });
     }
 }

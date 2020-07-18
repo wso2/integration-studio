@@ -89,8 +89,8 @@ var sampleMediatorList = {
 	    "xml to json transformation": "api,payload-factory,send,http-endpoint",
 	    "json to xml mapping": "api,datamapper,respond",
 	    "xml to json mapping": "api,datamapper,respond",
-	    "students data service": "dataservice,database",
-	    "rest data service": "dataservice,database",
+	    "students data service": "dataservice,database,soap",
+	    "rest data service": "dataservice,database,rest",
 	    "exception handling": "api,send,http-endpoint,sequence,log,payload-factory,respond",
 	    "fetch salesforce account information": "api,salesforcerest,respond,connector",
 	    "periodical scheduled tasks": "scheduled-task,sequence,call,log,address-endpoint",
@@ -99,7 +99,8 @@ var sampleMediatorList = {
 	    "hello docker": "docker",
 	    "hello kubernetes": "kubernetes",
 	    "unit test tutorial": "test",
-	    "api testing": "test"
+	    "api testing": "test",
+	    "email service": "email,connector,api,respond,foreach,payload-factory,property,log"
 };
 
 var esbNewProjectWizard = "org.wso2.developerstudio.eclipse.artifact.newesbsolutionproject";

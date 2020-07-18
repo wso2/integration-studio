@@ -373,6 +373,10 @@ public class CommonTemplateProjectCreationWizard extends Wizard implements INewW
         	openFileName = "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator
             + "api" + File.separator + "RESTApi.xml";
         	break;
+        case "EmailService":
+            openFileName = "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator + "api"
+                    + File.separator + "EmailService.xml";
+            break;
         }
 
         return openFileName;

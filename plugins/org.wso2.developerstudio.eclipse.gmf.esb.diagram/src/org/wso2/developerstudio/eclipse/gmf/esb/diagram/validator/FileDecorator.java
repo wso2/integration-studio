@@ -129,7 +129,7 @@ public class FileDecorator extends LabelProvider implements ILightweightLabelDec
         } else if (element instanceof Project) {
             // process project
             Project project = (Project) element;
-            if (!validProject(project.getLocation().toString())) {
+            if (project != null && project.getLocation() != null && !validProject(project.getLocation().toString())) {
                 addDecorator(decoration);
             }
 

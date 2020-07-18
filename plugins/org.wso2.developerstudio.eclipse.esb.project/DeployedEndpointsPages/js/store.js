@@ -7,6 +7,7 @@ var SHOW = "show";
 var HIDE = "hide";
 var FAILED_ALERT = "#failed-alert";
 var LOADING_ALERT = "#open-dashboard-modal";
+var CREDENTIAL_ALERT = "#credential-alert";
 
 function resolveGetParam(param) {
     var paramValue = null,
@@ -108,6 +109,10 @@ function openDashboard() {
 		cache: false,
 		success: function(data) {
 			$(LOADING_ALERT).modal(HIDE);
+			$(CREDENTIAL_ALERT).prop(HIDDEN, false);
+			setTimeout(function() {
+				$(CREDENTIAL_ALERT).prop(HIDDEN, true);
+			}, 20000);
 		},
 		error: function(jqXHR, textStatus, errorThrown) {
 			$(LOADING_ALERT).modal(HIDE);

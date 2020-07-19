@@ -44,6 +44,7 @@ import org.wso2.developerstudio.eclipse.maven.multi.module.handlers.MvnMultiModu
 import org.wso2.developerstudio.eclipse.maven.multi.module.handlers.MvnMultiModuleWizard;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.platform.core.exception.ObserverFailedException;
+import org.wso2.developerstudio.eclipse.platform.core.project.presentation.ProjectPresentation;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.pages.DockerDetailsPage;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.pages.KubernetesDetailsPage;
@@ -318,13 +319,13 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
                 if (!ESB_GRAPHICAL_PERSPECTIVE.equals(window.getActivePage().getPerspective().getId())) {
                     try {
                         PlatformUI.getWorkbench().showPerspective(ESB_GRAPHICAL_PERSPECTIVE, window);
+                        ProjectPresentation.setHierarchicalProjectPresentation();
                     } catch (Exception e) {
                         log.error("Cannot switch to ESB Graphical Perspective", e);
                     }
                 }
             }
         });
-
         return true;
 	}
 

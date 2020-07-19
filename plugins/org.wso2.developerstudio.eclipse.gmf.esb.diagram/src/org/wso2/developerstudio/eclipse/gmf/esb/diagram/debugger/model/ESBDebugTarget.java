@@ -63,6 +63,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.Messages;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.OpenEditorUtil;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.core.project.presentation.ProjectPresentation;
 
 import com.google.gson.JsonObject;
 
@@ -157,9 +158,11 @@ public class ESBDebugTarget extends ESBDebugElement implements IDebugTarget, Eve
                     String currentPerspective = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
                             .getPerspective().getLabel();
                     try {
-                        if ("debug".equalsIgnoreCase(currentPerspective))
+                        if ("debug".equalsIgnoreCase(currentPerspective)) {
                             PlatformUI.getWorkbench().showPerspective(ESB_GRAPHICAL_PERSPECTIVE_ID,
                                     PlatformUI.getWorkbench().getActiveWorkbenchWindow());
+                            ProjectPresentation.setHierarchicalProjectPresentation();
+                        }
                     } catch (WorkbenchException e) {
                         log.error("Error occurred while switching to ESB perspective " + e.getMessage());
                     }

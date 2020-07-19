@@ -107,6 +107,7 @@ import org.wso2.developerstudio.datamapper.servlets.DataMapperConfigHolder;
 import org.wso2.developerstudio.datamapper.views.RealtimeDatamapperView;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.core.project.presentation.ProjectPresentation;
 import org.xml.sax.SAXException;
 
 /**
@@ -167,6 +168,7 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
         final IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
         try {
             workbench.showPerspective(DATA_MAPPER_PERSPECTIVE, window); // $NON-NLS-1$
+            ProjectPresentation.setHierarchicalProjectPresentation();
             PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
                 @Override
                 public void run() {

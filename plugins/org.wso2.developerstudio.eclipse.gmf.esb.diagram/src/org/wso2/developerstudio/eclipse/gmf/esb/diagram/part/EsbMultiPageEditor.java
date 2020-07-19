@@ -137,6 +137,7 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.event.EsbEditorEvent;
 import org.wso2.developerstudio.eclipse.platform.core.interfaces.IDeveloperStudioProviderData;
+import org.wso2.developerstudio.eclipse.platform.core.project.presentation.ProjectPresentation;
 import org.wso2.developerstudio.eclipse.platform.core.utils.CSProviderConstants;
 import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryFile;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.ESBFormEditor;
@@ -1511,6 +1512,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
             if(!"debug".equalsIgnoreCase(currentPerspective))
             PlatformUI.getWorkbench().showPerspective(ESB_GRAPHICAL_PERSPECTIVE_ID,
                     PlatformUI.getWorkbench().getActiveWorkbenchWindow());
+            ProjectPresentation.setHierarchicalProjectPresentation();
         } catch (WorkbenchException e) {
             log.error("Error occurred while switching to ESB perspective " + e.getMessage());
         }

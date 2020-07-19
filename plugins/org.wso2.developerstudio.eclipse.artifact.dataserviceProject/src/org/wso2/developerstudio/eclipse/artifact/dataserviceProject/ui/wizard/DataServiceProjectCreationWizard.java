@@ -47,6 +47,7 @@ import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
+import org.wso2.developerstudio.eclipse.platform.core.project.presentation.ProjectPresentation;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.pages.MavenDetailsPage;
 import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
@@ -107,6 +108,7 @@ public class DataServiceProjectCreationWizard extends AbstractWSO2ProjectCreatio
                 IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
                 PlatformUI.getWorkbench().showPerspective(DSS_PERSPECTIVE, window);
                 IWorkbenchPage page = window.getActivePage();
+                ProjectPresentation.setHierarchicalProjectPresentation();
                 ((CommonNavigator) page.findViewReference(IPageLayout.ID_PROJECT_EXPLORER, null).getView(true)).setLinkingEnabled(true);
                 IDE.openEditor(page, project.getFile(POM_FILE).getLocationURI(), MAVEN_POM_EDITOR_ID, true);
                 IViewPart view = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()

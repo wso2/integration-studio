@@ -75,7 +75,7 @@ import org.eclipse.ui.part.ISetSelectionTarget;
 import org.wso2.developerstudio.eclipse.ds.DsFactory;
 import org.wso2.developerstudio.eclipse.ds.DsPackage;
 import org.wso2.developerstudio.eclipse.ds.provider.DsEditPlugin;
-
+import org.wso2.developerstudio.eclipse.platform.core.project.presentation.ProjectPresentation;
 import org.eclipse.core.runtime.Path;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -313,6 +313,7 @@ public class DsModelWizard extends Wizard implements INewWizard {
             try {
                 IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
                 PlatformUI.getWorkbench().showPerspective(DSS_PERSPECTIVE, window);
+                ProjectPresentation.setHierarchicalProjectPresentation();
             } catch (Exception e) {
                 MessageDialog.openError(workbenchWindow.getShell(), DsEditorPlugin.INSTANCE.getString("_UI_OpenEditorError_label"), e.getMessage());
             }

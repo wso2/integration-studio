@@ -60,59 +60,111 @@
 
     <div class="about-template">
         <h3><strong>About</strong></h3>
-        <p>This template contains a REST API which exposes email send and retrieve capabilities via the HTTP protocol.</p>
-        <p>When the API gets invoked, a simple message is generated and sent back to the client as the response.</p>
-        <p>Two modules get created with this template. <strong>ESB Configs</strong> module contains all the ESB 
-            artifacts and the <strong>Composite Exporter</strong> module is used to package and export the artifacts 
+        <p>This template contains a REST API which exposes email send and retrieve capabilities using the WSO2 email connector.</p>
+        <p>Here, the send operation uses the SMTP protocol where as the retrieve operation uses the IMAP protocol to connect with mailbox.</p>
+        <p>Three modules are created with this template. The <strong>ESB Configs</strong> module contains all the ESB 
+            artifacts. The <strong>Connector Exporter</strong> module is used to deploy the Email connector and the <strong>Composite Exporter</strong> module is used to package and export the artifacts 
             created within the ESB module.</p>
-        <p>ESB module contains a simple <strong>REST API</strong> called
-            &lsquo;HelloWorld&rsquo;. When you invoke it, it generates a JSON message and sends it to the client.
+        <p>ESB module contains a <strong>REST API</strong> called
+            &lsquo;EmailService&rsquo; along with &lsquo;smtpsconnection&rsquo; and &lsquo;imapsconnection&rsquo; local entries. You can invoke respective resource of this API to perform send and retrieve operations with the Email connector.
         </p>
     </div>
 
     <div class="accordion">
-            <div class="option" style="border-left: 5px solid #ff9100;">
-              <input type="checkbox" id="toggle1" class="toggle" checked/>
-              <label class="title" for="toggle1" 
-                  style="border-bottom-color: rgba(255,145,0,.1);background-color: rgba(255,145,0,.1);
-                      box-shadow: none !important;">
-                  Run using embedded WSO2 Micro Integrator
-              </label>
-              <div class="content" style="box-shadow: none !important;">
-                    <ol>
-                        <li>
-                            <h3>Export project atrifacts & run</h3>
-                            <p>
-                                Right click on the respective <strong>Composite Exporter</strong> 
-                                module and select <strong>Export Project Atrifacts and Run </strong> from menu.
-                            </p>
-                        </li>
-                        <li>
-                            <h3>Invoke the service</h3>
-                            <p>Open the <strong>HTTP Client</strong> of WSO2 Integration Studio (If you don't 
-                            see the HTTP Client pane, go to <strong>Window -> Show View - Other</strong> and 
-                            select HTTP Client to enable the client pane).</p>                      
-                       
-	                        <p>Enter the request information as given below and click the Send 
-	                        <span>
-	                            <img src="https://github.com/wso2/devstudio-tooling-esb/raw/master/plugins/org.wso2.developerstudio.eclipse.esb.dashboard.templates/NewSamples/Resources/play-head-icon.png" 
-	                        	    style="width:20px; margin: 0 2px -5px 2px;" />
-                        	</span> icon.
-	                        Use payloads one at a time.</p>
-	                        
-	                        <p><b>Method:</b></p>
-	                        <p style="margin-top:-30px;"><pre><code class="language-bash">GET</code></pre></p>
-	                        
-	                        <p style="margin-top:-15px;"><b>URL:</b></p>
-	                        <p style="margin-top:-30px;">
-		                        <pre>
-		                        	<code class="language-bash">http://localhost:8290/HelloWorld</code>
-		                        </pre>
-	                        </p>
-                        </li>
-                        </ol>        
-              </div>
-            </div>
+       <div class="option" style="border-left: 5px solid #ff9100;">
+          <input type="checkbox" id="toggle1" class="toggle" checked/>
+          <label class="title" for="toggle1" 
+style="border-bottom-color: rgba(255,145,0,.1);background-color: rgba(255,145,0,.1);
+	box-shadow: none !important;">
+Run using the embedded WSO2 Micro Integrator
+          </label>
+          <div class="content" style="box-shadow: none !important;">
+             <ol>
+                <li>
+                   <h3>Configure email credentials</h3>
+                   <p>
+                      	Open <strong>imapsconnection</strong> and <strong>smtpsconnection</strong> local entries
+                      	 inside the	<strong>ESB Configs</strong> module and replace <strong>EMAIL_ADDRESS</strong> 
+                      	and <strong>PASSWORD</strong> values with your email credentials.
+                   </p>
+                </li>
+                <li>
+                   <h3>Export project atrifacts & run</h3>
+                   <p>
+                      	Right click on the respective <strong>Composite Exporter</strong> 
+                      	module and select <strong>Export Project Atrifacts and Run </strong> from menu.
+                   </p>
+                </li>
+                <li>
+                   <h3>Invoke the service</h3>
+                   <p>Open the <strong>HTTP Client</strong> of WSO2 Integration Studio (If you don't 
+                   see the HTTP Client pane, go to <strong>Window -> Show View - Other</strong> and 
+                   select HTTP Client to enable the client pane).</p>                      
+                 
+                   <p>Enter the request information as given below and click the Send 
+                   <span>
+                   	<img src="https://github.com/wso2/devstudio-tooling-esb/raw/master/plugins/org.wso2.developerstudio.eclipse.esb.dashboard.templates/NewSamples/Resources/play-head-icon.png" 
+                   		style="width:20px; margin: 0 2px -5px 2px;" />
+                  	</span> icon.</p>
+                    <p><b>Email Send Service</b></p>
+                   <p><b>Method:</b></p>
+                   <p style="margin-top:-30px;"><pre><code class="language-bash">POST</code></pre></p>
+                   
+                   <p style="margin-top:-15px;"><b>URL:</b></p>
+                   <p style="margin-top:-30px;">
+                    <pre>
+                    	<code class="language-bash">http://localhost:8290/email/send</code>
+                    </pre>
+                   </p>
+                   
+                   <p style="margin-top:-15px;"><b>Payload:</b></p>
+                   <p style="margin-top:-30px;">
+                    <pre><code class="language-json">
+{
+    "from": "your@gmail.com",
+    "to": "your@gmail.com",
+    "subject": "Sample email",
+    "content": "This is the body of the sample email",
+    "contentType":"text/plain",
+    "attachments": "This is an attachment"
+}</code></pre>
+		</p>
+		<p style="margin-top:-15px;"><b>Headers:</b></p>
+                   <p style="margin-top:-30px;">
+                   	<pre>
+                   		<code class="language-bash">Content-Type: application/json</code>
+                  		</pre>
+                   </p>
+                   
+                   <p><b>Email Retrieve Service</b></p>
+                   <p><b>Method:</b></p>
+                   <p style="margin-top:-30px;"><pre><code class="language-bash">POST</code></pre></p>
+                   
+                   <p style="margin-top:-15px;"><b>URL:</b></p>
+                   <p style="margin-top:-30px;">
+                    <pre>
+                    	<code class="language-bash">http://localhost:8290/email/retrieve</code>
+                    </pre>
+                   </p>
+                   
+                   <p style="margin-top:-15px;"><b>Payload:</b></p>
+                   <p style="margin-top:-30px;">
+                    <pre><code class="language-json">
+{
+    "subjectRegex":"Sample email"
+}</code></pre>
+		</p>
+		<p style="margin-top:-15px;"><b>Headers:</b></p>
+                   <p style="margin-top:-30px;">
+                   	<pre>
+                   		<code class="language-bash">Content-Type: application/json</code>
+                  		</pre>
+                   </p>
+                   
+                </li>
+             </ol>
+          </div>
+       </div>
         
             <div class="option" style="border-left: 5px solid #448AFF;">
               <input type="checkbox" id="toggle2" class="toggle" />
@@ -124,8 +176,8 @@
               <div class="content" style="box-shadow: none !important;">
                     <ol>
                         <li>
-                            <h3>Connect the ESB server to WSO2 EI Tooling</h3>
-                            <p>If you haven't already attached the WSO2 EI runtime to WSO2 EI Tooling, follow the instructions given below.</p>
+                            <h3>Connect the EI server with Integration Studio</h3>
+                            <p>If you haven't already attached the WSO2 EI runtime to WSO2 Integration Studio, follow the instructions given below.</p>
                             <p>- Open the <strong>Integration Studio Getting Started</strong> and 
                             click <strong>Add Server</strong>.
                             <p>- In the &lsquo;<strong>Define a New Server</strong>&rsquo; dialog box, expand the WSO2 folder,
@@ -137,6 +189,14 @@
                                 specify unused ports here.</p>
                             <p>- Click <strong>Finish</strong>. The ESB server of WSO2 EI is now connected to WSO2 EI Tooling.</p>
                         </li>
+                        <li>
+		                   <h3>Configure email credentials</h3>
+		                   <p>
+		                      	Open <strong>imapsconnection</strong> and <strong>smtpsconnection</strong> local entries
+		                      	 inside the	<strong>ESB Configs</strong> module and replace <strong>EMAIL_ADDRESS</strong> 
+		                      	and <strong>PASSWORD</strong> values with your email credentials.
+		                   </p>
+		                </li>
                         <li>
                             <h3>Deploy the ESB artifacts in the server</h3>
                             <p>- In the <strong>Servers</strong> tab, right-click the server and click <strong>Add and Remove</strong>.</p>
@@ -153,8 +213,32 @@
                         <li>
                             <h3>Invoke the service</h3>
                             <p>Use the <strong>HTTP Client</strong> 
-                            as mentioned in above or following cURL command to invoke the service.</p>	
-                            <pre><code class="language-bash">curl http://localhost:8280/HelloWorld</code></pre>
+                            as mentioned above or follow the cURL commands to invoke the service.</p>
+                            <p><b>Email Send Service</b></p>
+                            <p style="margin-top:-15px;"><b>Payload:</b></p>
+                            <p style="margin-top:-30px;">
+                            <pre><code class="language-json">
+{
+    "from": "your@gmail.com",
+    "to": "your@gmail.com",
+    "subject": "Sample email",
+    "content": "This is the body of the sample email",
+    "contentType":"text/plain",
+    "attachments": "This is an attachment"
+}</code></pre>
+		                    </p>
+		                    <p><b>cURL command</b></p>
+                            <pre><code class="language-bash">curl -H "Content-Type: application/json" --request POST --data @body.json http://localhost:8290/email/send</code></pre>
+                            <p><b>Email Retrieve Service</b></p>
+                            <p style="margin-top:-15px;"><b>Payload:</b></p>
+                            <p style="margin-top:-30px;">
+                            <pre><code class="language-json">
+{
+    "subjectRegex":"Sample email"
+}</code></pre>
+		                    </p>
+		                    <p><b>cURL command</b></p>
+                            <pre><code class="language-bash">curl -H "Content-Type: application/json" --request POST --data @body.json http://localhost:8290/email/retrieve</code></pre>
                         </li>
                     </ol>
               </div>

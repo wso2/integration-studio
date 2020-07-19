@@ -72,6 +72,7 @@ import org.wso2.developerstudio.eclipse.distribution.project.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
+import org.wso2.developerstudio.eclipse.platform.core.project.presentation.ProjectPresentation;
 import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 import org.xml.sax.SAXException;
 
@@ -494,8 +495,8 @@ public class MavenMultiModuleImportUtils {
                         log.error("Cannot switch to DSS Graphical Perspective", e);
                     }
                 }
+                ProjectPresentation.setHierarchicalProjectPresentation();
             }
         });
-
     }
 }

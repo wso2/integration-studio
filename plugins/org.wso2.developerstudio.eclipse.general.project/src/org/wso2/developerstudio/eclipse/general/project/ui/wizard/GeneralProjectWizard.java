@@ -33,6 +33,7 @@ import org.wso2.developerstudio.eclipse.general.project.utils.GeneralProjectImag
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
+import org.wso2.developerstudio.eclipse.platform.core.project.presentation.ProjectPresentation;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
 import org.wso2.developerstudio.eclipse.utils.jdt.JavaUtils;
 import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
@@ -100,13 +101,13 @@ public class GeneralProjectWizard extends AbstractWSO2ProjectCreationWizard {
 				if (!ESB_GRAPHICAL_PERSPECTIVE.equals(window.getActivePage().getPerspective().getId())) {
 					try {
 						PlatformUI.getWorkbench().showPerspective(ESB_GRAPHICAL_PERSPECTIVE, window);
+						ProjectPresentation.setHierarchicalProjectPresentation();
 					} catch (Exception e) {
 						log.error("Cannot switch to ESB Graphical Perspective", e);
 					}
 				}
 			}
 		});
-		
 		return true;
 	}
 

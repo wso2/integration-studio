@@ -48,6 +48,7 @@ import org.wso2.developerstudio.eclipse.maven.multi.module.Activator;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.platform.core.exception.ObserverFailedException;
 import org.wso2.developerstudio.eclipse.platform.core.model.AbstractListDataProvider.ListData;
+import org.wso2.developerstudio.eclipse.platform.core.project.presentation.ProjectPresentation;
 import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
@@ -210,6 +211,7 @@ public class MvnMultiModuleWizard extends AbstractWSO2ProjectCreationWizard {
 					if (!ESB_GRAPHICAL_PERSPECTIVE.equals(window.getActivePage().getPerspective().getId())) {
 						try {
 							PlatformUI.getWorkbench().showPerspective(ESB_GRAPHICAL_PERSPECTIVE, window);
+							ProjectPresentation.setHierarchicalProjectPresentation();
 						} catch (Exception e) {
 							log.error("Cannot switch to ESB Graphical Perspective", e);
 						}

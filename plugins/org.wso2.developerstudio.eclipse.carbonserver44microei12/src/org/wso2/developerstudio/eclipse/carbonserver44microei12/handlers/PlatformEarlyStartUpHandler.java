@@ -174,9 +174,8 @@ public class PlatformEarlyStartUpHandler implements IStartup {
                                     && event.getResource().getType() == org.eclipse.core.resources.IResource.PROJECT) {
 
                                 IProject deletedProject = event.getResource().getProject();
-                                IWorkspace workspace = ResourcesPlugin.getWorkspace();
-                                IWorkspaceRoot root = workspace.getRoot();
-                                IProject[] projects = root.getProjects();
+                                ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+                                IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
 
                                 for (IProject project : projects) {
                                     if (project.hasNature(

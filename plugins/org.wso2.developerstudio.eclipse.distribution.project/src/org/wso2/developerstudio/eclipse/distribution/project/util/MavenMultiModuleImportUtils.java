@@ -119,6 +119,7 @@ public class MavenMultiModuleImportUtils {
             newProjectDescription.setLocationURI(mmmProjectURI);
 
             mainProject.create(newProjectDescription, new NullProgressMonitor());
+            ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
             mainProject.open(IResource.BACKGROUND_REFRESH, new NullProgressMonitor());
             mainProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
             ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());

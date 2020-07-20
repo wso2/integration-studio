@@ -68,39 +68,40 @@ public class MMMProjectSelectionWizard extends AbstractWSO2ProjectCreationWizard
         IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
         String mavenProjectName = selectionPage.getSelectedProjectName();
         String workspace = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString();
-        File oldImportingProject = new File(selectedNonMMMProject.getLocation().toOSString());
-        IProject mavenMultiModuleProject = root.getProject(mavenProjectName);
-        File mavenProject = new File(mavenMultiModuleProject.getLocation().toOSString());
-        String tmpMavenDir = workspace + File.separator + ".tmp" + File.separator + mavenMultiModuleProject.getName();
-        String tmpNewSubDir = tmpMavenDir + File.separator + selectedNonMMMProject.getName();
-        File importingMavenProject = new File(tmpMavenDir);
-        File importingSubProject = new File(tmpNewSubDir);
+        if (selectedNonMMMProject != null && selectedNonMMMProject.getLocation() != null) {
+            File oldImportingProject = new File(selectedNonMMMProject.getLocation().toOSString());
+            IProject mavenMultiModuleProject = root.getProject(mavenProjectName);
+            File mavenProject = new File(mavenMultiModuleProject.getLocation().toOSString());
+            String tmpMavenDir = workspace + File.separator + ".tmp" + File.separator + mavenMultiModuleProject.getName();
+            String tmpNewSubDir = tmpMavenDir + File.separator + selectedNonMMMProject.getName();
+            File importingMavenProject = new File(tmpMavenDir);
+            File importingSubProject = new File(tmpNewSubDir);
 
-        // copy selected importing project to .tmp location and delete project from workspace
-        try {
+            // copy selected importing project to .tmp location and delete project from workspace
+            try {
 
-            FileUtils.copyDirectory(mavenProject, importingMavenProject);
-            FileUtils.copyDirectory(oldImportingProject, importingSubProject);
-            mavenMultiModuleProject.delete(true, true, new NullProgressMonitor());
-            ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
-            selectedNonMMMProject.delete(true, true, new NullProgressMonitor());
-            ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+                FileUtils.copyDirectory(mavenProject, importingMavenProject);
+                FileUtils.copyDirectory(oldImportingProject, importingSubProject);
+                mavenMultiModuleProject.delete(true, true, new NullProgressMonitor());
+                ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+                selectedNonMMMProject.delete(true, true, new NullProgressMonitor());
+                ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 
-            if (MavenMultiModuleImportUtils.importMavenMultiModuleProjectToWorkspace(importingMavenProject)) {
-                // delete project in .tmp due to import is success
-                FileUtils.deleteDirectory(importingMavenProject);
-                MavenMultiModuleImportUtils.addModuleToParentPOM(root.getProject(mavenProjectName));
-            } else {
-                showErrorMessage("Error occured while importing " + selectedNonMMMProject.getName() + "project to "
-                                + mavenProjectName
-                                + " maven multi module project. Backup project is saved in ${workspace}/.tmp/"
-                                + mavenProjectName + " directory", "Import Error");
+                if (MavenMultiModuleImportUtils.importMavenMultiModuleProjectToWorkspace(importingMavenProject)) {
+                    // delete project in .tmp due to import is success
+                    FileUtils.deleteDirectory(importingMavenProject);
+                    MavenMultiModuleImportUtils.addModuleToParentPOM(root.getProject(mavenProjectName));
+                } else {
+                    showErrorMessage("Error occured while importing " + selectedNonMMMProject.getName() + "project to "
+                                    + mavenProjectName
+                                    + " maven multi module project. Backup project is saved in ${workspace}/.tmp/"
+                                    + mavenProjectName + " directory", "Import Error");
+                }
+                ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+            } catch (Exception e) {
+                log.error("Error while importing selected project", e);
             }
-            ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
-        } catch (Exception e) {
-            log.error("Error while importing selected project", e);
         }
-
         return true;
     }
 

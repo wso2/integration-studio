@@ -137,14 +137,11 @@ public class ESBProjectWizard extends AbstractWSO2ProjectCreationWizard {
 	public static void openEditor(File file,Map<File,String> fileList){
 		try {
 			String type = fileList.get(file);
-			IFile dbsFile  = ResourcesPlugin
-			.getWorkspace()
-			.getRoot()
-			.getFileForLocation(
+			IFile dbsFile  = ResourcesPlugin.getWorkspace().getRoot().getFileForLocation(
 					Path.fromOSString(file.getAbsolutePath()));
-			if("synConfig".equals(type)){
+			if ("synConfig".equals(type)) {
 				IDE.openEditor(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage(),dbsFile);
-			}else{
+			} else {
 				String path = dbsFile.getParent().getFullPath()+"/";
 				String source = FileUtils.getContentAsString(file);
 				Openable openable = ESBGraphicalEditor.getOpenable();

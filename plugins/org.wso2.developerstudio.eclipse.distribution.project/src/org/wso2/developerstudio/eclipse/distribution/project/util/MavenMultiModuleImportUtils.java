@@ -120,6 +120,7 @@ public class MavenMultiModuleImportUtils {
             mainProject.create(newProjectDescription, new NullProgressMonitor());
             mainProject.open(IResource.BACKGROUND_REFRESH, new NullProgressMonitor());
             mainProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+            ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 
             // If this is not a maven project, try to import connectors
             MavenMultiModuleImportUtils.importConnectorsFromConnectorExporterProject(mainProject);
@@ -165,6 +166,7 @@ public class MavenMultiModuleImportUtils {
                     IProject subIProject = root.getProject(resourceFile.getName());
                     subIProject.create(newSubProjectDescription, new NullProgressMonitor());
                     subIProject.open(new NullProgressMonitor());
+                    ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
                     
                     try {
                     	subIProject.create(newSubProjectDescription, new NullProgressMonitor());
@@ -197,6 +199,7 @@ public class MavenMultiModuleImportUtils {
                     operation.setOverwriteResources(true);
                     operation.setCreateContainerStructure(false);
                     operation.run(monitor);
+                    ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 
                     // If this is a connector exporter project, import connectors.
                     MavenMultiModuleImportUtils.importConnectorsFromConnectorExporterProject(subIProject);

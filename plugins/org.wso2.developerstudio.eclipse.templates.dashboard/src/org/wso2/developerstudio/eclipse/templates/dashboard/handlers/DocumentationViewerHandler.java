@@ -15,7 +15,7 @@ import org.wso2.developerstudio.eclipse.templates.dashboard.Activator;
 public class DocumentationViewerHandler extends AbstractHandler {
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-    private static final String WSO2_EI_DOCUMENTATION = "https://ei.docs.wso2.com/en/latest/micro-integrator/overview/introduction/";
+    private static final String WSO2_EI_DOCUMENTATION = "https://ei.docs.wso2.com/en/latest/micro-integrator/develop/WSO2-Integration-Studio/";
 
     public Object execute(ExecutionEvent event) throws ExecutionException {
         try {

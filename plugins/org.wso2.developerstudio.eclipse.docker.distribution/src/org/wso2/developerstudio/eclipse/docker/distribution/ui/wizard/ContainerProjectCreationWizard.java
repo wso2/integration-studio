@@ -71,6 +71,7 @@ import org.wso2.developerstudio.eclipse.docker.distribution.utils.DockerProjectC
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
+import org.wso2.developerstudio.eclipse.platform.core.project.presentation.ProjectPresentation;
 import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 import org.wso2.developerstudio.eclipse.platform.ui.utils.PlatformUIConstants;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
@@ -637,13 +638,13 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
                 if (!DockerProjectConstants.ESB_GRAPHICAL_PERSPECTIVE.equals(window.getActivePage().getPerspective().getId())) {
                     try {
                         PlatformUI.getWorkbench().showPerspective(DockerProjectConstants.ESB_GRAPHICAL_PERSPECTIVE, window);
+                        ProjectPresentation.setHierarchicalProjectPresentation();
                     } catch (Exception e) {
                         log.error("Cannot switch to ESB Graphical Perspective", e);
                     }
                 }
             }
         });
-
     }
 
     /**

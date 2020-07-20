@@ -33,6 +33,7 @@ import org.eclipse.ui.intro.IIntroSite;
 import org.eclipse.ui.intro.config.IIntroAction;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.core.project.presentation.ProjectPresentation;
 
 public class OpenDashboardAction extends Action implements IIntroAction {
 
@@ -47,6 +48,7 @@ public class OpenDashboardAction extends Action implements IIntroAction {
 		try {
 			hideDashboards();
 			PlatformUI.getWorkbench().showPerspective("org.eclipse.jst.j2ee.J2EEPerspective", window);
+			ProjectPresentation.setHierarchicalProjectPresentation();
 			page.openEditor(new NullEditorInput(), "org.wso2.developerstudio.eclipse.dashboard");
 		} catch (Exception e) {
 			log.error("Cannot open dashboard", e);

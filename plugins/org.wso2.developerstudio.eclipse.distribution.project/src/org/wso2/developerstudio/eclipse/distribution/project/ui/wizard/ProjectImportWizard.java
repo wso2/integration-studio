@@ -33,6 +33,7 @@ import org.eclipse.ui.wizards.datatransfer.ExternalProjectImportWizard;
 import org.wso2.developerstudio.eclipse.distribution.project.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.core.project.presentation.ProjectPresentation;
 import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 
 public class ProjectImportWizard extends ExternalProjectImportWizard {
@@ -62,6 +63,7 @@ public class ProjectImportWizard extends ExternalProjectImportWizard {
         try {
             PlatformUI.getWorkbench().showPerspective(JAVA_EE_PERSPECTIVE_ID,
                     PlatformUI.getWorkbench().getActiveWorkbenchWindow());
+            ProjectPresentation.setHierarchicalProjectPresentation();
         } catch (WorkbenchException e) {
             log.error("Error occurred while switching to ESB perspective " + e.getMessage());
         }

@@ -724,6 +724,7 @@ public class PropertiesWidgetProvider {
                             EsbViewsRepository.CloudConnectorOperation.Properties.configRef,
                             PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null,
                             connectionComboBox.getText()));
+                            checkRequired();
                 }
 
                 if (!connectionComboBox.getText().isEmpty()) {
@@ -737,6 +738,7 @@ public class PropertiesWidgetProvider {
         // Register created widget in notify lists
         setItemFocus(connectionComboBox);
         controlList.put(jsonSchemaObject.getName(), connectionComboBox);
+        connectionComboBox.setData("editConnectionButton", editConnectionButton);
         if (jsonSchemaObject.getRequired()) {
             requiredList.put(jsonSchemaObject.getName(), connectionComboBox);
         }

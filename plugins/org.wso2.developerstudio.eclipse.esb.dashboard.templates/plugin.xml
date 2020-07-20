@@ -197,7 +197,7 @@
                 </class>
         </wizard>
         <wizard
-                name="Fetch SalesForce Account Information"
+                name="Fetch SalesForce Accounts"
                 icon="icons/template-default.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"

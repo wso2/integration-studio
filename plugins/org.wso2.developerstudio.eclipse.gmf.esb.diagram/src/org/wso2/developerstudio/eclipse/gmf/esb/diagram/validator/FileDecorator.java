@@ -90,42 +90,44 @@ public class FileDecorator extends LabelProvider implements ILightweightLabelDec
         } else if (element instanceof Folder) {
 
             Folder folder = (Folder) element;
-            String fullPath = folder.getLocation().toString();
+            if (folder != null && folder.getLocation() != null) {
+                String fullPath = folder.getLocation().toString();
 
-            if (fullPath.endsWith(SRC)) {
-                // process src
-                if (!validSrc(fullPath)) {
-                    addDecorator(decoration);
-                }
+                if (fullPath.endsWith(SRC)) {
+                    // process src
+                    if (!validSrc(fullPath)) {
+                        addDecorator(decoration);
+                    }
 
-            } else if (fullPath.endsWith(MAIN)) {
-                // process main
-                if (!validMain(fullPath)) {
-                    addDecorator(decoration);
-                }
+                } else if (fullPath.endsWith(MAIN)) {
+                    // process main
+                    if (!validMain(fullPath)) {
+                        addDecorator(decoration);
+                    }
 
-            } else if (fullPath.endsWith(SYNAPSE_CONFIG)) {
-                // process synapse-config
-                if (!validSynapseConfig(fullPath)) {
-                    addDecorator(decoration);
-                }
+                } else if (fullPath.endsWith(SYNAPSE_CONFIG)) {
+                    // process synapse-config
+                    if (!validSynapseConfig(fullPath)) {
+                        addDecorator(decoration);
+                    }
 
-            } else if (fullPath.endsWith(API) || fullPath.endsWith(ENDPOINTS) || fullPath.endsWith(INBOUND_ENDPOINT)
-                    || fullPath.endsWith(LOCAL_ENTRY) || fullPath.endsWith(MS_PROCESSOR) || fullPath.endsWith(MS_STORE)
-                    || fullPath.endsWith(PROXY) || fullPath.endsWith(SEQUENCES) || fullPath.endsWith(TASKS)
-                    || fullPath.endsWith(TEMPLATES)) {
-                // process xml files
-                if (!validArtifacts(fullPath)) {
-                    addDecorator(decoration);
-                }
+                } else if (fullPath.endsWith(API) || fullPath.endsWith(ENDPOINTS) || fullPath.endsWith(INBOUND_ENDPOINT)
+                        || fullPath.endsWith(LOCAL_ENTRY) || fullPath.endsWith(MS_PROCESSOR) || fullPath.endsWith(MS_STORE)
+                        || fullPath.endsWith(PROXY) || fullPath.endsWith(SEQUENCES) || fullPath.endsWith(TASKS)
+                        || fullPath.endsWith(TEMPLATES)) {
+                    // process xml files
+                    if (!validArtifacts(fullPath)) {
+                        addDecorator(decoration);
+                    }
 
-            } else {
-                // process project
-                if (!validProject(fullPath)) {
-                    addDecorator(decoration);
+                } else {
+                    // process project
+                    if (!validProject(fullPath)) {
+                        addDecorator(decoration);
+                    }
                 }
             }
-
+            
         } else if (element instanceof Project) {
             // process project
             Project project = (Project) element;

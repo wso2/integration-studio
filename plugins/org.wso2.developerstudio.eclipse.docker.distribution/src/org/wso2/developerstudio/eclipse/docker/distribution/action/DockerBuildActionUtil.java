@@ -213,6 +213,9 @@ public class DockerBuildActionUtil {
     public static void runDockerBuildWithMavenProfile(IProject project, String mavenGoal, DockerHubAuth configuration,
             boolean isThisOldContainerProject) throws CoreException {
         ILaunchManager launchManager = DebugPlugin.getDefault().getLaunchManager();
+        
+        // change .docker/config.json file which storing authentication data
+        renameDockerConfigurationFile();
 
         // remove existing maven launcher for docker build
         if (findLaunchConfigurationByName(launchManager, MAVEN_DOCKER_BUILD) != null) {
@@ -545,5 +548,19 @@ public class DockerBuildActionUtil {
                 exportMsg.open();
             }
         });
+    }
+    
+    private static void renameDockerConfigurationFile() {
+        try {
+            String userHome = System.getProperty("user.home") + File.separator;
+            String dockerConfigLocation = ".docker" + File.separator;
+            File dockerConfigFile = new File(userHome + dockerConfigLocation + "config.json");
+            File targetNewDockerConfigFile = new File(userHome + dockerConfigLocation + "config_tooling_temp.json");
+
+            if (dockerConfigFile.exists()) {
+                dockerConfigFile.renameTo(targetNewDockerConfigFile);
+            }
+        } catch (Exception e) {
+            /* ignore */} ;
     }
 }

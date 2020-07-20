@@ -300,9 +300,11 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 			File parentFile = location.getParentFile();
 			String parentName = parentFile.getName();
 			parentProject = root.getProject(parentName);
+			
+			boolean parentIsWorkspace = rootWorkspaceLocation != null && rootWorkspaceLocation.equals(parentFile.getPath());
 
 			// Check the selected project is MMM or not
-			if (parentProject != null && parentProject.hasNature(Constants.MAVEN_MULTI_MODULE_PROJECT_NATURE)) {
+			if (!parentIsWorkspace && parentProject != null && parentProject.hasNature(Constants.MAVEN_MULTI_MODULE_PROJECT_NATURE)) {
 				String newLocation = parentFile.getAbsolutePath() + File.separator + name;
 				location = new File(newLocation);
 				getModel().setLocation(location);

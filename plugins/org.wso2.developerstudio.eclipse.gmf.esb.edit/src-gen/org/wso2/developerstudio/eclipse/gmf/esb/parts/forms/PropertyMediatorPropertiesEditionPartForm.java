@@ -1870,18 +1870,20 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
 	 * This should be invoked from component class initPart method after all the fields are init.
 	 */
     public void updateValueField() {
-        if (PropertyValueType.EXPRESSION.getLiteral().equals(getValueType().getLiteral())) {
-            Control exButton = (Control) valueComposite.getData(EEFPropertyConstants.ASSOCIATED_BUTTON);
-            if (exButton != null && exButton instanceof Button) {
-                ((Button) exButton).setSelection(true);
-                ((Button) exButton).notifyListeners(SWT.Selection, new Event());
+        if(getValueType() != null) {
+            if (PropertyValueType.EXPRESSION.getLiteral().equals(getValueType().getLiteral())) {
+                Control exButton = (Control) valueComposite.getData(EEFPropertyConstants.ASSOCIATED_BUTTON);
+                if (exButton != null && exButton instanceof Button) {
+                    ((Button) exButton).setSelection(true);
+                    ((Button) exButton).notifyListeners(SWT.Selection, new Event());
+                }
+                StyledText expressionTextBox = (StyledText) valueComposite
+                        .getData(EEFPropertyConstants.EXPRESSION_TEXT_BOX);
+                expressionTextBox.setText(getValueExpression().getPropertyValue());
+            } else {
+                Text valueTextBox = (Text) valueComposite.getData(EEFPropertyConstants.VALUE_TEXT_BOX);
+                valueTextBox.setText(getValue());
             }
-            StyledText expressionTextBox = (StyledText) valueComposite
-                    .getData(EEFPropertyConstants.EXPRESSION_TEXT_BOX);
-            expressionTextBox.setText(getValueExpression().getPropertyValue());
-        } else {
-            Text valueTextBox = (Text) valueComposite.getData(EEFPropertyConstants.VALUE_TEXT_BOX);
-            valueTextBox.setText(getValue());
         }
     }
 

@@ -45,6 +45,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IExecutableExtension;
@@ -477,7 +478,7 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
             mavenProject.getModel().setProperties(properties);
 
             MavenUtils.saveMavenProject(mavenProject, pomfile);
-            project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+            ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
             if (openEditor) {
                 openEditor();
             }

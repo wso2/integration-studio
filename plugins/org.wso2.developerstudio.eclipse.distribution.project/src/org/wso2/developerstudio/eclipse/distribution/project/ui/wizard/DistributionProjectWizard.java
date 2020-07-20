@@ -30,6 +30,7 @@ import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IWorkbenchPage;
@@ -143,8 +144,7 @@ public class DistributionProjectWizard extends
 
 			MavenUtils.addMavenDependency(mavenProject, dependencyList);
 			MavenUtils.saveMavenProject(mavenProject, pomfile);
-			project.refreshLocal(IResource.DEPTH_INFINITE,
-					new NullProgressMonitor());
+			ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 			openEditor();
 		} catch (Exception e) {
 			log.error("An error occurred generating a project: ", e);

@@ -2,13 +2,13 @@
 <?eclipse version="3.4"?>
 <plugin>
  <extension point="org.eclipse.ui.newWizards">
-		<wizard name="Connector Exporter Project" 
+		<wizard name="Connector Exporter" 
 			category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.extensions/org.wso2.developerstudio.eclipse.extensions.project.types"
 			class="org.wso2.developerstudio.eclipse.artifact.connector.ui.wizard.ConnectorCreationWizard"
 			wizardManifest="project_wizard.xml"
 			id="org.wso2.developerstudio.eclipse.artifact.newconnectorartifact"
 			project="true" icon="icons/new-mediator-16x16.png">
-			<description>Connector Project</description>
+			<description>Connector Exporter</description>
 		</wizard>
 	</extension>
 	<extension point="org.wso2.developerstudio.eclipse.capp.artifacts.provider">

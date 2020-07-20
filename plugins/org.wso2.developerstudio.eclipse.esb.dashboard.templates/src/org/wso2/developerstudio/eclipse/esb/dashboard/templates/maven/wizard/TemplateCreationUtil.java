@@ -39,6 +39,7 @@ import org.wso2.developerstudio.eclipse.esb.dashboard.templates.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
+import org.wso2.developerstudio.eclipse.platform.core.project.presentation.ProjectPresentation;
 import org.wso2.developerstudio.eclipse.templates.dashboard.help.TemplateGuideView;
 
 import java.io.File;
@@ -157,12 +158,12 @@ public class TemplateCreationUtil {
                     try {
                         PlatformUI.getWorkbench().showPerspective(TemplateProjectConstants.ESB_GRAPHICAL_PERSPECTIVE,
                                 window);
+                        ProjectPresentation.setHierarchicalProjectPresentation();
                     } catch (Exception e) {
                         log.error("Cannot switch to ESB Graphical Perspective", e);
                     }
                 }
             }
         });
-
     }
 }

@@ -84,6 +84,7 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.interfaces.IDeveloperStudioElement;
 import org.wso2.developerstudio.eclipse.platform.core.interfaces.IDeveloperStudioProvider;
 import org.wso2.developerstudio.eclipse.platform.core.interfaces.IDeveloperStudioProviderData;
+import org.wso2.developerstudio.eclipse.platform.core.project.presentation.ProjectPresentation;
 import org.wso2.developerstudio.eclipse.platform.core.utils.CSProviderConstants;
 import org.wso2.developerstudio.eclipse.platform.ui.startup.DataMapperEditor;
 import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryFile;
@@ -635,6 +636,7 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
         try {
             PlatformUI.getWorkbench().showPerspective(DATAMAPPER_PERSPECTIVE,
                     PlatformUI.getWorkbench().getActiveWorkbenchWindow());
+            ProjectPresentation.setHierarchicalProjectPresentation();
         } catch (WorkbenchException e) {
             log.error("Error occurred while switching to ESB perspective " + e.getMessage());
         }

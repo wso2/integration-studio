@@ -1895,7 +1895,7 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
      * @return composite which contains the expression supported field
      */
     public Composite createTextBoxFieldWithButton(FormToolkit widgetFactory,
-            final Composite parent, String updatedField, String updatedFieldExpression, String updateFieldType) {
+            final Composite parent, final String updatedField, String updatedFieldExpression, final String updateFieldType) {
         // Create wrapping composite of 3 elements
         Composite textBoxComposite = EEFPropertyViewUtil.createComposite(widgetFactory, parent, 3, 3);
 

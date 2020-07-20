@@ -635,7 +635,7 @@ public class EEFPropertyViewUtil {
      * @param value value to be set
      * @param nsp namespace property editor instance
      */
-    public static void setExpressionValue(String value, final NamespacedProperty nsp) {
+    public static void setExpressionValue(final String value, final NamespacedProperty nsp) {
         TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(nsp);
         domain.getCommandStack().execute(new RecordingCommand(domain) {
 

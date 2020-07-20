@@ -32,10 +32,10 @@ public class MonitoringDashboardConstants {
     public static final String DARWIN = "darwin";
     public static final String WINDOWS = "windows";
     public static final String DEFAULT_HOST = "127.0.0.1";
-    public static final String HTTPS = "https://";
+    public static final String HTTP = "http://";
     public static final String COLON = ":";
     public static final String MI_DASHBOARD_CONTEXT_PATH = "/dashboard";
-    public static final int DEFAULT_PORT = 9743;
+    public static final int DEFAULT_PORT = 9390;
     public static final String JDK_PATH = "jdk-home";
     public static final String JDK_PATH_MAC = "jdk-home/Contents/Home";
     public static final String JAVA_HOME_ENV_VAR = "JAVA_HOME";

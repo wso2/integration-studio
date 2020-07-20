@@ -94,7 +94,6 @@ public class CloudConnectorOperationExtFactory extends AbstractMediatorFactory {
                     // empty string properties for create model class objects for generating the
                     // design view
                     synapseXpath = SynapseXPathExt.createSynapseXPath(paramValue);
-                    log.error("Error while deserializing connector operation", e);
                 }
                 cloudConnectorOperationExt.getpName2ExpressionMap().put(paramName, new Value(synapseXpath));
             } else {

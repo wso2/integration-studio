@@ -275,8 +275,8 @@ public class JSEmbeddedFunctions {
 			try (InputStream input = new FileInputStream(configFilePath)) {
 				Properties prop = new Properties();
 				prop.load(input);
-
-				return prop.getProperty(DISABLE_WELCOME_PAGE);
+				String disableWelcomePageValue = prop.getProperty(DISABLE_WELCOME_PAGE);
+				return disableWelcomePageValue != null && disableWelcomePageValue.equals("true") ? "true" : "false";
 
 			} catch (IOException e) {
 				return "false";

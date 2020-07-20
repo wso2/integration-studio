@@ -179,7 +179,7 @@
 	 <extension point="org.eclipse.ui.popupMenus">
 	        <objectContribution objectClass="org.eclipse.core.resources.IProject" id="org.wso2.developerstudio.eclipse.general.project.popup.importcloudconnector">
 	               <action
-	                        label="Add or Remove Connector"
+	                        label="Add or Remove Connector/Module"
 	                        icon="icons/car.png"
 	                   class="org.wso2.developerstudio.eclipse.general.project.ui.action.ImportCloudConnectorAction"
 	                        id="org.wso2.developerstudio.eclipse.general.project.ui.action.cloudConnectorImport">

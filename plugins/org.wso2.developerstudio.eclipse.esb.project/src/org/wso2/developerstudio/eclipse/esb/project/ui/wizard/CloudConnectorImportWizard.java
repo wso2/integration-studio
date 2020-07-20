@@ -44,13 +44,13 @@ public class CloudConnectorImportWizard extends AbstractWSO2ProjectCreationWizar
     private ImportRemoveSelectionWizardPage selectionPage;
     private static final String DIR_DOT_METADATA = ".metadata";
     private static final String DIR_CONNECTORS = ".Connectors";
-    private static final String ADD_CONNECTOR_FAILURE_MSG = "Failed to add connector";
+    private static final String ADD_CONNECTOR_FAILURE_MSG = "Failed to add connector/module";
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     
     @Override
     public void init(IWorkbench workbench, IStructuredSelection selection) {
-        setWindowTitle("Add or Remove Connectors");
+        setWindowTitle("Add or Remove Connectors/Modules");
         selectionPage = new ImportRemoveSelectionWizardPage(selection);
         storeWizardPage = new ImportCloudConnectorWizardPage(selection);
         removeWizardPage = new RemoveCloudConnectorWizardPage(selection);

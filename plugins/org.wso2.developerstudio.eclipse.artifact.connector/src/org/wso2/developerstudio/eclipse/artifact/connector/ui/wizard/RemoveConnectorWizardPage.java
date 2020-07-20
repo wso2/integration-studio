@@ -39,6 +39,9 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public class RemoveConnectorWizardPage extends WizardPage {
+	
+	private static final String REMOVE_CONNECTOR_MODULE = "Remove connector or module";
+	
 	private TableViewer tblLibraryInfoViewer;
 	private ConnectorModel model;
 	private Table table;
@@ -49,16 +52,16 @@ public class RemoveConnectorWizardPage extends WizardPage {
 
 	public RemoveConnectorWizardPage(IProject project, ConnectorProjectArtifact connectorProjectArtifact) {
 		super("wizardPage");
-		setTitle("Add/Remove connector");
-		setDescription("Add/Remove connector");
+		setTitle(REMOVE_CONNECTOR_MODULE);
+		setDescription(REMOVE_CONNECTOR_MODULE);
 		this.project = project;
 		this.connectorProjectArtifact = connectorProjectArtifact;
 	}
 
 	public RemoveConnectorWizardPage(boolean existingProject) {
 		super("wizardPage");
-		setTitle("Add/Remove connector");
-		setDescription("Add/Remove connector");
+		setTitle(REMOVE_CONNECTOR_MODULE);
+		setDescription(REMOVE_CONNECTOR_MODULE);
 	}
 
 	public void createControl(Composite parent) {		
@@ -75,7 +78,7 @@ public class RemoveConnectorWizardPage extends WizardPage {
 		table = new Table(container, SWT.CHECK | SWT.BORDER | SWT.V_SCROLL | SWT.H_SCROLL);
 		table.setEnabled(true);
 		TableColumn tc1 = new TableColumn(table, SWT.LEFT);			
-		tc1.setText("Connector");
+		tc1.setText("Connector/Module");
 		tc1.setWidth(200);
 		table.setHeaderVisible(true);
 		table.setLayoutData(gridData);

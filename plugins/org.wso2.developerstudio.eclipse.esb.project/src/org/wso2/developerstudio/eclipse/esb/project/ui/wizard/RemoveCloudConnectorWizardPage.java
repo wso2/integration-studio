@@ -57,8 +57,8 @@ public class RemoveCloudConnectorWizardPage extends WizardPage{
 
 	protected RemoveCloudConnectorWizardPage(IStructuredSelection selection) {
 		super("remove");
-		setTitle("Remove connector");
-		setDescription("Remove existing connectors.");
+		setTitle("Remove connector/module");
+		setDescription("Remove existing connectors/modules.");
 		IProject project = getProject(selection);
 		if (project != null) {
 			setSelectedProject(project);
@@ -81,7 +81,7 @@ public class RemoveCloudConnectorWizardPage extends WizardPage{
 		table.setEnabled(true);
 		TableColumn tc1 = new TableColumn(table, SWT.LEFT);		
 		TableColumn tc2 = new TableColumn(table, SWT.LEFT);		
-		tc1.setText("Connector");
+		tc1.setText("Connector/Module");
 		tc2.setText("Description");
 		tc1.setWidth(200);
 		tc2.setWidth(328);

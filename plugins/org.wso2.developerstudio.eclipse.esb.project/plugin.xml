@@ -304,7 +304,7 @@
 	 <extension point="org.eclipse.ui.popupMenus">
 	        <objectContribution objectClass="org.eclipse.core.resources.IProject" id="org.wso2.developerstudio.eclipse.esb.project.popup.importCloudConnector">
 	               <action
-	                        label="Add or Remove Connector"
+	                        label="Add or Remove Connector/Module"
 	                        icon="icons/new-mediator-16x16.png"
 	                   class="org.wso2.developerstudio.eclipse.esb.project.ui.action.ImportCloudConnectorAction"
 	                        id="org.wso2.developerstudio.eclipse.esb.project.ui.action.cloudConnectorImport">

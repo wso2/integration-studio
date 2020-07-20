@@ -124,7 +124,7 @@ public class AddRemoveConnectorWizard extends AbstractWSO2ProjectCreationWizard 
 		selectionPage = new ImportRemoveSelectionWizardPage();
 		addWizardPage = new ConnectorWizardPage(true);
 		removeWizardPage = new RemoveConnectorWizardPage(project, connectorProjectArtifact);
-		setWindowTitle("Add or Remove Connectors");
+		setWindowTitle("Add or Remove Connectors/Modules");
 	}
 
 	@Override

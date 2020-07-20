@@ -7,9 +7,9 @@
                class="org.wso2.developerstudio.eclipse.docker.distribution.ui.wizard.DockerProjectCreationWizard"
                icon="icons/docker-16.png"
                id="org.wso2.developerstudio.eclipse.artifact.newdockerproject"
-               name="Docker Exporter Project"
+               name="Docker Exporter"
                project="true">
-            <description>Docker Project</description>
+            <description>Docker Exporter</description>
         </wizard>
     </extension>
     <extension point="org.eclipse.ui.newWizards">
@@ -18,9 +18,9 @@
                class="org.wso2.developerstudio.eclipse.docker.distribution.ui.wizard.KubernetesProjectCreationWizard"
                icon="icons/k8s-16.png"
                id="org.wso2.developerstudio.eclipse.artifact.newkubernetesproject"
-               name="Kubernetes Exporter Project"
+               name="Kubernetes Exporter"
                project="true">
-            <description>Kubernetes Project</description>
+            <description>Kubernetes Exporter</description>
         </wizard>
     </extension>
  

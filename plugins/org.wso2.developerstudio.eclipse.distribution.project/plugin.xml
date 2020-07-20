@@ -7,7 +7,7 @@
    <extension-point id="org.wso2.developerstudio.eclipse.capp.artifacts.provider" name="org.wso2.developerstudio.eclipse.capp.artifacts.provider" schema="schema/org.wso2.developerstudio.eclipse.capp.artifacts.provider.exsd"/>
    <extension-point id="org.wso2.developerstudio.eclipse.docker.artifacts.provider" name="org.wso2.developerstudio.eclipse.docker.artifacts.provider" schema="schema/org.wso2.developerstudio.eclipse.docker.artifacts.provider.exsd"/>
 	<extension point="org.eclipse.ui.newWizards">
-		<wizard name="Composite Application Project" 
+		<wizard name="Composite Exporter" 
 			category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.capp.distribution"
 			class="org.wso2.developerstudio.eclipse.distribution.project.ui.wizard.DistributionProjectWizard"
             finalPerspective="org.eclipse.jst.j2ee.J2EEPerspective"
@@ -15,7 +15,7 @@
 			wizardManifest="project_wizard.xml"
 			icon="icons/distribution-project-12.png"
 			project="true">
-			<description>Composite Application Project</description>
+			<description>Composite Exporter</description>
 		</wizard>
    </extension>
    <extension point="org.eclipse.ui.newWizards">

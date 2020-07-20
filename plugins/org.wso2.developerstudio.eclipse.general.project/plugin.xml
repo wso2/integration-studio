@@ -2,7 +2,7 @@
 <?eclipse version="3.4"?>
 <plugin>
 	<extension point="org.eclipse.ui.newWizards">
-		<wizard name="Registry Resources Project" 
+		<wizard name="Registry Resources" 
 			category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.repository"
 			class="org.wso2.developerstudio.eclipse.general.project.ui.wizard.GeneralProjectWizard"
             finalPerspective="org.eclipse.jst.j2ee.J2EEPerspective"
@@ -10,7 +10,7 @@
 			wizardManifest="project_wizard.xml"
 			icon="icons/general-project-12.png"
 			project="true">
-			<description>Registry Resources Project</description>
+			<description>Registry Resources</description>
 		</wizard>
    </extension>
    <extension point="org.wso2.developerstudio.eclipse.dashboad.link">

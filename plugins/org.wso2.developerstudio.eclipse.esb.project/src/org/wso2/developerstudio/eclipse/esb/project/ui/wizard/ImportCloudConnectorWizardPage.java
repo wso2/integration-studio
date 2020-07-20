@@ -75,8 +75,8 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 
     protected ImportCloudConnectorWizardPage(IStructuredSelection selection) {
         super("import");
-        setTitle("Import connector");
-        setDescription("Import a connector from connector store or file system.");
+        setTitle("Import connector/module");
+        setDescription("Import a connector/module from connector-module store or file system.");
         IProject project = getProject(selection);
         if (project != null) {
             setSelectedProject(project);

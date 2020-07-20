@@ -36,7 +36,7 @@ public class ImportRemoveSelectionWizardPage extends WizardPage {
 
 	protected ImportRemoveSelectionWizardPage(IStructuredSelection selection) {
 		super("import");
-		setTitle("Add or Remove Connectors");
+		setTitle("Add or Remove Connectors/Modules");
 		setDescription("Select option");
 	}
 
@@ -48,7 +48,7 @@ public class ImportRemoveSelectionWizardPage extends WizardPage {
 		FormData data;
 		
 		importRadioButton = new Button(container, SWT.RADIO);
-		importRadioButton.setText("Add connector");
+		importRadioButton.setText("Add connector/module");
 		importRadioButton.setSelection(true);
 		data = new FormData();
 		data.top = new FormAttachment(5);
@@ -56,7 +56,7 @@ public class ImportRemoveSelectionWizardPage extends WizardPage {
         importRadioButton.setLayoutData(data);
         
 		removeRadioButton = new Button(container, SWT.RADIO);
-		removeRadioButton.setText("Remove connector");
+		removeRadioButton.setText("Remove connector/module");
 		data = new FormData();
         data.top = new FormAttachment(importRadioButton, 10);
         data.left = new FormAttachment(3);

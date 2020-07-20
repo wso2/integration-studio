@@ -49,21 +49,24 @@ import org.wso2.developerstudio.eclipse.artifact.connector.model.ConnectorModel;
 import org.wso2.developerstudio.eclipse.artifact.connector.ui.dialog.WorkspaceConnectorImportDialog;
 
 public class ConnectorWizardPage extends WizardPage {
+	
+	private static final String ADD_CONNECTOR_MODULE = "Add connector or module";
+	
 	private TableViewer tblLibraryInfoViewer;
 	private ConnectorModel model;
 	private boolean existingProject;
 
 	public ConnectorWizardPage() {
 		super("wizardPage");
-		setTitle("Add/Remove connector");
-		setDescription("Add/Remove connector");
+		setTitle(ADD_CONNECTOR_MODULE);
+		setDescription(ADD_CONNECTOR_MODULE);
 		this.existingProject = false;
 	}
 
 	public ConnectorWizardPage(boolean existingProject) {
 		super("wizardPage");
-		setTitle("Add/Remove connector");
-		setDescription("Add/Remove connector");
+		setTitle(ADD_CONNECTOR_MODULE);
+		setDescription(ADD_CONNECTOR_MODULE);
 		this.existingProject = existingProject;
 	}
 
@@ -81,7 +84,7 @@ public class ConnectorWizardPage extends WizardPage {
 
 		Label lblCreateJavaLibrary = new Label(container, SWT.NONE);
 		lblCreateJavaLibrary.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 5, 1));
-		lblCreateJavaLibrary.setText("List of connectors to be included");
+		lblCreateJavaLibrary.setText("List of connectors/modules to be included");
 
 		tblLibraryInfoViewer = new TableViewer(container, SWT.BORDER | SWT.FULL_SELECTION);
 		Table tblLibraryInfo = tblLibraryInfoViewer.getTable();

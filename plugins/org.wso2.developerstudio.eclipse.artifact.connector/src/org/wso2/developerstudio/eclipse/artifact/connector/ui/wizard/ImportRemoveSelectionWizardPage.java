@@ -32,7 +32,7 @@ public class ImportRemoveSelectionWizardPage extends WizardPage {
 
 	protected ImportRemoveSelectionWizardPage() {
 		super("import");
-		setTitle("Add or Remove Connectors");
+		setTitle("Add or Remove Connectors/Modules");
 		setDescription("Select option");
 	}
 
@@ -42,10 +42,10 @@ public class ImportRemoveSelectionWizardPage extends WizardPage {
 		setControl(container);
 		container.setLayout(new GridLayout(1, false));
 		importRadioButton = new Button(container, SWT.RADIO);
-		importRadioButton.setText("Add connector");
+		importRadioButton.setText("Add connector/module");
 		importRadioButton.setSelection(true);
 		removeRadioButton = new Button(container, SWT.RADIO);
-		removeRadioButton.setText("Remove connector");
+		removeRadioButton.setText("Remove connector/module");
 		importRadioButton.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				setPageComplete(true);

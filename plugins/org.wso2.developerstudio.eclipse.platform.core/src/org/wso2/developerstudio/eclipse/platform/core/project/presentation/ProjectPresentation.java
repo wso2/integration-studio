@@ -71,30 +71,34 @@ public class ProjectPresentation {
     }
 
     private static void setHierarchicalLevelForProjectPresentation() {
-        IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-        IViewPart part = page.findView(IPageLayout.ID_PROJECT_EXPLORER);
-        if (part instanceof CommonNavigator) {
-            CommonNavigator navigator = (CommonNavigator) part;
-            navigator.getNavigatorContentService().getActivationService()
-                    .activateExtensions(new String[] { NestedProjectsContentProvider.EXTENSION_ID }, false);
-            ISelection initialSelection = navigator.getCommonViewer().getSelection();
-            INavigatorFilterService filterService = navigator.getNavigatorContentService().getFilterService();
-            Set<String> filters = new HashSet<>();
-            for (ICommonFilterDescriptor desc : filterService.getVisibleFilterDescriptors()) {
-                if (filterService.isActive(desc.getId())) {
-                    filters.add(desc.getId());
+        try {
+            IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+            IViewPart part = page.findView(IPageLayout.ID_PROJECT_EXPLORER);
+            if (part instanceof CommonNavigator) {
+                CommonNavigator navigator = (CommonNavigator) part;
+                navigator.getNavigatorContentService().getActivationService()
+                        .activateExtensions(new String[] { NestedProjectsContentProvider.EXTENSION_ID }, false);
+                ISelection initialSelection = navigator.getCommonViewer().getSelection();
+                INavigatorFilterService filterService = navigator.getNavigatorContentService().getFilterService();
+                Set<String> filters = new HashSet<>();
+                for (ICommonFilterDescriptor desc : filterService.getVisibleFilterDescriptors()) {
+                    if (filterService.isActive(desc.getId())) {
+                        filters.add(desc.getId());
+                    }
                 }
+
+                navigator.getNavigatorContentService().getActivationService()
+                        .activateExtensions(new String[] { NestedProjectsContentProvider.EXTENSION_ID }, false);
+                filters.add(HideTopLevelProjectIfNested.EXTENSION_ID);
+                filters.add(HideFolderWhenProjectIsShownAsNested.EXTENTSION_ID);
+
+                filterService.activateFilterIdsAndUpdateViewer(filters.toArray(new String[filters.size()]));
+                navigator.getNavigatorContentService().getActivationService().persistExtensionActivations();
+                navigator.getCommonViewer().refresh();
+                navigator.getCommonViewer().setSelection(initialSelection);
             }
-
-            navigator.getNavigatorContentService().getActivationService()
-                    .activateExtensions(new String[] { NestedProjectsContentProvider.EXTENSION_ID }, false);
-            filters.add(HideTopLevelProjectIfNested.EXTENSION_ID);
-            filters.add(HideFolderWhenProjectIsShownAsNested.EXTENTSION_ID);
-
-            filterService.activateFilterIdsAndUpdateViewer(filters.toArray(new String[filters.size()]));
-            navigator.getNavigatorContentService().getActivationService().persistExtensionActivations();
-            navigator.getCommonViewer().refresh();
-            navigator.getCommonViewer().setSelection(initialSelection);
+        } catch (Exception e) {
+            // ignore
         }
     }
 

@@ -11,7 +11,9 @@ Require-Bundle: org.eclipse.ltk.core.refactoring,
  org.wso2.developerstudio.eclipse.utils;bundle-version="4.3.0";visibility:=reexport,
  org.wso2.developerstudio.eclipse.logging;bundle-version="4.3.0";visibility:=reexport,
  org.wso2.developerstudio.eclipse.maven;bundle-version="4.3.0";visibility:=reexport,
- org.eclipse.ui.ide;bundle-version="3.13.1"
+ org.eclipse.ui.ide;bundle-version="3.13.1",
+ org.eclipse.ui.navigator;bundle-version="3.7.0",
+ org.eclipse.ui.navigator.resources;bundle-version="3.6.1"
 Export-Package: org.wso2.developerstudio.eclipse.platform.core;version="4.3.0",
  org.wso2.developerstudio.eclipse.platform.core.bundle;version="4.3.0",
  org.wso2.developerstudio.eclipse.platform.core.event;version="4.3.0",
@@ -24,6 +26,7 @@ Export-Package: org.wso2.developerstudio.eclipse.platform.core;version="4.3.0",
  org.wso2.developerstudio.eclipse.platform.core.project.export;version="4.3.0",
  org.wso2.developerstudio.eclipse.platform.core.project.export.util;version="4.3.0",
  org.wso2.developerstudio.eclipse.platform.core.project.model;version="4.3.0",
+ org.wso2.developerstudio.eclipse.platform.core.project.presentation;version="4.3.0",
  org.wso2.developerstudio.eclipse.platform.core.templates;version="4.3.0",
  org.wso2.developerstudio.eclipse.platform.core.types;version="4.3.0",
  org.wso2.developerstudio.eclipse.platform.core.utils;version="4.3.0"

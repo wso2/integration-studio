@@ -22,7 +22,7 @@
 <meta charset="utf-8">
 <meta content="IE=edge" http-equiv="X-UA-Compatible">
 <meta content="width=device-width, initial-scale=1" name="viewport">
-<title>Docker User Guide</title>
+<title>HelloWorld Docker Service</title>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400"
 	rel="stylesheet">
 <style>
@@ -98,17 +98,15 @@
 
 		<div class="about-template">
 			<h3><strong>About</strong></h3>
-			<p>This project leads you to build a docker image locally in your
-				machine with the given target repository name and the target
-				repository tag.</p>
-			<p>
-				You can change the Docker image name by changing the <b>Target
-					Repository</b> value and <b>Target Tag</b> value as desired.
-			</p>
-			<p>
-				If you want to pack multiple <b>Composite Application projects
-					(CApps)</b> inside the Docker image, you can select multiple CApps,
-				which are listed in the <b>Dependencies</b> section.
+			<p>This template leads you to build a docker image locally in your
+				machine with a given target repository name and the target
+				repository tag and push it to your docker repository.</p>
+			<p>Three modules get created with this template. <strong>ESB Configs</strong> module contains all the ESB 
+				artifacts, the <strong>Composite Exporter</strong> module which is used to package and export the 
+				artifacts created within the ESB module, the <strong>Docker Exporter</strong> module which facilitates
+				building and pushing of the docker image with the selected Composite Exporter modules (Capps).</p>
+			<p>ESB module contains a simple <strong>REST API</strong> called
+				&lsquo;HelloWorld&rsquo;. When you invoke it, it generates a JSON message and sends it to the client.
 			</p>
 		</div>
 
@@ -118,42 +116,66 @@
 				<label class="title" for="toggle1" 
                   style="border-bottom-color: rgba(255,145,0,.1);background-color: rgba(255,145,0,.1);
                       box-shadow: none !important;">
-                  Docker Project Structure
+                  Build and Run the Docker Image
                 </label>
 				<div class="content">
 					<ol>
 						<li>
-							<h3>Libs Directory</h3>
+							<h3>Configure docker image name</h3>
 							<p>
-								- This directory contains the JAR files that are packed with the
-								Docker image during the build. These JARs are copied to the <b><i>wso2carbon/wso2mi/lib/</i></b>
-								path while building. <b>Uncomment</b> the following command in
-								Dockerfile once you add any JARs here.
+								- Open the POM.xml file in the <b>Docker Exporter</b> module and change the Docker 
+								image name by changing the <b>Target Repository</b> value and <b>Target Tag</b> value.
+							</p>
+						</li>
+						<li>
+							<h3>Build the Docker Image</h3>
+							<p style="font-size: 13px;">
+								- Open the <b>pom.xml</b> file and click the <b>Build</b> button in
+								the top right corner.
+							</p>
+							<div class="separator">or</div>
+							<p style="font-size: 13px;">
+								<b>- Right click</b> the Docker Exporter project and select the <b>Build
+									Docker Image</b> option.
+							</p>
+						</li>
+						<li>
+							<h3>View the built docker image</h3>
+							<p>- Execute the following command in your terminal and you will see built docker image 
+								with given repository name and tag.</p>
 							<pre>
-								<code class="language-bash">#COPY Libs/*.jar /home/wso2carbon/wso2mi/lib/</code>
+								<code class="language-bash">docker images</code>
 							</pre>
+						</li>
+						<li>
+							<h3>Run the docker image</h3>
+							<p>- Execute the following command with the appropriate docker username, repository name 
+								and version.</p>
+							<pre>
+								<code class="language-bash">docker run -p 8290:8290 -it docker_username/repository:v1.0.0</code>
+							</pre>
+						</li>
+						<li>
+							<h3>Invoke the HelloWorld API</h3>
+							<p>Open the <strong>HTTP Client</strong> of WSO2 Integration Studio (If you don't 
+							see the HTTP Client pane, go to <strong>Window -> Show View - Other</strong> and 
+							select HTTP Client to enable the client pane).</p>					  
+					   
+							<p>Enter the request information as given below and click the Send 
+							<span>
+								<img src="https://github.com/wso2/devstudio-tooling-esb/raw/master/plugins/org.wso2.developerstudio.eclipse.esb.dashboard.templates/NewSamples/Resources/play-head-icon.png" 
+									style="width:20px; margin: 0 2px -5px 2px;" />
+							</span> icon.</p>
+							
+							<p><b>Method:</b></p>
+							<p style="margin-top:-30px;"><pre><code class="language-bash">GET</code></pre></p>
+							
+							<p style="margin-top:-15px;"><b>URL:</b></p>
+							<p style="margin-top:-30px;">
+								<pre>
+									<code class="language-bash">http://localhost:8290/HelloWorld</code>
+								</pre>
 							</p>
-						</li>
-						<li>
-							<h3>Resources Directory</h3>
-							<p>
-								- If you need to copy any kind of file to the Docker image, paste it here. And make sure to 
-								add the relevant Docker COPY command for added files inside the Dockerfile. 
-							</p>
-						</li>
-						<li>
-							<h3>deployment.toml file</h3>
-							<p>- Update the deployment.toml file if you want to change
-								the configurations of the Micro Integrator.</p>
-						</li>
-						<li>
-							<h3>Dockerfile</h3>
-							<p>- This file is used to build the Docker image.</p>
-						</li>
-						<li>
-							<h3>pom.xml file</h3>
-							<p>- This file facilitates the process of changing the Docker
-								image name, add or remove CApps, and build the Docker image.</p>
 						</li>
 					</ol>
 				</div>
@@ -164,18 +186,20 @@
 				<label class="title" for="toggle2"  
                   style="border-bottom-color: rgba(68, 138, 255,.1); 
                       background-color: rgba(68, 138, 255,.1); box-shadow: none !important;">
-                Build the Docker Image
+                Push the Docker Image
                 </label>
 				<div class="content">
 					<p style="font-size: 13px;">
-						Open the <b>pom.xml</b> file and click the <b>Build</b> button in
+						Open the <b>pom.xml</b> file and click the <b>Push</b> button in
 						the top right corner.
 					</p>
 					<div class="separator">or</div>
 					<p style="font-size: 13px;">
-						<b>Right click</b> the Docker Exporter project and select the <b>Build
+						<b>Right click</b> the Docker Exporter project and select the <b>Push
 							Docker Image</b> option.
 					</p>
+					<p style="font-size: 13px;">Both actions will open a wizard. Enter username and the password
+						of your docker account and click on <b>Push Image</b> button.</p>
 				</div>
 			</div>
 		</div>

@@ -82,19 +82,21 @@ public class MMMProjectSelectionWizard extends AbstractWSO2ProjectCreationWizard
             FileUtils.copyDirectory(mavenProject, importingMavenProject);
             FileUtils.copyDirectory(oldImportingProject, importingSubProject);
             mavenMultiModuleProject.delete(true, true, new NullProgressMonitor());
+            ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
             selectedNonMMMProject.delete(true, true, new NullProgressMonitor());
+            ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 
             if (MavenMultiModuleImportUtils.importMavenMultiModuleProjectToWorkspace(importingMavenProject)) {
                 // delete project in .tmp due to import is success
                 FileUtils.deleteDirectory(importingMavenProject);
                 MavenMultiModuleImportUtils.addModuleToParentPOM(root.getProject(mavenProjectName));
             } else {
-                showErrorMessage("Import Error",
-                        "Error occured while importing " + selectedNonMMMProject.getName() + "project to "
+                showErrorMessage("Error occured while importing " + selectedNonMMMProject.getName() + "project to "
                                 + mavenProjectName
                                 + " maven multi module project. Backup project is saved in ${workspace}/.tmp/"
-                                + mavenProjectName + " directory");
+                                + mavenProjectName + " directory", "Import Error");
             }
+            ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
         } catch (Exception e) {
             log.error("Error while importing selected project", e);
         }

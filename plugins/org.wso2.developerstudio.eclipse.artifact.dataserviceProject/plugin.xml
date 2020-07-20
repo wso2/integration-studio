@@ -3,13 +3,13 @@
 <plugin>
    <extension
          point="org.eclipse.ui.newWizards">
-         <wizard name="Data Service Project" category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.service.hosting/org.wso2.developerstudio.eclipse.service.hosting.project.types"
+         <wizard name="Data Service Configs" category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.service.hosting/org.wso2.developerstudio.eclipse.service.hosting.project.types"
 			class="org.wso2.developerstudio.eclipse.artifact.dataserviceProject.ui.wizard.DataServiceProjectCreationWizard"
 			wizardManifest="project_wizard.xml"
 			id="org.wso2.developerstudio.eclipse.artifact.newdsproject"
 			project="true"
 			icon="icons/ds-16x16.png">
-			<description>Data Service Project</description>
+			<description>Data Service Configs</description>
 		</wizard>
    </extension>
    <extension point="org.wso2.developerstudio.eclipse.capp.artifacts.provider">

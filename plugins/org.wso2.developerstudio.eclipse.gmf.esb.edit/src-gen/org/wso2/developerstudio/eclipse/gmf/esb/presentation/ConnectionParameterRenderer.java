@@ -62,7 +62,7 @@ public class ConnectionParameterRenderer {
     private CTabFolder tabFolder;
     private Group tabSection;
     private Map<String, String> connectionTitleTypeMap = new HashMap<>();
-
+    private static final String CONNECTION_TYPE = "connectionType";
     public ConnectionParameterRenderer(FormToolkit widgetFactory) {
         this.widgetFactory = widgetFactory;
         this.controlList = new HashMap<>();
@@ -84,7 +84,6 @@ public class ConnectionParameterRenderer {
         }
         
         List<String> connectorConnectionTypes = allowedConnectionTypes.getAllowedConnectionTypes();
-        allowedConnectionTypes.setName("connectionType");
         String connectionTypes[] = new String[connectorConnectionTypes.size()]; 
         for (int j = 0; j < connectorConnectionTypes.size(); j++) { 
             ConnectorRoot newConnectorRoot = ConnectorSchemaHolder.getInstance()
@@ -105,16 +104,16 @@ public class ConnectionParameterRenderer {
         GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
         propertiesSectionData.horizontalSpan = 2;
         composite.setLayoutData(propertiesSectionData);
-        compositeList.put(allowedConnectionTypes.getName(), composite);
+        compositeList.put(CONNECTION_TYPE, composite);
         Label label = new Label(composite, SWT.NONE);
         label.setText("Connection Type:");
         GridData labelRefData = new GridData();
         labelRefData.widthHint = 120;
         label.setLayoutData(labelRefData);
         final Combo configRef = new Combo(composite, SWT.READ_ONLY | SWT.DROP_DOWN);
-        controlList.put(allowedConnectionTypes.getName(), configRef);
+        controlList.put(CONNECTION_TYPE, configRef);
         if(allowedConnectionTypes.getRequired()) {
-            requiredList.put(allowedConnectionTypes.getName(), configRef);
+            requiredList.put(CONNECTION_TYPE, configRef);
         }
         configRef.setItems(connectionTypes);
         configRef.setData("conenctionTitles", connectionTitleTypeMap);
@@ -132,7 +131,7 @@ public class ConnectionParameterRenderer {
                 //remove dispose items from controlList
                 List<String> controlListItems = new ArrayList<>();
                 for (Map.Entry<String, Control> entry : controlList.entrySet()) {
-                    if (!entry.getKey().equals("connectionName") && !entry.getKey().equals("connectionType")) {
+                    if (!entry.getKey().equals("connectionName") && !entry.getKey().equals(CONNECTION_TYPE)) {
                         controlListItems.add(entry.getKey());
                     }
                 }
@@ -157,7 +156,7 @@ public class ConnectionParameterRenderer {
                         }
                         ((Text) control).setText(entry.getValue());
                     } else if (control instanceof Combo) {
-                        if (entry.getKey().equals("connectionType")) {
+                        if (entry.getKey().equals(CONNECTION_TYPE)) {
                             control.setEnabled(false);
                         }
                         for (Map.Entry<String, String> titleItem : connectionTitleTypeMap.entrySet()) {

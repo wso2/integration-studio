@@ -153,6 +153,8 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
         Combo configRefCombo = (Combo) controlList.get("configRef");
         if (configRefCombo != null && configRefValue != null) {
             configRefCombo.select(configRefCombo.indexOf(configRefValue));
+            Button connectionEditButton = (Button) configRefCombo.getData("editConnectionButton");
+            connectionEditButton.setEnabled(true);
         }
         String descriptionValue = ((CloudConnectorOperation) dataObject).getDescription();
         Text descriptionText = (Text) controlList.get("description");

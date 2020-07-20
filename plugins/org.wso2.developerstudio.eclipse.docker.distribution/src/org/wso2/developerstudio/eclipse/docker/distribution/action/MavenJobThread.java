@@ -16,6 +16,7 @@
 
 package org.wso2.developerstudio.eclipse.docker.distribution.action;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -99,6 +100,7 @@ public class MavenJobThread implements Runnable {
                     isMavenBuildDone = true;
                     isBuildSuccess = launcher.getProcesses()[0].getExitValue();
 
+                    revertDockerConfigurationFile();
                     if (isBuildSuccess == 0 && authConfiguration != null && authConfiguration.isKubernetesProject()) {
                         executeMavenPushJob();
                     } else if (isBuildSuccess == 0 && authConfiguration == null) {
@@ -152,6 +154,9 @@ public class MavenJobThread implements Runnable {
     private void executeMavenPushJob() throws InterruptedException, CoreException {
         ILaunchManager launchManager = DebugPlugin.getDefault().getLaunchManager();
         final String MAVEN_DOCKER_PUSH = "Run Docker Push Internal Configuration";
+        
+        // change .docker/config.json file which storing authentication data
+        renameDockerConfigurationFile();
 
         // remove existing maven launcher for docker build
         if (DockerBuildActionUtil.findLaunchConfigurationByName(launchManager, MAVEN_DOCKER_PUSH) != null) {
@@ -195,6 +200,7 @@ public class MavenJobThread implements Runnable {
                         isMavenPushBuildDone = true;
                         isPushSuccess = launch.getProcesses()[0].getExitValue();
 
+                        revertDockerConfigurationFile();
                         if (isPushSuccess == 0) {
                             DockerBuildActionUtil.showMessageBox(DockerProjectConstants.MESSAGE_BOX_TITLE,
                                     DockerProjectConstants.DOCKER_IMAGE_PUSH_SUCCESS_MESSAGE, SWT.ICON_WORKING);
@@ -248,5 +254,33 @@ public class MavenJobThread implements Runnable {
      */
     public int isBuildSuccess() {
         return isBuildSuccess;
+    }
+    
+    private void renameDockerConfigurationFile() {
+        try {
+            String userHome = System.getProperty("user.home") + File.separator;
+            String dockerConfigLocation = ".docker" + File.separator;
+            File dockerConfigFile = new File(userHome + dockerConfigLocation + "config.json");
+            File targetNewDockerConfigFile = new File(userHome + dockerConfigLocation + "config_tooling_temp.json");
+
+            if (dockerConfigFile.exists()) {
+                dockerConfigFile.renameTo(targetNewDockerConfigFile);
+            }
+        } catch (Exception e) {
+            /* ignore */} ;
+    }
+
+    private void revertDockerConfigurationFile() {
+        try {
+            String userHome = System.getProperty("user.home") + File.separator;
+            String dockerConfigLocation = ".docker" + File.separator;
+            File dockerConfigFile = new File(userHome + dockerConfigLocation + "config.json");
+            File targetNewDockerConfigFile = new File(userHome + dockerConfigLocation + "config_tooling_temp.json");
+
+            if (targetNewDockerConfigFile.exists()) {
+                targetNewDockerConfigFile.renameTo(dockerConfigFile);
+            }
+        } catch (Exception e) {
+            /* ignore */} ;
     }
 }

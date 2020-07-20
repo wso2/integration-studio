@@ -22,7 +22,7 @@
 <meta charset="utf-8">
 <meta content="IE=edge" http-equiv="X-UA-Compatible">
 <meta content="width=device-width, initial-scale=1" name="viewport">
-<title>Kubernetes User Guide</title>
+<title>Kubernetes HelloWorld Service</title>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400"
 	rel="stylesheet">
 <style>
@@ -90,7 +90,7 @@
 		</div>
 		<div style="margin-top:-12px;">
 			<h1>
-				<span id="page_title" style="font-size: 16px; font-weight: bold;">Kubernetes Project User Guide</span>
+				<span id="page_title" style="font-size: 16px; font-weight: bold;">Kubernetes Hello World Service</span>
 			</h1>
 		</div>
 	</div>
@@ -99,7 +99,7 @@
 		<div class="about-template">
 			<h3><strong>About</strong></h3>
 			<p>
-				This project leads you to build and push a Docker image to the
+				This template leads you to build and push a Docker image to the
 				private or public Docker registry with the given registry
 				credentials, target repository name and the target repository tag.
 				Also, this will create the <b>integration_cr.yaml</b> file, which is
@@ -110,10 +110,13 @@
 				You can change the Docker image name by changing the <b>Target
 					Repository</b> value and <b>Target Tag</b> value as desired.
 			</p>
-			<p>
-				If you want to pack multiple <b>Composite Application projects
-					(CApps)</b> inside the Docker image, you can select multiple CApps,
-				which are listed in the <b>Dependencies</b> section.
+			<p>Three modules get created with this template. <strong>ESB Configs</strong> module contains all the ESB 
+				artifacts, the <strong>Composite Exporter</strong> module which is used to package and export the 
+				artifacts created within the ESB module, the <strong>Kubernetes Exporter</strong> module which 
+				facilitates building and pushing of the docker image with the selected Composite Exporter modules (Capps)
+				and deploying the solution in Kubernetes.</p>
+			<p>ESB module contains a simple <strong>REST API</strong> called
+				&lsquo;HelloWorld&rsquo;. When you invoke it, it generates a JSON message and sends it to the client.
 			</p>
 		</div>
 
@@ -123,47 +126,30 @@
 				<label class="title" for="toggle1" 
                   style="border-bottom-color: rgba(255,145,0,.1);background-color: rgba(255,145,0,.1);
                       box-shadow: none !important;">
-                  Docker Project Structure
+                  Build and Push the Docker Image
                 </label>
 				<div class="content">
 					<ol>
 						<li>
-							<h3>Libs Directory</h3>
+							<h3>Configure docker image name</h3>
 							<p>
-								- This directory contains the JAR files that are packed with the
-								Docker image during the build. These JARs are copied to the <b><i>wso2carbon/wso2mi/lib/</i></b>
-								path while building. <b>Uncomment</b> the following command in
-								Dockerfile once you add any JARs here.
-
-								<pre><code class="language-bash">#COPY Libs/*.jar /home/wso2carbon/wso2mi/lib/</code>
-							</pre>
+								- Open the POM.xml file in the <b>Docker Exporter</b> module and change the Docker 
+								image name by changing the <b>Target Repository</b> value and <b>Target Tag</b> value.
 							</p>
 						</li>
 						<li>
-							<h3>Resources Directory</h3>
-							<p>
-								- If you need to copy any kind of file to the Docker image, paste it here. And make sure to 
-								add the relevant Docker COPY command for added files inside the Dockerfile. 
+							<h3>Build and Push the Image</h3>
+							<p style="font-size: 13px;">
+								Open the <b>pom.xml</b> file and click the <b>Push</b> button in
+								the top right corner.
 							</p>
-						</li>
-						<li>
-							<h3>deployment.toml File</h3>
-							<p>- Update the deployment.toml file if you want to change
-								the configurations of the Micro Integrator.</p>
-						</li>
-						<li>
-							<h3>integration_cr.yaml file</h3>
-							<p>- This file is used to configure the Kubernetes
-								Integration deployment</p>
-						</li>
-						<li>
-							<h3>Dockerfile</h3>
-							<p>- This file is used to build the Docker image.</p>
-						</li>
-						<li>
-							<h3>pom.xml file</h3>
-							<p>- This file facilitates the process of changing the Docker
-								image name, add or remove CApps, and build the Docker image.</p>
+							<div class="separator">or</div>
+							<p style="font-size: 13px;">
+								<b>Right click</b> the Docker Exporter project and select the <b>Push
+									Docker Image</b> option.
+							</p>
+							<p>- Both actions will open a wizard. Enter username and the 
+								password of your docker account and click on <b>Push Image</b> button.</p>
 						</li>
 					</ol>
 				</div>
@@ -174,20 +160,105 @@
 				<label class="title" for="toggle2"  
                   style="border-bottom-color: rgba(68, 138, 255,.1); 
                       background-color: rgba(68, 138, 255,.1); box-shadow: none !important;">
-                	Build and Push the Docker Image
+                	Set up EI Kubernetes Operator
                 </label>
 				<div class="content">
-					<p style="font-size: 13px;">
-						Open the <b>pom.xml</b> file and click the <b>Build & Push</b>
-						button in the top right corner. Then enter the Docker registry
-						credentials.
-					</p>
-					<div class="separator">or</div>
-					<p style="font-size: 13px;">
-						<b>Right click</b> on the Kubernetes Exporter project and select
-						the <b>Build and Push Docker Image</b> option. Then enter the
-						Docker registry credentials.
-					</p>
+					<ol>
+						<li>
+							<h3>Start your Kubernetes environment</h3>
+						</li>
+						<li>
+							<h3>Clone the K8s operator</h3>
+							<p>
+								Clone the latest <b>k8s-ei-operator</b> GitHub repository.
+							</p>
+							<p style="margin-top:-30px;">
+								<pre>
+									<code class="language-bash">http://localhost:8290/HelloWorld</code>
+								</pre>
+							</p>
+						</li>
+						<li>
+							<h3>Set up the K8s operator</h3>
+							<p>
+								- Navigate to the k8s-ei-operator directory that you cloned:
+							</p>
+							<p style="margin-top:-30px;">
+								<pre>
+									<code class="language-bash">cd k8s-ei-operator</code>
+								</pre>
+							</p>
+							<p>
+								- Set up the service account:
+							</p>
+							<p style="margin-top:-30px;">
+								<pre>
+									<code class="language-bash">kubectl create -f deploy/service_account.yaml</code>
+								</pre>
+							</p>
+							<p>
+								- Set up RBAC:
+							</p>
+							<p style="margin-top:-30px;">
+								<pre>
+									<code class="language-bash">
+										kubectl create -f deploy/role.yaml
+										kubectl create -f deploy/role_binding.yaml
+									</code>
+								</pre>
+							</p>
+							<p>
+								- Deploy a <b>custom resource definition</b>, which enables a Kubernetes cluster to 
+								understand the custom resource type. The EI K8s operator introduces the Integration 
+								custom resource.
+							</p>
+							<p style="margin-top:-30px;">
+								<pre>
+									<code class="language-bash">kubectl create -f deploy/crds/integration_v1alpha1_integration_crd.yaml</code>
+								</pre>
+							</p>
+							<p>
+								- Deploy the k8s-ei-operator:
+							</p>
+							<p style="margin-top:-30px;">
+								<pre>
+									<code class="language-bash">kubectl create -f deploy/operator.yaml</code>
+								</pre>
+							</p>
+							<p>
+								- Apply the Ingress controller configurations to the <b>config_map.yaml</b> file 
+								(configuration mapping file):.
+							</p>
+							<p style="margin-top:-30px;">
+								<pre>
+									<code class="language-bash">kubectl apply -f deploy/config_map.yaml</code>
+								</pre>
+							</p>
+						</li>
+						<li>
+							<h3>Verify the installation</h3>
+							<p>
+								- Execute the following command in your terminal.
+							</p>
+							<p style="margin-top:-30px;">
+								<pre>
+									<code class="language-bash">kubectl get deployment</code>
+								</pre>
+							</p>
+							<p>
+								- Verify the installation by making sure that the following deployment is running in 
+								your Kubernetes cluster.
+							</p>
+							<p style="margin-top:-30px;">
+								<pre>
+									<code class="language-bash">
+										NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+										k8s-ei-operator     1/1     1            1          1m
+									</code>
+								</pre>
+							</p>
+						</li>
+					</ol>
 				</div>
 			</div>
 
@@ -195,18 +266,63 @@
 				<input type="checkbox" id="toggle3" class="toggle"/>
 				<label class="title" for="toggle3" 
 					   style="border-bottom-color: rgba(0,191,165,.1);background-color: rgba(0,191,165,.1);
-					   box-shadow: none !important;">Kubernetes Deployment</label>
+					   box-shadow: none !important;">Deploy the solution in K8s</label>
 				<div class="content">
-					<p style="font-size: 13px;">
-						Install the <b>Kubernetes EI Operator</b> in your Kubernetes environment
-						once and run the following command to apply the native deployment.
-					</p>
-					<div>
-					<pre style="border-left: 10px;font-size: 13px;">
-						<code class="language-bash">kubectl apply -f path/to/integration_cr.yaml</code>
-					</pre>
-					</div>
-					
+					<ol>
+						<li>
+							<h3>Update the configuration file</h3>
+							<p>
+								- Open the <b>integration_cr.yaml</b> file in the <i>Kubernetes Exporter</i> module 
+								and update the file with appropriate docker username, repository name, and tag.
+							</p>
+						</li>
+						<li>
+							<h3>Deploy in Kubernetes Cluster</h3>
+							<p> - Open a terminal, navigate to the location of your <b>integration_cr.yaml</b> file, 
+								and execute the following command to deploy the integration solution in the Kubernetes 
+								cluster:
+							</p>
+							<p style="margin-top:-30px;">
+								<pre>
+									<code class="language-bash">kubectl apply -f integration_cr.yaml</code>
+								</pre>
+							</p>
+						</li>
+						<li>
+							<h3>Allow bypassing Ingress controller</h3>
+							<p>
+								- Apply port forwarding as shown below. This will allow you to invoke the API 
+								without going through the Ingress controller:
+							</p>
+							<p style="margin-top:-30px;">
+								<pre>
+									<code class="language-bash">kubectl port-forward service/hello-world-service 8290:8290</code>
+								</pre>
+							</p>
+						</li>
+						<li>
+							<h3>Invoke the API</h3>
+							<p>- Open the <strong>HTTP Client</strong> of WSO2 Integration Studio (If you don't 
+							see the HTTP Client pane, go to <strong>Window -> Show View - Other</strong> and 
+							select HTTP Client to enable the client pane).</p>					  
+					   
+							<p>- Enter the request information as given below and click the Send 
+							<span>
+								<img src="https://github.com/wso2/devstudio-tooling-esb/raw/master/plugins/org.wso2.developerstudio.eclipse.esb.dashboard.templates/NewSamples/Resources/play-head-icon.png" 
+									style="width:20px; margin: 0 2px -5px 2px;" />
+							</span> icon.</p>
+							
+							<p><b>Method:</b></p>
+							<p style="margin-top:-30px;"><pre><code class="language-bash">GET</code></pre></p>
+							
+							<p style="margin-top:-15px;"><b>URL:</b></p>
+							<p style="margin-top:-30px;">
+								<pre>
+									<code class="language-bash">http://localhost:8290/HelloWorld</code>
+								</pre>
+							</p>
+						</li>
+					</ol>
 				</div>
 			</div>
 		</div>

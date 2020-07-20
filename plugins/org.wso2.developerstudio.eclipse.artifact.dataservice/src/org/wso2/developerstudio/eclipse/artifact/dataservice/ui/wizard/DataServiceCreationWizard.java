@@ -57,6 +57,7 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.platform.core.exception.FieldValidationException;
+import org.wso2.developerstudio.eclipse.platform.core.project.presentation.ProjectPresentation;
 import org.wso2.developerstudio.eclipse.platform.core.utils.XMLUtil;
 import org.wso2.developerstudio.eclipse.platform.ui.validator.CommonFieldValidator;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
@@ -161,6 +162,7 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
             try {
                 IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
                 PlatformUI.getWorkbench().showPerspective(DSS_PERSPECTIVE, window);
+                ProjectPresentation.setHierarchicalProjectPresentation();
             } catch (Exception e) {
                 log.error(DataServiceArtifactConstants.ERROR_MESSAGE_FILE_OPEN, e);
             }

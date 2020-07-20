@@ -40,6 +40,7 @@ import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
+import org.wso2.developerstudio.eclipse.platform.core.project.presentation.ProjectPresentation;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.pages.MavenDetailsPage;
 import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
@@ -93,6 +94,7 @@ public class DataSourceProjectCreationWizard extends AbstractWSO2ProjectCreation
             try {
                 IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
                 PlatformUI.getWorkbench().showPerspective(DSS_PERSPECTIVE, window);
+                ProjectPresentation.setHierarchicalProjectPresentation();
             } catch (Exception e) {
                 log.error(DataSourceProjectConstants.ERROR_MESSAGE_CORE_EXCEPTION, e);
             }

@@ -26,6 +26,7 @@ import org.eclipse.core.runtime.Assert;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ui.forms.editor.FormEditor;
+import org.wso2.developerstudio.eclipse.gmf.esb.AggregateElementType;
 import org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.AggregateSequenceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.CompletionMessagesType;
@@ -90,6 +91,15 @@ public class AggregateMediatorDeserializer extends AbstractEsbNodeDeserializer<A
 
             executeSetValueCommand(AGGREGATE_MEDIATOR__AGGREGATION_EXPRESSION, nsp);
 
+        }
+        
+        // Setting aggregateElementType attribute
+        if (aggregateMediator.getAggregateElementType() != null) {
+        	if (aggregateMediator.getAggregateElementType().getKeyValue().equalsIgnoreCase(AggregateElementType.ROOT.getName())) {
+        		executeSetValueCommand(AGGREGATE_MEDIATOR__AGGREGATE_ELEMENT_TYPE, AggregateElementType.ROOT);
+        	} else if (aggregateMediator.getAggregateElementType().getKeyValue().equalsIgnoreCase(AggregateElementType.CHILD.getName())) {
+        		executeSetValueCommand(AGGREGATE_MEDIATOR__AGGREGATE_ELEMENT_TYPE, AggregateElementType.CHILD);
+        	}
         }
 
         if (aggregateMediator.getMaxMessagesToComplete() != null) {

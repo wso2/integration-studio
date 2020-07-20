@@ -4969,6 +4969,9 @@ public class EsbMessages extends NLS {
 	public static String AggregateMediatorPropertiesEditionPart_EnclosingElementPropertyLabel;
 
 	
+	public static String AggregateMediatorPropertiesEditionPart_AggregateElementTypeLabel;
+
+	
 	public static String AggregateMediatorPropertiesEditionPart_CorrelationExpressionLabel;
 
 	

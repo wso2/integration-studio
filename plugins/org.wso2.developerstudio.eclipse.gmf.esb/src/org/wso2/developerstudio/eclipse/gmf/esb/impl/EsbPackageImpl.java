@@ -46,6 +46,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.AddressEndPointOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.AddressingEndpoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.AddressingEndpointInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.AddressingEndpointOutputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.AggregateElementType;
 import org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediatorInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediatorOnCompleteOutputConnector;
@@ -3432,6 +3433,13 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * @generated
      */
     private EEnum completionMessagesTypeEEnum = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EEnum aggregateElementTypeEEnum = null;
 
     /**
      * <!-- begin-user-doc -->
@@ -13596,6 +13604,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
+    public EAttribute getAggregateMediator_AggregateElementType() {
+        return (EAttribute)aggregateMediatorEClass.getEStructuralFeatures().get(17);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EClass getAggregateMediatorInputConnector() {
         return aggregateMediatorInputConnectorEClass;
     }
@@ -18960,6 +18977,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
+    public EEnum getAggregateElementType() {
+        return aggregateElementTypeEEnum;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EEnum getAggregateSequenceType() {
         return aggregateSequenceTypeEEnum;
     }
@@ -20534,6 +20560,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         createEAttribute(aggregateMediatorEClass, AGGREGATE_MEDIATOR__SEQUENCE_TYPE);
         createEReference(aggregateMediatorEClass, AGGREGATE_MEDIATOR__SEQUENCE_KEY);
         createEAttribute(aggregateMediatorEClass, AGGREGATE_MEDIATOR__ENCLOSING_ELEMENT_PROPERTY);
+        createEAttribute(aggregateMediatorEClass, AGGREGATE_MEDIATOR__AGGREGATE_ELEMENT_TYPE);
 
         aggregateMediatorInputConnectorEClass = createEClass(AGGREGATE_MEDIATOR_INPUT_CONNECTOR);
 
@@ -21853,6 +21880,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         faultReasonTypeEEnum = createEEnum(FAULT_REASON_TYPE);
         faultDetailTypeEEnum = createEEnum(FAULT_DETAIL_TYPE);
         completionMessagesTypeEEnum = createEEnum(COMPLETION_MESSAGES_TYPE);
+        aggregateElementTypeEEnum = createEEnum(AGGREGATE_ELEMENT_TYPE);
         aggregateSequenceTypeEEnum = createEEnum(AGGREGATE_SEQUENCE_TYPE);
         targetSequenceTypeEEnum = createEEnum(TARGET_SEQUENCE_TYPE);
         targetEndpointTypeEEnum = createEEnum(TARGET_ENDPOINT_TYPE);
@@ -23040,6 +23068,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         initEAttribute(getAggregateMediator_SequenceType(), this.getAggregateSequenceType(), "sequenceType", null, 0, 1, AggregateMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getAggregateMediator_SequenceKey(), this.getRegistryKeyProperty(), null, "sequenceKey", null, 0, 1, AggregateMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getAggregateMediator_EnclosingElementProperty(), ecorePackage.getEString(), "enclosingElementProperty", null, 0, 1, AggregateMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getAggregateMediator_AggregateElementType(), this.getAggregateElementType(), "aggregateElementType", null, 0, 1, AggregateMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(aggregateMediatorInputConnectorEClass, AggregateMediatorInputConnector.class, "AggregateMediatorInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -24632,6 +24661,10 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         initEEnum(completionMessagesTypeEEnum, CompletionMessagesType.class, "CompletionMessagesType");
         addEEnumLiteral(completionMessagesTypeEEnum, CompletionMessagesType.VALUE);
         addEEnumLiteral(completionMessagesTypeEEnum, CompletionMessagesType.EXPRESSION);
+
+        initEEnum(aggregateElementTypeEEnum, AggregateElementType.class, "AggregateElementType");
+        addEEnumLiteral(aggregateElementTypeEEnum, AggregateElementType.ROOT);
+        addEEnumLiteral(aggregateElementTypeEEnum, AggregateElementType.CHILD);
 
         initEEnum(aggregateSequenceTypeEEnum, AggregateSequenceType.class, "AggregateSequenceType");
         addEEnumLiteral(aggregateSequenceTypeEEnum, AggregateSequenceType.ANONYMOUS);

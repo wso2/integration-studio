@@ -185,6 +185,27 @@ public interface AggregateMediatorPropertiesEditionPart {
 
 
 	/**
+	 * @return the aggregateElementType
+	 * 
+	 */
+	public Enumerator getAggregateElementType();
+
+	/**
+	 * Init the aggregateElementType
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initAggregateElementType(Object input, Enumerator current);
+
+	/**
+	 * Defines a new aggregateElementType
+	 * @param newValue the new aggregateElementType to set
+	 * 
+	 */
+	public void setAggregateElementType(Enumerator newValue);
+
+
+	/**
 	 * @return the sequenceType
 	 * 
 	 */

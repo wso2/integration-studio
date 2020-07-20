@@ -34,6 +34,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getSequenceType <em>Sequence Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getSequenceKey <em>Sequence Key</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getEnclosingElementProperty <em>Enclosing Element Property</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getAggregateElementType <em>Aggregate Element Type</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAggregateMediator()
@@ -493,5 +494,34 @@ public interface AggregateMediator extends Mediator {
      * @generated
      */
     void setEnclosingElementProperty(String value);
+
+    /**
+     * Returns the value of the '<em><b>Aggregate Element Type</b></em>' attribute.
+     * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateElementType}.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Aggregate Element Type</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Aggregate Element Type</em>' attribute.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.AggregateElementType
+     * @see #setAggregateElementType(AggregateElementType)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAggregateMediator_AggregateElementType()
+     * @model
+     * @generated
+     */
+    AggregateElementType getAggregateElementType();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator#getAggregateElementType <em>Aggregate Element Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Aggregate Element Type</em>' attribute.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.AggregateElementType
+     * @see #getAggregateElementType()
+     * @generated
+     */
+    void setAggregateElementType(AggregateElementType value);
 
 } // AggregateMediator

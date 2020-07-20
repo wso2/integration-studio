@@ -322,6 +322,10 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CompletionMessagesType/VALUE"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CompletionMessagesType/EXPRESSION"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//AggregateElementType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//AggregateElementType/ROOT"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//AggregateElementType/CHILD"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//AggregateSequenceType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//AggregateSequenceType/ANONYMOUS"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//AggregateSequenceType/REGISTRY_REFERENCE"/>
@@ -1445,6 +1449,7 @@
       <genFeatures children="true" createChild="true" propertyCategory="onComplete"
           ecoreFeature="ecore:EReference esb.ecore#//AggregateMediator/sequenceKey"/>
       <genFeatures createChild="false" propertyCategory="Basic" ecoreFeature="ecore:EAttribute esb.ecore#//AggregateMediator/enclosingElementProperty"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AggregateMediator/aggregateElementType"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//AggregateMediatorInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//AggregateMediatorOutputConnector"/>

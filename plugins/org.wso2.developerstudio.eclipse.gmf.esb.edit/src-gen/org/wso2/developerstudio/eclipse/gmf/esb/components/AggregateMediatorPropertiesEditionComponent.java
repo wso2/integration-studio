@@ -37,6 +37,7 @@ import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
+import org.wso2.developerstudio.eclipse.gmf.esb.AggregateElementType;
 import org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.AggregateSequenceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.CompletionMessagesType;
@@ -153,6 +154,12 @@ public class AggregateMediatorPropertiesEditionComponent extends SinglePartPrope
                 basePart.setSequenceKey(aggregateMediator.getSequenceKey());
             }
 			// End of user code
+            
+			// Start of user code  for aggregateElementType command update
+            if (isAccessible(EsbViewsRepository.AggregateMediator.Properties.aggregateElementType)) {
+				basePart.initAggregateElementType(EEFUtils.choiceOfValues(aggregateMediator, EsbPackage.eINSTANCE.getAggregateMediator_AggregateElementType()), aggregateMediator.getAggregateElementType());
+			}
+			// End of user code
 			
 			// init filters
 			
@@ -260,6 +267,9 @@ public class AggregateMediatorPropertiesEditionComponent extends SinglePartPrope
 		if (editorKey == EsbViewsRepository.AggregateMediator.OnComplete.sequenceKey) {
 			return EsbPackage.eINSTANCE.getAggregateMediator_SequenceKey();
 		}
+		if (editorKey == EsbViewsRepository.AggregateMediator.Properties.aggregateElementType) {
+			return EsbPackage.eINSTANCE.getAggregateMediator_AggregateElementType();
+		}
 		return super.associatedFeature(editorKey);
 	}
 
@@ -360,6 +370,10 @@ public class AggregateMediatorPropertiesEditionComponent extends SinglePartPrope
             }
 			// End of user code
 			
+		}
+		
+		if (EsbViewsRepository.AggregateMediator.Properties.aggregateElementType == event.getAffectedEditor()) {
+			aggregateMediator.setAggregateElementType((AggregateElementType)event.getNewValue());
 		}
 	}
 
@@ -487,6 +501,11 @@ public class AggregateMediatorPropertiesEditionComponent extends SinglePartPrope
            }
 					// End of user code
 			
+           // Start of user code for aggregateElementType live update
+           if (EsbPackage.eINSTANCE.getAggregateMediator_AggregateElementType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.AggregateMediator.Properties.aggregateElementType)) {
+				basePart.setAggregateElementType((AggregateElementType)msg.getNewValue());
+           }
+           // End of user code
 			
 		}
 	}
@@ -514,7 +533,8 @@ public class AggregateMediatorPropertiesEditionComponent extends SinglePartPrope
 			EsbPackage.eINSTANCE.getAggregateMediator_CompletionMinMessagesExpression(),
 			EsbPackage.eINSTANCE.getAggregateMediator_CompletionMaxMessagesExpression(),
 			EsbPackage.eINSTANCE.getAggregateMediator_AggregationExpression(),
-			EsbPackage.eINSTANCE.getAggregateMediator_SequenceKey()		);
+			EsbPackage.eINSTANCE.getAggregateMediator_SequenceKey(),
+			EsbPackage.eINSTANCE.getAggregateMediator_AggregateElementType());
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -605,6 +625,13 @@ public class AggregateMediatorPropertiesEditionComponent extends SinglePartPrope
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAggregateMediator_EnclosingElementProperty().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAggregateMediator_EnclosingElementProperty().getEAttributeType(), newValue);
+				}
+				if (EsbViewsRepository.AggregateMediator.Properties.aggregateElementType == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getAggregateMediator_AggregateElementType().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAggregateMediator_AggregateElementType().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

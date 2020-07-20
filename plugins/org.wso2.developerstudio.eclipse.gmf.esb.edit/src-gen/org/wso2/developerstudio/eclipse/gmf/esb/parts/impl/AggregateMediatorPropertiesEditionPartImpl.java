@@ -88,7 +88,8 @@ public class AggregateMediatorPropertiesEditionPartImpl extends CompositePropert
 	protected Text completionMinMessagesValue;
 	protected Text completionMaxMessagesValue;
 	protected Text enclosingElementProperty;
-	// Start of user code  for correlationExpression widgets declarations
+	protected EMFComboViewer aggregateElementType;
+  // Start of user code  for correlationExpression widgets declarations
 	
 	// End of user code
 
@@ -691,7 +692,36 @@ public class AggregateMediatorPropertiesEditionPartImpl extends CompositePropert
 		return parent;
 	}
 
-	/**
+	protected Composite createAggregateElementTypeEMFComboViewer(Composite parent) {
+    createDescription(parent, EsbViewsRepository.AggregateMediator.Properties.aggregateElementType, EsbMessages.AggregateMediatorPropertiesEditionPart_AggregateElementTypeLabel);
+    aggregateElementType = new EMFComboViewer(parent);
+    aggregateElementType.setContentProvider(new ArrayContentProvider());
+    aggregateElementType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+    GridData aggregateElementTypeData = new GridData(GridData.FILL_HORIZONTAL);
+    aggregateElementType.getCombo().setLayoutData(aggregateElementTypeData);
+    aggregateElementType.addSelectionChangedListener(new ISelectionChangedListener() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       * 	
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AggregateMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.AggregateMediator.Properties.aggregateElementType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getAggregateElementType()));
+      }
+
+    });
+    aggregateElementType.setID(EsbViewsRepository.AggregateMediator.Properties.aggregateElementType);
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.AggregateMediator.Properties.aggregateElementType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    // Start of user code for createAggregateElementTypeEMFComboViewer
+
+    // End of user code
+    return parent;
+  }
+
+  /**
 	 * 
 	 */
 	protected Composite createOnCompleteGroup(Composite parent) {
@@ -1128,6 +1158,53 @@ public class AggregateMediatorPropertiesEditionPartImpl extends CompositePropert
 	}
 
 	/**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#getAggregateElementType()
+   * 
+   */
+  public Enumerator getAggregateElementType() {
+    Enumerator selection = (Enumerator) ((StructuredSelection) aggregateElementType.getSelection()).getFirstElement();
+    return selection;
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#initAggregateElementType(Object input, Enumerator current)
+   */
+  public void initAggregateElementType(Object input, Enumerator current) {
+    aggregateElementType.setInput(input);
+    aggregateElementType.modelUpdating(new StructuredSelection(current));
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.AggregateMediator.Properties.aggregateElementType);
+    if (eefElementEditorReadOnlyState && aggregateElementType.isEnabled()) {
+      aggregateElementType.setEnabled(false);
+      aggregateElementType.setToolTipText(EsbMessages.AggregateMediator_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !aggregateElementType.isEnabled()) {
+      aggregateElementType.setEnabled(true);
+    }	
+    
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#setAggregateElementType(Enumerator newValue)
+   * 
+   */
+  public void setAggregateElementType(Enumerator newValue) {
+    aggregateElementType.modelUpdating(new StructuredSelection(newValue));
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.AggregateMediator.Properties.aggregateElementType);
+    if (eefElementEditorReadOnlyState && aggregateElementType.isEnabled()) {
+      aggregateElementType.setEnabled(false);
+      aggregateElementType.setToolTipText(EsbMessages.AggregateMediator_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !aggregateElementType.isEnabled()) {
+      aggregateElementType.setEnabled(true);
+    }	
+    
+  }
+
+  /**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#getSequenceType()

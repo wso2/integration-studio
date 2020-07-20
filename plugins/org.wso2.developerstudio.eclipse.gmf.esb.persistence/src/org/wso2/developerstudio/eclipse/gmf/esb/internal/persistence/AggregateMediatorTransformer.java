@@ -27,6 +27,7 @@ import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
 import org.jaxen.JaxenException;
+import org.wso2.developerstudio.eclipse.gmf.esb.AggregateElementType;
 import org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.AggregateSequenceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.CompletionMessagesType;
@@ -150,6 +151,9 @@ public class AggregateMediatorTransformer extends AbstractEsbNodeTransformer {
                 }
 
             }
+            
+            Value aggregateElementTypeValue = new Value(visualAggregate.getAggregateElementType().getName().toLowerCase());
+            aggregateMediator.setAggregateElementType(aggregateElementTypeValue);
 
             if (StringUtils.isNotBlank(visualAggregate.getAggregateID())) {
                 aggregateMediator.setId(visualAggregate.getAggregateID());

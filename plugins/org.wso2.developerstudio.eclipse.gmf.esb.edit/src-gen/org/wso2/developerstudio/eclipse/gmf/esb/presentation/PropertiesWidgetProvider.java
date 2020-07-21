@@ -90,6 +90,7 @@ public class PropertiesWidgetProvider {
     protected HashMap<String, Control> requiredList;
     private boolean isConnectionWidgetProvider = false;
     private static IDeveloperStudioLog log = Logger.getLog(EEFPropertyViewUtil.PLUGIN_ID);
+    private static final char PASSWORD_BLACK_CIRCLE = '\u25CF';
 
     /**
      * General constructor to initialize properties widget provider
@@ -355,7 +356,7 @@ public class PropertiesWidgetProvider {
 
         // Create Text box widget
         final Text valueTextBox = widgetFactory.createText(textBoxComposite, "", SWT.SINGLE | SWT.BORDER);
-        valueTextBox.setEchoChar('•');
+        valueTextBox.setEchoChar(PASSWORD_BLACK_CIRCLE);
 
         valueTextBox.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         GridData configRefData = new GridData(GridData.FILL_HORIZONTAL);
@@ -393,7 +394,7 @@ public class PropertiesWidgetProvider {
                 if (source.getSelection()) { // If pressed
                     valueTextBox.setEchoChar('\0');
                 } else {
-                    valueTextBox.setEchoChar('•');
+                    valueTextBox.setEchoChar(PASSWORD_BLACK_CIRCLE);
 
                 }
             }

@@ -42,6 +42,7 @@ import org.eclipse.ui.IExportWizard;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.distribution.project.Activator;
+import org.wso2.developerstudio.eclipse.distribution.project.export.CarExportHandler;
 import org.wso2.developerstudio.eclipse.distribution.project.model.DependencyData;
 import org.wso2.developerstudio.eclipse.distribution.project.util.ArtifactTypeMapping;
 import org.wso2.developerstudio.eclipse.distribution.project.util.DistProjectUtils;
@@ -212,7 +213,9 @@ public class DistributionProjectExportWizard extends Wizard implements IExportWi
 			if (mainPage.isPageDirty() || detailsPage.isPageDirty()){
 				savePOM();
 			}
-			IResource carbonArchive = ExportUtil.buildCAppProject(selectedProject);
+
+			CarExportHandler carExporterHandler = new CarExportHandler();
+			IResource carbonArchive = carExporterHandler.buildCAppProject(selectedProject, detailsPage.getName(), detailsPage.getVersion());
 			FileUtils.copy(carbonArchive.getLocation().toFile(), destFileName);
 			
 			openMessageBox(getShell(),"WSO2 Platform Distribution",

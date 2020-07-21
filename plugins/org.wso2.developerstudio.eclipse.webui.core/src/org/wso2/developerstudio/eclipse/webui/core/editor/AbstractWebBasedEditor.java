@@ -144,22 +144,6 @@ public abstract class AbstractWebBasedEditor extends EditorPart {
 				public void controlMoved(ControlEvent e) {
 				}
 			});
-			browser.addProgressListener(new ProgressListener() {
-
-				@Override
-				public void completed(ProgressEvent arg0) {
-					try {
-						executeScriptOnBrowser(ScriptFactory.INVOKE_FN_LOAD_FILE_CONTENT);
-					} catch (WebUIException e) {
-						log.error("Error loading file content.", e);
-					}
-				}
-
-				@Override
-				public void changed(ProgressEvent arg0) {
-
-				}
-			});
 			browser.addFocusListener(new FocusListener() {
 
 				@Override

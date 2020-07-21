@@ -27,7 +27,6 @@ import static org.wso2.developerstudio.eclipse.webui.core.editor.Constants.*;
 public class ScriptFactory {
 
 	private static Gson gson;
-	public static final BrowserScript INVOKE_FN_LOAD_FILE_CONTENT;
 	public static final BrowserScript INVOKE_FN_SAVE_FILE;
 	public static final BrowserScript INVOKE_FN_SET_IDE_DIRTY_CONTENT;
 	public static final BrowserScript INVOKE_FN_LOAD_IDE_DIRTY_CONTENT;
@@ -35,7 +34,6 @@ public class ScriptFactory {
 
 	static {
 		gson = new Gson();
-		INVOKE_FN_LOAD_FILE_CONTENT = createFunctionCallScript(APP_LOAD_FILE_CONTENT_FUNCTION);
 		INVOKE_FN_SAVE_FILE = createFunctionCallScript(APP_SAVE_FILE_FUNCTION);
 		INVOKE_FN_SET_IDE_DIRTY_CONTENT = createFunctionCallScript(APP_SET_DIRTY_CONTENT_FUNCTION);
 		INVOKE_FN_LOAD_IDE_DIRTY_CONTENT = createFunctionCallScript(APP_GET_DIRTY_CONTENT_FUNCTION);

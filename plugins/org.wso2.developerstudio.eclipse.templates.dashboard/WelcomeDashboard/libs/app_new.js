@@ -95,7 +95,7 @@ var sampleMediatorList = {
 	    "students data service": "dataservice,database,soap",
 	    "rest data service": "dataservice,database,rest",
 	    "exception handling": "api,send,http-endpoint,sequence,log,payload-factory,respond",
-	    "fetch salesforce account information": "api,salesforcerest,respond,connector",
+	    "fetch salesforce accounts": "api,salesforcerest,respond,connector",
 	    "periodical scheduled tasks": "scheduled-task,sequence,call,log,address-endpoint",
 	    "database polling": "scheduled-task,sequence,dataservice,address-endpoint,log,header,payload-factory,call",
 	    "proxying a rest service": "api,log,call,http-endpoint,respond",

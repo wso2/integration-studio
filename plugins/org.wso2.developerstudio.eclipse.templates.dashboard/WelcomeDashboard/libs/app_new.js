@@ -32,6 +32,7 @@ function setViewPortFullScreen(duration) {
 }
 
 var welcomeNodeArray;
+var sortedNodes = [];
 var selectedCategory = "all-category";
 GetDashboardWizards();
 loadDisableWelcomePageParameter();
@@ -52,7 +53,9 @@ function loadWelcomeNodes(contributionsString) {
             wizardNode.description = wizard.description;
             wizardNode.label = wizard.title;
             wizardNode.image = wizard.image;
+            wizardNode.parent = welcomeNode;
             welcomeNode.nodes.push(wizardNode);
+            sortedNodes[wizard.priority] = wizardNode;
         });
         welcomeNodes.push(welcomeNode);
     });
@@ -170,15 +173,13 @@ function GetDashboardWizards() {
 }
 
 function drawWelcomeNodes(){
-	welcomeNodeArray.forEach(function (welcomeNode) {
-		 welcomeNode.nodes.forEach(function (childNode) {
-			escapedChildTitle = childNode.title.replace(/\./g, '');		
-			templateNode = createTemplateNode(escapedChildTitle, childNode.label, childNode.description, childNode.image, welcomeNode.title);
-			$("#esb-templates").append(templateNode);
-			$("#"+escapedChildTitle).click(function(){
-				openWizard(childNode.wizardID);
-		    });
-		});
+	sortedNodes.forEach(function (childNode) {
+		escapedChildTitle = childNode.title.replace(/\./g, '');		
+		templateNode = createTemplateNode(escapedChildTitle, childNode.label, childNode.description, childNode.image, childNode.parent.title);
+		$("#esb-templates").append(templateNode);
+		$("#"+escapedChildTitle).click(function(){
+			openWizard(childNode.wizardID);
+	    });
 	});
 }
 

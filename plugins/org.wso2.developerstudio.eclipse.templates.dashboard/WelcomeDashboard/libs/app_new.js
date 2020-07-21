@@ -197,7 +197,7 @@ function createTemplateNode(templateID, templateName, templateDescription, image
 	}
 
 	var html = "<div class='col-xs-6 col-sm-4 col-md-4 col-lg-3 col-xl-2 template' data-title='" + templateName + "' data-category=' " + category + "'>" +
-			"<div class='item-box' style='cursor: pointer;' id='" + templateID + "'><a class='mb-2' style='text-align: center; height: 25%;'><img src='" + categoryIconPath + imageFileName +"' style='width:30%; max-width: 120px'/></a><div style='width:100%'><a><h6 class='template-title' style='font-weight:600 !important; text-align:center;font-size:15px; margin-top:6px;'>" + templateName + "</h6></a></div>" +
+			"<div class='item-box' style='cursor: pointer;' id='" + templateID + "'><a class='mb-2' style='text-align: center; height: 25%;'><img src='" + categoryIconPath + imageFileName +"' style='width:40%; max-width: 120px'/></a><div style='width:100%'><a><h6 class='template-title' style='font-weight:600 !important; text-align:center;font-size:15px; margin-top:6px;'>" + templateName + "</h6></a></div>" +
 			"<div class='item-box-inner' style='max-height:90px; height:90px; width: 100%; overflow-y: hidden;'><p style='font-weight:lighter;'>" + templateDescription + "</p></div></div></div>";
 
 	return html;

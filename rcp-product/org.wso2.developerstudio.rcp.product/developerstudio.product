@@ -358,7 +358,7 @@ Please visit : http://wso2.com/products/developer-studio/
       <feature id="org.wso2.developerstudio.eclipse.esb.editor.feature" installMode="root"/>
       <feature id="org.wso2.developerstudio.eclipse.esb.dependencies.feature" installMode="root"/>
       <feature id="org.wso2.developerstudio.eclipse.visualdatamapper.editor.feature" installMode="root"/>
-      <feature id="org.wso2.developerstudio.eclipse.smooks.editor.feature" installMode="root"/>
+      <!--<feature id="org.wso2.developerstudio.eclipse.smooks.editor.feature" installMode="root"/>-->
       <feature id="org.wso2.developerstudio.eclipse.apim.endpoint.central.feature" installMode="root"/>
       <!-- Dev studio BPS features -->
       <feature id="org.wso2.developerstudio.eclipse.bps.feature" installMode="root"/>

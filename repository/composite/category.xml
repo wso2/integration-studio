@@ -86,9 +86,9 @@
    <feature id="org.wso2.developerstudio.eclipse.visualdatamapper.editor.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
    </feature>
- <feature id="org.wso2.developerstudio.eclipse.smooks.editor.feature" version="0.0.0">
+ <!--<feature id="org.wso2.developerstudio.eclipse.smooks.editor.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
- </feature>
+ </feature>-->
    <!-- BPS features -->
    <feature id="org.wso2.developerstudio.eclipse.bps.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>

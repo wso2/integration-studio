@@ -352,7 +352,7 @@
         </category>
         <wizardLink category="dashboard.category.template.miscellaneous" id="dashboard.wizardLink.esb.template.project"
                     wizard="org.wso2.developerstudio.wizards.esb.template"
-                    description="this template creates a simple HTTP service."
+                    description="This template creates a simple HTTP service."
                     image="icons/template-default.png"
                     priority="0">
         </wizardLink>
@@ -379,7 +379,7 @@
         <wizardLink category="dashboard.category.template.saas"
                     id="dashboard.wizardLink.esb.emailServiceTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.emailServiceTemplate"
-                    description="This template demonstrates how to send and retrieve emails with WSO2 Email Conenctor."
+                    description="This template demonstrates how to send and retrieve emails with WSO2 Email Connector."
                     image="icons/template-default.png"
                     priority="4">
         </wizardLink>
@@ -529,7 +529,7 @@
         <wizardLink category="dashboard.category.template.unittesting"
                     id="dashboard.wizardLink.esb.template.project.unitTestTutorial"
                     wizard="org.wso2.developerstudio.wizards.esb.unitTestTutorial"
-                    description="This template demonstrate how to test an API with the Synapse Unit Testing framework."
+                    description="This template demonstrates how to test an API with the Synapse Unit Testing framework."
                     image="icons/template-default.png"
                     priority="27">
         </wizardLink>

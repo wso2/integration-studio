@@ -63,18 +63,14 @@
             </div>
             <div class="col-9">
             	<div class="row">
-            		<div class="col-12">
+            		<div class="col-12" style="position:fixed; right: 27%; left:27%;">
             			<h5 style="font-weight:bold; padding-top:32px !important;">Try out a Sample</h5>
 		                <p>Select the sample and follow the instructions to get started.</p>
-		                <div class="d-flex">
-		                    <div class="form-group has-search" style="width:35%;">
-		                        <span id="search-icon" class="fa fa-search form-control-feedback"></span>
-		                        <input type="text" style="height:115%" class="form-control" placeholder="Search by template or mediator name" autocorrect="off" autocapitalize="none" id="search" />
-		                    </div>
-		                    <div class="dropdown ml-2" style="color:#707070; border-color:#707070;">
+		                <div class="d-flex" style="width:50%;">
+		                    <div class="dropdown" style="color:#707070; border-color:#707070;">
 		                        <a class="btn btn-secondary dropdown-toggle onlyborder text-right" href="#" role="button"
 		                            id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-		                            style="width: 220px;">
+		                            style="height:78%">
 		                            Category
 		                        </a>
 		
@@ -90,6 +86,10 @@
 		                            <li class = "menu-item"><a id="container-category" class="dropdown-item" href="#">Docker/Kubernetes</a></li>
 		                            <li class = "menu-item"><a id="test-category" class="dropdown-item" href="#">Synapse Unit Testing</a></li>
 		                        </ul>
+		                    </div>
+		                    <div class="form-group has-search ml-2" style="width:100%;">
+		                        <span id="search-icon" class="fa fa-search form-control-feedback"></span>
+		                        <input type="text" style="height:115%" class="form-control" placeholder="Search by sample or mediator name" autocorrect="off" autocapitalize="none" id="search" />
 		                    </div>
 		                </div>
             		</div>

@@ -372,6 +372,7 @@ and (min-height: 1em) {
   padding-top:20px;
   overflow-y: auto;
   overflow-x: hidden;
+  -ms-overflow-style: none;
 }
 .font-heading {
 	margin-top:30px !important;

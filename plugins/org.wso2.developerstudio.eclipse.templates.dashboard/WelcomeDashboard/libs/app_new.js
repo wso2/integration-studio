@@ -4,6 +4,7 @@ var colorBorder = "#ffffff";
 var rectAnimationDuration = 50;
 var centerLogo;
 var portValue = resolveGetParam("port");
+var highestLength = 0;
 
 function resolveGetParam(param) {
     var paramValue = null,
@@ -319,6 +320,13 @@ $(".dropdown-menu .menu-item a").click(function () {
      $(".dropdown-menu li > a").removeClass("active"); 
      $(this).closest("li > a").addClass("active");
      selectedCategory = categoryList[this.id];
+     var displayCategory;
+     if (selectedCategory == "all-category" || selectedCategory == undefined) {
+         displayCategory = "Category";
+     } else {
+         displayCategory = $(this).text();
+     }
+     $("#dropdownMenuLink").text(displayCategory);
  });
 
 $("#doc-link").click(function() {

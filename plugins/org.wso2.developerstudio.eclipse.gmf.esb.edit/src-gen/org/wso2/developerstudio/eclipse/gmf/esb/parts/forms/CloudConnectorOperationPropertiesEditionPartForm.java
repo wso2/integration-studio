@@ -69,6 +69,8 @@ import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.layout.FormAttachment;
+import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 
@@ -79,12 +81,14 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
+import org.eclipse.ui.views.properties.tabbed.ITabbedPropertyConstants;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloudConnectorOperation;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
@@ -1044,6 +1048,20 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
             } else if (!eefElementEditorReadOnlyState && !connectorParameters.isEnabled()) {
                 connectorParameters.setEnabled(true);
             }
+
+            //Adjust table size according to no of params
+            EObject dataObject = ((ReferencesTableSettings) settings).getSource();
+            EList<CallTemplateParameter> parameterList = ((CloudConnectorOperation) dataObject).getConnectorParameters();
+            int n0OfParams = parameterList.size();
+            int tableLength = 100 + (n0OfParams / 5) * 100;
+            Table connectorParamTable = this.connectorParameters.getTable();
+            FormData connectorParamFormData = new FormData();
+            connectorParamFormData.height = (tableLength >= 300) ? 300 : tableLength;
+            connectorParamFormData.top = new FormAttachment(6, ITabbedPropertyConstants.VSPACE + 4);
+            connectorParamFormData.left = new FormAttachment(0, ITabbedPropertyConstants.HSPACE);
+            connectorParamFormData.right = new FormAttachment(100, -ITabbedPropertyConstants.HSPACE);
+            connectorParamTable.setLayoutData(connectorParamFormData);
+            validate();
         }
     }
 

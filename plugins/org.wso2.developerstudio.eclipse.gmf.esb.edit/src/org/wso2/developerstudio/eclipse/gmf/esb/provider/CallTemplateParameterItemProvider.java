@@ -183,7 +183,7 @@ public class CallTemplateParameterItemProvider extends EsbNodeItemProvider {
     @Override
     public String getText(Object object) {
         String parameterName = ((CallTemplateParameter) object).getParameterName();
-        String parameterNameLabel = WordUtils.abbreviate(parameterName, 40, 45, " ...");
+        String parameterNameLabel = WordUtils.abbreviate(parameterName, 100, 105, "...");
         String parameterType = ((CallTemplateParameter) object).getTemplateParameterType().toString();
         String parameterValue = ((CallTemplateParameter) object).getParameterValue();
         String parameterExpression = ((CallTemplateParameter) object).getParameterExpression().toString();
@@ -192,19 +192,16 @@ public class CallTemplateParameterItemProvider extends EsbNodeItemProvider {
             if (parameterValue != null) {
                 return parameterName == null || parameterName.length() == 0
                         ? getString("_UI_CallTemplateParameter_type")
-                        : getString("_UI_CallTemplateParameter_type") + "  -  "
-                                + EEFPropertyViewUtil.spaceFormat(parameterNameLabel)
+                        : EEFPropertyViewUtil.spaceFormat(parameterNameLabel)
                                 + EEFPropertyViewUtil.spaceFormat(parameterValue);
             } else {
                 return parameterName == null || parameterName.length() == 0
                         ? getString("_UI_CallTemplateParameter_type")
-                        : getString("_UI_CallTemplateParameter_type") + "  -  "
-                                + EEFPropertyViewUtil.spaceFormat(parameterNameLabel);
+                        : EEFPropertyViewUtil.spaceFormat(parameterNameLabel);
             }
         } else {
             return parameterName == null || parameterName.length() == 0 ? getString("_UI_CallTemplateParameter_type")
-                    : getString("_UI_CallTemplateParameter_type") + "  -  "
-                            + EEFPropertyViewUtil.spaceFormat(parameterNameLabel)
+                    : EEFPropertyViewUtil.spaceFormat(parameterNameLabel)
                             + EEFPropertyViewUtil.spaceFormat(parameterExpression);
         }
     }

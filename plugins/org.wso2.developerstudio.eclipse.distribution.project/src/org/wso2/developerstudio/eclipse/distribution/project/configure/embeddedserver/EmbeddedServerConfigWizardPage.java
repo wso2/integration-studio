@@ -143,7 +143,7 @@ public class EmbeddedServerConfigWizardPage extends WizardPage {
         data.bottom = new FormAttachment(100, -5);
         data.right = new FormAttachment(100, -5);
         scrolledComposite.setLayoutData(data);
-        scrolledComposite.setMinSize(500, 1000);
+        scrolledComposite.setMinSize(500, 980);
         scrolledComposite.setExpandHorizontal(true);
         scrolledComposite.setExpandVertical(true);
         setControl(scrolledComposite);
@@ -342,7 +342,7 @@ public class EmbeddedServerConfigWizardPage extends WizardPage {
         data.top = new FormAttachment(secureGroup, 10);
         data.left = new FormAttachment(3);
         data.right = new FormAttachment(97);
-        data.height = 225;
+        data.height = 210;
         libGroup.setLayoutData(data);
         libGroup.setLayout(new FormLayout());
         libGroup.setText("Select libraries(JARs) which are needed to copy to Lib directory:");
@@ -595,10 +595,10 @@ public class EmbeddedServerConfigWizardPage extends WizardPage {
         data.left = new FormAttachment(3);
         data.right = new FormAttachment(97);
         data.bottom = new FormAttachment(97);
-        data.height = 225;
+        data.height = 210;
         dropingLibGroup.setLayoutData(data);
         dropingLibGroup.setLayout(new FormLayout());
-        dropingLibGroup.setText("Select libraries(JARs) which are needed to copy to Dropin directory:");
+        dropingLibGroup.setText("Select libraries(JARs) which are needed to copy to Dropins directory:");
         Font bldLibFont = new Font(null, new FontData("Arial", 10, SWT.BOLD));
         dropingLibGroup.setFont(bldLibFont);
 

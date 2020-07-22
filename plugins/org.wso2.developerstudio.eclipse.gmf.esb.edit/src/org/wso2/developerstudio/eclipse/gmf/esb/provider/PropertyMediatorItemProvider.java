@@ -20,6 +20,7 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyName;
@@ -517,12 +518,19 @@ public class PropertyMediatorItemProvider extends MediatorItemProvider {
         int propertyTypeLength = 10;
         String newProperty = "newPropertyName";
         String emptySpace = StringUtils.rightPad("", spacing);
+        String propertyValue = "";
+        String propertyExpression = "";
 
         String propertyName = StringUtils.rightPad(((PropertyMediator) object).getPropertyName().getName(), maxLength);
         String propertyValueType = ((PropertyMediator) object).getValueType().toString();
-        String propertyValue = StringUtils.rightPad(((PropertyMediator) object).getValue(), maxLength);
-        String propertyExpression = StringUtils.rightPad(((PropertyMediator) object).getValueExpression().toString(),
-                maxLength);
+        String propertyTempValue = ((PropertyMediator) object).getValue();
+        if(propertyTempValue != null) {
+            propertyValue = StringUtils.rightPad(propertyTempValue, maxLength);
+        }
+        NamespacedProperty propertyTempExpression = ((PropertyMediator) object).getValueExpression();
+        if(propertyTempExpression != null) {
+            propertyExpression = StringUtils.rightPad(propertyTempExpression.toString(), maxLength);
+        }
 
         PropertyName labelValue = ((PropertyMediator) object).getPropertyName();
         String newPropertyName = ((PropertyMediator) object).getNewPropertyName();

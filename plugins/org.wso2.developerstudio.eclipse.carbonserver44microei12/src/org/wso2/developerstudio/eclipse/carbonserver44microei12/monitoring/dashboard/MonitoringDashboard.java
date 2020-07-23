@@ -19,6 +19,7 @@
 package org.wso2.developerstudio.eclipse.carbonserver44microei12.monitoring.dashboard;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -88,6 +89,13 @@ public class MonitoringDashboard {
 
                     // Starting the dashboard
                     String miMonitoringDashboardPath = MonitoringDashboardUtil.getMIMonitoringDashboardPath();
+
+                    // Check whether the dashboard app exits (It may not be available in older versions of studio).
+                    File miMonitoringDashBoardApp = new File(miMonitoringDashboardPath);
+                    if (!miMonitoringDashBoardApp.exists()) {
+                        throw new IOException("MI Monotoring Dashboard is not available.");
+                    }
+
                     ProcessBuilder processBuilder = new ProcessBuilder(miMonitoringDashboardPath);
                     processBuilder.environment().put(MonitoringDashboardConstants.JAVA_HOME_ENV_VAR,
                             MonitoringDashboardUtil.getJavaHomePath());

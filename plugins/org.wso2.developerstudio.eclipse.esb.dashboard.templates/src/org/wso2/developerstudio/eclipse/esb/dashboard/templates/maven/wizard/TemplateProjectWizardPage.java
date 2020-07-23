@@ -52,8 +52,8 @@ public class TemplateProjectWizardPage extends WizardPage {
         if (title == null) {
             return;
         }
-        setTitle(TemplateProjectConstants.PROJECT_WIZARD_PAGE_TITLE + title + " Sample");
-        setDescription(TemplateProjectConstants.PROJECT_WIZARD_PAGE_DESCRIPTION);
+        setTitle("Create " + title + " Sample");
+        setDescription(TemplateProjectConstants.PROJECT_WIZARD_PAGE_TITLE + title + " sample");
         this.selection = selection;
     }
 

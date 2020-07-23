@@ -12,6 +12,10 @@
 	padding: 6px;
 }
 
+input:-ms-input-placeholder {
+     height: 115%;
+}
+
 @media (min-width: 768px) {
   .bd-placeholder-img-lg {
       font-size: 3.5rem;
@@ -68,11 +72,6 @@ and (min-width: 1000px) {
 	}
 	input:-ms-input-placeholder {
 	     font-size: 12px !important;
-	     line-height: 1.5;
-	}
-	input::-ms-input-placeholder {
-	     font-size: 12px !important;
-	     line-height: 1.5;
 	}
 	input::placeholder {
 	     font-size: 12px !important;

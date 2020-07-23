@@ -17,6 +17,7 @@
 package org.wso2.developerstudio.eclipse.templates.dashboard.handlers;
 
 import java.io.File;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -122,10 +123,13 @@ public class PlatformEarlyStartUpHandler implements IStartup {
     private void setDefaultMavenInstallation() {
         final MavenRuntimeManagerImpl runtimeManager = MavenPluginActivator.getDefault().getMavenRuntimeManager();
         List<AbstractMavenRuntime> runtimes = runtimeManager.getMavenRuntimes(false);
-        AbstractMavenRuntime newRuntime = new MavenExternalRuntime("IntegrationStudioEmbedded", getMavenHomePath());
-        runtimes.add(newRuntime);
-        runtimeManager.setRuntimes(runtimes);
-        runtimeManager.setDefaultRuntime(newRuntime);
+        String mavenHomePath = getMavenHomePath();
+        if (Files.exists(Paths.get(mavenHomePath))) {
+            AbstractMavenRuntime newRuntime = new MavenExternalRuntime("IntegrationStudioEmbedded", mavenHomePath);
+            runtimes.add(newRuntime);
+            runtimeManager.setRuntimes(runtimes);
+            runtimeManager.setDefaultRuntime(newRuntime);
+        }
     }
     
     /**

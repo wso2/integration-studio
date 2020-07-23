@@ -122,7 +122,7 @@
             -Djava.net.preferIPv4Stack=true -DNonRegistryMode=true -DNonUserCoreMode=true -Dcom.ibm.cacheLocalHost=true
             -Dcarbon.use.registry.repo=false -DworkerNode=false
             -Dorg.apache.cxf.io.CachedOutputStream.Threshold=104857600 -Dprofile=micro-integrator-default
-            -Desb.debug=${esb.debug} -DenableManagementApi=true -DenableReadinessProbe=true -DgracefulShutdown=false
+            -Desb.debug=${esb.debug} -DenableManagementApi=true -DenablePrometheusApi=true -DgracefulShutdown=false
         </vmParameters>
         <programArguments></programArguments>
         <classpathReference>carbon.libs</classpathReference>

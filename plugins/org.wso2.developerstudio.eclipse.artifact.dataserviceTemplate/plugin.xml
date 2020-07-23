@@ -18,50 +18,5 @@
 
 <?eclipse version="3.4"?>
 <plugin>
-    <extension
-            point="org.eclipse.ui.newWizards">
-        <category
-                name="Templates"
-                id="org.wso2.developerstudio.templates"
-                parentCategory="org.wso2.developerstudio.eclipse.capp.project">
-        </category>
-        <wizard
-                name="Students Data Service"
-                icon="icons/message-store-small.png"
-                project="true"
-                category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
-                class="org.wso2.developerstudio.eclipse.artifact.dataserviceTemplate.wizard.StudentDataServiceTemplate"
-                id="org.wso2.developerstudio.wizards.ds.studentDataServiceTemplate">
-        </wizard>
-        <wizard
-                name="REST Data Service"
-                icon="icons/message-store-small.png"
-                project="true"
-                category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
-                class="org.wso2.developerstudio.eclipse.artifact.dataserviceTemplate.wizard.RESTDataServiceTemplate"
-                id="org.wso2.developerstudio.wizards.ds.restDataServiceTemplate">
-        </wizard>
-
-    </extension>
-    <extension
-            point="org.wso2.developerstudio.eclipse.template.dashboad.link">
-        <wizardCategory category="org.wso2.developerstudio.templates"/>
-        <category id="dashboard.category.ds.template" showTitle="false"
-                  title="DSS_Templates"
-                  priority="1">
-        </category>
-        <wizardLink category="dashboard.category.ds.template"
-                    id="dashboard.wizardLink.ds.template.project.studentDataServiceTemplate"
-                    wizard="org.wso2.developerstudio.wizards.ds.studentDataServiceTemplate"
-                    description="Student Data Service"
-                    image="icons/server.png">
-        </wizardLink>
-        <wizardLink category="dashboard.category.ds.template"
-                    id="dashboard.wizardLink.ds.template.project.restDataServiceTemplate"
-                    wizard="org.wso2.developerstudio.wizards.ds.restDataServiceTemplate"
-                    description="REST Data Service"
-                    image="icons/server.png">
-        </wizardLink>
-
-    </extension>
+    
 </plugin>

@@ -21,13 +21,13 @@ public class TemplateProjectConstants {
     
     public static final String WIZARD_PAGE_NAME = "wizardPage";
     
-    public static final String PROJECT_WIZARD_PAGE_TITLE = "Create Project Using ";
+    public static final String PROJECT_WIZARD_PAGE_TITLE = "Create a Project Using the ";
     
-    public static final String PROJECT_WIZARD_PAGE_DESCRIPTION = "Create Sample Template";
+    public static final String PROJECT_WIZARD_PAGE_DESCRIPTION = "Create a Sample";
     
     public static final String WIZARD_PROJECT_NAME_LABEL = "&Project Name :";
     
-    public static final String WIZARD_PAGE_TEXT = "Template Artifact";
+    public static final String WIZARD_PAGE_TEXT = "Sample Artifact";
 
     public static final String WIZARD_PARAM = "wizardId";
 

@@ -37,6 +37,10 @@ and (min-width: 1300px) {
 	#search-icon {
 		margin-top: -2px !important;
 	}
+	
+	#dropdownMenuLink {
+		font-size:14px !important;
+	}
 }
 
 @media screen 
@@ -56,23 +60,23 @@ and (min-width: 1000px) {
 	
 	input::-webkit-input-placeholder {
     	 font-size: 12px !important;
-    	 line-height: 1;
+    	 line-height: 1.5;
 	}
 	input::-moz-placeholder {
 	     font-size: 12px !important;
-	     line-height: 1;
+	     line-height: 1.5;
 	}
 	input:-ms-input-placeholder {
 	     font-size: 12px !important;
-	     line-height: 1;
+	     line-height: 1.5;
 	}
 	input::-ms-input-placeholder {
 	     font-size: 12px !important;
-	     line-height: 1;
+	     line-height: 1.5;
 	}
 	input::placeholder {
 	     font-size: 12px !important;
-	     line-height: 1;
+	     line-height: 1.5;
 	}
 		
 	.gray-link {
@@ -144,7 +148,7 @@ and (min-width: 850px) {
 	}
 	
 	#dropdownMenuLink {
-		font-size:10px !important;
+		font-size:12px !important;
 	}
 	
 	.dropdown-item {

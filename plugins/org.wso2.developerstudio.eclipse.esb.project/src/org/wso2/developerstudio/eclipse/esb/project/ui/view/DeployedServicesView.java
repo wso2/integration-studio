@@ -80,13 +80,27 @@ public class DeployedServicesView extends ViewPart {
     @Override
     public void createPartControl(Composite arg0) {
         browser = new Browser(arg0, SWT.NONE);
-
+        String apiList = null;
+        String proxyList = null;
+        String dataServiceList = null;
         try {
             setOffset();
             generateAccessToken();
-            String apiList = getDeployedServices(URL_PREFIX + getManagamentAPIPort() + MI_API_API_URL);
-            String proxyList = getDeployedServices(URL_PREFIX + getManagamentAPIPort() + MI_PROXY_API_URL);
-            String dataServiceList = getDeployedServices(URL_PREFIX + getManagamentAPIPort() + MI_DATASERVICES_API_URL);
+            apiList = getDeployedServices(URL_PREFIX + getManagamentAPIPort() + MI_API_API_URL);
+        } catch (Exception e) {
+            log.error("Failed to fetch API information from the management API", e);
+        }
+        try {
+            proxyList = getDeployedServices(URL_PREFIX + getManagamentAPIPort() + MI_PROXY_API_URL);
+        } catch (Exception e) {
+            log.error("Failed to fetch proxy information from the management API", e);
+        }
+        try {
+            dataServiceList = getDeployedServices(URL_PREFIX + getManagamentAPIPort() + MI_DATASERVICES_API_URL);
+        } catch (Exception e) {
+            log.error("Failed to fetch data service information from the management API", e);
+        }
+        try {
             updateDeployedServicesMetadata(apiList, proxyList, dataServiceList);
             browser.setUrl(getDefaultPage(apiList, proxyList, dataServiceList));
         } catch (Exception ex) {
@@ -218,9 +232,15 @@ public class DeployedServicesView extends ViewPart {
 
     private void updateDeployedServicesMetadata(String apiList, String proxyList, String dataServiceList) {
         Properties properties = new Properties();
-        properties.setProperty("deployed.md5sum.api", DigestUtils.md5Hex(apiList));
-        properties.setProperty("deployed.md5sum.proxy", DigestUtils.md5Hex(proxyList));
-        properties.setProperty("deployed.md5sum.dataservice", DigestUtils.md5Hex(dataServiceList));
+        if (apiList != null) {
+            properties.setProperty("deployed.md5sum.api", DigestUtils.md5Hex(apiList));
+        }
+        if (proxyList != null) {
+            properties.setProperty("deployed.md5sum.proxy", DigestUtils.md5Hex(proxyList));
+        }
+        if (dataServiceList != null) {
+            properties.setProperty("deployed.md5sum.dataservice", DigestUtils.md5Hex(dataServiceList));
+        }
         try (OutputStream outputStream = new FileOutputStream(DEP_SERVICES_PROPERTIES_PATH)) {
             properties.store(outputStream, null);
         } catch (IOException e) {

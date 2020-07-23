@@ -127,14 +127,14 @@ public class CarbonServerBehavior44microei12 extends CarbonServerBehaviour {
             }
 
             List<String> urls = new ArrayList<String>();
-            int port = 9191; // default ReadinessProbe API port
+            int port = 9191; // default Prometheus API port
             int offSet = Integer.valueOf(offsetString);
 
             String newUrl = url;
             newUrl = newUrl + ":" + (port + offSet);
 
-            // ReadinessProbe API is used as the ping server
-            newUrl = newUrl + "/healthz";
+            // Prometheus API is used as the ping server
+            newUrl = newUrl + "/metric-service/metrics";
             urls.add(newUrl);
 
             return urls.toArray(new String[] {});

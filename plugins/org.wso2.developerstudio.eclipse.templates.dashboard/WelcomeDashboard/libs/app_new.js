@@ -100,10 +100,10 @@ var sampleMediatorList = {
 	    "periodical scheduled tasks": "scheduled-task,sequence,call,log,address-endpoint",
 	    "database polling": "scheduled-task,sequence,dataservice,address-endpoint,log,header,payload-factory,call",
 	    "proxying a rest service": "api,log,call,http-endpoint,respond",
-	    "hello docker": "docker",
-	    "hello kubernetes": "kubernetes",
-	    "unit test tutorial": "test",
-	    "api testing": "test",
+	    "hello docker": "docker,api,payload-factory,respond",
+	    "hello kubernetes": "kubernetes,k8,api,payload-factory,respond",
+	    "unit test tutorial": "testing,unit,api,sequence,switch,payload-factory,respond,log,drop",
+	    "api testing": "test,api,property,payload-factory,respond,unit",
 	    "email service": "email,connector,api,respond,foreach,payload-factory,property,log"
 };
 

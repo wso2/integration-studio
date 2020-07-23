@@ -52,7 +52,7 @@ public class TemplateProjectWizardPage extends WizardPage {
         if (title == null) {
             return;
         }
-        setTitle(TemplateProjectConstants.PROJECT_WIZARD_PAGE_TITLE + title + " Template");
+        setTitle(TemplateProjectConstants.PROJECT_WIZARD_PAGE_TITLE + title + " Sample");
         setDescription(TemplateProjectConstants.PROJECT_WIZARD_PAGE_DESCRIPTION);
         this.selection = selection;
     }

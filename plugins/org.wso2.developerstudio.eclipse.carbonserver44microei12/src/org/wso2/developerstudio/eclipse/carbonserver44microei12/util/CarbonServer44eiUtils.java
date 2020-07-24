@@ -48,6 +48,7 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jst.server.generic.core.internal.GenericServer;
 import org.eclipse.jst.server.generic.servertype.definition.ServerRuntime;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
@@ -475,20 +476,24 @@ public class CarbonServer44eiUtils implements CarbonServerXUtils {
                         }
                     } while (hasNewChanges && count < 5);
                 }
-            } while (!exitLoop && count < 10);
+            } while (!exitLoop && count < 20);
         } catch (IOException | InterruptedException e) {
             log.error("Error while invoking the embedded integrator management API.", e);
         }
 
         if (hasChanged) {
-            IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-            IViewPart view = page.findView(ServerConstants.DEPLOYED_SERVICES_VIEW);
-            page.hideView(view);
-            try {
-                page.showView(ServerConstants.DEPLOYED_SERVICES_VIEW);
-            } catch (PartInitException e) {
-                log.error("Error while initializing deployed services view.", e);
-            }
+            Display.getDefault().asyncExec(new Runnable() {
+                public void run() {
+                    IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+                    IViewPart view = page.findView(ServerConstants.DEPLOYED_SERVICES_VIEW);
+                    page.hideView(view);
+                    try {
+                        page.showView(ServerConstants.DEPLOYED_SERVICES_VIEW);
+                    } catch (PartInitException e) {
+                        log.error("Error while initializing deployed services view.", e);
+                    }
+                }
+            });
         }
     }
 

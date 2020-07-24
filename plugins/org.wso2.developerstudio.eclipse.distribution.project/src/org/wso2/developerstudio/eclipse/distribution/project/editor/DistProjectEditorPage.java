@@ -246,7 +246,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 	protected void createFormContent(IManagedForm managedForm) {
 		managedForm.getForm()
 		           .setImage(SWTResourceManager.getImage(this.getClass(),
-		                                                 "/icons/distribution-project-12.png"));
+		                                                 "/icons/composite-exporter.png"));
 		toolkit = managedForm.getToolkit();
 		form = managedForm.getForm();
 		form.setText(getProjectName());

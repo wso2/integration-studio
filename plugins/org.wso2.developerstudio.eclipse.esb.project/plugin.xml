@@ -98,7 +98,7 @@
             locationURI="popup:common.new.menu?after=new">
             <command
                   commandId="developerstudio.commands.new.mavenMultiModuleProject"
-                  icon="icons/maven-16x16.png"
+                  icon="icons/mmm-project16x16.png"
                   label="Maven Multi Module Project">
                   <!-- Adding visibleWhen to visible the item only when clicking on the project explorer-->
                   <visibleWhen

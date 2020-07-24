@@ -161,11 +161,11 @@ public class MicroIntegratorRunLaunchDelegate implements ILaunchConfigurationDel
                     || !CarbonServer44eiUtils.isHotDeploymentEnabled(microIntegratorInstance)) {
                 microIntegratorInstance.restart();
             } else {
-                Display.getDefault().asyncExec(new Runnable() {
+                new Thread(new Runnable() {
                     public void run() {
                         CarbonServer44eiUtils.updateDeployedServices();
                     }
-                });
+                }).start();
             }
         }
 

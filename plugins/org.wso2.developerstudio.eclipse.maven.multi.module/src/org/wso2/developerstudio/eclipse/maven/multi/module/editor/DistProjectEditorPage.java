@@ -436,7 +436,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 
     @Override
     protected void createFormContent(IManagedForm managedForm) {
-        managedForm.getForm().setImage(SWTResourceManager.getImage(this.getClass(), "/icons/maven-24x24.png"));
+        managedForm.getForm().setImage(SWTResourceManager.getImage(this.getClass(), "/icons/mmm-pom-dir-32x32.png"));
         toolkit = managedForm.getToolkit();
         form = managedForm.getForm();
         form.setText(getProjectName());
@@ -764,7 +764,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
         } else if (projectNature.equals(Constants.KUBERNETES_EXPORTER_PROJECT_NATURE)) {
             return "/icons/k8s-16.png";
         } else if (projectNature.equals(Constants.MAVEN_MULTI_MODULE_PROJECT_NATURE)) {
-            return "/icons/maven-12x12.png";
+            return "/icons/mmm-project-12x12.png";
         } else {
             return "/icons/projects.gif";
         }

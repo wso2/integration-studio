@@ -199,7 +199,7 @@ public class MMMProjectSelectionWizardPage extends WizardPage {
         try {
             item.setText(0, project.getName());
             item.setText(1, project.getLocation().toString());
-            item.setImage(0, SWTResourceManager.getImage(this.getClass(), "/icons/maven-16x16.png"));
+            item.setImage(0, SWTResourceManager.getImage(this.getClass(), "/icons/mmm-project-16x16-03.png"));
 
         } catch (Exception e) {
             return;

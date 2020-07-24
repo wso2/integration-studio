@@ -71,7 +71,7 @@
                 wizardManifest="project_wizard_mvn.xml"
                 id="org.wso2.developerstudio.eclipse.platform.ui.mvn.wizard.MvnMultiModuleWizard"
                 descriptionImage="mvn-wizard.png"
-                project="true" icon="icons/maven-16x16.png">
+                project="true" icon="icons/mmm-project-16x16.png">
             <description>Maven Multimodule Project</description>
         </wizard>
     </extension>
@@ -90,7 +90,7 @@
 
     <extension point="org.eclipse.ui.ide.projectNatureImages">
         <image id="org.wso2.developerstudio.eclipse.mavenmultimodule.project.natureImage"
-               natureId="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" icon="icons/maven-12x12.png">
+               natureId="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" icon="icons/mmm-project-16x16-03.png">
         </image>
     </extension>
     <extension point="org.eclipse.ui.popupMenus">
@@ -131,6 +131,7 @@
             class="org.wso2.developerstudio.eclipse.maven.multi.module.editor.DistProjectEditor"
             id="org.wso2.developerstudio.eclipse.maven.multi.module.editor.DistProjectEditor"
             extensions="xml"
+            icon="icons/maven-pom-16x16.png"
             name="Maven Multi Module Project POM Editor">
             <contentTypeBinding contentTypeId="org.wso2.developerstudio.eclipse.maven.multi.module.contenttype.pom"/>
       </editor>

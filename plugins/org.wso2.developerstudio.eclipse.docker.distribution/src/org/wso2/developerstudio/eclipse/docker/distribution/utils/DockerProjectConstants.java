@@ -41,6 +41,7 @@ public class DockerProjectConstants extends NLS {
     public static String KUBERNETES_NATURE;
     public static String DOCKER_EDITOR;
     public static String DOCKER_FILE_EDITOR;
+    public static String TOML_FILE_EDITOR;
     public static String DOCKER_FILE_NAME;
     public static String KUBE_YAML_FILE_NAME;
     public static String DEPLOYMENT_TOML_FILE_NAME;

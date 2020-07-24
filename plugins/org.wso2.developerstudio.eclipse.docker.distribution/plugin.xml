@@ -57,6 +57,7 @@
             id="org.wso2.developerstudio.eclipse.docker.distribution.editor.DistProjectEditor"
             extensions="xml"
             default="false"
+            icon="icons/docker-pom-16x16.png"
             name="Docker/K8S Project POM Editor">
             <contentTypeBinding
 				contentTypeId="org.wso2.developerstudio.eclipse.docker.distribution.project.contenttype.pom">
@@ -66,9 +67,20 @@
             class="org.eclipse.ui.editors.text.TextEditor"
             id="org.wso2.developerstudio.eclipse.docker.distribution.editor.DockerFileEditor"
             default="false"
+            icon="icons/dockerfile-icon.png"
             name="Docker File Editor">
             <contentTypeBinding
 				contentTypeId="org.wso2.developerstudio.eclipse.docker.distribution.project.contenttype.dockerfile">
+            </contentTypeBinding>
+        </editor>
+        <editor
+            class="org.eclipse.ui.editors.text.TextEditor"
+            id="org.wso2.developerstudio.eclipse.docker.distribution.editor.TomlFileEditor"
+            default="false"
+            icon="icons/deployment-toml-icon.png"
+            name="Toml File Editor">
+            <contentTypeBinding
+				contentTypeId="org.wso2.developerstudio.eclipse.docker.distribution.project.contenttype.tomlfile">
             </contentTypeBinding>
         </editor>
         <editor

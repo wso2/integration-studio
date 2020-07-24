@@ -217,6 +217,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
     private double zoom = 1.0;
     private String fileName;
     private String validationMessage;
+    private String oldSwaggerSource;
     boolean initialPageLoad;
     boolean isFormEditor;
 
@@ -628,7 +629,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
         // Invoke the appropriate handler method.
         switch (pageIndex) {
 		case DESIGN_VIEW_PAGE_INDEX: {
-			if (lastActivePage == SWAGGER_VIEW_PAGE_INDEX) {
+			if (lastActivePage == SWAGGER_VIEW_PAGE_INDEX && isSwaggerDirty()) {
 				// Update the design view when the user switch from Swagger editor
 				String currentSource = sourceEditor.getDocument().get();
 				try {
@@ -745,16 +746,18 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 		case SOURCE_VIEW_PAGE_INDEX: {
 			if (lastActivePage == SWAGGER_VIEW_PAGE_INDEX) {
 				// Update the source view when the user switch from Swagger editor
-				String currentSource = sourceEditor.getDocument().get();
-				try {
-					RestApiAdmin restAPIAdmin = new RestApiAdmin();
-					OMElement element = AXIOMUtil.stringToOM(currentSource);
-					API api = APIFactory.createAPI(element);
-					String updatedAPI = restAPIAdmin.generateUpdatedAPIFromSwagger(getSource(), api);
-					sourceEditor.getDocument().set(DefaultEsbModelExporter.format(updatedAPI));
-				} catch (Exception e) {
-					MessageDialog.openError(Display.getCurrent().getActiveShell(),
-							"Could not update the source view from swagger editor", e.getMessage());
+				if (isSwaggerDirty()) {
+					String currentSource = sourceEditor.getDocument().get();
+					try {
+						RestApiAdmin restAPIAdmin = new RestApiAdmin();
+						OMElement element = AXIOMUtil.stringToOM(currentSource);
+						API api = APIFactory.createAPI(element);
+						String updatedAPI = restAPIAdmin.generateUpdatedAPIFromSwagger(getSource(), api);
+						sourceEditor.getDocument().set(DefaultEsbModelExporter.format(updatedAPI));
+					} catch (Exception e) {
+						MessageDialog.openError(Display.getCurrent().getActiveShell(),
+								"Could not update the source view from swagger editor", e.getMessage());
+					}
 				}
 			} else {
 				Display.getDefault().asyncExec(new Runnable() {
@@ -814,7 +817,9 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 					RestApiAdmin restAPIAdmin = new RestApiAdmin();
 					OMElement element = AXIOMUtil.stringToOM(currentSource);
 					API api = APIFactory.createAPI(element);
-					setSwaggerSource(restAPIAdmin.generateSwaggerFromSynapseAPI(api));
+					String swaggerDefinition = restAPIAdmin.generateSwaggerFromSynapseAPI(api);
+					setOldSwaggerSource(swaggerDefinition);
+					setSwaggerSource(swaggerDefinition);
 					swaggerlEditor.getBrowser().refresh();
 
 				} catch (Exception e) {
@@ -831,9 +836,11 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 					RestApiAdmin restAPIAdmin = new RestApiAdmin();
 					OMElement element = AXIOMUtil.stringToOM(currentSource);
 					API api = APIFactory.createAPI(element);
-					setSwaggerSource(restAPIAdmin.generateSwaggerFromSynapseAPI(api));
+					String swaggerDefinition = restAPIAdmin.generateSwaggerFromSynapseAPI(api);
+					setSwaggerSource(swaggerDefinition);
+					setOldSwaggerSource(swaggerDefinition);
 					swaggerlEditor.getBrowser().refresh();
-					sourceEditor.getDocument().set(currentSource);
+					updateSourceEditor();
 				} catch (Exception e) {
 					MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error Details",
 							"Error in loading associated XML : " + e.getMessage());
@@ -1534,6 +1541,27 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 
 	public void setSwaggerSource(String source) {
 		swaggerSource = source;
+	}
+
+	/**
+	 * Set the existing swagger definition before switching to swagger view.
+	 * 
+	 * @param source
+	 */
+	public void setOldSwaggerSource(String source) {
+		oldSwaggerSource = source;
+	}
+
+	/**
+	 * Check if the swagger definition has been changed.
+	 * 
+	 * @return state
+	 */
+	public boolean isSwaggerDirty() {
+		if (swaggerSource != null && oldSwaggerSource != null) {
+			return !oldSwaggerSource.equals(swaggerSource);
+		}
+		return false;
 	}
 
 	/*

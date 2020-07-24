@@ -19,7 +19,7 @@
          point="org.eclipse.ui.editors">
       <editor
             name="DataSource Editor"
-            icon="icons/ds-12x12.png"
+            icon="icons/data-source-icon.png"
             class="org.eclipse.wst.sse.ui.StructuredTextEditor"
             id="org.wso2.developerstudio.eclipse.artifact.datasource.editors.XMLEditor">
          <contentTypeBinding  

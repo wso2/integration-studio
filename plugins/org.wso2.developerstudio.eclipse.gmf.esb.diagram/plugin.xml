@@ -142,7 +142,7 @@
       <editor
          id="org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorID"
          name="%editorName"
-         icon="icons/obj16/EsbDiagramFile.png"
+         icon="icons/obj16/ESB-editor-icon.png"
          default="true"
          class="org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor"
          matchingStrategy="org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbMatchingStrategy"

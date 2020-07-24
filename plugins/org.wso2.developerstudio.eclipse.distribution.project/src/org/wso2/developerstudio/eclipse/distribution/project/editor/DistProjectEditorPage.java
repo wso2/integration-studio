@@ -818,7 +818,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 			nodeData.setHaschildren(true);
 			item.setData(nodeData);
 
-			item.setImage(0, SWTResourceManager.getImage(this.getClass(), "/icons/projects.gif"));
+			item.setImage(0, SWTResourceManager.getImage(this.getClass(), "/icons/composite-folder.png"));
 		} catch (Exception e) {
 			log.error("createNode fail", e);
 			return null;

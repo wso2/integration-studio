@@ -52,6 +52,7 @@
       <editor
             class="org.wso2.developerstudio.eclipse.distribution.project.editor.DistProjectEditor"
             id="org.wso2.developerstudio.eclipse.distribution.project.editor.DistProjectEditor"
+            icon="icons/capp-pom-16x16.png"
             extensions="xml"
             name="Composite Application Project POM Editor">
             <contentTypeBinding

@@ -61,7 +61,9 @@ body {
 
 	<script>
 		//TODO: Update the url to get port from quary param
-		let url = "http://127.0.0.1:7774/swagger-editor/service";
+		var portValue = resolveGetParam("port");
+
+		let url = "http://127.0.0.1:" + portValue + "/swagger-editor/service";
 		retreiveSwaggerFromBackEnd();
 
 		function sendSwaggerToBackEnd() {
@@ -113,6 +115,19 @@ body {
 					sendSwaggerToBackEnd();
 				}, 1000);
 			}, false);
+		}
+
+		function resolveGetParam(param) {
+		    var paramValue = null,
+		        tmp = [];
+		    location.search
+		        .substr(1)
+		        .split("&")
+		        .forEach(function (item) {
+		          tmp = item.split("=");
+		          if (tmp[0] === param) paramValue = decodeURIComponent(tmp[1]);
+		        });
+		    return paramValue;
 		}
 	</script>
 

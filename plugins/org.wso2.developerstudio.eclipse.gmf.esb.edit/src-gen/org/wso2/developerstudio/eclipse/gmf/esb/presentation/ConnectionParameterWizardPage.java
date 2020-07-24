@@ -91,6 +91,10 @@ public class ConnectionParameterWizardPage extends WizardPage {
                      }
                 }
             });
+            //Handle edit scenario where connection name is automatically set
+            if(!connectionNameText.getText().isEmpty()) {
+                setPageComplete(true);
+            }
         }
         setControl(composite);
     }

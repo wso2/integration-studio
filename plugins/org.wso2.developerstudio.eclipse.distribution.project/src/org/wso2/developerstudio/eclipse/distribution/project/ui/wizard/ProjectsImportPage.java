@@ -159,6 +159,8 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 
 	private static final String IMPORT_ARCHIVE_LOCATION = File.separator + ".tmp" + File.separator
 			+ "APIMArchiveImport";
+	
+	private static final String SLASH = "/";
 
 	private ILeveledImportStructureProvider structureProvider;
 
@@ -1550,8 +1552,8 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 
 				if (resourceFile.isDirectory()) {
 					if (sourceFile != null || sourceTarFile != null) {
-						String resourcePathInArchive = resourceFile.getParentFile().getName() + File.separator
-								+ resourceFile.getName() + File.separator;
+						String resourcePathInArchive = resourceFile.getParentFile().getName() + SLASH
+								+ resourceFile.getName() + SLASH;
 						if (!selectedAllProjects.containsKey(resourcePathInArchive)) {
 							continue;
 						}

@@ -72,6 +72,7 @@ public class DeployedServicesView extends ViewPart {
     private static final String DEFAULT_PASSWORD = "admin";
     private static final String DEP_SERVICES_PROPERTIES_PATH = ResourcesPlugin.getWorkspace().getRoot().getLocation()
             .toOSString() + File.separator + ".metadata" + File.separator + "deployed_services.properties";
+    private static final String NO_CACHE = "&nocache=1";
 
     private Browser browser;
     private String accessToken;
@@ -115,7 +116,7 @@ public class DeployedServicesView extends ViewPart {
         String port = rootNode.get("portDetails", String.valueOf(FunctionServerConstants.EMBEDDED_SERVER_PORT));
         return "http://127.0.0.1:" + port + "/project/endpoints?" + API_DETAILS_GET_PARAM + "=" + apiList + "&"
                 + PROXY_DETAILS_GET_PARAM + "=" + proxyList + "&" + DATASERVICE_DETAILS_GET_PARAM + "="
-                + dataServiceList + "&port=" + port;
+                + dataServiceList + "&port=" + port + NO_CACHE;
     }
 
     @Override
@@ -124,7 +125,7 @@ public class DeployedServicesView extends ViewPart {
     }
 
     public void setURL(URL url) {
-        browser.setUrl(url.toString());
+        browser.setUrl(url.toString() + NO_CACHE);
     }
     
     private String generateAccessToken() throws IOException {

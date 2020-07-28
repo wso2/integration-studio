@@ -37,7 +37,6 @@ Export-Package: org.wso2.developerstudio.eclipse.platform.ui;version="4.3.0",
  org.wso2.developerstudio.eclipse.platform.ui.startup;version="4.3.0",
  org.wso2.developerstudio.eclipse.platform.ui.utils;version="4.3.0",
  org.wso2.developerstudio.eclipse.platform.ui.validator;version="4.3.0",
- org.wso2.developerstudio.eclipse.platform.ui.view;version="4.3.0",
  org.wso2.developerstudio.eclipse.platform.ui.wizard;version="4.3.0",
  org.wso2.developerstudio.eclipse.platform.ui.wizard.pages;version="4.3.0"
 Bundle-Vendor: WSO2

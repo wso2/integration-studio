@@ -18,5 +18,4 @@ Require-Bundle: org.eclipse.e4.core.services,
  org.eclipse.core.runtime,
  org.wso2.developerstudio.eclipse.templates.dashboard;bundle-version="7.0.0"
 Import-Package: org.eclipse.ui.part,
- org.wso2.developerstudio.eclipse.logging.core;version="4.3.0",
- org.wso2.developerstudio.eclipse.platform.ui.view
+ org.wso2.developerstudio.eclipse.logging.core;version="4.3.0"

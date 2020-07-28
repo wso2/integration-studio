@@ -185,10 +185,12 @@ public class UpdaterDialog extends Dialog {
 		tabFolder.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent event) {
-				if (tabFolder.getSelection()[0].getText().equals(ALL_FEATURES_TAB_TITLE)) {
-					installBtn.setEnabled(!selectedFeatures.isEmpty());
-				} else if (tabFolder.getSelection()[0].getText().equals(UPDATES_TAB_TITLE)) {
-					installBtn.setEnabled(!selectedUpdates.isEmpty());
+				if (installBtn != null) {
+					if (tabFolder.getSelection()[0].getText().equals(ALL_FEATURES_TAB_TITLE) && selectedFeatures != null) {
+						installBtn.setEnabled(!selectedFeatures.isEmpty());
+					} else if (tabFolder.getSelection()[0].getText().equals(UPDATES_TAB_TITLE) && selectedUpdates != null) {
+						installBtn.setEnabled(!selectedUpdates.isEmpty());
+					}
 				}
 			}
 		});

@@ -37,6 +37,7 @@ public class K8sUserGuideTemplate extends ViewPart {
     private Browser browser;
     public static final String TEMPLATE_GUIDE_VIEW_ID = "org.wso2.developerstudio.eclipse.esb.templates.kubernetes.view";
     public static final String ERROR_MESSAGE_OPENING_EDITOR = "Error opening editor";
+    private static final String NO_CACHE = "?nocache=1";
 
     @Override
     public void createPartControl(Composite arg0) {
@@ -58,7 +59,7 @@ public class K8sUserGuideTemplate extends ViewPart {
         URL resolvedFolderURL = FileLocator.toFileURL(webAppURL);
         URI resolvedFolderURI = new URI(resolvedFolderURL.getProtocol(), resolvedFolderURL.getPath(), null);
         File resolvedWebAppFile = new File(resolvedFolderURI);
-        return resolvedWebAppFile.getAbsolutePath();
+        return resolvedWebAppFile.getAbsolutePath() + NO_CACHE;
     }
 
     @Override
@@ -66,6 +67,6 @@ public class K8sUserGuideTemplate extends ViewPart {
     }
 
     public void setURL(URL url) {
-        browser.setUrl(url.toString());
+        browser.setUrl(url.toString() + NO_CACHE);
     }
 }

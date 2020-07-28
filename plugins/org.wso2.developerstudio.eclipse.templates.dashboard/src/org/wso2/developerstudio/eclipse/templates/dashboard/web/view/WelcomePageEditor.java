@@ -85,7 +85,7 @@ public class WelcomePageEditor extends EditorPart {
 	public void createPartControl(Composite parent) {
 	    browser = createBrowser(parent);
 	    String port = getPortValueForJS();
-	    browser.setUrl("http://127.0.0.1:" + port + "/welcome?port=" + port);
+	    browser.setUrl("http://127.0.0.1:" + port + "/welcome?port=" + port + "&nocache=1");
 	     
 	    IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 	    try {

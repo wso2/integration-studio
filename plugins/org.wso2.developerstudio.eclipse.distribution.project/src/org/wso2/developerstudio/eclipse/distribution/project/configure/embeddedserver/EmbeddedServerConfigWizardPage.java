@@ -345,7 +345,7 @@ public class EmbeddedServerConfigWizardPage extends WizardPage {
         data.height = 210;
         libGroup.setLayoutData(data);
         libGroup.setLayout(new FormLayout());
-        libGroup.setText("Select libraries(JARs) which are needed to copy to Lib directory:");
+        libGroup.setText("Select libraries(JARs) that need to be copied to the Lib directory:");
         Font boldLibFont = new Font(null, new FontData("Arial", 10, SWT.BOLD));
         libGroup.setFont(boldLibFont);
 
@@ -598,7 +598,7 @@ public class EmbeddedServerConfigWizardPage extends WizardPage {
         data.height = 210;
         dropingLibGroup.setLayoutData(data);
         dropingLibGroup.setLayout(new FormLayout());
-        dropingLibGroup.setText("Select libraries(JARs) which are needed to copy to Dropins directory:");
+        dropingLibGroup.setText("Select libraries(JARs) that need to be copied to the Dropins directory:");
         Font bldLibFont = new Font(null, new FontData("Arial", 10, SWT.BOLD));
         dropingLibGroup.setFont(bldLibFont);
 

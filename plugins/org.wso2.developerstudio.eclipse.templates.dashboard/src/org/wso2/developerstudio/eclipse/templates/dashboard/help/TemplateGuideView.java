@@ -33,6 +33,7 @@ import java.net.URL;
 
 public class TemplateGuideView extends ViewPart {
 
+	private static final String NO_CACHE = "?nocache=1";
     private Browser browser;
 
     @Override
@@ -58,7 +59,7 @@ public class TemplateGuideView extends ViewPart {
         URI resolvedFolderURI = new URI(resolvedFolderURL.getProtocol(), resolvedFolderURL.getPath(), null);
         File resolvedWebAppFolder = new File(resolvedFolderURI);
         File resolvedWebAppIndex = new File(resolvedWebAppFolder, INDEX_HTML);
-        return resolvedWebAppIndex.getAbsolutePath();
+        return resolvedWebAppIndex.getAbsolutePath() + NO_CACHE;
     }
 
     @Override
@@ -67,7 +68,7 @@ public class TemplateGuideView extends ViewPart {
     }
 
     public void setURL(URL url) {
-        browser.setUrl(url.toString());
+        browser.setUrl(url.toString() + NO_CACHE);
     }
 
 }

@@ -121,7 +121,7 @@ public class JettyServerHandler {
         //context.addFilter(holder, "*", null);
         // Context path where static webpages are hosted
         context.setContextPath("/welcome");
-        String webAppPath = "TemplateDash";
+        String webAppPath = "WelcomeDashboard";
         try {
             // Get web app path from current bundle
             webAppPath = jsf.getWebAppPath();

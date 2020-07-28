@@ -57,5 +57,6 @@ public class DescriptorConstants {
     public static final String CONNECTION = "connection";
     public static final String COMBO_OR_EXPRESSION = "comboOrExpression";
     public static final String PASSWORD_TEXT_OR_EXPRESSION = "passwordTextOrExpression";
+    public static final String SEARCH_BOX = "searchBox";
 
 }

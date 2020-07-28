@@ -41,6 +41,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.CloudConnectorOperation;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleOptionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeGroupValue;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeProperties;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValue;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorRoot;
@@ -86,9 +87,9 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
         ++level;
         if (element.getType().equals("attribute")) {
             if (level != 2) { // Will be 2 since ++ level
-                evaluateAttribute((AttributeValue) element.getValue(), parent, widgetFactory, level);
+                evaluateAttribute((AttributeValue) element.getValue(), parent, widgetFactory, level, null);
             } else {
-                evaluateAttribute((AttributeValue) element.getValue(), generalGroup, widgetFactory, level);
+                evaluateAttribute((AttributeValue) element.getValue(), generalGroup, widgetFactory, level, null);
             }
         } else {
             AttributeGroupValue agv = (AttributeGroupValue) element.getValue();
@@ -107,7 +108,7 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
         }
     }
 
-    public void evaluateAttribute(AttributeValue value, Composite parent, FormToolkit widgetFactory, int level) {
+    public void evaluateAttribute(AttributeValue value, Composite parent, FormToolkit widgetFactory, int level, AttributeGroupValue attribute) {
         if (AttributeValueType.STRING.equals(value.getType())) {
             if (level == 2) {
                 widgetProvider.createTextBoxField(widgetFactory, parent, value);
@@ -126,6 +127,8 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
                     getConnectionEntriesList(value.getAllowedConnectionTypes()));
         } else if (AttributeValueType.PASSWORDTEXTOREXPRESSION.equals(value.getType())) {
             widgetProvider.createPasswordTextBoxFieldWithButton(widgetFactory, parent, value);
+        } else if (AttributeValueType.SEARCHBOX.equals(value.getType())) {
+            widgetProvider.createSearchBoxFieldWithButton(widgetFactory, parent, value, attribute);
         }
     }
 

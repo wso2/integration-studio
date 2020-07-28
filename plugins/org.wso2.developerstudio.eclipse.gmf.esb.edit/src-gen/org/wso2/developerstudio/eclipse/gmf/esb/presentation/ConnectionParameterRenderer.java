@@ -78,7 +78,7 @@ public class ConnectionParameterRenderer {
         //connectionName
         for (Element elem : connectorRoot.getElements()) {
             if (elem.getType().equals("attribute")) {
-                evaluateAttribute((AttributeValue) elem.getValue(), parent, widgetFactory, 0);
+                evaluateAttribute((AttributeValue) elem.getValue(), parent, widgetFactory, 0, null);
                 break;
             }
         }
@@ -221,7 +221,7 @@ public class ConnectionParameterRenderer {
 
     public void createDynamicWidgetComponents(Element element, Composite parent) {
         if (element.getType().equals("attribute")) {
-            evaluateAttribute((AttributeValue) element.getValue(), parent, widgetFactory, 0);
+            evaluateAttribute((AttributeValue) element.getValue(), parent, widgetFactory, 0, null);
         } else {
             AttributeGroupValue agv = (AttributeGroupValue) element.getValue();
             Group subGroup = widgetProvider.createGroup(parent, agv.getGroupName());
@@ -231,7 +231,7 @@ public class ConnectionParameterRenderer {
         }
     }
 
-    public void evaluateAttribute(AttributeValue value, Composite parent, FormToolkit widgetFactory, int level) {
+    public void evaluateAttribute(AttributeValue value, Composite parent, FormToolkit widgetFactory, int level,  AttributeGroupValue attribute) {
         if (AttributeValueType.STRING.equals(value.getType())) {
             widgetProvider.createTextBoxFieldWithButton(widgetFactory, parent, value);
         } else if (AttributeValueType.BOOLEANOREXPRESSION.equals(value.getType())) {
@@ -241,6 +241,8 @@ public class ConnectionParameterRenderer {
                     value);
         } else if (AttributeValueType.PASSWORDTEXTOREXPRESSION.equals(value.getType())) {
             widgetProvider.createPasswordTextBoxFieldWithButton(widgetFactory, parent, value);
+        }else if (AttributeValueType.SEARCHBOX.equals(value.getType())) {
+            widgetProvider.createSearchBoxFieldWithButton(widgetFactory, parent, value, attribute);
         }
     }
 

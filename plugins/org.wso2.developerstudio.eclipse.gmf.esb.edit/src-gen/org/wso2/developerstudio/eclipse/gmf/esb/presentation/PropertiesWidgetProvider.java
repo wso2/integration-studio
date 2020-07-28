@@ -20,6 +20,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.presentation;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.HashMap;
+import java.util.Map.Entry;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
@@ -40,6 +41,8 @@ import org.eclipse.swt.custom.StyleRange;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -74,6 +77,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.impl.CloudConnectorOperationImpl
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.CloudConnectorOperationPropertiesEditionPartForm;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeGroupValue;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeProperties;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValue;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -90,7 +95,6 @@ public class PropertiesWidgetProvider {
     protected HashMap<String, Control> requiredList;
     private boolean isConnectionWidgetProvider = false;
     private static IDeveloperStudioLog log = Logger.getLog(EEFPropertyViewUtil.PLUGIN_ID);
-    private static final char PASSWORD_BLACK_CIRCLE = '\u25CF';
 
     /**
      * General constructor to initialize properties widget provider
@@ -356,7 +360,7 @@ public class PropertiesWidgetProvider {
 
         // Create Text box widget
         final Text valueTextBox = widgetFactory.createText(textBoxComposite, "", SWT.SINGLE | SWT.BORDER);
-        valueTextBox.setEchoChar(PASSWORD_BLACK_CIRCLE);
+        valueTextBox.setEchoChar('•');
 
         valueTextBox.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         GridData configRefData = new GridData(GridData.FILL_HORIZONTAL);
@@ -394,7 +398,7 @@ public class PropertiesWidgetProvider {
                 if (source.getSelection()) { // If pressed
                     valueTextBox.setEchoChar('\0');
                 } else {
-                    valueTextBox.setEchoChar(PASSWORD_BLACK_CIRCLE);
+                    valueTextBox.setEchoChar('•');
 
                 }
             }
@@ -443,6 +447,75 @@ public class PropertiesWidgetProvider {
         return parent;
     }
 
+    /**
+     * Provide a composite with search box widget with expression support and a label
+     *
+     * @param widgetFactory widget factory instance
+     * @param parent parent composite
+     * @param jsonSchemaObject JSONSchema object of the property
+     * @return composite
+     */
+    public Composite createSearchBoxFieldWithButton(FormToolkit widgetFactory, final Composite parent,
+            AttributeValue jsonSchemaObject, AttributeGroupValue attribute) {
+        // Create wrapping composite of 1 element
+        Composite searchBoxComposite = createComposite(jsonSchemaObject.getName(), widgetFactory, parent, 1, 1);
+        
+        //Search field with search icon and cancel icon
+        final Text searchField = new Text(searchBoxComposite, SWT.BORDER | SWT.SEARCH | SWT.WRAP | SWT.ICON_SEARCH | SWT.ICON_CANCEL );
+        searchField.setMessage("Search");
+        
+        //Layout of search box
+        searchField.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        GridData searchData = new GridData(GridData.FILL_HORIZONTAL);
+        searchField.setLayoutData(searchData);
+        searchField.setData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY, jsonSchemaObject);
+        
+        
+        //listener to monitor changes in the text field
+        searchField.addModifyListener(new ModifyListener() {
+        	Control[] children;
+
+            public void modifyText(ModifyEvent e) {
+    			for (Entry<String, Composite> entry : compositeList.entrySet()) { //traverse through the hash map
+				
+				children = entry.getValue().getChildren();
+				
+					for (int i = 0; i < children.length; i++){
+					    if(children[i] instanceof Label){
+					    	Label label = (Label) children[i];
+					    	String displayName = label.getText().toLowerCase();
+					    	displayName = displayName.replaceAll("[:*]", "");
+					    	String searchText = searchField.getText().toLowerCase();
+					    	
+					    	//Check if the display name contains the searched text
+	        			    if (displayName.contains(searchText)) {
+	        			    	entry.getValue().setVisible(true);
+	        			    	((GridData) entry.getValue().getLayoutData()).exclude = false; // hide
+	        			    	entry.getValue().getParent().getParent().layout();
+	        			    	
+	        			    } else {
+	        			    	entry.getValue().setVisible(false);//hides the attribute that doesn't match
+	        			    	
+//	        			    	Composite trial = createTextAreaFieldWithButton(widgetFactory, searchBoxComposite, jsonSchemaObject);
+//	        		            trial.
+//	        			    	((GridData) valueTextArea.getLayoutData()).exclude = false;
+//	                            trial.getParent().setVisible(false);
+//	        			    	entry.getValue().getParent().pack();
+	        			    	((GridData) entry.getValue().getLayoutData()).exclude = true; // hide
+	        			    	entry.getValue().getParent().getParent().layout();
+	        			    }
+					    }
+					}
+			    
+    			}  
+		    	compositeList.get("configRef").setVisible(true); //keeps connection visible
+		    	((GridData) compositeList.get("configRef").getLayoutData()).exclude = false; // hide
+		    	compositeList.get("configRef").getParent().getParent().layout();
+            }
+        });        
+        return parent;
+    }
+    
     /**
      * Provide a composite with Drop down Combo widget with expression support and a label
      * 

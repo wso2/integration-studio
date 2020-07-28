@@ -78,7 +78,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.CloudConnectorOperationPropertiesEditionPartForm;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeGroupValue;
-import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeProperties;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValue;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -459,63 +458,57 @@ public class PropertiesWidgetProvider {
             AttributeValue jsonSchemaObject, AttributeGroupValue attribute) {
         // Create wrapping composite of 1 element
         Composite searchBoxComposite = createComposite(jsonSchemaObject.getName(), widgetFactory, parent, 1, 1);
-        
-        //Search field with search icon and cancel icon
-        final Text searchField = new Text(searchBoxComposite, SWT.BORDER | SWT.SEARCH | SWT.WRAP | SWT.ICON_SEARCH | SWT.ICON_CANCEL );
+
+        // Search field with search icon and cancel icon
+        final Text searchField = new Text(searchBoxComposite,
+                SWT.BORDER | SWT.SEARCH | SWT.WRAP | SWT.ICON_SEARCH | SWT.ICON_CANCEL);
         searchField.setMessage("Search");
-        
-        //Layout of search box
+
+        // Layout of search box
         searchField.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         GridData searchData = new GridData(GridData.FILL_HORIZONTAL);
         searchField.setLayoutData(searchData);
         searchField.setData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY, jsonSchemaObject);
-        
-        
-        //listener to monitor changes in the text field
+
+        // listener to monitor changes in the text field
         searchField.addModifyListener(new ModifyListener() {
-        	Control[] children;
+            Control[] children;
 
             public void modifyText(ModifyEvent e) {
-    			for (Entry<String, Composite> entry : compositeList.entrySet()) { //traverse through the hash map
-				
-				children = entry.getValue().getChildren();
-				
-					for (int i = 0; i < children.length; i++){
-					    if(children[i] instanceof Label){
-					    	Label label = (Label) children[i];
-					    	String displayName = label.getText().toLowerCase();
-					    	displayName = displayName.replaceAll("[:*]", "");
-					    	String searchText = searchField.getText().toLowerCase();
-					    	
-					    	//Check if the display name contains the searched text
-	        			    if (displayName.contains(searchText)) {
-	        			    	entry.getValue().setVisible(true);
-	        			    	((GridData) entry.getValue().getLayoutData()).exclude = false; // hide
-	        			    	entry.getValue().getParent().getParent().layout();
-	        			    	
-	        			    } else {
-	        			    	entry.getValue().setVisible(false);//hides the attribute that doesn't match
-	        			    	
-//	        			    	Composite trial = createTextAreaFieldWithButton(widgetFactory, searchBoxComposite, jsonSchemaObject);
-//	        		            trial.
-//	        			    	((GridData) valueTextArea.getLayoutData()).exclude = false;
-//	                            trial.getParent().setVisible(false);
-//	        			    	entry.getValue().getParent().pack();
-	        			    	((GridData) entry.getValue().getLayoutData()).exclude = true; // hide
-	        			    	entry.getValue().getParent().getParent().layout();
-	        			    }
-					    }
-					}
-			    
-    			}  
-		    	compositeList.get("configRef").setVisible(true); //keeps connection visible
-		    	((GridData) compositeList.get("configRef").getLayoutData()).exclude = false; // hide
-		    	compositeList.get("configRef").getParent().getParent().layout();
+                for (Entry<String, Composite> entry : compositeList.entrySet()) { // traverse through the hash map
+
+                    children = entry.getValue().getChildren();
+
+                    for (int i = 0; i < children.length; i++) {
+                        if (children[i] instanceof Label) {
+                            Label label = (Label) children[i];
+                            String displayName = label.getText().toLowerCase();
+                            displayName = displayName.replaceAll("[:*]", "");
+                            String searchText = searchField.getText().toLowerCase();
+
+                            // Check if the display name contains the searched text
+                            if (displayName.contains(searchText)) {
+                                entry.getValue().setVisible(true);// shows the attribute that doesn't match
+                                ((GridData) entry.getValue().getLayoutData()).exclude = false; // hide
+                                entry.getValue().getParent().getParent().layout();
+
+                            } else {
+                                entry.getValue().setVisible(false);// hides the attribute that doesn't match
+                                ((GridData) entry.getValue().getLayoutData()).exclude = true; // hide
+                                entry.getValue().getParent().getParent().layout();
+                            }
+                        }
+                    }
+                }
+
+                compositeList.get("configRef").setVisible(true); // keeps connection visible
+                ((GridData) compositeList.get("configRef").getLayoutData()).exclude = false; // show
+                compositeList.get("configRef").getParent().getParent().layout();
             }
-        });        
+        });
         return parent;
     }
-    
+
     /**
      * Provide a composite with Drop down Combo widget with expression support and a label
      * 
@@ -630,8 +623,8 @@ public class PropertiesWidgetProvider {
     public Composite createExpressionComposite(String id, FormToolkit widgetFactory, final Composite parent,
             AttributeValue jsonSchemaObject) {
         // Create wrapping composite of 2 elements and 1 span
-        Composite textComposite = createComposite(id + EEFPropertyConstants.EXPRESSION_FIELD_SUFFIX,
-                widgetFactory, parent, 2, 1);
+        Composite textComposite = createComposite(id + EEFPropertyConstants.EXPRESSION_FIELD_SUFFIX, widgetFactory,
+                parent, 2, 1);
 
         // Create expression Text box
         final StyledText expressionTextBox = new StyledText(textComposite, SWT.SINGLE);
@@ -770,14 +763,15 @@ public class PropertiesWidgetProvider {
                             EsbViewsRepository.CloudConnectorOperation.Properties.configRef,
                             PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null,
                             connectionComboBox.getText()));
-                            checkRequired();
+                    checkRequired();
                 }
 
             }
         });
 
         // Create edit connection button
-        final Button editConnectionButton = widgetFactory.createButton(textBoxComposite, "", SWT.PUSH | SWT.TRANSPARENT);
+        final Button editConnectionButton = widgetFactory.createButton(textBoxComposite, "",
+                SWT.PUSH | SWT.TRANSPARENT);
         editConnectionButton.setImage(deleteElementImage);
         editConnectionButton.setEnabled(false);
         editConnectionButton.addListener(SWT.Selection, new Listener() {
@@ -798,7 +792,7 @@ public class PropertiesWidgetProvider {
                             EsbViewsRepository.CloudConnectorOperation.Properties.configRef,
                             PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null,
                             connectionComboBox.getText()));
-                            checkRequired();
+                    checkRequired();
                 }
 
                 if (!connectionComboBox.getText().isEmpty()) {

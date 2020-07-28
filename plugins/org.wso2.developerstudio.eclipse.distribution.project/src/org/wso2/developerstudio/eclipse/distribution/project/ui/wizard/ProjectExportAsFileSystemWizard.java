@@ -18,7 +18,10 @@ package org.wso2.developerstudio.eclipse.distribution.project.ui.wizard;
 import java.util.List;
 
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Adapters;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.dialogs.IDialogSettings;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -85,6 +88,12 @@ public class ProjectExportAsFileSystemWizard extends Wizard implements IExportWi
 
 	@Override
 	public boolean performFinish() {
+		try {
+			ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+		} catch (CoreException e1) {
+			/* ignore */
+		}
+
 		return mainPage.finish();
 	}
 }

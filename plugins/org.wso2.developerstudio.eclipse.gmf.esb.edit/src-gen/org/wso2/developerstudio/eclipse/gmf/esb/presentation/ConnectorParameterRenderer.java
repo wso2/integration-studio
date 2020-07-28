@@ -86,9 +86,9 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
         ++level;
         if (element.getType().equals("attribute")) {
             if (level != 2) { // Will be 2 since ++ level
-                evaluateAttribute((AttributeValue) element.getValue(), parent, widgetFactory, level, null);
+                evaluateAttribute((AttributeValue) element.getValue(), parent, widgetFactory, level);
             } else {
-                evaluateAttribute((AttributeValue) element.getValue(), generalGroup, widgetFactory, level, null);
+                evaluateAttribute((AttributeValue) element.getValue(), generalGroup, widgetFactory, level);
             }
         } else {
             AttributeGroupValue agv = (AttributeGroupValue) element.getValue();
@@ -107,7 +107,7 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
         }
     }
 
-    public void evaluateAttribute(AttributeValue value, Composite parent, FormToolkit widgetFactory, int level, AttributeGroupValue attribute) {
+    public void evaluateAttribute(AttributeValue value, Composite parent, FormToolkit widgetFactory, int level) {
         if (AttributeValueType.STRING.equals(value.getType())) {
             if (level == 2) {
                 widgetProvider.createTextBoxField(widgetFactory, parent, value);
@@ -127,7 +127,7 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
         } else if (AttributeValueType.PASSWORDTEXTOREXPRESSION.equals(value.getType())) {
             widgetProvider.createPasswordTextBoxFieldWithButton(widgetFactory, parent, value);
         } else if (AttributeValueType.SEARCHBOX.equals(value.getType())) {
-            widgetProvider.createSearchBoxFieldWithButton(widgetFactory, parent, value, attribute);
+            widgetProvider.createSearchBoxFieldWithButton(widgetFactory, parent, value);
         }
     }
 
@@ -164,7 +164,7 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
             descriptionText.setText(descriptionValue);
         }
 
-        //Iterate through controlList and fill data
+        // Iterate through controlList and fill data
         for (String key : controlList.keySet()) {
             CallTemplateParameter ctp = null;
             for (Object parameter : parameterList) {

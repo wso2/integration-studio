@@ -77,10 +77,11 @@ import org.wso2.developerstudio.eclipse.gmf.esb.impl.CloudConnectorOperationImpl
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.CloudConnectorOperationPropertiesEditionPartForm;
-import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeGroupValue;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValue;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.DescriptorConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+
 
 /**
  * Widget Provider class for the new properties framework.
@@ -90,6 +91,7 @@ public class PropertiesWidgetProvider {
     protected IPropertiesEditionComponent propertiesEditionComponent;
     protected SectionPropertiesEditingPart partForm;
     protected HashMap<String, Control> controlList;
+    private static final char PASSWORD_BLACK_CIRCLE = '\u25CF';
     protected HashMap<String, Composite> compositeList;
     protected HashMap<String, Control> requiredList;
     private boolean isConnectionWidgetProvider = false;
@@ -359,7 +361,7 @@ public class PropertiesWidgetProvider {
 
         // Create Text box widget
         final Text valueTextBox = widgetFactory.createText(textBoxComposite, "", SWT.SINGLE | SWT.BORDER);
-        valueTextBox.setEchoChar('•');
+        valueTextBox.setEchoChar(PASSWORD_BLACK_CIRCLE);
 
         valueTextBox.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         GridData configRefData = new GridData(GridData.FILL_HORIZONTAL);
@@ -397,8 +399,7 @@ public class PropertiesWidgetProvider {
                 if (source.getSelection()) { // If pressed
                     valueTextBox.setEchoChar('\0');
                 } else {
-                    valueTextBox.setEchoChar('•');
-
+                    valueTextBox.setEchoChar(PASSWORD_BLACK_CIRCLE);
                 }
             }
         });
@@ -455,7 +456,7 @@ public class PropertiesWidgetProvider {
      * @return composite
      */
     public Composite createSearchBoxFieldWithButton(FormToolkit widgetFactory, final Composite parent,
-            AttributeValue jsonSchemaObject, AttributeGroupValue attribute) {
+            AttributeValue jsonSchemaObject) {
         // Create wrapping composite of 1 element
         Composite searchBoxComposite = createComposite(jsonSchemaObject.getName(), widgetFactory, parent, 1, 1);
 
@@ -472,16 +473,15 @@ public class PropertiesWidgetProvider {
 
         // listener to monitor changes in the text field
         searchField.addModifyListener(new ModifyListener() {
-            Control[] children;
 
             public void modifyText(ModifyEvent e) {
                 for (Entry<String, Composite> entry : compositeList.entrySet()) { // traverse through the hash map
 
-                    children = entry.getValue().getChildren();
+                    Control[] children = entry.getValue().getChildren();
 
-                    for (int i = 0; i < children.length; i++) {
-                        if (children[i] instanceof Label) {
-                            Label label = (Label) children[i];
+                    for (Control child: children) {
+                        if (child instanceof Label) {
+                            Label label = (Label)child;
                             String displayName = label.getText().toLowerCase();
                             displayName = displayName.replaceAll("[:*]", "");
                             String searchText = searchField.getText().toLowerCase();
@@ -501,9 +501,9 @@ public class PropertiesWidgetProvider {
                     }
                 }
 
-                compositeList.get("configRef").setVisible(true); // keeps connection visible
-                ((GridData) compositeList.get("configRef").getLayoutData()).exclude = false; // show
-                compositeList.get("configRef").getParent().getParent().layout();
+                compositeList.get(DescriptorConstants.CONFIG_REF).setVisible(true); // keeps connection visible
+                ((GridData) compositeList.get(DescriptorConstants.CONFIG_REF).getLayoutData()).exclude = false; // show
+                compositeList.get(DescriptorConstants.CONFIG_REF).getParent().getParent().layout();
             }
         });
         return parent;

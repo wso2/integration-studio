@@ -23,6 +23,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -56,6 +57,13 @@ public class ProjectImportWizard extends ExternalProjectImportWizard {
 	@Override
 	public boolean performFinish() {
 		boolean created = importMainPage.createProjects();
+
+		try {
+			ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+		} catch (CoreException e1) {
+			/* ignore */
+		}
+
 		List<IProject> createdProjects = importMainPage.getCreatedProjects();
 		for (IProject resource : createdProjects) {
 			searchAndRemoveGraphicalSynapseCongif(resource);

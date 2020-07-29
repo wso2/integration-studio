@@ -8299,6 +8299,9 @@ public class EsbMessages extends NLS {
 	public static String InboundEndpointPropertiesEditionPart_TransportJMSDBUrlLabel;
 
 	
+	public static String InboundEndpointPropertiesEditionPart_TransportRabbitMqAutoDeclareLabel;
+
+	
 	public static String InboundEndpointParameterPropertiesEditionPart_NameLabel;
 
 	

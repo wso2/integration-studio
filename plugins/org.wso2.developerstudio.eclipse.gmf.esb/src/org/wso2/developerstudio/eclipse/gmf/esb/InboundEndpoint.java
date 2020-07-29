@@ -248,6 +248,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerQos <em>Transport Rabbit Mq Consumer Qos</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerQosType <em>Transport Rabbit Mq Consumer Qos Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSDBUrl <em>Transport JMSDB Url</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportRabbitMqAutoDeclare <em>Transport Rabbit Mq Auto Declare</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint()
@@ -3647,6 +3648,33 @@ public interface InboundEndpoint extends EsbElement {
      * @generated
      */
     void setTransportJMSDBUrl(String value);
+
+    /**
+     * Returns the value of the '<em><b>Transport Rabbit Mq Auto Declare</b></em>' attribute.
+     * The default value is <code>"true"</code>.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Transport Rabbit Mq Auto Declare</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Transport Rabbit Mq Auto Declare</em>' attribute.
+     * @see #setTransportRabbitMqAutoDeclare(boolean)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqAutoDeclare()
+     * @model default="true"
+     * @generated
+     */
+    boolean isTransportRabbitMqAutoDeclare();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportRabbitMqAutoDeclare <em>Transport Rabbit Mq Auto Declare</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Transport Rabbit Mq Auto Declare</em>' attribute.
+     * @see #isTransportRabbitMqAutoDeclare()
+     * @generated
+     */
+    void setTransportRabbitMqAutoDeclare(boolean value);
 
     /**
      * Returns the value of the '<em><b>Class</b></em>' attribute.

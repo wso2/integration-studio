@@ -48,6 +48,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOU
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_AUTO_DECLARE;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.InboundEndpointConstants;
@@ -151,7 +152,10 @@ public enum RABBITMQInboundEndpointParameter {
                                                                                                                                                                                                                                                             true), RABBITMQ_CONSUMER_QOS(
                                                                                                                                                                                                                                                                     InboundEndpointConstants.RABBITMQ_CONSUMER_QOS,
                                                                                                                                                                                                                                                                     INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS,
-                                                                                                                                                                                                                                                                    true);
+                                                                                                                                                                                                                                                                    true), RABBITMQ_QUEUE_AUTODECLARE(
+                                                                                                                                                                                                                                                                            InboundEndpointConstants.RABBITMQ_QUEUE_AUTODECLARE,
+                                                                                                                                                                                                                                                                            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_AUTO_DECLARE,
+                                                                                                                                                                                                                                                                            false);
 
     private final String name;
     private final EAttribute eAttributeValue;

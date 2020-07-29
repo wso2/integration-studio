@@ -25988,13 +25988,22 @@ public interface EsbPackage extends EPackage {
     int INBOUND_ENDPOINT__TRANSPORT_JMSDB_URL = ESB_ELEMENT_FEATURE_COUNT + 221;
 
     /**
+     * The feature id for the '<em><b>Transport Rabbit Mq Auto Declare</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_AUTO_DECLARE = ESB_ELEMENT_FEATURE_COUNT + 222;
+
+    /**
      * The number of structural features of the '<em>Inbound Endpoint</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 222;
+    int INBOUND_ENDPOINT_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 223;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointParameterImpl <em>Inbound Endpoint Parameter</em>}' class.
@@ -37283,6 +37292,17 @@ public interface EsbPackage extends EPackage {
      * @generated
      */
     EAttribute getInboundEndpoint_TransportJMSDBUrl();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportRabbitMqAutoDeclare <em>Transport Rabbit Mq Auto Declare</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Transport Rabbit Mq Auto Declare</em>'.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportRabbitMqAutoDeclare()
+     * @see #getInboundEndpoint()
+     * @generated
+     */
+    EAttribute getInboundEndpoint_TransportRabbitMqAutoDeclare();
 
     /**
      * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointParameter <em>Inbound Endpoint Parameter</em>}'.
@@ -53934,6 +53954,14 @@ public interface EsbPackage extends EPackage {
          * @generated
          */
         EAttribute INBOUND_ENDPOINT__TRANSPORT_JMSDB_URL = eINSTANCE.getInboundEndpoint_TransportJMSDBUrl();
+
+        /**
+         * The meta object literal for the '<em><b>Transport Rabbit Mq Auto Declare</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_AUTO_DECLARE = eINSTANCE.getInboundEndpoint_TransportRabbitMqAutoDeclare();
 
         /**
          * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointParameterImpl <em>Inbound Endpoint Parameter</em>}' class.

@@ -51,7 +51,7 @@ public class JsonTransformMediatorPropertyImpl extends AbstractNameValueExpressi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
     public String getPropertyName() {
         if (propertyName.equals(PROPERTY_NAME_EDEFAULT)) {
@@ -89,7 +89,7 @@ public class JsonTransformMediatorPropertyImpl extends AbstractNameValueExpressi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
     public void setPropertyValue(String newPropertyValue) {
         String oldPropertyValue = propertyValue;

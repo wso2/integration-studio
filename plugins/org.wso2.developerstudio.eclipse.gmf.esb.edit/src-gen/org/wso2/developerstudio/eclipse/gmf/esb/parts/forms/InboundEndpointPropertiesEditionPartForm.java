@@ -356,6 +356,8 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
     protected EMFComboViewer transportRabbitMqConsumerQosType;
     protected Text transportJMSDBUrl;
 
+    protected Button transportRabbitMqAutoDeclare;
+
     /**
      * For {@link ISection} use only.
      */
@@ -612,6 +614,7 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportMQTTSslTruststoreType);
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportMQTTSslTruststorePassword);
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportMQTTSslVersion);
+        propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqAutoDeclare);
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.wssSslKeyStoreFile);
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.wssSslKeyStorePass);
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.wssSslTrustStoreFile);
@@ -2240,6 +2243,13 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
                     Composite composite =  createTransportJMSDBUrlText(widgetFactory, filterAdvanceSubPropertiesGroup);
                     Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
+                    return composite;
+                }
+                if (key == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqAutoDeclare) {
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportRabbitMqAutoDeclareCheckbox(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    EEFPropertyViewUtil.addTableElementsAsList(rabbitmqPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 return parent;
@@ -16774,6 +16784,47 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         return parent;
     }
 
+	protected Composite createTransportRabbitMqAutoDeclareCheckbox(FormToolkit widgetFactory, Composite parent) {
+		transportRabbitMqAutoDeclare = widgetFactory
+				.createButton(parent,
+						getDescription(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqAutoDeclare,
+								EsbMessages.InboundEndpointPropertiesEditionPart_TransportRabbitMqAutoDeclareLabel),
+						SWT.CHECK);
+		transportRabbitMqAutoDeclare.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 *
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(
+							new PropertiesEditionEvent(InboundEndpointPropertiesEditionPartForm.this,
+									EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqAutoDeclare,
+									PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+									new Boolean(transportRabbitMqAutoDeclare.getSelection())));
+			}
+
+		});
+		GridData transportRabbitMqAutoDeclareData = new GridData(GridData.FILL_HORIZONTAL);
+		transportRabbitMqAutoDeclareData.horizontalSpan = 2;
+		transportRabbitMqAutoDeclare.setLayoutData(transportRabbitMqAutoDeclareData);
+		EditingUtils.setID(transportRabbitMqAutoDeclare,
+				EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqAutoDeclare);
+		EditingUtils.setEEFtype(transportRabbitMqAutoDeclare, "eef::Checkbox"); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent,
+				propertiesEditionComponent.getHelpContent(
+						EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqAutoDeclare,
+						EsbViewsRepository.FORM_KIND),
+				null); // $NON-NLS-1$
+		// Start of user code for createTransportRabbitMqAutoDeclareCheckbox
+
+		// End of user code
+		return parent;
+	}
+
     /**
      * {@inheritDoc}
      * 
@@ -24590,6 +24641,40 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         }
 
     }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqAutoDeclare()
+	 * 
+	 */
+	public Boolean getTransportRabbitMqAutoDeclare() {
+		return Boolean.valueOf(transportRabbitMqAutoDeclare.getSelection());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqAutoDeclare(Boolean
+	 *      newValue)
+	 * 
+	 */
+	public void setTransportRabbitMqAutoDeclare(Boolean newValue) {
+		if (newValue != null) {
+			transportRabbitMqAutoDeclare.setSelection(newValue.booleanValue());
+		} else {
+			transportRabbitMqAutoDeclare.setSelection(false);
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqAutoDeclare);
+		if (eefElementEditorReadOnlyState && transportRabbitMqAutoDeclare.isEnabled()) {
+			transportRabbitMqAutoDeclare.setEnabled(false);
+			transportRabbitMqAutoDeclare.setToolTipText(EsbMessages.InboundEndpoint_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !transportRabbitMqAutoDeclare.isEnabled()) {
+			transportRabbitMqAutoDeclare.setEnabled(true);
+		}
+
+	}
 
     // Start of user code for transportRabbitMqConsumerQosKey specific getters and setters implementation
 

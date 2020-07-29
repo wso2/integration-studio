@@ -19,7 +19,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.ENABLE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__CLASS;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__CONSUMER_TYPE;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__CONTENT_TYPE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__COORDINATION;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__ENABLE_SSL;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__INBOUND_ENDPOINT_BEHAVIOUR;
@@ -41,8 +40,6 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOU
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_TRANSACTED;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_SHARED_SUBSCRIPTION;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_BROKER_TYPE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_QOS;
@@ -59,11 +56,9 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOU
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFS_STREAMING;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TYPE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_FORMAT;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_KEY;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_AUTO_DECLARE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_TYPE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_PASSWORD;
@@ -88,7 +83,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.ConsumerType;
-import org.wso2.developerstudio.eclipse.gmf.esb.ContentType;
 import org.wso2.developerstudio.eclipse.gmf.esb.Enable;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.FeedType;
@@ -855,6 +849,12 @@ public class InboundEndpointDeserializer
                             executeSetValueCommand(INBOUND_ENDPOINT__COORDINATION, true);
                         } else {
                             executeSetValueCommand(INBOUND_ENDPOINT__COORDINATION, false);
+                        }
+                    } else if (paramEntry.getKey().equals(InboundEndpointConstants.RABBITMQ_QUEUE_AUTODECLARE)) {
+                        if (paramEntry.getValue().equals(InboundEndpointConstants.FALSE)) {
+                            executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_AUTO_DECLARE, false);
+                        } else {
+                            executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_AUTO_DECLARE, true);
                         }
                     }
                 }

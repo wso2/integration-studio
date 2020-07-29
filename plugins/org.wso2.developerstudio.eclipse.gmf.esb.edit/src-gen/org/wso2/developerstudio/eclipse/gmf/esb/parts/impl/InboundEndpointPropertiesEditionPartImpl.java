@@ -317,7 +317,11 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 
 
 
-	/**
+	protected Button transportRabbitMqAutoDeclare;
+
+
+
+  /**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
 	 * 
@@ -11218,7 +11222,47 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	}
 
 
-	/**
+	protected Composite createTransportRabbitMqAutoDeclareCheckbox(Composite parent) {
+		transportRabbitMqAutoDeclare = new Button(parent, SWT.CHECK);
+		transportRabbitMqAutoDeclare
+				.setText(getDescription(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqAutoDeclare,
+						EsbMessages.InboundEndpointPropertiesEditionPart_TransportRabbitMqAutoDeclareLabel));
+		transportRabbitMqAutoDeclare.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 *
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(
+							new PropertiesEditionEvent(InboundEndpointPropertiesEditionPartImpl.this,
+									EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqAutoDeclare,
+									PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+									new Boolean(transportRabbitMqAutoDeclare.getSelection())));
+			}
+
+		});
+		GridData transportRabbitMqAutoDeclareData = new GridData(GridData.FILL_HORIZONTAL);
+		transportRabbitMqAutoDeclareData.horizontalSpan = 2;
+		transportRabbitMqAutoDeclare.setLayoutData(transportRabbitMqAutoDeclareData);
+		EditingUtils.setID(transportRabbitMqAutoDeclare,
+				EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqAutoDeclare);
+		EditingUtils.setEEFtype(transportRabbitMqAutoDeclare, "eef::Checkbox"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent,
+				propertiesEditionComponent.getHelpContent(
+						EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqAutoDeclare,
+						EsbViewsRepository.SWT_KIND),
+				null); // $NON-NLS-1$
+		// Start of user code for createTransportRabbitMqAutoDeclareCheckbox
+
+		// End of user code
+		return parent;
+	}
+
+  /**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
@@ -18579,8 +18623,42 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 
 
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqAutoDeclare()
+	 * 
+	 */
+	public Boolean getTransportRabbitMqAutoDeclare() {
+		return Boolean.valueOf(transportRabbitMqAutoDeclare.getSelection());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqAutoDeclare(Boolean
+	 *      newValue)
+	 * 
+	 */
+	public void setTransportRabbitMqAutoDeclare(Boolean newValue) {
+		if (newValue != null) {
+			transportRabbitMqAutoDeclare.setSelection(newValue.booleanValue());
+		} else {
+			transportRabbitMqAutoDeclare.setSelection(false);
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqAutoDeclare);
+		if (eefElementEditorReadOnlyState && transportRabbitMqAutoDeclare.isEnabled()) {
+			transportRabbitMqAutoDeclare.setEnabled(false);
+			transportRabbitMqAutoDeclare.setToolTipText(EsbMessages.InboundEndpoint_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !transportRabbitMqAutoDeclare.isEnabled()) {
+			transportRabbitMqAutoDeclare.setEnabled(true);
+		}
+
+	}
+
 	// Start of user code for transportRabbitMqConsumerQosKey specific getters and setters implementation
-	
+
 	// End of user code
 
 	/**

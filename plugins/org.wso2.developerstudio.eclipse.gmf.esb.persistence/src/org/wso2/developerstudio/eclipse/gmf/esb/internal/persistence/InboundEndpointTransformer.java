@@ -1204,6 +1204,10 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_CONSUMER_QOS,
                         visualInboundEndpoint.getTransportRabbitMqConsumerQosKey().getKeyValue());
             }
+            if (!visualInboundEndpoint.isTransportRabbitMqAutoDeclare()) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_QUEUE_AUTODECLARE,
+                        InboundEndpointConstants.FALSE);
+            }
             break;
         case FEED:
             if (StringUtils.isNotBlank(visualInboundEndpoint.getInterval())) {

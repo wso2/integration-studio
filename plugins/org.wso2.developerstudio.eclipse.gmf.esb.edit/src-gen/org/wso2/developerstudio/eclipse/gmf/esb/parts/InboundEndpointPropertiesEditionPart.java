@@ -3263,8 +3263,20 @@ public interface InboundEndpointPropertiesEditionPart {
 	 */
 	public void setTransportJMSDBUrl(String newValue);
 
+	/**
+	 * @return the transportRabbitMqAutoDeclare
+	 * 
+	 */
+	public Boolean getTransportRabbitMqAutoDeclare();
 
-
+	/**
+	 * Defines a new transportRabbitMqAutoDeclare
+	 * 
+	 * @param newValue
+	 *            the new transportRabbitMqAutoDeclare to set
+	 * 
+	 */
+	public void setTransportRabbitMqAutoDeclare(Boolean newValue);
 
 	// Start of user code for transportRabbitMqConsumerQosKey specific getters and setters declaration
     public RegistryKeyProperty getRabbitMqConsumerQosKey();

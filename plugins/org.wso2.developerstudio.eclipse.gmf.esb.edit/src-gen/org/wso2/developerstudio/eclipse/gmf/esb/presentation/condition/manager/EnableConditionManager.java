@@ -1,7 +1,9 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.presentation.condition.manager;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
+import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter;
 
 import java.util.*;
 
@@ -37,6 +39,12 @@ public class EnableConditionManager {
             enableConditions.forEach(enableCondition ->
                     setComponentVisibility(enableCondition, enableCondition.isValid(dependantComponentValuesMap)));
         }
+    }
+
+    public void handleValueChange(List<CallTemplateParameter> parameterList) {
+        parameterList.forEach(parameter -> {
+            handleValueChange(parameter.getParameterName(), parameter.getParameterValue());
+        });
     }
 
     private void setComponentVisibility(EnableCondition enableCondition, boolean visibility) {

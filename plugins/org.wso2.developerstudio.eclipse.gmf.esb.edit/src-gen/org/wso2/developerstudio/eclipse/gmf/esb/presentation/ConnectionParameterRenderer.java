@@ -45,6 +45,7 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.condition.manager.EnableConditionManager;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeGroupValue;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValue;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValueType;
@@ -63,6 +64,8 @@ public class ConnectionParameterRenderer {
     private Group tabSection;
     private Map<String, String> connectionTitleTypeMap = new HashMap<>();
     private static final String CONNECTION_TYPE = "connectionType";
+    private EnableConditionManager enableConditionManager;
+
     public ConnectionParameterRenderer(FormToolkit widgetFactory) {
         this.widgetFactory = widgetFactory;
         this.controlList = new HashMap<>();

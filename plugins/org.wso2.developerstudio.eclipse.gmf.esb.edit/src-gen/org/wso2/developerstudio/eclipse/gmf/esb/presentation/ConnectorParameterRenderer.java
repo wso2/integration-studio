@@ -40,6 +40,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloudConnectorOperation;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleOptionType;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.condition.manager.EnableConditionManager;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeGroupValue;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValue;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValueType;
@@ -56,6 +57,7 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
     IPropertiesEditionComponent propertiesEditionComponent;
     SectionPropertiesEditingPart partForm;
     PropertiesWidgetProvider widgetProvider;
+    private final EnableConditionManager enableConditionManager;
     private static IDeveloperStudioLog log = Logger.getLog(EEFPropertyViewUtil.PLUGIN_ID);
 
     public ConnectorParameterRenderer(IPropertiesEditionComponent propertiesEditionComponent,
@@ -65,8 +67,9 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
         this.controlList = new HashMap<String, Control>();
         this.compositeList = new HashMap<String, Composite>();
         this.requiredList = new HashMap<String, Control>();
+        this.enableConditionManager = new EnableConditionManager(compositeList);
         widgetProvider = new PropertiesWidgetProvider(partForm, propertiesEditionComponent, controlList, compositeList,
-                requiredList);
+                requiredList,enableConditionManager);
     }
 
     @Override
@@ -147,7 +150,7 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
     @Override
     public void fillData(EObject dataObject) {
         EList<CallTemplateParameter> parameterList = ((CloudConnectorOperation) dataObject).getConnectorParameters();
-
+        enableConditionManager.handleValueChange(parameterList);
         /// Exclude properties which are not parameters
         String configRefValue = ((CloudConnectorOperation) dataObject).getConfigRef();
         Combo configRefCombo = (Combo) controlList.get("configRef");

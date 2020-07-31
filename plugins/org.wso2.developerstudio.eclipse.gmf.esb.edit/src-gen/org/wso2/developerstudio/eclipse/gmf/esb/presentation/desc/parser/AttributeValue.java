@@ -17,6 +17,8 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser;
 
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.condition.manager.EnableCondition;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,11 +34,10 @@ public class AttributeValue extends Value {
     String validation;
     String defaultType; //????
     //String default; ????
-    List<EnableCondition> enableCondition;
+    EnableCondition enableCondition;
     List<String> comboValues;
    
     public AttributeValue() {
-        enableCondition = new ArrayList<>();
         comboValues = new ArrayList<>();
         allowedConnectionTypes = new ArrayList<>();
     }
@@ -110,14 +111,19 @@ public class AttributeValue extends Value {
         this.comboValues.add(comboValue);
     }
 
-
     public String getValidation() {
         return validation;
     }
-
 
     public void setValidation(String validation) {
         this.validation = validation;
     }
 
+    public EnableCondition getEnableCondition() {
+        return enableCondition;
+    }
+
+    public void setEnableCondition(EnableCondition enableCondition) {
+        this.enableCondition = enableCondition;
+    }
 }

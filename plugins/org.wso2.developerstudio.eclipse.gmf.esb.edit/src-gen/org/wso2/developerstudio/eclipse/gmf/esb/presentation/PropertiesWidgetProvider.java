@@ -74,7 +74,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.impl.CloudConnectorOperationImpl
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.CloudConnectorOperationPropertiesEditionPartForm;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.condition.manager.EnableConditionManager;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValue;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.condition.manager.EnableCondition;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
@@ -88,6 +90,7 @@ public class PropertiesWidgetProvider {
     protected HashMap<String, Control> controlList;
     protected HashMap<String, Composite> compositeList;
     protected HashMap<String, Control> requiredList;
+    private EnableConditionManager enableConditionManager;
     private boolean isConnectionWidgetProvider = false;
     private static IDeveloperStudioLog log = Logger.getLog(EEFPropertyViewUtil.PLUGIN_ID);
     private static final char PASSWORD_BLACK_CIRCLE = '\u25CF';
@@ -109,6 +112,7 @@ public class PropertiesWidgetProvider {
         this.controlList = controlList;
         this.compositeList = compositeList;
         this.requiredList = requiredList;
+        this.enableConditionManager = new EnableConditionManager(compositeList);
     }
 
     /**
@@ -124,6 +128,7 @@ public class PropertiesWidgetProvider {
         this.compositeList = compositeList;
         this.isConnectionWidgetProvider = true;
         this.requiredList = requiredList;
+        this.enableConditionManager = new EnableConditionManager(compositeList);
     }
 
     /**
@@ -455,10 +460,10 @@ public class PropertiesWidgetProvider {
     public Composite createDropDownField(FormToolkit widgetFactory, final Composite parent, String[] options,
             AttributeValue jsonSchemaObject) {
         // Create wrapping composite of 3 elements
-        Composite textBoxComposite = createComposite(jsonSchemaObject.getName(), widgetFactory, parent, 3, 3);
+        Composite dropDownComposite = createComposite(jsonSchemaObject.getName(), widgetFactory, parent, 3, 3);
 
         // Create label for the property
-        Label propertyLabel = new Label(textBoxComposite, SWT.TRANSPARENT | SWT.WRAP);
+        Label propertyLabel = new Label(dropDownComposite, SWT.TRANSPARENT | SWT.WRAP);
         // Append * If required field
         String displayName = jsonSchemaObject.getDisplayName();
         if (jsonSchemaObject.getRequired()) {
@@ -471,7 +476,7 @@ public class PropertiesWidgetProvider {
         setToolTip(propertyLabel, jsonSchemaObject.getHelpTip());
 
         // Create expression toggle button
-        Button expressionToggleButton = new Button(textBoxComposite, SWT.TOGGLE);
+        Button expressionToggleButton = new Button(dropDownComposite, SWT.TOGGLE);
         Image expressionToggleButtonImage = null;
         try {
             expressionToggleButtonImage = new Image(parent.getShell().getDisplay(),
@@ -483,12 +488,14 @@ public class PropertiesWidgetProvider {
 
         // Create expression compsite(Which has text box and exp button)
         final Composite expressionComposite = createExpressionComposite(jsonSchemaObject.getName(), widgetFactory,
-                textBoxComposite, jsonSchemaObject);
+                dropDownComposite, jsonSchemaObject);
         expressionComposite.setVisible(false);
         ((GridData) expressionComposite.getLayoutData()).exclude = true; // hide
 
+        addToEnableConditionManager(jsonSchemaObject,jsonSchemaObject.getName());
+
         // Create combo box
-        final Combo valueComboBox = new Combo(textBoxComposite, SWT.DROP_DOWN | SWT.READ_ONLY);
+        final Combo valueComboBox = new Combo(dropDownComposite, SWT.DROP_DOWN | SWT.READ_ONLY);
         Color colorWhite = new Color(null, 255, 255, 255);
         valueComboBox.setBackground(colorWhite);
         valueComboBox.setItems(options);
@@ -496,6 +503,7 @@ public class PropertiesWidgetProvider {
         GridData configRefData = new GridData(GridData.FILL_HORIZONTAL);
         valueComboBox.setLayoutData(configRefData);
         valueComboBox.addSelectionListener(new SelectionAdapter() {
+            @Override
             public void widgetSelected(SelectionEvent event) {
                 if (!isConnectionWidgetProvider) {
                     CallTemplateParameter ctp = (CallTemplateParameter) ((Combo) event.getSource()).getData();
@@ -503,6 +511,7 @@ public class PropertiesWidgetProvider {
                     AttributeValue uiSchemaValue = (AttributeValue) ((Combo) event.getSource())
                             .getData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY);
                     updateModel(ctp, valueComboBox, uiSchemaValue);
+                    updateValidation(jsonSchemaObject.getName(), ctp.getParameterValue());
                 }
             }
         });
@@ -543,6 +552,17 @@ public class PropertiesWidgetProvider {
             requiredList.put(jsonSchemaObject.getName(), valueComboBox);
         }
         return parent;
+    }
+
+    private void addToEnableConditionManager(AttributeValue jsonSchemaObject, String component) {
+        EnableCondition enableCondition = jsonSchemaObject.getEnableCondition();
+        if (enableCondition != null) {
+            enableConditionManager.addEnableCondition(enableCondition,component);
+        }
+    }
+
+    private void updateValidation(String componentName,String componentValue) {
+        enableConditionManager.handleValueChange(componentName, componentValue);
     }
 
     /**

@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2020, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- * 
+ *
  * WSO2 Inc. licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing,
- * 
+ *
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied. See the License for the
@@ -16,10 +16,6 @@
  * under the License.
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.presentation;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.EList;
@@ -31,15 +27,16 @@ import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Group;
-import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloudConnectorOperation;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleOptionType;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.condition.manager.EnableConditionManager;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeGroupValue;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValue;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValueType;
@@ -47,6 +44,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.Connect
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.Element;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class ConnectorParameterRenderer extends PropertyParameterRenderer {
 
@@ -56,17 +57,20 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
     IPropertiesEditionComponent propertiesEditionComponent;
     SectionPropertiesEditingPart partForm;
     PropertiesWidgetProvider widgetProvider;
+    private final EnableConditionManager enableConditionManager;
     private static IDeveloperStudioLog log = Logger.getLog(EEFPropertyViewUtil.PLUGIN_ID);
 
     public ConnectorParameterRenderer(IPropertiesEditionComponent propertiesEditionComponent,
-            SectionPropertiesEditingPart partForm) {
+                                      SectionPropertiesEditingPart partForm) {
+
         this.propertiesEditionComponent = propertiesEditionComponent;
         this.partForm = partForm;
         this.controlList = new HashMap<String, Control>();
         this.compositeList = new HashMap<String, Composite>();
         this.requiredList = new HashMap<String, Control>();
+        this.enableConditionManager = new EnableConditionManager(compositeList);
         widgetProvider = new PropertiesWidgetProvider(partForm, propertiesEditionComponent, controlList, compositeList,
-                requiredList);
+                requiredList, enableConditionManager);
     }
 
     @Override
@@ -82,7 +86,8 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
     }
 
     public void recursive(Element element, Composite parent, Composite generalGroup, FormToolkit widgetFactory,
-            int level) {
+                          int level) {
+
         ++level;
         if (element.getType().equals("attribute")) {
             if (level != 2) { // Will be 2 since ++ level
@@ -108,6 +113,7 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
     }
 
     public void evaluateAttribute(AttributeValue value, Composite parent, FormToolkit widgetFactory, int level) {
+
         if (AttributeValueType.STRING.equals(value.getType())) {
             if (level == 2) {
                 widgetProvider.createTextBoxField(widgetFactory, parent, value);
@@ -115,7 +121,7 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
                 widgetProvider.createTextBoxFieldWithButton(widgetFactory, parent, value);
             }
         } else if (AttributeValueType.BOOLEANOREXPRESSION.equals(value.getType())) {
-            widgetProvider.createDropDownField(widgetFactory, parent, new String[] { "true", "false" }, value);
+            widgetProvider.createDropDownField(widgetFactory, parent, new String[]{"true", "false"}, value);
         } else if (AttributeValueType.COMBO.equals(value.getType())) {
             widgetProvider.createDropDownField(widgetFactory, parent, value.getComboValues().toArray(new String[0]),
                     value);
@@ -132,6 +138,7 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
     }
 
     public String[] getConnectionEntriesList(List<String> allowedTypes) {
+
         ArrayList<String> availableConnections = null;
         try {
             availableConnections = EEFPropertyViewUtil.getAvailableConnectionEntriesList(allowedTypes);
@@ -139,17 +146,18 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
             log.error("Error loading available connections", e);
         }
         if (availableConnections == null || availableConnections.isEmpty()) {
-            return new String[] { "" };
+            return new String[]{""};
         } else {
-            return availableConnections.toArray(new String[] {});
+            return availableConnections.toArray(new String[]{});
         }
     }
 
     // Triggerred with ecore event bus
     @Override
     public void fillData(EObject dataObject) {
-        EList<CallTemplateParameter> parameterList = ((CloudConnectorOperation) dataObject).getConnectorParameters();
 
+        EList<CallTemplateParameter> parameterList = ((CloudConnectorOperation) dataObject).getConnectorParameters();
+        enableConditionManager.handleValueChange(parameterList);
         /// Exclude properties which are not parameters
         String configRefValue = ((CloudConnectorOperation) dataObject).getConfigRef();
         Combo configRefCombo = (Combo) controlList.get("configRef");

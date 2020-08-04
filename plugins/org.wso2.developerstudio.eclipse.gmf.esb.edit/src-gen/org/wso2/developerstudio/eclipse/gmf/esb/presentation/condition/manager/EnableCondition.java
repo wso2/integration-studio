@@ -21,15 +21,18 @@ import java.util.List;
 import java.util.Map;
 
 public abstract class EnableCondition {
+
     private String targetComponentName;
 
     public abstract List<String> getComponentsList();
 
     public String getTargetComponentName() {
+
         return targetComponentName;
     }
 
     public void setTargetComponent(String targetComponent) {
+
         this.targetComponentName = targetComponent;
     }
 

@@ -91,7 +91,7 @@ public class EsbSwaggerEditor extends AbstractWebBasedEditor {
     public void createPartControl(Composite parent) {
         browser = createBrowser(parent);
         String port = getPortValueForJS();
-        browser.setUrl("http://127.0.0.1:" + port + "/swagger-editor" + "?port=" + getJettyPort());
+        browser.setUrl("http://127.0.0.1:" + port + "/swagger-editor" + "?port=" + getJettyPort() + "&nocache=1");
     }
 
     private Browser createBrowser(Composite parent) {

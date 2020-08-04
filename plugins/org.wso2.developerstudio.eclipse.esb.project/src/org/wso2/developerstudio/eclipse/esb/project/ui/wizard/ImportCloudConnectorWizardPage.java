@@ -68,7 +68,7 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
     private Button connectorStore;
     private Button fileSystem;
     private static final String LOAD_CONNECTORS_PAGE = "http://localhost:"
-            + FunctionServerConstants.EMBEDDED_SERVER_PORT + "/project/connectors/index.html";
+            + FunctionServerConstants.EMBEDDED_SERVER_PORT + "/project/connectors/index.html?nocache=1";
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     private static ImportCloudConnectorWizardPage wizard;

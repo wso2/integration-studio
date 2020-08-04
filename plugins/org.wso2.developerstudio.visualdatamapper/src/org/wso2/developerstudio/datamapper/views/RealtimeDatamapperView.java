@@ -46,13 +46,14 @@ import org.osgi.framework.Bundle;
 public class RealtimeDatamapperView extends ViewPart {
 
     public static final int EMBEDDED_SERVER_PORT = 7774;
+    private static final String NO_CACHE = "&nocache=1";
     private Browser browser;
 
     @Override
     public void createPartControl(Composite arg0) {
         browser = new Browser(arg0, SWT.NONE);
         String port = getPortValueForJS();
-        browser.setUrl("http://localhost:" + port + "/dataMapper?port=" + port);
+        browser.setUrl("http://localhost:" + port + "/dataMapper?port=" + port + NO_CACHE);
     }
 
     public void closeBrowser() {
@@ -65,12 +66,12 @@ public class RealtimeDatamapperView extends ViewPart {
     }
 
     public void setURL(URL url) {
-        browser.setUrl(url.toString());
+        browser.setUrl(url.toString() + NO_CACHE);
     }
 
     public void setURL() {
         String port = getPortValueForJS();
-        browser.setUrl("http://localhost:" + port + "/dataMapper?port=" + port);
+        browser.setUrl("http://localhost:" + port + "/dataMapper?port=" + port + NO_CACHE);
         browser.refresh();
     }
 
@@ -82,7 +83,7 @@ public class RealtimeDatamapperView extends ViewPart {
     public void setURL(String inputSchema, String outputSchema) {
         String port = getPortValueForJS();
         browser.setUrl("http://localhost:" + port + "/dataMapper?port=" + port + "&inputtype=" + inputSchema
-                + "&outputtype=" + outputSchema);
+                + "&outputtype=" + outputSchema + NO_CACHE);
     }
 
     /**

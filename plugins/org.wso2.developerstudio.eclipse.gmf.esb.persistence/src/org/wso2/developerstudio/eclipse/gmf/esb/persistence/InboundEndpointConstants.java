@@ -257,6 +257,8 @@ public class InboundEndpointConstants {
     public static final String RABBITMQ_SERVER_RETRY_INTERVAL = "rabbitmq.server.retry.interval";
     public static final String RABBITMQ_CONSUMER_QOS = "rabbitmq.channel.consumer.qos";
     public static final String RABBITMQ_QUEUE_AUTODECLARE = "rabbitmq.queue.autodeclare";
+    public static final String RABBITMQ_MESSAGE_MAX_DEAD_LETTERED_COUNT = "rabbitmq.message.max.dead.lettered.count";
+    public static final String RABBITMQ_MESSAGE_REQUEUE_DELAY = "rabbitmq.message.requeue.delay";
 
     public static final String INBOUND_FEED_URL = "feed.url";
     public static final String INBOUND_FEED_TYPE = "feed.type";

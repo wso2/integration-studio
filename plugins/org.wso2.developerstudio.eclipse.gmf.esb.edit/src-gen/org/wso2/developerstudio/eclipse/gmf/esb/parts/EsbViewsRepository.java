@@ -9483,6 +9483,9 @@ public class EsbViewsRepository {
 			
 			public static String transportRabbitMqAutoDeclare = "esb::InboundEndpoint::properties::transportRabbitMqAutoDeclare";
 			
+			public static String transportRabbitMqMaxDeadLetteredCount = "esb::InboundEndpoint::properties::transportRabbitMqMaxDeadLetteredCount";
+			
+			public static String transportRabbitMqRequeueDelay = "esb::InboundEndpoint::properties::transportRabbitMqRequeueDelay";
 	
 		}
 	

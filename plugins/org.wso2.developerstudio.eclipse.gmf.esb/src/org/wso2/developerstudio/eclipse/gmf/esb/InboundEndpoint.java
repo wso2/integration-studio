@@ -249,6 +249,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerQosType <em>Transport Rabbit Mq Consumer Qos Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSDBUrl <em>Transport JMSDB Url</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportRabbitMqAutoDeclare <em>Transport Rabbit Mq Auto Declare</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqMaxDeadLetteredCount <em>Transport Rabbit Mq Max Dead Lettered Count</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqRequeueDelay <em>Transport Rabbit Mq Requeue Delay</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint()
@@ -3675,6 +3677,58 @@ public interface InboundEndpoint extends EsbElement {
      * @generated
      */
     void setTransportRabbitMqAutoDeclare(boolean value);
+
+    /**
+     * Returns the value of the '<em><b>Transport Rabbit Mq Max Dead Lettered Count</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Transport Rabbit Mq Max Dead Lettered Count</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Transport Rabbit Mq Max Dead Lettered Count</em>' attribute.
+     * @see #setTransportRabbitMqMaxDeadLetteredCount(String)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqMaxDeadLetteredCount()
+     * @model
+     * @generated
+     */
+    String getTransportRabbitMqMaxDeadLetteredCount();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqMaxDeadLetteredCount <em>Transport Rabbit Mq Max Dead Lettered Count</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Transport Rabbit Mq Max Dead Lettered Count</em>' attribute.
+     * @see #getTransportRabbitMqMaxDeadLetteredCount()
+     * @generated
+     */
+    void setTransportRabbitMqMaxDeadLetteredCount(String value);
+
+    /**
+     * Returns the value of the '<em><b>Transport Rabbit Mq Requeue Delay</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Transport Rabbit Mq Requeue Delay</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Transport Rabbit Mq Requeue Delay</em>' attribute.
+     * @see #setTransportRabbitMqRequeueDelay(String)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqRequeueDelay()
+     * @model
+     * @generated
+     */
+    String getTransportRabbitMqRequeueDelay();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqRequeueDelay <em>Transport Rabbit Mq Requeue Delay</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Transport Rabbit Mq Requeue Delay</em>' attribute.
+     * @see #getTransportRabbitMqRequeueDelay()
+     * @generated
+     */
+    void setTransportRabbitMqRequeueDelay(String value);
 
     /**
      * Returns the value of the '<em><b>Class</b></em>' attribute.

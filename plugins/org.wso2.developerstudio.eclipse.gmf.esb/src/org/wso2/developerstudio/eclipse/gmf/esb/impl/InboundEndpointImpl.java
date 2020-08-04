@@ -288,6 +288,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConsumerQosType <em>Transport Rabbit Mq Consumer Qos Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSDBUrl <em>Transport JMSDB Url</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportRabbitMqAutoDeclare <em>Transport Rabbit Mq Auto Declare</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqMaxDeadLetteredCount <em>Transport Rabbit Mq Max Dead Lettered Count</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqRequeueDelay <em>Transport Rabbit Mq Requeue Delay</em>}</li>
  * </ul>
  *
  * @generated
@@ -4773,6 +4775,46 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected boolean transportRabbitMqAutoDeclare = TRANSPORT_RABBIT_MQ_AUTO_DECLARE_EDEFAULT;
 
     /**
+     * The default value of the '{@link #getTransportRabbitMqMaxDeadLetteredCount() <em>Transport Rabbit Mq Max Dead Lettered Count</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTransportRabbitMqMaxDeadLetteredCount()
+     * @generated
+     * @ordered
+     */
+    protected static final String TRANSPORT_RABBIT_MQ_MAX_DEAD_LETTERED_COUNT_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getTransportRabbitMqMaxDeadLetteredCount() <em>Transport Rabbit Mq Max Dead Lettered Count</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTransportRabbitMqMaxDeadLetteredCount()
+     * @generated
+     * @ordered
+     */
+    protected String transportRabbitMqMaxDeadLetteredCount = TRANSPORT_RABBIT_MQ_MAX_DEAD_LETTERED_COUNT_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getTransportRabbitMqRequeueDelay() <em>Transport Rabbit Mq Requeue Delay</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTransportRabbitMqRequeueDelay()
+     * @generated
+     * @ordered
+     */
+    protected static final String TRANSPORT_RABBIT_MQ_REQUEUE_DELAY_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getTransportRabbitMqRequeueDelay() <em>Transport Rabbit Mq Requeue Delay</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTransportRabbitMqRequeueDelay()
+     * @generated
+     * @ordered
+     */
+    protected String transportRabbitMqRequeueDelay = TRANSPORT_RABBIT_MQ_REQUEUE_DELAY_EDEFAULT;
+
+    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated NOT
@@ -7439,6 +7481,48 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     }
 
     /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getTransportRabbitMqMaxDeadLetteredCount() {
+        return transportRabbitMqMaxDeadLetteredCount;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setTransportRabbitMqMaxDeadLetteredCount(String newTransportRabbitMqMaxDeadLetteredCount) {
+        String oldTransportRabbitMqMaxDeadLetteredCount = transportRabbitMqMaxDeadLetteredCount;
+        transportRabbitMqMaxDeadLetteredCount = newTransportRabbitMqMaxDeadLetteredCount;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MAX_DEAD_LETTERED_COUNT, oldTransportRabbitMqMaxDeadLetteredCount, transportRabbitMqMaxDeadLetteredCount));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getTransportRabbitMqRequeueDelay() {
+        return transportRabbitMqRequeueDelay;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setTransportRabbitMqRequeueDelay(String newTransportRabbitMqRequeueDelay) {
+        String oldTransportRabbitMqRequeueDelay = transportRabbitMqRequeueDelay;
+        transportRabbitMqRequeueDelay = newTransportRabbitMqRequeueDelay;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_REQUEUE_DELAY, oldTransportRabbitMqRequeueDelay, transportRabbitMqRequeueDelay));
+    }
+
+    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
@@ -9724,6 +9808,10 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
                 return getTransportJMSDBUrl();
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_AUTO_DECLARE:
                 return isTransportRabbitMqAutoDeclare();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MAX_DEAD_LETTERED_COUNT:
+                return getTransportRabbitMqMaxDeadLetteredCount();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_REQUEUE_DELAY:
+                return getTransportRabbitMqRequeueDelay();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -10406,6 +10494,12 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_AUTO_DECLARE:
                 setTransportRabbitMqAutoDeclare((Boolean)newValue);
                 return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MAX_DEAD_LETTERED_COUNT:
+                setTransportRabbitMqMaxDeadLetteredCount((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_REQUEUE_DELAY:
+                setTransportRabbitMqRequeueDelay((String)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -11086,6 +11180,12 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_AUTO_DECLARE:
                 setTransportRabbitMqAutoDeclare(TRANSPORT_RABBIT_MQ_AUTO_DECLARE_EDEFAULT);
                 return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MAX_DEAD_LETTERED_COUNT:
+                setTransportRabbitMqMaxDeadLetteredCount(TRANSPORT_RABBIT_MQ_MAX_DEAD_LETTERED_COUNT_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_REQUEUE_DELAY:
+                setTransportRabbitMqRequeueDelay(TRANSPORT_RABBIT_MQ_REQUEUE_DELAY_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -11543,6 +11643,10 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
                 return TRANSPORT_JMSDB_URL_EDEFAULT == null ? transportJMSDBUrl != null : !TRANSPORT_JMSDB_URL_EDEFAULT.equals(transportJMSDBUrl);
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_AUTO_DECLARE:
                 return transportRabbitMqAutoDeclare != TRANSPORT_RABBIT_MQ_AUTO_DECLARE_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MAX_DEAD_LETTERED_COUNT:
+                return TRANSPORT_RABBIT_MQ_MAX_DEAD_LETTERED_COUNT_EDEFAULT == null ? transportRabbitMqMaxDeadLetteredCount != null : !TRANSPORT_RABBIT_MQ_MAX_DEAD_LETTERED_COUNT_EDEFAULT.equals(transportRabbitMqMaxDeadLetteredCount);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_REQUEUE_DELAY:
+                return TRANSPORT_RABBIT_MQ_REQUEUE_DELAY_EDEFAULT == null ? transportRabbitMqRequeueDelay != null : !TRANSPORT_RABBIT_MQ_REQUEUE_DELAY_EDEFAULT.equals(transportRabbitMqRequeueDelay);
         }
         return super.eIsSet(featureID);
     }
@@ -11988,6 +12092,10 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
         result.append(transportJMSDBUrl);
         result.append(", transportRabbitMqAutoDeclare: ");
         result.append(transportRabbitMqAutoDeclare);
+        result.append(", transportRabbitMqMaxDeadLetteredCount: ");
+        result.append(transportRabbitMqMaxDeadLetteredCount);
+        result.append(", transportRabbitMqRequeueDelay: ");
+        result.append(transportRabbitMqRequeueDelay);
         result.append(')');
         return result.toString();
     }

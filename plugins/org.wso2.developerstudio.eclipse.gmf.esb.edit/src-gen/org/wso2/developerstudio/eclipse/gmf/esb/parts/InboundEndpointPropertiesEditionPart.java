@@ -3263,6 +3263,7 @@ public interface InboundEndpointPropertiesEditionPart {
 	 */
 	public void setTransportJMSDBUrl(String newValue);
 
+
 	/**
 	 * @return the transportRabbitMqAutoDeclare
 	 * 
@@ -3271,12 +3272,41 @@ public interface InboundEndpointPropertiesEditionPart {
 
 	/**
 	 * Defines a new transportRabbitMqAutoDeclare
-	 * 
-	 * @param newValue
-	 *            the new transportRabbitMqAutoDeclare to set
+	 * @param newValue the new transportRabbitMqAutoDeclare to set
 	 * 
 	 */
 	public void setTransportRabbitMqAutoDeclare(Boolean newValue);
+
+
+	/**
+	 * @return the transportRabbitMqMaxDeadLetteredCount
+	 * 
+	 */
+	public String getTransportRabbitMqMaxDeadLetteredCount();
+
+	/**
+	 * Defines a new transportRabbitMqMaxDeadLetteredCount
+	 * @param newValue the new transportRabbitMqMaxDeadLetteredCount to set
+	 * 
+	 */
+	public void setTransportRabbitMqMaxDeadLetteredCount(String newValue);
+
+
+	/**
+	 * @return the transportRabbitMqRequeueDelay
+	 * 
+	 */
+	public String getTransportRabbitMqRequeueDelay();
+
+	/**
+	 * Defines a new transportRabbitMqRequeueDelay
+	 * @param newValue the new transportRabbitMqRequeueDelay to set
+	 * 
+	 */
+	public void setTransportRabbitMqRequeueDelay(String newValue);
+
+
+
 
 	// Start of user code for transportRabbitMqConsumerQosKey specific getters and setters declaration
     public RegistryKeyProperty getRabbitMqConsumerQosKey();

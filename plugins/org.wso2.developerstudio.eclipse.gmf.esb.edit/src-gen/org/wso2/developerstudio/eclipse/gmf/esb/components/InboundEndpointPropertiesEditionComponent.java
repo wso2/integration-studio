@@ -135,10 +135,8 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 			if (isAccessible(EsbViewsRepository.InboundEndpoint.Properties.type)) {
 				basePart.initType(EEFUtils.choiceOfValues(inboundEndpoint, EsbPackage.eINSTANCE.getInboundEndpoint_Type()), inboundEndpoint.getType());
 			}
-			// Start of user code for additional businessfilters for serviceParameters
 			if (isAccessible(EsbViewsRepository.InboundEndpoint.Properties.class_))
 				basePart.setClass_(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, inboundEndpoint.getClass_()));
-			// End of user code
 			
 			if (isAccessible(EsbViewsRepository.InboundEndpoint.Properties.protocol))
 				basePart.setProtocol(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, inboundEndpoint.getProtocol()));
@@ -789,6 +787,12 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 			if (isAccessible(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqAutoDeclare)) {
 				basePart.setTransportRabbitMqAutoDeclare(inboundEndpoint.isTransportRabbitMqAutoDeclare());
 			}
+			if (isAccessible(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqMaxDeadLetteredCount))
+				basePart.setTransportRabbitMqMaxDeadLetteredCount(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, inboundEndpoint.getTransportRabbitMqMaxDeadLetteredCount()));
+			
+			if (isAccessible(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqRequeueDelay))
+				basePart.setTransportRabbitMqRequeueDelay(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, inboundEndpoint.getTransportRabbitMqRequeueDelay()));
+			
 			// init filters
 			
 			if (isAccessible(EsbViewsRepository.InboundEndpoint.Properties.serviceParameters)) {
@@ -1484,6 +1488,12 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 		}
 		if (editorKey == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqAutoDeclare) {
 			return EsbPackage.eINSTANCE.getInboundEndpoint_TransportRabbitMqAutoDeclare();
+		}
+		if (editorKey == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqMaxDeadLetteredCount) {
+			return EsbPackage.eINSTANCE.getInboundEndpoint_TransportRabbitMqMaxDeadLetteredCount();
+		}
+		if (editorKey == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqRequeueDelay) {
+			return EsbPackage.eINSTANCE.getInboundEndpoint_TransportRabbitMqRequeueDelay();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -2187,6 +2197,12 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 		}
 		if (EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqAutoDeclare == event.getAffectedEditor()) {
 			inboundEndpoint.setTransportRabbitMqAutoDeclare((Boolean)event.getNewValue());
+		}
+		if (EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqMaxDeadLetteredCount == event.getAffectedEditor()) {
+			inboundEndpoint.setTransportRabbitMqMaxDeadLetteredCount((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
+		if (EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqRequeueDelay == event.getAffectedEditor()) {
+			inboundEndpoint.setTransportRabbitMqRequeueDelay((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -3546,10 +3562,23 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 					basePart.setTransportJMSDBUrl("");
 				}
 			}
-			if (EsbPackage.eINSTANCE.getInboundEndpoint_TransportRabbitMqAutoDeclare().equals(msg.getFeature())
-					&& msg.getNotifier().equals(semanticObject) && basePart != null
-					&& isAccessible(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqAutoDeclare))
-				basePart.setTransportRabbitMqAutoDeclare((Boolean) msg.getNewValue());
+			if (EsbPackage.eINSTANCE.getInboundEndpoint_TransportRabbitMqAutoDeclare().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqAutoDeclare))
+				basePart.setTransportRabbitMqAutoDeclare((Boolean)msg.getNewValue());
+			
+			if (EsbPackage.eINSTANCE.getInboundEndpoint_TransportRabbitMqMaxDeadLetteredCount().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqMaxDeadLetteredCount)) {
+				if (msg.getNewValue() != null) {
+					basePart.setTransportRabbitMqMaxDeadLetteredCount(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+				} else {
+					basePart.setTransportRabbitMqMaxDeadLetteredCount("");
+				}
+			}
+			if (EsbPackage.eINSTANCE.getInboundEndpoint_TransportRabbitMqRequeueDelay().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqRequeueDelay)) {
+				if (msg.getNewValue() != null) {
+					basePart.setTransportRabbitMqRequeueDelay(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+				} else {
+					basePart.setTransportRabbitMqRequeueDelay("");
+				}
+			}
 			
 		}
 	}
@@ -3781,7 +3810,9 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 			EsbPackage.eINSTANCE.getInboundEndpoint_TransportRabbitMqConsumerQosKey(),
 			EsbPackage.eINSTANCE.getInboundEndpoint_TransportRabbitMqConsumerQosType(),
 			EsbPackage.eINSTANCE.getInboundEndpoint_TransportJMSDBUrl(),
-			EsbPackage.eINSTANCE.getInboundEndpoint_TransportRabbitMqAutoDeclare()		);
+			EsbPackage.eINSTANCE.getInboundEndpoint_TransportRabbitMqAutoDeclare(),
+			EsbPackage.eINSTANCE.getInboundEndpoint_TransportRabbitMqMaxDeadLetteredCount(),
+			EsbPackage.eINSTANCE.getInboundEndpoint_TransportRabbitMqRequeueDelay()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -3791,6 +3822,7 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.Object, int)
 	 * 
+	 * @generated NOT
 	 */
 	public String getHelpContent(Object key, int kind) {
 		return EEFPropertyViewUtil.getHelpContent(key);
@@ -5331,6 +5363,20 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getInboundEndpoint_TransportRabbitMqAutoDeclare().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getInboundEndpoint_TransportRabbitMqAutoDeclare().getEAttributeType(), newValue);
+				}
+				if (EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqMaxDeadLetteredCount == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getInboundEndpoint_TransportRabbitMqMaxDeadLetteredCount().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getInboundEndpoint_TransportRabbitMqMaxDeadLetteredCount().getEAttributeType(), newValue);
+				}
+				if (EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqRequeueDelay == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getInboundEndpoint_TransportRabbitMqRequeueDelay().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getInboundEndpoint_TransportRabbitMqRequeueDelay().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

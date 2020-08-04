@@ -5901,6 +5901,12 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_AYfNIdEFEeqOx6t8882TQQ" name="transportRabbitMqAutoDeclare" views="_AYhqedEFEeqOx6t8882TQQ">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//InboundEndpoint/transportRabbitMqAutoDeclare"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_uhc439YhEeqrxuqKKEwg2g" name="transportRabbitMqMaxDeadLetteredCount" views="_uhdhs9YhEeqrxuqKKEwg2g">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//InboundEndpoint/transportRabbitMqMaxDeadLetteredCount"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_uhc44NYhEeqrxuqKKEwg2g" name="transportRabbitMqRequeueDelay" views="_uhdhtNYhEeqrxuqKKEwg2g">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//InboundEndpoint/transportRabbitMqRequeueDelay"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//InboundEndpoint"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7wiHvJnEei6boXzpRIfnA" name="InboundEndpointParameter" views="_E7xMkfJnEei6boXzpRIfnA">
@@ -12536,6 +12542,12 @@
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_AYhqedEFEeqOx6t8882TQQ" name="transportRabbitMqAutoDeclare">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_uhdhs9YhEeqrxuqKKEwg2g" name="transportRabbitMqMaxDeadLetteredCount">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_uhdhtNYhEeqrxuqKKEwg2g" name="transportRabbitMqRequeueDelay">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
         </elements>
       </views>

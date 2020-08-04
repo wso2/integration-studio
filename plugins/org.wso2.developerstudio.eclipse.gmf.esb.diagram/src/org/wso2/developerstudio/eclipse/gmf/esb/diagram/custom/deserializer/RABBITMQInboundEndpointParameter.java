@@ -49,6 +49,8 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOU
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_AUTO_DECLARE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MAX_DEAD_LETTERED_COUNT;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_REQUEUE_DELAY;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.InboundEndpointConstants;
@@ -155,7 +157,13 @@ public enum RABBITMQInboundEndpointParameter {
                                                                                                                                                                                                                                                                     true), RABBITMQ_QUEUE_AUTODECLARE(
                                                                                                                                                                                                                                                                             InboundEndpointConstants.RABBITMQ_QUEUE_AUTODECLARE,
                                                                                                                                                                                                                                                                             INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_AUTO_DECLARE,
-                                                                                                                                                                                                                                                                            false);
+                                                                                                                                                                                                                                                                            false), RABBITMQ_MESSAGE_MAX_DEAD_LETTERED_COUNT(
+                                                                                                                                                                                                                                                                                    InboundEndpointConstants.RABBITMQ_MESSAGE_MAX_DEAD_LETTERED_COUNT,
+                                                                                                                                                                                                                                                                                    INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MAX_DEAD_LETTERED_COUNT,
+                                                                                                                                                                                                                                                                                    true), RABBITMQ_MESSAGE_REQUEUE_DELAY(
+                                                                                                                                                                                                                                                                                            InboundEndpointConstants.RABBITMQ_MESSAGE_REQUEUE_DELAY,
+                                                                                                                                                                                                                                                                                            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_REQUEUE_DELAY,
+                                                                                                                                                                                                                                                                                            true);
 
     private final String name;
     private final EAttribute eAttributeValue;

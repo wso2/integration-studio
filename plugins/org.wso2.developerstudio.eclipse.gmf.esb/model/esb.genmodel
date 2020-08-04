@@ -2654,6 +2654,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqConsumerQosType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSDBUrl"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqAutoDeclare"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqMaxDeadLetteredCount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqRequeueDelay"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//InboundEndpointParameter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpointParameter/name"/>

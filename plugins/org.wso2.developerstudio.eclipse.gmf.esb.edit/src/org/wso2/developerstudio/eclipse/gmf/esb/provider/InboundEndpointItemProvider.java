@@ -328,6 +328,8 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
             addTransportRabbitMqConnectionRetryIntervalPropertyDescriptor(object);
             addTransportRabbitMqServerRetryIntervalPropertyDescriptor(object);
             addTransportRabbitMqConsumerQosTypePropertyDescriptor(object);
+            addTransportRabbitMqMaxDeadLetteredCountPropertyDescriptor(object);
+            addTransportRabbitMqRequeueDelayPropertyDescriptor(object);
             if (PayloadFormatType.INLINE.equals(inboundEndpoint.getTransportRabbitMqConsumerQosType())) {
                 addTransportRabbitMqConsumerQosPropertyDescriptor(object);
             } else {
@@ -2665,6 +2667,50 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
     }
 
     /**
+     * This adds a property descriptor for the Transport Rabbit Mq Max Dead Lettered Count feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addTransportRabbitMqMaxDeadLetteredCountPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_InboundEndpoint_transportRabbitMqMaxDeadLetteredCount_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportRabbitMqMaxDeadLetteredCount_feature", "_UI_InboundEndpoint_type"),
+                 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MAX_DEAD_LETTERED_COUNT,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Transport Rabbit Mq Requeue Delay feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addTransportRabbitMqRequeueDelayPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_InboundEndpoint_transportRabbitMqRequeueDelay_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportRabbitMqRequeueDelay_feature", "_UI_InboundEndpoint_type"),
+                 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_REQUEUE_DELAY,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
      * This adds a property descriptor for the Class feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -4528,6 +4574,8 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE:
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMSDB_URL:
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_AUTO_DECLARE:
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MAX_DEAD_LETTERED_COUNT:
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_REQUEUE_DELAY:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
             case EsbPackage.INBOUND_ENDPOINT__SEQUENCE_INPUT_CONNECTOR:

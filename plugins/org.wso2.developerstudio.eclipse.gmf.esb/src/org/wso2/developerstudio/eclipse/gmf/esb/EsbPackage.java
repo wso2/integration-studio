@@ -25997,13 +25997,31 @@ public interface EsbPackage extends EPackage {
     int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_AUTO_DECLARE = ESB_ELEMENT_FEATURE_COUNT + 222;
 
     /**
+     * The feature id for the '<em><b>Transport Rabbit Mq Max Dead Lettered Count</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MAX_DEAD_LETTERED_COUNT = ESB_ELEMENT_FEATURE_COUNT + 223;
+
+    /**
+     * The feature id for the '<em><b>Transport Rabbit Mq Requeue Delay</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_REQUEUE_DELAY = ESB_ELEMENT_FEATURE_COUNT + 224;
+
+    /**
      * The number of structural features of the '<em>Inbound Endpoint</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 223;
+    int INBOUND_ENDPOINT_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 225;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointParameterImpl <em>Inbound Endpoint Parameter</em>}' class.
@@ -37303,6 +37321,28 @@ public interface EsbPackage extends EPackage {
      * @generated
      */
     EAttribute getInboundEndpoint_TransportRabbitMqAutoDeclare();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqMaxDeadLetteredCount <em>Transport Rabbit Mq Max Dead Lettered Count</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Transport Rabbit Mq Max Dead Lettered Count</em>'.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqMaxDeadLetteredCount()
+     * @see #getInboundEndpoint()
+     * @generated
+     */
+    EAttribute getInboundEndpoint_TransportRabbitMqMaxDeadLetteredCount();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqRequeueDelay <em>Transport Rabbit Mq Requeue Delay</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Transport Rabbit Mq Requeue Delay</em>'.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqRequeueDelay()
+     * @see #getInboundEndpoint()
+     * @generated
+     */
+    EAttribute getInboundEndpoint_TransportRabbitMqRequeueDelay();
 
     /**
      * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointParameter <em>Inbound Endpoint Parameter</em>}'.
@@ -53962,6 +54002,22 @@ public interface EsbPackage extends EPackage {
          * @generated
          */
         EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_AUTO_DECLARE = eINSTANCE.getInboundEndpoint_TransportRabbitMqAutoDeclare();
+
+        /**
+         * The meta object literal for the '<em><b>Transport Rabbit Mq Max Dead Lettered Count</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MAX_DEAD_LETTERED_COUNT = eINSTANCE.getInboundEndpoint_TransportRabbitMqMaxDeadLetteredCount();
+
+        /**
+         * The meta object literal for the '<em><b>Transport Rabbit Mq Requeue Delay</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_REQUEUE_DELAY = eINSTANCE.getInboundEndpoint_TransportRabbitMqRequeueDelay();
 
         /**
          * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointParameterImpl <em>Inbound Endpoint Parameter</em>}' class.

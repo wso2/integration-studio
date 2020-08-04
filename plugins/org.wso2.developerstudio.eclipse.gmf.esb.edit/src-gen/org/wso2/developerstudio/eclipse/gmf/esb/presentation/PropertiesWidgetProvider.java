@@ -123,7 +123,7 @@ public class PropertiesWidgetProvider {
      * @param requiredList Map which holds the required composite list based on the 'required' parameter of json schema
      */
     public PropertiesWidgetProvider(HashMap<String, Control> controlList, HashMap<String, Composite> compositeList,
-                                    HashMap<String, Control> requiredList) {
+            HashMap<String, Control> requiredList) {
         this.controlList = controlList;
         this.compositeList = compositeList;
         this.isConnectionWidgetProvider = true;

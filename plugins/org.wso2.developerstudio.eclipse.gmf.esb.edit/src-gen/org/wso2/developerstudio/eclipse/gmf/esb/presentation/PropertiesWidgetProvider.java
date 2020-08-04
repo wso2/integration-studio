@@ -81,6 +81,7 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 /**
@@ -249,9 +250,6 @@ public class PropertiesWidgetProvider {
         propertyLabel.setLayoutData(labelRefData);
         // Add tooltip to the label
         setToolTip(propertyLabel, jsonSchemaObject.getHelpTip());
-
-        addToEnableConditionManager(jsonSchemaObject, jsonSchemaObject.getName());
-
         // Create expression toggle button
         Button expressionToggleButton = new Button(textBoxComposite, SWT.TOGGLE);
         Image expressionToggleButtonImage = null;
@@ -282,7 +280,6 @@ public class PropertiesWidgetProvider {
                     AttributeValue uiSchemaValue = (AttributeValue) ((Text) e.getSource())
                             .getData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY);
                     updateModel(ctp, valueTextBox, uiSchemaValue);
-                    updateEnableConditionValidation(jsonSchemaObject.getName(), ctp.getParameterValue());
                 }
             }
         });
@@ -363,9 +360,6 @@ public class PropertiesWidgetProvider {
         propertyLabel.setLayoutData(labelRefData);
         // Add tooltip to the label
         setToolTip(propertyLabel, jsonSchemaObject.getHelpTip());
-
-        addToEnableConditionManager(jsonSchemaObject, jsonSchemaObject.getName());
-
         // Create expression toggle button
         Button expressionToggleButton = new Button(textBoxComposite, SWT.TOGGLE);
         Image expressionToggleButtonImage = null;
@@ -398,7 +392,6 @@ public class PropertiesWidgetProvider {
                     AttributeValue uiSchemaValue = (AttributeValue) ((Text) e.getSource())
                             .getData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY);
                     updateModel(ctp, valueTextBox, uiSchemaValue);
-                    updateEnableConditionValidation(jsonSchemaObject.getName(), ctp.getParameterValue());
                 }
             }
         });
@@ -497,7 +490,7 @@ public class PropertiesWidgetProvider {
         searchField.addModifyListener(new ModifyListener() {
 
             public void modifyText(ModifyEvent e) {
-                for (Entry<String, Composite> entry : compositeList.entrySet()) { // traverse through the hash map
+                for (Map.Entry<String, Composite> entry : compositeList.entrySet()) { // traverse through the hash map
 
                     Control[] children = entry.getValue().getChildren();
 

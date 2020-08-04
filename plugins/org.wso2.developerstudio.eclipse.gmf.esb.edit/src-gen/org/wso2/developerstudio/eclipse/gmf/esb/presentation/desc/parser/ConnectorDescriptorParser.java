@@ -213,7 +213,7 @@ public class ConnectorDescriptorParser {
             JSONObject currentJsonObject = (JSONObject) firstObject;
             enableCondition = parseConditionArgument(currentJsonObject);
         } else {
-            throw new RuntimeException("Invalid type"); // todo :: handle this correctly
+            throw new RuntimeException("Invalid type");
         }
         value.setEnableCondition(enableCondition);
     }

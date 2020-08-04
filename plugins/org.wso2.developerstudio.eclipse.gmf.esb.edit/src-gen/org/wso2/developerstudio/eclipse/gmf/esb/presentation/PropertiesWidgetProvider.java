@@ -35,6 +35,8 @@ import org.eclipse.swt.custom.StyleRange;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -72,6 +74,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.CloudConnectorOperat
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.condition.manager.EnableCondition;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.condition.manager.EnableConditionManager;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValue;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.DescriptorConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
@@ -88,12 +91,12 @@ public class PropertiesWidgetProvider {
     protected IPropertiesEditionComponent propertiesEditionComponent;
     protected SectionPropertiesEditingPart partForm;
     protected HashMap<String, Control> controlList;
+    private static final char PASSWORD_BLACK_CIRCLE = '\u25CF';
     protected HashMap<String, Composite> compositeList;
     protected HashMap<String, Control> requiredList;
     private EnableConditionManager enableConditionManager;
     private boolean isConnectionWidgetProvider = false;
     private static IDeveloperStudioLog log = Logger.getLog(EEFPropertyViewUtil.PLUGIN_ID);
-    private static final char PASSWORD_BLACK_CIRCLE = '\u25CF';
 
     /**
      * General constructor to initialize properties widget provider
@@ -418,7 +421,6 @@ public class PropertiesWidgetProvider {
                     valueTextBox.setEchoChar('\0');
                 } else {
                     valueTextBox.setEchoChar(PASSWORD_BLACK_CIRCLE);
-
                 }
             }
         });
@@ -464,6 +466,68 @@ public class PropertiesWidgetProvider {
         if (jsonSchemaObject.getRequired()) {
             requiredList.put(jsonSchemaObject.getName(), valueTextBox);
         }
+        return parent;
+    }
+
+    /**
+     * Provide a composite with search box widget with expression support and a label
+     *
+     * @param widgetFactory widget factory instance
+     * @param parent parent composite
+     * @param jsonSchemaObject JSONSchema object of the property
+     * @return composite
+     */
+    public Composite createSearchBoxFieldWithButton(FormToolkit widgetFactory, final Composite parent,
+            AttributeValue jsonSchemaObject) {
+        // Create wrapping composite of 1 element
+        Composite searchBoxComposite = createComposite(jsonSchemaObject.getName(), widgetFactory, parent, 1, 1);
+
+        // Search field with search icon and cancel icon
+        final Text searchField = new Text(searchBoxComposite,
+                SWT.BORDER | SWT.SEARCH | SWT.WRAP | SWT.ICON_SEARCH | SWT.ICON_CANCEL);
+        searchField.setMessage("Search");
+
+        // Layout of search box
+        searchField.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        GridData searchData = new GridData(GridData.FILL_HORIZONTAL);
+        searchField.setLayoutData(searchData);
+        searchField.setData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY, jsonSchemaObject);
+
+        // listener to monitor changes in the text field
+        searchField.addModifyListener(new ModifyListener() {
+
+            public void modifyText(ModifyEvent e) {
+                for (Entry<String, Composite> entry : compositeList.entrySet()) { // traverse through the hash map
+
+                    Control[] children = entry.getValue().getChildren();
+
+                    for (Control child: children) {
+                        if (child instanceof Label) {
+                            Label label = (Label)child;
+                            String displayName = label.getText().toLowerCase();
+                            displayName = displayName.replaceAll("[:*]", "");
+                            String searchText = searchField.getText().toLowerCase();
+
+                            // Check if the display name contains the searched text
+                            if (displayName.contains(searchText)) {
+                                entry.getValue().setVisible(true);// shows the attribute that doesn't match
+                                ((GridData) entry.getValue().getLayoutData()).exclude = false; // hide
+                                entry.getValue().getParent().getParent().layout();
+
+                            } else {
+                                entry.getValue().setVisible(false);// hides the attribute that doesn't match
+                                ((GridData) entry.getValue().getLayoutData()).exclude = true; // hide
+                                entry.getValue().getParent().getParent().layout();
+                            }
+                        }
+                    }
+                }
+
+                compositeList.get(DescriptorConstants.CONFIG_REF).setVisible(true); // keeps connection visible
+                ((GridData) compositeList.get(DescriptorConstants.CONFIG_REF).getLayoutData()).exclude = false; // show
+                compositeList.get(DescriptorConstants.CONFIG_REF).getParent().getParent().layout();
+            }
+        });
         return parent;
     }
 
@@ -600,8 +664,8 @@ public class PropertiesWidgetProvider {
     public Composite createExpressionComposite(String id, FormToolkit widgetFactory, final Composite parent,
                                                AttributeValue jsonSchemaObject) {
         // Create wrapping composite of 2 elements and 1 span
-        Composite textComposite = createComposite(id + EEFPropertyConstants.EXPRESSION_FIELD_SUFFIX,
-                widgetFactory, parent, 2, 1);
+        Composite textComposite = createComposite(id + EEFPropertyConstants.EXPRESSION_FIELD_SUFFIX, widgetFactory,
+                parent, 2, 1);
 
         // Create expression Text box
         final StyledText expressionTextBox = new StyledText(textComposite, SWT.SINGLE);
@@ -751,7 +815,8 @@ public class PropertiesWidgetProvider {
 
         // Create edit connection button
         final Button editConnectionButton =
-                widgetFactory.createButton(textBoxComposite, "", SWT.PUSH | SWT.TRANSPARENT);
+                widgetFactory.createButton(textBoxComposite, "",
+                SWT.PUSH | SWT.TRANSPARENT);
         editConnectionButton.setImage(deleteElementImage);
         editConnectionButton.setEnabled(false);
         editConnectionButton.addListener(SWT.Selection, new Listener() {

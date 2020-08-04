@@ -99,6 +99,9 @@ public class ConnectorDescriptorParser {
                 case DescriptorConstants.PASSWORD_TEXT_OR_EXPRESSION:
                     value.setType(AttributeValueType.PASSWORDTEXTOREXPRESSION);
                     break;
+                case DescriptorConstants.SEARCH_BOX:
+                    value.setType(AttributeValueType.SEARCHBOX);
+                    break;
                 default:
                     value.setType(AttributeValueType.STRING);
                     break;
@@ -162,6 +165,9 @@ public class ConnectorDescriptorParser {
                     break;
                 case DescriptorConstants.PASSWORD_TEXT_OR_EXPRESSION:
                     value.setType(AttributeValueType.PASSWORDTEXTOREXPRESSION);
+                    break;
+                case DescriptorConstants.SEARCH_BOX:
+                    value.setType(AttributeValueType.SEARCHBOX);
                     break;
                 default:
                     value.setType(AttributeValueType.STRING);

@@ -126,6 +126,8 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
                     getConnectionEntriesList(value.getAllowedConnectionTypes()));
         } else if (AttributeValueType.PASSWORDTEXTOREXPRESSION.equals(value.getType())) {
             widgetProvider.createPasswordTextBoxFieldWithButton(widgetFactory, parent, value);
+        } else if (AttributeValueType.SEARCHBOX.equals(value.getType())) {
+            widgetProvider.createSearchBoxFieldWithButton(widgetFactory, parent, value);
         }
     }
 
@@ -162,7 +164,7 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
             descriptionText.setText(descriptionValue);
         }
 
-        //Iterate through controlList and fill data
+        // Iterate through controlList and fill data
         for (String key : controlList.keySet()) {
             CallTemplateParameter ctp = null;
             for (Object parameter : parameterList) {

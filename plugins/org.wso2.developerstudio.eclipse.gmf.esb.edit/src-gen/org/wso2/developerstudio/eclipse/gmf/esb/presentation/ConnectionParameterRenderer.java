@@ -63,6 +63,7 @@ public class ConnectionParameterRenderer {
     private Group tabSection;
     private Map<String, String> connectionTitleTypeMap = new HashMap<>();
     private static final String CONNECTION_TYPE = "connectionType";
+
     public ConnectionParameterRenderer(FormToolkit widgetFactory) {
         this.widgetFactory = widgetFactory;
         this.controlList = new HashMap<>();
@@ -75,26 +76,26 @@ public class ConnectionParameterRenderer {
             Map<String, String> updateConfigMap, AttributeValue allowedConnectionTypes, final String connectorName) {
         parent.setBackgroundMode(SWT.INHERIT_FORCE);
 
-        //connectionName
+        // connectionName
         for (Element elem : connectorRoot.getElements()) {
             if (elem.getType().equals("attribute")) {
                 evaluateAttribute((AttributeValue) elem.getValue(), parent, widgetFactory, 0);
                 break;
             }
         }
-        
+
         List<String> connectorConnectionTypes = allowedConnectionTypes.getAllowedConnectionTypes();
-        String connectionTypes[] = new String[connectorConnectionTypes.size()]; 
-        for (int j = 0; j < connectorConnectionTypes.size(); j++) { 
+        String connectionTypes[] = new String[connectorConnectionTypes.size()];
+        for (int j = 0; j < connectorConnectionTypes.size(); j++) {
             ConnectorRoot newConnectorRoot = ConnectorSchemaHolder.getInstance()
                     .getConnectorConnectionSchema(connectorName + "-" + connectorConnectionTypes.get(j));
-            connectionTypes[j] = newConnectorRoot.getTitle(); 
+            connectionTypes[j] = newConnectorRoot.getTitle();
             connectionTitleTypeMap.put(newConnectorRoot.getTitle(), connectorConnectionTypes.get(j));
-        } 
-        
-        //create dropdown for connection types
+        }
+
+        // create dropdown for connection types
         Composite composite = widgetFactory.createComposite(parent, SWT.TRANSPARENT);
-        composite.setBackground(new Color (parent.getShell().getDisplay(), 245, 245, 245));
+        composite.setBackground(new Color(parent.getShell().getDisplay(), 245, 245, 245));
         GridLayout propertiesGroupLayout = new GridLayout();
         propertiesGroupLayout.numColumns = 2;
         propertiesGroupLayout.marginLeft = 0;
@@ -112,7 +113,7 @@ public class ConnectionParameterRenderer {
         label.setLayoutData(labelRefData);
         final Combo configRef = new Combo(composite, SWT.READ_ONLY | SWT.DROP_DOWN);
         controlList.put(CONNECTION_TYPE, configRef);
-        if(allowedConnectionTypes.getRequired()) {
+        if (allowedConnectionTypes.getRequired()) {
             requiredList.put(CONNECTION_TYPE, configRef);
         }
         configRef.setItems(connectionTypes);
@@ -122,13 +123,13 @@ public class ConnectionParameterRenderer {
         configRef.setLayoutData(configRefData);
         configRef.addSelectionListener(new SelectionAdapter() {
             public void widgetSelected(SelectionEvent event) {
-                ConnectorRoot newConnectorRoot = ConnectorSchemaHolder.getInstance()
-                        .getConnectorConnectionSchema(connectorName + "-" + connectionTitleTypeMap.get(configRef.getText()));
+                ConnectorRoot newConnectorRoot = ConnectorSchemaHolder.getInstance().getConnectorConnectionSchema(
+                        connectorName + "-" + connectionTitleTypeMap.get(configRef.getText()));
                 tabFolder.dispose();
                 tabSection.dispose();
                 isFirstTime = true;
-                
-                //remove dispose items from controlList
+
+                // remove dispose items from controlList
                 List<String> controlListItems = new ArrayList<>();
                 for (Map.Entry<String, Control> entry : controlList.entrySet()) {
                     if (!entry.getKey().equals("connectionName") && !entry.getKey().equals(CONNECTION_TYPE)) {
@@ -138,12 +139,12 @@ public class ConnectionParameterRenderer {
                 for (String item : controlListItems) {
                     controlList.remove(item);
                 }
-                //render new UI based on dropdown value
+                // render new UI based on dropdown value
                 renderContentOfConenction(newConnectorRoot, parent);
             }
         });
 
-        //load rest of the connection components
+        // load rest of the connection components
         renderContentOfConenction(connectorRoot, parent);
 
         if (updateConfigMap != null && updateConfigMap.size() > 0) {
@@ -169,10 +170,10 @@ public class ConnectionParameterRenderer {
                 }
             }
         }
-        
+
         return controlList;
     }
-    
+
     private void renderContentOfConenction(ConnectorRoot connectorRoot, Composite parent) {
         for (Element elem : connectorRoot.getElements()) {
             if (elem.getType().equals("attributeGroup")) {
@@ -186,35 +187,35 @@ public class ConnectionParameterRenderer {
                     tabFolder.setLayoutData(tableLayoutData);
                     isFirstTime = false;
                 }
-                
+
                 AttributeGroupValue agv = (AttributeGroupValue) elem.getValue();
                 CTabItem tabGeneralSection = new CTabItem(tabFolder, SWT.NONE);
                 tabGeneralSection.setText(agv.getGroupName());
-                
+
                 final ScrolledComposite scroller = new ScrolledComposite(tabFolder, SWT.V_SCROLL);
                 final Composite tabComposite = new Composite(scroller, SWT.NONE);
                 tabComposite.setLayout(new GridLayout());
-                
+
                 for (Element ele : agv.getElements()) {
                     createDynamicWidgetComponents(ele, tabComposite);
                 }
-                
+
                 scroller.layout();
                 scroller.setContent(tabComposite);
                 scroller.setExpandVertical(true);
                 scroller.setExpandHorizontal(true);
                 scroller.setMinHeight(tabComposite.computeSize(SWT.DEFAULT, SWT.DEFAULT).y);
-                
-                scroller.addControlListener(new ControlAdapter(){
-                    public void controlResized( ControlEvent e ) {
+
+                scroller.addControlListener(new ControlAdapter() {
+                    public void controlResized(ControlEvent e) {
                         scroller.setMinHeight(tabComposite.computeSize(SWT.DEFAULT, SWT.DEFAULT).y);
                     }
                 });
-                
+
                 tabGeneralSection.setControl(scroller);
             }
         }
-        
+
         parent.layout();
         tabFolder.setSelection(0);
     }
@@ -241,6 +242,8 @@ public class ConnectionParameterRenderer {
                     value);
         } else if (AttributeValueType.PASSWORDTEXTOREXPRESSION.equals(value.getType())) {
             widgetProvider.createPasswordTextBoxFieldWithButton(widgetFactory, parent, value);
+        } else if (AttributeValueType.SEARCHBOX.equals(value.getType())) {
+            widgetProvider.createSearchBoxFieldWithButton(widgetFactory, parent, value);
         }
     }
 

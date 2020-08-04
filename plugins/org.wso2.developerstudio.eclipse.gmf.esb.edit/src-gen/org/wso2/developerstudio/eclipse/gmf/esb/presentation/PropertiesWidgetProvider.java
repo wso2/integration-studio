@@ -98,11 +98,11 @@ public class PropertiesWidgetProvider {
     /**
      * General constructor to initialize properties widget provider
      *
-     * @param partForm                   Properties Editing Part Form which holds the relevent properties composite in the view
+     * @param partForm Properties Editing Part Form which holds the relevent properties composite in the view
      * @param propertiesEditionComponent Component object which uses to manipulate ecore model
-     * @param controlList                Map which holds each SWT input widget against its property name
-     * @param compositeList              Map which holds each composite of the property against its property name
-     * @param requiredList               Map which holds the required composite list based on the 'required' parameter of json schema
+     * @param controlList Map which holds each SWT input widget against its property name
+     * @param compositeList Map which holds each composite of the property against its property name
+     * @param requiredList Map which holds the required composite list based on the 'required' parameter of json schema
      */
     public PropertiesWidgetProvider(SectionPropertiesEditingPart partForm,
                                     IPropertiesEditionComponent propertiesEditionComponent, HashMap<String, Control> controlList,
@@ -118,9 +118,9 @@ public class PropertiesWidgetProvider {
     /**
      * Special constructor to be used with connection dialog box property generation
      *
-     * @param controlList   Map which holds each SWT input widget against its property name
+     * @param controlList Map which holds each SWT input widget against its property name
      * @param compositeList Map which holds each composite of the property against its property name
-     * @param requiredList  Map which holds the required composite list based on the 'required' parameter of json schema
+     * @param requiredList Map which holds the required composite list based on the 'required' parameter of json schema
      */
     public PropertiesWidgetProvider(HashMap<String, Control> controlList, HashMap<String, Composite> compositeList,
                                     HashMap<String, Control> requiredList) {
@@ -135,7 +135,7 @@ public class PropertiesWidgetProvider {
      * Provides a new group inside the provided composite
      *
      * @param parent parent composite
-     * @param label  label of the group
+     * @param label label of the group
      * @return Generated Group widget
      */
     public Group createGroup(Composite parent, String label) {
@@ -157,13 +157,13 @@ public class PropertiesWidgetProvider {
     /**
      * Provide a composite with plain text box widget and a label
      *
-     * @param widgetFactory    widget factory instance
-     * @param parent           parent composite
+     * @param widgetFactory widget factory instance
+     * @param parent parent composite
      * @param jsonSchemaObject JSONSchema object of the property
      * @return composite with plain text box widget and a label
      */
     public Composite createTextBoxField(FormToolkit widgetFactory, Composite parent,
-                                        final AttributeValue jsonSchemaObject) {
+            final AttributeValue jsonSchemaObject) {
         // Create wrapping composite of 2 elements
         Composite textBoxComposite = createComposite(jsonSchemaObject.getName(), widgetFactory, parent, 2, 2);
 
@@ -188,7 +188,7 @@ public class PropertiesWidgetProvider {
             public void keyPressed(KeyEvent e) {
                 if (!isConnectionWidgetProvider) { // Connection widgets are not notified to ecore model
                     if (jsonSchemaObject.getName().equals("description")) { // Notify ecore model directly since
-                        // description is not a connector param
+                                                                            // description is not a connector param
                         propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(partForm,
                                 EsbViewsRepository.CloudConnectorOperation.Properties.description,
                                 PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null,
@@ -216,13 +216,13 @@ public class PropertiesWidgetProvider {
     /**
      * Provide a composite with text box widget with expression support and a label
      *
-     * @param widgetFactory    widget factory instance
-     * @param parent           parent composite
+     * @param widgetFactory widget factory instance
+     * @param parent parent composite
      * @param jsonSchemaObject JSONSchema object of the property
      * @return composite
      */
     public Composite createTextBoxFieldWithButton(FormToolkit widgetFactory, final Composite parent,
-                                                  AttributeValue jsonSchemaObject) {
+            AttributeValue jsonSchemaObject) {
         // Create wrapping composite of 3 elements
         Composite textBoxComposite = createComposite(jsonSchemaObject.getName(), widgetFactory, parent, 3, 3);
 
@@ -259,7 +259,7 @@ public class PropertiesWidgetProvider {
         GridData configRefData = new GridData(GridData.FILL_HORIZONTAL);
         valueTextBox.setLayoutData(configRefData);
         valueTextBox.setData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY, jsonSchemaObject); // Set UI schema object as
-        // control data
+                                                                                           // control data
         valueTextBox.addKeyListener(new KeyAdapter() {
 
             @Override
@@ -315,7 +315,7 @@ public class PropertiesWidgetProvider {
             }
         });
         valueTextBox.setData(EEFPropertyConstants.ASSOCIATED_BUTTON, expressionToggleButton); // Add associated button
-        // to
+                                                                                              // to
         setItemFocus(valueTextBox);
         // Register created widget in notify lists
         controlList.put(jsonSchemaObject.getName(), valueTextBox);
@@ -328,13 +328,13 @@ public class PropertiesWidgetProvider {
     /**
      * Provide a composite with password text box widget with expression support and a label
      *
-     * @param widgetFactory    widget factory instance
-     * @param parent           parent composite
+     * @param widgetFactory widget factory instance
+     * @param parent parent composite
      * @param jsonSchemaObject JSONSchema object of the property
      * @return composite
      */
     public Composite createPasswordTextBoxFieldWithButton(FormToolkit widgetFactory, final Composite parent,
-                                                          AttributeValue jsonSchemaObject) {
+            AttributeValue jsonSchemaObject) {
         // Create wrapping composite of 3 elements
         Composite textBoxComposite = createComposite(jsonSchemaObject.getName(), widgetFactory, parent, 4, 3);
 
@@ -373,7 +373,7 @@ public class PropertiesWidgetProvider {
         GridData configRefData = new GridData(GridData.FILL_HORIZONTAL);
         valueTextBox.setLayoutData(configRefData);
         valueTextBox.setData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY, jsonSchemaObject); // Set UI schema object as
-        // control data
+                                                                                           // control data
         valueTextBox.addKeyListener(new KeyAdapter() {
 
             @Override
@@ -458,14 +458,14 @@ public class PropertiesWidgetProvider {
     /**
      * Provide a composite with Drop down Combo widget with expression support and a label
      *
-     * @param widgetFactory    widget factory instance
-     * @param parent           parent composite
-     * @param options          options array for drop down menu
+     * @param widgetFactory widget factory instance
+     * @param parent parent composite
+     * @param options options array for drop down menu
      * @param jsonSchemaObject JSONSchema object of the property
      * @return Composite
      */
     public Composite createDropDownField(FormToolkit widgetFactory, final Composite parent, String[] options,
-                                         AttributeValue jsonSchemaObject) {
+            AttributeValue jsonSchemaObject) {
         // Create wrapping composite of 3 elements
         Composite dropDownComposite = createComposite(jsonSchemaObject.getName(), widgetFactory, parent, 3, 3);
 
@@ -575,14 +575,14 @@ public class PropertiesWidgetProvider {
     /**
      * Create expression composite which shows when expression toggle button is pressed
      *
-     * @param id               Property Field Name
-     * @param widgetFactory    widget factory instance
-     * @param parent           parent composite
+     * @param id Property Field Name
+     * @param widgetFactory widget factory instance
+     * @param parent parent composite
      * @param jsonSchemaObject JSONSchema object of the property
      * @return Composite
      */
     public Composite createExpressionComposite(String id, FormToolkit widgetFactory, final Composite parent,
-                                               AttributeValue jsonSchemaObject) {
+            AttributeValue jsonSchemaObject) {
         // Create wrapping composite of 2 elements and 1 span
         Composite textComposite = createComposite(id + EEFPropertyConstants.EXPRESSION_FIELD_SUFFIX,
                 widgetFactory, parent, 2, 1);
@@ -671,14 +671,14 @@ public class PropertiesWidgetProvider {
     /**
      * Creates connection field for the config Ref
      *
-     * @param widgetFactory    widget factory instance
-     * @param parent           parent composite
+     * @param widgetFactory widget factory instance
+     * @param parent parent composite
      * @param jsonSchemaObject JSONSchema object of the property
-     * @param options          options array for drop down menu
+     * @param options options array for drop down menu
      * @return Composite
      */
     public Composite createConnectionField(final FormToolkit widgetFactory, final Composite parent,
-                                           final AttributeValue jsonSchemaObject, String[] options) {
+            final AttributeValue jsonSchemaObject, String[] options) {
         // Fetch images for add and edit connection buttons
         Image newElementImage = EEFRuntimePlugin.getImage(EEFRuntimePlugin.ICONS_16x16 + "Add_16x16.gif");
         Image deleteElementImage = null;
@@ -724,7 +724,7 @@ public class PropertiesWidgetProvider {
                             EsbViewsRepository.CloudConnectorOperation.Properties.configRef,
                             PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null,
                             connectionComboBox.getText()));
-                    checkRequired();
+                            checkRequired();
                 }
 
             }
@@ -752,7 +752,7 @@ public class PropertiesWidgetProvider {
                             EsbViewsRepository.CloudConnectorOperation.Properties.configRef,
                             PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null,
                             connectionComboBox.getText()));
-                    checkRequired();
+                            checkRequired();
                 }
 
                 if (!connectionComboBox.getText().isEmpty()) {
@@ -776,13 +776,13 @@ public class PropertiesWidgetProvider {
     /**
      * Creates composite with text area
      *
-     * @param widgetFactory    widget factory instance
-     * @param parent           parent composite
+     * @param widgetFactory widget factory instance
+     * @param parent parent composite
      * @param jsonSchemaObject JSONSchema object of the property
      * @return Composite
      */
     public Composite createTextAreaFieldWithButton(FormToolkit widgetFactory, final Composite parent,
-                                                   AttributeValue jsonSchemaObject) {
+            AttributeValue jsonSchemaObject) {
         // Create composite with 3 elements
         Composite textAreaComposite = createComposite(jsonSchemaObject.getName(), widgetFactory, parent, 3, 3);
 
@@ -879,7 +879,7 @@ public class PropertiesWidgetProvider {
     }
 
     public Composite createCheckBoxField(FormToolkit widgetFactory, Composite parent, String Label, String[] options,
-                                         String id) {
+            String id) {
         Composite textBoxComposite = createComposite(id, widgetFactory, parent, options.length + 1, options.length + 1);
         Label label = new Label(textBoxComposite, SWT.TRANSPARENT | SWT.WRAP);
         label.setText(Label);
@@ -898,7 +898,7 @@ public class PropertiesWidgetProvider {
      * Creates composite with fixed(2) number of columns
      *
      * @param widgetFactory widgetFactory instance
-     * @param parent        parent composite
+     * @param parent parent composite
      * @return Composite
      */
     public Composite createComposite(FormToolkit widgetFactory, Composite parent) {
@@ -919,11 +919,11 @@ public class PropertiesWidgetProvider {
     /**
      * Creates composite with given number of columns and span
      *
-     * @param id            Field name of the property
+     * @param id Field name of the property
      * @param widgetFactory widgetFactory instance
-     * @param parent        parent composite
-     * @param columns       number of columns of the field
-     * @param span          span of the field
+     * @param parent parent composite
+     * @param columns number of columns of the field
+     * @param span span of the field
      * @return composite
      */
     public Composite createComposite(String id, FormToolkit widgetFactory, Composite parent, int columns, int span) {
@@ -949,13 +949,13 @@ public class PropertiesWidgetProvider {
     /**
      * Open expression dialog box
      *
-     * @param parent              parent
+     * @param parent parent
      * @param valueExpressionText expression text box
-     * @param valueExpression     Name spaced property instance
+     * @param valueExpression Name spaced property instance
      * @return
      */
     public boolean openValueExpressionWidgetNamespacedPropertyEditor(final Composite parent,
-                                                                     Control valueExpressionText, NamespacedProperty valueExpression) {
+            Control valueExpressionText, NamespacedProperty valueExpression) {
         if (valueExpression == null) {
             valueExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
             ((CallTemplateParameter) valueExpressionText.getData()).setParameterExpression(valueExpression);
@@ -976,20 +976,20 @@ public class PropertiesWidgetProvider {
     /**
      * Open add connection dialog box
      *
-     * @param widgetFactory        widgetFactory instance
-     * @param parent               parent composite
+     * @param widgetFactory widgetFactory instance
+     * @param parent parent composite
      * @param valueExpressionCombo connection selector combo box
-     * @param valueExpression      Namespaced property object
-     * @param jsonSchemaObject     json Shema UI object
+     * @param valueExpression Namespaced property object
+     * @param jsonSchemaObject json Shema UI object
      */
     public void openConnectionEditor(FormToolkit widgetFactory, final Composite parent, Combo valueExpressionCombo,
-                                     NamespacedProperty valueExpression, AttributeValue jsonSchemaObject) {
+            NamespacedProperty valueExpression, AttributeValue jsonSchemaObject) {
         // Get connector semantic object from component
         CloudConnectorOperationImpl connectorObject = (CloudConnectorOperationImpl) propertiesEditionComponent
                 .getEditingContext().getEObject();
         String connectorName = connectorObject.getConnectorName()
                 .split(EEFPropertyConstants.ECORE_CONNECTOR_NAME_SUFFIX)[0]; // Ecore connector name has connector
-        // suffix
+                                                                             // suffix
         IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
         ConnectionParameterWizard wizard = new ConnectionParameterWizard(widgetFactory, connectorName,
                 valueExpressionCombo, jsonSchemaObject);
@@ -1003,20 +1003,20 @@ public class PropertiesWidgetProvider {
     /**
      * Open edit connection dialog box
      *
-     * @param widgetFactory        widgetFactory instance
-     * @param parent               parent composite
+     * @param widgetFactory widgetFactory instance
+     * @param parent parent composite
      * @param valueExpressionCombo connection selector combo box
-     * @param valueExpression      Namespaced property object
-     * @param jsonSchemaObject     json Shema UI object
+     * @param valueExpression Namespaced property object
+     * @param jsonSchemaObject json Shema UI object
      */
     public void openConnectionUpdateEditor(FormToolkit widgetFactory, final Composite parent,
-                                           Combo valueExpressionCombo, NamespacedProperty valueExpression, AttributeValue value) {
+            Combo valueExpressionCombo, NamespacedProperty valueExpression, AttributeValue value) {
         // Get connector semantic object from component
         CloudConnectorOperationImpl connectorObject = (CloudConnectorOperationImpl) propertiesEditionComponent
                 .getEditingContext().getEObject();
         String connectorName = connectorObject.getConnectorName()
                 .split(EEFPropertyConstants.ECORE_CONNECTOR_NAME_SUFFIX)[0]; // Ecore connector name has connector
-        // suffix
+                                                                             // suffix
         IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
         ConnectionParameterWizard wizard = new ConnectionParameterWizard(widgetFactory, connectorName,
                 valueExpressionCombo.getText(), value);
@@ -1033,7 +1033,7 @@ public class PropertiesWidgetProvider {
      * Update parameter type to VALUE or EXPRESSION
      *
      * @param ruleType parameter type value/expression
-     * @param ctp      Call template param
+     * @param ctp Call template param
      */
     public void setParameterType(final RuleOptionType ruleType, final CallTemplateParameter ctp) {
         TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(ctp);
@@ -1049,7 +1049,7 @@ public class PropertiesWidgetProvider {
     /**
      * Set value of expression, this will not change the namespace of the expr
      *
-     * @param ctp   Calltemplate parameter
+     * @param ctp Calltemplate parameter
      * @param value local value
      */
     public void setExpressionValue(final CallTemplateParameter ctp, final String value) {
@@ -1067,7 +1067,7 @@ public class PropertiesWidgetProvider {
      * Add a tooltip to the control
      *
      * @param control Control which tool tip should be added
-     * @param text    tooltip message
+     * @param text tooltip message
      */
     public void setToolTip(Control control, String text) {
         final ToolTip tip = new ToolTip(control.getShell(), SWT.BALLOON);
@@ -1112,7 +1112,7 @@ public class PropertiesWidgetProvider {
     /**
      * update ecore model
      *
-     * @param ctp           call template param
+     * @param ctp call template param
      * @param targetControl updated control
      * @param uiSchameValue uischema object
      */

@@ -59,7 +59,7 @@ public class ConnectorDescriptorParser {
                 AttributeValue value = new AttributeValue();
                 JSONObject attrObj = obj.getJSONObject(DescriptorConstants.VALUE);
                 value.setName(attrObj.getString(DescriptorConstants.NAME));
-                if (attrObj.has(DescriptorConstants.DEFAULT_VALUE)) {
+                if(attrObj.has(DescriptorConstants.DEFAULT_VALUE)) {
                     value.setDefaultValue(attrObj.getString(DescriptorConstants.DEFAULT_VALUE));
                 }
                 value.setRequired(Boolean.parseBoolean(attrObj.getString(DescriptorConstants.REQUIRED)));
@@ -71,37 +71,37 @@ public class ConnectorDescriptorParser {
                 String inputType = attrObj.getString(DescriptorConstants.INPUT_TYPE);
 
                 switch (inputType) {
-                    case DescriptorConstants.STRING_OR_EXPRESSION:
-                        value.setType(AttributeValueType.STRING);
-                        break;
-                    case DescriptorConstants.COMBO_OR_EXPRESSION:
-                        value.setType(AttributeValueType.COMBO);
-                        JSONArray comboArray = attrObj.getJSONArray(DescriptorConstants.COMBO_VALUES);
-                        for (int j = 0; j < comboArray.length(); j++) {
-                            value.addComboValue(comboArray.getString(j));
-                        }
-                        break;
-                    case DescriptorConstants.BOOLEAN_OR_EXPRESSION:
-                        value.setType(AttributeValueType.BOOLEANOREXPRESSION);
-                        break;
-                    case DescriptorConstants.TEXTAREA_OR_EXPRESSION:
-                        value.setType(AttributeValueType.TEXTAREAOREXPRESSION);
-                        break;
-                    case DescriptorConstants.CONNECTION:
+                case DescriptorConstants.STRING_OR_EXPRESSION:
+                    value.setType(AttributeValueType.STRING);
+                    break;
+                case DescriptorConstants.COMBO_OR_EXPRESSION:
+                    value.setType(AttributeValueType.COMBO);
+                    JSONArray comboArray = attrObj.getJSONArray(DescriptorConstants.COMBO_VALUES);
+                    for (int j = 0; j < comboArray.length(); j++) {
+                        value.addComboValue(comboArray.getString(j));
+                    }
+                    break;
+                case DescriptorConstants.BOOLEAN_OR_EXPRESSION:
+                    value.setType(AttributeValueType.BOOLEANOREXPRESSION);
+                    break;
+                case DescriptorConstants.TEXTAREA_OR_EXPRESSION:
+                    value.setType(AttributeValueType.TEXTAREAOREXPRESSION);
+                    break;
+                case DescriptorConstants.CONNECTION:
 
-                        value.setType(AttributeValueType.CONNECTION);
-                        JSONArray allowedConnectionType = attrObj
-                                .getJSONArray(DescriptorConstants.ALLOWED_CONNECTION_TYPES);
-                        for (int k = 0; k < allowedConnectionType.length(); k++) {
-                            value.addAllowedConnectionType(allowedConnectionType.getString(k));
-                        }
-                        break;
-                    case DescriptorConstants.PASSWORD_TEXT_OR_EXPRESSION:
-                        value.setType(AttributeValueType.PASSWORDTEXTOREXPRESSION);
-                        break;
-                    default:
-                        value.setType(AttributeValueType.STRING);
-                        break;
+                    value.setType(AttributeValueType.CONNECTION);
+                    JSONArray allowedConnectionType = attrObj
+                            .getJSONArray(DescriptorConstants.ALLOWED_CONNECTION_TYPES);
+                    for (int k = 0; k < allowedConnectionType.length(); k++) {
+                        value.addAllowedConnectionType(allowedConnectionType.getString(k));
+                    }
+                    break;
+                case DescriptorConstants.PASSWORD_TEXT_OR_EXPRESSION:
+                    value.setType(AttributeValueType.PASSWORDTEXTOREXPRESSION);
+                    break;
+                default:
+                    value.setType(AttributeValueType.STRING);
+                    break;
                 }
                 element.setValue(value);
             } else {
@@ -124,7 +124,7 @@ public class ConnectorDescriptorParser {
                 AttributeValue value = new AttributeValue();
                 JSONObject attrObj = obj.getJSONObject(DescriptorConstants.VALUE);
                 value.setName(attrObj.getString(DescriptorConstants.NAME));
-                if (attrObj.has(DescriptorConstants.DEFAULT_VALUE)) {
+                if(attrObj.has(DescriptorConstants.DEFAULT_VALUE)) {
                     value.setDefaultValue(attrObj.getString(DescriptorConstants.DEFAULT_VALUE));
                 }
                 value.setRequired(Boolean.parseBoolean(attrObj.getString(DescriptorConstants.REQUIRED)));
@@ -135,37 +135,37 @@ public class ConnectorDescriptorParser {
                 }
                 String inputType = attrObj.getString(DescriptorConstants.INPUT_TYPE);
                 switch (inputType) {
-                    case DescriptorConstants.STRING_OR_EXPRESSION:
-                        value.setType(AttributeValueType.STRING);
-                        break;
-                    case DescriptorConstants.TEXTAREA_OR_EXPRESSION:
-                        value.setType(AttributeValueType.TEXTAREAOREXPRESSION);
-                        break;
-                    case DescriptorConstants.COMBO_OR_EXPRESSION:
-                        value.setType(AttributeValueType.COMBO);
-                        JSONArray comboArray = attrObj.getJSONArray(DescriptorConstants.COMBO_VALUES);
-                        for (int j = 0; j < comboArray.length(); j++) {
-                            value.addComboValue(comboArray.getString(j));
-                        }
-                        break;
-                    case DescriptorConstants.BOOLEAN_OR_EXPRESSION:
-                        value.setType(AttributeValueType.BOOLEANOREXPRESSION);
-                        break;
-                    case DescriptorConstants.CONNECTION:
+                case DescriptorConstants.STRING_OR_EXPRESSION:
+                    value.setType(AttributeValueType.STRING);
+                    break;
+                case DescriptorConstants.TEXTAREA_OR_EXPRESSION:
+                    value.setType(AttributeValueType.TEXTAREAOREXPRESSION);
+                    break;
+                case DescriptorConstants.COMBO_OR_EXPRESSION:
+                    value.setType(AttributeValueType.COMBO);
+                    JSONArray comboArray = attrObj.getJSONArray(DescriptorConstants.COMBO_VALUES);
+                    for (int j = 0; j < comboArray.length(); j++) {
+                        value.addComboValue(comboArray.getString(j));
+                    }
+                    break;
+                case DescriptorConstants.BOOLEAN_OR_EXPRESSION:
+                    value.setType(AttributeValueType.BOOLEANOREXPRESSION);
+                    break;
+                case DescriptorConstants.CONNECTION:
 
-                        value.setType(AttributeValueType.CONNECTION);
-                        JSONArray allowedConnectionType = attrObj
-                                .getJSONArray(DescriptorConstants.ALLOWED_CONNECTION_TYPES);
-                        for (int k = 0; k < allowedConnectionType.length(); k++) {
-                            value.addAllowedConnectionType(allowedConnectionType.getString(k));
-                        }
-                        break;
-                    case DescriptorConstants.PASSWORD_TEXT_OR_EXPRESSION:
-                        value.setType(AttributeValueType.PASSWORDTEXTOREXPRESSION);
-                        break;
-                    default:
-                        value.setType(AttributeValueType.STRING);
-                        break;
+                    value.setType(AttributeValueType.CONNECTION);
+                    JSONArray allowedConnectionType = attrObj
+                            .getJSONArray(DescriptorConstants.ALLOWED_CONNECTION_TYPES);
+                    for (int k = 0; k < allowedConnectionType.length(); k++) {
+                        value.addAllowedConnectionType(allowedConnectionType.getString(k));
+                    }
+                    break;
+                case DescriptorConstants.PASSWORD_TEXT_OR_EXPRESSION:
+                    value.setType(AttributeValueType.PASSWORDTEXTOREXPRESSION);
+                    break;
+                default:
+                    value.setType(AttributeValueType.STRING);
+                    break;
                 }
 
                 element.setValue(value);

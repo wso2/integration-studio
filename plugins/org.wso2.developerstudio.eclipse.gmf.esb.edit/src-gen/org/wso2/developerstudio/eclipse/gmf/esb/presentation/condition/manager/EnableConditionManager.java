@@ -22,20 +22,27 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class EnableConditionManager {
+
     private final Map<String, List<EnableCondition>> enableConditionsMap;
     private final Map<String, Composite> compositeList;
     private final Map<String, String> dependantComponentValuesMap;
 
     public EnableConditionManager(Map<String, Composite> compositeList) {
+
         enableConditionsMap = new HashMap<>();
         dependantComponentValuesMap = new HashMap<>();
         this.compositeList = compositeList;
     }
 
     public void addEnableCondition(EnableCondition enableCondition, String targetComponent) {
+
         if (enableCondition != null) {
             enableCondition.setTargetComponent(targetComponent);
             List<String> componentsList = enableCondition.getComponentsList();
@@ -50,6 +57,7 @@ public class EnableConditionManager {
     }
 
     public void handleValueChange(String componentName, String value) {
+
         dependantComponentValuesMap.put(componentName, value);
         if (enableConditionsMap.containsKey(componentName)) {
             List<EnableCondition> enableConditions = enableConditionsMap.get(componentName);
@@ -59,12 +67,14 @@ public class EnableConditionManager {
     }
 
     public void handleValueChange(List<CallTemplateParameter> parameterList) {
+
         parameterList.forEach(parameter -> {
             handleValueChange(parameter.getParameterName(), parameter.getParameterValue());
         });
     }
 
     private void setComponentVisibility(EnableCondition enableCondition, boolean visibility) {
+
         String targetComponentName = enableCondition.getTargetComponentName();
         if (compositeList.containsKey(targetComponentName)) {
             Composite composite = compositeList.get(targetComponentName);
@@ -73,6 +83,5 @@ public class EnableConditionManager {
             composite.getParent().getParent().layout();
         }
     }
-
 
 }

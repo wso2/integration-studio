@@ -22,21 +22,25 @@ import java.util.List;
 import java.util.Map;
 
 public class ConditionArgument extends EnableCondition {
+
     private String component;
     private String state;
 
     public ConditionArgument(String component, String state) {
+
         this.component = component;
         this.state = state;
     }
 
     @Override
     public List<String> getComponentsList() {
+
         return Collections.singletonList(component);
     }
 
     @Override
     public boolean isValid(Map<String, String> componentsValueMap) {
+
         boolean isValid = false;
 
         if (componentsValueMap.containsKey(component)) {
@@ -50,18 +54,22 @@ public class ConditionArgument extends EnableCondition {
     }
 
     public String getComponent() {
+
         return component;
     }
 
     public void setComponent(String component) {
+
         this.component = component;
     }
 
     public String getState() {
+
         return state;
     }
 
     public void setState(String state) {
+
         this.state = state;
     }
 }

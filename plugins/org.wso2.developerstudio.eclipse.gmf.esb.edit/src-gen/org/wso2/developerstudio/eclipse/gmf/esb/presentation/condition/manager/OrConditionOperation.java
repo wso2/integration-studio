@@ -24,11 +24,13 @@ import java.util.Map;
 public class OrConditionOperation extends ConditionOperation {
 
     public OrConditionOperation(List<EnableCondition> arguments) {
+
         super(arguments);
     }
 
     @Override
     public boolean isValid(Map<String, String> componentsValueMap) {
+
         for (EnableCondition argument : getArguments()) {
             if (argument.isValid(componentsValueMap)) {
                 return true;

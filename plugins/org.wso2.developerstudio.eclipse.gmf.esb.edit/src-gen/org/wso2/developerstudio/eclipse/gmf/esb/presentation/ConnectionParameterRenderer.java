@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2020, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- * 
+ *
  * WSO2 Inc. licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing,
- * 
+ *
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied. See the License for the
@@ -17,40 +17,36 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.presentation;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.custom.CTabItem;
 import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.events.ControlAdapter;
 import org.eclipse.swt.events.ControlEvent;
-import org.eclipse.swt.events.PaintEvent;
-import org.eclipse.swt.events.PaintListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.condition.manager.EnableConditionManager;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeGroupValue;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValue;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorRoot;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.Element;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ConnectionParameterRenderer {
 
@@ -67,6 +63,7 @@ public class ConnectionParameterRenderer {
     private EnableConditionManager enableConditionManager;
 
     public ConnectionParameterRenderer(FormToolkit widgetFactory) {
+
         this.widgetFactory = widgetFactory;
         this.controlList = new HashMap<>();
         this.compositeList = new HashMap<>();
@@ -75,7 +72,9 @@ public class ConnectionParameterRenderer {
     }
 
     public HashMap<String, Control> generate(final Composite parent, ConnectorRoot connectorRoot,
-            Map<String, String> updateConfigMap, AttributeValue allowedConnectionTypes, final String connectorName) {
+                                             Map<String, String> updateConfigMap, AttributeValue allowedConnectionTypes,
+                                             final String connectorName) {
+
         parent.setBackgroundMode(SWT.INHERIT_FORCE);
 
         // connectionName
@@ -125,6 +124,7 @@ public class ConnectionParameterRenderer {
         configRef.setLayoutData(configRefData);
         configRef.addSelectionListener(new SelectionAdapter() {
             public void widgetSelected(SelectionEvent event) {
+
                 ConnectorRoot newConnectorRoot = ConnectorSchemaHolder.getInstance().getConnectorConnectionSchema(
                         connectorName + "-" + connectionTitleTypeMap.get(configRef.getText()));
                 tabFolder.dispose();
@@ -177,6 +177,7 @@ public class ConnectionParameterRenderer {
     }
 
     private void renderContentOfConenction(ConnectorRoot connectorRoot, Composite parent) {
+
         for (Element elem : connectorRoot.getElements()) {
             if (elem.getType().equals("attributeGroup")) {
                 if (isFirstTime) {
@@ -210,6 +211,7 @@ public class ConnectionParameterRenderer {
 
                 scroller.addControlListener(new ControlAdapter() {
                     public void controlResized(ControlEvent e) {
+
                         scroller.setMinHeight(tabComposite.computeSize(SWT.DEFAULT, SWT.DEFAULT).y);
                     }
                 });
@@ -223,6 +225,7 @@ public class ConnectionParameterRenderer {
     }
 
     public void createDynamicWidgetComponents(Element element, Composite parent) {
+
         if (element.getType().equals("attribute")) {
             evaluateAttribute((AttributeValue) element.getValue(), parent, widgetFactory, 0);
         } else {
@@ -235,10 +238,11 @@ public class ConnectionParameterRenderer {
     }
 
     public void evaluateAttribute(AttributeValue value, Composite parent, FormToolkit widgetFactory, int level) {
+
         if (AttributeValueType.STRING.equals(value.getType())) {
             widgetProvider.createTextBoxFieldWithButton(widgetFactory, parent, value);
         } else if (AttributeValueType.BOOLEANOREXPRESSION.equals(value.getType())) {
-            widgetProvider.createDropDownField(widgetFactory, parent, new String[] { "true", "false" }, value);
+            widgetProvider.createDropDownField(widgetFactory, parent, new String[]{"true", "false"}, value);
         } else if (AttributeValueType.COMBO.equals(value.getType())) {
             widgetProvider.createDropDownField(widgetFactory, parent, value.getComboValues().toArray(new String[0]),
                     value);

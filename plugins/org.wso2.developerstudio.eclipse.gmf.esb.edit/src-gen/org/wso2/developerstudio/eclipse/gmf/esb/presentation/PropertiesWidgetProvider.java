@@ -465,13 +465,13 @@ public class PropertiesWidgetProvider {
     /**
      * Provide a composite with search box widget with expression support and a label
      *
-     * @param widgetFactory widget factory instance
-     * @param parent parent composite
+     * @param widgetFactory    widget factory instance
+     * @param parent           parent composite
      * @param jsonSchemaObject JSONSchema object of the property
      * @return composite
      */
     public Composite createSearchBoxFieldWithButton(FormToolkit widgetFactory, final Composite parent,
-            AttributeValue jsonSchemaObject) {
+                                                    AttributeValue jsonSchemaObject) {
         // Create wrapping composite of 1 element
         Composite searchBoxComposite = createComposite(jsonSchemaObject.getName(), widgetFactory, parent, 1, 1);
 
@@ -490,13 +490,14 @@ public class PropertiesWidgetProvider {
         searchField.addModifyListener(new ModifyListener() {
 
             public void modifyText(ModifyEvent e) {
+
                 for (Map.Entry<String, Composite> entry : compositeList.entrySet()) { // traverse through the hash map
 
                     Control[] children = entry.getValue().getChildren();
 
-                    for (Control child: children) {
+                    for (Control child : children) {
                         if (child instanceof Label) {
-                            Label label = (Label)child;
+                            Label label = (Label) child;
                             String displayName = label.getText().toLowerCase();
                             displayName = displayName.replaceAll("[:*]", "");
                             String searchText = searchField.getText().toLowerCase();
@@ -809,7 +810,7 @@ public class PropertiesWidgetProvider {
         // Create edit connection button
         final Button editConnectionButton =
                 widgetFactory.createButton(textBoxComposite, "",
-                SWT.PUSH | SWT.TRANSPARENT);
+                        SWT.PUSH | SWT.TRANSPARENT);
         editConnectionButton.setImage(deleteElementImage);
         editConnectionButton.setEnabled(false);
         editConnectionButton.addListener(SWT.Selection, new Listener() {

@@ -8299,6 +8299,33 @@ public class EsbMessages extends NLS {
 	public static String InboundEndpointPropertiesEditionPart_TransportJMSDBUrlLabel;
 
 	
+	public static String InboundEndpointPropertiesEditionPart_TransportRabbitMqAutoDeclareLabel;
+
+	
+	public static String InboundEndpointPropertiesEditionPart_TransportRabbitMqMaxDeadLetteredCountLabel;
+
+	
+	public static String InboundEndpointPropertiesEditionPart_TransportRabbitMqRequeueDelayLabel;
+
+	
+	public static String InboundEndpointPropertiesEditionPart_TransportRabbitMqExchangeAutoDeclareLabel;
+
+	
+	public static String InboundEndpointPropertiesEditionPart_TransportRabbitMqConsumerTagLabel;
+
+	
+	public static String InboundEndpointPropertiesEditionPart_TransportRabbitMqErrorQueueRoutingKeyLabel;
+
+	
+	public static String InboundEndpointPropertiesEditionPart_TransportRabbitMqErrorExchangeNameLabel;
+
+	
+	public static String InboundEndpointPropertiesEditionPart_TransportRabbitMqFactoryConnectionTimeoutLabel;
+
+	
+	public static String InboundEndpointPropertiesEditionPart_TransportRabbitMqFactoryNetworkRecoveryIntervalLabel;
+
+	
 	public static String InboundEndpointParameterPropertiesEditionPart_NameLabel;
 
 	

@@ -92,7 +92,7 @@ public class JsonTransformMediatorItemProvider extends MediatorItemProvider {
      * This adds a property descriptor for the Schema feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
     protected void addSchemaPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add

@@ -5898,6 +5898,33 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7wiHfJnEei6boXzpRIfnA" name="transportJMSDBUrl" views="_E7xMkPJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//InboundEndpoint/transportJMSDBUrl"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_AYfNIdEFEeqOx6t8882TQQ" name="transportRabbitMqAutoDeclare" views="_AYhqedEFEeqOx6t8882TQQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//InboundEndpoint/transportRabbitMqAutoDeclare"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_uhc439YhEeqrxuqKKEwg2g" name="transportRabbitMqMaxDeadLetteredCount" views="_uhdhs9YhEeqrxuqKKEwg2g">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//InboundEndpoint/transportRabbitMqMaxDeadLetteredCount"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_uhc44NYhEeqrxuqKKEwg2g" name="transportRabbitMqRequeueDelay" views="_uhdhtNYhEeqrxuqKKEwg2g">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//InboundEndpoint/transportRabbitMqRequeueDelay"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_nvCdVtZeEeqrxuqKKEwg2g" name="transportRabbitMqExchangeAutoDeclare" views="_nvDF8dZeEeqrxuqKKEwg2g">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//InboundEndpoint/transportRabbitMqExchangeAutoDeclare"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_nvCdV9ZeEeqrxuqKKEwg2g" name="transportRabbitMqConsumerTag" views="_nvDF8tZeEeqrxuqKKEwg2g">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//InboundEndpoint/transportRabbitMqConsumerTag"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_nvCdWNZeEeqrxuqKKEwg2g" name="transportRabbitMqErrorQueueRoutingKey" views="_nvDF89ZeEeqrxuqKKEwg2g">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//InboundEndpoint/transportRabbitMqErrorQueueRoutingKey"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_nvCdWdZeEeqrxuqKKEwg2g" name="transportRabbitMqErrorExchangeName" views="_nvDF9NZeEeqrxuqKKEwg2g">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//InboundEndpoint/transportRabbitMqErrorExchangeName"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_nvCdWtZeEeqrxuqKKEwg2g" name="transportRabbitMqFactoryConnectionTimeout" views="_nvDF9dZeEeqrxuqKKEwg2g">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//InboundEndpoint/transportRabbitMqFactoryConnectionTimeout"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_nvCdW9ZeEeqrxuqKKEwg2g" name="transportRabbitMqFactoryNetworkRecoveryInterval" views="_nvDF9tZeEeqrxuqKKEwg2g">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//InboundEndpoint/transportRabbitMqFactoryNetworkRecoveryInterval"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//InboundEndpoint"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7wiHvJnEei6boXzpRIfnA" name="InboundEndpointParameter" views="_E7xMkfJnEei6boXzpRIfnA">
@@ -12529,6 +12556,33 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xMkPJnEei6boXzpRIfnA" name="transportJMSDBUrl">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_AYhqedEFEeqOx6t8882TQQ" name="transportRabbitMqAutoDeclare">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_uhdhs9YhEeqrxuqKKEwg2g" name="transportRabbitMqMaxDeadLetteredCount">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_uhdhtNYhEeqrxuqKKEwg2g" name="transportRabbitMqRequeueDelay">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_nvDF8dZeEeqrxuqKKEwg2g" name="transportRabbitMqExchangeAutoDeclare">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_nvDF8tZeEeqrxuqKKEwg2g" name="transportRabbitMqConsumerTag">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_nvDF89ZeEeqrxuqKKEwg2g" name="transportRabbitMqErrorQueueRoutingKey">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_nvDF9NZeEeqrxuqKKEwg2g" name="transportRabbitMqErrorExchangeName">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_nvDF9dZeEeqrxuqKKEwg2g" name="transportRabbitMqFactoryConnectionTimeout">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_nvDF9tZeEeqrxuqKKEwg2g" name="transportRabbitMqFactoryNetworkRecoveryInterval">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
         </elements>

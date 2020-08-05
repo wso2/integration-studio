@@ -28,7 +28,6 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint;
-import org.wso2.developerstudio.eclipse.gmf.esb.JMSBrokerType;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFormatType;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -45,20 +44,9 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
  */
 public class InboundEndpointItemProvider extends EsbElementItemProvider {
 
-    private static final String JAVA_NAMING_FACTORY_INITIAL_WSO2_BROKER = "org.wso2.andes.jndi.PropertiesFileInitialContextFactory";
-    private static final String JAVA_NAMING_FACTORY_INITIAL_ACTIVEMQ = "org.apache.activemq.jndi.ActiveMQInitialContextFactory";
-    private static final String CONNECTION_FACTORY_JNDI_NAME_WSO2_BROKER = "QueueConnectionFactory";
-    private static final String CONNECTION_FACTORY_JNDI_NAME_ACTIVEMQ = "QueueConnectionFactory";
-    private static final String TRANSPORT_JMS_DESTINATION_WSO2_BROKER = "JMSMS";
-    private static final String TRANSPORT_JMS_DESTINATION_ACTIVEMQ = "ordersQueue";
-    private static final String JAVA_NAMING_PROVIDER_URL_WSO2_BROKER = "conf/jndi.properties";
-    private static final String JAVA_NAMING_PROVIDER_URL_ACTIVEMQ = "tcp://localhost:61616";
-    
     private static final String PLUGIN_ID = "org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint";
     private static IDeveloperStudioLog log = Logger.getLog(PLUGIN_ID);
     
-    private static JMSBrokerType currentJMSProfileType = null;
-
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -315,6 +303,8 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
             addTransportRabbitMqExchangeAutoDeletePropertyDescriptor(object);
             addTransportRabbitMqServerVirtualHostPropertyDescriptor(object);
             addTransportRabbitMqFactoryHeartbeatPropertyDescriptor(object);
+            addTransportRabbitMqFactoryConnectionTimeoutPropertyDescriptor(object);
+            addTransportRabbitMqFactoryNetworkRecoveryIntervalPropertyDescriptor(object);
             addTransportRabbitMqConnectionSslEnabledPropertyDescriptor(object);
             addTransportRabbitMqConnectionSslKeystoreLocationPropertyDescriptor(object);
             addTransportRabbitMqConnectionSslKeystoreTypePropertyDescriptor(object);
@@ -328,11 +318,18 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
             addTransportRabbitMqConnectionRetryIntervalPropertyDescriptor(object);
             addTransportRabbitMqServerRetryIntervalPropertyDescriptor(object);
             addTransportRabbitMqConsumerQosTypePropertyDescriptor(object);
+            addTransportRabbitMqMaxDeadLetteredCountPropertyDescriptor(object);
+            addTransportRabbitMqRequeueDelayPropertyDescriptor(object);
             if (PayloadFormatType.INLINE.equals(inboundEndpoint.getTransportRabbitMqConsumerQosType())) {
                 addTransportRabbitMqConsumerQosPropertyDescriptor(object);
             } else {
                 addTransportRabbitMqConsumerQosKeyPropertyDescriptor(object);
             }
+            addTransportRabbitMqAutoDeclarePropertyDescriptor(object);
+            addTransportRabbitMqExchangeAutoDeclarePropertyDescriptor(object);
+            addTransportRabbitMqConsumerTagPropertyDescriptor(object);
+            addTransportRabbitMqErrorQueueRoutingKeyPropertyDescriptor(object);
+            addTransportRabbitMqErrorExchangeNamePropertyDescriptor(object);
             break;
         case FEED:
             addIntervalPropertyDescriptor(object);
@@ -2642,6 +2639,204 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
     }
 
     /**
+     * This adds a property descriptor for the Transport Rabbit Mq Auto Declare feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addTransportRabbitMqAutoDeclarePropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_InboundEndpoint_transportRabbitMqAutoDeclare_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportRabbitMqAutoDeclare_feature", "_UI_InboundEndpoint_type"),
+                 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_AUTO_DECLARE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Transport Rabbit Mq Max Dead Lettered Count feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addTransportRabbitMqMaxDeadLetteredCountPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_InboundEndpoint_transportRabbitMqMaxDeadLetteredCount_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportRabbitMqMaxDeadLetteredCount_feature", "_UI_InboundEndpoint_type"),
+                 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MAX_DEAD_LETTERED_COUNT,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Transport Rabbit Mq Requeue Delay feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addTransportRabbitMqRequeueDelayPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_InboundEndpoint_transportRabbitMqRequeueDelay_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportRabbitMqRequeueDelay_feature", "_UI_InboundEndpoint_type"),
+                 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_REQUEUE_DELAY,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Transport Rabbit Mq Exchange Auto Declare feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addTransportRabbitMqExchangeAutoDeclarePropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_InboundEndpoint_transportRabbitMqExchangeAutoDeclare_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportRabbitMqExchangeAutoDeclare_feature", "_UI_InboundEndpoint_type"),
+                 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DECLARE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Transport Rabbit Mq Consumer Tag feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addTransportRabbitMqConsumerTagPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_InboundEndpoint_transportRabbitMqConsumerTag_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportRabbitMqConsumerTag_feature", "_UI_InboundEndpoint_type"),
+                 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_TAG,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Transport Rabbit Mq Error Queue Routing Key feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addTransportRabbitMqErrorQueueRoutingKeyPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_InboundEndpoint_transportRabbitMqErrorQueueRoutingKey_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportRabbitMqErrorQueueRoutingKey_feature", "_UI_InboundEndpoint_type"),
+                 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_ERROR_QUEUE_ROUTING_KEY,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Transport Rabbit Mq Error Exchange Name feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addTransportRabbitMqErrorExchangeNamePropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_InboundEndpoint_transportRabbitMqErrorExchangeName_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportRabbitMqErrorExchangeName_feature", "_UI_InboundEndpoint_type"),
+                 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_ERROR_EXCHANGE_NAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Transport Rabbit Mq Factory Connection Timeout feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addTransportRabbitMqFactoryConnectionTimeoutPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_InboundEndpoint_transportRabbitMqFactoryConnectionTimeout_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportRabbitMqFactoryConnectionTimeout_feature", "_UI_InboundEndpoint_type"),
+                 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_CONNECTION_TIMEOUT,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Transport Rabbit Mq Factory Network Recovery Interval feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addTransportRabbitMqFactoryNetworkRecoveryIntervalPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_InboundEndpoint_transportRabbitMqFactoryNetworkRecoveryInterval_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportRabbitMqFactoryNetworkRecoveryInterval_feature", "_UI_InboundEndpoint_type"),
+                 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_NETWORK_RECOVERY_INTERVAL,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
      * This adds a property descriptor for the Class feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -4504,6 +4699,15 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS:
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE:
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMSDB_URL:
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_AUTO_DECLARE:
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MAX_DEAD_LETTERED_COUNT:
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_REQUEUE_DELAY:
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DECLARE:
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_TAG:
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_ERROR_QUEUE_ROUTING_KEY:
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_ERROR_EXCHANGE_NAME:
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_CONNECTION_TIMEOUT:
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_NETWORK_RECOVERY_INTERVAL:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
             case EsbPackage.INBOUND_ENDPOINT__SEQUENCE_INPUT_CONNECTOR:

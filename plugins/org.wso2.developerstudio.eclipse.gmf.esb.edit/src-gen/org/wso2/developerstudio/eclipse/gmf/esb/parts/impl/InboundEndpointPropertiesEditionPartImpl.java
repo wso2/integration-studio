@@ -317,7 +317,25 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 
 
 
-	/**
+	protected Button transportRabbitMqAutoDeclare;
+
+
+
+  protected Text transportRabbitMqMaxDeadLetteredCount;
+  protected Text transportRabbitMqRequeueDelay;
+
+
+
+  protected Button transportRabbitMqExchangeAutoDeclare;
+  protected Text transportRabbitMqConsumerTag;
+  protected Text transportRabbitMqErrorQueueRoutingKey;
+  protected Text transportRabbitMqErrorExchangeName;
+  protected Text transportRabbitMqFactoryConnectionTimeout;
+  protected Text transportRabbitMqFactoryNetworkRecoveryInterval;
+
+
+
+  /**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
 	 * 
@@ -11218,7 +11236,412 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	}
 
 
-	/**
+	protected Composite createTransportRabbitMqAutoDeclareCheckbox(Composite parent) {
+		transportRabbitMqAutoDeclare = new Button(parent, SWT.CHECK);
+		transportRabbitMqAutoDeclare
+				.setText(getDescription(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqAutoDeclare,
+						EsbMessages.InboundEndpointPropertiesEditionPart_TransportRabbitMqAutoDeclareLabel));
+		transportRabbitMqAutoDeclare.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 *
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(
+							new PropertiesEditionEvent(InboundEndpointPropertiesEditionPartImpl.this,
+									EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqAutoDeclare,
+									PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+									new Boolean(transportRabbitMqAutoDeclare.getSelection())));
+			}
+
+		});
+		GridData transportRabbitMqAutoDeclareData = new GridData(GridData.FILL_HORIZONTAL);
+		transportRabbitMqAutoDeclareData.horizontalSpan = 2;
+		transportRabbitMqAutoDeclare.setLayoutData(transportRabbitMqAutoDeclareData);
+		EditingUtils.setID(transportRabbitMqAutoDeclare,
+				EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqAutoDeclare);
+		EditingUtils.setEEFtype(transportRabbitMqAutoDeclare, "eef::Checkbox"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent,
+				propertiesEditionComponent.getHelpContent(
+						EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqAutoDeclare,
+						EsbViewsRepository.SWT_KIND),
+				null); // $NON-NLS-1$
+		// Start of user code for createTransportRabbitMqAutoDeclareCheckbox
+
+		// End of user code
+		return parent;
+	}
+
+  protected Composite createTransportRabbitMqMaxDeadLetteredCountText(Composite parent) {
+    createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqMaxDeadLetteredCount, EsbMessages.InboundEndpointPropertiesEditionPart_TransportRabbitMqMaxDeadLetteredCountLabel);
+    transportRabbitMqMaxDeadLetteredCount = SWTUtils.createScrollableText(parent, SWT.BORDER);
+    GridData transportRabbitMqMaxDeadLetteredCountData = new GridData(GridData.FILL_HORIZONTAL);
+    transportRabbitMqMaxDeadLetteredCount.setLayoutData(transportRabbitMqMaxDeadLetteredCountData);
+    transportRabbitMqMaxDeadLetteredCount.addFocusListener(new FocusAdapter() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void focusLost(FocusEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InboundEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqMaxDeadLetteredCount, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, transportRabbitMqMaxDeadLetteredCount.getText()));
+      }
+
+    });
+    transportRabbitMqMaxDeadLetteredCount.addKeyListener(new KeyAdapter() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void keyPressed(KeyEvent e) {
+        if (e.character == SWT.CR) {
+          if (propertiesEditionComponent != null)
+            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InboundEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqMaxDeadLetteredCount, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, transportRabbitMqMaxDeadLetteredCount.getText()));
+        }
+      }
+
+    });
+    EditingUtils.setID(transportRabbitMqMaxDeadLetteredCount, EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqMaxDeadLetteredCount);
+    EditingUtils.setEEFtype(transportRabbitMqMaxDeadLetteredCount, "eef::Text"); //$NON-NLS-1$
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqMaxDeadLetteredCount, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    // Start of user code for createTransportRabbitMqMaxDeadLetteredCountText
+
+    // End of user code
+    return parent;
+  }
+
+  protected Composite createTransportRabbitMqRequeueDelayText(Composite parent) {
+    createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqRequeueDelay, EsbMessages.InboundEndpointPropertiesEditionPart_TransportRabbitMqRequeueDelayLabel);
+    transportRabbitMqRequeueDelay = SWTUtils.createScrollableText(parent, SWT.BORDER);
+    GridData transportRabbitMqRequeueDelayData = new GridData(GridData.FILL_HORIZONTAL);
+    transportRabbitMqRequeueDelay.setLayoutData(transportRabbitMqRequeueDelayData);
+    transportRabbitMqRequeueDelay.addFocusListener(new FocusAdapter() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void focusLost(FocusEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InboundEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqRequeueDelay, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, transportRabbitMqRequeueDelay.getText()));
+      }
+
+    });
+    transportRabbitMqRequeueDelay.addKeyListener(new KeyAdapter() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void keyPressed(KeyEvent e) {
+        if (e.character == SWT.CR) {
+          if (propertiesEditionComponent != null)
+            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InboundEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqRequeueDelay, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, transportRabbitMqRequeueDelay.getText()));
+        }
+      }
+
+    });
+    EditingUtils.setID(transportRabbitMqRequeueDelay, EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqRequeueDelay);
+    EditingUtils.setEEFtype(transportRabbitMqRequeueDelay, "eef::Text"); //$NON-NLS-1$
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqRequeueDelay, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    // Start of user code for createTransportRabbitMqRequeueDelayText
+
+    // End of user code
+    return parent;
+  }
+
+  protected Composite createTransportRabbitMqExchangeAutoDeclareCheckbox(Composite parent) {
+    transportRabbitMqExchangeAutoDeclare = new Button(parent, SWT.CHECK);
+    transportRabbitMqExchangeAutoDeclare.setText(getDescription(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqExchangeAutoDeclare, EsbMessages.InboundEndpointPropertiesEditionPart_TransportRabbitMqExchangeAutoDeclareLabel));
+    transportRabbitMqExchangeAutoDeclare.addSelectionListener(new SelectionAdapter() {
+
+      /**
+       * {@inheritDoc}
+       *
+       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+       * 	
+       */
+      public void widgetSelected(SelectionEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InboundEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqExchangeAutoDeclare, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(transportRabbitMqExchangeAutoDeclare.getSelection())));
+      }
+
+    });
+    GridData transportRabbitMqExchangeAutoDeclareData = new GridData(GridData.FILL_HORIZONTAL);
+    transportRabbitMqExchangeAutoDeclareData.horizontalSpan = 2;
+    transportRabbitMqExchangeAutoDeclare.setLayoutData(transportRabbitMqExchangeAutoDeclareData);
+    EditingUtils.setID(transportRabbitMqExchangeAutoDeclare, EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqExchangeAutoDeclare);
+    EditingUtils.setEEFtype(transportRabbitMqExchangeAutoDeclare, "eef::Checkbox"); //$NON-NLS-1$
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqExchangeAutoDeclare, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    // Start of user code for createTransportRabbitMqExchangeAutoDeclareCheckbox
+
+    // End of user code
+    return parent;
+  }
+
+  protected Composite createTransportRabbitMqConsumerTagText(Composite parent) {
+    createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConsumerTag, EsbMessages.InboundEndpointPropertiesEditionPart_TransportRabbitMqConsumerTagLabel);
+    transportRabbitMqConsumerTag = SWTUtils.createScrollableText(parent, SWT.BORDER);
+    GridData transportRabbitMqConsumerTagData = new GridData(GridData.FILL_HORIZONTAL);
+    transportRabbitMqConsumerTag.setLayoutData(transportRabbitMqConsumerTagData);
+    transportRabbitMqConsumerTag.addFocusListener(new FocusAdapter() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void focusLost(FocusEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InboundEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConsumerTag, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, transportRabbitMqConsumerTag.getText()));
+      }
+
+    });
+    transportRabbitMqConsumerTag.addKeyListener(new KeyAdapter() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void keyPressed(KeyEvent e) {
+        if (e.character == SWT.CR) {
+          if (propertiesEditionComponent != null)
+            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InboundEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConsumerTag, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, transportRabbitMqConsumerTag.getText()));
+        }
+      }
+
+    });
+    EditingUtils.setID(transportRabbitMqConsumerTag, EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConsumerTag);
+    EditingUtils.setEEFtype(transportRabbitMqConsumerTag, "eef::Text"); //$NON-NLS-1$
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConsumerTag, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    // Start of user code for createTransportRabbitMqConsumerTagText
+
+    // End of user code
+    return parent;
+  }
+
+  protected Composite createTransportRabbitMqErrorQueueRoutingKeyText(Composite parent) {
+    createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqErrorQueueRoutingKey, EsbMessages.InboundEndpointPropertiesEditionPart_TransportRabbitMqErrorQueueRoutingKeyLabel);
+    transportRabbitMqErrorQueueRoutingKey = SWTUtils.createScrollableText(parent, SWT.BORDER);
+    GridData transportRabbitMqErrorQueueRoutingKeyData = new GridData(GridData.FILL_HORIZONTAL);
+    transportRabbitMqErrorQueueRoutingKey.setLayoutData(transportRabbitMqErrorQueueRoutingKeyData);
+    transportRabbitMqErrorQueueRoutingKey.addFocusListener(new FocusAdapter() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void focusLost(FocusEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InboundEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqErrorQueueRoutingKey, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, transportRabbitMqErrorQueueRoutingKey.getText()));
+      }
+
+    });
+    transportRabbitMqErrorQueueRoutingKey.addKeyListener(new KeyAdapter() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void keyPressed(KeyEvent e) {
+        if (e.character == SWT.CR) {
+          if (propertiesEditionComponent != null)
+            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InboundEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqErrorQueueRoutingKey, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, transportRabbitMqErrorQueueRoutingKey.getText()));
+        }
+      }
+
+    });
+    EditingUtils.setID(transportRabbitMqErrorQueueRoutingKey, EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqErrorQueueRoutingKey);
+    EditingUtils.setEEFtype(transportRabbitMqErrorQueueRoutingKey, "eef::Text"); //$NON-NLS-1$
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqErrorQueueRoutingKey, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    // Start of user code for createTransportRabbitMqErrorQueueRoutingKeyText
+
+    // End of user code
+    return parent;
+  }
+
+  protected Composite createTransportRabbitMqErrorExchangeNameText(Composite parent) {
+    createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqErrorExchangeName, EsbMessages.InboundEndpointPropertiesEditionPart_TransportRabbitMqErrorExchangeNameLabel);
+    transportRabbitMqErrorExchangeName = SWTUtils.createScrollableText(parent, SWT.BORDER);
+    GridData transportRabbitMqErrorExchangeNameData = new GridData(GridData.FILL_HORIZONTAL);
+    transportRabbitMqErrorExchangeName.setLayoutData(transportRabbitMqErrorExchangeNameData);
+    transportRabbitMqErrorExchangeName.addFocusListener(new FocusAdapter() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void focusLost(FocusEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InboundEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqErrorExchangeName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, transportRabbitMqErrorExchangeName.getText()));
+      }
+
+    });
+    transportRabbitMqErrorExchangeName.addKeyListener(new KeyAdapter() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void keyPressed(KeyEvent e) {
+        if (e.character == SWT.CR) {
+          if (propertiesEditionComponent != null)
+            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InboundEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqErrorExchangeName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, transportRabbitMqErrorExchangeName.getText()));
+        }
+      }
+
+    });
+    EditingUtils.setID(transportRabbitMqErrorExchangeName, EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqErrorExchangeName);
+    EditingUtils.setEEFtype(transportRabbitMqErrorExchangeName, "eef::Text"); //$NON-NLS-1$
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqErrorExchangeName, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    // Start of user code for createTransportRabbitMqErrorExchangeNameText
+
+    // End of user code
+    return parent;
+  }
+
+  protected Composite createTransportRabbitMqFactoryConnectionTimeoutText(Composite parent) {
+    createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqFactoryConnectionTimeout, EsbMessages.InboundEndpointPropertiesEditionPart_TransportRabbitMqFactoryConnectionTimeoutLabel);
+    transportRabbitMqFactoryConnectionTimeout = SWTUtils.createScrollableText(parent, SWT.BORDER);
+    GridData transportRabbitMqFactoryConnectionTimeoutData = new GridData(GridData.FILL_HORIZONTAL);
+    transportRabbitMqFactoryConnectionTimeout.setLayoutData(transportRabbitMqFactoryConnectionTimeoutData);
+    transportRabbitMqFactoryConnectionTimeout.addFocusListener(new FocusAdapter() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void focusLost(FocusEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InboundEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqFactoryConnectionTimeout, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, transportRabbitMqFactoryConnectionTimeout.getText()));
+      }
+
+    });
+    transportRabbitMqFactoryConnectionTimeout.addKeyListener(new KeyAdapter() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void keyPressed(KeyEvent e) {
+        if (e.character == SWT.CR) {
+          if (propertiesEditionComponent != null)
+            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InboundEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqFactoryConnectionTimeout, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, transportRabbitMqFactoryConnectionTimeout.getText()));
+        }
+      }
+
+    });
+    EditingUtils.setID(transportRabbitMqFactoryConnectionTimeout, EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqFactoryConnectionTimeout);
+    EditingUtils.setEEFtype(transportRabbitMqFactoryConnectionTimeout, "eef::Text"); //$NON-NLS-1$
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqFactoryConnectionTimeout, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    // Start of user code for createTransportRabbitMqFactoryConnectionTimeoutText
+
+    // End of user code
+    return parent;
+  }
+
+  protected Composite createTransportRabbitMqFactoryNetworkRecoveryIntervalText(Composite parent) {
+    createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqFactoryNetworkRecoveryInterval, EsbMessages.InboundEndpointPropertiesEditionPart_TransportRabbitMqFactoryNetworkRecoveryIntervalLabel);
+    transportRabbitMqFactoryNetworkRecoveryInterval = SWTUtils.createScrollableText(parent, SWT.BORDER);
+    GridData transportRabbitMqFactoryNetworkRecoveryIntervalData = new GridData(GridData.FILL_HORIZONTAL);
+    transportRabbitMqFactoryNetworkRecoveryInterval.setLayoutData(transportRabbitMqFactoryNetworkRecoveryIntervalData);
+    transportRabbitMqFactoryNetworkRecoveryInterval.addFocusListener(new FocusAdapter() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void focusLost(FocusEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InboundEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqFactoryNetworkRecoveryInterval, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, transportRabbitMqFactoryNetworkRecoveryInterval.getText()));
+      }
+
+    });
+    transportRabbitMqFactoryNetworkRecoveryInterval.addKeyListener(new KeyAdapter() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void keyPressed(KeyEvent e) {
+        if (e.character == SWT.CR) {
+          if (propertiesEditionComponent != null)
+            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InboundEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqFactoryNetworkRecoveryInterval, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, transportRabbitMqFactoryNetworkRecoveryInterval.getText()));
+        }
+      }
+
+    });
+    EditingUtils.setID(transportRabbitMqFactoryNetworkRecoveryInterval, EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqFactoryNetworkRecoveryInterval);
+    EditingUtils.setEEFtype(transportRabbitMqFactoryNetworkRecoveryInterval, "eef::Text"); //$NON-NLS-1$
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqFactoryNetworkRecoveryInterval, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    // Start of user code for createTransportRabbitMqFactoryNetworkRecoveryIntervalText
+
+    // End of user code
+    return parent;
+  }
+
+  /**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
@@ -18579,8 +19002,298 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 
 
 
-	// Start of user code for transportRabbitMqConsumerQosKey specific getters and setters implementation
-	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqAutoDeclare()
+	 * 
+	 */
+	public Boolean getTransportRabbitMqAutoDeclare() {
+		return Boolean.valueOf(transportRabbitMqAutoDeclare.getSelection());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqAutoDeclare(Boolean
+	 *      newValue)
+	 * 
+	 */
+	public void setTransportRabbitMqAutoDeclare(Boolean newValue) {
+		if (newValue != null) {
+			transportRabbitMqAutoDeclare.setSelection(newValue.booleanValue());
+		} else {
+			transportRabbitMqAutoDeclare.setSelection(false);
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(
+				EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqAutoDeclare);
+		if (eefElementEditorReadOnlyState && transportRabbitMqAutoDeclare.isEnabled()) {
+			transportRabbitMqAutoDeclare.setEnabled(false);
+			transportRabbitMqAutoDeclare.setToolTipText(EsbMessages.InboundEndpoint_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !transportRabbitMqAutoDeclare.isEnabled()) {
+			transportRabbitMqAutoDeclare.setEnabled(true);
+		}
+
+	}
+
+	/**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqMaxDeadLetteredCount()
+   * 
+   */
+  public String getTransportRabbitMqMaxDeadLetteredCount() {
+    return transportRabbitMqMaxDeadLetteredCount.getText();
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqMaxDeadLetteredCount(String newValue)
+   * 
+   */
+  public void setTransportRabbitMqMaxDeadLetteredCount(String newValue) {
+    if (newValue != null) {
+      transportRabbitMqMaxDeadLetteredCount.setText(newValue);
+    } else {
+      transportRabbitMqMaxDeadLetteredCount.setText(""); //$NON-NLS-1$
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqMaxDeadLetteredCount);
+    if (eefElementEditorReadOnlyState && transportRabbitMqMaxDeadLetteredCount.isEnabled()) {
+      transportRabbitMqMaxDeadLetteredCount.setEnabled(false);
+      transportRabbitMqMaxDeadLetteredCount.setToolTipText(EsbMessages.InboundEndpoint_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !transportRabbitMqMaxDeadLetteredCount.isEnabled()) {
+      transportRabbitMqMaxDeadLetteredCount.setEnabled(true);
+    }	
+    
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqRequeueDelay()
+   * 
+   */
+  public String getTransportRabbitMqRequeueDelay() {
+    return transportRabbitMqRequeueDelay.getText();
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqRequeueDelay(String newValue)
+   * 
+   */
+  public void setTransportRabbitMqRequeueDelay(String newValue) {
+    if (newValue != null) {
+      transportRabbitMqRequeueDelay.setText(newValue);
+    } else {
+      transportRabbitMqRequeueDelay.setText(""); //$NON-NLS-1$
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqRequeueDelay);
+    if (eefElementEditorReadOnlyState && transportRabbitMqRequeueDelay.isEnabled()) {
+      transportRabbitMqRequeueDelay.setEnabled(false);
+      transportRabbitMqRequeueDelay.setToolTipText(EsbMessages.InboundEndpoint_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !transportRabbitMqRequeueDelay.isEnabled()) {
+      transportRabbitMqRequeueDelay.setEnabled(true);
+    }	
+    
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqExchangeAutoDeclare()
+   * 
+   */
+  public Boolean getTransportRabbitMqExchangeAutoDeclare() {
+    return Boolean.valueOf(transportRabbitMqExchangeAutoDeclare.getSelection());
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqExchangeAutoDeclare(Boolean newValue)
+   * 
+   */
+  public void setTransportRabbitMqExchangeAutoDeclare(Boolean newValue) {
+    if (newValue != null) {
+      transportRabbitMqExchangeAutoDeclare.setSelection(newValue.booleanValue());
+    } else {
+      transportRabbitMqExchangeAutoDeclare.setSelection(false);
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqExchangeAutoDeclare);
+    if (eefElementEditorReadOnlyState && transportRabbitMqExchangeAutoDeclare.isEnabled()) {
+      transportRabbitMqExchangeAutoDeclare.setEnabled(false);
+      transportRabbitMqExchangeAutoDeclare.setToolTipText(EsbMessages.InboundEndpoint_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !transportRabbitMqExchangeAutoDeclare.isEnabled()) {
+      transportRabbitMqExchangeAutoDeclare.setEnabled(true);
+    }	
+    
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqConsumerTag()
+   * 
+   */
+  public String getTransportRabbitMqConsumerTag() {
+    return transportRabbitMqConsumerTag.getText();
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqConsumerTag(String newValue)
+   * 
+   */
+  public void setTransportRabbitMqConsumerTag(String newValue) {
+    if (newValue != null) {
+      transportRabbitMqConsumerTag.setText(newValue);
+    } else {
+      transportRabbitMqConsumerTag.setText(""); //$NON-NLS-1$
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqConsumerTag);
+    if (eefElementEditorReadOnlyState && transportRabbitMqConsumerTag.isEnabled()) {
+      transportRabbitMqConsumerTag.setEnabled(false);
+      transportRabbitMqConsumerTag.setToolTipText(EsbMessages.InboundEndpoint_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !transportRabbitMqConsumerTag.isEnabled()) {
+      transportRabbitMqConsumerTag.setEnabled(true);
+    }	
+    
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqErrorQueueRoutingKey()
+   * 
+   */
+  public String getTransportRabbitMqErrorQueueRoutingKey() {
+    return transportRabbitMqErrorQueueRoutingKey.getText();
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqErrorQueueRoutingKey(String newValue)
+   * 
+   */
+  public void setTransportRabbitMqErrorQueueRoutingKey(String newValue) {
+    if (newValue != null) {
+      transportRabbitMqErrorQueueRoutingKey.setText(newValue);
+    } else {
+      transportRabbitMqErrorQueueRoutingKey.setText(""); //$NON-NLS-1$
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqErrorQueueRoutingKey);
+    if (eefElementEditorReadOnlyState && transportRabbitMqErrorQueueRoutingKey.isEnabled()) {
+      transportRabbitMqErrorQueueRoutingKey.setEnabled(false);
+      transportRabbitMqErrorQueueRoutingKey.setToolTipText(EsbMessages.InboundEndpoint_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !transportRabbitMqErrorQueueRoutingKey.isEnabled()) {
+      transportRabbitMqErrorQueueRoutingKey.setEnabled(true);
+    }	
+    
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqErrorExchangeName()
+   * 
+   */
+  public String getTransportRabbitMqErrorExchangeName() {
+    return transportRabbitMqErrorExchangeName.getText();
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqErrorExchangeName(String newValue)
+   * 
+   */
+  public void setTransportRabbitMqErrorExchangeName(String newValue) {
+    if (newValue != null) {
+      transportRabbitMqErrorExchangeName.setText(newValue);
+    } else {
+      transportRabbitMqErrorExchangeName.setText(""); //$NON-NLS-1$
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqErrorExchangeName);
+    if (eefElementEditorReadOnlyState && transportRabbitMqErrorExchangeName.isEnabled()) {
+      transportRabbitMqErrorExchangeName.setEnabled(false);
+      transportRabbitMqErrorExchangeName.setToolTipText(EsbMessages.InboundEndpoint_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !transportRabbitMqErrorExchangeName.isEnabled()) {
+      transportRabbitMqErrorExchangeName.setEnabled(true);
+    }	
+    
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqFactoryConnectionTimeout()
+   * 
+   */
+  public String getTransportRabbitMqFactoryConnectionTimeout() {
+    return transportRabbitMqFactoryConnectionTimeout.getText();
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqFactoryConnectionTimeout(String newValue)
+   * 
+   */
+  public void setTransportRabbitMqFactoryConnectionTimeout(String newValue) {
+    if (newValue != null) {
+      transportRabbitMqFactoryConnectionTimeout.setText(newValue);
+    } else {
+      transportRabbitMqFactoryConnectionTimeout.setText(""); //$NON-NLS-1$
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqFactoryConnectionTimeout);
+    if (eefElementEditorReadOnlyState && transportRabbitMqFactoryConnectionTimeout.isEnabled()) {
+      transportRabbitMqFactoryConnectionTimeout.setEnabled(false);
+      transportRabbitMqFactoryConnectionTimeout.setToolTipText(EsbMessages.InboundEndpoint_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !transportRabbitMqFactoryConnectionTimeout.isEnabled()) {
+      transportRabbitMqFactoryConnectionTimeout.setEnabled(true);
+    }	
+    
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqFactoryNetworkRecoveryInterval()
+   * 
+   */
+  public String getTransportRabbitMqFactoryNetworkRecoveryInterval() {
+    return transportRabbitMqFactoryNetworkRecoveryInterval.getText();
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqFactoryNetworkRecoveryInterval(String newValue)
+   * 
+   */
+  public void setTransportRabbitMqFactoryNetworkRecoveryInterval(String newValue) {
+    if (newValue != null) {
+      transportRabbitMqFactoryNetworkRecoveryInterval.setText(newValue);
+    } else {
+      transportRabbitMqFactoryNetworkRecoveryInterval.setText(""); //$NON-NLS-1$
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqFactoryNetworkRecoveryInterval);
+    if (eefElementEditorReadOnlyState && transportRabbitMqFactoryNetworkRecoveryInterval.isEnabled()) {
+      transportRabbitMqFactoryNetworkRecoveryInterval.setEnabled(false);
+      transportRabbitMqFactoryNetworkRecoveryInterval.setToolTipText(EsbMessages.InboundEndpoint_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !transportRabbitMqFactoryNetworkRecoveryInterval.isEnabled()) {
+      transportRabbitMqFactoryNetworkRecoveryInterval.setEnabled(true);
+    }	
+    
+  }
+
+  // Start of user code for transportRabbitMqConsumerQosKey specific getters and setters implementation
+
 	// End of user code
 
 	/**

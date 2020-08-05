@@ -251,6 +251,12 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportRabbitMqAutoDeclare <em>Transport Rabbit Mq Auto Declare</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqMaxDeadLetteredCount <em>Transport Rabbit Mq Max Dead Lettered Count</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqRequeueDelay <em>Transport Rabbit Mq Requeue Delay</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportRabbitMqExchangeAutoDeclare <em>Transport Rabbit Mq Exchange Auto Declare</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerTag <em>Transport Rabbit Mq Consumer Tag</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqErrorQueueRoutingKey <em>Transport Rabbit Mq Error Queue Routing Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqErrorExchangeName <em>Transport Rabbit Mq Error Exchange Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqFactoryConnectionTimeout <em>Transport Rabbit Mq Factory Connection Timeout</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqFactoryNetworkRecoveryInterval <em>Transport Rabbit Mq Factory Network Recovery Interval</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint()
@@ -3729,6 +3735,163 @@ public interface InboundEndpoint extends EsbElement {
      * @generated
      */
     void setTransportRabbitMqRequeueDelay(String value);
+
+    /**
+     * Returns the value of the '<em><b>Transport Rabbit Mq Exchange Auto Declare</b></em>' attribute.
+     * The default value is <code>"true"</code>.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Transport Rabbit Mq Exchange Auto Declare</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Transport Rabbit Mq Exchange Auto Declare</em>' attribute.
+     * @see #setTransportRabbitMqExchangeAutoDeclare(boolean)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqExchangeAutoDeclare()
+     * @model default="true"
+     * @generated
+     */
+    boolean isTransportRabbitMqExchangeAutoDeclare();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportRabbitMqExchangeAutoDeclare <em>Transport Rabbit Mq Exchange Auto Declare</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Transport Rabbit Mq Exchange Auto Declare</em>' attribute.
+     * @see #isTransportRabbitMqExchangeAutoDeclare()
+     * @generated
+     */
+    void setTransportRabbitMqExchangeAutoDeclare(boolean value);
+
+    /**
+     * Returns the value of the '<em><b>Transport Rabbit Mq Consumer Tag</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Transport Rabbit Mq Consumer Tag</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Transport Rabbit Mq Consumer Tag</em>' attribute.
+     * @see #setTransportRabbitMqConsumerTag(String)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConsumerTag()
+     * @model
+     * @generated
+     */
+    String getTransportRabbitMqConsumerTag();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerTag <em>Transport Rabbit Mq Consumer Tag</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Transport Rabbit Mq Consumer Tag</em>' attribute.
+     * @see #getTransportRabbitMqConsumerTag()
+     * @generated
+     */
+    void setTransportRabbitMqConsumerTag(String value);
+
+    /**
+     * Returns the value of the '<em><b>Transport Rabbit Mq Error Queue Routing Key</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Transport Rabbit Mq Error Queue Routing Key</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Transport Rabbit Mq Error Queue Routing Key</em>' attribute.
+     * @see #setTransportRabbitMqErrorQueueRoutingKey(String)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqErrorQueueRoutingKey()
+     * @model
+     * @generated
+     */
+    String getTransportRabbitMqErrorQueueRoutingKey();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqErrorQueueRoutingKey <em>Transport Rabbit Mq Error Queue Routing Key</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Transport Rabbit Mq Error Queue Routing Key</em>' attribute.
+     * @see #getTransportRabbitMqErrorQueueRoutingKey()
+     * @generated
+     */
+    void setTransportRabbitMqErrorQueueRoutingKey(String value);
+
+    /**
+     * Returns the value of the '<em><b>Transport Rabbit Mq Error Exchange Name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Transport Rabbit Mq Error Exchange Name</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Transport Rabbit Mq Error Exchange Name</em>' attribute.
+     * @see #setTransportRabbitMqErrorExchangeName(String)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqErrorExchangeName()
+     * @model
+     * @generated
+     */
+    String getTransportRabbitMqErrorExchangeName();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqErrorExchangeName <em>Transport Rabbit Mq Error Exchange Name</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Transport Rabbit Mq Error Exchange Name</em>' attribute.
+     * @see #getTransportRabbitMqErrorExchangeName()
+     * @generated
+     */
+    void setTransportRabbitMqErrorExchangeName(String value);
+
+    /**
+     * Returns the value of the '<em><b>Transport Rabbit Mq Factory Connection Timeout</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Transport Rabbit Mq Factory Connection Timeout</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Transport Rabbit Mq Factory Connection Timeout</em>' attribute.
+     * @see #setTransportRabbitMqFactoryConnectionTimeout(String)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqFactoryConnectionTimeout()
+     * @model
+     * @generated
+     */
+    String getTransportRabbitMqFactoryConnectionTimeout();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqFactoryConnectionTimeout <em>Transport Rabbit Mq Factory Connection Timeout</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Transport Rabbit Mq Factory Connection Timeout</em>' attribute.
+     * @see #getTransportRabbitMqFactoryConnectionTimeout()
+     * @generated
+     */
+    void setTransportRabbitMqFactoryConnectionTimeout(String value);
+
+    /**
+     * Returns the value of the '<em><b>Transport Rabbit Mq Factory Network Recovery Interval</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Transport Rabbit Mq Factory Network Recovery Interval</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Transport Rabbit Mq Factory Network Recovery Interval</em>' attribute.
+     * @see #setTransportRabbitMqFactoryNetworkRecoveryInterval(String)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqFactoryNetworkRecoveryInterval()
+     * @model
+     * @generated
+     */
+    String getTransportRabbitMqFactoryNetworkRecoveryInterval();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqFactoryNetworkRecoveryInterval <em>Transport Rabbit Mq Factory Network Recovery Interval</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Transport Rabbit Mq Factory Network Recovery Interval</em>' attribute.
+     * @see #getTransportRabbitMqFactoryNetworkRecoveryInterval()
+     * @generated
+     */
+    void setTransportRabbitMqFactoryNetworkRecoveryInterval(String value);
 
     /**
      * Returns the value of the '<em><b>Class</b></em>' attribute.

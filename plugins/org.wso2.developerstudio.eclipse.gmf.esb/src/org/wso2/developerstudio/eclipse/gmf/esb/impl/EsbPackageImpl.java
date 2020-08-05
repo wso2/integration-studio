@@ -12038,6 +12038,60 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
+    public EAttribute getInboundEndpoint_TransportRabbitMqExchangeAutoDeclare() {
+        return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(225);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getInboundEndpoint_TransportRabbitMqConsumerTag() {
+        return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(226);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getInboundEndpoint_TransportRabbitMqErrorQueueRoutingKey() {
+        return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(227);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getInboundEndpoint_TransportRabbitMqErrorExchangeName() {
+        return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(228);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getInboundEndpoint_TransportRabbitMqFactoryConnectionTimeout() {
+        return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(229);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getInboundEndpoint_TransportRabbitMqFactoryNetworkRecoveryInterval() {
+        return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(230);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EClass getInboundEndpointParameter() {
         return inboundEndpointParameterEClass;
     }
@@ -21830,6 +21884,12 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_AUTO_DECLARE);
         createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MAX_DEAD_LETTERED_COUNT);
         createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_REQUEUE_DELAY);
+        createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DECLARE);
+        createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_TAG);
+        createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_ERROR_QUEUE_ROUTING_KEY);
+        createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_ERROR_EXCHANGE_NAME);
+        createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_CONNECTION_TIMEOUT);
+        createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_NETWORK_RECOVERY_INTERVAL);
 
         inboundEndpointParameterEClass = createEClass(INBOUND_ENDPOINT_PARAMETER);
         createEAttribute(inboundEndpointParameterEClass, INBOUND_ENDPOINT_PARAMETER__NAME);
@@ -24341,6 +24401,12 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         initEAttribute(getInboundEndpoint_TransportRabbitMqAutoDeclare(), ecorePackage.getEBoolean(), "transportRabbitMqAutoDeclare", "true", 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getInboundEndpoint_TransportRabbitMqMaxDeadLetteredCount(), ecorePackage.getEString(), "transportRabbitMqMaxDeadLetteredCount", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getInboundEndpoint_TransportRabbitMqRequeueDelay(), ecorePackage.getEString(), "transportRabbitMqRequeueDelay", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getInboundEndpoint_TransportRabbitMqExchangeAutoDeclare(), ecorePackage.getEBoolean(), "transportRabbitMqExchangeAutoDeclare", "true", 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getInboundEndpoint_TransportRabbitMqConsumerTag(), ecorePackage.getEString(), "transportRabbitMqConsumerTag", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getInboundEndpoint_TransportRabbitMqErrorQueueRoutingKey(), ecorePackage.getEString(), "transportRabbitMqErrorQueueRoutingKey", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getInboundEndpoint_TransportRabbitMqErrorExchangeName(), ecorePackage.getEString(), "transportRabbitMqErrorExchangeName", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getInboundEndpoint_TransportRabbitMqFactoryConnectionTimeout(), ecorePackage.getEString(), "transportRabbitMqFactoryConnectionTimeout", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getInboundEndpoint_TransportRabbitMqFactoryNetworkRecoveryInterval(), ecorePackage.getEString(), "transportRabbitMqFactoryNetworkRecoveryInterval", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(inboundEndpointParameterEClass, InboundEndpointParameter.class, "InboundEndpointParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getInboundEndpointParameter_Name(), ecorePackage.getEString(), "name", "parameter_name", 0, 1, InboundEndpointParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

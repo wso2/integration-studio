@@ -26015,13 +26015,67 @@ public interface EsbPackage extends EPackage {
     int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_REQUEUE_DELAY = ESB_ELEMENT_FEATURE_COUNT + 224;
 
     /**
+     * The feature id for the '<em><b>Transport Rabbit Mq Exchange Auto Declare</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DECLARE = ESB_ELEMENT_FEATURE_COUNT + 225;
+
+    /**
+     * The feature id for the '<em><b>Transport Rabbit Mq Consumer Tag</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_TAG = ESB_ELEMENT_FEATURE_COUNT + 226;
+
+    /**
+     * The feature id for the '<em><b>Transport Rabbit Mq Error Queue Routing Key</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_ERROR_QUEUE_ROUTING_KEY = ESB_ELEMENT_FEATURE_COUNT + 227;
+
+    /**
+     * The feature id for the '<em><b>Transport Rabbit Mq Error Exchange Name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_ERROR_EXCHANGE_NAME = ESB_ELEMENT_FEATURE_COUNT + 228;
+
+    /**
+     * The feature id for the '<em><b>Transport Rabbit Mq Factory Connection Timeout</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_CONNECTION_TIMEOUT = ESB_ELEMENT_FEATURE_COUNT + 229;
+
+    /**
+     * The feature id for the '<em><b>Transport Rabbit Mq Factory Network Recovery Interval</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_NETWORK_RECOVERY_INTERVAL = ESB_ELEMENT_FEATURE_COUNT + 230;
+
+    /**
      * The number of structural features of the '<em>Inbound Endpoint</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 225;
+    int INBOUND_ENDPOINT_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 231;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointParameterImpl <em>Inbound Endpoint Parameter</em>}' class.
@@ -37343,6 +37397,72 @@ public interface EsbPackage extends EPackage {
      * @generated
      */
     EAttribute getInboundEndpoint_TransportRabbitMqRequeueDelay();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportRabbitMqExchangeAutoDeclare <em>Transport Rabbit Mq Exchange Auto Declare</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Transport Rabbit Mq Exchange Auto Declare</em>'.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportRabbitMqExchangeAutoDeclare()
+     * @see #getInboundEndpoint()
+     * @generated
+     */
+    EAttribute getInboundEndpoint_TransportRabbitMqExchangeAutoDeclare();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerTag <em>Transport Rabbit Mq Consumer Tag</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Transport Rabbit Mq Consumer Tag</em>'.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerTag()
+     * @see #getInboundEndpoint()
+     * @generated
+     */
+    EAttribute getInboundEndpoint_TransportRabbitMqConsumerTag();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqErrorQueueRoutingKey <em>Transport Rabbit Mq Error Queue Routing Key</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Transport Rabbit Mq Error Queue Routing Key</em>'.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqErrorQueueRoutingKey()
+     * @see #getInboundEndpoint()
+     * @generated
+     */
+    EAttribute getInboundEndpoint_TransportRabbitMqErrorQueueRoutingKey();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqErrorExchangeName <em>Transport Rabbit Mq Error Exchange Name</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Transport Rabbit Mq Error Exchange Name</em>'.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqErrorExchangeName()
+     * @see #getInboundEndpoint()
+     * @generated
+     */
+    EAttribute getInboundEndpoint_TransportRabbitMqErrorExchangeName();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqFactoryConnectionTimeout <em>Transport Rabbit Mq Factory Connection Timeout</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Transport Rabbit Mq Factory Connection Timeout</em>'.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqFactoryConnectionTimeout()
+     * @see #getInboundEndpoint()
+     * @generated
+     */
+    EAttribute getInboundEndpoint_TransportRabbitMqFactoryConnectionTimeout();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqFactoryNetworkRecoveryInterval <em>Transport Rabbit Mq Factory Network Recovery Interval</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Transport Rabbit Mq Factory Network Recovery Interval</em>'.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqFactoryNetworkRecoveryInterval()
+     * @see #getInboundEndpoint()
+     * @generated
+     */
+    EAttribute getInboundEndpoint_TransportRabbitMqFactoryNetworkRecoveryInterval();
 
     /**
      * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointParameter <em>Inbound Endpoint Parameter</em>}'.
@@ -54018,6 +54138,54 @@ public interface EsbPackage extends EPackage {
          * @generated
          */
         EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_REQUEUE_DELAY = eINSTANCE.getInboundEndpoint_TransportRabbitMqRequeueDelay();
+
+        /**
+         * The meta object literal for the '<em><b>Transport Rabbit Mq Exchange Auto Declare</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DECLARE = eINSTANCE.getInboundEndpoint_TransportRabbitMqExchangeAutoDeclare();
+
+        /**
+         * The meta object literal for the '<em><b>Transport Rabbit Mq Consumer Tag</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_TAG = eINSTANCE.getInboundEndpoint_TransportRabbitMqConsumerTag();
+
+        /**
+         * The meta object literal for the '<em><b>Transport Rabbit Mq Error Queue Routing Key</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_ERROR_QUEUE_ROUTING_KEY = eINSTANCE.getInboundEndpoint_TransportRabbitMqErrorQueueRoutingKey();
+
+        /**
+         * The meta object literal for the '<em><b>Transport Rabbit Mq Error Exchange Name</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_ERROR_EXCHANGE_NAME = eINSTANCE.getInboundEndpoint_TransportRabbitMqErrorExchangeName();
+
+        /**
+         * The meta object literal for the '<em><b>Transport Rabbit Mq Factory Connection Timeout</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_CONNECTION_TIMEOUT = eINSTANCE.getInboundEndpoint_TransportRabbitMqFactoryConnectionTimeout();
+
+        /**
+         * The meta object literal for the '<em><b>Transport Rabbit Mq Factory Network Recovery Interval</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_NETWORK_RECOVERY_INTERVAL = eINSTANCE.getInboundEndpoint_TransportRabbitMqFactoryNetworkRecoveryInterval();
 
         /**
          * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointParameterImpl <em>Inbound Endpoint Parameter</em>}' class.

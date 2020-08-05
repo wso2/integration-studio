@@ -290,6 +290,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportRabbitMqAutoDeclare <em>Transport Rabbit Mq Auto Declare</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqMaxDeadLetteredCount <em>Transport Rabbit Mq Max Dead Lettered Count</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqRequeueDelay <em>Transport Rabbit Mq Requeue Delay</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportRabbitMqExchangeAutoDeclare <em>Transport Rabbit Mq Exchange Auto Declare</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConsumerTag <em>Transport Rabbit Mq Consumer Tag</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqErrorQueueRoutingKey <em>Transport Rabbit Mq Error Queue Routing Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqErrorExchangeName <em>Transport Rabbit Mq Error Exchange Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqFactoryConnectionTimeout <em>Transport Rabbit Mq Factory Connection Timeout</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqFactoryNetworkRecoveryInterval <em>Transport Rabbit Mq Factory Network Recovery Interval</em>}</li>
  * </ul>
  *
  * @generated
@@ -4815,6 +4821,126 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String transportRabbitMqRequeueDelay = TRANSPORT_RABBIT_MQ_REQUEUE_DELAY_EDEFAULT;
 
     /**
+     * The default value of the '{@link #isTransportRabbitMqExchangeAutoDeclare() <em>Transport Rabbit Mq Exchange Auto Declare</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isTransportRabbitMqExchangeAutoDeclare()
+     * @generated
+     * @ordered
+     */
+    protected static final boolean TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DECLARE_EDEFAULT = true;
+
+    /**
+     * The cached value of the '{@link #isTransportRabbitMqExchangeAutoDeclare() <em>Transport Rabbit Mq Exchange Auto Declare</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isTransportRabbitMqExchangeAutoDeclare()
+     * @generated
+     * @ordered
+     */
+    protected boolean transportRabbitMqExchangeAutoDeclare = TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DECLARE_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getTransportRabbitMqConsumerTag() <em>Transport Rabbit Mq Consumer Tag</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTransportRabbitMqConsumerTag()
+     * @generated
+     * @ordered
+     */
+    protected static final String TRANSPORT_RABBIT_MQ_CONSUMER_TAG_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getTransportRabbitMqConsumerTag() <em>Transport Rabbit Mq Consumer Tag</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTransportRabbitMqConsumerTag()
+     * @generated
+     * @ordered
+     */
+    protected String transportRabbitMqConsumerTag = TRANSPORT_RABBIT_MQ_CONSUMER_TAG_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getTransportRabbitMqErrorQueueRoutingKey() <em>Transport Rabbit Mq Error Queue Routing Key</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTransportRabbitMqErrorQueueRoutingKey()
+     * @generated
+     * @ordered
+     */
+    protected static final String TRANSPORT_RABBIT_MQ_ERROR_QUEUE_ROUTING_KEY_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getTransportRabbitMqErrorQueueRoutingKey() <em>Transport Rabbit Mq Error Queue Routing Key</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTransportRabbitMqErrorQueueRoutingKey()
+     * @generated
+     * @ordered
+     */
+    protected String transportRabbitMqErrorQueueRoutingKey = TRANSPORT_RABBIT_MQ_ERROR_QUEUE_ROUTING_KEY_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getTransportRabbitMqErrorExchangeName() <em>Transport Rabbit Mq Error Exchange Name</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTransportRabbitMqErrorExchangeName()
+     * @generated
+     * @ordered
+     */
+    protected static final String TRANSPORT_RABBIT_MQ_ERROR_EXCHANGE_NAME_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getTransportRabbitMqErrorExchangeName() <em>Transport Rabbit Mq Error Exchange Name</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTransportRabbitMqErrorExchangeName()
+     * @generated
+     * @ordered
+     */
+    protected String transportRabbitMqErrorExchangeName = TRANSPORT_RABBIT_MQ_ERROR_EXCHANGE_NAME_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getTransportRabbitMqFactoryConnectionTimeout() <em>Transport Rabbit Mq Factory Connection Timeout</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTransportRabbitMqFactoryConnectionTimeout()
+     * @generated
+     * @ordered
+     */
+    protected static final String TRANSPORT_RABBIT_MQ_FACTORY_CONNECTION_TIMEOUT_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getTransportRabbitMqFactoryConnectionTimeout() <em>Transport Rabbit Mq Factory Connection Timeout</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTransportRabbitMqFactoryConnectionTimeout()
+     * @generated
+     * @ordered
+     */
+    protected String transportRabbitMqFactoryConnectionTimeout = TRANSPORT_RABBIT_MQ_FACTORY_CONNECTION_TIMEOUT_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getTransportRabbitMqFactoryNetworkRecoveryInterval() <em>Transport Rabbit Mq Factory Network Recovery Interval</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTransportRabbitMqFactoryNetworkRecoveryInterval()
+     * @generated
+     * @ordered
+     */
+    protected static final String TRANSPORT_RABBIT_MQ_FACTORY_NETWORK_RECOVERY_INTERVAL_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getTransportRabbitMqFactoryNetworkRecoveryInterval() <em>Transport Rabbit Mq Factory Network Recovery Interval</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTransportRabbitMqFactoryNetworkRecoveryInterval()
+     * @generated
+     * @ordered
+     */
+    protected String transportRabbitMqFactoryNetworkRecoveryInterval = TRANSPORT_RABBIT_MQ_FACTORY_NETWORK_RECOVERY_INTERVAL_EDEFAULT;
+
+    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated NOT
@@ -7523,6 +7649,132 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     }
 
     /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public boolean isTransportRabbitMqExchangeAutoDeclare() {
+        return transportRabbitMqExchangeAutoDeclare;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setTransportRabbitMqExchangeAutoDeclare(boolean newTransportRabbitMqExchangeAutoDeclare) {
+        boolean oldTransportRabbitMqExchangeAutoDeclare = transportRabbitMqExchangeAutoDeclare;
+        transportRabbitMqExchangeAutoDeclare = newTransportRabbitMqExchangeAutoDeclare;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DECLARE, oldTransportRabbitMqExchangeAutoDeclare, transportRabbitMqExchangeAutoDeclare));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getTransportRabbitMqConsumerTag() {
+        return transportRabbitMqConsumerTag;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setTransportRabbitMqConsumerTag(String newTransportRabbitMqConsumerTag) {
+        String oldTransportRabbitMqConsumerTag = transportRabbitMqConsumerTag;
+        transportRabbitMqConsumerTag = newTransportRabbitMqConsumerTag;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_TAG, oldTransportRabbitMqConsumerTag, transportRabbitMqConsumerTag));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getTransportRabbitMqErrorQueueRoutingKey() {
+        return transportRabbitMqErrorQueueRoutingKey;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setTransportRabbitMqErrorQueueRoutingKey(String newTransportRabbitMqErrorQueueRoutingKey) {
+        String oldTransportRabbitMqErrorQueueRoutingKey = transportRabbitMqErrorQueueRoutingKey;
+        transportRabbitMqErrorQueueRoutingKey = newTransportRabbitMqErrorQueueRoutingKey;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_ERROR_QUEUE_ROUTING_KEY, oldTransportRabbitMqErrorQueueRoutingKey, transportRabbitMqErrorQueueRoutingKey));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getTransportRabbitMqErrorExchangeName() {
+        return transportRabbitMqErrorExchangeName;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setTransportRabbitMqErrorExchangeName(String newTransportRabbitMqErrorExchangeName) {
+        String oldTransportRabbitMqErrorExchangeName = transportRabbitMqErrorExchangeName;
+        transportRabbitMqErrorExchangeName = newTransportRabbitMqErrorExchangeName;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_ERROR_EXCHANGE_NAME, oldTransportRabbitMqErrorExchangeName, transportRabbitMqErrorExchangeName));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getTransportRabbitMqFactoryConnectionTimeout() {
+        return transportRabbitMqFactoryConnectionTimeout;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setTransportRabbitMqFactoryConnectionTimeout(String newTransportRabbitMqFactoryConnectionTimeout) {
+        String oldTransportRabbitMqFactoryConnectionTimeout = transportRabbitMqFactoryConnectionTimeout;
+        transportRabbitMqFactoryConnectionTimeout = newTransportRabbitMqFactoryConnectionTimeout;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_CONNECTION_TIMEOUT, oldTransportRabbitMqFactoryConnectionTimeout, transportRabbitMqFactoryConnectionTimeout));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getTransportRabbitMqFactoryNetworkRecoveryInterval() {
+        return transportRabbitMqFactoryNetworkRecoveryInterval;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setTransportRabbitMqFactoryNetworkRecoveryInterval(String newTransportRabbitMqFactoryNetworkRecoveryInterval) {
+        String oldTransportRabbitMqFactoryNetworkRecoveryInterval = transportRabbitMqFactoryNetworkRecoveryInterval;
+        transportRabbitMqFactoryNetworkRecoveryInterval = newTransportRabbitMqFactoryNetworkRecoveryInterval;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_NETWORK_RECOVERY_INTERVAL, oldTransportRabbitMqFactoryNetworkRecoveryInterval, transportRabbitMqFactoryNetworkRecoveryInterval));
+    }
+
+    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
@@ -9812,6 +10064,18 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
                 return getTransportRabbitMqMaxDeadLetteredCount();
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_REQUEUE_DELAY:
                 return getTransportRabbitMqRequeueDelay();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DECLARE:
+                return isTransportRabbitMqExchangeAutoDeclare();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_TAG:
+                return getTransportRabbitMqConsumerTag();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_ERROR_QUEUE_ROUTING_KEY:
+                return getTransportRabbitMqErrorQueueRoutingKey();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_ERROR_EXCHANGE_NAME:
+                return getTransportRabbitMqErrorExchangeName();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_CONNECTION_TIMEOUT:
+                return getTransportRabbitMqFactoryConnectionTimeout();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_NETWORK_RECOVERY_INTERVAL:
+                return getTransportRabbitMqFactoryNetworkRecoveryInterval();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -10500,6 +10764,24 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_REQUEUE_DELAY:
                 setTransportRabbitMqRequeueDelay((String)newValue);
                 return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DECLARE:
+                setTransportRabbitMqExchangeAutoDeclare((Boolean)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_TAG:
+                setTransportRabbitMqConsumerTag((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_ERROR_QUEUE_ROUTING_KEY:
+                setTransportRabbitMqErrorQueueRoutingKey((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_ERROR_EXCHANGE_NAME:
+                setTransportRabbitMqErrorExchangeName((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_CONNECTION_TIMEOUT:
+                setTransportRabbitMqFactoryConnectionTimeout((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_NETWORK_RECOVERY_INTERVAL:
+                setTransportRabbitMqFactoryNetworkRecoveryInterval((String)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -11186,6 +11468,24 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_REQUEUE_DELAY:
                 setTransportRabbitMqRequeueDelay(TRANSPORT_RABBIT_MQ_REQUEUE_DELAY_EDEFAULT);
                 return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DECLARE:
+                setTransportRabbitMqExchangeAutoDeclare(TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DECLARE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_TAG:
+                setTransportRabbitMqConsumerTag(TRANSPORT_RABBIT_MQ_CONSUMER_TAG_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_ERROR_QUEUE_ROUTING_KEY:
+                setTransportRabbitMqErrorQueueRoutingKey(TRANSPORT_RABBIT_MQ_ERROR_QUEUE_ROUTING_KEY_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_ERROR_EXCHANGE_NAME:
+                setTransportRabbitMqErrorExchangeName(TRANSPORT_RABBIT_MQ_ERROR_EXCHANGE_NAME_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_CONNECTION_TIMEOUT:
+                setTransportRabbitMqFactoryConnectionTimeout(TRANSPORT_RABBIT_MQ_FACTORY_CONNECTION_TIMEOUT_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_NETWORK_RECOVERY_INTERVAL:
+                setTransportRabbitMqFactoryNetworkRecoveryInterval(TRANSPORT_RABBIT_MQ_FACTORY_NETWORK_RECOVERY_INTERVAL_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -11647,6 +11947,18 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
                 return TRANSPORT_RABBIT_MQ_MAX_DEAD_LETTERED_COUNT_EDEFAULT == null ? transportRabbitMqMaxDeadLetteredCount != null : !TRANSPORT_RABBIT_MQ_MAX_DEAD_LETTERED_COUNT_EDEFAULT.equals(transportRabbitMqMaxDeadLetteredCount);
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_REQUEUE_DELAY:
                 return TRANSPORT_RABBIT_MQ_REQUEUE_DELAY_EDEFAULT == null ? transportRabbitMqRequeueDelay != null : !TRANSPORT_RABBIT_MQ_REQUEUE_DELAY_EDEFAULT.equals(transportRabbitMqRequeueDelay);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DECLARE:
+                return transportRabbitMqExchangeAutoDeclare != TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DECLARE_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_TAG:
+                return TRANSPORT_RABBIT_MQ_CONSUMER_TAG_EDEFAULT == null ? transportRabbitMqConsumerTag != null : !TRANSPORT_RABBIT_MQ_CONSUMER_TAG_EDEFAULT.equals(transportRabbitMqConsumerTag);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_ERROR_QUEUE_ROUTING_KEY:
+                return TRANSPORT_RABBIT_MQ_ERROR_QUEUE_ROUTING_KEY_EDEFAULT == null ? transportRabbitMqErrorQueueRoutingKey != null : !TRANSPORT_RABBIT_MQ_ERROR_QUEUE_ROUTING_KEY_EDEFAULT.equals(transportRabbitMqErrorQueueRoutingKey);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_ERROR_EXCHANGE_NAME:
+                return TRANSPORT_RABBIT_MQ_ERROR_EXCHANGE_NAME_EDEFAULT == null ? transportRabbitMqErrorExchangeName != null : !TRANSPORT_RABBIT_MQ_ERROR_EXCHANGE_NAME_EDEFAULT.equals(transportRabbitMqErrorExchangeName);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_CONNECTION_TIMEOUT:
+                return TRANSPORT_RABBIT_MQ_FACTORY_CONNECTION_TIMEOUT_EDEFAULT == null ? transportRabbitMqFactoryConnectionTimeout != null : !TRANSPORT_RABBIT_MQ_FACTORY_CONNECTION_TIMEOUT_EDEFAULT.equals(transportRabbitMqFactoryConnectionTimeout);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_NETWORK_RECOVERY_INTERVAL:
+                return TRANSPORT_RABBIT_MQ_FACTORY_NETWORK_RECOVERY_INTERVAL_EDEFAULT == null ? transportRabbitMqFactoryNetworkRecoveryInterval != null : !TRANSPORT_RABBIT_MQ_FACTORY_NETWORK_RECOVERY_INTERVAL_EDEFAULT.equals(transportRabbitMqFactoryNetworkRecoveryInterval);
         }
         return super.eIsSet(featureID);
     }
@@ -12096,6 +12408,18 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
         result.append(transportRabbitMqMaxDeadLetteredCount);
         result.append(", transportRabbitMqRequeueDelay: ");
         result.append(transportRabbitMqRequeueDelay);
+        result.append(", transportRabbitMqExchangeAutoDeclare: ");
+        result.append(transportRabbitMqExchangeAutoDeclare);
+        result.append(", transportRabbitMqConsumerTag: ");
+        result.append(transportRabbitMqConsumerTag);
+        result.append(", transportRabbitMqErrorQueueRoutingKey: ");
+        result.append(transportRabbitMqErrorQueueRoutingKey);
+        result.append(", transportRabbitMqErrorExchangeName: ");
+        result.append(transportRabbitMqErrorExchangeName);
+        result.append(", transportRabbitMqFactoryConnectionTimeout: ");
+        result.append(transportRabbitMqFactoryConnectionTimeout);
+        result.append(", transportRabbitMqFactoryNetworkRecoveryInterval: ");
+        result.append(transportRabbitMqFactoryNetworkRecoveryInterval);
         result.append(')');
         return result.toString();
     }

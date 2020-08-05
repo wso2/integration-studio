@@ -3306,6 +3306,90 @@ public interface InboundEndpointPropertiesEditionPart {
 	public void setTransportRabbitMqRequeueDelay(String newValue);
 
 
+	/**
+	 * @return the transportRabbitMqExchangeAutoDeclare
+	 * 
+	 */
+	public Boolean getTransportRabbitMqExchangeAutoDeclare();
+
+	/**
+	 * Defines a new transportRabbitMqExchangeAutoDeclare
+	 * @param newValue the new transportRabbitMqExchangeAutoDeclare to set
+	 * 
+	 */
+	public void setTransportRabbitMqExchangeAutoDeclare(Boolean newValue);
+
+
+	/**
+	 * @return the transportRabbitMqConsumerTag
+	 * 
+	 */
+	public String getTransportRabbitMqConsumerTag();
+
+	/**
+	 * Defines a new transportRabbitMqConsumerTag
+	 * @param newValue the new transportRabbitMqConsumerTag to set
+	 * 
+	 */
+	public void setTransportRabbitMqConsumerTag(String newValue);
+
+
+	/**
+	 * @return the transportRabbitMqErrorQueueRoutingKey
+	 * 
+	 */
+	public String getTransportRabbitMqErrorQueueRoutingKey();
+
+	/**
+	 * Defines a new transportRabbitMqErrorQueueRoutingKey
+	 * @param newValue the new transportRabbitMqErrorQueueRoutingKey to set
+	 * 
+	 */
+	public void setTransportRabbitMqErrorQueueRoutingKey(String newValue);
+
+
+	/**
+	 * @return the transportRabbitMqErrorExchangeName
+	 * 
+	 */
+	public String getTransportRabbitMqErrorExchangeName();
+
+	/**
+	 * Defines a new transportRabbitMqErrorExchangeName
+	 * @param newValue the new transportRabbitMqErrorExchangeName to set
+	 * 
+	 */
+	public void setTransportRabbitMqErrorExchangeName(String newValue);
+
+
+	/**
+	 * @return the transportRabbitMqFactoryConnectionTimeout
+	 * 
+	 */
+	public String getTransportRabbitMqFactoryConnectionTimeout();
+
+	/**
+	 * Defines a new transportRabbitMqFactoryConnectionTimeout
+	 * @param newValue the new transportRabbitMqFactoryConnectionTimeout to set
+	 * 
+	 */
+	public void setTransportRabbitMqFactoryConnectionTimeout(String newValue);
+
+
+	/**
+	 * @return the transportRabbitMqFactoryNetworkRecoveryInterval
+	 * 
+	 */
+	public String getTransportRabbitMqFactoryNetworkRecoveryInterval();
+
+	/**
+	 * Defines a new transportRabbitMqFactoryNetworkRecoveryInterval
+	 * @param newValue the new transportRabbitMqFactoryNetworkRecoveryInterval to set
+	 * 
+	 */
+	public void setTransportRabbitMqFactoryNetworkRecoveryInterval(String newValue);
+
+
 
 
 	// Start of user code for transportRabbitMqConsumerQosKey specific getters and setters declaration

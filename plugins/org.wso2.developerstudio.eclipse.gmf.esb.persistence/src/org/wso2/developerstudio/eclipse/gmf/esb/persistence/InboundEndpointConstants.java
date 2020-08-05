@@ -259,6 +259,12 @@ public class InboundEndpointConstants {
     public static final String RABBITMQ_QUEUE_AUTODECLARE = "rabbitmq.queue.autodeclare";
     public static final String RABBITMQ_MESSAGE_MAX_DEAD_LETTERED_COUNT = "rabbitmq.message.max.dead.lettered.count";
     public static final String RABBITMQ_MESSAGE_REQUEUE_DELAY = "rabbitmq.message.requeue.delay";
+    public static final String RABBITMQ_EXCHANGE_AUTODECLARE = "rabbitmq.exchange.autodeclare";
+    public static final String RABBITMQ_CONSUMER_TAG = "rabbitmq.consumer.tag";
+    public static final String RABBITMQ_MESSAGE_ERROR_QUEUE_ROUTING_KEY = "rabbitmq.message.error.queue.routing.key";
+    public static final String RABBITMQ_MESSAGE_ERROR_EXCHANGE_NAME = "rabbitmq.message.error.exchange.name";
+    public static final String RABBITMQ_FACTORY_CONENCTION_TIMEOUT = "rabbitmq.factory.connection.timeout";
+    public static final String RABBITMQ_CONNECTION_FACTORY_NETWORK_RECOVERY_INTERVAL = "rabbitmq.connection.factory.network.recovery.interval";
 
     public static final String INBOUND_FEED_URL = "feed.url";
     public static final String INBOUND_FEED_TYPE = "feed.type";

@@ -33,4 +33,7 @@ public class EEFPropertyConstants {
     public static String ENABLE_LEGACY_PROPERTY_VIEW_PROGRAM_ARG = "org.wso2.developerstudio.properties.legacy";
     public static String EXPRESSION_TEXT_BOX = "expressiontextbox";
     public static String VALUE_TEXT_BOX = "valuetextbox";
+    public static String JSON_COLUMN_WIDGET_DATA = "jsonColumn";
+    public static String CONTROL_LIST_WIDGET_DATA = "controlList";
+    public static String JSON_OBJECT_WIDGET_DATA = "JSONObject";
 }

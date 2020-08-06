@@ -72,6 +72,8 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Table;
+import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
@@ -644,5 +646,21 @@ public class EEFPropertyViewUtil {
                 nsp.setPropertyValue(value);
             }
         });
+    }
+
+    /**
+     * Get column instance by name
+     * @param table table instance
+     * @param text column text
+     * @return TableColumn
+     */
+    public static TableColumn getColumnByName(Table table, String text) {
+        TableColumn column = null;
+        for(TableColumn tableColumn: table.getColumns()) {
+            if(text != null && text.equals(tableColumn.getText())) {
+                column = tableColumn;
+            }
+        }
+        return column;
     }
 }

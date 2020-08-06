@@ -17,6 +17,11 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.presentation;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import org.codehaus.jettison.json.JSONException;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -27,10 +32,12 @@ import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+
+import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Table;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Event;
-import org.eclipse.swt.widgets.Group;
-import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloudConnectorOperation;
@@ -44,10 +51,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.Connect
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.Element;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 public class ConnectorParameterRenderer extends PropertyParameterRenderer {
 
@@ -134,6 +137,8 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
             widgetProvider.createPasswordTextBoxFieldWithButton(widgetFactory, parent, value);
         } else if (AttributeValueType.SEARCHBOX.equals(value.getType())) {
             widgetProvider.createSearchBoxFieldWithButton(widgetFactory, parent, value);
+        } else if (AttributeValueType.KEYVALUETABLE.equals(value.getType())) {
+            widgetProvider.createKeyValueTable(widgetFactory, parent, value);
         }
     }
 
@@ -214,6 +219,14 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
                         Combo combo = (Combo) controlList.get(key);
                         combo.setText(value);
                         combo.setData(ctp);
+                    } else if (controlList.get(key) instanceof Table) {
+                        Table table = (Table) controlList.get(key);
+                        table.setData(ctp);
+                        try {
+                            widgetProvider.deserializeKeyValueTableJson(ctp.getParameterValue(), table);
+                        } catch (JSONException e) {
+                            log.error("Error parsing JSON string", e);
+                        }
                     }
                     Control expControl = controlList.get(key + EEFPropertyConstants.EXPRESSION_FIELD_SUFFIX);
                     if (expControl != null) {

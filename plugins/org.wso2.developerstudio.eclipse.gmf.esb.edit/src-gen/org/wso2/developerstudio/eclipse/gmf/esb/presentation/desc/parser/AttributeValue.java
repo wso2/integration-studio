@@ -31,6 +31,7 @@ public class AttributeValue extends Value {
     boolean required;
     String helpTip;
     List<String> allowedConnectionTypes;
+    List<KeyValueTableColumn> columns;
     String validation;
     String defaultType; //????
     //String default; ????
@@ -41,6 +42,7 @@ public class AttributeValue extends Value {
 
         comboValues = new ArrayList<>();
         allowedConnectionTypes = new ArrayList<>();
+        columns = new ArrayList<>();
     }
 
     public String getName() {
@@ -146,5 +148,17 @@ public class AttributeValue extends Value {
     public void setEnableCondition(EnableCondition enableCondition) {
 
         this.enableCondition = enableCondition;
+    }
+
+    public List<KeyValueTableColumn> getColumns() {
+        return columns;
+    }
+
+    public void setColumns(List<KeyValueTableColumn> columns) {
+        this.columns = columns;
+    }
+
+    public void addColumn(KeyValueTableColumn column) {
+        this.columns.add(column);
     }
 }

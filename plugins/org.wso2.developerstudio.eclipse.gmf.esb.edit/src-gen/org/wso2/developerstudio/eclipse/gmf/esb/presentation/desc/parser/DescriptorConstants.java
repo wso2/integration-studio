@@ -48,6 +48,10 @@ public class DescriptorConstants {
     public static final String VALIDATION = "attributeGroup";
     public static final String ENABLE_CONDITION = "enableCondition";
     public static final String COMBO_VALUES = "comboValues";
+    public static final String COMBO_STRING = "combo";
+    public static final String TEXT_STRING = "text";
+    public static final String COLUMNS = "columns";
+    public static final String ALLOWED_VALUES = "allowedValues";
 
     // Supported Input Types
     public static final String STRING = "string";
@@ -58,7 +62,8 @@ public class DescriptorConstants {
     public static final String COMBO_OR_EXPRESSION = "comboOrExpression";
     public static final String PASSWORD_TEXT_OR_EXPRESSION = "passwordTextOrExpression";
     public static final String SEARCH_BOX = "searchBox";
-    
+    public static final String KEY_VALUE_TABLE = "keyValueTable";
+
     //Key related to the Connection attribute
     public static final String CONFIG_REF = "configRef";
 

@@ -17,7 +17,19 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.presentation;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.regex.Pattern;
+
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.ArrayUtils;
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
+import org.codehaus.jettison.json.JSONArray;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
@@ -33,6 +45,7 @@ import org.eclipse.swt.custom.LineStyleListener;
 import org.eclipse.swt.custom.ST;
 import org.eclipse.swt.custom.StyleRange;
 import org.eclipse.swt.custom.StyledText;
+import org.eclipse.swt.custom.TableEditor;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.ModifyEvent;
@@ -59,6 +72,9 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.Table;
+import org.eclipse.swt.widgets.TableColumn;
+import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.ToolTip;
 import org.eclipse.ui.IWorkbenchWindow;
@@ -75,14 +91,11 @@ import org.wso2.developerstudio.eclipse.gmf.esb.presentation.condition.manager.E
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.condition.manager.EnableConditionManager;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValue;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.DescriptorConstants;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.KeyValueTableColumn;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 /**
  * Widget Provider class for the new properties framework.
@@ -979,6 +992,231 @@ public class PropertiesWidgetProvider {
     }
 
     /**
+     * Creates Table field for type KeyValueTable
+     * 
+     * @param widgetFactory widget factory instance
+     * @param parent parent composite
+     * @param jsonSchemaObject JSONSchema object of the property
+     * @return Composite
+     */
+    public Composite createKeyValueTable(FormToolkit widgetFactory, Composite parent, AttributeValue jsonSchemaObject) {
+        // Create composite with 3 elements
+        Composite tableComposite = createComposite(jsonSchemaObject.getName(), widgetFactory, parent, 3, 3);
+
+        // Create label
+        Label propertyLabel = new Label(tableComposite, SWT.TRANSPARENT | SWT.WRAP);
+        String displayName = jsonSchemaObject.getDisplayName();
+        if (jsonSchemaObject.getRequired()) {
+            displayName = displayName.concat(EEFPropertyConstants.REQUIRED_FIELD_INDICATOR);
+        }
+        propertyLabel.setText(displayName + ":");
+        GridData labelRefData = new GridData();
+        labelRefData.widthHint = EEFPropertyConstants.LABEL_WIDTH;
+        propertyLabel.setLayoutData(labelRefData);
+        setToolTip(propertyLabel, jsonSchemaObject.getHelpTip());
+
+        // Create expression Button
+        Button expressionButton = new Button(tableComposite, SWT.TOGGLE);
+        Image expressionButtonImage = null;
+        try {
+            expressionButtonImage = new Image(parent.getShell().getDisplay(),
+                    EEFPropertyViewUtil.getIconPath(EEFPropertyConstants.EXPRESSION_TOGGLE_BUTTON_IMAGE));
+        } catch (URISyntaxException | IOException e1) {
+            log.error("Couldn't fetch property field icon", e1);
+        }
+        expressionButton.setImage(expressionButtonImage);
+
+        // Create table (uses a new composite since its a complex widget)
+        Composite composite = createComposite(jsonSchemaObject.getName(), widgetFactory, tableComposite, 2, 1);
+        Button addButton = widgetFactory.createButton(composite, "", SWT.PUSH);
+        addButton.setLayoutData(new GridData(SWT.RIGHT, SWT.TOP, false, false, 1, 1));
+        Button removeButton = widgetFactory.createButton(composite, "", SWT.PUSH);
+        removeButton.setLayoutData(new GridData(SWT.RIGHT, SWT.TOP, false, false, 1, 1));
+
+        final Table valueTable = new Table(composite, SWT.CHECK | SWT.BORDER | SWT.V_SCROLL | SWT.H_SCROLL);
+        valueTable.setHeaderVisible(true);
+        valueTable.setLinesVisible(true);
+        GridLayout tableLayout = new GridLayout();
+        tableLayout.numColumns = 2;
+        tableLayout.marginLeft = 0;
+        composite.setLayout(tableLayout);
+        GridData tableCompositeLayoutData = new GridData(GridData.FILL_HORIZONTAL);
+        tableCompositeLayoutData.grabExcessHorizontalSpace = true;
+        tableCompositeLayoutData.grabExcessVerticalSpace = false;
+        tableCompositeLayoutData.horizontalSpan = 1;
+        tableCompositeLayoutData.verticalSpan = 1;
+        composite.setLayoutData(tableCompositeLayoutData);
+        GridData tableLayoutData = new GridData(GridData.FILL_HORIZONTAL);
+        tableLayoutData.heightHint = 100;
+        tableLayoutData.minimumHeight = 100;
+        tableLayoutData.widthHint = 600;
+        tableLayoutData.minimumWidth = 600;
+        tableLayoutData.grabExcessHorizontalSpace = true;
+        tableLayoutData.grabExcessVerticalSpace = false;
+        tableLayoutData.horizontalSpan = 1;
+        tableLayoutData.verticalSpan = 1;
+        valueTable.setLayoutData(tableLayoutData);
+
+        // Populate Table
+        List<KeyValueTableColumn> kColumns = jsonSchemaObject.getColumns();
+
+        for (KeyValueTableColumn kColumn : kColumns) {
+            TableColumn keyColumn = new TableColumn(valueTable, SWT.NULL);
+            keyColumn.setText(kColumn.getName());
+            keyColumn.setWidth(380);
+            keyColumn.setData(EEFPropertyConstants.JSON_COLUMN_WIDGET_DATA, kColumn);
+        }
+
+        Image addButtonImage = EEFRuntimePlugin.getImage(EEFRuntimePlugin.ICONS_16x16 + "Add_16x16.gif");
+        addButton.setImage(addButtonImage);
+        addButton.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                int i = 0;
+                TableItem item = new TableItem(valueTable, SWT.NULL);
+                //item.setText(0, "Item " + valueTable.getItemCount());
+                List<Control> controlList = new ArrayList<Control>();
+
+                for (KeyValueTableColumn valueColumn : kColumns) {
+                    TableEditor te = new TableEditor(valueTable);
+                    Control innerControl = null;
+
+                    if (DescriptorConstants.COMBO_STRING.equals(valueColumn.getType())) {
+                        innerControl = new Combo(valueTable, SWT.DROP_DOWN | SWT.READ_ONLY);
+                        ((Combo) innerControl).setItems(valueColumn.getAllowedValues().toArray(new String[] {}));
+                        ((Combo) innerControl).select(0);
+                        ((Combo) innerControl).addSelectionListener(new SelectionAdapter() {
+                            public void widgetSelected(SelectionEvent event) {
+                                if (!isConnectionWidgetProvider) { // update model
+                                    CallTemplateParameter ctp = (CallTemplateParameter) (valueTable).getData();
+                                    setParameterType(RuleOptionType.VALUE, ctp);
+                                    AttributeValue uiSchemaValue = (AttributeValue) (valueTable)
+                                            .getData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY);
+                                    updateModel(ctp, valueTable, uiSchemaValue);
+                                }
+                            }
+                        });
+                    } else if (DescriptorConstants.TEXT_STRING.equals(valueColumn.getType())) {
+                        innerControl = new Text(valueTable, SWT.NONE);
+                        ((Text) innerControl).addKeyListener(new KeyAdapter() {
+                            /**
+                             * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+                             * 
+                             */
+                            @Override
+                            @SuppressWarnings("synthetic-access")
+                            public void keyReleased(KeyEvent e) {
+                                if (!isConnectionWidgetProvider) { // update model
+                                    CallTemplateParameter ctp = (CallTemplateParameter) (valueTable).getData();
+                                    setParameterType(RuleOptionType.VALUE, ctp);
+                                    AttributeValue uiSchemaValue = (AttributeValue) (valueTable)
+                                            .getData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY);
+                                    updateModel(ctp, valueTable, uiSchemaValue);
+                                }
+                            }
+                        });
+                    }
+                    innerControl.computeSize(SWT.DEFAULT, valueTable.getItemHeight());
+
+                    // Set attributes of the editor
+                    te.grabHorizontal = true;
+                    te.minimumHeight = innerControl.getSize().y;
+                    te.minimumWidth = innerControl.getSize().x;
+
+                    te.setEditor(innerControl, item, i);
+                    i++;
+                    controlList.add(innerControl);
+                }
+                item.setData(EEFPropertyConstants.CONTROL_LIST_WIDGET_DATA, controlList);
+            }
+        });
+
+        Image removeButtonImage = EEFRuntimePlugin.getImage(EEFRuntimePlugin.ICONS_16x16 + "Delete_16x16.gif");
+        removeButton.setImage(removeButtonImage);
+        removeButton.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+
+                final TableItem[] items = valueTable.getItems();
+                List<Integer> removableIndices = new ArrayList<Integer>();
+
+                for (int i = 0; i < items.length; i++) {
+                    if (items[i].getChecked()) {
+                        removableIndices.add(i);
+                    }
+                }
+
+                for (int index : removableIndices) {
+                    List<Control> controlList = (List<Control>) valueTable.getItem(index)
+                            .getData(EEFPropertyConstants.CONTROL_LIST_WIDGET_DATA);
+                    for (Control control : controlList) {
+                        control.dispose(); // dispose inner controls in table columns
+                    }
+                }
+                valueTable.remove(ArrayUtils.toPrimitive(removableIndices.toArray(new Integer[removableIndices.size()]))); // remove table rows
+                // valueTable.remove(valueTable.getSelectionIndices()); uncomment to remove selected indices too
+                if (!isConnectionWidgetProvider) { // update model
+                    CallTemplateParameter ctp = (CallTemplateParameter) (valueTable).getData();
+                    setParameterType(RuleOptionType.VALUE, ctp);
+                    AttributeValue uiSchemaValue = (AttributeValue) (valueTable)
+                            .getData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY);
+                    updateModel(ctp, valueTable, uiSchemaValue);
+                }
+            }
+        });
+
+        valueTable.addListener(SWT.MeasureItem, new Listener() {
+            public void handleEvent(Event event) {
+                event.height = 20; // Adjust table item height accordingly
+            }
+        });
+        valueTable.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        valueTable.setData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY, jsonSchemaObject);
+
+        // Create Expression Composite
+        final Composite expressionComposite = createExpressionComposite(jsonSchemaObject.getName(), widgetFactory,
+                tableComposite, jsonSchemaObject);
+        expressionComposite.setVisible(false);
+        ((GridData) expressionComposite.getLayoutData()).exclude = true;
+
+        // Bind events to toggle button
+        expressionButton.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                Button source = (Button) e.getSource();
+
+                if (source.getSelection()) {
+                    composite.setVisible(false);
+                    ((GridData) composite.getLayoutData()).exclude = true;
+                    expressionComposite.setVisible(true);
+                    ((GridData) expressionComposite.getLayoutData()).exclude = false;
+                    CallTemplateParameter ctp = (CallTemplateParameter) valueTable.getData();
+                    parent.layout();
+                    setParameterType(RuleOptionType.EXPRESSION, ctp);
+                } else {
+                    composite.setVisible(true);
+                    ((GridData) composite.getLayoutData()).exclude = false;
+                    expressionComposite.setVisible(false);
+                    ((GridData) expressionComposite.getLayoutData()).exclude = true;
+                    CallTemplateParameter ctp = (CallTemplateParameter) valueTable.getData();
+                    parent.layout();
+                    setParameterType(RuleOptionType.VALUE, ctp);
+                }
+
+            }
+        });
+        valueTable.setData(EEFPropertyConstants.ASSOCIATED_BUTTON, expressionButton);
+        valueTable.setData(EEFPropertyConstants.JSON_OBJECT_WIDGET_DATA, expressionButton);
+        // Register created widget in notify lists
+        setItemFocus(valueTable);
+        controlList.put(jsonSchemaObject.getName(), valueTable);
+        if (jsonSchemaObject.getRequired()) {
+            requiredList.put(jsonSchemaObject.getName(), valueTable);
+        }
+        return parent;
+    }
+
+    /**
      * Creates composite with fixed(2) number of columns
      *
      * @param widgetFactory widgetFactory instance
@@ -1223,6 +1461,12 @@ public class PropertiesWidgetProvider {
             value = ((Text) targetControl).getText();
         } else if (targetControl instanceof Combo) {
             value = ((Combo) targetControl).getText();
+        } else if (targetControl instanceof Table) {
+            try {
+                value = serializeKeyValueTable((Table)targetControl);
+            } catch (JSONException e) {
+                log.error("Could not serialize table to JSON array", e);
+            }
         }
         if (validateValue(uiSchameValue.getValidation(), value, uiSchameValue.getRequired(),
                 uiSchameValue.getDisplayName())) {
@@ -1310,6 +1554,135 @@ public class PropertiesWidgetProvider {
         } catch (URISyntaxException | IOException e) {
             log.error("Error updating message banner", e);
         }
+    }
+
+    /**
+     * Deserializes Key Value table json string. The parameter in KeyValueTable type holds a json
+     * in below structure(If 2 columns are defined).
+     * [{"column1Name":"Row1ValueForColumn1","column2Name":"Row1ValueForColumn2"},
+     * {"column1Name":"Row2ValueForColumn1","column2Name":"Row2ValueForColumn2"}]
+     * @param json Json string
+     * @param table Table which the data should be added
+     * @throws JSONException if json string isn't parseable
+     */
+    public void deserializeKeyValueTableJson(String json, Table table) throws JSONException {
+
+        JSONArray tableJsonArray = new JSONArray("[]");
+        if(json != null && !json.isEmpty()) {
+            tableJsonArray = new JSONArray(json);
+        }
+        for (TableItem tableItem : table.getItems()) {
+            List<Control> tempControlList = (ArrayList<Control>) tableItem
+                    .getData(EEFPropertyConstants.CONTROL_LIST_WIDGET_DATA);
+            for (Control control : tempControlList) {
+                control.dispose();
+            }
+        }
+        table.removeAll(); // Clean the table before refilling
+
+        for (int i = 0; i < tableJsonArray.length(); i++) {
+            JSONObject tableRowJsonObject = tableJsonArray.getJSONObject(i);
+            TableItem tableItem = new TableItem(table, SWT.NULL);
+            tableItem.setText(0, "Item " + table.getItemCount());
+            Iterator<String> keys = tableRowJsonObject.keys();
+            int j = 0;
+            List<Control> controlList = new ArrayList<Control>();
+
+            while (keys.hasNext()) {
+                String key = keys.next();
+
+                if (tableRowJsonObject.get(key) instanceof String) {
+                    TableColumn tableColumn = EEFPropertyViewUtil.getColumnByName(table, key);
+                    KeyValueTableColumn jsonColumn = (KeyValueTableColumn) tableColumn
+                            .getData(EEFPropertyConstants.JSON_COLUMN_WIDGET_DATA);
+                    TableEditor te = new TableEditor(table);
+                    Control innerControl = null;
+
+                    if (DescriptorConstants.COMBO_STRING.equals(jsonColumn.getType())) {
+                        innerControl = new Combo(table, SWT.DROP_DOWN | SWT.READ_ONLY);
+                        ((Combo) innerControl).setItems(jsonColumn.getAllowedValues().toArray(new String[] {}));
+                        ((Combo) innerControl).setText(tableRowJsonObject.get(key).toString());
+                        ((Combo) innerControl).addSelectionListener(new SelectionAdapter() {
+                            public void widgetSelected(SelectionEvent event) {
+                                if (!isConnectionWidgetProvider) { //update model
+                                    CallTemplateParameter ctp = (CallTemplateParameter) (table).getData();
+                                    setParameterType(RuleOptionType.VALUE, ctp);
+                                    AttributeValue uiSchemaValue = (AttributeValue) (table)
+                                            .getData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY);
+                                    updateModel(ctp, table, uiSchemaValue);
+                                }
+                            }
+                        });
+                    } else if (DescriptorConstants.TEXT_STRING.equals(jsonColumn.getType())) {
+                        innerControl = new Text(table, SWT.NONE);
+                        ((Text) innerControl).setText(tableRowJsonObject.get(key).toString());
+                        ((Text) innerControl).addKeyListener(new KeyAdapter() {
+                            /**
+                             * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+                             * 
+                             */
+                            @Override
+                            @SuppressWarnings("synthetic-access")
+                            public void keyReleased(KeyEvent e) {
+                                if (!isConnectionWidgetProvider) { //update model
+                                    CallTemplateParameter ctp = (CallTemplateParameter) (table).getData();
+                                    setParameterType(RuleOptionType.VALUE, ctp);
+                                    AttributeValue uiSchemaValue = (AttributeValue) (table)
+                                            .getData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY);
+                                    updateModel(ctp, table, uiSchemaValue);
+                                }
+                            }
+                        });
+                    }
+                    innerControl.computeSize(SWT.DEFAULT, table.getItemHeight());
+
+                    // Set attributes of the editor
+                    te.grabHorizontal = true;
+                    te.minimumHeight = innerControl.getSize().y;
+                    te.minimumWidth = innerControl.getSize().x;
+                    te.setEditor(innerControl, tableItem, j);
+                    controlList.add(innerControl);
+                    j++;
+                }
+            }
+            tableItem.setData(EEFPropertyConstants.CONTROL_LIST_WIDGET_DATA, controlList); //notify item control list
+        }
+    }
+
+    /**
+     * Serializes Key Value Table and produce a json String
+     * @param keyValueTable table widget
+     * @return JSONString
+     * @throws JSONException
+     */
+    public String serializeKeyValueTable(Table keyValueTable) throws JSONException {
+        final TableItem[] items = keyValueTable.getItems();
+        JSONArray jsonArray = new JSONArray();
+        String[] columnNames = new String[keyValueTable.getColumnCount()];
+
+        for (int i = 0; i < columnNames.length; i++) { // get columns names
+            columnNames[i] = keyValueTable.getColumn(i).getText();
+        }
+
+        for (int j = 0; j < items.length; j++) {
+            TableItem item = items[j];
+            JSONObject row = new JSONObject();
+            List<Control> controlList = (List<Control>) item.getData(EEFPropertyConstants.CONTROL_LIST_WIDGET_DATA);
+            for (int i = 0; i < controlList.size(); i++) {
+                Control control = controlList.get(i);
+                // gettext according to control
+                String value = "";
+                if (control instanceof Combo) {
+                    value = ((Combo) control).getText();
+                } else if (control instanceof Text) {
+                    value = ((Text) control).getText();
+                }
+                row.put(columnNames[i], value);
+            }
+
+            jsonArray.put(j, row);
+        }
+        return jsonArray.toString();
     }
 
 }

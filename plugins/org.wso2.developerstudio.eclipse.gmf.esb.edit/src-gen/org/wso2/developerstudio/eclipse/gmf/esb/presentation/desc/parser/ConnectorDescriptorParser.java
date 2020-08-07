@@ -109,6 +109,25 @@ public class ConnectorDescriptorParser {
                     case DescriptorConstants.SEARCH_BOX:
                         value.setType(AttributeValueType.SEARCHBOX);
                         break;
+                    case DescriptorConstants.KEY_VALUE_TABLE:
+                        value.setType(AttributeValueType.KEYVALUETABLE);
+                        JSONArray columns = attrObj
+                                .getJSONArray(DescriptorConstants.COLUMNS);
+                        for (int k = 0; k < columns.length(); k++) {
+                            KeyValueTableColumn kvtc = new KeyValueTableColumn();
+                            JSONObject column = columns.getJSONObject(k);
+                            kvtc.setName(column.getString(DescriptorConstants.NAME));
+                            kvtc.setType(column.getString(DescriptorConstants.TYPE));
+                            if(kvtc.getType().equals(DescriptorConstants.COMBO_STRING)) {
+                                JSONArray allowedValues = attrObj
+                                        .getJSONArray(DescriptorConstants.ALLOWED_VALUES);
+                                for (int l = 0; l < allowedValues.length(); l++) {
+                                    kvtc.addAllowedValues(allowedValues.getString(l));
+                                }
+                            }
+                            value.addColumn(kvtc);
+                        }
+                        break;
                     default:
                         value.setType(AttributeValueType.STRING);
                         break;
@@ -176,6 +195,26 @@ public class ConnectorDescriptorParser {
                         break;
                     case DescriptorConstants.SEARCH_BOX:
                         value.setType(AttributeValueType.SEARCHBOX);
+                        break;
+                    case DescriptorConstants.KEY_VALUE_TABLE:
+                        value.setType(AttributeValueType.KEYVALUETABLE);
+                        JSONArray columns = attrObj
+                                .getJSONArray(DescriptorConstants.COLUMNS);
+                        for (int k = 0; k < columns.length(); k++) {
+                            KeyValueTableColumn kvtc = new KeyValueTableColumn();
+                            JSONObject column = columns.getJSONObject(k);
+                            kvtc.setName(column.getString(DescriptorConstants.NAME));
+                            kvtc.setType(column.getString(DescriptorConstants.TYPE));
+                            if(kvtc.getType().equals(DescriptorConstants.COMBO_STRING) &&
+                                    column.has(DescriptorConstants.ALLOWED_VALUES)) {
+                                JSONArray allowedValues = column
+                                        .getJSONArray(DescriptorConstants.ALLOWED_VALUES);
+                                for (int l = 0; l < allowedValues.length(); l++) {
+                                    kvtc.addAllowedValues(allowedValues.getString(l));
+                                }
+                            }
+                            value.addColumn(kvtc);
+                        }
                         break;
                     default:
                         value.setType(AttributeValueType.STRING);

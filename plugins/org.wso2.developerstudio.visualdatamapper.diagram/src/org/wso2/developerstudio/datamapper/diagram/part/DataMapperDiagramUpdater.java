@@ -14,6 +14,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.update.DiagramUpdater;
 import org.wso2.developerstudio.datamapper.AbsoluteValue;
 import org.wso2.developerstudio.datamapper.Add;
+import org.wso2.developerstudio.datamapper.AdvancedCustomFunction;
 import org.wso2.developerstudio.datamapper.Celi;
 import org.wso2.developerstudio.datamapper.Clone;
 import org.wso2.developerstudio.datamapper.Compare;
@@ -64,6 +65,7 @@ import org.wso2.developerstudio.datamapper.UpperCase;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ANDEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AbsoluteValueEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AddEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.AdvancedCustomFunctionEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CeliEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CloneEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CompareEditPart;
@@ -209,6 +211,8 @@ public class DataMapperDiagramUpdater {
 			return getToString_2040SemanticChildren(view);
 		case GlobalVariableEditPart.VISUAL_ID:
 			return getGlobalVariable_2041SemanticChildren(view);
+		case AdvancedCustomFunctionEditPart.VISUAL_ID:
+			return getAdvancedCustomFunction_2042SemanticChildren(view);
 		case TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002SemanticChildren(view);
 		case ElementEditPart.VISUAL_ID:
@@ -402,6 +406,10 @@ public class DataMapperDiagramUpdater {
 				continue;
 			}
 			if (visualID == GlobalVariableEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == AdvancedCustomFunctionEditPart.VISUAL_ID) {
 				result.add(new DataMapperNodeDescriptor(childElement, visualID));
 				continue;
 			}
@@ -1156,6 +1164,25 @@ public class DataMapperDiagramUpdater {
 	}
 
 	/**
+	* @generated
+	*/
+	public static List<DataMapperNodeDescriptor> getAdvancedCustomFunction_2042SemanticChildren(View view) {
+		if (!view.isSetElement()) {
+			return Collections.emptyList();
+		}
+		AdvancedCustomFunction modelElement = (AdvancedCustomFunction) view.getElement();
+		LinkedList<DataMapperNodeDescriptor> result = new LinkedList<DataMapperNodeDescriptor>();
+		{
+			OperatorBasicContainer childElement = modelElement.getBasicContainer();
+			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == OperatorBasicContainerEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+			}
+		}
+		return result;
+	}
+
+	/**
 	 * @generated
 	 */
 	public static List<DataMapperNodeDescriptor> getTreeNode_3002SemanticChildren(View view) {
@@ -1496,6 +1523,8 @@ public class DataMapperDiagramUpdater {
 			return getToString_2040ContainedLinks(view);
 		case GlobalVariableEditPart.VISUAL_ID:
 			return getGlobalVariable_2041ContainedLinks(view);
+		case AdvancedCustomFunctionEditPart.VISUAL_ID:
+			return getAdvancedCustomFunction_2042ContainedLinks(view);
 		case TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002ContainedLinks(view);
 		case ElementEditPart.VISUAL_ID:
@@ -1615,6 +1644,8 @@ public class DataMapperDiagramUpdater {
 			return getToString_2040IncomingLinks(view);
 		case GlobalVariableEditPart.VISUAL_ID:
 			return getGlobalVariable_2041IncomingLinks(view);
+		case AdvancedCustomFunctionEditPart.VISUAL_ID:
+			return getAdvancedCustomFunction_2042IncomingLinks(view);
 		case TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002IncomingLinks(view);
 		case ElementEditPart.VISUAL_ID:
@@ -1734,6 +1765,8 @@ public class DataMapperDiagramUpdater {
 			return getToString_2040OutgoingLinks(view);
 		case GlobalVariableEditPart.VISUAL_ID:
 			return getGlobalVariable_2041OutgoingLinks(view);
+		case AdvancedCustomFunctionEditPart.VISUAL_ID:
+			return getAdvancedCustomFunction_2042OutgoingLinks(view);
 		case TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002OutgoingLinks(view);
 		case ElementEditPart.VISUAL_ID:
@@ -2047,6 +2080,13 @@ public class DataMapperDiagramUpdater {
 	* @generated
 	*/
 	public static List<DataMapperLinkDescriptor> getGlobalVariable_2041ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getAdvancedCustomFunction_2042ContainedLinks(View view) {
 		return Collections.emptyList();
 	}
 
@@ -2441,6 +2481,13 @@ public class DataMapperDiagramUpdater {
 	* @generated
 	*/
 	public static List<DataMapperLinkDescriptor> getGlobalVariable_2041IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getAdvancedCustomFunction_2042IncomingLinks(View view) {
 		return Collections.emptyList();
 	}
 
@@ -2841,6 +2888,13 @@ public class DataMapperDiagramUpdater {
 	* @generated
 	*/
 	public static List<DataMapperLinkDescriptor> getGlobalVariable_2041OutgoingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getAdvancedCustomFunction_2042OutgoingLinks(View view) {
 		return Collections.emptyList();
 	}
 

@@ -25,6 +25,7 @@ import org.eclipse.ui.navigator.ICommonContentProvider;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ANDEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AbsoluteValueEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AddEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.AdvancedCustomFunctionEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CeliEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CloneEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CompareEditPart;
@@ -385,6 +386,9 @@ public class DataMapperNavigatorContentProvider implements ICommonContentProvide
 			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
 			connectedViews = getChildrenByType(Collections.singleton(sv),
 					DataMapperVisualIDRegistry.getType(GlobalVariableEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					DataMapperVisualIDRegistry.getType(AdvancedCustomFunctionEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
 			connectedViews = getDiagramLinksByType(Collections.singleton(sv),
 					DataMapperVisualIDRegistry.getType(DataMapperLinkEditPart.VISUAL_ID));
@@ -776,6 +780,16 @@ public class DataMapperNavigatorContentProvider implements ICommonContentProvide
 		}
 
 		case GlobalVariableEditPart.VISUAL_ID: {
+			LinkedList<DataMapperAbstractNavigatorItem> result = new LinkedList<DataMapperAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			Collection<View> connectedViews;
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					DataMapperVisualIDRegistry.getType(OperatorBasicContainerEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			return result.toArray();
+		}
+
+		case AdvancedCustomFunctionEditPart.VISUAL_ID: {
 			LinkedList<DataMapperAbstractNavigatorItem> result = new LinkedList<DataMapperAbstractNavigatorItem>();
 			Node sv = (Node) view;
 			Collection<View> connectedViews;

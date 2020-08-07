@@ -1289,6 +1289,29 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.AdvancedCustomFunction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AdvancedCustomFunctionItemProvider advancedCustomFunctionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.AdvancedCustomFunction}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAdvancedCustomFunctionAdapter() {
+		if (advancedCustomFunctionItemProvider == null) {
+			advancedCustomFunctionItemProvider = new AdvancedCustomFunctionItemProvider(this);
+		}
+
+		return advancedCustomFunctionItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1440,6 +1463,7 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 		if (containsItemProvider != null) containsItemProvider.dispose();
 		if (toStringItemProvider != null) toStringItemProvider.dispose();
 		if (globalVariableItemProvider != null) globalVariableItemProvider.dispose();
+		if (advancedCustomFunctionItemProvider != null) advancedCustomFunctionItemProvider.dispose();
 	}
 
 }

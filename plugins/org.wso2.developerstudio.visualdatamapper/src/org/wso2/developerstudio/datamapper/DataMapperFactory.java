@@ -499,6 +499,15 @@ public interface DataMapperFactory extends EFactory {
 	GlobalVariable createGlobalVariable();
 
 	/**
+	 * Returns a new object of class '<em>Advanced Custom Function</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Advanced Custom Function</em>'.
+	 * @generated
+	 */
+	AdvancedCustomFunction createAdvancedCustomFunction();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

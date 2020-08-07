@@ -9,6 +9,7 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.DuplicateElementsRequest;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.ANDCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.AbsoluteValueCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.AddCreateCommand;
+import org.wso2.developerstudio.datamapper.diagram.edit.commands.AdvancedCustomFunctionCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.CeliCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.CloneCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.CompareCreateCommand;
@@ -179,6 +180,9 @@ public class DataMapperRootItemSemanticEditPolicy extends DataMapperBaseItemSema
 		}
 		if (DataMapperElementTypes.GlobalVariable_2041 == req.getElementType()) {
 			return getGEFWrapper(new GlobalVariableCreateCommand(req));
+		}
+		if (DataMapperElementTypes.AdvancedCustomFunction_2042 == req.getElementType()) {
+			return getGEFWrapper(new AdvancedCustomFunctionCreateCommand(req));
 		}
 		return super.getCreateCommand(req);
 	}

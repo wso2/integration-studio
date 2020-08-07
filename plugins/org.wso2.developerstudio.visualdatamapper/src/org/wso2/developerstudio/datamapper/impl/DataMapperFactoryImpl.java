@@ -142,6 +142,7 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 			case DataMapperPackage.CONTAINS: return createContains();
 			case DataMapperPackage.TO_STRING: return createToString();
 			case DataMapperPackage.GLOBAL_VARIABLE: return createGlobalVariable();
+			case DataMapperPackage.ADVANCED_CUSTOM_FUNCTION: return createAdvancedCustomFunction();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -765,6 +766,16 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 		GlobalVariableImpl globalVariable = new GlobalVariableImpl();
 		globalVariable.setBasicContainer(createOperatorBasicContainer());
 		return globalVariable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AdvancedCustomFunction createAdvancedCustomFunction() {
+		AdvancedCustomFunctionImpl advancedCustomFunction = new AdvancedCustomFunctionImpl();
+		return advancedCustomFunction;
 	}
 
 	/**

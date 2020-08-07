@@ -51,7 +51,9 @@ public class SwaggerEditorServlet extends HttpServlet {
 			public void run() {
 				IEditorPart editorPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
 						.getActiveEditor();
-				editor = (EsbMultiPageEditor) editorPart;
+				if (editorPart instanceof EsbMultiPageEditor) {
+					editor = (EsbMultiPageEditor) editorPart;
+				}
 			}
 		});
 		response.setContentType("application/json");

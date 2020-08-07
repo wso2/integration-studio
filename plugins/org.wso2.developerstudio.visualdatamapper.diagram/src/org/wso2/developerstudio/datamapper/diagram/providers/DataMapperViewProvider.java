@@ -43,6 +43,7 @@ import org.eclipse.swt.graphics.FontData;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ANDEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AbsoluteValueEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AddEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.AdvancedCustomFunctionEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CeliEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CloneEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CompareEditPart;
@@ -224,6 +225,7 @@ public class DataMapperViewProvider extends AbstractProvider implements IViewPro
 				case CloneEditPart.VISUAL_ID:
 				case ToStringEditPart.VISUAL_ID:
 				case GlobalVariableEditPart.VISUAL_ID:
+				case AdvancedCustomFunctionEditPart.VISUAL_ID:
 				case TreeNodeEditPart.VISUAL_ID:
 				case ElementEditPart.VISUAL_ID:
 				case InNode2EditPart.VISUAL_ID:
@@ -268,11 +270,12 @@ public class DataMapperViewProvider extends AbstractProvider implements IViewPro
 				|| PropertiesEditPart.VISUAL_ID == visualID || CompareEditPart.VISUAL_ID == visualID
 				|| StringToNumberEditPart.VISUAL_ID == visualID || StringToBooleanEditPart.VISUAL_ID == visualID
 				|| CloneEditPart.VISUAL_ID == visualID || ToStringEditPart.VISUAL_ID == visualID
-				|| GlobalVariableEditPart.VISUAL_ID == visualID || TreeNodeEditPart.VISUAL_ID == visualID
-				|| ElementEditPart.VISUAL_ID == visualID || InNode2EditPart.VISUAL_ID == visualID
-				|| OutNode2EditPart.VISUAL_ID == visualID || TreeNode2EditPart.VISUAL_ID == visualID
-				|| InNodeEditPart.VISUAL_ID == visualID || OutNodeEditPart.VISUAL_ID == visualID
-				|| TreeNode3EditPart.VISUAL_ID == visualID || OperatorBasicContainerEditPart.VISUAL_ID == visualID
+				|| GlobalVariableEditPart.VISUAL_ID == visualID || AdvancedCustomFunctionEditPart.VISUAL_ID == visualID
+				|| TreeNodeEditPart.VISUAL_ID == visualID || ElementEditPart.VISUAL_ID == visualID
+				|| InNode2EditPart.VISUAL_ID == visualID || OutNode2EditPart.VISUAL_ID == visualID
+				|| TreeNode2EditPart.VISUAL_ID == visualID || InNodeEditPart.VISUAL_ID == visualID
+				|| OutNodeEditPart.VISUAL_ID == visualID || TreeNode3EditPart.VISUAL_ID == visualID
+				|| OperatorBasicContainerEditPart.VISUAL_ID == visualID
 				|| OperatorLeftContainerEditPart.VISUAL_ID == visualID
 				|| OperatorLeftConnectorEditPart.VISUAL_ID == visualID || InNode3EditPart.VISUAL_ID == visualID
 				|| OperatorRightContainerEditPart.VISUAL_ID == visualID
@@ -403,6 +406,8 @@ public class DataMapperViewProvider extends AbstractProvider implements IViewPro
 			return createToString_2040(domainElement, containerView, index, persisted, preferencesHint);
 		case GlobalVariableEditPart.VISUAL_ID:
 			return createGlobalVariable_2041(domainElement, containerView, index, persisted, preferencesHint);
+		case AdvancedCustomFunctionEditPart.VISUAL_ID:
+			return createAdvancedCustomFunction_2042(domainElement, containerView, index, persisted, preferencesHint);
 		case TreeNodeEditPart.VISUAL_ID:
 			return createTreeNode_3002(domainElement, containerView, index, persisted, preferencesHint);
 		case ElementEditPart.VISUAL_ID:
@@ -1830,6 +1835,42 @@ public class DataMapperViewProvider extends AbstractProvider implements IViewPro
 		Shape node = NotationFactory.eINSTANCE.createShape();
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
 		node.setType(DataMapperVisualIDRegistry.getType(GlobalVariableEditPart.VISUAL_ID));
+		ViewUtil.insertChildView(containerView, node, index, persisted);
+		node.setElement(domainElement);
+		stampShortcut(containerView, node);
+		// initializeFromPreferences 
+		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
+
+		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
+				IPreferenceConstants.PREF_LINE_COLOR);
+		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
+		FontStyle nodeFontStyle = (FontStyle) node.getStyle(NotationPackage.Literals.FONT_STYLE);
+		if (nodeFontStyle != null) {
+			FontData fontData = PreferenceConverter.getFontData(prefStore, IPreferenceConstants.PREF_DEFAULT_FONT);
+			nodeFontStyle.setFontName(fontData.getName());
+			nodeFontStyle.setFontHeight(fontData.getHeight());
+			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
+			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
+			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter.getColor(prefStore,
+					IPreferenceConstants.PREF_FONT_COLOR);
+			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB).intValue());
+		}
+		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(prefStore,
+				IPreferenceConstants.PREF_FILL_COLOR);
+		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getFillStyle_FillColor(),
+				FigureUtilities.RGBToInteger(fillRGB));
+		return node;
+	}
+
+	/**
+	* @generated
+	*/
+	public Node createAdvancedCustomFunction_2042(EObject domainElement, View containerView, int index,
+			boolean persisted, PreferencesHint preferencesHint) {
+		Shape node = NotationFactory.eINSTANCE.createShape();
+		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
+		node.setType(DataMapperVisualIDRegistry.getType(AdvancedCustomFunctionEditPart.VISUAL_ID));
 		ViewUtil.insertChildView(containerView, node, index, persisted);
 		node.setElement(domainElement);
 		stampShortcut(containerView, node);

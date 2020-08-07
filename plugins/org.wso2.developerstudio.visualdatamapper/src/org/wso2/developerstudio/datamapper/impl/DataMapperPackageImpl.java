@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.wso2.developerstudio.datamapper.AbsoluteValue;
 import org.wso2.developerstudio.datamapper.Add;
+import org.wso2.developerstudio.datamapper.AdvancedCustomFunction;
 import org.wso2.developerstudio.datamapper.Celi;
 import org.wso2.developerstudio.datamapper.Clone;
 import org.wso2.developerstudio.datamapper.Compare;
@@ -442,6 +443,13 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * @generated
 	 */
 	private EClass globalVariableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass advancedCustomFunctionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1664,6 +1672,42 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getAdvancedCustomFunction() {
+		return advancedCustomFunctionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAdvancedCustomFunction_FunctionName() {
+		return (EAttribute)advancedCustomFunctionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAdvancedCustomFunction_FunctionDefinition() {
+		return (EAttribute)advancedCustomFunctionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAdvancedCustomFunction_IsEndFunction() {
+		return (EAttribute)advancedCustomFunctionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getComparisonOperatorType() {
 		return comparisonOperatorTypeEEnum;
 	}
@@ -1893,6 +1937,11 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		createEAttribute(globalVariableEClass, GLOBAL_VARIABLE__NAME);
 		createEAttribute(globalVariableEClass, GLOBAL_VARIABLE__DEFAULT_VALUE);
 
+		advancedCustomFunctionEClass = createEClass(ADVANCED_CUSTOM_FUNCTION);
+		createEAttribute(advancedCustomFunctionEClass, ADVANCED_CUSTOM_FUNCTION__FUNCTION_NAME);
+		createEAttribute(advancedCustomFunctionEClass, ADVANCED_CUSTOM_FUNCTION__FUNCTION_DEFINITION);
+		createEAttribute(advancedCustomFunctionEClass, ADVANCED_CUSTOM_FUNCTION__IS_END_FUNCTION);
+
 		// Create enums
 		comparisonOperatorTypeEEnum = createEEnum(COMPARISON_OPERATOR_TYPE);
 		schemaDataTypeEEnum = createEEnum(SCHEMA_DATA_TYPE);
@@ -1967,6 +2016,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		containsEClass.getESuperTypes().add(this.getOperator());
 		toStringEClass.getESuperTypes().add(this.getOperator());
 		globalVariableEClass.getESuperTypes().add(this.getOperator());
+		advancedCustomFunctionEClass.getESuperTypes().add(this.getOperator());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(dataMapperNodeEClass, DataMapperNode.class, "DataMapperNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2154,6 +2204,11 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEAttribute(getGlobalVariable_Name(), ecorePackage.getEString(), "name", "defaultName", 0, 1, GlobalVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGlobalVariable_DefaultValue(), ecorePackage.getEString(), "defaultValue", "\"defaultValue\"", 0, 1, GlobalVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(advancedCustomFunctionEClass, AdvancedCustomFunction.class, "AdvancedCustomFunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAdvancedCustomFunction_FunctionName(), ecorePackage.getEString(), "functionName", "endFunction", 0, 1, AdvancedCustomFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAdvancedCustomFunction_FunctionDefinition(), ecorePackage.getEString(), "functionDefinition", "function(input,output){};", 0, 1, AdvancedCustomFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAdvancedCustomFunction_IsEndFunction(), ecorePackage.getEBoolean(), "isEndFunction", "true", 0, 1, AdvancedCustomFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(comparisonOperatorTypeEEnum, ComparisonOperatorType.class, "ComparisonOperatorType");
 		addEEnumLiteral(comparisonOperatorTypeEEnum, ComparisonOperatorType.EQUAL_VALUE);
@@ -2229,6 +2284,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.GET);
 		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.TO_STRING);
 		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.GLOBAL_VARIABLE);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.ADVANCED_CUSTOM_FUNCTION);
 
 		// Create resource
 		createResource(eNS_URI);

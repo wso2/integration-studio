@@ -351,6 +351,15 @@
         <largeIcon
             xsi:type="gmftool:DefaultImage"/>
       </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="AdvancedCustomFunction"
+          description="Create new AdvancedCustomFunction">
+        <smallIcon
+            xsi:type="gmftool:DefaultImage"/>
+        <largeIcon
+            xsi:type="gmftool:DefaultImage"/>
+      </tools>
     </tools>
   </palette>
 </gmftool:ToolRegistry>

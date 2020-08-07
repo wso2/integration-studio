@@ -58,6 +58,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.CloudConnectorOperationPropertiesEditionPartForm;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.ConnectorSchemaHolder;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
 
@@ -157,18 +158,24 @@ public class CloudConnectorOperationPropertiesEditionComponent extends SinglePar
 				// Start of user code for additional businessfilters for connectorParameters
 				// End of user code
 			}
-			
-			
-			
-			
-			
-			
+
+
+
+
+
+
 			// init values for referenced views
-			
+
 			// init filters for referenced views
-			
+
 		}
 		setInitializing(false);
+
+		// Start of user code for additional businessfilters for connectorParameters
+		if (editingPart != null) {
+			((CloudConnectorOperationPropertiesEditionPartForm) editingPart).afterInitialization();
+		}
+		// End of user code
 	}
 
 

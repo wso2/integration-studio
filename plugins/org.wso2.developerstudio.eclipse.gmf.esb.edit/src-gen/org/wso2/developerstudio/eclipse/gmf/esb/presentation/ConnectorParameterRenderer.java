@@ -228,6 +228,34 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
         widgetProvider.checkRequired();
     }
 
+    public void addDefaultValues() {
+
+        for (Control control : controlList.values()) {
+
+            AttributeValue uiSchemaValue = (AttributeValue) control.getData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY);
+            if (uiSchemaValue != null) {
+                String defaultValue = uiSchemaValue.getDefaultValue();
+
+                if (control instanceof Text) {
+                    Text text = (Text) control;
+                    if (uiSchemaValue.getRequired() && defaultValue != null && !defaultValue.isEmpty() &&
+                            text.getText().equals("")) {
+                        text.setText(defaultValue);
+                        text.notifyListeners(SWT.KeyUp, new Event());
+                    }
+
+                } else if (control instanceof Combo) {
+                    Combo combo = (Combo) control;
+                    if (defaultValue != null && !defaultValue.isEmpty() && combo.getText().equals("")) {
+                        combo.setText(defaultValue);
+                        combo.notifyListeners(SWT.Selection, new Event());
+                    }
+                }
+            }
+
+        }
+    }
+
     public void validate() {
         // Todo: Enable condition logic
     }

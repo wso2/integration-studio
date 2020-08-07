@@ -138,6 +138,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
     private boolean hasConnectorSchema;
     protected CLabel infoLabel;
     private static IDeveloperStudioLog log = Logger.getLog(EEFPropertyViewUtil.PLUGIN_ID);
+	private ConnectorParameterRenderer propertyRenderer;
     // End of user code
 
 	/**
@@ -442,8 +443,9 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	    if(hasConnectorSchema) {
             CloudConnectorOperationImpl connectorObject = (CloudConnectorOperationImpl)propertiesEditionComponent.getEditingContext().getEObject();
             String schemaName = connectorObject.getConnectorName().split("connector")[0] + "-" + connectorObject.getOperationName();
-            this.connectorParameters = new ReferenceGroup(getDescription(EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters, null),
-                    new ConnectorParameterRenderer(propertiesEditionComponent, this), schemaName);
+            propertyRenderer = new ConnectorParameterRenderer(propertiesEditionComponent, this);
+			this.connectorParameters = new ReferenceGroup(getDescription(EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters, null),
+					propertyRenderer, schemaName);
             this.connectorParameters.createControls(parent, widgetFactory);
             connectorParameters.setID(EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters);
             connectorParameters.setEEFType("eef::AdvancedTableComposition");
@@ -1378,6 +1380,13 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
         infoLabel.setText(bannerMessage);
         infoLabel.getParent().layout();
     }
+
+	public void afterInitialization(){
+		if (propertyRenderer != null) {
+			propertyRenderer.addDefaultValues();
+			propertyRenderer = null;
+		}
+	}
 	// End of user code
 
 

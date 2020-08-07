@@ -138,7 +138,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
     private boolean hasConnectorSchema;
     protected CLabel infoLabel;
     private static IDeveloperStudioLog log = Logger.getLog(EEFPropertyViewUtil.PLUGIN_ID);
-	private ConnectorParameterRenderer propertyRenderer;
+    private ConnectorParameterRenderer propertyRenderer;
     // End of user code
 
 	/**
@@ -444,8 +444,8 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
             CloudConnectorOperationImpl connectorObject = (CloudConnectorOperationImpl)propertiesEditionComponent.getEditingContext().getEObject();
             String schemaName = connectorObject.getConnectorName().split("connector")[0] + "-" + connectorObject.getOperationName();
             propertyRenderer = new ConnectorParameterRenderer(propertiesEditionComponent, this);
-			this.connectorParameters = new ReferenceGroup(getDescription(EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters, null),
-					propertyRenderer, schemaName);
+            this.connectorParameters = new ReferenceGroup(getDescription(EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters, null),
+                    propertyRenderer, schemaName);
             this.connectorParameters.createControls(parent, widgetFactory);
             connectorParameters.setID(EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters);
             connectorParameters.setEEFType("eef::AdvancedTableComposition");

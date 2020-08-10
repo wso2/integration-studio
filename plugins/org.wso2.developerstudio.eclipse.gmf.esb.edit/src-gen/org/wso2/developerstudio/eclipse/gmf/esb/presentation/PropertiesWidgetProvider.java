@@ -273,7 +273,7 @@ public class PropertiesWidgetProvider {
         } catch (URISyntaxException | IOException e1) {
             log.error("Couldn't fetch property field icon", e1);
         }
-
+        addToEnableConditionManager(jsonSchemaObject, jsonSchemaObject.getName());
         // Create Text box widget
         final Text valueTextBox = widgetFactory.createText(textBoxComposite, "", SWT.BORDER);
         valueTextBox.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
@@ -293,6 +293,7 @@ public class PropertiesWidgetProvider {
                     AttributeValue uiSchemaValue = (AttributeValue) ((Text) e.getSource())
                             .getData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY);
                     updateModel(ctp, valueTextBox, uiSchemaValue);
+                    updateEnableConditionValidation(jsonSchemaObject.getName(), ctp.getParameterValue());
                 }
             }
         });

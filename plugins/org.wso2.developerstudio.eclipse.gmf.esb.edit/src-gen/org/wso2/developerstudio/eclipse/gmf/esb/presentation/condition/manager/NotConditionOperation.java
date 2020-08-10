@@ -17,8 +17,23 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.presentation.condition.manager;
 
-public enum ConditionOperatorType {
-    OR,
-    AND,
-    NOT
+import java.util.List;
+import java.util.Map;
+
+public class NotConditionOperation extends ConditionOperation {
+
+    public NotConditionOperation(List<EnableCondition> arguments) {
+
+        super(arguments);
+    }
+
+    @Override
+    public boolean isValid(Map<String, String> componentsValueMap) {
+
+        if (!getArguments().isEmpty()) {
+            EnableCondition firstArgument = getArguments().get(0);
+            return !firstArgument.isValid(componentsValueMap);
+        }
+        return false;
+    }
 }

@@ -24,6 +24,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.presentation.condition.manager.A
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.condition.manager.ConditionArgument;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.condition.manager.ConditionOperatorType;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.condition.manager.EnableCondition;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.condition.manager.NotConditionOperation;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.condition.manager.OrConditionOperation;
 
 import java.util.ArrayList;
@@ -249,10 +250,16 @@ public class ConnectorDescriptorParser {
                 for (int i = 1; i < jsonArray.length(); i++) {
                     arguments.add(parseConditionArgument(jsonArray.getJSONObject(i)));
                 }
-                if (operatorType == ConditionOperatorType.AND) {
-                    enableCondition = new AndConditionOperation(arguments);
-                } else {
-                    enableCondition = new OrConditionOperation(arguments);
+
+                switch (operatorType) {
+                    case AND:
+                        enableCondition = new AndConditionOperation(arguments);
+                        break;
+                    case NOT:
+                        enableCondition = new NotConditionOperation(arguments);
+                        break;
+                    default:
+                        enableCondition = new OrConditionOperation(arguments);
                 }
             } catch (IllegalArgumentException e) {
                 throw new RuntimeException("Invalid operation type");

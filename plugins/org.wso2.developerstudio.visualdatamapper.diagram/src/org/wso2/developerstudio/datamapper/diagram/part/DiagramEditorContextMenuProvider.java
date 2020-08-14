@@ -45,6 +45,7 @@ import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewObjectAct
 import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewRootAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.CompareConfigureAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.ConcatManyAction;
+import org.wso2.developerstudio.datamapper.diagram.custom.action.ConfigureAdvancedCustomFunctionAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.ConfigureCustomFunctionAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.ConstantConfigureAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.DisableNullableAction;
@@ -72,6 +73,7 @@ import org.wso2.developerstudio.datamapper.diagram.custom.action.StartsWithConfi
 import org.wso2.developerstudio.datamapper.diagram.custom.action.SubstringConfigureAction;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ANDEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AddEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.AdvancedCustomFunctionEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CompareEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConcatEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConstantEditPart;
@@ -189,6 +191,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 		contextActions.put(MatchEditPart.class, new MatchConfigureAction(part));
 		contextActions.put(ReplaceEditPart.class, new ReplaceConfigureAction(part));
 		contextActions.put(GlobalVariableEditPart.class, new GlobalVariableConfigureAction(part));
+		contextActions.put(AdvancedCustomFunctionEditPart.class, new ConfigureAdvancedCustomFunctionAction(part));
 
 		// Initialize new root record context sensitive actions.
 		addNewRootElementContextActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();

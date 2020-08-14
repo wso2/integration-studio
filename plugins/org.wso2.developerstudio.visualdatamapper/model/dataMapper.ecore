@@ -283,6 +283,7 @@
     <eLiterals name="GET" value="41" literal="GET"/>
     <eLiterals name="TO_STRING" value="42"/>
     <eLiterals name="GLOBAL_VARIABLE" value="43"/>
+    <eLiterals name="ADVANCED_CUSTOM_FUNCTION" value="44" literal="ADVANCED_CUSTOM_FUNCTION"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LowerCase" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="Celi" eSuperTypes="#//Operator"/>
@@ -299,5 +300,13 @@
         defaultValueLiteral="defaultName"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="&quot;defaultValue&quot;"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AdvancedCustomFunction" eSuperTypes="#//Operator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="functionName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="endFunction"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="functionDefinition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="function(input,output){};"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isEndFunction" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
   </eClassifiers>
 </ecore:EPackage>

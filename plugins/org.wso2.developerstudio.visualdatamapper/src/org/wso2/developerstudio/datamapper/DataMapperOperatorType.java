@@ -426,7 +426,15 @@ public enum DataMapperOperatorType implements Enumerator {
 	 * @generated NOT
 	 * @ordered
 	 */
-	GLOBAL_VARIABLE(43, "GLOBAL_VARIABLE", "GLOBAL_VARIABLE",COMMON_OPERATION);
+	GLOBAL_VARIABLE(43, "GLOBAL_VARIABLE", "GLOBAL_VARIABLE",COMMON_OPERATION), /**
+	 * The '<em><b>ADVANCED CUSTOM FUNCTION</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ADVANCED_CUSTOM_FUNCTION_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	ADVANCED_CUSTOM_FUNCTION(44, "ADVANCED_CUSTOM_FUNCTION", "ADVANCED_CUSTOM_FUNCTION");
 
 	/**
 	 * The '<em><b>OPERATOR</b></em>' literal value.
@@ -1119,6 +1127,21 @@ public enum DataMapperOperatorType implements Enumerator {
 	public static final int GLOBAL_VARIABLE_VALUE = 43;
 
 	/**
+	 * The '<em><b>ADVANCED CUSTOM FUNCTION</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>ADVANCED CUSTOM FUNCTION</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #ADVANCED_CUSTOM_FUNCTION
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ADVANCED_CUSTOM_FUNCTION_VALUE = 44;
+
+	/**
 	 * An array of all the '<em><b>Operator Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1172,6 +1195,7 @@ public enum DataMapperOperatorType implements Enumerator {
 			GET,
 			TO_STRING,
 			GLOBAL_VARIABLE,
+			ADVANCED_CUSTOM_FUNCTION,
 		};
 
 	/**
@@ -1272,6 +1296,7 @@ public enum DataMapperOperatorType implements Enumerator {
 			case GET_VALUE: return GET;
 			case TO_STRING_VALUE: return TO_STRING;
 			case GLOBAL_VARIABLE_VALUE: return GLOBAL_VARIABLE;
+			case ADVANCED_CUSTOM_FUNCTION_VALUE: return ADVANCED_CUSTOM_FUNCTION;
 		}
 		return null;
 	}

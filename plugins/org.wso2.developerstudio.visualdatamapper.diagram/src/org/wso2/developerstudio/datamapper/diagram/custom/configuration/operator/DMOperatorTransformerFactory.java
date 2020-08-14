@@ -18,6 +18,7 @@ package org.wso2.developerstudio.datamapper.diagram.custom.configuration.operato
 import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.AbsoluteValueOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.AddOperatorTransformer;
+import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.AdvancedCustomFunctionOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.CeilOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.CompareOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.ConcatOperatorTransformer;
@@ -152,6 +153,8 @@ public class DMOperatorTransformerFactory {
 			return new GetOperatorTransformer();
 		case GLOBAL_VARIABLE:
 			return new GlobalVariableOperatorTransformer();
+		case ADVANCED_CUSTOM_FUNCTION:
+			return new AdvancedCustomFunctionOperatorTransformer();
 		default:
 			throw new IllegalArgumentException(
 					"Unknown Common operator type found for tranform in DMOperatorTransformerFactory : " + type);

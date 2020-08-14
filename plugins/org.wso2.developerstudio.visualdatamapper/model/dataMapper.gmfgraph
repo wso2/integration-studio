@@ -362,7 +362,16 @@
           xsi:type="gmfgraph:Rectangle"
           name="GlobalVariableFigure"/>
     </descriptors>
+    <descriptors
+        name="AdvancedCustomFunctionFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="AdvancedCustomFunctionFigure"/>
+    </descriptors>
   </figures>
+  <nodes
+      name="AdvancedCustomFunction"
+      figure="AdvancedCustomFunctionFigure"/>
   <nodes
       name="DataMapperNode"
       figure="DataMapperNodeFigure"/>

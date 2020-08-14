@@ -278,6 +278,10 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 				return createGlobalVariableAdapter();
 			}
 			@Override
+			public Adapter caseAdvancedCustomFunction(AdvancedCustomFunction object) {
+				return createAdvancedCustomFunctionAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -1036,6 +1040,20 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createGlobalVariableAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.AdvancedCustomFunction <em>Advanced Custom Function</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.datamapper.AdvancedCustomFunction
+	 * @generated
+	 */
+	public Adapter createAdvancedCustomFunctionAdapter() {
 		return null;
 	}
 

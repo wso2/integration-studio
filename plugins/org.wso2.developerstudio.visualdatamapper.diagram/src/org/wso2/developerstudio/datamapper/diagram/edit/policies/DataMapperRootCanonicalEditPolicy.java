@@ -34,6 +34,7 @@ import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ANDEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AbsoluteValueEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AddEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.AdvancedCustomFunctionEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CeliEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CloneEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CompareEditPart;
@@ -194,6 +195,7 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 		case CloneEditPart.VISUAL_ID:
 		case ToStringEditPart.VISUAL_ID:
 		case GlobalVariableEditPart.VISUAL_ID:
+		case AdvancedCustomFunctionEditPart.VISUAL_ID:
 			return true;
 		}
 		return false;
@@ -609,6 +611,13 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 		case GlobalVariableEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(DataMapperDiagramUpdater.getGlobalVariable_2041ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case AdvancedCustomFunctionEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(DataMapperDiagramUpdater.getAdvancedCustomFunction_2042ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;

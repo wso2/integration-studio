@@ -17,6 +17,7 @@ import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonLabelProvider;
 import org.wso2.developerstudio.datamapper.AbsoluteValue;
 import org.wso2.developerstudio.datamapper.Add;
+import org.wso2.developerstudio.datamapper.AdvancedCustomFunction;
 import org.wso2.developerstudio.datamapper.Celi;
 import org.wso2.developerstudio.datamapper.Clone;
 import org.wso2.developerstudio.datamapper.Compare;
@@ -54,6 +55,7 @@ import org.wso2.developerstudio.datamapper.UpperCase;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ANDEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AbsoluteValueEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AddEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.AdvancedCustomFunctionEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CeliEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CloneEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CompareEditPart;
@@ -296,6 +298,10 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider
 			return getImage(
 					"Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?GlobalVariable", //$NON-NLS-1$
 					DataMapperElementTypes.GlobalVariable_2041);
+		case AdvancedCustomFunctionEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?AdvancedCustomFunction", //$NON-NLS-1$
+					DataMapperElementTypes.AdvancedCustomFunction_2042);
 		case TreeNodeEditPart.VISUAL_ID:
 			return getImage("Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?TreeNode", //$NON-NLS-1$
 					DataMapperElementTypes.TreeNode_3002);
@@ -479,6 +485,8 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider
 			return getToString_2040Text(view);
 		case GlobalVariableEditPart.VISUAL_ID:
 			return getGlobalVariable_2041Text(view);
+		case AdvancedCustomFunctionEditPart.VISUAL_ID:
+			return getAdvancedCustomFunction_2042Text(view);
 		case TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002Text(view);
 		case TreeNode2EditPart.VISUAL_ID:
@@ -1016,6 +1024,19 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider
 			return domainModelElement.getName();
 		} else {
 			DataMapperDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 2041); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
+	}
+
+	/**
+	* @generated
+	*/
+	private String getAdvancedCustomFunction_2042Text(View view) {
+		AdvancedCustomFunction domainModelElement = (AdvancedCustomFunction) view.getElement();
+		if (domainModelElement != null) {
+			return domainModelElement.getFunctionName();
+		} else {
+			DataMapperDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 2042); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}

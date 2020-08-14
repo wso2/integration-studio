@@ -17,6 +17,7 @@ import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ANDEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AbsoluteValueEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AddEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.AdvancedCustomFunctionEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CeliEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CloneEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CompareEditPart;
@@ -339,6 +340,12 @@ public class DataMapperElementTypes {
 			"org.wso2.developerstudio.visualdatamapper.diagram.GlobalVariable_2041"); //$NON-NLS-1$
 
 	/**
+	* @generated
+	*/
+	public static final IElementType AdvancedCustomFunction_2042 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.AdvancedCustomFunction_2042"); //$NON-NLS-1$
+
+	/**
 	 * @generated
 	 */
 	public static final IElementType TreeNode_3002 = getElementType(
@@ -552,6 +559,8 @@ public class DataMapperElementTypes {
 
 			elements.put(GlobalVariable_2041, DataMapperPackage.eINSTANCE.getGlobalVariable());
 
+			elements.put(AdvancedCustomFunction_2042, DataMapperPackage.eINSTANCE.getAdvancedCustomFunction());
+
 			elements.put(TreeNode_3002, DataMapperPackage.eINSTANCE.getTreeNode());
 
 			elements.put(Element_3007, DataMapperPackage.eINSTANCE.getElement());
@@ -640,6 +649,7 @@ public class DataMapperElementTypes {
 			KNOWN_ELEMENT_TYPES.add(Clone_2039);
 			KNOWN_ELEMENT_TYPES.add(ToString_2040);
 			KNOWN_ELEMENT_TYPES.add(GlobalVariable_2041);
+			KNOWN_ELEMENT_TYPES.add(AdvancedCustomFunction_2042);
 			KNOWN_ELEMENT_TYPES.add(TreeNode_3002);
 			KNOWN_ELEMENT_TYPES.add(Element_3007);
 			KNOWN_ELEMENT_TYPES.add(InNode_3008);
@@ -745,6 +755,8 @@ public class DataMapperElementTypes {
 			return ToString_2040;
 		case GlobalVariableEditPart.VISUAL_ID:
 			return GlobalVariable_2041;
+		case AdvancedCustomFunctionEditPart.VISUAL_ID:
+			return AdvancedCustomFunction_2042;
 		case TreeNodeEditPart.VISUAL_ID:
 			return TreeNode_3002;
 		case ElementEditPart.VISUAL_ID:

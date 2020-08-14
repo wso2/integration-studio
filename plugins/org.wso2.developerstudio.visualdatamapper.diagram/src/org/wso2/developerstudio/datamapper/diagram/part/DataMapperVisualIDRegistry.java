@@ -11,6 +11,7 @@ import org.wso2.developerstudio.datamapper.DataMapperRoot;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ANDEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AbsoluteValueEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AddEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.AdvancedCustomFunctionEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CeliEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CloneEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CompareEditPart;
@@ -290,6 +291,9 @@ public class DataMapperVisualIDRegistry {
 			if (DataMapperPackage.eINSTANCE.getGlobalVariable().isSuperTypeOf(domainElement.eClass())) {
 				return GlobalVariableEditPart.VISUAL_ID;
 			}
+			if (DataMapperPackage.eINSTANCE.getAdvancedCustomFunction().isSuperTypeOf(domainElement.eClass())) {
+				return AdvancedCustomFunctionEditPart.VISUAL_ID;
+			}
 			break;
 		case InputEditPart.VISUAL_ID:
 			if (DataMapperPackage.eINSTANCE.getTreeNode().isSuperTypeOf(domainElement.eClass())) {
@@ -482,6 +486,11 @@ public class DataMapperVisualIDRegistry {
 			}
 			break;
 		case GlobalVariableEditPart.VISUAL_ID:
+			if (DataMapperPackage.eINSTANCE.getOperatorBasicContainer().isSuperTypeOf(domainElement.eClass())) {
+				return OperatorBasicContainerEditPart.VISUAL_ID;
+			}
+			break;
+		case AdvancedCustomFunctionEditPart.VISUAL_ID:
 			if (DataMapperPackage.eINSTANCE.getOperatorBasicContainer().isSuperTypeOf(domainElement.eClass())) {
 				return OperatorBasicContainerEditPart.VISUAL_ID;
 			}
@@ -707,6 +716,9 @@ public class DataMapperVisualIDRegistry {
 			if (GlobalVariableEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (AdvancedCustomFunctionEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			break;
 		case InputEditPart.VISUAL_ID:
 			if (TreeNodeEditPart.VISUAL_ID == nodeVisualID) {
@@ -899,6 +911,11 @@ public class DataMapperVisualIDRegistry {
 			}
 			break;
 		case GlobalVariableEditPart.VISUAL_ID:
+			if (OperatorBasicContainerEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case AdvancedCustomFunctionEditPart.VISUAL_ID:
 			if (OperatorBasicContainerEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}

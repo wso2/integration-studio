@@ -269,43 +269,45 @@ public class XSLTGenerator {
     private boolean processSpecialOperators(XSLTStyleSheetWriter outputXMLFile) {
         String propertyOperatorString = EMPTY_STRING;
         for (OperatorNode operatorNode : operatorNodes) {
-            switch (operatorNode.getProperty(OPERATOR_TYPE)) {
-            case PROPERTIES_OPERATOR:
-                Element propertyElement = outputXMLFile.getDocument().createElement(XSL_PARAM);
-                String propertyName = operatorNode.getProperty(NAME);
-                String scope = operatorNode.getProperty(SCOPE);
-                if (propertyName == null) {
-                    propertyName = DEFAULT_NAME;
-                }
-                if (operatorNode.getProperty(SCOPE) == null) {
-                    scope = DEFAULT_SCOPE;
-                }
-                propertyElement.setAttribute(NAME, scope + "_" + propertyName);
-                if (EMPTY_STRING.equals(propertyOperatorString)) {
-                    propertyOperatorString += propertyName + "," + scope;
-                } else {
-                    propertyOperatorString += "," + propertyName + "," + scope;
-                }
-                rootElement.appendChild(propertyElement);
-                break;
-            case GLOBAL_VARIABLE:
-                Element globalVariableElement = outputXMLFile.getDocument().createElement(XSL_VARIABLE);
-                if (operatorNode.getProperty(NAME) == null) {
-                    globalVariables.add(DEFAULT_NAME);
-                    globalVariableElement.setAttribute(NAME, DEFAULT_NAME);
-                } else {
-                    globalVariables.add(operatorNode.getProperty(NAME));
-                    globalVariableElement.setAttribute(NAME, operatorNode.getProperty(NAME));
-                }
-                if (operatorNode.getProperty(DEFAULT_VALUE) != null) {
-                    globalVariableElement.setAttribute(SELECT, operatorNode.getProperty(DEFAULT_VALUE));
-                }
-                rootElement.appendChild(globalVariableElement);
-                break;
-            case CUSTOM_FUNCTION:
-                rootElement.setAttribute(NOT_XSLT_COMPATIBLE, NOT_XSLT_COMPATIBLE_DEFAULT);
-                return true;
+            if (operatorNode != null && operatorNode.getProperty(OPERATOR_TYPE) != null) {
+                switch (operatorNode.getProperty(OPERATOR_TYPE)) {
+                case PROPERTIES_OPERATOR:
+                    Element propertyElement = outputXMLFile.getDocument().createElement(XSL_PARAM);
+                    String propertyName = operatorNode.getProperty(NAME);
+                    String scope = operatorNode.getProperty(SCOPE);
+                    if (propertyName == null) {
+                        propertyName = DEFAULT_NAME;
+                    }
+                    if (operatorNode.getProperty(SCOPE) == null) {
+                        scope = DEFAULT_SCOPE;
+                    }
+                    propertyElement.setAttribute(NAME, scope + "_" + propertyName);
+                    if (EMPTY_STRING.equals(propertyOperatorString)) {
+                        propertyOperatorString += propertyName + "," + scope;
+                    } else {
+                        propertyOperatorString += "," + propertyName + "," + scope;
+                    }
+                    rootElement.appendChild(propertyElement);
+                    break;
+                case GLOBAL_VARIABLE:
+                    Element globalVariableElement = outputXMLFile.getDocument().createElement(XSL_VARIABLE);
+                    if (operatorNode.getProperty(NAME) == null) {
+                        globalVariables.add(DEFAULT_NAME);
+                        globalVariableElement.setAttribute(NAME, DEFAULT_NAME);
+                    } else {
+                        globalVariables.add(operatorNode.getProperty(NAME));
+                        globalVariableElement.setAttribute(NAME, operatorNode.getProperty(NAME));
+                    }
+                    if (operatorNode.getProperty(DEFAULT_VALUE) != null) {
+                        globalVariableElement.setAttribute(SELECT, operatorNode.getProperty(DEFAULT_VALUE));
+                    }
+                    rootElement.appendChild(globalVariableElement);
+                    break;
+                case CUSTOM_FUNCTION:
+                    rootElement.setAttribute(NOT_XSLT_COMPATIBLE, NOT_XSLT_COMPATIBLE_DEFAULT);
+                    return true;
 
+                }
             }
         }
         if (EMPTY_STRING.equals(propertyOperatorString)) {

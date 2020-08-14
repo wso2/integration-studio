@@ -19,7 +19,7 @@
       <editor
          id="org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditorID"
          name="%editorName"
-         icon="icons/obj16/DataMapperDiagramFile.png"
+         icon="icons/obj16/dm-diagram-editor-16x16.png"
          extensions="datamapper_diagram"
          default="true"
          class="org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditor"
@@ -42,7 +42,7 @@
       <?gmfgen generated="true"?>
   	  <wizard
   	     name="%newWizardName"
-  	     icon="icons/obj16/DataMapperDiagramFile.png"
+  	     icon="icons/obj16/dm-diagram-editor-16x16.png"
   	     category="org.eclipse.ui.Examples"
   	     class="org.wso2.developerstudio.datamapper.diagram.part.DataMapperCreationWizard"
   	     id="org.wso2.developerstudio.datamapper.diagram.part.DataMapperCreationWizardID">
@@ -226,7 +226,7 @@
       <viewProvider class="org.wso2.developerstudio.datamapper.diagram.providers.DataMapperViewProvider">
          <Priority name="Lowest"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="DataMapper"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2002,2003,2005,2013,2006,2012,2007,2008,2009,2010,2011,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031,2032,2033,2034,2035,2036,2037,2038,2039,2040,2041,3002,3007,3008,3009,3003,3020,3019,3011,3012,3013,3014,3015,3016,3017,3018"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2002,2003,2005,2013,2006,2012,2007,2008,2009,2010,2011,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031,2032,2033,2034,2035,2036,2037,2038,2039,2040,2041,2042,3002,3007,3008,3009,3003,3020,3019,3011,3012,3013,3014,3015,3016,3017,3018"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4001"/>
       </viewProvider>
    </extension>
@@ -239,7 +239,7 @@
             <method name="getType()" value="DataMapper"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
-            <method name="getType()" value="2002,2003,2005,2013,2006,2012,2007,2008,2009,2010,2011,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031,2032,2033,2034,2035,2036,2037,2038,2039,2040,2041,3002,3007,3008,3009,3003,3020,3019,3011,3012,3013,3014,3015,3016,3017,3018"/>
+            <method name="getType()" value="2002,2003,2005,2013,2006,2012,2007,2008,2009,2010,2011,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031,2032,2033,2034,2035,2036,2037,2038,2039,2040,2041,2042,3002,3007,3008,3009,3003,3020,3019,3011,3012,3013,3014,3015,3016,3017,3018"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
             <method name="getType()" value="4001"/>
@@ -455,6 +455,11 @@
          <Priority name="Lowest"/>
          <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.GlobalVariableEditPart" id="GlobalVariable_2041"/>
          <context elements="GlobalVariable_2041"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfAdvancedCustomFunctionEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.AdvancedCustomFunctionEditPart" id="AdvancedCustomFunction_2042"/>
+         <context elements="AdvancedCustomFunction_2042"/>
       </modelingAssistantProvider>
             <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfTreeNodeEditPart">
          <Priority name="Lowest"/>
@@ -945,6 +950,16 @@
       </metamodel>
       <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
          <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.AdvancedCustomFunction_2042"
+               name="%metatype.name.AdvancedCustomFunction_2042"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="AdvancedCustomFunction"
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.AdvancedCustomFunctionEditHelper">
+            <param name="semanticHint" value="2042"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
                id="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3002"
                name="%metatype.name.TreeNode_3002"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
@@ -1149,6 +1164,7 @@
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Clone_2039"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.ToString_2040"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.GlobalVariable_2041"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.AdvancedCustomFunction_2042"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3002"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Element_3007"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.InNode_3008"/>
@@ -1367,7 +1383,7 @@
             priority="normal" 
             contentProvider="org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperNavigatorContentProvider" 
             labelProvider="org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperNavigatorLabelProvider"
-            icon="icons/obj16/DataMapperDiagramFile.png"
+            icon="icons/obj16/dm-diagram-editor-16x16.png"
             activeByDefault="true">
          <triggerPoints>
             <or>
@@ -1403,7 +1419,7 @@
             priority="normal" 
             contentProvider="org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperDomainNavigatorContentProvider" 
             labelProvider="org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperDomainNavigatorLabelProvider"
-            icon="icons/obj16/DataMapperDiagramFile.png"
+            icon="icons/obj16/dm-diagram-editor-16x16.png"
             activeByDefault="true">
          <triggerPoints>
             <or>

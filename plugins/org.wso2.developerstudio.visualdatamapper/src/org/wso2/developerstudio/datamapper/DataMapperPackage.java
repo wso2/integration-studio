@@ -4056,6 +4056,115 @@ public interface DataMapperPackage extends EPackage {
 	int GLOBAL_VARIABLE_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 2;
 
 	/**
+	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.AdvancedCustomFunctionImpl <em>Advanced Custom Function</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.wso2.developerstudio.datamapper.impl.AdvancedCustomFunctionImpl
+	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getAdvancedCustomFunction()
+	 * @generated
+	 */
+	int ADVANCED_CUSTOM_FUNCTION = 53;
+
+	/**
+	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADVANCED_CUSTOM_FUNCTION__BASIC_CONTAINER = OPERATOR__BASIC_CONTAINER;
+
+	/**
+	 * The feature id for the '<em><b>Serialized</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADVANCED_CUSTOM_FUNCTION__SERIALIZED = OPERATOR__SERIALIZED;
+
+	/**
+	 * The feature id for the '<em><b>Default Input Connectors</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADVANCED_CUSTOM_FUNCTION__DEFAULT_INPUT_CONNECTORS = OPERATOR__DEFAULT_INPUT_CONNECTORS;
+
+	/**
+	 * The feature id for the '<em><b>Default Output Connectors</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADVANCED_CUSTOM_FUNCTION__DEFAULT_OUTPUT_CONNECTORS = OPERATOR__DEFAULT_OUTPUT_CONNECTORS;
+
+	/**
+	 * The feature id for the '<em><b>Input Size Fixed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADVANCED_CUSTOM_FUNCTION__INPUT_SIZE_FIXED = OPERATOR__INPUT_SIZE_FIXED;
+
+	/**
+	 * The feature id for the '<em><b>Output Size Fixed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADVANCED_CUSTOM_FUNCTION__OUTPUT_SIZE_FIXED = OPERATOR__OUTPUT_SIZE_FIXED;
+
+	/**
+	 * The feature id for the '<em><b>Operator Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADVANCED_CUSTOM_FUNCTION__OPERATOR_TYPE = OPERATOR__OPERATOR_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Function Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADVANCED_CUSTOM_FUNCTION__FUNCTION_NAME = OPERATOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Function Definition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADVANCED_CUSTOM_FUNCTION__FUNCTION_DEFINITION = OPERATOR_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Is End Function</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADVANCED_CUSTOM_FUNCTION__IS_END_FUNCTION = OPERATOR_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Advanced Custom Function</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADVANCED_CUSTOM_FUNCTION_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 3;
+
+	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.ComparisonOperatorType <em>Comparison Operator Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4063,7 +4172,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getComparisonOperatorType()
 	 * @generated
 	 */
-	int COMPARISON_OPERATOR_TYPE = 53;
+	int COMPARISON_OPERATOR_TYPE = 54;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.SchemaDataType <em>Schema Data Type</em>}' enum.
@@ -4073,7 +4182,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getSchemaDataType()
 	 * @generated
 	 */
-    int SCHEMA_DATA_TYPE = 54;
+    int SCHEMA_DATA_TYPE = 55;
 
     /**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.DataMapperOperatorType <em>Operator Type</em>}' enum.
@@ -4083,7 +4192,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getDataMapperOperatorType()
 	 * @generated
 	 */
-	int DATA_MAPPER_OPERATOR_TYPE = 55;
+	int DATA_MAPPER_OPERATOR_TYPE = 56;
 
 				/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.DataMapperNode <em>Node</em>}'.
@@ -5419,6 +5528,49 @@ public interface DataMapperPackage extends EPackage {
 	EAttribute getGlobalVariable_DefaultValue();
 
 	/**
+	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.AdvancedCustomFunction <em>Advanced Custom Function</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Advanced Custom Function</em>'.
+	 * @see org.wso2.developerstudio.datamapper.AdvancedCustomFunction
+	 * @generated
+	 */
+	EClass getAdvancedCustomFunction();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.AdvancedCustomFunction#getFunctionName <em>Function Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Function Name</em>'.
+	 * @see org.wso2.developerstudio.datamapper.AdvancedCustomFunction#getFunctionName()
+	 * @see #getAdvancedCustomFunction()
+	 * @generated
+	 */
+	EAttribute getAdvancedCustomFunction_FunctionName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.AdvancedCustomFunction#getFunctionDefinition <em>Function Definition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Function Definition</em>'.
+	 * @see org.wso2.developerstudio.datamapper.AdvancedCustomFunction#getFunctionDefinition()
+	 * @see #getAdvancedCustomFunction()
+	 * @generated
+	 */
+	EAttribute getAdvancedCustomFunction_FunctionDefinition();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.AdvancedCustomFunction#isIsEndFunction <em>Is End Function</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is End Function</em>'.
+	 * @see org.wso2.developerstudio.datamapper.AdvancedCustomFunction#isIsEndFunction()
+	 * @see #getAdvancedCustomFunction()
+	 * @generated
+	 */
+	EAttribute getAdvancedCustomFunction_IsEndFunction();
+
+	/**
 	 * Returns the meta object for enum '{@link org.wso2.developerstudio.datamapper.ComparisonOperatorType <em>Comparison Operator Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6583,6 +6735,40 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute GLOBAL_VARIABLE__DEFAULT_VALUE = eINSTANCE.getGlobalVariable_DefaultValue();
+
+								/**
+		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.AdvancedCustomFunctionImpl <em>Advanced Custom Function</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.wso2.developerstudio.datamapper.impl.AdvancedCustomFunctionImpl
+		 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getAdvancedCustomFunction()
+		 * @generated
+		 */
+		EClass ADVANCED_CUSTOM_FUNCTION = eINSTANCE.getAdvancedCustomFunction();
+
+								/**
+		 * The meta object literal for the '<em><b>Function Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADVANCED_CUSTOM_FUNCTION__FUNCTION_NAME = eINSTANCE.getAdvancedCustomFunction_FunctionName();
+
+								/**
+		 * The meta object literal for the '<em><b>Function Definition</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADVANCED_CUSTOM_FUNCTION__FUNCTION_DEFINITION = eINSTANCE.getAdvancedCustomFunction_FunctionDefinition();
+
+								/**
+		 * The meta object literal for the '<em><b>Is End Function</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADVANCED_CUSTOM_FUNCTION__IS_END_FUNCTION = eINSTANCE.getAdvancedCustomFunction_IsEndFunction();
 
 								/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.ComparisonOperatorType <em>Comparison Operator Type</em>}' enum.

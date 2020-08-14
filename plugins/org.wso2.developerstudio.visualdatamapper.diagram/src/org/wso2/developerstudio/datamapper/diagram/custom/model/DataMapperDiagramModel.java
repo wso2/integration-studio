@@ -43,9 +43,11 @@ import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.custom.exception.DataMapperException;
+import org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.AdvancedCustomOperatorModelTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.ModelTransformerFactory;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
+import org.wso2.developerstudio.datamapper.impl.AdvancedCustomFunctionImpl;
 import org.wso2.developerstudio.datamapper.impl.ConstantImpl;
 import org.wso2.developerstudio.datamapper.impl.ElementImpl;
 import org.wso2.developerstudio.datamapper.impl.GlobalVariableImpl;
@@ -89,11 +91,23 @@ public class DataMapperDiagramModel {
 			populateInputVariablesDepthFirst(rootDiagram.getInput());
 			resetDiagramTraversalProperties();
 			updateExecutionSequence();
+			updateAdvancedFucntions(rootDiagram);
 		} else {
 			throw new DataMapperException("Both input and output message formats needed to generate mapping");
 		}
 	}
 
+	private void updateAdvancedFucntions(DataMapperRoot rootDiagram) {
+		EList<Operator> operators = rootDiagram.getOperators();
+		for (Operator operator : operators) {
+			if (operator instanceof AdvancedCustomFunctionImpl) {
+				OperatorImpl operatorElement = (OperatorImpl) operator;
+				DMOperation dmOperator = new AdvancedCustomOperatorModelTransformer().transform(operatorElement, -1);
+				operationsList.add(dmOperator);
+			}
+		}
+	}
+	
 	private void populateInputVariablesDepthFirst(Input input) {
 		Stack<EObject> nodeStack = new Stack<>();
 		nodeStack.addAll(input.getTreeNode());

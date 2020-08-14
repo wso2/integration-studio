@@ -1,3 +1,19 @@
+/*
+ * Copyright 2020 WSO2, Inc. (http://wso2.com)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
 import org.apache.commons.lang.StringUtils;
@@ -13,19 +29,15 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 import org.eclipse.swt.graphics.Color;
 import org.wso2.developerstudio.datamapper.diagram.custom.edit.part.AbstractOperatorEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.AdvancedCustomFunctionCanonicalEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.AdvancedCustomFunctionItemSemanticEditPolicy;
-import org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry;
 import org.wso2.developerstudio.datamapper.impl.AdvancedCustomFunctionImpl;
 
 /**
@@ -61,16 +73,6 @@ public class AdvancedCustomFunctionEditPart extends AbstractOperatorEditPart {
 	* @generated NOT
 	*/
 	protected void createDefaultEditPolicies() {
-//		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
-//				new CreationEditPolicyWithCustomReparent(DataMapperVisualIDRegistry.TYPED_INSTANCE));
-//		super.createDefaultEditPolicies();
-//		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new AdvancedCustomFunctionItemSemanticEditPolicy());
-//		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
-///		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new AdvancedCustomFunctionCanonicalEditPolicy());
-//		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
-		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
-		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
-		
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new AdvancedCustomFunctionItemSemanticEditPolicy());
 		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new AdvancedCustomFunctionCanonicalEditPolicy());
@@ -106,7 +108,6 @@ public class AdvancedCustomFunctionEditPart extends AbstractOperatorEditPart {
 	* @generated NOT
 	*/
 	protected IFigure createNodeShape() {
-//		return primaryShape = new RectangleFigure();
 		functionName = ((AdvancedCustomFunctionImpl) ((View) getModel()).getElement()).getFunctionName();
 		return primaryShape = new AdvancedCustomFunctionFigure(functionName);
 	}
@@ -135,7 +136,6 @@ public class AdvancedCustomFunctionEditPart extends AbstractOperatorEditPart {
 	* @generated NOT
 	*/
 	protected NodeFigure createNodeFigure() {
-//		initializeOperatorImplConnectorCount();
 		NodeFigure figure = createNodePlate();
 		figure.setLayoutManager(new StackLayout());
 		IFigure shape = createNodeShape();

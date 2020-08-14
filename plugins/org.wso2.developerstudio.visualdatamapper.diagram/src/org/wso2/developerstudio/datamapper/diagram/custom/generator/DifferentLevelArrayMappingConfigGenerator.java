@@ -76,6 +76,8 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 	private Map<String, Integer> outputObjectVariableForLoopMap;
 	private Map<String, List<SchemaDataType>> variableMap;
 	private Map<String, Integer> outputArrayRootVariableForLoop;
+	boolean hasAdvancedFunction = false;
+	String advancedFunctionDefinition;
 
 	@Override
 	public String generateMappingConfig(DataMapperDiagramModel model) throws DataMapperException {
@@ -83,7 +85,11 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 		String globalVariables = instantiateGlobalVariables(model);
 		List<MappingOperation> mappingOperationList = populateOperationListFromModel(model);
 		String mainFunction = generateMainFunction(mappingOperationList, model);
+		hasAdvancedFunction = false;
 		String customFunctions = generateCustomFunctions(model);
+		if (hasAdvancedFunction) {
+		    mainFunction = generateAdvancedCustomFunctions(mainFunction, model);
+		}
 		return globalVariables + mainFunction + customFunctions;
 	}
 
@@ -130,8 +136,43 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 				functionBuilder.append(operation.getProperty(TransformerConstants.CUSTOM_FUNCTION_NAME) + " = "
 						+ addFunctionDefinition(operation));
 			}
+			if (DataMapperOperatorType.ADVANCED_CUSTOM_FUNCTION.equals(operation.getOperatorType())) {
+                hasAdvancedFunction = true;
+                advancedFunctionDefinition = TransformerConstants.ADVANCED_CUSTOM_FUNCTION_NAME + " = "
+                        + addAdvancedFunctionDefinition(operation);
+            }
 			functionBuilder.append("\n");
 		}
+		return functionBuilder.toString();
+	}
+	
+	protected String generateAdvancedCustomFunctions(String mainFunction, DataMapperDiagramModel model) {
+		String start = mainFunction.substring(0, mainFunction.lastIndexOf("return"));
+		String end = mainFunction.substring(mainFunction.lastIndexOf("return"));
+		StringBuilder functionBuilder = new StringBuilder();
+		String inputName = "", outputName = "";
+		boolean setInput = false, setOutput = false;
+		for (DMVariable dmVariable : model.getVariablesArray()) {
+			if (!setInput && dmVariable.getType().equals(DMVariableType.INPUT)) {
+				inputName = dmVariable.getName();
+				setInput = true;
+			} else if (!setOutput && dmVariable.getType().equals(DMVariableType.OUTPUT)) {
+				outputName = dmVariable.getName();
+				setOutput = true;
+			}
+		}
+		functionBuilder.append(start).append("\n").append("endFunction(").append(inputName).append(",")
+				.append(outputName).append(");").append("\n").append(end).append("\n\n")
+				.append(advancedFunctionDefinition);
+		return functionBuilder.toString();
+	}
+	
+	protected String addAdvancedFunctionDefinition(DMOperation operation) {
+		StringBuilder functionBuilder = new StringBuilder();
+		functionBuilder.append("function");
+		String functionDefinition = (String) operation
+				.getProperty(TransformerConstants.ADVANCED_CUSTOM_FUNCTION_DEFINITION);
+		functionBuilder.append(functionDefinition.substring(functionDefinition.indexOf("(")));
 		return functionBuilder.toString();
 	}
 

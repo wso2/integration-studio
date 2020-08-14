@@ -36,8 +36,10 @@ public abstract class ConditionOperation extends EnableCondition {
     @Override
     public List<String> getComponentsList() {
 
-        List<String> componentsList = new ArrayList<>();
-        arguments.forEach(argument -> componentsList.addAll(argument.getComponentsList()));
+        final List<String> componentsList = new ArrayList<>();
+        for (EnableCondition argument : arguments) {
+            componentsList.addAll(argument.getComponentsList());
+        }
         return componentsList;
     }
 

@@ -41,18 +41,18 @@ public class EnableConditionManager {
         this.compositeList = compositeList;
     }
 
-    public void addEnableCondition(EnableCondition enableCondition, String targetComponent) {
+    public void addEnableCondition(final EnableCondition enableCondition, String targetComponent) {
 
         if (enableCondition != null) {
             enableCondition.setTargetComponent(targetComponent);
             List<String> componentsList = enableCondition.getComponentsList();
-            componentsList.forEach(component -> {
+            for (String component : componentsList) {
                 if (enableConditionsMap.containsKey(component)) {
                     enableConditionsMap.get(component).add(enableCondition);
                 } else {
                     enableConditionsMap.put(component, new ArrayList<>(Collections.singletonList(enableCondition)));
                 }
-            });
+            }
         }
     }
 
@@ -61,16 +61,16 @@ public class EnableConditionManager {
         dependantComponentValuesMap.put(componentName, value);
         if (enableConditionsMap.containsKey(componentName)) {
             List<EnableCondition> enableConditions = enableConditionsMap.get(componentName);
-            enableConditions.forEach(enableCondition ->
-                    setComponentVisibility(enableCondition, enableCondition.isValid(dependantComponentValuesMap)));
+            for (EnableCondition enableCondition : enableConditions) {
+                setComponentVisibility(enableCondition, enableCondition.isValid(dependantComponentValuesMap));
+            }
         }
     }
 
     public void handleValueChange(List<CallTemplateParameter> parameterList) {
-
-        parameterList.forEach(parameter -> {
+        for (CallTemplateParameter parameter : parameterList) {
             handleValueChange(parameter.getParameterName(), parameter.getParameterValue());
-        });
+        }
     }
 
     private void setComponentVisibility(EnableCondition enableCondition, boolean visibility) {

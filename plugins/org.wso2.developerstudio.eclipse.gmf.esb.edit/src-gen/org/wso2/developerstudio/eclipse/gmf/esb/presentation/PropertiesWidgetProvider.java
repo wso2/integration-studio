@@ -246,7 +246,7 @@ public class PropertiesWidgetProvider {
      * @return composite
      */
     public Composite createTextBoxFieldWithButton(FormToolkit widgetFactory, final Composite parent,
-                                                  AttributeValue jsonSchemaObject) {
+                                                  final AttributeValue jsonSchemaObject) {
         // Create wrapping composite of 3 elements
         Composite textBoxComposite = createComposite(jsonSchemaObject.getName(), widgetFactory, parent, 3, 3);
 
@@ -549,7 +549,7 @@ public class PropertiesWidgetProvider {
      * @return Composite
      */
     public Composite createDropDownField(FormToolkit widgetFactory, final Composite parent, String[] options,
-                                         AttributeValue jsonSchemaObject) {
+                                         final AttributeValue jsonSchemaObject) {
         // Create wrapping composite of 3 elements
         Composite dropDownComposite = createComposite(jsonSchemaObject.getName(), widgetFactory, parent, 3, 3);
 
@@ -1000,7 +1000,7 @@ public class PropertiesWidgetProvider {
      * @param jsonSchemaObject JSONSchema object of the property
      * @return Composite
      */
-    public Composite createKeyValueTable(FormToolkit widgetFactory, Composite parent, AttributeValue jsonSchemaObject) {
+    public Composite createKeyValueTable(FormToolkit widgetFactory, final Composite parent, AttributeValue jsonSchemaObject) {
         // Create composite with 3 elements
         Composite tableComposite = createComposite(jsonSchemaObject.getName(), widgetFactory, parent, 3, 3);
 
@@ -1028,7 +1028,7 @@ public class PropertiesWidgetProvider {
         expressionButton.setImage(expressionButtonImage);
 
         // Create table (uses a new composite since its a complex widget)
-        Composite composite = createComposite(jsonSchemaObject.getName(), widgetFactory, tableComposite, 2, 1);
+        final Composite composite = createComposite(jsonSchemaObject.getName(), widgetFactory, tableComposite, 2, 1);
         Button addButton = widgetFactory.createButton(composite, "", SWT.PUSH);
         addButton.setLayoutData(new GridData(SWT.RIGHT, SWT.TOP, false, false, 1, 1));
         Button removeButton = widgetFactory.createButton(composite, "", SWT.PUSH);
@@ -1059,7 +1059,7 @@ public class PropertiesWidgetProvider {
         valueTable.setLayoutData(tableLayoutData);
 
         // Populate Table
-        List<KeyValueTableColumn> kColumns = jsonSchemaObject.getColumns();
+        final List<KeyValueTableColumn> kColumns = jsonSchemaObject.getColumns();
 
         for (KeyValueTableColumn kColumn : kColumns) {
             TableColumn keyColumn = new TableColumn(valueTable, SWT.NULL);
@@ -1566,7 +1566,7 @@ public class PropertiesWidgetProvider {
      * @param table Table which the data should be added
      * @throws JSONException if json string isn't parseable
      */
-    public void deserializeKeyValueTableJson(String json, Table table) throws JSONException {
+    public void deserializeKeyValueTableJson(String json, final Table table) throws JSONException {
 
         JSONArray tableJsonArray = new JSONArray("[]");
         if(json != null && !json.isEmpty()) {

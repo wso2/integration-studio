@@ -116,6 +116,7 @@ public class EEFPropertyViewUtil {
     private static final String XML_EXTENSION = ".xml";
     private static final String CONNECTION_LOCAL_ENTRY_TYPE_XPATH = "//*[local-name()='connectionType']/text()";
     private static final String CONNECTION_LOCAL_ENTRY_NAME_XPATH = "//*[local-name()='name']/text()";
+    private static final String CONNECTION_LOCAL_ENTRY_ARTIFACT_XML_PREFIX = ".local-entry";
 
     static {
         URL url;
@@ -526,7 +527,7 @@ public class EEFPropertyViewUtil {
         artifact.setVersion(mvp.getVersion());
         artifact.setType("synapse/local-entry");
         artifact.setServerRole("EnterpriseServiceBus");
-        artifact.setGroupId(mvp.getGroupId());
+        artifact.setGroupId(mvp.getGroupId() + CONNECTION_LOCAL_ENTRY_ARTIFACT_XML_PREFIX);
         artifact.setFile(LOCAL_ENTRY_LOCATION
                 + File.separator + localEntryName + XML_EXTENSION);
         esbProjectArtifact.addESBArtifact(artifact);

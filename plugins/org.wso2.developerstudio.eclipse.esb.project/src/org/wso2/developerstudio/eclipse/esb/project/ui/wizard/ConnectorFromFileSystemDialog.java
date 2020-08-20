@@ -29,6 +29,11 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.FileDialog;
+
+import java.io.File;
+import java.util.Arrays;
+import java.util.Iterator;
+
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.MessageBox;
@@ -107,10 +112,23 @@ public class ConnectorFromFileSystemDialog extends Dialog {
         btnBrowse.addSelectionListener(new SelectionAdapter() {
 
             public void widgetSelected(SelectionEvent e) {
-                FileDialog fileDlg = new FileDialog(getShell());
+                FileDialog fileDlg = new FileDialog(getShell(), SWT.MULTI);
                 String fileName = fileDlg.open();
+
                 if (fileName != null) {
-                    txtCloudConnectorPath.setText(fileName);
+                    // Store the file names in an array
+                    String[] connectorPaths = fileDlg.getFileNames();
+                    String displayText = "";
+
+                    String path = fileDlg.getFilterPath() + File.separator;
+                    for (int i=0; i < connectorPaths.length; i++) {
+                        if (i!=0) {
+                            displayText += ", " + path + connectorPaths[i];
+                        } else {
+                            displayText += path + connectorPaths[i]; 
+                        }
+                    }
+                    txtCloudConnectorPath.setText(displayText);
                 }
                 validate();
             }

@@ -47,7 +47,7 @@ public class CloudConnectorImportWizard extends AbstractWSO2ProjectCreationWizar
     private static final String ADD_CONNECTOR_FAILURE_MSG = "Failed to add connector/module";
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-    
+
     @Override
     public void init(IWorkbench workbench, IStructuredSelection selection) {
         setWindowTitle("Add or Remove Connectors/Modules");
@@ -86,6 +86,7 @@ public class CloudConnectorImportWizard extends AbstractWSO2ProjectCreationWizar
      */
     private boolean performFinishFileSystem() {
         String source = storeWizardPage.getCloudConnectorPath();
+        String[] values = source.split(", ");
         try {
             String parentDirectoryPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString()
                     + File.separator + DIR_DOT_METADATA + File.separator + DIR_CONNECTORS;
@@ -93,10 +94,11 @@ public class CloudConnectorImportWizard extends AbstractWSO2ProjectCreationWizar
             if (!parentDirectory.exists()) {
                 parentDirectory.mkdir();
             }
-            File file = new File(source);
-            FileUtils.copyFileToDirectory(file, parentDirectory);
-
-            updateProjects(source);
+            for (String value : values) {
+                File file = new File(value);
+                FileUtils.copyFileToDirectory(file, parentDirectory);
+                updateProjects(value);
+            }
         } catch (ZipException e) {
             log.error("Error while extracting the connector zip : " + source, e);
             WizardDialogUtils.showErrorMessage("Error while extracting the connector zip : " + source,
@@ -122,7 +124,7 @@ public class CloudConnectorImportWizard extends AbstractWSO2ProjectCreationWizar
                         .getData()).getConnectorFilePath();
                 try {
                     FileUtils.deleteDirectory(new File(filePath));
-                    
+
                     // Remove the archived connector.
                     File zipFile = new File(filePath + ".zip");
                     zipFile.delete();

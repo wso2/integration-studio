@@ -66,5 +66,4 @@ public class DescriptorConstants {
 
     //Key related to the Connection attribute
     public static final String CONFIG_REF = "configRef";
-
 }

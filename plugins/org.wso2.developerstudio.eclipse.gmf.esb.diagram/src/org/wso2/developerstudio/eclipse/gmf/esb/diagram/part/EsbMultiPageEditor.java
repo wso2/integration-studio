@@ -381,7 +381,12 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
         }
 
         esbPaletteFactory.updateToolPaletteItems(graphicalEditor);
-
+        try {
+			EsbPaletteUtil.loadConnectorFile();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         EditorUtils.setLockmode(graphicalEditor, false);
 
         // change editor title when a file rename occurs

@@ -20,10 +20,14 @@ package org.wso2.developerstudio.eclipse.esb.project.servlets;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.Paths;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -41,6 +45,7 @@ import javax.net.ssl.X509TrustManager;
 import org.apache.commons.httpclient.HttpClient;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.wso2.developerstudio.eclipse.esb.project.connector.store.Connector;
 import org.wso2.developerstudio.eclipse.esb.project.connector.store.ConnectorData;
 import org.wso2.developerstudio.eclipse.esb.project.connector.store.ConnectorStore;
@@ -67,6 +72,7 @@ public class ConnectorServletUtil {
     private static final String STORE_URL = "https://store.wso2.com";
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+	public static final String connectorPathFromWorkspace = DIR_DOT_METADATA + File.separator + ".Connectors";
 
     /**
      * Retrieves all connectors from WSO2 store
@@ -121,11 +127,25 @@ public class ConnectorServletUtil {
      * 
      */
     public static boolean downloadConnectorAndUpdateProjects(String downloadLink) throws ConnectorException {
+		String connectorPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString() + File.separator
+				+ connectorPathFromWorkspace;
+		Boolean exist = Files.exists(Paths.get(connectorPath + File.separator + "checkedConnectors.txt"),
+				LinkOption.NOFOLLOW_LINKS);
+
+		if (!exist) {
+			try {
+				Files.createFile(Paths.get(connectorPath + File.separator + "checkedConnectors.txt"));
+			} catch (IOException e) {
+				log.error("Error while writing to file : " + e.getMessage());
+			}
+		}
         String zipDestination = null;
         try {
             URL url = new URL(downloadLink);
             String[] segments = downloadLink.split("/");
             String zipFileName = segments[segments.length - 1];
+			String connectorDisplayName = zipFileName.substring(0, 1).toUpperCase()
+					+ zipFileName.substring(1).replaceAll("\\-(.*)", " Connector");
             String parentDirectoryPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString()
                     + File.separator + DIR_DOT_METADATA + File.separator + DIR_CONNECTORS;
             File parentDirectory = new File(parentDirectoryPath);
@@ -143,6 +163,14 @@ public class ConnectorServletUtil {
                         outputStream.write(buffer, 0, bytesRead);
                     }
                     updateProjects(zipDestination);
+					try {
+						FileWriter fileWriter = new FileWriter(
+								connectorPath + File.separator + "checkedConnectors.txt");
+						fileWriter.append(connectorDisplayName + ", ");
+						fileWriter.close();
+					} catch (IOException e) {
+						log.error("Error while writing to file : " + e.getMessage());
+					}
                     return true;
                 }
             } catch (IOException e) {

@@ -174,9 +174,7 @@ public class ConnectorServletUtil {
                         outputStream.write(buffer, 0, bytesRead);
                     }
                     updateProjects(zipDestination);
-					try {
-						FileWriter fileWriter = new FileWriter(
-								connectorPath + File.separator + "checkedConnectors.txt");
+					try (FileWriter fileWriter = new FileWriter(connectorPath + File.separator + "checkedConnectors.txt")){
 						connectorsFile += connectorDisplayName + ", ";
 						fileWriter.append(connectorsFile);
 						fileWriter.close();

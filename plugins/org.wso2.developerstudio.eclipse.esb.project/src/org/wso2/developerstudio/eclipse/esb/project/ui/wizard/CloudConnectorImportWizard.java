@@ -154,6 +154,7 @@ public class CloudConnectorImportWizard extends AbstractWSO2ProjectCreationWizar
     }
 
     private void updateProjects(String source) throws ZipException, CoreException {
+		String connectorsFile = "";
 		String connectorPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString() + File.separator
 				+ connectorPathFromWorkspace;
 		Boolean exist = Files.exists(Paths.get(connectorPath + File.separator + "checkedConnectors.txt"),
@@ -164,6 +165,15 @@ public class CloudConnectorImportWizard extends AbstractWSO2ProjectCreationWizar
 				Files.createFile(Paths.get(connectorPath + File.separator + "checkedConnectors.txt"));
 			} catch (IOException e) {
 				log.error("Error while creating file : " + e.getMessage());
+			}
+		}
+
+		if (exist) {
+			try {
+				connectorsFile = new String(
+						Files.readAllBytes(Paths.get(connectorPath + File.separator + "checkedConnectors.txt")));
+			} catch (IOException e) {
+				log.error("Error while reading file ", e);
 			}
 		}
 
@@ -187,7 +197,8 @@ public class CloudConnectorImportWizard extends AbstractWSO2ProjectCreationWizar
         }
 		try {
 			FileWriter fileWriter = new FileWriter(connectorPath + File.separator + "checkedConnectors.txt");
-			fileWriter.append(connectorDisplayName + ", ");
+			connectorsFile += connectorDisplayName + ", ";
+			fileWriter.append(connectorsFile);
 			fileWriter.close();
 		} catch (IOException e) {
 			log.error("Error while writing to file : " + e.getMessage());

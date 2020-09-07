@@ -384,8 +384,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
         try {
 			EsbPaletteUtil.loadConnectorFile();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error("Error while loading file " + e);
 		}
         EditorUtils.setLockmode(graphicalEditor, false);
 

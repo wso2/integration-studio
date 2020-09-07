@@ -127,6 +127,7 @@ public class ConnectorServletUtil {
      * 
      */
     public static boolean downloadConnectorAndUpdateProjects(String downloadLink) throws ConnectorException {
+		String connectorsFile = "";
 		String connectorPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString() + File.separator
 				+ connectorPathFromWorkspace;
 		Boolean exist = Files.exists(Paths.get(connectorPath + File.separator + "checkedConnectors.txt"),
@@ -139,6 +140,16 @@ public class ConnectorServletUtil {
 				log.error("Error while writing to file : " + e.getMessage());
 			}
 		}
+
+		if (exist) {
+			try {
+				connectorsFile = new String(
+						Files.readAllBytes(Paths.get(connectorPath + File.separator + "checkedConnectors.txt")));
+			} catch (IOException e) {
+				log.error("Error while reading file ", e);
+			}
+		}
+
         String zipDestination = null;
         try {
             URL url = new URL(downloadLink);
@@ -166,7 +177,8 @@ public class ConnectorServletUtil {
 					try {
 						FileWriter fileWriter = new FileWriter(
 								connectorPath + File.separator + "checkedConnectors.txt");
-						fileWriter.append(connectorDisplayName + ", ");
+						connectorsFile += connectorDisplayName + ", ";
+						fileWriter.append(connectorsFile);
 						fileWriter.close();
 					} catch (IOException e) {
 						log.error("Error while writing to file : " + e.getMessage());

@@ -21,8 +21,12 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtil
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils.updateToolpalette;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -33,6 +37,7 @@ import java.util.Set;
 import org.apache.commons.lang.WordUtils;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -59,6 +64,7 @@ import org.eclipse.swt.SWTException;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.IPerspectiveDescriptor;
 import org.eclipse.ui.IWorkbench;
@@ -101,6 +107,8 @@ public class EsbPaletteFactory {
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     
     private static HashMap<String, ImageDescriptor> imageDescriptorMap = new HashMap<String, ImageDescriptor>();
+	private static final String DIR_DOT_METADATA = ".metadata";
+	public static final String connectorPathFromWorkspace = DIR_DOT_METADATA + File.separator + ".Connectors";
 
     /**
      * @generated NOT
@@ -1926,7 +1934,73 @@ public class EsbPaletteFactory {
                 ((CustomPaletteViewerKeyHandler) paletteViewer.getKeyHandler()).initializeKeyHandler();
             }
         }
+		showConnectors();
     }
+
+	/**
+	 * Show the connectors ticked once a connector is added/removed
+	 * 
+	 */
+	private void showConnectors() {
+		String connectorsFile;
+		String[] checkedConnectors = null;
+		String connectorPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString() + File.separator
+				+ connectorPathFromWorkspace;
+		File directory = new File(connectorPath);
+		String[] names = directory.list();
+		Boolean exist = Files.exists(Paths.get(connectorPath + File.separator + "checkedConnectors.txt"),
+				LinkOption.NOFOLLOW_LINKS);
+
+		if ((names != null) && (names.length > 0)) {
+			for (String name : names) {
+				if (!((name.contains(".zip")) || (name.contains(".txt")))) {
+					name = name.substring(0, 1).toUpperCase() + name.substring(1).replaceAll("\\-(.*)", " Connector");
+					updateConnectorVisibility(name, false);
+				}
+			}
+		}
+
+		if (exist) {
+			try {
+				connectorsFile = new String(
+						Files.readAllBytes(Paths.get(connectorPath + File.separator + "checkedConnectors.txt")));
+				checkedConnectors = connectorsFile.split(", ");
+				for (String checkedConnector : checkedConnectors) {
+					updateConnectorVisibility(checkedConnector, true);
+				}
+			} catch (IOException e) {
+				log.error("Error while reading file ", e);
+			}
+		}
+	}
+
+	/**
+	 * Change the visibility of Connectors in palette based on the checked box
+	 * 
+	 * @param paletteContainer
+	 * @param visible
+	 */
+	private void updateConnectorVisibility(String connectorName, boolean visible) {
+		IEditorReference editorReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+				.getEditorReferences();
+		for (IEditorReference editorReference : editorReferences) {
+			if (editorReference.getEditor(true) instanceof EsbMultiPageEditor) {
+				PaletteViewer paletteViewer = ((DiagramEditDomain) ((EsbMultiPageEditor) editorReference
+						.getEditor(true)).getDiagramEditDomain()).getPaletteViewer();
+				List children = paletteViewer.getPaletteRoot().getChildren();
+				for (Object child : children) {
+					if (((PaletteContainer) child).getId().contains("CloudConnector")) {
+						String connectorId = ((PaletteContainer) child).getId().replaceAll("CloudConnector-", "");
+						connectorId = connectorId.substring(0, 1).toUpperCase() + connectorId.substring(1)
+								+ " Connector";
+						if (connectorId.equals(connectorName)) {
+							((PaletteContainer) child).setVisible(visible);
+						}
+					}
+				}
+			}
+		}
+	}
 
     /**
      * Change the visibility of Connector palette group(s) based on the opened

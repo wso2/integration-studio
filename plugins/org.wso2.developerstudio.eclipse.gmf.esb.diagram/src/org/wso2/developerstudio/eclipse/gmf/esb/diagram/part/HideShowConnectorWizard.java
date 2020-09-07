@@ -32,6 +32,8 @@ import org.eclipse.gef.ui.palette.PaletteViewer;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditDomain;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.TableItem;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.PlatformUI;
 
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
@@ -112,21 +114,24 @@ public class HideShowConnectorWizard extends AbstractWSO2ProjectCreationWizard {
 	 * @param visible
 	 */
 	private void updateConnectorVisibility(String connectorName, boolean visible) {
-		EsbMultiPageEditor esbMultiPageEditor = (EsbMultiPageEditor) PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow().getActivePage().getActiveEditor();
-		esbMultiPageEditor.getDiagramEditDomain();
-		PaletteViewer paletteViewer = ((DiagramEditDomain) esbMultiPageEditor.getDiagramEditDomain())
-				.getPaletteViewer();
-		List children = paletteViewer.getPaletteRoot().getChildren();
-		for (Object child : children) {
-			if (((PaletteContainer) child).getId().contains("CloudConnector")) {
-				String connectorId = ((PaletteContainer) child).getId().replaceAll("CloudConnector-", "");
-				connectorId = connectorId.substring(0, 1).toUpperCase() + connectorId.substring(1) + " Connector";
-				if (connectorId.equals(connectorName)) {
-					((PaletteContainer) child).setVisible(visible);
+		IEditorReference editorReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+				.getEditorReferences();
+		for (IEditorReference editorReference : editorReferences) {
+			if (editorReference.getEditor(true) instanceof EsbMultiPageEditor) {
+				PaletteViewer paletteViewer = ((DiagramEditDomain) ((EsbMultiPageEditor) editorReference
+						.getEditor(true)).getDiagramEditDomain()).getPaletteViewer();
+				List children = paletteViewer.getPaletteRoot().getChildren();
+				for (Object child : children) {
+					if (((PaletteContainer) child).getId().contains("CloudConnector")) {
+						String connectorId = ((PaletteContainer) child).getId().replaceAll("CloudConnector-", "");
+						connectorId = connectorId.substring(0, 1).toUpperCase() + connectorId.substring(1)
+								+ " Connector";
+						if (connectorId.equals(connectorName)) {
+							((PaletteContainer) child).setVisible(visible);
+						}
+					}
 				}
 			}
-
 		}
 	}
 

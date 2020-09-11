@@ -39,112 +39,112 @@ import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCr
 
 public class HideShowConnectorWizard extends AbstractWSO2ProjectCreationWizard {
 
-	private HideConnectorWizardPage hideWizardPage;
-	private static final String DIR_DOT_METADATA = ".metadata";
-	public static final String connectorPathFromWorkspace = DIR_DOT_METADATA + File.separator + ".Connectors";
+    private HideConnectorWizardPage hideWizardPage;
+    private static final String DIR_DOT_METADATA = ".metadata";
+    public static final String connectorPathFromWorkspace = DIR_DOT_METADATA + File.separator + ".Connectors";
 
-	public HideShowConnectorWizard() throws Exception {
-		super();
-		hideWizardPage = new HideConnectorWizardPage(true);
-		init();
-	}
+    public HideShowConnectorWizard() throws Exception {
+        super();
+        hideWizardPage = new HideConnectorWizardPage(true);
+        init();
+    }
 
-	public void init() {
-		hideWizardPage = new HideConnectorWizardPage(true);
-		setWindowTitle("Show or Hide Connectors/Modules from Palette");
-	}
+    public void init() {
+        hideWizardPage = new HideConnectorWizardPage(true);
+        setWindowTitle("Show or Hide Connectors/Modules from Palette");
+    }
 
-	@Override
-	public void addPages() {
-		addPage(hideWizardPage);
-	}
+    @Override
+    public void addPages() {
+        addPage(hideWizardPage);
+    }
 
-	public boolean performFinish() {
-		String connectorPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString() + File.separator
-				+ connectorPathFromWorkspace;
-		Boolean exist = Files.exists(Paths.get(connectorPath + File.separator + "checkedConnectors.txt"),
-				LinkOption.NOFOLLOW_LINKS);
-		FileWriter fileWriter = null;
+    public boolean performFinish() {
+        String connectorPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString() + File.separator
+                + connectorPathFromWorkspace;
+        Boolean exist = Files.exists(Paths.get(connectorPath + File.separator + "checkedConnectors.txt"),
+                LinkOption.NOFOLLOW_LINKS);
+        FileWriter fileWriter = null;
 
-		if (!exist) {
-			try {
-				Files.createFile(Paths.get(connectorPath + File.separator + "checkedConnectors.txt"));
-			} catch (IOException e) {
-				MessageDialog.openError(getShell(), "Error while creating file ", e.getMessage());
-			}
-		}
+        if (!exist) {
+            try {
+                Files.createFile(Paths.get(connectorPath + File.separator + "checkedConnectors.txt"));
+            } catch (IOException e) {
+                MessageDialog.openError(getShell(), "Error while creating file ", e.getMessage());
+            }
+        }
 
-		try {
-			fileWriter = new FileWriter(connectorPath + File.separator + "checkedConnectors.txt");
-		} catch (IOException e) {
-			MessageDialog.openError(getShell(), "Error while creating file ", e.getMessage());
-		}
+        try {
+            fileWriter = new FileWriter(connectorPath + File.separator + "checkedConnectors.txt");
+        } catch (IOException e) {
+            MessageDialog.openError(getShell(), "Error while creating file ", e.getMessage());
+        }
 
-		List<String> checkedList = new ArrayList();
-		for (TableItem tableItem : hideWizardPage.getTable().getItems()) {
-			if ((tableItem.getChecked())) {
-				checkedList.add((String) tableItem.getData());
-				updateConnectorVisibility((String) tableItem.getData(), true);
-			} else if (!(tableItem.getChecked())) {
-				checkedList.remove((String) tableItem.getData());
-				updateConnectorVisibility((String) tableItem.getData(), false);
-			}
-		}
+        List<String> checkedList = new ArrayList();
+        for (TableItem tableItem : hideWizardPage.getTable().getItems()) {
+            if ((tableItem.getChecked())) {
+                checkedList.add((String) tableItem.getData());
+                updateConnectorVisibility((String) tableItem.getData(), true);
+            } else if (!(tableItem.getChecked())) {
+                checkedList.remove((String) tableItem.getData());
+                updateConnectorVisibility((String) tableItem.getData(), false);
+            }
+        }
 
-		for (String checked : checkedList) {
-			try {
-				fileWriter.write(checked + ", ");
-			} catch (IOException e) {
-				MessageDialog.openError(getShell(), "Error while writing to file ", e.getMessage());
-			}
-		}
-		try {
-			fileWriter.close();
-		} catch (IOException e) {
-			MessageDialog.openError(getShell(), "Error while closing file ", e.getMessage());
-		}
-		return true;
-	}
+        for (String checked : checkedList) {
+            try {
+                fileWriter.write(checked + ", ");
+            } catch (IOException e) {
+                MessageDialog.openError(getShell(), "Error while writing to file ", e.getMessage());
+            }
+        }
+        try {
+            fileWriter.close();
+        } catch (IOException e) {
+            MessageDialog.openError(getShell(), "Error while closing file ", e.getMessage());
+        }
+        return true;
+    }
 
-	/**
-	 * Change the visibility of Connectors in palette based on the checked box
-	 * 
-	 * @param paletteContainer
-	 * @param visible
-	 */
-	private void updateConnectorVisibility(String connectorName, boolean visible) {
-		IEditorReference editorReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-				.getEditorReferences();
-		for (IEditorReference editorReference : editorReferences) {
-			if (editorReference.getEditor(true) instanceof EsbMultiPageEditor) {
-				PaletteViewer paletteViewer = ((DiagramEditDomain) ((EsbMultiPageEditor) editorReference
-						.getEditor(true)).getDiagramEditDomain()).getPaletteViewer();
-				List children = paletteViewer.getPaletteRoot().getChildren();
-				for (Object child : children) {
-					if (((PaletteContainer) child).getId().contains("CloudConnector")) {
-						String connectorId = ((PaletteContainer) child).getId().replaceAll("CloudConnector-", "");
-						connectorId = connectorId.substring(0, 1).toUpperCase() + connectorId.substring(1)
-								+ " Connector";
-						if (connectorId.equals(connectorName)) {
-							((PaletteContainer) child).setVisible(visible);
-						}
-					}
-				}
-			}
-		}
-	}
+    /**
+     * Change the visibility of Connectors in palette based on the checked box
+     * 
+     * @param paletteContainer
+     * @param visible
+     */
+    private void updateConnectorVisibility(String connectorName, boolean visible) {
+        IEditorReference editorReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+                .getEditorReferences();
+        for (IEditorReference editorReference : editorReferences) {
+            if (editorReference.getEditor(true) instanceof EsbMultiPageEditor) {
+                PaletteViewer paletteViewer = ((DiagramEditDomain) ((EsbMultiPageEditor) editorReference
+                        .getEditor(true)).getDiagramEditDomain()).getPaletteViewer();
+                List children = paletteViewer.getPaletteRoot().getChildren();
+                for (Object child : children) {
+                    if (((PaletteContainer) child).getId().contains("CloudConnector")) {
+                        String connectorId = ((PaletteContainer) child).getId().replaceAll("CloudConnector-", "");
+                        connectorId = connectorId.substring(0, 1).toUpperCase() + connectorId.substring(1)
+                                + " Connector";
+                        if (connectorId.equals(connectorName)) {
+                            ((PaletteContainer) child).setVisible(visible);
+                        }
+                    }
+                }
+            }
+        }
+    }
 
-	@Override
-	public IResource getCreatedResource() {
-		return null;
-	}
+    @Override
+    public IResource getCreatedResource() {
+        return null;
+    }
 
-	public HideConnectorWizardPage getHideWizardPage() {
-		return hideWizardPage;
-	}
+    public HideConnectorWizardPage getHideWizardPage() {
+        return hideWizardPage;
+    }
 
-	public void setHideWizardPage(HideConnectorWizardPage hideWizardPage) {
-		this.hideWizardPage = hideWizardPage;
-	}
+    public void setHideWizardPage(HideConnectorWizardPage hideWizardPage) {
+        this.hideWizardPage = hideWizardPage;
+    }
 
 }

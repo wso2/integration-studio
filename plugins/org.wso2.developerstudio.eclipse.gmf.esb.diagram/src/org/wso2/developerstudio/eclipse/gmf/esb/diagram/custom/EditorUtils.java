@@ -849,169 +849,169 @@ public class EditorUtils {
         return null;
     }
 
-	public static void updateToolpalette() {
-		Display.getDefault().asyncExec(new Runnable() {
-			public void run() {
-				IEditorReference editorReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-						.getActivePage().getEditorReferences();
-				IEditorPart activeEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-						.getActiveEditor();
-				for (int i = 0; i < editorReferences.length; i++) {
-					IEditorPart editor = editorReferences[i].getEditor(false);
-					if ((editor instanceof EsbMultiPageEditor)
-							&& ((EsbMultiPageEditor) editor).getGraphicalEditor() != null) {
-						/*
-						 * This must be altered. 'addDefinedSequences' and 'addDefinedEndpoints' methods
-						 * should not exist inside EsbPaletteFactory class. Creating new instance of
-						 * 'EsbPaletteFactory' must be avoided.
-						 */
-						EsbPaletteFactory esbPaletteFactory = new EsbPaletteFactory();
-						if (!editor.equals(activeEditor)) {
-							esbPaletteFactory.addDefinedSequences(((EsbMultiPageEditor) editor).getGraphicalEditor());
-							esbPaletteFactory.addDefinedEndpoints(((EsbMultiPageEditor) editor).getGraphicalEditor());
-						} else {
-							// esbPaletteFactory.addCloudConnectorOperations(((EsbMultiPageEditor)
-							// editor).getGraphicalEditor());
-						}
-						try {
-							EsbEditorInput input = (EsbEditorInput) ((EsbMultiPageEditor) editor).getGraphicalEditor()
-									.getEditorInput();
-							IFile file = input.getXmlResource();
-							IProject activeProject = file.getProject();
-							if (CloudConnectorDirectoryTraverser.getInstance().validate(activeProject)) {
-								addCloudConnectorOperations(((EsbMultiPageEditor) editor).getGraphicalEditor(),
-										esbPaletteFactory);
-							}
-							removeNonExistingCloudConnectorOperations(
-									((EsbMultiPageEditor) editor).getGraphicalEditor(), esbPaletteFactory);
-						} catch (Exception e) {
-							MessageDialog.openError(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
-									"Developer Studio Error Dialog",
-									"Error while loading the connector due to " + e.getMessage());
-						}
+    public static void updateToolpalette() {
+        Display.getDefault().asyncExec(new Runnable() {
+            public void run() {
+                IEditorReference editorReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+                        .getActivePage().getEditorReferences();
+                IEditorPart activeEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+                        .getActiveEditor();
+                for (int i = 0; i < editorReferences.length; i++) {
+                    IEditorPart editor = editorReferences[i].getEditor(false);
+                    if ((editor instanceof EsbMultiPageEditor)
+                            && ((EsbMultiPageEditor) editor).getGraphicalEditor() != null) {
+                        /*
+                         * This must be altered. 'addDefinedSequences' and 'addDefinedEndpoints' methods
+                         * should not exist inside EsbPaletteFactory class. Creating new instance of
+                         * 'EsbPaletteFactory' must be avoided.
+                         */
+                        EsbPaletteFactory esbPaletteFactory = new EsbPaletteFactory();
+                        if (!editor.equals(activeEditor)) {
+                            esbPaletteFactory.addDefinedSequences(((EsbMultiPageEditor) editor).getGraphicalEditor());
+                            esbPaletteFactory.addDefinedEndpoints(((EsbMultiPageEditor) editor).getGraphicalEditor());
+                        } else {
+                            // esbPaletteFactory.addCloudConnectorOperations(((EsbMultiPageEditor)
+                            // editor).getGraphicalEditor());
+                        }
+                        try {
+                            EsbEditorInput input = (EsbEditorInput) ((EsbMultiPageEditor) editor).getGraphicalEditor()
+                                    .getEditorInput();
+                            IFile file = input.getXmlResource();
+                            IProject activeProject = file.getProject();
+                            if (CloudConnectorDirectoryTraverser.getInstance().validate(activeProject)) {
+                                addCloudConnectorOperations(((EsbMultiPageEditor) editor).getGraphicalEditor(),
+                                        esbPaletteFactory);
+                            }
+                            removeNonExistingCloudConnectorOperations(
+                                    ((EsbMultiPageEditor) editor).getGraphicalEditor(), esbPaletteFactory);
+                        } catch (Exception e) {
+                            MessageDialog.openError(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
+                                    "Developer Studio Error Dialog",
+                                    "Error while loading the connector due to " + e.getMessage());
+                        }
 
-						// Initialize palette viewer key handler.
-						PaletteViewer paletteViewer = ((DiagramEditDomain) ((EsbMultiPageEditor) editor)
-								.getGraphicalEditor().getDiagramEditDomain()).getPaletteViewer();
-						if (editor.equals(activeEditor)) {
+                        // Initialize palette viewer key handler.
+                        PaletteViewer paletteViewer = ((DiagramEditDomain) ((EsbMultiPageEditor) editor)
+                                .getGraphicalEditor().getDiagramEditDomain()).getPaletteViewer();
+                        if (editor.equals(activeEditor)) {
 
-							// Creates "Hide/Show Connector" button in palette
-							Figure contents = new Figure();
-							XYLayout layout = new XYLayout();
-							contents.setLayoutManager(layout);
-							Button hideShowButton = new Button(
-									EsbElementTypes.getImage(EsbElementTypes.MediatorFlow_3607));
-							layout.setConstraint(hideShowButton, new Rectangle(0, 0, -1, -1));
-							contents.add(hideShowButton);
+                            // Creates "Hide/Show Connector" button in palette
+                            Figure contents = new Figure();
+                            XYLayout layout = new XYLayout();
+                            contents.setLayoutManager(layout);
+                            Button hideShowButton = new Button(
+                                    EsbElementTypes.getImage(EsbElementTypes.MediatorFlow_3607));
+                            layout.setConstraint(hideShowButton, new Rectangle(0, 0, -1, -1));
+                            contents.add(hideShowButton);
 
-							hideShowButton.addActionListener(new ActionListener() {
-								public void actionPerformed(ActionEvent event) {
-									String id = "org.wso2.developerstudio.eclipse.artifact.hideshowconnectorartifact"; // registered
-									// wizard id
-									// First see if this is a "new wizard".
-									IWizardDescriptor descriptor = PlatformUI.getWorkbench().getNewWizardRegistry()
-											.findWizard(id);
-									// If not check if it is an "import wizard".
-									if (descriptor == null) {
-										descriptor = PlatformUI.getWorkbench().getImportWizardRegistry().findWizard(id);
-									}
-									// Or maybe an export wizard
-									if (descriptor == null) {
-										descriptor = PlatformUI.getWorkbench().getExportWizardRegistry().findWizard(id);
-									}
-									// Then if we have a wizard, open it.
-									if (descriptor != null) {
-										IWizard wizard;
-										try {
-											wizard = descriptor.createWizard();
-											IWorkbenchWindow win = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-											WizardDialog wd = new WizardDialog(win.getShell(), wizard);
-											if (wizard instanceof IWorkbenchWizard) {
-												((IWorkbenchWizard) wizard).init(PlatformUI.getWorkbench(),
-														StructuredSelection.EMPTY);
-											}
-											wd.setTitle(wizard.getWindowTitle());
-											wd.open();
-										} catch (CoreException e) {
-											// Handle error
-										}
+                            hideShowButton.addActionListener(new ActionListener() {
+                                public void actionPerformed(ActionEvent event) {
+                                    String id = "org.wso2.developerstudio.eclipse.artifact.hideshowconnectorartifact"; // registered
+                                    // wizard id
+                                    // First see if this is a "new wizard".
+                                    IWizardDescriptor descriptor = PlatformUI.getWorkbench().getNewWizardRegistry()
+                                            .findWizard(id);
+                                    // If not check if it is an "import wizard".
+                                    if (descriptor == null) {
+                                        descriptor = PlatformUI.getWorkbench().getImportWizardRegistry().findWizard(id);
+                                    }
+                                    // Or maybe an export wizard
+                                    if (descriptor == null) {
+                                        descriptor = PlatformUI.getWorkbench().getExportWizardRegistry().findWizard(id);
+                                    }
+                                    // Then if we have a wizard, open it.
+                                    if (descriptor != null) {
+                                        IWizard wizard;
+                                        try {
+                                            wizard = descriptor.createWizard();
+                                            IWorkbenchWindow win = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+                                            WizardDialog wd = new WizardDialog(win.getShell(), wizard);
+                                            if (wizard instanceof IWorkbenchWizard) {
+                                                ((IWorkbenchWizard) wizard).init(PlatformUI.getWorkbench(),
+                                                        StructuredSelection.EMPTY);
+                                            }
+                                            wd.setTitle(wizard.getWindowTitle());
+                                            wd.open();
+                                        } catch (CoreException e) {
+                                            // Handle error
+                                        }
 
-									}
-								}
-							});
-							ToolbarEditPart toolbarEditPart = (ToolbarEditPart) paletteViewer.getRootEditPart()
-									.getContents().getChildren().get(0);
-							toolbarEditPart.getContentPane().add(contents);
-						}
-						if (paletteViewer.getKeyHandler() instanceof CustomPaletteViewerKeyHandler) {
-							((CustomPaletteViewerKeyHandler) paletteViewer.getKeyHandler()).initializeKeyHandler();
-						}
-						esbPaletteFactory.updateToolPaletteItems(((EsbMultiPageEditor) editor).getGraphicalEditor());
-					}
-				}
-				// Update Cloud Connector UI model
-				EEFPropertyViewUtil.loadConnectorSchemas();
-			}
-		});
-	}
+                                    }
+                                }
+                            });
+                            ToolbarEditPart toolbarEditPart = (ToolbarEditPart) paletteViewer.getRootEditPart()
+                                    .getContents().getChildren().get(0);
+                            toolbarEditPart.getContentPane().add(contents);
+                        }
+                        if (paletteViewer.getKeyHandler() instanceof CustomPaletteViewerKeyHandler) {
+                            ((CustomPaletteViewerKeyHandler) paletteViewer.getKeyHandler()).initializeKeyHandler();
+                        }
+                        esbPaletteFactory.updateToolPaletteItems(((EsbMultiPageEditor) editor).getGraphicalEditor());
+                    }
+                }
+                // Update Cloud Connector UI model
+                EEFPropertyViewUtil.loadConnectorSchemas();
+            }
+        });
+    }
 
-	public static void updateToolpaletteOnPluginChange() {
-		Display.getDefault().asyncExec(new Runnable() {
-			public void run() {
-				IEditorReference editorReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-						.getActivePage().getEditorReferences();
-				IEditorPart activeEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-						.getActiveEditor();
-				for (int i = 0; i < editorReferences.length; i++) {
-					IEditorPart editor = editorReferences[i].getEditor(false);
-					if ((editor instanceof EsbMultiPageEditor)
-							&& ((EsbMultiPageEditor) editor).getGraphicalEditor() != null) {
-						/*
-						 * This must be altered. 'addDefinedSequences' and 'addDefinedEndpoints' methods
-						 * should not exist inside EsbPaletteFactory class. Creating new instance of
-						 * 'EsbPaletteFactory' must be avoided.
-						 */
-						EsbPaletteFactory esbPaletteFactory = new EsbPaletteFactory();
-						if (!editor.equals(activeEditor)) {
-							esbPaletteFactory.addDefinedSequences(((EsbMultiPageEditor) editor).getGraphicalEditor());
-							esbPaletteFactory.addDefinedEndpoints(((EsbMultiPageEditor) editor).getGraphicalEditor());
-						} else {
-							// esbPaletteFactory.addCloudConnectorOperations(((EsbMultiPageEditor)
-							// editor).getGraphicalEditor());
-						}
-						try {
-							EsbEditorInput input = (EsbEditorInput) ((EsbMultiPageEditor) editor).getGraphicalEditor()
-									.getEditorInput();
-							IFile file = input.getXmlResource();
-							IProject activeProject = file.getProject();
-							if (CloudConnectorDirectoryTraverser.getInstance().validate(activeProject)) {
-								addCloudConnectorOperations(((EsbMultiPageEditor) editor).getGraphicalEditor(),
-										esbPaletteFactory);
-							}
-							removeNonExistingCloudConnectorOperations(
-									((EsbMultiPageEditor) editor).getGraphicalEditor(), esbPaletteFactory);
-						} catch (Exception e) {
-							MessageDialog.openError(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
-									"Developer Studio Error Dialog",
-									"Error while loading the connector due to " + e.getMessage());
-						}
+    public static void updateToolpaletteOnPluginChange() {
+        Display.getDefault().asyncExec(new Runnable() {
+            public void run() {
+                IEditorReference editorReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+                        .getActivePage().getEditorReferences();
+                IEditorPart activeEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+                        .getActiveEditor();
+                for (int i = 0; i < editorReferences.length; i++) {
+                    IEditorPart editor = editorReferences[i].getEditor(false);
+                    if ((editor instanceof EsbMultiPageEditor)
+                            && ((EsbMultiPageEditor) editor).getGraphicalEditor() != null) {
+                        /*
+                         * This must be altered. 'addDefinedSequences' and 'addDefinedEndpoints' methods
+                         * should not exist inside EsbPaletteFactory class. Creating new instance of
+                         * 'EsbPaletteFactory' must be avoided.
+                         */
+                        EsbPaletteFactory esbPaletteFactory = new EsbPaletteFactory();
+                        if (!editor.equals(activeEditor)) {
+                            esbPaletteFactory.addDefinedSequences(((EsbMultiPageEditor) editor).getGraphicalEditor());
+                            esbPaletteFactory.addDefinedEndpoints(((EsbMultiPageEditor) editor).getGraphicalEditor());
+                        } else {
+                            // esbPaletteFactory.addCloudConnectorOperations(((EsbMultiPageEditor)
+                            // editor).getGraphicalEditor());
+                        }
+                        try {
+                            EsbEditorInput input = (EsbEditorInput) ((EsbMultiPageEditor) editor).getGraphicalEditor()
+                                    .getEditorInput();
+                            IFile file = input.getXmlResource();
+                            IProject activeProject = file.getProject();
+                            if (CloudConnectorDirectoryTraverser.getInstance().validate(activeProject)) {
+                                addCloudConnectorOperations(((EsbMultiPageEditor) editor).getGraphicalEditor(),
+                                        esbPaletteFactory);
+                            }
+                            removeNonExistingCloudConnectorOperations(
+                                    ((EsbMultiPageEditor) editor).getGraphicalEditor(), esbPaletteFactory);
+                        } catch (Exception e) {
+                            MessageDialog.openError(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
+                                    "Developer Studio Error Dialog",
+                                    "Error while loading the connector due to " + e.getMessage());
+                        }
 
-						// Initialize palette viewer key handler.
-						PaletteViewer paletteViewer = ((DiagramEditDomain) ((EsbMultiPageEditor) editor)
-								.getGraphicalEditor().getDiagramEditDomain()).getPaletteViewer();
+                        // Initialize palette viewer key handler.
+                        PaletteViewer paletteViewer = ((DiagramEditDomain) ((EsbMultiPageEditor) editor)
+                                .getGraphicalEditor().getDiagramEditDomain()).getPaletteViewer();
 
-						if (paletteViewer.getKeyHandler() instanceof CustomPaletteViewerKeyHandler) {
-							((CustomPaletteViewerKeyHandler) paletteViewer.getKeyHandler()).initializeKeyHandler();
-						}
-						esbPaletteFactory.updateToolPaletteItems(((EsbMultiPageEditor) editor).getGraphicalEditor());
+                        if (paletteViewer.getKeyHandler() instanceof CustomPaletteViewerKeyHandler) {
+                            ((CustomPaletteViewerKeyHandler) paletteViewer.getKeyHandler()).initializeKeyHandler();
+                        }
+                        esbPaletteFactory.updateToolPaletteItems(((EsbMultiPageEditor) editor).getGraphicalEditor());
 
-					}
-				}
-				// Update Cloud Connector UI model
-				EEFPropertyViewUtil.loadConnectorSchemas();
-			}
-		});
-	}
+                    }
+                }
+                // Update Cloud Connector UI model
+                EEFPropertyViewUtil.loadConnectorSchemas();
+            }
+        });
+    }
     
     private static void addCloudConnectorOperations(EsbDiagramEditor editorPart, EsbPaletteFactory esbPaletteFactory)
             throws Exception {

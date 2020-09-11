@@ -107,8 +107,8 @@ public class EsbPaletteFactory {
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     
     private static HashMap<String, ImageDescriptor> imageDescriptorMap = new HashMap<String, ImageDescriptor>();
-	private static final String DIR_DOT_METADATA = ".metadata";
-	public static final String connectorPathFromWorkspace = DIR_DOT_METADATA + File.separator + ".Connectors";
+    private static final String DIR_DOT_METADATA = ".metadata";
+    public static final String connectorPathFromWorkspace = DIR_DOT_METADATA + File.separator + ".Connectors";
 
     /**
      * @generated NOT
@@ -1934,73 +1934,73 @@ public class EsbPaletteFactory {
                 ((CustomPaletteViewerKeyHandler) paletteViewer.getKeyHandler()).initializeKeyHandler();
             }
         }
-		showConnectors();
+        showConnectors();
     }
 
-	/**
-	 * Show the connectors ticked once a connector is added/removed
-	 * 
-	 */
-	private void showConnectors() {
-		String connectorsFile;
-		String[] checkedConnectors = null;
-		String connectorPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString() + File.separator
-				+ connectorPathFromWorkspace;
-		File directory = new File(connectorPath);
-		String[] names = directory.list();
-		Boolean exist = Files.exists(Paths.get(connectorPath + File.separator + "checkedConnectors.txt"),
-				LinkOption.NOFOLLOW_LINKS);
+    /**
+     * Show the connectors ticked once a connector is added/removed
+     * 
+     */
+    private void showConnectors() {
+        String connectorsFile;
+        String[] checkedConnectors = null;
+        String connectorPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString() + File.separator
+                + connectorPathFromWorkspace;
+        File directory = new File(connectorPath);
+        String[] names = directory.list();
+        Boolean exist = Files.exists(Paths.get(connectorPath + File.separator + "checkedConnectors.txt"),
+                LinkOption.NOFOLLOW_LINKS);
 
-		if ((names != null) && (names.length > 0)) {
-			for (String name : names) {
-				if (!((name.contains(".zip")) || (name.contains(".txt")))) {
-					name = name.substring(0, 1).toUpperCase() + name.substring(1).replaceAll("\\-(.*)", " Connector");
-					updateConnectorVisibility(name, false);
-				}
-			}
-		}
+        if ((names != null) && (names.length > 0)) {
+            for (String name : names) {
+                if (!((name.contains(".zip")) || (name.contains(".txt")))) {
+                    name = name.substring(0, 1).toUpperCase() + name.substring(1).replaceAll("\\-(.*)", " Connector");
+                    updateConnectorVisibility(name, false);
+                }
+            }
+        }
 
-		if (exist) {
-			try {
-				connectorsFile = new String(
-						Files.readAllBytes(Paths.get(connectorPath + File.separator + "checkedConnectors.txt")));
-				checkedConnectors = connectorsFile.split(", ");
-				for (String checkedConnector : checkedConnectors) {
-					updateConnectorVisibility(checkedConnector, true);
-				}
-			} catch (IOException e) {
-				log.error("Error while reading file ", e);
-			}
-		}
-	}
+        if (exist) {
+            try {
+                connectorsFile = new String(
+                        Files.readAllBytes(Paths.get(connectorPath + File.separator + "checkedConnectors.txt")));
+                checkedConnectors = connectorsFile.split(", ");
+                for (String checkedConnector : checkedConnectors) {
+                    updateConnectorVisibility(checkedConnector, true);
+                }
+            } catch (IOException e) {
+                log.error("Error while reading file ", e);
+            }
+        }
+    }
 
-	/**
-	 * Change the visibility of Connectors in palette based on the checked box
-	 * 
-	 * @param paletteContainer
-	 * @param visible
-	 */
-	private void updateConnectorVisibility(String connectorName, boolean visible) {
-		IEditorReference editorReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-				.getEditorReferences();
-		for (IEditorReference editorReference : editorReferences) {
-			if (editorReference.getEditor(true) instanceof EsbMultiPageEditor) {
-				PaletteViewer paletteViewer = ((DiagramEditDomain) ((EsbMultiPageEditor) editorReference
-						.getEditor(true)).getDiagramEditDomain()).getPaletteViewer();
-				List children = paletteViewer.getPaletteRoot().getChildren();
-				for (Object child : children) {
-					if (((PaletteContainer) child).getId().contains("CloudConnector")) {
-						String connectorId = ((PaletteContainer) child).getId().replaceAll("CloudConnector-", "");
-						connectorId = connectorId.substring(0, 1).toUpperCase() + connectorId.substring(1)
-								+ " Connector";
-						if (connectorId.equals(connectorName)) {
-							((PaletteContainer) child).setVisible(visible);
-						}
-					}
-				}
-			}
-		}
-	}
+    /**
+     * Change the visibility of Connectors in palette based on the checked box
+     * 
+     * @param paletteContainer
+     * @param visible
+     */
+    private void updateConnectorVisibility(String connectorName, boolean visible) {
+        IEditorReference editorReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+                .getEditorReferences();
+        for (IEditorReference editorReference : editorReferences) {
+            if (editorReference.getEditor(true) instanceof EsbMultiPageEditor) {
+                PaletteViewer paletteViewer = ((DiagramEditDomain) ((EsbMultiPageEditor) editorReference
+                        .getEditor(true)).getDiagramEditDomain()).getPaletteViewer();
+                List children = paletteViewer.getPaletteRoot().getChildren();
+                for (Object child : children) {
+                    if (((PaletteContainer) child).getId().contains("CloudConnector")) {
+                        String connectorId = ((PaletteContainer) child).getId().replaceAll("CloudConnector-", "");
+                        connectorId = connectorId.substring(0, 1).toUpperCase() + connectorId.substring(1)
+                                + " Connector";
+                        if (connectorId.equals(connectorName)) {
+                            ((PaletteContainer) child).setVisible(visible);
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     /**
      * Change the visibility of Connector palette group(s) based on the opened

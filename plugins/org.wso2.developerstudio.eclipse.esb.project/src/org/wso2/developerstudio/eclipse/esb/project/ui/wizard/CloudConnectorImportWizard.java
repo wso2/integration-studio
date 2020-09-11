@@ -51,7 +51,7 @@ public class CloudConnectorImportWizard extends AbstractWSO2ProjectCreationWizar
     private static final String DIR_DOT_METADATA = ".metadata";
     private static final String DIR_CONNECTORS = ".Connectors";
     private static final String ADD_CONNECTOR_FAILURE_MSG = "Failed to add connector/module";
-	public static final String connectorPathFromWorkspace = DIR_DOT_METADATA + File.separator + ".Connectors";
+    public static final String connectorPathFromWorkspace = DIR_DOT_METADATA + File.separator + ".Connectors";
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     @Override
@@ -154,34 +154,34 @@ public class CloudConnectorImportWizard extends AbstractWSO2ProjectCreationWizar
     }
 
     private void updateProjects(String source) throws ZipException, CoreException {
-		String connectorsFile = "";
-		String connectorPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString() + File.separator
-				+ connectorPathFromWorkspace;
-		Boolean exist = Files.exists(Paths.get(connectorPath + File.separator + "checkedConnectors.txt"),
-				LinkOption.NOFOLLOW_LINKS);
+        String connectorsFile = "";
+        String connectorPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString() + File.separator
+                + connectorPathFromWorkspace;
+        Boolean exist = Files.exists(Paths.get(connectorPath + File.separator + "checkedConnectors.txt"),
+                LinkOption.NOFOLLOW_LINKS);
 
-		if (!exist) {
-			try {
-				Files.createFile(Paths.get(connectorPath + File.separator + "checkedConnectors.txt"));
-			} catch (IOException e) {
-				log.error("Error while creating file : " + e.getMessage());
-			}
-		}
+        if (!exist) {
+            try {
+                Files.createFile(Paths.get(connectorPath + File.separator + "checkedConnectors.txt"));
+            } catch (IOException e) {
+                log.error("Error while creating file : " + e.getMessage());
+            }
+        }
 
-		if (exist) {
-			try {
-				connectorsFile = new String(
-						Files.readAllBytes(Paths.get(connectorPath + File.separator + "checkedConnectors.txt")));
-			} catch (IOException e) {
-				log.error("Error while reading file ", e);
-			}
-		}
+        if (exist) {
+            try {
+                connectorsFile = new String(
+                        Files.readAllBytes(Paths.get(connectorPath + File.separator + "checkedConnectors.txt")));
+            } catch (IOException e) {
+                log.error("Error while reading file ", e);
+            }
+        }
 
         ZipFile zipFile = new ZipFile(source);
         String[] segments = source.split(Pattern.quote(File.separator));
         String zipFileName = segments[segments.length - 1].split(".zip")[0];
-		String connectorDisplayName = zipFileName.substring(0, 1).toUpperCase()
-				+ zipFileName.substring(1).replaceAll("\\-(.*)", " Connector");
+        String connectorDisplayName = zipFileName.substring(0, 1).toUpperCase()
+                + zipFileName.substring(1).replaceAll("\\-(.*)", " Connector");
         String parentDirectoryPath = storeWizardPage.getSelectedProject().getWorkspace().getRoot().getLocation()
                 .toOSString() + File.separator + DIR_DOT_METADATA + File.separator + DIR_CONNECTORS;
         File parentDirectory = new File(parentDirectoryPath);
@@ -195,14 +195,14 @@ public class CloudConnectorImportWizard extends AbstractWSO2ProjectCreationWizar
         if (updateGMFPlugin != null) {
             updateGMFPlugin.updateOpenedEditors();
         }
-		try {
-			FileWriter fileWriter = new FileWriter(connectorPath + File.separator + "checkedConnectors.txt");
-			connectorsFile += connectorDisplayName + ", ";
-			fileWriter.append(connectorsFile);
-			fileWriter.close();
-		} catch (IOException e) {
-			log.error("Error while writing to file : " + e.getMessage());
-		}
+        try {
+            FileWriter fileWriter = new FileWriter(connectorPath + File.separator + "checkedConnectors.txt");
+            connectorsFile += connectorDisplayName + ", ";
+            fileWriter.append(connectorsFile);
+            fileWriter.close();
+        } catch (IOException e) {
+            log.error("Error while writing to file : " + e.getMessage());
+        }
 
         /*
          * Refresh the project.

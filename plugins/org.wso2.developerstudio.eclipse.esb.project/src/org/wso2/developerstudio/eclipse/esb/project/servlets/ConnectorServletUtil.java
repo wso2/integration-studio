@@ -72,7 +72,7 @@ public class ConnectorServletUtil {
     private static final String STORE_URL = "https://store.wso2.com";
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-	public static final String connectorPathFromWorkspace = DIR_DOT_METADATA + File.separator + ".Connectors";
+    public static final String connectorPathFromWorkspace = DIR_DOT_METADATA + File.separator + ".Connectors";
 
     /**
      * Retrieves all connectors from WSO2 store
@@ -127,36 +127,36 @@ public class ConnectorServletUtil {
      * 
      */
     public static boolean downloadConnectorAndUpdateProjects(String downloadLink) throws ConnectorException {
-		String connectorsFile = "";
-		String connectorPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString() + File.separator
-				+ connectorPathFromWorkspace;
-		Boolean exist = Files.exists(Paths.get(connectorPath + File.separator + "checkedConnectors.txt"),
-				LinkOption.NOFOLLOW_LINKS);
+        String connectorsFile = "";
+        String connectorPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString() + File.separator
+                + connectorPathFromWorkspace;
+        Boolean exist = Files.exists(Paths.get(connectorPath + File.separator + "checkedConnectors.txt"),
+                LinkOption.NOFOLLOW_LINKS);
 
-		if (!exist) {
-			try {
-				Files.createFile(Paths.get(connectorPath + File.separator + "checkedConnectors.txt"));
-			} catch (IOException e) {
-				log.error("Error while writing to file : " + e.getMessage());
-			}
-		}
+        if (!exist) {
+            try {
+                Files.createFile(Paths.get(connectorPath + File.separator + "checkedConnectors.txt"));
+            } catch (IOException e) {
+                log.error("Error while writing to file : " + e.getMessage());
+            }
+        }
 
-		if (exist) {
-			try {
-				connectorsFile = new String(
-						Files.readAllBytes(Paths.get(connectorPath + File.separator + "checkedConnectors.txt")));
-			} catch (IOException e) {
-				log.error("Error while reading file ", e);
-			}
-		}
+        if (exist) {
+            try {
+                connectorsFile = new String(
+                        Files.readAllBytes(Paths.get(connectorPath + File.separator + "checkedConnectors.txt")));
+            } catch (IOException e) {
+                log.error("Error while reading file ", e);
+            }
+        }
 
         String zipDestination = null;
         try {
             URL url = new URL(downloadLink);
             String[] segments = downloadLink.split("/");
             String zipFileName = segments[segments.length - 1];
-			String connectorDisplayName = zipFileName.substring(0, 1).toUpperCase()
-					+ zipFileName.substring(1).replaceAll("\\-(.*)", " Connector");
+            String connectorDisplayName = zipFileName.substring(0, 1).toUpperCase()
+                    + zipFileName.substring(1).replaceAll("\\-(.*)", " Connector");
             String parentDirectoryPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString()
                     + File.separator + DIR_DOT_METADATA + File.separator + DIR_CONNECTORS;
             File parentDirectory = new File(parentDirectoryPath);
@@ -174,13 +174,14 @@ public class ConnectorServletUtil {
                         outputStream.write(buffer, 0, bytesRead);
                     }
                     updateProjects(zipDestination);
-					try (FileWriter fileWriter = new FileWriter(connectorPath + File.separator + "checkedConnectors.txt")){
-						connectorsFile += connectorDisplayName + ", ";
-						fileWriter.append(connectorsFile);
-						fileWriter.close();
-					} catch (IOException e) {
-						log.error("Error while writing to file : " + e.getMessage());
-					}
+                    try (FileWriter fileWriter = new FileWriter(
+                            connectorPath + File.separator + "checkedConnectors.txt")) {
+                        connectorsFile += connectorDisplayName + ", ";
+                        fileWriter.append(connectorsFile);
+                        fileWriter.close();
+                    } catch (IOException e) {
+                        log.error("Error while writing to file : " + e.getMessage());
+                    }
                     return true;
                 }
             } catch (IOException e) {

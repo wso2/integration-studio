@@ -13,7 +13,7 @@
 				fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBSolutionProjectFieldController">Integration Project Name</data>
 
 			<data modelProperty="mmm.project.choice" type="choice"
-				fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBSolutionProjectFieldController">Wrap children modules with the parent project</data>
+				fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBSolutionProjectFieldController">Wrap child modules with the parent project</data>
 			
 			<group id="location" />
 			<group id="solution.projects.group" title="Selected modules will be created" />

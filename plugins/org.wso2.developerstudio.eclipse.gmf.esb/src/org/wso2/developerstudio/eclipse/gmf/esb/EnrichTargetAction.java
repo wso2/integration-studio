@@ -50,7 +50,15 @@ public enum EnrichTargetAction implements Enumerator {
      * @generated
      * @ordered
      */
-    SIBLING(2, "SIBLING", "sibling");
+    SIBLING(2, "SIBLING", "sibling"), /**
+	 * The '<em><b>REMOVE</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #REMOVE_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	REMOVE(3, "REMOVE", "remove");
 
     /**
      * The '<em><b>REPLACE</b></em>' literal value.

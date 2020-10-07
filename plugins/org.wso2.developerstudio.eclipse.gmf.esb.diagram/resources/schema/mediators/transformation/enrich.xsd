@@ -63,6 +63,7 @@
                     <xs:enumeration value="replace"/>
                     <xs:enumeration value="child"/>
                     <xs:enumeration value="sibling"/>
+                    <xs:enumeration value="remove"/>
                     <xs:enumeration value="custom"/>
                 </xs:restriction>
             </xs:simpleType>

@@ -205,8 +205,8 @@ public class EnrichMediatorTransformer extends AbstractEsbNodeTransformer {
                 target.setAction(org.apache.synapse.mediators.elementary.Target.ACTION_REPLACE);
                 break;
             case REMOVE:
-            	target.setAction(org.apache.synapse.mediators.elementary.Target.ACTION_REMOVE);
-            	break;
+                target.setAction(org.apache.synapse.mediators.elementary.Target.ACTION_REMOVE);
+                break;
             default:
                 break;
             }

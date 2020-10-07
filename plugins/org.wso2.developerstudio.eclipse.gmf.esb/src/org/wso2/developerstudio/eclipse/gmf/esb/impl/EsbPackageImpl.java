@@ -24681,7 +24681,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         addEEnumLiteral(enrichTargetActionEEnum, EnrichTargetAction.REPLACE);
         addEEnumLiteral(enrichTargetActionEEnum, EnrichTargetAction.CHILD);
         addEEnumLiteral(enrichTargetActionEEnum, EnrichTargetAction.SIBLING);
-		addEEnumLiteral(enrichTargetActionEEnum, EnrichTargetAction.REMOVE);
+        addEEnumLiteral(enrichTargetActionEEnum, EnrichTargetAction.REMOVE);
 
         initEEnum(enrichTargetTypeEEnum, EnrichTargetType.class, "EnrichTargetType");
         addEEnumLiteral(enrichTargetTypeEEnum, EnrichTargetType.CUSTOM);

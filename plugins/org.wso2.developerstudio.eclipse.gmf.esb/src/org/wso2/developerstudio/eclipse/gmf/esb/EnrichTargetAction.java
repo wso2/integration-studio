@@ -108,10 +108,6 @@ public enum EnrichTargetAction implements Enumerator {
     /**
 	 * The '<em><b>REMOVE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>REMOVE</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #REMOVE
 	 * @model literal="remove"
@@ -120,18 +116,18 @@ public enum EnrichTargetAction implements Enumerator {
 	 */
 	public static final int REMOVE_VALUE = 3;
 
-				/**
-	 * An array of all the '<em><b>Enrich Target Action</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
+    /**
+     * An array of all the '<em><b>Enrich Target Action</b></em>' enumerators.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     private static final EnrichTargetAction[] VALUES_ARRAY = new EnrichTargetAction[] {
-			REPLACE,
-			CHILD,
-			SIBLING,
-			REMOVE,
-		};
+            REPLACE,
+            CHILD,
+            SIBLING,
+            REMOVE,
+        };
 
     /**
      * A public read-only list of all the '<em><b>Enrich Target Action</b></em>' enumerators.

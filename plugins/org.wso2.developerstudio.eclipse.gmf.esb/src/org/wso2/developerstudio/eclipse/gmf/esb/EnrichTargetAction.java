@@ -186,7 +186,7 @@ public enum EnrichTargetAction implements Enumerator {
             case REPLACE_VALUE: return REPLACE;
             case CHILD_VALUE: return CHILD;
             case SIBLING_VALUE: return SIBLING;
-			case REMOVE_VALUE: return REMOVE;
+            case REMOVE_VALUE: return REMOVE;
         }
         return null;
     }

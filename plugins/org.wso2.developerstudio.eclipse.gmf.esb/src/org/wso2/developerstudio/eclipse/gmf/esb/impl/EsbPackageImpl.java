@@ -4134,7 +4134,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
     /**
      * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-     *
+     * 
      * <p>This method is used to initialize {@link EsbPackage#eINSTANCE} when that field is accessed.
      * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
      * <!-- begin-user-doc -->
@@ -4161,7 +4161,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         // Mark meta-data to indicate it can't be changed
         theEsbPackage.freeze();
 
-
+  
         // Update the registry and return the package
         EPackage.Registry.INSTANCE.put(EsbPackage.eNS_URI, theEsbPackage);
         return theEsbPackage;
@@ -7010,7 +7010,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
     public EAttribute getNamespacedProperty_Dynamic() {
         return (EAttribute)namespacedPropertyEClass.getEStructuralFeatures().get(5);
     }
-
+    
 	/**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

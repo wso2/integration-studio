@@ -809,6 +809,7 @@
     <eLiterals name="REPLACE" literal="replace"/>
     <eLiterals name="CHILD" value="1" literal="child"/>
     <eLiterals name="SIBLING" value="2" literal="sibling"/>
+    <eLiterals name="REMOVE" value="3" literal="remove"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="EnrichTargetType">
     <eLiterals name="CUSTOM" literal="custom"/>

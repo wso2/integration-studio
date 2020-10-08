@@ -242,6 +242,7 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EnrichTargetAction/REPLACE"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EnrichTargetAction/CHILD"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EnrichTargetAction/SIBLING"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EnrichTargetAction/REMOVE"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//EnrichTargetType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EnrichTargetType/CUSTOM"/>

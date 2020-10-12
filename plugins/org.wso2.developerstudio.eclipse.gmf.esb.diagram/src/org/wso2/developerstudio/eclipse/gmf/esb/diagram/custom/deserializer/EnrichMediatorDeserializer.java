@@ -223,6 +223,11 @@ public class EnrichMediatorDeserializer extends AbstractEsbNodeDeserializer<Abst
 
                 // vishualEnrich.setTargetAction(EnrichTargetAction.REPLACE);
                 executeSetValueCommand(ENRICH_MEDIATOR__TARGET_ACTION, EnrichTargetAction.REPLACE);
+                
+            } else if (targetAction.equals(org.apache.synapse.mediators.elementary.Target.ACTION_REMOVE)) {
+
+                // vishualEnrich.setTargetAction(EnrichTargetAction.REPLACE);
+                executeSetValueCommand(ENRICH_MEDIATOR__TARGET_ACTION, EnrichTargetAction.REMOVE);
             }
         }
 

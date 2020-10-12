@@ -106,6 +106,17 @@ public enum EnrichTargetAction implements Enumerator {
     public static final int SIBLING_VALUE = 2;
 
     /**
+	 * The '<em><b>REMOVE</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #REMOVE
+	 * @model literal="remove"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int REMOVE_VALUE = 3;
+
+    /**
      * An array of all the '<em><b>Enrich Target Action</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -115,6 +126,7 @@ public enum EnrichTargetAction implements Enumerator {
             REPLACE,
             CHILD,
             SIBLING,
+            REMOVE,
         };
 
     /**
@@ -174,6 +186,7 @@ public enum EnrichTargetAction implements Enumerator {
             case REPLACE_VALUE: return REPLACE;
             case CHILD_VALUE: return CHILD;
             case SIBLING_VALUE: return SIBLING;
+            case REMOVE_VALUE: return REMOVE;
         }
         return null;
     }

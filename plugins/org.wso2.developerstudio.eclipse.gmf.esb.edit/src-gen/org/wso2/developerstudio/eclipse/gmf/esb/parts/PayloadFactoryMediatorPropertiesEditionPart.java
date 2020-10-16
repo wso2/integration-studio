@@ -124,6 +124,27 @@ public interface PayloadFactoryMediatorPropertiesEditionPart {
 
 
 	/**
+	 * @return the templateType
+	 * 
+	 */
+	public Enumerator getTemplateType();
+
+	/**
+	 * Init the templateType
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initTemplateType(Object input, Enumerator current);
+
+	/**
+	 * Defines a new templateType
+	 * @param newValue the new templateType to set
+	 * 
+	 */
+	public void setTemplateType(Enumerator newValue);
+
+
+	/**
 	 * @return the description
 	 * 
 	 */

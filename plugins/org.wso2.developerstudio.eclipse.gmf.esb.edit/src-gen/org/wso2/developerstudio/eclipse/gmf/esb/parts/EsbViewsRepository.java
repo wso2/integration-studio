@@ -6230,6 +6230,9 @@ public class EsbViewsRepository {
 			public static String mediaType = "esb::PayloadFactoryMediator::properties::mediaType";
 			
 			
+			public static String templateType = "esb::PayloadFactoryMediator::properties::templateType";
+			
+			
 			public static String description = "esb::PayloadFactoryMediator::properties::description";
 			
 			

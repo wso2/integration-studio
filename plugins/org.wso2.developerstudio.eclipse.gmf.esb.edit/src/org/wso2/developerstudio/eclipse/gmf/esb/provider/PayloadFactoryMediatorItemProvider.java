@@ -71,6 +71,7 @@ public class PayloadFactoryMediatorItemProvider extends MediatorItemProvider {
 
         addArgsPropertyDescriptor(object);
         addMediaTypePropertyDescriptor(object);
+        addTemplateTypePropertyDescriptor(object);
         addDescriptionPropertyDescriptor(object);
 
         return itemPropertyDescriptors;

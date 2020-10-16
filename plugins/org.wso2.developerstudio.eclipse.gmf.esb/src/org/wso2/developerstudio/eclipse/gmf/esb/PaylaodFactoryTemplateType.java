@@ -23,94 +23,95 @@ import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Enrich Source Inline Type</b></em>',
+ * A representation of the literals of the enumeration '<em><b>Paylaod Factory Template Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEnrichSourceInlineType()
+ * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPaylaodFactoryTemplateType()
  * @model
  * @generated
  */
-public enum EnrichSourceInlineType implements Enumerator {
+public enum PaylaodFactoryTemplateType implements Enumerator {
     /**
-     * The '<em><b>CONTENT</b></em>' literal object.
+     * The '<em><b>DEFAULT</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #CONTENT_VALUE
+     * @see #DEFAULT_VALUE
      * @generated
      * @ordered
      */
-    CONTENT(0, "CONTENT", "SourceXML"),
+    DEFAULT(0, "DEFAULT", "default"),
 
     /**
-     * The '<em><b>KEY</b></em>' literal object.
+     * The '<em><b>FREEMARKER</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #KEY_VALUE
+     * @see #FREEMARKER_VALUE
      * @generated
      * @ordered
      */
-    KEY(1, "KEY", "RegistryKey");
+    FREEMARKER(1, "FREEMARKER", "freemarker");
 
     /**
-     * The '<em><b>CONTENT</b></em>' literal value.
+     * The '<em><b>DEFAULT</b></em>' literal value.
      * <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>CONTENT</b></em>' literal object isn't clear,
+     * If the meaning of '<em><b>DEFAULT</b></em>' literal object isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @see #CONTENT
-     * @model literal="SourceXML"
+     * @see #DEFAULT
+     * @model literal="default"
      * @generated
      * @ordered
      */
-    public static final int CONTENT_VALUE = 0;
+    public static final int DEFAULT_VALUE = 0;
 
     /**
-     * The '<em><b>KEY</b></em>' literal value.
+     * The '<em><b>FREEMARKER</b></em>' literal value.
      * <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>KEY</b></em>' literal object isn't clear,
+     * If the meaning of '<em><b>FREEMARKER</b></em>' literal object isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @see #KEY
-     * @model literal="RegistryKey"
+     * @see #FREEMARKER
+     * @model literal="freemarker"
      * @generated
      * @ordered
      */
-    public static final int KEY_VALUE = 1;
+    public static final int FREEMARKER_VALUE = 1;
 
     /**
-     * An array of all the '<em><b>Enrich Source Inline Type</b></em>' enumerators.
+     * An array of all the '<em><b>Paylaod Factory Template Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    private static final EnrichSourceInlineType[] VALUES_ARRAY = new EnrichSourceInlineType[] {
-            CONTENT,
-            KEY,
+    private static final PaylaodFactoryTemplateType[] VALUES_ARRAY =
+        new PaylaodFactoryTemplateType[] {
+            DEFAULT,
+            FREEMARKER,
         };
 
     /**
-     * A public read-only list of all the '<em><b>Enrich Source Inline Type</b></em>' enumerators.
+     * A public read-only list of all the '<em><b>Paylaod Factory Template Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    public static final List<EnrichSourceInlineType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<PaylaodFactoryTemplateType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
     /**
-     * Returns the '<em><b>Enrich Source Inline Type</b></em>' literal with the specified literal value.
+     * Returns the '<em><b>Paylaod Factory Template Type</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
-    public static EnrichSourceInlineType get(String literal) {
+    public static PaylaodFactoryTemplateType get(String literal) {
         for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            EnrichSourceInlineType result = VALUES_ARRAY[i];
+            PaylaodFactoryTemplateType result = VALUES_ARRAY[i];
             if (result.toString().equals(literal)) {
                 return result;
             }
@@ -119,16 +120,16 @@ public enum EnrichSourceInlineType implements Enumerator {
     }
 
     /**
-     * Returns the '<em><b>Enrich Source Inline Type</b></em>' literal with the specified name.
+     * Returns the '<em><b>Paylaod Factory Template Type</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
-    public static EnrichSourceInlineType getByName(String name) {
+    public static PaylaodFactoryTemplateType getByName(String name) {
         for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            EnrichSourceInlineType result = VALUES_ARRAY[i];
+            PaylaodFactoryTemplateType result = VALUES_ARRAY[i];
             if (result.getName().equals(name)) {
                 return result;
             }
@@ -137,17 +138,17 @@ public enum EnrichSourceInlineType implements Enumerator {
     }
 
     /**
-     * Returns the '<em><b>Enrich Source Inline Type</b></em>' literal with the specified integer value.
+     * Returns the '<em><b>Paylaod Factory Template Type</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
-    public static EnrichSourceInlineType get(int value) {
+    public static PaylaodFactoryTemplateType get(int value) {
         switch (value) {
-            case CONTENT_VALUE: return CONTENT;
-            case KEY_VALUE: return KEY;
+            case DEFAULT_VALUE: return DEFAULT;
+            case FREEMARKER_VALUE: return FREEMARKER;
         }
         return null;
     }
@@ -179,7 +180,7 @@ public enum EnrichSourceInlineType implements Enumerator {
      * <!-- end-user-doc -->
      * @generated
      */
-    private EnrichSourceInlineType(int value, String name, String literal) {
+    private PaylaodFactoryTemplateType(int value, String name, String literal) {
         this.value = value;
         this.name = name;
         this.literal = literal;
@@ -222,5 +223,5 @@ public enum EnrichSourceInlineType implements Enumerator {
     public String toString() {
         return literal;
     }
-
-} // EnrichSourceInlineType
+    
+} //PaylaodFactoryTemplateType

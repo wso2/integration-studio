@@ -151,6 +151,28 @@ public class PayloadFactoryMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
+     * This adds a property descriptor for the Template Type feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addTemplateTypePropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_PayloadFactoryMediator_templateType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_PayloadFactoryMediator_templateType_feature", "_UI_PayloadFactoryMediator_type"),
+                 EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR__TEMPLATE_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
      * This adds a property descriptor for the Payload Format feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -242,6 +264,7 @@ public class PayloadFactoryMediatorItemProvider extends MediatorItemProvider {
         switch (notification.getFeatureID(PayloadFactoryMediator.class)) {
             case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD:
             case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__MEDIA_TYPE:
+            case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__TEMPLATE_TYPE:
             case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_FORMAT:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;

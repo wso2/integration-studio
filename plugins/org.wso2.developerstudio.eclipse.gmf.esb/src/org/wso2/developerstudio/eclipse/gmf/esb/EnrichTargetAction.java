@@ -51,13 +51,13 @@ public enum EnrichTargetAction implements Enumerator {
      * @ordered
      */
     SIBLING(2, "SIBLING", "sibling"), /**
-     * The '<em><b>REMOVE</b></em>' literal object.
-     * <!-- begin-user-doc -->
+	 * The '<em><b>REMOVE</b></em>' literal object.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @see #REMOVE_VALUE
-     * @generated
-     * @ordered
-     */
+	 * @see #REMOVE_VALUE
+	 * @generated
+	 * @ordered
+	 */
 	REMOVE(3, "REMOVE", "remove");
 
     /**
@@ -106,14 +106,14 @@ public enum EnrichTargetAction implements Enumerator {
     public static final int SIBLING_VALUE = 2;
 
     /**
-     * The '<em><b>REMOVE</b></em>' literal value.
-     * <!-- begin-user-doc -->
+	 * The '<em><b>REMOVE</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @see #REMOVE
-     * @model literal="remove"
-     * @generated
-     * @ordered
-     */
+	 * @see #REMOVE
+	 * @model literal="remove"
+	 * @generated
+	 * @ordered
+	 */
 	public static final int REMOVE_VALUE = 3;
 
     /**

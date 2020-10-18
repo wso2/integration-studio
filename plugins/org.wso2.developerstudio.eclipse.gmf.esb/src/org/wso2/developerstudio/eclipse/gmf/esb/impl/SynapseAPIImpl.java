@@ -697,6 +697,8 @@ public class SynapseAPIImpl extends EsbElementImpl implements SynapseAPI {
         result.append(context);
         result.append(", hostName: ");
         result.append(hostName);
+        result.append(", publishSwagger: ");
+        result.append(publishSwagger.getKeyValue());
         result.append(", port: ");
         result.append(port);
         result.append(", traceEnabled: ");

@@ -100,7 +100,15 @@ public enum PropertyDataType implements Enumerator {
      * @generated
      * @ordered
      */
-    OM(7, "OM", "OM");
+    OM(7, "OM", "OM"), /**
+     * The '<em><b>JSON</b></em>' literal object.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #JSON_VALUE
+     * @generated
+     * @ordered
+     */
+    JSON(8, "JSON", "JSON");
 
     /**
      * The '<em><b>STRING</b></em>' literal value.
@@ -223,6 +231,21 @@ public enum PropertyDataType implements Enumerator {
     public static final int OM_VALUE = 7;
 
     /**
+     * The '<em><b>JSON</b></em>' literal value.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of '<em><b>JSON</b></em>' literal object isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @see #JSON
+     * @model
+     * @generated
+     * @ordered
+     */
+    public static final int JSON_VALUE = 8;
+
+    /**
      * An array of all the '<em><b>Property Data Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -237,6 +260,7 @@ public enum PropertyDataType implements Enumerator {
             LONG,
             SHORT,
             OM,
+            JSON,
         };
 
     /**
@@ -301,6 +325,7 @@ public enum PropertyDataType implements Enumerator {
             case LONG_VALUE: return LONG;
             case SHORT_VALUE: return SHORT;
             case OM_VALUE: return OM;
+            case JSON_VALUE: return JSON;
         }
         return null;
     }

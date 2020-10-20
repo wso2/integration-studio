@@ -22,7 +22,7 @@ package org.wso2.developerstudio.eclipse.esb.synapse.unit.test.utils;
  */
 public enum JsonTokensType {
     TEXT(true), KEYWORD(true), QUOTED_LITERAL(true), NUMBER(true), SYMBOL(true), EOF(false), EOL(false), SPACE(
-            false), OTHER(true), JRPARAMETER(true), JRVARIABLE(true), JRFIELD(true), STARTSYMBOL(true);
+            false), OTHER(true), JRPARAMETER(true), JRVARIABLE(true), JRFIELD(true), STARTSYMBOL(true), FREE_MARKUP_LOOP(true), FREE_MARKUP_DOLLER_SYNTAX(true);
 
     private boolean hasColor;
 

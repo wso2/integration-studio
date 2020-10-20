@@ -54,11 +54,13 @@ import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.window.Window;
 
 import org.eclipse.swt.SWT;
-
+import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -76,7 +78,7 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
-
+import org.wso2.developerstudio.eclipse.esb.synapse.unit.test.component.SyntaxHighlightTextBox;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.MediaType;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFormatType;
@@ -119,7 +121,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 	protected Composite filterPayloadSubPropertiesGroup;
 	// End of user code
 
-	protected Text payload;
+	protected StyledText payload;
 	protected ReferencesTable args;
 	protected List<ViewerFilter> argsBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> argsFilters = new ArrayList<ViewerFilter>();
@@ -295,7 +297,8 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
         filterPayloadSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Payload",
                 true);
 		Control payloadLabel = createDescription(filterPayloadSubPropertiesGroup, EsbViewsRepository.PayloadFactoryMediator.Properties.payload, EsbMessages.PayloadFactoryMediatorPropertiesEditionPart_PayloadLabel);
-		payload = widgetFactory.createText(filterPayloadSubPropertiesGroup, "", SWT.MULTI | SWT.BORDER | SWT.WRAP | SWT.V_SCROLL); //$NON-NLS-1$
+		SyntaxHighlightTextBox syntaxStyler = new SyntaxHighlightTextBox();
+		payload = syntaxStyler.getStyledTextBox(filterPayloadSubPropertiesGroup);
 		payload.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(filterPayloadSubPropertiesGroup);
 		GridData payloadData = new GridData(GridData.FILL_HORIZONTAL);
@@ -339,6 +342,12 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 				}
 			}
 		});
+		
+		payload.addModifyListener(new ModifyListener() {
+            public void modifyText(ModifyEvent arg0) {
+            	syntaxStyler.chooseSyntaxHighlighter(payload.getText(), false);
+            }
+        });
 
 		EditingUtils.setID(payload, EsbViewsRepository.PayloadFactoryMediator.Properties.payload);
 		EditingUtils.setEEFtype(payload, "eef::Text"); //$NON-NLS-1$

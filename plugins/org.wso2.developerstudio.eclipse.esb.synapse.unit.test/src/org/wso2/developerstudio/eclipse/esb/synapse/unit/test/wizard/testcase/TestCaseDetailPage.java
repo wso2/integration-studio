@@ -228,13 +228,13 @@ public class TestCaseDetailPage extends WizardPage {
         styledTextInputPayload.setLayoutData(data);
         if (getInputPayload() != null && !getInputPayload().isEmpty()) {
             styledTextInputPayload.setText(CommonUtil.removeCDATAFromPayload(getInputPayload()));
-            syntaxStyler.chooseSyntaxHighlighter(styledTextInputPayload.getText());
+            syntaxStyler.chooseSyntaxHighlighter(styledTextInputPayload.getText(), false);
         }
 
         styledTextInputPayload.addModifyListener(new ModifyListener() {
             public void modifyText(ModifyEvent arg0) {
                 setInputPayload(styledTextInputPayload.getText());
-                syntaxStyler.chooseSyntaxHighlighter(styledTextInputPayload.getText());
+                syntaxStyler.chooseSyntaxHighlighter(styledTextInputPayload.getText(), false);
                 validate();
             }
         });

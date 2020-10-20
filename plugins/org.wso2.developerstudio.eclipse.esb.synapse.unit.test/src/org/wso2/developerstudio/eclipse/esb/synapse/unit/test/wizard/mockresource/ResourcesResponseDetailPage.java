@@ -326,13 +326,13 @@ public class ResourcesResponseDetailPage extends WizardPage {
         txtServiceResponsePayload.setLayoutData(data);
         if (getServiceResponsePayload() != null && !getServiceResponsePayload().isEmpty()) {
             txtServiceResponsePayload.setText(CommonUtil.removeCDATAFromPayload(getServiceResponsePayload()));
-            syntaxStyler.chooseSyntaxHighlighter(txtServiceResponsePayload.getText());
+            syntaxStyler.chooseSyntaxHighlighter(txtServiceResponsePayload.getText(), false);
         }
 
         txtServiceResponsePayload.addModifyListener(new ModifyListener() {
             public void modifyText(ModifyEvent arg0) {
                 setServiceResponsePayload(txtServiceResponsePayload.getText());
-                syntaxStyler.chooseSyntaxHighlighter(txtServiceResponsePayload.getText());
+                syntaxStyler.chooseSyntaxHighlighter(txtServiceResponsePayload.getText(), false);
             }
         });
     }

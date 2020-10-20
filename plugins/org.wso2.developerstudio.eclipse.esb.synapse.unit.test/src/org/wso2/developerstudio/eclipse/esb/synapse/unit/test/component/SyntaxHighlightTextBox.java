@@ -40,6 +40,7 @@ import org.wso2.developerstudio.eclipse.esb.synapse.unit.test.utils.XmlRegionAna
 public class SyntaxHighlightTextBox extends Layout {
     private StyledText styledTextInputPayload;
     private JsonLineStyler jsonStyler;
+    private JsonLineStyler textStyler;
     private JavaScriptLineStyler javaScriptStyler;
 
     /**
@@ -76,12 +77,26 @@ public class SyntaxHighlightTextBox extends Layout {
      * @param inputPayload
      *            JSON text
      */
-    public void highlightJson(String inputPayload) {
-        if (jsonStyler == null) {
-            jsonStyler = new JsonLineStyler();
+    public void highlightJson(String inputPayload, boolean isTextHighlighter) {
+    	if (jsonStyler == null) {
+    		jsonStyler = new JsonLineStyler(isTextHighlighter);
         }
-
+    	
         styledTextInputPayload.addLineStyleListener(jsonStyler);
+    }
+    
+    /**
+     * Method of highlighting texts.
+     * 
+     * @param inputPayload
+     *            JSON text
+     */
+    public void highlightText(String inputPayload, boolean isTextHighlighter) {
+    	if (textStyler == null) {
+    		textStyler = new JsonLineStyler(isTextHighlighter);
+        }
+    	
+        styledTextInputPayload.addLineStyleListener(textStyler);
     }
 
     /**
@@ -136,7 +151,12 @@ public class SyntaxHighlightTextBox extends Layout {
             switch (xRegion.getXmlRegionType()) {
             case MARKUP:
                 colorCode = SWT.COLOR_DARK_GREEN;
-                styleRange.fontStyle = SWT.BOLD;
+                break;
+            case FREE_MARKUP_LOOP:
+                colorCode = SWT.COLOR_DARK_YELLOW;
+                break;    
+            case FREE_MARKUP_DOLLER_SYNTAX:
+                colorCode = SWT.COLOR_DARK_MAGENTA;
                 break;
             case ATTRIBUTE:
                 colorCode = SWT.COLOR_DARK_RED;
@@ -177,25 +197,24 @@ public class SyntaxHighlightTextBox extends Layout {
      * @param inputPayload
      *            raw text data
      */
-    public void chooseSyntaxHighlighter(String inputPayload) {
+    public void chooseSyntaxHighlighter(String inputPayload, boolean isJavaScriptHighlighter) {            
         if (inputPayload.trim().startsWith(Constants.JSON_PREFIX)) {
-            highlightJson(inputPayload);
+            highlightJson(inputPayload, false);
         } else if (inputPayload.trim().startsWith(Constants.XML_PREFIX)) {
-            if (jsonStyler != null) {
+        	if (jsonStyler != null) {
                 styledTextInputPayload.removeLineStyleListener(jsonStyler);
             }
             if (javaScriptStyler != null) {
                 styledTextInputPayload.removeLineStyleListener(javaScriptStyler);
+            }
+            if (textStyler != null) {
+            	styledTextInputPayload.removeLineStyleListener(textStyler);
             }
             highlightXml(inputPayload);
-        } else {
-            if (jsonStyler != null) {
-                styledTextInputPayload.removeLineStyleListener(jsonStyler);
-            }
-            if (javaScriptStyler != null) {
-                styledTextInputPayload.removeLineStyleListener(javaScriptStyler);
-            }
+        } else if (isJavaScriptHighlighter) {
             highlightJavaScript(inputPayload);
+        } else {
+        	highlightText(inputPayload, true);
         }
     }
 

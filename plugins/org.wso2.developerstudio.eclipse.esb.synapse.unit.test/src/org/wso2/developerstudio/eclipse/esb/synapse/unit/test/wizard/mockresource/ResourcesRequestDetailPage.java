@@ -396,13 +396,13 @@ public class ResourcesRequestDetailPage extends WizardPage {
         txtServiceRequestPayload.setLayoutData(data);
         if (getServiceRequestPayload() != null && !getServiceRequestPayload().isEmpty()) {
             txtServiceRequestPayload.setText(CommonUtil.removeCDATAFromPayload(getServiceRequestPayload()));
-            syntaxStyler.chooseSyntaxHighlighter(txtServiceRequestPayload.getText());
+            syntaxStyler.chooseSyntaxHighlighter(txtServiceRequestPayload.getText(), false);
         }
 
         txtServiceRequestPayload.addModifyListener(new ModifyListener() {
             public void modifyText(ModifyEvent arg0) {
                 setServiceRequestPayload(CommonUtil.removeCDATAFromPayload(txtServiceRequestPayload.getText()));
-                syntaxStyler.chooseSyntaxHighlighter(txtServiceRequestPayload.getText());
+                syntaxStyler.chooseSyntaxHighlighter(txtServiceRequestPayload.getText(), false);
                 validate();
             }
         });

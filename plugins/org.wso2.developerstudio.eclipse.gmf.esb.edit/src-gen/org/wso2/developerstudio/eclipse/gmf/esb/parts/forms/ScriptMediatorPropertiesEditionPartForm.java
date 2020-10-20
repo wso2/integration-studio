@@ -632,7 +632,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 		Control scriptBodyHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ScriptMediator.Properties.scriptBody, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createScriptBodyText
 		scriptBodyElements = new Control[] { scriptBodyLabel, scriptBody, scriptBodyHelp };
-		syntaxStyler.chooseSyntaxHighlighter(scriptBody.getText());
+		syntaxStyler.chooseSyntaxHighlighter(scriptBody.getText(), true);
 		// End of user code
 		return parent;
 	}

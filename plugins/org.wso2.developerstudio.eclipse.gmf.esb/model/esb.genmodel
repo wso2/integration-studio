@@ -140,6 +140,7 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyDataType/LONG"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyDataType/SHORT"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyDataType/OM"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyDataType/JSON"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//PropertyAction">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyAction/SET"/>

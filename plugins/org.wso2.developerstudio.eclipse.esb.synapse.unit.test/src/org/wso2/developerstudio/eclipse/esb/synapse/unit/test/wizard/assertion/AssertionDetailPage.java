@@ -300,13 +300,13 @@ public class AssertionDetailPage extends WizardPage {
         txtExpectedValue.setLayoutData(data);
         if (getExpectedValue() != null && !getExpectedValue().isEmpty()) {
             txtExpectedValue.setText(CommonUtil.removeCDATAFromPayload(getExpectedValue()));
-            syntaxStyler.chooseSyntaxHighlighter(txtExpectedValue.getText());
+            syntaxStyler.chooseSyntaxHighlighter(txtExpectedValue.getText(), false);
         }
 
         txtExpectedValue.addModifyListener(new ModifyListener() {
             public void modifyText(ModifyEvent arg0) {
                 setExpectedValue(txtExpectedValue.getText());
-                syntaxStyler.chooseSyntaxHighlighter(txtExpectedValue.getText());
+                syntaxStyler.chooseSyntaxHighlighter(txtExpectedValue.getText(), false);
                 validate();
             }
         });

@@ -658,6 +658,7 @@
     <eLiterals name="LONG" value="5"/>
     <eLiterals name="SHORT" value="6"/>
     <eLiterals name="OM" value="7"/>
+    <eLiterals name="JSON" value="8" literal="JSON"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="PropertyAction">
     <eLiterals name="SET" literal="set"/>

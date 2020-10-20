@@ -60,6 +60,19 @@ public class XmlRegionAnalyzer {
                     continue;
                 positions.add(new XmlRegion(XmlRegionType.UNEXPECTED, this.offset, xml.length()));
                 break;
+            } else if (c == '$') {
+            	// Free marker name ${...} phase
+            	int newPos = this.offset;
+            	if (xml.charAt(newPos) == '$' && newPos + 1 < xml.length() && xml.charAt(newPos + 1) == '{') {
+            		char ch = '!';
+                    while (newPos < xml.length() && (ch = xml.charAt(newPos)) != '}')
+                        newPos++;
+                    if (ch == '}')
+                        newPos++;
+                    positions.add(new XmlRegion(XmlRegionType.FREE_MARKUP_DOLLER_SYNTAX, this.offset, newPos));
+                    this.offset = newPos;
+                    continue;
+            	}
             }
             // Other things can be...
             if (analyzeAttribute(xml, positions))
@@ -144,16 +157,33 @@ public class XmlRegionAnalyzer {
             // Do not process a CData section or a comment as a mark-up
             if (newPos + 1 < xml.length() && xml.charAt(newPos + 1) == '!')
                 return false;
-            // Mark-up name
-            char c = '!';
-            while (newPos < xml.length() && (c = xml.charAt(newPos)) != '>' && !Character.isWhitespace(c))
-                newPos++;
-            if (c == '>')
-                newPos++;
-            positions.add(new XmlRegion(XmlRegionType.MARKUP, this.offset, newPos));
-            this.offset = newPos;
-            result = true;
-        }
+            // Process a free marker code segment <#
+            boolean isFreeMarkerSyntax = false;
+            if (newPos + 1 < xml.length() && xml.charAt(newPos + 1) == '#' || 
+            		(newPos + 1 < xml.length() && xml.charAt(newPos + 1) == '/' && newPos + 2 < xml.length() && xml.charAt(newPos + 2) == '#')) {
+            	// Free marker name
+                char c = '!';
+                while (newPos < xml.length() && (c = xml.charAt(newPos)) != '>')
+                    newPos++;
+                if (c == '>')
+                    newPos++;
+                positions.add(new XmlRegion(XmlRegionType.FREE_MARKUP_LOOP, this.offset, newPos));
+                this.offset = newPos;
+                result = true;
+                isFreeMarkerSyntax = true;
+            }
+            if (!isFreeMarkerSyntax) {
+            	// Mark-up name
+                char c = '!';
+                while (newPos < xml.length() && (c = xml.charAt(newPos)) != '>' && !Character.isWhitespace(c))
+                    newPos++;
+                if (c == '>')
+                    newPos++;
+                positions.add(new XmlRegion(XmlRegionType.MARKUP, this.offset, newPos));
+                this.offset = newPos;
+                result = true;
+            }
+        } 
         // "/>"
         else if (xml.charAt(newPos) == '/' && ++newPos < xml.length() && xml.charAt(newPos) == '>') {
             positions.add(new XmlRegion(XmlRegionType.MARKUP, this.offset, ++newPos));
@@ -224,7 +254,8 @@ public class XmlRegionAnalyzer {
             XmlRegion xr = positions.get(i);
             if (xr.getXmlRegionType() == XmlRegionType.WHITESPACE)
                 continue;
-            if (xr.getXmlRegionType() == XmlRegionType.MARKUP || xr.getXmlRegionType() == XmlRegionType.COMMENT) {
+            if (xr.getXmlRegionType() == XmlRegionType.MARKUP || xr.getXmlRegionType() == XmlRegionType.FREE_MARKUP_LOOP 
+            		|| xr.getXmlRegionType() == XmlRegionType.COMMENT) {
                 char c = xml.charAt(xr.getEnd() - 1);
                 if (c == '>')
                     break;
@@ -234,8 +265,10 @@ public class XmlRegionAnalyzer {
         // Read...
         boolean result = false;
         int newPos = this.offset;
-        while (newPos < xml.length() && xml.charAt(newPos) != '<')
+        while (newPos < xml.length() && xml.charAt(newPos) != '<' && 
+        		(newPos < xml.length() && xml.charAt(newPos) != '$' && newPos < xml.length() && xml.charAt(newPos) != '{')) {
             newPos++;
+        }
         // We read something and this something is not only made up of white
         // spaces
         if (this.offset != newPos) {

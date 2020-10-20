@@ -37,9 +37,9 @@ public class JsonLineStyler implements LineStyleListener {
     private JsonScanner jsonScanner;
     private Map<JsonTokensType, Color> colorsMap;
 
-    public JsonLineStyler() {
+    public JsonLineStyler(boolean isTextHighlighter) {
         initializeColors();
-        jsonScanner = new JsonScanner();
+        jsonScanner = new JsonScanner(isTextHighlighter);
     }
 
     /*
@@ -57,6 +57,8 @@ public class JsonLineStyler implements LineStyleListener {
         colorsMap.put(JsonTokensType.JRFIELD, ResourceManager.getColor(32, 187, 34));
         colorsMap.put(JsonTokensType.JRVARIABLE, ResourceManager.getColor(17, 18, 254));
         colorsMap.put(JsonTokensType.STARTSYMBOL, ResourceManager.getColor(219, 26, 26));
+        colorsMap.put(JsonTokensType.FREE_MARKUP_LOOP, ResourceManager.getColor(165, 152, 9));
+        colorsMap.put(JsonTokensType.FREE_MARKUP_DOLLER_SYNTAX, ResourceManager.getColor(149, 62, 196));
     }
 
     /*

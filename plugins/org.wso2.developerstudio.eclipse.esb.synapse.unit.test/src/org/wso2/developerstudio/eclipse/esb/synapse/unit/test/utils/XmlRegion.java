@@ -20,7 +20,7 @@ package org.wso2.developerstudio.eclipse.esb.synapse.unit.test.utils;
 public class XmlRegion {
 
     public enum XmlRegionType {
-        INSTRUCTION, COMMENT, CDATA, MARKUP, ATTRIBUTE, MARKUP_VALUE, ATTRIBUTE_VALUE, WHITESPACE, UNEXPECTED;
+        INSTRUCTION, COMMENT, CDATA, MARKUP, ATTRIBUTE, MARKUP_VALUE, ATTRIBUTE_VALUE, WHITESPACE, UNEXPECTED, FREE_MARKUP_LOOP, FREE_MARKUP_DOLLER_SYNTAX;
     }
 
     private final XmlRegionType xmlRegionType;

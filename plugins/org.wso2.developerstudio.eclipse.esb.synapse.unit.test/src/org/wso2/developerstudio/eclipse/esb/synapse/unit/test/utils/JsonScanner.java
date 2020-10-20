@@ -34,10 +34,13 @@ public class JsonScanner {
     private int fPos;
     private int fEnd;
     private int fStartToken;
+    private boolean isFreeMarkerSyntaxOccured = false;
+    private boolean isTextHighlighter = false;
 
-    public JsonScanner() {
+    public JsonScanner(boolean isTextHighlighter) {
         initJsonKeywords();
         initJsonSymbolsAndOperators();
+        this.isTextHighlighter = isTextHighlighter;
     }
 
     /**
@@ -49,6 +52,28 @@ public class JsonScanner {
         int c;
         fStartToken = fPos;
         while (true) {
+        	if (isFreeMarkerSyntaxOccured && !isTextHighlighter) {
+        		isFreeMarkerSyntaxOccured = false;
+        		for (;;) {
+                    c = read();
+                    switch (c) {
+                    case '"':
+                        return JsonTokensType.QUOTED_LITERAL;
+                    case EOF_CHAR:
+                        unread(c);
+                        return JsonTokensType.QUOTED_LITERAL;
+                    case '$':
+                        unread(c);
+                        return JsonTokensType.QUOTED_LITERAL;
+                    case '<':
+                        unread(c);
+                        return JsonTokensType.QUOTED_LITERAL;
+                    case '\\':
+                        c = read();
+                        break;
+                    }
+                }
+        	}
             switch (c = read()) {
             case EOF_CHAR:
                 return JsonTokensType.EOF;
@@ -61,19 +86,17 @@ public class JsonScanner {
                     jrbaseExprType = JsonTokensType.JRFIELD;
                 } else if (c == 'V') {
                     jrbaseExprType = JsonTokensType.JRVARIABLE;
-                } else {
-                    break;
-                }
-                c = read();
+                } 
                 if (c == '{') {
+                	isFreeMarkerSyntaxOccured = true;
                     for (;;) {
                         c = read();
                         switch (c) {
                         case '}':
-                            return JsonTokensType.STARTSYMBOL;
+                            return JsonTokensType.FREE_MARKUP_DOLLER_SYNTAX;
                         case EOF_CHAR:
                             unread(c);
-                            return JsonTokensType.STARTSYMBOL;
+                            return JsonTokensType.FREE_MARKUP_DOLLER_SYNTAX;
                         case '\\':
                             c = read();
                             break;
@@ -87,6 +110,12 @@ public class JsonScanner {
                     case '"':
                         return JsonTokensType.QUOTED_LITERAL;
                     case EOF_CHAR:
+                        unread(c);
+                        return JsonTokensType.QUOTED_LITERAL;
+                    case '$':
+                        unread(c);
+                        return JsonTokensType.QUOTED_LITERAL;
+                    case '<':
                         unread(c);
                         return JsonTokensType.QUOTED_LITERAL;
                     case '\\':
@@ -106,6 +135,44 @@ public class JsonScanner {
                     case '\\':
                         c = read();
                         break;
+                    }
+                }
+            case '<':
+            	c = read();
+            	if (c == '#' || c == '/') {
+                	isFreeMarkerSyntaxOccured = true;
+                    for (;;) {
+                        c = read();
+                        switch (c) {
+                        case '>':
+                            return JsonTokensType.FREE_MARKUP_LOOP;
+                        case EOF_CHAR:
+                            unread(c);
+                            return JsonTokensType.FREE_MARKUP_LOOP;
+                        case '\\':
+                            c = read();
+                            break;
+                        }
+                    }
+                } else {
+                	for (;;) {
+                        c = read();
+                        switch (c) {
+                        case '"':
+                            return JsonTokensType.QUOTED_LITERAL;
+                        case EOF_CHAR:
+                            unread(c);
+                            return JsonTokensType.QUOTED_LITERAL;
+                        case '$':
+                            unread(c);
+                            return JsonTokensType.QUOTED_LITERAL;
+                        case '<':
+                            unread(c);
+                            return JsonTokensType.QUOTED_LITERAL;
+                        case '\\':
+                            c = read();
+                            break;
+                        }
                     }
                 }
             case '0':

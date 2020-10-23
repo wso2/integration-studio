@@ -250,6 +250,7 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EnrichTargetType/BODY"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EnrichTargetType/PROPERTY"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EnrichTargetType/ENVELOPE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EnrichTargetType/KEY"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//EventTopicType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EventTopicType/STATIC"/>

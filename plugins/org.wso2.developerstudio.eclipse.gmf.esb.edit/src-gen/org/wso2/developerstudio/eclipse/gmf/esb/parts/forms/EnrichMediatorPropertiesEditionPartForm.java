@@ -1721,6 +1721,10 @@ public class EnrichMediatorPropertiesEditionPartForm extends SectionPropertiesEd
             epv.showEntry(targetPropertyElements, false);
             break;
         }
+        case "key": {
+            epv.showEntry(targetXPathElements, false);
+            break;
+        }
         }
         epv.showEntry(descriptionElements, false);
         view.layout(true, true);

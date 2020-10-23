@@ -62,9 +62,11 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
     PropertiesWidgetProvider widgetProvider;
     private final EnableConditionManager enableConditionManager;
     private static IDeveloperStudioLog log = Logger.getLog(EEFPropertyViewUtil.PLUGIN_ID);
+    public final int MAX_ALLOWED_ATTRTIBUTES = 100;
+    private int attributeCount = 0;
 
     public ConnectorParameterRenderer(IPropertiesEditionComponent propertiesEditionComponent,
-                                      SectionPropertiesEditingPart partForm) {
+            SectionPropertiesEditingPart partForm) {
 
         this.propertiesEditionComponent = propertiesEditionComponent;
         this.partForm = partForm;
@@ -89,14 +91,20 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
     }
 
     public void recursive(Element element, Composite parent, Composite generalGroup, FormToolkit widgetFactory,
-                          int level) {
+            int level) {
 
         ++level;
         if (element.getType().equals("attribute")) {
-            if (level != 2) { // Will be 2 since ++ level
-                evaluateAttribute((AttributeValue) element.getValue(), parent, widgetFactory, level);
+            attributeCount++;
+            if (attributeCount < MAX_ALLOWED_ATTRTIBUTES) {
+                if (level != 2) { // Will be 2 since ++ level
+                    evaluateAttribute((AttributeValue) element.getValue(), parent, widgetFactory, level);
+                } else {
+                    evaluateAttribute((AttributeValue) element.getValue(), generalGroup, widgetFactory, level);
+                }
             } else {
-                evaluateAttribute((AttributeValue) element.getValue(), generalGroup, widgetFactory, level);
+                widgetProvider.addToAttributeQueue(widgetFactory, parent, (AttributeValue) element.getValue()
+                        );
             }
         } else {
             AttributeGroupValue agv = (AttributeGroupValue) element.getValue();
@@ -116,7 +124,6 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
     }
 
     public void evaluateAttribute(AttributeValue value, Composite parent, FormToolkit widgetFactory, int level) {
-
         if (AttributeValueType.STRING.equals(value.getType())) {
             if (level == 2) {
                 widgetProvider.createTextBoxField(widgetFactory, parent, value);
@@ -124,7 +131,7 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
                 widgetProvider.createTextBoxFieldWithButton(widgetFactory, parent, value);
             }
         } else if (AttributeValueType.BOOLEANOREXPRESSION.equals(value.getType())) {
-            widgetProvider.createDropDownField(widgetFactory, parent, new String[]{"true", "false"}, value);
+            widgetProvider.createDropDownField(widgetFactory, parent, new String[] { "true", "false" }, value);
         } else if (AttributeValueType.COMBO.equals(value.getType())) {
             widgetProvider.createDropDownField(widgetFactory, parent, value.getComboValues().toArray(new String[0]),
                     value);
@@ -151,9 +158,9 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
             log.error("Error loading available connections", e);
         }
         if (availableConnections == null || availableConnections.isEmpty()) {
-            return new String[]{""};
+            return new String[] { "" };
         } else {
-            return availableConnections.toArray(new String[]{});
+            return availableConnections.toArray(new String[] {});
         }
     }
 
@@ -251,8 +258,8 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
 
                 if (control instanceof Text) {
                     Text text = (Text) control;
-                    if (uiSchemaValue.getRequired() && defaultValue != null && !defaultValue.isEmpty() &&
-                            text.getText().equals("")) {
+                    if (uiSchemaValue.getRequired() && defaultValue != null && !defaultValue.isEmpty()
+                            && text.getText().equals("")) {
                         text.setText(defaultValue);
                         text.notifyListeners(SWT.KeyUp, new Event());
                     }

@@ -90,12 +90,15 @@ import org.wso2.developerstudio.eclipse.gmf.esb.parts.forms.CloudConnectorOperat
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.condition.manager.EnableCondition;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.condition.manager.EnableConditionManager;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValue;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.DescriptorConstants;
+import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.Element;
 import org.wso2.developerstudio.eclipse.gmf.esb.presentation.desc.parser.KeyValueTableColumn;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 import java.util.Map;
+import java.util.Map.Entry;
 
 /**
  * Widget Provider class for the new properties framework.
@@ -111,6 +114,10 @@ public class PropertiesWidgetProvider {
     private EnableConditionManager enableConditionManager;
     private boolean isConnectionWidgetProvider = false;
     private static IDeveloperStudioLog log = Logger.getLog(EEFPropertyViewUtil.PLUGIN_ID);
+    private HashMap<String, AttributeConstuctionElement> attributeQueue = new HashMap<>();
+    private final int MAX_NUMBER_OF_RESULTS = 50;
+    protected HashMap<String, Composite> initialCompositeList;
+
 
     /**
      * General constructor to initialize properties widget provider
@@ -479,13 +486,13 @@ public class PropertiesWidgetProvider {
     /**
      * Provide a composite with search box widget with expression support and a label
      *
-     * @param widgetFactory    widget factory instance
-     * @param parent           parent composite
+     * @param widgetFactory widget factory instance
+     * @param parent parent composite
      * @param jsonSchemaObject JSONSchema object of the property
      * @return composite
      */
     public Composite createSearchBoxFieldWithButton(FormToolkit widgetFactory, final Composite parent,
-                                                    AttributeValue jsonSchemaObject) {
+            AttributeValue jsonSchemaObject) {
         // Create wrapping composite of 1 element
         Composite searchBoxComposite = createComposite(jsonSchemaObject.getName(), widgetFactory, parent, 1, 1);
 
@@ -505,37 +512,73 @@ public class PropertiesWidgetProvider {
 
             public void modifyText(ModifyEvent e) {
 
-                for (Map.Entry<String, Composite> entry : compositeList.entrySet()) { // traverse through the hash map
-
-                    Control[] children = entry.getValue().getChildren();
-
-                    for (Control child : children) {
-                        if (child instanceof Label) {
-                            Label label = (Label) child;
-                            String displayName = label.getText().toLowerCase();
-                            displayName = displayName.replaceAll("[:*]", "");
-                            String searchText = searchField.getText().toLowerCase();
-
-                            // Check if the display name contains the searched text
-                            if (displayName.contains(searchText)) {
-                                entry.getValue().setVisible(true);// shows the attribute that doesn't match
-                                ((GridData) entry.getValue().getLayoutData()).exclude = false; // hide
-                                entry.getValue().getParent().getParent().layout();
-
-                            } else {
+                if (initialCompositeList == null) {
+                    initialCompositeList = new HashMap<String, Composite>(compositeList);
+                }
+                String searchText = searchField.getText().toLowerCase();
+                if (StringUtils.isNotBlank(searchText)) {
+                    int resultCount = 0;
+                    // traverse through the hash map of the available composites
+                    for (Map.Entry<String, Composite> entry : compositeList.entrySet()) {
+                        // Check if the display name contains the searched text
+                        if (entry.getKey().contains(searchText) && resultCount < MAX_NUMBER_OF_RESULTS) {
+                            if (!entry.getKey().endsWith("exp")) { // skip the expression text boxes and button
+                                entry.getValue().setVisible(true);// shows the attribute that match
+                                ((GridData) entry.getValue().getLayoutData()).exclude = false;
+                                resultCount++;
+                            }
+                        } else {
+                            if (!entry.getKey().equals("search")) { // skip the search bar from hiding
                                 entry.getValue().setVisible(false);// hides the attribute that doesn't match
-                                ((GridData) entry.getValue().getLayoutData()).exclude = true; // hide
-                                entry.getValue().getParent().getParent().layout();
+                                ((GridData) entry.getValue().getLayoutData()).exclude = true;
                             }
                         }
                     }
-                }
+                    // Show the additional attributes from the availabe from queue
+                    ArrayList<String> listOfAttributesAdded = new ArrayList<>();
+                    if (resultCount < MAX_NUMBER_OF_RESULTS) {
+                        for (Entry<String, AttributeConstuctionElement> attributeElement : attributeQueue.entrySet()) {
+                            if (attributeElement.getValue().getValue().getName().contains(searchText)
+                                    && resultCount < MAX_NUMBER_OF_RESULTS) {
+                                loadAttributeFromQueue(attributeElement.getValue().getValue().getName());
+                                listOfAttributesAdded.add(attributeElement.getValue().getValue().getName());
+                                resultCount++;
+                            }
+                        }
+                        partForm.refresh();
+                    }
 
-                compositeList.get(DescriptorConstants.CONFIG_REF).setVisible(true); // keeps connection visible
-                ((GridData) compositeList.get(DescriptorConstants.CONFIG_REF).getLayoutData()).exclude = false; // show
-                compositeList.get(DescriptorConstants.CONFIG_REF).getParent().getParent().layout();
+                    for (String attributeName : listOfAttributesAdded) {
+                        attributeQueue.remove(attributeName);
+                    }
+
+                    if (compositeList.get(DescriptorConstants.CONFIG_REF) != null) {
+                        compositeList.get(DescriptorConstants.CONFIG_REF).setVisible(true); // keeps connection visible
+                        ((GridData) compositeList.get(DescriptorConstants.CONFIG_REF).getLayoutData()).exclude = false; // show
+                    }
+
+                    // refresh the swt graphical objects
+                    searchBoxComposite.getParent().getParent().layout();
+
+                } else {
+                    // if the search text is empty show the initial set of attributes
+                    for (Map.Entry<String, Composite> entry : compositeList.entrySet()) {
+                        entry.getValue().setVisible(false);
+                        ((GridData) entry.getValue().getLayoutData()).exclude = true;
+
+                    }
+                    for (Map.Entry<String, Composite> entry : initialCompositeList.entrySet()) { // hash
+                        if (!entry.getKey().endsWith("exp")) {
+                            entry.getValue().setVisible(true);
+                            ((GridData) entry.getValue().getLayoutData()).exclude = false;
+                        }
+                    }
+                    // refresh the SWT graphical objects
+                    searchBoxComposite.getParent().getParent().layout();
+                }
             }
         });
+
         return parent;
     }
 
@@ -1684,6 +1727,51 @@ public class PropertiesWidgetProvider {
             jsonArray.put(j, row);
         }
         return jsonArray.toString();
+    }
+
+    /**
+     * Add the attribute to temporary queue if there are more attributes than MAX_ALLOWED_ATTRTIBUTES
+     * 
+     * @param widgetFactory widget factory to save
+     * @param parent parent for the attribute
+     * @param value the attribute value to save in the queue
+     */
+    public void addToAttributeQueue(FormToolkit widgetFactory, Composite parent, AttributeValue value) {
+        AttributeConstuctionElement tmpElement = new AttributeConstuctionElement(widgetFactory, parent, value);
+        attributeQueue.put(value.getName(), tmpElement);
+    }
+
+    /**
+     * Load the attribute to the properties pane from the queue
+     * 
+     * @param attributeName name of the attribute to retrieve from the queue of attributes
+     * 
+     */
+    public void loadAttributeFromQueue(String attributeName) {
+        AttributeConstuctionElement attElem = attributeQueue.get(attributeName);
+        if (attElem != null) {
+
+            FormToolkit widgetFactory = attElem.getWidgetFactory();
+            Composite parent = attElem.getParent();
+            AttributeValue value = attElem.getValue();
+
+            if (AttributeValueType.STRING.equals(value.getType())) {
+                createTextBoxFieldWithButton(widgetFactory, parent, value);
+
+            } else if (AttributeValueType.BOOLEANOREXPRESSION.equals(value.getType())) {
+                createDropDownField(widgetFactory, parent, new String[] { "true", "false" }, value);
+            } else if (AttributeValueType.COMBO.equals(value.getType())) {
+                createDropDownField(widgetFactory, parent, value.getComboValues().toArray(new String[0]), value);
+            } else if (AttributeValueType.TEXTAREAOREXPRESSION.equals(value.getType())) {
+                createTextAreaFieldWithButton(widgetFactory, parent, value);
+            } else if (AttributeValueType.PASSWORDTEXTOREXPRESSION.equals(value.getType())) {
+                createPasswordTextBoxFieldWithButton(widgetFactory, parent, value);
+            } else if (AttributeValueType.SEARCHBOX.equals(value.getType())) {
+                createSearchBoxFieldWithButton(widgetFactory, parent, value);
+            } else if (AttributeValueType.KEYVALUETABLE.equals(value.getType())) {
+                createKeyValueTable(widgetFactory, parent, value);
+            }
+        }
     }
 
 }

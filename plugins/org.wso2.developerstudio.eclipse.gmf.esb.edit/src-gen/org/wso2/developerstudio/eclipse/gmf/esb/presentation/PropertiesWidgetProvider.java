@@ -282,9 +282,12 @@ public class PropertiesWidgetProvider {
         }
         addToEnableConditionManager(jsonSchemaObject, jsonSchemaObject.getName());
         // Create Text box widget
-        final Text valueTextBox = widgetFactory.createText(textBoxComposite, "", SWT.BORDER);
+        final Text valueTextBox = widgetFactory.createText(textBoxComposite, "", SWT.BORDER | SWT.WRAP);
         valueTextBox.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         GridData configRefData = new GridData(GridData.FILL_HORIZONTAL);
+        // Set the height of the value input text box since there is issue with toggling expression text box is
+        // not visible when the height of the label is high
+        configRefData.heightHint = propertyLabel.computeSize(EEFPropertyConstants.LABEL_WIDTH, SWT.DEFAULT).y;
         valueTextBox.setLayoutData(configRefData);
         valueTextBox.setData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY, jsonSchemaObject); // Set UI schema object as
         // control data

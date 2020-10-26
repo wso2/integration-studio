@@ -282,7 +282,7 @@ public class PropertiesWidgetProvider {
         }
         addToEnableConditionManager(jsonSchemaObject, jsonSchemaObject.getName());
         // Create Text box widget
-        final Text valueTextBox = widgetFactory.createText(textBoxComposite, "", SWT.BORDER | SWT.WRAP);
+        final Text valueTextBox = widgetFactory.createText(textBoxComposite, "", SWT.BORDER );
         valueTextBox.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         GridData configRefData = new GridData(GridData.FILL_HORIZONTAL);
         // Set the height of the value input text box since there is issue with toggling expression text box is
@@ -497,7 +497,7 @@ public class PropertiesWidgetProvider {
     public Composite createSearchBoxFieldWithButton(FormToolkit widgetFactory, final Composite parent,
             AttributeValue jsonSchemaObject) {
         // Create wrapping composite of 1 element
-        Composite searchBoxComposite = createComposite(jsonSchemaObject.getName(), widgetFactory, parent, 1, 1);
+        final Composite searchBoxComposite = createComposite(jsonSchemaObject.getName(), widgetFactory, parent, 1, 1);
 
         // Search field with search icon and cancel icon
         final Text searchField = new Text(searchBoxComposite,
@@ -528,6 +528,7 @@ public class PropertiesWidgetProvider {
                             if (!entry.getKey().endsWith("exp")) { // skip the expression text boxes and button
                                 entry.getValue().setVisible(true);// shows the attribute that match
                                 ((GridData) entry.getValue().getLayoutData()).exclude = false;
+                                validateExpressionButton(entry.getValue());
                                 resultCount++;
                             }
                         } else {
@@ -574,6 +575,7 @@ public class PropertiesWidgetProvider {
                         if (!entry.getKey().endsWith("exp")) {
                             entry.getValue().setVisible(true);
                             ((GridData) entry.getValue().getLayoutData()).exclude = false;
+                            validateExpressionButton(entry.getValue());
                         }
                     }
                     // refresh the SWT graphical objects
@@ -583,6 +585,45 @@ public class PropertiesWidgetProvider {
         });
 
         return parent;
+    }
+    
+    private static void validateExpressionButton(Composite composite) {
+        Control[] compositeChildren = composite.getChildren();
+        Text valueTextBox = null;
+        Button expressionToggleButton = null;
+        Composite expressionComposite = null;
+        for (Control child : compositeChildren) {
+            if (child instanceof Text) {
+                valueTextBox = (Text) child;
+            } else if (child instanceof Composite) {
+                expressionComposite = (Composite) child;
+            } else if (child instanceof Button) {
+                expressionToggleButton = (Button) child;
+            }
+        }
+        if (valueTextBox != null && expressionToggleButton != null && expressionComposite != null) {
+            if (expressionToggleButton.getSelection()) { // If pressed
+                // Hide value text box
+                valueTextBox.setVisible(false);
+                ((GridData) valueTextBox.getLayoutData()).exclude = true;
+                // Show expression composite
+                expressionComposite.setVisible(true);
+                ((GridData) expressionComposite.getLayoutData()).exclude = false;
+                // update ecore object to expression
+                CallTemplateParameter ctp = (CallTemplateParameter) valueTextBox.getData();
+                setParameterType(RuleOptionType.EXPRESSION, ctp);
+            } else {
+                // Show value text box
+                valueTextBox.setVisible(true);
+                ((GridData) valueTextBox.getLayoutData()).exclude = false;
+                // Hide expression composite
+                expressionComposite.setVisible(false);
+                ((GridData) expressionComposite.getLayoutData()).exclude = true;
+                // update ecore object to value
+                CallTemplateParameter ctp = (CallTemplateParameter) valueTextBox.getData();
+                setParameterType(RuleOptionType.VALUE, ctp);
+            }
+        }
     }
 
     /**
@@ -1409,7 +1450,7 @@ public class PropertiesWidgetProvider {
      * @param ruleType parameter type value/expression
      * @param ctp      Call template param
      */
-    public void setParameterType(final RuleOptionType ruleType, final CallTemplateParameter ctp) {
+    public static void setParameterType(final RuleOptionType ruleType, final CallTemplateParameter ctp) {
 
         TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(ctp);
         domain.getCommandStack().execute(new RecordingCommand(domain) {

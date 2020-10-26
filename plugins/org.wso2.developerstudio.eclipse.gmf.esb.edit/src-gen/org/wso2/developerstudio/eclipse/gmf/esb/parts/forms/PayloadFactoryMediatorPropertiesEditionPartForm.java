@@ -297,7 +297,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
         filterPayloadSubPropertiesGroup = EEFPropertyViewUtil.createSubsectionGroup(widgetFactory, parent, "Payload",
                 true);
 		Control payloadLabel = createDescription(filterPayloadSubPropertiesGroup, EsbViewsRepository.PayloadFactoryMediator.Properties.payload, EsbMessages.PayloadFactoryMediatorPropertiesEditionPart_PayloadLabel);
-		SyntaxHighlightTextBox syntaxStyler = new SyntaxHighlightTextBox();
+		final SyntaxHighlightTextBox syntaxStyler = new SyntaxHighlightTextBox();
 		payload = syntaxStyler.getStyledTextBox(filterPayloadSubPropertiesGroup);
 		payload.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(filterPayloadSubPropertiesGroup);

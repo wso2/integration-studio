@@ -47,15 +47,18 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.maven.execution.MavenExecutionRequest;
 import org.apache.maven.execution.MavenExecutionResult;
 import org.apache.maven.lifecycle.LifecycleExecutionException;
+import org.codehaus.plexus.util.StringUtils;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -200,11 +203,13 @@ public class DependencyProvider extends Dialog {
     public DependencyProvider(Shell parent, int style, String activeProjectName, String[] dataBaseTypes) {
         super(parent, style);
         eclipseWorkspace = ResourcesPlugin.getWorkspace().getRoot().getLocation().toString();
+        eclipseWorkspace = FilenameUtils.separatorsToSystem(eclipseWorkspace);
         IEditorPart editorPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
                 .getActivePage().getActiveEditor();
         if (dataBaseTypes != null) {
             this.databaseArr = dataBaseTypes;
         }
+        String MMPName = null;
         if (activeProjectName != null) {
             this.activeProjectName = activeProjectName;
         } else {
@@ -213,10 +218,27 @@ public class DependencyProvider extends Dialog {
                 IFile file = input.getFile();
                 IProject activeProject = file.getProject();
                 this.activeProjectName = activeProject.getName();
+                try {
+                    if (activeProject.getDescription().getLocation() != null) {
+                        String completePath = activeProject.getDescription().getLocation().toString();
+                        completePath = completePath.substring(eclipseWorkspace.length() + 1);
+                        if (completePath.length() > this.activeProjectName.length()) {
+                            MMPName = completePath.replaceAll(this.activeProjectName, "");
+                            MMPName = MMPName.substring(0, MMPName.length() - 1);
+                        }
+                    }
+                } catch (CoreException e) {
+                    log.error("Error occurred while getting the project location", e);
+                }
             }
         }
-        jarOutputPath = eclipseWorkspace + File.separator + this.activeProjectName + File.separator + DEPENDENCIES;
-        dependencyDir = eclipseWorkspace + File.separator + this.activeProjectName + File.separator + DEPENDENCIES;
+        if (StringUtils.isEmpty(MMPName)) {
+            dependencyDir = eclipseWorkspace + File.separator + this.activeProjectName + File.separator + DEPENDENCIES;
+        } else {
+            dependencyDir = eclipseWorkspace + File.separator + MMPName + File.separator + this.activeProjectName
+                    + File.separator + DEPENDENCIES;
+        }
+        jarOutputPath = dependencyDir;
         OS_TYPE = System.getProperty(OS_NAME, SYSTEM_PROPERTY_TYPE_GENERIC).toLowerCase(Locale.ENGLISH);
     }
 
@@ -1235,7 +1257,13 @@ public class DependencyProvider extends Dialog {
         }
 
         if (jarCreated) {
-            String path = "file://" + jdbcBundledConnectivityJar;
+            String filePath = null;
+            if (OS_TYPE.indexOf(OS_TYPE_WINDOWS) >= 0) {
+                filePath = "file:\\";
+            } else {
+                filePath = "file://";
+            }
+            String path = filePath + jdbcBundledConnectivityJar;
             Connection conn = null;
             try {
                 Bundle bundle = Platform.getBundle("org.wso2.developerstudio.eclipse.gmf.esb.edit");

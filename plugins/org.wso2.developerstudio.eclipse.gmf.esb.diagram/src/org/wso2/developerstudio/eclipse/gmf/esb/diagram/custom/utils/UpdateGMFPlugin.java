@@ -23,7 +23,7 @@ public class UpdateGMFPlugin implements IUpdateGMFPlugin {
 
     @Override
     public void updateOpenedEditors() {
-        EditorUtils.updateToolpaletteOnPluginChange();
+        EditorUtils.updateToolpalette();
     }
 
 }

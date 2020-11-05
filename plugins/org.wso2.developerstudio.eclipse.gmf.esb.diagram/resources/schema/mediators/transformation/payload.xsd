@@ -58,6 +58,14 @@
                     </xs:restriction>
                 </xs:simpleType>
             </xs:attribute>
+            <xs:attribute name="template-type" use="optional" default="default">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="default"/>
+                        <xs:enumeration value="freemarker"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
             <xs:attribute name="description" type="xs:string" use="optional"/>
         </xs:complexType>
     </xs:element>

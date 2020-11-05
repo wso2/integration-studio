@@ -3567,6 +3567,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v9gfJnEei6boXzpRIfnA" name="mediaType" views="_E7xJT_JnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//PayloadFactoryMediator/mediaType"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_fR_YYA-IEeu02LT_0BqvWA" name="templateType" views="_VJpPYA-IEeu02LT_0BqvWA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//PayloadFactoryMediator/templateType"/>
+        </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v9fPJnEei6boXzpRIfnA" name="description" views="_E7xJSvJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//EsbElement/description"/>
         </properties>
@@ -10050,6 +10053,9 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xJT_JnEei6boXzpRIfnA" name="mediaType">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_VJpPYA-IEeu02LT_0BqvWA" name="templateType">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xJSvJnEei6boXzpRIfnA" name="description">

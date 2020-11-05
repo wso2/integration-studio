@@ -460,40 +460,52 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 	}
 
 	protected Composite createTemplateTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-	Control templateTypeLabel = createDescription(parent, EsbViewsRepository.PayloadFactoryMediator.Properties.templateType, EsbMessages.PayloadFactoryMediatorPropertiesEditionPart_TemplateTypeLabel);
-    templateType = new EMFComboViewer(parent);
-    templateType.setContentProvider(new ArrayContentProvider());
-    templateType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
-    GridData templateTypeData = new GridData(GridData.FILL_HORIZONTAL);
-    templateType.getCombo().setLayoutData(templateTypeData);
-    templateType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-        @Override
-        public void handleEvent(Event arg0) {
-            arg0.doit = false;
-        }
-    });
-    templateType.addSelectionChangedListener(new ISelectionChangedListener() {
+		Control templateTypeLabel =
+				createDescription(parent, EsbViewsRepository.PayloadFactoryMediator.Properties.templateType,
+						EsbMessages.PayloadFactoryMediatorPropertiesEditionPart_TemplateTypeLabel);
+		templateType = new EMFComboViewer(parent);
+		templateType.setContentProvider(new ArrayContentProvider());
+		templateType
+				.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		GridData templateTypeData = new GridData(GridData.FILL_HORIZONTAL);
+		templateType.getCombo().setLayoutData(templateTypeData);
+		templateType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
-      /**
-       * {@inheritDoc}
-       * 
-       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-       * 	
-       */
-      public void selectionChanged(SelectionChangedEvent event) {
-        if (propertiesEditionComponent != null)
-          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PayloadFactoryMediatorPropertiesEditionPartForm.this, EsbViewsRepository.PayloadFactoryMediator.Properties.templateType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getTemplateType()));
-      }
+			@Override
+			public void handleEvent(Event arg0) {
 
-    });
-    templateType.setID(EsbViewsRepository.PayloadFactoryMediator.Properties.templateType);
-    Control templateTypeHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PayloadFactoryMediator.Properties.templateType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-    // Start of user code for createTemplateTypeEMFComboViewer
-    templateTypeElements = new Control[] {templateTypeLabel, templateType.getCombo(), templateTypeHelp};
-    // End of user code
-    return parent;
-  }
+				arg0.doit = false;
+			}
+		});
+		templateType.addSelectionChangedListener(new ISelectionChangedListener() {
+
+			/**
+			 * {@inheritDoc}
+			 *
+			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+			 *
+			 */
+			public void selectionChanged(SelectionChangedEvent event) {
+
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(
+							new PropertiesEditionEvent(PayloadFactoryMediatorPropertiesEditionPartForm.this,
+									EsbViewsRepository.PayloadFactoryMediator.Properties.templateType,
+									PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+									getTemplateType()));
+			}
+
+		});
+		templateType.setID(EsbViewsRepository.PayloadFactoryMediator.Properties.templateType);
+		Control templateTypeHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent
+				.getHelpContent(EsbViewsRepository.PayloadFactoryMediator.Properties.templateType,
+						EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTemplateTypeEMFComboViewer
+		templateTypeElements = new Control[]{templateTypeLabel, templateType.getCombo(), templateTypeHelp};
+		// End of user code
+		return parent;
+	}
 
   /**
      * @generated NOT
@@ -845,53 +857,56 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 	}
 
 	/**
-   * {@inheritDoc}
-   * 
-   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#getTemplateType()
-   * 
-   */
-  public Enumerator getTemplateType() {
-    Enumerator selection = (Enumerator) ((StructuredSelection) templateType.getSelection()).getFirstElement();
-    return selection;
-  }
+	 * {@inheritDoc}
+	 *
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#getTemplateType()
+	 */
+	public Enumerator getTemplateType() {
 
-  /**
-   * {@inheritDoc}
-   * 
-   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#initTemplateType(Object input, Enumerator current)
-   */
-  public void initTemplateType(Object input, Enumerator current) {
-    templateType.setInput(input);
-    templateType.modelUpdating(new StructuredSelection(current));
-    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.PayloadFactoryMediator.Properties.templateType);
-    if (eefElementEditorReadOnlyState && templateType.isEnabled()) {
-      templateType.setEnabled(false);
-      templateType.setToolTipText(EsbMessages.PayloadFactoryMediator_ReadOnly);
-    } else if (!eefElementEditorReadOnlyState && !templateType.isEnabled()) {
-      templateType.setEnabled(true);
-    }	
-    
-  }
+		Enumerator selection = (Enumerator) ((StructuredSelection) templateType.getSelection()).getFirstElement();
+		return selection;
+	}
 
-  /**
-   * {@inheritDoc}
-   * 
-   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#setTemplateType(Enumerator newValue)
-   * 
-   */
-  public void setTemplateType(Enumerator newValue) {
-    templateType.modelUpdating(new StructuredSelection(newValue));
-    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.PayloadFactoryMediator.Properties.templateType);
-    if (eefElementEditorReadOnlyState && templateType.isEnabled()) {
-      templateType.setEnabled(false);
-      templateType.setToolTipText(EsbMessages.PayloadFactoryMediator_ReadOnly);
-    } else if (!eefElementEditorReadOnlyState && !templateType.isEnabled()) {
-      templateType.setEnabled(true);
-    }	
-    
-  }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#initTemplateType(Object input, Enumerator current)
+	 */
+	public void initTemplateType(Object input, Enumerator current) {
 
-  /**
+		templateType.setInput(input);
+		templateType.modelUpdating(new StructuredSelection(current));
+		boolean eefElementEditorReadOnlyState =
+				isReadOnly(EsbViewsRepository.PayloadFactoryMediator.Properties.templateType);
+		if (eefElementEditorReadOnlyState && templateType.isEnabled()) {
+			templateType.setEnabled(false);
+			templateType.setToolTipText(EsbMessages.PayloadFactoryMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !templateType.isEnabled()) {
+			templateType.setEnabled(true);
+		}
+
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#setTemplateType(Enumerator newValue)
+	 */
+	public void setTemplateType(Enumerator newValue) {
+
+		templateType.modelUpdating(new StructuredSelection(newValue));
+		boolean eefElementEditorReadOnlyState =
+				isReadOnly(EsbViewsRepository.PayloadFactoryMediator.Properties.templateType);
+		if (eefElementEditorReadOnlyState && templateType.isEnabled()) {
+			templateType.setEnabled(false);
+			templateType.setToolTipText(EsbMessages.PayloadFactoryMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !templateType.isEnabled()) {
+			templateType.setEnabled(true);
+		}
+
+	}
+
+	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#getDescription()

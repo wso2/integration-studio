@@ -797,7 +797,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartImpl extends CompositePr
 
 	}
 
-  /**
+	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#getDescription()

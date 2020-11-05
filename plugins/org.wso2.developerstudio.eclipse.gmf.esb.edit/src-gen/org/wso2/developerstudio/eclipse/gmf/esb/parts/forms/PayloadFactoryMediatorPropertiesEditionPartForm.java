@@ -507,7 +507,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 		return parent;
 	}
 
-  /**
+	/**
      * @generated NOT
      */
 	protected Composite createDescriptionText(FormToolkit widgetFactory, Composite parent) {

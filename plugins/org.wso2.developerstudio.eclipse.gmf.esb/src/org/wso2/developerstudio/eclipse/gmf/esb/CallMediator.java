@@ -35,6 +35,13 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#isEnableBlockingCalls <em>Enable Blocking Calls</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getEndpointRegistrykey <em>Endpoint Registrykey</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getEndpointXpath <em>Endpoint Xpath</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getSourcePayload <em>Source Payload</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getSourceProperty <em>Source Property</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getContentType <em>Content Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getSourceXPath <em>Source XPath</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getTargetProperty <em>Target Property</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getSourceType <em>Source Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getTargetType <em>Target Type</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCallMediator()
@@ -269,5 +276,196 @@ public interface CallMediator extends Mediator {
      * @generated
      */
     void setEndpointXpath(NamespacedProperty value);
+
+    /**
+     * Returns the value of the '<em><b>Source Payload</b></em>' attribute.
+     * The default value is <code>"<inline/>"</code>.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Source Payload</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Source Payload</em>' attribute.
+     * @see #setSourcePayload(String)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCallMediator_SourcePayload()
+     * @model default="&lt;inline/&gt;"
+     * @generated
+     */
+    String getSourcePayload();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getSourcePayload <em>Source Payload</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Source Payload</em>' attribute.
+     * @see #getSourcePayload()
+     * @generated
+     */
+    void setSourcePayload(String value);
+
+    /**
+     * Returns the value of the '<em><b>Source Property</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Source Property</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Source Property</em>' attribute.
+     * @see #setSourceProperty(String)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCallMediator_SourceProperty()
+     * @model
+     * @generated
+     */
+    String getSourceProperty();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getSourceProperty <em>Source Property</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Source Property</em>' attribute.
+     * @see #getSourceProperty()
+     * @generated
+     */
+    void setSourceProperty(String value);
+
+    /**
+     * Returns the value of the '<em><b>Content Type</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Content Type</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Content Type</em>' attribute.
+     * @see #setContentType(String)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCallMediator_ContentType()
+     * @model
+     * @generated
+     */
+    String getContentType();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getContentType <em>Content Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Content Type</em>' attribute.
+     * @see #getContentType()
+     * @generated
+     */
+    void setContentType(String value);
+
+    /**
+     * Returns the value of the '<em><b>Source XPath</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Source XPath</em>' containment reference isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Source XPath</em>' containment reference.
+     * @see #setSourceXPath(NamespacedProperty)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCallMediator_SourceXPath()
+     * @model containment="true"
+     * @generated
+     */
+    NamespacedProperty getSourceXPath();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getSourceXPath <em>Source XPath</em>}' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Source XPath</em>' containment reference.
+     * @see #getSourceXPath()
+     * @generated
+     */
+    void setSourceXPath(NamespacedProperty value);
+
+    /**
+     * Returns the value of the '<em><b>Target Property</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Target Property</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Target Property</em>' attribute.
+     * @see #setTargetProperty(String)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCallMediator_TargetProperty()
+     * @model
+     * @generated
+     */
+    String getTargetProperty();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getTargetProperty <em>Target Property</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Target Property</em>' attribute.
+     * @see #getTargetProperty()
+     * @generated
+     */
+    void setTargetProperty(String value);
+
+    /**
+     * Returns the value of the '<em><b>Source Type</b></em>' attribute.
+     * The default value is <code>"none"</code>.
+     * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.CallSourceType}.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Source Type</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Source Type</em>' attribute.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.CallSourceType
+     * @see #setSourceType(CallSourceType)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCallMediator_SourceType()
+     * @model default="none"
+     * @generated
+     */
+    CallSourceType getSourceType();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getSourceType <em>Source Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Source Type</em>' attribute.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.CallSourceType
+     * @see #getSourceType()
+     * @generated
+     */
+    void setSourceType(CallSourceType value);
+
+    /**
+     * Returns the value of the '<em><b>Target Type</b></em>' attribute.
+     * The default value is <code>"none"</code>.
+     * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.CallTargetType}.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Target Type</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Target Type</em>' attribute.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.CallTargetType
+     * @see #setTargetType(CallTargetType)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCallMediator_TargetType()
+     * @model default="none"
+     * @generated
+     */
+    CallTargetType getTargetType();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getTargetType <em>Target Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Target Type</em>' attribute.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.CallTargetType
+     * @see #getTargetType()
+     * @generated
+     */
+    void setTargetType(CallTargetType value);
 
 } // CallMediator

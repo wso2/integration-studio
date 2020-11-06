@@ -51,6 +51,27 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_i3pa0CI6EemnaM3ogRIOJQ" name="endpointRegistryKey" views="_AJ3J8CI2EemnaM3ogRIOJQ">
           <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CallMediator/endpointRegistrykey"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ydSiIB_7Eeu2Q9ZM4swiDg" name="sourceType" views="_XxT5oB_5Eeu2Q9ZM4swiDg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CallMediator/sourceType"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_fXbPEB_8Eeu2Q9ZM4swiDg" name="sourcePayload" views="_1xCSMB_4Eeu2Q9ZM4swiDg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CallMediator/sourcePayload"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_kIJMEB_8Eeu2Q9ZM4swiDg" name="sourceProperty" views="_9xp5sB_4Eeu2Q9ZM4swiDg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CallMediator/sourceProperty"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_pdybEB_8Eeu2Q9ZM4swiDg" name="contentType" views="_Qcj5oB_5Eeu2Q9ZM4swiDg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CallMediator/contentType"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_t-WcMB_8Eeu2Q9ZM4swiDg" name="sourceXPath" views="_LDBXMB_7Eeu2Q9ZM4swiDg">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CallMediator/sourceXPath"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_1e6qoB_8Eeu2Q9ZM4swiDg" name="targetType" views="_fhc1IB_5Eeu2Q9ZM4swiDg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CallMediator/targetType"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_9dBJoB_8Eeu2Q9ZM4swiDg" name="targetProperty" views="_UqkLIB_5Eeu2Q9ZM4swiDg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CallMediator/targetProperty"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.developerstudio.eclipse.gmf.esb/model/esb.ecore#//CallMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7vUAfJnEei6boXzpRIfnA" name="CallMediatorInputConnector" views="_E7wiSPJnEei6boXzpRIfnA">
@@ -6092,6 +6113,31 @@
           </elements>
           <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_1Cw5sCI1EemnaM3ogRIOJQ" name="endpointXpath"/>
           <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_AJ3J8CI2EemnaM3ogRIOJQ" name="endpointRegistryKey"/>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_u9_REB_4Eeu2Q9ZM4swiDg" name="source">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_1xCSMB_4Eeu2Q9ZM4swiDg" name="sourcePayload">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_9xp5sB_4Eeu2Q9ZM4swiDg" name="sourceProperty">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_Qcj5oB_5Eeu2Q9ZM4swiDg" name="contentType">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_XxT5oB_5Eeu2Q9ZM4swiDg" name="sourceType">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+          </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_LDBXMB_7Eeu2Q9ZM4swiDg" name="sourceXPath"/>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_yG2fcB_4Eeu2Q9ZM4swiDg" name="target">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_UqkLIB_5Eeu2Q9ZM4swiDg" name="targetProperty">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_fhc1IB_5Eeu2Q9ZM4swiDg" name="targetType">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+          </elements>
         </elements>
       </views>
       <views xmi:id="_E7wiSPJnEei6boXzpRIfnA" name="CallMediatorInputConnector">

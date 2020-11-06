@@ -135,8 +135,8 @@ public abstract class AbstractDBMediatorDeserializer
 
             for (Parameter parameter : statement.getParameters()) {
                 SqlParameterDefinition sqlParameterDefinition = EsbFactory.eINSTANCE.createSqlParameterDefinition();
-                if (parameter.getXpath() != null) {
-                    sqlParameterDefinition.setValueExpression(createNamespacedProperty(parameter.getXpath()));
+                if (parameter.getPath() != null) {
+                    sqlParameterDefinition.setValueExpression(createNamespacedProperty(parameter.getPath()));
                     sqlParameterDefinition.setValueType(SqlParameterValueType.EXPRESSION);
                 } else {
                     sqlParameterDefinition.setValueLiteral(parameter.getPropertyName());

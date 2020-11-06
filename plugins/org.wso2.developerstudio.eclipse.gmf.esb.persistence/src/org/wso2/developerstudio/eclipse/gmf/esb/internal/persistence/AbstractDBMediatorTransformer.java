@@ -23,6 +23,7 @@ import javax.xml.namespace.QName;
 import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.commons.datasource.DataSourceInformation;
+import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.endpoints.Endpoint;
 import org.eclipse.emf.ecore.EObject;
@@ -44,6 +45,7 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.securevault.secret.SecretInformation;
 import org.apache.synapse.mediators.db.AbstractDBMediator;
 import org.apache.synapse.mediators.db.Statement;
+import org.apache.synapse.util.xpath.SynapseJsonPath;
 import org.apache.synapse.util.xpath.SynapseXPath;
 
 /**
@@ -191,9 +193,14 @@ public abstract class AbstractDBMediatorTransformer extends AbstractEsbNodeTrans
             for (SqlParameterDefinition param : sqlStatement.getParameters()) {
                 if (param.getValueType() == SqlParameterValueType.EXPRESSION) {
                     NamespacedProperty namespacedProperty = param.getValueExpression();
-                    SynapseXPath expression = null;
+                    SynapsePath expression = null;
                     try {
-                        expression = new SynapseXPath(namespacedProperty.getPropertyValue());
+                        String pathExpression = namespacedProperty.getPropertyValue();
+                        if (pathExpression.startsWith("json-eval(")) {
+                            expression = new SynapseJsonPath(pathExpression.substring(10, pathExpression.length() - 1));
+                        } else {
+                            expression = new SynapseXPath(namespacedProperty.getPropertyValue());
+                        }
                         for (Entry<String, String> entry : namespacedProperty.getNamespaces().entrySet()) {
                             expression.addNamespace(entry.getKey(), entry.getValue());
                         }

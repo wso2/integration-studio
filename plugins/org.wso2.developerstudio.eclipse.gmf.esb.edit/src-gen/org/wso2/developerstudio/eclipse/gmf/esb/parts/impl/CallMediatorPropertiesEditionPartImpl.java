@@ -108,7 +108,13 @@ public class CallMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	protected List<ViewerFilter> endpointFilters = new ArrayList<ViewerFilter>();
 	protected EMFComboViewer endpointType;
 	protected Button enableBlockingCalls;
-	// Start of user code  for endpointXpath widgets declarations
+	protected Text sourcePayload;
+    protected Text sourceProperty;
+    protected Text contentType;
+    protected EMFComboViewer sourceType;
+    protected Text targetProperty;
+    protected EMFComboViewer targetType;
+  // Start of user code  for endpointXpath widgets declarations
 	
 	// End of user code
 
@@ -491,6 +497,286 @@ public class CallMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 
 
 	/**
+   * 
+   */
+  protected Composite createSourceGroup(Composite parent) {
+    Group sourceGroup = new Group(parent, SWT.NONE);
+    sourceGroup.setText(EsbMessages.CallMediatorPropertiesEditionPart_SourceGroupLabel);
+    GridData sourceGroupData = new GridData(GridData.FILL_HORIZONTAL);
+    sourceGroupData.horizontalSpan = 3;
+    sourceGroup.setLayoutData(sourceGroupData);
+    GridLayout sourceGroupLayout = new GridLayout();
+    sourceGroupLayout.numColumns = 3;
+    sourceGroup.setLayout(sourceGroupLayout);
+    return sourceGroup;
+  }
+
+  protected Composite createSourcePayloadText(Composite parent) {
+    createDescription(parent, EsbViewsRepository.CallMediator.Source.sourcePayload, EsbMessages.CallMediatorPropertiesEditionPart_SourcePayloadLabel);
+    sourcePayload = SWTUtils.createScrollableText(parent, SWT.BORDER);
+    GridData sourcePayloadData = new GridData(GridData.FILL_HORIZONTAL);
+    sourcePayload.setLayoutData(sourcePayloadData);
+    sourcePayload.addFocusListener(new FocusAdapter() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void focusLost(FocusEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CallMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.CallMediator.Source.sourcePayload, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, sourcePayload.getText()));
+      }
+
+    });
+    sourcePayload.addKeyListener(new KeyAdapter() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void keyPressed(KeyEvent e) {
+        if (e.character == SWT.CR) {
+          if (propertiesEditionComponent != null)
+            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CallMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.CallMediator.Source.sourcePayload, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, sourcePayload.getText()));
+        }
+      }
+
+    });
+    EditingUtils.setID(sourcePayload, EsbViewsRepository.CallMediator.Source.sourcePayload);
+    EditingUtils.setEEFtype(sourcePayload, "eef::Text"); //$NON-NLS-1$
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CallMediator.Source.sourcePayload, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    // Start of user code for createSourcePayloadText
+
+    // End of user code
+    return parent;
+  }
+
+  protected Composite createSourcePropertyText(Composite parent) {
+    createDescription(parent, EsbViewsRepository.CallMediator.Source.sourceProperty, EsbMessages.CallMediatorPropertiesEditionPart_SourcePropertyLabel);
+    sourceProperty = SWTUtils.createScrollableText(parent, SWT.BORDER);
+    GridData sourcePropertyData = new GridData(GridData.FILL_HORIZONTAL);
+    sourceProperty.setLayoutData(sourcePropertyData);
+    sourceProperty.addFocusListener(new FocusAdapter() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void focusLost(FocusEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CallMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.CallMediator.Source.sourceProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, sourceProperty.getText()));
+      }
+
+    });
+    sourceProperty.addKeyListener(new KeyAdapter() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void keyPressed(KeyEvent e) {
+        if (e.character == SWT.CR) {
+          if (propertiesEditionComponent != null)
+            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CallMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.CallMediator.Source.sourceProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, sourceProperty.getText()));
+        }
+      }
+
+    });
+    EditingUtils.setID(sourceProperty, EsbViewsRepository.CallMediator.Source.sourceProperty);
+    EditingUtils.setEEFtype(sourceProperty, "eef::Text"); //$NON-NLS-1$
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CallMediator.Source.sourceProperty, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    // Start of user code for createSourcePropertyText
+
+    // End of user code
+    return parent;
+  }
+
+  protected Composite createContentTypeText(Composite parent) {
+    createDescription(parent, EsbViewsRepository.CallMediator.Source.contentType, EsbMessages.CallMediatorPropertiesEditionPart_ContentTypeLabel);
+    contentType = SWTUtils.createScrollableText(parent, SWT.BORDER);
+    GridData contentTypeData = new GridData(GridData.FILL_HORIZONTAL);
+    contentType.setLayoutData(contentTypeData);
+    contentType.addFocusListener(new FocusAdapter() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void focusLost(FocusEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CallMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.CallMediator.Source.contentType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, contentType.getText()));
+      }
+
+    });
+    contentType.addKeyListener(new KeyAdapter() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void keyPressed(KeyEvent e) {
+        if (e.character == SWT.CR) {
+          if (propertiesEditionComponent != null)
+            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CallMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.CallMediator.Source.contentType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, contentType.getText()));
+        }
+      }
+
+    });
+    EditingUtils.setID(contentType, EsbViewsRepository.CallMediator.Source.contentType);
+    EditingUtils.setEEFtype(contentType, "eef::Text"); //$NON-NLS-1$
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CallMediator.Source.contentType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    // Start of user code for createContentTypeText
+
+    // End of user code
+    return parent;
+  }
+
+  protected Composite createSourceTypeEMFComboViewer(Composite parent) {
+    createDescription(parent, EsbViewsRepository.CallMediator.Source.sourceType, EsbMessages.CallMediatorPropertiesEditionPart_SourceTypeLabel);
+    sourceType = new EMFComboViewer(parent);
+    sourceType.setContentProvider(new ArrayContentProvider());
+    sourceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+    GridData sourceTypeData = new GridData(GridData.FILL_HORIZONTAL);
+    sourceType.getCombo().setLayoutData(sourceTypeData);
+    sourceType.addSelectionChangedListener(new ISelectionChangedListener() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       * 	
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CallMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.CallMediator.Source.sourceType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSourceType()));
+      }
+
+    });
+    sourceType.setID(EsbViewsRepository.CallMediator.Source.sourceType);
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CallMediator.Source.sourceType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    // Start of user code for createSourceTypeEMFComboViewer
+
+    // End of user code
+    return parent;
+  }
+
+  /**
+   * 
+   */
+  protected Composite createTargetGroup(Composite parent) {
+    Group targetGroup = new Group(parent, SWT.NONE);
+    targetGroup.setText(EsbMessages.CallMediatorPropertiesEditionPart_TargetGroupLabel);
+    GridData targetGroupData = new GridData(GridData.FILL_HORIZONTAL);
+    targetGroupData.horizontalSpan = 3;
+    targetGroup.setLayoutData(targetGroupData);
+    GridLayout targetGroupLayout = new GridLayout();
+    targetGroupLayout.numColumns = 3;
+    targetGroup.setLayout(targetGroupLayout);
+    return targetGroup;
+  }
+
+  protected Composite createTargetPropertyText(Composite parent) {
+    createDescription(parent, EsbViewsRepository.CallMediator.Target.targetProperty, EsbMessages.CallMediatorPropertiesEditionPart_TargetPropertyLabel);
+    targetProperty = SWTUtils.createScrollableText(parent, SWT.BORDER);
+    GridData targetPropertyData = new GridData(GridData.FILL_HORIZONTAL);
+    targetProperty.setLayoutData(targetPropertyData);
+    targetProperty.addFocusListener(new FocusAdapter() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void focusLost(FocusEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CallMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.CallMediator.Target.targetProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, targetProperty.getText()));
+      }
+
+    });
+    targetProperty.addKeyListener(new KeyAdapter() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void keyPressed(KeyEvent e) {
+        if (e.character == SWT.CR) {
+          if (propertiesEditionComponent != null)
+            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CallMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.CallMediator.Target.targetProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, targetProperty.getText()));
+        }
+      }
+
+    });
+    EditingUtils.setID(targetProperty, EsbViewsRepository.CallMediator.Target.targetProperty);
+    EditingUtils.setEEFtype(targetProperty, "eef::Text"); //$NON-NLS-1$
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CallMediator.Target.targetProperty, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    // Start of user code for createTargetPropertyText
+
+    // End of user code
+    return parent;
+  }
+
+  protected Composite createTargetTypeEMFComboViewer(Composite parent) {
+    createDescription(parent, EsbViewsRepository.CallMediator.Target.targetType, EsbMessages.CallMediatorPropertiesEditionPart_TargetTypeLabel);
+    targetType = new EMFComboViewer(parent);
+    targetType.setContentProvider(new ArrayContentProvider());
+    targetType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+    GridData targetTypeData = new GridData(GridData.FILL_HORIZONTAL);
+    targetType.getCombo().setLayoutData(targetTypeData);
+    targetType.addSelectionChangedListener(new ISelectionChangedListener() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       * 	
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CallMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.CallMediator.Target.targetType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getTargetType()));
+      }
+
+    });
+    targetType.setID(EsbViewsRepository.CallMediator.Target.targetType);
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CallMediator.Target.targetType, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    // Start of user code for createTargetTypeEMFComboViewer
+
+    // End of user code
+    return parent;
+  }
+
+  /**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
@@ -766,7 +1052,229 @@ public class CallMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 
 
 
-	// Start of user code for endpointXpath specific getters and setters implementation
+	/**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CallMediatorPropertiesEditionPart#getSourcePayload()
+   * 
+   */
+  public String getSourcePayload() {
+    return sourcePayload.getText();
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CallMediatorPropertiesEditionPart#setSourcePayload(String newValue)
+   * 
+   */
+  public void setSourcePayload(String newValue) {
+    if (newValue != null) {
+      sourcePayload.setText(newValue);
+    } else {
+      sourcePayload.setText(""); //$NON-NLS-1$
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.CallMediator.Source.sourcePayload);
+    if (eefElementEditorReadOnlyState && sourcePayload.isEnabled()) {
+      sourcePayload.setEnabled(false);
+      sourcePayload.setToolTipText(EsbMessages.CallMediator_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !sourcePayload.isEnabled()) {
+      sourcePayload.setEnabled(true);
+    }	
+    
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CallMediatorPropertiesEditionPart#getSourceProperty()
+   * 
+   */
+  public String getSourceProperty() {
+    return sourceProperty.getText();
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CallMediatorPropertiesEditionPart#setSourceProperty(String newValue)
+   * 
+   */
+  public void setSourceProperty(String newValue) {
+    if (newValue != null) {
+      sourceProperty.setText(newValue);
+    } else {
+      sourceProperty.setText(""); //$NON-NLS-1$
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.CallMediator.Source.sourceProperty);
+    if (eefElementEditorReadOnlyState && sourceProperty.isEnabled()) {
+      sourceProperty.setEnabled(false);
+      sourceProperty.setToolTipText(EsbMessages.CallMediator_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !sourceProperty.isEnabled()) {
+      sourceProperty.setEnabled(true);
+    }	
+    
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CallMediatorPropertiesEditionPart#getContentType()
+   * 
+   */
+  public String getContentType() {
+    return contentType.getText();
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CallMediatorPropertiesEditionPart#setContentType(String newValue)
+   * 
+   */
+  public void setContentType(String newValue) {
+    if (newValue != null) {
+      contentType.setText(newValue);
+    } else {
+      contentType.setText(""); //$NON-NLS-1$
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.CallMediator.Source.contentType);
+    if (eefElementEditorReadOnlyState && contentType.isEnabled()) {
+      contentType.setEnabled(false);
+      contentType.setToolTipText(EsbMessages.CallMediator_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !contentType.isEnabled()) {
+      contentType.setEnabled(true);
+    }	
+    
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CallMediatorPropertiesEditionPart#getSourceType()
+   * 
+   */
+  public Enumerator getSourceType() {
+    Enumerator selection = (Enumerator) ((StructuredSelection) sourceType.getSelection()).getFirstElement();
+    return selection;
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CallMediatorPropertiesEditionPart#initSourceType(Object input, Enumerator current)
+   */
+  public void initSourceType(Object input, Enumerator current) {
+    sourceType.setInput(input);
+    sourceType.modelUpdating(new StructuredSelection(current));
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.CallMediator.Source.sourceType);
+    if (eefElementEditorReadOnlyState && sourceType.isEnabled()) {
+      sourceType.setEnabled(false);
+      sourceType.setToolTipText(EsbMessages.CallMediator_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !sourceType.isEnabled()) {
+      sourceType.setEnabled(true);
+    }	
+    
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CallMediatorPropertiesEditionPart#setSourceType(Enumerator newValue)
+   * 
+   */
+  public void setSourceType(Enumerator newValue) {
+    sourceType.modelUpdating(new StructuredSelection(newValue));
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.CallMediator.Source.sourceType);
+    if (eefElementEditorReadOnlyState && sourceType.isEnabled()) {
+      sourceType.setEnabled(false);
+      sourceType.setToolTipText(EsbMessages.CallMediator_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !sourceType.isEnabled()) {
+      sourceType.setEnabled(true);
+    }	
+    
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CallMediatorPropertiesEditionPart#getTargetProperty()
+   * 
+   */
+  public String getTargetProperty() {
+    return targetProperty.getText();
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CallMediatorPropertiesEditionPart#setTargetProperty(String newValue)
+   * 
+   */
+  public void setTargetProperty(String newValue) {
+    if (newValue != null) {
+      targetProperty.setText(newValue);
+    } else {
+      targetProperty.setText(""); //$NON-NLS-1$
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.CallMediator.Target.targetProperty);
+    if (eefElementEditorReadOnlyState && targetProperty.isEnabled()) {
+      targetProperty.setEnabled(false);
+      targetProperty.setToolTipText(EsbMessages.CallMediator_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !targetProperty.isEnabled()) {
+      targetProperty.setEnabled(true);
+    }	
+    
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CallMediatorPropertiesEditionPart#getTargetType()
+   * 
+   */
+  public Enumerator getTargetType() {
+    Enumerator selection = (Enumerator) ((StructuredSelection) targetType.getSelection()).getFirstElement();
+    return selection;
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CallMediatorPropertiesEditionPart#initTargetType(Object input, Enumerator current)
+   */
+  public void initTargetType(Object input, Enumerator current) {
+    targetType.setInput(input);
+    targetType.modelUpdating(new StructuredSelection(current));
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.CallMediator.Target.targetType);
+    if (eefElementEditorReadOnlyState && targetType.isEnabled()) {
+      targetType.setEnabled(false);
+      targetType.setToolTipText(EsbMessages.CallMediator_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !targetType.isEnabled()) {
+      targetType.setEnabled(true);
+    }	
+    
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.developerstudio.eclipse.gmf.esb.parts.CallMediatorPropertiesEditionPart#setTargetType(Enumerator newValue)
+   * 
+   */
+  public void setTargetType(Enumerator newValue) {
+    targetType.modelUpdating(new StructuredSelection(newValue));
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.CallMediator.Target.targetType);
+    if (eefElementEditorReadOnlyState && targetType.isEnabled()) {
+      targetType.setEnabled(false);
+      targetType.setToolTipText(EsbMessages.CallMediator_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !targetType.isEnabled()) {
+      targetType.setEnabled(true);
+    }	
+    
+  }
+
+  // Start of user code for endpointXpath specific getters and setters implementation
 	
 	// End of user code
 
@@ -809,6 +1317,18 @@ public class CallMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
         
     }
 	// End of user code
+
+    @Override
+    public void setSourceXPath(NamespacedProperty nameSpacedProperty) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public NamespacedProperty getSourceXPath() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
 
 }

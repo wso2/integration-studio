@@ -113,6 +113,29 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="endpointXpath" eType="#//NamespacedProperty"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourcePayload" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="&lt;inline/>"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceProperty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="contentType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceXPath" eType="#//NamespacedProperty"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetProperty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceType" eType="#//CallSourceType"
+        defaultValueLiteral="none"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetType" eType="#//CallTargetType"
+        defaultValueLiteral="none"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CallTargetType">
+    <eLiterals name="NONE" value="6" literal="none"/>
+    <eLiterals name="BODY" value="2" literal="body"/>
+    <eLiterals name="PROPERTY" value="3" literal="property"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CallSourceType">
+    <eLiterals name="NONE" value="6" literal="none"/>
+    <eLiterals name="CUSTOM" literal="custom"/>
+    <eLiterals name="BODY" value="2" literal="body"/>
+    <eLiterals name="PROPERTY" value="3" literal="property"/>
+    <eLiterals name="INLINE" value="4" literal="inline"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CallMediatorInputConnector" eSuperTypes="#//InputConnector"/>
   <eClassifiers xsi:type="ecore:EClass" name="CallMediatorOutputConnector" eSuperTypes="#//OutputConnector"/>

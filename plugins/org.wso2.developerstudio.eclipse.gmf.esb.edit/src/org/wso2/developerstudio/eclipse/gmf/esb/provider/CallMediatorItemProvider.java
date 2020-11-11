@@ -86,6 +86,30 @@ public class CallMediatorItemProvider extends MediatorItemProvider {
 
         addDescriptionPropertyDescriptor(object);
 
+        addSourceTypePropertyDescriptor(object);
+        addContentTypePropertyDescriptor(object);
+        switch (callMediator.getSourceType()) {
+        case NONE:
+        case BODY:
+            break;
+        case PROPERTY:
+            addSourcePropertyPropertyDescriptor(object);
+            break;
+        case INLINE:
+            addSourcePayloadPropertyDescriptor(object);
+            break;
+        case CUSTOM:
+            addSourceXpathPropertyDescriptor(object);
+        }
+        addTargetTypePropertyDescriptor(object);
+        switch (callMediator.getTargetType()) {
+        case NONE:
+        case BODY:
+            break;
+        case PROPERTY:
+            addTargetPropertyPropertyDescriptor(object);
+            break;
+        }
         return itemPropertyDescriptors;
     }
 
@@ -178,6 +202,160 @@ public class CallMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
+     * This adds a property descriptor for the Source Xpath feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated NOT
+     */
+    protected void addSourceXpathPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CallMediator_sourceXPath_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CallMediator_sourceXPath_feature", "_UI_CallMediator_type"),
+                 EsbPackage.Literals.CALL_MEDIATOR__SOURCE_XPATH,
+                 true,
+                 false,
+                 false,
+                 null,
+                 null,
+                 null));
+    }
+    
+    /**
+     * This adds a property descriptor for the Source Payload feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addSourcePayloadPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CallMediator_sourcePayload_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CallMediator_sourcePayload_feature", "_UI_CallMediator_type"),
+                 EsbPackage.Literals.CALL_MEDIATOR__SOURCE_PAYLOAD,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Source Property feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addSourcePropertyPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CallMediator_sourceProperty_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CallMediator_sourceProperty_feature", "_UI_CallMediator_type"),
+                 EsbPackage.Literals.CALL_MEDIATOR__SOURCE_PROPERTY,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Content Type feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addContentTypePropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CallMediator_contentType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CallMediator_contentType_feature", "_UI_CallMediator_type"),
+                 EsbPackage.Literals.CALL_MEDIATOR__CONTENT_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Target Property feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addTargetPropertyPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CallMediator_targetProperty_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CallMediator_targetProperty_feature", "_UI_CallMediator_type"),
+                 EsbPackage.Literals.CALL_MEDIATOR__TARGET_PROPERTY,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Source Type feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addSourceTypePropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CallMediator_sourceType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CallMediator_sourceType_feature", "_UI_CallMediator_type"),
+                 EsbPackage.Literals.CALL_MEDIATOR__SOURCE_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Target Type feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addTargetTypePropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CallMediator_targetType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CallMediator_targetType_feature", "_UI_CallMediator_type"),
+                 EsbPackage.Literals.CALL_MEDIATOR__TARGET_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
      * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -195,6 +373,7 @@ public class CallMediatorItemProvider extends MediatorItemProvider {
             childrenFeatures.add(EsbPackage.Literals.CALL_MEDIATOR__MEDIATOR_FLOW);
             childrenFeatures.add(EsbPackage.Literals.CALL_MEDIATOR__ENDPOINT_REGISTRYKEY);
             childrenFeatures.add(EsbPackage.Literals.CALL_MEDIATOR__ENDPOINT_XPATH);
+            childrenFeatures.add(EsbPackage.Literals.CALL_MEDIATOR__SOURCE_XPATH);
         }
         return childrenFeatures;
     }
@@ -251,6 +430,12 @@ public class CallMediatorItemProvider extends MediatorItemProvider {
         switch (notification.getFeatureID(CallMediator.class)) {
             case EsbPackage.CALL_MEDIATOR__ENDPOINT_TYPE:
             case EsbPackage.CALL_MEDIATOR__ENABLE_BLOCKING_CALLS:
+            case EsbPackage.CALL_MEDIATOR__SOURCE_PAYLOAD:
+            case EsbPackage.CALL_MEDIATOR__SOURCE_PROPERTY:
+            case EsbPackage.CALL_MEDIATOR__CONTENT_TYPE:
+            case EsbPackage.CALL_MEDIATOR__TARGET_PROPERTY:
+            case EsbPackage.CALL_MEDIATOR__SOURCE_TYPE:
+            case EsbPackage.CALL_MEDIATOR__TARGET_TYPE:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
             case EsbPackage.CALL_MEDIATOR__INPUT_CONNECTOR:
@@ -259,6 +444,7 @@ public class CallMediatorItemProvider extends MediatorItemProvider {
             case EsbPackage.CALL_MEDIATOR__MEDIATOR_FLOW:
             case EsbPackage.CALL_MEDIATOR__ENDPOINT_REGISTRYKEY:
             case EsbPackage.CALL_MEDIATOR__ENDPOINT_XPATH:
+            case EsbPackage.CALL_MEDIATOR__SOURCE_XPATH:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                 return;
         }
@@ -305,6 +491,34 @@ public class CallMediatorItemProvider extends MediatorItemProvider {
             (createChildParameter
                 (EsbPackage.Literals.CALL_MEDIATOR__ENDPOINT_XPATH,
                  EsbFactory.eINSTANCE.createNamespacedProperty()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.CALL_MEDIATOR__SOURCE_XPATH,
+                 EsbFactory.eINSTANCE.createNamespacedProperty()));
+    }
+
+    /**
+     * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
+        Object childFeature = feature;
+        Object childObject = child;
+
+        boolean qualify =
+            childFeature == EsbPackage.Literals.CALL_MEDIATOR__ENDPOINT_XPATH ||
+            childFeature == EsbPackage.Literals.CALL_MEDIATOR__SOURCE_XPATH;
+
+        if (qualify) {
+            return getString
+                ("_UI_CreateChild_text2",
+                 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+        }
+        return super.getCreateChildText(owner, feature, child, selection);
     }
 
 }

@@ -34,6 +34,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.CallMediatorEndpointOutputConnec
 import org.wso2.developerstudio.eclipse.gmf.esb.CallMediatorEndpointType;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallMediatorInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallMediatorOutputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.CallSourceType;
+import org.wso2.developerstudio.eclipse.gmf.esb.CallTargetType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.MediatorFlow;
@@ -57,6 +59,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallMediatorImpl#isEnableBlockingCalls <em>Enable Blocking Calls</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallMediatorImpl#getEndpointRegistrykey <em>Endpoint Registrykey</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallMediatorImpl#getEndpointXpath <em>Endpoint Xpath</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallMediatorImpl#getSourcePayload <em>Source Payload</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallMediatorImpl#getSourceProperty <em>Source Property</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallMediatorImpl#getContentType <em>Content Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallMediatorImpl#getSourceXPath <em>Source XPath</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallMediatorImpl#getTargetProperty <em>Target Property</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallMediatorImpl#getSourceType <em>Source Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallMediatorImpl#getTargetType <em>Target Type</em>}</li>
  * </ul>
  *
  * @generated
@@ -171,6 +180,136 @@ public class CallMediatorImpl extends MediatorImpl implements CallMediator {
      * @ordered
      */
     protected NamespacedProperty endpointXpath;
+
+    /**
+     * The default value of the '{@link #getSourcePayload() <em>Source Payload</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getSourcePayload()
+     * @generated
+     * @ordered
+     */
+    protected static final String SOURCE_PAYLOAD_EDEFAULT = "<inline/>";
+
+    /**
+     * The cached value of the '{@link #getSourcePayload() <em>Source Payload</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getSourcePayload()
+     * @generated
+     * @ordered
+     */
+    protected String sourcePayload = SOURCE_PAYLOAD_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getSourceProperty() <em>Source Property</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getSourceProperty()
+     * @generated
+     * @ordered
+     */
+    protected static final String SOURCE_PROPERTY_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getSourceProperty() <em>Source Property</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getSourceProperty()
+     * @generated
+     * @ordered
+     */
+    protected String sourceProperty = SOURCE_PROPERTY_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getContentType() <em>Content Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getContentType()
+     * @generated
+     * @ordered
+     */
+    protected static final String CONTENT_TYPE_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getContentType() <em>Content Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getContentType()
+     * @generated
+     * @ordered
+     */
+    protected String contentType = CONTENT_TYPE_EDEFAULT;
+
+    /**
+     * The cached value of the '{@link #getSourceXPath() <em>Source XPath</em>}' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getSourceXPath()
+     * @generated
+     * @ordered
+     */
+    protected NamespacedProperty sourceXPath;
+
+    /**
+     * The default value of the '{@link #getTargetProperty() <em>Target Property</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTargetProperty()
+     * @generated
+     * @ordered
+     */
+    protected static final String TARGET_PROPERTY_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getTargetProperty() <em>Target Property</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTargetProperty()
+     * @generated
+     * @ordered
+     */
+    protected String targetProperty = TARGET_PROPERTY_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getSourceType() <em>Source Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getSourceType()
+     * @generated
+     * @ordered
+     */
+    protected static final CallSourceType SOURCE_TYPE_EDEFAULT = CallSourceType.NONE;
+
+    /**
+     * The cached value of the '{@link #getSourceType() <em>Source Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getSourceType()
+     * @generated
+     * @ordered
+     */
+    protected CallSourceType sourceType = SOURCE_TYPE_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getTargetType() <em>Target Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTargetType()
+     * @generated
+     * @ordered
+     */
+    protected static final CallTargetType TARGET_TYPE_EDEFAULT = CallTargetType.NONE;
+
+    /**
+     * The cached value of the '{@link #getTargetType() <em>Target Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTargetType()
+     * @generated
+     * @ordered
+     */
+    protected CallTargetType targetType = TARGET_TYPE_EDEFAULT;
 
     /**
      * <!-- begin-user-doc -->
@@ -524,6 +663,175 @@ public class CallMediatorImpl extends MediatorImpl implements CallMediator {
      * <!-- end-user-doc -->
      * @generated
      */
+    public String getSourcePayload() {
+        return sourcePayload;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setSourcePayload(String newSourcePayload) {
+        String oldSourcePayload = sourcePayload;
+        sourcePayload = newSourcePayload;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CALL_MEDIATOR__SOURCE_PAYLOAD, oldSourcePayload, sourcePayload));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getSourceProperty() {
+        return sourceProperty;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setSourceProperty(String newSourceProperty) {
+        String oldSourceProperty = sourceProperty;
+        sourceProperty = newSourceProperty;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CALL_MEDIATOR__SOURCE_PROPERTY, oldSourceProperty, sourceProperty));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getContentType() {
+        return contentType;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setContentType(String newContentType) {
+        String oldContentType = contentType;
+        contentType = newContentType;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CALL_MEDIATOR__CONTENT_TYPE, oldContentType, contentType));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public NamespacedProperty getSourceXPath() {
+        return sourceXPath;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public NotificationChain basicSetSourceXPath(NamespacedProperty newSourceXPath, NotificationChain msgs) {
+        NamespacedProperty oldSourceXPath = sourceXPath;
+        sourceXPath = newSourceXPath;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.CALL_MEDIATOR__SOURCE_XPATH, oldSourceXPath, newSourceXPath);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
+        }
+        return msgs;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setSourceXPath(NamespacedProperty newSourceXPath) {
+        if (newSourceXPath != sourceXPath) {
+            NotificationChain msgs = null;
+            if (sourceXPath != null)
+                msgs = ((InternalEObject)sourceXPath).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.CALL_MEDIATOR__SOURCE_XPATH, null, msgs);
+            if (newSourceXPath != null)
+                msgs = ((InternalEObject)newSourceXPath).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.CALL_MEDIATOR__SOURCE_XPATH, null, msgs);
+            msgs = basicSetSourceXPath(newSourceXPath, msgs);
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CALL_MEDIATOR__SOURCE_XPATH, newSourceXPath, newSourceXPath));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getTargetProperty() {
+        return targetProperty;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setTargetProperty(String newTargetProperty) {
+        String oldTargetProperty = targetProperty;
+        targetProperty = newTargetProperty;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CALL_MEDIATOR__TARGET_PROPERTY, oldTargetProperty, targetProperty));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public CallSourceType getSourceType() {
+        return sourceType;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setSourceType(CallSourceType newSourceType) {
+        CallSourceType oldSourceType = sourceType;
+        sourceType = newSourceType == null ? SOURCE_TYPE_EDEFAULT : newSourceType;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CALL_MEDIATOR__SOURCE_TYPE, oldSourceType, sourceType));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public CallTargetType getTargetType() {
+        return targetType;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setTargetType(CallTargetType newTargetType) {
+        CallTargetType oldTargetType = targetType;
+        targetType = newTargetType == null ? TARGET_TYPE_EDEFAULT : newTargetType;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CALL_MEDIATOR__TARGET_TYPE, oldTargetType, targetType));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
@@ -539,6 +847,8 @@ public class CallMediatorImpl extends MediatorImpl implements CallMediator {
                 return basicSetEndpointRegistrykey(null, msgs);
             case EsbPackage.CALL_MEDIATOR__ENDPOINT_XPATH:
                 return basicSetEndpointXpath(null, msgs);
+            case EsbPackage.CALL_MEDIATOR__SOURCE_XPATH:
+                return basicSetSourceXPath(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -569,6 +879,20 @@ public class CallMediatorImpl extends MediatorImpl implements CallMediator {
                 return getEndpointRegistrykey();
             case EsbPackage.CALL_MEDIATOR__ENDPOINT_XPATH:
                 return getEndpointXpath();
+            case EsbPackage.CALL_MEDIATOR__SOURCE_PAYLOAD:
+                return getSourcePayload();
+            case EsbPackage.CALL_MEDIATOR__SOURCE_PROPERTY:
+                return getSourceProperty();
+            case EsbPackage.CALL_MEDIATOR__CONTENT_TYPE:
+                return getContentType();
+            case EsbPackage.CALL_MEDIATOR__SOURCE_XPATH:
+                return getSourceXPath();
+            case EsbPackage.CALL_MEDIATOR__TARGET_PROPERTY:
+                return getTargetProperty();
+            case EsbPackage.CALL_MEDIATOR__SOURCE_TYPE:
+                return getSourceType();
+            case EsbPackage.CALL_MEDIATOR__TARGET_TYPE:
+                return getTargetType();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -610,6 +934,27 @@ public class CallMediatorImpl extends MediatorImpl implements CallMediator {
             case EsbPackage.CALL_MEDIATOR__ENDPOINT_XPATH:
                 setEndpointXpath((NamespacedProperty)newValue);
                 return;
+            case EsbPackage.CALL_MEDIATOR__SOURCE_PAYLOAD:
+                setSourcePayload((String)newValue);
+                return;
+            case EsbPackage.CALL_MEDIATOR__SOURCE_PROPERTY:
+                setSourceProperty((String)newValue);
+                return;
+            case EsbPackage.CALL_MEDIATOR__CONTENT_TYPE:
+                setContentType((String)newValue);
+                return;
+            case EsbPackage.CALL_MEDIATOR__SOURCE_XPATH:
+                setSourceXPath((NamespacedProperty)newValue);
+                return;
+            case EsbPackage.CALL_MEDIATOR__TARGET_PROPERTY:
+                setTargetProperty((String)newValue);
+                return;
+            case EsbPackage.CALL_MEDIATOR__SOURCE_TYPE:
+                setSourceType((CallSourceType)newValue);
+                return;
+            case EsbPackage.CALL_MEDIATOR__TARGET_TYPE:
+                setTargetType((CallTargetType)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -649,6 +994,27 @@ public class CallMediatorImpl extends MediatorImpl implements CallMediator {
             case EsbPackage.CALL_MEDIATOR__ENDPOINT_XPATH:
                 setEndpointXpath((NamespacedProperty)null);
                 return;
+            case EsbPackage.CALL_MEDIATOR__SOURCE_PAYLOAD:
+                setSourcePayload(SOURCE_PAYLOAD_EDEFAULT);
+                return;
+            case EsbPackage.CALL_MEDIATOR__SOURCE_PROPERTY:
+                setSourceProperty(SOURCE_PROPERTY_EDEFAULT);
+                return;
+            case EsbPackage.CALL_MEDIATOR__CONTENT_TYPE:
+                setContentType(CONTENT_TYPE_EDEFAULT);
+                return;
+            case EsbPackage.CALL_MEDIATOR__SOURCE_XPATH:
+                setSourceXPath((NamespacedProperty)null);
+                return;
+            case EsbPackage.CALL_MEDIATOR__TARGET_PROPERTY:
+                setTargetProperty(TARGET_PROPERTY_EDEFAULT);
+                return;
+            case EsbPackage.CALL_MEDIATOR__SOURCE_TYPE:
+                setSourceType(SOURCE_TYPE_EDEFAULT);
+                return;
+            case EsbPackage.CALL_MEDIATOR__TARGET_TYPE:
+                setTargetType(TARGET_TYPE_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -679,6 +1045,20 @@ public class CallMediatorImpl extends MediatorImpl implements CallMediator {
                 return endpointRegistrykey != null;
             case EsbPackage.CALL_MEDIATOR__ENDPOINT_XPATH:
                 return endpointXpath != null;
+            case EsbPackage.CALL_MEDIATOR__SOURCE_PAYLOAD:
+                return SOURCE_PAYLOAD_EDEFAULT == null ? sourcePayload != null : !SOURCE_PAYLOAD_EDEFAULT.equals(sourcePayload);
+            case EsbPackage.CALL_MEDIATOR__SOURCE_PROPERTY:
+                return SOURCE_PROPERTY_EDEFAULT == null ? sourceProperty != null : !SOURCE_PROPERTY_EDEFAULT.equals(sourceProperty);
+            case EsbPackage.CALL_MEDIATOR__CONTENT_TYPE:
+                return CONTENT_TYPE_EDEFAULT == null ? contentType != null : !CONTENT_TYPE_EDEFAULT.equals(contentType);
+            case EsbPackage.CALL_MEDIATOR__SOURCE_XPATH:
+                return sourceXPath != null;
+            case EsbPackage.CALL_MEDIATOR__TARGET_PROPERTY:
+                return TARGET_PROPERTY_EDEFAULT == null ? targetProperty != null : !TARGET_PROPERTY_EDEFAULT.equals(targetProperty);
+            case EsbPackage.CALL_MEDIATOR__SOURCE_TYPE:
+                return sourceType != SOURCE_TYPE_EDEFAULT;
+            case EsbPackage.CALL_MEDIATOR__TARGET_TYPE:
+                return targetType != TARGET_TYPE_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -697,6 +1077,18 @@ public class CallMediatorImpl extends MediatorImpl implements CallMediator {
         result.append(endpointType);
         result.append(", enableBlockingCalls: ");
         result.append(enableBlockingCalls);
+        result.append(", sourcePayload: ");
+        result.append(sourcePayload);
+        result.append(", sourceProperty: ");
+        result.append(sourceProperty);
+        result.append(", contentType: ");
+        result.append(contentType);
+        result.append(", targetProperty: ");
+        result.append(targetProperty);
+        result.append(", sourceType: ");
+        result.append(sourceType);
+        result.append(", targetType: ");
+        result.append(targetType);
         result.append(')');
         return result.toString();
     }

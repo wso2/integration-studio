@@ -65,7 +65,6 @@ public class ProxyServiceProjectFieldController extends AbstractFieldController 
 									throw new FieldValidationException("");
 								}
 							}
-
 						} catch (Exception e) {
 							throw new FieldValidationException("Specified proxy service name already exsits.");
 						}
@@ -158,7 +157,13 @@ public class ProxyServiceProjectFieldController extends AbstractFieldController 
 			updateFields.add("save.file");
 		} else if (modelProperty.equals("ps.type")) {
 			updateFields.add("proxy.AdvancedConfig");
-		}
+        } else if (modelProperty.equals(PsArtifactConstants.PROXY_WSDL_TYPE)) {
+            updateFields.add(PsArtifactConstants.PROXY_WSDL_FILE);
+            updateFields.add(PsArtifactConstants.PROXY_WSDL_URL);
+        } else if (modelProperty.equals(PsArtifactConstants.PROXY_WSDL_URL)
+                || modelProperty.equals(PsArtifactConstants.PROXY_WSDL_FILE)) {
+            updateFields.add(PsArtifactConstants.PROXY_WSDL_SELECTED_NAME);
+        }
 		return updateFields;
 	}
 
@@ -166,11 +171,25 @@ public class ProxyServiceProjectFieldController extends AbstractFieldController 
 	public boolean isVisibleField(String modelProperty, ProjectDataModel model) {
 		boolean visibleField = super.isVisibleField(modelProperty, model);
 
-		if (modelProperty.equals("available.ps")) {
-			List<OMElement> availableEPList = ((ProxyServiceModel) model).getAvailablePSList();
-			visibleField = (availableEPList != null && availableEPList.size() > 0);
-		}
-		return visibleField;
+        if (modelProperty.equals("available.ps")) {
+            List<OMElement> availableEPList = ((ProxyServiceModel) model).getAvailablePSList();
+            visibleField = (availableEPList != null && availableEPList.size() > 0);
+        } else if (modelProperty.equals(PsArtifactConstants.PROXY_WSDL_FILE)) {
+            ProxyServiceModel proxyModel = (ProxyServiceModel) model;
+            if (proxyModel.getProxyWSDLType().equals(PsArtifactConstants.TYPE_WSDL_URL)) {
+                visibleField = false;
+            } else {
+                visibleField = true;
+            }
+        } else if (modelProperty.equals(PsArtifactConstants.PROXY_WSDL_URL)) {
+            ProxyServiceModel proxyModel = (ProxyServiceModel) model;
+            if (proxyModel.getProxyWSDLType().equals(PsArtifactConstants.TYPE_WSDL_FILE)) {
+                visibleField = false;
+            } else {
+                visibleField = true;
+            }
+        }
+        return visibleField;
 
 	}
 	

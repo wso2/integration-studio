@@ -18,6 +18,8 @@ package org.wso2.developerstudio.eclipse.artifact.proxyservice.model;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMException;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.validator.routines.UrlValidator;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
@@ -28,20 +30,27 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.artifact.proxyservice.Activator;
 import org.wso2.developerstudio.eclipse.artifact.proxyservice.utils.PsArtifactConstants;
+import org.wso2.developerstudio.eclipse.artifact.proxyservice.wsdl.WSDL2Java;
 import org.wso2.developerstudio.eclipse.esb.core.utils.SynapseEntryType;
 import org.wso2.developerstudio.eclipse.esb.core.utils.SynapseFileUtils;
 import org.wso2.developerstudio.eclipse.esb.project.utils.ESBProjectUtils;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.exception.ObserverFailedException;
+import org.wso2.developerstudio.eclipse.platform.core.model.AbstractListDataProvider.ListData;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
 import org.wso2.developerstudio.eclipse.project.extensions.templates.ArtifactTemplate;
+import org.xml.sax.SAXException;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.wsdl.Definition;
+import javax.wsdl.WSDLException;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.stream.XMLStreamException;
 
 public class ProxyServiceModel extends ProjectDataModel {
@@ -69,9 +78,12 @@ public class ProxyServiceModel extends ProjectDataModel {
 	private String predefinedEndPoint;
 	List<OMElement> selectedProxyList = new ArrayList<OMElement>();
 	private TargetEPType targetEPType = TargetEPType.URL;
-	
-	
-	
+    private File proxyWSDLFile;
+    private String proxyWSDLurl;
+    private String proxyWSDLType;
+    private String proxyWSDLSelectedName;
+    List<ListData> wsdlNameList = new ArrayList<ListData>();
+
 	public Object getModelPropertyValue(String key) {
 		Object modelPropertyValue = super.getModelPropertyValue(key);
 		if (modelPropertyValue == null) {
@@ -219,10 +231,36 @@ public class ProxyServiceModel extends ProjectDataModel {
 					selectedProxyList.add((OMElement)object);
 				}
 			}
-			setSelectedProxyList(selectedProxyList);
-		}
-		return returnResult;
-	}
+            setSelectedProxyList(selectedProxyList);
+        } else if (key.equals(PsArtifactConstants.PROXY_WSDL_FILE)) {
+            if (data instanceof File && ((File) data).exists()) {
+                setProxyWSDLFile((File) data);
+                try {
+                    addAvailableNames(((File) data).toURI().toURL().toString());
+                } catch (MalformedURLException e) {
+                    log.error(e);
+                }
+            }
+
+        } else if (key.equals(PsArtifactConstants.PROXY_WSDL_URL)) {
+            String url = (String) data;
+            if (StringUtils.isNotBlank(url)) {
+                setProxyWSDLurl(url);
+                UrlValidator urlValidator = new UrlValidator();
+                if (urlValidator.isValid(url)) {
+                    addAvailableNames(url);
+                }
+            }
+
+        } else if (key.equals(PsArtifactConstants.PROXY_WSDL_TYPE)) {
+            if (data instanceof String) {
+                setProxyWSDLType((String) data);
+            }
+        } else if (key.equals(PsArtifactConstants.PROXY_WSDL_SELECTED_NAME)) {
+            setProxyWSDLSelectedName(data.toString());
+        }
+        return returnResult;
+    }
 	
 	public void setEndPointUrl(String endPointUrl){
 		this.endPointUrl = endPointUrl;
@@ -442,4 +480,59 @@ public class ProxyServiceModel extends ProjectDataModel {
 	public enum TargetEPType {
 		URL,PREDEFINED,REGISTRY
 	}
+
+    public File getProxyWSDLFile() {
+        return proxyWSDLFile;
+    }
+
+    public void setProxyWSDLFile(File wsdlFile) {
+        this.proxyWSDLFile = wsdlFile;
+    }
+
+    public String getProxyWSDLurl() {
+        return proxyWSDLurl;
+    }
+
+    public void setProxyWSDLurl(String wsdlUrl) {
+        this.proxyWSDLurl = wsdlUrl;
+    }
+
+    public String getProxyWSDLType() {
+        return proxyWSDLType;
+    }
+
+    public void setProxyWSDLType(String wsdlType) {
+        this.proxyWSDLType = wsdlType;
+    }
+
+    public String getProxyWSDLSelectedName() {
+        return proxyWSDLSelectedName;
+    }
+
+    public void setProxyWSDLSelectedName(String wsdlSelectedName) {
+        this.proxyWSDLSelectedName = wsdlSelectedName;
+    }
+
+    public List<ListData> getAvailabelWSDLNames() {
+        return wsdlNameList;
+    }
+
+    public void addAvailableName(String name) {
+        this.wsdlNameList.add(new ListData(name, name));
+    }
+
+    private void addAvailableNames(String wsdlUrl) {
+        try {
+            Definition definitions = WSDL2Java.readWSDL(wsdlUrl);
+            List<String> serviceNames = WSDL2Java.getServiceNames(definitions);
+            if (!serviceNames.isEmpty()) {
+                wsdlNameList.clear();
+                for (String serviceName : serviceNames) {
+                    addAvailableName(serviceName);
+                }
+            }
+        } catch (IOException | ParserConfigurationException | SAXException | WSDLException e) {
+            log.warn("Error while extracting Service Names from provided URL", e);
+        }
+    }
 }

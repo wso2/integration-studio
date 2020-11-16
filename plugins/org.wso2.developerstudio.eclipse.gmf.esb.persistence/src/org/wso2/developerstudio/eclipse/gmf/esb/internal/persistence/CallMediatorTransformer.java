@@ -15,9 +15,15 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
+import javax.xml.stream.XMLStreamException;
+
+import org.apache.axiom.om.OMAbstractFactory;
 import org.apache.axiom.om.OMAttribute;
+import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.endpoints.IndirectEndpoint;
 import org.apache.synapse.endpoints.ResolvingEndpoint;
@@ -33,6 +39,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.CallMediatorEndpointType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.SynapseXPathExt;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.ValidationConstansts;
@@ -66,6 +73,8 @@ public class CallMediatorTransformer extends AbstractEsbNodeTransformer {
             doTransform(information, ((CallMediator) subject).getOutputConnector()); // continue in normal flow
         } catch (JaxenException e) {
             throw new TransformerException(e);
+        } catch (XMLStreamException e) {
+            throw new TransformerException(e);
         }
     }
 
@@ -92,11 +101,13 @@ public class CallMediatorTransformer extends AbstractEsbNodeTransformer {
                     sequence);
         } catch (JaxenException e) {
             throw new TransformerException(e);
+        } catch (XMLStreamException e) {
+            throw new TransformerException(e);
         }
     }
 
     public static org.apache.synapse.mediators.builtin.CallMediator createCallMediator(EsbNode subject,
-            boolean isForValidation) throws TransformerException, JaxenException {
+            boolean isForValidation) throws TransformerException, JaxenException, XMLStreamException {
         // Check subject.
         Assert.isTrue(subject instanceof CallMediator, "Invalid subject.");
         CallMediator visualCallMediator = (CallMediator) subject;
@@ -118,6 +129,75 @@ public class CallMediatorTransformer extends AbstractEsbNodeTransformer {
             synapseCallMediator.setEndpoint(null);
         }
         synapseCallMediator.setBlocking(visualCallMediator.isEnableBlockingCalls());
+        
+        org.apache.synapse.mediators.elementary.Source source = new org.apache.synapse.mediators.elementary.Source();
+        org.apache.synapse.mediators.elementary.Target target = new org.apache.synapse.mediators.elementary.Target();
+        String sourceType = visualCallMediator.getSourceType().getLiteral();
+        String targetType = visualCallMediator.getTargetType().getLiteral();
+        switch (visualCallMediator.getSourceType()) {
+        case NONE: synapseCallMediator.setSourceAvailable(false); break;
+        case BODY: source.setSourceType(org.apache.synapse.mediators.elementary.EnrichMediator.BODY);
+        synapseCallMediator.setSourceAvailable(true);
+        break;
+        case PROPERTY:
+            source.setSourceType(org.apache.synapse.mediators.elementary.EnrichMediator.PROPERTY);
+            String prop = visualCallMediator.getSourceProperty();
+            if (prop != null)
+                source.setProperty(prop);
+            synapseCallMediator.setSourceAvailable(true);
+            break;
+        case INLINE:
+            source.setSourceType(org.apache.synapse.mediators.elementary.EnrichMediator.INLINE);
+            String str = visualCallMediator.getSourcePayload();
+            if (str != null && str.trim().startsWith("<") && str.trim().endsWith(">")) {
+                source.setInlineOMNode(AXIOMUtil.stringToOM(str));
+            } else {
+                source.setInlineOMNode(OMAbstractFactory.getOMFactory().createOMText(str));
+            }
+            synapseCallMediator.setSourceAvailable(true);
+            break;
+        case CUSTOM:
+            source.setSourceType(org.apache.synapse.mediators.elementary.EnrichMediator.CUSTOM);
+            NamespacedProperty visualSourceXPath = visualCallMediator.getSourceXPath();
+
+            SynapseXPath xPath;
+            if(!isForValidation && StringUtils.isEmpty(visualSourceXPath.getPropertyValue())) {
+                // Fill the XPath with a default values, so that we can use synapse serializer
+                xPath = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
+            }
+            else {
+                xPath = (SynapseXPath) SynapseXPathExt.createSynapsePath(visualSourceXPath.getPropertyValue());
+            }
+            Map<String, String> map = visualSourceXPath.getNamespaces();
+            Iterator<Map.Entry<String, String>> entries = map.entrySet().iterator();
+            while (entries.hasNext()) {
+                Map.Entry<String, String> entry = entries.next();
+                xPath.addNamespace(entry.getKey(), entry.getValue());
+            }
+            source.setXpath(xPath);
+            synapseCallMediator.setSourceAvailable(true);
+            break;
+        }
+        switch(visualCallMediator.getTargetType()) {
+        case NONE: synapseCallMediator.setTargetAvailable(false);
+        break;
+        case BODY: target.setTargetType(org.apache.synapse.mediators.elementary.EnrichMediator.BODY);
+        synapseCallMediator.setTargetAvailable(true);
+        break;
+        case PROPERTY:
+            target.setTargetType(org.apache.synapse.mediators.elementary.EnrichMediator.PROPERTY);
+            String prop = visualCallMediator.getTargetProperty();
+            if (prop != null)
+                target.setProperty(prop);
+            synapseCallMediator.setTargetAvailable(true);
+            break;
+        }
+        
+        if(visualCallMediator.getContentType() != null) {
+            synapseCallMediator.setSourceMessageType(visualCallMediator.getContentType());
+        }
+        synapseCallMediator.setSourceForOutboundPayload(source);
+        synapseCallMediator.setTargetForInboundPayload(target);
         return synapseCallMediator;
     }
 

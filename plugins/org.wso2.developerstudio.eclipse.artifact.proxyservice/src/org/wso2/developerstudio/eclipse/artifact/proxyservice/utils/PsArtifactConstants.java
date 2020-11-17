@@ -62,6 +62,14 @@ public final class PsArtifactConstants extends NLS{
 	public static String WIZARD_OPTION_TEMPL_TRANSFORMER_PS_TRANSFORMRESPONSES;
 	public static String WIZARD_OPTION_TEMPL_COMMON_PS_PREDEFINED;
 	public static String WIZARD_OPTION_TEMPL_COMMON_PS_EPLIST;
+    // Generate Proxy using WSDL releated constants
+    public static String PROXY_WSDL_FILE;
+    public static String WIZARD_OPTION_WSDL_OPTION;
+    public static String PROXY_WSDL_TYPE;
+    public static String PROXY_WSDL_URL;
+    public static String PROXY_WSDL_SELECTED_NAME;
+    public static String TYPE_WSDL_URL;
+    public static String TYPE_WSDL_FILE;
 	
 	//proxy template IDs
 	public static  String TRANSFORMER_PROXY_TEMPL_ID;

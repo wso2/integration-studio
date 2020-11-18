@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.regex.Pattern;
 
+import javax.wsdl.Definition;
 import javax.xml.namespace.QName;
 
 import org.apache.axiom.om.OMElement;
@@ -30,6 +31,8 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
+import org.apache.synapse.config.xml.ProxyServiceSerializer;
+import org.apache.synapse.core.axis2.ProxyService;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.core.resources.IContainer;
@@ -45,6 +48,8 @@ import org.wso2.developerstudio.eclipse.artifact.proxyservice.model.ProxyService
 import org.wso2.developerstudio.eclipse.artifact.proxyservice.model.ProxyServiceModel.TargetEPType;
 import org.wso2.developerstudio.eclipse.artifact.proxyservice.utils.ProxyServiceImageUtils;
 import org.wso2.developerstudio.eclipse.artifact.proxyservice.utils.PsArtifactConstants;
+import org.wso2.developerstudio.eclipse.artifact.proxyservice.wsdl.ProxyGenerator;
+import org.wso2.developerstudio.eclipse.artifact.proxyservice.wsdl.WSDL2Java;
 import org.wso2.developerstudio.eclipse.esb.core.ESBMavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
@@ -120,10 +125,39 @@ public class ProxyServiceProjectCreationWizard extends AbstractWSO2ProjectCreati
 					}
 					isNewArtifact = false;
 				} 
-				copyImportFile(location,isNewArtifact,groupId);
-			} else {
-				ArtifactTemplate selectedTemplate = psModel.getSelectedTemplate();
-				templateContent = FileUtils.getContentAsString(selectedTemplate.getTemplateDataStream());
+                copyImportFile(location, isNewArtifact, groupId);
+            } else if (getModel().getSelectedOption().equals(PsArtifactConstants.WIZARD_OPTION_WSDL_OPTION)) {
+                try {
+                    String wsdlUrl;
+                    if (proxyServiceModel.getProxyWSDLType().equals(PsArtifactConstants.TYPE_WSDL_FILE)) {
+                        wsdlUrl = proxyServiceModel.getProxyWSDLFile().toURI().toString();
+                    } else {
+                        wsdlUrl = proxyServiceModel.getProxyWSDLurl();
+                    }
+                    Definition definitions = WSDL2Java.readWSDL(wsdlUrl);
+                    List<String> soapActions = WSDL2Java.getBindingSoapActions(definitions);
+                    ProxyService proxyService = ProxyGenerator.generateProxyWithOperations(
+                            proxyServiceModel.getProxyWSDLSelectedName(), soapActions, wsdlUrl);
+                    template = ProxyServiceSerializer.serializeProxy(null, proxyService).toString();
+                    proxyServiceFile = location.getFile(new Path(proxyServiceModel.getProxyServiceName() + ".xml"));
+                    File destFile = proxyServiceFile.getLocation().toFile();
+                    FileUtils.createFile(destFile, template);
+                    fileLst.add(destFile);
+                    String relativePath = FileUtils
+                            .getRelativePath(esbProject.getLocation().toFile(),
+                                    new File(location.getLocation().toFile(),
+                                            proxyServiceModel.getProxyServiceName() + ".xml"))
+                            .replaceAll(Pattern.quote(File.separator), "/");
+                    esbProjectArtifact.addESBArtifact(
+                            createArtifact(proxyServiceModel.getProxyServiceName(), groupId, version, relativePath));
+                } catch (Exception e) {
+                    log.error("Error occured while generating Poxy from given WSDL", e);
+                    MessageDialog.openError(getShell(), "Error while creating the Proxy from given WSDL file",
+                            "Unable to generate the Proxy service from the given URL " + e.getMessage());
+                }
+            } else {
+                ArtifactTemplate selectedTemplate = psModel.getSelectedTemplate();
+                templateContent = FileUtils.getContentAsString(selectedTemplate.getTemplateDataStream());
 				if(selectedTemplate.getName().equals(PsArtifactConstants.CUSTOM_PROXY)){
 					template = createProxyTemplate(templateContent, PsArtifactConstants.CUSTOM_PROXY);
 				}else if(selectedTemplate.getName().equals(PsArtifactConstants.LOGGING_PROXY)){

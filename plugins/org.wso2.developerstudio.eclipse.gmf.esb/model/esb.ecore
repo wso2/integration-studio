@@ -817,7 +817,6 @@
     <eLiterals name="BODY" value="2" literal="body"/>
     <eLiterals name="PROPERTY" value="3" literal="property"/>
     <eLiterals name="ENVELOPE" value="1" literal="envelope"/>
-    <eLiterals name="KEY" value="5" literal="key"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractNameValueExpressionProperty"
       abstract="true" eSuperTypes="#//EsbNode">

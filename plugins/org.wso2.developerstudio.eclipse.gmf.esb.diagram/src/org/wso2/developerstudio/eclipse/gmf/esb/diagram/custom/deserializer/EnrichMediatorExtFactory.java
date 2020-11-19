@@ -172,8 +172,6 @@ public class EnrichMediatorExtFactory extends EnrichMediatorFactory {
             return EnrichMediator.CUSTOM;
         } else if (type.equals("inline")) {
             return EnrichMediator.INLINE;
-        } else if (type.equals("key")) {
-            return EnrichMediator.KEY;
         }
         return -1;
     }

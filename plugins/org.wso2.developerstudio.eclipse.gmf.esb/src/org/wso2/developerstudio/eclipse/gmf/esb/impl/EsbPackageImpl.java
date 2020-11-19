@@ -24718,7 +24718,6 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         addEEnumLiteral(enrichTargetTypeEEnum, EnrichTargetType.BODY);
         addEEnumLiteral(enrichTargetTypeEEnum, EnrichTargetType.PROPERTY);
         addEEnumLiteral(enrichTargetTypeEEnum, EnrichTargetType.ENVELOPE);
-        addEEnumLiteral(enrichTargetTypeEEnum, EnrichTargetType.KEY);
 
         initEEnum(eventTopicTypeEEnum, EventTopicType.class, "EventTopicType");
         addEEnumLiteral(eventTopicTypeEEnum, EventTopicType.STATIC);

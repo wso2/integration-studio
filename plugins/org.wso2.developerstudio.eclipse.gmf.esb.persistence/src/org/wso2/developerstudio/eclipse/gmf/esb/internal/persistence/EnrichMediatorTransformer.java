@@ -49,9 +49,6 @@ public class EnrichMediatorTransformer extends AbstractEsbNodeTransformer {
     private static final String BDY = "body";
     private static final String CUS = "custom";
     private static  final String PROP = "property";
-    private static  final String KEY = "key";
-    private static  final String REMOVE = "remove";
-    private static  final String REPLACE = "replace";
 
     /**
      * {@inheritDoc}
@@ -103,25 +100,9 @@ public class EnrichMediatorTransformer extends AbstractEsbNodeTransformer {
             String targetType = visualEnrich.getTargetType().getLiteral();
             if ((ENV.equals(sourceType) && !PROP.equals(targetType))
                     || (CUS.equals(sourceType) && ENV.equals(targetType))
-                    || (BDY.equals(sourceType) && (ENV.equals(targetType) || BDY.equals(targetType)))
-                    || ((KEY.equals(targetType) && (BDY.equals(sourceType) || ENV.equals(sourceType))))) {
+                    || (BDY.equals(sourceType) && (ENV.equals(targetType) || BDY.equals(targetType)))) {
                 throw new JaxenException("Target type \"" + targetType + "\" does not support source type \""
                         + sourceType + "\". Please change source/target types");
-            }
-
-            // validate action/type combinations
-            String targetAction = visualEnrich.getTargetAction().getLiteral();
-
-            if ((REMOVE.equals(targetAction) && !CUS.equals(sourceType)) || (REMOVE.equals(targetAction)
-                    && (CUS.equals(targetType) || ENV.equals(targetType) || KEY.equals(targetType)))) {
-                throw new JaxenException(
-                        "Target action \"" + targetAction + "\" does not support source/target configuration");
-            }
-
-            if ((KEY.equals(targetType) && !REPLACE.equals(targetAction))
-                    || (KEY.equals(targetType) && (ENV.equals(sourceType) || BDY.equals(sourceType)))) {
-                throw new JaxenException(
-                        "Target type \"" + targetAction + "\" does not support source/target configuration");
             }
 
             source.setClone(visualEnrich.isCloneSource());
@@ -192,15 +173,15 @@ public class EnrichMediatorTransformer extends AbstractEsbNodeTransformer {
                 if (prop != null)
                     target.setProperty(prop);
                 break;
-            case CUSTOM: {
+            case CUSTOM:
                 target.setTargetType(org.apache.synapse.mediators.elementary.EnrichMediator.CUSTOM);
                 NamespacedProperty visualTargetXPath = visualEnrich.getTargetXpath();
                 SynapseXPath xPath;
-                if (!isForValidation && StringUtils.isEmpty(visualTargetXPath.getPropertyValue())) {
-                    // Fill the XPath with a default values, so that we can
-                    // use synapse serializer
+                if(!isForValidation && StringUtils.isEmpty(visualTargetXPath.getPropertyValue())) {
+                    // Fill the XPath with a default values, so that we can use synapse serializer
                     xPath = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
-                } else {
+                }
+                else {
                     xPath = (SynapseXPath) SynapseXPathExt.createSynapsePath(visualTargetXPath.getPropertyValue());
                 }
                 Map<String, String> map = visualTargetXPath.getNamespaces();
@@ -211,28 +192,6 @@ public class EnrichMediatorTransformer extends AbstractEsbNodeTransformer {
                 }
                 target.setXpath(xPath);
                 break;
-            }
-            case KEY: {
-                target.setTargetType(org.apache.synapse.mediators.elementary.EnrichMediator.KEY);
-                NamespacedProperty visualTargetXPath = visualEnrich.getTargetXpath();
-                SynapseXPath xPath;
-                if (!isForValidation && StringUtils.isEmpty(visualTargetXPath.getPropertyValue())) {
-                    // Fill the XPath with a default values, so that we can
-                    // use synapse serializer
-                    xPath = new SynapseXPath(ValidationConstansts.DEFAULT_XPATH_FOR_VALIDATION);
-                } else {
-                    xPath = (SynapseXPath) SynapseXPathExt.createSynapsePath(visualTargetXPath.getPropertyValue());
-                }
-                Map<String, String> map = visualTargetXPath.getNamespaces();
-                Iterator<Map.Entry<String, String>> entries = map.entrySet().iterator();
-                while (entries.hasNext()) {
-                    Map.Entry<String, String> entry = entries.next();
-                    xPath.addNamespace(entry.getKey(), entry.getValue());
-                }
-                target.setXpath(xPath);
-                break;
-            }
-
             }
 
             switch (visualEnrich.getTargetAction()) {

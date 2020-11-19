@@ -101,38 +101,6 @@ public class EsbViewsRepository {
 	
 		}
 	
-		public static class Source {
-	
-			
-			public static String sourcePayload = "esb::CallMediator::source::sourcePayload";
-			
-			
-			public static String sourceProperty = "esb::CallMediator::source::sourceProperty";
-			
-			
-			public static String contentType = "esb::CallMediator::source::contentType";
-			
-			
-			public static String sourceType = "esb::CallMediator::source::sourceType";
-			
-			// Start of user code for sourceXPath ElementEditor key
-			public static String sourceXPath = "esb::RuleMediator::source::sourceXPath";
-			// End of user code
-			
-	
-		}
-	
-		public static class Target {
-	
-			
-			public static String targetProperty = "esb::CallMediator::target::targetProperty";
-			
-			
-			public static String targetType = "esb::CallMediator::target::targetType";
-			
-	
-		}
-	
 	}
 
 	/**
@@ -3456,10 +3424,10 @@ public class EsbViewsRepository {
 			// Start of user code for completionMaxMessages ElementEditor key
 			public static String completionMaxMessages = "esb::AggregateMediator::properties::completionMaxMessages";
 			// End of user code
-			
+
 			// Start of user code for completionMaxMessages ElementEditor key
-            public static String aggregateElementType = "esb::AggregateMediator::properties::aggregateElementType";
-            // End of user code
+			public static String aggregateElementType = "esb::AggregateMediator::properties::aggregateElementType";
+			// End of user code
 	
 		}
 	
@@ -3475,7 +3443,6 @@ public class EsbViewsRepository {
 			// Start of user code for sequenceKey ElementEditor key
 			public static String sequenceKey = "esb::AggregateMediator::onComplete::sequenceKey";
 			// End of user code
-			
 	
 		}
 	
@@ -5122,7 +5089,6 @@ public class EsbViewsRepository {
 			// Start of user code for valueMessageElementXpath ElementEditor key
 			public static String valueMessageElementXpath = "esb::CommandProperty::properties::valueMessageElementXpath";
 			// End of user code
-			
 	
 		}
 	
@@ -5134,19 +5100,14 @@ public class EsbViewsRepository {
 	 */
 	public static class SqlStatement {
 		public static class Properties {
-	
 			
 			public static String queryString = "esb::SqlStatement::properties::queryString";
 			
-			
 			public static String parameters = "esb::SqlStatement::properties::parameters";
-			
 			
 			public static String resultsEnabled = "esb::SqlStatement::properties::resultsEnabled";
 			
-			
 			public static String results = "esb::SqlStatement::properties::results";
-			
 	
 		}
 	
@@ -9525,30 +9486,21 @@ public class EsbViewsRepository {
 			
 			public static String transportRabbitMqAutoDeclare = "esb::InboundEndpoint::properties::transportRabbitMqAutoDeclare";
 			
-			
 			public static String transportRabbitMqMaxDeadLetteredCount = "esb::InboundEndpoint::properties::transportRabbitMqMaxDeadLetteredCount";
-			
 			
 			public static String transportRabbitMqRequeueDelay = "esb::InboundEndpoint::properties::transportRabbitMqRequeueDelay";
 			
-			
 			public static String transportRabbitMqExchangeAutoDeclare = "esb::InboundEndpoint::properties::transportRabbitMqExchangeAutoDeclare";
-			
-			
+			                      
 			public static String transportRabbitMqConsumerTag = "esb::InboundEndpoint::properties::transportRabbitMqConsumerTag";
-			
-			
+			                       
 			public static String transportRabbitMqErrorQueueRoutingKey = "esb::InboundEndpoint::properties::transportRabbitMqErrorQueueRoutingKey";
-			
-			
+			                       
 			public static String transportRabbitMqErrorExchangeName = "esb::InboundEndpoint::properties::transportRabbitMqErrorExchangeName";
-			
-			
+			                       
 			public static String transportRabbitMqFactoryConnectionTimeout = "esb::InboundEndpoint::properties::transportRabbitMqFactoryConnectionTimeout";
-			
-			
+			                       
 			public static String transportRabbitMqFactoryNetworkRecoveryInterval = "esb::InboundEndpoint::properties::transportRabbitMqFactoryNetworkRecoveryInterval";
-			
 	
 		}
 	

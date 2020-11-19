@@ -40,6 +40,7 @@ public class EnrichMediatorExtFactory extends EnrichMediatorFactory {
     private static final QName ATT_ACTION = new QName("action");
     private static final QName ATT_PROPERTY = new QName("property");
     private static final QName ATT_XPATH = new QName("xpath");
+    private static final QName ATT_KEY = new QName("key");
     
     private static EnrichMediatorExtFactory instance;
     

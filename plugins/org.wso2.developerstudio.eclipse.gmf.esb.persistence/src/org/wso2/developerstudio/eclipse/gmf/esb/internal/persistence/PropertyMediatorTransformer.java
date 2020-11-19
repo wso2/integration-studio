@@ -160,9 +160,6 @@ public class PropertyMediatorTransformer extends AbstractEsbNodeTransformer {
                     case STRING:
                         propMediator.setValue(visualProp.getValue(), XMLConfigConstants.DATA_TYPES.STRING.toString());
                         break;
-                    case JSON:
-                        propMediator.setValue(visualProp.getValue(), XMLConfigConstants.DATA_TYPES.JSON.toString());
-                        break;
                     }
                 } else {
                     if (visualProp.getValueExpression() != null) {
@@ -212,9 +209,6 @@ public class PropertyMediatorTransformer extends AbstractEsbNodeTransformer {
                             break;
                         case STRING:
                             propMediator.setExpression(xpath, XMLConfigConstants.DATA_TYPES.STRING.toString());
-                            break;
-                        case JSON:
-                            propMediator.setExpression(xpath, XMLConfigConstants.DATA_TYPES.JSON.toString());
                             break;
                         }
                     }

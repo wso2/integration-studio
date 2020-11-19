@@ -87,8 +87,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.CallMediatorEndpointOutputConnec
 import org.wso2.developerstudio.eclipse.gmf.esb.CallMediatorEndpointType;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallMediatorInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallMediatorOutputConnector;
-import org.wso2.developerstudio.eclipse.gmf.esb.CallSourceType;
-import org.wso2.developerstudio.eclipse.gmf.esb.CallTargetType;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateMediatorInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateMediatorOutputConnector;
@@ -2050,20 +2048,6 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * @generated
      */
     private EEnum artifactTypeEEnum = null;
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    private EEnum callTargetTypeEEnum = null;
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    private EEnum callSourceTypeEEnum = null;
 
     /**
      * <!-- begin-user-doc -->
@@ -4558,69 +4542,6 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      */
     public EReference getCallMediator_EndpointXpath() {
         return (EReference)callMediatorEClass.getEStructuralFeatures().get(8);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public EAttribute getCallMediator_SourcePayload() {
-        return (EAttribute)callMediatorEClass.getEStructuralFeatures().get(9);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public EAttribute getCallMediator_SourceProperty() {
-        return (EAttribute)callMediatorEClass.getEStructuralFeatures().get(10);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public EAttribute getCallMediator_ContentType() {
-        return (EAttribute)callMediatorEClass.getEStructuralFeatures().get(11);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public EReference getCallMediator_SourceXPath() {
-        return (EReference)callMediatorEClass.getEStructuralFeatures().get(12);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public EAttribute getCallMediator_TargetProperty() {
-        return (EAttribute)callMediatorEClass.getEStructuralFeatures().get(13);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public EAttribute getCallMediator_SourceType() {
-        return (EAttribute)callMediatorEClass.getEStructuralFeatures().get(14);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public EAttribute getCallMediator_TargetType() {
-        return (EAttribute)callMediatorEClass.getEStructuralFeatures().get(15);
     }
 
     /**
@@ -13250,24 +13171,6 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EEnum getCallTargetType() {
-        return callTargetTypeEEnum;
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public EEnum getCallSourceType() {
-        return callSourceTypeEEnum;
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
     public EEnum getCallMediatorEndpointType() {
         return callMediatorEndpointTypeEEnum;
     }
@@ -20120,13 +20023,6 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         createEAttribute(callMediatorEClass, CALL_MEDIATOR__ENABLE_BLOCKING_CALLS);
         createEReference(callMediatorEClass, CALL_MEDIATOR__ENDPOINT_REGISTRYKEY);
         createEReference(callMediatorEClass, CALL_MEDIATOR__ENDPOINT_XPATH);
-        createEAttribute(callMediatorEClass, CALL_MEDIATOR__SOURCE_PAYLOAD);
-        createEAttribute(callMediatorEClass, CALL_MEDIATOR__SOURCE_PROPERTY);
-        createEAttribute(callMediatorEClass, CALL_MEDIATOR__CONTENT_TYPE);
-        createEReference(callMediatorEClass, CALL_MEDIATOR__SOURCE_XPATH);
-        createEAttribute(callMediatorEClass, CALL_MEDIATOR__TARGET_PROPERTY);
-        createEAttribute(callMediatorEClass, CALL_MEDIATOR__SOURCE_TYPE);
-        createEAttribute(callMediatorEClass, CALL_MEDIATOR__TARGET_TYPE);
 
         callMediatorInputConnectorEClass = createEClass(CALL_MEDIATOR_INPUT_CONNECTOR);
 
@@ -22061,8 +21957,6 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
         // Create enums
         artifactTypeEEnum = createEEnum(ARTIFACT_TYPE);
-        callTargetTypeEEnum = createEEnum(CALL_TARGET_TYPE);
-        callSourceTypeEEnum = createEEnum(CALL_SOURCE_TYPE);
         callMediatorEndpointTypeEEnum = createEEnum(CALL_MEDIATOR_ENDPOINT_TYPE);
         endPointPropertyScopeEEnum = createEEnum(END_POINT_PROPERTY_SCOPE);
         sequenceTypeEEnum = createEEnum(SEQUENCE_TYPE);
@@ -22638,13 +22532,6 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         initEAttribute(getCallMediator_EnableBlockingCalls(), ecorePackage.getEBoolean(), "enableBlockingCalls", "false", 0, 1, CallMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getCallMediator_EndpointRegistrykey(), this.getRegistryKeyProperty(), null, "endpointRegistrykey", null, 0, 1, CallMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getCallMediator_EndpointXpath(), this.getNamespacedProperty(), null, "endpointXpath", null, 0, 1, CallMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getCallMediator_SourcePayload(), ecorePackage.getEString(), "sourcePayload", "<inline/>", 0, 1, CallMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getCallMediator_SourceProperty(), ecorePackage.getEString(), "sourceProperty", null, 0, 1, CallMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getCallMediator_ContentType(), ecorePackage.getEString(), "contentType", null, 0, 1, CallMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getCallMediator_SourceXPath(), this.getNamespacedProperty(), null, "sourceXPath", null, 0, 1, CallMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getCallMediator_TargetProperty(), ecorePackage.getEString(), "targetProperty", null, 0, 1, CallMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getCallMediator_SourceType(), this.getCallSourceType(), "sourceType", "none", 0, 1, CallMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getCallMediator_TargetType(), this.getCallTargetType(), "targetType", "none", 0, 1, CallMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(callMediatorInputConnectorEClass, CallMediatorInputConnector.class, "CallMediatorInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -24615,18 +24502,6 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         addEEnumLiteral(artifactTypeEEnum, ArtifactType.ENDPOINT_LOADBALANCE);
         addEEnumLiteral(artifactTypeEEnum, ArtifactType.ENDPOINT_FAILOVER);
         addEEnumLiteral(artifactTypeEEnum, ArtifactType.ENDPOINT_RECIPIENTLIST);
-
-        initEEnum(callTargetTypeEEnum, CallTargetType.class, "CallTargetType");
-        addEEnumLiteral(callTargetTypeEEnum, CallTargetType.NONE);
-        addEEnumLiteral(callTargetTypeEEnum, CallTargetType.BODY);
-        addEEnumLiteral(callTargetTypeEEnum, CallTargetType.PROPERTY);
-
-        initEEnum(callSourceTypeEEnum, CallSourceType.class, "CallSourceType");
-        addEEnumLiteral(callSourceTypeEEnum, CallSourceType.NONE);
-        addEEnumLiteral(callSourceTypeEEnum, CallSourceType.CUSTOM);
-        addEEnumLiteral(callSourceTypeEEnum, CallSourceType.BODY);
-        addEEnumLiteral(callSourceTypeEEnum, CallSourceType.PROPERTY);
-        addEEnumLiteral(callSourceTypeEEnum, CallSourceType.INLINE);
 
         initEEnum(callMediatorEndpointTypeEEnum, CallMediatorEndpointType.class, "CallMediatorEndpointType");
         addEEnumLiteral(callMediatorEndpointTypeEEnum, CallMediatorEndpointType.INLINE);

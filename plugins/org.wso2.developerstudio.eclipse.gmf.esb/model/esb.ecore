@@ -2264,18 +2264,12 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mediaType" eType="#//MediaType"
         defaultValueLiteral="xml"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="templateType" eType="#//PaylaodFactoryTemplateType"
-        defaultValueLiteral="default"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="payloadFormat" eType="#//PayloadFormatType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="MediaType">
     <eLiterals name="XML" literal="xml"/>
     <eLiterals name="JSON" value="1" literal="json"/>
     <eLiterals name="TEXT" value="2" literal="text"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="PaylaodFactoryTemplateType">
-    <eLiterals name="DEFAULT" literal="default"/>
-    <eLiterals name="FREEMARKER" value="1" literal="freemarker"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PayloadFactoryMediatorInputConnector"
       eSuperTypes="#//InputConnector"/>

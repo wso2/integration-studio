@@ -23,7 +23,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getOutputConnector <em>Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getMediaType <em>Media Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getTemplateType <em>Template Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getPayloadFormat <em>Payload Format</em>}</li>
  * </ul>
  *
@@ -181,36 +180,6 @@ public interface PayloadFactoryMediator extends Mediator {
      * @generated
      */
     void setMediaType(MediaType value);
-
-    /**
-     * Returns the value of the '<em><b>Template Type</b></em>' attribute.
-     * The default value is <code>"default"</code>.
-     * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.PaylaodFactoryTemplateType}.
-     * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Template Type</em>' attribute isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
-     * @return the value of the '<em>Template Type</em>' attribute.
-     * @see org.wso2.developerstudio.eclipse.gmf.esb.PaylaodFactoryTemplateType
-     * @see #setTemplateType(PaylaodFactoryTemplateType)
-     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPayloadFactoryMediator_TemplateType()
-     * @model default="default"
-     * @generated
-     */
-    PaylaodFactoryTemplateType getTemplateType();
-
-    /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getTemplateType <em>Template Type</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Template Type</em>' attribute.
-     * @see org.wso2.developerstudio.eclipse.gmf.esb.PaylaodFactoryTemplateType
-     * @see #getTemplateType()
-     * @generated
-     */
-    void setTemplateType(PaylaodFactoryTemplateType value);
 
     /**
      * Returns the value of the '<em><b>Payload Format</b></em>' attribute.

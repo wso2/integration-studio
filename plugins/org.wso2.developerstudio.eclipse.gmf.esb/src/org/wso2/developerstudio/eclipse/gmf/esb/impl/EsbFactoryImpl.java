@@ -613,8 +613,6 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
                 return createKeyTypeFromString(eDataType, initialValue);
             case EsbPackage.MEDIA_TYPE:
                 return createMediaTypeFromString(eDataType, initialValue);
-            case EsbPackage.PAYLAOD_FACTORY_TEMPLATE_TYPE:
-                return createPaylaodFactoryTemplateTypeFromString(eDataType, initialValue);
             case EsbPackage.PAYLOAD_FACTORY_ARGUMENT_TYPE:
                 return createPayloadFactoryArgumentTypeFromString(eDataType, initialValue);
             case EsbPackage.PAYLOAD_FORMAT_TYPE:
@@ -903,8 +901,6 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
                 return convertKeyTypeToString(eDataType, instanceValue);
             case EsbPackage.MEDIA_TYPE:
                 return convertMediaTypeToString(eDataType, instanceValue);
-            case EsbPackage.PAYLAOD_FACTORY_TEMPLATE_TYPE:
-                return convertPaylaodFactoryTemplateTypeToString(eDataType, instanceValue);
             case EsbPackage.PAYLOAD_FACTORY_ARGUMENT_TYPE:
                 return convertPayloadFactoryArgumentTypeToString(eDataType, instanceValue);
             case EsbPackage.PAYLOAD_FORMAT_TYPE:
@@ -6747,26 +6743,6 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
      * @generated
      */
     public String convertMediaTypeToString(EDataType eDataType, Object instanceValue) {
-        return instanceValue == null ? null : instanceValue.toString();
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public PaylaodFactoryTemplateType createPaylaodFactoryTemplateTypeFromString(EDataType eDataType, String initialValue) {
-        PaylaodFactoryTemplateType result = PaylaodFactoryTemplateType.get(initialValue);
-        if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-        return result;
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public String convertPaylaodFactoryTemplateTypeToString(EDataType eDataType, Object instanceValue) {
         return instanceValue == null ? null : instanceValue.toString();
     }
 

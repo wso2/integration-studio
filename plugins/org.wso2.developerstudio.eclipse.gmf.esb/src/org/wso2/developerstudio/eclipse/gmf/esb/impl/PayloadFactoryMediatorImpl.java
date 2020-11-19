@@ -23,7 +23,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.MediaType;
-import org.wso2.developerstudio.eclipse.gmf.esb.PaylaodFactoryTemplateType;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgument;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediatorInputConnector;
@@ -45,7 +44,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PayloadFactoryMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PayloadFactoryMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PayloadFactoryMediatorImpl#getMediaType <em>Media Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PayloadFactoryMediatorImpl#getTemplateType <em>Template Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PayloadFactoryMediatorImpl#getPayloadFormat <em>Payload Format</em>}</li>
  * </ul>
  *
@@ -131,26 +129,6 @@ public class PayloadFactoryMediatorImpl extends MediatorImpl implements PayloadF
      * @ordered
      */
     protected MediaType mediaType = MEDIA_TYPE_EDEFAULT;
-
-    /**
-     * The default value of the '{@link #getTemplateType() <em>Template Type</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #getTemplateType()
-     * @generated
-     * @ordered
-     */
-    protected static final PaylaodFactoryTemplateType TEMPLATE_TYPE_EDEFAULT = PaylaodFactoryTemplateType.DEFAULT;
-
-    /**
-     * The cached value of the '{@link #getTemplateType() <em>Template Type</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #getTemplateType()
-     * @generated
-     * @ordered
-     */
-    protected PaylaodFactoryTemplateType templateType = TEMPLATE_TYPE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getPayloadFormat() <em>Payload Format</em>}' attribute.
@@ -389,27 +367,6 @@ public class PayloadFactoryMediatorImpl extends MediatorImpl implements PayloadF
      * <!-- end-user-doc -->
      * @generated
      */
-    public PaylaodFactoryTemplateType getTemplateType() {
-        return templateType;
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public void setTemplateType(PaylaodFactoryTemplateType newTemplateType) {
-        PaylaodFactoryTemplateType oldTemplateType = templateType;
-        templateType = newTemplateType == null ? TEMPLATE_TYPE_EDEFAULT : newTemplateType;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PAYLOAD_FACTORY_MEDIATOR__TEMPLATE_TYPE, oldTemplateType, templateType));
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
     public PayloadFormatType getPayloadFormat() {
         return payloadFormat;
     }
@@ -466,8 +423,6 @@ public class PayloadFactoryMediatorImpl extends MediatorImpl implements PayloadF
                 return getOutputConnector();
             case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__MEDIA_TYPE:
                 return getMediaType();
-            case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__TEMPLATE_TYPE:
-                return getTemplateType();
             case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_FORMAT:
                 return getPayloadFormat();
         }
@@ -502,9 +457,6 @@ public class PayloadFactoryMediatorImpl extends MediatorImpl implements PayloadF
             case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__MEDIA_TYPE:
                 setMediaType((MediaType)newValue);
                 return;
-            case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__TEMPLATE_TYPE:
-                setTemplateType((PaylaodFactoryTemplateType)newValue);
-                return;
             case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_FORMAT:
                 setPayloadFormat((PayloadFormatType)newValue);
                 return;
@@ -538,9 +490,6 @@ public class PayloadFactoryMediatorImpl extends MediatorImpl implements PayloadF
             case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__MEDIA_TYPE:
                 setMediaType(MEDIA_TYPE_EDEFAULT);
                 return;
-            case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__TEMPLATE_TYPE:
-                setTemplateType(TEMPLATE_TYPE_EDEFAULT);
-                return;
             case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_FORMAT:
                 setPayloadFormat(PAYLOAD_FORMAT_EDEFAULT);
                 return;
@@ -568,8 +517,6 @@ public class PayloadFactoryMediatorImpl extends MediatorImpl implements PayloadF
                 return outputConnector != null;
             case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__MEDIA_TYPE:
                 return mediaType != MEDIA_TYPE_EDEFAULT;
-            case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__TEMPLATE_TYPE:
-                return templateType != TEMPLATE_TYPE_EDEFAULT;
             case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_FORMAT:
                 return payloadFormat != PAYLOAD_FORMAT_EDEFAULT;
         }
@@ -590,8 +537,6 @@ public class PayloadFactoryMediatorImpl extends MediatorImpl implements PayloadF
         result.append(payload);
         result.append(", mediaType: ");
         result.append(mediaType);
-        result.append(", templateType: ");
-        result.append(templateType);
         result.append(", payloadFormat: ");
         result.append(payloadFormat);
         result.append(')');

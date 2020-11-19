@@ -6241,9 +6241,6 @@ public class EsbMessages extends NLS {
 	public static String PayloadFactoryMediatorPropertiesEditionPart_MediaTypeLabel;
 
 	
-	public static String PayloadFactoryMediatorPropertiesEditionPart_TemplateTypeLabel;
-
-	
 	public static String PayloadFactoryMediatorPropertiesEditionPart_DescriptionLabel;
 
 	

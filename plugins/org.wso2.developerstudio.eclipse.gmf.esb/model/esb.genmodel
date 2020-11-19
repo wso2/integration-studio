@@ -581,10 +581,6 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MediaType/JSON"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MediaType/TEXT"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//PaylaodFactoryTemplateType">
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PaylaodFactoryTemplateType/DEFAULT"/>
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PaylaodFactoryTemplateType/FREEMARKER"/>
-    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//PayloadFactoryArgumentType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PayloadFactoryArgumentType/VALUE"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PayloadFactoryArgumentType/EXPRESSION"/>
@@ -1975,7 +1971,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//PayloadFactoryMediator/inputConnector"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//PayloadFactoryMediator/outputConnector"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//PayloadFactoryMediator/mediaType"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//PayloadFactoryMediator/templateType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//PayloadFactoryMediator/payloadFormat"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//PayloadFactoryMediatorInputConnector"/>

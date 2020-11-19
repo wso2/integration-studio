@@ -53,7 +53,6 @@ import org.eclipse.jface.viewers.ViewerFilter;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.MediaType;
-import org.wso2.developerstudio.eclipse.gmf.esb.PaylaodFactoryTemplateType;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgument;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFormatType;
@@ -127,9 +126,6 @@ public class PayloadFactoryMediatorPropertiesEditionComponent extends SinglePart
 			if (isAccessible(EsbViewsRepository.PayloadFactoryMediator.Properties.mediaType)) {
 				basePart.initMediaType(EEFUtils.choiceOfValues(payloadFactoryMediator, EsbPackage.eINSTANCE.getPayloadFactoryMediator_MediaType()), payloadFactoryMediator.getMediaType());
 			}
-			if (isAccessible(EsbViewsRepository.PayloadFactoryMediator.Properties.templateType)) {
-				basePart.initTemplateType(EEFUtils.choiceOfValues(payloadFactoryMediator, EsbPackage.eINSTANCE.getPayloadFactoryMediator_TemplateType()), payloadFactoryMediator.getTemplateType());
-			}
 			if (isAccessible(EsbViewsRepository.PayloadFactoryMediator.Properties.description))
 				basePart.setDescription(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, payloadFactoryMediator.getDescription()));
 			
@@ -202,9 +198,6 @@ public class PayloadFactoryMediatorPropertiesEditionComponent extends SinglePart
 		if (editorKey == EsbViewsRepository.PayloadFactoryMediator.Properties.mediaType) {
 			return EsbPackage.eINSTANCE.getPayloadFactoryMediator_MediaType();
 		}
-		if (editorKey == EsbViewsRepository.PayloadFactoryMediator.Properties.templateType) {
-			return EsbPackage.eINSTANCE.getPayloadFactoryMediator_TemplateType();
-		}
 		if (editorKey == EsbViewsRepository.PayloadFactoryMediator.Properties.description) {
 			return EsbPackage.eINSTANCE.getEsbElement_Description();
 		}
@@ -269,9 +262,6 @@ public class PayloadFactoryMediatorPropertiesEditionComponent extends SinglePart
 		if (EsbViewsRepository.PayloadFactoryMediator.Properties.mediaType == event.getAffectedEditor()) {
 			payloadFactoryMediator.setMediaType((MediaType)event.getNewValue());
 		}
-		if (EsbViewsRepository.PayloadFactoryMediator.Properties.templateType == event.getAffectedEditor()) {
-			payloadFactoryMediator.setTemplateType((PaylaodFactoryTemplateType)event.getNewValue());
-		}
 		if (EsbViewsRepository.PayloadFactoryMediator.Properties.description == event.getAffectedEditor()) {
 			payloadFactoryMediator.setDescription((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
@@ -318,8 +308,7 @@ public class PayloadFactoryMediatorPropertiesEditionComponent extends SinglePart
 				basePart.updateArgs();
 			if (EsbPackage.eINSTANCE.getPayloadFactoryMediator_MediaType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.PayloadFactoryMediator.Properties.mediaType))
 				basePart.setMediaType((MediaType)msg.getNewValue());
-			if (EsbPackage.eINSTANCE.getPayloadFactoryMediator_TemplateType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.PayloadFactoryMediator.Properties.templateType))
-				basePart.setTemplateType((PaylaodFactoryTemplateType)msg.getNewValue());
+			
 			if (EsbPackage.eINSTANCE.getEsbElement_Description().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.PayloadFactoryMediator.Properties.description)) {
 				if (msg.getNewValue() != null) {
 					basePart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
@@ -359,7 +348,6 @@ public class PayloadFactoryMediatorPropertiesEditionComponent extends SinglePart
 			EsbPackage.eINSTANCE.getPayloadFactoryMediator_Payload(),
 			EsbPackage.eINSTANCE.getPayloadFactoryMediator_Args(),
 			EsbPackage.eINSTANCE.getPayloadFactoryMediator_MediaType(),
-			EsbPackage.eINSTANCE.getPayloadFactoryMediator_TemplateType(),
 			EsbPackage.eINSTANCE.getEsbElement_Description(),
 			EsbPackage.eINSTANCE.getEsbElement_CommentsList(),
 			EsbPackage.eINSTANCE.getMediator_Reverse()		);
@@ -412,13 +400,6 @@ public class PayloadFactoryMediatorPropertiesEditionComponent extends SinglePart
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getPayloadFactoryMediator_MediaType().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getPayloadFactoryMediator_MediaType().getEAttributeType(), newValue);
-				}
-				if (EsbViewsRepository.PayloadFactoryMediator.Properties.templateType == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getPayloadFactoryMediator_TemplateType().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getPayloadFactoryMediator_TemplateType().getEAttributeType(), newValue);
 				}
 				if (EsbViewsRepository.PayloadFactoryMediator.Properties.description == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();

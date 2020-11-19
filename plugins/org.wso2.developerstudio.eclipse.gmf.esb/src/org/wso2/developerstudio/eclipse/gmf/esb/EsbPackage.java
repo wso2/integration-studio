@@ -17110,22 +17110,13 @@ public interface EsbPackage extends EPackage {
     int PAYLOAD_FACTORY_MEDIATOR__MEDIA_TYPE = MEDIATOR_FEATURE_COUNT + 5;
 
     /**
-     * The feature id for the '<em><b>Template Type</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int PAYLOAD_FACTORY_MEDIATOR__TEMPLATE_TYPE = MEDIATOR_FEATURE_COUNT + 6;
-
-    /**
      * The feature id for the '<em><b>Payload Format</b></em>' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_FORMAT = MEDIATOR_FEATURE_COUNT + 7;
+    int PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_FORMAT = MEDIATOR_FEATURE_COUNT + 6;
 
     /**
      * The number of structural features of the '<em>Payload Factory Mediator</em>' class.
@@ -17134,7 +17125,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int PAYLOAD_FACTORY_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 8;
+    int PAYLOAD_FACTORY_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 7;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PayloadFactoryMediatorInputConnectorImpl <em>Payload Factory Mediator Input Connector</em>}' class.
@@ -27522,16 +27513,6 @@ public interface EsbPackage extends EPackage {
     int MEDIA_TYPE = 459;
 
     /**
-     * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PaylaodFactoryTemplateType <em>Paylaod Factory Template Type</em>}' enum.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.wso2.developerstudio.eclipse.gmf.esb.PaylaodFactoryTemplateType
-     * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getPaylaodFactoryTemplateType()
-     * @generated
-     */
-    int PAYLAOD_FACTORY_TEMPLATE_TYPE = 460;
-
-    /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgumentType <em>Payload Factory Argument Type</em>}' enum.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -27539,7 +27520,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getPayloadFactoryArgumentType()
      * @generated
      */
-    int PAYLOAD_FACTORY_ARGUMENT_TYPE = 461;
+    int PAYLOAD_FACTORY_ARGUMENT_TYPE = 460;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFormatType <em>Payload Format Type</em>}' enum.
@@ -27549,7 +27530,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getPayloadFormatType()
      * @generated
      */
-    int PAYLOAD_FORMAT_TYPE = 462;
+    int PAYLOAD_FORMAT_TYPE = 461;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.Type <em>Type</em>}' enum.
@@ -27559,7 +27540,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getType()
      * @generated
      */
-    int TYPE = 463;
+    int TYPE = 462;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceSessionType <em>Load Balance Session Type</em>}' enum.
@@ -27569,7 +27550,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getLoadBalanceSessionType()
      * @generated
      */
-    int LOAD_BALANCE_SESSION_TYPE = 464;
+    int LOAD_BALANCE_SESSION_TYPE = 463;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntryValueType <em>Local Entry Value Type</em>}' enum.
@@ -27579,7 +27560,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getLocalEntryValueType()
      * @generated
      */
-    int LOCAL_ENTRY_VALUE_TYPE = 465;
+    int LOCAL_ENTRY_VALUE_TYPE = 464;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleActionType <em>Rule Action Type</em>}' enum.
@@ -27589,7 +27570,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getRuleActionType()
      * @generated
      */
-    int RULE_ACTION_TYPE = 466;
+    int RULE_ACTION_TYPE = 465;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleFragmentType <em>Rule Fragment Type</em>}' enum.
@@ -27599,7 +27580,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getRuleFragmentType()
      * @generated
      */
-    int RULE_FRAGMENT_TYPE = 467;
+    int RULE_FRAGMENT_TYPE = 466;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.TemplateType <em>Template Type</em>}' enum.
@@ -27609,7 +27590,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getTemplateType()
      * @generated
      */
-    int TEMPLATE_TYPE = 468;
+    int TEMPLATE_TYPE = 467;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.TaskPropertyType <em>Task Property Type</em>}' enum.
@@ -27619,7 +27600,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getTaskPropertyType()
      * @generated
      */
-    int TASK_PROPERTY_TYPE = 469;
+    int TASK_PROPERTY_TYPE = 468;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.TaskTriggerType <em>Task Trigger Type</em>}' enum.
@@ -27629,7 +27610,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getTaskTriggerType()
      * @generated
      */
-    int TASK_TRIGGER_TYPE = 470;
+    int TASK_TRIGGER_TYPE = 469;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ApiResourceUrlStyle <em>Api Resource Url Style</em>}' enum.
@@ -27639,7 +27620,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getApiResourceUrlStyle()
      * @generated
      */
-    int API_RESOURCE_URL_STYLE = 471;
+    int API_RESOURCE_URL_STYLE = 470;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndpointType <em>Recipient List Endpoint Type</em>}' enum.
@@ -27649,7 +27630,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getRecipientListEndpointType()
      * @generated
      */
-    int RECIPIENT_LIST_ENDPOINT_TYPE = 472;
+    int RECIPIENT_LIST_ENDPOINT_TYPE = 471;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStoreType <em>Message Store Type</em>}' enum.
@@ -27659,7 +27640,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getMessageStoreType()
      * @generated
      */
-    int MESSAGE_STORE_TYPE = 473;
+    int MESSAGE_STORE_TYPE = 472;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.JMSSpecVersion <em>JMS Spec Version</em>}' enum.
@@ -27669,7 +27650,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getJMSSpecVersion()
      * @generated
      */
-    int JMS_SPEC_VERSION = 474;
+    int JMS_SPEC_VERSION = 473;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.JDBCConnectionInformationType <em>JDBC Connection Information Type</em>}' enum.
@@ -27679,7 +27660,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getJDBCConnectionInformationType()
      * @generated
      */
-    int JDBC_CONNECTION_INFORMATION_TYPE = 475;
+    int JDBC_CONNECTION_INFORMATION_TYPE = 474;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessorType <em>Message Processor Type</em>}' enum.
@@ -27689,7 +27670,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getMessageProcessorType()
      * @generated
      */
-    int MESSAGE_PROCESSOR_TYPE = 476;
+    int MESSAGE_PROCESSOR_TYPE = 475;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ProcessorState <em>Processor State</em>}' enum.
@@ -27699,7 +27680,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getProcessorState()
      * @generated
      */
-    int PROCESSOR_STATE = 477;
+    int PROCESSOR_STATE = 476;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CloudConnectorOperationParamEditorType <em>Cloud Connector Operation Param Editor Type</em>}' enum.
@@ -27709,7 +27690,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getCloudConnectorOperationParamEditorType()
      * @generated
      */
-    int CLOUD_CONNECTOR_OPERATION_PARAM_EDITOR_TYPE = 478;
+    int CLOUD_CONNECTOR_OPERATION_PARAM_EDITOR_TYPE = 477;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorDataTypes <em>Data Mapper Mediator Data Types</em>}' enum.
@@ -27719,7 +27700,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getDataMapperMediatorDataTypes()
      * @generated
      */
-    int DATA_MAPPER_MEDIATOR_DATA_TYPES = 479;
+    int DATA_MAPPER_MEDIATOR_DATA_TYPES = 478;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.Protocol <em>Protocol</em>}' enum.
@@ -27729,7 +27710,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getProtocol()
      * @generated
      */
-    int PROTOCOL = 480;
+    int PROTOCOL = 479;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointType <em>Inbound Endpoint Type</em>}' enum.
@@ -27739,7 +27720,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getInboundEndpointType()
      * @generated
      */
-    int INBOUND_ENDPOINT_TYPE = 481;
+    int INBOUND_ENDPOINT_TYPE = 480;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointBehaviourType <em>Inbound Endpoint Behaviour Type</em>}' enum.
@@ -27749,7 +27730,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getInboundEndpointBehaviourType()
      * @generated
      */
-    int INBOUND_ENDPOINT_BEHAVIOUR_TYPE = 482;
+    int INBOUND_ENDPOINT_BEHAVIOUR_TYPE = 481;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ContentType <em>Content Type</em>}' enum.
@@ -27759,7 +27740,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getContentType()
      * @generated
      */
-    int CONTENT_TYPE = 483;
+    int CONTENT_TYPE = 482;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.TopicsType <em>Topics Type</em>}' enum.
@@ -27769,7 +27750,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getTopicsType()
      * @generated
      */
-    int TOPICS_TYPE = 484;
+    int TOPICS_TYPE = 483;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.TopicFilterFromType <em>Topic Filter From Type</em>}' enum.
@@ -27779,7 +27760,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getTopicFilterFromType()
      * @generated
      */
-    int TOPIC_FILTER_FROM_TYPE = 485;
+    int TOPIC_FILTER_FROM_TYPE = 484;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ConsumerType <em>Consumer Type</em>}' enum.
@@ -27789,7 +27770,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getConsumerType()
      * @generated
      */
-    int CONSUMER_TYPE = 486;
+    int CONSUMER_TYPE = 485;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AutoOffsetResetType <em>Auto Offset Reset Type</em>}' enum.
@@ -27799,7 +27780,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getAutoOffsetResetType()
      * @generated
      */
-    int AUTO_OFFSET_RESET_TYPE = 487;
+    int AUTO_OFFSET_RESET_TYPE = 486;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PartitionAssignmentStrategyType <em>Partition Assignment Strategy Type</em>}' enum.
@@ -27809,7 +27790,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getPartitionAssignmentStrategyType()
      * @generated
      */
-    int PARTITION_ASSIGNMENT_STRATEGY_TYPE = 488;
+    int PARTITION_ASSIGNMENT_STRATEGY_TYPE = 487;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.OffsetsStorageType <em>Offsets Storage Type</em>}' enum.
@@ -27819,7 +27800,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getOffsetsStorageType()
      * @generated
      */
-    int OFFSETS_STORAGE_TYPE = 489;
+    int OFFSETS_STORAGE_TYPE = 488;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.Enable <em>Enable</em>}' enum.
@@ -27829,7 +27810,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getEnable()
      * @generated
      */
-    int ENABLE = 490;
+    int ENABLE = 489;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.VFSAction <em>VFS Action</em>}' enum.
@@ -27839,7 +27820,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getVFSAction()
      * @generated
      */
-    int VFS_ACTION = 491;
+    int VFS_ACTION = 490;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort <em>VFS File Sort</em>}' enum.
@@ -27849,7 +27830,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getVFSFileSort()
      * @generated
      */
-    int VFS_FILE_SORT = 492;
+    int VFS_FILE_SORT = 491;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.JMSConnectionFactoryType <em>JMS Connection Factory Type</em>}' enum.
@@ -27859,7 +27840,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getJMSConnectionFactoryType()
      * @generated
      */
-    int JMS_CONNECTION_FACTORY_TYPE = 493;
+    int JMS_CONNECTION_FACTORY_TYPE = 492;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.JMSSessionAcknowledgement <em>JMS Session Acknowledgement</em>}' enum.
@@ -27869,7 +27850,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getJMSSessionAcknowledgement()
      * @generated
      */
-    int JMS_SESSION_ACKNOWLEDGEMENT = 494;
+    int JMS_SESSION_ACKNOWLEDGEMENT = 493;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.JMSCacheLevel <em>JMS Cache Level</em>}' enum.
@@ -27879,7 +27860,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getJMSCacheLevel()
      * @generated
      */
-    int JMS_CACHE_LEVEL = 495;
+    int JMS_CACHE_LEVEL = 494;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.JMSBrokerType <em>JMS Broker Type</em>}' enum.
@@ -27889,7 +27870,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getJMSBrokerType()
      * @generated
      */
-    int JMS_BROKER_TYPE = 496;
+    int JMS_BROKER_TYPE = 495;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.StoreMediatorSpecifyType <em>Store Mediator Specify Type</em>}' enum.
@@ -27899,7 +27880,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getStoreMediatorSpecifyType()
      * @generated
      */
-    int STORE_MEDIATOR_SPECIFY_TYPE = 497;
+    int STORE_MEDIATOR_SPECIFY_TYPE = 496;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel <em>WS Client Side Broadcast Level</em>}' enum.
@@ -27909,7 +27890,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getWSClientSideBroadcastLevel()
      * @generated
      */
-    int WS_CLIENT_SIDE_BROADCAST_LEVEL = 498;
+    int WS_CLIENT_SIDE_BROADCAST_LEVEL = 497;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MQTTSubscriptionQOS <em>MQTT Subscription QOS</em>}' enum.
@@ -27919,7 +27900,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getMQTTSubscriptionQOS()
      * @generated
      */
-    int MQTT_SUBSCRIPTION_QOS = 499;
+    int MQTT_SUBSCRIPTION_QOS = 498;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FeedType <em>Feed Type</em>}' enum.
@@ -27929,7 +27910,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getFeedType()
      * @generated
      */
-    int FEED_TYPE = 500;
+    int FEED_TYPE = 499;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnableDisableState <em>Enable Disable State</em>}' enum.
@@ -27939,7 +27920,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getEnableDisableState()
      * @generated
      */
-    int ENABLE_DISABLE_STATE = 501;
+    int ENABLE_DISABLE_STATE = 500;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.APIVersionType <em>API Version Type</em>}' enum.
@@ -27949,7 +27930,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getAPIVersionType()
      * @generated
      */
-    int API_VERSION_TYPE = 502;
+    int API_VERSION_TYPE = 501;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheScopeType <em>Cache Scope Type</em>}' enum.
@@ -27959,7 +27940,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getCacheScopeType()
      * @generated
      */
-    int CACHE_SCOPE_TYPE = 503;
+    int CACHE_SCOPE_TYPE = 502;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheImplementationType <em>Cache Implementation Type</em>}' enum.
@@ -27969,7 +27950,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getCacheImplementationType()
      * @generated
      */
-    int CACHE_IMPLEMENTATION_TYPE = 504;
+    int CACHE_IMPLEMENTATION_TYPE = 503;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediatorType <em>Cache Mediator Type</em>}' enum.
@@ -27979,7 +27960,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getCacheMediatorType()
      * @generated
      */
-    int CACHE_MEDIATOR_TYPE = 505;
+    int CACHE_MEDIATOR_TYPE = 504;
 
     /**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryEvaluatorType <em>Payload Factory Evaluator Type</em>}' enum.
@@ -27989,7 +27970,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getPayloadFactoryEvaluatorType()
      * @generated
      */
-    int PAYLOAD_FACTORY_EVALUATOR_TYPE = 506;
+    int PAYLOAD_FACTORY_EVALUATOR_TYPE = 505;
 
     /**
      * The meta object id for the '<em>Map</em>' data type.
@@ -27999,7 +27980,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getMap()
      * @generated
      */
-    int MAP = 507;
+    int MAP = 506;
 
     /**
      * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbDiagram <em>Diagram</em>}'.
@@ -44122,17 +44103,6 @@ public interface EsbPackage extends EPackage {
     EAttribute getPayloadFactoryMediator_MediaType();
 
     /**
-     * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getTemplateType <em>Template Type</em>}'.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @return the meta object for the attribute '<em>Template Type</em>'.
-     * @see org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getTemplateType()
-     * @see #getPayloadFactoryMediator()
-     * @generated
-     */
-    EAttribute getPayloadFactoryMediator_TemplateType();
-
-    /**
      * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getPayloadFormat <em>Payload Format</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -46285,16 +46255,6 @@ public interface EsbPackage extends EPackage {
      * @generated
      */
     EEnum getMediaType();
-
-    /**
-     * Returns the meta object for enum '{@link org.wso2.developerstudio.eclipse.gmf.esb.PaylaodFactoryTemplateType <em>Paylaod Factory Template Type</em>}'.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @return the meta object for enum '<em>Paylaod Factory Template Type</em>'.
-     * @see org.wso2.developerstudio.eclipse.gmf.esb.PaylaodFactoryTemplateType
-     * @generated
-     */
-    EEnum getPaylaodFactoryTemplateType();
 
     /**
      * Returns the meta object for enum '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgumentType <em>Payload Factory Argument Type</em>}'.
@@ -59432,14 +59392,6 @@ public interface EsbPackage extends EPackage {
         EAttribute PAYLOAD_FACTORY_MEDIATOR__MEDIA_TYPE = eINSTANCE.getPayloadFactoryMediator_MediaType();
 
         /**
-         * The meta object literal for the '<em><b>Template Type</b></em>' attribute feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        EAttribute PAYLOAD_FACTORY_MEDIATOR__TEMPLATE_TYPE = eINSTANCE.getPayloadFactoryMediator_TemplateType();
-
-        /**
          * The meta object literal for the '<em><b>Payload Format</b></em>' attribute feature.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -61340,16 +61292,6 @@ public interface EsbPackage extends EPackage {
          * @generated
          */
         EEnum MEDIA_TYPE = eINSTANCE.getMediaType();
-
-        /**
-         * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PaylaodFactoryTemplateType <em>Paylaod Factory Template Type</em>}' enum.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @see org.wso2.developerstudio.eclipse.gmf.esb.PaylaodFactoryTemplateType
-         * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getPaylaodFactoryTemplateType()
-         * @generated
-         */
-        EEnum PAYLAOD_FACTORY_TEMPLATE_TYPE = eINSTANCE.getPaylaodFactoryTemplateType();
 
         /**
          * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgumentType <em>Payload Factory Argument Type</em>}' enum.

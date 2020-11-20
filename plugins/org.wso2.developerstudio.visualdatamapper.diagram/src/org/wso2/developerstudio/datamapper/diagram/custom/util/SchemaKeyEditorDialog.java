@@ -26,6 +26,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
@@ -1054,7 +1055,8 @@ public class SchemaKeyEditorDialog extends Dialog {
             try {
                 FileUtils.copyFile(originalFile, copiedFile);
                 assert (copiedFile).exists();
-                assert (Files.readAllLines(originalFile.toPath()).equals(Files.readAllLines(copiedFile.toPath())));
+				assert (Files.readAllLines(originalFile.toPath(), Charset.defaultCharset())
+						.equals(Files.readAllLines(copiedFile.toPath(), Charset.defaultCharset())));
             } catch (IOException e) {
                 log.error("IO error occured while saving the datamapper input file!", e);
             }

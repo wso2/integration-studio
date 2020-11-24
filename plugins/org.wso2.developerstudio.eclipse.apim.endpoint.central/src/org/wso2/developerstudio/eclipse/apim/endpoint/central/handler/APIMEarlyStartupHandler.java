@@ -44,6 +44,7 @@ import org.wso2.developerstudio.eclipse.apim.endpoint.central.utils.UserSessionM
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.templates.dashboard.handlers.JettyServerHandler;
+import org.wso2.developerstudio.eclipse.templates.dashboard.web.function.server.FunctionServerConstants;
 
 /**
  * This startup handler will add the Endpoint central context handler to Jetty.
@@ -54,7 +55,12 @@ public class APIMEarlyStartupHandler implements IStartup {
 
     @Override
     public void earlyStartup() {
-        JettyServerHandler jettyServerHandler = JettyServerHandler.getInstance();
+    	
+    	JettyServerHandler jettyServerHandler = JettyServerHandler.getInstance();
+		if(!JettyServerHandler.serverStarted) {
+			jettyServerHandler.startEmbeddedJetty(FunctionServerConstants.EMBEDDED_SERVER_PORT);
+            JettyServerHandler.serverStarted = true;
+        }
 
         // Registering servlet context handler of the DSS editor
         ServletContextHandler endpointCentralContext = new ServletContextHandler();

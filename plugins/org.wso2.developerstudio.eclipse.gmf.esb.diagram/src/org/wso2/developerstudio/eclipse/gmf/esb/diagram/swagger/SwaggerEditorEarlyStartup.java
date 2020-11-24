@@ -35,6 +35,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.templates.dashboard.handlers.JettyServerHandler;
+import org.wso2.developerstudio.eclipse.templates.dashboard.web.function.server.FunctionServerConstants;
 
 /**
  * This startup handler will add the Swagger Editor context handler to Jetty.
@@ -51,7 +52,12 @@ public class SwaggerEditorEarlyStartup implements IStartup {
 
 	@Override
 	public void earlyStartup() {
+		
 		JettyServerHandler jettyServerHandler = JettyServerHandler.getInstance();
+		if(!JettyServerHandler.serverStarted) {
+			jettyServerHandler.startEmbeddedJetty(FunctionServerConstants.EMBEDDED_SERVER_PORT);
+            JettyServerHandler.serverStarted = true;
+        } 
 
 		// Registering servlet context handler of the Swagger editor
 		ServletContextHandler swaggerEditorContext = new ServletContextHandler();

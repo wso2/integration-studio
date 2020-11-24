@@ -26,4 +26,5 @@ Import-Package: com.google.common.reflect,
  org.wso2.developerstudio.eclipse.esb.core,
  org.wso2.developerstudio.eclipse.esb.project.artifact,
  org.wso2.developerstudio.eclipse.templates.dashboard.handlers;version="7.0.0",
+ org.wso2.developerstudio.eclipse.templates.dashboard.web.function.server;version="7.0.0",
  org.wso2.developerstudio.eclipse.templates.dashboard.web.view

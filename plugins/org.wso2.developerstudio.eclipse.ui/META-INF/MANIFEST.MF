@@ -17,5 +17,4 @@ Import-Package: org.eclipse.core.resources,
  org.eclipse.jdt.core.search,
  org.eclipse.jdt.internal.core,
  org.eclipse.jdt.internal.core.search,
- org.eclipse.jdt.internal.ui.dialogs,
- org.eclipse.ui.model
+ org.eclipse.jdt.internal.ui.dialogs

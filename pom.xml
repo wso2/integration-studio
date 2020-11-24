@@ -47,7 +47,7 @@
 				<checksumPolicy>ignore</checksumPolicy>
 			</releases>
 			<id>Eclipse-p2-repo</id>
-			<url>http://download.eclipse.org/releases/oxygen/</url>
+			<url>http://download.eclipse.org/releases/2020-06/</url>
 			<layout>p2</layout>
 		</repository>
 		<repository>
@@ -178,27 +178,12 @@
 						<environment>
 							<os>linux</os>
 							<ws>gtk</ws>
-							<arch>x86</arch>
-						</environment>
-						<environment>
-							<os>linux</os>
-							<ws>gtk</ws>
 							<arch>x86_64</arch>
 						</environment>
 						<environment>
 							<os>win32</os>
 							<ws>win32</ws>
-							<arch>x86</arch>
-						</environment>
-						<environment>
-							<os>win32</os>
-							<ws>win32</ws>
 							<arch>x86_64</arch>
-						</environment>
-						<environment>
-							<os>macosx</os>
-							<ws>cocoa</ws>
-							<arch>x86</arch>
 						</environment>
 						<environment>
 							<os>macosx</os>

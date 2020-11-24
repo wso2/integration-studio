@@ -36,7 +36,7 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.ElementTreeSelectionDialog;
-import org.eclipse.ui.model.WorkbenchContentProvider;
+//import org.eclipse.ui.model.WorkbenchContentProvider;
 import org.eclipse.ui.model.WorkbenchLabelProvider;
 
 public class FromWS extends Composite{
@@ -91,23 +91,23 @@ public class FromWS extends Composite{
 //		gd.widthHint = 100; 
 		wsClassButton.setLayoutData(gd);
 		
-		wsProjectButton.addSelectionListener(new SelectionListener() {
-			
-			public void widgetSelected(SelectionEvent arg0) {
-		        ElementTreeSelectionDialog elementTreeSelectionDialog = new ElementTreeSelectionDialog(group.getShell(),
-																WorkbenchLabelProvider.getDecoratingWorkbenchLabelProvider(),
-																new WorkbenchContentProvider());
-		        elementTreeSelectionDialog.setInput(ResourcesPlugin.getWorkspace().getRoot());
-		        if (elementTreeSelectionDialog.open() == Window.OK) {
-			        elementTreeSelectionDialog.getFirstResult();
-			        IResource resource =(IResource) elementTreeSelectionDialog.getFirstResult();
-		        }
-			}
-			
-			public void widgetDefaultSelected(SelectionEvent arg0) {
-				
-			}
-		});
+//		wsProjectButton.addSelectionListener(new SelectionListener() {
+//			
+//			public void widgetSelected(SelectionEvent arg0) {
+//		        ElementTreeSelectionDialog elementTreeSelectionDialog = new ElementTreeSelectionDialog(group.getShell(),
+//																WorkbenchLabelProvider.getDecoratingWorkbenchLabelProvider(),
+//																new WorkbenchContentProvider());
+//		        elementTreeSelectionDialog.setInput(ResourcesPlugin.getWorkspace().getRoot());
+//		        if (elementTreeSelectionDialog.open() == Window.OK) {
+//			        elementTreeSelectionDialog.getFirstResult();
+//			        IResource resource =(IResource) elementTreeSelectionDialog.getFirstResult();
+//		        }
+//			}
+//			
+//			public void widgetDefaultSelected(SelectionEvent arg0) {
+//				
+//			}
+//		});
 		
 		wsClassButton.addSelectionListener(new SelectionListener() {
 			

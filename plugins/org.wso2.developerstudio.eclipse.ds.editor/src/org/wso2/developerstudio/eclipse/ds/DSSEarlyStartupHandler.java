@@ -34,6 +34,7 @@ import org.osgi.framework.Bundle;
 import org.wso2.developerstudio.eclipse.ds.presentation.DsEditorPlugin;
 import org.wso2.developerstudio.eclipse.ds.servlets.DSSEditorServlet;
 import org.wso2.developerstudio.eclipse.templates.dashboard.handlers.JettyServerHandler;
+import org.wso2.developerstudio.eclipse.templates.dashboard.web.function.server.FunctionServerConstants;
 
 /**
  * This startup handler will add the DSS context handler to Jetty.
@@ -50,7 +51,11 @@ public class DSSEarlyStartupHandler implements IStartup {
     
     @Override
     public void earlyStartup() {
-        JettyServerHandler jettyServerHandler = JettyServerHandler.getInstance();
+    	JettyServerHandler jettyServerHandler = JettyServerHandler.getInstance();
+		if(!JettyServerHandler.serverStarted) {
+			jettyServerHandler.startEmbeddedJetty(FunctionServerConstants.EMBEDDED_SERVER_PORT);
+            JettyServerHandler.serverStarted = true;
+        } 
         
         //Registering servlet context handler of the DSS editor
         ServletContextHandler dssEditorContext = new ServletContextHandler();

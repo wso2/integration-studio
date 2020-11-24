@@ -25,6 +25,6 @@
     <url>http://wso2.org</url>
 	<modules>
 	<module>main</module>
-	<module>composite</module>
+	<!-- <module>composite</module> -->
     </modules>
 </project>

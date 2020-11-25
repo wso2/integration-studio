@@ -13,7 +13,7 @@ package org.eclipse.bpel.common.ui.flatui;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.custom.StyledText;
-import org.eclipse.swt.custom.TableTree;
+//import org.eclipse.swt.custom.TableTree;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Layout;
@@ -64,7 +64,8 @@ public abstract class BorderLayout extends Layout implements IBorderConstants {
 		if (control instanceof Table)      return BORDER_1P1_BLACK;
 		
 		if (control instanceof Tree)       return BORDER_2P2_BLACK;
-		if (control instanceof TableTree)  return BORDER_1P1_BLACK;
+		// Commented due to removal of deprecated Class in eclipse 2020
+		//if (control instanceof TableTree)  return BORDER_1P1_BLACK;
 	
 		return BORDER_NONE;
 	}

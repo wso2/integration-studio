@@ -67,28 +67,28 @@
          id="org.eclipse.emf.validation"
          download-size="0"
          install-size="0"
-         version="1.8.0.201706061352"
+         version="1.8.0.201812070911"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.emf.query"
          download-size="0"
          install-size="0"
-         version="1.7.0.201706061326"
+         version="1.7.0.201805030653"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.emf.transaction"
          download-size="0"
          install-size="0"
-         version="1.9.0.201706061339"
+         version="1.9.1.201805140824"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.emf.workspace"
          download-size="0"
          install-size="0"
-         version="1.5.1.201706061339"
+         version="1.5.1.201805140824"
          unpack="false"/>
 
    <plugin

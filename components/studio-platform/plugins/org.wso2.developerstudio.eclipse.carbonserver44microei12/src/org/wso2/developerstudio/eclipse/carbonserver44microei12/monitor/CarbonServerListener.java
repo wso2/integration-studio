@@ -62,6 +62,13 @@ public class CarbonServerListener implements IServerListener {
     }
 
     public void serverChanged(ServerEvent event) {
+        // Eclipse 2020-06 sets kind value as 80
+    	// PR https://github.com/eclipse/webtools.servertools/commit/e423572dd61784ebe0a051780cb51bf95f11f3b6#diff-9b396db2c848f960e8da8f199bd3165b11ec429b8ad9906f459c5efcf1e31a91R775
+    	// if kind =80, our source triggers IServer.STATE_STOPPED case.
+    	if (event.getKind() == 80) {
+    		return;
+    	}
+
         switch (event.getState()) {
         case IServer.STATE_STARTING:
             triggerStarting(event.getServer());

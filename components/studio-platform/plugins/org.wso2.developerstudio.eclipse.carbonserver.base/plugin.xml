@@ -52,10 +52,15 @@
            <iterate
                  ifEmpty="false"
                  operator="and">
+                 <instanceof
+                     value="org.eclipse.wst.server.ui.IServerModule">
+                  </instanceof>
+                  <and>
               <test
                     property="org.wso2.developerstudio.eclipse.serverModuleEnablement"
                     value="org.eclipse.wst.server.ui.IServerModule">
               </test>
+            </and>
            </iterate>
         </with>
      		</enabledWhen>

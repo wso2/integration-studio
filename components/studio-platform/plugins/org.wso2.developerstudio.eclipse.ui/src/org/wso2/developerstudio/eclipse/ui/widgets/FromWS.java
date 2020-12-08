@@ -22,7 +22,7 @@ import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.search.IJavaSearchConstants;
 import org.eclipse.jdt.internal.core.SourceType;
 import org.eclipse.jdt.internal.core.search.JavaWorkspaceScope;
-import org.eclipse.jdt.internal.ui.dialogs.FilteredTypesSelectionDialog;
+//import org.eclipse.jdt.internal.ui.dialogs.FilteredTypesSelectionDialog;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
@@ -36,7 +36,7 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.ElementTreeSelectionDialog;
-import org.eclipse.ui.model.WorkbenchContentProvider;
+//import org.eclipse.ui.model.WorkbenchContentProvider;
 import org.eclipse.ui.model.WorkbenchLabelProvider;
 
 public class FromWS extends Composite{
@@ -91,23 +91,23 @@ public class FromWS extends Composite{
 //		gd.widthHint = 100; 
 		wsClassButton.setLayoutData(gd);
 		
-		wsProjectButton.addSelectionListener(new SelectionListener() {
+		// wsProjectButton.addSelectionListener(new SelectionListener() {
 			
-			public void widgetSelected(SelectionEvent arg0) {
-		        ElementTreeSelectionDialog elementTreeSelectionDialog = new ElementTreeSelectionDialog(group.getShell(),
-																WorkbenchLabelProvider.getDecoratingWorkbenchLabelProvider(),
-																new WorkbenchContentProvider());
-		        elementTreeSelectionDialog.setInput(ResourcesPlugin.getWorkspace().getRoot());
-		        if (elementTreeSelectionDialog.open() == Window.OK) {
-			        elementTreeSelectionDialog.getFirstResult();
-			        IResource resource =(IResource) elementTreeSelectionDialog.getFirstResult();
-		        }
-			}
+		// 	public void widgetSelected(SelectionEvent arg0) {
+		//         ElementTreeSelectionDialog elementTreeSelectionDialog = new ElementTreeSelectionDialog(group.getShell(),
+		// 														WorkbenchLabelProvider.getDecoratingWorkbenchLabelProvider(),
+		// 														new WorkbenchContentProvider());
+		//         elementTreeSelectionDialog.setInput(ResourcesPlugin.getWorkspace().getRoot());
+		//         if (elementTreeSelectionDialog.open() == Window.OK) {
+		// 	        elementTreeSelectionDialog.getFirstResult();
+		// 	        IResource resource =(IResource) elementTreeSelectionDialog.getFirstResult();
+		//         }
+		// 	}
 			
-			public void widgetDefaultSelected(SelectionEvent arg0) {
+		// 	public void widgetDefaultSelected(SelectionEvent arg0) {
 				
-			}
-		});
+		// 	}
+		// });
 		
 		wsClassButton.addSelectionListener(new SelectionListener() {
 			
@@ -123,19 +123,21 @@ public class FromWS extends Composite{
 	}
 	
 	public void browseClassFile() {
-		FilteredTypesSelectionDialog dialog = new FilteredTypesSelectionDialog(Display.getCurrent().getActiveShell(), 
-																				true, 
-																				PlatformUI.getWorkbench().getProgressService(),
-																				new JavaWorkspaceScope(), 
-																				IJavaSearchConstants.CLASS);
-		dialog.setTitle("Registry Handler Class");
-		dialog.setMessage("Select a java class to create the Registry Handler from");
+		// Commented the code due to eclipse 2020 migration and dependency issue with
+		// org.eclipse.jdt.internal.ui.dialogs.FilteredTypesSelectionDialog
+		// FilteredTypesSelectionDialog dialog = new FilteredTypesSelectionDialog(Display.getCurrent().getActiveShell(), 
+		// 																		true, 
+		// 																		PlatformUI.getWorkbench().getProgressService(),
+		// 																		new JavaWorkspaceScope(), 
+		// 																		IJavaSearchConstants.CLASS);
+		// dialog.setTitle("Registry Handler Class");
+		// dialog.setMessage("Select a java class to create the Registry Handler from");
 
-		if (dialog.open() == Window.OK) {
-			SourceType firstResult = (SourceType) dialog.getFirstResult();
-			IJavaProject p = (IJavaProject) firstResult.getAncestor(2);
-			pathText.setText(firstResult.getFullyQualifiedName());
-		}
+		// if (dialog.open() == Window.OK) {
+		// 	SourceType firstResult = (SourceType) dialog.getFirstResult();
+		// 	IJavaProject p = (IJavaProject) firstResult.getAncestor(2);
+		// 	pathText.setText(firstResult.getFullyQualifiedName());
+		// }
 	}
 	
 	

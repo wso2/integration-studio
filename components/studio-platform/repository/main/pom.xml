@@ -15,13 +15,13 @@
    <modelVersion>4.0.0</modelVersion>
    <parent>
       <artifactId>wso2-developer-studio-kernel-p2-parent</artifactId>
-      <groupId>org.wso2.developerstudio</groupId>
-      <version>4.3.0-SNAPSHOT</version>
+      <groupId>org.wso2.integrationstudio</groupId>
+      <version>7.2.0-SNAPSHOT</version>
       <relativePath>../pom.xml</relativePath>
    </parent>
    <artifactId>wso2-developer-studio-kernel-p2</artifactId>
    <packaging>eclipse-repository</packaging>
-   <name>WSO2 Developer Studio Kernel - P2 Repository</name>
+   <name>WSO2 Integration Studio Kernel - P2 Repository</name>
    <url>http://wso2.org</url>
    <build>
       <plugins>

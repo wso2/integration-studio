@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?><plugin><extension point="org.eclipse.wst.server.core.serverTypes">
+      <serverType
+            behaviourClass="org.wso2.integrationstudio.eclipse.carbonserver44microei.internal.CarbonServerBehavior44microei"
+            class="org.wso2.integrationstudio.eclipse.carbonserver44microei.internal.CarbonServer44microei"
+            description="descr"
+            hasConfiguration="false"
+            id="org.wso2.integrationstudio.eclipse.carbon.server44microei"
+            initialState="stopped"
+            launchConfigId="org.eclipse.jst.server.generic.core.launchConfigurationType"
+            launchModes="run, debug"
+            name="name"
+            runtime="true"
+            runtimeTypeId="org.wso2.integrationstudio.eclipse.carbon.runtime44microei"
+            startBeforePublish="true"
+            startTimeout="600000"
+            stopTimeout="15000"
+            supportsRemoteHosts="false">
+      </serverType>
+   </extension></plugin>

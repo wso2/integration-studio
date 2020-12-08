@@ -21,6 +21,48 @@
 		<module>org.wso2.developerstudio.eclipse.platform.ui</module>
 		<module>org.wso2.developerstudio.eclipse.wso2plugin.template.manager</module>
 		<module>org.wso2.developerstudio.eclipse.updater</module>
+
+		<module>org.wso2.developerstudio.eclipse.libraries</module>
+		<module>org.wso2.developerstudio.eclipse.ui</module>
+		<module>org.wso2.developerstudio.eclipse.samples</module>
+		<module>org.wso2.developerstudio.eclipse.registry.core</module>
+		<module>org.wso2.developerstudio.eclipse.registry.libraries</module>
+		<module>org.wso2.developerstudio.eclipse.registry.manager.remote</module>
+		<module>org.wso2.developerstudio.eclipse.registry.base</module>
+		<module>org.wso2.developerstudio.eclipse.registry.resource.authorization</module>
+		<module>org.wso2.developerstudio.eclipse.usermgt.remote</module>
+		<module>org.wso2.developerstudio.eclipse.capp.core</module>
+		<module>org.wso2.developerstudio.eclipse.capp.maven</module>
+		<module>org.wso2.developerstudio.eclipse.distribution.project</module>
+		<module>org.wso2.developerstudio.eclipse.distributionproject.module</module>
+		<module>org.wso2.developerstudio.eclipse.carbonfeatures</module>
+		<module>org.wso2.developerstudio.eclipse.carbonserver.base</module>
+		<module>org.wso2.developerstudio.eclipse.carbon.server.model</module>
+		<module>org.wso2.developerstudio.eclipse.carbonserver.remote</module>
+		<module>org.wso2.developerstudio.eclipse.carbonserver40</module>
+		<module>org.wso2.developerstudio.eclipse.carbonserver42</module>
+		<module>org.wso2.developerstudio.eclipse.carbonserver44</module>
+        <module>org.wso2.developerstudio.eclipse.carbonserver44ei</module>
+        <module>org.wso2.developerstudio.eclipse.carbonserver44microei</module>
+        <module>org.wso2.developerstudio.eclipse.carbonserver44microei11</module>
+        <module>org.wso2.developerstudio.eclipse.carbonserver44microei12</module>
+        <module>org.wso2.developerstudio.eclipse.server.base</module>
+		<module>org.wso2.developerstudio.eclipse.general.project</module>
+		<module>org.wso2.developerstudio.eclipse.registry.perspective</module>
+		<module>org.wso2.developerstudio.eclipse.registry.search</module>
+		<module>org.wso2.developerstudio.eclipse.registry.manager.local</module>
+		<module>org.wso2.developerstudio.eclipse.artifact.registry</module>
+		<module>org.wso2.developerstudio.eclipse.registry.connector</module>
+		<module>org.wso2.developerstudio.eclipse.artifact.security</module>
+		<module>org.wso2.developerstudio.eclipse.security.ui</module>
+		<module>org.wso2.developerstudio.eclipse.artifact.library</module>
+		<module>org.wso2.developerstudio.eclipse.maven.multi.module</module>
+		<module>org.wso2.developerstudio.eclipse.webui.core</module>
+		<module>org.wso2.developerstudio.appcloud.utils</module>
+		<module>org.wso2.developerstudio.eclipse.templates.dashboard</module>
+		<module>org.wso2.developerstudio.eclipse.dashboard</module>
+		<module>org.wso2.developerstudio.eclipse.project.extensions</module>
+		<module>org.wso2.developerstudio.eclipse.docker.distribution</module>
 	</modules>
 	<build>
 		<plugins>

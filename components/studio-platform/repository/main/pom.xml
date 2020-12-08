@@ -23,9 +23,6 @@
    <packaging>eclipse-repository</packaging>
    <name>WSO2 Developer Studio Kernel - P2 Repository</name>
    <url>http://wso2.org</url>
-   <properties>
-      <versionproperty>4.3.0</versionproperty>
-   </properties>
    <build>
       <plugins>
          <plugin>
@@ -45,25 +42,6 @@
                <timestampPropertyName>build.date</timestampPropertyName>
             </configuration>
          </plugin>
-         <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-antrun-plugin</artifactId>
-            <version>1.7</version>
-            <executions>
-               <execution>
-                  <phase>install</phase>
-                  <configuration>
-                  <target>
-                        <copy file="${project.build.directory}/${artifactId}-${version}.zip" tofile="${project.build.directory}/${artifactId}-${versionproperty}-${build.date}.zip" />
-                     </target>
-                  </configuration>
-                  <goals>
-                     <goal>run</goal>
-                  </goals>
-               </execution>
-            </executions>
-         </plugin>
       </plugins>
    </build>
 </project>
-

@@ -22,7 +22,7 @@ import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.search.IJavaSearchConstants;
 import org.eclipse.jdt.internal.core.SourceType;
 import org.eclipse.jdt.internal.core.search.JavaWorkspaceScope;
-//import org.eclipse.jdt.internal.ui.dialogs.FilteredTypesSelectionDialog;
+import org.eclipse.jdt.internal.ui.dialogs.FilteredTypesSelectionDialog;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
@@ -123,21 +123,19 @@ public class FromWS extends Composite{
 	}
 	
 	public void browseClassFile() {
-		// Commented the code due to eclipse 2020 migration and dependency issue with
-		// org.eclipse.jdt.internal.ui.dialogs.FilteredTypesSelectionDialog
-//		FilteredTypesSelectionDialog dialog = new FilteredTypesSelectionDialog(Display.getCurrent().getActiveShell(), 
-//																				true, 
-//																				PlatformUI.getWorkbench().getProgressService(),
-//																				new JavaWorkspaceScope(), 
-//																				IJavaSearchConstants.CLASS);
-//		dialog.setTitle("Registry Handler Class");
-//		dialog.setMessage("Select a java class to create the Registry Handler from");
-//
-//		if (dialog.open() == Window.OK) {
-//			SourceType firstResult = (SourceType) dialog.getFirstResult();
-//			IJavaProject p = (IJavaProject) firstResult.getAncestor(2);
-//			pathText.setText(firstResult.getFullyQualifiedName());
-//		}
+		FilteredTypesSelectionDialog dialog = new FilteredTypesSelectionDialog(Display.getCurrent().getActiveShell(), 
+																				true, 
+																				PlatformUI.getWorkbench().getProgressService(),
+																				new JavaWorkspaceScope(), 
+																				IJavaSearchConstants.CLASS);
+		dialog.setTitle("Registry Handler Class");
+		dialog.setMessage("Select a java class to create the Registry Handler from");
+
+		if (dialog.open() == Window.OK) {
+			SourceType firstResult = (SourceType) dialog.getFirstResult();
+			IJavaProject p = (IJavaProject) firstResult.getAncestor(2);
+			pathText.setText(firstResult.getFullyQualifiedName());
+		}
 	}
 	
 	

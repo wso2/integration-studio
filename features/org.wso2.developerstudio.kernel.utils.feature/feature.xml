@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.wso2.developerstudio.kernel.utils.feature"
+      label="Platform Utils Features"
+      version="7.0.0.qualifier"
+      provider-name="%providerName">
+
+   <description url="http://wso2.com">
+      Provides utilities for maven and eclipse workbench for WSO2 plugins.
+   </description>
+
+   <copyright url="%copyrightURL">
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="org.wso2.developerstudio.eclipse.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+    <plugin
+         id="org.wso2.developerstudio.eclipse.project.extensions"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

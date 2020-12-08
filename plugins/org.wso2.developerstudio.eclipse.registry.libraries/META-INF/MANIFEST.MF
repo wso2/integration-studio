@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Libraries
+Bundle-SymbolicName: org.wso2.developerstudio.eclipse.registry.libraries
+Bundle-Version: 7.0.0.qualifier
+Bundle-ActivationPolicy: lazy
+Export-Package: org.wso2.developerstudio.eclipse.registry.libraries;version="7.0.0",
+ org.wso2.developerstudio.eclipse.registry.libraries.utils;version="7.0.0"
+Bundle-ClassPath: .
+Import-Package: javax.wsdl;version="[1.6.2.wso2v1,1.7.0)",
+ javax.wsdl.extensions.soap,
+ org.wso2.developerstudio.eclipse.logging.core;version="[4.1.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.utils.jdt;version="[4.1.0,8.0.0)"
+Require-Bundle: org.eclipse.ui.workbench,
+ org.eclipse.osgi,
+ org.eclipse.core.runtime,
+ org.wso2.developerstudio.eclipse.libraries;bundle-version="[7.0.0,8.0.0)"
+Bundle-Activator: org.wso2.developerstudio.eclipse.registry.libraries.Activator
+Bundle-Vendor: WSO2
+
+
+

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	<extension point="org.eclipse.ui.decorators">
+		<decorator adaptable="true" location="BOTTOM_RIGHT"
+			lightweight="true" label="Carbon Folder Label Decorator" state="true"
+			class="org.wso2.developerstudio.eclipse.registry.manager.local.decorators.RegistryResourceDecorator"
+			id="org.wso2.developerstudio.eclipse.greg.manager.local.decorators.RegistryResourceDecoratorFolderLightWeight">
+			<enablement>
+				<or>
+					<objectClass name="org.eclipse.core.resources.IFolder" />
+				</or>
+			</enablement>
+			<description>
+				WSO2 Registry Resource Collection
+        </description>
+		</decorator>
+	</extension>
+	<extension point="org.eclipse.ui.decorators">
+		<decorator adaptable="true" location="BOTTOM_RIGHT"
+			lightweight="true" label="Carbon Folder Label Decorator" state="true"
+			class="org.wso2.developerstudio.eclipse.registry.manager.local.decorators.RegistryResourceDecorator"
+			id="org.wso2.developerstudio.eclipse.greg.manager.local.decorators.RegistryResourceDecoratorFileLightWeight">
+			<enablement>
+				<or>
+					<objectClass name="org.eclipse.core.resources.IFile" />
+				</or>
+			</enablement>
+			<description>
+				WSO2 Registry Resource Collection
+        </description>
+		</decorator>
+	</extension>
+	<extension point="org.eclipse.ui.popupMenus">
+		<objectContribution objectClass="org.eclipse.core.resources.IFolder"
+			id="org.wso2.developerstudio.eclipse.greg.manager.local.decorators.RegistryResourcePopup1">
+
+
+			<menu id="org.wso2.developerstudio.eclipse.greg.manager.local.checkout.subMenu"
+				label="WSO2 Registry" icon="icons/registry.png" path="additions">
+				<separator name="group1" />
+				<separator name="group2" />
+				<separator name="group3" />
+				<separator name="group4" />
+			</menu>
+			<action
+				id="org.wso2.developerstudio.eclipse.greg.manager.local.checkout.subMenu.update"
+				label="Update with registry"
+				icon="icons/update.png"
+				menubarPath="org.wso2.developerstudio.eclipse.greg.manager.local.checkout.subMenu/group2"
+				class="org.wso2.developerstudio.eclipse.registry.manager.local.checkout.actions.UpdateAction"
+				enablesFor="1">
+			</action>
+			<action
+				id="org.wso2.developerstudio.eclipse.greg.manager.local.checkout.subMenu.commit"
+				label="Commit changes"
+				icon="icons/commit.png"
+				menubarPath="org.wso2.developerstudio.eclipse.greg.manager.local.checkout.subMenu/group3"
+				class="org.wso2.developerstudio.eclipse.registry.manager.local.checkout.actions.CommitAction"
+				enablesFor="1">
+			</action>
+			<action
+				id="org.wso2.developerstudio.eclipse.greg.manager.local.checkout.subMenu.commitAsUser"
+				label="Commit changes as user..."
+				icon="icons/commitAsUser.png"
+				menubarPath="org.wso2.developerstudio.eclipse.greg.manager.local.checkout.subMenu/group3"
+				class="org.wso2.developerstudio.eclipse.registry.manager.local.checkout.actions.CommitAsUserAction"
+				enablesFor="1">
+			</action>
+			<action
+				id="org.wso2.developerstudio.eclipse.greg.manager.local.checkout.subMenu.addtoregistry"
+				label="Check in to WSO2 Registry"
+				icon="icons/addToWso2Registry.png"
+				menubarPath="org.wso2.developerstudio.eclipse.greg.manager.local.checkout.subMenu/group1"
+				class="org.wso2.developerstudio.eclipse.registry.manager.local.checkout.actions.AddToRegistryAction"
+				enablesFor="1">
+			</action>	
+			<action
+				id="org.wso2.developerstudio.eclipse.greg.manager.local.checkout.subMenu.cofromregistry"
+				label="Check-out from WSO2 Registry"
+				icon="icons/checkout_menu.png"
+				menubarPath="org.wso2.developerstudio.eclipse.greg.manager.local.checkout.subMenu/group4"
+				class="org.wso2.developerstudio.eclipse.registry.manager.local.checkout.actions.CheckOutFromRegistryAction"
+				enablesFor="1">
+			</action>		
+			<action
+				id="org.wso2.developerstudio.eclipse.greg.manager.local.checkout.subMenu.showInRegistryBrowser"
+				label="Show in registry browser"
+				icon="icons/checkout_menu.png"
+				menubarPath="org.wso2.developerstudio.eclipse.greg.manager.local.checkout.subMenu/group4"
+				class="org.wso2.developerstudio.eclipse.registry.manager.local.checkout.actions.ShowInRegistryBrowserAction"
+				enablesFor="1">
+			</action>											
+		</objectContribution>
+		
+		<objectContribution objectClass="org.eclipse.core.resources.IFile"
+			id="org.wso2.developerstudio.eclipse.greg.manager.local.decorators.RegistryResourcePopup2">
+			<menu id="org.wso2.developerstudio.eclipse.greg.manager.local.conflict.subMenu"
+				label="WSO2 Registry" icon="icons/registry.png"  path="additions">
+				<separator name="group1" />
+				<separator name="group2" />
+				<separator name="group3" />
+				<separator name="group4" />
+			</menu>
+			<action
+				id="org.wso2.developerstudio.eclipse.greg.manager.local.checkout.subMenu.addtoregistry"
+				label="Check in to WSO2 Registry"
+				icon="icons/addToWso2Registry.png"
+				menubarPath="org.wso2.developerstudio.eclipse.greg.manager.local.conflict.subMenu/group1"
+				class="org.wso2.developerstudio.eclipse.registry.manager.local.checkout.actions.AddToRegistryAction"
+				enablesFor="1">
+			</action>
+			<action
+				id="org.wso2.developerstudio.eclipse.greg.manager.local.checkout.subMenu.commit"
+				label="Commit changes"
+				icon="icons/commit.png"
+				menubarPath="org.wso2.developerstudio.eclipse.greg.manager.local.conflict.subMenu/group2"
+				class="org.wso2.developerstudio.eclipse.registry.manager.local.checkout.actions.CommitAction"
+				enablesFor="1">
+			</action>
+			<action
+				id="org.wso2.developerstudio.eclipse.greg.manager.local.checkout.subMenu.commitAsUser"
+				label="Commit changes as user..."
+				icon="icons/commitAsUser.png"
+				menubarPath="org.wso2.developerstudio.eclipse.greg.manager.local.conflict.subMenu/group2"
+				class="org.wso2.developerstudio.eclipse.registry.manager.local.checkout.actions.CommitAsUserAction"
+				enablesFor="1">
+			</action>
+			<action
+				id="org.wso2.developerstudio.eclipse.greg.manager.local.checkout.subMenu.conflictcompare"
+				label="Compare conflict resource"
+				icon="icons/compareConflicts.png"
+				menubarPath="org.wso2.developerstudio.eclipse.greg.manager.local.conflict.subMenu/group3"
+				class="org.wso2.developerstudio.eclipse.registry.manager.local.checkout.actions.ConflictComapareAction"
+				enablesFor="1">
+			</action>
+			<action
+				id="org.wso2.developerstudio.eclipse.greg.manager.local.checkout.subMenu.conflictmyVersion"
+				label="Open conflicted local version"
+				icon="icons/conflictedLocalCopy.png"
+				menubarPath="org.wso2.developerstudio.eclipse.greg.manager.local.conflict.subMenu/group3"
+				class="org.wso2.developerstudio.eclipse.registry.manager.local.checkout.actions.ConflictOpenLocalAction"
+				enablesFor="1">
+			</action>			
+			<action
+				id="org.wso2.developerstudio.eclipse.greg.manager.local.checkout.subMenu.conflictserverVersion"
+				label="Open conflicted server version"
+				icon="icons/conflictedServerVersions.png"
+				menubarPath="org.wso2.developerstudio.eclipse.greg.manager.local.conflict.subMenu/group3"
+				class="org.wso2.developerstudio.eclipse.registry.manager.local.checkout.actions.ConflictOpenServerAction"
+				enablesFor="1">
+			</action>	
+			<action
+				id="org.wso2.developerstudio.eclipse.greg.manager.local.checkout.subMenu.conflictresolvewithLocal"
+				label="Resolve conflict using local version"
+				icon="icons/conflictedLocalCopyResolve.png"
+				menubarPath="org.wso2.developerstudio.eclipse.greg.manager.local.conflict.subMenu/group3"
+				class="org.wso2.developerstudio.eclipse.registry.manager.local.checkout.actions.ConflictResolveUsingLocalAction"
+				enablesFor="1">
+			</action>	
+			<action
+				id="org.wso2.developerstudio.eclipse.greg.manager.local.checkout.subMenu.conflictresolvewithServer"
+				label="Resolve conflict using server version"
+				icon="icons/conflictedServerVersionsResolve.png"
+				menubarPath="org.wso2.developerstudio.eclipse.greg.manager.local.conflict.subMenu/group3"
+				class="org.wso2.developerstudio.eclipse.registry.manager.local.checkout.actions.ConflictResolveUsingServerAction"
+				enablesFor="1">
+			</action>	
+			<action
+				id="org.wso2.developerstudio.eclipse.greg.manager.local.checkout.subMenu.showInRegistryBrowserFile"
+				label="Show in registry browser"
+				icon="icons/checkout_menu.png"
+				menubarPath="org.wso2.developerstudio.eclipse.greg.manager.local.conflict.subMenu/group4"
+				class="org.wso2.developerstudio.eclipse.registry.manager.local.checkout.actions.ShowInRegistryBrowserAction"
+				enablesFor="1">
+			</action>											
+						
+		</objectContribution>
+	</extension>
+
+
+	<extension point="org.eclipse.ui.navigator.navigatorContent">
+		<commonFilter
+			class="org.wso2.developerstudio.eclipse.registry.manager.local.filter.ConflictFileFilter"
+			description="Hide the extra files created when a resource in WSO2 registry conflicts with the working copy."
+			id="org.eclipse.ui.tests.navigator.filters.TestItemsThatEndWith3"
+			name="Hide WSO2 Registry Resource Conflict Items" activeByDefault="true" />
+		<!--commonFilter description="Hides all instances of Test Item"
+			id="org.eclipse.ui.tests.navigator.filters.AllTestItems" name="A TestItem Exp Filter (should be sorted alphab..)">
+			<filterExpression>
+				<instanceof
+					value="org.eclipse.ui.tests.navigator.extension.TestExtensionTreeData" />
+			</filterExpression>
+		</commonFilter-->
+	</extension>
+
+	<extension
+			point="org.eclipse.ui.navigator.viewer">
+		<viewerContentBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+			<includes>
+				<contentExtension pattern="org.eclipse.ui.tests.navigator.filters.TestItemsThatEndWith3*" />	
+			</includes>
+		</viewerContentBinding>
+		<viewerContentBinding viewerId="org.eclipse.ui.navigator.PackageExplorer">
+			<includes>
+				<contentExtension pattern="org.eclipse.ui.tests.navigator.filters.TestItemsThatEndWith3*" />	
+			</includes>
+		</viewerContentBinding>
+	</extension>
+ <extension
+       point="org.wso2.developerstudio.eclipse.greg.viewer.action">
+    <action
+          class="org.wso2.developerstudio.eclipse.registry.manager.local.ui.remoteviewer.actions.CheckoutActionContributor"
+          id="org.wso2.developerstudio.eclipse.greg.manager.local.action2">
+    </action>
+ </extension>
+</plugin>

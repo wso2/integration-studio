@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+  <extension-point id="org.wso2.developerstudio.eclipse.dashboad.link" name="Dashboard"
+                     schema="schema/org.wso2.developerstudio.eclipse.dashboard.intro.ui.exsd"/>
+                     
+  <extension-point id="org.wso2.developerstudio.create.dashbaord.new.section" 
+  name="Dashboard Section RHS" schema="schema/org.wso2.developerstudio.create.dashbaord.new.section.exsd"/>
+   <extension point="org.eclipse.ui.editors">
+        <editor
+                class="org.wso2.developerstudio.eclipse.dashboard.handlers.Dashboard"
+                id="org.wso2.developerstudio.eclipse.dashboard"
+                name="Integration Studio Dashboard"></editor>
+    </extension>
+        <extension point="org.eclipse.ui.menus">
+        <menuContribution locationURI="menu:help?before=org.wso2.developerstudio.eclipse.updater.updateCommand">
+
+
+			<separator name="separator-id-dashboard-up"
+                       visible="true">
+            </separator>
+            
+             <command
+                    commandId="org.wso2.developerstudio.eclipse.platform.ui.commands.opentemplatedashboard"
+                    icon="icons/getting-started.png"
+                    label="Getting Started"
+                    style="push"
+                    id="org.wso2.developerstudio.eclipse.dashboard.gettingStarted"
+                    tooltip="Open Integration Studio Dashboard">
+             </command>
+
+			<separator name="separator-id-dashboard-up"
+                       visible="true">
+            </separator>
+            
+                 <!--command
+                        commandId="org.wso2.developerstudio.eclipse.platform.ui.commands.opendashboard"
+                        icon="icons/carbon-normal.png"
+                        id="org.wso2.developerstudio.eclipse.platform.ui.toolbars.opendashboard"
+                        label="Open Dashboard"
+                        tooltip="Open Developer Studio Dashboard">
+                 </command>
+                 <separator
+                        name="separator-id-dashboard-down"
+                        visible="true">
+                 </separator -->
+        </menuContribution>
+    </extension>
+    
+    <extension point="org.eclipse.ui.menus">
+    	<menuContribution locationURI="menu:help?after=org.wso2.developerstudio.eclipse.dashboard.gettingStarted">
+			<command
+            	commandId="org.wso2.developerstudio.eclipse.platform.ui.commands.opendocviewer"
+                icon="icons/carbon-normal.png"
+                id="org.wso2.developerstudio.eclipse.platform.ui.toolbars.opendocviewer"
+                label="Help Content"
+                tooltip="WSO2 Documentation">
+			</command>
+    	</menuContribution>
+    </extension>
+    <extension point="org.eclipse.ui.menus">
+    	<menuContribution locationURI="menu:help?after=org.wso2.developerstudio.eclipse.dashboard.gettingStarted">
+			<command
+            	commandId="org.wso2.developerstudio.eclipse.platform.ui.commands.openfeedbackviewer"
+                icon="icons/feedback.png"
+                id="org.wso2.developerstudio.eclipse.platform.ui.toolbars.openfeedbackviewer"
+                label="Report Issue"
+                tooltip="Share your issues, suggestions or ideas about Integration Studio">
+			</command>
+    	</menuContribution>
+    </extension>
+                 
+    <extension point="org.eclipse.ui.newWizards">
+  <category name="WSO2BASS" id="org.wso2.developerstudio.eclipse.capp.projectBASS">
+        </category>
+   </extension>
+     <extension point="org.wso2.developerstudio.eclipse.dashboad.link">
+        <wizardCategory category="org.wso2.developerstudio.eclipse.web.apps"/>
+        <wizardCategory category="org.wso2.developerstudio.eclipse.message.mediation"/>
+        <wizardCategory category="org.wso2.developerstudio.eclipse.repository"/>
+        <wizardCategory category="org.wso2.developerstudio.eclipse.business.processes"/>
+        <wizardCategory category="org.wso2.developerstudio.eclipse.portal.services"/>
+        <wizardCategory category="org.wso2.developerstudio.eclipse.carbon.ui"/>
+        <wizardCategory category="org.wso2.developerstudio.eclipse.extensions"/>
+        <wizardCategory category="org.wso2.developerstudio.eclipse.service.hosting.project.types"/>
+        <wizardCategory category="org.wso2.developerstudio.eclipse.service.hosting.features"/>
+        <wizardCategory category="org.wso2.developerstudio.eclipse.extensions.project.types"/>
+        <wizardCategory category="org.wso2.developerstudio.eclipse.extensions.features"/>
+        <wizardCategory category="org.wso2.developerstudio.eclipse.message.mediation.project.types"/>
+        <wizardCategory category="org.wso2.developerstudio.eclipse.message.mediation.features"/>
+    </extension>
+    <extension point="org.eclipse.ui.startup">
+     <startup class="org.wso2.developerstudio.eclipse.dashboard.handlers.PlatformEarlyStartUpHandler"/>
+   </extension> 
+</plugin>

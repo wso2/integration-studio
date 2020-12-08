@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.wso2.developerstudio.eclipse.greg.manager.remote" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appinfo>
+         <meta.schema plugin="org.wso2.developerstudio.eclipse.greg.manager.remote" id="org.wso2.developerstudio.eclipse.greg.viewer.action" name="WSO2 Registry Viewer Action Contributor"/>
+      </appinfo>
+      <documentation>
+         This is the extension point to add a custom menu item to the right click menu of a resource or collection in the registry browser.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appinfo>
+            <meta.element />
+         </appinfo>
+      </annotation>
+      <complexType>
+         <sequence minOccurs="1" maxOccurs="unbounded">
+            <element ref="action"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="action">
+      <complexType>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  the identifier of a plug-in which may or may not exist in the plug-in registry
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  fully qualified class name of the contributing class
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.wso2.developerstudio.eclipse.greg.base.interfaces.IRegistryAction"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="since"/>
+      </appinfo>
+      <documentation>
+         WSO2 Developer Studio 1.0.0
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="examples"/>
+      </appinfo>
+      <documentation>
+         The following is an example usage of the extension point.
+&lt;extension
+       point=&quot;org.wso2.developerstudio.eclipse.greg.viewer.action&quot;&gt;
+    &lt;action
+          class=&quot;org.wso2.developerstudio.sample.ui.actions.SampleActionContributor&quot;
+          id=&quot;org.wso2.developerstudio.sample.ui.sample.action&quot;&gt;
+    &lt;/action&gt;
+ &lt;/extension&gt;&quot;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="apiinfo"/>
+      </appinfo>
+      <documentation>
+         The value of the class attribute must be the fully qualified name of a class that implements org.wso2.developerstudio.eclipse.greg.base.interfaces.IRegistryAction. Both class and id field are mandatory.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="implementation"/>
+      </appinfo>
+      <documentation>
+         Plug-ins may use this extension point to add custom UI action to right click menu of the registry browser. Implemantation of the action should be inside createAction() method.
+      </documentation>
+   </annotation>
+
+
+</schema>

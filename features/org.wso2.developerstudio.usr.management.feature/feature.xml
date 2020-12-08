@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.wso2.developerstudio.usr.management.feature"
+      label="User Management Feature"
+      version="7.0.0.qualifier"
+      provider-name="%providerName">
+
+   <description url="http://wso2.com">
+      Provides support for Developer Studio User Management Components. 
+   </description>
+
+   <copyright url="%copyrightURL">
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="org.wso2.developerstudio.eclipse.usermgt.remote"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+
+</feature>

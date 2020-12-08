@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+		~ Copyright (c) WSO2 Inc. (http://wso2.com) All Rights Reserved. ~ ~
+		Licensed under the Apache License, Version 2.0 (the "License"); ~ you
+		may not use this file except in compliance with the License. ~ You may
+		obtain a copy of the License at ~ ~
+		http://www.apache.org/licenses/LICENSE-2.0 ~ ~ Unless required by
+		applicable law or agreed to in writing, software ~ distributed under
+		the License is distributed on an "AS IS" BASIS, ~ WITHOUT WARRANTIES
+		OR CONDITIONS OF ANY KIND, either express or implied. ~ See the
+		License for the specific language governing permissions and ~
+		limitations under the License.
+	-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>wso2-developer-studio-tooling-platform-p2-parent</artifactId>
+        <groupId>org.wso2.developerstudio</groupId>
+        <version>7.0.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <artifactId>wso2-developer-studio-tooling-platform-p2</artifactId>
+    <packaging>eclipse-repository</packaging>
+    <name>WSO2 Developer Studio Platform-P2 Repository</name>
+    <url>http://wso2.org</url>
+ <properties>
+      <versionproperty>7.0.0</versionproperty>
+   </properties>
+   <build>
+      <plugins>
+         <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>buildnumber-maven-plugin</artifactId>
+            <version>1.2</version>
+            <executions>
+               <execution>
+                  <phase>validate</phase>
+                  <goals>
+                     <goal>create-timestamp</goal>
+                  </goals>
+               </execution>
+            </executions>
+            <configuration>
+               <timestampFormat>yyyyMMddHHmm</timestampFormat>
+               <timestampPropertyName>build.date</timestampPropertyName>
+            </configuration>
+         </plugin>
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <version>1.7</version>
+            <executions>
+               <execution>
+                  <phase>install</phase>
+                  <configuration>
+                     <target>
+                        <copy file="${project.build.directory}/${artifactId}-${version}.zip" tofile="${project.build.directory}/${artifactId}-${versionproperty}-${build.date}.zip" />
+                     </target>
+                  </configuration>
+                  <goals>
+                     <goal>run</goal>
+                  </goals>
+               </execution>
+            </executions>
+         </plugin>
+      </plugins>
+   </build>
+</project>

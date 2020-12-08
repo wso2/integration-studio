@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- introContent> <extensionContent id="comdeveloperwelcome-introExtension" 
+	style="css/sample.css" name="Sample Extension" path="overview/@"> <group 
+	style-id="content-group" id="comdeveloperwelcome-introLink-group"> <link 
+	label="WSO2 Developer Studio" url="http://www.eclipse.org" id="comdeveloperwelcome-introLink" 
+	style-id="content-link"> <text>Hello everyone. welcome to WSO2 Developer 
+	Studio</text> </link> </group> </extensionContent> </introContent -->
+
+<introContent>
+	<extensionContent id="comdeveloperwelcome-introExtension"
+		style="css/sample.css" name="Sample Extension" path="overview/@">
+		<group style-id="content-group" id="comdeveloperwelcome-introLink-group"
+			icon="icons/carbon-normal.png">
+			<link label="Open Dashboard"
+				url="http://org.eclipse.ui.intro/runAction?pluginId=org.wso2.developerstudio.eclipse.platform.core&#38;class=org.wso2.developerstudio.eclipse.platform.core.intro.action.OpenDashboardAction"
+				id="carbonStudio-dashboardlink" style-id="content-link">
+				<text>Start using WSO2 Developer Studio</text>
+			</link>
+		</group>
+		<group style-id="content-group" id="comdeveloperwelcome-introLink-group">
+			<link label="WSO2 Developer Studio - Quick Start Guide"
+				url="https://docs.wso2.com/display/DVS400/Getting+Started" id="carbonStudio-introLink"
+				style-id="content-link">
+				<text>Describes the fundamentals of Developer Studio to develop WSO2
+					projects in Eclipse.
+				</text>
+			</link>
+		</group>
+		<group style-id="content-group" id="comdeveloperwelcome-introLink-group"
+			icon="icons/carbon-normal.png">
+			<link label="WSO2 Developer Studio - User Guide" url="https://docs.wso2.com/display/DVS400/Developer+Guide"
+				id="getting-started-link" style-id="content-link">
+				<text>Describes how to create, package, test and deploy artifacts
+					for various WSO2 products, and how to create and manage these using
+					Composite Application Archive (CAR).
+				</text>
+			</link>
+		</group>
+	</extensionContent>
+</introContent>

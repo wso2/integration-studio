@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	<extension-point id="org.wso2.developerstudio.libraries.libraryprovider"
+		name="Library Provider" schema="schema/org.wso2.developerstudio.libraries.libraryprovider.exsd" />
+	<extension point="org.eclipse.jdt.ui.classpathContainerPage">
+		<classpathContainerPage id=""
+			name="WSO2 Classpath Libraries"
+			class="org.wso2.developerstudio.eclipse.libraries.ui.wizard.WSO2LibraryWizardPage" />
+	</extension>
+	<extension point="org.wso2.developerstudio.libraries.libraryprovider">
+		<category id="org.wso2.developerstudio.eclipse.libraries.category.general"
+			name="General">
+			<description>
+				Generally used libraries
+         </description>
+		</category>
+	</extension>
+	<extension point="org.wso2.developerstudio.libraries.libraryprovider">
+		<library jar="lib/abdera_1.0.0.wso2v3.jar"
+			categoryId="org.wso2.developerstudio.eclipse.libraries.category.general" />
+		<library jar="lib/axiom_1.2.11.wso2v6.jar"
+			categoryId="org.wso2.developerstudio.eclipse.libraries.category.general" />
+		<library jar="lib/commons-logging-1.1.1.jar"
+			categoryId="org.wso2.developerstudio.eclipse.libraries.category.general" />
+		<library jar="lib/geronimo-stax-api_1.0_spec_1.0.1.wso2v2.jar"
+			categoryId="org.wso2.developerstudio.eclipse.libraries.category.general" />
+		<library jar="lib/XmlSchema_1.4.7.wso2v3.jar"
+			categoryId="org.wso2.developerstudio.eclipse.libraries.category.general" />
+		<library jar="lib/org.eclipse.osgi_3.9.1.v20130814-1242.jar"
+			categoryId="org.wso2.developerstudio.eclipse.libraries.category.general" />
+	</extension>
+
+	<extension point="org.eclipse.ui.startup">
+		<startup class="org.wso2.developerstudio.eclipse.libraries.LibraryBundleStartupHandler"/>
+	</extension>
+
+</plugin>

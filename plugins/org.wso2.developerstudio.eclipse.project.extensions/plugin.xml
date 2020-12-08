@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="org.wso2.developerstudio.project.nature.provider" name="WSO2 Project Natures" 
+                                                          schema="schema/org.wso2.developerstudio.project.nature.provider.exsd"/>
+   <extension-point id="artifacttemplates" name="Template artifacts" schema="schema/artifacttemplates.exsd"/>                       
+   	<extension
+          point="org.wso2.developerstudio.eclipse.project.extensions.artifacttemplates">
+        <template
+             file="resources/templates/endpoints/address_endpoint.xml"
+             id="org.wso2.developerstudio.eclipse.esb.template.ep1"
+             name="Address Endpoint"
+             mediaType="application/vnd.wso2.esb.endpoint"
+             extension="xml"></template>
+        <template
+             file="resources/templates/endpoint_templates/Address.xml"
+             id="org.wso2.developerstudio.eclipse.esb.template.endpoint_templates.Address"
+             name="Address Endpoint Template"
+             mediaType="application/vnd.wso2.template.endpoint"
+             extension="xml"></template>
+        <template
+             file="resources/templates/empty_css.css"
+             id="org.wso2.developerstudio.eclipse.esb.template.css"
+             name="CSS File"
+             mediaType="text/css"
+             extension="css"></template>
+        <template
+             file="resources/templates/proxyservices/custom-proxy.xml"
+             id="org.wso2.developerstudio.eclipse.esb.proxy6"
+             name="Custom Proxy"
+             mediaType="application/vnd+wso2.proxyservice"
+             extension="xml"></template>
+        <template
+             file="resources/templates/datamapper/datamapper.dmc"
+             id="org.wso2.developerstudio.eclipse.esb.template.datamapper"
+             name="Data Mapper"
+             mediaType="application/datamapper"
+             extension="dmc"></template>
+        <template
+             file="resources/templates/endpoints/default_endpoint.xml"
+             id="org.wso2.developerstudio.eclipse.esb.template.ep2"
+             name="Default Endpoint"
+             mediaType="application/vnd.wso2.esb.endpoint"
+             extension="xml"></template>
+        <template
+             file="resources/templates/endpoint_templates/default.xml"
+             id="org.wso2.developerstudio.eclipse.esb.template.endpoint_templates.default"
+             name="Default Endpoint Template"
+             mediaType="application/vnd.wso2.template.endpoint"
+             extension="xml"></template>
+        <template
+             file="resources/templates/endpoints/fail_over_endpoint.xml"
+             id="org.wso2.developerstudio.eclipse.esb.template.ep3"
+             name="Fail Over Endpoint"
+             mediaType="application/vnd.wso2.esb.endpoint"
+             extension="xml"></template>
+        <template
+             file="resources/templates/empty_html_template.html"
+             id="org.wso2.developerstudio.eclipse.esb.template.html"
+             name="HTML File"
+             mediaType="text/html"
+             extension="html"></template>
+        <template
+             file="resources/templates/endpoints/http_endpoint.xml"
+             id="org.wso2.developerstudio.eclipse.esb.template.ep8"
+             name="HTTP Endpoint"
+             mediaType="application/vnd.wso2.esb.endpoint"
+             extension="xml"></template>            
+        <template
+             file="resources/templates/endpoint_templates/http.xml"
+             id="org.wso2.developerstudio.eclipse.esb.template.endpoint_templates.http"
+             name="HTTP Endpoint Template"
+             mediaType="application/vnd.wso2.template.endpoint"
+             extension="xml"></template>
+        <template
+             file="resources/templates/empty_java_script.js"
+             id="org.wso2.developerstudio.eclipse.esb.template.js"
+             name="JavaScript File"
+             mediaType="application/javascript"
+             extension="js"></template>
+        <template
+             file="resources/templates/endpoints/load_balance_endpoint.xml"
+             id="org.wso2.developerstudio.eclipse.esb.template.ep4"
+             name="Load Balance Endpoint"
+             mediaType="application/vnd.wso2.esb.endpoint"
+             extension="xml"></template>  
+        <template
+             file="resources/templates/localentries/local-entry.xml"
+             id="org.wso2.developerstudio.eclipse.esb.localentry"
+             name="Local Entry"
+             mediaType="application/vnd.wso2.esb.localentry"
+             extension="xml"></template>           
+        <template
+             file="resources/templates/proxyservices/log-forward-proxy.xml"
+             id="org.wso2.developerstudio.eclipse.esb.proxy2"
+             name="Logging Proxy"
+             mediaType="application/vnd+wso2.proxyservice"
+             extension="xml"></template>     
+        <template
+             file="resources/templates/proxyservices/pass-through-proxy.xml"
+             id="org.wso2.developerstudio.eclipse.esb.proxy3"
+             name="Pass Through Proxy"
+             mediaType="application/vnd+wso2.proxyservice"
+             extension="xml"></template>             
+        <template
+             file="resources/templates/endpoints/recipientlist_endpoint.xml"
+             id="org.wso2.developerstudio.eclipse.esb.template.ep6"
+             name="Recipient List Endpoint"
+             mediaType="application/vnd.wso2.esb.endpoint"
+             extension="xml"></template>             
+        <template
+             file="resources/templates/proxyservices/secure-proxy.xml"
+             id="org.wso2.developerstudio.eclipse.esb.proxy5"
+             name="Secure Proxy"
+             mediaType="application/vnd+wso2.proxyservice"
+             extension="xml"></template>
+        <template 
+             file="resources/templates/sequences/sequence.xml"
+             id="org.wso2.developerstudio.eclipse.esb.sequence"
+             name="Sequence"
+             mediaType="application/vnd.wso2.sequence"
+             extension="xml"></template>
+        <template
+             file="resources/templates/sequence_template/sq_template.xml"
+             id="org.wso2.developerstudio.eclipse.esb.template.sq_template"
+             name="Sequence Template"
+             mediaType="application/vnd.wso2.template"
+             extension="xml"></template>
+        <template
+             file="resources/templates/smooks/smooks-config-template.xml"
+             id="org.wso2.developerstudio.eclipse.esb.template.smooks"
+             name="Smooks Configuration"
+             mediaType="application/vnd+wso2.smooks"
+             extension="xml"></template>        
+        <template
+             file="resources/templates/empty_sql_script.sql"
+             id="org.wso2.developerstudio.eclipse.esb.template.sql"
+             name="SQL Script File"
+             mediaType="text/x-sql"
+             extension="sql"></template>
+        <template
+             file="resources/templates/endpoints/template_endpoint.xml"
+             id="org.wso2.developerstudio.eclipse.esb.template.ep7"
+             name="Template Endpoint"
+             mediaType="application/vnd.wso2.esb.endpoint"
+             extension="xml"></template>
+        <template
+             file="resources/templates/proxyservices/transformer-proxy.xml"
+             id="org.wso2.developerstudio.eclipse.esb.template.proxy1"
+             name="Transformer Proxy"
+             mediaType="application/vnd+wso2.proxyservice"
+             extension="xml"></template>
+        <template
+             file="resources/templates/proxyservices/wsdl-based-proxy.xml"
+             id="org.wso2.developerstudio.eclipse.esb.proxy4"
+             name="WSDL Based Proxy"
+             mediaType="application/vnd+wso2.proxyservice"
+             extension="xml"></template>  
+        <template
+             file="resources/templates/endpoints/wsdl_endpoint.xml"
+             id="org.wso2.developerstudio.eclipse.esb.template.ep5"
+             name="WSDL Endpoint"
+             mediaType="application/vnd.wso2.esb.endpoint"
+             extension="xml"></template>
+        <template
+             file="resources/templates/endpoint_templates/wsdl.xml"
+             id="org.wso2.developerstudio.eclipse.esb.template.endpoint_templates.wsdl"
+             name="WSDL Endpoint Template"
+             mediaType="application/vnd.wso2.template.endpoint"
+             extension="xml"></template>
+        <template
+             file="resources/templates/NewWSDLFile.wsdl"
+             id="org.wso2.developerstudio.eclipse.esb.template.wsdl"
+             name="WSDL File"
+             mediaType="application/wsdl+xml"
+             extension="wsdl"></template>   
+        <template
+            file="resources/templates/ws_policy/wsPolicyTemplate.xml"
+            id="org.wso2.developerstudio.eclipse.security.ws_policy"
+            name="WS-Policy"
+            mediaType="application/xml"
+            extension="xml"></template>
+        <template
+            file="resources/templates/xsds/xsd_template.xsd"
+            id="org.wso2.developerstudio.eclipse.sample.xsd"
+            name="XSD File"
+            mediaType="application/xsd"
+            extension="xsd"></template>
+        <template
+             file="resources/templates/NewStylesheet.xsl"
+             id="org.wso2.developerstudio.eclipse.esb.template.xsl"
+             name="XSL File"
+             mediaType="application/xsl+xml"
+             extension="xsl"></template>
+        <template
+             file="resources/templates/NewStylesheet.xslt"
+             id="org.wso2.developerstudio.eclipse.esb.template.xslt"
+             name="XSLT File"
+             mediaType="application/xslt+xml"
+             extension="xslt"></template>
+
+    </extension>
+</plugin>

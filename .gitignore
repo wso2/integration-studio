@@ -1,6 +1,5 @@
 # No Eclipse Related Files #
 ###################
-
 .settings/
 target/
 bin/

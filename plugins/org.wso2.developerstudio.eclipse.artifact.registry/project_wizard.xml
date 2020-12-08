@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+	<projectOptions title="Registry Resource Artifact Creation Options"
+					description="Select how you would like to create your new registry resource"
+					error="Please select a method to create the registry resource">
+		<option id="new.resource" default="true">From existing template</option>
+		<option id="import.resource">Import from file system</option>
+		<option id="import.dump">Import Registry dump file from file system</option>
+		<option id="checkout">Check-out from registry</option>
+	</projectOptions>
+	<projectOptionSettings>
+		<settings optionId="new.resource"
+				  title="Registry Resource"
+				  description="Create a new Registry Resource"
+				  error="Please give a name for the registry resource">
+			<data modelProperty="resource.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController" controlData="toolTip=Resource Name withtout File Extension">Resource Name</data>
+			<data modelProperty="artifact.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController">Artifact Name</data>
+			<data modelProperty="resource.type" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController"  controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactTemplateList">Template</data>
+			<data modelProperty="reg.partition" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController"  controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryPartitionList">Registry</data>
+			<data modelProperty="reg.location" type="workspacepathbrowser" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController">Registry path</data>
+			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.registry.validators.ProjectFilter">Save resource in</data>
+			<data modelProperty="create.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController" controlData="align=right">&lt;a&gt;Create new Project...&lt;/a&gt;</data>
+
+			<projectNatures>
+				<nature>org.eclipse.jdt.core.javanature</nature>
+			</projectNatures>
+		</settings>
+		<settings optionId="import.resource"
+				  title="Registry Resource"
+				  description="Create a Registry Resource using a resource file"
+				  error="Browse and select a resource file">
+	
+			<data modelProperty="import.file" type="file+dir" filter="*" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController">From File</data>
+			<data modelProperty="artifact.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController">Artifact Name</data>
+			<data modelProperty="copy.content" type="choice" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController">Copy content only</data>
+			<data modelProperty="reg.partition" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController"  controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryPartitionList">Registry</data>
+			<data modelProperty="reg.location" type="workspacepathbrowser" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController">Registry path to deploy</data>
+			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.registry.validators.ProjectFilter">Save resource in:</data>
+			<data modelProperty="create.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController" controlData="align=right">&lt;a&gt;Create new Project...&lt;/a&gt;</data>
+			
+			<projectNatures>
+				<nature>org.eclipse.jdt.core.javanature</nature>
+			</projectNatures>
+		</settings>
+		
+		<settings optionId="import.dump"
+				  title="Registry Resource"
+				  description="Create a Registry Resource using a registry dump file"
+				  error="Browse and select a registry dump file">
+			<data modelProperty="import.file" type="file" filter="*.dump" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController">Registry Dump File</data>
+			<data modelProperty="artifact.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController">Artifact Name</data>
+			<data modelProperty="reg.partition" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController"  controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryPartitionList">Registry</data>
+			<data modelProperty="reg.location" type="workspacepathbrowser" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController">Registry path to deploy</data>
+			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.registry.validators.ProjectFilter">Save resource in:</data>
+			<data modelProperty="create.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController" controlData="align=right">&lt;a&gt;Create new Project...&lt;/a&gt;</data>
+			
+			<projectNatures>
+				<nature>org.eclipse.jdt.core.javanature</nature>
+			</projectNatures>
+		</settings>
+		<settings optionId="checkout"
+				  title="Registry Resource"
+				  description="Create a Registry Resource using an existing registry "
+				  error="Browse and select a registry ">
+			<data modelProperty="registry.browser" type="registry" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController"  controlData="select=single;modify=readonly;registry.selection.type=resource+collection">Path</data>
+			<data modelProperty="artifact.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController">Artifact Name</data>
+			<data modelProperty="reg.partition" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController"  controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryPartitionList">Registry</data>
+			<data modelProperty="reg.location" type="workspacepathbrowser" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController">Registry path to deploy</data>
+			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.registry.validators.ProjectFilter">Save resource in</data>
+			<data modelProperty="create.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController" controlData="align=right">&lt;a&gt;Create new Project...&lt;/a&gt;</data>
+			<projectNatures>
+				<nature>org.eclipse.jdt.core.javanature</nature>
+			</projectNatures>
+		</settings>
+	</projectOptionSettings>
+	
+</wizard>

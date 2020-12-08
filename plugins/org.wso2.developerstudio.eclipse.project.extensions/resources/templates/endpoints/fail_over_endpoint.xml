@@ -1,0 +1,8 @@
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="{ep.name}">
+	<failover>
+		<endpoint
+			name="endpoint_urn_uuid_6179155B57847314A656794419902014617670556">
+			<address uri="http://localhost" />
+		</endpoint>
+	</failover>
+</endpoint>

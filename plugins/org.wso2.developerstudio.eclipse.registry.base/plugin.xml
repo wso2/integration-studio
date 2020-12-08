@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	<extension point="org.eclipse.ui.editors">
+		<editor default="true"
+			class="org.wso2.developerstudio.eclipse.registry.base.ui.editor.RegistryResourceEditor"
+			id="org.wso2.developerstudio.eclipse.editors.registry.formEditor" name="Registry Collection"
+			extensions="readme">
+		</editor>
+	</extension>
+	<extension point="org.eclipse.ui.newWizards">
+		<category name="WSO2" id="org.wso2.developerstudio.eclipse.capp.project">
+		</category>
+		<category name="Registry" id="org.wso2.developerstudio.eclipse.greg" 
+			parentCategory="org.wso2.developerstudio.eclipse.capp.project">
+		</category>
+	</extension>
+ <extension point="org.eclipse.ui.startup">
+ 		<startup class="org.wso2.developerstudio.eclipse.registry.base.startup.RegistryStartup"/>
+ </extension>
+</plugin>

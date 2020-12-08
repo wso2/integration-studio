@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+  <extension-point 
+  	id="org.wso2.developerstudio.eclipse.greg.connector" 
+  	name="Extension Point for requesting registry tools api" 
+  	schema="schema/org.wso2.developerstudio.eclipse.registry.connector.exsd"/>
+  	
+  <extension point="org.eclipse.ui.navigator.navigatorContent">
+	<navigatorContent activeByDefault="true"
+			id="org.wso2.developerstudio.eclipse.capp.artifact.registry.connector.navigator.content"
+			contentProvider="org.wso2.developerstudio.eclipse.capp.registry.connector.provider.RegistryConnectionContentProvider"
+			labelProvider="org.wso2.developerstudio.eclipse.capp.registry.connector.provider.RegistryConnectionLabelProvider"
+			name="Registry Artifacts" priority="high">
+			<triggerPoints>
+				<or>
+					<adapt type="org.eclipse.core.resources.IProject">
+						<test property="org.eclipse.core.resources.projectNature"
+							value="org.wso2.developerstudio.eclipse.capp.project.nature" />
+					</adapt>
+				</or>
+			</triggerPoints>
+			<commonWizard menuGroupId="4org.wso2.developerstudio.eclipse.capp.newartifacts"
+				type="new"
+				wizardId="org.wso2.developerstudio.eclipse.capp.artifact.newregistryartifact">
+				<enablement>
+					<or>
+						<adapt type="org.eclipse.core.resources.IProject">
+							<test property="org.eclipse.core.resources.projectNature"
+								value="org.wso2.developerstudio.eclipse.capp.project.nature" />
+						</adapt>
+					</or>
+				</enablement>
+			</commonWizard>
+			<commonWizard menuGroupId="8org.wso2.developerstudio.eclipse.capp.newutils"
+				type="new"
+				wizardId="org.wso2.developerstudio.eclipse.capp.artifact.newregistryconnection">
+				<enablement>
+					<or>
+						<adapt type="org.eclipse.core.resources.IProject">
+							<test property="org.eclipse.core.resources.projectNature"
+								value="org.wso2.developerstudio.eclipse.capp.project.nature" />
+						</adapt>
+					</or>
+				</enablement>
+			</commonWizard>
+		</navigatorContent>
+		<actionProvider
+			class="org.wso2.developerstudio.eclipse.capp.registry.connector.provider.RegistryConnectionActionProvider"
+			id="org.wso2.developerstudio.eclipse.capp.artifact.registry.navigator.content.actionProvider">
+			<enablement>
+				<or>
+					<instanceof
+						value="org.wso2.developerstudio.eclipse.capp.registry.connector.model.RegistryConnectionNode" />
+				</or>
+			</enablement>
+		</actionProvider>
+	</extension>
+	<extension point="org.eclipse.ui.startup">
+	  <startup class="org.wso2.developerstudio.eclipse.capp.registry.connector.Initializer" />
+	</extension>
+
+	<extension point="org.eclipse.ui.navigator.viewer">
+	<viewerContentBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+	   	<includes>
+			<contentExtension
+				pattern="org.wso2.developerstudio.eclipse.capp.artifact.registry.connector.navigator.content" />
+	    </includes>
+	 </viewerContentBinding>
+	 <viewerActionBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+	   	<includes>
+			<actionExtension
+				pattern="org.wso2.developerstudio.eclipse.capp.artifact.registry.navigator.content.actionProvider" />
+	    </includes>
+	 </viewerActionBinding>
+   </extension>
+	
+	<!--extension point="org.eclipse.ui.newWizards">
+		<wizard name="Registry Connection" category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.capp.other"
+			class="org.wso2.developerstudio.eclipse.capp.registry.connector.wizards.NewRegistryConnectionWizard"
+			id="org.wso2.developerstudio.eclipse.capp.artifact.newregistryconnection"
+			icon="icons/reg-connection-16x16.png">
+		    <description>WSO2 Registry Connection</description>
+		</wizard>
+	</extension-->
+</plugin>

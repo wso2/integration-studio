@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.wso2.developerstudio.eclipse.docker.distribution.feature"
+      label="Docker Project Creation Feature"
+      version="7.0.0.qualifier"
+      provider-name="%providerName">
+
+   <description url="http://wso2.com">
+      Provides support to create Docker type projects. 
+   </description>
+
+   <copyright url="%copyrightURL">
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="org.wso2.developerstudio.eclipse.docker.distribution"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+
+</feature>

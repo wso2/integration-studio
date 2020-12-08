@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+  <extension-point id="org.wso2.developerstudio.eclipse.template.dashboad.link" name="Template Dashboard"
+                     schema="schema/org.wso2.developerstudio.eclipse.dashboard.intro.ui.exsd"/>
+                     
+  <extension-point id="org.wso2.developerstudio.create.template.dashbaord.new.section" 
+  name="Dashboard Section RHS" schema="schema/org.wso2.developerstudio.create.dashbaord.new.section.exsd"/>
+   <extension point="org.eclipse.ui.editors">
+        <editor
+                class="org.wso2.developerstudio.eclipse.templates.dashboard.web.view.WelcomePageEditor"
+                id="org.wso2.developerstudio.eclipse.templates.dashboard"
+                icon="icons/getting-started.png"
+                name="Getting Started">
+        </editor>
+    </extension>
+    <extension
+            point="org.eclipse.ui.handlers">
+        <handler
+                class="org.wso2.developerstudio.eclipse.templates.dashboard.handlers.DocumentationViewerHandler"
+                commandId="org.wso2.developerstudio.eclipse.platform.ui.commands.opendocviewer">
+        </handler>
+    </extension>
+    <extension
+            point="org.eclipse.ui.handlers">
+        <handler
+                class="org.wso2.developerstudio.eclipse.templates.dashboard.handlers.FeedbackViewerHandler"
+                commandId="org.wso2.developerstudio.eclipse.platform.ui.commands.openfeedbackviewer">
+        </handler>
+    </extension>
+    <extension point="org.eclipse.ui.newWizards">
+     <category name="WSO2BASS" id="org.wso2.developerstudio.eclipse.capp.projectBASS">
+        </category>
+   </extension>
+     <extension point="org.wso2.developerstudio.eclipse.template.dashboad.link">
+         <wizardCategory category="org.wso2.developerstudio.eclipse.esb.templates"/>
+    </extension>
+      <extension point="org.eclipse.ui.startup">
+     <startup class="org.wso2.developerstudio.eclipse.templates.dashboard.handlers.PlatformEarlyStartUpHandler"/>
+   </extension>
+    <extension point="org.eclipse.ui.views">
+        <view id="org.wso2.developerstudio.eclipse.esb.templates.view"
+              name="Sample Guide"
+              class="org.wso2.developerstudio.eclipse.templates.dashboard.help.TemplateGuideView"
+              icon="icons/help.png"/>
+    </extension>
+</plugin>

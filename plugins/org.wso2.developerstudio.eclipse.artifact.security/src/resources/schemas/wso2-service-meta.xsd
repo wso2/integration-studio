@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+    <xs:import namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" schemaLocation="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"/>
+    <xs:import namespace="http://schemas.xmlsoap.org/ws/2004/09/policy" schemaLocation="ws-policy.xsd"/>
+   
+  
+  
+    <xs:element name="serviceGroup">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="service"/>
+                <xs:choice maxOccurs="unbounded">
+                    <xs:element ref="module" minOccurs="0"/>
+                    <xs:element ref="parameter" minOccurs="0"/>
+                </xs:choice>
+            </xs:sequence>
+            <xs:attribute name="hashValue" use="optional"/>
+            <xs:attribute name="name" use="required" type="xs:NCName"/>
+            <xs:attribute name="successfullyAdded" use="required" type="xs:boolean"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="service">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="operation"/>
+                <xs:element ref="bindings"/>
+                <xs:element ref="policies"/>
+                <xs:choice maxOccurs="unbounded">
+                    <xs:element ref="module"/>
+                    <xs:element ref="parameter"/>
+                    <xs:element ref="policyUUID"/>
+                    <xs:element ref="association"/>
+                </xs:choice>
+            </xs:sequence>
+            <xs:attribute name="exposedAllTransports" use="required" type="xs:boolean"/>
+            <xs:attribute name="name" use="required" type="xs:NCName"/>
+            <xs:attribute name="rahas.sctissuer" type="xs:boolean"/>
+            <xs:attribute name="serviceActive" type="xs:boolean"/>
+            <xs:attribute name="serviceDeployedTime" use="required" type="xs:integer"/>
+            <xs:attribute name="serviceDocumentation" use="required" type="xs:NCName"/>
+            <xs:attribute name="successfullyAdded" use="required" type="xs:boolean"/>
+            <xs:attribute name="utEnabled" type="xs:boolean"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="bindings">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="binding"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="binding">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="operation"/>
+                <xs:element minOccurs="0" ref="policyUUID"/>
+            </xs:sequence>
+            <xs:attribute name="name" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="policies">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" ref="policy"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="policy">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="policyUUID"/>
+                   <xs:element ref="wsp:Policy"/>
+            </xs:sequence>
+            <xs:attribute name="policyType" use="required" type="xs:integer"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="association">
+        <xs:complexType>
+            <xs:attribute name="destinationPath" use="required"/>
+            <xs:attribute name="type" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="operation">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" ref="module"/>
+                <xs:element minOccurs="0" maxOccurs="unbounded" ref="policyUUID"/>
+            </xs:sequence>
+            <xs:attribute name="name" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="policyUUID" type="xs:NCName"/>
+    <xs:element name="parameter">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:NMTOKEN">
+                    <xs:attribute name="locked" use="optional" type="xs:boolean"/>
+                    <xs:attribute name="name" use="required" type="xs:NCName"/>
+                    <xs:attribute name="type" use="optional" type="xs:integer"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="module">
+        <xs:complexType>
+            <xs:attribute name="name" use="required" type="xs:NCName"/>
+            <xs:attribute name="type" use="required" type="xs:NCName"/>
+            <xs:attribute name="version" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

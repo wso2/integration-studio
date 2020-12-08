@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+ <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="org.wso2.developerstudio.eclipse.security.project.ui.form.SecurityFormEditor"
+            id="org.wso2.developerstudio.eclipse.security.SecurityFormPage"
+            extensions="xml"
+            name="Security Form Editor"
+            icon="icons/secured.gif">
+            <contentTypeBinding
+				contentTypeId="org.wso2.developerstudio.eclipse.security.project.contenttype.xml">
+			</contentTypeBinding>
+      </editor>
+    </extension>
+    <extension point="org.eclipse.core.contenttype.contentTypes">
+		<content-type base-type="org.eclipse.core.runtime.xml"
+			id="org.wso2.developerstudio.eclipse.security.project.contenttype.xml"
+			 name="Service Meta File" priority="high" file-extensions="xml">
+			<describer
+				class="org.eclipse.core.runtime.content.XMLRootElementContentDescriber2">
+				<parameter name="element" value="{http://schemas.xmlsoap.org/ws/2004/09/policy}*" />		
+			</describer>
+		</content-type>
+	</extension>
+ <extension
+       point="org.eclipse.ui.commands">
+    <command
+        description="Quality of Service"
+        id="org.wso2.developerstudio.eclipse.security.SecurityFormPage"
+        name="Apply Security">
+  	</command>
+ </extension>
+    <extension
+       point="org.eclipse.ui.handlers">
+    <handler
+        class="org.wso2.developerstudio.eclipse.security.handlers.OpenSecurityDashboardCommandHandler"
+        commandId="org.wso2.developerstudio.eclipse.security.SecurityFormPage">
+  	</handler>
+ </extension>
+</plugin>

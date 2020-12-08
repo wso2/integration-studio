@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:ServerRuntime
+	xmlns:tns="http://eclipse.org/jst/server/generic/ServerTypeDefinition"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="WSO2 Carbon Server Runtime"
+	version="4.0"
+	xsi:schemaLocation="http://eclipse.org/jst/server/generic/ServerTypeDefinition ServerTypeDefinitionSchema.xsd">
+	<property 
+		id="server.name" 
+		label="Runtime Name" 
+		type="string"
+        context="runtime" 
+		default="WSO2 Carbon 4.0 based server" />
+		
+	<property 
+		id="carbon.home" 
+		label="CARBON_HOME" 
+		type="directory"
+		context="runtime" 
+		default="carbon.home.folder" />
+	
+    <property 
+        id="carbon.http" 
+        label="Carbon service port (HTTP)" 
+        type="string"
+        context="server"
+        default="9763" />
+    
+    <property 
+        id="carbon.https" 
+        label="Carbon web console port (HTTPS)" 
+        type="string"
+        context="server"
+        default="9443" />
+        
+    <property 
+        id="carbon.offset" 
+        label="Carbon Server Offset" 
+        type="string"
+        context="server"
+        default="0" />
+        	
+	<property 
+		id="carbon.debug" 
+		label="Carbon server debug port" 
+		type="string"
+		context="server"
+		default="5001" />
+		
+    <property 
+        id="synapse.transport.http" 
+        label="Synapse transport HTTP port(change only if applicable)" 
+        type="string"
+        context="server"
+        default="8280" />
+        
+    <property 
+        id="synapse.transport.https" 
+        label="Synapse transport HTTPS port(change only if applicable)" 
+        type="string"
+        context="server"
+        default="8243" />
+        
+	<property 
+        id="carbon.browser" 
+        label="Bring up the CARBON_HOME in the browser when this server starts." 
+        type="boolean"
+        context="server"
+        default="true" />
+
+    <property 
+        id="carbon.hotupdate" 
+        label="Enable hot update of published server modules" 
+        type="boolean"
+        context="server"
+        default="true" />
+        
+    <property 
+        id="osgi.console" 
+        label="Enable OSGi console" 
+        type="boolean"
+        context="server"
+        default="false" />
+                                
+    <port>
+        <no>${carbon.http}</no>
+        <name>Carbon service port (HTTP)</name>
+        <protocol>http</protocol>
+    </port>
+
+    <port>
+        <no>${carbon.https}</no>
+        <name>Carbon web console port (HTTPS)</name>
+        <protocol>https</protocol>
+    </port>
+    
+    <port>
+        <no>${carbon.offset}</no>
+        <name>Carbon Server Offset</name>
+        <protocol>https</protocol>
+    </port>
+    
+    <port>
+        <no>${synapse.transport.http}</no>
+        <name>Synapse transport HTTP port(change only if applicable)</name>
+        <protocol>http</protocol>
+    </port>
+    
+    <port>
+        <no>${synapse.transport.https}</no>
+        <name>Synapse transport HTTPS port(change only if applicable)</name>
+        <protocol>https</protocol>
+    </port>
+
+	<module>
+		<type>org.wso2.developerstudio.eclipse.carbon.module</type>
+		<publishDir>${carbon.home}/repository/services</publishDir>
+		<publisherReference>org.eclipse.jst.server.generic.antpublisher</publisherReference>
+	</module>
+	<module>
+		<type>jst.web</type>
+		<publishDir>${carbon.home}/repository/services</publishDir>
+		<publisherReference>org.eclipse.jst.server.generic.antpublisher</publisherReference>
+	</module>
+	<start>
+		<mainClass>org.wso2.carbon.bootstrap.Bootstrap</mainClass>
+		<workingDirectory>${carbon.home}</workingDirectory>
+        <vmParameters>-Xbootclasspath/a::"${carbon.home}/lib/xboot/org.wso2.carbon.xboot-3.8.0.jar" -Xms512m -Xmx1024m -XX:MaxPermSize=128m -Dcom.sun.management.jmxremote -Djava.io.tmpdir="${carbon.home}/tmp" -Dwso2.server.standalone=true -Dcarbon.home="${carbon.home}" -Dcarbon.registry.root=/ -Djava.endorsed.dirs="${carbon.home}/lib/endorsed" -Djava.util.logging.config.file="${carbon.home}/repository/conf/log4j.properties" -Dcomponents.repo="${carbon.home}/repository/components/plugins" -Dcarbon.config.dir.path="${carbon.home}/repository/conf" -Dcom.atomikos.icatch.file="${carbon.home}/lib/transactions.properties" -Dcom.atomikos.icatch.hide_init_file_path=true -Dcatalina.base="${carbon.home}/lib/tomcat" -Dconf.location="${carbon.home}/repository/conf"</vmParameters>
+        <programArguments></programArguments>
+		<classpathReference>carbon.libs</classpathReference>
+		<debugPort>${carbon.debug}</debugPort>
+	</start>
+	
+	<classpath id="carbon.libs">
+		<archive path="${carbon.home}/lib" />
+		<archive path="${carbon.home}/bin" />
+		<archive path="${carbon.home}/lib/endorsed" />
+		<!-- archive path="${carbon.home}/lib/patches" /-->
+		<archive path="${carbon.home}/repository/components/lib" />
+		<archive path="${carbon.home}/repository/components/extensions" />		
+	</classpath>
+</tns:ServerRuntime>

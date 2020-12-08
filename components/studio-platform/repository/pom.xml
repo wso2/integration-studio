@@ -25,6 +25,5 @@
     <url>http://wso2.org</url>
     <modules>
 	     <module>main</module>
-	     <module>distribution</module>
     </modules>
 </project>

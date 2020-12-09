@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Developer Studio
-Bundle-SymbolicName: org.wso2.developerstudio.rcp.plugin;singleton:=true
-Bundle-Version: 7.0.0.qualifier
+Bundle-Name: Integration Studio
+Bundle-SymbolicName: org.wso2.integrationstudio.rcp.plugin;singleton:=true
+Bundle-Version: 7.2.0.qualifier
 Bundle-Vendor: WSO2
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.eclipse.e4.core.services,
@@ -14,8 +14,8 @@ Require-Bundle: org.eclipse.e4.core.services,
  org.eclipse.ui.intro,
  org.eclipse.ui,
  org.eclipse.ui.workbench,
- org.wso2.developerstudio.eclipse.platform.ui,
+ org.wso2.integrationstudio.eclipse.platform.ui,
  org.eclipse.core.runtime,
- org.wso2.developerstudio.eclipse.templates.dashboard;bundle-version="7.0.0"
+ org.wso2.integrationstudio.eclipse.templates.dashboard;bundle-version="7.0.0"
 Import-Package: org.eclipse.ui.part,
- org.wso2.developerstudio.eclipse.logging.core;version="4.3.0"
+ org.wso2.integrationstudio.eclipse.logging.core

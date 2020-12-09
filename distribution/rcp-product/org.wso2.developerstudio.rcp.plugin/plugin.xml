@@ -25,11 +25,11 @@
          </property>
          <property
 		   name="cssTheme"
-	         value="org.wso2.developerstudio.eclipse.esb.light.theme">
+	         value="org.wso2.integrationstudio.eclipse.esb.light.theme">
          </property>      
          <property
            name="lifeCycleURI"
-           value="bundleclass://org.wso2.developerstudio.rcp.plugin/org.wso2.developerstudio.rcp.plugin.LifeCycleManager">
+           value="bundleclass://org.wso2.integrationstudio.rcp.plugin/org.wso2.integrationstudio.rcp.plugin.LifeCycleManager">
          </property>
          <property
                name="startupForegroundColor"
@@ -45,10 +45,10 @@
          </property>
          <property 
          		name="introBrandingImage" 
-         		value="product:icons/developer-studio.svg"/>
+         		value="product:icons/integration-studio.svg"/>
 		 <property 
 		 		name="introTitle" 
-		 		value="Welcome to WSO2 Developer Studio"/>
+		 		value="Welcome to WSO2 Integration Studio"/>
    <property
          name="preferenceCustomization"
          value="plugin_customization.ini">
@@ -60,14 +60,14 @@
       <perspective
             name="WSO2"
             icon="icons/perspective.png"
-            class="org.wso2.developerstudio.rcp.plugin.perspective.DeveloperStudioPerspective"
-            id="org.wso2.developerstudio.eclipse.WSO2DeveloperStudioPerspective">
+            class="org.wso2.integrationstudio.rcp.plugin.perspective.IntegrationStudioPerspective"
+            id="org.wso2.integrationstudio.eclipse.WSO2IntegrationStudioPerspective">
       </perspective>
    </extension-->
    <extension point="org.eclipse.ui.intro">
  		<introProductBinding
 			introId="org.eclipse.ui.intro.universal"
- 			productId="org.wso2.developerstudio.rcp.plugin.devstudio">
+ 			productId="org.wso2.integrationstudio.rcp.plugin.devstudio">
 		</introProductBinding>
 	</extension>
 
@@ -79,17 +79,17 @@
 
       <splashHandler
 
-            class="org.wso2.developerstudio.rcp.plugin.handler.SplashHandler"
+            class="org.wso2.integrationstudio.rcp.plugin.handler.SplashHandler"
 
-            id="org.wso2.developerstudio.rcp.plugin.handler.id">
+            id="org.wso2.integrationstudio.rcp.plugin.handler.id">
 
       </splashHandler>
 
       <splashHandlerProductBinding
 
-            productId="org.wso2.developerstudio.rcp.plugin.devstudio"
+            productId="org.wso2.integrationstudio.rcp.plugin.devstudio"
 
-            splashId="org.wso2.developerstudio.rcp.plugin.handler.id">
+            splashId="org.wso2.integrationstudio.rcp.plugin.handler.id">
 
       </splashHandlerProductBinding>
 

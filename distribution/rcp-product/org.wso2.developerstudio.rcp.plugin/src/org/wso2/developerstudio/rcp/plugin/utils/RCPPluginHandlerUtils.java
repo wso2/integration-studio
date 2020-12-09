@@ -1,4 +1,4 @@
-package org.wso2.developerstudio.rcp.plugin.utils;
+package org.wso2.integrationstudio.rcp.plugin.utils;
 
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
@@ -23,10 +23,10 @@ public class RCPPluginHandlerUtils {
         final String version = System.getProperty(JAVA_VERSION_PROPERTY);
         double detectedJavaVersion = getJavaVersionInDouble(version);
         final String warningMessage = "Detected java version " + detectedJavaVersion
-                + " is not compatible with Developer Studio."
+                + " is not compatible with Integration Studio."
                 + " Recommended JDK version is 1.8.x. Do you want to proceed with this version?.";
         final Display display = splashDisplay;
-        // If Developer Studio starts with an unsupported version, then show a
+        // If Integration Studio starts with an unsupported version, then show a
         // warning
         if (detectedJavaVersion > 1.8) {
             display.asyncExec(new Runnable() {

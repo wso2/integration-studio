@@ -15,7 +15,7 @@
 * specific language governing permissions and limitations
 * under the License.
 */
-package org.wso2.developerstudio.rcp.plugin;
+package org.wso2.integrationstudio.rcp.plugin;
 
 import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.e4.ui.workbench.lifecycle.PostContextCreate;
@@ -27,11 +27,11 @@ import org.eclipse.swt.widgets.Monitor;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
-import org.wso2.developerstudio.eclipse.logging.core.Logger;
-import org.wso2.developerstudio.eclipse.platform.ui.Activator;
-import org.wso2.developerstudio.eclipse.templates.dashboard.handlers.JettyServerHandler;
-import org.wso2.developerstudio.rcp.plugin.utils.RCPPluginHandlerUtils;
+import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.eclipse.platform.ui.Activator;
+import org.wso2.integrationstudio.eclipse.templates.dashboard.handlers.JettyServerHandler;
+import org.wso2.integrationstudio.rcp.plugin.utils.RCPPluginHandlerUtils;
 
 /**
  * This class handles the eclipse lifecycle events. In a RCP distribution we can
@@ -39,7 +39,7 @@ import org.wso2.developerstudio.rcp.plugin.utils.RCPPluginHandlerUtils;
  */
 public class LifeCycleManager {
 
-    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     /**
      * This will fire once the workspece is selected in eclipse startup.

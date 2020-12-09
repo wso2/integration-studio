@@ -64,7 +64,7 @@
 		<module>org.wso2.integrationstudio.eclipse.project.extensions</module>
 		<module>org.wso2.integrationstudio.eclipse.docker.distribution</module>
 
-		<module>org.wso2.developerstudio.eclipse.ei.project</module>
+		<module>org.wso2.integrationstudio.eclipse.ei.project</module>
 	</modules>
 	<build>
 		<plugins>

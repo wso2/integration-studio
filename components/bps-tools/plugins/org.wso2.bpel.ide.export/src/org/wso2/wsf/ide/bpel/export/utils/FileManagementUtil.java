@@ -30,12 +30,12 @@ import java.util.zip.ZipOutputStream;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.wso2.wsf.ide.bpel.export.WSO2BPELPlugin;
-import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
-import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.eclipse.logging.core.Logger;
 
 public class FileManagementUtil {
 	private static final int BUFFER = 100;
-	private static IDeveloperStudioLog log=Logger.getLog(WSO2BPELPlugin.PLUGIN_ID);
+	private static IIntegrationStudioLog log=Logger.getLog(WSO2BPELPlugin.PLUGIN_ID);
 
 	public static void copyDirectory(File srcPath, File dstPath, List filesToBeCopied) throws IOException{
 		

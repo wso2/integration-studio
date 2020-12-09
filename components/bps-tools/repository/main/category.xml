@@ -17,19 +17,19 @@
   under the License.
    -->
 <site>
-<category-def name="org.wso2.developerstudio.eclipse.bps.feature.category" label="WSO2 BPS Tools">
+<category-def name="org.wso2.integrationstudio.eclipse.bps.feature.category" label="WSO2 BPS Tools">
 <description>
-		This is the App Server Feature for the Developer Studio. This provides tooling support for WSO2 BPS Artifact creation and deployment with Developer Studio.
+		This is the App Server Feature for the Integration Studio. This provides tooling support for WSO2 BPS Artifact creation and deployment with Integration Studio.
       </description>
 </category-def>
 
- <feature id="org.wso2.developerstudio.eclipse.bps.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+ <feature id="org.wso2.integrationstudio.eclipse.bps.feature" version="0.0.0">
+      <category name="org.wso2.integrationstudio.eclipse.bps.feature.category"/>
    </feature>
- <feature id="org.wso2.developerstudio.eclipse.bps.hteditor.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+ <feature id="org.wso2.integrationstudio.eclipse.bps.hteditor.feature" version="0.0.0">
+      <category name="org.wso2.integrationstudio.eclipse.bps.feature.category"/>
    </feature>
-   <feature id="org.wso2.developerstudio.eclipse.bps.bpmn.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+   <feature id="org.wso2.integrationstudio.eclipse.bps.bpmn.feature" version="0.0.0">
+      <category name="org.wso2.integrationstudio.eclipse.bps.feature.category"/>
    </feature>
 </site>

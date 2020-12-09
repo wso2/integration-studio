@@ -72,8 +72,8 @@
    <feature id="org.wso2.integrationstudio.eclipse.docker.distribution.feature" version="0.0.0">
       <category name="org.wso2.integrationstudio.kernel.platform.bundles" />
    </feature>
-   <feature id="org.wso2.developerstudio.eclipse.ei.project.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.eclipse.ei.project.feature.category" />
+   <feature id="org.wso2.integrationstudio.eclipse.ei.project.feature" version="0.0.0">
+      <category name="org.wso2.integrationstudio.eclipse.ei.project.feature.category" />
    </feature>
    <category-def name="org.wso2.integrationstudio.kernel" label="WSO2 Integration Studio Kernel">
       <description>
@@ -90,9 +90,9 @@
 		WSO2 Integration Studio Kernel provides a set of core plugins which can be used to develop Eclipse plugins for the WSO2 products which are based on award wining WSO2 carbon platform. After a major architecture revamping with version 4.0.0, WSO2 Integration Studio is moved in to a kernel based model. All the product specific plugins will use the Integration Studio Kernel as the base for their implementation.
       </description>
    </category-def>
-   <category-def name="org.wso2.developerstudio.eclipse.ei.project.feature.category" label="WSO2 Enterprise Integrator Tools">
+   <category-def name="org.wso2.integrationstudio.eclipse.ei.project.feature.category" label="WSO2 Enterprise Integrator Tools">
       <description>
-      This is the Enterprise Integrator Tooling Feature for the Developer Studio. This enables the 'WSO2 Enterprise Integrator' Server under servers section.
+      This is the Enterprise Integrator Tooling Feature for the Integration Studio. This enables the 'WSO2 Enterprise Integrator' Server under servers section.
       </description>
    </category-def>
 </site>

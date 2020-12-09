@@ -17,17 +17,17 @@
  </page>
  <page id="whatsnew">
   <group path="page-content/top-left">
-    <extension id="org.wso2.developerstudio.product.whatsnew"
+    <extension id="org.wso2.integrationstudio.product.whatsnew"
                importance="high"/>
   </group>
  </page>
  <page id="firststeps">
   <group path="page-content/top-left">
-    <extension id="org.wso2.developerstudio.trends.databrowser"
+    <extension id="org.wso2.integrationstudio.trends.databrowser"
                importance="medium"/>
   </group>
   <group path="page-content/top-right">
-    <extension id="org.wso2.developerstudio.opibuilder" importance="medium"/>
+    <extension id="org.wso2.integrationstudio.opibuilder" importance="medium"/>
   </group>
  </page>
 </extensions>

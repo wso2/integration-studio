@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.wso2.developerstudio.rcp.feature"
+      id="org.wso2.integrationstudio.rcp.feature"
       label="Feature"
-      version="7.0.0.qualifier"
+      version="7.2.0.qualifier"
       provider-name="WSO2 Inc.">
 
    <description url="http://www.example.com/description">
@@ -18,7 +18,7 @@
    </license>
 
    <plugin
-         id="org.wso2.developerstudio.rcp.plugin"
+         id="org.wso2.integrationstudio.rcp.plugin"
          download-size="0"
          install-size="0"
          version="0.0.0"

@@ -14,77 +14,77 @@
   under the License.
    -->
 <site>
-   <category-def name="org.wso2.developerstudio.eclipse.bps.feature.category" label="WSO2 BPS Tools">
+   <category-def name="org.wso2.integrationstudio.eclipse.bps.feature.category" label="WSO2 BPS Tools">
    <description>
-    This is the App Server Feature for the Developer Studio. This provides tooling support for WSO2 BPS Artifact creation and deployment with Developer Studio.
+    This is the App Server Feature for the Integration Studio. This provides tooling support for WSO2 BPS Artifact creation and deployment with Integration Studio.
    </description>
    </category-def>
-   <feature id="org.wso2.developerstudio.eclipse.bps.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+   <feature id="org.wso2.integrationstudio.eclipse.bps.feature" version="0.0.0">
+      <category name="org.wso2.integrationstudio.eclipse.bps.feature.category"/>
    </feature>
-   <feature id="org.wso2.developerstudio.eclipse.bps.hteditor.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+   <feature id="org.wso2.integrationstudio.eclipse.bps.hteditor.feature" version="0.0.0">
+      <category name="org.wso2.integrationstudio.eclipse.bps.feature.category"/>
    </feature>
-   <feature id="org.wso2.developerstudio.eclipse.bps.bpmn.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+   <feature id="org.wso2.integrationstudio.eclipse.bps.bpmn.feature" version="0.0.0">
+      <category name="org.wso2.integrationstudio.eclipse.bps.feature.category"/>
    </feature>
 
    <!-- Kernel Features and category--> 
- <feature id="org.wso2.developerstudio.kernel.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+ <feature id="org.wso2.integrationstudio.kernel.feature" version="0.0.0">
+      <category name="org.wso2.integrationstudio.eclipse.bps.feature.category"/>
    </feature>
-   <feature id="org.wso2.developerstudio.capp.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+   <feature id="org.wso2.integrationstudio.capp.feature" version="0.0.0">
+      <category name="org.wso2.integrationstudio.eclipse.bps.feature.category"/>
    </feature>
-   <feature id="org.wso2.developerstudio.carbon.server.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+   <feature id="org.wso2.integrationstudio.carbon.server.feature" version="0.0.0">
+      <category name="org.wso2.integrationstudio.eclipse.bps.feature.category"/>
    </feature>
-   <feature id="org.wso2.developerstudio.carbon.server-40.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+   <feature id="org.wso2.integrationstudio.carbon.server-40.feature" version="0.0.0">
+      <category name="org.wso2.integrationstudio.eclipse.bps.feature.category"/>
    </feature>
-   <feature id="org.wso2.developerstudio.carbon.server-42.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+   <feature id="org.wso2.integrationstudio.carbon.server-42.feature" version="0.0.0">
+      <category name="org.wso2.integrationstudio.eclipse.bps.feature.category"/>
    </feature>
- <feature id="org.wso2.developerstudio.carbon.server-remote.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+ <feature id="org.wso2.integrationstudio.carbon.server-remote.feature" version="0.0.0">
+      <category name="org.wso2.integrationstudio.eclipse.bps.feature.category"/>
    </feature>
- <feature id="org.wso2.developerstudio.carbon.server-44.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+ <feature id="org.wso2.integrationstudio.carbon.server-44.feature" version="0.0.0">
+      <category name="org.wso2.integrationstudio.eclipse.bps.feature.category"/>
    </feature>
- <feature id="org.wso2.developerstudio.dashboard.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+ <feature id="org.wso2.integrationstudio.dashboard.feature" version="0.0.0">
+      <category name="org.wso2.integrationstudio.eclipse.bps.feature.category"/>
    </feature>
- <feature id="org.wso2.developerstudio.kernel.registry.core.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+ <feature id="org.wso2.integrationstudio.kernel.registry.core.feature" version="0.0.0">
+      <category name="org.wso2.integrationstudio.eclipse.bps.feature.category"/>
    </feature>
- <feature id="org.wso2.developerstudio.kernel.security.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+ <feature id="org.wso2.integrationstudio.kernel.security.feature" version="0.0.0">
+      <category name="org.wso2.integrationstudio.eclipse.bps.feature.category"/>
    </feature>
- <feature id="org.wso2.developerstudio.kernel.wso2plugins.default.samples.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+ <feature id="org.wso2.integrationstudio.kernel.wso2plugins.default.samples.feature" version="0.0.0">
+      <category name="org.wso2.integrationstudio.eclipse.bps.feature.category"/>
    </feature>
- <feature id="org.wso2.developerstudio.cloud.utils.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+ <feature id="org.wso2.integrationstudio.cloud.utils.feature" version="0.0.0">
+      <category name="org.wso2.integrationstudio.eclipse.bps.feature.category"/>
    </feature>
- <feature id="org.wso2.developerstudio.kernel.utils.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+ <feature id="org.wso2.integrationstudio.kernel.utils.feature" version="0.0.0">
+      <category name="org.wso2.integrationstudio.eclipse.bps.feature.category"/>
    </feature>
- <feature id="org.wso2.developerstudio.library.artifact.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+ <feature id="org.wso2.integrationstudio.library.artifact.feature" version="0.0.0">
+      <category name="org.wso2.integrationstudio.eclipse.bps.feature.category"/>
    </feature>
- <feature id="org.wso2.developerstudio.platform.libraries.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+ <feature id="org.wso2.integrationstudio.platform.libraries.feature" version="0.0.0">
+      <category name="org.wso2.integrationstudio.eclipse.bps.feature.category"/>
    </feature>
- <feature id="org.wso2.developerstudio.usr.management.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+ <feature id="org.wso2.integrationstudio.usr.management.feature" version="0.0.0">
+      <category name="org.wso2.integrationstudio.eclipse.bps.feature.category"/>
    </feature>
- <feature id="org.wso2.developerstudio.mvn.multimodule.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+ <feature id="org.wso2.integrationstudio.mvn.multimodule.feature" version="0.0.0">
+      <category name="org.wso2.integrationstudio.eclipse.bps.feature.category"/>
    </feature>
- <feature id="org.wso2.developerstudio.web.ui.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+ <feature id="org.wso2.integrationstudio.web.ui.feature" version="0.0.0">
+      <category name="org.wso2.integrationstudio.eclipse.bps.feature.category"/>
    </feature>  
   <feature id="org.eclipse.graphiti.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+      <category name="org.wso2.integrationstudio.eclipse.bps.feature.category"/>
    </feature>  
 </site>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Integration Studio" uid="WSO2-Integration-Studio" id="org.wso2.developerstudio.rcp.plugin.devstudio" application="org.eclipse.ui.ide.workbench" version="7.0.0.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="Integration Studio" uid="WSO2-Integration-Studio" id="org.wso2.integrationstudio.rcp.plugin.devstudio" application="org.eclipse.ui.ide.workbench" version="7.2.0.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
-      <image path="/org.wso2.developerstudio.rcp.plugin/icons/carbon-studio-logo.gif"/>
+      <image path="/org.wso2.integrationstudio.rcp.plugin/icons/carbon-studio-logo.gif"/>
       <text>
          Licensed under Apache License, version 2.
 Please visit : http://wso2.com/products/developer-studio/
@@ -15,7 +15,7 @@ Please visit : http://wso2.com/products/developer-studio/
    </configIni>
 
    <launcherArgs>
-      <programArgsMac>/org.wso2.developerstudio.rcp.plugin/icons/DeveloperStudio.icns
+      <programArgsMac>/org.wso2.integrationstudio.rcp.plugin/icons/IntegrationStudio.icns
       </programArgsMac>
       <vmArgs>-Xms512m
 -Xmx2048m
@@ -26,16 +26,16 @@ Please visit : http://wso2.com/products/developer-studio/
       </vmArgsMac>
    </launcherArgs>
 
-   <windowImages i16="/org.wso2.developerstudio.rcp.plugin/icons/icon-16.gif" i32="/org.wso2.developerstudio.rcp.plugin/icons/icon-32.gif" i48="/org.wso2.developerstudio.rcp.plugin/icons/icon-48.gif" i64="/org.wso2.developerstudio.rcp.plugin/icons/icon-64.gif" i128="/org.wso2.developerstudio.rcp.plugin/icons/icon-128.gif" i256="/org.wso2.developerstudio.rcp.plugin/icons/icon-256.gif"/>
+   <windowImages i16="/org.wso2.integrationstudio.rcp.plugin/icons/icon-16.gif" i32="/org.wso2.integrationstudio.rcp.plugin/icons/icon-32.gif" i48="/org.wso2.integrationstudio.rcp.plugin/icons/icon-48.gif" i64="/org.wso2.integrationstudio.rcp.plugin/icons/icon-64.gif" i128="/org.wso2.integrationstudio.rcp.plugin/icons/icon-128.gif" i256="/org.wso2.integrationstudio.rcp.plugin/icons/icon-256.gif"/>
 
    <splash
-      location="org.wso2.developerstudio.rcp.plugin"
+      location="org.wso2.integrationstudio.rcp.plugin"
       startupProgressRect="5,275,440,10"
       startupMessageRect="7,252,445,20"
       startupForegroundColor="729FCF" />
-   <launcher name="developerstudio">
+   <launcher name="integrationstudio">
       <linux icon="./icons/icon-linux.xpm"/>
-      <macosx icon="/icons/DeveloperStudio.icns"/>
+      <macosx icon="/icons/IntegrationStudio.icns"/>
       <win useIco="false">
          <ico path="./icons/256x256.png.ico"/>
          <bmp
@@ -331,46 +331,46 @@ Please visit : http://wso2.com/products/developer-studio/
       <feature id="org.roussev.http4e.feature" version="5.0.12"/>
       <feature id="de.jcup.yamleditor"/>
       <!-- Dev studio kernel/platform features -->
-      <feature id="org.wso2.developerstudio.rcp.feature" installMode="root"/>
-      <feature id="org.wso2.developerstudio.kernel.feature" installMode="root"/>
-      <feature id="org.wso2.developerstudio.kernel.wso2plugins.samples.feature" installMode="root"/>
-      <feature id="org.wso2.developerstudio.capp.feature" installMode="root"/>
-      <feature id="org.wso2.developerstudio.carbon.server.feature" installMode="root"/>
-      <feature id="org.wso2.developerstudio.carbon.server-40.feature" installMode="root"/>
-      <feature id="org.wso2.developerstudio.carbon.server-42.feature" installMode="root"/>
-      <feature id="org.wso2.developerstudio.carbon.server-remote.feature" installMode="root"/>
-      <feature id="org.wso2.developerstudio.carbon.server-44.feature" installMode="root"/>
-      <feature id="org.wso2.developerstudio.carbon.server-44ei.feature" installMode="root"/>
-      <feature id="org.wso2.developerstudio.dashboard.feature" installMode="root"/>
-      <feature id="org.wso2.developerstudio.kernel.registry.core.feature" installMode="root"/>
-      <feature id="org.wso2.developerstudio.kernel.security.feature" installMode="root"/>
-      <feature id="org.wso2.developerstudio.kernel.utils.feature" installMode="root"/>
-      <feature id="org.wso2.developerstudio.kernel.wso2plugins.default.samples.feature" installMode="root"/>
-      <feature id="org.wso2.developerstudio.library.artifact.feature" installMode="root"/>
-      <feature id="org.wso2.developerstudio.platform.libraries.feature" installMode="root"/>
-      <feature id="org.wso2.developerstudio.usr.management.feature" installMode="root"/>
-      <feature id="org.wso2.developerstudio.mvn.multimodule.feature" installMode="root"/>
-      <feature id="org.wso2.developerstudio.cloud.utils.feature" installMode="root"/>
-      <feature id="org.wso2.developerstudio.web.ui.feature" installMode="root"/>
-      <feature id="org.wso2.developerstudio.eclipse.docker.distribution.feature" installMode="root"/>
-      <feature id="org.wso2.developerstudio.carbon.server-44microei.feature" installMode="root"/>
-      <!-- <feature id="org.wso2.developerstudio.eclipse.smooks.editor.feature" installMode="root"/> -->
-      <!-- <feature id="org.wso2.developerstudio.eclipse.apim.endpoint.central.feature" installMode="root"/> -->
+      <feature id="org.wso2.integrationstudio.rcp.feature" installMode="root"/>
+      <feature id="org.wso2.integrationstudio.kernel.feature" installMode="root"/>
+      <feature id="org.wso2.integrationstudio.kernel.wso2plugins.samples.feature" installMode="root"/>
+      <feature id="org.wso2.integrationstudio.capp.feature" installMode="root"/>
+      <feature id="org.wso2.integrationstudio.carbon.server.feature" installMode="root"/>
+      <feature id="org.wso2.integrationstudio.carbon.server-40.feature" installMode="root"/>
+      <feature id="org.wso2.integrationstudio.carbon.server-42.feature" installMode="root"/>
+      <feature id="org.wso2.integrationstudio.carbon.server-remote.feature" installMode="root"/>
+      <feature id="org.wso2.integrationstudio.carbon.server-44.feature" installMode="root"/>
+      <feature id="org.wso2.integrationstudio.carbon.server-44ei.feature" installMode="root"/>
+      <feature id="org.wso2.integrationstudio.dashboard.feature" installMode="root"/>
+      <feature id="org.wso2.integrationstudio.kernel.registry.core.feature" installMode="root"/>
+      <feature id="org.wso2.integrationstudio.kernel.security.feature" installMode="root"/>
+      <feature id="org.wso2.integrationstudio.kernel.utils.feature" installMode="root"/>
+      <feature id="org.wso2.integrationstudio.kernel.wso2plugins.default.samples.feature" installMode="root"/>
+      <feature id="org.wso2.integrationstudio.library.artifact.feature" installMode="root"/>
+      <feature id="org.wso2.integrationstudio.platform.libraries.feature" installMode="root"/>
+      <feature id="org.wso2.integrationstudio.usr.management.feature" installMode="root"/>
+      <feature id="org.wso2.integrationstudio.mvn.multimodule.feature" installMode="root"/>
+      <feature id="org.wso2.integrationstudio.cloud.utils.feature" installMode="root"/>
+      <feature id="org.wso2.integrationstudio.web.ui.feature" installMode="root"/>
+      <feature id="org.wso2.integrationstudio.eclipse.docker.distribution.feature" installMode="root"/>
+      <feature id="org.wso2.integrationstudio.carbon.server-44microei.feature" installMode="root"/>
+      <!-- <feature id="org.wso2.integrationstudio.eclipse.smooks.editor.feature" installMode="root"/> -->
+      <!-- <feature id="org.wso2.integrationstudio.eclipse.apim.endpoint.central.feature" installMode="root"/> -->
       <!-- Dev studio ESB features -->
-      <feature id="org.wso2.developerstudio.eclipse.esb.feature" installMode="root"/>
-      <feature id="org.wso2.developerstudio.eclipse.esb.editor.feature" installMode="root"/>
-      <feature id="org.wso2.developerstudio.eclipse.esb.dependencies.feature" installMode="root"/>
-      <feature id="org.wso2.developerstudio.eclipse.visualdatamapper.editor.feature" installMode="root"/>
+      <feature id="org.wso2.integrationstudio.eclipse.esb.feature" installMode="root"/>
+      <feature id="org.wso2.integrationstudio.eclipse.esb.editor.feature" installMode="root"/>
+      <feature id="org.wso2.integrationstudio.eclipse.esb.dependencies.feature" installMode="root"/>
+      <feature id="org.wso2.integrationstudio.eclipse.visualdatamapper.editor.feature" installMode="root"/>
       <!-- Dev studio DSS features -->
-      <feature id="org.wso2.developerstudio.eclipse.data.service.feature" installMode="root"/>
-      <feature id="org.wso2.developerstudio.eclipse.data.source.feature" installMode="root"/>
-      <feature id="org.wso2.developerstudio.eclipse.dss.dependencies.feature" installMode="root"/>
+      <feature id="org.wso2.integrationstudio.eclipse.data.service.feature" installMode="root"/>
+      <feature id="org.wso2.integrationstudio.eclipse.data.source.feature" installMode="root"/>
+      <feature id="org.wso2.integrationstudio.eclipse.dss.dependencies.feature" installMode="root"/>
       <!-- Dev studio EI features -->
-      <feature id="org.wso2.developerstudio.eclipse.ei.project.feature" installMode="root"/>
+      <feature id="org.wso2.integrationstudio.eclipse.ei.project.feature" installMode="root"/>
       <!-- Dev studio BPS features -->
-      <feature id="org.wso2.developerstudio.eclipse.bps.feature" installMode="root"/>
-      <feature id="org.wso2.developerstudio.eclipse.bps.hteditor.feature" installMode="root"/>
-      <feature id="org.wso2.developerstudio.eclipse.bps.bpmn.feature" installMode="root"/>
+      <feature id="org.wso2.integrationstudio.eclipse.bps.feature" installMode="root"/>
+      <feature id="org.wso2.integrationstudio.eclipse.bps.hteditor.feature" installMode="root"/>
+      <feature id="org.wso2.integrationstudio.eclipse.bps.bpmn.feature" installMode="root"/>
 
    </features>
 

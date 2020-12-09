@@ -15,7 +15,7 @@
 * specific language governing permissions and limitations
 * under the License.
 */
-package org.wso2.developerstudio.rcp.plugin.handler;
+package org.wso2.integrationstudio.rcp.plugin.handler;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.events.PaintEvent;
@@ -30,7 +30,7 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
  */
 public class SplashHandler extends EclipseSplashHandler {
 
-    private static final String PLUGIN_ID = "org.wso2.developerstudio.rcp.plugin";
+    private static final String PLUGIN_ID = "org.wso2.integrationstudio.rcp.plugin";
     private static final String BETA_PNG = "icons/version/420_4.png";
     private static final int BORDER = 165;
     private Image image;

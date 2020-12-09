@@ -8,7 +8,7 @@
    <includeBaseDirectory>false</includeBaseDirectory>
   <fileSets>
     <fileSet>
-        <directory>${project.basedir}/target/products/WSO2-Developer-Studio/macosx/cocoa/x86_64</directory>
+        <directory>${project.basedir}/target/products/WSO2-Integration-Studio/macosx/cocoa/x86_64</directory>
         <outputDirectory>${project.basedir}/target/products/WSO2-Developer-Asss-Studio-macosx.cocoa.x86_64</outputDirectory>
         <useDefaultExcludes>true</useDefaultExcludes>
         <fileMode>777</fileMode>

@@ -32,14 +32,14 @@ import org.eclipse.core.resources.IProject;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
-import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.eclipse.logging.core.Logger;
 import org.wso2.wsf.ide.bpel.export.WSO2BPELPlugin;
 import org.xml.sax.SAXException;
 
 public class BpelUtils {
 	private static final String DEPLOY_XML = "deploy.xml";
-	private static IDeveloperStudioLog log=Logger.getLog(WSO2BPELPlugin.PLUGIN_ID);
+	private static IIntegrationStudioLog log=Logger.getLog(WSO2BPELPlugin.PLUGIN_ID);
 
 	public static boolean isProjectContainsBpel(IProject p) {
 		String prjPath = p.getLocation().toOSString();

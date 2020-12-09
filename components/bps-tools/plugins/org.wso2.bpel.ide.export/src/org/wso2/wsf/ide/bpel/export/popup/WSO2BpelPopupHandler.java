@@ -29,14 +29,14 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.internal.ObjectPluginAction;
-import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
-import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.eclipse.logging.core.Logger;
 import org.wso2.wsf.ide.bpel.export.WSO2BPELPlugin;
 import org.wso2.wsf.ide.bpel.export.utils.BpelUtils;
 import org.wso2.wsf.ide.bpel.export.utils.FileManagementUtil;
 
 public class WSO2BpelPopupHandler implements IObjectActionDelegate {
-	private static IDeveloperStudioLog log=Logger.getLog(WSO2BPELPlugin.PLUGIN_ID);
+	private static IIntegrationStudioLog log=Logger.getLog(WSO2BPELPlugin.PLUGIN_ID);
 	private Shell shell;
 	public void setActivePart(IAction arg0, IWorkbenchPart arg1) {
 		shell = arg1.getSite().getShell();

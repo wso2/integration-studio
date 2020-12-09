@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Xtext Embeddable Editor in Bpel Designer
+Bundle-SymbolicName: org.eclipse.bpel.ui.xtext
+Bundle-Version: 1.0.0
+Bundle-Activator: org.eclipse.bpel.ui.xtext.Activator
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.xtext.ui;bundle-version="2.3.0";visibility:=reexport,
+ org.eclipse.bpel.ui;bundle-version="1.0.1";visibility:=reexport,
+ org.eclipse.bpel.model;bundle-version="1.0.1";visibility:=reexport,
+ org.eclipse.ui.views.properties.tabbed;bundle-version="3.5.0";visibility:=reexport,
+ org.eclipse.gef;visibility:=reexport,
+ org.eclipse.bpel.common.ui;bundle-version="1.0.1";visibility:=reexport
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.eclipse.bpel.ui.properties.xtext
+Bundle-Vendor: Lorenzo Bettini

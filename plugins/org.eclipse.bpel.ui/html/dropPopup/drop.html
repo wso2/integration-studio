@@ -1,0 +1,25 @@
+<html>
+<head>
+<title></title>
+<style type="text/css">
+${:include:../popup.css}
+</style> 
+<script>
+function cb (e) {
+	window.status = "event://" + e
+	window.status = ""
+}
+</script>
+</head>
+<body style="${background-color}; ${font};"> 
+<ol>
+${content}
+</ol>
+
+<p>Check the <a href="#" onclick="cb('typeBrowser')"><b>types</b></a>
+or <a href="#" onclick="cb('wsdlBrowser')"><b>port/partner link type</b></a>
+browsers to see current types, port types, and partner links
+ available to this BPEL process.
+</body>
+</html>
+

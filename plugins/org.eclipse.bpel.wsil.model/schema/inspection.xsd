@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+
+Copyright Notice
+
+(c) 2001-2006  International Business Machines Corporation and Microsoft Corporation, Inc. 
+All rights reserved. 
+      
+Permission to copy and display the Web Services Inspection Language Specification (the "Specification",
+which includes WSDL and schema documents), in any medium without fee or royalty is hereby granted, 
+provided that you include the following on ALL copies of the Specification that you make:
+     
+      1.  A link or URL to the Specification at one of the Authors' websites. 
+      2. The copyright notice as shown in the Specification. 
+            
+International Business Machines Corporation and Microsoft Corporation, Inc. (collectively, the "Authors") 
+each agree to grant you a license, under royalty-free and otherwise reasonable, non-discriminatory terms and
+conditions, to their respective essential patent claims that they deem necessary to implement the Specification. 
+      
+THE SPECIFICATION IS PROVIDED "AS IS," AND THE AUTHORS MAKE NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED,
+INCLUDING, BUT NOT LIMITED TO, WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT,
+OR TITLE; THAT THE CONTENTS OF THE SPECIFICATION ARE SUITABLE FOR ANY PURPOSE; NOR THAT THE IMPLEMENTATION OF SUCH
+CONTENTS WILL NOT INFRINGE ANY THIRD PARTY PATENTS, COPYRIGHTS, TRADEMARKS OR OTHER RIGHTS. 
+
+THE AUTHORS WILL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT
+OF OR RELATING TO ANY USE OR DISTRIBUTION OF THE SPECIFICATION.
+
+The name and trademarks of the Authors may NOT be used in any manner, including advertising or publicity pertaining
+to the Specification or its contents without specific, written prior permission. Title to copyright in the
+Specification will at all times remain with the Authors.
+      
+No other rights are granted by implication, estoppel or otherwise.
+
+ -->
+<schema targetNamespace="http://schemas.xmlsoap.org/ws/2001/10/inspection/"
+  xmlns:wsil="http://schemas.xmlsoap.org/ws/2001/10/inspection/"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="qualified">
+<import namespace="http://www.w3.org/XML/1998/namespace"
+ schemaLocation="http://www.w3.org/2001/xml.xsd" />
+
+
+  <complexType name="typeOfAbstract">
+    <simpleContent>
+      <extension base="xsd:string">
+        <attribute ref="xml:lang" use="optional"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+
+  <complexType name="itemWithAbstracts" abstract="true">
+    <sequence>
+      <element name="abstract" type="wsil:typeOfAbstract" minOccurs="0" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+  
+  <complexType name="nameType">
+    <simpleContent>
+      <extension base="xsd:string">
+        <attribute ref="xml:lang" use="optional"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+
+  <complexType name="referenceType">
+    <complexContent>
+      <extension base="wsil:itemWithAbstracts">
+        <attribute name="referencedNamespace" type="anyURI" use="required"/>
+        <attribute name="location" type="anyURI" use="optional"/>
+      </extension>
+    </complexContent>
+  </complexType>
+  
+  <complexType name="descriptionType">
+    <complexContent>
+      <extension base="wsil:referenceType">
+        <sequence>
+          <any namespace="##other" minOccurs="0" processContents="lax"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+
+  <complexType name="linkType">
+    <complexContent>
+      <extension base="wsil:referenceType">
+        <sequence>
+          <any namespace="##other" minOccurs="0" processContents="lax"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  
+  <complexType name="serviceType">
+    <complexContent>
+      <extension base="wsil:itemWithAbstracts">
+        <sequence>
+          <element name="name" type="wsil:nameType" minOccurs="0" maxOccurs="unbounded"/>
+          <element name="description" type="wsil:descriptionType" minOccurs="1" maxOccurs="unbounded"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+	    
+  <element name="inspection">
+    <complexType>
+      <complexContent>
+        <extension base="wsil:itemWithAbstracts">
+          <sequence minOccurs='1' maxOccurs='unbounded'>
+            <choice>
+              <element name="service" type="wsil:serviceType"/>
+              <element name="link" type="wsil:linkType"/>
+            </choice>
+          </sequence>
+        </extension>
+      </complexContent>
+    </complexType>
+  </element>
+
+</schema>

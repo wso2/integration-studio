@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+	xmlns:plnk="http://schemas.xmlsoap.org/ws/2004/03/partner-link/"
+	xmlns:tns="http://SampleProject/SampleProcessArtifacts"
+	xmlns:wsdl0="http://SampleProject/SampleProcessInterface"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://schemas.xmlsoap.org/wsdl/" name="SampleProcess"
+	targetNamespace="http://SampleProject/SampleProcessArtifacts">
+	<plnk:partnerLinkType name="SampleProcessPartnerLinkType">
+		<plnk:role name="ProcessRole" portType="wsdl0:SampleProcess" />
+	</plnk:partnerLinkType>
+	<import location="SampleProcess.wsdl"
+		namespace="http://SampleProject/SampleProcessInterface" />
+</definitions>

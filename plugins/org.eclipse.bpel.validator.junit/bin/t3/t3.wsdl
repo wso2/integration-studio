@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<definitions name="Simple"
+        targetNamespace="http://eclipse.org/bpel/sample"
+        xmlns:tns="http://eclipse.org/bpel/sample"
+        xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+        xmlns="http://schemas.xmlsoap.org/wsdl/"
+   	    xmlns:xsd = "http://www.w3.org/2001/XMLSchema"
+   	    xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" 	    
+        >
+
+   <!-- define a correlation property -->
+   <vprop:property name="p1" type="xsd:integer" />
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     TYPE DEFINITION - List of services participating in this BPEL process 
+     The default output of the BPEL designer uses strings as input and 
+     output to the BPEL Process. But you can define or import any XML 
+     Schema type and us them as part of the message types.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
+    <types>  
+        <schema attributeFormDefault="unqualified" 
+                elementFormDefault="qualified" 
+                targetNamespace="http://eclipse.org/bpel/sample" 
+                xmlns="http://www.w3.org/2001/XMLSchema"
+                >
+                
+            <element name="SimpleRequest">
+                <complexType>
+                    <sequence>
+                        <element name="input" type="string" />
+                    </sequence>
+                </complexType>
+            </element>
+                  
+            <element name="SimpleResponse">
+                <complexType>
+                    <sequence>
+                        <element name="result" type="string"/>
+                    </sequence>
+                </complexType>
+            </element>
+            
+        </schema>
+    </types>
+  
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     MESSAGE TYPE DEFINITION - Definition of the message types used as 
+     part of the port type defintions
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
+    <message name="SimpleRequestMessage">
+        <part name="payload" element="tns:SimpleRequest"/>
+    </message>
+    
+    <message name="SimpleResponseMessage">
+        <part name="payload" element="tns:SimpleResponse"/>
+    </message>
+
+    <message name="RequestMessage3">
+        <part name="payload1" element="tns:SimpleRequest"/>
+        <part name="payload2" element="xsd:integer"/>        
+        <part name="payload3" element="tns:SimpleRequest"/>                
+    </message>
+    
+    <message name="ResponseMessage3">
+        <part name="payload1" element="tns:SimpleResponse"/>
+        <part name="payload2" element="xsd:integer"/>        
+        <part name="payload2" element="tns:SimpleResponse"/>                
+    </message>
+
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     PORT TYPE DEFINITION - A port type groups a set of operations into
+     a logical service unit.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- portType implemented by the Simple BPEL process -->
+    <portType name="Simple">
+        <operation name="initiate">
+            <input message="tns:SimpleRequestMessage"/>
+        </operation>
+    </portType>
+    <portType name="TwoWay">
+        <operation name="TwoWayOperation">
+            <input message="tns:SimpleRequestMessage"/>
+            <output message="tns:SimpleResponseMessage"/>            
+        </operation>
+    </portType>
+	
+	<portType name="Simple3">
+        <operation name="call">
+            <input  message="tns:RequestMessage3"/>
+            <output message="tns:ResponseMessage3"/>
+        </operation>
+    </portType>
+    
+    <!-- portType implemented by the requester of Simple BPEL process 
+         for asynchronous callback purposes
+         -->
+    <portType name="SimpleCallback">
+        <operation name="onResult">
+            <input message="tns:SimpleResponseMessage"/>
+        </operation>
+    </portType>
+
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     PARTNER LINK TYPE DEFINITION
+         the Simple partnerLinkType binds the provider and
+         requester portType into an asynchronous conversation.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
+    <plnk:partnerLinkType name="Simple">
+        <plnk:role name="SimpleProvider"  portType="tns:Simple"/>
+        <plnk:role name="SimpleRequester" portType="tns:SimpleCallback"/>
+    </plnk:partnerLinkType>   
+    
+    <plnk:partnerLinkType name="twoWayPLT">
+        <plnk:role name="twoWayRole" portType="tns:TwoWay"/>
+    </plnk:partnerLinkType>   
+    
+    <plnk:partnerLinkType name="Simple3PLT">
+        <plnk:role name="SimpleProvider3" portType="tns:Simple3"/>
+    </plnk:partnerLinkType>   
+    
+    
+</definitions>

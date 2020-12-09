@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension-point id="factories" name="Validator Factories" schema="schema/factories.exsd"/>
+   <extension-point id="modelQuery" name="Model Query Interface" schema="schema/modelQuery.exsd"/>
+   <extension
+         id="org.eclipse.bpel.validator.factory.iproblem"
+         name="IProblem factory"
+         point="org.eclipse.core.runtime.adapters">
+      <factory
+            adaptableType="org.eclipse.bpel.validator.model.IProblem"
+            class="org.eclipse.bpel.validator.factory.AdapterFactory">
+         <adapter type="org.eclipse.core.resources.IMarker"/>
+         <adapter type="org.eclipse.wst.validation.internal.provisional.core.IMessage"/>
+      </factory>
+      <factory
+            adaptableType="org.eclipse.emf.ecore.EObject"
+            class="org.eclipse.bpel.validator.factory.AdapterFactory">
+         <adapter type="org.eclipse.core.resources.IResource"/>
+         <adapter type="org.eclipse.bpel.validator.model.INode"/>
+      </factory>
+      <factory
+            adaptableType="org.w3c.dom.Element"
+            class="org.eclipse.bpel.validator.factory.AdapterFactory">
+         <adapter type="org.eclipse.bpel.validator.model.INode"/>
+         <adapter type="org.eclipse.core.resources.IResource"/>
+      </factory>
+   </extension>
+   <extension
+         id="org.eclipse.bpel.validator.builder"
+         name="BPEL Validator (Builder)"
+         point="org.eclipse.core.resources.builders">
+      <builder
+            callOnEmptyDelta="false"
+            hasNature="false"
+            isConfigurable="true">
+         <run class="org.eclipse.bpel.validator.Builder">
+         </run>
+      </builder>
+   </extension>
+   <extension
+         id="org.eclipse.validator.builder.2"
+         name="BPEL Validator"
+         point="org.eclipse.wst.validation.validator">
+      <validator>
+         <facet
+               facetId="bpel.facet.core">
+         </facet>
+         <filter
+               caseSensitive="false"
+               nameFilter="*.bpel"
+               objectClass="org.eclipse.core.resources.IFile"/>
+         <run
+               async="true"
+               class="org.eclipse.bpel.validator.Validator"
+               enabled="true"
+               fullBuild="true"
+               incremental="true"/>
+         <helper class="org.eclipse.bpel.validator.ValidatorHelper"/>
+         <markerId markerIdValue="org.eclispe.bpel.validator.marker"/>
+      </validator>
+   </extension>
+   <extension
+         id="org.eclispe.bpel.validator.marker"
+         name="BPEL Validation Marker"
+         point="org.eclipse.core.resources.markers">
+      <!-- https://jira.jboss.org/browse/JBIDE-7497 -->
+      <persistent value="true"/>
+      <super type="org.eclipse.core.resources.problemmarker"/>
+      <attribute name="address.xpath"/>
+      <attribute name="address.model"/>
+   </extension>
+   <extension
+         point="org.eclipse.bpel.validator.factories">
+      <factory
+            class="org.eclipse.bpel.validator.rules.Factory"
+            name="BPEL Factory"/>
+      <factory
+            class="org.eclipse.bpel.validator.wsdl.Factory"
+            name="WSDL Factory"/>
+      <factory
+            class="org.eclipse.bpel.validator.vprop.Factory"
+            name="Variable Properties Factory"/>
+      <factory
+            class="org.eclipse.bpel.validator.plt.Factory"
+            name="Partner Link Types Factory"/>
+      <factory
+            class="org.eclipse.bpel.validator.unsupported.Factory"
+            name="Unsupported Factory">
+      </factory>
+      <factory
+            class="org.eclipse.bpel.validator.xpath.Factory"
+            name="XPath Validator Factory"/>
+   </extension>
+   <extension
+         point="org.eclipse.bpel.validator.modelQuery">
+      <modelQuery
+            class="org.eclipse.bpel.validator.ModelQuery"
+            name="Default EMF Model Query Implementation"/>
+   </extension>
+
+
+</plugin>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<definitions name="${processName}"
+        targetNamespace="${namespace}"
+        xmlns:tns="${namespace}"
+        xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+        xmlns="http://schemas.xmlsoap.org/wsdl/"
+        xmlns:${protocol}="${protocolNamespace}"
+        >
+
+</definitions>

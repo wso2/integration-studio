@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.importWizards">
+      <category
+            id="org.eclipse.bpel.common.wsdl.wsdlCategory"
+            name="WSDL">
+      </category>
+      <wizard
+            category="org.eclipse.bpel.common.wsdl.wsdlCategory"
+            class="org.eclipse.bpel.common.wsdl.wizards.WsdlImportWizard"
+            icon="icons/obj16/importWsdl3.gif"
+            id="org.eclipse.bpel.common.wsdl.wsdlImportWizard"
+            name="WSDL">
+      </wizard>
+   </extension>
+
+</plugin>

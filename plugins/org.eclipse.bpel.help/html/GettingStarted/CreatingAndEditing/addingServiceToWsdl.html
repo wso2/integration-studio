@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="CONTENT-TYPE" />
+<link rel="stylesheet" href="../../book.css" type="text/css" />
+<title>Adding a Service to WSDL file</title>
+</head>
+
+<body>
+	<h1>Adding a Service to WSDL file</h1>
+	<p>
+		The <i>HelloWorldArtifacts.wsdl</i>
+		file is added a service when you create a BPEL process file. A
+		default service is already defined in this WSDL file. However, if
+		you want to add your own service, follow the steps below:
+	</p>
+	<ul>
+		<li><p>
+				Open the file <i>HelloWorldArtifacts.wsdl</i> in the <strong>HelloWorld</strong> project by double-clicking the file. 
+				Right-click the WSDL editor and select <strong>Add Service</strong>. A new service should appear in the editor. Name
+				it <strong>HelloWorldProcessService</strong>. It has the Port named <strong>NewPort</strong>. 
+				Select it, right-click on it and rename it to <strong>HelloWorldProcessPort</strong> in
+				the <strong>Properties</strong> view.
+			</p>
+			<p>
+				<img src="../../../images/detail_editprocess_3.png" alt="Add Service to the WSDL file" />
+			</p>
+		</li>
+		<li><p>
+				Right-click somewhere in the whitespace of the WSDL editor and
+				select the <strong>Add Binding</strong> option. A new Binding component will appear in the
+				editor. Name it <strong>HelloWorldSOAPBinding</strong>. Select it, and in the 
+				<strong>General</strong> tab of the <strong>Properties</strong> view and select 
+				<strong>HelloWorld</strong> as a port type in the <strong>PortType</strong> field. 
+				Then click on the <strong>Generate Binding Content...</strong> button to open the <strong>Binding
+				Wizard</strong>. In the wizard, select <strong>SOAP</strong> as the <strong>Protocol</strong>.
+				Finally, click <strong>Finish</strong> to close the wizard.
+			</p>
+			<p>
+				<img src="../../../images/detail_editprocess_4.png" alt="Add a Binding to the WSDL file" />
+			</p>
+		</li>
+		<li><p>
+				Click the <strong>HelloWorldProcessPort</strong> property in the <strong>General</strong>
+				section of the <strong>Properties</strong> view, select <strong>HelloWorldSOAPBinding</strong>
+				in the <strong>Binding</strong> combobox. Enter <a class="ulink"
+				href="http://localhost:8080/bpel/processes/HelloWorld?wsdl">http://localhost:8080/bpel/processes/HelloWorld?wsdl</a>
+				in the <strong>Address</strong> field.
+			</p>
+			<p>
+				<img src="../../../images/detail_editprocess_5.png" alt="Add the HelloWorldSOAPBinding to the HelloWorldProcessPort" />
+			</p>
+		</li>
+	</ul>
+</body>
+</html>

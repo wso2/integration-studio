@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="inspection"
+    nsURI="http://schemas.xmlsoap.org/ws/2001/10/inspection/" nsPrefix="inspection">
+  <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+    <details key="documentation" value="&#xD;&#xA;   See http://www.w3.org/XML/1998/namespace.html and&#xD;&#xA;   http://www.w3.org/TR/REC-xml for information about this namespace.&#xD;&#xA;&#xD;&#xA;    This schema document describes the XML namespace, in a form&#xD;&#xA;    suitable for import by other schema documents.  &#xD;&#xA;&#xD;&#xA;    Note that local names in this namespace are intended to be defined&#xD;&#xA;    only by the World Wide Web Consortium or its subgroups.  The&#xD;&#xA;    following names are currently defined in this namespace and should&#xD;&#xA;    not be used with conflicting semantics by any Working Group,&#xD;&#xA;    specification, or document instance:&#xD;&#xA;&#xD;&#xA;    base (as an attribute name): denotes an attribute whose value&#xD;&#xA;         provides a URI to be used as the base for interpreting any&#xD;&#xA;         relative URIs in the scope of the element on which it&#xD;&#xA;         appears; its value is inherited.  This name is reserved&#xD;&#xA;         by virtue of its definition in the XML Base specification.&#xD;&#xA;&#xD;&#xA;    id   (as an attribute name): denotes an attribute whose value&#xD;&#xA;         should be interpreted as if declared to be of type ID.&#xD;&#xA;         The xml:id specification is not yet a W3C Recommendation,&#xD;&#xA;         but this attribute is included here to facilitate experimentation&#xD;&#xA;         with the mechanisms it proposes.  Note that it is _not_ included&#xD;&#xA;         in the specialAttrs attribute group.&#xD;&#xA;&#xD;&#xA;    lang (as an attribute name): denotes an attribute whose value&#xD;&#xA;         is a language code for the natural language of the content of&#xD;&#xA;         any element; its value is inherited.  This name is reserved&#xD;&#xA;         by virtue of its definition in the XML specification.&#xD;&#xA;  &#xD;&#xA;    space (as an attribute name): denotes an attribute whose&#xD;&#xA;         value is a keyword indicating what whitespace processing&#xD;&#xA;         discipline is intended for the content of the element; its&#xD;&#xA;         value is inherited.  This name is reserved by virtue of its&#xD;&#xA;         definition in the XML specification.&#xD;&#xA;&#xD;&#xA;    Father (in any context at all): denotes Jon Bosak, the chair of &#xD;&#xA;         the original XML Working Group.  This name is reserved by &#xD;&#xA;         the following decision of the W3C XML Plenary and &#xD;&#xA;         XML Coordination groups:&#xD;&#xA;&#xD;&#xA;             In appreciation for his vision, leadership and dedication&#xD;&#xA;             the W3C XML Plenary on this 10th day of February, 2000&#xD;&#xA;             reserves for Jon Bosak in perpetuity the XML name&#xD;&#xA;             xml:Father&#xD;&#xA;  &#xD;&#xA;This schema defines attributes and an attribute group&#xD;&#xA;        suitable for use by&#xD;&#xA;        schemas wishing to allow xml:base, xml:lang, xml:space or xml:id&#xD;&#xA;        attributes on elements they define.&#xD;&#xA;&#xD;&#xA;        To enable this, such a schema must import this schema&#xD;&#xA;        for the XML namespace, e.g. as follows:&#xD;&#xA;        &amp;lt;schema . . .&amp;gt;&#xD;&#xA;         . . .&#xD;&#xA;         &amp;lt;import namespace=&quot;http://www.w3.org/XML/1998/namespace&quot;&#xD;&#xA;                    schemaLocation=&quot;http://www.w3.org/2001/xml.xsd&quot;/&amp;gt;&#xD;&#xA;&#xD;&#xA;        Subsequently, qualified reference to any of the attributes&#xD;&#xA;        or the group defined below will have the desired effect, e.g.&#xD;&#xA;&#xD;&#xA;        &amp;lt;type . . .&amp;gt;&#xD;&#xA;         . . .&#xD;&#xA;         &amp;lt;attributeGroup ref=&quot;xml:specialAttrs&quot;/&amp;gt;&#xD;&#xA; &#xD;&#xA;         will define a type which will schema-validate an instance&#xD;&#xA;         element with any of those attributes&#xD;&#xA;In keeping with the XML Schema WG's standard versioning&#xD;&#xA;   policy, this schema document will persist at&#xD;&#xA;   http://www.w3.org/2005/08/xml.xsd.&#xD;&#xA;   At the date of issue it can also be found at&#xD;&#xA;   http://www.w3.org/2001/xml.xsd.&#xD;&#xA;   The schema document at that URI may however change in the future,&#xD;&#xA;   in order to remain compatible with the latest version of XML Schema&#xD;&#xA;   itself, or with the XML namespace itself.  In other words, if the XML&#xD;&#xA;   Schema or XML namespaces change, the version of this document at&#xD;&#xA;   http://www.w3.org/2001/xml.xsd will change&#xD;&#xA;   accordingly; the version at&#xD;&#xA;   http://www.w3.org/2005/08/xml.xsd will not change.&#xD;&#xA;  "/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="Description" eSuperTypes="#//Reference">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="descriptionType"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="any" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFeatureMapEntry">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="elementWildcard"/>
+        <details key="wildcards" value="##other"/>
+        <details key="name" value=":3"/>
+        <details key="processing" value="lax"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WSILDocument">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value=""/>
+      <details key="kind" value="mixed"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mixed" unique="false" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFeatureMapEntry">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="elementWildcard"/>
+        <details key="name" value=":mixed"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="xMLNSPrefixMap" upperBound="-1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStringToStringMapEntry"
+        transient="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="xmlns:prefix"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="xSISchemaLocation" upperBound="-1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStringToStringMapEntry"
+        transient="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="xsi:schemaLocation"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inspection" upperBound="-2"
+        eType="#//Inspection" volatile="true" transient="true" derived="true" containment="true"
+        resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="inspection"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Inspection" eSuperTypes="#//ItemWithAbstracts">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="inspection_._type"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="groups" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFeatureMapEntry">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="group"/>
+        <details key="name" value="group:1"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="services" upperBound="-1"
+        eType="#//Service" volatile="true" transient="true" derived="true" containment="true"
+        resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="service"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="group" value="#group:1"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="links" upperBound="-1"
+        eType="#//Link" volatile="true" transient="true" derived="true" containment="true"
+        resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="link"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="group" value="#group:1"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ItemWithAbstracts" abstract="true">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="itemWithAbstracts"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="abstract" upperBound="-1"
+        eType="#//TypeOfAbstract" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="abstract"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Link" eSuperTypes="#//Reference">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="linkType"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="any" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFeatureMapEntry">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="elementWildcard"/>
+        <details key="wildcards" value="##other"/>
+        <details key="name" value=":3"/>
+        <details key="processing" value="lax"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Name">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="nameType"/>
+      <details key="kind" value="simple"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value=":0"/>
+        <details key="kind" value="simple"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lang" unique="false" eType="ecore:EDataType ../../plugin/org.eclipse.emf.ecore/model/XMLNamespace.ecore#//LangType">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Attempting to install the relevant ISO 2- and 3-letter&#xD;&#xA;         codes as the enumerated possible values is probably never&#xD;&#xA;         going to be a realistic possibility.  See&#xD;&#xA;         RFC 3066 at http://www.ietf.org/rfc/rfc3066.txt and the IANA registry&#xD;&#xA;         at http://www.iana.org/assignments/lang-tag-apps.htm for&#xD;&#xA;         further information.&#xD;&#xA;&#xD;&#xA;         The union allows for the 'un-declaration' of xml:lang with&#xD;&#xA;         the empty string."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="lang"/>
+        <details key="namespace" value="http://www.w3.org/XML/1998/namespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Reference" eSuperTypes="#//ItemWithAbstracts">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="referenceType"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//AnyURI">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="location"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="referencedNamespace" unique="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//AnyURI">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="referencedNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Service" eSuperTypes="#//ItemWithAbstracts">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="serviceType"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="name" upperBound="-1" eType="#//Name"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="name"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="description" lowerBound="1"
+        upperBound="-1" eType="#//Description" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="description"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TypeOfAbstract">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="typeOfAbstract"/>
+      <details key="kind" value="simple"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value=":0"/>
+        <details key="kind" value="simple"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lang" unique="false" eType="ecore:EDataType ../../plugin/org.eclipse.emf.ecore/model/XMLNamespace.ecore#//LangType">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Attempting to install the relevant ISO 2- and 3-letter&#xD;&#xA;         codes as the enumerated possible values is probably never&#xD;&#xA;         going to be a realistic possibility.  See&#xD;&#xA;         RFC 3066 at http://www.ietf.org/rfc/rfc3066.txt and the IANA registry&#xD;&#xA;         at http://www.iana.org/assignments/lang-tag-apps.htm for&#xD;&#xA;         further information.&#xD;&#xA;&#xD;&#xA;         The union allows for the 'un-declaration' of xml:lang with&#xD;&#xA;         the empty string."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="lang"/>
+        <details key="namespace" value="http://www.w3.org/XML/1998/namespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+</ecore:EPackage>

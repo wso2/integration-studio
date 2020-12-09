@@ -1,0 +1,1025 @@
+<problems count="49">
+ <sa-cases>1,2,4,5,6,7,8,9,10,11,12,13,15,16,17,18,23,24,25,43,58,1000,1004,0</sa-cases>
+ <problem>
+  <address.model>/</address.model>
+  <address.xpath>/bpws:process</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ProcessValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>13</charEnd>
+  <charStart>1</charStart>
+  <columnNumber>1</columnNumber>
+  <fixMessage>Please use an http://bad.ex.Lang supported by this BPEL processor.</fixMessage>
+  <lineNumber>1</lineNumber>
+  <location>process</location>
+  <message>expressionLanguage attribute refers to an unsupported language URI http://bad.ex.Lang</message>
+  <message.args>[null,"http://bad.ex.Lang"]</message.args>
+  <message.id>BPELC__UNSUPPORTED_XML_LANG</message.id>
+  <node>&lt;bpws:process "Simple"&gt;</node>
+  <ruleDescription>Checks the expression language for support in the BPEL model</ruleDescription>
+  <ruleName>ProcessValidator.CheckExpressionLanguage.3</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>4</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>/</address.model>
+  <address.xpath>/bpws:process</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ProcessValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>13</charEnd>
+  <charStart>1</charStart>
+  <columnNumber>1</columnNumber>
+  <fixMessage>Please use an http://bad.query.Language supported by this BPEL processor.</fixMessage>
+  <lineNumber>1</lineNumber>
+  <location>process</location>
+  <message>queryLanguage attribute refers to an unsupported language URI http://bad.query.Language</message>
+  <message.args>[null,"http://bad.query.Language"]</message.args>
+  <message.id>BPELC__UNSUPPORTED_XML_LANG</message.id>
+  <node>&lt;bpws:process "Simple"&gt;</node>
+  <ruleDescription>Checks the query language for support in the BPEL model</ruleDescription>
+  <ruleName>ProcessValidator.CheckQueryLanguage.4</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>4</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>/</address.model>
+  <address.xpath>/bpws:process</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ProcessValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>13</charEnd>
+  <charStart>1</charStart>
+  <columnNumber>1</columnNumber>
+  <fixMessage>A &lt;receive&gt; or &lt;pick&gt; with createInstance set to "true" must be present.</fixMessage>
+  <lineNumber>1</lineNumber>
+  <location>process</location>
+  <message>There is no start activity in process "Simple"</message>
+  <message.args>["bpws:process","Simple"]</message.args>
+  <message.id>BPELC_PROCESS__NO_START</message.id>
+  <node>&lt;bpws:process "Simple"&gt;</node>
+  <ruleDescription>Verifies that a start activity has been found in the process</ruleDescription>
+  <ruleName>ProcessValidator.CheckIfProcessHasStartActivity.1000</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>15</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@extensions/@children.0</address.model>
+  <address.xpath>/bpws:process/bpws:extensions/bpws:extension[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ExtensionValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>586</charEnd>
+  <charStart>572</charStart>
+  <columnNumber>9</columnNumber>
+  <context.name>mustUnderstand</context.name>
+  <fixMessage>Make sure that the attribute "mustUnderstand" is specified.</fixMessage>
+  <lineNumber>16</lineNumber>
+  <location>extension</location>
+  <message>Attribute "mustUnderstand" is not set on this &lt;bpws:extension&gt; node.</message>
+  <message.args>["bpws:extension","mustUnderstand",0]</message.args>
+  <message.id>BPELC__UNSET_ATTRIBUTE</message.id>
+  <node>&lt;bpws:extension&gt;</node>
+  <ruleName>ExtensionValidator.CheckMustUnderstand.1</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@extensions/@children.1</address.model>
+  <address.xpath>/bpws:process/bpws:extensions/bpws:extension[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ExtensionValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>651</charEnd>
+  <charStart>637</charStart>
+  <columnNumber>9</columnNumber>
+  <context.name>mustUnderstand</context.name>
+  <fixMessage>Make sure that "mustUnderstand" is set to one of the values from "no", "yes"</fixMessage>
+  <lineNumber>17</lineNumber>
+  <location>extension</location>
+  <message>"mustUnderstand" is set to "yesxx" on this &lt;bpws:extension&gt; node but it can only be set to "no", "yes"</message>
+  <message.args>["bpws:extension","mustUnderstand","yesxx","\"no\", \"yes\"",0]</message.args>
+  <message.id>BPELC__INVALID_ATTRIBUTE_VALUE</message.id>
+  <node>&lt;bpws:extension&gt;</node>
+  <ruleName>ExtensionValidator.CheckMustUnderstand.1</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@extensions/@children.3</address.model>
+  <address.xpath>/bpws:process/bpws:extensions/bpws:extension[4]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ExtensionValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>824</charEnd>
+  <charStart>810</charStart>
+  <columnNumber>9</columnNumber>
+  <fixMessage>Remove the dependency on extension "http://foobar/extension/4"</fixMessage>
+  <lineNumber>19</lineNumber>
+  <location>extension</location>
+  <message>Extension "http://foobar/extension/4" is not supported by this implementation.</message>
+  <message.args>["bpws:extension","http://foobar/extension/4","yes"]</message.args>
+  <message.id>BPELC_EXTENSION__NOT_SUPPORTED</message.id>
+  <node>&lt;bpws:extension&gt;</node>
+  <ruleDescription>Mandatory extensions must be understood</ruleDescription>
+  <ruleName>ExtensionValidator.CheckMustUnderstand.20</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>9</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>Property:http://eclipse.org/bpel/sample:foobar</address.model>
+  <address.xpath>/:definitions/prop:property[1]</address.xpath>
+  <charEnd>-1</charEnd>
+  <charStart>-1</charStart>
+  <columnNumber>-1</columnNumber>
+  <lineNumber>-1</lineNumber>
+  <location>property</location>
+  <message>!!BPELC_PROPERTY__UNSET! [0=prop:property,1=type,2=element,3=0,4={4},5={5}]</message>
+  <message.args>["prop:property",null,null,0]</message.args>
+  <message.id>BPELC_PROPERTY__UNSET</message.id>
+  <node>&lt;prop:property "foobar"&gt;</node>
+  <ruleDescription>Either the type or element attributes MUST be present but not both.</ruleDescription>
+  <ruleName>Property.CheckPropertyType.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>19</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>Property:http://eclipse.org/bpel/sample:foobar2</address.model>
+  <address.xpath>/:definitions/prop:property[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.CValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>-1</charEnd>
+  <charStart>-1</charStart>
+  <columnNumber>-1</columnNumber>
+  <fixMessage>Make sure that value "xsd:integer" is resolvable (check imports, value of "type").</fixMessage>
+  <lineNumber>-1</lineNumber>
+  <location>property</location>
+  <message>"type" is set to "xsd:integer" on this &lt;prop:property&gt;  but it cannot be resolved (check value of "type", imports, WSDLs or XSDs).</message>
+  <message.args>["prop:property",null,0,"xsd:integer"]</message.args>
+  <message.id>BPELC__UNRESOLVED_ATTRIBUTE</message.id>
+  <node>&lt;prop:property "foobar2"&gt;</node>
+  <ruleName>Property.CheckTypeOrElement.15</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@imports.3</address.model>
+  <address.xpath>/bpws:process/bpws:import[4]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ImportValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1338</charEnd>
+  <charStart>1327</charStart>
+  <columnNumber>2</columnNumber>
+  <fixMessage>Change the import statement namespace.</fixMessage>
+  <lineNumber>31</lineNumber>
+  <location>import</location>
+  <message>The import namespace http://eclipse.org/bpel/badNS and the imported document target namespace http://eclipse.org/bpel/sampleArtifacts do not match.</message>
+  <message.args>["bpws:import","http://eclipse.org/bpel/badNS","http://eclipse.org/bpel/sampleArtifacts"]</message.args>
+  <message.id>BPELC_IMPORT__NS1</message.id>
+  <node>&lt;bpws:import&gt;</node>
+  <ruleDescription>Imported namespace, if set, must match</ruleDescription>
+  <ruleName>ImportValidator.CheckNamespaceOfImport.8</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>11</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@imports.4</address.model>
+  <address.xpath>/bpws:process/bpws:import[5]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ImportValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1480</charEnd>
+  <charStart>1469</charStart>
+  <columnNumber>2</columnNumber>
+  <fixMessage>Remove the namespace attribute from the import statement.</fixMessage>
+  <lineNumber>35</lineNumber>
+  <location>import</location>
+  <message>The targetNamespace http://eclipse.org/bpel/sampleArtifacts of the imported document is not the default namespace.</message>
+  <message.args>["bpws:import",null,"http://eclipse.org/bpel/sampleArtifacts"]</message.args>
+  <message.id>BPELC_IMPORT__NS2</message.id>
+  <node>&lt;bpws:import&gt;</node>
+  <ruleDescription>When import has no namespace, the targetNamespace must be empty.</ruleDescription>
+  <ruleName>ImportValidator.CheckNamespaceOfImport.15</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>12</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@imports.5</address.model>
+  <address.xpath>/bpws:process/bpws:import[6]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ImportValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1576</charEnd>
+  <charStart>1565</charStart>
+  <columnNumber>2</columnNumber>
+  <fixMessage>Make sure that the attribute "importType" is specified.</fixMessage>
+  <lineNumber>38</lineNumber>
+  <location>import</location>
+  <message>Attribute "importType" is not set on this &lt;bpws:import&gt; node.</message>
+  <message.args>["bpws:import",null,0]</message.args>
+  <message.id>BPELC__UNSET_ATTRIBUTE</message.id>
+  <node>&lt;bpws:import&gt;</node>
+  <ruleName>ImportValidator.CheckIfImportTypesSet.1</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@imports.6</address.model>
+  <address.xpath>/bpws:process/bpws:import[7]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ImportValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1593</charEnd>
+  <charStart>1582</charStart>
+  <columnNumber>2</columnNumber>
+  <fixMessage>WSDL and XSD imports are allowed in BPEL 2.0, others are implementation dependent.</fixMessage>
+  <lineNumber>39</lineNumber>
+  <location>import</location>
+  <message>The importType of http://bad.import.type is not defined in BPEL 2.0 and is not understood by this implementation.</message>
+  <message.args>["http://bad.import.type",null,"bpws:import",0]</message.args>
+  <message.id>BPELC_IMPORT__IMPORT_TYPE</message.id>
+  <node>&lt;bpws:import&gt;</node>
+  <ruleDescription>Check the import type. BPEL 2.0 currently supports WSDL and XSD import types.</ruleDescription>
+  <ruleName>ImportValidator.CheckImportType.4</ruleName>
+  <severity>0</severity>
+  <staticAnalysisCode>13</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@partnerLinks/@children.2</address.model>
+  <address.xpath>/bpws:process/bpws:partnerLinks/bpws:partnerLink[3]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.PartnerLinksValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1877</charEnd>
+  <charStart>1861</charStart>
+  <columnNumber>3</columnNumber>
+  <context.name>name</context.name>
+  <fixMessage>You must change the name of bpws:partnerLink "client" to something else.</fixMessage>
+  <lineNumber>45</lineNumber>
+  <location>partnerLink</location>
+  <message>&lt;bpws:partnerLink&gt; name "client" is already defined in this scope/process.</message>
+  <message.args>["bpws:partnerLinks","bpws:partnerLink","client"]</message.args>
+  <message.id>BPELC_DUPLICATE_NAME</message.id>
+  <node>&lt;bpws:partnerLink "client"&gt;</node>
+  <ruleDescription>Checks for duplicate partner link name</ruleDescription>
+  <ruleName>PartnerLinksValidator.CheckDuplicateName.40</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>18</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@partnerLinks/@children.1</address.model>
+  <address.xpath>/bpws:process/bpws:partnerLinks/bpws:partnerLink[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.PartnerLinkValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1810</charEnd>
+  <charStart>1794</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>You must specify either "myRole" or "partnerRole" for the &lt;{http://docs.oasis-open.org/wsbpel/2.0/process/executable}partnerLink&gt; "noRoles"</fixMessage>
+  <lineNumber>44</lineNumber>
+  <location>partnerLink</location>
+  <message>{http://docs.oasis-open.org/wsbpel/2.0/process/executable}partnerLink "noRoles" must have "myRole" and/or "partnerRole" set.</message>
+  <message.args>[null,"noRoles",null,null]</message.args>
+  <message.id>BPELC_PARTNER_LINK__NO_ROLES_SET</message.id>
+  <node>&lt;bpws:partnerLink "noRoles"&gt;</node>
+  <ruleDescription>myRole or partnerRole (or both) must be set</ruleDescription>
+  <ruleName>PartnerLinkValidator.CheckForUndefinedPartnerLinkRoles.4</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>16</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@partnerLinks/@children.2</address.model>
+  <address.xpath>/bpws:process/bpws:partnerLinks/bpws:partnerLink[3]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.PartnerLinkValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1877</charEnd>
+  <charStart>1861</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>You must remove "initializePartnerRole" from this &lt;bpws:partnerLink&gt;.</fixMessage>
+  <lineNumber>45</lineNumber>
+  <location>partnerLink</location>
+  <message>The "initializePartnerRole" cannot be used on &lt;bpws:partnerLink&gt; that does not have partnerRole defined.</message>
+  <message.args>["bpws:partnerLink",null,null]</message.args>
+  <message.id>BPELC_PARTNER_LINK__INIT_PARTNER_ROLE</message.id>
+  <node>&lt;bpws:partnerLink "client"&gt;</node>
+  <ruleDescription>Check if initializePartnerRole is set on the partnerLink if partnerRole is set (or not).</ruleDescription>
+  <ruleName>PartnerLinkValidator.CheckInitializePartnerRole.8</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>17</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@partnerLinks/@children.3</address.model>
+  <address.xpath>/bpws:process/bpws:partnerLinks/bpws:partnerLink[4]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.PartnerLinkValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2000</charEnd>
+  <charStart>1984</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Remove the overloaded operation "start2" in portType "OverloadedPT".</fixMessage>
+  <lineNumber>47</lineNumber>
+  <location>partnerLink</location>
+  <message>partnerLink "overloadedPL" uses portType "OverloadedPT" (via partnerLinkType "{http://eclipse.org/bpel/sample}Overloaded") which has an overloaded operation "start2".</message>
+  <message.args>["bpws:partnerLink","overloadedPL",null,"OverloadedPT","start2"]</message.args>
+  <message.id>BPELC_PL__OVERLOADED</message.id>
+  <node>&lt;bpws:partnerLink "overloadedPL"&gt;</node>
+  <ruleDescription>Check for overloaded operation names in port types</ruleDescription>
+  <ruleName>PartnerLinkValidator.checkOverloadedOperationNames.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@partnerLinks/@children.4</address.model>
+  <address.xpath>/bpws:process/bpws:partnerLinks/bpws:partnerLink[5]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.PartnerLinkValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2100</charEnd>
+  <charStart>2084</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Notification operations cannot be used in BPEL partnerLinkTypes.</fixMessage>
+  <lineNumber>50</lineNumber>
+  <location>partnerLink</location>
+  <message>Notification operation "operationStart" in portType "NotificationPT" (via partnerLinkType "{http://eclipse.org/bpel/sample}RejectThis") cannot be used in a BPEL process.</message>
+  <message.args>["bpws:partnerLink","notificationPL",null,"NotificationPT","operationStart"]</message.args>
+  <message.id>BPELC_PL__NOTIFICATION</message.id>
+  <node>&lt;bpws:partnerLink "notificationPL"&gt;</node>
+  <ruleDescription>Check solicit-response or notification port types</ruleDescription>
+  <ruleName>PartnerLinkValidator.checkSolicitResponseAndNotification.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>1</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@partnerLinks/@children.4</address.model>
+  <address.xpath>/bpws:process/bpws:partnerLinks/bpws:partnerLink[5]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.PartnerLinkValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2100</charEnd>
+  <charStart>2084</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Solicit-response operations cannot be used in BPEL partnerLinkTypes.</fixMessage>
+  <lineNumber>50</lineNumber>
+  <location>partnerLink</location>
+  <message>Solicit-response operation "operationStart" in portType "SolicityResponsePT" cannot be used in a BPEL process.</message>
+  <message.args>["bpws:partnerLink","notificationPL",null,"SolicityResponsePT","operationStart"]</message.args>
+  <message.id>BPELC_PL__SOLICIT_RESPONSE</message.id>
+  <node>&lt;bpws:partnerLink "notificationPL"&gt;</node>
+  <ruleDescription>Check solicit-response or notification port types</ruleDescription>
+  <ruleName>PartnerLinkValidator.checkSolicitResponseAndNotification.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>1</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@partnerLinks/@children.5</address.model>
+  <address.xpath>/bpws:process/bpws:partnerLinks/bpws:partnerLink[6]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.PartnerLinkValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2207</charEnd>
+  <charStart>2191</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>The &lt;{http://docs.oasis-open.org/wsbpel/2.0/plnktype}partnerLinkType&gt; must define a role "ListenerResonder".</fixMessage>
+  <lineNumber>53</lineNumber>
+  <location>partnerLink</location>
+  <message>&lt;{http://docs.oasis-open.org/wsbpel/2.0/plnktype}partnerLinkType&gt; does not have a role "ListenerResonder" defined.</message>
+  <message.args>[null,"ListenerResonder"]</message.args>
+  <message.id>BPELC_PARTNER_LINK_TYPE__NO_SUCH_ROLE</message.id>
+  <node>&lt;bpws:partnerLink "solicitResponsePL"&gt;</node>
+  <ruleName>PartnerLinkValidator.CheckPartnerLinkRoles.10</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@partnerLinks/@children.5</address.model>
+  <address.xpath>/bpws:process/bpws:partnerLinks/bpws:partnerLink[6]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.PartnerLinkValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2207</charEnd>
+  <charStart>2191</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Notification operations cannot be used in BPEL partnerLinkTypes.</fixMessage>
+  <lineNumber>53</lineNumber>
+  <location>partnerLink</location>
+  <message>Notification operation "operationStart" in portType "NotificationPT" (via partnerLinkType "{http://eclipse.org/bpel/sample}RejectThis") cannot be used in a BPEL process.</message>
+  <message.args>["bpws:partnerLink","solicitResponsePL",null,"NotificationPT","operationStart"]</message.args>
+  <message.id>BPELC_PL__NOTIFICATION</message.id>
+  <node>&lt;bpws:partnerLink "solicitResponsePL"&gt;</node>
+  <ruleDescription>Check solicit-response or notification port types</ruleDescription>
+  <ruleName>PartnerLinkValidator.checkSolicitResponseAndNotification.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>1</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@partnerLinks/@children.5</address.model>
+  <address.xpath>/bpws:process/bpws:partnerLinks/bpws:partnerLink[6]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.PartnerLinkValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2207</charEnd>
+  <charStart>2191</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Solicit-response operations cannot be used in BPEL partnerLinkTypes.</fixMessage>
+  <lineNumber>53</lineNumber>
+  <location>partnerLink</location>
+  <message>Solicit-response operation "operationStart" in portType "SolicityResponsePT" cannot be used in a BPEL process.</message>
+  <message.args>["bpws:partnerLink","solicitResponsePL",null,"SolicityResponsePT","operationStart"]</message.args>
+  <message.id>BPELC_PL__SOLICIT_RESPONSE</message.id>
+  <node>&lt;bpws:partnerLink "solicitResponsePL"&gt;</node>
+  <ruleDescription>Check solicit-response or notification port types</ruleDescription>
+  <ruleName>PartnerLinkValidator.checkSolicitResponseAndNotification.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>1</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@variables/@children.10</address.model>
+  <address.xpath>/bpws:process/bpws:variables/bpws:variable[11]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.VariablesValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3178</charEnd>
+  <charStart>3165</charStart>
+  <columnNumber>3</columnNumber>
+  <context.name>name</context.name>
+  <fixMessage>You must change the name of bpws:variable "aDuplicateName" to something else.</fixMessage>
+  <lineNumber>79</lineNumber>
+  <location>variable</location>
+  <message>&lt;bpws:variable&gt; name "aDuplicateName" is already defined in this scope/process.</message>
+  <message.args>["bpws:variables","bpws:variable","aDuplicateName"]</message.args>
+  <message.id>BPELC_DUPLICATE_NAME</message.id>
+  <node>&lt;bpws:variable "aDuplicateName"&gt;</node>
+  <ruleDescription>Checks for duplicate variable name</ruleDescription>
+  <ruleName>VariablesValidator.CheckDuplicateVariableName.40</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>23</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@variables/@children.2</address.model>
+  <address.xpath>/bpws:process/bpws:variables/bpws:variable[3]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.VariableValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2565</charEnd>
+  <charStart>2552</charStart>
+  <columnNumber>3</columnNumber>
+  <context.name>messageType</context.name>
+  <fixMessage>Make sure that value "tns:NoSuchMessage" is resolvable (check imports, value of "messageType").</fixMessage>
+  <lineNumber>65</lineNumber>
+  <location>variable</location>
+  <message>"messageType" is set to "tns:NoSuchMessage" on this &lt;bpws:variable&gt;  but it cannot be resolved (check value of "messageType", imports, WSDLs or XSDs).</message>
+  <message.args>["bpws:variable","messageType",0,"tns:NoSuchMessage"]</message.args>
+  <message.id>BPELC__UNRESOLVED_ATTRIBUTE</message.id>
+  <node>&lt;bpws:variable "badNoMessage"&gt;</node>
+  <ruleDescription>Make sure that Message Type is visible from the import(s)</ruleDescription>
+  <ruleName>VariableValidator.CheckMessageTypeNode.4</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>10</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@variables/@children.3</address.model>
+  <address.xpath>/bpws:process/bpws:variables/bpws:variable[4]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.VariableValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2640</charEnd>
+  <charStart>2627</charStart>
+  <columnNumber>3</columnNumber>
+  <context.name>type</context.name>
+  <fixMessage>Make sure that value "tns:NoSuchType" is resolvable (check imports, value of "type").</fixMessage>
+  <lineNumber>66</lineNumber>
+  <location>variable</location>
+  <message>"type" is set to "tns:NoSuchType" on this &lt;bpws:variable&gt;  but it cannot be resolved (check value of "type", imports, WSDLs or XSDs).</message>
+  <message.args>["bpws:variable","type",0,"tns:NoSuchType"]</message.args>
+  <message.id>BPELC__UNRESOLVED_ATTRIBUTE</message.id>
+  <node>&lt;bpws:variable "badNoType"&gt;</node>
+  <ruleDescription>Make sure that Type is visible from the import(s)</ruleDescription>
+  <ruleName>VariableValidator.CheckTypeNode.4</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>10</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@variables/@children.4</address.model>
+  <address.xpath>/bpws:process/bpws:variables/bpws:variable[5]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.VariableValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2741</charEnd>
+  <charStart>2728</charStart>
+  <columnNumber>3</columnNumber>
+  <context.name>element</context.name>
+  <fixMessage>Make sure that value "tns:NoSuchElement" is resolvable (check imports, value of "element").</fixMessage>
+  <lineNumber>69</lineNumber>
+  <location>variable</location>
+  <message>"element" is set to "tns:NoSuchElement" on this &lt;bpws:variable&gt;  but it cannot be resolved (check value of "element", imports, WSDLs or XSDs).</message>
+  <message.args>["bpws:variable","element",0,"tns:NoSuchElement"]</message.args>
+  <message.id>BPELC__UNRESOLVED_ATTRIBUTE</message.id>
+  <node>&lt;bpws:variable "badNoElement1"&gt;</node>
+  <ruleDescription>Make sure that Element is visible from the import(s)</ruleDescription>
+  <ruleName>VariableValidator.CheckElementNode.4</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>10</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@variables/@children.5</address.model>
+  <address.xpath>/bpws:process/bpws:variables/bpws:variable[6]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.VariableValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2811</charEnd>
+  <charStart>2798</charStart>
+  <columnNumber>3</columnNumber>
+  <context.name>element</context.name>
+  <fixMessage>Make sure that value "badprefix:NoSuchElement" is resolvable (check imports, value of "element").</fixMessage>
+  <lineNumber>70</lineNumber>
+  <location>variable</location>
+  <message>"element" is set to "badprefix:NoSuchElement" on this &lt;bpws:variable&gt;  but it cannot be resolved (check value of "element", imports, WSDLs or XSDs).</message>
+  <message.args>["bpws:variable","element",0,"badprefix:NoSuchElement"]</message.args>
+  <message.id>BPELC__UNRESOLVED_ATTRIBUTE</message.id>
+  <node>&lt;bpws:variable "badNoElement2"&gt;</node>
+  <ruleDescription>Make sure that Element is visible from the import(s)</ruleDescription>
+  <ruleName>VariableValidator.CheckElementNode.4</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>10</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@variables/@children.8</address.model>
+  <address.xpath>/bpws:process/bpws:variables/bpws:variable[9]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.VariableValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3077</charEnd>
+  <charStart>3064</charStart>
+  <columnNumber>3</columnNumber>
+  <context.name>name</context.name>
+  <fixMessage>Remove the period (.) character from variable name.</fixMessage>
+  <lineNumber>76</lineNumber>
+  <location>variable</location>
+  <message>The variable name "bad.Name" contains an illegal period (.) character.</message>
+  <message.args>["bad.Name"]</message.args>
+  <message.id>BPELC_VARIABLE__NO_DOT</message.id>
+  <node>&lt;bpws:variable "bad.Name"&gt;</node>
+  <ruleDescription>Checks that variable NCName further does not contain a period (.) in the name.</ruleDescription>
+  <ruleName>VariableValidator.CheckName.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>24</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@variables/@children.8</address.model>
+  <address.xpath>/bpws:process/bpws:variables/bpws:variable[9]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.VariableValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3077</charEnd>
+  <charStart>3064</charStart>
+  <columnNumber>3</columnNumber>
+  <context.name>type</context.name>
+  <fixMessage>Define the type of the variable "bad.Name"</fixMessage>
+  <lineNumber>76</lineNumber>
+  <location>variable</location>
+  <message>Variable "bad.Name" must be have either messageType,element, or type defined.</message>
+  <message.args>["bad.Name"]</message.args>
+  <message.id>BPELC_VARIABLE__NO_TYPE</message.id>
+  <node>&lt;bpws:variable "bad.Name"&gt;</node>
+  <ruleDescription>Variable type specification (either element, messaageType, or type).</ruleDescription>
+  <ruleName>VariableValidator.CheckType.2</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>25</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@variables/@children.9</address.model>
+  <address.xpath>/bpws:process/bpws:variables/bpws:variable[10]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.VariableValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3117</charEnd>
+  <charStart>3104</charStart>
+  <columnNumber>3</columnNumber>
+  <context.name>type</context.name>
+  <fixMessage>Make sure that value "xsd:integer" is resolvable (check imports, value of "type").</fixMessage>
+  <lineNumber>78</lineNumber>
+  <location>variable</location>
+  <message>"type" is set to "xsd:integer" on this &lt;bpws:variable&gt;  but it cannot be resolved (check value of "type", imports, WSDLs or XSDs).</message>
+  <message.args>["bpws:variable","type",0,"xsd:integer"]</message.args>
+  <message.id>BPELC__UNRESOLVED_ATTRIBUTE</message.id>
+  <node>&lt;bpws:variable "aDuplicateName"&gt;</node>
+  <ruleDescription>Make sure that Type is visible from the import(s)</ruleDescription>
+  <ruleName>VariableValidator.CheckTypeNode.4</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>10</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@variables/@children.10</address.model>
+  <address.xpath>/bpws:process/bpws:variables/bpws:variable[11]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.VariableValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3178</charEnd>
+  <charStart>3165</charStart>
+  <columnNumber>3</columnNumber>
+  <context.name>type</context.name>
+  <fixMessage>Make sure that value "badprefix:integer" is resolvable (check imports, value of "type").</fixMessage>
+  <lineNumber>79</lineNumber>
+  <location>variable</location>
+  <message>"type" is set to "badprefix:integer" on this &lt;bpws:variable&gt;  but it cannot be resolved (check value of "type", imports, WSDLs or XSDs).</message>
+  <message.args>["bpws:variable","type",0,"badprefix:integer"]</message.args>
+  <message.id>BPELC__UNRESOLVED_ATTRIBUTE</message.id>
+  <node>&lt;bpws:variable "aDuplicateName"&gt;</node>
+  <ruleDescription>Make sure that Type is visible from the import(s)</ruleDescription>
+  <ruleName>VariableValidator.CheckTypeNode.4</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>10</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@variables/@children.13</address.model>
+  <address.xpath>/bpws:process/bpws:variables/bpws:variable[14]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.VariableValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3389</charEnd>
+  <charStart>3376</charStart>
+  <columnNumber>3</columnNumber>
+  <context.name>type</context.name>
+  <fixMessage>Make sure that value "xsdmapped:unsignedInteger" is resolvable (check imports, value of "type").</fixMessage>
+  <lineNumber>83</lineNumber>
+  <location>variable</location>
+  <message>"type" is set to "xsdmapped:unsignedInteger" on this &lt;bpws:variable&gt;  but it cannot be resolved (check value of "type", imports, WSDLs or XSDs).</message>
+  <message.args>["bpws:variable","type",0,"xsdmapped:unsignedInteger"]</message.args>
+  <message.id>BPELC__UNRESOLVED_ATTRIBUTE</message.id>
+  <node>&lt;bpws:variable "integer3"&gt;</node>
+  <ruleDescription>Make sure that Type is visible from the import(s)</ruleDescription>
+  <ruleName>VariableValidator.CheckTypeNode.4</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>10</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@variables/@children.14/@from</address.model>
+  <address.xpath>/bpws:process/bpws:variables/bpws:variable[15]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.FromValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3539</charEnd>
+  <charStart>3530</charStart>
+  <columnNumber>6</columnNumber>
+  <fixMessage>Register the validator for this expression language and try again.</fixMessage>
+  <lineNumber>86</lineNumber>
+  <location>from</location>
+  <message>The expression in &lt;bpws:from&gt; cannot be checked - no expression validator has been registered for language http://bad.ex.Lang.</message>
+  <message.args>["bpws:from","http://bad.ex.Lang"]</message.args>
+  <message.id>BPELC__NO_EXPRESSION_VALIDATOR</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>Checks the actual expression using the expression language validator.</ruleDescription>
+  <ruleName>FromValidator.CheckExpressionVariant.50</ruleName>
+  <severity>1</severity>
+  <staticAnalysisCode>1000</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@variables/@children.15</address.model>
+  <address.xpath>/bpws:process/bpws:variables/bpws:variable[16]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.VariableValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3607</charEnd>
+  <charStart>3594</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Simple types ought to be compatible.</fixMessage>
+  <lineNumber>89</lineNumber>
+  <location>variable</location>
+  <message>The from-spec of simple type "&lt;xs:simpleType "boolean"&gt;" is not compatible with to-spec of simple type "&lt;xs:simpleType "integer"&gt;" - a BPEL runtime may provide an implicit conversion.</message>
+  <message.args>["bpws:variable","from-spec",null,"to-spec",null]</message.args>
+  <message.id>BPELC_COPY__INCOMPATIBLE_SIMPLE</message.id>
+  <node>&lt;bpws:variable "initializedVariable2"&gt;</node>
+  <ruleDescription>From and to spec must have compatible types</ruleDescription>
+  <ruleName>VariableValidator.CheckCompatibleCopy.40</ruleName>
+  <severity>1</severity>
+  <staticAnalysisCode>43</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@variables/@children.17</address.model>
+  <address.xpath>/bpws:process/bpws:variables/bpws:variable[18]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.VariableValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>4014</charEnd>
+  <charStart>4001</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Simple types ought to be compatible.</fixMessage>
+  <lineNumber>97</lineNumber>
+  <location>variable</location>
+  <message>The from-spec of simple type "&lt;xs:simpleType "integer"&gt;" is not compatible with to-spec of simple type "&lt;xs:simpleType "string"&gt;" - a BPEL runtime may provide an implicit conversion.</message>
+  <message.args>["bpws:variable","from-spec",null,"to-spec",null]</message.args>
+  <message.id>BPELC_COPY__INCOMPATIBLE_SIMPLE</message.id>
+  <node>&lt;bpws:variable "initializedVariable4"&gt;</node>
+  <ruleDescription>From and to spec must have compatible types</ruleDescription>
+  <ruleName>VariableValidator.CheckCompatibleCopy.40</ruleName>
+  <severity>1</severity>
+  <staticAnalysisCode>43</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@variables/@children.18</address.model>
+  <address.xpath>/bpws:process/bpws:variables/bpws:variable[19]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.VariableValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>4218</charEnd>
+  <charStart>4205</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Simple types ought to be compatible.</fixMessage>
+  <lineNumber>101</lineNumber>
+  <location>variable</location>
+  <message>The from-spec of simple type "&lt;xs:simpleType "boolean"&gt;" is not compatible with to-spec of simple type "&lt;xs:simpleType "NCName"&gt;" - a BPEL runtime may provide an implicit conversion.</message>
+  <message.args>["bpws:variable","from-spec",null,"to-spec",null]</message.args>
+  <message.id>BPELC_COPY__INCOMPATIBLE_SIMPLE</message.id>
+  <node>&lt;bpws:variable "initializedVariable5"&gt;</node>
+  <ruleDescription>From and to spec must have compatible types</ruleDescription>
+  <ruleName>VariableValidator.CheckCompatibleCopy.40</ruleName>
+  <severity>1</severity>
+  <staticAnalysisCode>43</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.0</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:rethrow</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.RethrowValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>4894</charEnd>
+  <charStart>4882</charStart>
+  <columnNumber>6</columnNumber>
+  <fixMessage>You need to move this &lt;bpws:rethrow&gt; activity to a fault handler.</fixMessage>
+  <lineNumber>126</lineNumber>
+  <location>rethrow</location>
+  <message>The &lt;bpws:rethrow&gt; activity named Unnamed must be in a fault handler.</message>
+  <message.args>["Unnamed","bpws:rethrow"]</message.args>
+  <message.id>BPELC_RETHROW__NOT_IN_FAULT_HANDLER</message.id>
+  <node>&lt;bpws:rethrow&gt;</node>
+  <ruleDescription>Check rethrow placement (catch or catchAll)</ruleDescription>
+  <ruleName>RethrowValidator.CheckRethrowPlacement.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>6</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.1</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:receive[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ReceiveValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>4916</charEnd>
+  <charStart>4904</charStart>
+  <columnNumber>6</columnNumber>
+  <fixMessage>Check value of operation ("initiatex") and portType "&lt;portType "Simple"&gt;".</fixMessage>
+  <lineNumber>127</lineNumber>
+  <location>receive</location>
+  <message>No "{http://schemas.xmlsoap.org/wsdl/}input" message exist on portType "&lt;portType "Simple"&gt;" with operation "initiatex".</message>
+  <message.args>["bpws:receive",null,"initiatex",null]</message.args>
+  <message.id>BPELC_PA__NO_MESSAGE</message.id>
+  <node>&lt;bpws:receive "receiveInput"&gt;</node>
+  <ruleName>ReceiveValidator.CheckInputMessage.12</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:receive[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ReceiveValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>5065</charEnd>
+  <charStart>5053</charStart>
+  <columnNumber>6</columnNumber>
+  <fixMessage>Check variable "output" declaration, check WSDL message "&lt;message "SimpleRequestMessage"&gt;" declaration.</fixMessage>
+  <lineNumber>132</lineNumber>
+  <location>receive</location>
+  <message>variable "output" of type "&lt;message "SimpleResponseMessage"&gt;" is not compatible with WSDL message "&lt;message "SimpleRequestMessage"&gt;".</message>
+  <message.args>["bpws:receive",null,"output",null,null]</message.args>
+  <message.id>BPELC_PA__MESSAGE_TYPE_MISMATCH</message.id>
+  <node>&lt;bpws:receive "receiveInput"&gt;</node>
+  <ruleDescription>Check message type compatability on receive</ruleDescription>
+  <ruleName>ReceiveValidator.CheckVariableAndMessageStructureCompatibility.20</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>58</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.3</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:receive[3]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ReceiveValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>5215</charEnd>
+  <charStart>5203</charStart>
+  <columnNumber>3</columnNumber>
+  <context.name>variable</context.name>
+  <fixMessage>Make sure that value "noinput" is resolvable (check imports, value of "variable").</fixMessage>
+  <lineNumber>137</lineNumber>
+  <location>receive</location>
+  <message>"variable" is set to "noinput" on this &lt;bpws:receive&gt; activity but it cannot be resolved (check value of "variable", imports, WSDLs or XSDs).</message>
+  <message.args>["bpws:receive","variable",1,"noinput"]</message.args>
+  <message.id>BPELC__UNRESOLVED_ATTRIBUTE</message.id>
+  <node>&lt;bpws:receive "receiveInput"&gt;</node>
+  <ruleName>ReceiveValidator.CheckVariable.3</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.4</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:receive[4]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ReceiveValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>5368</charEnd>
+  <charStart>5356</charStart>
+  <columnNumber>6</columnNumber>
+  <fixMessage>make sure the myRole is defined correctly in partnerLink "client" in WSDL C:\ws\eclipse.org\org.eclipse.bpel.validator.junit\tests\t2\t2.wsdl</fixMessage>
+  <lineNumber>142</lineNumber>
+  <location>receive</location>
+  <message>&lt;bpws:receive&gt; activity "receiveInput" specifies a portType "tns:SimpleCallback", yet this portType does not match the portType derived from "myRole" of partnerLink "client" defined in WSDL "C:\ws\eclipse.org\org.eclipse.bpel.validator.junit\tests\t2\t2.wsdl"</message>
+  <message.args>["bpws:receive","receiveInput","tns:SimpleCallback","client",null,"C:\\ws\\eclipse.org\\org.eclipse.bpel.validator.junit\\tests\\t2\\t2.wsdl"]</message.args>
+  <message.id>BPELC_MISMATCH_ROLE_PORT_TYPE</message.id>
+  <node>&lt;bpws:receive "receiveInput"&gt;</node>
+  <ruleDescription>Checks portType and derived portType values on receive activity.</ruleDescription>
+  <ruleName>ReceiveValidator.CheckRolePortTypeWithReceivePortType.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>5</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.5</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:receive[5]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ReceiveValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>5517</charEnd>
+  <charStart>5505</charStart>
+  <columnNumber>6</columnNumber>
+  <context.name>portType</context.name>
+  <fixMessage>Make sure that value "tns:SimpleDOESNOTEXIST" is resolvable (check imports, value of "portType").</fixMessage>
+  <lineNumber>147</lineNumber>
+  <location>receive</location>
+  <message>"portType" is set to "tns:SimpleDOESNOTEXIST" on this &lt;bpws:receive&gt; activity but it cannot be resolved (check value of "portType", imports, WSDLs or XSDs).</message>
+  <message.args>["bpws:receive","portType",1,"tns:SimpleDOESNOTEXIST"]</message.args>
+  <message.id>BPELC__UNRESOLVED_ATTRIBUTE</message.id>
+  <node>&lt;bpws:receive "receiveInput"&gt;</node>
+  <ruleName>CPartnerActivityValidator.CheckPortType.3</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.6</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:receive[6]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ReceiveValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>5672</charEnd>
+  <charStart>5660</charStart>
+  <columnNumber>6</columnNumber>
+  <context.name>variable</context.name>
+  <fixMessage>Make sure that value "input_bad" is resolvable (check imports, value of "variable").</fixMessage>
+  <lineNumber>152</lineNumber>
+  <location>receive</location>
+  <message>"variable" is set to "input_bad" on this &lt;bpws:receive&gt; activity but it cannot be resolved (check value of "variable", imports, WSDLs or XSDs).</message>
+  <message.args>["bpws:receive","variable",1,"input_bad"]</message.args>
+  <message.id>BPELC__UNRESOLVED_ATTRIBUTE</message.id>
+  <node>&lt;bpws:receive "receiveInput"&gt;</node>
+  <ruleName>ReceiveValidator.CheckVariable.3</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.6</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:receive[6]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ReceiveValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>5672</charEnd>
+  <charStart>5660</charStart>
+  <columnNumber>6</columnNumber>
+  <context.name>portType</context.name>
+  <fixMessage>Make sure that value "badprefix:Simple" is resolvable (check imports, value of "portType").</fixMessage>
+  <lineNumber>152</lineNumber>
+  <location>receive</location>
+  <message>"portType" is set to "badprefix:Simple" on this &lt;bpws:receive&gt; activity but it cannot be resolved (check value of "portType", imports, WSDLs or XSDs).</message>
+  <message.args>["bpws:receive","portType",1,"badprefix:Simple"]</message.args>
+  <message.id>BPELC__UNRESOLVED_ATTRIBUTE</message.id>
+  <node>&lt;bpws:receive "receiveInput"&gt;</node>
+  <ruleName>CPartnerActivityValidator.CheckPortType.3</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.6</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:receive[6]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ReceiveValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>5672</charEnd>
+  <charStart>5660</charStart>
+  <columnNumber>6</columnNumber>
+  <fixMessage>Check value of operation ("initiate_bad") and portType "&lt;portType "Simple"&gt;".</fixMessage>
+  <lineNumber>152</lineNumber>
+  <location>receive</location>
+  <message>No "{http://schemas.xmlsoap.org/wsdl/}input" message exist on portType "&lt;portType "Simple"&gt;" with operation "initiate_bad".</message>
+  <message.args>["bpws:receive",null,"initiate_bad",null]</message.args>
+  <message.id>BPELC_PA__NO_MESSAGE</message.id>
+  <node>&lt;bpws:receive "receiveInput"&gt;</node>
+  <ruleName>ReceiveValidator.CheckInputMessage.12</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.7</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:compensateScope</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.CompensateScopeValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>5839</charEnd>
+  <charStart>5819</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>You need to move this &lt;bpws:compensateScope&gt; activity to fault, compensate, or termination handlers.</fixMessage>
+  <lineNumber>158</lineNumber>
+  <location>compensateScope</location>
+  <message>The &lt;bpws:compensateScope&gt; activity named "Unnamed" must be in a fault, compensate, or termination handlers.</message>
+  <message.args>["bpws:compensateScope","Unnamed"]</message.args>
+  <message.id>BPELC_COMPENSATE__NOT_IN_HANDLER</message.id>
+  <node>&lt;bpws:compensateScope&gt;</node>
+  <ruleDescription>Check compensateScope placement.</ruleDescription>
+  <ruleName>CompensateScopeValidator.CheckPlacement.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>7</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.7</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:compensateScope</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.CompensateScopeValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>5839</charEnd>
+  <charStart>5819</charStart>
+  <columnNumber>3</columnNumber>
+  <context.name>target</context.name>
+  <fixMessage>Make sure that the attribute "target" is specified.</fixMessage>
+  <lineNumber>158</lineNumber>
+  <location>compensateScope</location>
+  <message>Attribute "target" is not set on this &lt;bpws:compensateScope&gt; node.</message>
+  <message.args>["bpws:compensateScope",null,0]</message.args>
+  <message.id>BPELC__UNSET_ATTRIBUTE</message.id>
+  <node>&lt;bpws:compensateScope&gt;</node>
+  <ruleDescription>Check target scope NCName</ruleDescription>
+  <ruleName>CompensateScopeValidator.CheckTargetScopeNCName.15</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>1004</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:compensate</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.CompensateValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>5913</charEnd>
+  <charStart>5898</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>You need to move this &lt;bpws:compensate&gt; activity to fault, compensate, or termination handlers.</fixMessage>
+  <lineNumber>162</lineNumber>
+  <location>compensate</location>
+  <message>The &lt;bpws:compensate&gt; activity named "Unnamed" must be in a fault, compensate, or termination handlers.</message>
+  <message.args>["bpws:compensate","Unnamed"]</message.args>
+  <message.id>BPELC_COMPENSATE__NOT_IN_HANDLER</message.id>
+  <node>&lt;bpws:compensate&gt;</node>
+  <ruleDescription>Check compensate placement</ruleDescription>
+  <ruleName>CompensateValidator.CheckPlacement.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>8</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.9/@condition</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:while[1]/bpws:condition</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ConditionValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>5996</charEnd>
+  <charStart>5982</charStart>
+  <columnNumber>6</columnNumber>
+  <fixMessage>Please use an http://bad.ex.Lang supported by this BPEL processor.</fixMessage>
+  <lineNumber>167</lineNumber>
+  <location>condition</location>
+  <message>expressionLanguage attribute refers to an unsupported language URI http://bad.ex.Lang</message>
+  <message.args>[null,"http://bad.ex.Lang"]</message.args>
+  <message.id>BPELC__UNSUPPORTED_XML_LANG</message.id>
+  <node>&lt;bpws:condition&gt;</node>
+  <ruleDescription>Checks the expression language for support in the BPEL model</ruleDescription>
+  <ruleName>ConditionValidator.CheckExpressionLanguageSupport.20</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>4</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.11/@condition</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:while[3]/bpws:condition</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ConditionValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>6272</charEnd>
+  <charStart>6258</charStart>
+  <columnNumber>6</columnNumber>
+  <fixMessage>Please use an http://foobar supported by this BPEL processor.</fixMessage>
+  <lineNumber>177</lineNumber>
+  <location>condition</location>
+  <message>expressionLanguage attribute refers to an unsupported language URI http://foobar</message>
+  <message.args>[null,"http://foobar"]</message.args>
+  <message.id>BPELC__UNSUPPORTED_XML_LANG</message.id>
+  <node>&lt;bpws:condition&gt;</node>
+  <ruleDescription>Checks the expression language for support in the BPEL model</ruleDescription>
+  <ruleName>ConditionValidator.CheckExpressionLanguageSupport.20</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>4</staticAnalysisCode>
+ </problem>
+
+</problems>

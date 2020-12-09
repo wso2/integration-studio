@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	<extension id="HTUIObjectFactory" name="test"
+		point="org.eclipse.bpel.ui.uiObjectFactories">
+		<factory
+			class="org.wso2.developerstudio.bpel.humantask.ui.factories.HTUIObjectFactory"
+			specCompliant="false" categoryId="not.used"
+			id="org.wso2.developerstudio.bpel.humantask.ui.factories.HTUIObjectFactory" />
+	</extension>
+	
+	<extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs contributorId="org.eclipse.bpel.ui.bpeleditor">
+         <propertyTab
+            category="implementation"
+               id="org.wso2.bpel.ui.tabs.partnerlinks"
+            label="PartnerLinks"/>
+         <propertyTab
+            category="implementation"
+               id="org.wso2.bpel.ui.tabs.variable"
+            label="Variables"/>
+      </propertyTabs>
+   </extension>
+   
+	<extension point="org.eclipse.bpel.common.ui.paletteAdditions">
+		<additions targetEditor="org.eclipse.bpel.ui.bpeleditor"
+			provider="org.wso2.developerstudio.bpel.humantask.ui.palette.HTpaletteProvider">
+		</additions>
+	</extension>
+	
+	<extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
+		<propertySections contributorId="org.eclipse.bpel.ui.bpeleditor">
+			<!--Remote Task -->
+			<propertySection
+				class="org.wso2.developerstudio.bpel.humantask.ui.property.RemoteTaskVariablePropertySection"
+				tab="org.wso2.bpel.ui.tabs.variable"
+				id="org.wso2.developerstudio.bpel.humantask.ui.property.PeopleActivityRTPropertySection">
+				<input type="org.wso2.developerstudio.bpel.humantask.model.PeopleActivityRT" />
+			</propertySection>
+			<propertySection
+				class="org.wso2.developerstudio.bpel.humantask.ui.property.RemoteTaskPartnerLinkPropertySection"
+				tab="org.wso2.bpel.ui.tabs.partnerlinks"
+				id="org.wso2.developerstudio.bpel.humantask.ui.property.RemoteTaskPartnerLinkPropertySection">
+				<input type="org.wso2.developerstudio.bpel.humantask.model.PeopleActivityRT" />
+			</propertySection>
+			<!--Remote Notification -->
+			<propertySection
+				class="org.wso2.developerstudio.bpel.humantask.ui.property.RemoteNotificationVariablePropertySection"
+				tab="org.wso2.bpel.ui.tabs.variable"
+				id="org.wso2.developerstudio.bpel.humantask.ui.property.RemoteNotificationPropertySection">
+				<input type="org.wso2.developerstudio.bpel.humantask.model.PeopleActivityRN" />
+			</propertySection>
+			<propertySection
+				class="org.wso2.developerstudio.bpel.humantask.ui.property.RemoteNotificationPartnerLinkPropertySection"
+				tab="org.wso2.bpel.ui.tabs.partnerlinks"
+				id="org.wso2.developerstudio.bpel.humantask.ui.property.RemoteNotificationPartnerLinkPropertySection">
+				<input type="org.wso2.developerstudio.bpel.humantask.model.PeopleActivityRN" />
+			</propertySection>
+		</propertySections>
+	</extension>
+	
+
+	
+</plugin>
+

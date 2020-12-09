@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://schemas.xmlsoap.org/ws/2004/03/partner-link/" 
+       class = "org.eclipse.bpel.model.partnerlinktype.PartnerlinktypePackage"
+       genModel = "src/model/partnerlinktype.genmodel"/> 
+  </extension>
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://schemas.xmlsoap.org/ws/2004/03/business-process/" 
+       class = "org.eclipse.bpel.model.messageproperties.MessagepropertiesPackage"
+       genModel = "src/model/messageproperties.genmodel"/> 
+  </extension>
+   <extension
+         point="org.eclipse.emf.ecore.generated_package">
+      <package
+            class="org.eclipse.bpel.model.BPELPackage"
+            genModel="src/model/bpel.genmodel"
+            uri="http:///org/eclipse/bpel/model/bpel.ecore">
+      </package>
+   </extension>
+
+   <!-- Register the ExtensibilityElementFactory for each supported namespace. -->
+   <!-- Keep this in sync with the manual registrations in PackageImpl.init(). -->
+   <extension
+         name="Message Properties"
+         point="org.eclipse.wst.wsdl.extensibilityElementFactories">
+		<extensibilityElementFactory
+     	namespace="http://schemas.xmlsoap.org/ws/2004/03/business-process/"
+     	class="org.eclipse.bpel.model.messageproperties.util.MessagepropertiesExtensibilityElementFactory"/>   
+   </extension>
+
+   <!-- Register the ExtensibilityElementFactory for each supported namespace. -->
+   <!-- Keep this in sync with the manual registrations in PackageImpl.init(). -->
+   <extension
+         name="Message Properties"
+         point="org.eclipse.wst.wsdl.extensibilityElementFactories">
+		<extensibilityElementFactory
+     	namespace="http://docs.oasis-open.org/wsbpel/2.0/varprop"
+     	class="org.eclipse.bpel.model.messageproperties.util.MessagepropertiesExtensibilityElementFactory"/>   
+   </extension>
+   
+   <!-- Register the ExtensibilityElementFactory for each supported namespace. -->
+   <!-- Keep this in sync with the manual registrations in PackageImpl.init(). -->
+   <extension
+         name="Partner Link Types"
+         point="org.eclipse.wst.wsdl.extensibilityElementFactories">
+		<extensibilityElementFactory
+     	namespace="http://schemas.xmlsoap.org/ws/2004/03/partner-link/"
+     	class="org.eclipse.bpel.model.partnerlinktype.util.PartnerlinktypeExtensibilityElementFactory"/>   
+   </extension>
+
+   <!-- Register the ExtensibilityElementFactory for each supported namespace. -->
+   <!-- Keep this in sync with the manual registrations in PackageImpl.init(). -->
+   <extension
+         name="Partner Link Types"
+         point="org.eclipse.wst.wsdl.extensibilityElementFactories">
+		<extensibilityElementFactory
+     	namespace="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+     	class="org.eclipse.bpel.model.partnerlinktype.util.PartnerlinktypeExtensibilityElementFactory"/>   
+   </extension>
+   
+   <extension-point id="extensions_reordering" name="Reordering of extensibility element list"/>
+   
+
+   <extension
+         point="org.eclipse.emf.ecore.extension_parser">
+      <parser
+            type="bpel"
+            class="org.eclipse.bpel.model.resource.BPELResourceFactoryImpl">
+      </parser>
+   </extension>
+   
+   <!-- VZ - FIXME: The provider class was commented. Delete the class and this commented extension? -->
+   <!-- extension
+         point="org.eclipse.bpel.common.ui.resourceSetProvider">
+      <provider class="org.eclipse.bpel.model.resource.ResourceSetProvider"/>
+   </extension -->
+
+
+	<!-- Bugzilla 320545: -->
+	<extension point="org.eclipse.emf.ecore.content_parser">
+		<parser
+            class="org.eclipse.bpel.model.resource.BPELResourceFactoryImpl"
+			contentTypeIdentifier="org.eclipse.bpel.contenttype">
+		</parser>
+	</extension>
+</plugin>
+

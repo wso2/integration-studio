@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpws:process
+	xmlns:bpws="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+	xmlns:ns="http://eclipse.org/bpel/sampleArtifacts"
+	xmlns:tns="http://eclipse.org/bpel/sample"
+	xmlns:tnstoo="http://eclipse.org/bpel/sample"
+	xmlns:xsdmapped = "http://www.w3.org/2001/XMLSchema"
+	exitOnStandardFault="yes"
+	name="Simple"
+	suppressJoinFailure="yes"
+	targetNamespace="http://eclipse.org/bpel/sample"
+	expressionLanguage="http://bad.ex.Lang"
+	queryLanguage="http://bad.query.Language">
+
+    <bpws:extensions>
+        <bpws:extension namespace="http://foobar/extension/1"/>
+        <bpws:extension namespace="http://foobar/extension/2" mustUnderstand="yesxx"/>
+        <bpws:extension namespace="http://foobar/extension/3" mustUnderstand="no"/>
+        <bpws:extension namespace="http://foobar/extension/4" mustUnderstand="yes"/>        
+    </bpws:extensions>
+	<bpws:import importType="http://schemas.xmlsoap.org/wsdl/"
+		location="t2.wsdl" namespace="http://eclipse.org/bpel/sample" />
+
+	<bpws:import importType="http://schemas.xmlsoap.org/wsdl/"
+		namespace="http://eclipse.org/bpel/sampleArtifacts" />
+		
+	<bpws:import importType="http://schemas.xmlsoap.org/wsdl/"
+		location="t2Artifacts.wsdl"
+		namespace="http://eclipse.org/bpel/sampleArtifacts" />
+
+	<bpws:import importType="http://schemas.xmlsoap.org/wsdl/"
+		location="t2Artifacts.wsdl"
+		namespace="http://eclipse.org/bpel/badNS" />
+
+	<bpws:import importType="http://schemas.xmlsoap.org/wsdl/"
+		location="t2Artifacts.wsdl"/>
+
+	<bpws:import/>
+	<bpws:import importType="http://bad.import.type"/>
+	
+	<bpws:partnerLinks>
+		<bpws:partnerLink myRole="SimpleProvider" name="client"
+			partnerLinkType="tns:Simple" partnerRole="SimpleRequester"/>									
+		<bpws:partnerLink name="noRoles" partnerLinkType="tns:Simple"/>
+		<bpws:partnerLink myRole="SimpleProvider" name="client"
+			partnerLinkType="tns:Simple" initializePartnerRole="yes"/>	
+		<bpws:partnerLink name="overloadedPL"
+			partnerLinkType="tns:Overloaded"
+			myRole="Loaded"/>
+		<bpws:partnerLink name="notificationPL"
+			partnerLinkType="tns:RejectThis"
+			myRole="Listener"/>			
+		<bpws:partnerLink name="solicitResponsePL"
+			partnerLinkType="tns:RejectThis"
+			myRole="ListenerResonder"/>						
+	</bpws:partnerLinks>
+
+	<bpws:variables>
+		<bpws:variable messageType="tns:SimpleRequestMessage"
+			name="input" />
+		<bpws:variable messageType="tns:SimpleResponseMessage"
+			name="output"/>
+
+		<!--  These should be bad  -->					
+		<bpws:variable name="badNoMessage"  messageType="tns:NoSuchMessage"/>		
+		<bpws:variable name="badNoType"     type="tns:NoSuchType"/>
+		
+		<!--  These should be bad  -->
+		<bpws:variable name="badNoElement1"  element="tns:NoSuchElement"/>
+		<bpws:variable name="badNoElement2"  element="badprefix:NoSuchElement"/>
+		
+		<!--  These should be good  -->
+		<bpws:variable name="goodElement1"   element="tnstoo:SimpleRequest"/>
+		<bpws:variable name="goodElement2"   element="tnstoo:SimpleResponse"/>
+		
+		<bpws:variable name="bad.Name"/>
+		
+		<bpws:variable name="aDuplicateName" type="xsd:integer"/>
+		<bpws:variable name="aDuplicateName" type="badprefix:integer"/>
+		
+		<bpws:variable name="integer1"        type="xsdmapped:integer"/>
+		<bpws:variable name="integer2"        type="xsdmapped:unsignedInt"/>
+		<bpws:variable name="integer3"        type="xsdmapped:unsignedInteger"/>
+		
+		<bpws:variable name="initializedVariable" type="xsdmapped:integer">
+		   <bpws:from>"Hello World"</bpws:from>
+		</bpws:variable>
+		
+		<bpws:variable name="initializedVariable2" type="xsdmapped:integer">
+		   <bpws:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">1 &lt; 2</bpws:from>
+		</bpws:variable>
+		
+		<bpws:variable name="initializedVariable3" type="xsdmapped:integer">
+		   <bpws:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">"Hello World"</bpws:from>
+		</bpws:variable>
+
+		<bpws:variable name="initializedVariable4" type="xsdmapped:string">
+		   <bpws:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">"Hello World"</bpws:from>
+		</bpws:variable>
+
+		<bpws:variable name="initializedVariable5" type="xsdmapped:NCName">
+		   <bpws:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
+		      ($integer3 + $integer2) &lt; 2
+		   </bpws:from>
+		</bpws:variable>
+		
+	</bpws:variables>
+	<bpws:faultHandlers>
+	  <bpws:catch faultName="bpws:invalidVariables">
+	    <bpws:sequence>
+	       <bpws:rethrow/>
+	    </bpws:sequence>
+	  </bpws:catch>
+	  <bpws:catch faultName="tns:xyz">
+	    <bpws:rethrow/>
+	  </bpws:catch>	 
+	  <bpws:catchAll>
+	    <bpws:sequence>
+	       <bpws:rethrow/>
+	    </bpws:sequence>
+	  </bpws:catchAll>
+	  
+	</bpws:faultHandlers>
+	
+	<bpws:sequence name="main">
+   		<bpws:rethrow/>
+   		<bpws:receive name="receiveInput"
+			operation="initiatex" 
+			partnerLink="client"
+			portType="tnstoo:Simple"
+			variable="input"/>					
+   		<bpws:receive name="receiveInput"
+			operation="initiate" 
+			partnerLink="client" 
+			portType="tnstoo:Simple"
+			variable="output"/>								
+		<bpws:receive name="receiveInput"
+			operation="initiate" 
+			partnerLink="client"
+			portType="tnstoo:Simple"
+			variable="noinput"/>								
+	   	<bpws:receive name="receiveInput"
+			operation="initiate" 
+			partnerLink="client" 
+			portType="tns:SimpleCallback"
+			variable="input"/>
+	   	<bpws:receive name="receiveInput"
+			operation="initiate" 
+			partnerLink="client"
+			portType="tns:SimpleDOESNOTEXIST"
+			variable="input"/>			
+	   	<bpws:receive name="receiveInput"
+			operation="initiate_bad"
+			partnerLink="client" 
+			portType="badprefix:Simple"
+			variable="input_bad"/>			
+			
+		<bpws:compensateScope>
+			<bpws:empty/>
+		</bpws:compensateScope>				
+		
+		<bpws:compensate>
+			<bpws:empty/>
+		</bpws:compensate>
+		
+		<bpws:while>
+		   <bpws:condition>1 &lt; 2</bpws:condition>
+		   <bpws:empty/>
+		</bpws:while>
+
+		<bpws:while>
+		   <bpws:condition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">1 &lt; 2</bpws:condition>
+		   <bpws:empty/>
+		</bpws:while>
+		
+		<bpws:while>
+		   <bpws:condition expressionLanguage="http://foobar">1 &lt; 2</bpws:condition>
+   		   <bpws:empty/>
+		</bpws:while>
+				
+	</bpws:sequence>
+</bpws:process>

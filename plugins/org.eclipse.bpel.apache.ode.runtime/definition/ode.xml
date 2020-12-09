@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:ServerRuntime
+	xmlns:tns="http://eclipse.org/jst/server/generic/ServerTypeDefinition"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://eclipse.org/jst/server/generic/ServerTypeDefinition ServerTypeDefinitionSchema.xsd "
+	name="Apache ODE" version="v1.x">
+	<property id="ode.home"
+		label="%odeHome"
+		type="directory"
+		context="runtime"
+		default="/your_ode_root/" />
+		
+	<property id="tomcat.home"
+		label="%tomcatHome"
+		type="directory"
+		context="runtime"
+		default="/your_tomcat_root/" />
+
+	<property id="serverAddress"
+		label="%serverAddress"
+		type="string"
+		context="runtime"
+		default="localhost" />
+
+	<property id="port"
+		label="%port"
+		type="string"
+		context="runtime"
+		default="8080" />
+
+	<property id="vmArguments"
+		label="%vmArguments"
+		type="string"
+		context="runtime"
+		default="-Xms128m -Xmx512m -XX:MaxPermSize=256m" />
+		
+	<port>
+		<no>${port}</no>
+		<name>Http</name>
+		<protocol>http</protocol>
+	</port>
+
+	<module>
+		<type>bpel.module</type>
+		<publishDir>${ode.home}/WEB-INF/processes</publishDir>
+		<publisherReference>org.eclipse.bpel.apache.ode.runtime.publisher</publisherReference>
+	</module>
+	
+	<project>
+		<classpathReference>ode.project</classpathReference>
+	</project>
+
+	<start>
+		<mainClass>org.apache.catalina.startup.Bootstrap</mainClass>
+		<workingDirectory>${tomcat.home}</workingDirectory>
+		<programArguments>start</programArguments>
+		<vmParameters>-Dcatalina.home="${tomcat.home}" -Djava.endorsed.dirs="${tomcat.home}/common/endorsed" ${vmArguments}</vmParameters>
+		<classpathReference>tomcat</classpathReference>
+	</start>
+
+	<stop>
+		<mainClass>org.apache.catalina.startup.Bootstrap</mainClass>
+		<workingDirectory>${tomcat.home}</workingDirectory>
+		<programArguments>stop</programArguments>
+		<vmParameters>-Dcatalina.home="${tomcat.home}" -Djava.endorsed.dirs="${tomcat.home}/common/endorsed"</vmParameters>
+		<classpathReference>tomcat</classpathReference>
+	</stop>
+
+ 	<classpath id="ode">
+		<archive path="${ode.home}/WEB-INF/lib" />
+	</classpath>
+
+	<classpath id="tomcat">
+		<archive path="${tomcat.home}/bin/bootstrap.jar" />
+	</classpath>
+	
+</tns:ServerRuntime>

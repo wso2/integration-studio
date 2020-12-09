@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.wso2.developerstudio.bpel.humantask.model/src"
+    modelPluginID="org.wso2.developerstudio.bpel.humantask.model" modelName="Humantask"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
+    usedGenPackages="../../org.eclipse.bpel.model/src/model/bpel.genmodel#//model ../../org.eclipse.bpel.model/src/model/bpel.genmodel#//partnerlinktype ../../org.eclipse.bpel.model/src/model/bpel.genmodel#//messageproperties platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore recoder.genmodel#//record platform:/plugin/org.eclipse.wst.wsdl/model/WSDL.genmodel#//wsdl platform:/plugin/org.eclipse.xsd/model/XSD.genmodel#//xsd">
+  <foreignModel>humantask.ecore</foreignModel>
+  <genPackages prefix="Model" basePackage="org.wso2.developerstudio.bpel.humantask" disposableProviderFactory="true"
+      ecorePackage="humantask.ecore#/">
+    <genClasses ecoreClass="humantask.ecore#//PeopleActivityRT">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference humantask.ecore#//PeopleActivityRT/inputVariable"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference humantask.ecore#//PeopleActivityRT/outputVariable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute humantask.ecore#//PeopleActivityRT/isSkipable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute humantask.ecore#//PeopleActivityRT/dontShareComments"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference humantask.ecore#//PeopleActivityRT/remoteTask"/>
+    </genClasses>
+    <genClasses ecoreClass="humantask.ecore#//RemoteTask">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference humantask.ecore#//RemoteTask/partnerLink"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference humantask.ecore#//RemoteTask/operation"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference humantask.ecore#//RemoteTask/responseOperation"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

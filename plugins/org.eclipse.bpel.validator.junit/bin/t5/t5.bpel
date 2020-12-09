@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpws:process
+	xmlns:bpws="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+	xmlns:ns="http://eclipse.org/bpel/sampleArtifacts"
+	xmlns:tns="http://eclipse.org/bpel/sample" 
+	xmlns:tnstoo="http://eclipse.org/bpel/sample"
+	xmlns:xsdmapped = "http://www.w3.org/2001/XMLSchema"
+	exitOnStandardFault="yes"
+	name="T5"
+	suppressJoinFailure="yes"
+	targetNamespace="http://eclipse.org/bpel/sample">
+
+	<bpws:import importType="http://schemas.xmlsoap.org/wsdl/"
+		location="t5.wsdl" namespace="http://eclipse.org/bpel/sample" />
+ 
+	<!--  Comment  -->
+	<bpws:partnerLinks>
+		<bpws:partnerLink myRole="SimpleProvider" name="client"
+			partnerLinkType="tns:Simple" partnerRole="SimpleRequester"/>									
+		<bpws:partnerLink name="partner1"
+			partnerLinkType="tns:Simple" partnerRole="SimpleRequester"/>									
+		<bpws:partnerLink name="partner2"
+			partnerLinkType="tns:Simple" myRole="SimpleRequester"/>									
+			
+	</bpws:partnerLinks>
+
+	<bpws:variables>
+		<bpws:variable messageType="tns:SimpleRequestMessage"
+			name="input" />
+		<bpws:variable messageType="tns:SimpleResponseMessage"
+			name="output"/>		
+		<bpws:variable type="xsdmapped:integer" name="varx"/>		
+		<bpws:variable type="xsdmapped:integer" name="vary"/>
+				
+	</bpws:variables>
+	
+	<bpws:faultHandlers/>
+	<bpws:eventHandlers/>
+	
+	<bpws:terminationHandler>
+	   <bpws:scope>
+		 <bpws:sequence>
+		    <bpws:compensateScope/>
+		    <bpws:compensateScope target="foo_scope"/>
+   		 </bpws:sequence>
+	   </bpws:scope>   		 
+	</bpws:terminationHandler>
+	
+	<bpws:compensationHandler>
+	   <bpws:scope name="foo_x">
+	     <bpws:compensationHandler>
+	        <bpws:empty/>
+	     </bpws:compensationHandler>	 
+		 <bpws:sequence>
+		    <bpws:compensateScope/>
+		    <bpws:compensateScope target="foo_scope"/>
+   		 </bpws:sequence>
+	   </bpws:scope>   		 
+	</bpws:compensationHandler>
+	
+	<bpws:sequence name="main">
+   		<bpws:receive name="receiveInput"
+			operation="initiate" 
+			partnerLink="client" 
+			portType="tns:Simple"
+			variable="input"
+			createInstance="yes"/>
+        
+        <bpws:compensateScope name="try this"/>
+        
+		<bpws:scope name="foo_scope">
+		  <bpws:faultHandlers>
+		      <bpws:catchAll>
+		         <bpws:sequence>
+		             <bpws:compensateScope/>
+		             <bpws:compensateScope target="target S"/>
+   		             <bpws:compensateScope target="targetBad"/>
+		             <bpws:compensateScope target="targetS"/>		             
+   		         </bpws:sequence>
+		      </bpws:catchAll>
+  		  </bpws:faultHandlers>
+  		  
+  		  <bpws:sequence>
+  		     <bpws:empty/>
+  		     <bpws:scope name="targetS">
+  		        <bpws:empty/>
+  		     </bpws:scope>
+  		     
+  		  </bpws:sequence>
+  		    		  
+		</bpws:scope>
+
+		<bpws:scope name="onEvent1">
+		  <bpws:eventHandlers>
+		     <bpws:onEvent partnerLink="onEventPL"
+		                 variable="fxa">
+
+		        <bpws:scope name="fff1">
+		           <bpws:partnerLinks>
+		              <bpws:partnerLink name="onEventPL" />
+		           </bpws:partnerLinks>
+		           <bpws:empty/>
+		        </bpws:scope>
+		        
+		     </bpws:onEvent>
+
+		     <bpws:onEvent partnerLink="client"
+		                   variable="foo"
+		                   operation="initiatessxxxx">
+		        <bpws:scope name="fff2">
+		           <bpws:empty/>
+		        </bpws:scope>
+		        <bpws:fromParts>
+		           <bpws:fromPart part="foopart" toVariable="foo2xxx"/>
+		        </bpws:fromParts>		        
+		     </bpws:onEvent>
+		     
+
+		     <bpws:onEvent partnerLink="client"
+		                   variable="foo"
+		                   operation="initiate"
+		                   element="xsd:mapped"
+		                   messageType="msgtype">
+		     </bpws:onEvent>
+		     
+		    <!-- fromParts or variable must be present -->
+ 	        <bpws:onEvent partnerLink="client" 
+ 	                      operation="initiate">
+		        <bpws:scope name="fff3">
+		           <bpws:empty/>
+		        </bpws:scope>		              
+		     </bpws:onEvent>
+		     
+		     
+	        <!-- Message type mismatch -->            
+ 	        <bpws:onEvent name="ok_onevent_3"
+ 	                       partnerLink="client"
+		                   variable="foo"
+		                   operation="initiate"
+		                   messageType="tns:SimpleResponseMessage">
+		        <bpws:scope name="fff5">
+		           <bpws:empty/>
+		        </bpws:scope>		              
+		     </bpws:onEvent>
+		     
+		     
+            <!-- Should be OK -->            
+ 	        <bpws:onEvent name="ok_onevent"
+ 	                       partnerLink="client"
+		                   variable="foo"
+		                   operation="initiate"
+		                   messageType="tns:SimpleRequestMessage">
+		        
+		        <bpws:correlations>
+		           <bpws:correlation set="set1"/>
+		        </bpws:correlations>
+		        
+		        <bpws:scope name="fff10">
+		           <bpws:empty/>
+		        </bpws:scope>	
+		        	              
+		     </bpws:onEvent>
+		     
+  		  </bpws:eventHandlers>
+
+  		  <bpws:sequence>
+  		     <bpws:empty/>
+  		  </bpws:sequence>
+  		    		  
+		</bpws:scope>
+
+
+		
+		
+		<bpws:scope name="foo_scope" isolated="nope">
+  		  <bpws:sequence>
+  		     <bpws:empty/>
+  		  </bpws:sequence>
+  		    		  
+		</bpws:scope>
+
+		<bpws:scope name="foo_scope" isolated="yes">
+		  <bpws:faultHandlers>
+		     <bpws:catch faultName="fff:xad">
+		        <bpws:empty/>
+		     </bpws:catch>
+		     <bpws:catch faultName="fff:xad">
+		        <bpws:empty/>
+		     </bpws:catch>
+		     <bpws:catch faultName="tns:xad"
+		                 faultVariable="faultVar1">
+		        <bpws:empty/>
+		     </bpws:catch>
+		     <bpws:catch faultName="tns:xad1"
+		                 faultVariable="faultVar2"
+		                 faultElement="xsdmapped:foobar">
+		        <bpws:empty/>
+		     </bpws:catch>
+
+		     <bpws:catch faultName="tns:xad1"
+		                 faultElement="xsdmapped:foobar">
+		        <bpws:empty/>
+		     </bpws:catch>
+		     
+		     <!-- This one should be OK -->
+		     
+		     <bpws:catch faultName="tns:xad2"
+		                 faultVariable="faultVar3"
+		                 faultMessageType="tns:SimpleRequestMessage">
+		        <bpws:empty/>
+		     </bpws:catch>
+		     
+  		  </bpws:faultHandlers>
+  		  <bpws:sequence>
+  		     <bpws:empty/>
+  		     <bpws:scope name="bar_scope" isolated="yes">
+  		         <bpws:sequence>
+  		             <bpws:empty/>
+  		         </bpws:sequence>
+  		     </bpws:scope>
+  		     
+  		     <bpws:scope name="bar_scope" isolated="yes">
+  		         <bpws:sequence>
+  		             <bpws:empty/>
+  		         </bpws:sequence>  		    		  
+  		     </bpws:scope>
+  		     
+  		  </bpws:sequence>
+  		    		  
+		</bpws:scope>
+		<!-- foo --> 
+	</bpws:sequence>
+	
+</bpws:process>

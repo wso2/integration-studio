@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="CONTENT-TYPE" />
+<link rel="stylesheet" href="../book.css" type="text/css" />
+<title>Creating JBoss BPEL Server</title>
+</head>
+
+<body>
+	<h1>Creating JBoss BPEL Server</h1>
+	<p>
+		Once you have installed the JBoss BPEL Runtime-RiftSaw, you can
+		create a server for JBoss BPEL runtime.
+	</p>
+
+	<ul>
+		<li><p>
+				Open the <strong>Servers</strong> view by selecting 
+				<strong>Windows &gt; Show View &gt; Other...</strong> 
+				and then <strong>Server &gt; Servers</strong>. 
+			</p>
+		</li>
+		<li><p>
+				Right-click the <strong>Servers</strong> view and select 
+				<strong>New &gt; Server</strong> to open the <strong>New Server</strong> wizard: 
+			</p>
+			<p>
+				<img src="../../../images/deploy_createdeploy_4.png" alt="New Server Wizard" />
+			</p>
+		</li>
+		<li><p>
+				Select <strong>JBoss AS 5.1</strong> as a server type.
+			</p>
+			<h2>Note</h2>
+			<p>Please note, that only JBoss As 5.1 or higher version supports BPEL.</p>
+		</li>
+		<li><p>
+				Click the <strong>Next</strong>
+					button. On the next page, you should input your <strong>JBoss As™ location</strong>. 
+					Then click <strong>Next</strong>. You will get the page like this: 
+			</p>
+			<p>
+				<img src="../../../images/deploy_createdeploy_5.png" alt="Add resource to the server" />
+			</p>
+		</li>
+		<li><p>
+				Select <strong>HelloWorld</strong> , then click the <strong>Add</strong> 
+				button to add the
+					project to the server. Finally, click <strong>Finish</strong>. 
+			</p>
+			<p>
+				Start the server by right-clicking on the server and selecting the <strong>Start</strong>
+				item.
+			</p>
+			<p>
+				<img src="../../../images/deploy_createdeploy_6.png" alt="The started server" />
+			</p>
+			<p>
+				Read the <a class="ulink"
+					href="http://download.jboss.org/jbosstools/nightly-docs/en/as/html_single/index.html">JBoss
+					Server Manager Reference Guide</a> for more detail on this process.
+			</p>
+		</li>
+		<li><p>
+				You can enter the link <a class="ulink"
+					href="http://localhost:8080/bpel-console/app.html">http://localhost:8080/bpel-console/app.html</a>
+				in your web browser to access the deployed processes.
+			</p>
+			<p>
+				<img src="../../../images/deploy_createdeploy_7.png" alt="The BPEL console" />
+			</p>
+		</li>
+	</ul>
+</body>
+</html>

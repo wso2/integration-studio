@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?>
+
+<target name="indigo" sequenceNumber="21">
+<locations>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.swtbot.eclipse.feature.group" version="2.0.5.20111003_1754-3676ac8-dev-e36"/>
+<unit id="org.eclipse.swtbot.eclipse.gef.feature.group" version="2.0.5.20111003_1754-3676ac8-dev-e36"/>
+<unit id="org.eclipse.swtbot.ide.feature.group" version="2.0.5.20111003_1754-3676ac8-dev-e36"/>
+<repository location="http://download.eclipse.org/technology/swtbot/helios/dev-build/update-site"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.xtend.sdk.feature.group" version="2.3.1.v201208210947"/>
+<unit id="org.eclipse.xtext.sdk.feature.group" version="2.3.1.v201208210947"/>
+<repository location="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.jst.enterprise_ui.feature.feature.group" version="3.3.2.v201111030500-7b7II1YFSK2WIuPRDEnExPV-RvTn"/>
+<unit id="org.eclipse.jst.web_ui.feature.feature.group" version="3.3.2.v201112072049-7F7AFO7C25ToiIbpoiuW12GT78Mciy6W7iwuxaco"/>
+<unit id="org.eclipse.sdk.ide" version="3.7.2.M20120208-0800"/>
+<unit id="org.eclipse.emf.sdk.feature.group" version="2.7.2.v20120130-0943"/>
+<unit id="org.eclipse.emf.compare.sdk.feature.group" version="1.2.2.v20120214-0915"/>
+<unit id="org.eclipse.gef.sdk.feature.group" version="3.7.2.v20110927-2020-7G7W77A5WNgIRPdWXDIbNTSQPdQL"/>
+<unit id="org.eclipse.gmf.runtime.sdk.feature.group" version="1.5.0.v20110607-1200-67N09E9QnChoWswz-3wf_rz0kQ8Y"/>
+<unit id="org.eclipse.jst.server_adapters.feature.feature.group" version="3.2.100.v20110303-208Z7w31211419"/>
+<unit id="org.eclipse.jst.server_adapters.ext.feature.feature.group" version="3.3.2.v20111010_1242-777HFHzCcNBDjCbIUfEEE3"/>
+<unit id="org.eclipse.jst.server_ui.feature.feature.group" version="3.3.0.v201102200555-7A6FHr9xFcAVCFLZBBJLIR43A"/>
+<unit id="org.eclipse.wst.ws_wsdl15.feature.feature.group" version="1.5.301.v201102200555-2407w312123151655"/>
+<unit id="org.eclipse.wst.common_core.feature.feature.group" version="3.3.2.v201111030500-7B7DFO9F7RZHOhIjR6Mz-NJ"/>
+<unit id="org.eclipse.wst.common_ui.feature.feature.group" version="3.3.2.v201111030500-7C79FVsEdhO_sfog9oNekiJkS7Nz00OK"/>
+<unit id="org.eclipse.wst.server_adapters.feature.feature.group" version="3.2.100.v20110303-51EoAkF77g8HBSc"/>
+<unit id="org.eclipse.wst.server_core.feature.feature.group" version="3.3.2.v20111026_1748-30FBd8s7356394Ka2531"/>
+<unit id="org.eclipse.wst.server_ui.feature.feature.group" version="3.3.2.v20111026_1748-7B79FBdAtJcez0EONePJUSNPjBC42"/>
+<unit id="org.eclipse.wst.xml_core.feature.feature.group" version="3.3.2.v201112072049-7C7OFeMF7RZHQOIsNANyRc"/>
+<repository location="http://download.eclipse.org/releases/indigo"/>
+</location>
+</locations>
+<environment>
+<nl>en_US</nl>
+</environment>
+<launcherArgs>
+<vmArgs>-Xms40m -Xmx512m -Declipse.p2.mirrors=true -Djava.net.preferIPv4Stack=true</vmArgs>
+</launcherArgs>
+</target>

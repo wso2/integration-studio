@@ -1,11 +1,5 @@
 # No Eclipse Related Files #
 ###################
-<<<<<<< HEAD
-=======
-
-.classpath
-.project
->>>>>>> dss/eclipse-2020-migration
 .settings/
 target/
 bin/
@@ -17,7 +11,6 @@ test-output/
 *.ipr
 *.iws
 .idea/
-
 
 # Igonore duplicated feature.common.properties
 feature.common.properties
@@ -42,3 +35,13 @@ feature.common.properties
 ## Generated When Building
 components/esb-tools/plugins/org.wso2.integrationstudio.eclipse.gmf.esb.persistence/library.jar
 
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.war
+*.ear
+*.zip
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*

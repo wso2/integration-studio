@@ -1,0 +1,87 @@
+
+ol.validators {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+ol.validators li {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+ol.validators .missing {
+	color: #900;
+	font-weight: bold;
+	background-color: #ebb;
+	border: 1px solid #f00;
+	padding: 5px;
+}
+
+
+table.av {
+	font-size: 9pt;
+}
+
+table.av td {
+	vertical-align: top;
+	border: 1px solid #888;
+	padding: 2px;
+}
+
+table.av th {
+	font-weight: bold;
+	text-align: right;
+	background-color: #ddd;
+	border: 1px solid #888;
+}
+
+
+table.av2 {
+	width: 100%;
+	padding: 3px;
+	border: 1px dotted black;
+	/* background-color: #9694B9; */
+}
+
+table.av2 td {
+	vertical-align: top;
+	border: 1px solid #888;
+	padding: 2px;
+	background-color: #fff;
+}
+
+table.av2 th {
+	font-weight: bold;
+	text-align: center;
+	background-color: #ddd;
+	border: 1px solid #888;
+}
+
+table.av2 .w1 {
+	width: 10px;
+}
+
+table.av2 .w2 {
+	width: 20px;
+}
+
+table.av2 .w4 {
+	width: 40px;
+}
+
+table.av2 .w10 {
+	width: 200px;
+}
+
+.author {
+	font-size: 8pt;
+	text-style: italics;
+}
+
+.warn {
+	color: #900;
+	font-weight: bold;
+	background-color: #ebb;
+}
+
+

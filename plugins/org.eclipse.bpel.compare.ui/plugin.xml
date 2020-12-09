@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.compare.contentMergeViewers">
+      <viewer
+            class="org.eclipse.bpel.compare.ui.gef.bpel.BPELContentMergeViewerCreator"
+            id="org.eclipse.emf.compare.ui.gef.mergeviewer.content">
+      </viewer>
+      <contentTypeBinding
+            contentMergeViewerId="org.eclipse.emf.compare.ui.gef.mergeviewer.content"
+	        contentTypeId="org.eclipse.bpel.contenttype">
+      </contentTypeBinding>
+   </extension>
+   
+   <extension
+         point="org.eclipse.emf.compare.match.engine">
+      <matchengine
+            engineClass="org.eclipse.bpel.compare.ui.gef.bpel.BPELMatchEngine"
+            fileExtension="bpel"
+            icon="icons/obj16/MatchModel.gif"
+            label="BPEL Matching Engine"/>
+   </extension>
+   
+      <!--extension
+         point="org.eclipse.compare.structureMergeViewers">
+      <contentTypeBinding
+            structureMergeViewerId="org.eclipse.emf.compare.ui.structuremergeviewer.ModelStructureMergeViewer"
+	        id="org.eclipse.bpel.contenttype">
+   </extension-->
+   
+</plugin>

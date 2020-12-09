@@ -2,8 +2,7 @@
 BASE_DIR=$(pwd)
 PRODUCT_VERSION=$1
 APACHE_MAVEN_VERSION=$2
-APIM_CTL_VERSION=$3
-PRODUCT_DIRECTORY=$4
+PRODUCT_DIRECTORY=$3
 
 echo BASE_DIR $BASE_DIR and PRODUCT_VERSION $PRODUCT_VERSION
 
@@ -101,19 +100,6 @@ rm -rf $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-linux.gtk.x86_64.tar.gz
 rm -rf $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-win32.win32.x86_64.zip
 rm -rf $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-macosx.cocoa.x86_64.tar.gz
 
-# Extract api-ctl to relevant packages
-pushd ${APICTL_DISTRIBUTION_PATH_LINUX_64}
-tar xzf apictl-$APIM_CTL_VERSION-linux-x64.tar.gz -C $PRODUCT_PATH_LINUX_64
-popd
-
-pushd ${APICTL_DISTRIBUTION_PATH_WINDOWS_64}
-unzip apictl-$APIM_CTL_VERSION-windows-x64.zip -d $PRODUCT_PATH_WIN_64
-popd
-
-pushd ${APICTL_DISTRIBUTION_PATH_MACOSX_64}
-tar xzf apictl-$APIM_CTL_VERSION-macosx-x64.tar.gz -C $PRODUCT_PATH_MACOS/IntegrationStudio.app/Contents/Eclipse
-popd
-
 # Extract JDK distributions
 pushd ${JDK_DISTRIBUTION_PATH_LINUX}
 mv $JDK_DISTRIBUTION_FILE_PREFIX* $JDK_DISTRIBUTION_NAME.tar.gz
@@ -177,11 +163,11 @@ popd
 
 #Rename Info.plist for Mac issue 
 #TODO: Need to fix this on RCP level
-pushd ${MACOS_ECLIPSE_PLIST_PATH}
-sed -e 's/integrationstudio/IntegrationStudio/; s/Integrationstudio/IntegrationStudio/; s/WSO2-Integration-Studio/WSO2-Integration-Studio/' Info.plist > Info_temp.plist
-rm Info.plist
-mv Info_temp.plist Info.plist
-popd
+# pushd ${MACOS_ECLIPSE_PLIST_PATH}
+# sed -e 's/integrationstudio/IntegrationStudio/; s/Integrationstudio/IntegrationStudio/; s/WSO2-Integration-Studio/WSO2-Integration-Studio/' Info.plist > Info_temp.plist
+# rm Info.plist
+# mv Info_temp.plist Info.plist
+# popd
 
 # Zip the packages with microesb and JDK
 pushd ${PRODUCT_PATH_LINUX_64}

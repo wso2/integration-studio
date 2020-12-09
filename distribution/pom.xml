@@ -31,6 +31,6 @@
     <description>WSO2 Integration Studio Distribution</description>
 
     <modules>
-
+      <module>rcp-product</module>
     </modules>
 </project>

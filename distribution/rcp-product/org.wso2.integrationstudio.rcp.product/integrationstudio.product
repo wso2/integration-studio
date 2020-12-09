@@ -7,7 +7,7 @@
       <image path="/org.wso2.integrationstudio.rcp.plugin/icons/carbon-studio-logo.gif"/>
       <text>
          Licensed under Apache License, version 2.
-Please visit : http://wso2.com/products/developer-studio/
+Please visit : http://wso2.com/products/integration-studio/
       </text>
    </aboutInfo>
 
@@ -53,7 +53,7 @@ Please visit : http://wso2.com/products/developer-studio/
    </vm>
 
    <license>
-        <url>https://github.com/wso2/developer-studio/blob/master/LICENSE</url>
+        <url>https://github.com/wso2/integration-studio/blob/master/LICENSE</url>
         <text>
    Apache License
                            Version 2.0, January 2004

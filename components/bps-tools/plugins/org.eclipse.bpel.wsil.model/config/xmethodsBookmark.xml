@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<inspection xmlns="http://schemas.xmlsoap.org/ws/2001/10/inspection/">
+
+<service>
+	<name>Weather - Temperature</name>
+	<abstract><![CDATA[Current temperature in a given U.S. zipcode region.]]></abstract>
+    <description referencedNamespace="http://schemas.xmlsoap.org/wsdl/" location="http://www.xmethods.net/sd/2001/TemperatureService.wsdl" /> 
+</service>					
+
+<service>
+	<name>Barnes and Noble Price Quote</name>
+	<abstract><![CDATA[Returns price of a book at BN.com given an ISBN number.]]></abstract>
+    <description referencedNamespace="http://schemas.xmlsoap.org/wsdl/" location="http://www.xmethods.net/sd/2001/BNQuoteService.wsdl" /> 
+</service>					
+
+<service>
+	<name>California Traffic Conditions</name>
+	<abstract><![CDATA[California highway conditions.]]></abstract>
+    <description referencedNamespace="http://schemas.xmlsoap.org/wsdl/" location="http://www.xmethods.net/sd/2001/CATrafficService.wsdl" /> 
+</service>					
+
+<service>
+	<name>Delayed Stock Quote</name>
+	<abstract><![CDATA[20 minute delayed stock quote]]></abstract>
+    <description referencedNamespace="http://schemas.xmlsoap.org/wsdl/" location="http://services.xmethods.net/soap/urn:xmethods-delayed-quotes.wsdl" /> 
+</service>					
+
+<service>
+	<name>eBay Price Watcher</name>
+	<abstract><![CDATA[Checks current bid price of an eBay auction.]]></abstract>
+    <description referencedNamespace="http://schemas.xmlsoap.org/wsdl/" location="http://www.xmethods.net/sd/2001/EBayWatcherService.wsdl" /> 
+</service>					
+
+</inspection >
+

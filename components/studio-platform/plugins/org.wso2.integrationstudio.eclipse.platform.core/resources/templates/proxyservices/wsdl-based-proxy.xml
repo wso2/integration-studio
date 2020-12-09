@@ -1,0 +1,13 @@
+<proxy xmlns="http://ws.apache.org/ns/synapse" name="{proxy.name}"
+	transports="https,http" statistics="disable" trace="disable"
+	startOnLoad="true">
+	<target>
+		<outSequence>
+			<send />
+		</outSequence>
+		<endpoint
+			name="endpoint_urn_uuid_1FF78996948B9A0B6E14565751214774-1218279313">
+			<wsdl service="{wsdl.service}" port="{wsdl.port}" uri="{wsdl.url}" />
+		</endpoint>
+	</target>
+</proxy>

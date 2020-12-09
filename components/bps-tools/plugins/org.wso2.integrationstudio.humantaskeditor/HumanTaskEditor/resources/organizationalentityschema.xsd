@@ -1,0 +1,30 @@
+<xsd:schema xmlns:htt="http://docs.oasis-open.org/ns/bpel4people/ws-humantask/types/200803" 
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			elementFormDefault="qualified"
+			targetNamespace="http://docs.oasis-open.org/ns/bpel4people/ws-humantask/types/200803">
+			<xsd:complexType name="organization">
+				<xsd:sequence>
+					<xsd:element name="organizationalEntity" type="htt:tOrganizationalEntity" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="organizationalEntity" type="htt:tOrganizationalEntity" />
+			<xsd:complexType name="tOrganizationalEntity">
+  				<xsd:choice maxOccurs="unbounded">
+   					<xsd:element name="user" type="htt:tUser" />
+    				<xsd:element name="group" type="htt:tGroup" />
+  				</xsd:choice>
+			</xsd:complexType>
+			<xsd:complexType name="UserType">
+				<xsd:sequence>
+					<xsd:element name="user" type="htt:tUser"></xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="user" type="htt:tUser" />
+			<xsd:simpleType name="tUser">
+ 			 		<xsd:restriction base="xsd:string" />
+			</xsd:simpleType>
+			<xsd:element name="group" type="htt:tGroup" />
+			<xsd:simpleType name="tGroup">
+  				<xsd:restriction base="xsd:string" />
+			</xsd:simpleType>
+</xsd:schema>

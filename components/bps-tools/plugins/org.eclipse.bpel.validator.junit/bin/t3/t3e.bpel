@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpws:process exitOnStandardFault="yes" name="T3"
+    suppressJoinFailure="no"
+    targetNamespace="http://eclipse.org/bpel/sample"
+    xmlns:bpws="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+    xmlns:ns="http://eclipse.org/bpel/sampleArtifacts"
+    xmlns:tns="http://eclipse.org/bpel/sample"
+    xmlns:tnstoo="http://eclipse.org/bpel/sample" xmlns:xsdmapped="http://www.w3.org/2001/XMLSchema">
+    <bpws:import importType="http://schemas.xmlsoap.org/wsdl/"
+        location="t3.wsdl" namespace="http://eclipse.org/bpel/sample"/>
+    <bpws:import importType="http://schemas.xmlsoap.org/wsdl/"
+        location="t3Artifacts.wsdl" namespace="http://eclipse.org/bpel/sampleArtifacts"/>
+    <bpws:partnerLinks>
+        <bpws:partnerLink myRole="SimpleProvider" name="client"
+            partnerLinkType="tnstoo:Simple" partnerRole="SimpleRequester"/>
+        <bpws:partnerLink name="partner1"
+            partnerLinkType="tnstoo:Simple" partnerRole="SimpleRequester"/>
+        <bpws:partnerLink myRole="SimpleRequester" name="partner2" partnerLinkType="tnstoo:Simple"/>
+        <bpws:partnerLink name="twoWayPL"
+            partnerLinkType="tnstoo:twoWayPLT" partnerRole="twoWayRole"/>
+        <bpws:partnerLink name="simple3"
+            partnerLinkType="tnstoo:Simple3PLT" partnerRole="SimpleProvider3"/>
+    </bpws:partnerLinks>
+    <bpws:variables>
+        <bpws:variable messageType="tnstoo:SimpleRequestMessage" name="input"/>
+        <bpws:variable element="tnstoo:SimpleRequest" name="inputElement"/>
+        <bpws:variable messageType="tnstoo:SimpleResponseMessage" name="output"/>
+        <bpws:variable element="tnstoo:SimpleResponse" name="outputElement"/>
+        <bpws:variable name="varx" type="xsdmapped:integer"/>
+        <bpws:variable name="vary" type="xsdmapped:integer"/>
+    </bpws:variables>
+    <bpws:correlationSets>
+        <bpws:correlationSet name="foobar"/>
+        <bpws:correlationSet name="foobar"/>
+        <bpws:correlationSet name="foobar2" properties="tnstoo:p1 tnstoo:p2"/>
+    </bpws:correlationSets>
+    <bpws:sequence name="main">
+        <bpws:if>
+            <bpws:empty/>
+            <bpws:condition><![CDATA[
+                1 + $varx/foo/bar <  3
+            ]]></bpws:condition>
+            <bpws:elseif/>
+        </bpws:if>
+        <bpws:forEach counterName="Counter" name="ForEach" parallel="no">
+            <bpws:scope/>
+        </bpws:forEach>
+        <bpws:while name="While">
+            <bpws:condition><![CDATA[true()]]></bpws:condition>
+        </bpws:while>
+        <bpws:empty/>
+        <bpws:flow>
+            <bpws:receive createInstance="yes" name="receiveInput"
+                operation="initiate" partnerLink="client"
+                portType="tnstoo:Simple" variable="input">
+                <bpws:correlations>
+                    <bpws:correlation set="foobar"/>
+                </bpws:correlations>
+            </bpws:receive>
+            <bpws:receive createInstance="yes" name="receiveInput"
+                operation="initiate" partnerLink="client"
+                portType="tnstoo:Simple" variable="output">
+                <bpws:correlations>
+                    <bpws:correlation set="foobar"/>
+                    <bpws:correlation set="foobarx"/>
+                    <bpws:correlation set="foobary"/>
+                </bpws:correlations>
+            </bpws:receive>
+            <bpws:pick createInstance="yes">
+                <bpws:onMessage partnerLink="client"
+                    portType="tnstoo:Simple" variable="output">
+                    <bpws:correlations>
+                        <bpws:correlation set="foobar"/>
+                    </bpws:correlations>
+                </bpws:onMessage>
+                <bpws:onMessage partnerLink="client"
+                    portType="tnstoo:Simple" variable="output">
+                    <bpws:correlations>
+                        <bpws:correlation set="foobar"/>
+                    </bpws:correlations>
+                </bpws:onMessage>
+                <bpws:onAlarm>
+                    <bpws:for><![CDATA[string('foobar')]]></bpws:for>
+                    <bpws:empty/>
+                </bpws:onAlarm>
+            </bpws:pick>
+        </bpws:flow>
+        <bpws:reply name="replyOutput" operation="initiate"
+            partnerLink="client" portType="tnstoo:SimpleCallback" variable="output"/>
+        <bpws:reply name="replyOutput" operation="initiate"
+            partnerLink="client" portType="tnstoo:SimpleCallback" variable="input"/>
+        <bpws:assign name="Empty Assign" validate="no">
+            <bpws:copy/>
+        </bpws:assign>
+        <bpws:assign name="Empty_Copy" validate="no">
+            <bpws:copy/>
+        </bpws:assign>
+        <bpws:assign name="incompatible_copies" validate="no">
+            <bpws:copy>
+                <bpws:from><![CDATA["Hello World"]]></bpws:from>
+                <bpws:to/>
+            </bpws:copy>
+            <bpws:copy>
+                <bpws:from variable="varx"/>
+                <bpws:to part="payloa" variable="output"/>
+            </bpws:copy>
+            <bpws:copy>
+                <bpws:from variable="input"/>
+                <bpws:to variable="output"/>
+            </bpws:copy>
+            <bpws:copy>
+                <bpws:from part="payload" variable="input"/>
+                <bpws:to variable="varx"/>
+            </bpws:copy>
+            <bpws:copy>
+                <bpws:from part="payload" variable="input">
+                    <bpws:query><![CDATA[/tns:input]]></bpws:query>
+                </bpws:from>
+                <bpws:to variable="varx"/>
+            </bpws:copy>
+            <bpws:copy>
+                <bpws:from part="payload" variable="input">
+                    <bpws:query><![CDATA[/tns:input + 1]]></bpws:query>
+                </bpws:from>
+                <bpws:to variable="varx"/>
+            </bpws:copy>
+            <bpws:copy>
+                <bpws:from><![CDATA[$input.payload/tns:input]]></bpws:from>
+                <bpws:to variable="varx"/>
+            </bpws:copy>
+            <bpws:copy>
+                <bpws:from><![CDATA[$input.payload/tns:input + 1]]></bpws:from>
+                <bpws:to variable="varx"/>
+            </bpws:copy>
+            <bpws:copy>
+                <bpws:from><![CDATA[$input.payload/tns:input/tns:foo]]></bpws:from>
+                <bpws:to variable="varx"/>
+            </bpws:copy>
+            <bpws:copy keepSrcElementName="yes">
+                <bpws:from><![CDATA[$input.payload/tns:input + 1]]></bpws:from>
+                <bpws:to variable="varx"/>
+            </bpws:copy>
+            <bpws:copy keepSrcElementName="no">
+                <bpws:from><![CDATA[$input.payload/tns:input + 1]]></bpws:from>
+                <bpws:to variable="varx"/>
+            </bpws:copy>
+            <bpws:copy>
+                <bpws:from endpointReference="myRole" partnerLink="client"/>
+                <bpws:to partnerLink="partner1"/>
+            </bpws:copy>
+            <bpws:copy>
+                <bpws:from endpointReference="myRole" partnerLink="client"/>
+                <bpws:to variable="outputElement"/>
+            </bpws:copy>
+            <bpws:copy>
+                <bpws:from endpointReference="myRole" partnerLink="client"/>
+                <bpws:to variable="varx"/>
+            </bpws:copy>
+        </bpws:assign>
+        <bpws:assign name="broken assign" validate="no">
+            <bpws:copy>
+                <bpws:from/>
+                <bpws:to/>
+            </bpws:copy>
+            <bpws:copy>
+                <bpws:from endpointReference="myRole"
+                    partnerLink="clientx" variable="inputx"><![CDATA[1]]></bpws:from>
+                <bpws:to/>
+            </bpws:copy>
+            <bpws:copy>
+                <bpws:from expressionLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"/>
+                <bpws:to variable="var2"/>
+            </bpws:copy>
+            <bpws:copy>
+                <bpws:from variable="varx"/>
+                <bpws:to variable="vary"/>
+            </bpws:copy>
+            <bpws:copy>
+                <bpws:from partnerLink="badPL-from"/>
+                <bpws:to partnerLink="badPL-to"/>
+            </bpws:copy>
+            <bpws:copy>
+                <bpws:from endpointReference="partnerRole" partnerLink="client"/>
+                <bpws:to partnerLink="partner2"/>
+            </bpws:copy>
+            <bpws:copy>
+                <bpws:from endpointReference="myRole" partnerLink="client"/>
+                <bpws:to/>
+            </bpws:copy>
+            <bpws:copy>
+                <bpws:from endpointReference="partnerRole"
+                    expressionLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116" partnerLink="partner1"/>
+                <bpws:to/>
+            </bpws:copy>
+            <bpws:copy>
+                <bpws:from endpointReference="myRole" partnerLink="partner1"/>
+                <bpws:to/>
+            </bpws:copy>
+            <bpws:copy>
+                <bpws:from endpointReference="partnerRole" partnerLink="partner2"/>
+                <bpws:to/>
+            </bpws:copy>
+            <bpws:copy>
+                <bpws:from endpointReference="myRole" partnerLink="partner2"/>
+                <bpws:to/>
+            </bpws:copy>
+            <bpws:copy>
+                <bpws:from endpointReference="myRole" partnerLink="partner2"/>
+                <bpws:to/>
+            </bpws:copy>
+            <bpws:copy>
+                <bpws:from>
+                    <bpws:literal>
+                        <bpws:literal xmlns:bpws="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+                            <bpws:literal>
+                                <just-one-element/>
+                                <just-second-element/>
+                            </bpws:literal>
+                        </bpws:literal>
+                    </bpws:literal>
+                </bpws:from>
+                <bpws:to/>
+            </bpws:copy>
+            <bpws:copy>
+                <bpws:from>
+                    <bpws:literal>
+                        <bpws:literal xmlns:bpws="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+                            <bpws:literal>Just some text to copy ...</bpws:literal>
+                        </bpws:literal>
+                    </bpws:literal>
+                </bpws:from>
+                <bpws:to/>
+            </bpws:copy>
+            <bpws:copy>
+                <bpws:from><![CDATA[/bpws:foo/bpws:bar]]></bpws:from>
+                <bpws:to/>
+            </bpws:copy>
+            <bpws:copy>
+                <bpws:from><![CDATA[$varx]]></bpws:from>
+                <bpws:to/>
+            </bpws:copy>
+            <bpws:copy>
+                <bpws:from><![CDATA[$varx.part1]]></bpws:from>
+                <bpws:to/>
+            </bpws:copy>
+            <bpws:copy>
+                <bpws:from><![CDATA[bpws:getVariableProperty($foo,$bar) + 
+		               bpws:getVariableProperty($foo,"bar") + 
+		               bpws:getVariableProperty("foo","badns:bar") + 
+		               bpws:getVariableProperty("foo1") +
+		               bpws:getVariableProperty("foo5","badns1:bar","far") + 
+		               bpws:getVariableProperty("foo3","bpws:bar")
+		    ]]></bpws:from>
+                <bpws:to/>
+            </bpws:copy>
+            <bpws:copy>
+                <bpws:from><![CDATA[
+		               bpws:doXslTransform($foo2,  $bar2  ) + 
+		               bpws:doXslTransform($foo2,"bar") + 
+		bpws:doXslTransform( " :foo/bar.txt", "bar") + 
+        bpws:doXslTransform( 
+                        "12:12"
+                            ) +
+		bpws:doXslTransform  ("13:13") +
+		     bpws:doXslTransform("foo5/..",$input,"arg3") + 
+		     bpws:doXslTransform("foo2",$input,"badns1:arg3",$output) +
+   		         bpws:doXslTransform("foo2",$input,1 > 3,$output, 1 div 3) +
+   		         bpws:doXslTransform("foo2",$input,"badns3:arg3",$output, "badns4:arg3") +
+   		         bpws:doXslTransform("foo2",$input,"bpws:arg3",$output, "bpws:arg3",$output)
+		    ]]></bpws:from>
+                <bpws:to/>
+            </bpws:copy>
+        </bpws:assign>
+        <bpws:empty>
+            <bpws:targets>
+                <bpws:joinCondition><![CDATA[
+		       bpws:helloWorld() > 
+		       string(12) 
+		     ]]></bpws:joinCondition>
+            </bpws:targets>
+        </bpws:empty>
+        <bpws:invoke inputVariable="input" name="invokeTest1"
+            operation="twoWayOperation" partnerLink="twoWayPL" portType="tnstoo:TwoWay"/>
+        <bpws:invoke name="invokeTest2" operation="twoWayOperation"
+            partnerLink="twoWayPL" portType="tnstoo:TwoWay"/>
+        <bpws:invoke inputVariable="output" name="invokeTest3"
+            operation="twoWayOperation" partnerLink="twoWayPL" portType="tnstoo:TwoWay"/>
+        <bpws:invoke inputVariable="inputElement" name="invokeTest4"
+            operation="twoWayOperation" partnerLink="twoWayPL" portType="tnstoo:TwoWay"/>
+        <bpws:invoke inputVariable="outputElement" name="invokeTest"
+            operation="twoWayOperation" partnerLink="twoWayPL" portType="tnstoo:TwoWay"/>
+        <bpws:invoke inputVariable="outputElement" name="invokeTest"
+            operation="twoWayOperation" partnerLink="twoWayPL" portType="tnstoo:TwoWay">
+            <bpws:correlations>
+                <bpws:correlation set="foobar2"/>
+            </bpws:correlations>
+        </bpws:invoke>
+        <bpws:sequence name="Sequence"/>
+        <bpws:invoke inputVariable="outputElement" name="invokeTest"
+            operation="onResult" partnerLink="client" portType="tnstoo:SimpleCallback">
+            <bpws:correlations>
+                <bpws:correlation set="foobar2"/>
+            </bpws:correlations>
+        </bpws:invoke>
+        <bpws:scope>
+            <bpws:variables>
+                <bpws:variable messageType="" name="v1"/>
+                <bpws:variable name="v2int" type="xsdmapped:integer"/>
+                <bpws:variable name="v2int" type="xsdmapped:integer"/>
+                <bpws:variable element="tnstoo:SimpleRequest" name="part1"/>
+                <bpws:variable name="part2" type="xsdmapped:integer"/>
+                <bpws:variable messageType="tnstoo:RequestMessage3" name="req3"/>
+                <bpws:variable messageType="tnstoo:ResponseMessage3" name="resp3"/>
+            </bpws:variables>
+            <bpws:sequence>
+                <bpws:invoke inputVariable="req3" operation="call"
+                    outputVariable="resp3" partnerLink="simple3" portType="tnstoo:Simple3"/>
+                <bpws:invoke inputVariable="req3" operation="call"
+                    outputVariable="resp3" partnerLink="simple3" portType="tnstoo:Simple3"/>
+            </bpws:sequence>
+        </bpws:scope>
+    </bpws:sequence>
+</bpws:process>

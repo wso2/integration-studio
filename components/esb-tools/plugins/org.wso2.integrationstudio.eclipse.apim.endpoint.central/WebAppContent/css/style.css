@@ -1,0 +1,245 @@
+/*
+ * Copyright (c) 2020, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+
+ * WSO2 Inc. licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License.
+ * You may obtain a copy of the License at
+
+ *      http://www.apache.org/licenses/LICENSE-2.0
+
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+/* Roboto font load */
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 100;
+  src: local("Roboto Thin"), local("Roboto-Thin"), url(../fonts/Roboto/Roboto-Thin.woff2) format("woff2"),
+    url(../fonts/Roboto/Roboto-Thin.woff) format("woff"), url(../fonts/Roboto/Roboto-Thin.ttf) format("truetype"),
+    url(../fonts/Roboto/Roboto-Thin.eot), url(../fonts/Roboto/Roboto-Thin.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/Roboto/Roboto-Thin.svg#Roboto) format("svg");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215,
+    U+E0FF, U+EFFD, U+F000;
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Roboto Light"), local("Roboto-Light"), url(../fonts/Roboto/Roboto-Light.woff2) format("woff2"),
+    url(../fonts/Roboto/Roboto-Light.woff) format("woff"), url(../fonts/Roboto/Roboto-Light.ttf) format("truetype"),
+    url(../fonts/Roboto/Roboto-Light.eot), url(../fonts/Roboto/Roboto-Light.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/Roboto/Roboto-Light.svg#Roboto) format("svg");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215,
+    U+E0FF, U+EFFD, U+F000;
+}
+
+/* Other Styles */
+body {
+  background: url(../images/dashboard-background.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.428571429;
+  position: relative;
+}
+
+.container-main {
+  margin: 3em;
+}
+.container-body {
+  margin: 2em;
+}
+.header {
+  font-weight: 300;
+  color: #7f8c8d;
+  margin-bottom: 2em;
+}
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:focus,
+.nav-pills > li.active > a:hover {
+  background-color: transparent;
+  color: #7f8c8d;
+  font-size: 18px;
+  outline: none;
+}
+.nav-stacked > li.active {
+  border-left: 8px solid #3498db;
+  border-top: 0.5px solid #ececec;
+  border-bottom: 0.5px solid #ececec;
+  border-right: none;
+}
+.open-project .text,
+.create-project .text {
+  padding: 10px;
+  font-size: 18px;
+}
+.section-one .icon,
+.section-one .text {
+  float: left;
+}
+.icon {
+  width: 20%;
+}
+.text {
+  width: 80%;
+}
+.nav-stacked > li {
+  border-right: 1px solid #ececec;
+  margin-top: 0px !important;
+  padding: 10px;
+}
+.nav-stacked > li > a {
+  font-size: 18px;
+}
+.project-actions {
+  padding: 1em;
+  background: rgba(236, 240, 241, 0.8);
+  margin: 0 1em 1em;
+  min-height: 90px;
+}
+.actions {
+  margin-bottom: 0.5em;
+}
+.section-one {
+  margin-top: 12px;
+}
+.section-one svg {
+  height: 60px;
+}
+h2 {
+  font-size: 28px;
+  font-weight: 100;
+  margin-bottom: 25px;
+}
+.temp-input-group {
+  width: 90%;
+}
+.temp-input-group .input-group-addon {
+  padding: 0;
+  border: none;
+  background: #ecf0f1;
+}
+.temp-input-group .form-control {
+  box-shadow: 0 0 0;
+  border: none;
+  background-color: #ecf0f1;
+  font-size: 18px;
+  height: 50px;
+  border-radius: 0;
+}
+.input-group-addon svg {
+  width: 35px;
+  height: 35px;
+  margin-top: 3px;
+  margin-right: 6px;
+}
+button:focus {
+  outline: none;
+}
+.row.template-list {
+  padding-top: 1em;
+  background: #e9eff24f;
+  min-height: 8em;
+  margin-left: 0;
+  max-height: 30em;
+  overflow: auto;
+}
+.template {
+  margin-bottom: 20px;
+}
+.nav > li > a:focus,
+.nav > li > a:hover {
+  text-decoration: none;
+  background-color: transparent;
+}
+.thumb {
+  position: relative;
+  margin: 0 auto;
+  max-width: 533px;
+  border-width: 1px 1px 0px 1px;
+  border-color: #e6e6e6;
+  border-style: solid;
+}
+
+.hover-opaque {
+  background: #000;
+  opacity: 0;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  transition: all ease 0.5s;
+  -webkit-transition: all ease 0.5s;
+  -moz-transition: all ease 0.5s;
+  padding: 20px;
+  color: #fff;
+  overflow: auto;
+}
+
+.thumb:hover .hover-opaque {
+  opacity: 0.5;
+}
+
+.thumb:hover .glyphicon {
+  opacity: 1;
+}
+
+.thumb-caption {
+  background: #fff;
+  border-color: #e6e6e6;
+  border-style: solid;
+  border-width: 0px 1px 1px 1px;
+  color: #4e4e54;
+  padding: 10px;
+}
+figcaption {
+  width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+figcaption a {
+  color: #4e4e54;
+  -moz-transition: color 0.5s ease;
+  -webkit-transition: color 0.5s ease;
+  transition: color 0.5s ease;
+  font-size: 0.9em;
+}
+
+figcaption a:hover {
+  color: #73a7f7;
+  text-decoration: none;
+}
+
+button {
+  margin: 15px;
+}
+
+#ellipsis {
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.position-right {
+  position: fixed;
+  right: 8px;
+  padding: 6px 10px 0px;
+  background: rgba(152, 152, 152, 0.12941176470588237);
+  bottom: 7px;
+}
+
+.modal-body {
+  max-height: calc(100vh - 400px);
+  overflow-y: auto;
+}

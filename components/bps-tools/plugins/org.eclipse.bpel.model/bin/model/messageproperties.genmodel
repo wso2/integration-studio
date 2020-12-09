@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.bpel.model/src"
+    modelPluginID="org.eclipse.bpel.model" modelName="messageproperties" testsDirectory="/org.eclipse.bpel.model.tests/src"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" runtimeVersion="2.6"
+    usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore platform:/plugin/org.eclipse.wst.wsdl/model/WSDL.genmodel#//wsdl platform:/plugin/org.eclipse.xsd/model/XSD.genmodel#//xsd">
+  <foreignModel>messageproperties.ecore</foreignModel>
+  <genPackages prefix="Messageproperties" basePackage="org.eclipse.bpel.model" disposableProviderFactory="true"
+      ecorePackage="messageproperties.ecore#/">
+    <genClasses ecoreClass="messageproperties.ecore#//Property">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute messageproperties.ecore#//Property/qName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute messageproperties.ecore#//Property/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute messageproperties.ecore#//Property/type"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute messageproperties.ecore#//Property/ID"/>
+    </genClasses>
+    <genClasses ecoreClass="messageproperties.ecore#//PropertyAlias">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute messageproperties.ecore#//PropertyAlias/messageType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute messageproperties.ecore#//PropertyAlias/part"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute messageproperties.ecore#//PropertyAlias/propertyName"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute messageproperties.ecore#//PropertyAlias/ID"/>
+      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference messageproperties.ecore#//PropertyAlias/wsdlPart"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference messageproperties.ecore#//PropertyAlias/query"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute messageproperties.ecore#//PropertyAlias/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute messageproperties.ecore#//PropertyAlias/XSDElement"/>
+    </genClasses>
+    <genClasses ecoreClass="messageproperties.ecore#//Query">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute messageproperties.ecore#//Query/queryLanguage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute messageproperties.ecore#//Query/value"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

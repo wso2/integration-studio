@@ -1,17 +1,44 @@
-# Compiled class file
-*.class
+# No Eclipse Related Files #
+###################
+.settings/
+target/
+bin/
+test-output/
 
-# Log file
-*.log
+# No Idea Related files #
+##################
+*.iml
+*.ipr
+*.iws
+.idea/
 
-# BlueJ files
-*.ctxt
+# Igonore duplicated feature.common.properties
+feature.common.properties
+
+## No Eclipse settings from nested workspace
+.metadata/
+
+## No Checkstyle plugin settings
+.checkstyle
+
+## various other file types we don't want to have in the repository:
+.DS_Store
+*~
+*#
+*.licensed
+*.aux
+*_trace
+
+## no eclipse packs
+*.tar.gz
+
+## Generated When Building
+components/esb-tools/plugins/org.wso2.integrationstudio.eclipse.gmf.esb.persistence/library.jar
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
 # Package Files #
-*.jar
 *.war
 *.nar
 *.ear

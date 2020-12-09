@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:bpws="http://schemas.xmlsoap.org/ws/2004/03/business-process/" xmlns:plnk="http://schemas.xmlsoap.org/ws/2004/03/partner-link/" xmlns:tns="http://eclipse.org/bpel/sampleArtifacts" xmlns:wsdl="http://eclipse.org/bpel/sample" name="SimpleArtifacts" targetNamespace="http://eclipse.org/bpel/sampleArtifacts" xmlns="http://schemas.xmlsoap.org/wsdl/">
+<plnk:partnerLinkType name="pltTraffic">
+<plnk:role name="trafficRequester" portType="wsdl:checkTraffic"/>
+</plnk:partnerLinkType>
+<import location="..\Traffic\checkTraffic.wsdl" namespace="http://eclipse.org/bpel/sample"/>
+</definitions>

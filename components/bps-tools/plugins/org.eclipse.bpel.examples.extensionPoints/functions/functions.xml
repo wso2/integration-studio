@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpel-xpath-functions>
+
+    <!-- Now the functions -->
+
+    <function id="postRequest" returns="string">        
+        <namespace prefix="http">urn:http:namesapce</namespace>        
+        <help>This function does absolutely nothing.</help>
+        <comment>
+            <![CDATA[This function does absolutely nothing.]]>
+        </comment>        
+        <arg default="" name="url" type="string">
+            <comment>Desitnation URL.</comment>
+        </arg>
+        <arg default="" name="username" type="string">
+            <comment>User name to use basic authentication.</comment>
+        </arg>
+        <arg default="" name="password" type="string">
+            <comment>Password of the user to use for basic authentication.</comment>
+        </arg>
+        
+    </function>
+
+
+</bpel-xpath-functions>

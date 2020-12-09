@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <extension-point id="functionRegistry" name="Function Registry" schema="schema/functionRegistry.exsd"/>
+   <extension
+         id="modelMarker"
+         name="%MODEL_MARKER_NAME"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.core.resources.marker">
+      </super>
+      <attribute
+            name="org.eclipse.bpel.common.model.modelMarker.objectId">
+      </attribute>
+      <!-- Bugzilla 330519 -->
+      <persistent value="true"/>
+   </extension>
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http:///extensionmodel.ecore" 
+       class = "org.eclipse.bpel.common.extension.model.ExtensionmodelPackage"
+       genModel = "src/model/extensionmodel.genmodel" />
+    <package
+          class="org.eclipse.bpel.fnmeta.model.FMPackage"
+          genModel="src/model/fnmeta.genmodel"
+          uri="http://eclipse.org/bpel/ns/function-meta">
+    </package> 
+  </extension>
+  <extension
+        point="org.eclipse.emf.ecore.extension_parser">
+     <parser
+           class="org.eclipse.bpel.fnmeta.model.util.FMResourceFactoryImpl"
+           type="fnmeta">
+     </parser>
+  </extension>
+
+</plugin>
+

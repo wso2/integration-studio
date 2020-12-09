@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry exported="true" kind="lib" path="lib/commons-codec_1.4.0.wso2v1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/commons-collections_3.2.0.wso2v1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/httpcore_4.3.3.wso2v1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/not-yet-commons-ssl-0.3.9.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/opensaml2_2.4.1.wso2v1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.apache.httpcomponents.httpclient_4.1.2.v201203221030.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.apache.httpcomponents.httpcore_4.1.4.v201203221030.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.osgi_3.9.1.v20130814-1242.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.securevault_1.0.0.wso2v2.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.securevault-1.0.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/quartz_2.1.1.wso2v1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/woden_1.0.0.M9-wso2v1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/xml-apis-1.4.01.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/xmlbeans_2.3.0.wso2v1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/XmlSchema_1.4.7.wso2v3.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/neethi-2.0.4.wso2v4.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/commons-logging-1.1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/axis2-1.6.1.wso2v14.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/maven-invoker-2.0.11.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/wsdl4j-1.6.2.wso2v4.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/commons-validator-1.4.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/commons-io-2.0.0.wso2v1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/commons-httpclient-3.1.0.wso2v2.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/axiom-1.2.11.wso2v10.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<!-- 
+2005-08-30: YIU-OSS: Alex Yiu: This XSD becomes merged into wsbpel_main.xsd, as a result of Issue 192. This XSD becomes obsolete.
+-->
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://schemas.xmlsoap.org/ws/2004/03/business-process/"
+	targetNamespace="http://schemas.xmlsoap.org/ws/2004/03/business-process/"
+	elementFormDefault="qualified">
+	
+	<annotation>
+		<documentation>
+			Message Properties Schema
+			2004-03-24: YIU-OSS: Alex Yiu: Extracted from  wsbpel-specification-draft.doc (Rev 1.22 - Modified on 24 March, 2004)
+			2004-03-24: YIU-OSS: Alex Yiu: Updated targetNamespace with "2004/03"
+			2004-03-24: YIU-OSS: Alex Yiu: Adding minOccurs="0" to query element; fix the syntax typo in "propertyAlias" definition (e.g remove complexContent)
+			2004-04-07: YIU-OSS: Alex Yiu: removed unnecessary wsbp xmlns
+			2005-07-25: YIU-OSS: Alex Yiu: Apply Issue 196 by adding anyAttribute to query 
+			2005-08-30: YIU-OSS: Alex Yiu: This XSD becomes merged into wsbpel_main.xsd, as a result of Issue 192. This XSD becomes obsolete.
+
+		</documentation>
+	</annotation>
+	
+	<import namespace="http://www.w3.org/XML/1998/namespace"  schemaLocation="http://www.w3.org/2001/xml.xsd" />
+	<element name="documentation" id="documentation">
+		<complexType mixed="true">
+			<sequence minOccurs="0" maxOccurs="unbounded">
+				<any processContents="lax"/>
+			</sequence>
+			<attribute name="source" type="anyURI"/>
+			<attribute ref="xml:lang"/>
+		</complexType>
+	</element>
+	<complexType name="tExtensibleElements">
+		<annotation>
+			<documentation>
+		This type is extended by other component types
+		to allow elements and attributes from
+		other namespaces to be added.
+	   </documentation>
+		</annotation>
+		<sequence>
+			<element ref="tns:documentation" minOccurs="0" maxOccurs="unbounded" />
+			<any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+		<anyAttribute namespace="##other" processContents="lax"/>
+	</complexType>
+
+    <element name="property">
+	    <complexType>
+			<complexContent>
+				<extension base="tns:tExtensibleElements">
+		<attribute name="name" type="NCName" use="required"/>
+		<attribute name="type" type="QName"/>
+		<attribute name="element" type="QName"/>
+				</extension>
+			</complexContent>
+	   </complexType>
+	</element>
+	
+		<complexType name="tQuery" mixed="true">
+		<sequence>
+			<any minOccurs="0" maxOccurs="unbounded"  processContents="lax"/>
+		</sequence>
+		<attribute name="queryLanguage" type="anyURI"/>
+		<anyAttribute namespace="##other" processContents="lax"/>
+	</complexType>
+
+	<element name="propertyAlias">
+		<complexType>
+			<complexContent>
+				<extension base="tns:tExtensibleElements">
+					<sequence>
+						<element name="query" minOccurs="0" type="tns:tQuery" />
+					</sequence>
+					<attribute name="propertyName" type="QName" use="required"/>
+					<attribute name="messageType" type="QName"/>
+					<attribute name="part" type="NCName"/>
+					<attribute name="type" type="QName"/>
+					<attribute name="element" type="QName"/>
+				</extension>
+			</complexContent>
+		</complexType>
+	</element>
+	
+</schema>

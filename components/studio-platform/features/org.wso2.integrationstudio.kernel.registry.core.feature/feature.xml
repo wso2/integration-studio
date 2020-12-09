@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.wso2.integrationstudio.kernel.registry.core.feature"
+      label="Registry Feature"
+      version="7.2.0.qualifier"
+      provider-name="%providerName">
+
+   <description url="http://wso2.com">
+      Provides tools for DevStudio integration with Carbon Registry.
+   </description>
+
+   <copyright url="%copyrightURL">
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="org.wso2.integrationstudio.eclipse.general.project"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.wso2.integrationstudio.eclipse.artifact.registry"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+   <plugin
+         id="org.wso2.integrationstudio.eclipse.registry.search"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+   <plugin
+         id="org.wso2.integrationstudio.eclipse.registry.resource.authorization"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+   <plugin
+         id="org.wso2.integrationstudio.eclipse.registry.perspective"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+   <plugin
+         id="org.wso2.integrationstudio.eclipse.registry.manager.remote"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+   <plugin
+         id="org.wso2.integrationstudio.eclipse.registry.manager.local"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+   <plugin
+         id="org.wso2.integrationstudio.eclipse.registry.libraries"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+   <plugin
+         id="org.wso2.integrationstudio.eclipse.registry.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+   <plugin
+         id="org.wso2.integrationstudio.eclipse.registry.connector"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+   <plugin
+         id="org.wso2.integrationstudio.eclipse.registry.base"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

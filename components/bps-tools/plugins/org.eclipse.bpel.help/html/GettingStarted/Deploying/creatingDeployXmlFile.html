@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="CONTENT-TYPE" />
+<link rel="stylesheet" href="../book.css" type="text/css" />
+<title>Creating a deploy.xml file</title>
+</head>
+
+<body>
+	<h1>Creating a deploy.xml file</h1>
+	<p>
+		If you want to deploy a BPEL project to the JBoss BPEL Runtime, a
+		<code >deploy.xml</code> file needs to be created. The steps below show you how to create this file:
+	</p>
+
+	<ul>
+		<li><p>Create the <code >deploy.xml</code>
+				file by selecting <strong>File &gt; New &gt; Other...</strong>   
+				and then <strong>BPEL 2.0 &gt; Apache ODE Deployment Descriptor</strong> . 
+				Click <strong>Next</strong>.
+			</p>
+			<p>
+				<img src="../../../images/deploy_createdeploy_1.png" alt="New BPEL Deploy file" />
+			</p>
+		</li>
+		<li><p>On the next wizard page you should enter the following information:</p>
+			<p>
+				<em>BPEL Project</em>: Click the <strong>Browse...</strong>
+					button to select the BPEL project in your workspace where you want
+					to deploy to the runtime. Please note that you should select the
+					<code >bpelContent</code>
+					folder in your new BPEL project for the BPEL
+						Project field because this is the correct location for the
+					<code >deploy.xml</code>
+					file.
+				</p>
+				<p>
+					<em>File name </em> : The default value is
+					<code >deploy.xml</code>
+					. This should not be changed.
+				</p>
+				<p>
+					Click on the <strong>Finish</strong>
+					 button to close the wizard and a new
+					<code >deploy.xml</code>
+					file will be created.
+				</p>
+				<p>
+					<img src="../../../images/deploy_createdeploy_2.png" alt="New BPEL Deploy file Wizard" />
+				</p>
+			</li>
+			<li><p>
+					Double-click the
+					<code >deploy.xml</code>
+					file to open it in <strong>ODE
+							Descriptor Deployment Editor</strong> . In the <strong>Inbound
+							Interfaces</strong>  section, click the <strong>Associated
+							Port</strong>  column and select <strong>HelloWorldProcessPort</strong>
+					 in the combobox.The <strong>Related
+							Service</strong>  and <strong>Binding
+							Used</strong>  columns should be automatically filled in. Save the changes
+					to the
+					<code >deploy.xml</code>
+					file.
+				</p>
+				<p>
+					<img src="../../../images/deploy_createdeploy_3.png" alt="deploy.xml file editor" />
+				</p>
+			</li>
+		</ul>
+</body>
+</html>

@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright (c) 2018, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+
+  Version 2.0 (the "License"); you may not use this file except
+  in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied. See the License for the
+ specific language governing permissions and limitations
+ under the License.
+-->
+
+<?eclipse version="3.4"?>
+<plugin>
+
+    <extension
+            point="org.eclipse.ui.newWizards">
+        <category
+                name="Templates"
+                id="org.wso2.integrationstudio.templates"
+                parentCategory="org.wso2.integrationstudio.eclipse.capp.project">
+        </category>
+        <wizard
+                name="RabbitMQ Integration"
+                icon="icons/template-default.png"
+                project="true"
+                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                id="org.wso2.integrationstudio.wizards.esb.rabbitMQSampleTemplate">
+                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.rabbitMQSampleTemplate"/>
+                </class>
+        </wizard>
+        <wizard
+                name="JMS Integration"
+                icon="icons/template-default.png"
+                project="true"
+                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                id="org.wso2.integrationstudio.wizards.esb.jmsProxyTemplate">
+                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.jmsProxyTemplate"/>
+                </class>
+        </wizard>
+        <wizard
+                name="Database Polling"
+                icon="icons/template-default.png"
+                project="true"
+                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                id="org.wso2.integrationstudio.wizards.esb.dataPolling">
+                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.dataPolling"/>
+                </class>
+        </wizard>
+        <wizard
+                name="Hello World Service"
+                icon="icons/template-default.png"
+                project="true"
+                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                id="org.wso2.integrationstudio.wizards.esb.template">
+                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.template"/>
+                </class>
+        </wizard>
+        <wizard
+                name="Proxying a SOAP Service"
+                icon="icons/template-default.png"
+                project="true"
+                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                id="org.wso2.integrationstudio.wizards.esb.proxyingASoapService">
+                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.proxyingASoapService"/>
+                </class>
+        </wizard>
+        <wizard
+                name="Proxying a REST Service"
+                icon="icons/template-default.png"
+                project="true"
+                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                id="org.wso2.integrationstudio.wizards.esb.proxyingARESTAPI">
+                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.proxyingARESTAPI"/>
+                </class>
+        </wizard>
+        <wizard
+                name="Content Based Routing"
+                icon="icons/template-default.png"
+                project="true"
+                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                id="org.wso2.integrationstudio.wizards.esb.contentBasedRoutingTemplate">
+                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.contentBasedRoutingTemplate"/>
+                </class>
+        </wizard>
+        <wizard
+                name="Header Based Routing"
+                icon="icons/template-default.png"
+                project="true"
+                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                id="org.wso2.integrationstudio.wizards.esb.headerBasedRoutingTemplate">
+                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.headerBasedRoutingTemplate"/>
+                </class>
+        </wizard>
+        <wizard
+                name="Message Filtering"
+                icon="icons/template-default.pngg"
+                project="true"
+                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                id="org.wso2.integrationstudio.wizards.esb.messageFilteringTemplate">
+                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.messageFilteringTemplate"/>
+                </class>
+        </wizard>
+        <wizard
+                name="Protocol Switching"
+                icon="icons/template-default.png"
+                project="true"
+                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                id="org.wso2.integrationstudio.wizards.esb.protocolSwitchingTemplate">
+                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.protocolSwitchingTemplate"/>
+                </class>
+        </wizard>
+        <wizard
+                name="Scatter Gather Integration Pattern"
+                icon="icons/template-default.png"
+                project="true"
+                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                id="org.wso2.integrationstudio.wizards.esb.scatterGatherTemplate">
+                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.scatterGatherTemplate"/>
+                </class>
+        </wizard>
+        <wizard
+                name="File Transfer"
+                icon="icons/template-default.png"
+                project="true"
+                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                id="org.wso2.integrationstudio.wizards.esb.fileTransferTeamplate">
+                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.fileTransferTeamplate"/>
+                </class>
+        </wizard>
+        <wizard
+                name="Guaranteed Delivery"
+                icon="icons/template-default.png"
+                project="true"
+                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                id="org.wso2.integrationstudio.wizards.esb.guaranteedDeliveryTemplate">
+                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.guaranteedDeliveryTemplate"/>
+                </class>
+        </wizard>
+        <wizard
+                name="REST to SOAP Conversion"
+                icon="icons/template-default.png"
+                project="true"
+                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                id="org.wso2.integrationstudio.wizards.esb.restToSoapTemplate">
+                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.restToSoapTemplate"/>
+                </class>
+        </wizard>
+        <wizard
+                name="Exception Handling"
+                icon="icons/template-default.png"
+                project="true"
+                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                id="org.wso2.integrationstudio.wizards.esb.exceptionHandlingTemplate">
+                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.exceptionHandlingTemplate"/>
+                </class>
+        </wizard>
+        <wizard
+                name="XML To JSON Transformation"
+                icon="icons/template-default.png"
+                project="true"
+                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                id="org.wso2.integrationstudio.wizards.esb.xmlToJsonTransformationTemplate">
+                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.xmlToJsonTransformationTemplate"/>
+                </class>
+        </wizard>
+        <wizard
+                name="Periodical Scheduled Tasks"
+                icon="icons/template-default.png"
+                project="true"
+                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                id="org.wso2.integrationstudio.wizards.esb.scheduleTaskTeamplate">
+                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.scheduleTaskTeamplate"/>
+                </class>
+        </wizard>
+        <wizard
+                name="Fetch SalesForce Accounts"
+                icon="icons/template-default.png"
+                project="true"
+                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                id="org.wso2.integrationstudio.wizards.esb.readSalesforceAccountsTemplate">
+                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.readSalesforceAccountsTemplate"/>
+                </class>
+        </wizard>
+        <wizard
+                name="JSON to XML Mapping"
+                icon="icons/template-default.png"
+                project="true"
+                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                id="org.wso2.integrationstudio.wizards.esb.jsonToXmlMappingTemplate">
+                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.jsonToXmlMappingTemplate"/>
+                </class>
+        </wizard>
+        <wizard
+                name="XML to JSON Mapping"
+                icon="icons/template-default.png"
+                project="true"
+                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                id="org.wso2.integrationstudio.wizards.esb.xmlToJsonMappingTemplate">
+                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.xmlToJsonMappingTemplate"/>
+                </class>
+        </wizard>
+        <wizard
+                name="Kafka Consumer and Producer"
+                icon="icons/template-default.png"
+                project="true"
+                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                id="org.wso2.integrationstudio.wizards.esb.kafkaTemplate">
+                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.kafkaTemplate"/>
+                </class>
+        </wizard>
+        <wizard
+                name="Email Service"
+                icon="icons/template-default.png"
+                project="true"
+                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                id="org.wso2.integrationstudio.wizards.esb.emailServiceTemplate">
+                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.emailServiceTemplate"/>
+                </class>
+        </wizard>
+        <wizard
+                name="Students Data Service"
+                icon="icons/template-default.png"
+                project="true"
+                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                id="org.wso2.integrationstudio.wizards.ds.studentDataServiceTemplate">
+                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.ds.studentDataServiceTemplate"/>
+                </class>
+        </wizard>
+        <wizard
+                name="REST Data Service"
+                icon="icons/template-default.png"
+                project="true"
+                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                id="org.wso2.integrationstudio.wizards.ds.restDataServiceTemplate">
+                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.ds.restDataServiceTemplate"/>
+                </class>
+        </wizard>
+        <wizard
+                name="Hello Docker"
+                icon="icons/template-default.png"
+                project="true"
+                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                id="org.wso2.integrationstudio.wizards.esb.helloDocker">
+                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.helloDocker"/>
+                </class>
+        </wizard>
+        <wizard
+                name="Hello Kubernetes"
+                icon="icons/template-default.png"
+                project="true"
+                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                id="org.wso2.integrationstudio.wizards.esb.helloKubernetes">
+                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.helloKubernetes"/>
+                </class>
+        </wizard>
+        <wizard
+                name="Unit Test Tutorial"
+                icon="icons/template-default.png"
+                project="true"
+                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                id="org.wso2.integrationstudio.wizards.esb.unitTestTutorial">
+                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.unitTestTutorial"/>
+                </class>
+        </wizard>
+        <wizard
+                name="API Testing"
+                icon="icons/template-default.png"
+                project="true"
+                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                id="org.wso2.integrationstudio.wizards.esb.apiTesting">
+                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.apiTesting"/>
+                </class>
+        </wizard>
+    </extension>
+    <extension
+            point="org.wso2.integrationstudio.eclipse.template.dashboad.link">
+        <wizardCategory category="org.wso2.integrationstudio.templates"/>
+        <category id="dashboard.category.template.miscellaneous" showTitle="false"
+                  title="Miscellaneous_Templates"
+                  priority="1">
+        </category>
+        <category id="dashboard.category.template.routing" showTitle="false"
+                  title="Routing_Templates"
+                  priority="1">
+        </category>
+        <category id="dashboard.category.template.messaging" showTitle="false"
+                  title="Messaging_Templates"
+                  priority="1">
+        </category>
+        <category id="dashboard.category.template.transformation" showTitle="false"
+                  title="Transformation_Templates"
+                  priority="1">
+        </category>
+        <category id="dashboard.category.template.dataintegration" showTitle="false"
+                  title="DataIntegration_Templates"
+                  priority="1">
+        </category>
+        <category id="dashboard.category.template.container" showTitle="false"
+                  title="Container_Templates"
+                  priority="1">
+        </category>
+        <category id="dashboard.category.template.errorhendling" showTitle="false"
+                  title="ErrorHandling_Templates"
+                  priority="1">
+        </category>
+         <category id="dashboard.category.template.unittesting" showTitle="false"
+                  title="Testing_Templates"
+                  priority="1">
+        </category>
+        <category id="dashboard.category.template.saas" showTitle="false"
+                  title="SaaS_Templates"
+                  priority="1">
+        </category>
+        <category id="dashboard.category.template.task" showTitle="false"
+                  title="Task_Templates"
+                  priority="1">
+        </category>
+        <wizardLink category="dashboard.category.template.miscellaneous" id="dashboard.wizardLink.esb.template.project"
+                    wizard="org.wso2.integrationstudio.wizards.esb.template"
+                    description="This sample demonstrates a simple HTTP service."
+                    image="icons/template-default.png"
+                    priority="0">
+        </wizardLink>
+        <wizardLink category="dashboard.category.template.unittesting"
+                    id="dashboard.wizardLink.esb.template.project.apiTesting"
+                    wizard="org.wso2.integrationstudio.wizards.esb.apiTesting"
+                    description="This sample demonstrates unit testing of a REST API artifact using WSO2 Integration Studio."
+                    image="icons/template-default.png"
+                    priority="1">
+        </wizardLink>
+        <wizardLink category="dashboard.category.template.routing"
+                    id="dashboard.wizardLink.esb.contentBasedRoutingTemplate.project"
+                    wizard="org.wso2.integrationstudio.wizards.esb.contentBasedRoutingTemplate"
+                    description="This sample demonstrates content-based message routing in an integration solution."
+                    image="icons/template-default.png"
+                    priority="2">
+        </wizardLink>
+        <wizardLink category="dashboard.category.template.task" id="dashboard.wizardLink.esb.dataPolling.project"
+                    wizard="org.wso2.integrationstudio.wizards.esb.dataPolling"
+                    description="This sample demonstrates how to periodically poll data from a database and then trigger a message flow."
+                    image="icons/template-default.png"
+                    priority="3">
+        </wizardLink>
+        <wizardLink category="dashboard.category.template.saas"
+                    id="dashboard.wizardLink.esb.emailServiceTemplate"
+                    wizard="org.wso2.integrationstudio.wizards.esb.emailServiceTemplate"
+                    description="This sample demonstrates how to send and receive emails using WSO2 Email Connector."
+                    image="icons/template-default.png"
+                    priority="4">
+        </wizardLink>
+        <wizardLink category="dashboard.category.template.errorhendling" id="dashboard.wizardLink.esb.exceptionHandlingTemplate"
+                    wizard="org.wso2.integrationstudio.wizards.esb.exceptionHandlingTemplate"
+                    description="This sample demonstrates the exception handling capabilities of WSO2 Enterprise Integrator."
+                    image="icons/template-default.png"
+                    priority="5">
+        </wizardLink>
+        <wizardLink category="dashboard.category.template.saas"
+                    id="dashboard.wizardLink.esb.readSalesforceAccountsTemplate"
+                    wizard="org.wso2.integrationstudio.wizards.esb.readSalesforceAccountsTemplate"
+                    description="This sample demonstrates how to fetch leads from the Salesforce system."
+                    image="icons/template-default.png"
+                    priority="6">
+        </wizardLink>
+        <wizardLink category="dashboard.category.template.messaging" id="dashboard.wizardLink.esb.fileTransferTeamplate"
+                    wizard="org.wso2.integrationstudio.wizards.esb.fileTransferTeamplate"
+                    description="This sample demonstrates file handling in an integration solution."
+                    image="icons/template-default.png"
+                    priority="7">
+        </wizardLink>
+        <wizardLink category="dashboard.category.template.messaging" id="dashboard.wizardLink.esb.guaranteedDeliveryTemplate"
+                    wizard="org.wso2.integrationstudio.wizards.esb.guaranteedDeliveryTemplate"
+                    description="This sample demonstrates guaranteed message delivery using the Store and Forward messaging pattern."
+                    image="icons/template-default.png"
+                    priority="8">
+        </wizardLink>
+        <wizardLink category="dashboard.category.template.routing"
+                    id="dashboard.wizardLink.esb.headerBasedRoutingTemplate.project"
+                    wizard="org.wso2.integrationstudio.wizards.esb.headerBasedRoutingTemplate"
+                    description="This sample demonstrates header-based message routing in an integration solution."
+                    image="icons/template-default.png"
+                    priority="9">
+        </wizardLink>
+        <wizardLink category="dashboard.category.template.container" id="dashboard.wizardLink.esb.helloDocker.project"
+                    wizard="org.wso2.integrationstudio.wizards.esb.helloDocker"
+                    description="This sample demonstrates how to deploy a simple Hello World service on Docker."
+                    image="icons/template-default.png"
+                    priority="10">
+        </wizardLink>
+        <wizardLink category="dashboard.category.template.container" id="dashboard.wizardLink.esb.helloKubernetes.project"
+                    wizard="org.wso2.integrationstudio.wizards.esb.helloKubernetes"
+                    description="This sample demonstrates how to deploy a simple Hello World service on Kubernetes."
+                    image="icons/template-default.png"
+                    priority="11">
+        </wizardLink>
+        <wizardLink category="dashboard.category.template.messaging" id="dashboard.wizardLink.esb.jmsProxyTemplate.project"
+                    wizard="org.wso2.integrationstudio.wizards.esb.jmsProxyTemplate"
+                    description="This sample demonstrates how the WSO2 Enterprise Integrator integrates with JMS brokers."
+                    image="icons/template-default.png"
+                    priority="12">
+        </wizardLink>
+        <wizardLink category="dashboard.category.template.transformation"
+                    id="dashboard.wizardLink.esb.jsonToXmlMappingTemplate.project"
+                    wizard="org.wso2.integrationstudio.wizards.esb.jsonToXmlMappingTemplate"
+                    description="This sample demonstrates JSON to XML mapping using the Data Mapper mediator."
+                    image="icons/template-default.png"
+                    priority="13">
+        </wizardLink>
+        <wizardLink category="dashboard.category.template.messaging"
+                    id="dashboard.wizardLink.esb.kafkaTemplate"
+                    wizard="org.wso2.integrationstudio.wizards.esb.kafkaTemplate"
+                    description="This sample demonstrates how Kafka messages are consumed and produced using WSO2 Kafka Connector."
+                    image="icons/template-default.png"
+                    priority="14">
+        </wizardLink>
+        <wizardLink category="dashboard.category.template.routing"
+                    id="dashboard.wizardLink.esb.messageFilteringTemplate.project"
+                    wizard="org.wso2.integrationstudio.wizards.esb.messageFilteringTemplate"
+                    description="This sample demonstrates message filtering in an integration solution."
+                    image="icons/template-default.png"
+                    priority="15">
+        </wizardLink>
+        <wizardLink category="dashboard.category.template.task" id="dashboard.wizardLink.esb.scheduleTaskTeamplate"
+                    wizard="org.wso2.integrationstudio.wizards.esb.scheduleTaskTeamplate"
+                    description="This sample demonstrates how scheduled integration tasks are created and periodically triggered."
+                    image="icons/template-default.png"
+                    priority="16">
+        </wizardLink>
+        <wizardLink category="dashboard.category.template.routing" id="dashboard.wizardLink.esb.protocolSwitchingTemplate"
+                    wizard="org.wso2.integrationstudio.wizards.esb.protocolSwitchingTemplate"
+                    description="This sample demonstrates protocol switching in an integration solution."
+                    image="icons/template-default.png"
+                    priority="17">
+        </wizardLink>
+        <wizardLink category="dashboard.category.template.routing" id="dashboard.wizardLink.esb.proxyingARESTAPI.project"
+                    wizard="org.wso2.integrationstudio.wizards.esb.proxyingARESTAPI"
+                    description="This sample exposes a virtual service, which acts as a proxy to an existing RESTful service."
+                    image="icons/template-default.png"
+                    priority="18">
+        </wizardLink>
+        <wizardLink category="dashboard.category.template.routing"
+                    id="dashboard.wizardLink.esb.proxyingASoapService.project"
+                    wizard="org.wso2.integrationstudio.wizards.esb.proxyingASoapService"
+                    description="This sample exposes a virtual service, which acts as a proxy to an existing SOAP service."
+                    image="icons/template-default.png"
+                    priority="19">
+        </wizardLink>
+        <wizardLink category="dashboard.category.template.messaging"
+                    id="dashboard.wizardLink.esb.rabbitMQSampleTemplate.project"
+                    wizard="org.wso2.integrationstudio.wizards.esb.rabbitMQSampleTemplate"
+                    description="This sample demonstrates how the WSO2 Enterprise Integrator integrates with RabbitMQ."
+                    image="icons/template-default.png"
+                    priority="20">
+        </wizardLink>
+        <wizardLink category="dashboard.category.template.dataintegration"
+                    id="dashboard.wizardLink.ds.template.project.restDataServiceTemplate"
+                    wizard="org.wso2.integrationstudio.wizards.ds.restDataServiceTemplate"
+                    description="This sample demonstrates a data service exposed as a RESTful service."
+                    image="icons/template-default.png"
+                    priority="21">
+        </wizardLink>
+        <wizardLink category="dashboard.category.template.transformation" id="dashboard.wizardLink.esb.restToSoapTemplate"
+                    wizard="org.wso2.integrationstudio.wizards.esb.restToSoapTemplate"
+                    description="This sample exposes an existing SOAP service as a RESTful API."
+                    image="icons/template-default.png"
+                    priority="22">
+        </wizardLink>
+        <wizardLink category="dashboard.category.template.routing" id="dashboard.wizardLink.esb.scatterGatherTemplate"
+                    wizard="org.wso2.integrationstudio.wizards.esb.scatterGatherTemplate"
+                    description="This sample demonstrates how to implement the Scatter Gather messaging pattern."
+                    image="icons/template-default.png"
+                    priority="23">
+        </wizardLink>
+        <wizardLink category="dashboard.category.template.dataintegration"
+                    id="dashboard.wizardLink.ds.template.project.studentDataServiceTemplate"
+                    wizard="org.wso2.integrationstudio.wizards.ds.studentDataServiceTemplate"
+                    description="This sample demonstrates a SOAP data service."
+                    image="icons/template-default.png"
+                    priority="24">
+        </wizardLink>
+        <wizardLink category="dashboard.category.template.transformation"
+                    id="dashboard.wizardLink.esb.xmlToJsonMappingTemplate"
+                    wizard="org.wso2.integrationstudio.wizards.esb.xmlToJsonMappingTemplate"
+                    description="This sample demonstrates XML to JSON mapping using the Data Mapper mediator."
+                    image="icons/template-default.png"
+                    priority="25">
+        </wizardLink>
+        <wizardLink category="dashboard.category.template.transformation"
+                    id="dashboard.wizardLink.esb.xmlToJsonTransformationTemplate"
+                    wizard="org.wso2.integrationstudio.wizards.esb.xmlToJsonTransformationTemplate"
+                    description="This sample demonstrates  XML to JSON message transformation capabilities."
+                    image="icons/template-default.png"
+                    priority="26">
+        </wizardLink>
+        <wizardLink category="dashboard.category.template.unittesting"
+                    id="dashboard.wizardLink.esb.template.project.unitTestTutorial"
+                    wizard="org.wso2.integrationstudio.wizards.esb.unitTestTutorial"
+                    description="This sample demonstrates the Unit Testing capabilities of WSO2 Integration Studio."
+                    image="icons/template-default.png"
+                    priority="27">
+        </wizardLink>
+    </extension>
+</plugin>

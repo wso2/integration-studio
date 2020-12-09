@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xsd2ecore:XSD2EcoreMappingRoot xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsd2ecore="http://www.eclipse.org/emf/2002/XSD2Ecore" inputs="schema/wsil.xsd#/ http://www.w3.org/2001/xml.xsd#/"
+    outputs="inspection.ecore#/ ../../plugin/org.eclipse.emf.ecore/model/XMLNamespace.ecore#/"
+    topToBottom="true">
+  <nested inputs="bundleentry://705/cache/www.w3.org/2001/XMLSchema.xsd#//string;XSDSimpleTypeDefinition=7"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//String"/>
+  <nested inputs="bundleentry://705/cache/www.w3.org/2001/XMLSchema.xsd#//language;XSDSimpleTypeDefinition=28"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//Language"/>
+  <nested inputs="http://www.w3.org/2001/xml.xsd#//lang;XSDAttributeDeclaration/XSDSimpleTypeDefinition/XSDSimpleTypeDefinition"
+      outputs="../../plugin/org.eclipse.emf.ecore/model/XMLNamespace.ecore#//LangTypeMember1">
+    <nested inputs="http://www.w3.org/2001/xml.xsd#//lang;XSDAttributeDeclaration/XSDSimpleTypeDefinition/XSDSimpleTypeDefinition/XSDEnumerationFacet"
+        outputs="../../plugin/org.eclipse.emf.ecore/model/XMLNamespace.ecore#//LangTypeMember1/_"/>
+  </nested>
+  <nested inputs="http://www.w3.org/2001/xml.xsd#//lang;XSDAttributeDeclaration/XSDSimpleTypeDefinition"
+      outputs="../../plugin/org.eclipse.emf.ecore/model/XMLNamespace.ecore#//LangType"/>
+  <nested inputs="schema/wsil.xsd#//typeOfAbstract;XSDComplexTypeDefinition" outputs="inspection.ecore#//TypeOfAbstract">
+    <nested inputs="schema/wsil.xsd#//typeOfAbstract;XSDComplexTypeDefinition/XSDAttributeUse"
+        outputs="inspection.ecore#//TypeOfAbstract/lang"/>
+  </nested>
+  <nested inputs="schema/wsil.xsd#//itemWithAbstracts;XSDComplexTypeDefinition=1"
+      outputs="inspection.ecore#//ItemWithAbstracts">
+    <nested inputs="schema/wsil.xsd#//itemWithAbstracts;XSDComplexTypeDefinition=1/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="inspection.ecore#//ItemWithAbstracts/abstract"/>
+  </nested>
+  <nested inputs="schema/wsil.xsd#//nameType;XSDComplexTypeDefinition=2" outputs="inspection.ecore#//NameType">
+    <nested inputs="schema/wsil.xsd#//nameType;XSDComplexTypeDefinition=2/XSDAttributeUse"
+        outputs="inspection.ecore#//NameType/lang"/>
+  </nested>
+  <nested inputs="bundleentry://705/cache/www.w3.org/2001/XMLSchema.xsd#//anyURI;XSDSimpleTypeDefinition=23"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//AnyURI"/>
+  <nested inputs="schema/wsil.xsd#//referenceType;XSDComplexTypeDefinition=3" outputs="inspection.ecore#//ReferenceType">
+    <nested inputs="schema/wsil.xsd#//referenceType;XSDComplexTypeDefinition=3/XSDAttributeUse=1"
+        outputs="inspection.ecore#//ReferenceType/location"/>
+    <nested inputs="schema/wsil.xsd#//referenceType;XSDComplexTypeDefinition=3/XSDAttributeUse"
+        outputs="inspection.ecore#//ReferenceType/referencedNamespace"/>
+  </nested>
+  <nested inputs="schema/wsil.xsd#//descriptionType;XSDComplexTypeDefinition=4" outputs="inspection.ecore#//DescriptionType">
+    <nested inputs="schema/wsil.xsd#//descriptionType;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="inspection.ecore#//DescriptionType/any"/>
+  </nested>
+  <nested inputs="schema/wsil.xsd#//serviceType;XSDComplexTypeDefinition=6" outputs="inspection.ecore#//ServiceType">
+    <nested inputs="schema/wsil.xsd#//serviceType;XSDComplexTypeDefinition=6/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="inspection.ecore#//ServiceType/name"/>
+    <nested inputs="schema/wsil.xsd#//serviceType;XSDComplexTypeDefinition=6/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="inspection.ecore#//ServiceType/description"/>
+  </nested>
+  <nested inputs="schema/wsil.xsd#//linkType;XSDComplexTypeDefinition=5" outputs="inspection.ecore#//LinkType">
+    <nested inputs="schema/wsil.xsd#//linkType;XSDComplexTypeDefinition=5/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="inspection.ecore#//LinkType/any"/>
+  </nested>
+  <nested inputs="schema/wsil.xsd#//inspection;XSDElementDeclaration/XSDComplexTypeDefinition"
+      outputs="inspection.ecore#//InspectionType">
+    <nested inputs="schema/wsil.xsd#//inspection;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="inspection.ecore#//InspectionType/group"/>
+    <nested inputs="schema/wsil.xsd#//inspection;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="inspection.ecore#//InspectionType/service"/>
+    <nested inputs="schema/wsil.xsd#//inspection;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="inspection.ecore#//InspectionType/link"/>
+  </nested>
+  <nested inputs="schema/wsil.xsd#//inspection;XSDElementDeclaration" outputs="inspection.ecore#//DocumentRoot/inspection"/>
+  <nested inputs="http://www.w3.org/2001/xml.xsd#//base;XSDAttributeDeclaration=2"
+      outputs="../../plugin/org.eclipse.emf.ecore/model/XMLNamespace.ecore#//DocumentRoot/base"/>
+  <nested inputs="bundleentry://705/cache/www.w3.org/2001/XMLSchema.xsd#//ID;XSDSimpleTypeDefinition=35"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//ID"/>
+  <nested inputs="http://www.w3.org/2001/xml.xsd#//id;XSDAttributeDeclaration=3" outputs="../../plugin/org.eclipse.emf.ecore/model/XMLNamespace.ecore#//DocumentRoot/id"/>
+  <nested inputs="http://www.w3.org/2001/xml.xsd#//lang;XSDAttributeDeclaration" outputs="../../plugin/org.eclipse.emf.ecore/model/XMLNamespace.ecore#//DocumentRoot/lang"/>
+  <nested inputs="http://www.w3.org/2001/xml.xsd#//space;XSDAttributeDeclaration=1/XSDSimpleTypeDefinition"
+      outputs="../../plugin/org.eclipse.emf.ecore/model/XMLNamespace.ecore#//SpaceType">
+    <nested inputs="http://www.w3.org/2001/xml.xsd#//space;XSDAttributeDeclaration=1/XSDSimpleTypeDefinition/XSDEnumerationFacet"
+        outputs="../../plugin/org.eclipse.emf.ecore/model/XMLNamespace.ecore#//SpaceType/default"/>
+    <nested inputs="http://www.w3.org/2001/xml.xsd#//space;XSDAttributeDeclaration=1/XSDSimpleTypeDefinition/XSDEnumerationFacet=1"
+        outputs="../../plugin/org.eclipse.emf.ecore/model/XMLNamespace.ecore#//SpaceType/preserve"/>
+  </nested>
+  <nested inputs="http://www.w3.org/2001/xml.xsd#//space;XSDAttributeDeclaration=1"
+      outputs="../../plugin/org.eclipse.emf.ecore/model/XMLNamespace.ecore#//DocumentRoot/space"/>
+</xsd2ecore:XSD2EcoreMappingRoot>

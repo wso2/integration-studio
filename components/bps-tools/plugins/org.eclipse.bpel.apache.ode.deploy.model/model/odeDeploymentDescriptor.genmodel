@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2008 IBM Corporation, University of Stuttgart (IAAS) and others.&#xD;&#xA;All rights reserved. This program and the accompanying materials&#xD;&#xA;are made available under the terms of the Eclipse Public License v1.0&#xD;&#xA;which accompanies this distribution, and is available at&#xD;&#xA;http://www.eclipse.org/legal/epl-v10.html&#xD;&#xA;&#xD;&#xA;Contributors:&#xD;&#xA;    IBM Corporation, University of Stuttgart (IAAS) - initial API and implementation"
+    modelDirectory="/org.eclipse.bpel.apache.ode.deploy.model/src" modelPluginID="org.eclipse.bpel.apache.ode.deploy.model"
+    modelName="OdeDeploymentDescriptor" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="5.0" copyrightFields="false" usedGenPackages="../../org.eclipse.bpel.model/src/model/bpel.genmodel#//model ../../org.eclipse.bpel.model/src/model/bpel.genmodel#//partnerlinktype ../../org.eclipse.bpel.model/src/model/bpel.genmodel#//messageproperties platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore platform:/plugin/org.eclipse.wst.wsdl/model/WSDL.genmodel#//wsdl platform:/plugin/org.eclipse.xsd/model/XSD.genmodel#//xsd">
+  <foreignModel>odeDeploymentDescriptor.ecore</foreignModel>
+  <genPackages prefix="dd" basePackage="org.eclipse.bpel.apache.ode.deploy.model"
+      resource="XML" disposableProviderFactory="true" ecorePackage="odeDeploymentDescriptor.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="odeDeploymentDescriptor.ecore#//GenerateType">
+      <genEnumLiterals ecoreEnumLiteral="odeDeploymentDescriptor.ecore#//GenerateType/all"/>
+      <genEnumLiterals ecoreEnumLiteral="odeDeploymentDescriptor.ecore#//GenerateType/none"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="odeDeploymentDescriptor.ecore#//GenerateTypeObject"/>
+    <genClasses ecoreClass="odeDeploymentDescriptor.ecore#//BindingType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//BindingType/name"/>
+    </genClasses>
+    <genClasses ecoreClass="odeDeploymentDescriptor.ecore#//DocumentRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//DocumentRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//DocumentRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//DocumentRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//DocumentRoot/deploy"/>
+    </genClasses>
+    <genClasses ecoreClass="odeDeploymentDescriptor.ecore#//MexInterceptorsType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//MexInterceptorsType/mexInterceptor"/>
+    </genClasses>
+    <genClasses ecoreClass="odeDeploymentDescriptor.ecore#//ProcessType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//ProcessType/active"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//ProcessType/retired"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//ProcessType/inMemory"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//ProcessType/property"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//ProcessType/processEvents"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//ProcessType/provide"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//ProcessType/invoke"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//ProcessType/mexInterceptors"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//ProcessType/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//ProcessType/bpel11wsdlFileName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//ProcessType/fileName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//ProcessType/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//ProcessType/model"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//ProcessType/bamServerProfiles"/>
+    </genClasses>
+    <genClasses ecoreClass="odeDeploymentDescriptor.ecore#//PropertyType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//PropertyType/any"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//PropertyType/name"/>
+    </genClasses>
+    <genClasses ecoreClass="odeDeploymentDescriptor.ecore#//TDeployment">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//TDeployment/process"/>
+    </genClasses>
+    <genClasses ecoreClass="odeDeploymentDescriptor.ecore#//TEnableEventList">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TEnableEventList/enableEvent"/>
+    </genClasses>
+    <genClasses ecoreClass="odeDeploymentDescriptor.ecore#//TInvoke">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//TInvoke/service"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//TInvoke/binding"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TInvoke/partnerLink"/>
+    </genClasses>
+    <genClasses ecoreClass="odeDeploymentDescriptor.ecore#//TMexInterceptor">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TMexInterceptor/className"/>
+    </genClasses>
+    <genClasses ecoreClass="odeDeploymentDescriptor.ecore#//TProcessEvents">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//TProcessEvents/scopeEvents"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TProcessEvents/generate"/>
+    </genClasses>
+    <genClasses ecoreClass="odeDeploymentDescriptor.ecore#//TProvide">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//TProvide/service"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TProvide/partnerLink"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TProvide/correlationFilter"/>
+    </genClasses>
+    <genClasses ecoreClass="odeDeploymentDescriptor.ecore#//TScopeEvents">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TScopeEvents/name"/>
+    </genClasses>
+    <genClasses ecoreClass="odeDeploymentDescriptor.ecore#//TService">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TService/any"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TService/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TService/port"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//TService/endpoint"/>
+    </genClasses>
+    <genClasses ecoreClass="odeDeploymentDescriptor.ecore#//TBamServerProfiles">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//TBamServerProfiles/profile"/>
+    </genClasses>
+    <genClasses ecoreClass="odeDeploymentDescriptor.ecore#//TProfile">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TProfile/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TProfile/location"/>
+    </genClasses>
+    <genClasses ecoreClass="odeDeploymentDescriptor.ecore#//TEndPoint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TEndPoint/xmlns"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TEndPoint/endpointReference"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TEndPoint/serviceDescriptionReference"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

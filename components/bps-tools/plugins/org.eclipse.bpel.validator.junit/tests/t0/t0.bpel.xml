@@ -1,0 +1,21 @@
+<problems count="1">
+ <sa-cases>0</sa-cases>
+ <problem>
+  <address.xpath>/bpws:process</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.unsupported.Process</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.unsupported.messages</bundleName>
+  <charEnd>13</charEnd>
+  <charStart>1</charStart>
+  <columnNumber>1</columnNumber>
+  <fixMessage>You cannot validate a BPEL process in namespace "http://some.unknown.namespace"</fixMessage>
+  <lineNumber>1</lineNumber>
+  <location>process</location>
+  <message>Validation is not supported for &lt;bpws:process&gt; "Simple"  in namespace "http://some.unknown.namespace"</message>
+  <message.args>["bpws:process","Simple","http://some.unknown.namespace"]</message.args>
+  <message.id>BPELC__UNSUPPORTED_VALIDATION</message.id>
+  <node>&lt;bpws:process "Simple"&gt;</node>
+  <ruleName>Process.ReportUnsupportedProcessVariant.5</ruleName>
+  <severity>2</severity>
+ </problem>
+
+</problems>

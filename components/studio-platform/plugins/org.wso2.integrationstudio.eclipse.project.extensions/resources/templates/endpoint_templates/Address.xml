@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template xmlns="http://ws.apache.org/ns/synapse" name="{ep.name}">
+	<endpoint name="$name">
+		<address uri="{address.uri}">
+			<suspendOnFailure>
+				<progressionFactor>1.0</progressionFactor>
+			</suspendOnFailure>
+			<markForSuspension>
+				<retriesBeforeSuspension>0</retriesBeforeSuspension>
+				<retryDelay>0</retryDelay>
+			</markForSuspension>
+		</address>
+	</endpoint>
+</template>

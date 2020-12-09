@@ -1,0 +1,1048 @@
+<problems count="50">
+ <sa-cases>0,64,65,66,67,68,69,70,71,73,76,92,1015,2001,2002,0</sa-cases>
+ <problem>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:link</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.LinkValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1687</charEnd>
+  <charStart>1678</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:link&gt; cannot exist as a child of &lt;"links"&gt;</fixMessage>
+  <lineNumber>47</lineNumber>
+  <location>link</location>
+  <message>&lt;bpws:link&gt; cannot be a child of &lt;bpws:sequence&gt;; it can only be a child of "links"</message>
+  <message.args>["bpws:link","bpws:sequence","\"links\""]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:link "AB"&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:links[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.LinksValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1714</charEnd>
+  <charStart>1704</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Add &lt;"link"&gt; to node &lt;bpws:links&gt; to satisfy the constraint.</fixMessage>
+  <lineNumber>48</lineNumber>
+  <location>links</location>
+  <message>Node &lt;bpws:links&gt; must contain at least one node from "link"</message>
+  <message.args>["bpws:links",0,0,"\"link\"",0,1]</message.args>
+  <message.id>BPELC__MIN_IN_PARENT</message.id>
+  <node>&lt;bpws:links&gt;</node>
+  <ruleDescription>Check my children nodes (types and occurances)</ruleDescription>
+  <ruleName>CValidator.CheckChildrenNodes.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2002</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:links[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.LinksValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1714</charEnd>
+  <charStart>1704</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:links&gt; cannot exist as a child of &lt;"flow"&gt;</fixMessage>
+  <lineNumber>48</lineNumber>
+  <location>links</location>
+  <message>&lt;bpws:links&gt; cannot be a child of &lt;bpws:sequence&gt;; it can only be a child of "flow"</message>
+  <message.args>["bpws:links","bpws:sequence","\"flow\""]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:links&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:links[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.LinksValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1737</charEnd>
+  <charStart>1727</charStart>
+  <columnNumber>9</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:links&gt; cannot exist as a child of &lt;"flow"&gt;</fixMessage>
+  <lineNumber>49</lineNumber>
+  <location>links</location>
+  <message>&lt;bpws:links&gt; cannot be a child of &lt;bpws:sequence&gt;; it can only be a child of "flow"</message>
+  <message.args>["bpws:links","bpws:sequence","\"flow\""]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:links&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.1/@activity/@activities.1</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope/bpws:sequence/bpws:scope[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ScopeValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1988</charEnd>
+  <charStart>1978</charStart>
+  <columnNumber>4</columnNumber>
+  <fixMessage>Choose unique name for bpws:scope "scope_foo"</fixMessage>
+  <lineNumber>60</lineNumber>
+  <location>scope</location>
+  <message>Immediately enclosed bpws:scope "scope_foo" must have a unique name within the outer scope "outer".</message>
+  <message.args>["bpws:scope","scope_foo","bpws:scope","outer"]</message.args>
+  <message.id>BPELC_SCOPE__UNIQUE_NAME</message.id>
+  <node>&lt;bpws:scope "scope_foo"&gt;</node>
+  <ruleDescription>Within a scope all immediately enclosed scopes must have unique name</ruleDescription>
+  <ruleName>ScopeValidator.CheckUniqueScopeNames.20</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>92</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.FlowValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2165</charEnd>
+  <charStart>2156</charStart>
+  <columnNumber>3</columnNumber>
+  <context.name>name</context.name>
+  <fixMessage>Set the "name" attribute to a valid NCName.</fixMessage>
+  <lineNumber>69</lineNumber>
+  <location>flow</location>
+  <message>The "name" attribute of this &lt;bpws:flow&gt; is set to "first flow" - it is not a valid NCName.</message>
+  <message.args>["name","bpws:flow","first flow"]</message.args>
+  <message.id>General.NCName_Bad</message.id>
+  <node>&lt;bpws:flow "first flow"&gt;</node>
+  <ruleDescription>Check the name of the activity which must be valid NCName</ruleDescription>
+  <ruleName>CActivityValidator.CheckName.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>0</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@links/@children.5</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:links/bpws:link[6]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.LinksValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2370</charEnd>
+  <charStart>2361</charStart>
+  <columnNumber>8</columnNumber>
+  <context.name>name</context.name>
+  <fixMessage>You must change the name of bpws:link "B" to something else.</fixMessage>
+  <lineNumber>76</lineNumber>
+  <location>link</location>
+  <message>&lt;bpws:link&gt; name "B" is already defined in this scope/process.</message>
+  <message.args>["bpws:links","bpws:link","B"]</message.args>
+  <message.id>BPELC_DUPLICATE_NAME</message.id>
+  <node>&lt;bpws:link "B"&gt;</node>
+  <ruleDescription>Check for unique link name</ruleDescription>
+  <ruleName>LinksValidator.CheckDuplicateLinkName.40</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>64</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@links/@children.10</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:links/bpws:link[11]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.LinksValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2547</charEnd>
+  <charStart>2538</charStart>
+  <columnNumber>8</columnNumber>
+  <context.name>name</context.name>
+  <fixMessage>You must change the name of bpws:link "B" to something else.</fixMessage>
+  <lineNumber>81</lineNumber>
+  <location>link</location>
+  <message>&lt;bpws:link&gt; name "B" is already defined in this scope/process.</message>
+  <message.args>["bpws:links","bpws:link","B"]</message.args>
+  <message.id>BPELC_DUPLICATE_NAME</message.id>
+  <node>&lt;bpws:link "B"&gt;</node>
+  <ruleDescription>Check for unique link name</ruleDescription>
+  <ruleName>LinksValidator.CheckDuplicateLinkName.40</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>64</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@links/@children.0</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:links/bpws:link[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.LinkValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2221</charEnd>
+  <charStart>2212</charStart>
+  <columnNumber>8</columnNumber>
+  <fixMessage>Link in BPEL must be unique - remove either "A" or "AA".</fixMessage>
+  <lineNumber>71</lineNumber>
+  <location>link</location>
+  <message>The link "A" is not unique - the link "AA" also makes an identical connection.</message>
+  <message.args>["bpws:link","A","AA"]</message.args>
+  <message.id>BPELC_LINK__NOT_UNIQUE</message.id>
+  <node>&lt;bpws:link "A"&gt;</node>
+  <ruleDescription>Two different links MUST NOT share the same source *and* target activities;  that is, at most one link may be used to connect two activities.</ruleDescription>
+  <ruleName>LinkValidator.CheckDistinctLinks.12</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>67</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@links/@children.0</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:links/bpws:link[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.LinkValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2221</charEnd>
+  <charStart>2212</charStart>
+  <columnNumber>8</columnNumber>
+  <fixMessage>Link in BPEL must be unique - remove either "A" or "AAA".</fixMessage>
+  <lineNumber>71</lineNumber>
+  <location>link</location>
+  <message>The link "A" is not unique - the link "AAA" also makes an identical connection.</message>
+  <message.args>["bpws:link","A","AAA"]</message.args>
+  <message.id>BPELC_LINK__NOT_UNIQUE</message.id>
+  <node>&lt;bpws:link "A"&gt;</node>
+  <ruleDescription>Two different links MUST NOT share the same source *and* target activities;  that is, at most one link may be used to connect two activities.</ruleDescription>
+  <ruleName>LinkValidator.CheckDistinctLinks.12</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>67</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@links/@children.1</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:links/bpws:link[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.LinkValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2251</charEnd>
+  <charStart>2242</charStart>
+  <columnNumber>8</columnNumber>
+  <fixMessage>Link in BPEL must be unique - remove either "AA" or "AAA".</fixMessage>
+  <lineNumber>72</lineNumber>
+  <location>link</location>
+  <message>The link "AA" is not unique - the link "AAA" also makes an identical connection.</message>
+  <message.args>["bpws:link","AA","AAA"]</message.args>
+  <message.id>BPELC_LINK__NOT_UNIQUE</message.id>
+  <node>&lt;bpws:link "AA"&gt;</node>
+  <ruleDescription>Two different links MUST NOT share the same source *and* target activities;  that is, at most one link may be used to connect two activities.</ruleDescription>
+  <ruleName>LinkValidator.CheckDistinctLinks.12</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>67</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@links/@children.1</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:links/bpws:link[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.LinkValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2251</charEnd>
+  <charStart>2242</charStart>
+  <columnNumber>8</columnNumber>
+  <fixMessage>Link in BPEL must be unique - remove either "AA" or "A".</fixMessage>
+  <lineNumber>72</lineNumber>
+  <location>link</location>
+  <message>The link "AA" is not unique - the link "A" also makes an identical connection.</message>
+  <message.args>["bpws:link","AA","A"]</message.args>
+  <message.id>BPELC_LINK__NOT_UNIQUE</message.id>
+  <node>&lt;bpws:link "AA"&gt;</node>
+  <ruleDescription>Two different links MUST NOT share the same source *and* target activities;  that is, at most one link may be used to connect two activities.</ruleDescription>
+  <ruleName>LinkValidator.CheckDistinctLinks.12</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>67</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@links/@children.2</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:links/bpws:link[3]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.LinkValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2281</charEnd>
+  <charStart>2272</charStart>
+  <columnNumber>5</columnNumber>
+  <fixMessage>Link in BPEL must be unique - remove either "AAA" or "AA".</fixMessage>
+  <lineNumber>73</lineNumber>
+  <location>link</location>
+  <message>The link "AAA" is not unique - the link "AA" also makes an identical connection.</message>
+  <message.args>["bpws:link","AAA","AA"]</message.args>
+  <message.id>BPELC_LINK__NOT_UNIQUE</message.id>
+  <node>&lt;bpws:link "AAA"&gt;</node>
+  <ruleDescription>Two different links MUST NOT share the same source *and* target activities;  that is, at most one link may be used to connect two activities.</ruleDescription>
+  <ruleName>LinkValidator.CheckDistinctLinks.12</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>67</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@links/@children.2</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:links/bpws:link[3]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.LinkValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2281</charEnd>
+  <charStart>2272</charStart>
+  <columnNumber>5</columnNumber>
+  <fixMessage>Link in BPEL must be unique - remove either "AAA" or "A".</fixMessage>
+  <lineNumber>73</lineNumber>
+  <location>link</location>
+  <message>The link "AAA" is not unique - the link "A" also makes an identical connection.</message>
+  <message.args>["bpws:link","AAA","A"]</message.args>
+  <message.id>BPELC_LINK__NOT_UNIQUE</message.id>
+  <node>&lt;bpws:link "AAA"&gt;</node>
+  <ruleDescription>Two different links MUST NOT share the same source *and* target activities;  that is, at most one link may be used to connect two activities.</ruleDescription>
+  <ruleName>LinkValidator.CheckDistinctLinks.12</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>67</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@links/@children.7</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:links/bpws:link[8]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.LinkValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2430</charEnd>
+  <charStart>2421</charStart>
+  <columnNumber>8</columnNumber>
+  <fixMessage>Make the link "E" a source of an activity within this flow.</fixMessage>
+  <lineNumber>78</lineNumber>
+  <location>link</location>
+  <message>The link "E" does not have a source.</message>
+  <message.args>["bpws:link","E"]</message.args>
+  <message.id>BPELC_LINK__NO_SOURCE</message.id>
+  <node>&lt;bpws:link "E"&gt;</node>
+  <ruleDescription>Every link must have exactly one activity as source and one as target</ruleDescription>
+  <ruleName>LinkValidator.CheckLinkConnections.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>66</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@links/@children.7</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:links/bpws:link[8]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.LinkValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2430</charEnd>
+  <charStart>2421</charStart>
+  <columnNumber>8</columnNumber>
+  <fixMessage>Make the link "E" a target of an activity within this flow.</fixMessage>
+  <lineNumber>78</lineNumber>
+  <location>link</location>
+  <message>The link "E" does not have a target.</message>
+  <message.args>["bpws:link","E"]</message.args>
+  <message.id>BPELC_LINK__NO_TARGET</message.id>
+  <node>&lt;bpws:link "E"&gt;</node>
+  <ruleDescription>Every link must have exactly one activity as source and one as target</ruleDescription>
+  <ruleName>LinkValidator.CheckLinkConnections.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>66</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@links/@children.11</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:links/bpws:link[12]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.LinkValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2577</charEnd>
+  <charStart>2568</charStart>
+  <columnNumber>8</columnNumber>
+  <context.name>name</context.name>
+  <fixMessage>Set the "name" attribute to a valid NCName.</fixMessage>
+  <lineNumber>82</lineNumber>
+  <location>link</location>
+  <message>The "name" attribute of this &lt;bpws:link&gt; is set to "B Z" - it is not a valid NCName.</message>
+  <message.args>["name","bpws:link","B Z"]</message.args>
+  <message.id>General.NCName_Bad</message.id>
+  <node>&lt;bpws:link "B Z"&gt;</node>
+  <ruleDescription>Check the NCName of the link</ruleDescription>
+  <ruleName>LinkValidator.CheckName.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>0</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.0/@targets</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:sequence[1]/bpws:targets</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.TargetsValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2674</charEnd>
+  <charStart>2662</charStart>
+  <columnNumber>9</columnNumber>
+  <fixMessage>Add &lt;"target"&gt; to node &lt;bpws:targets&gt; to satisfy the constraint.</fixMessage>
+  <lineNumber>86</lineNumber>
+  <location>targets</location>
+  <message>Node &lt;bpws:targets&gt; must contain at least one node from "target"</message>
+  <message.args>["bpws:targets",0,0,"\"target\"",0,1]</message.args>
+  <message.id>BPELC__MIN_IN_PARENT</message.id>
+  <node>&lt;bpws:targets&gt;</node>
+  <ruleDescription>Check my children nodes (types and occurances)</ruleDescription>
+  <ruleName>CValidator.CheckChildrenNodes.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2002</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.0/@activities.0/@targets/@children.4</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:sequence[1]/bpws:empty[1]/bpws:targets/bpws:target[5]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.TargetValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2937</charEnd>
+  <charStart>2926</charStart>
+  <columnNumber>18</columnNumber>
+  <fixMessage>Define the link "Z".</fixMessage>
+  <lineNumber>93</lineNumber>
+  <location>target</location>
+  <message>The link "Z" used as a bpws:target is not defined in the enclosing flow.</message>
+  <message.args>["bpws:target","Z"]</message.args>
+  <message.id>BPELC_LINK__UNDEFINED</message.id>
+  <node>&lt;bpws:target&gt;</node>
+  <ruleDescription>The value of the linkName attribute of &lt;target&gt; MUST be the name of a &lt;link&gt; declared in an enclosing &lt;flow&gt; activity.</ruleDescription>
+  <ruleName>TargetValidator.CheckAgainstDeclaredLink.12</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>65</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.0/@activities.1/@targets/@children.1</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:sequence[1]/bpws:empty[2]/bpws:targets/bpws:target[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.TargetsValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3125</charEnd>
+  <charStart>3114</charStart>
+  <columnNumber>15</columnNumber>
+  <context.name>linkName</context.name>
+  <fixMessage>You must change the name of bpws:target "A" to something else.</fixMessage>
+  <lineNumber>100</lineNumber>
+  <location>target</location>
+  <message>&lt;bpws:target&gt; name "A" is already defined in this scope/process.</message>
+  <message.args>["bpws:targets","bpws:target","A"]</message.args>
+  <message.id>BPELC_DUPLICATE_NAME</message.id>
+  <node>&lt;bpws:target&gt;</node>
+  <ruleDescription>&lt;target&gt; elements must have distinct linkNames</ruleDescription>
+  <ruleName>TargetsValidator.CheckUniqueTargetName.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>69</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.0/@activities.1/@targets/@children.0</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:sequence[1]/bpws:empty[2]/bpws:targets/bpws:target[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.TargetValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3082</charEnd>
+  <charStart>3071</charStart>
+  <columnNumber>15</columnNumber>
+  <fixMessage>Use a different link then "A" as a bpws:target.</fixMessage>
+  <lineNumber>99</lineNumber>
+  <location>target</location>
+  <message>The link "A" is already used as a bpws:target.</message>
+  <message.args>["bpws:target","A"]</message.args>
+  <message.id>BPELC_LINK__NAME_USED</message.id>
+  <node>&lt;bpws:target&gt;</node>
+  <ruleDescription>Every link must have exactly one activity as source and one as target</ruleDescription>
+  <ruleName>TargetValidator.CheckIfSourceAlreadyUsed.12</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>66</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.0/@activities.1/@targets/@children.1</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:sequence[1]/bpws:empty[2]/bpws:targets/bpws:target[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.TargetValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3125</charEnd>
+  <charStart>3114</charStart>
+  <columnNumber>15</columnNumber>
+  <fixMessage>Use a different link then "A" as a bpws:target.</fixMessage>
+  <lineNumber>100</lineNumber>
+  <location>target</location>
+  <message>The link "A" is already used as a bpws:target.</message>
+  <message.args>["bpws:target","A"]</message.args>
+  <message.id>BPELC_LINK__NAME_USED</message.id>
+  <node>&lt;bpws:target&gt;</node>
+  <ruleDescription>Every link must have exactly one activity as source and one as target</ruleDescription>
+  <ruleName>TargetValidator.CheckIfSourceAlreadyUsed.12</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>66</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.0/@activities.1/@targets/@children.2</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:sequence[1]/bpws:empty[2]/bpws:targets/bpws:target[3]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.TargetValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3185</charEnd>
+  <charStart>3174</charStart>
+  <columnNumber>18</columnNumber>
+  <fixMessage>Define the link "Z".</fixMessage>
+  <lineNumber>101</lineNumber>
+  <location>target</location>
+  <message>The link "Z" used as a bpws:target is not defined in the enclosing flow.</message>
+  <message.args>["bpws:target","Z"]</message.args>
+  <message.id>BPELC_LINK__UNDEFINED</message.id>
+  <node>&lt;bpws:target&gt;</node>
+  <ruleDescription>The value of the linkName attribute of &lt;target&gt; MUST be the name of a &lt;link&gt; declared in an enclosing &lt;flow&gt; activity.</ruleDescription>
+  <ruleName>TargetValidator.CheckAgainstDeclaredLink.12</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>65</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.0/@activities.1/@targets/@children.2</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:sequence[1]/bpws:empty[2]/bpws:targets/bpws:target[3]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.TargetValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3185</charEnd>
+  <charStart>3174</charStart>
+  <columnNumber>18</columnNumber>
+  <fixMessage>Use a different link then "Z" as a bpws:target.</fixMessage>
+  <lineNumber>101</lineNumber>
+  <location>target</location>
+  <message>The link "Z" is already used as a bpws:target.</message>
+  <message.args>["bpws:target","Z"]</message.args>
+  <message.id>BPELC_LINK__NAME_USED</message.id>
+  <node>&lt;bpws:target&gt;</node>
+  <ruleDescription>Every link must have exactly one activity as source and one as target</ruleDescription>
+  <ruleName>TargetValidator.CheckIfSourceAlreadyUsed.12</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>66</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.0/@activities.2/@condition</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:sequence[1]/bpws:while[1]/bpws:condition</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.Condition</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>3318</charEnd>
+  <charStart>3312</charStart>
+  <columnNumber>28</columnNumber>
+  <fixMessage>Make sure that the expression in &lt;bpws:condition&gt; is a boolean expression.</fixMessage>
+  <lineNumber>106</lineNumber>
+  <location>condition</location>
+  <message>The expression in &lt;bpws:condition&gt; is not a boolean expression.</message>
+  <message.args>["bpws:condition","boolean(true)","boolean expression"]</message.args>
+  <message.id>XPATH_EXPRESSION_TYPE</message.id>
+  <node>&lt;bpws:condition&gt;</node>
+  <ruleDescription>Checks for boolean expression on conditions</ruleDescription>
+  <ruleName>Condition.checkBooleanExpression.15</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>0</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.0/@activities.2/@activity/@sources/@children.0</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:sequence[1]/bpws:while[1]/bpws:empty/bpws:sources/bpws:source</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.SourceValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3538</charEnd>
+  <charStart>3527</charStart>
+  <columnNumber>17</columnNumber>
+  <fixMessage>Links cannot cross repeatable boundaries.</fixMessage>
+  <lineNumber>112</lineNumber>
+  <location>source</location>
+  <message>The link "C" crosses repeatable boundary on &lt;bpws:while&gt;.</message>
+  <message.args>["bpws:source","C","bpws:while",null]</message.args>
+  <message.id>BPELC_LINK__CROSS_REPEATABLE</message.id>
+  <node>&lt;bpws:source&gt;</node>
+  <ruleDescription>Link must not cross repeatable constructs</ruleDescription>
+  <ruleName>SourceValidator.CheckRepeatableConstruct.15</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>70</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.0/@activities.3/@condition</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:sequence[1]/bpws:while[2]/bpws:condition</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.Condition</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>3924</charEnd>
+  <charStart>3918</charStart>
+  <columnNumber>27</columnNumber>
+  <fixMessage>Make sure that the expression in &lt;bpws:condition&gt; is a boolean expression.</fixMessage>
+  <lineNumber>124</lineNumber>
+  <location>condition</location>
+  <message>The expression in &lt;bpws:condition&gt; is not a boolean expression.</message>
+  <message.args>["bpws:condition","boolean(true)","boolean expression"]</message.args>
+  <message.id>XPATH_EXPRESSION_TYPE</message.id>
+  <node>&lt;bpws:condition&gt;</node>
+  <ruleDescription>Checks for boolean expression on conditions</ruleDescription>
+  <ruleName>Condition.checkBooleanExpression.15</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>0</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.1/@sources/@children.3</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:sequence[2]/bpws:sources/bpws:source[4]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.SourcesValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>4312</charEnd>
+  <charStart>4301</charStart>
+  <columnNumber>15</columnNumber>
+  <context.name>linkName</context.name>
+  <fixMessage>You must change the name of {http://docs.oasis-open.org/wsbpel/2.0/process/executable}source "A" to something else.</fixMessage>
+  <lineNumber>135</lineNumber>
+  <location>source</location>
+  <message>&lt;{http://docs.oasis-open.org/wsbpel/2.0/process/executable}source&gt; name "A" is already defined in this scope/process.</message>
+  <message.args>["bpws:sources",null,"A"]</message.args>
+  <message.id>BPELC_DUPLICATE_NAME</message.id>
+  <node>&lt;bpws:source&gt;</node>
+  <ruleDescription>&lt;source&gt; elements must have distinct linkNames</ruleDescription>
+  <ruleName>SourcesValidator.CheckUniqueSourceName.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>68</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.1/@sources/@children.3</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:sequence[2]/bpws:sources/bpws:source[4]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.SourceValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>4312</charEnd>
+  <charStart>4301</charStart>
+  <columnNumber>15</columnNumber>
+  <fixMessage>Use a different link then "A" as a bpws:source.</fixMessage>
+  <lineNumber>135</lineNumber>
+  <location>source</location>
+  <message>The link "A" is already used as a bpws:source.</message>
+  <message.args>["bpws:source","A"]</message.args>
+  <message.id>BPELC_LINK__NAME_USED</message.id>
+  <node>&lt;bpws:source&gt;</node>
+  <ruleDescription>Every link must have exactly one activity as source and one as target</ruleDescription>
+  <ruleName>SourceValidator.CheckIfSourceAlreadyUsed.12</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>66</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.1/@sources/@children.4</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:sequence[2]/bpws:sources/bpws:source[5]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.SourceValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>4372</charEnd>
+  <charStart>4361</charStart>
+  <columnNumber>18</columnNumber>
+  <fixMessage>Define the link "Z".</fixMessage>
+  <lineNumber>136</lineNumber>
+  <location>source</location>
+  <message>The link "Z" used as a bpws:source is not defined in the enclosing flow.</message>
+  <message.args>["bpws:source","Z"]</message.args>
+  <message.id>BPELC_LINK__UNDEFINED</message.id>
+  <node>&lt;bpws:source&gt;</node>
+  <ruleDescription>The value of the linkName attribute of &lt;source&gt; MUST be the name of a &lt;link&gt; declared in an enclosing &lt;flow&gt; activity.</ruleDescription>
+  <ruleName>SourceValidator.CheckAgainstDeclaredLink.11</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>65</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.2/@activities.0/@targets/@children.1</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:sequence[3]/bpws:empty/bpws:targets/bpws:target[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.TargetValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>4631</charEnd>
+  <charStart>4620</charStart>
+  <columnNumber>18</columnNumber>
+  <fixMessage>Use a different link then "A" as a bpws:target.</fixMessage>
+  <lineNumber>145</lineNumber>
+  <location>target</location>
+  <message>The link "A" is already used as a bpws:target.</message>
+  <message.args>["bpws:target","A"]</message.args>
+  <message.id>BPELC_LINK__NAME_USED</message.id>
+  <node>&lt;bpws:target&gt;</node>
+  <ruleDescription>Every link must have exactly one activity as source and one as target</ruleDescription>
+  <ruleName>TargetValidator.CheckIfSourceAlreadyUsed.12</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>66</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.2/@activities.0/@targets/@joinCondition</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:sequence[3]/bpws:empty/bpws:targets/bpws:joinCondition</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.JoinCondition</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>4715</charEnd>
+  <charStart>4709</charStart>
+  <columnNumber>23</columnNumber>
+  <fixMessage>Remove the prefix "$bar:foo"</fixMessage>
+  <lineNumber>147</lineNumber>
+  <location>joinCondition</location>
+  <message>Prefix "bar" is not allowed in expression "$bar:foo"</message>
+  <message.args>["bpws:joinCondition","$bar:foo","bar"]</message.args>
+  <message.id>XPATH_PREFIX_NOT_ALLOWED</message.id>
+  <node>&lt;bpws:joinCondition&gt;</node>
+  <ruleDescription>Check the link reference for joinCondition (only incoming link names)</ruleDescription>
+  <ruleName>JoinCondition.CheckLinkReference.17</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>73</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.2/@activities.0/@targets/@joinCondition</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:sequence[3]/bpws:empty/bpws:targets/bpws:joinCondition</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.JoinCondition</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>4715</charEnd>
+  <charStart>4709</charStart>
+  <columnNumber>23</columnNumber>
+  <fixMessage>Check to make sure that the link "foo" is defined.</fixMessage>
+  <lineNumber>147</lineNumber>
+  <location>joinCondition</location>
+  <message>The link "foo" does not exist and cannot be used in the expression.</message>
+  <message.args>["foo","$bar:foo"]</message.args>
+  <message.id>XPATH_LINK_UNDEF</message.id>
+  <node>&lt;bpws:joinCondition&gt;</node>
+  <ruleDescription>Check the link reference for joinCondition (only incoming link names)</ruleDescription>
+  <ruleName>JoinCondition.CheckLinkReference.17</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>73</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.2/@activities.0/@targets/@joinCondition</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:sequence[3]/bpws:empty/bpws:targets/bpws:joinCondition</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.JoinCondition</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>4767</charEnd>
+  <charStart>4765</charStart>
+  <columnNumber>43</columnNumber>
+  <fixMessage>Check to make sure that the link "BBB" is defined.</fixMessage>
+  <lineNumber>148</lineNumber>
+  <location>joinCondition</location>
+  <message>The link "BBB" does not exist and cannot be used in the expression.</message>
+  <message.args>["BBB","$BBB"]</message.args>
+  <message.id>XPATH_LINK_UNDEF</message.id>
+  <node>&lt;bpws:joinCondition&gt;</node>
+  <ruleDescription>Check the link reference for joinCondition (only incoming link names)</ruleDescription>
+  <ruleName>JoinCondition.CheckLinkReference.17</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>73</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.2/@activities.0/@targets/@joinCondition</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:sequence[3]/bpws:empty/bpws:targets/bpws:joinCondition</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.JoinCondition</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>4813</charEnd>
+  <charStart>4813</charStart>
+  <columnNumber>36</columnNumber>
+  <fixMessage>Check to make sure that the link "C" is defined.</fixMessage>
+  <lineNumber>149</lineNumber>
+  <location>joinCondition</location>
+  <message>The link "C" does not exist and cannot be used in the expression.</message>
+  <message.args>["C","$C"]</message.args>
+  <message.id>XPATH_LINK_UNDEF</message.id>
+  <node>&lt;bpws:joinCondition&gt;</node>
+  <ruleDescription>Check the link reference for joinCondition (only incoming link names)</ruleDescription>
+  <ruleName>JoinCondition.CheckLinkReference.17</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>73</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.3/@activities.0/@sources/@children.0</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:sequence[4]/bpws:empty/bpws:sources/bpws:source[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.SourceValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>5043</charEnd>
+  <charStart>5032</charStart>
+  <columnNumber>15</columnNumber>
+  <fixMessage>Use a different link then "A" as a bpws:source.</fixMessage>
+  <lineNumber>158</lineNumber>
+  <location>source</location>
+  <message>The link "A" is already used as a bpws:source.</message>
+  <message.args>["bpws:source","A"]</message.args>
+  <message.id>BPELC_LINK__NAME_USED</message.id>
+  <node>&lt;bpws:source&gt;</node>
+  <ruleDescription>Every link must have exactly one activity as source and one as target</ruleDescription>
+  <ruleName>SourceValidator.CheckIfSourceAlreadyUsed.12</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>66</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.3/@activities.0/@sources/@children.2</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:sequence[4]/bpws:empty/bpws:sources/bpws:source[3]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.SourceValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>5129</charEnd>
+  <charStart>5118</charStart>
+  <columnNumber>15</columnNumber>
+  <fixMessage>Use a different link then "C" as a bpws:source.</fixMessage>
+  <lineNumber>160</lineNumber>
+  <location>source</location>
+  <message>The link "C" is already used as a bpws:source.</message>
+  <message.args>["bpws:source","C"]</message.args>
+  <message.id>BPELC_LINK__NAME_USED</message.id>
+  <node>&lt;bpws:source&gt;</node>
+  <ruleDescription>Every link must have exactly one activity as source and one as target</ruleDescription>
+  <ruleName>SourceValidator.CheckIfSourceAlreadyUsed.12</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>66</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.4/@faultHandlers/@catchAll/@activity/@activities.0/@sources/@children.1</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:scope/bpws:faultHandlers/bpws:catchAll/bpws:sequence/bpws:empty[1]/bpws:sources/bpws:source[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.SourceValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>5536</charEnd>
+  <charStart>5525</charStart>
+  <columnNumber>27</columnNumber>
+  <fixMessage>Change the linkage expressed by the link "H"</fixMessage>
+  <lineNumber>172</lineNumber>
+  <location>source</location>
+  <message>Link "H" must be outbound only; target activity must be outside of the enclosing &lt;bpws:catchAll&gt;.</message>
+  <message.args>["bpws:source","H","bpws:catchAll"]</message.args>
+  <message.id>BPELC_LINK__OUTBOUND_ONLY</message.id>
+  <node>&lt;bpws:source&gt;</node>
+  <ruleDescription>Check for links crossing event handlers boundaries</ruleDescription>
+  <ruleName>SourceValidator.CheckEventHandlersBoundary.20</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>71</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.3</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:forEach[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ForEachValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>6037</charEnd>
+  <charStart>6025</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Add &lt;"scope"&gt; to activity &lt;bpws:forEach&gt; to satisfy the constraint.</fixMessage>
+  <lineNumber>187</lineNumber>
+  <location>forEach</location>
+  <message>Activity &lt;bpws:forEach&gt; must contain at least one node from "scope"</message>
+  <message.args>["bpws:forEach",1,0,"\"scope\"",0,1]</message.args>
+  <message.id>BPELC__MIN_IN_PARENT</message.id>
+  <node>&lt;bpws:forEach&gt;</node>
+  <ruleDescription>Check my children nodes (types and occurances)</ruleDescription>
+  <ruleName>CValidator.CheckChildrenNodes.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2002</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.3</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:forEach[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ForEachValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>6037</charEnd>
+  <charStart>6025</charStart>
+  <columnNumber>3</columnNumber>
+  <context.name>parallel</context.name>
+  <fixMessage>Make sure that the attribute "parallel" is specified.</fixMessage>
+  <lineNumber>187</lineNumber>
+  <location>forEach</location>
+  <message>Attribute "parallel" is not set on this &lt;bpws:forEach&gt; activity.</message>
+  <message.args>["bpws:forEach","parallel",1]</message.args>
+  <message.id>BPELC__UNSET_ATTRIBUTE</message.id>
+  <node>&lt;bpws:forEach&gt;</node>
+  <ruleName>ForEachValidator.CheckParallel.1</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.3/@startCounterValue</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:forEach[1]/bpws:startCounterValue</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.StartCounterValue</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>6093</charEnd>
+  <charStart>6071</charStart>
+  <columnNumber>6</columnNumber>
+  <fixMessage>You must specify a valid unsigned integer expression expression in &lt;bpws:startCounterValue&gt;.</fixMessage>
+  <lineNumber>189</lineNumber>
+  <location>startCounterValue</location>
+  <message>The unsigned integer expression is not specified on &lt;bpws:startCounterValue&gt;.</message>
+  <message.args>["bpws:startCounterValue","unsigned integer expression"]</message.args>
+  <message.id>XPATH_EMPTY_EXPRESSION</message.id>
+  <node>&lt;bpws:startCounterValue&gt;</node>
+  <ruleName>XPathValidator.SanityCheck.1</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.3/@finalCounterValue</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:forEach[1]/bpws:finalCounterValue</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.FinalCounterValue</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>6135</charEnd>
+  <charStart>6113</charStart>
+  <columnNumber>9</columnNumber>
+  <fixMessage>You must specify a valid unsigned integer expression expression in &lt;bpws:finalCounterValue&gt;.</fixMessage>
+  <lineNumber>191</lineNumber>
+  <location>finalCounterValue</location>
+  <message>The unsigned integer expression is not specified on &lt;bpws:finalCounterValue&gt;.</message>
+  <message.args>["bpws:finalCounterValue","unsigned integer expression"]</message.args>
+  <message.id>XPATH_EMPTY_EXPRESSION</message.id>
+  <node>&lt;bpws:finalCounterValue&gt;</node>
+  <ruleName>XPathValidator.SanityCheck.1</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.4</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:forEach[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ForEachValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>6193</charEnd>
+  <charStart>6181</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Add &lt;"scope"&gt; to activity &lt;bpws:forEach&gt; to satisfy the constraint.</fixMessage>
+  <lineNumber>195</lineNumber>
+  <location>forEach</location>
+  <message>Activity &lt;bpws:forEach&gt; must contain at least one node from "scope"</message>
+  <message.args>["bpws:forEach",1,0,"\"scope\"",0,1]</message.args>
+  <message.id>BPELC__MIN_IN_PARENT</message.id>
+  <node>&lt;bpws:forEach&gt;</node>
+  <ruleDescription>Check my children nodes (types and occurances)</ruleDescription>
+  <ruleName>CValidator.CheckChildrenNodes.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2002</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.4</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:forEach[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ForEachValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>6193</charEnd>
+  <charStart>6181</charStart>
+  <columnNumber>3</columnNumber>
+  <context.name>parallel</context.name>
+  <fixMessage>Make sure that the attribute "parallel" is specified.</fixMessage>
+  <lineNumber>195</lineNumber>
+  <location>forEach</location>
+  <message>Attribute "parallel" is not set on this &lt;bpws:forEach&gt; activity.</message>
+  <message.args>["bpws:forEach","parallel",1]</message.args>
+  <message.id>BPELC__UNSET_ATTRIBUTE</message.id>
+  <node>&lt;bpws:forEach&gt;</node>
+  <ruleName>ForEachValidator.CheckParallel.1</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.4/@finalCounterValue</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:forEach[2]/bpws:finalCounterValue</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.FinalCounterValue</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>6344</charEnd>
+  <charStart>6339</charStart>
+  <columnNumber>33</columnNumber>
+  <fixMessage>Add function definition for this function "string" to the validator</fixMessage>
+  <lineNumber>199</lineNumber>
+  <location>finalCounterValue</location>
+  <message>Unknown function "string" used in &lt;bpws:finalCounterValue&gt;</message>
+  <message.args>["bpws:finalCounterValue","string"]</message.args>
+  <message.id>XPATH_FUNCTION_UNKNOWN</message.id>
+  <node>&lt;bpws:finalCounterValue&gt;</node>
+  <ruleDescription>Check functions in XPath expressions</ruleDescription>
+  <ruleName>XPathValidator.CheckFunctions.1</ruleName>
+  <severity>1</severity>
+  <staticAnalysisCode>1015</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.4/@completionCondition</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:forEach[2]/bpws:completionCondition</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.CompletionConditionValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>6432</charEnd>
+  <charStart>6408</charStart>
+  <columnNumber>9</columnNumber>
+  <fixMessage>Add &lt;"branches"&gt; to node &lt;bpws:completionCondition&gt; to satisfy the constraint.</fixMessage>
+  <lineNumber>201</lineNumber>
+  <location>completionCondition</location>
+  <message>Node &lt;bpws:completionCondition&gt; must contain at least one node from "branches"</message>
+  <message.args>["bpws:completionCondition",0,0,"\"branches\"",0,1]</message.args>
+  <message.id>BPELC__MIN_IN_PARENT</message.id>
+  <node>&lt;bpws:completionCondition&gt;</node>
+  <ruleDescription>Check my children nodes (types and occurances)</ruleDescription>
+  <ruleName>CValidator.CheckChildrenNodes.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2002</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.5</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:forEach[3]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ForEachValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>6529</charEnd>
+  <charStart>6517</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Add &lt;"scope"&gt; to activity &lt;bpws:forEach&gt; to satisfy the constraint.</fixMessage>
+  <lineNumber>206</lineNumber>
+  <location>forEach</location>
+  <message>Activity &lt;bpws:forEach&gt; must contain at least one node from "scope"</message>
+  <message.args>["bpws:forEach",1,0,"\"scope\"",0,1]</message.args>
+  <message.id>BPELC__MIN_IN_PARENT</message.id>
+  <node>&lt;bpws:forEach&gt;</node>
+  <ruleDescription>Check my children nodes (types and occurances)</ruleDescription>
+  <ruleName>CValidator.CheckChildrenNodes.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2002</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.6</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:forEach[4]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ForEachValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>6856</charEnd>
+  <charStart>6844</charStart>
+  <columnNumber>3</columnNumber>
+  <context.name>parallel</context.name>
+  <fixMessage>Make sure that "parallel" is set to one of the values from "no", "yes"</fixMessage>
+  <lineNumber>214</lineNumber>
+  <location>forEach</location>
+  <message>"parallel" is set to "true" on this &lt;bpws:forEach&gt; activity but it can only be set to "no", "yes"</message>
+  <message.args>["bpws:forEach","parallel","true","\"no\", \"yes\"",1]</message.args>
+  <message.id>BPELC__INVALID_ATTRIBUTE_VALUE</message.id>
+  <node>&lt;bpws:forEach&gt;</node>
+  <ruleName>ForEachValidator.CheckParallel.1</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.6/@completionCondition/@branches</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:forEach[4]/bpws:completionCondition/bpws:branches</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.Branches</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>7096</charEnd>
+  <charStart>7094</charStart>
+  <columnNumber>35</columnNumber>
+  <fixMessage>You must defined the variable to use it in the XPath expression.</fixMessage>
+  <lineNumber>219</lineNumber>
+  <location>branches</location>
+  <message>The variable "foo" is not defined in scope or process.</message>
+  <message.args>["foo","$foo"]</message.args>
+  <message.id>XPATH_UNDEF_VARIABLE</message.id>
+  <node>&lt;bpws:branches&gt;</node>
+  <ruleDescription>Check the variable namespace prefix</ruleDescription>
+  <ruleName>XPathValidator.CheckVariable.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>0</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.6/@activity/@variables/@children.1</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:forEach[4]/bpws:scope/bpws:variables/bpws:variable[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.VariableValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>7325</charEnd>
+  <charStart>7312</charStart>
+  <columnNumber>13</columnNumber>
+  <fixMessage>Change the name of this variable.</fixMessage>
+  <lineNumber>225</lineNumber>
+  <location>variable</location>
+  <message>The variable name "counter3" is used as a counter name in &lt;{http://docs.oasis-open.org/wsbpel/2.0/process/executable}forEach&gt;.</message>
+  <message.args>["bpws:variable","counter3",null,null]</message.args>
+  <message.id>BPELC_VARIABLE__COUNTER</message.id>
+  <node>&lt;bpws:variable "counter3"&gt;</node>
+  <ruleDescription>For &lt;forEach&gt;  the enclosed scope MUST NOT  declare a variable with the same name as specified in the counterName  attribute of &lt;forEach&gt;.</ruleDescription>
+  <ruleName>VariableValidator.CheckForEachCounter.30</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>76</staticAnalysisCode>
+ </problem>
+
+</problems>

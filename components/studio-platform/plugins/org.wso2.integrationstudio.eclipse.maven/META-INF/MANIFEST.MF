@@ -1,0 +1,34 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Maven Invoker
+Bundle-SymbolicName: org.wso2.integrationstudio.eclipse.maven;singleton:=true
+Bundle-Version: 7.2.0.qualifier
+Bundle-Vendor: WSO2
+Bundle-Activator: org.wso2.integrationstudio.eclipse.maven.Activator
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: junit.framework,
+ org.apache.maven.shared.invoker,
+ org.eclipse.core.commands,
+ org.eclipse.core.expressions,
+ org.eclipse.core.resources,
+ org.eclipse.jdt.core,
+ org.eclipse.jface.dialogs,
+ org.eclipse.jface.viewers,
+ org.eclipse.swt.widgets,
+ org.eclipse.ui.handlers,
+ org.junit,
+ org.osgi.framework;version="1.3.0",
+ org.wso2.integrationstudio.eclipse.logging.core,
+ org.wso2.integrationstudio.eclipse.utils.file,
+ org.wso2.integrationstudio.eclipse.utils.jdt,
+ org.wso2.integrationstudio.eclipse.utils.project
+Bundle-ClassPath: .
+Export-Package: org.wso2.integrationstudio.eclipse.maven,
+ org.wso2.integrationstudio.eclipse.maven.executor,
+ org.wso2.integrationstudio.eclipse.maven.types,
+ org.wso2.integrationstudio.eclipse.maven.util
+Require-Bundle: org.eclipse.equinox.registry,
+ org.eclipse.core.runtime,
+ org.wso2.integrationstudio.eclipse.kernel.libraries
+

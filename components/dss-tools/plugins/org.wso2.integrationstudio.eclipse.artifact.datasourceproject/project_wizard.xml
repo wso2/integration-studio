@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+	<projectOptions title="New Data Source Configs" 
+					description="Create new Data Source Configs" 
+					error="">
+		<option id="new.dss" default="true">New Data Source Configs</option>
+	</projectOptions>
+	<projectOptionSettings>
+		<settings optionId="new.dss" 
+				  title="Data Source Configs" 
+				  description="Create new Data Source Configs" 
+				  error="Please give a name for the data source configs">
+			<data modelProperty="project.name" type="string" >Module Name</data>
+			<projectNatures>
+				<nature>org.eclipse.jdt.core.javanature</nature>
+			</projectNatures>
+		</settings>
+	</projectOptionSettings>
+</wizard>

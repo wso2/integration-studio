@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         id="org.eclipse.bpel.common.ui.paletteAdditions"
+         name="Example Palette Extension"
+         point="org.eclipse.bpel.common.ui.paletteAdditions">
+      <additions targetEditor="org.eclipse.bpel.ui.bpeleditor">
+         <addition
+               category="Additions-1"
+               categoryId="user.additions.one"
+               categoryOrder="75"
+               class="org.eclipse.bpel.examples.extensionpoints.palette.ExitToolEntry"
+               default="false"/>
+         <addition
+               category="Additions-2"
+               categoryId="user.additions.two"
+               categoryOrder="74"
+               class="org.eclipse.bpel.examples.extensionpoints.palette.EmptyToolEntry"
+               default="false"/>
+      </additions>
+   </extension>
+   <!-- NOTE: This extension point is not yet implemented -->
+   <extension
+         point="org.eclipse.bpel.common.ui.embeddedEditors">
+      <editor
+            class="org.eclipse.bpel.examples.extensionpoints.expression.editors.SimpleTextEditor"
+            id="org.eclipse.bpel.examples.extensionPoints.textEditor"
+            name="Ruby-Text">
+      </editor>
+      <editor
+            class="org.eclipse.bpel.examples.extensionpoints.expression.editors.JavaTextEditor"
+            contributorClass="org.eclipse.jdt.internal.ui.javaeditor.BasicJavaEditorActionContributor"
+            id="org.eclipse.bpel.examples.extensionPoints.javaEditor"
+            name="Java Editor">
+      </editor>
+      <editor
+            class="org.eclipse.bpel.examples.extensionpoints.expression.editors.JavaScriptTextEditor"
+            id="org.eclipse.bpel.examples.extensionPoints.javaScriptEditor"
+            name="JavaScript Editor">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.bpel.ui.expressionEditors">
+      <editor
+            class="org.eclipse.bpel.examples.extensionpoints.expression.editors.SimpleTextExpressionEditor"
+            expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:ruby"
+            label="Ruby (Simple Text Editor)">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.bpel.common.model.functionRegistry">
+      <registry
+            namespace="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"
+            uri="platform:/plugin/org.eclipse.bpel.examples.extensionPoints/functions/functions.xml">
+      </registry>
+   </extension>
+
+</plugin>

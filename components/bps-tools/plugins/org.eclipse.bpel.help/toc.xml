@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <?NLS TYPE="org.eclipse.help.toc"?>
+  <toc label="BPEL User Guide">
+    <topic href="html/GettingStarted/gettingStarted.html" label="Getting Started">
+        <topic label="Creating and editing a BPEL project" href="html/GettingStarted/CreatingAndEditing/creatingAndEditingBpelProject.html">
+           <topic href="html/GettingStarted/CreatingAndEditing/creatingBpelProject.html" label="Creating a BPEL project">
+           </topic>
+           <topic href="html/GettingStarted/CreatingAndEditing/creatingBpelProcess.html" label="Creating a BPEL process">
+           </topic>
+           <topic href="html/GettingStarted/CreatingAndEditing/editingProcessFile.html" label="Editing a BPEL process file">
+           </topic>
+           <topic href="html/GettingStarted/CreatingAndEditing/addingServiceToWsdl.html" label="Adding a Service to WSDL file">
+           </topic>
+      </topic>
+        <topic href="html/GettingStarted/Deploying/deployingToRuntime.html" label="Deploying a BPEL project to BPEL platforms">
+           <topic label="Deploying a BPEL project to JBoss BPEL Runtime">
+              <topic href="html/GettingStarted/Deploying/creatingDeployXmlFile.html" label="Creating a deploy.xml file">
+              </topic>
+              <topic href="html/GettingStarted/Deploying/creatingJbossServer.html" label="Creating JBoss BPEL Server">
+              </topic>
+           </topic>
+        </topic>
+        <topic href="html/GettingStarted/creatingCorrelationSets.html" label="Creating correlation sets">
+        </topic>
+    </topic>
+    <topic label="Reference">
+       <topic label="Wizards">
+          <topic href="html/Reference/Wizards/newBpelProject.html" label="New BPEL Project">
+          </topic>
+          <topic href="html/Reference/Wizards/newBpelProcess.html" label="New BPEL Process">
+          </topic>
+          <topic href="html/Reference/Wizards/newDeploymentDescriptor.html" label="New Deplyment Descriptor">
+          </topic>
+       </topic>
+       <topic href="html/Reference/Perspective/bpelPerspective.html" label="Perspective">
+       </topic>
+       <topic label="Views">
+          <topic href="html/Reference/Views/outline.html" label="Outline">
+          </topic>
+          <topic href="html/Reference/Views/palette.html" label="Palette">
+          </topic>
+          <topic href="html/Reference/Views/dashboard.html" label="Dashboard">
+          </topic>
+       </topic>
+       <topic label="Property Sections">
+       		<topic href="html/Reference/UniqueProperties/propertySections.html" label="Process Properties Section">
+	          <topic href="html/Reference/UniqueProperties/descriptionTab.html" label="Description Tab">
+	          </topic>
+	          <topic href="html/Reference/UniqueProperties/detailsTab.html" label="Details Tab">
+	          </topic>
+	          <topic href="html/Reference/UniqueProperties/importsTab.html" label="Imports Tab">
+	          </topic>
+	          <topic href="html/Reference/UniqueProperties/joinBehaviorTab.html" label="Join Behavior Tab">
+	          </topic>
+	       </topic>
+	       <topic href="html/Reference/CommonProperties/commonPropertySections.html" label="Common Property Sections">
+	          <topic href="html/Reference/CommonProperties/correlationTab.html" label="Correlation Tab">
+	          </topic>
+	          <topic href="html/Reference/CommonProperties/descriptionTab.html" label="Description Tab">
+	          </topic>
+	          <topic href="html/Reference/CommonProperties/joinBehaviorTab.html" label="Join Behavior Tab">
+	          </topic>
+	          <topic href="html/Reference/CommonProperties/messageExchangeTab.html" label="Message Exchange Tab">
+	          </topic>
+	          <topic href="html/Reference/CommonProperties/namespacesTab.html" label="Namespaces Tab">
+	          </topic>
+	       </topic>
+	       <topic href="html/Reference/DetailsTabs/detailsTabs.html" label="Activities Property Sections">
+	          <topic href="html/Reference/DetailsTabs/assign.html" label="Assign">
+	          </topic>
+	          <topic href="html/Reference/DetailsTabs/compensateScope.html" label="Compensate Scope">
+	          </topic>
+	          <topic href="html/Reference/DetailsTabs/empty.html" label="Empty">
+	          </topic>
+	          <topic href="html/Reference/DetailsTabs/forEach.html" label="For Each">
+	          </topic>
+	          <topic href="html/Reference/DetailsTabs/invoke.html" label="Invoke">
+	          </topic>
+	          <topic href="html/Reference/DetailsTabs/link.html" label="Link">
+	          </topic>
+	          <topic href="html/Reference/DetailsTabs/pick.html" label="Pick">
+	          </topic>
+	          <topic href="html/Reference/DetailsTabs/onMessage.html" label="On Message">
+	          </topic>
+	          <topic href="html/Reference/DetailsTabs/onAlarm.html" label="On Alarm">
+	          </topic>
+	          <topic href="html/Reference/DetailsTabs/opaque.html" label="Opaque">
+	          </topic>
+	          <topic href="html/Reference/DetailsTabs/receive.html" label="Receive">
+	          </topic>
+	          <topic href="html/Reference/DetailsTabs/reply.html" label="Reply">
+	          </topic>
+	          <topic href="html/Reference/DetailsTabs/scope.html" label="Scope">
+	          </topic>
+	          <topic href="html/Reference/DetailsTabs/throw.html" label="Throw">
+	          </topic>
+	          <topic href="html/Reference/DetailsTabs/validate.html" label="Validate">
+	          </topic>
+	          <topic href="html/Reference/DetailsTabs/wait.html" label="Wait">
+	          </topic>
+	          <topic href="html/Reference/DetailsTabs/while.html" label="While">
+	          </topic>
+	       </topic>
+	       <topic label="Other Property Sections">
+	          <topic href="html/Reference/DetailsTabs/partnerLinks.html" label="Partner Links">
+	          </topic>
+	          <topic href="html/Reference/DetailsTabs/variables.html" label="Variables">
+	          </topic>
+	       </topic>
+       </topic>
+       <topic label="Editors">
+          <topic href="html/Reference/Editors/bpelDesigner.html" label="BPEL Designer">
+             <topic href="html/Reference/Editors/basicActivities.html" label="Basic Activities">
+             </topic>
+             <topic href="html/Reference/Editors/structuredActivities.html" label="Structured Activities">
+             </topic>
+             <topic href="html/Reference/Editors/faultActivities.html" label="Fault Activities">
+             </topic>
+             <topic href="html/Reference/Editors/faultCompensationEtc.html" label="Faults, Compensation, Termination and Event Handlers">
+             </topic>
+          </topic>
+          <topic href="html/Reference/Editors/bpelDeploymentEditor.html" label="BPEL Deployment Editor">
+          </topic>
+       </topic>
+       <topic href="html/Reference/Preferences/preferencePages.html" label="Preference Pages">
+          <topic href="html/Reference/Preferences/editor.html" label="Editor">
+          </topic>
+          <topic href="html/Reference/Preferences/expressionEditor.html" label="Expression Editor">
+          </topic>
+          <topic href="html/Reference/Preferences/wsilBrowser.html" label="WSIL Browser">
+          </topic>
+       </topic>
+       <topic label="Dialogs">
+          <topic href="html/Reference/Dialogs/xpathExpressionEditor.html" label="XPath Expression Editor">
+          </topic>
+          <topic href="html/Reference/Dialogs/quickPick.html" label="Quick Pick">
+          </topic>
+          <topic href="html/Reference/Dialogs/typeSelection.html" label="Type Selection">
+          </topic>
+          <topic href="html/Reference/Dialogs/selectWsdlProperty.html" label="Select WSDL Property">
+          </topic>
+          <topic href="html/Reference/Dialogs/createWsdlProperty.html" label="Create WSDL Property">
+          </topic>
+          <topic href="html/Reference/Dialogs/createWsdlPropertyAlias.html" label="Create WSDL Property Alias">
+          </topic>
+          <topic href="html/Reference/Dialogs/cheatSheets.html" label="Cheat Sheets">
+          </topic>
+       </topic>
+       <topic href="html/Reference/IconsMenus/contextMenus.html" label="Context Menus">
+       </topic>
+       <topic href="html/Reference/troubleshooting.html" label="Troubleshooting">
+       </topic>
+    </topic>
+    <topic label="What's New">
+      <topic label="1.0 New and Noteworthy"/>
+    </topic>
+  </toc>

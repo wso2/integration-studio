@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.wso2.integrationstudio.carbon.server-44microei.feature"
+      label="WSO2 Enterprise Integrator - Micro Integrator profile (Carbon 4.4 based) Feature"
+      version="7.2.0.qualifier"
+      provider-name="%providerName">
+
+   <description url="http://wso2.com">
+      Adds Micro Integrator profile support for Carbon 4.4 based servers.
+   </description>
+
+   <copyright url="%copyrightURL">
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+ <plugin
+         id="org.wso2.integrationstudio.eclipse.carbonserver44microei"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+</feature>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="model"
+    nsURI="http://docs.oasis-open.org/ns/bpel4people/bpel4people/200803" nsPrefix="b4p">
+  <eClassifiers xsi:type="ecore:EClass" name="PeopleActivityRT" eSuperTypes="../../org.eclipse.bpel.model/src/model/bpel.ecore#//ExtensionActivity recoder.ecore#//ExtensionElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputVariable" eType="ecore:EClass ../../org.eclipse.bpel.model/src/model/bpel.ecore#//Variable"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outputVariable" eType="ecore:EClass ../../org.eclipse.bpel.model/src/model/bpel.ecore#//Variable"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isSkipable" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dontShareComments" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="remoteTask" lowerBound="1"
+        eType="#//RemoteTask" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PeopleActivityRN" eSuperTypes="../../org.eclipse.bpel.model/src/model/bpel.ecore#//ExtensionActivity recoder.ecore#//ExtensionElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputVariable" eType="ecore:EClass ../../org.eclipse.bpel.model/src/model/bpel.ecore#//Variable"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="remoteNotification" lowerBound="1"
+        eType="#//RemoteNotification" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RemoteTask" eSuperTypes="recoder.ecore#//ExtensionElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="partnerLink" eType="ecore:EClass ../../org.eclipse.bpel.model/src/model/bpel.ecore#//PartnerLink"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operation" eType="ecore:EClass platform:/plugin/org.eclipse.wst.wsdl/model/WSDL.ecore#//Operation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="responseOperation" eType="ecore:EClass platform:/plugin/org.eclipse.wst.wsdl/model/WSDL.ecore#//Operation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RemoteNotification" eSuperTypes="recoder.ecore#//ExtensionElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="partnerLink" eType="ecore:EClass ../../org.eclipse.bpel.model/src/model/bpel.ecore#//PartnerLink"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operation" eType="ecore:EClass platform:/plugin/org.eclipse.wst.wsdl/model/WSDL.ecore#//Operation"/>
+  </eClassifiers>
+</ecore:EPackage>

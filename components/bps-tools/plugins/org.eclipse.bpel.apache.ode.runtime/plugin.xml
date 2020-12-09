@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+<!--
+=========================================================================
+Runtime types
+=========================================================================
+-->
+	<extension point="org.eclipse.wst.server.core.runtimeTypes">
+		<runtimeType id="org.eclipse.jst.server.generic.runtime.apache.ode.1x"
+			name="Apache Ode 1.x Runtime" description="Apache's BPEL 2.0 execution engine - Runtime"
+			vendor="Apache" version="1.0"
+			class="org.eclipse.bpel.apache.ode.runtime.OdeServerRuntime">
+			<moduleType types="bpel.module" versions="1.1, 2.0" />
+		</runtimeType>
+	</extension>
+	
+<!--
+=========================================================================
+Server types
+=========================================================================
+-->
+	<extension point="org.eclipse.wst.server.core.serverTypes">
+		<serverType runtime="true"
+			class="org.eclipse.jst.server.generic.core.internal.GenericServer"
+			id="org.eclipse.jst.server.generic.apache.ode.1x"
+			initialState="stopped"
+			supportsRemoteHosts="true"
+			runtimeTypeId="org.eclipse.jst.server.generic.runtime.apache.ode.1x"
+			description="Apache's BPEL 2.0 execution engine - Server"
+			launchConfigId="org.eclipse.jst.server.generic.core.launchConfigurationType"
+			behaviourClass="org.eclipse.jst.server.generic.core.internal.GenericServerBehaviour"
+			name="Ode v1.x Server"
+			hasConfiguration="false"
+			startTimeout="480000"
+			stopTimeout="60000"
+			launchModes="run,debug"
+			startBeforePublish="true">
+		</serverType>
+	</extension>
+	
+<!--
+=========================================================================
+Server runtime wizard contributions
+=========================================================================
+-->
+	<extension point="org.eclipse.wst.server.ui.wizardFragments">
+		<fragment id="org.eclipse.jst.server.generic.runtime"
+			typeIds="org.eclipse.jst.server.generic.runtime.apache.ode.1x"
+			class="org.eclipse.jst.server.generic.ui.internal.GenericServerRuntimeWizardFragment" />
+		<fragment id="org.eclipse.jst.server.generic.server"
+			typeIds="org.eclipse.jst.server.generic.apache.ode.1x"
+			class="org.eclipse.jst.server.generic.ui.internal.GenericServerWizardFragment" />
+	</extension>
+	
+<!--
+=========================================================================
+Server runtime wizard definition
+=========================================================================
+-->
+	<extension point="org.eclipse.jst.server.generic.core.serverdefinition">
+		<serverdefinition
+		  id="org.eclipse.jst.server.generic.runtime.apache.ode.1x"
+		  definitionfile="definition/ode.xml"/>
+	</extension>
+
+<!--
+=========================================================================
+Runtime Class Providers
+=========================================================================
+-->
+  <extension
+    point="org.eclipse.jst.server.core.runtimeClasspathProviders">
+    <runtimeClasspathProvider
+      id="org.eclipse.jst.server.generic.runtime.apache.ode.runtimeClasspathProvider"
+      runtimeTypeIds="org.eclipse.jst.server.generic.runtime.apache.ode.1x"
+      class="org.eclipse.jst.server.generic.core.internal.GenericServerRuntimeTargetHandler" />
+  </extension>
+
+<!--
+=========================================================================
+Server icons
+=========================================================================
+-->
+	<extension point="org.eclipse.wst.server.ui.serverImages">
+		<image id="org.eclipse.jst.server.generic.image" icon="/icons/obj16/ode.gif"
+			typeIds="org.eclipse.jst.server.generic.runtime.apache.ode.1x" />
+		<image id="org.eclipse.jst.server.generic.image" icon="/icons/obj16/ode.gif"
+			typeIds="org.eclipse.jst.server.generic.apache.ode.1x" />
+	</extension>
+
+<!--
+=========================================================================
+Project facet Runtime types
+=========================================================================
+-->
+	<extension point="org.eclipse.wst.common.project.facet.core.runtimes">
+		<runtime-component-type
+		  id="org.eclipse.jst.server.generic.runtime.apache.ode" />
+
+		<runtime-component-version
+		  type="org.eclipse.jst.server.generic.runtime.apache.ode"
+		  version="1.0" />
+
+		<adapter>
+			<runtime-component
+			  id="org.eclipse.jst.server.generic.runtime.apache.ode" />
+			<factory
+			  class="org.eclipse.jst.server.core.internal.RuntimeClasspathProvider$Factory" />
+			<type
+			  class="org.eclipse.jst.common.project.facet.core.IClasspathProvider" />
+		</adapter>
+		<adapter>
+			<runtime-component
+			  id="org.eclipse.jst.server.generic.runtime.apache.ode" />
+			<factory
+			  class="org.eclipse.jst.server.ui.internal.RuntimeLabelProvider$Factory" />
+			<type
+			  class="org.eclipse.wst.common.project.facet.ui.IRuntimeComponentLabelProvider" />
+		</adapter>
+
+		<supported>
+			<runtime-component
+			  id="org.eclipse.jst.server.generic.runtime.apache.ode"
+			  version="1.0" />
+			<facet id="bpel.facet.core" version="2.0" />
+		</supported>
+	</extension>
+	
+<!--
+=========================================================================
+Project facet icons
+=========================================================================
+-->
+	<extension point="org.eclipse.wst.common.project.facet.ui.images">
+		<image runtime-component-type="org.eclipse.jst.server.generic.runtime.apache.ode"
+			path="/icons/obj16/ode.gif" />
+	</extension>
+
+<!--
+=========================================================================
+Runtime/project facet mappings
+=========================================================================
+-->
+	<extension point="org.eclipse.jst.server.core.runtimeFacetMappings">
+		<runtimeFacetMapping
+		  runtimeTypeId="org.eclipse.jst.server.generic.runtime.apache.ode.1x"
+		  runtime-component="org.eclipse.jst.server.generic.runtime.apache.ode" version="1.0" />
+	</extension>
+	
+	
+<!--
+=========================================================================
+Generic publisher
+=========================================================================
+-->
+	<extension point="org.eclipse.jst.server.generic.core.genericpublisher">
+		<genericpublisher
+			class="org.eclipse.bpel.apache.ode.runtime.OdeBPELPublisher"
+			id="org.eclipse.bpel.apache.ode.runtime.publisher" />
+	</extension>
+
+</plugin>

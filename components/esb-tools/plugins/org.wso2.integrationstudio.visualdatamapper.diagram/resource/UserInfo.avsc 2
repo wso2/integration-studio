@@ -1,0 +1,83 @@
+{
+    "type" : "record",
+    "name" : "UserInfo",
+    "namespace" : "example.wso2.datamapper.avro",
+    "fields" : [{"name" : "ID", 
+                 "type" : "int",
+                 "default" : -1},
+    
+    			{"name" : "username", 
+                 "type" : {
+                         "type" : "record",
+                         "name" : "UserName",
+                         "fields" : [
+                            {"name" : "first", 
+                             "type" : "string", 
+                             "default" : "NONE"},
+
+                            {"name" : "last", 
+                             "type" : "string", 
+                             "default" : "NONE"}
+                            ]}, 
+                 "default" : "NONE"},
+
+                {"name" : "age", 
+                 "type" : "int",
+                 "default" : -1},
+                 
+                 {"name" : "GPA", 
+                 "type" : "double",
+                 "default" : 0.00},
+                 
+                {"name" : "subjects", 
+                 "type" : {	"type":"array", 
+                 			"items": {
+                         				"type" : "record",
+                         				"name" : "Subject",
+                         				"fields" : [
+                            						{"name" : "subject", 
+                             						 "type" : "string", 
+                             						 "default" : "NONE"}
+													]
+                 					}
+                  			}
+                  },
+ 
+                 
+
+                 {"name" : "phone", 
+                  "type" : "string", 
+                  "default" : "NONE"},
+
+                 {"name" : "housenum", 
+                  "type" : "string", 
+                  "default" : "NONE"},
+
+                  {"name" : "address", 
+                     "type" : {
+                         "type" : "record",
+                         "name" : "Address",
+                         "fields" : [
+                            {"name" : "street", 
+                             "type" : "string", 
+                             "default" : "NONE"},
+
+                            {"name" : "city", 
+                             "type" : "string", 
+                             "default" : "NONE"},
+
+                            {"name" : "state_prov", 
+                             "type" : "string", 
+                             "default" : "NONE"},
+
+                            {"name" : "country", 
+                             "type" : "string", 
+                             "default" : "NONE"},
+
+                            {"name" : "zip", 
+                             "type" : "string", 
+                             "default" : "NONE"}
+                            ]}
+                }
+    ]
+} 

@@ -1,0 +1,14 @@
+<proxy xmlns="http://ws.apache.org/ns/synapse" name="{proxy.name}"
+	transports="https,http" statistics="disable" trace="disable"
+	startOnLoad="true">
+	<target {endpoint.key.def}>
+		<inSequence>
+			<xslt key="{xslt.key}" />
+		</inSequence>
+		<outSequence>
+			{xsltres.key.def}
+			<send />
+		</outSequence>
+		{endpoint.def}
+	</target>
+</proxy>

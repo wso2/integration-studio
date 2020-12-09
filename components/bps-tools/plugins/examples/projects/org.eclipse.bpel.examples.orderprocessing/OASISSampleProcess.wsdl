@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="http://manufacturing.org/wsdl/purchase"
+	xmlns:sns="http://manufacturing.org/xsd/purchase"
+	xmlns:pos="http://manufacturing.org/wsdl/purchase"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:plnk="http://schemas.xmlsoap.org/ws/2004/03/partner-link/"
+	xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+	<types>
+		<xsd:schema>
+			<xsd:import
+				namespace="http://manufacturing.org/xsd/purchase"
+				schemaLocation="purchase.xsd" />
+		</xsd:schema>
+	</types>
+
+	<message name="POMessage">
+		<part name="customerInfo" type="sns:customerInfo" />
+		<part name="purchaseOrder" type="sns:purchaseOrder" />
+	</message>
+
+	<message name="InvMessage">
+		<part name="IVC" type="sns:Invoice" />
+	</message>
+
+	<message name="orderFaultType">
+		<part name="problemInfo" element="sns:OrderFault"/>
+	</message>
+
+	<message name="shippingRequestMessage">
+		<part name="customerInfo" element="sns:customerInfo" />
+	</message>
+
+	<message name="shippingInfoMessage">
+		<part name="shippingInfo" element="sns:shippingInfo" />
+	</message>
+
+	<message name="scheduleMessage">
+		<part name="schedule" element="sns:scheduleInfo" />
+	</message>
+
+	<!-- portTypes supported by the purchase order process -->
+
+	<portType name="purchaseOrderPT">
+		<operation name="sendPurchaseOrder">
+			<input message="pos:POMessage" />
+			<output message="pos:InvMessage" />
+			<fault name="cannotCompleteOrder"
+				message="pos:orderFaultType" />
+		</operation>
+	</portType>
+
+	<portType name="invoiceCallbackPT">
+		<operation name="sendInvoice">
+			<input message="pos:InvMessage" />
+		</operation>
+	</portType>
+
+	<portType name="shippingCallbackPT">
+		<operation name="sendSchedule">
+			<input message="pos:scheduleMessage" />
+		</operation>
+	</portType>
+
+	<!-- portType supported by the invoice services -->
+
+	<portType name="computePricePT">
+		<operation name="initiatePriceCalculation">
+			<input message="pos:POMessage" />
+		</operation>
+		<operation name="sendShippingPrice">
+			<input message="pos:shippingInfoMessage" />
+		</operation>
+	</portType>
+
+	<!-- portType supported by the shipping service -->
+
+	<portType name="shippingPT">
+		<operation name="requestShipping">
+			<input message="pos:shippingRequestMessage" />
+			<output message="pos:shippingInfoMessage" />
+			<fault name="cannotCompleteOrder"
+				message="pos:orderFaultType" />
+		</operation>
+	</portType>
+
+	<!-- portType supported by the production scheduling process -->
+
+	<portType name="schedulingPT">
+		<operation name="requestProductionScheduling">
+			<input message="pos:POMessage" />
+		</operation>
+		<operation name="sendShippingSchedule">
+			<input message="pos:scheduleMessage" />
+		</operation>
+	</portType>
+
+	<plnk:partnerLinkType name="purchasingLT">
+		<plnk:role name="purchaseService"
+			portType="pos:purchaseOrderPT" />
+	</plnk:partnerLinkType>
+
+	<plnk:partnerLinkType name="invoicingLT">
+		<plnk:role name="invoiceService" portType="pos:computePricePT" />
+		<plnk:role name="invoiceRequester"
+			portType="pos:invoiceCallbackPT" />
+	</plnk:partnerLinkType>
+
+	<plnk:partnerLinkType name="shippingLT">
+		<plnk:role name="shippingService" portType="pos:shippingPT" />
+		<plnk:role name="shippingRequester"
+			portType="pos:shippingCallbackPT" />
+	</plnk:partnerLinkType>
+
+	<plnk:partnerLinkType name="schedulingLT">
+		<plnk:role name="schedulingService" portType="pos:schedulingPT" />
+	</plnk:partnerLinkType>
+
+</definitions>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xsd2ecore:XSD2EcoreMappingRoot xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsd2ecore="http://www.eclipse.org/emf/2002/XSD2Ecore" inputs="dd.xsd#/"
+    outputs="_03.ecore#/" topToBottom="true">
+  <nested inputs="bundleentry://506/cache/www.w3.org/2001/XMLSchema.xsd#//boolean;XSDSimpleTypeDefinition=8"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
+  <nested inputs="bundleentry://506/cache/www.w3.org/2001/XMLSchema.xsd#//QName;XSDSimpleTypeDefinition=24"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//QName"/>
+  <nested inputs="dd.xsd#//tDeployment;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle/process;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=3/property;XSDElementDeclaration/XSDComplexTypeDefinition"
+      outputs="_03.ecore#//PropertyType">
+    <nested inputs="dd.xsd#//tDeployment;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle/process;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=3/property;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="_03.ecore#//PropertyType/any"/>
+    <nested inputs="dd.xsd#//tDeployment;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle/process;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=3/property;XSDElementDeclaration/XSDComplexTypeDefinition/XSDAttributeUse"
+        outputs="_03.ecore#//PropertyType/name"/>
+  </nested>
+  <nested inputs="bundleentry://506/cache/www.w3.org/2001/XMLSchema.xsd#//string;XSDSimpleTypeDefinition=7"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//String"/>
+  <nested inputs="dd.xsd#//tEnableEventList;XSDComplexTypeDefinition=5" outputs="_03.ecore#//TEnableEventList">
+    <nested inputs="dd.xsd#//tEnableEventList;XSDComplexTypeDefinition=5/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="_03.ecore#//TEnableEventList/enableEvent"/>
+  </nested>
+  <nested inputs="dd.xsd#//tScopeEvents;XSDComplexTypeDefinition=6" outputs="_03.ecore#//TScopeEvents">
+    <nested inputs="dd.xsd#//tScopeEvents;XSDComplexTypeDefinition=6/XSDAttributeUse"
+        outputs="_03.ecore#//TScopeEvents/name"/>
+  </nested>
+  <nested inputs="dd.xsd#//tProcessEvents;XSDComplexTypeDefinition=7/XSDAttributeUse/generate;XSDAttributeDeclaration/XSDSimpleTypeDefinition"
+      outputs="_03.ecore#//GenerateType">
+    <nested inputs="dd.xsd#//tProcessEvents;XSDComplexTypeDefinition=7/XSDAttributeUse/generate;XSDAttributeDeclaration/XSDSimpleTypeDefinition/XSDEnumerationFacet"
+        outputs="_03.ecore#//GenerateType/all"/>
+    <nested inputs="dd.xsd#//tProcessEvents;XSDComplexTypeDefinition=7/XSDAttributeUse/generate;XSDAttributeDeclaration/XSDSimpleTypeDefinition/XSDEnumerationFacet=1"
+        outputs="_03.ecore#//GenerateType/none"/>
+  </nested>
+  <nested inputs="dd.xsd#//tProcessEvents;XSDComplexTypeDefinition=7" outputs="_03.ecore#//TProcessEvents">
+    <nested inputs="dd.xsd#//tProcessEvents;XSDComplexTypeDefinition=7/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="_03.ecore#//TProcessEvents/scopeEvents"/>
+    <nested inputs="dd.xsd#//tProcessEvents;XSDComplexTypeDefinition=7/XSDAttributeUse"
+        outputs="_03.ecore#//TProcessEvents/generate"/>
+  </nested>
+  <nested inputs="bundleentry://506/cache/www.w3.org/2001/XMLSchema.xsd#//NCName;XSDSimpleTypeDefinition=34"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//NCName"/>
+  <nested inputs="dd.xsd#//tService;XSDComplexTypeDefinition=3" outputs="_03.ecore#//TService">
+    <nested inputs="dd.xsd#//tService;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="_03.ecore#//TService/any"/>
+    <nested inputs="dd.xsd#//tService;XSDComplexTypeDefinition=3/XSDAttributeUse"
+        outputs="_03.ecore#//TService/name"/>
+    <nested inputs="dd.xsd#//tService;XSDComplexTypeDefinition=3/XSDAttributeUse=1"
+        outputs="_03.ecore#//TService/port"/>
+  </nested>
+  <nested inputs="dd.xsd#//tProvide;XSDComplexTypeDefinition=1" outputs="_03.ecore#//TProvide">
+    <nested inputs="dd.xsd#//tProvide;XSDComplexTypeDefinition=1/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="_03.ecore#//TProvide/service"/>
+    <nested inputs="dd.xsd#//tProvide;XSDComplexTypeDefinition=1/XSDAttributeUse"
+        outputs="_03.ecore#//TProvide/partnerLink"/>
+  </nested>
+  <nested inputs="dd.xsd#//tInvoke;XSDComplexTypeDefinition=2/XSDParticle/XSDModelGroup/XSDParticle=1/binding;XSDElementDeclaration/XSDComplexTypeDefinition"
+      outputs="_03.ecore#//BindingType">
+    <nested inputs="dd.xsd#//tInvoke;XSDComplexTypeDefinition=2/XSDParticle/XSDModelGroup/XSDParticle=1/binding;XSDElementDeclaration/XSDComplexTypeDefinition/XSDAttributeUse"
+        outputs="_03.ecore#//BindingType/name"/>
+  </nested>
+  <nested inputs="dd.xsd#//tInvoke;XSDComplexTypeDefinition=2" outputs="_03.ecore#//TInvoke">
+    <nested inputs="dd.xsd#//tInvoke;XSDComplexTypeDefinition=2/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="_03.ecore#//TInvoke/service"/>
+    <nested inputs="dd.xsd#//tInvoke;XSDComplexTypeDefinition=2/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="_03.ecore#//TInvoke/binding"/>
+    <nested inputs="dd.xsd#//tInvoke;XSDComplexTypeDefinition=2/XSDAttributeUse" outputs="_03.ecore#//TInvoke/partnerLink"/>
+  </nested>
+  <nested inputs="dd.xsd#//tMexInterceptor;XSDComplexTypeDefinition=4" outputs="_03.ecore#//TMexInterceptor">
+    <nested inputs="dd.xsd#//tMexInterceptor;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="_03.ecore#//TMexInterceptor/className"/>
+  </nested>
+  <nested inputs="dd.xsd#//tDeployment;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle/process;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=7/mex-interceptors;XSDElementDeclaration/XSDComplexTypeDefinition"
+      outputs="_03.ecore#//MexInterceptorsType">
+    <nested inputs="dd.xsd#//tDeployment;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle/process;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=7/mex-interceptors;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="_03.ecore#//MexInterceptorsType/mexInterceptor"/>
+  </nested>
+  <nested inputs="dd.xsd#//tDeployment;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle/process;XSDElementDeclaration/XSDComplexTypeDefinition"
+      outputs="_03.ecore#//ProcessType">
+    <nested inputs="dd.xsd#//tDeployment;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle/process;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="_03.ecore#//ProcessType/active"/>
+    <nested inputs="dd.xsd#//tDeployment;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle/process;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="_03.ecore#//ProcessType/retired"/>
+    <nested inputs="dd.xsd#//tDeployment;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle/process;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="_03.ecore#//ProcessType/inMemory"/>
+    <nested inputs="dd.xsd#//tDeployment;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle/process;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="_03.ecore#//ProcessType/property"/>
+    <nested inputs="dd.xsd#//tDeployment;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle/process;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=4"
+        outputs="_03.ecore#//ProcessType/processEvents"/>
+    <nested inputs="dd.xsd#//tDeployment;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle/process;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=5"
+        outputs="_03.ecore#//ProcessType/provide"/>
+    <nested inputs="dd.xsd#//tDeployment;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle/process;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=6"
+        outputs="_03.ecore#//ProcessType/invoke"/>
+    <nested inputs="dd.xsd#//tDeployment;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle/process;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=7"
+        outputs="_03.ecore#//ProcessType/mexInterceptors"/>
+    <nested inputs="dd.xsd#//tDeployment;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle/process;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=8"
+        outputs="_03.ecore#//ProcessType/type"/>
+    <nested inputs="dd.xsd#//tDeployment;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle/process;XSDElementDeclaration/XSDComplexTypeDefinition/XSDAttributeUse=2"
+        outputs="_03.ecore#//ProcessType/bpel11wsdlFileName"/>
+    <nested inputs="dd.xsd#//tDeployment;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle/process;XSDElementDeclaration/XSDComplexTypeDefinition/XSDAttributeUse=1"
+        outputs="_03.ecore#//ProcessType/fileName"/>
+    <nested inputs="dd.xsd#//tDeployment;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle/process;XSDElementDeclaration/XSDComplexTypeDefinition/XSDAttributeUse"
+        outputs="_03.ecore#//ProcessType/name"/>
+  </nested>
+  <nested inputs="dd.xsd#//tDeployment;XSDComplexTypeDefinition" outputs="_03.ecore#//TDeployment">
+    <nested inputs="dd.xsd#//tDeployment;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="_03.ecore#//TDeployment/process"/>
+  </nested>
+  <nested inputs="dd.xsd#//deploy;XSDElementDeclaration" outputs="_03.ecore#//DocumentRoot/deploy"/>
+</xsd2ecore:XSD2EcoreMappingRoot>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="CONTENT-TYPE" />
+<link rel="stylesheet" href="../../book.css" type="text/css" />
+<title>Faults, Compensation, Termination and Event Handlers</title>
+</head>
+
+<body>
+	<h1>Faults, Compensation, Termination and Event Handlers</h1>
+	<p>
+		Handlers allow a BPEL process to recover from exception
+		conditions. Exception conditions include: a timeout waiting for a
+		response from a partner service, invalid or missing message data, a
+		fault condition returned by a service. There are four types of
+		handlers:
+	</p>
+
+	<ul>
+		<li>
+			Fault handler <img src="../../../images/reference/Handlers_01.png" />: Executed when a fault is thrown by an activity.
+		</li>
+		<li>
+			Compensation handler <img src="../../../images/reference/Handlers_02.png" />
+			: Executed when the BPEL process encounters a Compensate
+			or CompensateScope activity.
+		</li>
+		<li>
+			Termination handler <img src="../../../images/reference/Handlers_03.png" />
+			: Executed if a Scope is forced to terminate early.
+		</li>
+		<li>
+			Event handler <img src="../../../images/reference/Handlers_04.png" />
+			: Executed for events include the receipt of a message and a timer expiration.
+		</li>
+	</ul>
+
+	<p>
+		Handlers are defined for the process or for certain activities.
+		To create a new handler right-click an activity and select the desired
+		handler from its context menu. The BPEL Designer will generate a
+		skeleton of the handler within a collapsible window that is attached
+		to the activity. The figure below illustrates all of the different
+		types of handlers in their fully expanded view. The handler windows
+		can be collapsed and expanded by clicking on their respective icon.
+	</p>
+	<p><img src="../../../images/reference/Handlers_05.png" alt="Handlers overview" /></p>
+	<p><b>Handlers overview</b></p>
+	<p>
+		The behavior of handlers and the order of exception processing is
+		complex and beyond the scope of this document. Refer to the OASIS
+		WS-BPEL 2.0 specification at <a href="http://docs.oasis-open.org/wsbpel/2.0/wsbpel-v2.0.html">
+		http://docs.oasis-open.org/wsbpel/2.0/wsbpel-v2.0.html</a>
+		for more information.
+	</p>
+	
+	<h5>Process-level Handlers</h5>
+	<p><img src="../../../images/reference/Handlers_06.png" alt="Start activity with handlers" /></p>
+	<p><b>Start activity with handlers</b></p>
+	<p>
+		Fault and event handlers can be defined for the process by
+		right-clicking the Start activity and selecting the desired handler
+		from the context menu.
+	</p>
+
+	<h5>Scope-level handlers</h5>
+	<p>
+		A Scope may have any handler. Since Scopes can be nested, each
+		level can define its own set of handlers. Events that are not caught
+		and processed by a handler in an inner Scope, will be propagated to
+		its ancestors.
+	</p>
+
+	<h5>Activity-level handlers</h5>
+	<p>
+		Only the Invoke activity can define handlers. The handlers
+		available to it are the fault and compensation handlers.
+	</p>
+</body>
+</html>

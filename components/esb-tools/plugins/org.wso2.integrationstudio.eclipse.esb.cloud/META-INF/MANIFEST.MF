@@ -1,0 +1,35 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ESB Cloud Integration Utility
+Bundle-SymbolicName: org.wso2.integrationstudio.eclipse.esb.cloud;singleton:=true
+Bundle-Version: 7.2.0.qualifier
+Bundle-Activator: org.wso2.integrationstudio.eclipse.esb.cloud.Activator
+Bundle-Vendor: WSO2 Inc
+Require-Bundle: org.wso2.integrationstudio.eclipse.kernel.libraries,
+ org.wso2.integrationstudio.eclipse.platform.core,
+ org.wso2.integrationstudio.eclipse.platform.ui,
+ org.eclipse.ui.workbench
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Import-Package: com.google.gson,
+ org.eclipse.core.resources,
+ org.eclipse.jdt.core,
+ org.eclipse.ui.forms.events,
+ org.eclipse.ui.forms.widgets,
+ org.eclipse.ui.ide,
+ org.eclipse.ui.navigator,
+ org.wso2.integrationstudio.eclipse.carbonserver44microei.register.product.servers,
+ org.wso2.integrationstudio.eclipse.distribution.project.model,
+ org.wso2.integrationstudio.eclipse.distribution.project.publisher,
+ org.wso2.integrationstudio.eclipse.distribution.project.ui.wizard,
+ org.wso2.integrationstudio.eclipse.distribution.project.util,
+ org.wso2.integrationstudio.eclipse.distribution.project.validator,
+ org.wso2.integrationstudio.eclipse.esb.core,
+ org.wso2.integrationstudio.eclipse.esb.core.utils
+Bundle-ClassPath: .,
+ lib/httpclient-4.5.jar,
+ lib/httpcore-4.4.5.jar,
+ lib/httpmime-4.5.7.jar,
+ lib/core-3.8.2-v20120916-1200.jar,
+ lib/ui-3.8.2-v20120916-1200.jar,
+ lib/guava-20.0.jar

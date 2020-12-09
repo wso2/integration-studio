@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="ASCII"?>
-<eef-gen:EEFGenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:eef-gen="http://www.eclipse.org/emf/eef/generation/1.0.0" genDirectory="/org.wso2.developerstudio.eclipse.gmf.esb.edit/src-gen">
-  <editionContexts basePackage="org.wso2.developerstudio.eclipse.gmf" descriptorsGenericPropertiesViews="true">
-    <PropertiesEditionContext href="esb.components#_E7vT8PJnEei6boXzpRIfnA"/>
-  </editionContexts>
-  <viewsRepositories basePackage="org.wso2.developerstudio.eclipse.gmf.esb" swtViews="true" formViews="true">
-    <viewsRepository href="esb.components#_E7wiM_JnEei6boXzpRIfnA"/>
-  </viewsRepositories>
-</eef-gen:EEFGenModel>

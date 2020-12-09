@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="Dynamic View Category"
+            id="org.eclipse.ui.forms.article">
+      </category>
+      <view
+            name="My View"
+            icon="icons/sample.gif"
+            category="org.eclipse.ui.forms.article"
+            class="org.wso2.sample.multipage.form.editor.editors.FormView"
+            id="org.wso2.sample.multipage.form.editor.editors.FormView">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            name="%baseEditor"
+            default="true"
+            icon="icons/file_obj.gif"
+            class="org.wso2.integrationstudio.esb.form.editors.article.rcp.ESBFormEditor"
+            id="org.eclipse.ui.forms.article.base-editor">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            label="%actionSetName"
+            id="org.eclipse.ui.forms.article.actionSet">
+         <menu
+               label="%menuLabel"
+               id="org.eclipse.ui.forms.article.menu">
+            <groupMarker
+                  name="group">
+            </groupMarker>
+         </menu>
+         <action
+               label="%actionLabel"
+               class="org.wso2.integrationstudio.esb.form.editors.article.rcp.OpenSimpleFormEditorAction"
+               menubarPath="org.eclipse.ui.forms.article.menu/group"
+               id="org.eclipse.ui.forms.article.simple">
+         </action>
+      </actionSet>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.ui.resourcePerspective">
+         <view
+               ratio="0.5"
+               relative="org.eclipse.ui.views.TaskList"
+               relationship="right"
+               id="org.eclipse.ui.forms.article.views.FormView">
+         </view>
+      </perspectiveExtension>
+   </extension>
+</plugin>

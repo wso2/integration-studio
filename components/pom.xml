@@ -32,5 +32,6 @@
 
     <modules>
         <module>studio-platform</module>
+        <module>esb-tools</module>
     </modules>
 </project>

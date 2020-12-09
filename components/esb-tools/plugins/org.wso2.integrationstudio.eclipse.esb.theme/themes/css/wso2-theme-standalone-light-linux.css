@@ -1,0 +1,156 @@
+.MPartSashContainer {
+	background-color: #EDEDED;
+}
+
+.DragFeedback {
+	background-color: #ff6900;
+	jswt-alpha: 127;
+}
+
+TabbedPropertyList1 {
+	swt-tabAreaBackground-color: #258712;
+	swt-tabBackground-color: #258712;
+	swt-tabNormalShadow-color: #258712;
+	swt-tabDarkShadow-color: #258712;
+	color: #258712;
+}
+
+EEFTabbedPropertyList-ListElement {
+	swt-backgroundGradientStart-color: #FF0000;
+	swt-backgroundGradientEnd-color: #FF0000;
+	swt-backgroundBottomKeyline1-color: #FF0000;
+	swt-backgroundBottomKeyline2-color: #FF0000;
+		swt-simple:true;
+	border-visible: false;
+	swt-corner-radius:10px;
+	swt-tab-outline: #ffffff;
+	swt-outer-keyline-color:#ffffff;
+	swt-tab-height: 10px;
+}
+
+TabbedPropertyTitle {
+	swt-backgroundGradientStart-color: #FFFFFF;
+	swt-backgroundGradientEnd-color: #FFFFFF;
+	swt-backgroundBottomKeyline1-color: #3498db;
+	swt-backgroundBottomKeyline2-color: #3498db;
+}
+
+FigureCanvas{
+    border-color:#E8E9EB;
+    background-color:#ffffff;
+    splitter-border-color:#C0C0C0;
+    connector-color:#6D6D6D;
+    connector-response-color:#6D6D6D;
+}
+
+#SquareButton {
+    fbtn-border-width: 2px;
+    fbtn-border-color: #cccccc;
+    fbtn-border-alpha:0;
+    fbtn-selected-color: #38b5e6;
+    fbtn-inactive-color: #bcbcbc;
+    fbtn-hover-color: #2f8fb5;
+    fbtn-default-color: #38b5e6;
+    fbtn-clicked-color: #54cfff;
+    fbtn-font-color: #ffffff;
+}
+
+#SquareButtonWithAnchor {
+	fbtn-border-alpha: 255;
+	
+	fbtn-default-color: #f8f8f8;
+	fbtn-clicked-color: #f8f8f8;
+
+	fbtn-border-color: #c0c0c0;
+	fbtn-clicked-border-color: #c0c0c0;
+	
+	fbtn-font-color: #000000;
+	fbtn-selected-font-color: #a06b26;
+}
+
+CTabFolder{
+	swt-tab-renderer: url('bundleclass://org.wso2.integrationstudio.eclipse.esb.theme/org.wso2.integrationstudio.eclipse.esb.theme.TabTopRenderer');
+	swt-mru-visible: true;
+	swt-outer-keyline-color: #ffffff;
+    swt-inner-keyline-color: #ffffff;
+    swt-tab-outline: #ffffff;
+
+	/* layout */
+	swt-tab-height: 29px;
+	jtab-border-radius: 6px;
+	jtab-spacing: 2px;
+	jtab-item-padding: 0px 5px;
+	jtab-item-horizontal-spacing: 3px;
+	jtab-padding : 2px;
+	jtab-truncate-tab-items : true;
+	jtab-use-ellipses : true;
+	jtab-minimum-characters : 3;
+	jtab-close-button-alignment : baseline;
+
+	jtab-margin : 0px 4px 4px 1px; /* top right bottom left */
+	jtab-shadow-color: #a8a8a8;
+	jtab-shadow-position: 1px 1px;
+	jtab-shadow-radius: 3px;
+
+	/* tab background */
+	jtab-header-background : #ededed #cacaca 100%;
+	jtab-border-color : #b6bccc #b6bccc 100%;
+	background : #ffffff;
+
+	/* selected tabs */
+	jtab-selected-tab-background: #ffffff #ffffff 100%;
+	jtab-selected-border-color: #b6bccc #b6bccc 100%;
+	jtab-selected-text-shadow-color: none;
+
+	/* unselected tabs */
+	jtab-unselected-tabs-background: none;
+
+	jtab-unselected-border-color: none;
+	jtab-unselected-text-shadow-position: 0px 1px;
+	jtab-unselected-text-shadow-color: #ffffff;
+
+	/* hover tabs */
+	jtab-hover-color : #000000;
+	jtab-hover-tabs-background: #f4f4f4 #ebebeb 100%;
+
+	jtab-hover-border-color: none;
+	jtab-hover-text-shadow-position: 0px 1px;
+	jtab-hover-text-shadow-color: #ffffff;
+
+	jtab-close-button-color: #cdcdcd;
+	jtab-close-button-hot-color: #b05656;
+	jtab-close-button-active-color: #dd1b1b;
+	jtab-close-button-line-width: 2px;
+
+	jtab-chevron-color: #000000;
+}
+
+CTabFolder[style~='SWT.BOTTOM']{
+	swt-tab-renderer: url('bundleclass://org.wso2.integrationstudio.eclipse.esb.theme/org.wso2.integrationstudio.eclipse.esb.theme.TabTopRenderer');
+	swt-simple:true;
+	border-visible: false;
+	swt-corner-radius:10px;
+	swt-tab-outline: #ffffff;
+	swt-outer-keyline-color:#ffffff;
+	swt-tab-height: 30px;
+}
+
+VerticalPropertiesTabFolder{
+	swt-tab-renderer: url('bundleclass://org.wso2.integrationstudio.eclipse.esb.theme/org.wso2.integrationstudio.eclipse.esb.theme.TabTopRenderer');
+	border-color:#cccccc;
+	border-width: 0;
+	swt-outer-keyline-color: #ffffff;
+    swt-inner-keyline-color: #ffffff;
+    swt-tab-outline: #ffffff;
+}
+
+TabbedPropertyList {
+	swt-tab-renderer: url('bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.CTabRendering');
+	swt-tabBackground-color: #FFFFFF;
+	swt-tabNormalShadow-color: #e8e8e8;
+	swt-tabDarkShadow-color: #e8e8e8;
+	swt-unselected-tabs-color: #FFFFFF;
+	color: #3498db;
+	width: 100;
+}
+

@@ -1,0 +1,30 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: API led Integration
+Bundle-SymbolicName: org.wso2.integrationstudio.eclipse.apim.endpoint.central;singleton:=true
+Bundle-Version: 7.2.0.qualifier
+Bundle-Activator: org.wso2.integrationstudio.eclipse.apim.endpoint.central.Activator
+Bundle-Vendor: WSO2 Inc
+Require-Bundle: org.eclipse.ui,
+ org.wso2.integrationstudio.eclipse.kernel.libraries,
+ org.wso2.integrationstudio.eclipse.platform.core,
+ org.wso2.integrationstudio.eclipse.platform.ui,
+ org.eclipse.ui.workbench,
+ org.eclipse.jetty.server;bundle-version="9.4.8",
+ org.eclipse.jetty.servlet;bundle-version="9.4.8",
+ org.eclipse.jetty.util;bundle-version="9.4.8",
+ javax.servlet,
+ org.wso2.integrationstudio.eclipse.distribution.project
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Import-Package: com.google.common.reflect,
+ com.google.gson,
+ org.apache.synapse.config.xml.rest,
+ org.apache.synapse.rest,
+ org.wso2.carbon.rest.api,
+ org.wso2.carbon.rest.api.service,
+ org.wso2.integrationstudio.eclipse.esb.core,
+ org.wso2.integrationstudio.eclipse.esb.project.artifact,
+ org.wso2.integrationstudio.eclipse.templates.dashboard.handlers,
+ org.wso2.integrationstudio.eclipse.templates.dashboard.web.function.server,
+ org.wso2.integrationstudio.eclipse.templates.dashboard.web.view

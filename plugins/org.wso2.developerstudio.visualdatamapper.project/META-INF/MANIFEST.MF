@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.wso2.developerstudio.visualdatamapper.project;singleton:=true
+Bundle-Version: 7.0.0.qualifier
+Bundle-Activator: org.wso2.developerstudio.visualdatamapper.project.Activator
+Require-Bundle: org.eclipse.ui.ide,
+ org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="[4.1.0,8.0.0)"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: org.wso2.developerstudio.eclipse.maven.util;version="[4.1.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.platform.core.nature;version="[4.1.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.utils.project;version="[4.1.0,8.0.0)"
+Bundle-Vendor: %providerName

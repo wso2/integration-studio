@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+	<projectOptions title="Inbound Endpoint Artifact Creation Options"
+					description="Select how you would like to create your new Inbound Endpoint"
+					error="Please select a method to create the Inbound Endpoint">
+		<option id="new.inboundendpoint" default="true">Create A New Inbound Endpoint</option>
+		<option id="import.inboundendpoint">Import Inbound Endpoint</option>
+	</projectOptions>
+	<projectOptionSettings>
+		<settings optionId="new.inboundendpoint"
+				  title="Inbound Endpoint Artifact"
+				  description="Create a new Inbound Endpoint Artifact"
+				  error="Please give a name for the Inbound Endpoint">
+			<data modelProperty="inboundendpoint.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController">Inbound Endpoint Name</data>
+			<data modelProperty="inboundendpoint.type" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController"  controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointCreationTypes">Inbound Endpoint Creation Type</data>
+			<data modelProperty="inboundendpoint.sequence" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController"  controlData="h-indent=25;select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointAvailableSequences">Sequence</data>
+			<data modelProperty="inboundendpoint.errorSequence" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController"  controlData="h-indent=25;select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointAvailableSequences">Error Sequence</data>
+			<data modelProperty="generate.sequence" type="choice" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController" controlData="h-indent=10">Generate Sequence and Error Sequence</data>
+
+			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.ESBProjectFilter">Save Inbound Endpoint in:</data>
+			<data modelProperty="create.esb.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController" controlData="align=right">&lt;a&gt;Create new ESB Project...&lt;/a&gt;</data>
+			<data group="group1" modelProperty="class" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController">Class</data>
+		</settings>
+		<settings optionId="import.inboundendpoint"
+				  title="Inbound Endpoint Artifact"
+				  description="Create a Inbound Endpoint Artifact using a configuration file with Inbound Endpoint defined"
+				  error="Browse and select a Inbound Endpoint configuration file">
+			<data modelProperty="import.file" type="file" filter="*.xml" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController">Inbound Endpoint Configuration File</data>
+
+			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.ESBProjectFilter">Save Inbound Endpoint in:</data>
+			<data modelProperty="create.esb.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController" controlData="align=right">&lt;a&gt;Create new ESB Project...&lt;/a&gt;</data>			
+		</settings>
+	</projectOptionSettings>
+</wizard>

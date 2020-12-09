@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+	<projectOptions title="Integration Project Creation Wizard "
+		description="Provide a name for your new Integration project.">
+		<option id="esb.solution" default="true">Create New Integration
+			Project</option>
+	</projectOptions>
+	<projectOptionSettings>
+		<settings optionId="esb.solution" title="Integration Project"
+			description="Select the module types required for your integration solution."
+			error="Please give a name to create the Integration project ">
+			<data modelProperty="mmm.project.name" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBSolutionProjectFieldController">Integration Project Name</data>
+
+			<data modelProperty="mmm.project.choice" type="choice"
+				fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBSolutionProjectFieldController">Wrap child modules with the parent project</data>
+			
+			<group id="location" />
+			<group id="solution.projects.group" title="Selected modules will be created" />
+			
+			<data modelProperty="solution.config.choice" type="choice"
+				fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBSolutionProjectFieldController"
+				group="solution.projects.group">Create ESB Configs</data>
+			
+			<data modelProperty="project.name" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBSolutionProjectFieldController"
+				group="solution.projects.group">Module Name</data>
+				
+			<data modelProperty="solution.capp.choice" type="choice"
+				fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBSolutionProjectFieldController"
+				group="solution.projects.group">Create Composite Exporter</data>
+			
+			<data modelProperty="solution.capp" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBSolutionProjectFieldController"
+				group="solution.projects.group">Module Name</data>
+			
+			<data modelProperty="solution.registry.choice" type="choice"
+				fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBSolutionProjectFieldController"
+				group="solution.projects.group">Create Registry Resources</data>
+			
+			<data modelProperty="solution.registry" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBSolutionProjectFieldController"
+				group="solution.projects.group">Module Name</data>
+			
+			<data modelProperty="solution.connector.choice" type="choice"
+				fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBSolutionProjectFieldController"
+				group="solution.projects.group">Create Connector Exporter</data>
+			
+			<data modelProperty="solution.connector" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBSolutionProjectFieldController"
+				group="solution.projects.group">Module Name</data>
+				
+			<data modelProperty="solution.docker.choice" type="choice"
+				fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBSolutionProjectFieldController"
+				group="solution.projects.group">Create Docker Exporter</data>
+			
+			<data modelProperty="solution.docker" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBSolutionProjectFieldController"
+				group="solution.projects.group">Project Name</data>
+				
+			<data modelProperty="solution.kubernetes.choice" type="choice"
+				fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBSolutionProjectFieldController"
+				group="solution.projects.group">Create Kubernetes Exporter</data>
+			
+			<data modelProperty="solution.kubernetes" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBSolutionProjectFieldController"
+				group="solution.projects.group">Module Name</data>	
+			
+			<projectNatures>
+				<nature>org.eclipse.jdt.core.javanature</nature>
+			</projectNatures>
+
+		</settings>
+	</projectOptionSettings>
+</wizard>

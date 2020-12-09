@@ -29,3 +29,9 @@ feature.common.properties
 *.licensed
 *.aux
 *_trace
+
+## no eclipse packs
+*.tar.gz
+
+## Generated When Building
+components/esb-tools/plugins/org.wso2.integrationstudio.eclipse.gmf.esb.persistence/library.jar

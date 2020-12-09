@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+~ Copyright (c) WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+~
+~ Licensed under the Apache License, Version 2.0 (the "License");
+~ you may not use this file except in compliance with the License.
+~ You may obtain a copy of the License at
+~
+~      http://www.apache.org/licenses/LICENSE-2.0
+~
+~ Unless required by applicable law or agreed to in writing, software
+~ distributed under the License is distributed on an "AS IS" BASIS,
+~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+~ See the License for the specific language governing permissions and
+~ limitations under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>wso2-developerstudio-esb-toolkit</artifactId>
+		<groupId>org.wso2.developerstudio</groupId>
+		<version>7.0.0-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+	<artifactId>wso2-developerstudio-esb-plugins</artifactId>
+	<packaging>pom</packaging>
+	<name>WSO2 Developer Studio ESB Plugins</name>
+
+	<modules>
+		<module>org.wso2.developerstudio.eclipse.esb.libraries</module>
+		<module>org.wso2.developerstudio.eclipse.esb.core</module>
+		<module>org.wso2.developerstudio.eclipse.gmf.esb</module>
+		<module>org.wso2.developerstudio.eclipse.gmf.esb.edit</module>
+		<module>org.wso2.developerstudio.eclipse.gmf.esb.persistence</module>
+		<module>org.wso2.developerstudio.eclipse.esb.project</module>
+		<module>org.wso2.developerstudio.eclipse.artifact.endpoint</module>
+		<module>org.wso2.developerstudio.eclipse.artifact.proxyservice</module>
+		<module>org.wso2.developerstudio.eclipse.artifact.sequence</module>
+		<module>org.wso2.developerstudio.eclipse.artifact.localentry</module>
+		<module>org.wso2.developerstudio.eclipse.artifact.mediator</module>
+		<module>org.wso2.developerstudio.eclipse.artifact.synapse</module>
+		<module>org.wso2.developerstudio.eclipse.artifact.synapse.api</module>
+		<module>org.wso2.developerstudio.eclipse.artifact.task</module>
+		<module>org.wso2.developerstudio.eclipse.artifact.template.sequence</module>
+		<module>org.wso2.developerstudio.eclipse.artifact.messagestore</module>
+		<module>org.wso2.developerstudio.eclipse.artifact.messageprocessor</module>
+		<module>org.wso2.developerstudio.eclipse.artifact.inboundendpoint</module>
+		<module>org.wso2.developerstudio.eclipse.artifact.connector</module>
+		<module>org.wso2.developerstudio.eclipse.gmf.esb.diagram</module>
+		<module>org.wso2.developerstudio.esb.form.editors</module>
+		<module>org.wso2.developerstudio.visualdatamapper</module>
+		<module>org.wso2.developerstudio.visualdatamapper.diagram</module>
+		<module>org.wso2.developerstudio.visualdatamapper.edit</module>
+		<module>org.wso2.developerstudio.visualdatamapper.editor</module>
+		<module>org.wso2.developerstudio.visualdatamapper.project</module>
+		<module>org.wso2.developerstudio.eclipse.esb.dashboard.templates</module>
+		<module>org.wso2.developerstudio.eclipse.esb.theme</module>
+		<module>org.wso2.developerstudio.eclipse.esb.docker</module>
+		<module>org.wso2.developerstudio.eclipse.esb.cloud</module>
+		<module>org.wso2.developerstudio.eclipse.esb.synapse.unit.test</module>
+		<module>org.wso2.developerstudio.eclipse.apim.project</module>
+		<module>org.wso2.developerstudio.eclipse.apim.endpoint.central</module>
+	</modules>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.10</version>
+				<configuration>
+					<projectnatures>
+						<projectnature>org.eclipse.jdt.core.javanature</projectnature>
+						<projectnature>org.eclipse.pde.PluginNature</projectnature>
+					</projectnatures>
+					<buildcommands>
+						<buildcommand>org.eclipse.jdt.core.javabuilder</buildcommand>
+						<buildcommand>org.eclipse.pde.ManifestBuilder</buildcommand>
+						<buildcommand>org.eclipse.pde.SchemaBuilder</buildcommand>
+					</buildcommands>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<profiles>
+		<profile>
+			<id>devsrelease</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-jarsigner-plugin</artifactId>
+						<version>1.2</version>
+						<configuration>
+							<keystore>${keystore.path}</keystore>
+							<storepass>${keystore.store.password}</storepass>
+							<alias>selfsigned</alias>
+							<keypass>${keystore.key.password}</keypass>
+						</configuration>
+						<executions>
+							<execution>
+								<id>sign</id>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>

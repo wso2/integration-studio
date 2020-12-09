@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+	<projectOptions title="Sequence Artifact Creation Options" 
+					description="Select how you would like to create your new sequence artifact" 
+					error="Please select a method to create the sequence artifact">
+		<option id="new.sequence" default="true">Create New Sequence</option>
+		<option id="import.sequence">Import Sequence</option>
+	</projectOptions>
+	<projectOptionSettings>
+		<settings optionId="new.sequence" 
+				  title="Sequence Artifact" 
+				  description="Create a new Sequence Artifact" 
+				  error="Please give a name for the sequence">
+			<data modelProperty="sequence.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.sequence.validators.SequenceProjectFieldController">Sequence Name    </data>
+			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.sequence.validators.SequenceProjectFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.sequence.validators.ProjectFilter">Save Sequence in:</data>
+			<data modelProperty="create.esb.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.sequence.validators.SequenceProjectFieldController" controlData="align=right">&lt;a&gt;Create new Project...&lt;/a&gt;</data>
+			
+			<data modelProperty="on.error.sequence" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.sequence.validators.SequenceProjectFieldController" controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.sequence.validators.WorkspaceSequenceList" group="group1">On Error Sequence</data>
+			<data modelProperty="available.eps" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.sequence.validators.SequenceProjectFieldController" controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.sequence.validators.AvailableEPList" group="group1">Available Endpoints</data>
+			
+			
+			<data modelProperty="dynamic.sequence" type="choice" fieldController="org.wso2.developerstudio.eclipse.artifact.sequence.validators.SequenceProjectFieldController" group="group1">Make this as Dynamic Sequence</data>
+			<data modelProperty="reg.path" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.sequence.validators.SequenceProjectFieldController" group="group1" controlData="h-indent=10;select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.sequence.validators.RegOptionsList">Registry</data>
+			<data modelProperty="reg.browse" type="registry+text" fieldController="org.wso2.developerstudio.eclipse.artifact.sequence.validators.SequenceProjectFieldController" group="group1" controlData="h-indent=10;select=single;modify=non-editable;registry.selection.type=collection;path.binding.property=reg.path">   Registry Path</data>
+			<!-- group id="group1"></group -->
+			<group id="group1" title="Advanced Configuration" controlData="type=collapsible;state=expanded"></group>
+
+
+			<!--  group id="group2"></group-->
+		</settings>
+		<settings optionId="import.sequence" 
+				  title="Sequence Artifact" 
+				  description="Create a Sequence Artifact using a configuration file with Sequences defined" 
+				  error="Browse and select a Sequence configuration file">
+			<data modelProperty="import.file" type="file" filter="*.xml" fieldController="org.wso2.developerstudio.eclipse.artifact.sequence.validators.SequenceProjectFieldController">Sequence Configuration File</data>
+			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.sequence.validators.SequenceProjectFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.sequence.validators.ProjectFilter" >Save sequence in: </data>
+			<data modelProperty="create.esb.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.sequence.validators.SequenceProjectFieldController" controlData="align=right" >&lt;a&gt;Create new Project...&lt;/a&gt;</data>
+			<data modelProperty="available.sequences" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.sequence.validators.SequenceProjectFieldController" controlData="select=multiple;selectAllbtn=true;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.sequence.validators.SequenceList">Available Sequence</data>
+			<!-- data modelProperty="dynamic.sequence" type="choice" fieldController="org.wso2.developerstudio.eclipse.artifact.sequence.validators.SequenceProjectFieldController" group="group1">Make this as Dynamic Sequence</data>
+			<data modelProperty="reg.path" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.sequence.validators.SequenceProjectFieldController" group="group1" controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.sequence.validators.RegOptionsList">Registry path</data>
+			<data modelProperty="reg.browse" type="registry" fieldController="org.wso2.developerstudio.eclipse.artifact.sequence.validators.SequenceProjectFieldController" group="group1" controlData="h-indent=10;select=single;modify=non-editable;registry.selection.type=resource;path.binding.property=reg.path">   Registry Resource</data-->
+			<!--group id="group1" title="Advanced Configuration" controlData="type=collapsible;state=expanded"></group -->
+			
+			<!-- group id="group2"></group -->
+		</settings>
+	</projectOptionSettings>
+</wizard>

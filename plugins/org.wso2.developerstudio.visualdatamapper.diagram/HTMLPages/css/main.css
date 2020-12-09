@@ -1,0 +1,33 @@
+.input-header {
+	background: #3498db;
+}
+
+.output-header {
+	background: #1abc9c;
+}
+
+.header {
+	padding: 5px 10px;
+	margin: 0 -15px 10px -15px;
+	color: #fff;
+	font-size: 20px;
+	font-weight: 400;
+}
+
+.box {
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+	box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.button-center {
+	display: flex;
+	align-items: center;
+}
+
+.input-radio, .output-radio {
+	text-align: center;
+}
+
+.CodeMirror-empty.CodeMirror-focused { outline: none; }
+.CodeMirror pre.CodeMirror-placeholder { color: #999; }

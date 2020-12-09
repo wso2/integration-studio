@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <title>DataMapper test window</title>
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/main.css">
+      <link rel="stylesheet" href="css/codemirror.css">
+      <script type='text/javascript' src="js/jquery.min-3.3.1.js"></script>
+      <script type='text/javascript' src='js/DataTypeConverter.js'></script>
+      <script type='text/javascript' src='js/SchemaToJson.js'></script>
+      <script type='text/javascript' src='js/codemirror-5.43.1.js'></script>  
+      <script type='text/javascript' src='js/xml.js'></script>
+      <script type='text/javascript' src='js/javascript.js'></script>
+      <script type='text/javascript' src='js/formatting.js'></script>
+      <script type='text/javascript' src='js/placeholder.js'></script>
+      <script type='text/javascript' src='js/papaparse.min.js'></script>
+   </head>
+   <body>
+      <div class="container-fluid">
+         <div class="row">
+            <div class="col-lg-5 box">
+               <h3 class="input-header header">Input Data</h3>
+               <div class="row no-gutter">
+                  <div class="col-lg-12 custom">
+                     <div class="container">
+                        <div class="row" >
+                            <div class="col-lg-3">
+                                Input Type:
+                            </div>
+                            <div class="col-lg-4" id="inputType">
+                            </div>
+                        </div>
+                        <div class="row" >
+                            <div class="col-lg-12">
+                                <div class="alert alert-primary" style="padding:0px">
+                                    <small>&nbsp Note: The Input Type is selected from the loaded input file or is set to XML by default.</small>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <textarea id="inputTextArea" rows="7" placeholder="Paste your own dataset OR save datamapper_diagram file to generate a sample dataset"></textarea>
+            </div>
+            <div class="col-lg-2 button-center">
+               <button type="button" class="btn" style="width:100%;" onclick="process()">
+               <img src="images/convert.png" />
+               <br/> Try Out
+               </button>
+            </div>
+            <div class="col-lg-5 box">
+               <h3 class="output-header header">Output Data</h3>
+               <div class="col-lg-12 custom">
+                  <div class="row">
+                     <div class="col-lg-3">
+                        Output Type:
+                     </div>
+                     <div class="col-lg-3 output-radio">
+                        <label><input type="radio" name="outputTypeRadio" checked value="JSON"> JSON</label>
+                     </div>
+                     <div class="col-lg-3 output-radio">
+                        <label><input type="radio" name="outputTypeRadio" value="XML"> XML</label>
+                     </div>
+                     <div class="col-lg-3 output-radio">
+                        <label><input type="radio" name="outputTypeRadio" value="CSV"> CSV</label>
+                     </div>
+                  </div>
+               </div>
+               <textarea id="outputTextArea" data-autogrow="false" rows="15" cols="40"></textarea>
+            </div>
+         </div>
+      </div>
+   </body>
+   <script>
+      // get the current port of the Jetty server.
+      var portValue = resolveGetParam("port");
+      
+      //code edior instance
+      var inputEditor;
+      
+      function getSelectedRange(editor) {
+          return { from: editor.getCursor(true), to: editor.getCursor(false) };
+        }
+        
+        function autoFormatSelection() {
+      	CodeMirror.commands["selectAll"](inputEditor);
+          var range = getSelectedRange(inputEditor);
+          inputEditor.autoFormatRange(range.from, range.to);
+          inputEditor.focus();
+        }
+      
+      function resolveGetParam(param) {
+        var paramValue = null,
+          tmp = [];
+        location.search
+          .substr(1)
+          .split("&")
+          .forEach(function(item) {
+            tmp = item.split("=");
+            if (tmp[0] === param) paramValue = decodeURIComponent(tmp[1]);
+          });
+        return paramValue;
+      }
+      
+      // input and output types
+      var inputType = convertType(resolveGetParam("inputtype"));
+      var outputType = convertType(resolveGetParam("outputtype"));
+      var schema = "";
+      var sample = "";
+      var inputSchemaTitle = "";
+      var jsonString = "";
+      var xmlString = "";
+      var csvString = "";
+      // Configuration for JSON to CSV converter
+      var configs = {
+        quotes: false,
+        quoteChar: '"',
+        escapeChar: '"',
+        delimiter: ",",
+        header: false,
+        newline: "\r\n"
+      }
+
+      // read input shema json from file
+      getInputSchema();
+      
+      //create codemirror instances
+      inputEditor = CodeMirror.fromTextArea(document.getElementById("inputTextArea"), {
+            mode: "text/javascript",
+            lineNumbers: true,
+            lineWrapping: true
+          });
+      outputEditor = CodeMirror.fromTextArea(document.getElementById("outputTextArea"), {
+            mode: "text/javascript",
+            lineNumbers: true,
+            lineWrapping: true
+          });
+
+      // generate examples once the input schema is available
+      function ajaxCallBack(retString) {
+        sample = retString["sample"];
+        schema = JSON.parse(retString["schema"]);
+        inputSchemaTitle = schema.title;
+        generateExamples();
+        $("input[name=outputTypeRadio][value=" + outputType + "]").attr('checked', true).trigger('change');
+        autoFormatSelection();
+        // Get output schema for the example
+        process();
+      }
+
+      // Generate json / xml / csv examples from the json schema.  
+      function generateExamples() {
+        if (sample) {
+          $('#inputType').text(inputType);
+          if (inputType === "JSON") {
+            jsonString = sample;
+            inputEditor.setOption("mode", "text/javascript");
+            inputEditor.setValue(jsonString);
+          } else if (inputType == "XML") {
+            xmlString = sample;
+            inputEditor.setOption("mode", "text/html");
+            inputEditor.setValue(xmlString);
+          } else if (inputType == "CSV") {
+            csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + sample + "</text>";
+            inputEditor.setOption("mode", "text/html");
+            inputEditor.setValue(csvString);
+          } else {
+            generateDefaultValues();
+          }
+        } else {
+          generateDefaultValues();
+        }
+        autoFormatSelection();
+        process();
+      }
+
+      // Generates default values when inputs are not given or when the schema is changed
+      function generateDefaultValues() {
+		var inputSchemaClone = jQuery.extend(true, {}, schema); //create a object clone
+
+        jsonString = convertSchemaToJson(schema);
+        jsonBadgerFishString = convertSchemaToJson(inputSchemaClone, true); //create badgerfish json for xml
+
+        if (inputSchemaTitle != "root" && jsonString[inputSchemaTitle] != null) {
+          jsonString = jsonString[inputSchemaTitle];
+        }
+        if (inputSchemaTitle != "root" && jsonBadgerFishString[inputSchemaTitle] != null) {
+            jsonBadgerFishString = jsonBadgerFishString[inputSchemaTitle];
+        }
+
+        jsonString = JSON.stringify(jsonString, null, "\t");
+        jsonBadgerFishString = JSON.stringify(jsonBadgerFishString, null, "\t");
+
+        xmlString = json2xml(JSON.parse(jsonBadgerFishString), "\n");
+        rootElemWithNS = buildRootWithNS(schema);
+
+        xmlString = "<" + rootElemWithNS + ">" + xmlString + "</" + inputSchemaTitle + ">";
+        csvString = '<text xmlns="http://ws.apache.org/commons/ns/payload">' + Papa.unparse(JSON.parse(jsonString), configs) + "</text>";
+        
+        $('#inputType').text(inputType);
+
+        if (inputType == "JSON") {
+          inputEditor.setOption("mode", "text/javascript");
+          inputEditor.setValue(jsonString);
+        } else if (inputType == "XML") {
+          inputEditor.setOption("mode", "text/html");
+          inputEditor.setValue(xmlString);
+        } else if (inputType == "CSV") {
+          inputEditor.setOption("mode", "text/html");
+          inputEditor.setValue(csvString);
+        } else {
+          inputEditor.setOption("mode", "text/javascript");
+          inputEditor.setValue(jsonString);
+        }
+      }
+      
+      $('input[name=outputTypeRadio]').on('change', function(e) {
+        outputType = $('input[name=outputTypeRadio]:checked').val();
+        process();
+      });
+      
+      //Create xml root element content with namespaces
+      function buildRootWithNS(inputSchema) {
+          namespaces = inputSchema["namespaces"];
+          rootValue = inputSchema["title"];
+          rootElements = "<" + rootValue + ">";
+          tempRoot = rootValue;
+          for (var i in namespaces) {
+              tempRoot = tempRoot + " xmlns:" + namespaces[i]["prefix"] + "=\"" + namespaces[i]["url"] + "\""
+          }
+          tempRoot = tempRoot;
+          return tempRoot;
+      }
+
+      // Call Datamapper.mediate() and take back the results
+      function process() {
+        var input = inputEditor.getValue();
+        if(input==""){
+        	alert("Paste your own dataset OR save datamapper_diagram file to generate a sample dataset");
+        }else{
+        	var arr = "process " + inputType + " " + outputType + " " + input;
+            var url = "http://localhost:" + portValue + "/dataMapper/getRegistryResources";
+            $.ajax({
+              url: url,
+              type: "POST",
+              data: arr,
+              success: function(data, status, xhr) {
+                var ct = xhr.getResponseHeader("content-type") || "";
+                var result = "";
+          
+                if (ct.indexOf('application/json') > -1) {
+                  result = JSON.stringify(data, null, '\t');
+                  outputEditor.setOption("mode", "text/javascript");
+                  outputEditor.setValue(result);
+                } else if (ct.indexOf('application/xml') > -1 || ct.indexOf('text/xml') > -1) {
+                  result = new XMLSerializer().serializeToString(data);
+                  outputEditor.setOption("mode", "text/html");
+                  outputEditor.setValue(result);
+                  CodeMirror.commands["selectAll"](outputEditor);
+                  var range = getSelectedRange(outputEditor);
+                  outputEditor.autoFormatRange(range.from, range.to);
+                } else {
+              	  outputEditor.setOption("mode", "text/javascript");
+              	  outputEditor.setValue(data);
+                 
+                }
+
+              }
+            });
+        }
+        
+      }
+      
+      // fetch input_schema.json by calling the servlet
+      function getInputSchema() {
+      
+        var url = "http://localhost:" + portValue + "/dataMapper/getRegistryResources";
+      
+        $.ajax({
+          url: url,
+          type: "POST",
+          data: "getInputSchema",
+          success: function(data) {
+            ajaxCallBack(data);
+          }
+        });
+      }
+      
+      function convertType(type){
+    	  if (type === "CONNECTOR" || type === "JSONSCHEMA"){
+    		type = "JSON";
+    	  } else if (type === "XSD"){
+    		type = "XML";
+    	  }
+    	  return type;
+      }
+          
+   </script>
+   </body>
+</html>

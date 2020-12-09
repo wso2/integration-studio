@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+    <extension
+            point="org.eclipse.ui.newWizards">
+        <wizard name="Unit Test Suite"
+                class="org.wso2.developerstudio.eclipse.esb.synapse.unit.test.wizard.unittest.UnitTestSuiteCreationWizard"
+                id="org.wso2.developerstudio.eclipse.esb.synapse.unit.test.testsuite"
+                icon="icons/UnitTestSuite16x16.png">
+        </wizard>
+    </extension>
+
+    <extension point="org.eclipse.ui.navigator.navigatorContent">
+        <commonWizard type="new"
+                      menuGroupId="a-group-integrationTest"
+                      wizardId="org.wso2.developerstudio.eclipse.esb.synapse.unit.test.testsuite">
+            <enablement>
+                <adapt
+                        type="org.eclipse.core.resources.IResource">
+                    <test
+                            property="org.wso2.developerstudio.eclipse.esb.synapse.unit.test.propertytester.checkResourceType"
+                            value="true"
+                            forcePluginActivation="true">
+                    </test>
+                </adapt>
+            </enablement>
+        </commonWizard>
+    </extension>
+
+    <!-- Adding property tester for adding the item to the right click menu based on the resource type-->
+    <extension
+            point="org.eclipse.core.expressions.propertyTesters">
+        <propertyTester
+                class="org.wso2.developerstudio.eclipse.esb.synapse.unit.test.propertytester.UnitTestResourceTester"
+                id="ResourceTester"
+                namespace="org.wso2.developerstudio.eclipse.esb.synapse.unit.test.propertytester"
+                properties="checkResourceType"
+                type="org.eclipse.core.resources.IResource">
+        </propertyTester>
+    </extension>
+
+    <extension
+            point="org.eclipse.ui.newWizards">
+        <wizard name="Mock Service"
+                class="org.wso2.developerstudio.eclipse.esb.synapse.unit.test.wizard.mockservice.MockServiceSuiteCreationWizard"
+                id="org.wso2.developerstudio.eclipse.esb.synapse.unit.test.mockservice"
+                icon="icons/MockService16x16.png">
+        </wizard>
+    </extension>
+
+    <extension point="org.eclipse.ui.navigator.navigatorContent">
+        <commonWizard type="new"
+                      menuGroupId="a-group-mockService"
+                      wizardId="org.wso2.developerstudio.eclipse.esb.synapse.unit.test.mockservice">
+            <enablement>
+                <adapt
+                        type="org.eclipse.core.resources.IResource">
+                    <test
+                            property="org.wso2.developerstudio.eclipse.esb.synapse.unit.test.propertytester.checkMockResourceType"
+                            value="true"
+                            forcePluginActivation="true">
+                    </test>
+                </adapt>
+            </enablement>
+        </commonWizard>
+    </extension>
+
+    <!-- Adding property tester for adding the item to the right click menu based on the resource type-->
+    <extension
+            point="org.eclipse.core.expressions.propertyTesters">
+        <propertyTester
+                class="org.wso2.developerstudio.eclipse.esb.synapse.unit.test.propertytester.MockServiceResourceTester"
+                id="MockResourceTester"
+                namespace="org.wso2.developerstudio.eclipse.esb.synapse.unit.test.propertytester"
+                properties="checkMockResourceType"
+                type="org.eclipse.core.resources.IResource">
+        </propertyTester>
+    </extension>
+
+    <extension point="org.eclipse.ui.popupMenus">
+            <objectContribution objectClass="org.eclipse.core.resources.IResource"
+                                id="org.wso2.developerstudio.eclipse.esb.synapse.unit.test.runtest">
+                <action
+                        label="Run Unit Test"
+                        icon="icons/TestSuite16x16.png"
+                        class="org.wso2.developerstudio.eclipse.esb.synapse.unit.test.action.RunSynapseUnitTestAction"
+                        id="org.wso2.developerstudio.eclipse.esb.synapse.unit.test.runtest">
+                </action>
+                <enablement>
+                    <adapt
+                            type="org.eclipse.core.resources.IResource">
+                        <test
+                                property="org.wso2.developerstudio.eclipse.esb.synapse.unit.test.propertytester.checkUnitTestRunType"
+                                value="true"
+                                forcePluginActivation="true">
+                        </test>
+                    </adapt>
+                </enablement>
+            </objectContribution>
+    </extension>
+        
+        <!-- Adding property tester for adding the item to the right click menu based on the resource type-->
+    <extension
+            point="org.eclipse.core.expressions.propertyTesters">
+        <propertyTester
+                class="org.wso2.developerstudio.eclipse.esb.synapse.unit.test.propertytester.RunTestResourceTester"
+                id="UnitTestRunTester"
+                namespace="org.wso2.developerstudio.eclipse.esb.synapse.unit.test.propertytester"
+                properties="checkUnitTestRunType"
+                type="org.eclipse.core.resources.IResource">
+        </propertyTester>
+    </extension>
+
+</plugin>

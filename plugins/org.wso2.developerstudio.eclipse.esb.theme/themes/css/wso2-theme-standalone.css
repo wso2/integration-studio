@@ -1,0 +1,116 @@
+.MTrimmedWindow {
+	background-color: #EDEDED;
+}
+
+.MPartStack {
+	swt-simple: false;
+	swt-mru-visible: false;
+}
+
+.MTrimBar {
+	background-color: #EDEDED;
+}
+
+.MTrimBar#org-eclipse-ui-main-toolbar  {
+	background-color: #EDEDED;
+}
+
+#PerspectiveSwitcher {
+	background-color: #EDEDED;
+	eclipse-perspective-keyline-color: #EDEDED;
+}
+
+.MPartSashContainer {
+	background-color: #EDEDED;
+}
+
+.MPartStack {
+	swt-tab-renderer: url('bundleclass://org.wso2.developerstudio.eclipse.esb.theme/org.wso2.developerstudio.eclipse.esb.theme.TabTopRenderer');
+    swt-selected-tab-fill: #ffffff; 
+    swt-unselected-tabs-color: #EDEDED;
+    swt-outer-keyline-color: #EDEDED;
+    swt-inner-keyline-color: #EDEDED;
+    swt-tab-outline: #EDEDED;
+    padding: 0px;
+    swt-shadow-visible: false;
+    swt-mru-visible: false;
+    swt-simple: true;
+    color: #000000;
+    swt-corner-radius: 6;
+    swt-tab-height: 28px;
+}
+
+.MPartStack.active {
+	swt-selected-tab-fill: #FFFFFF;
+	swt-tab-outline: #EDEDED;
+    background-color: #EDEDED;
+	swt-outer-keyline-color: #EDEDED;
+	swt-inner-keyline-color: #EDEDED;
+	color: #000000;
+}
+
+.ToolBarElement{
+	background-color: #EDEDED;
+}
+
+.CTabItem:selected {
+	color: #000000;
+}
+
+.CTabFolder .Canvas {
+	background-color: #EDEDED;
+}
+
+.CTabFolder{
+	swt-outer-keyline-color: #EDEDED;
+	swt-inner-keyline-color: #EDEDED;
+	background-color: #EDEDED;
+}
+
+.CTabItem,
+.CTabItem .CLabel {
+    background-color: #EDEDED;
+    color:#000000;
+}
+
+.CTabItem:selected,
+.CTabItem:selected CLabel {
+    color: #EDEDED;
+}
+
+Form,
+FormHeading {
+    background: #F4F5F6;
+    background-color: #F4F5F6;
+    background-image: #F4F5F6;
+    color: #000000;
+    padding: 0px 0px 0px 0px;
+}
+
+Form {
+    text-background-color: #F4F5F6;
+	tb-toggle-hover-color: #F4F5F6;
+	tb-toggle-color: #F4F5F6;
+	h-hover-full-color: #F4F5F6;
+	h-hover-light-color: #F4F5F6;
+	h-bottom-keyline-2-color: #F4F5F6;
+	h-bottom-keyline-1-color: #F4F5F6;
+    swt-background-mode: 'force';
+}
+
+Section {
+	background-color: #e8e8e8;
+    color: #34495e;
+    background-color-titlebar: #e8e8e8;
+    background-color-gradient-titlebar: #e8e8e8;
+    border-color-titlebar: #c9c9c9;
+}
+
+Section Label{
+ 	font-weight: lighter;
+}
+
+CTabFolder#org-eclipse-e4-primaryDataStack,
+CTabFolder#topLeft,CTabFolder#right ,CTabFolder#bottomLeft,CTabFolder#bottom {
+  swt-outer-keyline-color: rgb(189, 195, 199);
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+p, li, ul {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+#infotable {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  font-size: 14px;
+  width: 100%;
+}
+
+#infotable td, #infotable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#infotable tr:nth-child(even){background-color: #f2f2f2;}
+
+#infotable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+<meta charset="UTF-8">
+<title>More about Expressions</title>
+</head>
+<body>
+	<p>In addition to standard XPath functions, the&nbsp;ESB profile of
+		WSO2 Enterprise Integrator supports the following custom functions for
+		working with XPath expressions:</p>
+	<ul>
+		<li>get-property() function -&nbsp;Allows any XPath expression
+			used in a configuration to look up information from the current
+			message context.</li>
+		<li>vault-lookup() function - Can be used to securely store and
+			to logically reference the password mapping.</li>
+	</ul>
+	<p>
+		There is a set of predefined XPath variables that you can directly use
+		to write XPaths in the Synapse configuration, instead of using
+		the&nbsp;<span class="confluence-link">synapse:get-property()
+			function</span>. These XPath variables get properties of various scopes as
+		follows:
+	</p>
+	<table id="infotable" style="border-color: #000000; border-collapse: collapse; border: 1px solid black;" border="1" cellpadding="5">
+		<thead>
+			<tr style="background-color: #eeeeee;">
+				<td style="text-align: center;">
+					<p>
+						<strong>Variable</strong>
+					</p>
+				</td>
+				<td style="text-align: center;"><strong>Description</strong></td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td style="text-align: center;">$body</td>
+				<td>The SOAP 1.1 or 1.2 body element. For example, the
+					expression&nbsp;<strong>$body//getQuote</strong>&nbsp;refers to the
+					first&nbsp;<strong>getQuote</strong>&nbsp;element in a SOAP body,
+					regardless of whether the message is SOAP-11 or SOAP-12
+				</td>
+			</tr>
+			<tr>
+				<td style="text-align: center;">$header</td>
+				<td>The SOAP 1.1 or 1.2 header element. For example, the
+					expression&nbsp;<strong>$header/wsa:To</strong>&nbsp;refers to the
+					addressing&nbsp;<strong>To</strong>&nbsp;header regardless of
+					whether this message is SOAP-11 or SOAP-12
+				</td>
+			</tr>
+			<tr>
+				<td style="text-align: center;">$axis2</td>
+				<td>&nbsp;Prefix for Axis2 MessageContext properties. This is
+					used to get the property value at the axis2 scope. For example, to
+					get the value of Axis2 message context property with name
+					REST_URL_POSTFIX,&nbsp;use the XPath expression&nbsp;<strong>$axis2:REST_URL_POSTFIX</strong>
+				</td>
+			</tr>
+			<tr>
+				<td style="text-align: center;">$ctx</td>
+				<td>Prefix for Synapse MessageContext properties and gets a
+					property at the default scope. For example, to get the value
+					of&nbsp;Synapse message context property with name
+					ERROR_MESSAGE,&nbsp;use the XPath expression&nbsp;<strong>$ctx:ERROR_MESSAGE</strong>
+				</td>
+			</tr>
+			<tr>
+				<td style="text-align: center;">$trp</td>
+				<td>Prefix used to get the transport headers. For
+					example,&nbsp;to get the transport header named Content-Type of the
+					current message, use the XPath expression<strong>&nbsp;$trp:Content-Type</strong>.
+					HTTP transport headers are not case sensitive. Therefore,
+					$trp:Content-Type and $trp:CONTENT-TYPE are regarded as the same
+				</td>
+			</tr>
+			<tr>
+				<td style="text-align: center;">$url</td>
+				<td>&nbsp;The prefix used to get the URI element of a request
+					URL</td>
+			</tr>
+			<tr>
+				<td style="text-align: center;">$func</td>
+				<td>&nbsp;The prefix used to refer to a particular parameter
+					value passed externally by an invoker such as the Call Template
+					Mediator</td>
+			</tr>
+			<tr>
+				<td style="text-align: center;">$env</td>
+				<td>&nbsp;Prefix used to get a&nbsp;SOAP 1.1 or 1.2 envelope
+					level element. For example, to get&nbsp;the body element from the
+					SOAP envelope, use the&nbsp;&nbsp;expression&nbsp;<strong>$env/*[local-name()='Body']</strong>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

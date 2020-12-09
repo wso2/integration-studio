@@ -1,0 +1,159 @@
+<?xml version = "1.0"?>
+<!--
+ ~ Copyright (c) 2019 WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ ~
+ ~ Licensed under the Apache License, Version 2.0 (the "License");
+ ~ you may not use this file except in compliance with the License.
+ ~ You may obtain a copy of the License at
+ ~
+ ~      http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~ Unless required by applicable law or agreed to in writing, software
+ ~ distributed under the License is distributed on an "AS IS" BASIS,
+ ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ ~ See the License for the specific language governing permissions and
+ ~ limitations under the License.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name='unit-test'>
+		<xs:complexType>
+			<xs:all>
+				<xs:element name='artifacts' type='Artifacts'
+					minOccurs='1' maxOccurs='1' />
+				<xs:element name='test-cases' type='TestCases'
+					minOccurs='0' maxOccurs='1' />
+				<xs:element name='mock-services' type='MockServices'
+					minOccurs='1' maxOccurs='1' />
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="Artifacts">
+		<xs:all>
+			<xs:element name="test-artifact" type="TestArtifact"
+				minOccurs='1' maxOccurs='1' />
+			<xs:element name="supportive-artifacts"
+				type="SupportiveArtifacts" minOccurs='0' maxOccurs='1' />
+			<xs:element name="registry-resources"
+				type="RegistryResources" minOccurs='0' maxOccurs='1' />
+			<xs:element name="connector-resources"
+				type="ConnectorResources" minOccurs='0' maxOccurs='1' />		
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="TestArtifact">
+		<xs:sequence>
+			<xs:element name="artifact" type="xs:string" minOccurs='1'
+				maxOccurs='1' />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="SupportiveArtifacts">
+		<xs:sequence>
+			<xs:element name="artifact" type="xs:string" minOccurs='0'
+				maxOccurs='unbounded' />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="RegistryResources">
+		<xs:sequence>
+			<xs:element name="registry-resource" type="RegistryResource" minOccurs='0'
+				maxOccurs='unbounded' />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ConnectorResources">
+		<xs:sequence>
+			<xs:element name="connector-resource" type="xs:string" minOccurs='0'
+				maxOccurs='unbounded' />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="RegistryResource">
+		<xs:sequence>
+			<xs:element name="file-name" type="xs:string" minOccurs='1'
+				maxOccurs='1' />
+			<xs:element name="artifact" type="xs:string" minOccurs='1'
+				maxOccurs='1' />
+			<xs:element name="registry-path" type="xs:string" minOccurs='1'
+				maxOccurs='1' />
+			<xs:element name="media-type" type="xs:string" minOccurs='1'
+				maxOccurs='1' />		
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="TestCases">
+		<xs:sequence>
+			<xs:element name="test-case" type="TestCase" minOccurs='0'
+				maxOccurs='unbounded' />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="TestCase">
+		<xs:all>
+			<xs:element name="input" type="Inputs" minOccurs='0'
+				maxOccurs='1' />
+			<xs:element name="assertions" type="Assertions"
+				minOccurs='1' maxOccurs='1' />
+		</xs:all>
+		<xs:attribute name='name' type='xs:string' />
+	</xs:complexType>
+
+	<xs:complexType name="Inputs">
+		<xs:all>
+			<xs:element name="request-path" type="xs:string"
+				minOccurs='0' maxOccurs='1' />
+			<xs:element name="request-method" type="xs:string"
+				minOccurs='0' maxOccurs='1' />
+			<xs:element name="payload" type="xs:string" minOccurs='0'
+				maxOccurs='1' />
+			<xs:element name="properties" type="Properties"
+				minOccurs='0' maxOccurs='1' />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="Properties">
+		<xs:sequence>
+			<xs:element name="property" minOccurs='0' maxOccurs='unbounded' />
+		</xs:sequence>
+		<xs:attribute name='name' type='xs:string' />
+		<xs:attribute name='value' type='xs:string' />
+		<xs:attribute name='scope' type='xs:string' />
+	</xs:complexType>
+
+	<xs:complexType name="Assertions">
+		<xs:sequence>
+			<xs:element name="assertEquals" type="AssertEquals"
+				minOccurs='0' maxOccurs='unbounded' />
+			<xs:element name="assertNotNull" type="AssertNotNull"
+				minOccurs='0' maxOccurs='unbounded' />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="AssertEquals">
+		<xs:sequence>
+			<xs:element name="actual" type="xs:string" minOccurs='1'
+				maxOccurs='1' />
+			<xs:element name="expected" type="xs:string" minOccurs='1'
+				maxOccurs='1' />
+			<xs:element name="message" type="xs:string" minOccurs='1'
+				maxOccurs='1' />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="AssertNotNull">
+		<xs:sequence>
+			<xs:element name="actual" type="xs:string" minOccurs='1'
+				maxOccurs='1' />
+			<xs:element name="message" type="xs:string" minOccurs='1'
+				maxOccurs='1' />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="MockServices">
+		<xs:sequence>
+			<xs:element name="mock-service" type="xs:string"
+				minOccurs='0' maxOccurs='unbounded' />
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

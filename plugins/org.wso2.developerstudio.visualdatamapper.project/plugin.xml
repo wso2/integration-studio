@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="org.wso2.developerstudio.visualdatamapper.dataMapperNature"
+         name="DataMapper Project Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="org.wso2.developerstudio.visualdatamapper.project.builder.DataMapperProjectNature">
+         </run>
+      </runtime>
+
+   </extension>
+   	<extension point="org.eclipse.ui.ide.projectNatureImages">
+		<image id="org.wso2.developerstudio.visualdatamapper.project.natureImage"
+			natureId="org.wso2.developerstudio.visualdatamapper.dataMapperNature" icon="icons/datamapper-project-12.png">
+		</image>
+	</extension>
+   
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            name="DataMapper Wizards"
+            id="org.wso2.developerstudio.visualdatamapper.project">
+      </category>
+      <wizard
+            name="Data Mapper"
+            icon="icons/sample.gif"
+            category="org.wso2.developerstudio.visualdatamapper.project"
+            class="org.wso2.developerstudio.visualdatamapper.project.ui.wizards.DataMapperNewWizard"
+            id="org.wso2.developerstudio.visualdatamapper.project.ui.wizards.DataMapperNewWizard"
+            project="true">
+            
+			<description>DataMapper Config Project</description>
+      </wizard>
+   </extension>
+
+</plugin>

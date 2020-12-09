@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+ <projectOptions description="Choose how to create the mediator"
+ 				 error="Please select a method to create the project">
+ 	<option id="new.mediator" default="true">Create New Mediator</option>
+ 	<option id="import.mediator">Import From Workspace</option>
+ </projectOptions>
+ <projectOptionSettings>
+ 	<settings optionId="new.mediator"
+ 			  		description="Create new Mediator Project"
+ 			  		error="Please give a name to create the mediator">
+ 		<data modelProperty="project.name"
+ 					type="string" 
+ 					fieldController="org.wso2.developerstudio.eclipse.artifact.mediator.validators.MediatorFieldsController">Project Name   </data>
+ 		<data modelProperty="mediatorClass.package.name" 
+ 					type="string" 
+ 					fieldController="org.wso2.developerstudio.eclipse.artifact.mediator.validators.MediatorFieldsController" group="testid">Package Name</data>
+ 		<data modelProperty="mediatorClass.name" 
+ 					type="string" 
+ 					fieldController="org.wso2.developerstudio.eclipse.artifact.mediator.validators.MediatorFieldsController" group="testid">Class Name</data>	 
+ 		<group id="testid"></group>
+ 		
+ 		<projectNatures>
+			<nature>org.eclipse.jdt.core.javanature</nature>
+		</projectNatures>
+		
+ 	</settings>
+ 	 	<settings optionId="import.mediator"
+ 			  			description="Create a Mediator Project using an existing resource"
+ 			  			error="Please select the project">	  
+ 	 		<data modelProperty="import.project.list" type="list" 
+ 					fieldController="org.wso2.developerstudio.eclipse.artifact.mediator.validators.MediatorFieldsController"
+ 					controlData="select=single;class=org.wso2.developerstudio.eclipse.artifact.mediator.utils.ProjectData">Mediator Project</data>
+ 		<projectNatures>
+			<nature>org.eclipse.jdt.core.javanature</nature>
+		</projectNatures>
+		
+ 	</settings>
+ </projectOptionSettings>
+</wizard>

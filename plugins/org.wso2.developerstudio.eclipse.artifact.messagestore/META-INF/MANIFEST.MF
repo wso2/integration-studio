@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ESB Messagestore Artifact Wizard
+Bundle-SymbolicName: org.wso2.developerstudio.eclipse.artifact.messagestore;singleton:=true
+Bundle-Version: 7.0.0.qualifier
+Bundle-Activator: org.wso2.developerstudio.eclipse.artifact.messagestore.Activator
+Bundle-Vendor: WSO2 Inc
+Require-Bundle: org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="[4.1.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.esb.libraries;bundle-version="[7.0.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.platform.core;bundle-version="[4.1.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.platform.ui;bundle-version="[4.1.0,8.0.0)",
+ org.wso2.developerstudio.esb.form.editors,
+ org.wso2.developerstudio.eclipse.gmf.esb
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Import-Package: org.eclipse.core.resources,
+ org.wso2.developerstudio.eclipse.esb.core,
+ org.wso2.developerstudio.eclipse.esb.core.utils,
+ org.wso2.developerstudio.eclipse.esb.project.artifact,
+ org.wso2.developerstudio.eclipse.esb.project.utils,
+ org.wso2.developerstudio.eclipse.gmf.esb

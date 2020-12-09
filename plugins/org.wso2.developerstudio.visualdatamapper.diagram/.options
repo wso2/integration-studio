@@ -1,0 +1,7 @@
+# Tracing options for the org.wso2.developerstudio.visualdatamapper.diagram plug-in
+
+# Common issues
+org.wso2.developerstudio.visualdatamapper.diagram/debug=false
+
+# Visual IDs
+org.wso2.developerstudio.visualdatamapper.diagram/debug/visualID=false

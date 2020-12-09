@@ -1,0 +1,25 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Local Entry
+Bundle-SymbolicName: org.wso2.developerstudio.eclipse.artifact.localentry;singleton:=true
+Bundle-Version: 7.0.0.qualifier
+Bundle-Activator: org.wso2.developerstudio.eclipse.artifact.localentry.Activator
+Require-Bundle: org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="[4.1.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.platform.core;bundle-version="[4.1.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.platform.ui;bundle-version="[4.1.0,8.0.0)"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: org.wso2.developerstudio.eclipse.esb.core,
+ org.wso2.developerstudio.eclipse.esb.core.configuration.impl,
+ org.wso2.developerstudio.eclipse.esb.core.interfaces,
+ org.wso2.developerstudio.eclipse.esb.core.utils,
+ org.wso2.developerstudio.eclipse.esb.project.artifact,
+ org.wso2.developerstudio.eclipse.esb.project.utils,
+ org.wso2.developerstudio.eclipse.gmf.esb,
+ org.wso2.developerstudio.eclipse.logging.core;version="[4.1.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.maven.util;version="[4.1.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.utils.file;version="[4.1.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.utils.template;version="[4.1.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.utils.ui;version="[4.1.0,8.0.0)"
+Export-Package: org.wso2.developerstudio.eclipse.artifact.localentry.model,
+ org.wso2.developerstudio.eclipse.artifact.localentry.ui.wizard

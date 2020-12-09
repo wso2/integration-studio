@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--
+  ~ Copyright (c) 2020, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+  ~
+  ~ WSO2 Inc. licenses this file to you under the Apache License,
+  ~ Version 2.0 (the "License"); you may not use this file except
+  ~ in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing,
+  ~ software distributed under the License is distributed on an
+  ~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~ KIND, either express or implied. See the License for the
+  ~ specific language governing permissions and limitations
+  ~ under the License.
+  -->
+<html lang="en">
+  
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Getting Started</title>
+
+  <!-- Bootstrap -->
+  <link href="libs/bootstrap_3.3.6/css/bootstrap.min.css" rel="stylesheet">
+  <link href="libs/jquery.scrollbar_0.2.11/jquery.scrollbar.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/login_style.css" rel="stylesheet">
+</head>
+
+<body>
+  <div>
+    <h1 class="text-center">Service Catalog</h1>
+  </div>
+  <div id="login">
+    <div class="col-md-3"></div>
+    <div class="col-md-6" id="rcorners1">
+    <form id="login_form">
+      <div class="alert alert-danger" id="error-message-box" role="alert" hidden="true">...</div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Host Url</label>
+        <input type="email" class="form-control" placeholder="https://host:port" id="hostUrl">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">User Name</label>
+        <input type="email" class="form-control" placeholder="User name" id="username">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" placeholder="Password" id="password">
+      </div>
+      <div class="form-group">
+        <label class="form-check-label" for="exampleCheck1">API Manager Version</label>
+        <select id="productVersion" class="form-control"></select>
+      </div>
+      <button type="submit" class="btn btn-secondary pull-right" id="sign_in_button"><b>Log in</b></button>
+    </form>
+  </div>
+  </div>
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="libs/jquery_1.11.3/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="libs/bootstrap_3.3.6/js/bootstrap.min.js"></script>
+  <script src="libs/jquery.scrollbar_0.2.11/jquery.scrollbar.min.js"></script>
+  <script src="js/constants.js"></script>
+  <script src="serverproperties.js"></script>
+  <script src="js/logging.js"></script>
+</body>
+
+</html>

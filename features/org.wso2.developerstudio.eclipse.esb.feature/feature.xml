@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.wso2.developerstudio.eclipse.esb.feature"
+      label="WSO2 ESB Tooling Feature"
+      version="7.0.0.qualifier"
+      provider-name="%providerName">
+
+   <description url="http://wso2.com">
+      This feature will install plugins related WSO2 Carbon ESB Support.
+   </description>
+
+   <copyright url="%copyrightURL">
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+ 	<requires>
+  		 <import feature="org.wso2.developerstudio.kernel.feature"
+			version="0.0.0"/>
+		 <import feature="org.wso2.developerstudio.capp.feature"
+			version="0.0.0"/>
+		 <import feature="org.wso2.developerstudio.carbon.server.feature"
+			version="0.0.0"/>
+		 <import feature="org.wso2.developerstudio.carbon.server-40.feature"
+			version="0.0.0"/>
+		 <import feature="org.wso2.developerstudio.carbon.server-42.feature"
+			version="0.0.0"/>
+		 <import feature="org.wso2.developerstudio.carbon.server-remote.feature"
+			version="0.0.0"/>
+		 <import feature="org.wso2.developerstudio.carbon.server-44.feature"
+			version="0.0.0"/>
+		 <import feature="org.wso2.developerstudio.dashboard.feature"
+			version="0.0.0"/>
+		 <import feature="org.wso2.developerstudio.kernel.registry.core.feature"
+			version="0.0.0"/>
+		 <import feature="org.wso2.developerstudio.kernel.security.feature"
+			version="0.0.0"/>
+		 <import feature="org.wso2.developerstudio.kernel.wso2plugins.default.samples.feature"
+			version="0.0.0"/>
+		 <import feature="org.wso2.developerstudio.kernel.utils.feature"
+			version="0.0.0"/>
+		 <import feature="org.wso2.developerstudio.library.artifact.feature"
+			version="0.0.0"/>
+		 <import feature="org.wso2.developerstudio.platform.libraries.feature"
+			version="0.0.0"/>
+		 <import feature="org.wso2.developerstudio.cloud.utils.feature"
+			version="0.0.0"/>
+		 <import feature="org.wso2.developerstudio.usr.management.feature"
+			version="0.0.0"/>
+		 <import feature="org.wso2.developerstudio.mvn.multimodule.feature"
+			version="0.0.0"/> </requires>
+   <plugin
+         id="org.wso2.developerstudio.eclipse.esb.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.wso2.developerstudio.eclipse.artifact.connector"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.wso2.developerstudio.eclipse.artifact.endpoint"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.wso2.developerstudio.eclipse.artifact.inboundendpoint"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.wso2.developerstudio.eclipse.artifact.localentry"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.wso2.developerstudio.eclipse.artifact.mediator"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.wso2.developerstudio.eclipse.artifact.messageprocessor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.wso2.developerstudio.eclipse.artifact.messagestore"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.wso2.developerstudio.eclipse.artifact.proxyservice"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.wso2.developerstudio.eclipse.artifact.sequence"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.wso2.developerstudio.eclipse.artifact.synapse"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.wso2.developerstudio.eclipse.artifact.synapse.api"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.wso2.developerstudio.eclipse.artifact.task"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.wso2.developerstudio.eclipse.artifact.template.sequence"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.wso2.developerstudio.eclipse.esb.project"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.wso2.developerstudio.eclipse.esb.dashboard.templates"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+   <plugin
+         id="org.wso2.developerstudio.eclipse.esb.theme"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+         
+   <plugin
+         id="org.wso2.developerstudio.eclipse.esb.docker"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+   <plugin
+         id="org.wso2.developerstudio.eclipse.esb.cloud"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+   <plugin
+         id="org.wso2.developerstudio.eclipse.esb.synapse.unit.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>     
+</feature>

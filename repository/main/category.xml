@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <category-def name="org.wso2.developerstudio.eclipse.ei.project.feature.category" label="WSO2 Enterprise Integrator Tools">
+<description>
+		This is the Enterprise Integrator Tooling Feature for the Developer Studio. This enables the 'WSO2 Enterprise Integrator' Server under servers section.
+      </description>
+ </category-def>
+ <feature id="org.wso2.developerstudio.eclipse.ei.project.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.project.feature.category"/>
+   </feature>
+</site>

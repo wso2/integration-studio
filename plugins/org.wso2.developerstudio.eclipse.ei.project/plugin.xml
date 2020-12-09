@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension point="org.wso2.developerstudio.carbon.product.server.registry">
+      <product.server
+            carbon.server.version="carbon.server.44ei"
+            server.display.name="WSO2 Enterprise Integrator 6.0.0">
+      </product.server>
+       <product.server
+            carbon.server.version="carbon.server.44ei"
+            server.display.name="WSO2 Enterprise Integrator 6.1.0">
+      </product.server>
+      <product.server
+            carbon.server.version="carbon.server.44ei"
+            server.display.name="WSO2 Enterprise Integrator 6.2.0">
+      </product.server>
+      <product.server
+            carbon.server.version="carbon.server.44ei"
+            server.display.name="WSO2 Enterprise Integrator 6.3.0">
+      </product.server>
+      <product.server
+            carbon.server.version="carbon.server.44ei"
+            server.display.name="WSO2 Enterprise Integrator 6.4.0">
+      </product.server>
+      <product.server
+            carbon.server.version="carbon.server.44ei"
+            server.display.name="WSO2 Enterprise Integrator 6.5.0">
+      </product.server>
+      <product.server
+            carbon.server.version="carbon.server.44ei"
+            server.display.name="WSO2 Enterprise Integrator 6.6.0">
+      </product.server>
+       <product.server
+               carbon.server.version="carbon.server.44microei"
+               server.display.name="WSO2 Enterprise Micro Integrator 1.0.0">
+       </product.server>
+        <product.server
+               carbon.server.version="carbon.server.44microei11"
+               server.display.name="WSO2 Enterprise Micro Integrator 1.1.0">
+       </product.server>
+       <product.server
+               carbon.server.version="carbon.server.44microei12"
+               server.display.name="WSO2 Enterprise Micro Integrator 1.2.0">
+       </product.server>
+    </extension>
+    <extension-point id="org.wso2.developerstudio.aboutDialog.contributor" name="AboutDialogContributor" schema="schema/org.wso2.developerstudio.aboutDialog.contributor.exsd"/>
+<!--    <extension point="org.eclipse.ui.menus">
+        <menuContribution locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+            <menu label="Integration Studio"
+                  mnemonic="C"
+                  id="org.wso2.developerstudio.eclipse.platform.ui.main">
+                <command
+                        commandId="org.wso2.developerstudio.eclipse.ei.commands.sampleCommand"
+                        icon="icons/carbon-studio-small-logo.gif"
+                        id="org.wso2.developerstudio.eclipse.ei.toolbars.sampleCommand"
+                        label="About"
+                        tooltip="About Integration Studio">
+                </command>
+            </menu>
+        </menuContribution>
+    </extension> -->
+    <extension point="org.eclipse.ui.intro.configExtension">
+         <configExtension
+            configId="org.eclipse.ui.intro.universalConfig"
+            content="intro/welcome.xml" />
+     </extension>
+     <extension
+            point="org.eclipse.ui.handlers">
+        <handler
+                class="org.wso2.developerstudio.eclipse.ei.handler.DeveloperStudioAboutPageHandler"
+                commandId="org.wso2.developerstudio.eclipse.ei.commands.sampleCommand">
+        </handler>
+    </extension>
+</plugin>

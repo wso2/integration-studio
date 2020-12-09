@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <category-def name="org.wso2.developerstudio.eclipse.ei.feature.category" label="WSO2 Enterprise Integrator Tools">
+   <description>
+		This is the Enterprise Integrator Feature for the Developer Studio. This provides tooling support for WSO2 Enterprise Integrator.
+      </description>
+     </category-def>
+   <feature id="org.wso2.developerstudio.eclipse.ei.project.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature>
+
+  <!-- Kernel features and required core features-->	
+    <feature id="org.wso2.developerstudio.kernel.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature>
+    <feature id="org.wso2.developerstudio.cloud.utils.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.capp.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.carbon.server.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.carbon.server-40.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.carbon.server-42.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature>
+ <feature id="org.wso2.developerstudio.carbon.server-remote.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature>
+ <feature id="org.wso2.developerstudio.carbon.server-44.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature>
+ <feature id="org.wso2.developerstudio.carbon.server-44ei.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature>
+ <feature id="org.wso2.developerstudio.carbon.server-44microei.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.kernel.platform.bundles"/>
+   </feature>
+ <feature id="org.wso2.developerstudio.dashboard.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature>
+ <feature id="org.wso2.developerstudio.kernel.registry.core.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature>
+ <feature id="org.wso2.developerstudio.kernel.security.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature>
+ <feature id="org.wso2.developerstudio.kernel.wso2plugins.default.samples.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature>
+ <feature id="org.wso2.developerstudio.kernel.utils.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature>
+ <feature id="org.wso2.developerstudio.library.artifact.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature>
+ <feature id="org.wso2.developerstudio.platform.libraries.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature>
+ <feature id="org.wso2.developerstudio.usr.management.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature>
+ <feature id="org.wso2.developerstudio.mvn.multimodule.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature>
+ <feature id="org.wso2.developerstudio.web.ui.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature>  
+ <feature id="org.eclipse.graphiti.feature" version="0.0.0">
+     <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature> 
+  <!-- ESB features -->
+   <feature id="org.wso2.developerstudio.eclipse.esb.editor.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.eclipse.esb.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.eclipse.esb.dependencies.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.eclipse.visualdatamapper.editor.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature>
+ <!--<feature id="org.wso2.developerstudio.eclipse.smooks.editor.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+ </feature>-->
+   <!-- BPS features -->
+   <feature id="org.wso2.developerstudio.eclipse.bps.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.eclipse.bps.hteditor.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.eclipse.bps.bpmn.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature>
+   <!-- DSS features -->
+   <feature id="org.wso2.developerstudio.eclipse.data.service.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.eclipse.data.source.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.eclipse.dss.dependencies.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature>
+</site>

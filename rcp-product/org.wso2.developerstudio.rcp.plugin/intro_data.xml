@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- This file controls the initial placement of
+     Welcome (intro) page items.
+     File can be generated via the Welcome page preference panel.
+     
+     Items that are not listed in here will show in a
+     default place on their page.
+     Items listen in <hidden></hidden> sections will be, well,
+     hidden.
+  -->
+<extensions>
+ <page id="overview">
+  <group path="page-content/top-left">
+   <extension id="comdeveloperwelcome-introExtension"
+              importance="high"/>
+  </group>
+ </page>
+ <page id="whatsnew">
+  <group path="page-content/top-left">
+    <extension id="org.wso2.developerstudio.product.whatsnew"
+               importance="high"/>
+  </group>
+ </page>
+ <page id="firststeps">
+  <group path="page-content/top-left">
+    <extension id="org.wso2.developerstudio.trends.databrowser"
+               importance="medium"/>
+  </group>
+  <group path="page-content/top-right">
+    <extension id="org.wso2.developerstudio.opibuilder" importance="medium"/>
+  </group>
+ </page>
+</extensions>

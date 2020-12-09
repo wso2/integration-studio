@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="Integration Studio" uid="WSO2-Integration-Studio" id="org.wso2.developerstudio.rcp.plugin.devstudio" application="org.eclipse.ui.ide.workbench" version="7.0.0.qualifier" useFeatures="true" includeLaunchers="true">
+
+   <aboutInfo>
+      <image path="/org.wso2.developerstudio.rcp.plugin/icons/carbon-studio-logo.gif"/>
+      <text>
+         Licensed under Apache License, version 2.
+Please visit : http://wso2.com/products/developer-studio/
+      </text>
+   </aboutInfo>
+
+   <configIni use="default">
+   </configIni>
+
+   <launcherArgs>
+      <programArgsMac>/org.wso2.developerstudio.rcp.plugin/icons/DeveloperStudio.icns
+      </programArgsMac>
+      <vmArgs>-Xms512m
+-Xmx2048m
+-XX:MaxPermSize=512m
+-Dosgi.instance.area.default=@user.home/IntegrationStudio/workspace
+      </vmArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
+      </vmArgsMac>
+   </launcherArgs>
+
+   <windowImages i16="/org.wso2.developerstudio.rcp.plugin/icons/icon-16.gif" i32="/org.wso2.developerstudio.rcp.plugin/icons/icon-32.gif" i48="/org.wso2.developerstudio.rcp.plugin/icons/icon-48.gif" i64="/org.wso2.developerstudio.rcp.plugin/icons/icon-64.gif" i128="/org.wso2.developerstudio.rcp.plugin/icons/icon-128.gif" i256="/org.wso2.developerstudio.rcp.plugin/icons/icon-256.gif"/>
+
+   <splash
+      location="org.wso2.developerstudio.rcp.plugin"
+      startupProgressRect="5,275,440,10"
+      startupMessageRect="7,252,445,20"
+      startupForegroundColor="729FCF" />
+   <launcher name="developerstudio">
+      <linux icon="./icons/icon-linux.xpm"/>
+      <macosx icon="/icons/DeveloperStudio.icns"/>
+      <win useIco="false">
+         <ico path="./icons/256x256.png.ico"/>
+         <bmp
+            winSmallHigh="./icons/16x16_32bit.bmp"
+            winSmallLow="./icons/16x16_8bit.bmp"
+            winMediumHigh="./icons/32x32_32bit.bmp"
+            winMediumLow="./icons/32x32_8bit.bmp"
+            winLargeHigh="./icons/48x48_32bit.bmp"
+            winLargeLow="./icons/48x48_8bit.bmp"
+            winExtraLargeHigh="./icons/256x256_32bit.bmp"/>
+      </win>
+   </launcher>
+
+   <vm>
+   </vm>
+
+   <license>
+        <url>https://github.com/wso2/developer-studio/blob/master/LICENSE</url>
+        <text>
+   Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      &quot;License&quot; shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      &quot;Licensor&quot; shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      &quot;Legal Entity&quot; shall mean the union of the acting entity and all
+      other entities that control, are controlled by, or are under common
+      control with that entity. For the purposes of this definition,
+      &quot;control&quot; means (i) the power, direct or indirect, to cause the
+      direction or management of such entity, whether by contract or
+      otherwise, or (ii) ownership of fifty percent (50%) or more of the
+      outstanding shares, or (iii) beneficial ownership of such entity.
+
+      &quot;You&quot; (or &quot;Your&quot;) shall mean an individual or Legal Entity
+      exercising permissions granted by this License.
+
+      &quot;Source&quot; form shall mean the preferred form for making modifications,
+      including but not limited to software source code, documentation
+      source, and configuration files.
+
+      &quot;Object&quot; form shall mean any form resulting from mechanical
+      transformation or translation of a Source form, including but
+      not limited to compiled object code, generated documentation,
+      and conversions to other media types.
+
+      &quot;Work&quot; shall mean the work of authorship, whether in Source or
+      Object form, made available under the License, as indicated by a
+      copyright notice that is included in or attached to the work
+      (an example is provided in the Appendix below).
+
+      &quot;Derivative Works&quot; shall mean any work, whether in Source or Object
+      form, that is based on (or derived from) the Work and for which the
+      editorial revisions, annotations, elaborations, or other modifications
+      represent, as a whole, an original work of authorship. For the purposes
+      of this License, Derivative Works shall not include works that remain
+      separable from, or merely link (or bind by name) to the interfaces of,
+      the Work and Derivative Works thereof.
+
+      &quot;Contribution&quot; shall mean any work of authorship, including
+      the original version of the Work and any modifications or additions
+      to that Work or Derivative Works thereof, that is intentionally
+      submitted to Licensor for inclusion in the Work by the copyright owner
+      or by an individual or Legal Entity authorized to submit on behalf of
+      the copyright owner. For the purposes of this definition, &quot;submitted&quot;
+      means any form of electronic, verbal, or written communication sent
+      to the Licensor or its representatives, including but not limited to
+      communication on electronic mailing lists, source code control systems,
+      and issue tracking systems that are managed by, or on behalf of, the
+      Licensor for the purpose of discussing and improving the Work, but
+      excluding communication that is conspicuously marked or otherwise
+      designated in writing by the copyright owner as &quot;Not a Contribution.&quot;
+
+      &quot;Contributor&quot; shall mean Licensor and any individual or Legal Entity
+      on behalf of whom a Contribution has been received by Licensor and
+      subsequently incorporated within the Work.
+
+   2. Grant of Copyright License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      copyright license to reproduce, prepare Derivative Works of,
+      publicly display, publicly perform, sublicense, and distribute the
+      Work and such Derivative Works in Source or Object form.
+
+   3. Grant of Patent License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      (except as stated in this section) patent license to make, have made,
+      use, offer to sell, sell, import, and otherwise transfer the Work,
+      where such license applies only to those patent claims licensable
+      by such Contributor that are necessarily infringed by their
+      Contribution(s) alone or by combination of their Contribution(s)
+      with the Work to which such Contribution(s) was submitted. If You
+      institute patent litigation against any entity (including a
+      cross-claim or counterclaim in a lawsuit) alleging that the Work
+      or a Contribution incorporated within the Work constitutes direct
+      or contributory patent infringement, then any patent licenses
+      granted to You under this License for that Work shall terminate
+      as of the date such litigation is filed.
+
+   4. Redistribution. You may reproduce and distribute copies of the
+      Work or Derivative Works thereof in any medium, with or without
+      modifications, and in Source or Object form, provided that You
+      meet the following conditions:
+
+      (a) You must give any other recipients of the Work or
+          Derivative Works a copy of this License; and
+
+      (b) You must cause any modified files to carry prominent notices
+          stating that You changed the files; and
+
+      (c) You must retain, in the Source form of any Derivative Works
+          that You distribute, all copyright, patent, trademark, and
+          attribution notices from the Source form of the Work,
+          excluding those notices that do not pertain to any part of
+          the Derivative Works; and
+
+      (d) If the Work includes a &quot;NOTICE&quot; text file as part of its
+          distribution, then any Derivative Works that You distribute must
+          include a readable copy of the attribution notices contained
+          within such NOTICE file, excluding those notices that do not
+          pertain to any part of the Derivative Works, in at least one
+          of the following places: within a NOTICE text file distributed
+          as part of the Derivative Works; within the Source form or
+          documentation, if provided along with the Derivative Works; or,
+          within a display generated by the Derivative Works, if and
+          wherever such third-party notices normally appear. The contents
+          of the NOTICE file are for informational purposes only and
+          do not modify the License. You may add Your own attribution
+          notices within Derivative Works that You distribute, alongside
+          or as an addendum to the NOTICE text from the Work, provided
+          that such additional attribution notices cannot be construed
+          as modifying the License.
+
+      You may add Your own copyright statement to Your modifications and
+      may provide additional or different license terms and conditions
+      for use, reproduction, or distribution of Your modifications, or
+      for any such Derivative Works as a whole, provided Your use,
+      reproduction, and distribution of the Work otherwise complies with
+      the conditions stated in this License.
+
+   5. Submission of Contributions. Unless You explicitly state otherwise,
+      any Contribution intentionally submitted for inclusion in the Work
+      by You to the Licensor shall be under the terms and conditions of
+      this License, without any additional terms or conditions.
+      Notwithstanding the above, nothing herein shall supersede or modify
+      the terms of any separate license agreement you may have executed
+      with Licensor regarding such Contributions.
+
+   6. Trademarks. This License does not grant permission to use the trade
+      names, trademarks, service marks, or product names of the Licensor,
+      except as required for reasonable and customary use in describing the
+      origin of the Work and reproducing the content of the NOTICE file.
+
+   7. Disclaimer of Warranty. Unless required by applicable law or
+      agreed to in writing, Licensor provides the Work (and each
+      Contributor provides its Contributions) on an &quot;AS IS&quot; BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+      implied, including, without limitation, any warranties or conditions
+      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+      PARTICULAR PURPOSE. You are solely responsible for determining the
+      appropriateness of using or redistributing the Work and assume any
+      risks associated with Your exercise of permissions under this License.
+
+   8. Limitation of Liability. In no event and under no legal theory,
+      whether in tort (including negligence), contract, or otherwise,
+      unless required by applicable law (such as deliberate and grossly
+      negligent acts) or agreed to in writing, shall any Contributor be
+      liable to You for damages, including any direct, indirect, special,
+      incidental, or consequential damages of any character arising as a
+      result of this License or out of the use or inability to use the
+      Work (including but not limited to damages for loss of goodwill,
+      work stoppage, computer failure or malfunction, or any and all
+      other commercial damages or losses), even if such Contributor
+      has been advised of the possibility of such damages.
+
+   9. Accepting Warranty or Additional Liability. While redistributing
+      the Work or Derivative Works thereof, You may choose to offer,
+      and charge a fee for, acceptance of support, warranty, indemnity,
+      or other liability obligations and/or rights consistent with this
+      License. However, in accepting such obligations, You may act only
+      on Your own behalf and on Your sole responsibility, not on behalf
+      of any other Contributor, and only if You agree to indemnify,
+      defend, and hold each Contributor harmless for any liability
+      incurred by, or claims asserted against, such Contributor by reason
+      of your accepting any such warranty or additional liability.
+
+   END OF TERMS AND CONDITIONS
+
+   APPENDIX: How to apply the Apache License to your work.
+
+      To apply the Apache License to your work, attach the following
+      boilerplate notice, with the fields enclosed by brackets &quot;{}&quot;
+      replaced with your own identifying information. (Don&apos;t include
+      the brackets!)  The text should be enclosed in the appropriate
+      comment syntax for the file format. We also recommend that a
+      file or class name and description of purpose be included on the
+      same &quot;printed page&quot; as the copyright notice for easier
+      identification within third-party archives.
+
+   Copyright {yyyy} {name of copyright owner}
+
+   Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+         </text>
+   </license>
+
+   <plugins>
+   </plugins>
+
+   <features>
+      <feature id="org.eclipse.e4.rcp"/>
+      <feature id="org.eclipse.emf.ecore"/>
+      <feature id="org.eclipse.emf.common"/>
+      <feature id="org.eclipse.platform"/>
+      <feature id="org.eclipse.egit"/>
+      <feature id="org.eclipse.ecf.filetransfer.httpclient4.feature"/>
+      <feature id="org.eclipse.ecf.filetransfer.feature"/>
+      <feature id="org.eclipse.equinox.p2.core.feature"/>
+      <feature id="org.eclipse.ecf.core.ssl.feature"/>
+      <feature id="org.eclipse.jgit"/>
+      <feature id="org.eclipse.rcp"/>
+      <feature id="org.eclipse.ecf.core.feature"/>
+      <feature id="org.eclipse.help"/>
+      <feature id="org.eclipse.ecf.filetransfer.httpclient4.ssl.feature"/>
+      <feature id="org.eclipse.equinox.p2.rcp.feature"/>
+      <feature id="org.eclipse.equinox.p2.user.ui"/>
+      <feature id="org.eclipse.equinox.p2.extras.feature"/>
+      <feature id="org.eclipse.ecf.filetransfer.ssl.feature"/>
+      <feature id="org.eclipse.m2e.feature"/>
+      <feature id="org.eclipse.emf.ecore.edit"/>
+      <feature id="org.eclipse.wst.xml_core.feature"/>
+      <feature id="org.eclipse.wst.xml_ui.feature"/>
+      <feature id="org.eclipse.emf"/>
+      <feature id="org.eclipse.emf.mapping"/>
+      <feature id="org.eclipse.emf.codegen.ecore.ui"/>
+      <feature id="org.eclipse.emf.mapping.ecore.editor"/>
+      <feature id="org.eclipse.emf.ecore.editor"/>
+      <feature id="org.eclipse.emf.codegen.ui"/>
+      <feature id="org.eclipse.emf.codegen.ecore"/>
+      <feature id="org.eclipse.emf.databinding"/>
+      <feature id="org.eclipse.emf.edit"/>
+      <feature id="org.eclipse.wst.xml_userdoc.feature"/>
+      <feature id="org.eclipse.emf.converter"/>
+      <feature id="org.eclipse.wst.common_ui.feature"/>
+      <feature id="org.eclipse.emf.edit.ui"/>
+      <feature id="org.eclipse.emf.mapping.ecore"/>
+      <feature id="org.eclipse.wst.common_core.feature"/>
+      <feature id="org.eclipse.emf.databinding.edit"/>
+      <feature id="org.eclipse.emf.mapping.ui"/>
+      <feature id="org.eclipse.emf.codegen"/>
+      <feature id="org.eclipse.emf.common.ui"/>
+      <feature id="org.eclipse.equinox.p2.discovery.feature"/>
+      <feature id="org.eclipse.jsf.feature"/>
+      <feature id="org.eclipse.jst.web_core.feature"/>
+      <feature id="org.eclipse.wst.ws_wsdl15.feature"/>
+      <feature id="org.eclipse.wst.ws_core.feature"/>
+      <feature id="org.eclipse.wst.server_core.feature"/>
+      <feature id="org.eclipse.wst.web_core.feature"/>
+      <feature id="org.eclipse.jst.common.fproj.enablement.jdt"/>
+      <feature id="org.eclipse.wst.common.fproj"/>
+      <feature id="org.eclipse.jst.server_core.feature"/>
+      <feature id="org.eclipse.wst.jsdt.feature"/>
+      <feature id="org.eclipse.jst.enterprise_core.feature"/>
+      <feature id="org.eclipse.jst.enterprise_ui.feature"/>
+      <feature id="org.eclipse.jst.enterprise_userdoc.feature"/>
+      <feature id="org.eclipse.wst.ws_ui.feature"/>
+      <feature id="org.eclipse.wst.server_ui.feature"/>
+      <feature id="org.eclipse.wst.web_ui.feature"/>
+      <feature id="org.eclipse.wst.web_userdoc.feature"/>
+      <feature id="org.eclipse.wst.server_userdoc.feature"/>
+      <feature id="org.eclipse.wst.ws_userdoc.feature"/>
+      <feature id="org.eclipse.jst.web_ui.feature"/>
+      <feature id="org.eclipse.jst.web_userdoc.feature"/>
+      <feature id="org.eclipse.pde"/>
+      <feature id="org.eclipse.jdt"/>
+      <feature id="org.roussev.http4e.feature" version="5.0.12"/>
+      <feature id="de.jcup.yamleditor"/>
+      <!-- Dev studio kernel/platform features -->
+      <feature id="org.wso2.developerstudio.rcp.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.kernel.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.kernel.wso2plugins.samples.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.capp.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.carbon.server.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.carbon.server-40.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.carbon.server-42.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.carbon.server-remote.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.carbon.server-44.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.carbon.server-44ei.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.dashboard.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.kernel.registry.core.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.kernel.security.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.kernel.utils.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.kernel.wso2plugins.default.samples.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.library.artifact.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.platform.libraries.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.usr.management.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.mvn.multimodule.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.cloud.utils.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.web.ui.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.eclipse.docker.distribution.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.carbon.server-44microei.feature" installMode="root"/>
+      <!-- <feature id="org.wso2.developerstudio.eclipse.smooks.editor.feature" installMode="root"/> -->
+      <!-- <feature id="org.wso2.developerstudio.eclipse.apim.endpoint.central.feature" installMode="root"/> -->
+      <!-- Dev studio ESB features -->
+      <feature id="org.wso2.developerstudio.eclipse.esb.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.eclipse.esb.editor.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.eclipse.esb.dependencies.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.eclipse.visualdatamapper.editor.feature" installMode="root"/>
+      <!-- Dev studio DSS features -->
+      <feature id="org.wso2.developerstudio.eclipse.data.service.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.eclipse.data.source.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.eclipse.dss.dependencies.feature" installMode="root"/>
+      <!-- Dev studio EI features -->
+      <feature id="org.wso2.developerstudio.eclipse.ei.project.feature" installMode="root"/>
+      <!-- Dev studio BPS features -->
+      <feature id="org.wso2.developerstudio.eclipse.bps.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.eclipse.bps.hteditor.feature" installMode="root"/>
+      <feature id="org.wso2.developerstudio.eclipse.bps.bpmn.feature" installMode="root"/>
+
+   </features>
+
+   <configurations>
+      <plugin id="org.apache.felix.scr" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
+   </configurations>
+
+   <repositories>
+      <repository location="http://download.eclipse.org/releases/2020-06/" enabled="true" />
+      <repository location="http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/updates/" enabled="true" />
+      <repository location="http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/releases/" enabled="true" />
+      <repository location="http://download.eclipse.org/releases/2020-06" enabled="true" />
+   </repositories>
+
+   <preferencesInfo>
+      <targetfile overwrite="false"/>
+   </preferencesInfo>
+
+   <cssInfo>
+   </cssInfo>
+
+</product>

@@ -1,0 +1,18 @@
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3 http://maven.apache.org/xsd/assembly-1.1.3.xsd">
+  <id>bin</id>
+  <formats>
+    <format>zip</format>
+  </formats>
+   <includeBaseDirectory>false</includeBaseDirectory>
+  <fileSets>
+    <fileSet>
+        <directory>${project.basedir}/target/products/WSO2-Developer-Studio/macosx/cocoa/x86_64</directory>
+        <outputDirectory>${project.basedir}/target/products/WSO2-Developer-Asss-Studio-macosx.cocoa.x86_64</outputDirectory>
+        <useDefaultExcludes>true</useDefaultExcludes>
+        <fileMode>777</fileMode>
+        <directoryMode>777</directoryMode>
+    </fileSet>
+  </fileSets>
+</assembly>

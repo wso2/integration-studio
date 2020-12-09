@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension  
+         point="org.eclipse.core.contenttype.contentTypes">  
+      <content-type  
+            base-type="org.eclipse.core.runtime.xml"  
+            file-extensions="xml"  
+            id="org.wso2.developerstudio.eclipse.artifact.datasource.editors.contentType"  
+            name="Data Source File"  
+            priority="normal">
+            <describer
+				class="org.eclipse.core.runtime.content.XMLRootElementContentDescriber2">
+				<parameter name="element" value="datasource" />
+			</describer>
+      </content-type>  
+   </extension>  
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            name="DataSource Editor"
+            icon="icons/data-source-icon.png"
+            class="org.eclipse.wst.sse.ui.StructuredTextEditor"
+            id="org.wso2.developerstudio.eclipse.artifact.datasource.editors.XMLEditor">
+         <contentTypeBinding  
+               contentTypeId="org.wso2.developerstudio.eclipse.artifact.datasource.editors.contentType">  
+         </contentTypeBinding>  
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="org.wso2.developerstudio.eclipse.artifact.datasource"
+            name="Data Source">
+      </category>
+      <wizard
+            category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.service.hosting/org.wso2.developerstudio.eclipse.service.hosting.project.types"
+            class="org.wso2.developerstudio.eclipse.artifact.datasource.wizards.DataSourceWizard"
+            icon="icons/ds-16x16.png"
+            id="org.wso2.developerstudio.eclipse.artifact.datasource.wizards.DataSourceWizard"
+            name="Data Source">
+      </wizard>
+   </extension>
+   <extension point="org.eclipse.core.resources.natures"
+		id="org.wso2.developerstudio.eclipse.datasource.project.nature" name="Data Source Nature">
+		<runtime>
+			<run
+				class="org.wso2.developerstudio.eclipse.artifact.datasource.project.nature.DataSourceNature">
+			</run>
+		</runtime>
+	</extension>
+	<extension point="org.eclipse.ui.ide.projectNatureImages">
+		<image id="org.wso2.developerstudio.eclipse.ds.project.natureImage"
+			natureId="org.wso2.developerstudio.eclipse.datasource.project.nature" icon="icons/ds-12x12.png">
+		</image>
+	</extension>
+       <extension point="org.eclipse.ui.navigator.navigatorContent">    
+            <commonWizard type="new"
+                menuGroupId="1org.wso2.developerstudio.eclipse.artifact.webservice"
+                wizardId="org.wso2.developerstudio.eclipse.artifact.datasource.wizards.DataSourceWizard">
+                <enablement>
+                    <or>
+                        <adapt type="org.eclipse.core.resources.IProject">
+                            <test property="org.eclipse.core.resources.projectNature"
+                                value="org.wso2.developerstudio.eclipse.datasource.project.nature" />
+                                </adapt>
+                       <adapt type="org.eclipse.jdt.core.IPackageFragment">
+							<test property="org.wso2.developerstudio.projectNature"
+								value="org.wso2.developerstudio.eclipse.datasource.project.nature" />
+						</adapt>
+                    </or>
+                </enablement>
+            </commonWizard>
+    </extension>
+      <extension
+       point="org.wso2.developerstudio.eclipse.project.export.handler">
+    <handler
+          class="org.wso2.developerstudio.eclipse.artifact.datasource.project.export.DataSourceArtfactExportHandler"
+          id="org.wso2.developerstudio.eclipse.artifact.datasource.project.export.handler"
+          type="datasource/datasource">
+    </handler>
+ </extension>
+ 
+  	<extension point="org.wso2.developerstudio.eclipse.dashboad.link">
+		<category id="dashboard.category.dss.project" showTitle="true" title="DSS Project Types" priority="3" />
+        	<wizardLink category="dashboard.category.dss.project" id="dashboard.wizardLink.ds.datasource.project"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newdatasourceproject" priority="3">
+        	</wizardLink>
+ 	</extension>
+   
+    <extension point="org.wso2.developerstudio.eclipse.dashboad.link">
+		<category id="dashboard.category.dss.artifacts" showTitle="true" title="DSS Artifact Types" priority="4" />
+      		<wizardLink category="dashboard.category.dss.artifacts" id="dashboard.wizardLink.ds.datasource"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.datasource.wizards.DataSourceWizard" priority="2">
+        	</wizardLink>
+   	</extension>
+</plugin>

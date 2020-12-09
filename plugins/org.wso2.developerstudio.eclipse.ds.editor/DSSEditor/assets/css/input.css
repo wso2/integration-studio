@@ -1,0 +1,109 @@
+label {
+  display: inline-block;
+  margin-bottom: .5rem;
+}
+
+input, button, select, optgroup, textarea {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+button, input {
+  overflow: visible;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0.625rem 0.625rem;
+  font-size: 0.875rem;
+  line-height: 1.3;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.125rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #48CCFF;
+  outline: 0;
+  box-shadow: none;
+}
+
+.mb-0, .my-0 {
+  margin-bottom: 0 !important;
+}
+
+input {
+  padding: 0.30rem !important;
+  border: solid 1px #efefef;
+  border-radius: 5px;
+}
+
+input:focus {
+  border: solid 1px #efefef;
+  outline: none !important;
+  color: #495057;
+}
+
+.field {
+  display: flex;
+  flex-flow: column-reverse;
+  margin-bottom: 1em;
+}
+
+label, input, textarea {
+  transition: all 0.2s !important;
+}
+
+input:placeholder-shown + label {
+  cursor: text;
+  max-width: 66.66%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transform-origin: left bottom;
+  transform: translate(10px, 1.8rem) scale(1);
+  font-weight: 500;
+  color: #cccccc;
+}
+
+input:not(:placeholder-shown) + label, input:focus + label {
+  transform: translate(0, 0) scale(1);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+label {
+  font-size: 14px;
+}
+
+#dss-description-input {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+  color: #495057;
+}
+
+input:invalid {
+  border-right: 0;
+  border-left: 0;
+  border-top: 0;
+  border-bottom: 1px solid #b71c1c;
+}
+
+input:valid {
+  border: solid 1px #ccc;
+}
+
+select:invalid {
+  border: 1px solid #b71c1c;
+}
+
+

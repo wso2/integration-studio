@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+        id="org.wso2.developerstudio.eclipse.data.service.feature"
+        label="WSO2 DSS Tooling Feature"
+        version="7.0.0.qualifier"
+        provider-name="%providerName">
+
+    <description url="http://wso2.com">
+        This feature will install plugins related WSO2 Data Service Support.
+    </description>
+
+    <copyright url="%copyrightURL">
+        %copyright
+    </copyright>
+
+    <license url="%licenseURL">
+        %license
+    </license>
+
+    <requires>
+        <import feature="org.wso2.developerstudio.kernel.feature"
+                version="0.0.0"/>
+        <import feature="org.wso2.developerstudio.capp.feature"
+                version="0.0.0"/>
+        <import feature="org.wso2.developerstudio.carbon.server.feature"
+                version="0.0.0"/>
+        <import feature="org.wso2.developerstudio.carbon.server-40.feature"
+                version="0.0.0"/>
+        <import feature="org.wso2.developerstudio.carbon.server-42.feature"
+                version="0.0.0"/>
+        <import feature="org.wso2.developerstudio.carbon.server-remote.feature"
+                version="0.0.0"/>
+        <import feature="org.wso2.developerstudio.carbon.server-44.feature"
+                version="0.0.0"/>
+        <import feature="org.wso2.developerstudio.carbon.server-44ei.feature"
+                version="0.0.0"/>
+        <import feature="org.wso2.developerstudio.dashboard.feature"
+                version="0.0.0"/>
+        <import feature="org.wso2.developerstudio.kernel.registry.core.feature"
+                version="0.0.0"/>
+        <import feature="org.wso2.developerstudio.kernel.security.feature"
+                version="0.0.0"/>
+        <import feature="org.wso2.developerstudio.kernel.wso2plugins.default.samples.feature"
+                version="0.0.0"/>
+        <import feature="org.wso2.developerstudio.kernel.utils.feature"
+                version="0.0.0"/>
+        <import feature="org.wso2.developerstudio.library.artifact.feature"
+                version="0.0.0"/>
+        <import feature="org.wso2.developerstudio.platform.libraries.feature"
+                version="0.0.0"/>
+        <import feature="org.wso2.developerstudio.cloud.utils.feature"
+                version="0.0.0"/>
+        <import feature="org.wso2.developerstudio.usr.management.feature"
+                version="0.0.0"/>
+        <import feature="org.wso2.developerstudio.mvn.multimodule.feature"
+                version="0.0.0"/>
+    </requires>
+
+    <plugin
+            id="org.wso2.developerstudio.eclipse.artifact.dataservice"
+            download-size="0"
+            install-size="0"
+            version="0.0.0"
+            unpack="false"/>
+
+    <plugin
+            id="org.wso2.developerstudio.eclipse.artifact.dataservice.validator"
+            download-size="0"
+            install-size="0"
+            version="0.0.0"
+            unpack="false"/>
+
+    <plugin
+            id="org.wso2.developerstudio.eclipse.artifact.dataserviceProject"
+            download-size="0"
+            install-size="0"
+            version="0.0.0"
+            unpack="false"/>
+
+    <plugin
+            id="org.wso2.developerstudio.eclipse.ds"
+            download-size="0"
+            install-size="0"
+            version="0.0.0"
+            unpack="false"/>
+
+    <plugin
+            id="org.wso2.developerstudio.eclipse.ds.customvalidator"
+            download-size="0"
+            install-size="0"
+            version="0.0.0"
+            unpack="false"/>
+
+    <plugin
+            id="org.wso2.developerstudio.eclipse.ds.edit"
+            download-size="0"
+            install-size="0"
+            version="0.0.0"
+            unpack="false"/>
+
+    <plugin
+            id="org.wso2.developerstudio.eclipse.ds.editor"
+            download-size="0"
+            install-size="0"
+            version="0.0.0"
+            unpack="false"/>
+
+    <plugin
+            id="org.wso2.developerstudio.eclipse.ds.editor.xml"
+            download-size="0"
+            install-size="0"
+            version="0.0.0"
+            unpack="false"/>
+
+    <plugin
+            id="org.wso2.developerstudio.eclipse.ds.source.editor"
+            download-size="0"
+            install-size="0"
+            version="0.0.0"
+            unpack="false"/>
+
+    <plugin
+            id="org.wso2.developerstudio.eclipse.artifact.dataserviceTemplate"
+            download-size="0"
+            install-size="0"
+            version="0.0.0"
+            unpack="false"/>
+
+</feature>

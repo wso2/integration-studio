@@ -1,5 +1,11 @@
 # No Eclipse Related Files #
 ###################
+<<<<<<< HEAD
+=======
+
+.classpath
+.project
+>>>>>>> dss/eclipse-2020-migration
 .settings/
 target/
 bin/
@@ -35,3 +41,4 @@ feature.common.properties
 
 ## Generated When Building
 components/esb-tools/plugins/org.wso2.integrationstudio.eclipse.gmf.esb.persistence/library.jar
+

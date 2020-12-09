@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.newWizards">
+       <wizard
+            category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.extensions/org.wso2.developerstudio.eclipse.extensions.features"
+            class="org.wso2.developerstudio.eclipse.ds.customvalidator.ui.wizard.NewDataserviceValidatorClassWizard"
+            icon="icons/ds-validate-16x16.png"
+            id="org.wso2.developerstudio.eclipse.ds.customvalidator.NewDataserviceValidatorWizard"
+            name="WSO2 Dataservice Validator Class">
+            <description>Create new dataservice validator class</description>
+      </wizard>
+   </extension>
+   <!--extension point="org.eclipse.ui.newWizards">
+		<category name="WSO2" id="org.wso2.developerstudio.eclipse.capp.project">
+		</category>
+		<category name="Dataservice" id="org.wso2.developerstudio.eclipse.ds" 
+			parentCategory="org.wso2.developerstudio.eclipse.capp.project">
+		</category>
+   </extension-->
+</plugin>

@@ -1,0 +1,15 @@
+<datasource>
+	<name>MySQLConnection</name>
+	<description>MySQL Connection</description>
+	<jndiConfig useDataSourceFactory="false">
+		<name>MysqlConJNDI1</name>
+	</jndiConfig>
+	<definition type="RDBMS">
+		<configuration>
+			<driverClassName>com.mysql.jdbc.Driver</driverClassName>
+			<url>jdbc:mysql://localhost:3306/mysqldb</url>
+			<username>username</username>
+			<password>password</password>
+		</configuration>
+	</definition>
+</datasource>

@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:ds="http://org/wso2/developerstudio/eclipse/ds" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://org/wso2/developerstudio/eclipse/ds">
+  <xsd:import namespace="http://www.omg.org/XMI" schemaLocation="platform:/plugin/org.eclipse.emf.ecore/model/XMI.xsd"/>
+  <xsd:simpleType name="serviceStatus_._type">
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="active"/>
+      <xsd:enumeration value="inactive"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="attribute_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="column" type="xsd:string" use="required"/>
+    <xsd:attribute name="name" type="xsd:string" use="required"/>
+    <xsd:attribute name="requiredRoles" type="xsd:string"/>
+    <xsd:attribute name="xsdType" type="xsd:string"/>
+    <xsd:attribute name="optional" type="xsd:boolean"/>
+  </xsd:complexType>
+  <xsd:element name="attribute_._type" type="ds:attribute_._type"/>
+  <xsd:complexType name="call-query_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="href" type="xsd:string" use="required"/>
+  </xsd:complexType>
+  <xsd:element name="call-query_._type" type="ds:call-query_._type"/>
+  <xsd:complexType name="call-query-group_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  </xsd:complexType>
+  <xsd:element name="call-query-group_._type" type="ds:call-query-group_._type"/>
+  <xsd:complexType name="property_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="value" type="xsd:string"/>
+    <xsd:attribute name="name" type="xsd:string" use="required"/>
+  </xsd:complexType>
+  <xsd:element name="property_._type" type="ds:property_._type"/>
+  <xsd:complexType name="validateCustom_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="class" type="xsd:string" use="required"/>
+  </xsd:complexType>
+  <xsd:element name="validateCustom_._type" type="ds:validateCustom_._type"/>
+  <xsd:complexType name="data_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="baseURI" type="xsd:string"/>
+    <xsd:attribute name="enableBatchRequests" type="xsd:string"/>
+    <xsd:attribute name="enableBoxcarring" type="xsd:string"/>
+    <xsd:attribute name="enableDTP" type="xsd:string"/>
+    <xsd:attribute name="name" type="xsd:string" use="required"/>
+    <xsd:attribute name="serviceGroup" type="xsd:string"/>
+    <xsd:attribute name="serviceNamespace" type="xsd:string"/>
+    <xsd:attribute name="serviceStatus" type="ds:serviceStatus_._type"/>
+    <xsd:attribute name="disableStreaming" type="xsd:string"/>
+    <xsd:attribute name="enableSec" type="xsd:string"/>
+    <xsd:attribute name="transports" type="xsd:string" use="required"/>
+  </xsd:complexType>
+  <xsd:element name="data_._type" type="ds:data_._type"/>
+  <xsd:complexType name="config_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="id" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="config_._type" type="ds:config_._type"/>
+  <xsd:complexType name="description_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="value" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="description_._type" type="ds:description_._type"/>
+  <xsd:complexType name="DocumentRoot">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  </xsd:complexType>
+  <xsd:element name="DocumentRoot" type="ds:DocumentRoot"/>
+  <xsd:complexType name="validateDoubleRange_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="maximum" type="xsd:string"/>
+    <xsd:attribute name="minimum" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="validateDoubleRange_._type" type="ds:validateDoubleRange_._type"/>
+  <xsd:complexType name="element_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="column" type="xsd:string" use="required"/>
+    <xsd:attribute name="export" type="xsd:string"/>
+    <xsd:attribute name="name" type="xsd:string" use="required"/>
+    <xsd:attribute name="requiredRoles" type="xsd:string"/>
+    <xsd:attribute name="exportType" type="xsd:string"/>
+    <xsd:attribute name="namespace" type="xsd:string"/>
+    <xsd:attribute name="xsdType" type="xsd:string"/>
+    <xsd:attribute name="isComplexType" type="xsd:boolean"/>
+    <xsd:attribute name="query-param" type="xsd:string"/>
+    <xsd:attribute name="value" type="xsd:string"/>
+    <xsd:attribute name="optional" type="xsd:boolean"/>
+    <xsd:attribute name="arrayName" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="element_._type" type="ds:element_._type"/>
+  <xsd:complexType name="subscriptions_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  </xsd:complexType>
+  <xsd:element name="subscriptions_._type" type="ds:subscriptions_._type"/>
+  <xsd:complexType name="event-trigger_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="id" type="xsd:string" use="required"/>
+    <xsd:attribute name="language" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="event-trigger_._type" type="ds:event-trigger_._type"/>
+  <xsd:complexType name="excel_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  </xsd:complexType>
+  <xsd:element name="excel_._type" type="ds:excel_._type"/>
+  <xsd:complexType name="expression_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="value" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="expression_._type" type="ds:expression_._type"/>
+  <xsd:complexType name="gspread_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  </xsd:complexType>
+  <xsd:element name="gspread_._type" type="ds:gspread_._type"/>
+  <xsd:complexType name="hasheader_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="value" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="hasheader_._type" type="ds:hasheader_._type"/>
+  <xsd:complexType name="validateLength_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="maximum" type="xsd:string"/>
+    <xsd:attribute name="minimum" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="validateLength_._type" type="ds:validateLength_._type"/>
+  <xsd:complexType name="validateLongRange_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="maximum" type="xsd:string"/>
+    <xsd:attribute name="minimum" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="validateLongRange_._type" type="ds:validateLongRange_._type"/>
+  <xsd:complexType name="maxrowcount_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="value" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="maxrowcount_._type" type="ds:maxrowcount_._type"/>
+  <xsd:complexType name="operation_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="disableStreaming" type="xsd:string"/>
+    <xsd:attribute name="returnRequestStatus" type="xsd:string" use="required"/>
+    <xsd:attribute name="name" type="xsd:string" use="required"/>
+  </xsd:complexType>
+  <xsd:element name="operation_._type" type="ds:operation_._type"/>
+  <xsd:complexType name="with-param_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="column" type="xsd:string"/>
+    <xsd:attribute name="name" type="xsd:string" use="required"/>
+    <xsd:attribute name="query-param" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="with-param_._type" type="ds:with-param_._type"/>
+  <xsd:complexType name="validatePattern_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="pattern" type="xsd:string" use="required"/>
+  </xsd:complexType>
+  <xsd:element name="validatePattern_._type" type="ds:validatePattern_._type"/>
+  <xsd:complexType name="query_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="expression" type="ds:queryExpression_._type"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="id" type="xsd:string" use="required"/>
+    <xsd:attribute name="input-event-trigger" type="xsd:string"/>
+    <xsd:attribute name="output-event-trigger" type="xsd:string"/>
+    <xsd:attribute name="returnGeneratedKeys" type="xsd:string"/>
+    <xsd:attribute name="useConfig" type="xsd:string"/>
+    <xsd:attribute name="keyColumns" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="query_._type" type="ds:query_._type"/>
+  <xsd:complexType name="param_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="defaultValue" type="xsd:string"/>
+    <xsd:attribute name="name" type="xsd:string" use="required"/>
+    <xsd:attribute name="ordinal" type="xsd:string"/>
+    <xsd:attribute name="paramType" type="xsd:string"/>
+    <xsd:attribute name="sqlType" type="xsd:string" use="required"/>
+    <xsd:attribute name="structType" type="xsd:string"/>
+    <xsd:attribute name="type" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="param_._type" type="ds:param_._type"/>
+  <xsd:complexType name="property_._1_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="value" type="xsd:string"/>
+    <xsd:attribute name="name" type="xsd:string" use="required"/>
+  </xsd:complexType>
+  <xsd:element name="property_._1_._type" type="ds:property_._1_._type"/>
+  <xsd:complexType name="properties_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  </xsd:complexType>
+  <xsd:element name="properties_._type" type="ds:properties_._type"/>
+  <xsd:complexType name="resource_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="method" type="xsd:string" use="required"/>
+    <xsd:attribute name="path" type="xsd:string" use="required"/>
+    <xsd:attribute name="returnRequestStatus" type="xsd:string" use="required"/>
+  </xsd:complexType>
+  <xsd:element name="resource_._type" type="ds:resource_._type"/>
+  <xsd:complexType name="result_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="defaultNamespace" type="xsd:string"/>
+    <xsd:attribute name="element" type="xsd:string" use="required"/>
+    <xsd:attribute name="rowName" type="xsd:string" use="required"/>
+    <xsd:attribute name="useColumnNumbers" type="xsd:string"/>
+    <xsd:attribute name="escapeNonPrintableChar" type="xsd:string"/>
+    <xsd:attribute name="xsltPath" type="xsd:string"/>
+    <xsd:attribute name="outputType" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="result_._type" type="ds:result_._type"/>
+  <xsd:complexType name="sparql_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="value" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="sparql_._type" type="ds:sparql_._type"/>
+  <xsd:complexType name="sql_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="value" type="xsd:string"/>
+    <xsd:attribute name="dialect" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="sql_._type" type="ds:sql_._type"/>
+  <xsd:complexType name="queryExpression_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="value" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="queryExpression_._type" type="ds:queryExpression_._type"/>
+  <xsd:complexType name="startingrow_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="value" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="startingrow_._type" type="ds:startingrow_._type"/>
+  <xsd:complexType name="subscription_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="value" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="subscription_._type" type="ds:subscription_._type"/>
+  <xsd:complexType name="target-topic_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="value" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="target-topic_._type" type="ds:target-topic_._type"/>
+  <xsd:complexType name="workbookname_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="value" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="workbookname_._type" type="ds:workbookname_._type"/>
+  <xsd:complexType name="worksheetnumber_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="value" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="worksheetnumber_._type" type="ds:worksheetnumber_._type"/>
+  <xsd:complexType name="policy_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="key" type="xsd:string" use="required"/>
+  </xsd:complexType>
+  <xsd:element name="policy_._type" type="ds:policy_._type"/>
+  <xsd:complexType name="parameter_._type">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="name" type="xsd:string" use="required"/>
+    <xsd:attribute name="value" type="xsd:string" use="required"/>
+  </xsd:complexType>
+  <xsd:element name="parameter_._type" type="ds:parameter_._type"/>
+  <xsd:complexType name="RegistryKeyProperty">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="key" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="RegistryKeyProperty" type="ds:RegistryKeyProperty"/>
+</xsd:schema>

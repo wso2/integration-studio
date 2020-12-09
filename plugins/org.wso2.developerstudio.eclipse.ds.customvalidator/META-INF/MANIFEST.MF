@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Dataservice Validator Class Plugin
+Bundle-SymbolicName: org.wso2.developerstudio.eclipse.ds.customvalidator;singleton:=true
+Bundle-Version: 7.0.0.qualifier
+Bundle-Activator: org.wso2.developerstudio.eclipse.ds.customvalidator.Activator
+Bundle-Vendor: WSO2
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime
+Bundle-ActivationPolicy: lazy
+Import-Package: org.eclipse.core.resources,
+ org.eclipse.jdt.core,
+ org.eclipse.jdt.ui.wizards,
+ org.eclipse.ui.dialogs,
+ org.eclipse.ui.ide,
+ org.wso2.developerstudio.eclipse.libraries.utils;version="[7.0.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.logging.core;version="[4.1.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.utils.jdt;version="[4.1.0,8.0.0)",
+ org.wso2.developerstudio.eclipse.utils.ui;version="[4.1.0,8.0.0)"
+Export-Package: org.wso2.developerstudio.eclipse.ds.customvalidator.ui.wizard,
+ org.wso2.developerstudio.eclipse.ds.customvalidator.utils

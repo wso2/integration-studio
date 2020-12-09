@@ -1,0 +1,3 @@
+<data name="{service.name}" serviceNamespace="{service.NS}" serviceGroup="{service.group}" transports="{service.transports}">
+   <description>{service.description}</description>
+</data>

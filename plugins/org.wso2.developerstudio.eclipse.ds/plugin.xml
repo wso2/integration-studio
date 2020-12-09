@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="platform:/resource/org.wso2.developerstudio.eclipse.ds/model/ds.xsd"
+            class="org.wso2.developerstudio.eclipse.ds.DsPackage"
+            genModel="model/ds.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <parser
+            type="dbs"
+            class="org.wso2.developerstudio.eclipse.ds.util.DsResourceFactoryImpl"/>
+   </extension>
+   
+   <extension point="org.eclipse.emf.validation.constraintProviders">
+		<category name="WSO2 DS Model Constraints"
+			id="org.wso2.developerstudio.eclipse.ds.ModelConstraintsCategory" mandatory="true"/>
+		<constraintProvider cache="true">
+			<package namespaceUri="platform:/resource/org.wso2.developerstudio.eclipse.ds/model/ds.xsd" />
+			<constraints categories="org.wso2.developerstudio.eclipse.ds.ModelConstraintsCategory">
+				<constraint lang="Java"
+					class="org.wso2.developerstudio.eclipse.ds.constraint.MandatoryChildDeleteBeforeDeleteConstraint"
+					severity="ERROR" mode="Live" name="Mandatory to delete children before deleting a node"
+					id="org.wso2.developerstudio.eclipse.ds.constraint.MandatoryChildDeleteBeforeDeleteConstraint"
+					statusCode="1">
+					<description>
+						Mandatory to delete children before deleting a node
+					</description>
+					<message>
+						This element has child elements. Delete the child elements before deleting this element.
+					</message>
+					<target class="Query">
+						<event name="Set">
+							<feature name="id" />
+						</event>						
+					</target>		
+					</constraint>	
+					</constraints>
+		</constraintProvider>
+		</extension>		
+			
+	<extension point="org.eclipse.emf.validation.constraintBindings">
+      <clientContext
+            default="false"
+            id="org.wso2.developerstudio.eclipse.ds.ModelConstraintsContext">
+         <selector class="org.wso2.developerstudio.eclipse.ds.ValidationContextSelector"/> 
+      </clientContext>
+      <binding
+            context="org.wso2.developerstudio.eclipse.ds.ModelConstraintsContext"
+            category="org.wso2.developerstudio.eclipse.ds.ModelConstraintsCategory"/>
+   	</extension> 	
+   	
+   	<extension
+         point="org.eclipse.emf.validation.ui.UIRegisteredClientContext">
+      <clientContext id="org.wso2.developerstudio.eclipse.ds.ModelConstraintsContext"/>
+   </extension>
+  
+   <extension
+       point="org.eclipse.ltk.core.refactoring.renameParticipants">
+       <renameParticipant
+			class="org.wso2.developerstudio.eclipse.ds.refactor.DataServiceRenameParticipant"
+			id="DataServiceRenameParticipant"
+			name="DataServiceRename">
+				<enablement>
+					<and>
+							<instanceof
+								value="org.eclipse.core.resources.IFile">
+							</instanceof>
+						<adapt type="org.eclipse.core.resources.IResource">
+             				<test
+                   				property="org.eclipse.core.resources.projectNature"
+                   				value="org.wso2.developerstudio.eclipse.ds.project.nature">
+             				</test>
+         				</adapt>
+					</and>
+				</enablement>
+		</renameParticipant>
+   </extension>
+    <extension
+       point="org.eclipse.ltk.core.refactoring.renameParticipants">
+       <renameParticipant
+			class=" org.wso2.developerstudio.eclipse.ds.capp.refactor.DataServiceRenameParticipant"
+			id="DataServiceRenameParticipantForCApp"
+			name="DataServiceRenameUpdateforCApp">
+				<enablement>
+					<and>
+							<instanceof
+								value="org.eclipse.core.resources.IFile">
+							</instanceof>
+						<adapt type="org.eclipse.core.resources.IResource">
+             				<test
+                   				property="org.eclipse.core.resources.projectNature"
+                   				value="org.wso2.developerstudio.eclipse.ds.project.nature">
+             				</test>
+         				</adapt>
+					</and>
+				</enablement>
+		</renameParticipant>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ltk.core.refactoring.deleteParticipants">
+       <deleteParticipant
+			class="org.wso2.developerstudio.eclipse.ds.refactor.DataServiceDeleteParticipant"
+			id="DataServiceDeleteParticipant"
+			name="DataServiceDelete">
+				<enablement>
+					<and>
+							<instanceof
+								value="org.eclipse.core.resources.IFile">
+							</instanceof>
+						<adapt type="org.eclipse.core.resources.IResource">
+             				<test
+                   				property="org.eclipse.core.resources.projectNature"
+                   				value="org.wso2.developerstudio.eclipse.ds.project.nature">
+             				</test>
+         				</adapt>
+					</and>
+				</enablement>
+		</deleteParticipant>
+   </extension>
+   <extension
+         point="org.eclipse.ltk.core.refactoring.deleteParticipants">
+       <deleteParticipant
+			class="org.wso2.developerstudio.eclipse.ds.capp.refactor.DataServiceDeleteParticipant"
+			id="DataServiceDeleteParticipantForCapp"
+			name="DataServiceDelete and Update CApp">
+				<enablement>
+					<and>
+							<instanceof
+								value="org.eclipse.core.resources.IFile">
+							</instanceof>
+						<adapt type="org.eclipse.core.resources.IResource">
+             				<test
+                   				property="org.eclipse.core.resources.projectNature"
+                   				value="org.wso2.developerstudio.eclipse.ds.project.nature">
+             				</test>
+         				</adapt>
+					</and>
+				</enablement>
+		</deleteParticipant>
+   </extension>
+</plugin>

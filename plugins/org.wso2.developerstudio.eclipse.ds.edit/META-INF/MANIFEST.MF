@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.wso2.developerstudio.eclipse.ds.edit;singleton:=true
+Bundle-Version: 7.0.0.qualifier
+Bundle-ClassPath: .,
+ lib/com.google.collect_0.8.0.v201008251220.jar
+Bundle-Activator: org.wso2.developerstudio.eclipse.ds.provider.DsEditPlugin$Implementation
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Export-Package: org.wso2.developerstudio.eclipse.ds.provider,
+ org.wso2.developerstudio.eclipse.ds.provider.choiceListProvider
+Require-Bundle: org.eclipse.core.runtime,
+ org.wso2.developerstudio.eclipse.ds;visibility:=reexport,
+ org.eclipse.emf.edit;visibility:=reexport,
+ org.wso2.developerstudio.eclipse.libraries;bundle-version="[7.0.0,8.0.0)"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+
+

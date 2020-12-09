@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+	<projectOptions title="New Data Service Configs" 
+					description="Create new Data Service Configs" 
+					error="">
+		<option id="new.dss" default="true">New Data Service Configs</option>
+	</projectOptions>
+	<projectOptionSettings>
+		<settings optionId="new.dss" 
+				  title="Data Service Configs" 
+				  description="Create new Data Service Configs" 
+				  error="Please give a name for the data service configs">
+			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.dataserviceProject.validators.DataServiceProjectFieldController">Module Name</data>
+			<projectNatures>
+				<nature>org.eclipse.jdt.core.javanature</nature>
+			</projectNatures>
+		</settings>
+	</projectOptionSettings>
+</wizard>

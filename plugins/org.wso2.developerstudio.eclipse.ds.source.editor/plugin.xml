@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="org.wso2.developerstudio.eclipse.ds.dbseditor.DsSourceEditor"
+            contributorClass="org.wso2.developerstudio.eclipse.ds.dbseditor.DsEditorActionContributor"
+            extensions="dbs"
+            id="org.wso2.developerstudio.eclipse.ds.dbseditor.DsEditorID"
+            name="DsSourceEditor">
+      </editor>
+   </extension>
+
+</plugin>

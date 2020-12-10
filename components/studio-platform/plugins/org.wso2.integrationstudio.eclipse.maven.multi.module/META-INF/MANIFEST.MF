@@ -9,7 +9,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.m2e.maven.runtime;bundle-version="1.6.2",
  org.wso2.integrationstudio.eclipse.dashboard,
  org.eclipse.wst.sse.ui,
- org.wso2.integrationstudio.eclipse.distribution.project;bundle-version="7.0.0",
+ org.wso2.integrationstudio.eclipse.distribution.project,
  org.eclipse.ui.workbench,
  org.eclipse.ui.ide,
  org.eclipse.jface

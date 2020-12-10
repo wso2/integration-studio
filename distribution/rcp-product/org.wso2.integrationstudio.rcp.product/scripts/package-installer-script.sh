@@ -36,12 +36,6 @@ JDK_DISTRIBUTION_PATH_LINUX=$JDK_DISTRIBUTION_PATH/jdk-linux
 JDK_DISTRIBUTION_PATH_WINDOWS=$JDK_DISTRIBUTION_PATH/jdk-windows
 JDK_DISTRIBUTION_PATH_MACOS=$JDK_DISTRIBUTION_PATH/jdk-macos
 
-# Location of apictl distributions
-APICTL_DISTRIBUTION_PATH=$BASE_DIR/target/apictl
-APICTL_DISTRIBUTION_PATH_LINUX_64=$APICTL_DISTRIBUTION_PATH/apictl-linux-x64
-APICTL_DISTRIBUTION_PATH_WINDOWS_64=$APICTL_DISTRIBUTION_PATH/apictl-windows-x64
-APICTL_DISTRIBUTION_PATH_MACOSX_64=$APICTL_DISTRIBUTION_PATH/apictl-macosx-x64
-
 # Micro Integrator configurations 
 DEPLOYMENT_FILE=deployment.toml
 DEPLOYMENT_FILE_PATH=resources/$DEPLOYMENT_FILE
@@ -163,11 +157,11 @@ popd
 
 #Rename Info.plist for Mac issue 
 #TODO: Need to fix this on RCP level
-# pushd ${MACOS_ECLIPSE_PLIST_PATH}
-# sed -e 's/integrationstudio/IntegrationStudio/; s/Integrationstudio/IntegrationStudio/; s/WSO2-Integration-Studio/WSO2-Integration-Studio/' Info.plist > Info_temp.plist
-# rm Info.plist
-# mv Info_temp.plist Info.plist
-# popd
+pushd ${MACOS_ECLIPSE_PLIST_PATH}
+sed -e 's/integrationstudio/IntegrationStudio/; s/Integrationstudio/IntegrationStudio/; s/WSO2-Integration-Studio/WSO2-Integration-Studio/' Info.plist > Info_temp.plist
+rm Info.plist
+mv Info_temp.plist Info.plist
+popd
 
 # Zip the packages with microesb and JDK
 pushd ${PRODUCT_PATH_LINUX_64}

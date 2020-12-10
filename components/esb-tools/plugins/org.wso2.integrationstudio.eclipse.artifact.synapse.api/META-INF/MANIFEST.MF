@@ -8,8 +8,8 @@ Bundle-Vendor: WSO2 Inc
 Require-Bundle: org.wso2.integrationstudio.eclipse.kernel.libraries,
  org.wso2.integrationstudio.eclipse.platform.core,
  org.wso2.integrationstudio.eclipse.platform.ui,
- org.wso2.integrationstudio.eclipse.esb.libraries;bundle-version="7.0.0",
- org.wso2.integrationstudio.eclipse.docker.distribution;bundle-version="7.0.0"
+ org.wso2.integrationstudio.eclipse.esb.libraries,
+ org.wso2.integrationstudio.eclipse.docker.distribution
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.wso2.integrationstudio.eclipse.artifact.synapse.api.validator

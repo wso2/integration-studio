@@ -1,0 +1,1698 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>DSS-Dashboard</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/pageguide.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/color-theme.css">
+    <link rel="stylesheet" href="assets/css/input.css">
+    <link rel="stylesheet" href="assets/css/modal.css">
+    <link rel="stylesheet" href="assets/css/panel-table-styles.css">
+    <link rel="stylesheet" href="assets/css/query.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body style="padding-top: 10px;padding-bottom: 10px;padding-right: 20px;padding-left: 20px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1 class="display-4 main-title" id="dss-name-header">Data Service Name Placeholder</h1>
+            </div>
+        </div>
+    </div>
+    <div class="container main-content">
+        <div class="row">
+            <div class="col-md-3">
+                <h6>General Details</h6>
+                <p><small>This section contains the basic details about this Data Service</small></p>
+
+            </div>
+            <div class="col-md-9">
+                <div id="dss-description" class="field inputgroup">
+                    <input type="text" placeholder=" " id="dss-description-input" name="dss-description-input">
+                    <label class="mb-0" for="dss-description-input">Description</label>
+                </div>
+                <small id="passwordHelpBlock" class="form-text text-muted input-help-text">
+                    Provide a basic description about the Data Service
+                </small>
+                <div id="dss-service-group" class="field inputgroup">
+                    <input type="text" placeholder=" " id="dss-service-group-input" name="dss-service-group-input">
+                    <label class="mb-0" for="dss-service-group-input">Service group</label>
+                </div>
+                <small id="passwordHelpBlock" class="form-text text-muted input-help-text">
+                    Provide a Service Group ID
+                </small>
+                <div id="dss-namespace" class="field inputgroup">
+                    <input type="text" placeholder=" " id="dss-namespace-input" name="dss-namespace-input">
+                    <label class="mb-0" for="dss-namespace-input">Namespace</label>
+                </div>
+                <small id="passwordHelpBlock" class="form-text text-muted input-help-text">
+                    Provide namespaces for the Data Service
+                </small>
+                <div id="dss-publish-swagger" class="field inputgroup">
+                    <input type="text" placeholder=" " id="dss-publish-swagger-input" name="dss-publish-swagger-input">
+                    <label class="mb-0" for="dss-publish-swagger-input">Publish Swagger</label>
+                </div>
+                <small id="passwordHelpBlock" class="form-text text-muted input-help-text">
+                    Provide a Swagger definition to publish
+                </small>
+            </div>
+        </div>
+        <div class="row">
+            <hr class="divider" />
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <h6>Transport Settings</h6>
+                <p><small>This section contains various configurations related to Transport</small></p>
+
+            </div>
+            <div class="col-md-9">
+                <div id="transport-collapse" class="collapse-custom">
+                    <a id="ds-collapse-header" class="btn btn-primary btn-collapse-header" data-toggle="collapse"
+                        aria-expanded="false" aria-controls="data-sources-collapse" role="button"
+                        href="#transport-settings-collapse">Configure Transport Settings</a>
+                    <div class="collapse" id="transport-settings-collapse">
+                        <div style="margin-bottom: 10px;">
+                            <div class="col-md-6">
+                                <div class="row" id="ts-transport-check-row">
+                                    <div class="col-md-3">
+                                        <div class="form-check"><input class="form-check-input ts-transport-checkbox"
+                                                type="checkbox" name="http" id="ts-http-check"><label
+                                                class="form-check-label" for="ts-http-check">HTTP</label></div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-check"><input class="form-check-input ts-transport-checkbox"
+                                                type="checkbox" name="https" id="ts-https-check"><label
+                                                class="form-check-label" for="ts-https-check">HTTPS</label></div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-check"><input class="form-check-input ts-transport-checkbox"
+                                                type="checkbox" name="local" id="ts-local-check"><label
+                                                class="form-check-label" for="ts-local-check">Local</label></div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-check"><input class="form-check-input ts-transport-checkbox"
+                                                type="checkbox" name="jms" id="ts-jms-check"><label
+                                                class="form-check-label" for="ts-jms-check">JMS</label></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="ts-txmjndi-name-inputgroup" class="field inputgroup"><input type="text" placeholder=" "
+                                id="ts-txmjndi-name-input" name="float-input"
+                                style="border: 0; border-bottom: 4px solid #e4e4e4; background-color:#ffffff !important;"><label
+                                class="mb-0" for="ts-txmjndi-name-input">Enter Transaction Manager JNDI Name</label></div>
+                        <div class="sub-section">
+                            <h3>Authorization Provider Configuration</h3>
+                            <div>
+                                <div id="ts-auth-prov-class-inputgroup" class="field inputgroup"><input type="text"
+                                        placeholder=" " id="ts-auth-prov-class-input" name="ts-auth-prov-class-input"
+                                        style="border: 0; border-bottom: 4px solid #e4e4e4; background-color:#ffffff !important;"><label
+                                        class="mb-0" for="ts-auth-prov-class-input">Enter Authorization Provider
+                                        Class</label>
+                                </div>
+                                <div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="card panel panel-default panel-table">
+                                                <div class="card-header static-card-header" style="height: 40px;">
+                                                    <div class="row" style="height: 100%;">
+                                                        <div class="col text-left col-md-12 align-middle">
+                                                            <h6 class="align-middle">Parameters</h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-body table-bordered table-striped">
+                                                    <div class="table-responsive" id="ts-parameter-table">
+                                                        <table class="table table-sm" id="auth-provider-param-table">
+                                                            <thead class="align-items-center">
+                                                                <tr class="text-center">
+                                                                    <th>Param Name</th>
+                                                                    <th>Param Value</th>
+                                                                    <th><i class="fa fa-cog delete-row"></i></th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="d-lg-flex justify-content-lg-end"><button
+                                                            class="btn btn-primary d-lg-flex justify-content-lg-center btn-sm"
+                                                            type="button" id="ts-params-add-btn">Add New</button></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <hr class="divider" />
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <h6>Data Sources</h6>
+                <p><small>Data sources are created and listed in this section. We support an array of different DB management systems</small></p>
+
+            </div>
+            <div class="col-md-9">
+                <div id="ds-collapse" class="collapse-custom"><a id="ds-collapse-header"
+                        class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="false"
+                        aria-controls="data-sources-collapse" role="button" href="#data-sources-collapse">Configure Data
+                        Sources</a>
+                    <div class="collapse table-bordered" id="data-sources-collapse">
+                        <div class="table-responsive" id="ds-datasources-table">
+                            <table class="table table-hover table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Configure Data Source Name</th>
+                                        <th class="text-center"><i class="fa fa-cog"></i></th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                        <div id="ds-table-notification-alert-holder" class="alert mr-auto"></div>
+                        <div class="text-right"><button class="btn btn-primary btn-sm" type="button"
+                                id="ds-datasource-add-btn" data-mode="add">Add New</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <hr class="divider" />
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <h6>Queries</h6>
+                <p><small>Create and configure Queries with input and output mappings</small></p>
+
+            </div>
+            <div class="col-md-9">
+                <div id="queries" class="collapse-custom"><a class="btn btn-primary btn-collapse-header"
+                        data-toggle="collapse" aria-expanded="false" aria-controls="queries-collapse" role="button"
+                        href="#queries-collapse">Configure Queries</a>
+                    <div class="collapse table-bordered" id="queries-collapse">
+                        <div class="table-responsive" id="q-queries-table">
+                            <table class="table table-hover table-sm" id="q-queries-item-table">
+                                <thead>
+                                    <tr>
+                                        <th>Query ID</th>
+                                        <th class="text-center"><i class="fa fa-cog"></i></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="q-table-notification-alert-holder" class="alert mr-auto"
+                            style="padding-right: 0;padding-left: 0;margin-bottom: 0;padding-bottom: 0;"></div>
+                        <div class="text-right"><button class="btn btn-primary btn-sm" type="button"
+                                id="q-query-add-btn" data-toggle="modal">Add New</button></div>
+                        <div class="border bg-light rounded-0 border-dark query-add-edit-section"
+                            id="q-add-edit-query-section" style="padding: 15px; display:none;">
+                            <h4 id="q-addedit-title">Add Query</h4>
+                            <form id="query-form">
+                                <div class="form-group query-common-element">
+                                    <div id="q-query-id-inputgroup" class="field inputgroup"><input class="form-control"
+                                            type="text" required="" placeholder=" " id="q-query-id-input"
+                                            name="q-query-id-input"
+                                            style="border: 0; border-bottom: 1px solid #E0E0E0;"><label class="mb-0"
+                                            for="q-query-id-input">Query ID *</label></div>
+                                </div>
+                                <div class="form-group form-inline query-common-element">
+                                    <div class="form-group"><label>Datasource *</label><select class="form-control"
+                                            required="" id="q-datasource-select" style="margin-left: 10px;">
+                                            <option value="" selected="">- Select Datasource -</option>
+                                            <option value="generic">Generic</option>
+                                        </select></div>
+                                </div>
+                                <div class="form-group query-common-element">
+                                    <div id="q-sql-query-inputgroup" class="field inputgroup"><textarea
+                                            class="form-control" rows="2" id="q-sql-query-input"></textarea><label
+                                            class="mb-0" for="om-json-input" id="sql-query-label">SQL Query</label>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="collapse-custom"><a class="btn btn-primary btn-collapse-header"
+                                    data-toggle="collapse" aria-expanded="false" aria-controls="collapse-1"
+                                    role="button" href="#collapse-1">Input
+                                    Mappings</a>
+                                <div class="collapse" id="collapse-1">
+                                    <div class="table-responsive" id="q-im-entries-table">
+                                        <table class="table table-hover table-sm" id="inputMappingTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Mapping Name</th>
+                                                    <th>Parameter Type</th>
+                                                    <th>Type</th>
+                                                    <th class="text-center"><i class="fa fa-cog"></i></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div id="q-im-table-notification-alert-holder" class="alert mr-auto"></div>
+                                    <div class="text-right">
+                                        <button class="btn btn-secondary btn-sm" type="button"
+                                            id="q-input-mapping-generate-btn">Generate</button>
+                                        <button class="btn btn-primary btn-sm" type="button"
+                                            id="q-input-mapping-add-btn">Add
+                                            New</button>
+                                    </div>
+                                    <div class="form-group form-inline query-common-element">
+                                        <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                id="q-im-return-gk-checkbox"><label class="form-check-label"
+                                                for="q-im-return-gk-checkbox">Return Generated Keys</label></div>
+                                        <div class="form-check" style="margin-left: 20px;"><input
+                                                class="form-check-input" type="checkbox"
+                                                id="q-im-return-ukc-checkbox"><label class="form-check-label"
+                                                for="q-im-return-ukc-checkbox">Return Updated Key Count</label></div>
+                                    </div>
+                                    <div class="form-group query-common-element">
+                                        <div id="q-im-keycolumns-inputgroup" class="field inputgroup"
+                                            style="display: none;"><input class="form-control" type="text"
+                                                placeholder=" " id="q-im-keycolumns-input" name="q-im-keycolumns-input"
+                                                style="border: 0; border-bottom: 1px solid #E0E0E0;"><label class="mb-0"
+                                                for="q-im-keycolumns-input">Key Columns</label></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="collapse-custom"><a class="btn btn-primary btn-collapse-header"
+                                    data-toggle="collapse" aria-expanded="false" aria-controls="om-collapse"
+                                    role="button" href="#om-collapse">Result
+                                    (Output Mappings)</a>
+                                <div class="collapse" id="om-collapse">
+                                    <form>
+                                        <div class="form-group form-inline query-common-element">
+                                            <div class="form-group"><label>Output Type</label><select
+                                                    class="form-control" required="" id="om-outputtype-select"
+                                                    style="margin-left: 10px;">
+                                                    <option value="xml" selected="">XML</option>
+                                                    <option value="rdf">RDF</option>
+                                                    <option value="json">JSON</option>
+                                                </select></div>
+                                        </div>
+                                        <div class="form-group form-inline query-common-element">
+                                            <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                    id="om-use-column-nums-checkbox"><label class="form-check-label"
+                                                    for="om-use-column-nums-checkbox">Use Column Numbers</label></div>
+                                            <div class="form-check" style="margin-left: 20px;"><input
+                                                    class="form-check-input" type="checkbox"
+                                                    id="om-escapse-npc-checkbox"><label class="form-check-label"
+                                                    for="om-escapse-npc-checkbox">Escape Non Printable
+                                                    Characters</label></div>
+                                        </div>
+                                        <div class="form-group query-common-element">
+                                            <div id="om-grouped-by-element-inputgroup" class="field inputgroup"><input
+                                                    class="form-control" type="text" placeholder=" "
+                                                    id="om-grouped-by-element-input" name="om-grouped-by-element-input"
+                                                    style="border: 0; border-bottom: 1px solid #E0E0E0;"><label
+                                                    class="mb-0" for="om-grouped-by-element-input">Grouped by
+                                                    element</label></div>
+                                        </div>
+                                        <div class="form-group query-common-element">
+                                            <div id="om-row-name-inputgroup" class="field inputgroup"><input
+                                                    class="form-control" type="text" placeholder=" "
+                                                    id="om-row-name-input" name="om-row-name-input"
+                                                    style="border: 0; border-bottom: 1px solid #E0E0E0;"><label
+                                                    class="mb-0" for="om-row-name-input">Row name</label></div>
+                                        </div>
+                                        <div class="form-group query-common-element">
+                                            <div id="om-rdf-baseuri-inputgroup" class="field inputgroup"><input
+                                                    class="form-control" type="text" placeholder=" "
+                                                    id="om-rdf-baseuri-input" name="om-rdf-baseuri-input"
+                                                    style="border: 0; border-bottom: 1px solid #E0E0E0;"><label
+                                                    class="mb-0" for="om-rdf-baseuri-input">RDF Base URI</label></div>
+                                        </div>
+                                        <div class="form-group query-common-element">
+                                            <div id="om-row-namespace-inputgroup" class="field inputgroup"><input
+                                                    class="form-control" type="text" placeholder=" "
+                                                    id="om-row-namespace-input" name="om-row-namespace-input"
+                                                    style="border: 0; border-bottom: 1px solid #E0E0E0;"><label
+                                                    class="mb-0" for="om-row-namespace-input">Row namespace</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group query-common-element">
+                                            <div id="om-xslt-path-inputgroup" class="field inputgroup"><input
+                                                    class="form-control" type="text" placeholder=" "
+                                                    id="om-xslt-path-input" name="om-xslt-path-input"
+                                                    style="border: 0; border-bottom: 1px solid #E0E0E0;"><label
+                                                    class="mb-0" for="om-xslt-path-input">XSLT Path</label></div>
+                                        </div>
+                                        <div class="form-group query-common-element">
+                                            <div id="om-json-inputgroup" class="field inputgroup"><textarea
+                                                    class="form-control" rows="10" id="om-json-input"></textarea><label
+                                                    class="mb-0" for="om-json-input">JSON Payload</label></div>
+                                        </div>
+                                    </form>
+                                    <div class="table-responsive" id="q-om-queries-table">
+                                        <table class="table table-hover table-sm" id="q-output-mapping-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Element Name</th>
+                                                    <th>Datasource Type</th>
+                                                    <th>Datasource Column Number</th>
+                                                    <th>Mapping Type</th>
+                                                    <th>Allowed User Roles</th>
+                                                    <th>Schema Type</th>
+                                                    <th class="text-center"><i class="fa fa-cog"></i></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="text-right"><button class="btn btn-secondary btn-sm" type="button"
+                                            id="q-output_mapping-gen-btn">Generate</button><button
+                                            class="btn btn-primary btn-sm" type="button" id="q-output_mapping-add-btn"
+                                            data-toggle="modal" data-target="#q-output-mapping-modal"
+                                            data-keyboard="false" data-backdrop="static">Add
+                                            New</button></div>
+                                </div>
+                            </div>
+                            <div class="collapse-custom"><a class="btn btn-primary btn-collapse-header"
+                                    data-toggle="collapse" aria-expanded="false"
+                                    aria-controls="om-advanced-properties-collapse" role="button"
+                                    href="#om-advanced-properties-collapse">Advanced Properties</a>
+                                <div class="collapse" id="om-advanced-properties-collapse">
+                                    <form>
+                                        <div class="form-group query-common-element">
+                                            <div id="q-adv-timeout-inputgroup" class="field inputgroup"><input
+                                                    class="form-control" type="text" placeholder=" "
+                                                    id="q-timeout-input" name="q-timeout-input"
+                                                    style="border: 0; border-bottom: 1px solid #E0E0E0;"><label
+                                                    class="mb-0" for="q-timeout-input">Timeout in seconds</label></div>
+                                        </div>
+                                        <div class="form-group form-inline query-common-element">
+                                            <div class="form-group"><label>Fetch Direction</label><select
+                                                    class="form-control" id="q-fetchdir-select"
+                                                    style="margin-left: 10px;">
+                                                    <option value="" selected="">--Select--</option>
+                                                    <option value="forward">Forward</option>
+                                                    <option value="reverse">Reverse</option>
+                                                </select></div>
+                                        </div>
+                                        <div class="form-group query-common-element">
+                                            <div id="q-fetchsize-inputgroup" class="field inputgroup"><input
+                                                    class="form-control" type="text" placeholder=" "
+                                                    id="q-adv-fetchsize-input" name="q-adv-fetchsize-input"
+                                                    style="border: 0; border-bottom: 1px solid #E0E0E0;"><label
+                                                    class="mb-0" for="q-adv-fetchsize-input">Fetch Size</label></div>
+                                        </div>
+                                        <div class="form-group query-common-element">
+                                            <div id="q-adv-max-field-size-inputgroup" class="field inputgroup"><input
+                                                    class="form-control" type="text" placeholder=" "
+                                                    id="q-adv-max-field-size-input" name="q-adv-max-field-size-input"
+                                                    style="border: 0; border-bottom: 1px solid #E0E0E0;"><label
+                                                    class="mb-0" for="q-adv-max-field-size-input">Max Field Size</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group query-common-element">
+                                            <div id="q-adv-maxrows-inputgroup" class="field inputgroup"><input
+                                                    class="form-control" type="text" placeholder=" "
+                                                    id="q-adv-maxrows-input" name="q-adv-maxrows-input"
+                                                    style="border: 0; border-bottom: 1px solid #E0E0E0;"><label
+                                                    class="mb-0" for="q-adv-maxrows-input">Max Rows</label></div>
+                                        </div>
+                                        <div class="form-group form-inline query-common-element">
+                                            <div class="form-group"><label>Force Stored Procedure</label><select
+                                                    class="form-control" id="q-adv-forcestoredproc-select"
+                                                    style="margin-left: 10px;">
+                                                    <option value="" selected="">--Select--</option>
+                                                    <option value="true">True</option>
+                                                    <option value="false">False</option>
+                                                </select></div>
+                                        </div>
+                                        <div class="form-group form-inline query-common-element">
+                                            <div class="form-group"><label>Force JDBC Batch Requests</label><select
+                                                    class="form-control" id="q-adv-forcejdbcbatchreq-select"
+                                                    style="margin-left: 10px;">
+                                                    <option value="" selected="">--Select--</option>
+                                                    <option value="true">True</option>
+                                                    <option value="false">False</option>
+                                                </select></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                                <div id="query-notification-alert-holder" class="alert mr-auto"></div><button
+                                    class="btn btn-light ml-auto" type="button"
+                                    id="query-add-close-btn">Close</button><button class="btn btn-primary" type="submit"
+                                    id="query-add-save-btn" form="query-form">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <hr class="divider" />
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <h6>Operations</h6>
+                <p><small>Operations expose data sources as SOAP services. Use this section to create and configure operations.</small></p>
+
+            </div>
+            <div class="col-md-9">
+                <div id="operations" class="collapse-custom"><a class="btn btn-primary btn-collapse-header"
+                        data-toggle="collapse" aria-expanded="false" aria-controls="operations-collapse" role="button"
+                        href="#operations-collapse">Configure Operations</a>
+                    <div class="collapse table-bordered" id="operations-collapse">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-sm" id="o-operation-table">
+                                <thead>
+                                    <tr>
+                                        <th>Operation Name</th>
+                                        <th>Query</th>
+                                        <th class="text-center"><i class="fa fa-cog"></i></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="o-table-notification-alert-holder" class="alert mr-auto"
+                            style="padding-right: 0;padding-left: 0;margin-bottom: 0;padding-bottom: 0;"></div>
+                        <div class="text-right"><button class="btn btn-primary btn-sm" type="button"
+                                id="o-operation-add-btn" data-toggle="modal" data-target="#o-operation-addedit-modal"
+                                data-keyboard="false" data-backdrop="static">Add New</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <hr class="divider" />
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <h6>Resources</h6>
+                <p><small>Expose data sources as REST services by creating and configuring Resources in this section</small></p>
+
+            </div>
+            <div class="col-md-9">
+                <div id="resources" class="collapse-custom"><a class="btn btn-primary btn-collapse-header"
+                        data-toggle="collapse" aria-expanded="false" aria-controls="resources-collapse" role="button"
+                        href="#resources-collapse">Configure Resources</a>
+                    <div class="collapse table-bordered" id="resources-collapse">
+                        <div class="table-responsive" id="r-resources-table">
+                            <table class="table table-hover table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Resource Path</th>
+                                        <th>Resource Method</th>
+                                        <th>Query</th>
+                                        <th class="text-center"><i class="fa fa-cog"></i></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Resource_Path_Placeholder</td>
+                                        <td>Resource_Method_Placeholder</td>
+                                        <td>Query_Placeholder</td>
+                                        <td class="text-center"><i class="fa fa-edit"></i><i class="fa fa-trash"></i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="resource-table-notification-alert-holder" class="alert mr-auto"
+                            style="padding-right: 0;padding-left: 0;margin-bottom: 0;padding-bottom: 0;"></div>
+                        <div class="text-right"><button class="btn btn-primary btn-sm" type="button"
+                                id="r-resource-add-btn" data-toggle="modal">Add New</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <hr class="divider" />
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <h6>Advanced Configurations</h6>
+                <p><small>Advance properties related to the Data Service</small></p>
+
+            </div>
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-3 col-md-4">
+                        <div class="form-check"><input class="form-check-input" type="checkbox"
+                                id="ac-enable-batch-check"><label class="form-check-label"
+                                for="ac-enable-batch-check">Enable Batch Requests</label></div>
+                    </div>
+                    <div class="col-md-3 col-md-4">
+                        <div class="form-check"><input class="form-check-input" type="checkbox"
+                                id="ac-enable-boxcarring-check"><label class="form-check-label"
+                                for="ac-enable-boxcarring-check">Enable Boxcarring</label></div>
+                    </div>
+                    <div class="col-md-3 col-md-4" id="ac-disable-legacy-boxcarring-group">
+                        <div class="form-check"><input class="form-check-input" type="checkbox"
+                                id="ac-disable-legacy-boxcarring-check"><label class="form-check-label"
+                                for="ac-disable-legacy-boxcarring-check">Disable Legacy Boxcarring Mode</label></div>
+                    </div>
+                    <div class="col-md-3 col-md-4">
+                        <div class="form-check"><input class="form-check-input" type="checkbox"
+                                id="ac-enable-streaming-check"><label class="form-check-label"
+                                for="ac-enable-streaming-check">Enable Streaming</label></div>
+                    </div>
+                    <div class="col-md-3 col-md-4">
+                        <div class="form-check"><input class="form-check-input" type="checkbox"
+                                id="ac-active-service-status"><label class="form-check-label"
+                                for="ac-active-service-status">Active Service Status</label></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="ds-add-edit-ds-modal">
+        <div class="modal-dialog modal-lg modal-custom-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="ds-modal-header">Create Datasource</h4><button type="button"
+                        class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body table-bordered modal-custom-body">
+                    <form id="create-ds-form" class="general-form" name="create-ds-form">
+                        <div class="form-group">
+                            <div id="ds-ds-id-input-inputgroup" class="field inputgroup"><input class="form-control"
+                                    type="text" required="" placeholder=" " id="ds-ds-id-input"
+                                    name="ds-ds-id-input"><label class="mb-0" for="ds-ds-id-input">Datasource
+                                    Identifier</label></div>
+                        </div>
+                        <div class="form-group form-inline">
+                            <div class="form-group"><label>Datasource Type</label><select class="form-control"
+                                    required="" id="ds-dstype-select" name="ds-dstype-select">
+                                    <option value="rdbms_ds" selected="">RDBMS</option>
+                                    <option value="mongodb_ds">MongoDB</option>
+                                    <option value="csv">CSV</option>
+                                    <option value="carbon_ds">Carbon Datasource</option>
+                                </select>
+                                <select class="form-control" value="default" required="" id="ds-dstype-2-select"
+                                    name="ds-dstype-2-select">
+                                    <option value="default_ds">Default</option>
+                                    <option value="external_ds">External Datasource</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" id="ds-db-engine-formgroup">
+                            <div class="form-group"><label>Database Engine</label><select class="form-control"
+                                    id="ds-db-engine-select" name="ds-db-engine-select" required="">
+                                    <option value="" selected="">- Select Engine -</option>
+                                    <option value="mysql">MySQL</option>
+                                    <option value="apachederby">Apache Derby</option>
+                                    <option value="mssql">Microsoft SQL Server</option>
+                                    <option value="oracle">Oracle</option>
+                                    <option value="ibmdb2">IBM DB2</option>
+                                    <option value="hsqldb">HSQLDB</option>
+                                    <option value="informix">Informix</option>
+                                    <option value="postgresql">PostgreSQL</option>
+                                    <option value="sybasease">Sybase ASE</option>
+                                    <option value="h2">H2</option>
+                                    <option value="generic">Generic</option>
+                                </select></div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-driver-class-inputgroup" class="field inputgroup"><input class="form-control"
+                                    type="text" placeholder=" " id="ds-driver-class-input"
+                                    name="ds-driver-class-input"><label class="mb-0" for="ds-driver-class-input">Driver
+                                    Class</label></div>
+                            <div id="ds-ds-name-inputgroup" class="field inputgroup"><input class="form-control"
+                                    type="text" placeholder=" " id="ds-ds-name-input" name="ds-ds-name-input"><label
+                                    class="mb-0" for="ds-ds-name-input">Datasource Name</label></div>
+                            <div id="ds-class-name-inputgroup" class="field inputgroup"><input class="form-control"
+                                    type="text" placeholder=" " id="ds-class-name-input"
+                                    name="ds-class-name-input"><label class="mb-0" for="ds-class-name-input">Datasource
+                                    Class Name</label></div>
+                            <div id="ds-ext-prop-group" class="form-custom-group">
+                                <div class="table-responsive" id="ds-ext-properties-table">
+                                    <table class="table table-sm">
+                                        <thead class="align-items-center">
+                                            <tr class="text-center">
+                                                <th>Property Name</th>
+                                                <th>Property Value</th>
+                                                <th>Use Secret Alias</th>
+                                                <th><i class="fa fa-cog delete-row"></i></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><input class="form-control" type="text" placeholder="Property Name"
+                                                        style="width: 100%;"></td>
+                                                <td><input class="form-control" type="text" placeholder="Property Value"
+                                                        style="width: 100%;"></td>
+                                                <td class="text-center"><input type="checkbox"></td>
+                                                <td class="text-center"><i class="fa fa-trash"></i></td>
+                                            </tr>
+                                            <tr></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="d-lg-flex justify-content-lg-end"><button
+                                        class="btn btn-primary d-lg-flex justify-content-lg-center btn-sm" type="button"
+                                        id="ds-ext-properties-add-btn">Add New</button></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-url-inputgroup" class="field inputgroup"><input class="form-control" type="text"
+                                    placeholder=" " id="ds-url-input" name="ds-url-input"><label class="mb-0"
+                                    for="ds-url-input">URL</label></div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-server-inputgroup" class="field inputgroup"><input class="form-control"
+                                    type="text" placeholder=" " id="ds-server-input" name="ds-server-input"
+                                    required=""><label class="mb-0" for="ds-server-input">Servers</label></div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-mongo-dbname-inputgroup" class="field inputgroup"><input class="form-control"
+                                    type="text" placeholder=" " id="ds-mongo-dbname-input" name="ds-mongo-dbname-input"
+                                    required=""><label class="mb-0" for="ds-server-input">Database Name</label></div>
+                        </div>
+                        <div class="form-group form-inline" id="ds-auth-method-input">
+                            <div class="form-group"><label>Authentication Method</label>
+                                <select class="form-control" value="NONE" id="ds-auth-method-select"
+                                    name="ds-auth-method-select">
+                                    <option value="NONE">NONE</option>
+                                    <option value="SCRAM-SHA-1">SCRAM-SHA-1</option>
+                                    <option value="MONGODB-CR">MONGODB-CR</option>
+                                    <option value="MONGODB-X509">MONGODB-X509</option>
+                                    <option value="GSSAPI">GSSAPI</option>
+                                    <option value="PLAIN">PLAIN</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-username-inputgroup" class="field inputgroup"><input class="form-control"
+                                    type="text" placeholder=" " id="ds-username-input" name="ds-username-input"><label
+                                    class="mb-0" for="ds-username-input">Username</label></div>
+                        </div>
+                        <div class="form-group form-inline" id="ds-password-formgroup">
+                            <div id="ds-password-inputgroup" class="field inputgroup" style="width: 70%;"><input
+                                    class="form-control" type="password" placeholder=" " id="ds-password-input"
+                                    name="ds-password-input"><label
+                                    class="d-lg-flex justify-content-lg-start mb-0 justify-content-md-start justify-content-sm-start"
+                                    for="ds-password-input">Password</label></div>
+                            <div id="ds-password-sa-inputgroup" class="field inputgroup" style="width: 70%;"><input
+                                    class="form-control" type="text" placeholder=" " id="ds-password-sa-input"
+                                    name="ds-password-sa-input"><label
+                                    class="d-lg-flex justify-content-lg-start mb-0 justify-content-md-start justify-content-sm-start"
+                                    for="ds-password-input">Secret Alias</label></div>
+                            <div class="form-check"><input class="form-check-input" type="checkbox"
+                                    id="ds-secret-alias-check" name="ds-secret-alias-check" style="margin-left: 15px;"><label
+                                    class="form-check-label" for="ds-secret-alias-check">Use as Secret Alias</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" id="ds-write-concern-input">
+                            <div class="form-group"><label>Write Concern</label>
+                                <select class="form-control" value="" id="ds-write-concern-select"
+                                    name="ds-write-concern-select">
+                                    <option value="">-- Select --</option>
+                                    <option value="ACKNOWLEDGED">ACKNOWLEDGED</option>
+                                    <option value="SJOURNALED">JOURNALED</option>
+                                    <option value="MAJORITY">MAJORITY</option>
+                                    <option value="UNACKNOWLEDGED">UNACKNOWLEDGED</option>
+                                    <option value="W1">W1</option>
+                                    <option value="W2">W2</option>
+                                    <option value="W3">W3</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" id="ds-read-pref-input">
+                            <div class="form-group"><label>Read Preference</label>
+                                <select class="form-control" value="" id="ds-read-pref-select"
+                                    name="ds-read-pref-select">
+                                    <option value="">-- Select --</option>
+                                    <option value="PRIMARY">PRIMARY</option>
+                                    <option value="SECONDARY">SECONDARY</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-con-timeout-inputgroup" class="field inputgroup"><input class="form-control"
+                                    type="text" placeholder=" " id="ds-con-timeout-input"
+                                    name="ds-con-timeout-input"><label class="mb-0"
+                                    for="ds-con-timeout-input">Connection Timeout</label></div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-max-wait-inputgroup" class="field inputgroup"><input class="form-control"
+                                    type="text" placeholder=" " id="ds-max-wait-input" name="ds-max-wait-input"><label
+                                    class="mb-0" for="ds-max-wait-input">Max Wait Time</label></div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-socket-timeout-inputgroup" class="field inputgroup"><input class="form-control"
+                                    type="text" placeholder=" " id="ds-socket-timeout-input"
+                                    name="ds-socket-timeout-input"><label class="mb-0"
+                                    for="ds-socket-timeout-input">Socket Timeout</label></div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-connections-inputgroup" class="field inputgroup"><input class="form-control"
+                                    type="text" placeholder=" " id="ds-connections-input"
+                                    name="ds-connections-input"><label class="mb-0"
+                                    for="ds-connections-input">Connections per Host</label></div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-threads-for-mul-inputgroup" class="field inputgroup"><input class="form-control"
+                                    type="text" placeholder=" " id="ds-threads-for-mul-input"
+                                    name="ds-threads-for-mul-input"><label class="mb-0"
+                                    for="ds-threads-for-mul-input">Threads Allowed to Block For Connection
+                                    Multiplier</label></div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-csv-file-location-inputgroup" class="field inputgroup"><input
+                                    class="form-control" type="text" placeholder=" " id="ds-csv-file-location-input"
+                                    name="ds-csv-file-location-input" required=""><label class="mb-0"
+                                    for="ds-csv-file-location-input">CSV File Location</label></div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-col-separator-inputgroup" class="field inputgroup"><input class="form-control"
+                                    type="text" placeholder=" " id="ds-col-separator-input"
+                                    name="ds-col-separator-input"><label class="mb-0"
+                                    for="ds-col-separator-input">Column Separator</label></div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-start-row-inputgroup" class="field inputgroup"><input class="form-control"
+                                    type="text" placeholder=" " id="ds-start-row-input" name="ds-start-row-input"><label
+                                    class="mb-0" for="ds-start-row-input">Start Reading from Row</label></div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-max-read-rows-inputgroup" class="field inputgroup"><input class="form-control"
+                                    type="text" placeholder=" " id="ds-max-read-rows-input"
+                                    name="ds-max-read-rows-input"><label class="mb-0"
+                                    for="ds-max-read-rows-input">Maximum number of Rows to Read</label></div>
+                        </div>
+                        <div class="form-group form-inline" id="ds-col-header-input">
+                            <div class="form-group"><label>Contains Column Header Row</label>
+                                <select class="form-control" value="" id="ds-col-header-select"
+                                    name="ds-col-header-select" required="">
+                                    <option value="">-- Select --</option>
+                                    <option value="true">TRUE</option>
+                                    <option value="false">FALSE</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-header-row-inputgroup" class="field inputgroup"><input class="form-control"
+                                    type="text" placeholder=" " id="ds-header-row-input"
+                                    name="ds-header-row-input"><label class="mb-0" for="ds-header-row-input">Header
+                                    Row</label></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-check" id="ds-enable-odata-check-inputgroup"><input
+                                    class="form-check-input" type="checkbox" id="ds-enable-odata-check"
+                                    name="ds-enable-odata-check"><label class="form-check-label"
+                                    for="ds-enable-odata-check">Enable OData</label></div>
+                        </div>
+                        <div id="ds-test-con-collapse-group" class="collapse-custom"><a
+                                class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="true"
+                                aria-controls="ds-conf-params-collapse" role="button"
+                                href="#ds-conf-params-collapse">Test Connection</a>
+                            <div class="collapse" id="ds-conf-params-collapse">
+                                <form>
+                                    <div class="form-group form-inline">
+                                        <div id="ds-host-inputgroup" class="field inputgroup"><input type="text"
+                                                placeholder=" " class="form-control" id="ds-host-input"
+                                                name="ds-host-input" /><label
+                                                class="mb-0 justify-content-md-start justify-content-sm-start"
+                                                for="ds-host-input">Host</label></div>
+                                        <div id="ds-port-inputgroup" class="field inputgroup"
+                                            style="margin-left: 20px;"><input type="text" placeholder=" "
+                                                class="form-control" id="ds-port-input" name="ds-port-input" /><label
+                                                class="mb-0 justify-content-md-start justify-content-sm-start"
+                                                for="ds-port-input">Port</label></div>
+                                        <div id="ds-dbname-inputgroup" class="field inputgroup"
+                                            style="margin-left: 20px;"><input type="text" placeholder=" "
+                                                class="form-control" id="ds-dbname-input"
+                                                name="ds-dbname-input" /><label
+                                                class="mb-0 justify-content-md-start justify-content-sm-start"
+                                                for="ds-dbname-input">DB Name</label></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div id="ds-test-password-sa-inputgroup" class="field inputgroup"><input
+                                                type="text" placeholder=" " class="form-control"
+                                                id="ds-test-password-sa" name="ds-test-password-sa" /><label
+                                                class="mb-0 justify-content-md-start justify-content-sm-start"
+                                                for="ds-test-password-sa">Password</label></div>
+                                    </div>
+                                    <div class="form-group d-xl-flex form-inline"><label>RDBMS Version</label><select
+                                            class="form-control" id="ds-db-version-select"
+                                            style="margin-left: 5px;margin-right: 0;">
+                                            <optgroup label="MySQL">
+                                                <option value="8_0_15" selected>v8.0.15</option>
+                                                <option value="5_1_47">v5.1.47</option>
+                                            </optgroup>
+                                            <optgroup label="MSSQL">
+                                                <option value="7_20_0">v7.20.0</option>
+                                                <option value="6_4_0">v6.4.0</option>
+                                            </optgroup>
+                                            <optgroup label="PostgreSQL">
+                                                <option value="42_2_11">v42.2.11</option>
+                                            </optgroup>
+                                            <optgroup label="Generic">
+                                                <option value="4_50_1">v4.50.1</option>
+                                            </optgroup>
+                                            <optgroup label="Derby">
+                                                <option value="10_14_2_0">v10.14.2.0</option>
+                                            </optgroup>
+                                            <optgroup label="H2">
+                                                <option value="1_4_200">v1.4.200</option>
+                                            </optgroup>
+                                        </select>
+                                        <button class="btn btn-secondary btn-sm d-lg-flex justify-content-xl-end"
+                                            type="button" id="ds-test-conn-btn" style="margin-left: 15px;">Test
+                                            Connection</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div id="ds-dynamic-auth-collapse-group-2" class="collapse-custom"><a
+                                class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="false"
+                                aria-controls="ds-dyn-auth-collapse" role="button" href="#ds-dyn-auth-collapse">Dynamic
+                                Authentication</a>
+                            <div class="collapse table-bordered" id="ds-dyn-auth-collapse">
+                                <div id="ds-dynamic-auth-class-inputgroup" class="field inputgroup"><input
+                                        class="form-control" type="text" placeholder=" "
+                                        id="ds-dynamic-auth-class-input" name="ds-dynamic-auth-class-input"
+                                        style="border: 0; border-bottom: 1px solid #E0E0E0;"><label class="mb-0"
+                                        for="ds-dynamic-auth-class-input">Dynamic User Authentication Class</label>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-sm" id="ds-dynamic-auth-usermapping-table">
+                                        <thead class="align-items-center">
+                                            <tr class="text-center">
+                                                <th>Carbon Username</th>
+                                                <th>DB Username</th>
+                                                <th>DB Password</th>
+                                                <th><i class="fa fa-cog delete-row"></i></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><input class="form-control" type="text"
+                                                        placeholder="Carbon Username" style="width: 100%;"></td>
+                                                <td><input class="form-control" type="text" placeholder="DB Username"
+                                                        style="width: 100%;"></td>
+                                                <td><input class="form-control" type="password"
+                                                        placeholder="DB Password" style="width: 100%;"></td>
+                                                <td class="text-center"><i class="fa fa-trash"></i></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="d-lg-flex justify-content-lg-end"><button
+                                        class="btn btn-primary d-lg-flex justify-content-lg-center btn-sm" type="button"
+                                        id="ds-dynamic-auth-add-btn">Add New</button></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <div id="ds-notification-alert-holder" class="alert mr-auto"></div><button
+                        class="btn btn-light ml-auto" type="button" data-dismiss="modal"
+                        id="ds-add-edit-close-btn">Close</button><button class="btn btn-primary" type="submit"
+                        id="ds-add-save-btn" form="create-ds-form">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="q-input-mapping-modal">
+        <div class="modal-dialog modal-lg modal-custom-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="q-im-addedit-title">Add Input Mapping</h4><button type="button"
+                        class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body table-bordered modal-custom-body">
+                    <form id="input-mapping-form" class="general-form">
+                        <div class="form-group">
+                            <div id="im-mappingname-inputgroup" class="field inputgroup"><input class="form-control"
+                                    type="text" placeholder=" " required="" id="im-mappingname-input"
+                                    name="im-ordinal-input"><label class="mb-0" for="im-mappingname-input">Mapping Name
+                                    *</label></div>
+                        </div>
+                        <div class="form-group form-inline">
+                            <div class="form-group"><label>Parameter Type</label><select class="form-control"
+                                    required="" id="q-im-paramtype-select" name="q-im-paramtype-select">
+                                    <option value="SCALAR" selected="">Scalar</option>
+                                    <option value="ARRAY">Array</option>
+                                </select></div>
+                        </div>
+                        <div class="form-group form-inline">
+                            <div class="form-group"><label>SQL Type</label><select class="form-control" required=""
+                                    id="q-im-sqltype-select" name="q-im-sqltype-select">
+                                    <option value="STRING" selected="">String</option>
+                                    <option value="INTEGER">Integer</option>
+                                    <option value="REAL">Real</option>
+                                    <option value="DOUBLE">Double</option>
+                                    <option value="NUMERIC">Numeric</option>
+                                    <option value="TINYINT">TINYINT</option>
+                                    <option value="SMALLINT">SMALLINT</option>
+                                    <option value="BIGINT">BIGINT</option>
+                                    <option value="DATE">DATE</option>
+                                    <option value="TIME">TIME</option>
+                                    <option value="TIMESTAMP">TIMESTAMP</option>
+                                    <option value="BIT">BIT</option>
+                                    <option value="ORACLE_REF_CURSOR">ORACLE REF CURSOR</option>
+                                    <option value="BINARY">BINARY</option>
+                                    <option value="BLOB">BLOB</option>
+                                    <option value="CLOB">CLOB</option>
+                                    <option value="STRUCT">STRUCT</option>
+                                    <option value="ARRAY">ARRAY</option>
+                                    <option value="UUID">UUID</option>
+                                    <option value="VARINT">VARINT</option>
+                                    <option value="INETADDRESS">INETADDRESS</option>
+                                    <option value="QUERYSTRING">QUERY_STRING</option>
+                                </select></div>
+                        </div>
+                        <div class="form-group">
+                            <div id="im-defaultvalue-inputgroup" class="field inputgroup"><input class="form-control"
+                                    type="text" placeholder=" " id="im-defaultvalue-input"
+                                    name="im-defaultvalue-input"><label class="mb-0" for="im-defaultvalue-input">Default
+                                    Value</label></div>
+                        </div>
+                        <div class="form-group form-inline">
+                            <div class="form-group"><label>IN/OUT Type</label><select class="form-control" required=""
+                                    id="q-im-inout-select" name="q-im-inout-select">
+                                    <option value="IN" selected="">IN</option>
+                                    <option value="OUT">OUT</option>
+                                    <option value="IN-OUT">INOUT</option>
+                                </select></div>
+                        </div>
+                        <div class="form-group">
+                            <div id="im-ordinal-inputgroup" class="field inputgroup"><input class="form-control"
+                                    type="text" placeholder=" " id="im-ordinal-input" name="im-ordinal-input"><label
+                                    class="mb-0" for="im-ordinal-input">Ordinal</label></div>
+                        </div>
+                    </form>
+                    <div id="validators" class="collapse-custom"><a class="btn btn-primary btn-collapse-header"
+                            data-toggle="collapse" aria-expanded="false" aria-controls="validators-collapse"
+                            role="button" href="#validators-collapse">Validators</a>
+                        <div class="collapse table-bordered" id="validators-collapse">
+                            <div class="table-responsive" id="q-im-validators-table">
+                                <table class="table table-hover table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Validator</th>
+                                            <th>Validation</th>
+                                            <th class="text-center"><i class="fa fa-cog"></i></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                            <div class="text-right"><button class="btn btn-primary btn-sm" type="button"
+                                    id="q-im-validators-add-btn">Add New</button></div>
+                            <div class="bg-light border rounded-0 border-dark" id="q-im-addedit-validator-section"
+                                style="padding: 10px;margin-top: 10px; display:none;">
+                                <h5 class="modal-title" id="q-im-addedit-validator-section-header"
+                                    style="margin-bottom: 10px;">Add Validator</h5>
+                                <form id="q-im-validators-form" class="general-form">
+                                    <div class="form-group form-inline">
+                                        <div class="form-group"><label>Validator Type</label><select
+                                                class="form-control" id="q-im-validator-select"
+                                                name="q-im-validator-select">
+                                                <option value="default" selected="">-- Select Validator Type --</option>
+                                                <option value="validateLongRange">Long Range Validator</option>
+                                                <option value="validateDoubleRange">Double Range Validator</option>
+                                                <option value="validateLength">Length Validator</option>
+                                                <option value="validatePattern">Pattern Validator</option>
+                                            </select></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div id="im-val-maxvalue-inputgroup" class="field inputgroup"><input
+                                                class="form-control" type="text" placeholder=" "
+                                                id="im-val-maxvalue-input" name="im-val-maxvalue-input"><label
+                                                class="mb-0" for="im-val-maxvalue-input">Maximum Value*</label></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div id="im-val-minvalue-inputgroup" class="field inputgroup"><input
+                                                class="form-control" type="text" placeholder=" "
+                                                id="im-val-minvalue-input" name="im-val-minvalue-input"><label
+                                                class="mb-0" for="im-val-minvalue-input">Minimum Value*</label></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div id="im-val-pattern-inputgroup" class="field inputgroup"><input
+                                                class="form-control" type="text" placeholder=" "
+                                                id="im-val-pattern-input" name="im-val-pattern-input"><label
+                                                class="mb-0" for="im-val-pattern-input">Pattern*</label></div>
+                                    </div>
+                                </form>
+                                <div class="modal-footer justify-content-between">
+                                    <button class="btn btn-light ml-auto" type="button"
+                                        id="validator-close-btn">Close</button><button class="btn btn-primary"
+                                        type="submit" form="q-im-validators-form" id="q-im-validators-save-btn"
+                                        name="q-im-validators-save-btn">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <div id="q-im-notification-alert-holder" class="alert mr-auto"></div><button class="btn btn-light"
+                        type="button" data-dismiss="modal">Close</button><button class="btn btn-primary" type="submit"
+                        id="input-mapping-save-btn" name="input-mapping-save-btn"
+                        form="input-mapping-form">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="q-output-mapping-modal">
+        <div class="modal-dialog modal-lg modal-custom-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="output-mapping-modal-header">Add Output Mapping</h4><button
+                        type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body table-bordered modal-custom-body">
+                    <form id="output-mapping-form" class="general-form">
+                        <div class="form-group form-inline">
+                            <div class="form-group"><label>Mapping Type *</label><select class="form-control"
+                                    required="" id="q-om-addedit-mappingtype-select"
+                                    name="q-om-addedit-mappingtype-select">
+                                    <option value="element" selected="">Element</option>
+                                    <option value="attribute">Attribute</option>
+                                    <option value="query">Query</option>
+                                    <option value="complex-element">Complex Element</option>
+                                </select></div>
+                        </div>
+                        <div class="form-group form-inline" id="q-om-addedit-dsmapping-select-inputgroup">
+                            <div class="form-group"><label>Datasource Type *</label><select class="form-control"
+                                    required="" id="q-om-addedit-dsmapping-select" name="q-om-addedit-dsmapping-select">
+                                    <option value="column" selected="">Column</option>
+                                    <option value="query-param">Query Param</option>
+                                </select></div>
+                        </div>
+                        <div class="form-group" id="q-om-addedit-outputfn-inputgroup">
+                            <div class="field inputgroup"><input class="form-control" type="text" placeholder=" "
+                                    id="q-om-addedit-outputfn-input" name="q-om-addedit-outputfn-input"><label
+                                    class="mb-0" for="q-om-addedit-outputfn-input">Output Field Name</label></div>
+                        </div>
+                        <div class="form-group" id="q-om-addedit-elename-inputgroup">
+                            <div class="field inputgroup"><input class="form-control" type="text" placeholder=" "
+                                    id="q-om-addedit-elename-input" name="q-om-addedit-elename-input"><label
+                                    class="mb-0" for="q-om-addedit-elename-input">Element Name</label></div>
+                        </div>
+                        <div class="form-group" id="q-om-addedit-elens-inputgroup">
+                            <div class="field inputgroup"><input class="form-control" type="text" placeholder=" "
+                                    id="q-om-addedit-elens-input" name="q-om-addedit-elens-input"><label class="mb-0"
+                                    for="q-om-addedit-elens-input">Element Namespace</label></div>
+                        </div>
+                        <div class="form-group" id="q-om-addedit-dscolname-inputgroup">
+                            <div class="field inputgroup"><input class="form-control" type="text" placeholder=" "
+                                    id="q-om-addedit-dscolname-input" name="q-om-addedit-dscolname-input"><label
+                                    class="mb-0" for="q-om-addedit-dscolname-input">Datasource Column Name</label></div>
+                        </div>
+                        <div class="form-group" id="q-om-addedit-qparamname-inputgroup">
+                            <div class="field inputgroup"><input class="form-control" type="text" placeholder=" "
+                                    id="q-om-addedit-qparamname-input" name="q-om-addedit-qparamname-input"><label
+                                    class="mb-0" for="q-om-addedit-qparamname-input">Datasource Query Param Name</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" id="q-om-addedit-paramtype-inputgroup">
+                            <div class="form-group"><label>Parameter Type</label><select class="form-control"
+                                    required="" id="q-om-addedit-paramtype-select" name="q-om-addedit-paramtype-select">
+                                    <option value="scalar" selected="">Scalar</option>
+                                    <option value="array">Array</option>
+                                </select></div>
+                        </div>
+                        <div class="form-group" id="q-om-addedit-arrayname-inputgroup">
+                            <div class="field inputgroup"><input class="form-control" type="text" placeholder=" "
+                                    id="q-om-addedit-arrayname-input" name="q-om-addedit-arrayname-input"><label
+                                    class="mb-0" for="q-om-addedit-arrayname-input">Array Name</label></div>
+                        </div>
+                        <div class="form-group form-inline" id="q-om-addedit-schematype-inputgroup">
+                            <div class="form-group"><label>Schema Type</label><select class="form-control" required=""
+                                    id="q-om-paramtype-select" name="q-om-paramtype-select">
+                                    <option value="string" selected="">string</option>
+                                    <option value="integer">integer</option>
+                                    <option value="boolean">boolean</option>
+                                    <option value="float">float</option>
+                                    <option value="double">double</option>
+                                    <option value="decimal">decimal</option>
+                                    <option value="datetime">dateTime</option>
+                                    <option value="time">time</option>
+                                    <option value="date">date</option>
+                                    <option value="long">long</option>
+                                    <option value="base64binary">base64Binary</option>
+                                </select></div>
+                        </div>
+                        <div class="form-group form-inline query-common-element" id="q-om-addedit-optional-inputgroup">
+                            <div class="form-check"><input class="form-check-input" type="checkbox"
+                                    id="q-om-addedit-optional-checkbox"><label class="form-check-label"
+                                    for="q-om-addedit-optional-checkbox">Optional</label></div>
+                        </div>
+                        <div id="q-om-addedit-export-inputgroup" class="collapse-custom"><a
+                                class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="false"
+                                aria-controls="q-export-option-collapse" role="button"
+                                href="#q-export-option-collapse">Export Options</a>
+                            <div class="collapse" id="q-export-option-collapse">
+                                <div class="form-group query-common-element">
+                                    <div id="q-export-name-inputgroup" class="field inputgroup"><input
+                                            class="form-control" type="text" placeholder=" " id="q-export-name-input"
+                                            name="q-export-name-input"
+                                            style="border: 0; border-bottom: 1px solid #E0E0E0;"><label class="mb-0"
+                                            for="q-export-name-input">Export Name</label></div>
+                                </div>
+                                <div class="form-group form-inline query-common-element">
+                                    <div class="form-group"><label>Export Type</label><select class="form-control"
+                                            required="" id="q-export-type-select" style="margin-left: 10px;">
+                                            <option value="scalar" selected="">Scalar</option>
+                                            <option value="array">Array</option>
+                                        </select></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" id="q-om-addedit-selectquery-inputgroup">
+                            <div class="form-group"><label>Select Query *</label><select class="form-control"
+                                    required="" id="q-om-addedit-query-select" name="q-om-addedit-query-select">
+                                    <option value="">-- Select Query --</option>
+                                </select></div>
+                        </div>
+                        <div class="table-responsive" id="q-om-query-entries-tbl">
+                            <table class="table table-hover table-sm" id="q-om-query-table">
+                                <thead>
+                                    <tr>
+                                        <th>Query Parameter Name</th>
+                                        <th>Mapping Name</th>
+                                        <th>Mapping Type</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Query_Parameter_Placeholder</td>
+                                        <td><input class="form-control" type="text"
+                                                placeholder="Mapping_Name_Placeholder" style="width: 100%;"></td>
+                                        <td><select class="form-control" required="" id="q-om-mapping-type-select"
+                                                style="margin-left: 10px;">
+                                                <option value="column" selected="">Column</option>
+                                                <option value="query-param">Query Param</option>
+                                            </select></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="form-group query-common-element" id="q-om-complex-child-inputgroup">
+                            <div class="field inputgroup"><textarea class="form-control" rows="2"
+                                    id="om-complex-child-input"></textarea><label class="mb-0">Child Elements</label>
+                            </div>
+                        </div>
+                        <div class="collapse-custom" id="q-om-roles-entries-tbl"><a
+                                class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="false"
+                                aria-controls="q-roles-table" role="button" href="#q-roles-table">Allowed User Roles</a>
+                            <div class="collapse" id="q-roles-table">
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>User Role</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>admin</td>
+                                                <td><input class="form-check-input" type="checkbox"
+                                                        id="role-admin-checkbox" name="role-admin-checkbox"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Internal/everyone</td>
+                                                <td><input class="form-check-input" type="checkbox"
+                                                        id="role-int-checkbox" name="role-int-checkbox"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <div id="q-om-notification-alert-holder" class="alert mr-auto"></div><button class="btn btn-light"
+                        type="button" data-dismiss="modal">Close</button><button class="btn btn-primary" type="submit"
+                        id="input-mapping-modal-save" form="input-mapping-form">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="o-operation-addedit-modal">
+        <div class="modal-dialog modal-lg modal-custom-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Operation</h4><button type="button" class="close" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body table-bordered modal-custom-body">
+                    <form id="operation-form" class="general-form" name="operation-form">
+                        <div class="form-group">
+                            <div id="o-addedit-opname-inputgroup" class="field inputgroup"><input class="form-control"
+                                    type="text" required="" placeholder=" " id="o-addedit-opname-input"
+                                    name="o-addedit-opname-input"><label class="mb-0"
+                                    for="o-addedit-opname-input">Operation Name</label></div>
+                        </div>
+                        <div class="form-group query-common-element">
+                            <div id="o-addedit-description-inputgroup" class="field inputgroup"><textarea
+                                    class="form-control" rows="2" id="o-addedit-description-input"></textarea><label
+                                    class="mb-0" for="om-json-input">Description</label></div>
+                        </div>
+                        <div class="form-group form-inline">
+                            <div class="form-group"><label>Query ID</label><select class="form-control" required=""
+                                    id="o-addedit-queryid-select" name="o-addedit-queryid-select">
+                                    <option value="" selected="">-- Select Query --</option>
+                                </select></div>
+                        </div>
+                        <div class="collapse-custom" id="operation-query-param-area"><a
+                                class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="false"
+                                aria-controls="op-table" role="button" href="#op-table">Operation Parameters</a>
+                            <div class="collapse" id="op-table">
+                                <div class="table-responsive" id="operation-query-entries-table">
+                                    <table class="table table-hover table-sm" id="operation-param-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Query Parameter Name</th>
+                                                <th>Operation Parameter Name</th>
+                                                <th class="text-center"><i class="fa fa-cog"></i></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Q Param Name</td>
+                                                <td>O param Name</td>
+                                                <td class="text-center"><i class="fa fa-edit"></i><i
+                                                        class="fa fa-trash"></i></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="text-right"><button class="btn btn-primary btn-sm" type="button"
+                                        id="op-param-add-btn" data-toggle="modal">Add New</button></div>
+                            </div>
+                        </div>
+                        <div class="form-group form-inline query-common-element">
+                            <div class="form-check"><input class="form-check-input" type="checkbox"
+                                    id="o-addedit-enablestreaming-checkbox"><label class="form-check-label"
+                                    for="o-addedit-enablestreaming-checkbox">Enable Streaming</label></div>
+                        </div>
+                        <div class="form-group form-inline query-common-element" id="returnreqstatus-area">
+                            <div class="form-check"><input class="form-check-input" type="checkbox"
+                                    id="op-addedit-returnreqstatus-checkbox"><label class="form-check-label"
+                                    for="o-addedit-returnreqstatus-checkbox">Return Request Status</label></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <div id="operation-notification-alert-holder" class="alert mr-auto"></div><button
+                        class="btn btn-light ml-auto" type="button" id="operation-form-close-btn"
+                        data-dismiss="modal">Close</button><button class="btn btn-primary" type="submit"
+                        id="operation-form-save-btn" form="operation-form">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="r-resource-addedit-modal">
+        <div class="modal-dialog modal-lg modal-custom-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="resource-modal-header">Add Resource</h4><button type="button"
+                        class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body table-bordered modal-custom-body">
+                    <form id="resource-form" class="general-form">
+                        <div class="form-group">
+                            <div id="r-addedit-opname-inputgroup" class="field inputgroup"><input class="form-control"
+                                    type="text" placeholder=" " required="" id="r-addedit-opname-input"
+                                    name="r-addedit-opname-input"><label class="mb-0"
+                                    for="r-addedit-opname-input">Resource Path *</label></div>
+                        </div>
+                        <div class="form-group query-common-element">
+                            <div id="r-addedit-description-inputgroup" class="field inputgroup"><textarea
+                                    class="form-control" rows="2" id="r-addedit-description-input"></textarea><label
+                                    class="mb-0" for="om-json-input">Description</label></div>
+                        </div>
+                        <div class="form-group form-inline">
+                            <div class="form-group"><label>Resource Method *</label><select class="form-control"
+                                    required="" id="r-addedit-resourcemethod-select"
+                                    name="r-addedit-resourcemethod-select">
+                                    <option value="select" selected="">-- Select --</option>
+                                    <option value="GET">GET</option>
+                                    <option value="PUT">PUT</option>
+                                    <option value="POST">POST</option>
+                                    <option value="DELETE">DELETE</option>
+                                </select> <input type="hidden" id="r-addedit-resourcemethod-select-original"
+                                    name="r-addedit-resourcemethod-select-original" /></div>
+                        </div>
+                        <div class="form-group form-inline">
+                            <div class="form-group"><label>Query ID *</label><select class="form-control" required=""
+                                    id="r-addedit-queryid-select" name="r-addedit-queryid-select">
+                                    <option value="select" selected="">-- Select Query --</option>
+                                </select></div>
+                        </div>
+                        <div class="collapse-custom" id="operation-query-param-area"><a
+                                class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="true"
+                                aria-controls="op-table" role="button" href="#op-table">Query Parameters</a>
+                            <div class="collapse" id="op-table">
+                                <div class="table-responsive" id="operation-query-entries-table">
+                                    <table class="table table-hover table-sm" id="resource-param-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Query Parameter Name</th>
+                                                <th>Operation Parameter Name</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Q Param Name</td>
+                                                <td>O param Name</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-inline query-common-element">
+                            <div class="form-check"><input class="form-check-input" type="checkbox"
+                                    id="r-addedit-enablestreaming-checkbox"><label class="form-check-label"
+                                    for="o-addedit-enablestreaming-checkbox">Enable Streaming</label></div>
+                        </div>
+                        <div class="form-group form-inline query-common-element">
+                            <div class="form-check"><input class="form-check-input" type="checkbox"
+                                    id="r-addedit-returnreqstatus-checkbox"><label class="form-check-label"
+                                    for="o-addedit-returnreqstatus-checkbox">Return Request Status</label></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <div id="resource-notification-alert-holder" class="alert mr-auto"></div><button
+                        class="btn btn-light" type="button" data-dismiss="modal">Close</button><button
+                        class="btn btn-primary" type="submit" form="resource-form" name="resource-save-btn"
+                        id="resource-save-btn">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Generic notification modal -->
+    <div class="modal fade" id="alert-modal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="alert-modal-title">Modal Header</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p id="alert-modal-content">Content</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-light" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ul id="tlyPageGuide" data-tourtitle="Let us guide you through the editor">
+        <li class="tlypageguide_top" data-tourtarget="#ds-collapse">
+            <div>
+                When you create data services and resources using WSO2 Data Services Server, you have the flexibility of
+                service enabling data stored in various types of data storages. This is done by creating datasources for
+                each of the data storage types used by your data service.
+            </div>
+        </li>
+        <li class="tlypageguide_top" data-tourtarget="#queries">
+            <div>
+                Data service queries are created after creating a data source at the time a data service is created.
+                Through data service queries, you can define different ways of extracting data in the data sources and
+                presenting the results.
+            </div>
+        </li>
+        <li class="tlypageguide_top" data-tourtarget="#operations">
+            <div>
+                Data service operations are written to invoke queries. Therefore, defining operations is the 4th step in
+                the process of creating a data service.
+            </div>
+        </li>
+        <li class="tlypageguide_top" data-tourtarget="#resources">
+            <div>
+                The WSO2 Data Services feature supports exposing data as a set of REST style resources in addition to
+                the SOAP services.
+            </div>
+        </li>
+    </ul>
+
+    <!--    <div class="tlyPageGuideWelcome">-->
+    <!--        <p>Sample popup</p>-->
+    <!--        <p>-->
+    <!--            Page Guide:-->
+    <!--            <button class="tlypageguide_start">let's go</button>-->
+    <!--        </p>-->
+    <!--        <p>-->
+    <!--            Close modal:-->
+    <!--            <button class="tlypageguide_ignore">not now</button>-->
+    <!--        </p>-->
+    <!--        <p>-->
+    <!--            Close and never open again:-->
+    <!--            <button class="tlypageguide_dismiss">got it, thanks</button>-->
+    <!--        </p>-->
+    <!--    </div>-->
+
+    <!-- DS Delete confirmation Modal -->
+    <div id="ds-delete-confirm-modal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete data source</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Data Source will be deleted permenetly.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                    <button id="ds-delete-confirm-btn" type="button" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Query Delete confirmation Modal -->
+    <div id="q-delete-confirm-modal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete query</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Query will be deleted permenetly.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                    <button id="q-delete-confirm-btn" type="button" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Operation Delete confirmation Modal -->
+    <div id="o-delete-confirm-modal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete operation</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Operation will be deleted permenetly.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                    <button id="o-delete-confirm-btn" type="button" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Resource Delete confirmation Modal -->
+    <div id="r-delete-confirm-modal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete resource</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Resource will be deleted permenetly.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                    <button id="r-delete-confirm-btn" type="button" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Input query mapping delete confirmation Modal -->
+    <div id="q-im-delete-confirm-modal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete input query mapping</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Input query mapping will be deleted permenetly.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                    <button id="q-im-delete-confirm-btn" type="button" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Output query mapping delete confirmation Modal -->
+    <div id="q-om-delete-confirm-modal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete output query mapping</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Output query mapping will be deleted permenetly.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                    <button id="q-om-delete-confirm-btn" type="button" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Transport setting authorization config delete confirmation Modal -->
+    <div id="transport-auth-param-delete-confirm-modal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete authorization parameter</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Authorization parameter will be deleted permenetly.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                    <button id="transport-auth-param-delete-confirm-btn" type="button"
+                        class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Query input mapping validator delete confirmation Modal -->
+    <div id="q-input-mapping-validator-delete-confirm-modal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete query input mapping</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p> Query input mapping will be deleted permenetly.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                    <button id="q-input-mapping-validator-delete-confirm-btn" type="button"
+                        class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Operation Parameters validator delete confirmation Modal -->
+    <div id="operation-parameters-validator-delete-confirm-modal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete operation parameter</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Operation Parameter will be deleted permenetly.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                    <button id="operation-parameters-validator-delete-confirm-btn" type="button"
+                        class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dynamic auth user mapping validator delete confirmation Modal -->
+    <div id="ds-dynamic-auth-usermapping-validator-delete-confirm-modal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete Authenticaition Data</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Authenticaition Data will be deleted permenetly.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                    <button id="ds-dynamic-auth-usermapping-validator-delete-confirm-btn" type="button"
+                        class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data source external property validator delete confirmation Modal -->
+    <div id="ds-ext-properties-table-validator-delete-confirm-modal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete Property</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Property will be deleted permenetly.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                    <button id="ds-ext-properties-table-validator-delete-confirm-btn" type="button"
+                        class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/pageguide.min.js"></script>
+    <script src="assets/js/datasources-util.js"></script>
+    <script src="assets/js/query-util.js"></script>
+    <script src="assets/js/constants.js"></script>
+    <script src="assets/js/data-handler.js"></script>
+    <script src="assets/js/domutils.js"></script>
+    <script src="assets/js/ds-validation.js"></script>
+    <script src="assets/js/table-functions.js"></script>
+    <script src="assets/js/operation-validation.js"></script>
+    <script src="assets/js/q-output-mapping-validation.js"></script>
+    <script src="assets/js/query-validation.js"></script>
+    <script src="assets/js/advanced-validation.js"></script>
+    <script src="assets/js/q-advanced-validation.js"></script>
+</body>
+
+</html>

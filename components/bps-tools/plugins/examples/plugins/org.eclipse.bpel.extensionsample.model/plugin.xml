@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id: plugin.xml,v 1.1 2008/09/15 15:44:28 smoser Exp $
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://eclipse.org/bpel/extensionsample"
+            class="org.eclipse.bpel.extensionsample.model.ModelPackage"
+            genModel="model/extensionsample.genmodel"/>
+   </extension>
+
+</plugin>

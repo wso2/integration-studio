@@ -1,0 +1,448 @@
+<problems count="21">
+ <sa-cases>0,7,16,77,78,79,80,83,88,91,92,1004,0</sa-cases>
+ <problem>
+  <address.model>//@faultHandlers</address.model>
+  <address.xpath>/bpws:process/bpws:faultHandlers</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.FaultHandlersValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1347</charEnd>
+  <charStart>1329</charStart>
+  <columnNumber>2</columnNumber>
+  <fixMessage>You need to add node "catch", "catchAll" to node &lt;bpws:faultHandlers&gt;.</fixMessage>
+  <lineNumber>37</lineNumber>
+  <location>faultHandlers</location>
+  <message>Node &lt;bpws:faultHandlers&gt; must have "catch", "catchAll" node present.</message>
+  <message.args>["bpws:faultHandlers",0,null,0]</message.args>
+  <message.id>BPELC__AT_LEAST_ONE</message.id>
+  <node>&lt;bpws:faultHandlers&gt;</node>
+  <ruleDescription>At least one catch or catchAll must be present in fault handlers.</ruleDescription>
+  <ruleName>FaultHandlersValidator.CheckHandlerCount.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>80</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@eventHandlers</address.model>
+  <address.xpath>/bpws:process/bpws:eventHandlers</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.EventHandlersValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1371</charEnd>
+  <charStart>1353</charStart>
+  <columnNumber>2</columnNumber>
+  <fixMessage>You need to add node "onAlarm", "onEvent" to node &lt;bpws:eventHandlers&gt;.</fixMessage>
+  <lineNumber>38</lineNumber>
+  <location>eventHandlers</location>
+  <message>Node &lt;bpws:eventHandlers&gt; must have "onAlarm", "onEvent" node present.</message>
+  <message.args>["bpws:eventHandlers",0,null,0]</message.args>
+  <message.id>BPELC__AT_LEAST_ONE</message.id>
+  <node>&lt;bpws:eventHandlers&gt;</node>
+  <ruleDescription>At least one onAlarm or onEvent must be present in event handlers.</ruleDescription>
+  <ruleName>EventHandlersValidator.CheckHandlerCount.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>83</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.xpath>/bpws:process/bpws:terminationHandler/bpws:scope/bpws:sequence/bpws:compensateScope[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.CompensateScopeValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1471</charEnd>
+  <charStart>1451</charStart>
+  <columnNumber>7</columnNumber>
+  <context.name>target</context.name>
+  <fixMessage>Make sure that the attribute "target" is specified.</fixMessage>
+  <lineNumber>43</lineNumber>
+  <location>compensateScope</location>
+  <message>Attribute "target" is not set on this &lt;bpws:compensateScope&gt; node.</message>
+  <message.args>["bpws:compensateScope",null,0]</message.args>
+  <message.id>BPELC__UNSET_ATTRIBUTE</message.id>
+  <node>&lt;bpws:compensateScope&gt;</node>
+  <ruleDescription>Check target scope NCName</ruleDescription>
+  <ruleName>CompensateScopeValidator.CheckTargetScopeNCName.15</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>1004</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.xpath>/bpws:process/bpws:compensationHandler/bpws:scope</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ScopeValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1650</charEnd>
+  <charStart>1640</charStart>
+  <columnNumber>5</columnNumber>
+  <fixMessage>Remove &lt;bpws:compensationHandler&gt; from the scope "foo_x".</fixMessage>
+  <lineNumber>50</lineNumber>
+  <location>scope</location>
+  <message>Scope "foo_x" cannot have a &lt;bpws:compensationHandler&gt; because because it is itself inside an FCT-hander.</message>
+  <message.args>["bpws:scope","foo_x","bpws:compensationHandler"]</message.args>
+  <message.id>BPELC_SCOPE__COMPENSATION_HANDLER</message.id>
+  <node>&lt;bpws:scope "foo_x"&gt;</node>
+  <ruleDescription>Root scope inside an FCT-handler MUST not have a compensation handler</ruleDescription>
+  <ruleName>ScopeValidator.CheckRootFCTScope.25</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>79</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.xpath>/bpws:process/bpws:compensationHandler/bpws:scope/bpws:sequence/bpws:compensateScope[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.CompensateScopeValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1808</charEnd>
+  <charStart>1788</charStart>
+  <columnNumber>7</columnNumber>
+  <context.name>target</context.name>
+  <fixMessage>Make sure that the attribute "target" is specified.</fixMessage>
+  <lineNumber>55</lineNumber>
+  <location>compensateScope</location>
+  <message>Attribute "target" is not set on this &lt;bpws:compensateScope&gt; node.</message>
+  <message.args>["bpws:compensateScope",null,0]</message.args>
+  <message.id>BPELC__UNSET_ATTRIBUTE</message.id>
+  <node>&lt;bpws:compensateScope&gt;</node>
+  <ruleDescription>Check target scope NCName</ruleDescription>
+  <ruleName>CompensateScopeValidator.CheckTargetScopeNCName.15</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>1004</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.1</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:compensateScope</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.CompensateScopeValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2179</charEnd>
+  <charStart>2159</charStart>
+  <columnNumber>9</columnNumber>
+  <context.name>name</context.name>
+  <fixMessage>Set the "name" attribute to a valid NCName.</fixMessage>
+  <lineNumber>69</lineNumber>
+  <location>compensateScope</location>
+  <message>The "name" attribute of this &lt;bpws:compensateScope&gt; is set to "try this" - it is not a valid NCName.</message>
+  <message.args>["name","bpws:compensateScope","try this"]</message.args>
+  <message.id>General.NCName_Bad</message.id>
+  <node>&lt;bpws:compensateScope "try this"&gt;</node>
+  <ruleDescription>Check the name of the activity which must be valid NCName</ruleDescription>
+  <ruleName>CActivityValidator.CheckName.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>0</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.1</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:compensateScope</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.CompensateScopeValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2179</charEnd>
+  <charStart>2159</charStart>
+  <columnNumber>9</columnNumber>
+  <fixMessage>You need to move this &lt;bpws:compensateScope&gt; activity to fault, compensate, or termination handlers.</fixMessage>
+  <lineNumber>69</lineNumber>
+  <location>compensateScope</location>
+  <message>The &lt;bpws:compensateScope&gt; activity named "try this" must be in a fault, compensate, or termination handlers.</message>
+  <message.args>["bpws:compensateScope","try this"]</message.args>
+  <message.id>BPELC_COMPENSATE__NOT_IN_HANDLER</message.id>
+  <node>&lt;bpws:compensateScope "try this"&gt;</node>
+  <ruleDescription>Check compensateScope placement.</ruleDescription>
+  <ruleName>CompensateScopeValidator.CheckPlacement.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>7</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.1</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:compensateScope</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.CompensateScopeValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2179</charEnd>
+  <charStart>2159</charStart>
+  <columnNumber>9</columnNumber>
+  <context.name>target</context.name>
+  <fixMessage>Make sure that the attribute "target" is specified.</fixMessage>
+  <lineNumber>69</lineNumber>
+  <location>compensateScope</location>
+  <message>Attribute "target" is not set on this &lt;bpws:compensateScope&gt; node.</message>
+  <message.args>["bpws:compensateScope",null,0]</message.args>
+  <message.id>BPELC__UNSET_ATTRIBUTE</message.id>
+  <node>&lt;bpws:compensateScope "try this"&gt;</node>
+  <ruleDescription>Check target scope NCName</ruleDescription>
+  <ruleName>CompensateScopeValidator.CheckTargetScopeNCName.15</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>1004</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@faultHandlers/@catchAll/@activity/@activities.0</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope[1]/bpws:faultHandlers/bpws:catchAll/bpws:sequence/bpws:compensateScope[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.CompensateScopeValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2357</charEnd>
+  <charStart>2337</charStart>
+  <columnNumber>16</columnNumber>
+  <context.name>target</context.name>
+  <fixMessage>Make sure that the attribute "target" is specified.</fixMessage>
+  <lineNumber>75</lineNumber>
+  <location>compensateScope</location>
+  <message>Attribute "target" is not set on this &lt;bpws:compensateScope&gt; node.</message>
+  <message.args>["bpws:compensateScope",null,0]</message.args>
+  <message.id>BPELC__UNSET_ATTRIBUTE</message.id>
+  <node>&lt;bpws:compensateScope&gt;</node>
+  <ruleDescription>Check target scope NCName</ruleDescription>
+  <ruleName>CompensateScopeValidator.CheckTargetScopeNCName.15</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>1004</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@faultHandlers/@catchAll/@activity/@activities.1</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope[1]/bpws:faultHandlers/bpws:catchAll/bpws:sequence/bpws:compensateScope[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.CompensateScopeValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2397</charEnd>
+  <charStart>2377</charStart>
+  <columnNumber>16</columnNumber>
+  <context.name>target</context.name>
+  <fixMessage>Set the "target" attribute to a valid NCName.</fixMessage>
+  <lineNumber>76</lineNumber>
+  <location>compensateScope</location>
+  <message>The "target" attribute of this &lt;bpws:compensateScope&gt; is set to "target S" - it is not a valid NCName.</message>
+  <message.args>["target","bpws:compensateScope","target S"]</message.args>
+  <message.id>General.NCName_Bad</message.id>
+  <node>&lt;bpws:compensateScope&gt;</node>
+  <ruleDescription>Check target scope NCName</ruleDescription>
+  <ruleName>CompensateScopeValidator.CheckTargetScopeNCName.15</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>1004</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@faultHandlers/@catchAll/@activity/@activities.2</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope[1]/bpws:faultHandlers/bpws:catchAll/bpws:sequence/bpws:compensateScope[3]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.CompensateScopeValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2458</charEnd>
+  <charStart>2438</charStart>
+  <columnNumber>19</columnNumber>
+  <fixMessage>Change target scope name "targetBad" or create a new target scope.</fixMessage>
+  <lineNumber>77</lineNumber>
+  <location>compensateScope</location>
+  <message>Target scope "targetBad" does not exist.</message>
+  <message.args>["bpws:compensateScope",null,"targetBad"]</message.args>
+  <message.id>BPELC_COMPENSATE_SCOPE__NO_TARGET</message.id>
+  <node>&lt;bpws:compensateScope&gt;</node>
+  <ruleDescription>Make sure that the target scope exists</ruleDescription>
+  <ruleName>CompensateScopeValidator.CheckTargetScope.25</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>77</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@faultHandlers/@catchAll/@activity/@activities.3</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope[1]/bpws:faultHandlers/bpws:catchAll/bpws:sequence/bpws:compensateScope[4]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.CompensateScopeValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2517</charEnd>
+  <charStart>2497</charStart>
+  <columnNumber>16</columnNumber>
+  <fixMessage>Add a compensationHandler or a faultHandler to the target bpws:scope.</fixMessage>
+  <lineNumber>78</lineNumber>
+  <location>compensateScope</location>
+  <message>Target bpws:scope "targetS" must have a compensationHandler or a faultHandler.</message>
+  <message.args>["bpws:compensateScope",null,"targetS","bpws:scope"]</message.args>
+  <message.id>BPELC_COMPENSATE_SCOPE__TARGET_NO_HANDLERS</message.id>
+  <node>&lt;bpws:compensateScope&gt;</node>
+  <ruleDescription>Target of compenateScope must have a fault or compensation handler</ruleDescription>
+  <ruleName>CompensateScopeValidator.CheckTargetScopeHandlers.27</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>78</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.3/@eventHandlers/@events.0/@activity/@partnerLinks/@children.0</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope[2]/bpws:eventHandlers/bpws:onEvent[1]/bpws:scope/bpws:partnerLinks/bpws:partnerLink</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.PartnerLinkValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3097</charEnd>
+  <charStart>3081</charStart>
+  <columnNumber>17</columnNumber>
+  <context.name>partnerLinkType</context.name>
+  <fixMessage>Make sure that the attribute "partnerLinkType" is specified.</fixMessage>
+  <lineNumber>100</lineNumber>
+  <location>partnerLink</location>
+  <message>Attribute "partnerLinkType" is not set on this &lt;bpws:partnerLink&gt; node.</message>
+  <message.args>["bpws:partnerLink","partnerLinkType",0]</message.args>
+  <message.id>BPELC__UNSET_ATTRIBUTE</message.id>
+  <node>&lt;bpws:partnerLink "onEventPL"&gt;</node>
+  <ruleName>PartnerLinkValidator.CheckPartnerLinkType.2</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.3/@eventHandlers/@events.0/@activity/@partnerLinks/@children.0</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope[2]/bpws:eventHandlers/bpws:onEvent[1]/bpws:scope/bpws:partnerLinks/bpws:partnerLink</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.PartnerLinkValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3097</charEnd>
+  <charStart>3081</charStart>
+  <columnNumber>17</columnNumber>
+  <fixMessage>You must specify either "myRole" or "partnerRole" for the &lt;{http://docs.oasis-open.org/wsbpel/2.0/process/executable}partnerLink&gt; "onEventPL"</fixMessage>
+  <lineNumber>100</lineNumber>
+  <location>partnerLink</location>
+  <message>{http://docs.oasis-open.org/wsbpel/2.0/process/executable}partnerLink "onEventPL" must have "myRole" and/or "partnerRole" set.</message>
+  <message.args>[null,"onEventPL",null,null]</message.args>
+  <message.id>BPELC_PARTNER_LINK__NO_ROLES_SET</message.id>
+  <node>&lt;bpws:partnerLink "onEventPL"&gt;</node>
+  <ruleDescription>myRole or partnerRole (or both) must be set</ruleDescription>
+  <ruleName>PartnerLinkValidator.CheckForUndefinedPartnerLinkRoles.4</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>16</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.3/@eventHandlers/@events.5/@correlations/@children.0</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope[2]/bpws:eventHandlers/bpws:onEvent[6]/bpws:correlations/bpws:correlation</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.CorrelationValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>4959</charEnd>
+  <charStart>4943</charStart>
+  <columnNumber>14</columnNumber>
+  <context.name>set</context.name>
+  <fixMessage>Make sure that value "set1" is resolvable (check imports, value of "set").</fixMessage>
+  <lineNumber>155</lineNumber>
+  <location>correlation</location>
+  <message>"set" is set to "set1" on this &lt;bpws:correlation&gt;  but it cannot be resolved (check value of "set", imports, WSDLs or XSDs).</message>
+  <message.args>["bpws:correlation","set",0,"set1"]</message.args>
+  <message.id>BPELC__UNRESOLVED_ATTRIBUTE</message.id>
+  <node>&lt;bpws:correlation&gt;</node>
+  <ruleDescription>Correlation set lookup, first associated scope, then ancestor scopes</ruleDescription>
+  <ruleName>CorrelationValidator.ExistCorrelationSet.13</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>88</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.4</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope[3]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ScopeValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>5327</charEnd>
+  <charStart>5317</charStart>
+  <columnNumber>3</columnNumber>
+  <context.name>isolated</context.name>
+  <fixMessage>Make sure that "isolated" is set to one of the values from "no", "yes"</fixMessage>
+  <lineNumber>175</lineNumber>
+  <location>scope</location>
+  <message>"isolated" is set to "nope" on this &lt;bpws:scope&gt; activity but it can only be set to "no", "yes"</message>
+  <message.args>["bpws:scope","isolated","nope","\"no\", \"yes\"",1]</message.args>
+  <message.id>BPELC__INVALID_ATTRIBUTE_VALUE</message.id>
+  <node>&lt;bpws:scope "foo_scope"&gt;</node>
+  <ruleDescription>Check isolated attribute setting on scope</ruleDescription>
+  <ruleName>ScopeValidator.CheckIsolatedAttribute.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>0</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.4</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope[3]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ScopeValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>5327</charEnd>
+  <charStart>5317</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Choose unique name for bpws:scope "foo_scope"</fixMessage>
+  <lineNumber>175</lineNumber>
+  <location>scope</location>
+  <message>Immediately enclosed bpws:scope "foo_scope" must have a unique name within the outer scope "T5".</message>
+  <message.args>["bpws:scope","foo_scope","bpws:process","T5"]</message.args>
+  <message.id>BPELC_SCOPE__UNIQUE_NAME</message.id>
+  <node>&lt;bpws:scope "foo_scope"&gt;</node>
+  <ruleDescription>Within a scope all immediately enclosed scopes must have unique name</ruleDescription>
+  <ruleName>ScopeValidator.CheckUniqueScopeNames.20</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>92</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.5</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope[4]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ScopeValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>5480</charEnd>
+  <charStart>5470</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Choose unique name for bpws:scope "foo_scope"</fixMessage>
+  <lineNumber>182</lineNumber>
+  <location>scope</location>
+  <message>Immediately enclosed bpws:scope "foo_scope" must have a unique name within the outer scope "T5".</message>
+  <message.args>["bpws:scope","foo_scope","bpws:process","T5"]</message.args>
+  <message.id>BPELC_SCOPE__UNIQUE_NAME</message.id>
+  <node>&lt;bpws:scope "foo_scope"&gt;</node>
+  <ruleDescription>Within a scope all immediately enclosed scopes must have unique name</ruleDescription>
+  <ruleName>ScopeValidator.CheckUniqueScopeNames.20</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>92</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.5/@activity/@activities.1</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope[4]/bpws:sequence/bpws:scope[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ScopeValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>6542</charEnd>
+  <charStart>6532</charStart>
+  <columnNumber>10</columnNumber>
+  <fixMessage>Remove this isolated scope "bar_scope".</fixMessage>
+  <lineNumber>216</lineNumber>
+  <location>scope</location>
+  <message>Isolated scope "bar_scope" cannot exist within another isolated scope (scope "foo_scope").</message>
+  <message.args>["bpws:scope","bar_scope","bpws:scope","foo_scope"]</message.args>
+  <message.id>BPELC_SCOPE__ISOLATED</message.id>
+  <node>&lt;bpws:scope "bar_scope"&gt;</node>
+  <ruleDescription>Isolated scopes may not contain other isolated scopes</ruleDescription>
+  <ruleName>ScopeValidator.CheckNoIsolatedScopeDescendants.20</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>91</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.5/@activity/@activities.2</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope[4]/bpws:sequence/bpws:scope[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ScopeValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>6725</charEnd>
+  <charStart>6715</charStart>
+  <columnNumber>10</columnNumber>
+  <fixMessage>Remove this isolated scope "bar_scope".</fixMessage>
+  <lineNumber>222</lineNumber>
+  <location>scope</location>
+  <message>Isolated scope "bar_scope" cannot exist within another isolated scope (scope "foo_scope").</message>
+  <message.args>["bpws:scope","bar_scope","bpws:scope","foo_scope"]</message.args>
+  <message.id>BPELC_SCOPE__ISOLATED</message.id>
+  <node>&lt;bpws:scope "bar_scope"&gt;</node>
+  <ruleDescription>Isolated scopes may not contain other isolated scopes</ruleDescription>
+  <ruleName>ScopeValidator.CheckNoIsolatedScopeDescendants.20</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>91</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.5/@activity/@activities.2</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope[4]/bpws:sequence/bpws:scope[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ScopeValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>6725</charEnd>
+  <charStart>6715</charStart>
+  <columnNumber>10</columnNumber>
+  <fixMessage>Choose unique name for bpws:scope "bar_scope"</fixMessage>
+  <lineNumber>222</lineNumber>
+  <location>scope</location>
+  <message>Immediately enclosed bpws:scope "bar_scope" must have a unique name within the outer scope "foo_scope".</message>
+  <message.args>["bpws:scope","bar_scope","bpws:scope","foo_scope"]</message.args>
+  <message.id>BPELC_SCOPE__UNIQUE_NAME</message.id>
+  <node>&lt;bpws:scope "bar_scope"&gt;</node>
+  <ruleDescription>Within a scope all immediately enclosed scopes must have unique name</ruleDescription>
+  <ruleName>ScopeValidator.CheckUniqueScopeNames.20</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>92</staticAnalysisCode>
+ </problem>
+
+</problems>

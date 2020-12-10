@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <category-def name="org.wso2.integrationstudio.eclipse.esb.feature.category" label="WSO2 ESB Tools">
+      <description>
+	This is the ESB Server Feature for the Integration Studio. This provides tooling support for WSO2 ESB Artifact creation and deployment with Integration Studio.
+      </description>
+   </category-def>
+
+   <feature id="org.wso2.integrationstudio.eclipse.esb.feature" version="0.0.0">
+      <category name="org.wso2.integrationstudio.eclipse.esb.feature.category"/>
+   </feature>
+   <feature id="org.wso2.integrationstudio.eclipse.esb.editor.feature" version="0.0.0">
+      <category name="org.wso2.integrationstudio.eclipse.esb.feature.category"/>
+   </feature>
+   <feature id="org.wso2.integrationstudio.eclipse.esb.dependencies.feature" version="0.0.0">
+      <category name="org.wso2.integrationstudio.eclipse.esb.feature.category"/>
+   </feature>
+   <feature id="org.wso2.integrationstudio.eclipse.visualdatamapper.editor.feature" version="0.0.0">
+      <category name="org.wso2.integrationstudio.eclipse.esb.feature.category"/>
+   </feature>
+   <!--<feature id="org.wso2.integrationstudio.eclipse.smooks.editor.feature" version="0.0.0">
+      <category name="org.wso2.integrationstudio.eclipse.esb.feature.category"/>
+   </feature>-->
+   <feature id="org.wso2.integrationstudio.eclipse.apim.feature" version="0.0.0">
+      <category name="org.wso2.integrationstudio.eclipse.apim.feature.category"/>
+   </feature>
+   <feature id="org.wso2.integrationstudio.eclipse.apim.endpoint.central.feature" version="0.0.0">
+      <category name="org.wso2.integrationstudio.eclipse.esb.feature.category"/>
+   </feature>
+</site>

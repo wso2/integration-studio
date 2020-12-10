@@ -1,0 +1,3197 @@
+<problems count="153">
+ <sa-cases>0,10,23,27,28,30,32,33,34,37,38,39,40,41,43,44,45,46,50,51,52,53,54,55,56,57,58,59,62,1001,1015,2002,0</sa-cases>
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.0</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:receive[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ProcessValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2382</charEnd>
+  <charStart>2370</charStart>
+  <columnNumber>10</columnNumber>
+  <fixMessage>Remove the correlation from the start 3 activities or have them share at least one correlation.</fixMessage>
+  <lineNumber>66</lineNumber>
+  <location>receive</location>
+  <message>The 3 start activities must share at least one correlation.</message>
+  <message.args>[null,3]</message.args>
+  <message.id>BPELC_CORRELATION__COMMON</message.id>
+  <node>&lt;bpws:receive "receiveInput"&gt;</node>
+  <ruleDescription>Check common correlation sets on all the start activities</ruleDescription>
+  <ruleName>ProcessValidator.CheckCorrelationSetsOnStartActivities.2000</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>57</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.1</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:receive[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ProcessValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2847</charEnd>
+  <charStart>2835</charStart>
+  <columnNumber>8</columnNumber>
+  <fixMessage>Remove the correlation from the start 3 activities or have them share at least one correlation.</fixMessage>
+  <lineNumber>81</lineNumber>
+  <location>receive</location>
+  <message>The 3 start activities must share at least one correlation.</message>
+  <message.args>[null,3]</message.args>
+  <message.id>BPELC_CORRELATION__COMMON</message.id>
+  <node>&lt;bpws:receive "receiveInput"&gt;</node>
+  <ruleDescription>Check common correlation sets on all the start activities</ruleDescription>
+  <ruleName>ProcessValidator.CheckCorrelationSetsOnStartActivities.2000</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>57</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.2</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:pick</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ProcessValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3233</charEnd>
+  <charStart>3224</charStart>
+  <columnNumber>5</columnNumber>
+  <fixMessage>Remove the correlation from the start 3 activities or have them share at least one correlation.</fixMessage>
+  <lineNumber>95</lineNumber>
+  <location>pick</location>
+  <message>The 3 start activities must share at least one correlation.</message>
+  <message.args>[null,3]</message.args>
+  <message.id>BPELC_CORRELATION__COMMON</message.id>
+  <node>&lt;bpws:pick&gt;</node>
+  <ruleDescription>Check common correlation sets on all the start activities</ruleDescription>
+  <ruleName>ProcessValidator.CheckCorrelationSetsOnStartActivities.2000</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>57</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@correlationSets/@children.0</address.model>
+  <address.xpath>/bpws:process/bpws:correlationSets/bpws:correlationSet[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.CorrelationSetValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1889</charEnd>
+  <charStart>1870</charStart>
+  <columnNumber>8</columnNumber>
+  <fixMessage>Make sure that the attribute "properties" is specified.</fixMessage>
+  <lineNumber>50</lineNumber>
+  <location>correlationSet</location>
+  <message>Attribute "properties" is not set on this &lt;bpws:correlationSet&gt; node.</message>
+  <message.args>["bpws:correlationSet",null,0]</message.args>
+  <message.id>BPELC__UNSET_ATTRIBUTE</message.id>
+  <node>&lt;bpws:correlationSet "foobar"&gt;</node>
+  <ruleName>CorrelationSetValidator.CheckPropertiesAttribute.10</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@correlationSets/@children.1</address.model>
+  <address.xpath>/bpws:process/bpws:correlationSets/bpws:correlationSet[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.CorrelationSetValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1940</charEnd>
+  <charStart>1921</charStart>
+  <columnNumber>8</columnNumber>
+  <fixMessage>You must change the name of bpws:correlationSet "foobar" to something else.</fixMessage>
+  <lineNumber>51</lineNumber>
+  <location>correlationSet</location>
+  <message>&lt;bpws:correlationSet&gt; name "foobar" is already defined in this scope/process.</message>
+  <message.args>["bpws:correlationSets","bpws:correlationSet","foobar"]</message.args>
+  <message.id>BPELC_DUPLICATE_NAME</message.id>
+  <node>&lt;bpws:correlationSet "foobar"&gt;</node>
+  <ruleDescription>Check to see if the correlationSet is already specified</ruleDescription>
+  <ruleName>CorrelationSetValidator.CheckDuplicateCorrelationSet.2</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>44</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@correlationSets/@children.1</address.model>
+  <address.xpath>/bpws:process/bpws:correlationSets/bpws:correlationSet[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.CorrelationSetValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1940</charEnd>
+  <charStart>1921</charStart>
+  <columnNumber>8</columnNumber>
+  <fixMessage>Make sure that the attribute "properties" is specified.</fixMessage>
+  <lineNumber>51</lineNumber>
+  <location>correlationSet</location>
+  <message>Attribute "properties" is not set on this &lt;bpws:correlationSet&gt; node.</message>
+  <message.args>["bpws:correlationSet",null,0]</message.args>
+  <message.id>BPELC__UNSET_ATTRIBUTE</message.id>
+  <node>&lt;bpws:correlationSet "foobar"&gt;</node>
+  <ruleName>CorrelationSetValidator.CheckPropertiesAttribute.10</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@correlationSets/@children.2</address.model>
+  <address.xpath>/bpws:process/bpws:correlationSets/bpws:correlationSet[3]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.CorrelationSetValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1985</charEnd>
+  <charStart>1966</charStart>
+  <columnNumber>8</columnNumber>
+  <fixMessage>Make sure that value "tns:p2" is resolvable (check imports, value of "properties").</fixMessage>
+  <lineNumber>52</lineNumber>
+  <location>correlationSet</location>
+  <message>"properties" is set to "tns:p2" on this &lt;bpws:correlationSet&gt;  but it cannot be resolved (check value of "properties", imports, WSDLs or XSDs).</message>
+  <message.args>["bpws:correlationSet",null,0,"tns:p2"]</message.args>
+  <message.id>BPELC__UNRESOLVED_ATTRIBUTE</message.id>
+  <node>&lt;bpws:correlationSet "foobar2"&gt;</node>
+  <ruleDescription>Properties used in a &lt;correlationSet&gt; MUST be defined using  XML Schema simple types.</ruleDescription>
+  <ruleName>CorrelationSetValidator.CheckProperties.15</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>45</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.0/@condition</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:if/bpws:condition</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.Condition</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>2174</charEnd>
+  <charStart>2160</charStart>
+  <columnNumber>13</columnNumber>
+  <fixMessage>Check the type definition associated with the BPEL variable.</fixMessage>
+  <lineNumber>57</lineNumber>
+  <location>condition</location>
+  <message>The XPath segment "child::foo" cannot be resolved.</message>
+  <message.args>["child::foo"]</message.args>
+  <message.id>XPATH_NAME_STEP</message.id>
+  <node>&lt;bpws:condition&gt;</node>
+  <ruleDescription>Check the variable namespace prefix</ruleDescription>
+  <ruleName>XPathValidator.CheckVariable.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>0</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.0</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:receive[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ReceiveValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2382</charEnd>
+  <charStart>2370</charStart>
+  <columnNumber>10</columnNumber>
+  <fixMessage>Make &lt;bpws:receive&gt; the first activity in the process.</fixMessage>
+  <lineNumber>66</lineNumber>
+  <location>receive</location>
+  <message>The start activity &lt;bpws:receive&gt; must be the first activity in the process.</message>
+  <message.args>["bpws:receive",3]</message.args>
+  <message.id>BPELC__START_ACTIVITY</message.id>
+  <node>&lt;bpws:receive "receiveInput"&gt;</node>
+  <ruleDescription>Check if this 'start' &lt;receive&gt; activity is positioned correctly</ruleDescription>
+  <ruleName>ReceiveValidator.CheckIfStartActivity.3</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>56</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.0</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:receive[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ReceiveValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2382</charEnd>
+  <charStart>2370</charStart>
+  <columnNumber>10</columnNumber>
+  <fixMessage>Specify either &lt;bpws:fromPart&gt; *or* attribute "variable" on &lt;bpws:receive&gt;.</fixMessage>
+  <lineNumber>66</lineNumber>
+  <location>receive</location>
+  <message>Either &lt;bpws:fromPart&gt; *or* attribute "variable" must be specified on &lt;bpws:receive&gt;.</message>
+  <message.args>["bpws:receive","bpws:fromPart",null,1]</message.args>
+  <message.id>BPELC__PA_PARTS</message.id>
+  <node>&lt;bpws:receive "receiveInput"&gt;</node>
+  <ruleDescription>Check to see if fromPart is specified; if so then  variable must not be used on the receive.</ruleDescription>
+  <ruleName>ReceiveValidator.checkFromPartsPresence.50</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>55</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.0/@fromParts/@children.1</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:receive[1]/bpws:fromParts/bpws:fromPart[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.FromPartValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2737</charEnd>
+  <charStart>2724</charStart>
+  <columnNumber>9</columnNumber>
+  <context.name>toVariable</context.name>
+  <fixMessage>Make sure that value "bad_input" is resolvable (check imports, value of "toVariable").</fixMessage>
+  <lineNumber>77</lineNumber>
+  <location>fromPart</location>
+  <message>"toVariable" is set to "bad_input" on this &lt;bpws:fromPart&gt;  but it cannot be resolved (check value of "toVariable", imports, WSDLs or XSDs).</message>
+  <message.args>["bpws:fromPart","toVariable",0,"bad_input"]</message.args>
+  <message.id>BPELC__UNRESOLVED_ATTRIBUTE</message.id>
+  <node>&lt;bpws:fromPart&gt;</node>
+  <ruleDescription>Checks to see if the toVariable is defined.</ruleDescription>
+  <ruleName>FromPartValidator.CheckVariableDefined.4</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>0</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.0/@fromParts/@children.1</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:receive[1]/bpws:fromParts/bpws:fromPart[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.FromPartValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2737</charEnd>
+  <charStart>2724</charStart>
+  <columnNumber>9</columnNumber>
+  <fixMessage>Pick a valid message type.</fixMessage>
+  <lineNumber>77</lineNumber>
+  <location>fromPart</location>
+  <message>Message part "payload5" does not exist in message "SimpleRequestMessage"</message>
+  <message.args>["bpws:fromPart","payload5","SimpleRequestMessage"]</message.args>
+  <message.id>BPELC__PA_NO_PART</message.id>
+  <node>&lt;bpws:fromPart&gt;</node>
+  <ruleDescription>Check to see if the toVariable matches the type of the partName</ruleDescription>
+  <ruleName>FromPartValidator.CheckMessagePart.5</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>53</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.1</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:receive[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ReceiveValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2847</charEnd>
+  <charStart>2835</charStart>
+  <columnNumber>8</columnNumber>
+  <fixMessage>Make &lt;bpws:receive&gt; the first activity in the process.</fixMessage>
+  <lineNumber>81</lineNumber>
+  <location>receive</location>
+  <message>The start activity &lt;bpws:receive&gt; must be the first activity in the process.</message>
+  <message.args>["bpws:receive",3]</message.args>
+  <message.id>BPELC__START_ACTIVITY</message.id>
+  <node>&lt;bpws:receive "receiveInput"&gt;</node>
+  <ruleDescription>Check if this 'start' &lt;receive&gt; activity is positioned correctly</ruleDescription>
+  <ruleName>ReceiveValidator.CheckIfStartActivity.3</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>56</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.1</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:receive[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ReceiveValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2847</charEnd>
+  <charStart>2835</charStart>
+  <columnNumber>8</columnNumber>
+  <fixMessage>Check variable "output" declaration, check WSDL message "&lt;message "SimpleRequestMessage"&gt;" declaration.</fixMessage>
+  <lineNumber>81</lineNumber>
+  <location>receive</location>
+  <message>variable "output" of type "&lt;message "SimpleResponseMessage"&gt;" is not compatible with WSDL message "&lt;message "SimpleRequestMessage"&gt;".</message>
+  <message.args>["bpws:receive",null,"output",null,null]</message.args>
+  <message.id>BPELC_PA__MESSAGE_TYPE_MISMATCH</message.id>
+  <node>&lt;bpws:receive "receiveInput"&gt;</node>
+  <ruleDescription>Check message type compatability on receive</ruleDescription>
+  <ruleName>ReceiveValidator.CheckVariableAndMessageStructureCompatibility.20</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>58</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.1/@correlations/@children.1</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:receive[2]/bpws:correlations/bpws:correlation[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.CorrelationValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3096</charEnd>
+  <charStart>3080</charStart>
+  <columnNumber>7</columnNumber>
+  <context.name>set</context.name>
+  <fixMessage>Make sure that value "foobarx" is resolvable (check imports, value of "set").</fixMessage>
+  <lineNumber>89</lineNumber>
+  <location>correlation</location>
+  <message>"set" is set to "foobarx" on this &lt;bpws:correlation&gt;  but it cannot be resolved (check value of "set", imports, WSDLs or XSDs).</message>
+  <message.args>["bpws:correlation","set",0,"foobarx"]</message.args>
+  <message.id>BPELC__UNRESOLVED_ATTRIBUTE</message.id>
+  <node>&lt;bpws:correlation&gt;</node>
+  <ruleName>CorrelationValidator.ExistCorrelationSet.12</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.1/@correlations/@children.2</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:receive[2]/bpws:correlations/bpws:correlation[3]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.CorrelationValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3137</charEnd>
+  <charStart>3121</charStart>
+  <columnNumber>7</columnNumber>
+  <context.name>set</context.name>
+  <fixMessage>Make sure that value "foobary" is resolvable (check imports, value of "set").</fixMessage>
+  <lineNumber>90</lineNumber>
+  <location>correlation</location>
+  <message>"set" is set to "foobary" on this &lt;bpws:correlation&gt;  but it cannot be resolved (check value of "set", imports, WSDLs or XSDs).</message>
+  <message.args>["bpws:correlation","set",0,"foobary"]</message.args>
+  <message.id>BPELC__UNRESOLVED_ATTRIBUTE</message.id>
+  <node>&lt;bpws:correlation&gt;</node>
+  <ruleName>CorrelationValidator.ExistCorrelationSet.12</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.2</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:pick</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.PickValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3233</charEnd>
+  <charStart>3224</charStart>
+  <columnNumber>5</columnNumber>
+  <fixMessage>Remove the onAlarm component.</fixMessage>
+  <lineNumber>95</lineNumber>
+  <location>pick</location>
+  <message>This &lt;bpws:pick&gt; activity is a start activity and cannot have an onAlarm component.</message>
+  <message.args>["bpws:pick",null,"yes"]</message.args>
+  <message.id>BPELC_PICK__ON_ALARM</message.id>
+  <node>&lt;bpws:pick&gt;</node>
+  <ruleDescription>When createInstance is set to yes, onAlarm must not be there.</ruleDescription>
+  <ruleName>PickValidator.CheckNoAlaram.2</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>62</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.2</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:pick</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.PickValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3233</charEnd>
+  <charStart>3224</charStart>
+  <columnNumber>5</columnNumber>
+  <fixMessage>Make &lt;bpws:pick&gt; the first activity in the process.</fixMessage>
+  <lineNumber>95</lineNumber>
+  <location>pick</location>
+  <message>The start activity &lt;bpws:pick&gt; must be the first activity in the process.</message>
+  <message.args>["bpws:pick",3]</message.args>
+  <message.id>BPELC__START_ACTIVITY</message.id>
+  <node>&lt;bpws:pick&gt;</node>
+  <ruleDescription>Check if this pick activity is positioned correctly</ruleDescription>
+  <ruleName>PickValidator.CheckIfStartActivity.3</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>56</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.2/@messages.0</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:pick/bpws:onMessage[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.OnMessageValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3283</charEnd>
+  <charStart>3269</charStart>
+  <columnNumber>6</columnNumber>
+  <context.name>operation</context.name>
+  <fixMessage>Make sure that the attribute "operation" is specified.</fixMessage>
+  <lineNumber>97</lineNumber>
+  <location>onMessage</location>
+  <message>Attribute "operation" is not set on this &lt;bpws:onMessage&gt; activity.</message>
+  <message.args>["bpws:onMessage","operation",1]</message.args>
+  <message.id>BPELC__UNSET_ATTRIBUTE</message.id>
+  <node>&lt;bpws:onMessage&gt;</node>
+  <ruleName>CPartnerActivityValidator.CheckOperationSet.0</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.2/@messages.1</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:pick/bpws:onMessage[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.OnMessageValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3564</charEnd>
+  <charStart>3550</charStart>
+  <columnNumber>6</columnNumber>
+  <context.name>operation</context.name>
+  <fixMessage>Make sure that the attribute "operation" is specified.</fixMessage>
+  <lineNumber>106</lineNumber>
+  <location>onMessage</location>
+  <message>Attribute "operation" is not set on this &lt;bpws:onMessage&gt; activity.</message>
+  <message.args>["bpws:onMessage","operation",1]</message.args>
+  <message.id>BPELC__UNSET_ATTRIBUTE</message.id>
+  <node>&lt;bpws:onMessage&gt;</node>
+  <ruleName>CPartnerActivityValidator.CheckOperationSet.0</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@activities.2/@alarm.0/@for</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow/bpws:pick/bpws:onAlarm/bpws:for</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.For</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>3877</charEnd>
+  <charStart>3872</charStart>
+  <columnNumber>17</columnNumber>
+  <fixMessage>Make sure that the expression in &lt;bpws:for&gt; is a duration expression.</fixMessage>
+  <lineNumber>116</lineNumber>
+  <location>for</location>
+  <message>The expression in &lt;bpws:for&gt; is not a duration expression.</message>
+  <message.args>["bpws:for","string('foobar')","duration expression"]</message.args>
+  <message.id>XPATH_EXPRESSION_TYPE</message.id>
+  <node>&lt;bpws:for&gt;</node>
+  <ruleDescription>Checks duration expression on for, and repeatUntil</ruleDescription>
+  <ruleName>For.checkDurationExpression.17</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>0</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.3</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:reply[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ReplyValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>4016</charEnd>
+  <charStart>4006</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Check value of operation ("initiate") and portType "&lt;portType "SimpleCallback"&gt;".</fixMessage>
+  <lineNumber>126</lineNumber>
+  <location>reply</location>
+  <message>No "{http://schemas.xmlsoap.org/wsdl/}input" message exist on portType "&lt;portType "SimpleCallback"&gt;" with operation "initiate".</message>
+  <message.args>["bpws:reply",null,"initiate",null]</message.args>
+  <message.id>BPELC_PA__NO_MESSAGE</message.id>
+  <node>&lt;bpws:reply "replyOutput"&gt;</node>
+  <ruleName>ReplyValidator.CheckOutputMessage.12</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.3</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:reply[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ReplyValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>4016</charEnd>
+  <charStart>4006</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Specify either &lt;{http://docs.oasis-open.org/wsbpel/2.0/process/executable}toPart&gt; *or* attribute "variable" on &lt;bpws:reply&gt;.</fixMessage>
+  <lineNumber>126</lineNumber>
+  <location>reply</location>
+  <message>Either &lt;{http://docs.oasis-open.org/wsbpel/2.0/process/executable}toPart&gt; *or* attribute "variable" must be specified on &lt;bpws:reply&gt;.</message>
+  <message.args>["bpws:reply",null,null,1]</message.args>
+  <message.id>BPELC__PA_PARTS</message.id>
+  <node>&lt;bpws:reply "replyOutput"&gt;</node>
+  <ruleDescription>Check to see if toPart is specified; if so then  variable must not be used on the reply.</ruleDescription>
+  <ruleName>ReplyValidator.checkToPartsPresence.50</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>59</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.3/@toParts/@children.1</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:reply[1]/bpws:toParts/bpws:toPart[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ToPartValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>4242</charEnd>
+  <charStart>4231</charStart>
+  <columnNumber>7</columnNumber>
+  <context.name>fromVariable</context.name>
+  <fixMessage>Make sure that value "bad_input" is resolvable (check imports, value of "fromVariable").</fixMessage>
+  <lineNumber>133</lineNumber>
+  <location>toPart</location>
+  <message>"fromVariable" is set to "bad_input" on this &lt;bpws:toPart&gt;  but it cannot be resolved (check value of "fromVariable", imports, WSDLs or XSDs).</message>
+  <message.args>["bpws:toPart","fromVariable",0,"bad_input"]</message.args>
+  <message.id>BPELC__UNRESOLVED_ATTRIBUTE</message.id>
+  <node>&lt;bpws:toPart&gt;</node>
+  <ruleDescription>Checks to see if the fromVariable is defined.</ruleDescription>
+  <ruleName>ToPartValidator.CheckVariableDefined.4</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>0</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.4</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:reply[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ReplyValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>4341</charEnd>
+  <charStart>4331</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Check value of operation ("initiate") and portType "&lt;portType "SimpleCallback"&gt;".</fixMessage>
+  <lineNumber>137</lineNumber>
+  <location>reply</location>
+  <message>No "{http://schemas.xmlsoap.org/wsdl/}input" message exist on portType "&lt;portType "SimpleCallback"&gt;" with operation "initiate".</message>
+  <message.args>["bpws:reply",null,"initiate",null]</message.args>
+  <message.id>BPELC_PA__NO_MESSAGE</message.id>
+  <node>&lt;bpws:reply "replyOutput"&gt;</node>
+  <ruleName>ReplyValidator.CheckOutputMessage.12</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.5</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.AssignValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>4520</charEnd>
+  <charStart>4509</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Add &lt;"copy"&gt; to activity &lt;bpws:assign&gt; to satisfy the constraint.</fixMessage>
+  <lineNumber>146</lineNumber>
+  <location>assign</location>
+  <message>Activity &lt;bpws:assign&gt; must contain at least one node from "copy"</message>
+  <message.args>["bpws:assign",1,0,"\"copy\"",0,1]</message.args>
+  <message.id>BPELC__MIN_IN_PARENT</message.id>
+  <node>&lt;bpws:assign "Empty Assign"&gt;</node>
+  <ruleDescription>Check my children nodes (types and occurances)</ruleDescription>
+  <ruleName>CValidator.CheckChildrenNodes.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2002</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.5</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.AssignValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>4520</charEnd>
+  <charStart>4509</charStart>
+  <columnNumber>3</columnNumber>
+  <context.name>name</context.name>
+  <fixMessage>Set the "name" attribute to a valid NCName.</fixMessage>
+  <lineNumber>146</lineNumber>
+  <location>assign</location>
+  <message>The "name" attribute of this &lt;bpws:assign&gt; is set to "Empty Assign" - it is not a valid NCName.</message>
+  <message.args>["name","bpws:assign","Empty Assign"]</message.args>
+  <message.id>General.NCName_Bad</message.id>
+  <node>&lt;bpws:assign "Empty Assign"&gt;</node>
+  <ruleDescription>Check the name of the activity which must be valid NCName</ruleDescription>
+  <ruleName>CActivityValidator.CheckName.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>0</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.6/@copy.0</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[2]/bpws:copy</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.CopyValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>4613</charEnd>
+  <charStart>4604</charStart>
+  <columnNumber>5</columnNumber>
+  <fixMessage>Add &lt;"from"&gt; to node &lt;bpws:copy&gt; to satisfy the constraint.</fixMessage>
+  <lineNumber>150</lineNumber>
+  <location>copy</location>
+  <message>Node &lt;bpws:copy&gt; must contain at least one node from "from"</message>
+  <message.args>["bpws:copy",0,0,"\"from\"",0,1]</message.args>
+  <message.id>BPELC__MIN_IN_PARENT</message.id>
+  <node>&lt;bpws:copy&gt;</node>
+  <ruleDescription>Check my children nodes (types and occurances)</ruleDescription>
+  <ruleName>CValidator.CheckChildrenNodes.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2002</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.6/@copy.0</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[2]/bpws:copy</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.CopyValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>4613</charEnd>
+  <charStart>4604</charStart>
+  <columnNumber>5</columnNumber>
+  <fixMessage>Add &lt;"to"&gt; to node &lt;bpws:copy&gt; to satisfy the constraint.</fixMessage>
+  <lineNumber>150</lineNumber>
+  <location>copy</location>
+  <message>Node &lt;bpws:copy&gt; must contain at least one node from "to"</message>
+  <message.args>["bpws:copy",0,0,"\"to\"",0,1]</message.args>
+  <message.id>BPELC__MIN_IN_PARENT</message.id>
+  <node>&lt;bpws:copy&gt;</node>
+  <ruleDescription>Check my children nodes (types and occurances)</ruleDescription>
+  <ruleName>CValidator.CheckChildrenNodes.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2002</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.7/@copy.0/@to</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[3]/bpws:copy[1]/bpws:to</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.To</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>4786</charEnd>
+  <charStart>4762</charStart>
+  <columnNumber>16</columnNumber>
+  <fixMessage>Make sure that the expression in &lt;bpws:to&gt; is a variable reference expression.</fixMessage>
+  <lineNumber>158</lineNumber>
+  <location>to</location>
+  <message>The expression in &lt;bpws:to&gt; is not a variable reference expression.</message>
+  <message.args>["bpws:to","$output.payload/tns:result","variable reference expression"]</message.args>
+  <message.id>XPATH_EXPRESSION_TYPE</message.id>
+  <node>&lt;bpws:to&gt;</node>
+  <ruleDescription>Check variable reference expression on to nodes</ruleDescription>
+  <ruleName>To.CheckVariableReference.15</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>33</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.7/@copy.1/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[3]/bpws:copy[2]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.FromValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>4921</charEnd>
+  <charStart>4912</charStart>
+  <columnNumber>14</columnNumber>
+  <fixMessage>Remove the "part" attribute or choose a messageType variable.</fixMessage>
+  <lineNumber>163</lineNumber>
+  <location>from</location>
+  <message>The variable "varx" is not of messageType and a "part" is specified in this &lt;bpws:from&gt; node.</message>
+  <message.args>["bpws:from",null,"varx"]</message.args>
+  <message.id>BPELC_FROM__VARIABLE_PART</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>Variables used in &lt;from&gt; must not have part set if they are schema types.  (part must not be set) </ruleDescription>
+  <ruleName>FromValidator.CheckVariableVariant.18</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>34</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.7/@copy.1/@to</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[3]/bpws:copy[2]/bpws:to</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ToValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>4976</charEnd>
+  <charStart>4969</charStart>
+  <columnNumber>14</columnNumber>
+  <fixMessage>Pick a valid message type.</fixMessage>
+  <lineNumber>164</lineNumber>
+  <location>to</location>
+  <message>Message part "payloa" does not exist in message "&lt;message "SimpleResponseMessage"&gt;"</message>
+  <message.args>["bpws:to","payloa",null]</message.args>
+  <message.id>BPELC__PA_NO_PART</message.id>
+  <node>&lt;bpws:to&gt;</node>
+  <ruleDescription>Variables used in &lt;to&gt; must not have part set if they are schema types.  (part must not be set) </ruleDescription>
+  <ruleName>ToValidator.CheckVariableAndPartVariant.18</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>34</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.7/@copy.2</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[3]/bpws:copy[3]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.CopyValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>5096</charEnd>
+  <charStart>5087</charStart>
+  <columnNumber>5</columnNumber>
+  <fixMessage>Types must be compatible.</fixMessage>
+  <lineNumber>168</lineNumber>
+  <location>copy</location>
+  <message>The from-spec of "&lt;message "SimpleRequestMessage"&gt;" is not compatible with to-spec of "&lt;message "SimpleResponseMessage"&gt;"</message>
+  <message.args>["bpws:copy","from-spec",null,"to-spec",null]</message.args>
+  <message.id>BPELC_COPY__INCOMPATIBLE</message.id>
+  <node>&lt;bpws:copy&gt;</node>
+  <ruleDescription>From and to spec must have compatible types</ruleDescription>
+  <ruleName>CopyValidator.CheckCompatibleCopy.40</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>43</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.7/@copy.3</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[3]/bpws:copy[4]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.CopyValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>5295</charEnd>
+  <charStart>5286</charStart>
+  <columnNumber>11</columnNumber>
+  <fixMessage>Types must be compatible.</fixMessage>
+  <lineNumber>174</lineNumber>
+  <location>copy</location>
+  <message>The from-spec of "&lt;complexType&gt;" is not compatible with to-spec of "&lt;xs:simpleType "integer"&gt;"</message>
+  <message.args>["bpws:copy","from-spec",null,"to-spec",null]</message.args>
+  <message.id>BPELC_COPY__INCOMPATIBLE</message.id>
+  <node>&lt;bpws:copy&gt;</node>
+  <ruleDescription>From and to spec must have compatible types</ruleDescription>
+  <ruleName>CopyValidator.CheckCompatibleCopy.40</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>43</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.7/@copy.4</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[3]/bpws:copy[5]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.CopyValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>5485</charEnd>
+  <charStart>5476</charStart>
+  <columnNumber>11</columnNumber>
+  <fixMessage>Types must be compatible.</fixMessage>
+  <lineNumber>180</lineNumber>
+  <location>copy</location>
+  <message>The from-spec of "&lt;complexType&gt;" is not compatible with to-spec of "&lt;xs:simpleType "integer"&gt;"</message>
+  <message.args>["bpws:copy","from-spec",null,"to-spec",null]</message.args>
+  <message.id>BPELC_COPY__INCOMPATIBLE</message.id>
+  <node>&lt;bpws:copy&gt;</node>
+  <ruleDescription>From and to spec must have compatible types</ruleDescription>
+  <ruleName>CopyValidator.CheckCompatibleCopy.40</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>43</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.7/@copy.4/@from/@query</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[3]/bpws:copy[5]/bpws:from/bpws:query</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.Query</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>5584</charEnd>
+  <charStart>5576</charStart>
+  <columnNumber>31</columnNumber>
+  <fixMessage>The expression in &lt;bpws:query&gt; must be a LocationPath expression.</fixMessage>
+  <lineNumber>182</lineNumber>
+  <location>query</location>
+  <message>XPath expression "/tns:input" in &lt;/tns:input&gt; is not a LocationPath expression.</message>
+  <message.args>["/tns:input","bpws:query"]</message.args>
+  <message.id>XPATH_NOT_A_LOCATION</message.id>
+  <node>&lt;bpws:query&gt;</node>
+  <ruleDescription>Check the query location path</ruleDescription>
+  <ruleName>Query.CheckQuery.16</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>27</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.7/@copy.5</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[3]/bpws:copy[6]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.CopyValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>5752</charEnd>
+  <charStart>5743</charStart>
+  <columnNumber>11</columnNumber>
+  <fixMessage>Types must be compatible.</fixMessage>
+  <lineNumber>188</lineNumber>
+  <location>copy</location>
+  <message>The from-spec of "&lt;complexType&gt;" is not compatible with to-spec of "&lt;xs:simpleType "integer"&gt;"</message>
+  <message.args>["bpws:copy","from-spec",null,"to-spec",null]</message.args>
+  <message.id>BPELC_COPY__INCOMPATIBLE</message.id>
+  <node>&lt;bpws:copy&gt;</node>
+  <ruleDescription>From and to spec must have compatible types</ruleDescription>
+  <ruleName>CopyValidator.CheckCompatibleCopy.40</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>43</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.7/@copy.5/@from/@query</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[3]/bpws:copy[6]/bpws:from/bpws:query</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.Query</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>5855</charEnd>
+  <charStart>5843</charStart>
+  <columnNumber>31</columnNumber>
+  <fixMessage>The expression in &lt;bpws:query&gt; must be a LocationPath expression.</fixMessage>
+  <lineNumber>190</lineNumber>
+  <location>query</location>
+  <message>XPath expression "/tns:input + 1" in &lt;/tns:input + 1&gt; is not a LocationPath expression.</message>
+  <message.args>["/tns:input + 1","bpws:query"]</message.args>
+  <message.id>XPATH_NOT_A_LOCATION</message.id>
+  <node>&lt;bpws:query&gt;</node>
+  <ruleDescription>Check the query location path</ruleDescription>
+  <ruleName>Query.CheckQuery.16</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>27</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.7/@copy.8/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[3]/bpws:copy[9]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>6397</charEnd>
+  <charStart>6388</charStart>
+  <columnNumber>14</columnNumber>
+  <fixMessage>Check the type definition associated with the BPEL variable.</fixMessage>
+  <lineNumber>208</lineNumber>
+  <location>from</location>
+  <message>The XPath segment "child::tns:foo" cannot be resolved.</message>
+  <message.args>["child::tns:foo"]</message.args>
+  <message.id>XPATH_NAME_STEP</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>Check the variable namespace prefix</ruleDescription>
+  <ruleName>XPathValidator.CheckVariable.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>0</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.7/@copy.10</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[3]/bpws:copy[11]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.CopyValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>6694</charEnd>
+  <charStart>6685</charStart>
+  <columnNumber>11</columnNumber>
+  <context.name>keepSrcElementName</context.name>
+  <fixMessage>Make sure that "keepSrcElementName" is set to one of the values from "no", "yes"</fixMessage>
+  <lineNumber>217</lineNumber>
+  <location>copy</location>
+  <message>"keepSrcElementName" is set to "yesxx" on this &lt;bpws:copy&gt; node but it can only be set to "no", "yes"</message>
+  <message.args>["bpws:copy","keepSrcElementName","yesxx","\"no\", \"yes\"",0]</message.args>
+  <message.id>BPELC__INVALID_ATTRIBUTE_VALUE</message.id>
+  <node>&lt;bpws:copy&gt;</node>
+  <ruleDescription>Check to see if keep source element is one of the allowed values</ruleDescription>
+  <ruleName>CopyValidator.VerifyKeepSrcElement.5</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>1001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.7/@copy.11</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[3]/bpws:copy[12]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.CopyValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>6935</charEnd>
+  <charStart>6926</charStart>
+  <columnNumber>11</columnNumber>
+  <fixMessage>Nothing.</fixMessage>
+  <lineNumber>224</lineNumber>
+  <location>copy</location>
+  <message>Copy rule not checked - from-spec type-of "unspecified", to-spec type-of "&lt;portType "SimpleCallback"&gt;".</message>
+  <message.args>["bpws:copy","from-spec","unspecified","to-spec",null]</message.args>
+  <message.id>BPELC_COPY__NOT_CHECKED</message.id>
+  <node>&lt;bpws:copy&gt;</node>
+  <ruleDescription>From and to spec must have compatible types</ruleDescription>
+  <ruleName>CopyValidator.CheckCompatibleCopy.40</ruleName>
+  <severity>0</severity>
+  <staticAnalysisCode>43</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.7/@copy.12</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[3]/bpws:copy[13]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.CopyValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>7162</charEnd>
+  <charStart>7153</charStart>
+  <columnNumber>11</columnNumber>
+  <fixMessage>Nothing.</fixMessage>
+  <lineNumber>230</lineNumber>
+  <location>copy</location>
+  <message>Copy rule not checked - from-spec type-of "unspecified", to-spec type-of "&lt;element "SimpleResponse"&gt;".</message>
+  <message.args>["bpws:copy","from-spec","unspecified","to-spec",null]</message.args>
+  <message.id>BPELC_COPY__NOT_CHECKED</message.id>
+  <node>&lt;bpws:copy&gt;</node>
+  <ruleDescription>From and to spec must have compatible types</ruleDescription>
+  <ruleName>CopyValidator.CheckCompatibleCopy.40</ruleName>
+  <severity>0</severity>
+  <staticAnalysisCode>43</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.7/@copy.13</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[3]/bpws:copy[14]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.CopyValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>7379</charEnd>
+  <charStart>7370</charStart>
+  <columnNumber>11</columnNumber>
+  <fixMessage>Nothing.</fixMessage>
+  <lineNumber>236</lineNumber>
+  <location>copy</location>
+  <message>Copy rule not checked - from-spec type-of "unspecified", to-spec type-of "&lt;xs:simpleType "integer"&gt;".</message>
+  <message.args>["bpws:copy","from-spec","unspecified","to-spec",null]</message.args>
+  <message.id>BPELC_COPY__NOT_CHECKED</message.id>
+  <node>&lt;bpws:copy&gt;</node>
+  <ruleDescription>From and to spec must have compatible types</ruleDescription>
+  <ruleName>CopyValidator.CheckCompatibleCopy.40</ruleName>
+  <severity>0</severity>
+  <staticAnalysisCode>43</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.AssignValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>7555</charEnd>
+  <charStart>7544</charStart>
+  <columnNumber>3</columnNumber>
+  <context.name>name</context.name>
+  <fixMessage>Set the "name" attribute to a valid NCName.</fixMessage>
+  <lineNumber>244</lineNumber>
+  <location>assign</location>
+  <message>The "name" attribute of this &lt;bpws:assign&gt; is set to "broken assign" - it is not a valid NCName.</message>
+  <message.args>["name","bpws:assign","broken assign"]</message.args>
+  <message.id>General.NCName_Bad</message.id>
+  <node>&lt;bpws:assign "broken assign"&gt;</node>
+  <ruleDescription>Check the name of the activity which must be valid NCName</ruleDescription>
+  <ruleName>CActivityValidator.CheckName.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>0</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.0/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[1]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>7616</charEnd>
+  <charStart>7607</charStart>
+  <columnNumber>7</columnNumber>
+  <fixMessage>You must specify a valid expression expression in &lt;bpws:from&gt;.</fixMessage>
+  <lineNumber>247</lineNumber>
+  <location>from</location>
+  <message>The expression is not specified on &lt;bpws:from&gt;.</message>
+  <message.args>["bpws:from","expression"]</message.args>
+  <message.id>XPATH_EMPTY_EXPRESSION</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleName>XPathValidator.SanityCheck.1</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.0/@to</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[1]/bpws:to</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.To</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>7634</charEnd>
+  <charStart>7627</charStart>
+  <columnNumber>7</columnNumber>
+  <fixMessage>You must specify a valid variable reference expression expression in &lt;bpws:to&gt;.</fixMessage>
+  <lineNumber>248</lineNumber>
+  <location>to</location>
+  <message>The variable reference expression is not specified on &lt;bpws:to&gt;.</message>
+  <message.args>["bpws:to","variable reference expression"]</message.args>
+  <message.id>XPATH_EMPTY_EXPRESSION</message.id>
+  <node>&lt;bpws:to&gt;</node>
+  <ruleName>XPathValidator.SanityCheck.1</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.1/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[2]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.FromValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>7691</charEnd>
+  <charStart>7682</charStart>
+  <columnNumber>7</columnNumber>
+  <context.name>variable</context.name>
+  <fixMessage>Make sure that value "inputx" is resolvable (check imports, value of "variable").</fixMessage>
+  <lineNumber>252</lineNumber>
+  <location>from</location>
+  <message>"variable" is set to "inputx" on this &lt;bpws:from&gt;  but it cannot be resolved (check value of "variable", imports, WSDLs or XSDs).</message>
+  <message.args>["bpws:from","variable",0,"inputx"]</message.args>
+  <message.id>BPELC__UNRESOLVED_ATTRIBUTE</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>Checks the allowed formats of the &lt;from&gt; element</ruleDescription>
+  <ruleName>FromValidator.CheckFromVariant.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>32</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.1/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[2]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.FromValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>7691</charEnd>
+  <charStart>7682</charStart>
+  <columnNumber>7</columnNumber>
+  <context.name>partnerLink</context.name>
+  <fixMessage>Make sure that value "clientx" is resolvable (check imports, value of "partnerLink").</fixMessage>
+  <lineNumber>252</lineNumber>
+  <location>from</location>
+  <message>"partnerLink" is set to "clientx" on this &lt;bpws:from&gt;  but it cannot be resolved (check value of "partnerLink", imports, WSDLs or XSDs).</message>
+  <message.args>["bpws:from","partnerLink",0,"clientx"]</message.args>
+  <message.id>BPELC__UNRESOLVED_ATTRIBUTE</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>Checks the allowed formats of the &lt;from&gt; element</ruleDescription>
+  <ruleName>FromValidator.CheckFromVariant.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>32</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.1/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[2]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.FromValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>7691</charEnd>
+  <charStart>7682</charStart>
+  <columnNumber>7</columnNumber>
+  <context.name>endpointReference</context.name>
+  <fixMessage>Make sure that "endpointReference" is set to one of the values from "myRole", "partnerRole"</fixMessage>
+  <lineNumber>252</lineNumber>
+  <location>from</location>
+  <message>"endpointReference" is set to "myRolex" on this &lt;bpws:from&gt; node but it can only be set to "myRole", "partnerRole"</message>
+  <message.args>["bpws:from","endpointReference","myRolex","\"myRole\", \"partnerRole\"",0]</message.args>
+  <message.id>BPELC__INVALID_ATTRIBUTE_VALUE</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>Checks the allowed formats of the &lt;from&gt; element</ruleDescription>
+  <ruleName>FromValidator.CheckFromVariant.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>32</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.1/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[2]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.FromValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>7691</charEnd>
+  <charStart>7682</charStart>
+  <columnNumber>7</columnNumber>
+  <fixMessage>You must change the &lt;bpws:from&gt; to be one of the allowed variants.</fixMessage>
+  <lineNumber>252</lineNumber>
+  <location>from</location>
+  <message>The form of &lt;bpws:from&gt; is not valid (too many variants detected).</message>
+  <message.args>["bpws:from",2]</message.args>
+  <message.id>BPELC_FROM__VARIANT</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>Checks the allowed formats of the &lt;from&gt; element</ruleDescription>
+  <ruleName>FromValidator.CheckFromVariant.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>32</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.1/@to</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[2]/bpws:to</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.To</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>7826</charEnd>
+  <charStart>7822</charStart>
+  <columnNumber>20</columnNumber>
+  <fixMessage>Make sure that the expression in &lt;bpws:to&gt; is a variable reference expression.</fixMessage>
+  <lineNumber>255</lineNumber>
+  <location>to</location>
+  <message>The expression in &lt;bpws:to&gt; is not a variable reference expression.</message>
+  <message.args>["bpws:to","1 + 3","variable reference expression"]</message.args>
+  <message.id>XPATH_EXPRESSION_TYPE</message.id>
+  <node>&lt;bpws:to&gt;</node>
+  <ruleDescription>Check variable reference expression on to nodes</ruleDescription>
+  <ruleName>To.CheckVariableReference.15</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>33</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.2/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[3]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.FromValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>7908</charEnd>
+  <charStart>7899</charStart>
+  <columnNumber>7</columnNumber>
+  <context.name>variable</context.name>
+  <fixMessage>Make sure that value "var1" is resolvable (check imports, value of "variable").</fixMessage>
+  <lineNumber>259</lineNumber>
+  <location>from</location>
+  <message>"variable" is set to "var1" on this &lt;bpws:from&gt;  but it cannot be resolved (check value of "variable", imports, WSDLs or XSDs).</message>
+  <message.args>["bpws:from","variable",0,"var1"]</message.args>
+  <message.id>BPELC__UNRESOLVED_ATTRIBUTE</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>Checks the allowed formats of the &lt;from&gt; element</ruleDescription>
+  <ruleName>FromValidator.CheckFromVariant.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>32</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.2/@to</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[3]/bpws:to</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ToValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>7957</charEnd>
+  <charStart>7950</charStart>
+  <columnNumber>7</columnNumber>
+  <context.name>variable</context.name>
+  <fixMessage>Make sure that value "var2" is resolvable (check imports, value of "variable").</fixMessage>
+  <lineNumber>260</lineNumber>
+  <location>to</location>
+  <message>"variable" is set to "var2" on this &lt;bpws:to&gt;  but it cannot be resolved (check value of "variable", imports, WSDLs or XSDs).</message>
+  <message.args>["bpws:to","variable",0,"var2"]</message.args>
+  <message.id>BPELC__UNRESOLVED_ATTRIBUTE</message.id>
+  <node>&lt;bpws:to&gt;</node>
+  <ruleDescription>Checks the allowed formats of the &lt;to&gt; element</ruleDescription>
+  <ruleName>ToValidator.CheckToVariant.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>32</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.3/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[4]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.FromValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>8045</charEnd>
+  <charStart>8036</charStart>
+  <columnNumber>7</columnNumber>
+  <fixMessage>Remove the "part" attribute or choose a messageType variable.</fixMessage>
+  <lineNumber>263</lineNumber>
+  <location>from</location>
+  <message>The variable "varx" is not of messageType and a "part" is specified in this &lt;bpws:from&gt; node.</message>
+  <message.args>["bpws:from",null,"varx"]</message.args>
+  <message.id>BPELC_FROM__VARIABLE_PART</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>Variables used in &lt;from&gt; must not have part set if they are schema types.  (part must not be set) </ruleDescription>
+  <ruleName>FromValidator.CheckVariableVariant.18</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>34</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.3/@to</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[4]/bpws:to</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ToValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>8094</charEnd>
+  <charStart>8087</charStart>
+  <columnNumber>7</columnNumber>
+  <lineNumber>264</lineNumber>
+  <location>to</location>
+  <message>The variable "vary" is not of messageType and a "part" is specified in this &lt;bpws:to&gt; node.</message>
+  <message.args>["bpws:to",null,"vary"]</message.args>
+  <message.id>BPELC_TO__VARIABLE_PART</message.id>
+  <node>&lt;bpws:to&gt;</node>
+  <ruleDescription>Variables used in &lt;to&gt; must not have part set if they are schema types.  (part must not be set) </ruleDescription>
+  <ruleName>ToValidator.CheckVariableAndPartVariant.18</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>34</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.4/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[5]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.FromValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>8195</charEnd>
+  <charStart>8186</charStart>
+  <columnNumber>14</columnNumber>
+  <context.name>partnerLink</context.name>
+  <fixMessage>Make sure that value "badPL-from" is resolvable (check imports, value of "partnerLink").</fixMessage>
+  <lineNumber>268</lineNumber>
+  <location>from</location>
+  <message>"partnerLink" is set to "badPL-from" on this &lt;bpws:from&gt;  but it cannot be resolved (check value of "partnerLink", imports, WSDLs or XSDs).</message>
+  <message.args>["bpws:from","partnerLink",0,"badPL-from"]</message.args>
+  <message.id>BPELC__UNRESOLVED_ATTRIBUTE</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>Checks the allowed formats of the &lt;from&gt; element</ruleDescription>
+  <ruleName>FromValidator.CheckFromVariant.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>32</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.4/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[5]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.FromValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>8195</charEnd>
+  <charStart>8186</charStart>
+  <columnNumber>14</columnNumber>
+  <context.name>endpointReference</context.name>
+  <fixMessage>Make sure that the attribute "endpointReference" is specified.</fixMessage>
+  <lineNumber>268</lineNumber>
+  <location>from</location>
+  <message>Attribute "endpointReference" is not set on this &lt;bpws:from&gt; node.</message>
+  <message.args>["bpws:from","endpointReference",0]</message.args>
+  <message.id>BPELC__UNSET_ATTRIBUTE</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>Checks the allowed formats of the &lt;from&gt; element</ruleDescription>
+  <ruleName>FromValidator.CheckFromVariant.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>32</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.4/@to</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[5]/bpws:to</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ToValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>8245</charEnd>
+  <charStart>8238</charStart>
+  <columnNumber>14</columnNumber>
+  <context.name>partnerLink</context.name>
+  <fixMessage>Make sure that value "badPL-to" is resolvable (check imports, value of "partnerLink").</fixMessage>
+  <lineNumber>269</lineNumber>
+  <location>to</location>
+  <message>"partnerLink" is set to "badPL-to" on this &lt;bpws:to&gt;  but it cannot be resolved (check value of "partnerLink", imports, WSDLs or XSDs).</message>
+  <message.args>["bpws:to","partnerLink",0,"badPL-to"]</message.args>
+  <message.id>BPELC__UNRESOLVED_ATTRIBUTE</message.id>
+  <node>&lt;bpws:to&gt;</node>
+  <ruleDescription>Checks the allowed formats of the &lt;to&gt; element</ruleDescription>
+  <ruleName>ToValidator.CheckToVariant.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>32</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.5/@to</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[6]/bpws:to</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ToValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>8422</charEnd>
+  <charStart>8415</charStart>
+  <columnNumber>14</columnNumber>
+  <lineNumber>274</lineNumber>
+  <location>to</location>
+  <message>The partner link "partner2" referenced from this &lt;bpws:to&gt; must have "partnerRole" defined.</message>
+  <message.args>["bpws:to","partner2",null]</message.args>
+  <message.id>BPELC_TO__PARTNER_LINK</message.id>
+  <node>&lt;bpws:to&gt;</node>
+  <ruleDescription>&lt;to&gt; spec with partnerLink must have partnerRole set.</ruleDescription>
+  <ruleName>ToValidator.CheckPartnerLinkVariant.20</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>37</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.6/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[7]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.FromValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>8521</charEnd>
+  <charStart>8512</charStart>
+  <columnNumber>14</columnNumber>
+  <context.name>endpointReference</context.name>
+  <fixMessage>Make sure that "endpointReference" is set to one of the values from "myRole", "partnerRole"</fixMessage>
+  <lineNumber>278</lineNumber>
+  <location>from</location>
+  <message>"endpointReference" is set to "partner-Role" on this &lt;bpws:from&gt; node but it can only be set to "myRole", "partnerRole"</message>
+  <message.args>["bpws:from","endpointReference","partner-Role","\"myRole\", \"partnerRole\"",0]</message.args>
+  <message.id>BPELC__INVALID_ATTRIBUTE_VALUE</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>Checks the allowed formats of the &lt;from&gt; element</ruleDescription>
+  <ruleName>FromValidator.CheckFromVariant.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>32</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.6/@to</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[7]/bpws:to</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.To</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>8637</charEnd>
+  <charStart>8635</charStart>
+  <columnNumber>18</columnNumber>
+  <fixMessage>Make sure that the expression in &lt;bpws:to&gt; is a variable reference expression.</fixMessage>
+  <lineNumber>281</lineNumber>
+  <location>to</location>
+  <message>The expression in &lt;bpws:to&gt; is not a variable reference expression.</message>
+  <message.args>["bpws:to","$xyz","variable reference expression"]</message.args>
+  <message.id>XPATH_EXPRESSION_TYPE</message.id>
+  <node>&lt;bpws:to&gt;</node>
+  <ruleDescription>Check variable reference expression on to nodes</ruleDescription>
+  <ruleName>To.CheckVariableReference.15</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>33</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.7/@to</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[8]/bpws:to</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.To</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>8841</charEnd>
+  <charStart>8838</charStart>
+  <columnNumber>25</columnNumber>
+  <fixMessage>Make sure that the expression in &lt;bpws:to&gt; is a variable reference expression.</fixMessage>
+  <lineNumber>288</lineNumber>
+  <location>to</location>
+  <message>The expression in &lt;bpws:to&gt; is not a variable reference expression.</message>
+  <message.args>["bpws:to","$varx","variable reference expression"]</message.args>
+  <message.id>XPATH_EXPRESSION_TYPE</message.id>
+  <node>&lt;bpws:to&gt;</node>
+  <ruleDescription>Check variable reference expression on to nodes</ruleDescription>
+  <ruleName>To.CheckVariableReference.15</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>33</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.8/@to</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[9]/bpws:to</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.To</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>9006</charEnd>
+  <charStart>9004</charStart>
+  <columnNumber>24</columnNumber>
+  <fixMessage>Make sure that the expression in &lt;bpws:to&gt; is a variable reference expression.</fixMessage>
+  <lineNumber>293</lineNumber>
+  <location>to</location>
+  <message>The expression in &lt;bpws:to&gt; is not a variable reference expression.</message>
+  <message.args>["bpws:to","$xyz","variable reference expression"]</message.args>
+  <message.id>XPATH_EXPRESSION_TYPE</message.id>
+  <node>&lt;bpws:to&gt;</node>
+  <ruleDescription>Check variable reference expression on to nodes</ruleDescription>
+  <ruleName>To.CheckVariableReference.15</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>33</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.9/@to</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[10]/bpws:to</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.To</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>9175</charEnd>
+  <charStart>9168</charStart>
+  <columnNumber>14</columnNumber>
+  <fixMessage>You must specify a valid variable reference expression expression in &lt;bpws:to&gt;.</fixMessage>
+  <lineNumber>298</lineNumber>
+  <location>to</location>
+  <message>The variable reference expression is not specified on &lt;bpws:to&gt;.</message>
+  <message.args>["bpws:to","variable reference expression"]</message.args>
+  <message.id>XPATH_EMPTY_EXPRESSION</message.id>
+  <node>&lt;bpws:to&gt;</node>
+  <ruleName>XPathValidator.SanityCheck.1</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.10/@to</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[11]/bpws:to</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.To</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>9326</charEnd>
+  <charStart>9319</charStart>
+  <columnNumber>14</columnNumber>
+  <fixMessage>You must specify a valid variable reference expression expression in &lt;bpws:to&gt;.</fixMessage>
+  <lineNumber>303</lineNumber>
+  <location>to</location>
+  <message>The variable reference expression is not specified on &lt;bpws:to&gt;.</message>
+  <message.args>["bpws:to","variable reference expression"]</message.args>
+  <message.id>XPATH_EMPTY_EXPRESSION</message.id>
+  <node>&lt;bpws:to&gt;</node>
+  <ruleName>XPathValidator.SanityCheck.1</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.11/@to</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[12]/bpws:to</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.To</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>9509</charEnd>
+  <charStart>9497</charStart>
+  <columnNumber>24</columnNumber>
+  <fixMessage>Make sure that the expression in &lt;bpws:to&gt; is a variable reference expression.</fixMessage>
+  <lineNumber>308</lineNumber>
+  <location>to</location>
+  <message>The expression in &lt;bpws:to&gt; is not a variable reference expression.</message>
+  <message.args>["bpws:to","$input.payload","variable reference expression"]</message.args>
+  <message.id>XPATH_EXPRESSION_TYPE</message.id>
+  <node>&lt;bpws:to&gt;</node>
+  <ruleDescription>Check variable reference expression on to nodes</ruleDescription>
+  <ruleName>To.CheckVariableReference.15</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>33</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.12/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[13]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.FromValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>9606</charEnd>
+  <charStart>9597</charStart>
+  <columnNumber>14</columnNumber>
+  <fixMessage>Change the &lt;{http://docs.oasis-open.org/wsbpel/2.0/process/executable}literal&gt; to have only 1 element or a text value.</fixMessage>
+  <lineNumber>312</lineNumber>
+  <location>from</location>
+  <message>The &lt;{http://docs.oasis-open.org/wsbpel/2.0/process/executable}literal&gt; node present in this &lt;bpws:from&gt; has has too many elements (1 element is required)</message>
+  <message.args>["bpws:from",null,2]</message.args>
+  <message.id>BPELC_FROM__LITERAL</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>The literal &lt;from&gt; spec must return a EII or a TII only</ruleDescription>
+  <ruleName>FromValidator.CheckLiteralVariant.30</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>38</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.12/@to</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[13]/bpws:to</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.To</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>9807</charEnd>
+  <charStart>9801</charStart>
+  <columnNumber>26</columnNumber>
+  <fixMessage>Make sure that the expression in &lt;bpws:to&gt; is a variable reference expression.</fixMessage>
+  <lineNumber>318</lineNumber>
+  <location>to</location>
+  <message>The expression in &lt;bpws:to&gt; is not a variable reference expression.</message>
+  <message.args>["bpws:to","$xy + $z","variable reference expression"]</message.args>
+  <message.id>XPATH_EXPRESSION_TYPE</message.id>
+  <node>&lt;bpws:to&gt;</node>
+  <ruleDescription>Check variable reference expression on to nodes</ruleDescription>
+  <ruleName>To.CheckVariableReference.15</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>33</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.13/@to</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[14]/bpws:to</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.To</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>10060</charEnd>
+  <charStart>10054</charStart>
+  <columnNumber>18</columnNumber>
+  <fixMessage>Make sure that the expression in &lt;bpws:to&gt; is a variable reference expression.</fixMessage>
+  <lineNumber>327</lineNumber>
+  <location>to</location>
+  <message>The expression in &lt;bpws:to&gt; is not a variable reference expression.</message>
+  <message.args>["bpws:to","$xyz + 1","variable reference expression"]</message.args>
+  <message.id>XPATH_EXPRESSION_TYPE</message.id>
+  <node>&lt;bpws:to&gt;</node>
+  <ruleDescription>Check variable reference expression on to nodes</ruleDescription>
+  <ruleName>To.CheckVariableReference.15</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>33</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.14/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[15]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>10180</charEnd>
+  <charStart>10171</charStart>
+  <columnNumber>14</columnNumber>
+  <fixMessage>Check the type definition associated with the BPEL variable.</fixMessage>
+  <lineNumber>333</lineNumber>
+  <location>from</location>
+  <message>The XPath segment "child::bpws:foo" cannot be resolved.</message>
+  <message.args>["child::bpws:foo"]</message.args>
+  <message.id>XPATH_NAME_STEP</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>Check the general XPath expression</ruleDescription>
+  <ruleName>From.CheckGeneralExpression.15</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>0</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.14/@to</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[15]/bpws:to</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.To</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>10240</charEnd>
+  <charStart>10236</charStart>
+  <columnNumber>24</columnNumber>
+  <fixMessage>Make sure that the expression in &lt;bpws:to&gt; is a variable reference expression.</fixMessage>
+  <lineNumber>334</lineNumber>
+  <location>to</location>
+  <message>The expression in &lt;bpws:to&gt; is not a variable reference expression.</message>
+  <message.args>["bpws:to","$input","variable reference expression"]</message.args>
+  <message.id>XPATH_EXPRESSION_TYPE</message.id>
+  <node>&lt;bpws:to&gt;</node>
+  <ruleDescription>Check variable reference expression on to nodes</ruleDescription>
+  <ruleName>To.CheckVariableReference.15</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>33</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.15/@to</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[16]/bpws:to</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.To</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>10372</charEnd>
+  <charStart>10369</charStart>
+  <columnNumber>24</columnNumber>
+  <fixMessage>Make sure that the expression in &lt;bpws:to&gt; is a variable reference expression.</fixMessage>
+  <lineNumber>339</lineNumber>
+  <location>to</location>
+  <message>The expression in &lt;bpws:to&gt; is not a variable reference expression.</message>
+  <message.args>["bpws:to","$vary","variable reference expression"]</message.args>
+  <message.id>XPATH_EXPRESSION_TYPE</message.id>
+  <node>&lt;bpws:to&gt;</node>
+  <ruleDescription>Check variable reference expression on to nodes</ruleDescription>
+  <ruleName>To.CheckVariableReference.15</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>33</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.16/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[17]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>10480</charEnd>
+  <charStart>10471</charStart>
+  <columnNumber>26</columnNumber>
+  <fixMessage>Variable "varx" must not specify a part name.</fixMessage>
+  <lineNumber>343</lineNumber>
+  <location>from</location>
+  <message>Variable "varx"  must not specify part "part1" because its type is not a WSDL message</message>
+  <message.args>["varx","part1","$varx.part1",0]</message.args>
+  <message.id>XPATH_VARIABLE_PART</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>Check the variable namespace prefix</ruleDescription>
+  <ruleName>XPathValidator.CheckVariable.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>0</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.16/@to</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[17]/bpws:to</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.To</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>10527</charEnd>
+  <charStart>10518</charStart>
+  <columnNumber>24</columnNumber>
+  <fixMessage>Make sure that the expression in &lt;bpws:to&gt; is a variable reference expression.</fixMessage>
+  <lineNumber>344</lineNumber>
+  <location>to</location>
+  <message>The expression in &lt;bpws:to&gt; is not a variable reference expression.</message>
+  <message.args>["bpws:to","$vary.part2","variable reference expression"]</message.args>
+  <message.id>XPATH_EXPRESSION_TYPE</message.id>
+  <node>&lt;bpws:to&gt;</node>
+  <ruleDescription>Check variable reference expression on to nodes</ruleDescription>
+  <ruleName>To.CheckVariableReference.15</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>33</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.17/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[18]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>10638</charEnd>
+  <charStart>10636</charStart>
+  <columnNumber>44</columnNumber>
+  <fixMessage>Change the first argument to function getVariableProperty in "bpws:getVariableProperty($foo, $bar)" to a literal (string).</fixMessage>
+  <lineNumber>348</lineNumber>
+  <location>from</location>
+  <message>The first argument ($foo) to function getVariableProperty in "bpws:getVariableProperty($foo, $bar)" must be a literal (string).</message>
+  <message.args>["bpws:from","getVariableProperty","bpws:getVariableProperty($foo, $bar)",1,"$foo"]</message.args>
+  <message.id>XPATH_FN_LITERAL_ARGS</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>Arguments to getVariableProperty must be quoted strings</ruleDescription>
+  <ruleName>XPathValidator.CheckGetVariableProperty.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>30</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.17/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[18]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>10643</charEnd>
+  <charStart>10641</charStart>
+  <columnNumber>49</columnNumber>
+  <fixMessage>Change the second argument to function getVariableProperty in "bpws:getVariableProperty($foo, $bar)" to a literal (string).</fixMessage>
+  <lineNumber>348</lineNumber>
+  <location>from</location>
+  <message>The second argument ($bar) to function getVariableProperty in "bpws:getVariableProperty($foo, $bar)" must be a literal (string).</message>
+  <message.args>["bpws:from","getVariableProperty","bpws:getVariableProperty($foo, $bar)",2,"$bar"]</message.args>
+  <message.id>XPATH_FN_LITERAL_ARGS</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>Arguments to getVariableProperty must be quoted strings</ruleDescription>
+  <ruleName>XPathValidator.CheckGetVariableProperty.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>30</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.17/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[18]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>10633</charEnd>
+  <charStart>10610</charStart>
+  <columnNumber>18</columnNumber>
+  <fixMessage>Add function definition for this function "bpws:getVariableProperty" to the validator</fixMessage>
+  <lineNumber>348</lineNumber>
+  <location>from</location>
+  <message>Unknown function "bpws:getVariableProperty" used in &lt;bpws:from&gt;</message>
+  <message.args>["bpws:from","bpws:getVariableProperty"]</message.args>
+  <message.id>XPATH_FUNCTION_UNKNOWN</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>3rd,5th,7th, etc. arguments must be QName strings</ruleDescription>
+  <ruleName>XPathValidator.CheckDoXslTransform.15</ruleName>
+  <severity>1</severity>
+  <staticAnalysisCode>41</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.17/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[18]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>10638</charEnd>
+  <charStart>10636</charStart>
+  <columnNumber>44</columnNumber>
+  <fixMessage>You must defined the variable to use it in the XPath expression.</fixMessage>
+  <lineNumber>348</lineNumber>
+  <location>from</location>
+  <message>The variable "foo" is not defined in scope or process.</message>
+  <message.args>["foo","$foo"]</message.args>
+  <message.id>XPATH_UNDEF_VARIABLE</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>Check the variable namespace prefix</ruleDescription>
+  <ruleName>XPathValidator.CheckVariable.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>0</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.17/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[18]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>10643</charEnd>
+  <charStart>10641</charStart>
+  <columnNumber>49</columnNumber>
+  <fixMessage>You must defined the variable to use it in the XPath expression.</fixMessage>
+  <lineNumber>348</lineNumber>
+  <location>from</location>
+  <message>The variable "bar" is not defined in scope or process.</message>
+  <message.args>["bar","$bar"]</message.args>
+  <message.id>XPATH_UNDEF_VARIABLE</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>Check the variable namespace prefix</ruleDescription>
+  <ruleName>XPathValidator.CheckVariable.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>0</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.17/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[18]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>10695</charEnd>
+  <charStart>10693</charStart>
+  <columnNumber>44</columnNumber>
+  <fixMessage>Change the first argument to function getVariableProperty in "bpws:getVariableProperty($foo, "bar")" to a literal (string).</fixMessage>
+  <lineNumber>349</lineNumber>
+  <location>from</location>
+  <message>The first argument ($foo) to function getVariableProperty in "bpws:getVariableProperty($foo, "bar")" must be a literal (string).</message>
+  <message.args>["bpws:from","getVariableProperty","bpws:getVariableProperty($foo, \"bar\")",1,"$foo"]</message.args>
+  <message.id>XPATH_FN_LITERAL_ARGS</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>Arguments to getVariableProperty must be quoted strings</ruleDescription>
+  <ruleName>XPathValidator.CheckGetVariableProperty.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>30</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.17/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[18]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>10701</charEnd>
+  <charStart>10697</charStart>
+  <columnNumber>48</columnNumber>
+  <fixMessage>Change the second argument to function getVariableProperty in "bpws:getVariableProperty($foo, "bar")" to a literal (string).</fixMessage>
+  <lineNumber>349</lineNumber>
+  <location>from</location>
+  <message>The second argument ("bar") to function getVariableProperty in "bpws:getVariableProperty($foo, "bar")" must be a literal (string).</message>
+  <message.args>["bpws:from","getVariableProperty","bpws:getVariableProperty($foo, \"bar\")",2,"\"bar\""]</message.args>
+  <message.id>XPATH_FN_LITERAL_ARGS</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>Arguments to getVariableProperty must be quoted strings</ruleDescription>
+  <ruleName>XPathValidator.CheckGetVariableProperty.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>30</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.17/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[18]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>10754</charEnd>
+  <charStart>10750</charStart>
+  <columnNumber>43</columnNumber>
+  <fixMessage>Change the first argument to function getVariableProperty in "bpws:getVariableProperty("foo", "badns:bar")" to a literal (string).</fixMessage>
+  <lineNumber>350</lineNumber>
+  <location>from</location>
+  <message>The first argument ("foo") to function getVariableProperty in "bpws:getVariableProperty("foo", "badns:bar")" must be a literal (string).</message>
+  <message.args>["bpws:from","getVariableProperty","bpws:getVariableProperty(\"foo\", \"badns:bar\")",1,"\"foo\""]</message.args>
+  <message.id>XPATH_FN_LITERAL_ARGS</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>Arguments to getVariableProperty must be quoted strings</ruleDescription>
+  <ruleName>XPathValidator.CheckGetVariableProperty.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>30</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.17/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[18]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>10766</charEnd>
+  <charStart>10756</charStart>
+  <columnNumber>49</columnNumber>
+  <fixMessage>Change the second argument to function getVariableProperty in "bpws:getVariableProperty("foo", "badns:bar")" to a literal (string).</fixMessage>
+  <lineNumber>350</lineNumber>
+  <location>from</location>
+  <message>The second argument ("badns:bar") to function getVariableProperty in "bpws:getVariableProperty("foo", "badns:bar")" must be a literal (string).</message>
+  <message.args>["bpws:from","getVariableProperty","bpws:getVariableProperty(\"foo\", \"badns:bar\")",2,"\"badns:bar\""]</message.args>
+  <message.id>XPATH_FN_LITERAL_ARGS</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>Arguments to getVariableProperty must be quoted strings</ruleDescription>
+  <ruleName>XPathValidator.CheckGetVariableProperty.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>30</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.17/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[18]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>10813</charEnd>
+  <charStart>10790</charStart>
+  <columnNumber>18</columnNumber>
+  <fixMessage>Not enough arguments and modify "bpws:getVariableProperty("foo1")"</fixMessage>
+  <lineNumber>351</lineNumber>
+  <location>from</location>
+  <message>Not enough arguments to function getVariableProperty in "bpws:getVariableProperty("foo1")" (requires 2 arguments).</message>
+  <message.args>["bpws:from","getVariableProperty","bpws:getVariableProperty(\"foo1\")",0,2]</message.args>
+  <message.id>XPATH_FN_ARGS</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>Arguments to getVariableProperty must be quoted strings</ruleDescription>
+  <ruleName>XPathValidator.CheckGetVariableProperty.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>30</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.17/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[18]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>10820</charEnd>
+  <charStart>10815</charStart>
+  <columnNumber>43</columnNumber>
+  <fixMessage>Change the first argument to function getVariableProperty in "bpws:getVariableProperty("foo1")" to a literal (string).</fixMessage>
+  <lineNumber>351</lineNumber>
+  <location>from</location>
+  <message>The first argument ("foo1") to function getVariableProperty in "bpws:getVariableProperty("foo1")" must be a literal (string).</message>
+  <message.args>["bpws:from","getVariableProperty","bpws:getVariableProperty(\"foo1\")",1,"\"foo1\""]</message.args>
+  <message.id>XPATH_FN_LITERAL_ARGS</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>Arguments to getVariableProperty must be quoted strings</ruleDescription>
+  <ruleName>XPathValidator.CheckGetVariableProperty.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>30</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.17/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[18]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>10866</charEnd>
+  <charStart>10843</charStart>
+  <columnNumber>18</columnNumber>
+  <fixMessage>Too many arguments and modify "bpws:getVariableProperty("foo5", "badns1:bar", "far")"</fixMessage>
+  <lineNumber>352</lineNumber>
+  <location>from</location>
+  <message>Too many arguments to function getVariableProperty in "bpws:getVariableProperty("foo5", "badns1:bar", "far")" (requires 2 arguments).</message>
+  <message.args>["bpws:from","getVariableProperty","bpws:getVariableProperty(\"foo5\", \"badns1:bar\", \"far\")",1,2]</message.args>
+  <message.id>XPATH_FN_ARGS</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>Arguments to getVariableProperty must be quoted strings</ruleDescription>
+  <ruleName>XPathValidator.CheckGetVariableProperty.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>30</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.17/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[18]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>10873</charEnd>
+  <charStart>10868</charStart>
+  <columnNumber>43</columnNumber>
+  <fixMessage>Change the first argument to function getVariableProperty in "bpws:getVariableProperty("foo5", "badns1:bar", "far")" to a literal (string).</fixMessage>
+  <lineNumber>352</lineNumber>
+  <location>from</location>
+  <message>The first argument ("foo5") to function getVariableProperty in "bpws:getVariableProperty("foo5", "badns1:bar", "far")" must be a literal (string).</message>
+  <message.args>["bpws:from","getVariableProperty","bpws:getVariableProperty(\"foo5\", \"badns1:bar\", \"far\")",1,"\"foo5\""]</message.args>
+  <message.id>XPATH_FN_LITERAL_ARGS</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>Arguments to getVariableProperty must be quoted strings</ruleDescription>
+  <ruleName>XPathValidator.CheckGetVariableProperty.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>30</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.17/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[18]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>10886</charEnd>
+  <charStart>10875</charStart>
+  <columnNumber>50</columnNumber>
+  <fixMessage>Change the second argument to function getVariableProperty in "bpws:getVariableProperty("foo5", "badns1:bar", "far")" to a literal (string).</fixMessage>
+  <lineNumber>352</lineNumber>
+  <location>from</location>
+  <message>The second argument ("badns1:bar") to function getVariableProperty in "bpws:getVariableProperty("foo5", "badns1:bar", "far")" must be a literal (string).</message>
+  <message.args>["bpws:from","getVariableProperty","bpws:getVariableProperty(\"foo5\", \"badns1:bar\", \"far\")",2,"\"badns1:bar\""]</message.args>
+  <message.id>XPATH_FN_LITERAL_ARGS</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>Arguments to getVariableProperty must be quoted strings</ruleDescription>
+  <ruleName>XPathValidator.CheckGetVariableProperty.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>30</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.17/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[18]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>10946</charEnd>
+  <charStart>10941</charStart>
+  <columnNumber>43</columnNumber>
+  <fixMessage>Change the first argument to function getVariableProperty in "bpws:getVariableProperty("foo3", "bpws:bar")" to a literal (string).</fixMessage>
+  <lineNumber>353</lineNumber>
+  <location>from</location>
+  <message>The first argument ("foo3") to function getVariableProperty in "bpws:getVariableProperty("foo3", "bpws:bar")" must be a literal (string).</message>
+  <message.args>["bpws:from","getVariableProperty","bpws:getVariableProperty(\"foo3\", \"bpws:bar\")",1,"\"foo3\""]</message.args>
+  <message.id>XPATH_FN_LITERAL_ARGS</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>Arguments to getVariableProperty must be quoted strings</ruleDescription>
+  <ruleName>XPathValidator.CheckGetVariableProperty.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>30</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.17/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[18]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>10957</charEnd>
+  <charStart>10948</charStart>
+  <columnNumber>50</columnNumber>
+  <fixMessage>Change the second argument to function getVariableProperty in "bpws:getVariableProperty("foo3", "bpws:bar")" to a literal (string).</fixMessage>
+  <lineNumber>353</lineNumber>
+  <location>from</location>
+  <message>The second argument ("bpws:bar") to function getVariableProperty in "bpws:getVariableProperty("foo3", "bpws:bar")" must be a literal (string).</message>
+  <message.args>["bpws:from","getVariableProperty","bpws:getVariableProperty(\"foo3\", \"bpws:bar\")",2,"\"bpws:bar\""]</message.args>
+  <message.id>XPATH_FN_LITERAL_ARGS</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>Arguments to getVariableProperty must be quoted strings</ruleDescription>
+  <ruleName>XPathValidator.CheckGetVariableProperty.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>30</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.17/@to</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[18]/bpws:to</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.To</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>11001</charEnd>
+  <charStart>10997</charStart>
+  <columnNumber>17</columnNumber>
+  <fixMessage>Make sure that the expression in &lt;bpws:to&gt; is a variable reference expression.</fixMessage>
+  <lineNumber>355</lineNumber>
+  <location>to</location>
+  <message>The expression in &lt;bpws:to&gt; is not a variable reference expression.</message>
+  <message.args>["bpws:to","$input","variable reference expression"]</message.args>
+  <message.id>XPATH_EXPRESSION_TYPE</message.id>
+  <node>&lt;bpws:to&gt;</node>
+  <ruleDescription>Check variable reference expression on to nodes</ruleDescription>
+  <ruleName>To.CheckVariableReference.15</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>33</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.18/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[19]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>11111</charEnd>
+  <charStart>11108</charStart>
+  <columnNumber>39</columnNumber>
+  <fixMessage>Change the first argument to function doXslTransform in "bpws:doXslTransform($foo2, $bar2)" to a literal (string).</fixMessage>
+  <lineNumber>360</lineNumber>
+  <location>from</location>
+  <message>The first argument ($foo2) to function doXslTransform in "bpws:doXslTransform($foo2, $bar2)" must be a literal (string).</message>
+  <message.args>["bpws:from","doXslTransform","bpws:doXslTransform($foo2, $bar2)",1,"$foo2"]</message.args>
+  <message.id>XPATH_FN_LITERAL_ARGS</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>1st arguments to doXslTransform must be quoted string</ruleDescription>
+  <ruleName>XPathValidator.CheckDoXslTransform.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>39</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.18/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[19]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>11105</charEnd>
+  <charStart>11087</charStart>
+  <columnNumber>18</columnNumber>
+  <fixMessage>Add function definition for this function "bpws:doXslTransform" to the validator</fixMessage>
+  <lineNumber>360</lineNumber>
+  <location>from</location>
+  <message>Unknown function "bpws:doXslTransform" used in &lt;bpws:from&gt;</message>
+  <message.args>["bpws:from","bpws:doXslTransform"]</message.args>
+  <message.id>XPATH_FUNCTION_UNKNOWN</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>3rd,5th,7th, etc. arguments must be QName strings</ruleDescription>
+  <ruleName>XPathValidator.CheckDoXslTransform.15</ruleName>
+  <severity>1</severity>
+  <staticAnalysisCode>41</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.18/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[19]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>11111</charEnd>
+  <charStart>11108</charStart>
+  <columnNumber>39</columnNumber>
+  <fixMessage>You must defined the variable to use it in the XPath expression.</fixMessage>
+  <lineNumber>360</lineNumber>
+  <location>from</location>
+  <message>The variable "foo2" is not defined in scope or process.</message>
+  <message.args>["foo2","$foo2"]</message.args>
+  <message.id>XPATH_UNDEF_VARIABLE</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>Check the variable namespace prefix</ruleDescription>
+  <ruleName>XPathValidator.CheckVariable.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>0</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.18/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[19]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>11119</charEnd>
+  <charStart>11116</charStart>
+  <columnNumber>47</columnNumber>
+  <fixMessage>You must defined the variable to use it in the XPath expression.</fixMessage>
+  <lineNumber>360</lineNumber>
+  <location>from</location>
+  <message>The variable "bar2" is not defined in scope or process.</message>
+  <message.args>["bar2","$bar2"]</message.args>
+  <message.id>XPATH_UNDEF_VARIABLE</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>Check the variable namespace prefix</ruleDescription>
+  <ruleName>XPathValidator.CheckVariable.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>0</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.18/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[19]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>11169</charEnd>
+  <charStart>11166</charStart>
+  <columnNumber>39</columnNumber>
+  <fixMessage>Change the first argument to function doXslTransform in "bpws:doXslTransform($foo2, "bar")" to a literal (string).</fixMessage>
+  <lineNumber>361</lineNumber>
+  <location>from</location>
+  <message>The first argument ($foo2) to function doXslTransform in "bpws:doXslTransform($foo2, "bar")" must be a literal (string).</message>
+  <message.args>["bpws:from","doXslTransform","bpws:doXslTransform($foo2, \"bar\")",1,"$foo2"]</message.args>
+  <message.id>XPATH_FN_LITERAL_ARGS</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>1st arguments to doXslTransform must be quoted string</ruleDescription>
+  <ruleName>XPathValidator.CheckDoXslTransform.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>39</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.18/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[19]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>11219</charEnd>
+  <charStart>11205</charStart>
+  <columnNumber>24</columnNumber>
+  <fixMessage>Change the first argument to function doXslTransform in "bpws:doXslTransform(" :foo/bar.txt", "bar")" to a literal (string).</fixMessage>
+  <lineNumber>362</lineNumber>
+  <location>from</location>
+  <message>The first argument (" :foo/bar.txt") to function doXslTransform in "bpws:doXslTransform(" :foo/bar.txt", "bar")" must be a literal (string).</message>
+  <message.args>["bpws:from","doXslTransform","bpws:doXslTransform(\" :foo/bar.txt\", \"bar\")",1,"\" :foo/bar.txt\""]</message.args>
+  <message.id>XPATH_FN_LITERAL_ARGS</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>1st arguments to doXslTransform must be quoted string</ruleDescription>
+  <ruleName>XPathValidator.CheckDoXslTransform.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>39</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.18/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[19]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>11259</charEnd>
+  <charStart>11241</charStart>
+  <columnNumber>9</columnNumber>
+  <fixMessage>Not enough arguments and modify "bpws:doXslTransform("12:12")"</fixMessage>
+  <lineNumber>363</lineNumber>
+  <location>from</location>
+  <message>Not enough arguments to function doXslTransform in "bpws:doXslTransform("12:12")" (requires 2 arguments).</message>
+  <message.args>["bpws:from","doXslTransform","bpws:doXslTransform(\"12:12\")",0,2]</message.args>
+  <message.id>XPATH_FN_ARGS</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>1st arguments to doXslTransform must be quoted string</ruleDescription>
+  <ruleName>XPathValidator.CheckDoXslTransform.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>39</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.18/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[19]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>11294</charEnd>
+  <charStart>11288</charStart>
+  <columnNumber>25</columnNumber>
+  <fixMessage>Change the first argument to function doXslTransform in "bpws:doXslTransform("12:12")" to a literal (string).</fixMessage>
+  <lineNumber>364</lineNumber>
+  <location>from</location>
+  <message>The first argument ("12:12") to function doXslTransform in "bpws:doXslTransform("12:12")" must be a literal (string).</message>
+  <message.args>["bpws:from","doXslTransform","bpws:doXslTransform(\"12:12\")",1,"\"12:12\""]</message.args>
+  <message.id>XPATH_FN_LITERAL_ARGS</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>1st arguments to doXslTransform must be quoted string</ruleDescription>
+  <ruleName>XPathValidator.CheckDoXslTransform.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>39</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.18/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[19]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>11350</charEnd>
+  <charStart>11332</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Not enough arguments and modify "bpws:doXslTransform("13:13")"</fixMessage>
+  <lineNumber>366</lineNumber>
+  <location>from</location>
+  <message>Not enough arguments to function doXslTransform in "bpws:doXslTransform("13:13")" (requires 2 arguments).</message>
+  <message.args>["bpws:from","doXslTransform","bpws:doXslTransform(\"13:13\")",0,2]</message.args>
+  <message.id>XPATH_FN_ARGS</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>1st arguments to doXslTransform must be quoted string</ruleDescription>
+  <ruleName>XPathValidator.CheckDoXslTransform.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>39</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.18/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[19]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>11360</charEnd>
+  <charStart>11354</charStart>
+  <columnNumber>25</columnNumber>
+  <fixMessage>Change the first argument to function doXslTransform in "bpws:doXslTransform("13:13")" to a literal (string).</fixMessage>
+  <lineNumber>366</lineNumber>
+  <location>from</location>
+  <message>The first argument ("13:13") to function doXslTransform in "bpws:doXslTransform("13:13")" must be a literal (string).</message>
+  <message.args>["bpws:from","doXslTransform","bpws:doXslTransform(\"13:13\")",1,"\"13:13\""]</message.args>
+  <message.id>XPATH_FN_LITERAL_ARGS</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>1st arguments to doXslTransform must be quoted string</ruleDescription>
+  <ruleName>XPathValidator.CheckDoXslTransform.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>39</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.18/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[19]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>11401</charEnd>
+  <charStart>11393</charStart>
+  <columnNumber>28</columnNumber>
+  <fixMessage>Change the first argument to function doXslTransform in "bpws:doXslTransform("foo5/..", $input, "arg3")" to a literal (string).</fixMessage>
+  <lineNumber>367</lineNumber>
+  <location>from</location>
+  <message>The first argument ("foo5/..") to function doXslTransform in "bpws:doXslTransform("foo5/..", $input, "arg3")" must be a literal (string).</message>
+  <message.args>["bpws:from","doXslTransform","bpws:doXslTransform(\"foo5/..\", $input, \"arg3\")",1,"\"foo5/..\""]</message.args>
+  <message.id>XPATH_FN_LITERAL_ARGS</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>1st arguments to doXslTransform must be quoted string</ruleDescription>
+  <ruleName>XPathValidator.CheckDoXslTransform.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>39</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.18/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[19]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>11391</charEnd>
+  <charStart>11373</charStart>
+  <columnNumber>8</columnNumber>
+  <fixMessage>Not enough arguments and modify "bpws:doXslTransform("foo5/..", $input, "arg3")"</fixMessage>
+  <lineNumber>367</lineNumber>
+  <location>from</location>
+  <message>Not enough arguments to function doXslTransform in "bpws:doXslTransform("foo5/..", $input, "arg3")" (requires 2 arguments).</message>
+  <message.args>["bpws:from","doXslTransform","bpws:doXslTransform(\"foo5/..\", $input, \"arg3\")",0,2]</message.args>
+  <message.id>XPATH_FN_ARGS</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>There must be an even number of arguments doXslTransform</ruleDescription>
+  <ruleName>XPathValidator.CheckDoXslTransform.11</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>40</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.18/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[19]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>11415</charEnd>
+  <charStart>11410</charStart>
+  <columnNumber>45</columnNumber>
+  <fixMessage>Change the third argument to function doXslTransform in "bpws:doXslTransform("foo5/..", $input, "arg3")" to a literal (string).</fixMessage>
+  <lineNumber>367</lineNumber>
+  <location>from</location>
+  <message>The third argument ("arg3") to function doXslTransform in "bpws:doXslTransform("foo5/..", $input, "arg3")" must be a literal (string).</message>
+  <message.args>["bpws:from","doXslTransform","bpws:doXslTransform(\"foo5/..\", $input, \"arg3\")",3,"\"arg3\""]</message.args>
+  <message.id>XPATH_FN_LITERAL_ARGS</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>3rd,5th,7th, etc. arguments must be QName strings</ruleDescription>
+  <ruleName>XPathValidator.CheckDoXslTransform.15</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>41</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.18/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[19]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>11408</charEnd>
+  <charStart>11404</charStart>
+  <columnNumber>39</columnNumber>
+  <fixMessage>Variable "input" must specify a part name.</fixMessage>
+  <lineNumber>367</lineNumber>
+  <location>from</location>
+  <message>Variable "input" needs to specify a part because its type is a WSDL message</message>
+  <message.args>["input","unspecified","$input",1]</message.args>
+  <message.id>XPATH_VARIABLE_PART</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>Check the variable namespace prefix</ruleDescription>
+  <ruleName>XPathValidator.CheckVariable.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>0</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.18/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[19]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>11454</charEnd>
+  <charStart>11449</charStart>
+  <columnNumber>28</columnNumber>
+  <fixMessage>Change the first argument to function doXslTransform in "bpws:doXslTransform("foo2", $input, "badns1:arg3", $output)" to a literal (string).</fixMessage>
+  <lineNumber>368</lineNumber>
+  <location>from</location>
+  <message>The first argument ("foo2") to function doXslTransform in "bpws:doXslTransform("foo2", $input, "badns1:arg3", $output)" must be a literal (string).</message>
+  <message.args>["bpws:from","doXslTransform","bpws:doXslTransform(\"foo2\", $input, \"badns1:arg3\", $output)",1,"\"foo2\""]</message.args>
+  <message.id>XPATH_FN_LITERAL_ARGS</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>1st arguments to doXslTransform must be quoted string</ruleDescription>
+  <ruleName>XPathValidator.CheckDoXslTransform.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>39</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.18/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[19]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>11475</charEnd>
+  <charStart>11463</charStart>
+  <columnNumber>42</columnNumber>
+  <fixMessage>Change the third argument to function doXslTransform in "bpws:doXslTransform("foo2", $input, "badns1:arg3", $output)" to a literal (string).</fixMessage>
+  <lineNumber>368</lineNumber>
+  <location>from</location>
+  <message>The third argument ("badns1:arg3") to function doXslTransform in "bpws:doXslTransform("foo2", $input, "badns1:arg3", $output)" must be a literal (string).</message>
+  <message.args>["bpws:from","doXslTransform","bpws:doXslTransform(\"foo2\", $input, \"badns1:arg3\", $output)",3,"\"badns1:arg3\""]</message.args>
+  <message.id>XPATH_FN_LITERAL_ARGS</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>3rd,5th,7th, etc. arguments must be QName strings</ruleDescription>
+  <ruleName>XPathValidator.CheckDoXslTransform.15</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>41</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.18/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[19]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>11483</charEnd>
+  <charStart>11478</charStart>
+  <columnNumber>57</columnNumber>
+  <fixMessage>Variable "output" must specify a part name.</fixMessage>
+  <lineNumber>368</lineNumber>
+  <location>from</location>
+  <message>Variable "output" needs to specify a part because its type is a WSDL message</message>
+  <message.args>["output","unspecified","$output",1]</message.args>
+  <message.id>XPATH_VARIABLE_PART</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>Check the variable namespace prefix</ruleDescription>
+  <ruleName>XPathValidator.CheckVariable.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>0</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.18/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[19]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>11528</charEnd>
+  <charStart>11523</charStart>
+  <columnNumber>35</columnNumber>
+  <fixMessage>Change the first argument to function doXslTransform in "bpws:doXslTransform("foo2", $input, 1 &gt; 3, $output, 1 div 3)" to a literal (string).</fixMessage>
+  <lineNumber>369</lineNumber>
+  <location>from</location>
+  <message>The first argument ("foo2") to function doXslTransform in "bpws:doXslTransform("foo2", $input, 1 &gt; 3, $output, 1 div 3)" must be a literal (string).</message>
+  <message.args>["bpws:from","doXslTransform","bpws:doXslTransform(\"foo2\", $input, 1 &gt; 3, $output, 1 div 3)",1,"\"foo2\""]</message.args>
+  <message.id>XPATH_FN_LITERAL_ARGS</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>1st arguments to doXslTransform must be quoted string</ruleDescription>
+  <ruleName>XPathValidator.CheckDoXslTransform.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>39</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.18/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[19]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>11521</charEnd>
+  <charStart>11503</charStart>
+  <columnNumber>15</columnNumber>
+  <fixMessage>Not enough arguments and modify "bpws:doXslTransform("foo2", $input, 1 &gt; 3, $output, 1 div 3)"</fixMessage>
+  <lineNumber>369</lineNumber>
+  <location>from</location>
+  <message>Not enough arguments to function doXslTransform in "bpws:doXslTransform("foo2", $input, 1 &gt; 3, $output, 1 div 3)" (requires 2 arguments).</message>
+  <message.args>["bpws:from","doXslTransform","bpws:doXslTransform(\"foo2\", $input, 1 &gt; 3, $output, 1 div 3)",0,2]</message.args>
+  <message.id>XPATH_FN_ARGS</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>There must be an even number of arguments doXslTransform</ruleDescription>
+  <ruleName>XPathValidator.CheckDoXslTransform.11</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>40</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.18/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[19]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>11541</charEnd>
+  <charStart>11537</charStart>
+  <columnNumber>49</columnNumber>
+  <fixMessage>Change the third argument to function doXslTransform in "bpws:doXslTransform("foo2", $input, 1 &gt; 3, $output, 1 div 3)" to a literal (string).</fixMessage>
+  <lineNumber>369</lineNumber>
+  <location>from</location>
+  <message>The third argument (1 &gt; 3) to function doXslTransform in "bpws:doXslTransform("foo2", $input, 1 &gt; 3, $output, 1 div 3)" must be a literal (string).</message>
+  <message.args>["bpws:from","doXslTransform","bpws:doXslTransform(\"foo2\", $input, 1 &gt; 3, $output, 1 div 3)",3,"1 &gt; 3"]</message.args>
+  <message.id>XPATH_FN_LITERAL_ARGS</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>3rd,5th,7th, etc. arguments must be QName strings</ruleDescription>
+  <ruleName>XPathValidator.CheckDoXslTransform.15</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>41</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.18/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[19]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>11558</charEnd>
+  <charStart>11552</charStart>
+  <columnNumber>64</columnNumber>
+  <fixMessage>Change the 5th argument to function doXslTransform in "bpws:doXslTransform("foo2", $input, 1 &gt; 3, $output, 1 div 3)" to a literal (string).</fixMessage>
+  <lineNumber>369</lineNumber>
+  <location>from</location>
+  <message>The 5th argument (1 div 3) to function doXslTransform in "bpws:doXslTransform("foo2", $input, 1 &gt; 3, $output, 1 div 3)" must be a literal (string).</message>
+  <message.args>["bpws:from","doXslTransform","bpws:doXslTransform(\"foo2\", $input, 1 &gt; 3, $output, 1 div 3)",5,"1 div 3"]</message.args>
+  <message.id>XPATH_FN_LITERAL_ARGS</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>3rd,5th,7th, etc. arguments must be QName strings</ruleDescription>
+  <ruleName>XPathValidator.CheckDoXslTransform.15</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>41</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.18/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[19]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>11603</charEnd>
+  <charStart>11598</charStart>
+  <columnNumber>35</columnNumber>
+  <fixMessage>Change the first argument to function doXslTransform in "bpws:doXslTransform("foo2", $input, "badns3:arg3", $output, "badns4:arg3")" to a literal (string).</fixMessage>
+  <lineNumber>370</lineNumber>
+  <location>from</location>
+  <message>The first argument ("foo2") to function doXslTransform in "bpws:doXslTransform("foo2", $input, "badns3:arg3", $output, "badns4:arg3")" must be a literal (string).</message>
+  <message.args>["bpws:from","doXslTransform","bpws:doXslTransform(\"foo2\", $input, \"badns3:arg3\", $output, \"badns4:arg3\")",1,"\"foo2\""]</message.args>
+  <message.id>XPATH_FN_LITERAL_ARGS</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>1st arguments to doXslTransform must be quoted string</ruleDescription>
+  <ruleName>XPathValidator.CheckDoXslTransform.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>39</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.18/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[19]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>11596</charEnd>
+  <charStart>11578</charStart>
+  <columnNumber>15</columnNumber>
+  <fixMessage>Not enough arguments and modify "bpws:doXslTransform("foo2", $input, "badns3:arg3", $output, "badns4:arg3")"</fixMessage>
+  <lineNumber>370</lineNumber>
+  <location>from</location>
+  <message>Not enough arguments to function doXslTransform in "bpws:doXslTransform("foo2", $input, "badns3:arg3", $output, "badns4:arg3")" (requires 2 arguments).</message>
+  <message.args>["bpws:from","doXslTransform","bpws:doXslTransform(\"foo2\", $input, \"badns3:arg3\", $output, \"badns4:arg3\")",0,2]</message.args>
+  <message.id>XPATH_FN_ARGS</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>There must be an even number of arguments doXslTransform</ruleDescription>
+  <ruleName>XPathValidator.CheckDoXslTransform.11</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>40</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.18/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[19]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>11624</charEnd>
+  <charStart>11612</charStart>
+  <columnNumber>49</columnNumber>
+  <fixMessage>Change the third argument to function doXslTransform in "bpws:doXslTransform("foo2", $input, "badns3:arg3", $output, "badns4:arg3")" to a literal (string).</fixMessage>
+  <lineNumber>370</lineNumber>
+  <location>from</location>
+  <message>The third argument ("badns3:arg3") to function doXslTransform in "bpws:doXslTransform("foo2", $input, "badns3:arg3", $output, "badns4:arg3")" must be a literal (string).</message>
+  <message.args>["bpws:from","doXslTransform","bpws:doXslTransform(\"foo2\", $input, \"badns3:arg3\", $output, \"badns4:arg3\")",3,"\"badns3:arg3\""]</message.args>
+  <message.id>XPATH_FN_LITERAL_ARGS</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>3rd,5th,7th, etc. arguments must be QName strings</ruleDescription>
+  <ruleName>XPathValidator.CheckDoXslTransform.15</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>41</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.18/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[19]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>11647</charEnd>
+  <charStart>11635</charStart>
+  <columnNumber>72</columnNumber>
+  <fixMessage>Change the 5th argument to function doXslTransform in "bpws:doXslTransform("foo2", $input, "badns3:arg3", $output, "badns4:arg3")" to a literal (string).</fixMessage>
+  <lineNumber>370</lineNumber>
+  <location>from</location>
+  <message>The 5th argument ("badns4:arg3") to function doXslTransform in "bpws:doXslTransform("foo2", $input, "badns3:arg3", $output, "badns4:arg3")" must be a literal (string).</message>
+  <message.args>["bpws:from","doXslTransform","bpws:doXslTransform(\"foo2\", $input, \"badns3:arg3\", $output, \"badns4:arg3\")",5,"\"badns4:arg3\""]</message.args>
+  <message.id>XPATH_FN_LITERAL_ARGS</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>3rd,5th,7th, etc. arguments must be QName strings</ruleDescription>
+  <ruleName>XPathValidator.CheckDoXslTransform.15</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>41</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.18/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[19]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>11692</charEnd>
+  <charStart>11687</charStart>
+  <columnNumber>35</columnNumber>
+  <fixMessage>Change the first argument to function doXslTransform in "bpws:doXslTransform("foo2", $input, "bpws:arg3", $output, "bpws:arg3", $output)" to a literal (string).</fixMessage>
+  <lineNumber>371</lineNumber>
+  <location>from</location>
+  <message>The first argument ("foo2") to function doXslTransform in "bpws:doXslTransform("foo2", $input, "bpws:arg3", $output, "bpws:arg3", $output)" must be a literal (string).</message>
+  <message.args>["bpws:from","doXslTransform","bpws:doXslTransform(\"foo2\", $input, \"bpws:arg3\", $output, \"bpws:arg3\", $output)",1,"\"foo2\""]</message.args>
+  <message.id>XPATH_FN_LITERAL_ARGS</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>1st arguments to doXslTransform must be quoted string</ruleDescription>
+  <ruleName>XPathValidator.CheckDoXslTransform.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>39</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.18/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[19]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>11711</charEnd>
+  <charStart>11701</charStart>
+  <columnNumber>49</columnNumber>
+  <fixMessage>Change the third argument to function doXslTransform in "bpws:doXslTransform("foo2", $input, "bpws:arg3", $output, "bpws:arg3", $output)" to a literal (string).</fixMessage>
+  <lineNumber>371</lineNumber>
+  <location>from</location>
+  <message>The third argument ("bpws:arg3") to function doXslTransform in "bpws:doXslTransform("foo2", $input, "bpws:arg3", $output, "bpws:arg3", $output)" must be a literal (string).</message>
+  <message.args>["bpws:from","doXslTransform","bpws:doXslTransform(\"foo2\", $input, \"bpws:arg3\", $output, \"bpws:arg3\", $output)",3,"\"bpws:arg3\""]</message.args>
+  <message.id>XPATH_FN_LITERAL_ARGS</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>3rd,5th,7th, etc. arguments must be QName strings</ruleDescription>
+  <ruleName>XPathValidator.CheckDoXslTransform.15</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>41</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.18/@from</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[19]/bpws:from</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.From</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>11732</charEnd>
+  <charStart>11722</charStart>
+  <columnNumber>70</columnNumber>
+  <fixMessage>Change the 5th argument to function doXslTransform in "bpws:doXslTransform("foo2", $input, "bpws:arg3", $output, "bpws:arg3", $output)" to a literal (string).</fixMessage>
+  <lineNumber>371</lineNumber>
+  <location>from</location>
+  <message>The 5th argument ("bpws:arg3") to function doXslTransform in "bpws:doXslTransform("foo2", $input, "bpws:arg3", $output, "bpws:arg3", $output)" must be a literal (string).</message>
+  <message.args>["bpws:from","doXslTransform","bpws:doXslTransform(\"foo2\", $input, \"bpws:arg3\", $output, \"bpws:arg3\", $output)",5,"\"bpws:arg3\""]</message.args>
+  <message.id>XPATH_FN_LITERAL_ARGS</message.id>
+  <node>&lt;bpws:from&gt;</node>
+  <ruleDescription>3rd,5th,7th, etc. arguments must be QName strings</ruleDescription>
+  <ruleName>XPathValidator.CheckDoXslTransform.15</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>41</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8/@copy.18/@to</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign[4]/bpws:copy[19]/bpws:to</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.To</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>11792</charEnd>
+  <charStart>11780</charStart>
+  <columnNumber>17</columnNumber>
+  <fixMessage>Make sure that the expression in &lt;bpws:to&gt; is a variable reference expression.</fixMessage>
+  <lineNumber>373</lineNumber>
+  <location>to</location>
+  <message>The expression in &lt;bpws:to&gt; is not a variable reference expression.</message>
+  <message.args>["bpws:to","$input.payload","variable reference expression"]</message.args>
+  <message.id>XPATH_EXPRESSION_TYPE</message.id>
+  <node>&lt;bpws:to&gt;</node>
+  <ruleDescription>Check variable reference expression on to nodes</ruleDescription>
+  <ruleName>To.CheckVariableReference.15</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>33</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.9/@targets</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:empty[2]/bpws:targets</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.TargetsValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>11882</charEnd>
+  <charStart>11870</charStart>
+  <columnNumber>5</columnNumber>
+  <fixMessage>Add &lt;"target"&gt; to node &lt;bpws:targets&gt; to satisfy the constraint.</fixMessage>
+  <lineNumber>379</lineNumber>
+  <location>targets</location>
+  <message>Node &lt;bpws:targets&gt; must contain at least one node from "target"</message>
+  <message.args>["bpws:targets",0,0,"\"target\"",0,1]</message.args>
+  <message.id>BPELC__MIN_IN_PARENT</message.id>
+  <node>&lt;bpws:targets&gt;</node>
+  <ruleDescription>Check my children nodes (types and occurances)</ruleDescription>
+  <ruleName>CValidator.CheckChildrenNodes.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2002</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.9/@targets/@joinCondition</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:empty[2]/bpws:targets/bpws:joinCondition</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.JoinCondition</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>11937</charEnd>
+  <charStart>11923</charStart>
+  <columnNumber>10</columnNumber>
+  <fixMessage>You cannot use BPEL functions in nodes like &lt;bpws:joinCondition&gt;.</fixMessage>
+  <lineNumber>381</lineNumber>
+  <location>joinCondition</location>
+  <message>BPEL function "helloWorld" cannot be used in node &lt;bpws:joinCondition&gt;.</message>
+  <message.args>["bpws:joinCondition","helloWorld","boolean expression"]</message.args>
+  <message.id>XPATH_BPEL_FUNCTION</message.id>
+  <node>&lt;bpws:joinCondition&gt;</node>
+  <ruleDescription>BPEL Functions must not be used in joinConditions</ruleDescription>
+  <ruleName>JoinCondition.CheckBPELFunctionsInJoinConditions.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>28</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.9/@targets/@joinCondition</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:empty[2]/bpws:targets/bpws:joinCondition</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.JoinCondition</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>11937</charEnd>
+  <charStart>11923</charStart>
+  <columnNumber>10</columnNumber>
+  <fixMessage>Add function definition for this function "bpws:helloWorld" to the validator</fixMessage>
+  <lineNumber>381</lineNumber>
+  <location>joinCondition</location>
+  <message>Unknown function "bpws:helloWorld" used in &lt;bpws:joinCondition&gt;</message>
+  <message.args>["bpws:joinCondition","bpws:helloWorld"]</message.args>
+  <message.id>XPATH_FUNCTION_UNKNOWN</message.id>
+  <node>&lt;bpws:joinCondition&gt;</node>
+  <ruleDescription>3rd,5th,7th, etc. arguments must be QName strings</ruleDescription>
+  <ruleName>XPathValidator.CheckDoXslTransform.15</ruleName>
+  <severity>1</severity>
+  <staticAnalysisCode>41</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.9/@targets/@joinCondition</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:empty[2]/bpws:targets/bpws:joinCondition</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.xpath.JoinCondition</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.xpath.messages</bundleName>
+  <charEnd>11959</charEnd>
+  <charStart>11954</charStart>
+  <columnNumber>10</columnNumber>
+  <fixMessage>Add function definition for this function "string" to the validator</fixMessage>
+  <lineNumber>382</lineNumber>
+  <location>joinCondition</location>
+  <message>Unknown function "string" used in &lt;bpws:joinCondition&gt;</message>
+  <message.args>["bpws:joinCondition","string"]</message.args>
+  <message.id>XPATH_FUNCTION_UNKNOWN</message.id>
+  <node>&lt;bpws:joinCondition&gt;</node>
+  <ruleDescription>Check functions in XPath expressions</ruleDescription>
+  <ruleName>XPathValidator.CheckFunctions.1</ruleName>
+  <severity>1</severity>
+  <staticAnalysisCode>1015</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.10</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:invoke[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.InvokeValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>12095</charEnd>
+  <charStart>12084</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Check value of operation ("twoWayOperation") and portType "&lt;portType "TwoWay"&gt;".</fixMessage>
+  <lineNumber>388</lineNumber>
+  <location>invoke</location>
+  <message>No "{http://schemas.xmlsoap.org/wsdl/}input" message exist on portType "&lt;portType "TwoWay"&gt;" with operation "twoWayOperation".</message>
+  <message.args>["bpws:invoke",null,"twoWayOperation",null]</message.args>
+  <message.id>BPELC_PA__NO_MESSAGE</message.id>
+  <node>&lt;bpws:invoke "invokeTest"&gt;</node>
+  <ruleName>InvokeValidator.CheckInputOutputMessages.12</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.11</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:invoke[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.InvokeValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>12287</charEnd>
+  <charStart>12276</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Check value of operation ("twoWayOperation") and portType "&lt;portType "TwoWay"&gt;".</fixMessage>
+  <lineNumber>395</lineNumber>
+  <location>invoke</location>
+  <message>No "{http://schemas.xmlsoap.org/wsdl/}input" message exist on portType "&lt;portType "TwoWay"&gt;" with operation "twoWayOperation".</message>
+  <message.args>["bpws:invoke",null,"twoWayOperation",null]</message.args>
+  <message.id>BPELC_PA__NO_MESSAGE</message.id>
+  <node>&lt;bpws:invoke "invokeTest"&gt;</node>
+  <ruleName>InvokeValidator.CheckInputOutputMessages.12</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.12</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:invoke[3]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.InvokeValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>12487</charEnd>
+  <charStart>12476</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Check value of operation ("twoWayOperation") and portType "&lt;portType "TwoWay"&gt;".</fixMessage>
+  <lineNumber>401</lineNumber>
+  <location>invoke</location>
+  <message>No "{http://schemas.xmlsoap.org/wsdl/}input" message exist on portType "&lt;portType "TwoWay"&gt;" with operation "twoWayOperation".</message>
+  <message.args>["bpws:invoke",null,"twoWayOperation",null]</message.args>
+  <message.id>BPELC_PA__NO_MESSAGE</message.id>
+  <node>&lt;bpws:invoke "invokeTest"&gt;</node>
+  <ruleName>InvokeValidator.CheckInputOutputMessages.12</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.13</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:invoke[4]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.InvokeValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>12713</charEnd>
+  <charStart>12702</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Check value of operation ("twoWayOperation") and portType "&lt;portType "TwoWay"&gt;".</fixMessage>
+  <lineNumber>408</lineNumber>
+  <location>invoke</location>
+  <message>No "{http://schemas.xmlsoap.org/wsdl/}input" message exist on portType "&lt;portType "TwoWay"&gt;" with operation "twoWayOperation".</message>
+  <message.args>["bpws:invoke",null,"twoWayOperation",null]</message.args>
+  <message.id>BPELC_PA__NO_MESSAGE</message.id>
+  <node>&lt;bpws:invoke "invokeTest"&gt;</node>
+  <ruleName>InvokeValidator.CheckInputOutputMessages.12</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.14</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:invoke[5]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.InvokeValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>12951</charEnd>
+  <charStart>12940</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Check value of operation ("twoWayOperation") and portType "&lt;portType "TwoWay"&gt;".</fixMessage>
+  <lineNumber>415</lineNumber>
+  <location>invoke</location>
+  <message>No "{http://schemas.xmlsoap.org/wsdl/}input" message exist on portType "&lt;portType "TwoWay"&gt;" with operation "twoWayOperation".</message>
+  <message.args>["bpws:invoke",null,"twoWayOperation",null]</message.args>
+  <message.id>BPELC_PA__NO_MESSAGE</message.id>
+  <node>&lt;bpws:invoke "invokeTest"&gt;</node>
+  <ruleName>InvokeValidator.CheckInputOutputMessages.12</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.15</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:invoke[6]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.InvokeValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>13190</charEnd>
+  <charStart>13179</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Check value of operation ("twoWayOperation") and portType "&lt;portType "TwoWay"&gt;".</fixMessage>
+  <lineNumber>422</lineNumber>
+  <location>invoke</location>
+  <message>No "{http://schemas.xmlsoap.org/wsdl/}input" message exist on portType "&lt;portType "TwoWay"&gt;" with operation "twoWayOperation".</message>
+  <message.args>["bpws:invoke",null,"twoWayOperation",null]</message.args>
+  <message.id>BPELC_PA__NO_MESSAGE</message.id>
+  <node>&lt;bpws:invoke "invokeTest"&gt;</node>
+  <ruleName>InvokeValidator.CheckInputOutputMessages.12</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.15/@correlations/@children.0</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:invoke[6]/bpws:correlations/bpws:correlation</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.CorrelationValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>13406</charEnd>
+  <charStart>13390</charStart>
+  <columnNumber>16</columnNumber>
+  <fixMessage>Make sure that the attribute "pattern" is defined.</fixMessage>
+  <lineNumber>428</lineNumber>
+  <location>correlation</location>
+  <message>Attribute "pattern" must not be set on this &lt;bpws:correlation&gt; node.</message>
+  <message.args>[null,"bpws:correlation",0]</message.args>
+  <message.id>BPELC__SET_ATTRIBUTE</message.id>
+  <node>&lt;bpws:correlation&gt;</node>
+  <ruleDescription>Check the pattern attribute values of correlation</ruleDescription>
+  <ruleName>CorrelationValidator.CheckPatternValues.5</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>46</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.16/@correlations/@children.0</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:invoke[7]/bpws:correlations/bpws:correlation</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.CorrelationValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>13809</charEnd>
+  <charStart>13793</charStart>
+  <columnNumber>16</columnNumber>
+  <fixMessage>Make sure that the attribute "pattern" is defined.</fixMessage>
+  <lineNumber>440</lineNumber>
+  <location>correlation</location>
+  <message>Attribute "pattern" must not be set on this &lt;bpws:correlation&gt; node.</message>
+  <message.args>[null,"bpws:correlation",0]</message.args>
+  <message.id>BPELC__SET_ATTRIBUTE</message.id>
+  <node>&lt;bpws:correlation&gt;</node>
+  <ruleDescription>Check the pattern attribute values of correlation</ruleDescription>
+  <ruleName>CorrelationValidator.CheckPatternValues.5</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>46</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.17/@variables/@children.2</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope/bpws:variables/bpws:variable[3]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.VariablesValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>14119</charEnd>
+  <charStart>14106</charStart>
+  <columnNumber>15</columnNumber>
+  <context.name>name</context.name>
+  <fixMessage>You must change the name of bpws:variable "v2int" to something else.</fixMessage>
+  <lineNumber>448</lineNumber>
+  <location>variable</location>
+  <message>&lt;bpws:variable&gt; name "v2int" is already defined in this scope/process.</message>
+  <message.args>["bpws:variables","bpws:variable","v2int"]</message.args>
+  <message.id>BPELC_DUPLICATE_NAME</message.id>
+  <node>&lt;bpws:variable "v2int"&gt;</node>
+  <ruleDescription>Checks for duplicate variable name</ruleDescription>
+  <ruleName>VariablesValidator.CheckDuplicateVariableName.40</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>23</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.17/@variables/@children.0</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope/bpws:variables/bpws:variable[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.VariableValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>13992</charEnd>
+  <charStart>13979</charStart>
+  <columnNumber>15</columnNumber>
+  <context.name>messageType</context.name>
+  <fixMessage>Make sure that value "" is resolvable (check imports, value of "messageType").</fixMessage>
+  <lineNumber>446</lineNumber>
+  <location>variable</location>
+  <message>"messageType" is set to "" on this &lt;bpws:variable&gt;  but it cannot be resolved (check value of "messageType", imports, WSDLs or XSDs).</message>
+  <message.args>["bpws:variable","messageType",0,""]</message.args>
+  <message.id>BPELC__UNRESOLVED_ATTRIBUTE</message.id>
+  <node>&lt;bpws:variable "v1"&gt;</node>
+  <ruleDescription>Make sure that Message Type is visible from the import(s)</ruleDescription>
+  <ruleName>VariableValidator.CheckMessageTypeNode.4</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>10</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.17/@activity/@activities.1</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope/bpws:sequence/bpws:invoke[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.InvokeValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>14866</charEnd>
+  <charStart>14855</charStart>
+  <columnNumber>15</columnNumber>
+  <fixMessage>Specify either &lt;{http://docs.oasis-open.org/wsbpel/2.0/process/executable}toPart&gt; *or* attribute "inputVariable" on &lt;bpws:invoke&gt;.</fixMessage>
+  <lineNumber>462</lineNumber>
+  <location>invoke</location>
+  <message>Either &lt;{http://docs.oasis-open.org/wsbpel/2.0/process/executable}toPart&gt; *or* attribute "inputVariable" must be specified on &lt;bpws:invoke&gt;.</message>
+  <message.args>["bpws:invoke",null,null,1]</message.args>
+  <message.id>BPELC__PA_PARTS</message.id>
+  <node>&lt;bpws:invoke&gt;</node>
+  <ruleDescription>Check to see if toPart is specified; if so then  inputVariable must not be used on the reply.</ruleDescription>
+  <ruleName>InvokeValidator.checkToPartsPresence.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>51</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.17/@activity/@activities.1</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope/bpws:sequence/bpws:invoke[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.InvokeValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>14866</charEnd>
+  <charStart>14855</charStart>
+  <columnNumber>15</columnNumber>
+  <fixMessage>Specify either &lt;{http://docs.oasis-open.org/wsbpel/2.0/process/executable}fromPart&gt; *or* attribute "outputVariable" on &lt;bpws:invoke&gt;.</fixMessage>
+  <lineNumber>462</lineNumber>
+  <location>invoke</location>
+  <message>Either &lt;{http://docs.oasis-open.org/wsbpel/2.0/process/executable}fromPart&gt; *or* attribute "outputVariable" must be specified on &lt;bpws:invoke&gt;.</message>
+  <message.args>["bpws:invoke",null,null,1]</message.args>
+  <message.id>BPELC__PA_PARTS</message.id>
+  <node>&lt;bpws:invoke&gt;</node>
+  <ruleDescription>Check to see if fromPart is specified; if so then  outputVariable must not be used on invoke.</ruleDescription>
+  <ruleName>InvokeValidator.checkFromPartsPresence.11</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>52</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.17/@activity/@activities.1/@toParts</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope/bpws:sequence/bpws:invoke[2]/bpws:toParts</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ToPartsValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>15044</charEnd>
+  <charStart>15032</charStart>
+  <columnNumber>20</columnNumber>
+  <fixMessage>You must specify part "payload3" on this &lt;{http://docs.oasis-open.org/wsbpel/2.0/process/executable}toParts&gt;</fixMessage>
+  <lineNumber>466</lineNumber>
+  <location>toParts</location>
+  <message>Part "payload3" must be specified on this &lt;{http://docs.oasis-open.org/wsbpel/2.0/process/executable}toParts&gt; - activity &lt;{http://docs.oasis-open.org/wsbpel/2.0/process/executable}invoke&gt; requires it.</message>
+  <message.args>["bpws:toParts",null,null,"payload3"]</message.args>
+  <message.id>BPELC_PART__MISSING_PART</message.id>
+  <node>&lt;bpws:toParts&gt;</node>
+  <ruleDescription>Check to make sure that every to part is used</ruleDescription>
+  <ruleName>ToPartsValidator.CheckEveryPartUsed.10</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>50</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.17/@activity/@activities.1/@toParts/@children.0</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope/bpws:sequence/bpws:invoke[2]/bpws:toParts/bpws:toPart[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ToPartValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>15082</charEnd>
+  <charStart>15071</charStart>
+  <columnNumber>24</columnNumber>
+  <context.name>part</context.name>
+  <fixMessage>Make sure that "part" is set to one of the values from Valid-NCName</fixMessage>
+  <lineNumber>467</lineNumber>
+  <location>toPart</location>
+  <message>"part" is set to "no_such _part" on this &lt;bpws:toPart&gt; node but it can only be set to Valid-NCName</message>
+  <message.args>["bpws:toPart","part","no_such _part","Valid-NCName",0]</message.args>
+  <message.id>BPELC__INVALID_ATTRIBUTE_VALUE</message.id>
+  <node>&lt;bpws:toPart&gt;</node>
+  <ruleName>ToPartValidator.CheckVariable.1</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.17/@activity/@activities.1/@toParts/@children.0</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope/bpws:sequence/bpws:invoke[2]/bpws:toParts/bpws:toPart[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ToPartValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>15082</charEnd>
+  <charStart>15071</charStart>
+  <columnNumber>24</columnNumber>
+  <context.name>fromVariable</context.name>
+  <fixMessage>Make sure that "fromVariable" is set to one of the values from Valid-NCName</fixMessage>
+  <lineNumber>467</lineNumber>
+  <location>toPart</location>
+  <message>"fromVariable" is set to "vxx x " on this &lt;bpws:toPart&gt; node but it can only be set to Valid-NCName</message>
+  <message.args>["bpws:toPart","fromVariable","vxx x ","Valid-NCName",0]</message.args>
+  <message.id>BPELC__INVALID_ATTRIBUTE_VALUE</message.id>
+  <node>&lt;bpws:toPart&gt;</node>
+  <ruleName>ToPartValidator.CheckVariable.1</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.17/@activity/@activities.1/@toParts/@children.1</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope/bpws:sequence/bpws:invoke[2]/bpws:toParts/bpws:toPart[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ToPartValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>15183</charEnd>
+  <charStart>15172</charStart>
+  <columnNumber>24</columnNumber>
+  <context.name>fromVariable</context.name>
+  <fixMessage>Make sure that value "vxxx" is resolvable (check imports, value of "fromVariable").</fixMessage>
+  <lineNumber>468</lineNumber>
+  <location>toPart</location>
+  <message>"fromVariable" is set to "vxxx" on this &lt;bpws:toPart&gt;  but it cannot be resolved (check value of "fromVariable", imports, WSDLs or XSDs).</message>
+  <message.args>["bpws:toPart","fromVariable",0,"vxxx"]</message.args>
+  <message.id>BPELC__UNRESOLVED_ATTRIBUTE</message.id>
+  <node>&lt;bpws:toPart&gt;</node>
+  <ruleDescription>Checks to see if the fromVariable is defined.</ruleDescription>
+  <ruleName>ToPartValidator.CheckVariableDefined.4</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>0</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.17/@activity/@activities.1/@toParts/@children.1</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope/bpws:sequence/bpws:invoke[2]/bpws:toParts/bpws:toPart[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ToPartValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>15183</charEnd>
+  <charStart>15172</charStart>
+  <columnNumber>24</columnNumber>
+  <fixMessage>Pick a valid message type.</fixMessage>
+  <lineNumber>468</lineNumber>
+  <location>toPart</location>
+  <message>Message part "no_such_part" does not exist in message "&lt;message "RequestMessage3"&gt;"</message>
+  <message.args>["bpws:toPart","no_such_part",null]</message.args>
+  <message.id>BPELC__PA_NO_PART</message.id>
+  <node>&lt;bpws:toPart&gt;</node>
+  <ruleDescription>Check to see if the fromVariable type matches the part name specified</ruleDescription>
+  <ruleName>ToPartValidator.CheckMessageParts.5</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>54</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.17/@activity/@activities.1/@toParts/@children.2</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope/bpws:sequence/bpws:invoke[2]/bpws:toParts/bpws:toPart[3]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ToPartValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>15262</charEnd>
+  <charStart>15251</charStart>
+  <columnNumber>24</columnNumber>
+  <context.name>fromVariable</context.name>
+  <fixMessage>Check the bpws:variable specified on this node via attribute "fromVariable" and make sure it is itself specified correctly.</fixMessage>
+  <lineNumber>469</lineNumber>
+  <location>toPart</location>
+  <message>The node &lt;bpws:toPart&gt; refers to a bpws:variable (via the attribute "fromVariable") - this bpws:variable needs to be defined correctly.</message>
+  <message.args>["bpws:toPart","bpws:variable",null,0]</message.args>
+  <message.id>BPELC_REF_NODE_PROBLEMS</message.id>
+  <node>&lt;bpws:toPart&gt;</node>
+  <ruleDescription>Checks to see if the fromVariable is defined.</ruleDescription>
+  <ruleName>ToPartValidator.CheckVariableDefined.4</ruleName>
+  <severity>1</severity>
+  <staticAnalysisCode>0</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.17/@activity/@activities.1/@toParts/@children.2</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope/bpws:sequence/bpws:invoke[2]/bpws:toParts/bpws:toPart[3]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ToPartValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>15262</charEnd>
+  <charStart>15251</charStart>
+  <columnNumber>24</columnNumber>
+  <fixMessage>Pick a valid message type.</fixMessage>
+  <lineNumber>469</lineNumber>
+  <location>toPart</location>
+  <message>Message part "no_such_part_two" does not exist in message "&lt;message "RequestMessage3"&gt;"</message>
+  <message.args>["bpws:toPart","no_such_part_two",null]</message.args>
+  <message.id>BPELC__PA_NO_PART</message.id>
+  <node>&lt;bpws:toPart&gt;</node>
+  <ruleDescription>Check to see if the fromVariable type matches the part name specified</ruleDescription>
+  <ruleName>ToPartValidator.CheckMessageParts.5</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>54</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.17/@activity/@activities.1/@toParts/@children.3</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope/bpws:sequence/bpws:invoke[2]/bpws:toParts/bpws:toPart[4]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ToPartValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>15343</charEnd>
+  <charStart>15332</charStart>
+  <columnNumber>24</columnNumber>
+  <fixMessage>Type must be compatible.</fixMessage>
+  <lineNumber>470</lineNumber>
+  <location>toPart</location>
+  <message>The variable "part1" of type "&lt;element "SimpleRequest"&gt;" is not compatible with message part "payload1" of type "&lt;complexType&gt;"</message>
+  <message.args>["bpws:toPart","variable","part1",null,"message part","payload1",null]</message.args>
+  <message.id>BPELC_XSD__INCOMPATIBLE_TYPE</message.id>
+  <node>&lt;bpws:toPart&gt;</node>
+  <ruleDescription>Check toPart and variable type compatibility</ruleDescription>
+  <ruleName>ToPartValidator.CheckToPartTypeCompatibility.20</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>0</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.17/@activity/@activities.1/@toParts/@children.4</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope/bpws:sequence/bpws:invoke[2]/bpws:toParts/bpws:toPart[5]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ToPartValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>15419</charEnd>
+  <charStart>15408</charStart>
+  <columnNumber>24</columnNumber>
+  <fixMessage>Remove the duplicate &lt;bpws:toPart&gt; "payload1"</fixMessage>
+  <lineNumber>471</lineNumber>
+  <location>toPart</location>
+  <message>The part "payload1" is already specified in another &lt;bpws:toPart&gt;.</message>
+  <message.args>["bpws:toPart","payload1","part2"]</message.args>
+  <message.id>BPELC_PART__DUPLICATE</message.id>
+  <node>&lt;bpws:toPart&gt;</node>
+  <ruleDescription>Check to see if part='' fromVariable='' is a duplicate entry.</ruleDescription>
+  <ruleName>ToPartValidator.CheckDuplicatePartFromVariable.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>0</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.17/@activity/@activities.1/@toParts/@children.4</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope/bpws:sequence/bpws:invoke[2]/bpws:toParts/bpws:toPart[5]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ToPartValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>15419</charEnd>
+  <charStart>15408</charStart>
+  <columnNumber>24</columnNumber>
+  <fixMessage>Type must be compatible.</fixMessage>
+  <lineNumber>471</lineNumber>
+  <location>toPart</location>
+  <message>The variable "part2" of type "&lt;xs:simpleType "integer"&gt;" is not compatible with message part "payload1" of type "&lt;complexType&gt;"</message>
+  <message.args>["bpws:toPart","variable","part2",null,"message part","payload1",null]</message.args>
+  <message.id>BPELC_XSD__INCOMPATIBLE_TYPE</message.id>
+  <node>&lt;bpws:toPart&gt;</node>
+  <ruleDescription>Check toPart and variable type compatibility</ruleDescription>
+  <ruleName>ToPartValidator.CheckToPartTypeCompatibility.20</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>0</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.17/@activity/@activities.1/@fromParts/@children.0</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope/bpws:sequence/bpws:invoke[2]/bpws:fromParts/bpws:fromPart[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.FromPartValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>15669</charEnd>
+  <charStart>15656</charStart>
+  <columnNumber>24</columnNumber>
+  <context.name>toVariable</context.name>
+  <fixMessage>Make sure that the attribute "toVariable" is specified.</fixMessage>
+  <lineNumber>475</lineNumber>
+  <location>fromPart</location>
+  <message>Attribute "toVariable" is not set on this &lt;bpws:fromPart&gt; activity.</message>
+  <message.args>["bpws:fromPart","toVariable",1]</message.args>
+  <message.id>BPELC__UNSET_ATTRIBUTE</message.id>
+  <node>&lt;bpws:fromPart&gt;</node>
+  <ruleName>FromPartValidator.CheckVariable.1</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.17/@activity/@activities.1/@fromParts/@children.0</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope/bpws:sequence/bpws:invoke[2]/bpws:fromParts/bpws:fromPart[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.FromPartValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>15669</charEnd>
+  <charStart>15656</charStart>
+  <columnNumber>24</columnNumber>
+  <fixMessage>Pick a valid message type.</fixMessage>
+  <lineNumber>475</lineNumber>
+  <location>fromPart</location>
+  <message>Message part "no_such_part" does not exist in message "ResponseMessage3"</message>
+  <message.args>["bpws:fromPart","no_such_part","ResponseMessage3"]</message.args>
+  <message.id>BPELC__PA_NO_PART</message.id>
+  <node>&lt;bpws:fromPart&gt;</node>
+  <ruleDescription>Check to see if the toVariable matches the type of the partName</ruleDescription>
+  <ruleName>FromPartValidator.CheckMessagePart.5</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>53</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.17/@activity/@activities.1/@fromParts/@children.1</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope/bpws:sequence/bpws:invoke[2]/bpws:fromParts/bpws:fromPart[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.FromPartValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>15748</charEnd>
+  <charStart>15735</charStart>
+  <columnNumber>24</columnNumber>
+  <context.name>toVariable</context.name>
+  <fixMessage>Make sure that the attribute "toVariable" is specified.</fixMessage>
+  <lineNumber>476</lineNumber>
+  <location>fromPart</location>
+  <message>Attribute "toVariable" is not set on this &lt;bpws:fromPart&gt; activity.</message>
+  <message.args>["bpws:fromPart","toVariable",1]</message.args>
+  <message.id>BPELC__UNSET_ATTRIBUTE</message.id>
+  <node>&lt;bpws:fromPart&gt;</node>
+  <ruleName>FromPartValidator.CheckVariable.1</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.17/@activity/@activities.1/@fromParts/@children.1</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope/bpws:sequence/bpws:invoke[2]/bpws:fromParts/bpws:fromPart[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.FromPartValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>15748</charEnd>
+  <charStart>15735</charStart>
+  <columnNumber>24</columnNumber>
+  <fixMessage>Remove the duplicate &lt;bpws:fromPart&gt; "no_such_part"</fixMessage>
+  <lineNumber>476</lineNumber>
+  <location>fromPart</location>
+  <message>The part "no_such_part" is already specified in another &lt;bpws:fromPart&gt;.</message>
+  <message.args>["bpws:fromPart","no_such_part",null]</message.args>
+  <message.id>BPELC_PART__DUPLICATE</message.id>
+  <node>&lt;bpws:fromPart&gt;</node>
+  <ruleDescription>Check to see if part='' toVariable='' is a duplicate entry.</ruleDescription>
+  <ruleName>FromPartValidator.CheckDuplicatePartToVariable.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>0</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.17/@activity/@activities.1/@fromParts/@children.1</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope/bpws:sequence/bpws:invoke[2]/bpws:fromParts/bpws:fromPart[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.FromPartValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>15748</charEnd>
+  <charStart>15735</charStart>
+  <columnNumber>24</columnNumber>
+  <fixMessage>Pick a valid message type.</fixMessage>
+  <lineNumber>476</lineNumber>
+  <location>fromPart</location>
+  <message>Message part "no_such_part" does not exist in message "ResponseMessage3"</message>
+  <message.args>["bpws:fromPart","no_such_part","ResponseMessage3"]</message.args>
+  <message.id>BPELC__PA_NO_PART</message.id>
+  <node>&lt;bpws:fromPart&gt;</node>
+  <ruleDescription>Check to see if the toVariable matches the type of the partName</ruleDescription>
+  <ruleName>FromPartValidator.CheckMessagePart.5</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>53</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.17/@activity/@activities.1/@fromParts/@children.2</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope/bpws:sequence/bpws:invoke[2]/bpws:fromParts/bpws:fromPart[3]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.FromPartValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>15850</charEnd>
+  <charStart>15837</charStart>
+  <columnNumber>24</columnNumber>
+  <context.name>toVariable</context.name>
+  <fixMessage>Check the bpws:variable specified on this node via attribute "toVariable" and make sure it is itself specified correctly.</fixMessage>
+  <lineNumber>477</lineNumber>
+  <location>fromPart</location>
+  <message>The node &lt;bpws:fromPart&gt; refers to a bpws:variable (via the attribute "toVariable") - this bpws:variable needs to be defined correctly.</message>
+  <message.args>["bpws:fromPart","bpws:variable",null,0]</message.args>
+  <message.id>BPELC_REF_NODE_PROBLEMS</message.id>
+  <node>&lt;bpws:fromPart&gt;</node>
+  <ruleDescription>Checks to see if the toVariable is defined.</ruleDescription>
+  <ruleName>FromPartValidator.CheckVariableDefined.4</ruleName>
+  <severity>1</severity>
+  <staticAnalysisCode>0</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.17/@activity/@activities.1/@fromParts/@children.2</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope/bpws:sequence/bpws:invoke[2]/bpws:fromParts/bpws:fromPart[3]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.FromPartValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>15850</charEnd>
+  <charStart>15837</charStart>
+  <columnNumber>24</columnNumber>
+  <fixMessage>Pick a valid message type.</fixMessage>
+  <lineNumber>477</lineNumber>
+  <location>fromPart</location>
+  <message>Message part "no_such_part_two" does not exist in message "ResponseMessage3"</message>
+  <message.args>["bpws:fromPart","no_such_part_two","ResponseMessage3"]</message.args>
+  <message.id>BPELC__PA_NO_PART</message.id>
+  <node>&lt;bpws:fromPart&gt;</node>
+  <ruleDescription>Check to see if the toVariable matches the type of the partName</ruleDescription>
+  <ruleName>FromPartValidator.CheckMessagePart.5</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>53</staticAnalysisCode>
+ </problem>
+
+</problems>

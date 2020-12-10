@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+
+<!--=========================================================================-->
+<!-- BPEL Designer Runtime Extension Point 									 -->
+<!--																		 -->
+<!-- Copyright (c) 2006 University College London.							 -->
+<!-- All rights reserved. This program and the accompanying materials 		 -->
+<!-- are made available under the terms of the Eclipse Public License v1.0	 -->
+<!-- which accompanies this distribution, and is available at				 -->
+<!-- http://www.eclipse.org/legal/epl-v10.html								 -->
+<!--																		 -->
+<!--=========================================================================-->
+
+<plugin>
+
+<!--=========================================================================-->
+<!-- New BPEL Project Wizard			 									 -->
+<!--=========================================================================-->
+   
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            name="%NEW_BPEL_PROJECT"
+            icon="icons/ctool16/new_bpelprj.gif"
+            category="org.eclipse.bpel.wizards"
+            project="true"
+            class="org.eclipse.bpel.runtimes.ui.wizards.NewBPELProjectWizard"
+            finalPerspective="org.eclipse.bpel.ui.perspective"
+            preferredPerspectives="org.eclipse.bpel.ui.perspective"
+            id="org.eclipse.bpel.runtimes.wizards.newBPELProject">
+            <description>%NEW_BPEL_PROJECT_DESCRIPTION</description>
+      </wizard>
+   </extension>
+   
+  <extension point="org.eclipse.wst.common.project.facet.ui.wizardPages">
+    <wizard-pages action="bpel.facet.core.install">
+      <page class="org.eclipse.bpel.runtimes.ui.wizards.BPELFacetInstallPage"/>
+    </wizard-pages>
+  </extension>
+   
+   
+<!--=========================================================================-->
+<!-- BPEL ModuleType							 							 -->
+<!--=========================================================================-->   
+   
+   <extension
+         id="bpel.module"
+         name="%MODULE_TYPE_NAME"
+         point="org.eclipse.wst.server.core.moduleTypes">
+   </extension>
+   
+<!-- The following is needed to make icons for deployable modules occur in   -->
+<!-- the Add and Remove Projects wizard										 -->
+   
+	<extension point="org.eclipse.wst.server.ui.serverImages">
+		<image
+			id="org.eclipse.bpel.runtimes.bpel.bpel.module"
+			typeIds="bpel.module"
+			icon="icons/obj16/bpelfacet.gif"/>
+	</extension>
+   
+<!--=========================================================================-->
+<!-- BPEL Facet							 									 -->
+<!--=========================================================================-->
+
+	<extension point="org.eclipse.wst.common.project.facet.core.facets">
+		
+		<project-facet id="bpel.facet.core">
+		  <label>%BPEL_CORE_FACET_LABEL</label>
+		  <description>%BPEL_CORE_FACET_DESCRIPTION</description>
+		</project-facet>
+		
+        <project-facet-version facet="bpel.facet.core" version="2.0">
+          <group-member id="modules"></group-member>
+          <constraint>
+             <conflicts group="modules">
+             </conflicts>
+          </constraint>
+        </project-facet-version>
+		
+		<action facet="bpel.facet.core" version="2.0" type="INSTALL" id="bpel.facet.core.install">
+		    <delegate class="org.eclipse.bpel.runtimes.facets.BPELCoreFacetInstallDelegate"/>
+	        <config-factory class="org.eclipse.bpel.runtimes.facets.BPELFacetInstallDataModelProvider"/>	    
+		</action>
+
+        <action facet="bpel.facet.core" version="2.0" type="UNINSTALL" id="bpel.facet.core.uninstall">
+            <delegate class="org.eclipse.bpel.runtimes.facets.BPELCoreFacetUninstallDelegate"/>
+        </action>
+
+		<category id="bpel.category">
+		  <label>%BPEL_FACET_CATEGORY_LABEL</label>
+		  <description>%bpelCoreFacetDescription</description>
+		</category>
+		
+		<template id="template.bpel.core">
+    		<label>%BPEL_FACET_TEMPLATE_LABEL</label>
+   		    <fixed facet="bpel.facet.core"/>
+    	</template>
+    	
+	</extension>
+
+<!--=========================================================================-->
+<!-- BPEL Facet	Image					 									 -->
+<!--=========================================================================-->		
+			
+	<extension point="org.eclipse.wst.common.project.facet.ui.images">
+    	<image facet="bpel.facet.core" path="icons/obj16/bpelfacet.gif"/>
+    </extension>
+
+<!--=========================================================================-->
+<!-- BPEL Virtual Component				 									 -->
+<!--=========================================================================-->		
+    
+    <extension
+         point="org.eclipse.wst.common.modulecore.componentimpl">
+      <componentimpl
+            typeID="bpel.facet.core"
+            class="org.eclipse.bpel.runtimes.facets.BPELVirtualComponent">
+      </componentimpl>
+   </extension>
+    
+
+<!--=========================================================================-->
+<!-- BPEL Module Factory													 -->
+<!--=========================================================================-->
+
+	<extension
+         point="org.eclipse.wst.server.core.moduleFactories">
+		<moduleFactory
+            projects="true"
+            class="org.eclipse.bpel.runtimes.module.BPELModuleFactoryDelegate"
+            id="org.eclipse.bpel.runtimes.module.moduleFactory"
+            order="10">
+     		<moduleType
+               versions="1.1, 2.0"
+               types="bpel.module">
+			</moduleType>
+ 		</moduleFactory>
+     </extension>
+     
+<!--=========================================================================-->
+<!-- BPEL Module ArtifactAdapters											 -->
+<!--=========================================================================-->
+     
+	<extension point="org.eclipse.wst.server.core.moduleArtifactAdapters">
+		<moduleArtifactAdapter
+			id="org.eclipse.bpel.runtimes.module.artifactAdapter1"
+            class="org.eclipse.bpel.runtimes.module.BPELDeployableArtifactAdapterFactory"
+            priority="0">
+			<enablement>
+				<with variable="selection">
+					<adapt type="org.eclipse.core.resources.IProject"/>
+				</with>
+			</enablement>
+		</moduleArtifactAdapter>
+		<moduleArtifactAdapter
+			id="org.eclipse.bpel.runtimes.module.artifactAdapter2"
+            class="org.eclipse.bpel.runtimes.module.BPELDeployableArtifactAdapterFactory"
+            priority="0">
+			<enablement>
+				<with variable="selection">
+             		<adapt type="org.eclipse.core.resources.IFile"/>
+           		</with>
+         	</enablement>
+      	</moduleArtifactAdapter>   
+   </extension>
+
+<!--=========================================================================-->
+<!-- BPEL Runtime Adapters													 -->
+<!--=========================================================================-->
+
+	<extension point="org.eclipse.core.runtime.adapters">
+		<factory
+			class="org.eclipse.bpel.runtimes.module.BPELDeployableArtifactAdapterFactory"
+			adaptableType="org.eclipse.core.resources.IProject">
+			<adapter type="org.eclipse.debug.ui.actions.ILaunchable"/>
+        </factory>
+        <factory
+             class="org.eclipse.bpel.runtimes.module.BPELDeployableArtifactAdapterFactory"
+             adaptableType="org.eclipse.core.resources.IFile">
+            <adapter type="org.eclipse.debug.ui.actions.ILaunchable"/>
+       </factory>
+   </extension> 
+
+</plugin>

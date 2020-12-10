@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+  <extension
+        name="WSIL Model"
+        point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://schemas.xmlsoap.org/ws/2001/10/inspection/" 
+       class = "org.eclipse.bpel.wsil.model.inspection.InspectionPackage"
+       genModel = "wsil.genmodel" /> 
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.extension_parser">
+    <parser 
+       type="wsil" 
+       class="org.eclipse.bpel.wsil.model.inspection.util.InspectionResourceFactoryImpl" />
+  </extension>
+
+</plugin>
+

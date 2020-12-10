@@ -1,0 +1,3 @@
+<data name="{service.name}" serviceNamespace="{service.NS}" serviceGroup="{service.group}" transports="{service.transports}" xmlns:svns="http://org.wso2.securevault/configuration">
+   <description>{service.description}</description>
+</data>

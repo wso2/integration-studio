@@ -1,0 +1,10 @@
+<proxy xmlns="http://ws.apache.org/ns/synapse" name="{proxy.name}"
+	transports="{proxy.transports}" statistics="disable" trace="disable"
+	startOnLoad="true">
+	<target {endpoint.key.def}>
+		<outSequence>
+			<send />
+		</outSequence>
+		{endpoint.def}
+	</target>
+</proxy>

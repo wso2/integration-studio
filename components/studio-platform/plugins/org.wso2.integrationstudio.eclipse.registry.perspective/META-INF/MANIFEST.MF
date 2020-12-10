@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Perspective
+Bundle-SymbolicName: org.wso2.integrationstudio.eclipse.registry.perspective;singleton:=true
+Bundle-Version: 7.2.0.qualifier
+Bundle-Activator: org.wso2.integrationstudio.eclipse.registry.perspective.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime
+Bundle-ActivationPolicy: lazy
+Import-Package: org.wso2.integrationstudio.eclipse.dashboard.handlers,
+ org.wso2.integrationstudio.eclipse.logging.core,
+ org.wso2.integrationstudio.eclipse.platform.core.utils,
+ org.wso2.integrationstudio.eclipse.registry.base,
+ org.wso2.integrationstudio.eclipse.registry.base.model,
+ org.wso2.integrationstudio.eclipse.registry.manager.remote,
+ org.wso2.integrationstudio.eclipse.registry.manager.remote.dialog,
+ org.wso2.integrationstudio.eclipse.registry.manager.remote.views

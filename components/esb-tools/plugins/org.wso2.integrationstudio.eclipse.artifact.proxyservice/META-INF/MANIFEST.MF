@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Proxy Service
+Bundle-SymbolicName: org.wso2.integrationstudio.eclipse.artifact.proxyservice;singleton:=true
+Bundle-Version: 7.2.0.qualifier
+Bundle-Activator: org.wso2.integrationstudio.eclipse.artifact.proxyservice.Activator
+Require-Bundle: org.wso2.integrationstudio.eclipse.gmf.esb,
+ org.wso2.integrationstudio.eclipse.kernel.libraries,
+ org.wso2.integrationstudio.eclipse.esb.libraries,
+ org.wso2.integrationstudio.eclipse.platform.core,
+ org.wso2.integrationstudio.eclipse.platform.ui,
+ org.wso2.integrationstudio.eclipse.project.extensions
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Import-Package: org.wso2.integrationstudio.eclipse.esb.core,
+ org.wso2.integrationstudio.eclipse.esb.core.utils,
+ org.wso2.integrationstudio.eclipse.esb.project.artifact,
+ org.wso2.integrationstudio.eclipse.esb.project.utils,
+ org.wso2.integrationstudio.eclipse.gmf.esb,
+ org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.provider,
+ org.wso2.integrationstudio.eclipse.samples.contributor

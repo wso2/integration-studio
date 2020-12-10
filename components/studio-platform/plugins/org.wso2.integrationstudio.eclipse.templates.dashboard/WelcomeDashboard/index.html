@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="WSO2 EI - IS team">
+    <meta name="generator" content="WSO2 EI - IS team">
+    <title>Integration Studio - Getting Started</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="libs/bootstrap-custom/css/bootstrap.min.css" rel="stylesheet">
+    <link href="libs/font-awsome/css/all.min.css" rel="stylesheet">
+    <meta name="theme-color" content="#563d7c">
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/custom.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row main-row">
+            <div class="col-3">
+                <div class="left-col-box">
+                    <div id="left-top-section" class="top-left">
+                        <h1 class="is-label" style="font-weight:bold;">Integration Studio</h1>
+                        <h4 class="weight200 getting-started">Getting Started</h4>
+                        <h5 class="mt-3 font-heading" style="font-weight:600;">Start</h5>
+                        
+                        <div class="row">
+                        	<div class="col-9">
+	                        	<a id="createNewProject" class="gray-link" href="#">New Integration Project</a>
+		                        <a id="openExistingProject" class="gray-link" href="#">Open Project...</a>
+		                        <hr style="margin-top:10px !important; margin-bottom:10px !important;" />
+		                        <a id="DataServiceProject" class="gray-link" href="#">New Data Service Configs</a>
+		                        <a id="DataSourceProject" class="gray-link" href="#">New Data Source Configs</a>
+		                        <hr style="margin-top:10px !important; margin-bottom:10px !important;" />
+		                        <a id="BPMNProject" class="gray-link" href="#">New BPMN Project</a>
+		                        <a id="HumanTaskProject" class="gray-link" href="#">New Human Task Project</a>
+		                        <hr style="margin-top:10px !important; margin-bottom:10px !important;" />
+		                        <a id='MediatorProject' class="gray-link" href="#">New Mediator Project</a>
+		                        <a id='MavenMultiModuleProject' class="gray-link" href="#">New Maven Multi-Module Project</a>
+		                        <hr style="margin-top:10px !important; margin-bottom:10px !important;" />
+		                        <a id='Server' class="gray-link" href="#">Add Server</a>
+                        	</div>
+                        </div>
+                    </div>
+                    <div id="help-bottom-section" class="help-section" style="visibility:hidden;">
+                        <h5 style="font-weight:600;">Help</h5>
+                        <a class="gray-link" href="#" id="doc-link">Documentation</a>
+                        <a class="gray-link" href="#" id="git-link">GitHub</a>
+                        <a class="gray-link" href="#" id="slack-link">Slack</a>
+                        <a class="gray-link" href="#" id="video-link">Video Tutorials</a>
+                        <div class="form-check mt-3" style="font-weight:bold;">
+                            <input class="form-check-input" type="checkbox" value="" id="show-welcome" checked style="bottom:10px;" />
+                            <label class="form-check-label" for="defaultCheck1"  style="bottom:10px;">
+                                Always show on startup
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-9">
+            	<div class="row">
+            		<div class="col-12">
+            			<div style="position:fixed; top:3px; left:27%; padding-left:15px; z-index:2000;">
+	            			<h5 style="font-weight:bold; padding-top:32px !important;">Try out a Sample</h5>
+			                <p>Select the sample and follow the instructions to get started.</p>
+            			</div>
+		                <div class="d-flex" style="position:fixed; top:100px; right:10px; left:27%; padding-right:50px; padding-left:10px; z-index:2000;">
+		                    <div class="dropdown ml-2" style="color:#707070; border-color:#707070; margin-right:10px;">
+		                        <a class="btn btn-secondary dropdown-toggle onlyborder" href="#" role="button"
+		                            id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		                            Category
+		                        </a>
+		
+		                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+		                            <li class = "menu-item"><a id="all-category" class="dropdown-item active" href="#">All</a></li>
+		                            <li class = "menu-item"><a id="routing-category" class="dropdown-item" href="#">Message Routing</a></li>
+		                            <li class = "menu-item"><a id="msg-transformation-category" class="dropdown-item" href="#">Message Transformation</a></li>
+		                            <li class = "menu-item"><a id="messaging-category" class="dropdown-item" href="#">Messaging</a></li>
+		                            <li class = "menu-item"><a id="saas-category" class="dropdown-item" href="#">SaaS Integration</a></li>
+		                            <li class = "menu-item"><a id="data-category" class="dropdown-item" href="#">Data Integration</a></li>
+		                            <li class = "menu-item"><a id="task-category" class="dropdown-item" href="#">Scheduled Task</a></li>
+		                            <li class = "menu-item"><a id="error-category" class="dropdown-item" href="#">Error Handling</a></li>
+		                            <li class = "menu-item"><a id="container-category" class="dropdown-item" href="#">Docker/Kubernetes</a></li>
+		                            <li class = "menu-item"><a id="test-category" class="dropdown-item" href="#">Synapse Unit Testing</a></li>
+		                        </ul>
+		                    </div>
+		                    <div class="form-group has-search" style="width:100%;">
+		                        <span id="search-icon" class="fa fa-search form-control-feedback"></span>
+		                        <input type="text" class="form-control" placeholder="Search by sample or mediator name" autocorrect="off" autocapitalize="none" id="search" />
+		                    </div>
+		                </div>
+            		</div>
+            	</div>
+               <div class="template-container" style="position:fixed; bottom:30px; top: 150px; right: 10px; left:27%;  z-index:1000;">
+                    <div class="row template-list" id="esb-templates"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+	<script src="libs/jquery_1.11.3/jquery.min.js"></script>
+    <script src="libs/bootstrap-custom/js/bootstrap.bundle.min.js"></script>
+    <script src="libs/jquery.scrollbar_0.2.11/jquery.scrollbar.min.js"></script>
+    <script src="libs/serverproperties.js"></script>
+    <script src="libs/app_new.js"></script>
+</body>
+
+</html>

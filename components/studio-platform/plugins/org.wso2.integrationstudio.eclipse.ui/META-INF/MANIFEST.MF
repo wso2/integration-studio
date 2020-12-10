@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Integration Studio UI
+Bundle-SymbolicName: org.wso2.integrationstudio.eclipse.ui
+Bundle-Version: 7.2.0.qualifier
+Bundle-Activator: org.wso2.integrationstudio.eclipse.ui.Activator
+Bundle-Vendor: WSO2
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime
+Bundle-ActivationPolicy: lazy
+Export-Package: org.wso2.integrationstudio.eclipse.ui.image,
+ org.wso2.integrationstudio.eclipse.ui.utils,
+ org.wso2.integrationstudio.eclipse.ui.widgets
+Import-Package: org.eclipse.core.resources,
+ org.eclipse.emf.common.ui.celleditor,
+ org.eclipse.jdt.core,
+ org.eclipse.jdt.core.search,
+ org.eclipse.jdt.internal.core,
+ org.eclipse.jdt.internal.core.search,
+ org.eclipse.jdt.internal.ui.dialogs

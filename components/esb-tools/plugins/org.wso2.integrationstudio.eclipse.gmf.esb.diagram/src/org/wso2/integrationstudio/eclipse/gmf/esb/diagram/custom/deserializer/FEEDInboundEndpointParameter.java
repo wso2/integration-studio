@@ -1,0 +1,67 @@
+/*
+ * Copyright 2016 WSO2, Inc. (http://wso2.com)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+
+import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__INTERVAL;
+import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE;
+import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_FEED_URL;
+
+import org.eclipse.emf.ecore.EAttribute;
+import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.InboundEndpointConstants;
+
+public enum FEEDInboundEndpointParameter {
+    INTERVAL_TYPE(InboundEndpointConstants.INTERVAL, INBOUND_ENDPOINT__INTERVAL, true), INBOUND_FEED_URL_TYPE(
+            InboundEndpointConstants.INBOUND_FEED_URL, INBOUND_ENDPOINT__TRANSPORT_FEED_URL,
+            true), INBOUND_FEED_TYPE_TYPE(InboundEndpointConstants.INBOUND_FEED_TYPE,
+                    INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE, false);
+
+    private final String name;
+    private final EAttribute eAttributeValue;
+    private final boolean holdsKeyValue;
+
+    /**
+     * This Enum represent Feed inbound endpoint parameters with parameter name , related EAttribute and boolean value
+     * indicating
+     * whether it could hold key attribute
+     *
+     */
+    FEEDInboundEndpointParameter(String name, EAttribute eAttributeValue, boolean holdsKeyValue) {
+        this.name = name;
+        this.eAttributeValue = eAttributeValue;
+        this.holdsKeyValue = holdsKeyValue;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public EAttribute getEAttributeValue() {
+        return eAttributeValue;
+    }
+
+    public boolean canHoldKeyValue() {
+        return holdsKeyValue;
+    }
+
+    public boolean isMatchedWithParameterName(String parameterName) {
+        if (this.name.equals(parameterName)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+}

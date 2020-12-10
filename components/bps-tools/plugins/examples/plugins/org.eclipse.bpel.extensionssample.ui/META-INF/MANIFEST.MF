@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: BPEL Extensions Sample UI Plug-in
+Bundle-SymbolicName: org.eclipse.bpel.extensionssample.ui;singleton:=true
+Bundle-Version: 1.0.0.wso2v1
+Bundle-Activator: org.eclipse.bpel.extensionssample.ui.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.bpel.common.ui,
+ org.eclipse.bpel.ui;bundle-version="0.3.0",
+ org.eclipse.gef;bundle-version="3.4.0",
+ org.eclipse.emf.ecore;bundle-version="2.4.0",
+ org.eclipse.bpel.extensionsample.model;bundle-version="1.0.0",
+ org.eclipse.core.resources;bundle-version="3.4.0",
+ org.eclipse.ui.views.properties.tabbed;bundle-version="3.4.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

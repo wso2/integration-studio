@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="CONTENT-TYPE" />
+<link rel="stylesheet" href="../../book.css" type="text/css" />
+<title>Fault Activities</title>
+</head>
+
+<body>
+	<h1>Fault Activities</h1>
+	
+	<p>
+		Fault activities cause the normal process execution flow to
+		jump to a specialized handler, similar to exceptions in modern
+		programming languages. There are five different types of fault
+		activities, described in this section.
+	</p>
+	
+	<h5>Exit</h5>
+	<p><img src="../../../images/reference/Fault_Activities_01.png" alt="Exit" /></p>
+	<p ><b>Exit</b></p>
+	<p>The Exit activity causes the process to immediately terminate.</p>
+	
+	<h5>Throw</h5>
+	<p><img src="../../../images/reference/Fault_Activities_02.png" alt="Throw" /></p>
+	<p ><b>Throw</b></p>
+	<p>
+		The Throw activity propagates a specified fault to its ancestor
+		Scope, or the process itself.
+	</p>
+
+	<h5>Rethrow</h5>
+	<p><img src="../../../images/reference/Fault_Activities_03.png" alt="Rethrow" /></p>
+	<p><b>Rethrow</b></p>
+	<p>
+		A Rethrow activity can only be used inside a fault handler. It
+		is used to propagate the fault that was caught by the handler, using
+		the original fault data.
+	</p>
+
+	<h5>Compensate</h5>
+	<p><img src="../../../images/reference/Fault_Activities_04.png" alt="Compensate" /></p>
+	<p><b>Compensate</b></p>
+	<p>
+		The Compensate activity is used to invoke a compensation
+		handler. This activity can only be used within a fault handler,
+		compensation handler or termination handler.
+	</p>
+
+	<h5>CompensateScope</h5>
+	<p>
+		<img src="images/reference/Fault_Activities_05.png"
+			alt="CompensateScope" />
+	</p>
+	<p><b>CompensateScope</b></p>
+	<p>
+		The CompensateScope activity is used to invoke a compensation
+		handler in the enclosing Scope. This activity can only be used within
+		a fault handler, compensation handler or termination handler.
+	</p>
+</body>
+</html>

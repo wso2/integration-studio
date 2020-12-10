@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpws:process
+	xmlns:bpws="http://some.unknown.namespace"
+	xmlns:ns="http://eclipse.org/bpel/sampleArtifacts"
+	xmlns:tns="http://eclipse.org/bpel/sample" 
+	exitOnStandardFault="yes"
+	name="Simple" 
+	suppressJoinFailure="yes"
+	targetNamespace="http://eclipse.org/bpel/sample">
+	
+	<bpws:partnerLinks></bpws:partnerLinks>
+
+	<bpws:variables></bpws:variables>
+	<bpws:sequence name="main"></bpws:sequence>
+</bpws:process>

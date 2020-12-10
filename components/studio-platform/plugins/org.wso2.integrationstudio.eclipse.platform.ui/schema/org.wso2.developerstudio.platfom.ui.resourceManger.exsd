@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.wso2.integrationstudio.eclipse.platform.ui" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appinfo>
+         <meta.schema plugin="org.wso2.integrationstudio.eclipse.platform.ui" id="org.wso2.integrationstudio.platfom.ui.resourceManger" name="ResourceManager"/>
+      </appinfo>
+      <documentation>
+         Providing Resources Managers
+&lt;extension
+       point=&quot;org.wso2.integrationstudio.platfom.ui.resourceManger&quot;&gt;
+       &lt;ResourceManger class=&quot;org.wso2.integrationstudio.eclipse.registry.core.RegistryManager&quot;&gt;
+       &lt;/ResourceManger&gt;
+ &lt;/extension&gt;
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appinfo>
+            <meta.element />
+         </appinfo>
+      </annotation>
+      <complexType>
+         <choice minOccurs="1" maxOccurs="unbounded">
+            <element ref="ResourceManger"/>
+         </choice>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="ResourceManger">
+      <complexType>
+         <attribute name="class" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.wso2.integrationstudio.eclipse.platform.ui.utils.IResourceManager"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="since"/>
+      </appinfo>
+      <documentation>
+         Integration Studio kernel - 4.3.0
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="examples"/>
+      </appinfo>
+      <documentation>
+         &lt;extension
+       point=&quot;org.wso2.integrationstudio.platfom.ui.resourceManger&quot;&gt;
+       &lt;ResourceManger class=&quot;org.wso2.integrationstudio.eclipse.registry.core.RegistryManager&quot;&gt;
+       &lt;/ResourceManger&gt;
+ &lt;/extension&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="apiinfo"/>
+      </appinfo>
+      <documentation>
+         &lt;extension
+       point=&quot;org.wso2.integrationstudio.platfom.ui.resourceManger&quot;&gt;
+       &lt;ResourceManger class=&quot;org.wso2.integrationstudio.eclipse.registry.core.RegistryManager&quot;&gt;
+       &lt;/ResourceManger&gt;
+ &lt;/extension&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="implementation"/>
+      </appinfo>
+      <documentation>
+         &lt;extension
+       point=&quot;org.wso2.integrationstudio.platfom.ui.resourceManger&quot;&gt;
+       &lt;ResourceManger class=&quot;org.wso2.integrationstudio.eclipse.registry.core.RegistryManager&quot;&gt;
+       &lt;/ResourceManger&gt;
+ &lt;/extension&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="copyright"/>
+      </appinfo>
+      <documentation>
+         /*
+ * Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+      </documentation>
+   </annotation>
+
+</schema>

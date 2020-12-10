@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+	<projectOptions title="Sample Project creation options" description="Select how you would like to create your new project" error="Please select a method to create the project">
+		<option id="someid" default="true">new project creation option</option>
+		<option id="someid2">import project from file system</option>
+		<option id="someid3">another import from workspace</option>
+	</projectOptions>
+	<projectOptionSettings>
+		<settings optionId="someid" title="Option 1 settings" description="Specify settings for option 1" error="Please select a method to create the project">
+			<data modelProperty="project.name" type="string" validator="">Name</data>
+			<data modelProperty="project.name" type="string" validator="">Age</data>
+			<data modelProperty="project.name" type="string" validator="">School</data>
+			<data modelProperty="project.name" type="string" validator="">Gender</data>
+			<data modelProperty="import.file" type="file" filter="*.xml" validator="">Synapse xml</data>
+			<data modelProperty="from.file" modelValue="1" type="option" validator="" group="grp1">Synapse xml</data>
+			<data modelProperty="from.workspace" modelValue="2" type="option" validator="" group="grp1">Synapse xml</data>
+			<group id="grp1" title="from where" />
+		</settings>
+		<settings optionId="someid2" title="Option 2 settings" description="Specify settings for option 2" error="Please select a method to create the project">
+			<data modelProperty="project.name" type="string" validator="">Project Name</data>
+			<data modelProperty="import.file" type="file" filter="*.xml" validator="">Synapse xml</data>
+			<data modelProperty="from.file" modelValue="1" type="option" validator="" group="grp1">Synapse xml</data>
+			<data modelProperty="from.workspace" modelValue="2" type="option" validator="" group="grp1">Synapse xml</data>
+			<group id="grp1" title="from where" />
+		</settings>
+	</projectOptionSettings>
+</wizard>

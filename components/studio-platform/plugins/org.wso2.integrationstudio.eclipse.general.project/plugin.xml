@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	<extension point="org.eclipse.ui.newWizards">
+		<wizard name="Registry Resources" 
+			category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.eclipse.repository"
+			class="org.wso2.integrationstudio.eclipse.general.project.ui.wizard.GeneralProjectWizard"
+            finalPerspective="org.eclipse.jst.j2ee.J2EEPerspective"
+			id="org.wso2.integrationstudio.eclipse.general.project"
+			wizardManifest="project_wizard.xml"
+			icon="icons/general-project-12.png"
+			project="true">
+			<description>Registry Resources</description>
+		</wizard>
+   </extension>
+   <extension point="org.wso2.integrationstudio.eclipse.dashboad.link">
+   <category id="dashboard.category.greg" showTitle="true"
+                  title="Repository"
+                  priority="5">
+   </category>
+    <wizardLink category="dashboard.category.greg" id="dashboard.wizardLink.general.project"
+                    wizard="org.wso2.integrationstudio.eclipse.general.project"
+                    priority="2">
+        </wizardLink>
+   </extension>
+      <extension point="org.eclipse.core.resources.natures"
+		id="org.wso2.integrationstudio.eclipse.general.project.nature" name="General Project Nature">
+		<runtime>
+			<run
+				class="org.wso2.integrationstudio.eclipse.general.project.nature.GeneralProjectNature">
+			</run>
+		</runtime>
+	</extension>
+	<extension point="org.eclipse.ui.ide.projectNatureImages">
+		<image id="org.wso2.integrationstudio.eclipse.esb.project.natureImage"
+			natureId="org.wso2.integrationstudio.eclipse.general.project.nature" icon="icons/general-project-12.png">
+		</image>
+	</extension>
+ <extension
+       point="org.eclipse.ltk.core.refactoring.renameParticipants">
+       <renameParticipant
+			class="org.wso2.integrationstudio.eclipse.general.project.refactor.RegistryResourceArtifactRenameParticipant"
+			id="RegistryResourceArtifactRenameParticipant"
+			name="RegistryResourceArtifactRename">
+				<enablement>
+					<and>
+							<instanceof
+								value="org.eclipse.core.resources.IResource">
+							</instanceof>
+						<adapt type="org.eclipse.core.resources.IResource">
+             				<test
+                   				property="org.eclipse.core.resources.projectNature"
+                   				value="org.wso2.integrationstudio.eclipse.general.project.nature">
+             				</test>
+         				</adapt>
+					</and>
+				</enablement>
+		</renameParticipant>
+		 <renameParticipant
+			class="org.wso2.integrationstudio.eclipse.general.project.capp.refactor.RegistryResourceArtifactRenameParticipant"
+			id="RegistryResourceArtifactRenameParticipantCApp"
+			name="RegistryResourceArtifactRenameCApp">
+				<enablement>
+					<and>
+							<instanceof
+								value="org.eclipse.core.resources.IResource">
+							</instanceof>
+						<adapt type="org.eclipse.core.resources.IResource">
+             				<test
+                   				property="org.eclipse.core.resources.projectNature"
+                   				value="org.wso2.integrationstudio.eclipse.general.project.nature">
+             				</test>
+         				</adapt>
+					</and>
+				</enablement>
+		</renameParticipant>
+ </extension>
+ <extension
+       point="org.eclipse.ltk.core.refactoring.deleteParticipants">
+       <deleteParticipant
+			class="org.wso2.integrationstudio.eclipse.general.project.refactor.RegistryArtifactMetadataDeleteParticipant"
+			id="RegistryResourceArtifactMetaDataDeleteParticipant"
+			name="RegistryResourceArtifactMetaDataDeleteParticipantRefactor">
+				<enablement>
+					<and>
+							<instanceof
+								value="org.eclipse.core.resources.IResource">
+							</instanceof>
+						<adapt type="org.eclipse.core.resources.IResource">
+             				<test
+                   				property="org.eclipse.core.resources.projectNature"
+                   				value="org.wso2.integrationstudio.eclipse.general.project.nature">
+             				</test>
+         				</adapt>
+					</and>
+				</enablement>
+		</deleteParticipant>
+       <deleteParticipant
+			class="org.wso2.integrationstudio.eclipse.general.project.refactor.RegistryResourceArtifactDeleteParticipant"
+			id="RegistryResiurceArtifactDeleteParticipant"
+			name="RegistryResiurceArtifactDeleteParticipantRefactor">
+				<enablement>
+					<and>
+							<instanceof
+								value="org.eclipse.core.resources.IResource">
+							</instanceof>
+						<adapt type="org.eclipse.core.resources.IResource">
+             				<test
+                   				property="org.eclipse.core.resources.projectNature"
+                   				value="org.wso2.integrationstudio.eclipse.general.project.nature">
+             				</test>
+         				</adapt>
+					</and>
+				</enablement>
+		</deleteParticipant>
+		 <deleteParticipant
+			class="org.wso2.integrationstudio.eclipse.general.project.capp.refactor.RegistryResourceArtifactDeleteParticipant"
+			id="RegistryResiurceArtifactDeleteParticipantForCapp"
+			name="RegistryResiurceArtifactDeleteParticipantRefactorCapp">
+				<enablement>
+					<and>
+							<instanceof
+								value="org.eclipse.core.resources.IResource">
+							</instanceof>
+						<adapt type="org.eclipse.core.resources.IResource">
+             				<test
+                   				property="org.eclipse.core.resources.projectNature"
+                   				value="org.wso2.integrationstudio.eclipse.general.project.nature">
+             				</test>
+         				</adapt>
+					</and>
+				</enablement>
+		</deleteParticipant>
+ </extension>
+ 
+ 
+ 
+ 
+ <extension
+       point="org.eclipse.ltk.core.refactoring.moveParticipants">
+       <moveParticipant
+			class="org.wso2.integrationstudio.eclipse.general.project.refactor.RegistryArtifactMetadataMoveParticipant"
+			id="RegistryResourceArtifactMetaDataMoveParticipant"
+			name="RegistryResourceArtifactMetaDataMoveParticipantRefactor">
+				<enablement>
+					<and>
+							<instanceof
+								value="org.eclipse.core.resources.IResource">
+							</instanceof>
+						<adapt type="org.eclipse.core.resources.IResource">
+             				<test
+                   				property="org.eclipse.core.resources.projectNature"
+                   				value="org.wso2.integrationstudio.eclipse.general.project.nature">
+             				</test>
+         				</adapt>
+					</and>
+				</enablement>
+		</moveParticipant>
+       <moveParticipant
+			class="org.wso2.integrationstudio.eclipse.general.project.refactor.RegistryResourceArtifactMoveParticipant"
+			id="RegistryResourceArtifactMoveParticipant"
+			name="RegistryResourceArtifactMoveParticipantRefactor">
+				<enablement>
+					<and>
+							<instanceof
+								value="org.eclipse.core.resources.IResource">
+							</instanceof>
+						<adapt type="org.eclipse.core.resources.IResource">
+             				<test
+                   				property="org.eclipse.core.resources.projectNature"
+                   				value="org.wso2.integrationstudio.eclipse.general.project.nature">
+             				</test>
+         				</adapt>
+					</and>
+				</enablement>
+		</moveParticipant>
+ </extension> 
+	
+	 <extension point="org.eclipse.ui.popupMenus">
+	        <objectContribution objectClass="org.eclipse.core.resources.IProject" id="org.wso2.integrationstudio.eclipse.general.project.popup.importcloudconnector">
+	               <action
+	                        label="Add or Remove Connector/Module"
+	                        icon="icons/car.png"
+	                   class="org.wso2.integrationstudio.eclipse.general.project.ui.action.ImportCloudConnectorAction"
+	                        id="org.wso2.integrationstudio.eclipse.general.project.ui.action.cloudConnectorImport">
+	               </action>
+	               <enablement>
+						<adapt type="org.eclipse.core.resources.IProject">
+						 <or>
+							<test property="org.eclipse.core.resources.projectNature"
+								value="org.wso2.integrationstudio.eclipse.general.project.nature" />
+		 				</or>
+						</adapt>
+				</enablement>
+	          </objectContribution>     
+	 </extension>
+	 
+	  <extension
+        point="org.wso2.integrationstudio.eclipse.capp.artifacts.provider">
+     <provider
+            class="org.wso2.integrationstudio.eclipse.artifact.general.project.exporter.RegistryArtifactsProvider"
+           nature="org.wso2.integrationstudio.eclipse.general.project.nature">
+     </provider>
+  </extension>
+</plugin>

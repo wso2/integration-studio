@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="CONTENT-TYPE" />
+<link rel="stylesheet" href="../../book.css" type="text/css" />
+<title>Creating a BPEL process</title>
+</head>
+
+<body>
+	<h1>Creating a BPEL process</h1>
+	<p>
+		To create a new BPEL process, select <strong>File &gt; New &gt; Others...</strong>
+		and then <strong>BPEL 2.0 &gt; New BPEL Process File</strong>.
+	</p>
+	<p>
+		<img src="../../../images/detail_createprocess_1.png" alt="New BPEL Process File" />
+	</p>
+	<p>
+		Click <strong>Next</strong>. <br />
+		Enter the following information:
+	</p>
+
+	<table summary="Fields and values" border="1">
+		<colgroup>
+			<col align="left" />
+			<col />
+		</colgroup>
+		<thead>
+			<tr>
+				<th align="left">Field</th>
+				<th>Value</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td align="left"><p>BPEL Process Name</p></td>
+				<td><p>Enter a process name. For example, <i>HelloWorld</i>.</p></td>
+			</tr>
+			<tr>
+				<td align="left"><p>Namespace</p></td>
+				<td><p>Enter or select a namespace for the BPEL process.</p></td>
+			</tr>
+			<tr>
+				<td valign="top" align="left"><p>Template</p></td>
+				<td><p>
+						Select the appropriate template for the BPEL process. <br />
+						When you select the template, you will see the information about the
+						template below on the page. 
+						
+						<br /><br />In this case you should select 
+						<strong>Synchronous BPEL Process</strong>.
+					</p></td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<p>
+		<img src="../../../images/detail_createprocess_2.png" alt="New BPEL Process File Wizard" />
+	</p>
+	<p>
+		Click <strong>Next</strong>.<br />
+		On the second page, you can customize your WSDL service details. Enter the following information:
+	</p>
+
+	<table summary="Fields and values" border="1">
+		<colgroup>
+			<col align="left" />
+			<col />
+		</colgroup>
+		<thead>
+			<tr>
+				<th align="left">Field</th>
+				<th>Value</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td align="left"><p>Service Name</p></td>
+				<td><p>
+						A wsdl service name for the BPEL process. The default value is <strong>HelloWorld</strong>.
+					</p></td>
+			</tr>
+			<tr>
+				<td align="left"><p>Port Name</p></td>
+				<td><p>
+						A wsdl port name for the BPEL process. The default value is <strong>HelloWorldPort</strong>.
+					</p></td>
+			</tr>
+			<tr>
+				<td align="left"><p>Service Address</p></td>
+				<td><p>
+						An address of the WSDL service for the BPEL process. The default
+						value is <strong>http://localhost:8080/HelloWorld</strong>.
+					</p></td>
+			</tr>
+			<tr>
+				<td align="left"><p>Binding Protocol</p></td>
+				<td><p>
+						The binding protocol that you use in the wsdl. You can choose SOAP
+						or HTTP. The default value is <strong>SOAP</strong>.
+					</p></td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<p>
+		<img src="../../../images/detail_createprocess_2a.png" alt="Create WSDL file for the BPEL Process wizard page" />
+	</p>
+		
+	<p>
+		Click <strong>Next</strong>.<br />
+		On the third page, you can select a folder for the
+		process file from the projects in your workspace. If a folder is
+		not selected, the default folder
+		<code class="filename">HelloWorld/bpelContent</code>
+		will be used. 
+		<br /><br />
+		Click <strong>Finish</strong>.
+	</p>
+
+	<h2>Note</h2>
+	<p>
+		All of your files that are used in your BPEL project should be under the
+		<code class="filename">bpelContent</code>
+		folder of a BPEL project. Only in this case these files can be
+		deployed to BPEL runtime platforms.
+	</p>
+	<p>
+		This will create a simple BPEL process as shown in the image below.
+	</p>
+	<p>
+		<img src="../../../images/detail_createprocess_3.png" alt="A simple BPEL Process File" />
+	</p>
+</body>
+</html>

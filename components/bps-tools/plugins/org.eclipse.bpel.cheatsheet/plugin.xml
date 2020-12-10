@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.5"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.cheatsheets.cheatSheetContent">
+      <category
+            id="org.eclipse.bpel.cheatsheet"
+            name="BPEL Tutorials">
+      </category>
+      <cheatsheet
+            category="org.eclipse.bpel.cheatsheet"
+            contentFile="$nl$/cheatsheets/HelloWorld.xml"
+            id="org.eclipse.bpel.cheatsheet.bpel"
+            name="&quot;HelloWorld&quot; Tutorial">
+         <description>
+            Demonstrates how to create, deploy and run the classic "HelloWorld" BPEL process
+         </description>
+      </cheatsheet>
+   </extension>
+
+</plugin>

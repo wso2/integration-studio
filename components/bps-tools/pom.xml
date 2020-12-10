@@ -17,16 +17,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.wso2.integrationstudio</groupId>
+    <parent>
+        <groupId>org.wso2.integrationstudio</groupId>
+        <artifactId>wso2-integration-studio-component-parent</artifactId>
+        <version>7.2.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    
     <artifactId>wso2-integrationstudio-bps-toolkit</artifactId>
-    <version>7.2.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>WSO2 BPS Tools</name>
     <modules>
         <module>plugins</module>
         <module>features</module>
         <module>repository</module>
-        <!--module>installed-distribution</module-->
     </modules>
     <scm>
         <connection>scm:git:https://github.com/wso2/devstudio-tooling-bps</connection>

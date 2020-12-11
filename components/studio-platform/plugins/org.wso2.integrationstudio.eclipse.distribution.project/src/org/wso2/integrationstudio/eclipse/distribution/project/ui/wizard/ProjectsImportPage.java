@@ -149,7 +149,7 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 
 	public static final String METADATA_FOLDER = ".metadata"; //$NON-NLS-1$
 
-	private static final String MAVEN_MULTI_MODULE_NATURE = "org.wso2.integrationstudio.eclipse.mavenmultimodule.project.nature";
+	private static final String MAVEN_MULTI_MODULE_NATURE = "org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature";
 	
 	private static final String DIR_DOT_METADATA = ".metadata";
 	
@@ -1142,7 +1142,7 @@ public class ProjectsImportPage extends WizardPage implements IOverwriteQuery {
 		stringBuilder.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" + "<projectDescription>\n" + "    <name>"
 				+ directory.getName() + "</name>\n" + "    <comment></comment>\n" + "    <projects>\n"
 				+ "    </projects>\n" + "    <buildSpec>\n" + "    </buildSpec>\n" + "    <natures>\n"
-				+ "        <nature>org.wso2.integrationstudio.eclipse.apim.project.nature</nature>\n" + "    </natures>\n"
+				+ "        <nature>org.wso2.developerstudio.eclipse.apim.project.nature</nature>\n" + "    </natures>\n"
 				+ "</projectDescription>");
 
 		try {

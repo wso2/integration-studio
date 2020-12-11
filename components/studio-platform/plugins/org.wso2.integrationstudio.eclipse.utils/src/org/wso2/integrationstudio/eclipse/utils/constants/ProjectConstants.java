@@ -18,9 +18,9 @@ package org.wso2.integrationstudio.eclipse.utils.constants;
 
 public class ProjectConstants {
 	public static final String JAVA_NATURE_ID="org.eclipse.jdt.core.javanature";
-	public static final String AXIS2_NATURE_ID="org.wso2.integrationstudio.eclipse.axis2.project.nature";
-	public static final String DSS_NATURE_ID="org.wso2.integrationstudio.eclipse.ds.project.nature";
-	public static final String DATASOURCE_NATURE_ID="org.wso2.integrationstudio.eclipse.datasource.project.nature";
-	public static final String BPS_NATURE_ID="org.wso2.integrationstudio.eclipse.bpel.project.nature";
-	public static final String BRS_NATURE_ID="org.wso2.integrationstudio.eclipse.artifact.businessruleservice.project.nature";
+	public static final String AXIS2_NATURE_ID="org.wso2.developerstudio.eclipse.axis2.project.nature";
+	public static final String DSS_NATURE_ID="org.wso2.developerstudio.eclipse.ds.project.nature";
+	public static final String DATASOURCE_NATURE_ID="org.wso2.developerstudio.eclipse.datasource.project.nature";
+	public static final String BPS_NATURE_ID="org.wso2.developerstudio.eclipse.bpel.project.nature";
+	public static final String BRS_NATURE_ID="org.wso2.developerstudio.eclipse.artifact.businessruleservice.project.nature";
 }

@@ -55,7 +55,7 @@ import org.wso2.integrationstudio.eclipse.utils.project.ProjectUtils;
 public class CustomMediatorCreationWizard extends AbstractWSO2ProjectCreationWizard {
 	
 	private static final String PROJECT_WIZARD_WINDOW_TITLE = "New Mediator Artifact";
-    private static final String MEDIATOR_PROJECT_NATURE = "org.wso2.integrationstudio.eclipse.artifact.mediator.project.nature";
+    private static final String MEDIATOR_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.artifact.mediator.project.nature";
 	private static final String ESB_GRAPHICAL_PERSPECTIVE = "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.perspective";
     
 	private  CustomMediatorModel customMediatorModel;

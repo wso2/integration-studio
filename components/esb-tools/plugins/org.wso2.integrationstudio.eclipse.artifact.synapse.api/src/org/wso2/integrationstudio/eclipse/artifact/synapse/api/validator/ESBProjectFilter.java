@@ -24,7 +24,7 @@ import org.eclipse.jface.viewers.ViewerFilter;
  * ViewerFilter class for ESB project nature.
  */
 public class ESBProjectFilter extends ViewerFilter {
-	private static final String ESB_PROJECT_NATURE = "org.wso2.integrationstudio.eclipse.esb.project.nature";
+	private static final String ESB_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.esb.project.nature";
 
 	
 	public boolean select(Viewer viewer, Object parentElement, Object element) {

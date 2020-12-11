@@ -1742,7 +1742,7 @@ public class EsbPaletteFactory {
             IProject activeProject = file.getProject();
             // FIXME: scan whole workspace
             try {
-                if (activeProject.hasNature("org.wso2.integrationstudio.eclipse.esb.project.nature")) {
+                if (activeProject.hasNature("org.wso2.developerstudio.eclipse.esb.project.nature")) {
 
                     ESBProjectArtifact esbProjectArtifact = new ESBProjectArtifact();
                     File projectPath = activeProject.getLocation().toFile();

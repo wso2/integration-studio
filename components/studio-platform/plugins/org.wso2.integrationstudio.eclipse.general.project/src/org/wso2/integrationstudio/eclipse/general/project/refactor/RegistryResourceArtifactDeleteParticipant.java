@@ -92,7 +92,7 @@ public class RegistryResourceArtifactDeleteParticipant extends DeleteParticipant
 
 		for (IProject project : projects) {
 			if (project.isOpen() &&
-			    project.hasNature("org.wso2.integrationstudio.eclipse.distribution.project.nature")) {
+			    project.hasNature("org.wso2.developerstudio.eclipse.distribution.project.nature")) {
 				try {
 					IFile pomFile = project.getFile("pom.xml");
 					MavenProject mavenProject = RefactorUtils.getMavenProject(project);

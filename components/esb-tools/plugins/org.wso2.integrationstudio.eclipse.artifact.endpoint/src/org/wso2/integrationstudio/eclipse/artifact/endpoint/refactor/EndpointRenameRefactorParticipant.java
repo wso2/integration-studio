@@ -99,7 +99,7 @@ public class EndpointRenameRefactorParticipant extends RenameParticipant {
 		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
 		for (int i = 0; i < projects.length; i++) {
 			if (projects[i].isOpen()
-					&& projects[i].hasNature("org.wso2.integrationstudio.eclipse.distribution.project.nature")) {
+					&& projects[i].hasNature("org.wso2.developerstudio.eclipse.distribution.project.nature")) {
 				try {
 					     pomFile = projects[i].getFile("pom.xml");
 					try{

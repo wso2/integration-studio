@@ -61,7 +61,7 @@ public class FileModificationManager implements IResourceChangeListener {
 	private static final String POM = "pom.xml";
 	private static final String COMMAN_NAME = "synapse/";
 	private static final String ARTIFACT_MEATADATA_FILE = "artifact.xml";
-	private static final String ESB_PROJECT_NATURE = "org.wso2.integrationstudio.eclipse.esb.project.nature";
+	private static final String ESB_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.esb.project.nature";
 
 	@Override
 	public void resourceChanged(IResourceChangeEvent event) {

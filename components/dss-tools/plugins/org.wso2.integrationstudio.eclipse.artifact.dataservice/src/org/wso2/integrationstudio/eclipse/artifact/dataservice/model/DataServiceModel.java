@@ -45,7 +45,7 @@ public class DataServiceModel extends ProjectDataModel {
 
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-	public static final String DSS_NATURE_ID = "org.wso2.integrationstudio.eclipse.ds.project.nature";
+	public static final String DSS_NATURE_ID = "org.wso2.developerstudio.eclipse.ds.project.nature";
 
 	private String serviceName;
 	private String serviceGroup;

@@ -34,7 +34,7 @@ public class WebAppProjectRemotePublisher implements
 		ICarbonServerModulePublisher {
 
 	private WebAppDeployer webappDeployer;
-	private static final String WEBAPP_NATURE = "org.wso2.integrationstudio.eclipse.webapp.project.nature";
+	private static final String WEBAPP_NATURE = "org.wso2.developerstudio.eclipse.webapp.project.nature";
 
 	@Override
 	public void publish(IProject project, IServer server, File serverHome,

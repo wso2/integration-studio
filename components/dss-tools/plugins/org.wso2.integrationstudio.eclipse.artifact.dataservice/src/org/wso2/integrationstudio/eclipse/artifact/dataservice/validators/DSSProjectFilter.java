@@ -31,7 +31,7 @@ public class DSSProjectFilter extends ViewerFilter {
 		if (element instanceof IProject) {
 			try {
 				if (((IProject) element)
-						.hasNature("org.wso2.integrationstudio.eclipse.ds.project.nature")) {
+						.hasNature("org.wso2.developerstudio.eclipse.ds.project.nature")) {
 					return true;
 				}
 			} catch (Exception e) {

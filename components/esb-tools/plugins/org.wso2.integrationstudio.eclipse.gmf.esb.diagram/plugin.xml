@@ -6095,11 +6095,11 @@
 					<or>
 						<adapt type="org.eclipse.core.resources.IProject">
 							<test property="org.eclipse.core.resources.projectNature"
-								value="org.wso2.integrationstudio.eclipse.esb.project.nature" />
+								value="org.wso2.developerstudio.eclipse.esb.project.nature" />
 						</adapt>
 						<adapt type="org.eclipse.core.resources.IFolder">
 							<test property="org.eclipse.core.resources.projectNature"
-								value="org.wso2.integrationstudio.eclipse.esb.project.nature" />
+								value="org.wso2.developerstudio.eclipse.esb.project.nature" />
 						</adapt>
 					</or>
 				</enablement>
@@ -6127,11 +6127,11 @@
 					<or>
 						<adapt type="org.eclipse.core.resources.IProject">
 							<test property="org.eclipse.core.resources.projectNature"
-								value="org.wso2.integrationstudio.eclipse.esb.project.nature" />
+								value="org.wso2.developerstudio.eclipse.esb.project.nature" />
 						</adapt>
 						<adapt type="org.eclipse.core.resources.IFolder">
 							<test property="org.eclipse.core.resources.projectNature"
-								value="org.wso2.integrationstudio.eclipse.esb.project.nature" />
+								value="org.wso2.developerstudio.eclipse.esb.project.nature" />
 						</adapt>
 					</or>
 				</enablement>
@@ -6159,11 +6159,11 @@
 					<or>
 						<adapt type="org.eclipse.core.resources.IProject">
 							<test property="org.eclipse.core.resources.projectNature"
-								value="org.wso2.integrationstudio.eclipse.esb.project.nature" />
+								value="org.wso2.developerstudio.eclipse.esb.project.nature" />
 						</adapt>
 						<adapt type="org.eclipse.core.resources.IFolder">
 							<test property="org.eclipse.core.resources.projectNature"
-								value="org.wso2.integrationstudio.eclipse.esb.project.nature" />
+								value="org.wso2.developerstudio.eclipse.esb.project.nature" />
 						</adapt>
 					</or>
 				</enablement>
@@ -6191,11 +6191,11 @@
 					<or>
 						<adapt type="org.eclipse.core.resources.IProject">
 							<test property="org.eclipse.core.resources.projectNature"
-								value="org.wso2.integrationstudio.eclipse.esb.project.nature" />
+								value="org.wso2.developerstudio.eclipse.esb.project.nature" />
 						</adapt>
 						<adapt type="org.eclipse.core.resources.IFolder">
 							<test property="org.eclipse.core.resources.projectNature"
-								value="org.wso2.integrationstudio.eclipse.esb.project.nature" />
+								value="org.wso2.developerstudio.eclipse.esb.project.nature" />
 						</adapt>
 					</or>
 				</enablement>
@@ -6224,11 +6224,11 @@
 					<or>
 						<adapt type="org.eclipse.core.resources.IProject">
 							<test property="org.eclipse.core.resources.projectNature"
-								value="org.wso2.integrationstudio.eclipse.esb.project.nature" />
+								value="org.wso2.developerstudio.eclipse.esb.project.nature" />
 						</adapt>
 						<adapt type="org.eclipse.core.resources.IFolder">
 							<test property="org.eclipse.core.resources.projectNature"
-								value="org.wso2.integrationstudio.eclipse.esb.project.nature" />
+								value="org.wso2.developerstudio.eclipse.esb.project.nature" />
 						</adapt>
 					</or>
 				</enablement>
@@ -6256,11 +6256,11 @@
 					<or>
 						<adapt type="org.eclipse.core.resources.IProject">
 							<test property="org.eclipse.core.resources.projectNature"
-								value="org.wso2.integrationstudio.eclipse.esb.project.nature" />
+								value="org.wso2.developerstudio.eclipse.esb.project.nature" />
 						</adapt>
 						<adapt type="org.eclipse.core.resources.IFolder">
 							<test property="org.eclipse.core.resources.projectNature"
-								value="org.wso2.integrationstudio.eclipse.esb.project.nature" />
+								value="org.wso2.developerstudio.eclipse.esb.project.nature" />
 						</adapt>
 					</or>
 				</enablement>
@@ -6289,11 +6289,11 @@
 					<or>
 						<adapt type="org.eclipse.core.resources.IProject">
 							<test property="org.eclipse.core.resources.projectNature"
-								value="org.wso2.integrationstudio.eclipse.esb.project.nature" />
+								value="org.wso2.developerstudio.eclipse.esb.project.nature" />
 						</adapt>
 						<adapt type="org.eclipse.core.resources.IFolder">
 							<test property="org.eclipse.core.resources.projectNature"
-								value="org.wso2.integrationstudio.eclipse.esb.project.nature" />
+								value="org.wso2.developerstudio.eclipse.esb.project.nature" />
 						</adapt>
 					</or>
 				</enablement>
@@ -6322,11 +6322,11 @@
 					<or>
 						<adapt type="org.eclipse.core.resources.IProject">
 							<test property="org.eclipse.core.resources.projectNature"
-								value="org.wso2.integrationstudio.eclipse.esb.project.nature" />
+								value="org.wso2.developerstudio.eclipse.esb.project.nature" />
 						</adapt>
 						<adapt type="org.eclipse.core.resources.IFolder">
 							<test property="org.eclipse.core.resources.projectNature"
-								value="org.wso2.integrationstudio.eclipse.esb.project.nature" />
+								value="org.wso2.developerstudio.eclipse.esb.project.nature" />
 						</adapt>
 					</or>
 				</enablement>

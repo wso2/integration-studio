@@ -56,7 +56,7 @@ public class EndpointArtifactDeleteParticipant extends DeleteParticipant {
 		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
 
 		for (IProject project : projects) {
-			if (project.isOpen() && project.hasNature("org.wso2.integrationstudio.eclipse.distribution.project.nature")) {
+			if (project.isOpen() && project.hasNature("org.wso2.developerstudio.eclipse.distribution.project.nature")) {
 				try {
 				     pomFile = project.getFile("pom.xml");
 					try{
@@ -67,7 +67,7 @@ public class EndpointArtifactDeleteParticipant extends DeleteParticipant {
 					MavenProject mavenProject = RefactorUtils.getMavenProject(project);
 
 					ESBArtifact esbArtifactFromFile = RefactorUtils.getESBArtifactFromFile(originalFile,
-							"org.wso2.integrationstudio.eclipse.esb.project.nature");
+							"org.wso2.developerstudio.eclipse.esb.project.nature");
 					Dependency projectDependency = null;
 
 					if (esbArtifactFromFile != null) {
@@ -132,7 +132,7 @@ public class EndpointArtifactDeleteParticipant extends DeleteParticipant {
 		esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 
 		ESBArtifact esbArtifact = RefactorUtils.getESBArtifactFromFile(originalFile,
-				"org.wso2.integrationstudio.eclipse.esb.project.nature");
+				"org.wso2.developerstudio.eclipse.esb.project.nature");
 
 		if (esbArtifact != null) {
 			String type = esbArtifact.getType().substring("synapse/".length());

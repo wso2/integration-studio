@@ -12,16 +12,16 @@
 		</wizard>
 	</extension>
 	<extension point="org.eclipse.core.resources.natures"
-		id="org.wso2.integrationstudio.eclipse.artifact.ds.validator.project.nature" name="validator Project Nature">
+		id="org.wso2.developerstudio.eclipse.artifact.ds.validator.project.nature" name="validator Project Nature">
 		<runtime>
 			<run
-				class="org.wso2.integrationstudio.eclipse.artifact.ds.validator.project.nature.DataServiceValidatorProjectNature">
+				class="org.wso2.developerstudio.eclipse.artifact.ds.validator.project.nature.DataServiceValidatorProjectNature">
 			</run>
 		</runtime>
 	</extension>
 	<extension point="org.eclipse.ui.ide.projectNatureImages">
 		<image id="org.wso2.integrationstudio.eclipse.ds.validator.project.natureImage"
-			natureId="org.wso2.integrationstudio.eclipse.artifact.ds.validator.project.nature" icon="icons/ds-validate-12x12.png">
+			natureId="org.wso2.developerstudio.eclipse.artifact.ds.validator.project.nature" icon="icons/ds-validate-12x12.png">
 		</image>
 	</extension>
 	  <!--<extension point="org.eclipse.ui.navigator.navigatorContent">	
@@ -60,11 +60,11 @@
                     <or>
                         <adapt type="org.eclipse.core.resources.IProject">
                             <test property="org.eclipse.core.resources.projectNature"
-                                value="org.wso2.integrationstudio.eclipse.ds.project.nature" />
+                                value="org.wso2.developerstudio.eclipse.ds.project.nature" />
                                 </adapt>
                        <adapt type="org.eclipse.jdt.core.IPackageFragment">
 							<test property="org.wso2.integrationstudio.projectNature"
-								value="org.wso2.integrationstudio.eclipse.ds.project.nature" />
+								value="org.wso2.developerstudio.eclipse.ds.project.nature" />
 						</adapt>
                     </or>
                 </enablement>

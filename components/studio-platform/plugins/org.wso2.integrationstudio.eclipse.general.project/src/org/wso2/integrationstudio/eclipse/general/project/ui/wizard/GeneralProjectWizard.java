@@ -39,7 +39,7 @@ import org.wso2.integrationstudio.eclipse.utils.jdt.JavaUtils;
 import org.wso2.integrationstudio.eclipse.utils.project.ProjectUtils;
 
 public class GeneralProjectWizard extends AbstractWSO2ProjectCreationWizard {
-	private static final String GENERAL_PROJECT_NATURE = "org.wso2.integrationstudio.eclipse.general.project.nature";
+	private static final String GENERAL_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.general.project.nature";
 	private static final String ESB_GRAPHICAL_PERSPECTIVE = "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.perspective";
 
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);

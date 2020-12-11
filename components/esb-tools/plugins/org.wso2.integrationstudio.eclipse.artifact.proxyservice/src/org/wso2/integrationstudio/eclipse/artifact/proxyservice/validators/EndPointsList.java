@@ -49,7 +49,7 @@ public class EndPointsList extends AbstractListDataProvider {
 		for (IProject project : projects) {
 			try{
 				if(project.isOpen()){
-					if(project.hasNature("org.wso2.integrationstudio.eclipse.esb.project.nature")){
+					if(project.hasNature("org.wso2.developerstudio.eclipse.esb.project.nature")){
 						IResource resources[] = project.getFolder("src/main/synapse-config/endpoints").members();
 						for (IResource res : resources) {
 							if(res.getName().endsWith(".xml")){

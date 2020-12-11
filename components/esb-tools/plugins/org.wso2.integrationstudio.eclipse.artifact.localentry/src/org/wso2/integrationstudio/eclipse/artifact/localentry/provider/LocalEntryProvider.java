@@ -41,7 +41,7 @@ public class LocalEntryProvider implements ILocalEntryProvider {
 			for (IProject project : projects) {
 				try {
 					if (project.isOpen() &&
-					    project.hasNature("org.wso2.integrationstudio.eclipse.esb.project.nature")) {
+					    project.hasNature("org.wso2.developerstudio.eclipse.esb.project.nature")) {
 						ProjectLocalEntryProvider projectLocalEntryProvider = new ProjectLocalEntryProvider(project);
 						IEsbLocalEntry[] localentries =projectLocalEntryProvider.getLocalEntries(filters);
 						if (localentries != null && localentries.length > 0) {

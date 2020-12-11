@@ -96,7 +96,7 @@ public class ArtifactProjectRenameRefactorParticipant extends RenameParticipant 
 
 		for (int i = 0; i < projects.length; i++) {
 			if (projects[i].isOpen() &&
-			    projects[i].hasNature("org.wso2.integrationstudio.eclipse.distribution.project.nature")) {
+			    projects[i].hasNature("org.wso2.developerstudio.eclipse.distribution.project.nature")) {
 				try {
 					MavenProject mavenProject =
 					                            MavenUtils.getMavenProject(projects[i].getFile("pom.xml").getLocation()

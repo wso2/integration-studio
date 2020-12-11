@@ -13,7 +13,7 @@
 	</extension>
 	<extension point="org.wso2.integrationstudio.eclipse.capp.artifacts.provider">
     	<provider class="org.wso2.integrationstudio.eclipse.artifact.connector.project.export.ConnectorArtifactProvider"
-          nature="org.wso2.integrationstudio.eclipse.artifact.connector.project.nature"></provider>
+          nature="org.wso2.developerstudio.eclipse.artifact.connector.project.nature"></provider>
     </extension>
 	 <extension point="org.eclipse.ui.newWizards">
 		<wizard name="Add/Remove Connectors" 
@@ -38,16 +38,16 @@
       </objectContribution>
    </extension>
 	<extension point="org.eclipse.core.resources.natures"
-		id="org.wso2.integrationstudio.eclipse.artifact.connector.project.nature" name="Connector Project Nature">
+		id="org.wso2.developerstudio.eclipse.artifact.connector.project.nature" name="Connector Project Nature">
 		<runtime>
 			<run
-				class="org.wso2.integrationstudio.eclipse.artifact.connector.project.nature.ConnectorProjectNature">
+				class="org.wso2.developerstudio.eclipse.artifact.connector.project.nature.ConnectorProjectNature">
 			</run>
 		</runtime>
 	</extension>
 	<extension point="org.eclipse.ui.ide.projectNatureImages">
 		<image id="org.wso2.integrationstudio.eclipse.connector.project.natureImage"
-			natureId="org.wso2.integrationstudio.eclipse.artifact.connector.project.nature" icon="icons/new-mediator-12x12.png">
+			natureId="org.wso2.developerstudio.eclipse.artifact.connector.project.nature" icon="icons/new-mediator-12x12.png">
 		</image>
 	</extension>
 			<extension point="org.eclipse.ui.navigator.navigatorContent">    
@@ -58,11 +58,11 @@
                     <or>
                         <adapt type="org.eclipse.core.resources.IProject">
                             <test property="org.eclipse.core.resources.projectNature"
-                                value="org.wso2.integrationstudio.eclipse.mavenmultimodule.project.nature" />
+                                value="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" />
                                 </adapt>
                        <adapt type="org.eclipse.jdt.core.IPackageFragment">
 							<test property="org.wso2.integrationstudio.projectNature"
-								value="org.wso2.integrationstudio.eclipse.mavenmultimodule.project.nature" />
+								value="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" />
 						</adapt>
                     </or>
                 </enablement>
@@ -76,11 +76,11 @@
                     <or>
                         <adapt type="org.eclipse.core.resources.IProject">
                             <test property="org.eclipse.core.resources.projectNature"
-                                value="org.wso2.integrationstudio.eclipse.artifact.connector.project.nature" />
+                                value="org.wso2.developerstudio.eclipse.artifact.connector.project.nature" />
                                 </adapt>
                        <adapt type="org.eclipse.jdt.core.IPackageFragment">
 							<test property="org.wso2.integrationstudio.projectNature"
-								value="org.wso2.integrationstudio.eclipse.artifact.connector.project.nature" />
+								value="org.wso2.developerstudio.eclipse.artifact.connector.project.nature" />
 						</adapt>
                     </or>
                 </enablement>

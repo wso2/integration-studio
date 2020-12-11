@@ -41,7 +41,7 @@ public class SequenceProvider implements ISequenceProvider {
 			for (IProject project : projects) {
 				try {
 	                if (project.isOpen() &&
-	                	    project.hasNature("org.wso2.integrationstudio.eclipse.esb.project.nature")){
+	                	    project.hasNature("org.wso2.developerstudio.eclipse.esb.project.nature")){
 	                	ProjectSequenceProvider projectSequenceProvider = new ProjectSequenceProvider(project);
 	                	IEsbSequence[] sequences = projectSequenceProvider.getSequences(filters);
 	                	if (sequences!=null && sequences.length>0){

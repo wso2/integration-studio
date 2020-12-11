@@ -186,7 +186,7 @@ public class APIMProjectCreationWizard extends Wizard implements INewWizard, IEx
         stringBuilder.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" + "<projectDescription>\n" + "    <name>"
                 + directory.getName() + "</name>\n" + "    <comment></comment>\n" + "    <projects>\n"
                 + "    </projects>\n" + "    <buildSpec>\n" + "    </buildSpec>\n" + "    <natures>\n"
-                + "        <nature>org.wso2.integrationstudio.eclipse.apim.project.nature</nature>\n" + "    </natures>\n"
+                + "        <nature>org.wso2.developerstudio.eclipse.apim.project.nature</nature>\n" + "    </natures>\n"
                 + "</projectDescription>");
 
         try {

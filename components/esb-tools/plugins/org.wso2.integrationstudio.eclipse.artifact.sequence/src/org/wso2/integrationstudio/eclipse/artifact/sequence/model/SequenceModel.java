@@ -202,7 +202,7 @@ public class SequenceModel extends ProjectDataModel {
 		if (getSequenceSaveLocation() == null && absolutionPath != null) {
 			IContainer newEndpointSaveLocation =
 			                                     getContainer(absolutionPath,
-			                                                  "org.wso2.integrationstudio.eclipse.esb.project.nature");
+			                                                  "org.wso2.developerstudio.eclipse.esb.project.nature");
 			setSequenceSaveLocation(newEndpointSaveLocation);
 		}
 	}

@@ -74,7 +74,7 @@ public class AvailableEPList extends AbstractListDataProvider {
 		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
 		for (IProject workspaceProject : projects) {
 			if (workspaceProject.isOpen() &&
-			    workspaceProject.hasNature("org.wso2.integrationstudio.eclipse.general.project.nature")) {
+			    workspaceProject.hasNature("org.wso2.developerstudio.eclipse.general.project.nature")) {
 				GeneralProjectArtifact generalProjectArtifact = new GeneralProjectArtifact();
 				try {
 					generalProjectArtifact.fromFile(workspaceProject.getFile("artifact.xml").getLocation().toFile());
@@ -118,7 +118,7 @@ public class AvailableEPList extends AbstractListDataProvider {
 		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
 		for (IProject workspaceProject : projects) {
 			if (workspaceProject.isOpen() &&
-			    workspaceProject.hasNature("org.wso2.integrationstudio.eclipse.esb.project.nature")) {
+			    workspaceProject.hasNature("org.wso2.developerstudio.eclipse.esb.project.nature")) {
 				ESBProjectArtifact esbProjectArtifact = new ESBProjectArtifact();
 				File projectPath = workspaceProject.getLocation().toFile();
 				try {

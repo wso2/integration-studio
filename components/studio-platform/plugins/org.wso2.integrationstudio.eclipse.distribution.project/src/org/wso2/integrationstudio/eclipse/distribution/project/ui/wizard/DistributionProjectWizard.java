@@ -53,7 +53,7 @@ import org.wso2.integrationstudio.eclipse.utils.project.ProjectUtils;
 
 public class DistributionProjectWizard extends
 		AbstractWSO2ProjectCreationWizard {
-	private static final String DISTRIBUTION_PROJECT_NATURE = "org.wso2.integrationstudio.eclipse.distribution.project.nature";
+	private static final String DISTRIBUTION_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.distribution.project.nature";
 	private IProject project;
 	private static IIntegrationStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 

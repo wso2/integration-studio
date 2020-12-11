@@ -622,7 +622,7 @@ public class NamedEndpointEditPart extends ComplexFiguredAbstractEndpoint {
 
             try {
                 boolean registryProject = false;
-                if (currentProject.hasNature("org.wso2.integrationstudio.eclipse.general.project.nature")) {
+                if (currentProject.hasNature("org.wso2.developerstudio.eclipse.general.project.nature")) {
                     fileTobeOpened = currentProject.getFile(name + ".xml");
                     registryProject = true;
                 } else {

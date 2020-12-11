@@ -38,7 +38,7 @@ public class InboundEndpointProvider implements ILocalEntryProvider {
 			for (IProject project : projects) {
 				try {
 					if (project.isOpen() &&
-					    project.hasNature("org.wso2.integrationstudio.eclipse.esb.project.nature")) {
+					    project.hasNature("org.wso2.developerstudio.eclipse.esb.project.nature")) {
 						ProjectInboundEndpointProvider projectLocalEntryProvider =
 						                                                           new ProjectInboundEndpointProvider(
 						                                                                                              project);

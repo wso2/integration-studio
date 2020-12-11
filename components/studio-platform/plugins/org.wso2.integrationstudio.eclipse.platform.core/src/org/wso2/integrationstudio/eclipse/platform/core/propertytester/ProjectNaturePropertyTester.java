@@ -31,7 +31,7 @@ import org.wso2.integrationstudio.eclipse.platform.core.Activator;
  * <pre>
  * <adapt type="org.eclipse.jdt.core.IPackageFragment">
  * <test property="org.wso2.integrationstudio.projectNature"
- * 	value="org.wso2.integrationstudio.eclipse.jaxrs.project.nature" />
+ * 	value="org.wso2.developerstudio.eclipse.jaxrs.project.nature" />
  * </adapt>
  * </pre>
  *

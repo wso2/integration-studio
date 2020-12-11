@@ -22,8 +22,8 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 public class ProjectFilter extends ViewerFilter {
-	private static final String GENERAL_PROJECT_NATURE = "org.wso2.integrationstudio.eclipse.general.project.nature";
-	private static final String ESB_PROJECT_NATURE = "org.wso2.integrationstudio.eclipse.esb.project.nature";
+	private static final String GENERAL_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.general.project.nature";
+	private static final String ESB_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.esb.project.nature";
 	private static boolean showGeneralProjects;
 	
 	public ProjectFilter() {

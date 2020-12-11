@@ -59,7 +59,7 @@
             <projectnature>org.eclipse.jem.workbench.JavaEMFNature</projectnature>
             <projectnature>org.eclipse.wst.common.modulecore.ModuleCoreNature</projectnature>
             <projectnature>org.eclipse.wst.common.project.facet.core.nature</projectnature>
-            <projectnature>org.wso2.integrationstudio.eclipse.bpel.project.nature</projectnature>
+            <projectnature>org.wso2.developerstudio.eclipse.bpel.project.nature</projectnature>
           </projectnatures>
         </configuration>
       </plugin>

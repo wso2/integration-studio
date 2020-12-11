@@ -48,11 +48,11 @@
                     <or>
                         <adapt type="org.eclipse.core.resources.IProject">
                             <test property="org.eclipse.core.resources.projectNature"
-                                value="org.wso2.integrationstudio.eclipse.esb.project.nature" />
+                                value="org.wso2.developerstudio.eclipse.esb.project.nature" />
                                 </adapt>
                        <adapt type="org.eclipse.jdt.core.IPackageFragment">
 							<test property="org.wso2.integrationstudio.projectNature"
-								value="org.wso2.integrationstudio.eclipse.esb.project.nature" />
+								value="org.wso2.developerstudio.eclipse.esb.project.nature" />
 						</adapt>
 						<adapt type="org.eclipse.core.resources.IFolder">  
 						   <test
@@ -71,7 +71,7 @@
 			nameFilter="*.xml">
 			<filter
            	 	name="projectNature"
-            	value="org.wso2.integrationstudio.eclipse.esb.project.nature">
+            	value="org.wso2.developerstudio.eclipse.esb.project.nature">
          	</filter>
 			<menu id="org.wso2.integrationstudio.eclipse.artifact.sequence"
 				label="Generate" path="additions">
@@ -156,11 +156,11 @@
                     <or>
                         <adapt type="org.eclipse.core.resources.IProject">
                             <test property="org.eclipse.core.resources.projectNature"
-                                value="org.wso2.integrationstudio.eclipse.esb.project.nature" />
+                                value="org.wso2.developerstudio.eclipse.esb.project.nature" />
                                 </adapt>
                        <adapt type="org.eclipse.jdt.core.IPackageFragment">
 							<test property="org.wso2.integrationstudio.projectNature"
-								value="org.wso2.integrationstudio.eclipse.esb.project.nature" />
+								value="org.wso2.developerstudio.eclipse.esb.project.nature" />
 						</adapt>
                     </or>
                 </enablement>

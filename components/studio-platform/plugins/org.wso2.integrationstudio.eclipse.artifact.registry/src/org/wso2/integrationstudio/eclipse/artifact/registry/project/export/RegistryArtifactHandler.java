@@ -46,7 +46,7 @@ import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
 public class RegistryArtifactHandler extends ProjectArtifactHandler {
 	private static IIntegrationStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 	public static final String ARTIFACT_XML = "artifact.xml";
-	public static final String GENERAL_PROJECT_NATURE = "org.wso2.integrationstudio.eclipse.general.project.nature";
+	public static final String GENERAL_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.general.project.nature";
 	List<IResource> exportResources = new ArrayList<IResource>();
 
 	public List<IResource> exportArtifact(IProject project) throws Exception {

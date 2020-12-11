@@ -84,7 +84,7 @@ public class WebAppProjectPublisher implements ICarbonServerModulePublisher {
 
 	@Override
 	public void publish(IProject project, IServer server, File serverHome, File deployLocation) throws Exception {
-		if (project.hasNature("org.wso2.integrationstudio.eclipse.webapp.project.nature")) {
+		if (project.hasNature("org.wso2.developerstudio.eclipse.webapp.project.nature")) {
 			final WarPublisher warPublisher = new WarPublisher(deployLocation, project, server);
 			new Thread(warPublisher).start();
 			if (warPublisher.getException() != null) {

@@ -41,7 +41,7 @@ public class AvailableMessageStoreList extends AbstractListDataProvider {
 		for (IProject workspaceProject : projects) {
 			
 				try {
-					if (workspaceProject.isOpen() && workspaceProject.hasNature("org.wso2.integrationstudio.eclipse.esb.project.nature")) {
+					if (workspaceProject.isOpen() && workspaceProject.hasNature("org.wso2.developerstudio.eclipse.esb.project.nature")) {
 					
  						
  						ESBProjectArtifact esbProjectArtifact = new ESBProjectArtifact();

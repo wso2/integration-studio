@@ -89,7 +89,7 @@ public class TemplateEndpointTargetTemplateCustomPropertyDescriptor extends Prop
             IProject activeProject = file.getProject();
             // FIXME: scan whole workspace
             try {
-                if (activeProject.hasNature("org.wso2.integrationstudio.eclipse.esb.project.nature")) {
+                if (activeProject.hasNature("org.wso2.developerstudio.eclipse.esb.project.nature")) {
                     ESBProjectArtifact esbProjectArtifact = new ESBProjectArtifact();
                     projectPath = activeProject.getLocation().toFile();
                     try {

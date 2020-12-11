@@ -67,7 +67,7 @@ public class MavenConfigurationFileRenameChange extends TextFileChange {
 
 			try {
 				if (pomFile.exists() &&
-				    refactoringProject.hasNature("org.wso2.integrationstudio.eclipse.distribution.project.nature")) {
+				    refactoringProject.hasNature("org.wso2.developerstudio.eclipse.distribution.project.nature")) {
 					dependencyReplacement();
 				}
 			} catch (CoreException e) {

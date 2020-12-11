@@ -181,7 +181,7 @@ public class PlatformEarlyStartUpHandler implements IStartup {
 
                                 for (IProject project : projects) {
                                     if (project.hasNature(
-                                            "org.wso2.integrationstudio.eclipse.mavenmultimodule.project.nature")) {
+                                            "org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature")) {
                                         IFile pomFile = project.getFile("pom.xml");
                                         MavenProject mavenProject = MavenUtils
                                                 .getMavenProject(pomFile.getLocation().toFile());

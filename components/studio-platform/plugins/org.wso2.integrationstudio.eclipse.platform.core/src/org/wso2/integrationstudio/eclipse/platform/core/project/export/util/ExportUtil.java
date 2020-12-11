@@ -107,7 +107,7 @@ public class ExportUtil {
 		if (!project.isOpen()) {
 			throw new Exception("\"" + project.getName() + "\" project is not open!");
 		}
-		if (project.hasNature("org.wso2.integrationstudio.eclipse.distribution.project.nature")) {
+		if (project.hasNature("org.wso2.developerstudio.eclipse.distribution.project.nature")) {
 			buildProject = ExportUtil.buildProject(project, "carbon/application");
 		} else {
 			throw new Exception("\"" + project.getName() + "\" project is not a carbon application project");

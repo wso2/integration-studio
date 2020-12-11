@@ -25,9 +25,9 @@ public class Constants {
     private Constants() {
     }
 
-    public static final String ESB_PROJECT_NATURE = "org.wso2.integrationstudio.eclipse.esb.project.nature";
-    public static final String CONNECTOR_PROJECT_NATURE = "org.wso2.integrationstudio.eclipse.artifact.connector.project.nature";
-    public static final String REGISTRY_PROJECT_NATURE = "org.wso2.integrationstudio.eclipse.general.project.nature";
+    public static final String ESB_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.esb.project.nature";
+    public static final String CONNECTOR_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.artifact.connector.project.nature";
+    public static final String REGISTRY_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.general.project.nature";
     public static final String ESB_PROJECT = "esb_project";
     public static final String REGISTRY_PROJECT = "registry_project";
     public static final String CONNECTOR_PROJECT = "connector_project";

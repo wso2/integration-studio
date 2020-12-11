@@ -26,7 +26,7 @@ public class ESBProjectFilter extends ViewerFilter {
 	public boolean select(Viewer viewer, Object parentElement, Object element) {
 		if (element instanceof IProject) {
 			try {
-				if (((IProject) element).hasNature("org.wso2.integrationstudio.eclipse.esb.project.nature")) {
+				if (((IProject) element).hasNature("org.wso2.developerstudio.eclipse.esb.project.nature")) {
 					return true;
 				}
 			} catch (Exception e) {/*ignore*/}

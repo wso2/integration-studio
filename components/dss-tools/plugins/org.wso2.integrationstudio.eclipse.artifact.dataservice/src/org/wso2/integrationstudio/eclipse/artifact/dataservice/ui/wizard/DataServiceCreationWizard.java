@@ -72,7 +72,7 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-	private static final String DS_PROJECT_NATURE = "org.wso2.integrationstudio.eclipse.ds.project.nature";
+	private static final String DS_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.ds.project.nature";
 	private static final String IMPORT_OPTION = "import.ds";
 	private static final String NEW_OPTION = "new.ds";
 	private static final String POM_FILE = "pom.xml";

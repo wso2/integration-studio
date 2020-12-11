@@ -25,6 +25,10 @@
     <name>WSO2 Integration Studio - Parent</name>
     <description>WSO2 Integration Studio</description>
 
+<properties>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+</properties>
     <modules>
         <module>components</module>
         <module>distribution</module>

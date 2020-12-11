@@ -265,7 +265,7 @@ public abstract class WizardExportResourcesCustomPage extends WizardDataTransfer
 		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
 		for (IProject project : projects) {
 			try {
-				if (project.hasNature("org.wso2.integrationstudio.eclipse.mavenmultimodule.project.nature")) {
+				if (project.hasNature("org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature")) {
 					IContainer container = (IContainer) project;
 					IResource[] members = container.members();
 					for (IResource resource : members) {
@@ -380,7 +380,7 @@ public abstract class WizardExportResourcesCustomPage extends WizardDataTransfer
 					if ((resource.getType() & resourceType) > 0) {
 						try {
 							if (resource.getParent().getProject() != null && resource.getParent().getProject()
-									.hasNature("org.wso2.integrationstudio.eclipse.mavenmultimodule.project.nature")) {
+									.hasNature("org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature")) {
 								if (resource instanceof IFolder) {
 									for (int i = 0; i < allProjects.length; i++) {
 										IProject project = allProjects[i];

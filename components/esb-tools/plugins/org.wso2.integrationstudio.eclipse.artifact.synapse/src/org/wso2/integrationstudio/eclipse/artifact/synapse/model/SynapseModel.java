@@ -139,7 +139,7 @@ public class SynapseModel extends ProjectDataModel {
 		File absolutionPath = getLocation();
 		if (getEsbProject() == null && absolutionPath != null) {
 			IContainer newEndpointSaveLocation =
-			        getContainer(absolutionPath, "org.wso2.integrationstudio.eclipse.esb.project.nature");
+			        getContainer(absolutionPath, "org.wso2.developerstudio.eclipse.esb.project.nature");
 			setEsbProject(newEndpointSaveLocation);
 		}
 	}

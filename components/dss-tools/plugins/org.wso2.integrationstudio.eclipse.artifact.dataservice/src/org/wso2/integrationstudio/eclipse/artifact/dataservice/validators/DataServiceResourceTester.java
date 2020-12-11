@@ -26,7 +26,7 @@ import org.eclipse.core.runtime.CoreException;
 public class DataServiceResourceTester extends PropertyTester {
 
     private final String DS_FOLDER = "dataservice";
-    private final String DS_PROJECT_NATURE = "org.wso2.integrationstudio.eclipse.ds.project.nature";
+    private final String DS_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.ds.project.nature";
     
     @Override
     public boolean test(Object receiver, String property, Object[] args, Object expectedValue) {

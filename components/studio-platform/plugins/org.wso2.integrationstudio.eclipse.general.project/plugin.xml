@@ -24,16 +24,16 @@
         </wizardLink>
    </extension>
       <extension point="org.eclipse.core.resources.natures"
-		id="org.wso2.integrationstudio.eclipse.general.project.nature" name="General Project Nature">
+		id="org.wso2.developerstudio.eclipse.general.project.nature" name="General Project Nature">
 		<runtime>
 			<run
-				class="org.wso2.integrationstudio.eclipse.general.project.nature.GeneralProjectNature">
+				class="org.wso2.developerstudio.eclipse.general.project.nature.GeneralProjectNature">
 			</run>
 		</runtime>
 	</extension>
 	<extension point="org.eclipse.ui.ide.projectNatureImages">
-		<image id="org.wso2.integrationstudio.eclipse.esb.project.natureImage"
-			natureId="org.wso2.integrationstudio.eclipse.general.project.nature" icon="icons/general-project-12.png">
+		<image id="org.wso2.developerstudio.eclipse.esb.project.natureImage"
+			natureId="org.wso2.developerstudio.eclipse.general.project.nature" icon="icons/general-project-12.png">
 		</image>
 	</extension>
  <extension
@@ -50,7 +50,7 @@
 						<adapt type="org.eclipse.core.resources.IResource">
              				<test
                    				property="org.eclipse.core.resources.projectNature"
-                   				value="org.wso2.integrationstudio.eclipse.general.project.nature">
+                   				value="org.wso2.developerstudio.eclipse.general.project.nature">
              				</test>
          				</adapt>
 					</and>
@@ -68,7 +68,7 @@
 						<adapt type="org.eclipse.core.resources.IResource">
              				<test
                    				property="org.eclipse.core.resources.projectNature"
-                   				value="org.wso2.integrationstudio.eclipse.general.project.nature">
+                   				value="org.wso2.developerstudio.eclipse.general.project.nature">
              				</test>
          				</adapt>
 					</and>
@@ -89,7 +89,7 @@
 						<adapt type="org.eclipse.core.resources.IResource">
              				<test
                    				property="org.eclipse.core.resources.projectNature"
-                   				value="org.wso2.integrationstudio.eclipse.general.project.nature">
+                   				value="org.wso2.developerstudio.eclipse.general.project.nature">
              				</test>
          				</adapt>
 					</and>
@@ -107,7 +107,7 @@
 						<adapt type="org.eclipse.core.resources.IResource">
              				<test
                    				property="org.eclipse.core.resources.projectNature"
-                   				value="org.wso2.integrationstudio.eclipse.general.project.nature">
+                   				value="org.wso2.developerstudio.eclipse.general.project.nature">
              				</test>
          				</adapt>
 					</and>
@@ -125,7 +125,7 @@
 						<adapt type="org.eclipse.core.resources.IResource">
              				<test
                    				property="org.eclipse.core.resources.projectNature"
-                   				value="org.wso2.integrationstudio.eclipse.general.project.nature">
+                   				value="org.wso2.developerstudio.eclipse.general.project.nature">
              				</test>
          				</adapt>
 					</and>
@@ -150,7 +150,7 @@
 						<adapt type="org.eclipse.core.resources.IResource">
              				<test
                    				property="org.eclipse.core.resources.projectNature"
-                   				value="org.wso2.integrationstudio.eclipse.general.project.nature">
+                   				value="org.wso2.developerstudio.eclipse.general.project.nature">
              				</test>
          				</adapt>
 					</and>
@@ -168,7 +168,7 @@
 						<adapt type="org.eclipse.core.resources.IResource">
              				<test
                    				property="org.eclipse.core.resources.projectNature"
-                   				value="org.wso2.integrationstudio.eclipse.general.project.nature">
+                   				value="org.wso2.developerstudio.eclipse.general.project.nature">
              				</test>
          				</adapt>
 					</and>
@@ -188,7 +188,7 @@
 						<adapt type="org.eclipse.core.resources.IProject">
 						 <or>
 							<test property="org.eclipse.core.resources.projectNature"
-								value="org.wso2.integrationstudio.eclipse.general.project.nature" />
+								value="org.wso2.developerstudio.eclipse.general.project.nature" />
 		 				</or>
 						</adapt>
 				</enablement>
@@ -199,7 +199,7 @@
         point="org.wso2.integrationstudio.eclipse.capp.artifacts.provider">
      <provider
             class="org.wso2.integrationstudio.eclipse.artifact.general.project.exporter.RegistryArtifactsProvider"
-           nature="org.wso2.integrationstudio.eclipse.general.project.nature">
+           nature="org.wso2.developerstudio.eclipse.general.project.nature">
      </provider>
   </extension>
 </plugin>

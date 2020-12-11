@@ -74,7 +74,7 @@ public class WorkspaceSequenceList extends AbstractListDataProvider{
 		for (IProject workspaceProject : projects) {
 			if (workspaceProject.isOpen()) {
 				if (workspaceProject
-						.hasNature("org.wso2.integrationstudio.eclipse.esb.project.nature")) {
+						.hasNature("org.wso2.developerstudio.eclipse.esb.project.nature")) {
 					
 					ESBProjectArtifact esbProjectArtifact = new ESBProjectArtifact();
 					File projectPath = workspaceProject.getLocation().toFile();

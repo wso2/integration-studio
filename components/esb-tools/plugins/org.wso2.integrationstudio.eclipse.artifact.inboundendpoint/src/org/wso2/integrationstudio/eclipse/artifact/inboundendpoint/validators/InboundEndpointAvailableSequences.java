@@ -44,7 +44,7 @@ public class InboundEndpointAvailableSequences extends AbstractListDataProvider 
 
 			try {
 				if (workspaceProject.isOpen()
-						&& workspaceProject.hasNature("org.wso2.integrationstudio.eclipse.esb.project.nature")) {
+						&& workspaceProject.hasNature("org.wso2.developerstudio.eclipse.esb.project.nature")) {
 
 					ESBProjectArtifact esbProjectArtifact = new ESBProjectArtifact();
 					try {

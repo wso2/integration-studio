@@ -55,7 +55,7 @@ import org.wso2.integrationstudio.eclipse.utils.project.ProjectUtils;
 public class DataServiceValidatorCreationWizard extends AbstractWSO2ProjectCreationWizard {
 	
 	private static final String PROJECT_WIZARD_WINDOW_TITLE = "New Data Service Validator";
-    private static final String DS_VALIDATOR_PROJECT_NATURE = "org.wso2.integrationstudio.eclipse.artifact.ds.validator.project.nature";
+    private static final String DS_VALIDATOR_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.artifact.ds.validator.project.nature";
 	private static  DataServiceValidatorModel dsValidatorModel;
 	private  IProject project;
 	private IIntegrationStudioLog log=Logger.getLog(Activator.PLUGIN_ID);

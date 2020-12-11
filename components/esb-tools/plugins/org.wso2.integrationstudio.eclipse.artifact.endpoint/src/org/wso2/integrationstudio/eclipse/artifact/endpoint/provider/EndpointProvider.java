@@ -41,7 +41,7 @@ public class EndpointProvider implements IEndpointProvider {
 			try {
 	            for (IProject project : projects) {
 	            	if (project.isOpen() &&
-	            		    project.hasNature("org.wso2.integrationstudio.eclipse.esb.project.nature")){
+	            		    project.hasNature("org.wso2.developerstudio.eclipse.esb.project.nature")){
 	            		ProjectEndpointProvider projectEndpointProvider = new ProjectEndpointProvider(project);
 	            		IEsbEndpoint[] endpoints = projectEndpointProvider.getEndpoints(filters);
 	            		if (endpoints!=null && endpoints.length>0){

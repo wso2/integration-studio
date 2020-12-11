@@ -102,7 +102,7 @@ public class CallTemplateTargetTemplateCustomPropertyDescriptor extends Property
             IProject activeProject = file.getProject();
             // FIXME: scan whole workspace
             try {
-                if (activeProject.hasNature("org.wso2.integrationstudio.eclipse.esb.project.nature")) {
+                if (activeProject.hasNature("org.wso2.developerstudio.eclipse.esb.project.nature")) {
                     ESBProjectArtifact esbProjectArtifact = new ESBProjectArtifact();
                     projectPath = activeProject.getLocation().toFile();
                     try {
@@ -208,7 +208,7 @@ public class CallTemplateTargetTemplateCustomPropertyDescriptor extends Property
 
         for (IProject workspaceProject : projects) {
             if (workspaceProject.isOpen()
-                    && workspaceProject.hasNature("org.wso2.integrationstudio.eclipse.general.project.nature")) {
+                    && workspaceProject.hasNature("org.wso2.developerstudio.eclipse.general.project.nature")) {
                 GeneralProjectArtifact generalProjectArtifact = new GeneralProjectArtifact();
                 try {
                     generalProjectArtifact.fromFile(workspaceProject.getFile("artifact.xml").getLocation().toFile());

@@ -40,7 +40,7 @@ public class NavigatorActionProvider extends CommonActionProvider {
 	
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);	
 	private OpenEditorAction openEditorAction;
-	String compositeAppNatureId = "org.wso2.integrationstudio.eclipse.distribution.project.nature";
+	String compositeAppNatureId = "org.wso2.developerstudio.eclipse.distribution.project.nature";
 	
 	@Override
 	public void fillActionBars(IActionBars actionBars) {

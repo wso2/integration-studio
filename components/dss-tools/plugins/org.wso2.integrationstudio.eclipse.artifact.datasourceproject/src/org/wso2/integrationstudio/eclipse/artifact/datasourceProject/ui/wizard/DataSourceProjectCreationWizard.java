@@ -48,7 +48,7 @@ import org.wso2.integrationstudio.eclipse.utils.project.ProjectUtils;
 public class DataSourceProjectCreationWizard extends AbstractWSO2ProjectCreationWizard {
 
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-	private static final String DS_PROJECT_NATURE = "org.wso2.integrationstudio.eclipse.datasource.project.nature";
+	private static final String DS_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.datasource.project.nature";
 	private static final String POM_FILE = "pom.xml";
 	private static final String ARTIFACT_FILE = "artifact.xml";
 	private static final String PACKAGE_NAME = "pom";

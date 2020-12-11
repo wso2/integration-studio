@@ -22,7 +22,7 @@
                 <adapt type="org.eclipse.core.resources.IProject">
                 	<!-- here nature ID need to give as value not the class -->
                    <test property="org.eclipse.core.resources.projectNature" 
-                   value="org.wso2.integrationstudio.eclipse.library.project.nature"/>
+                   value="org.wso2.developerstudio.eclipse.library.project.nature"/>
                 </adapt>
               </iterate>
         </visibleWhen>
@@ -47,7 +47,7 @@
 	 
      
    <extension point="org.eclipse.core.resources.natures"
-		id="org.wso2.integrationstudio.eclipse.library.project.nature" name="Java Library Project Nature">
+		id="org.wso2.developerstudio.eclipse.library.project.nature" name="Java Library Project Nature">
 		<runtime>
 			<run
 				class="org.wso2.integrationstudio.eclipse.artifact.library.project.nature.LibraryArtifactProjectNature">
@@ -55,8 +55,8 @@
 		</runtime>
 	</extension>
 	<extension point="org.eclipse.ui.ide.projectNatureImages">
-		<image id="org.wso2.integrationstudio.eclipse.library.project.natureImage"
-			natureId="org.wso2.integrationstudio.eclipse.library.project.nature" icon="icons/jar-12x12.png">
+		<image id="org.wso2.developerstudio.eclipse.library.project.natureImage"
+			natureId="org.wso2.developerstudio.eclipse.library.project.nature" icon="icons/jar-12x12.png">
 		</image>
 	</extension>
 	
@@ -96,11 +96,11 @@
                     <or>
                         <adapt type="org.eclipse.core.resources.IProject">
                             <test property="org.eclipse.core.resources.projectNature"
-                                value="org.wso2.integrationstudio.eclipse.mavenmultimodule.project.nature" />
+                                value="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" />
                                 </adapt>
                        <adapt type="org.eclipse.jdt.core.IPackageFragment">
 							<test property="org.wso2.integrationstudio.projectNature"
-								value="org.wso2.integrationstudio.eclipse.mavenmultimodule.project.nature" />
+								value="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" />
 						</adapt>
                     </or>
                 </enablement>

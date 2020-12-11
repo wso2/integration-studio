@@ -79,7 +79,7 @@
     org.wso2.integrationstudio.eclipse.platform.ui.mvn.wizard.MvnMultiModuleWizard
     
     <extension point="org.eclipse.core.resources.natures"
-               id="org.wso2.integrationstudio.eclipse.mavenmultimodule.project.nature"
+               id="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature"
                name="Maven Multi Module Project Nature">
         <runtime>
             <run
@@ -89,8 +89,8 @@
     </extension>
 
     <extension point="org.eclipse.ui.ide.projectNatureImages">
-        <image id="org.wso2.integrationstudio.eclipse.mavenmultimodule.project.natureImage"
-               natureId="org.wso2.integrationstudio.eclipse.mavenmultimodule.project.nature" icon="icons/mmm-project-16x16-03.png">
+        <image id="org.wso2.developerstudio.eclipse.mavenmultimodule.project.natureImage"
+               natureId="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" icon="icons/mmm-project-16x16-03.png">
         </image>
     </extension>
     <extension point="org.eclipse.ui.popupMenus">

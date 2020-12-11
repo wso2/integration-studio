@@ -11,8 +11,8 @@ public class ArtifactResourceFilter extends ViewerFilter {
 
     @Override
     public boolean select(Viewer viewer, Object parentElement, Object element) {
-        final String DOCKER_PROJECT_NATURE = "org.wso2.integrationstudio.eclipse.docker.distribution.project.nature";
-        final String K8S_PROJECT_NATURE = "org.wso2.integrationstudio.eclipse.kubernetes.distribution.project.nature";
+        final String DOCKER_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.docker.distribution.project.nature";
+        final String K8S_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.kubernetes.distribution.project.nature";
 
         if (element instanceof IFile) {
 

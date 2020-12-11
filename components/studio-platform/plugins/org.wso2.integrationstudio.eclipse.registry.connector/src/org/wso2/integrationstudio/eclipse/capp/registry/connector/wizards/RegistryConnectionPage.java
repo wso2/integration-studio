@@ -229,7 +229,7 @@ public class RegistryConnectionPage extends WizardPage {
 		List<IProject> cAppPrjects = new ArrayList<IProject>();
 		IProject[] wsProjects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
 		for (IProject iProject : wsProjects) {
-			if(iProject.hasNature("org.wso2.integrationstudio.eclipse.distribution.project.nature")){
+			if(iProject.hasNature("org.wso2.developerstudio.eclipse.distribution.project.nature")){
 				cAppPrjects.add(iProject);
 			}
 		}

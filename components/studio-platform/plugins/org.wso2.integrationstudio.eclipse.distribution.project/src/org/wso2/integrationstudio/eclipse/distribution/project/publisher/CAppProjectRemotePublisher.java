@@ -37,7 +37,7 @@ public class CAppProjectRemotePublisher implements ICarbonServerModulePublisher{
 
 	public void publish(IProject project, IServer server, File serverHome,
 			File deployLocation) throws Exception {		
-		if (project.hasNature("org.wso2.integrationstudio.eclipse.distribution.project.nature")){
+		if (project.hasNature("org.wso2.developerstudio.eclipse.distribution.project.nature")){
 			
 			URL serverURL = CarbonServerManager.getServerURL(server);
 			ICredentials serverCredentials = CarbonServerManager.getServerCredentials(server);

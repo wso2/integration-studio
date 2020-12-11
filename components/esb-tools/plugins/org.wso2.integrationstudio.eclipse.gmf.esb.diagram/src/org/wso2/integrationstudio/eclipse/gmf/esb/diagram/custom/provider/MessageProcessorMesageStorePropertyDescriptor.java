@@ -65,7 +65,7 @@ public class MessageProcessorMesageStorePropertyDescriptor extends DevSProjectAr
             IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
             for (IProject workspaceProject : projects) {
                 try {
-                    if (workspaceProject.hasNature("org.wso2.integrationstudio.eclipse.esb.project.nature")) {
+                    if (workspaceProject.hasNature("org.wso2.developerstudio.eclipse.esb.project.nature")) {
                         ESBProjectArtifact esbProjectArtifact = new ESBProjectArtifact();
                         projectPath = workspaceProject.getLocation().toFile();
                         try {

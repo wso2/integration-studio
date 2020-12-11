@@ -51,7 +51,7 @@ public class RegistryResourceProvider implements IRegistryResourceProvider {
 				try {
 					if (project.isOpen()
 							&& project
-									.hasNature("org.wso2.integrationstudio.eclipse.general.project.nature")) {
+									.hasNature("org.wso2.developerstudio.eclipse.general.project.nature")) {
 						project.refreshLocal(IResource.DEPTH_INFINITE, null);
 						if (IntegrationStudioProviderUtils.isInProjectFilterPassed(
 								filters, project)) {

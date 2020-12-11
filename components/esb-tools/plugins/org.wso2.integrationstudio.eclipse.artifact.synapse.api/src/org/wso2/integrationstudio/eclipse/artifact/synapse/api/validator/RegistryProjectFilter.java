@@ -24,7 +24,7 @@ import org.eclipse.jface.viewers.ViewerFilter;
  * ViewerFilter class for ESB project nature.
  */
 public class RegistryProjectFilter extends ViewerFilter {
-	private static final String REGISTRY_PROJECT_NATURE = "org.wso2.integrationstudio.eclipse.general.project.nature";
+	private static final String REGISTRY_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.general.project.nature";
 
 	public boolean select(Viewer viewer, Object parentElement, Object element) {
 		if (element instanceof IProject) {

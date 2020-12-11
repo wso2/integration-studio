@@ -57,7 +57,7 @@ import org.wso2.integrationstudio.eclipse.utils.project.ProjectUtils;
 
 public class ESBProjectWizard extends AbstractWSO2ProjectCreationWizard {
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-	private static final String ESB_PROJECT_NATURE = "org.wso2.integrationstudio.eclipse.esb.project.nature";
+	private static final String ESB_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.esb.project.nature";
 	private IProject project;
 	private ESBProjectModel esbProjectModel;
 	private File pomfile;

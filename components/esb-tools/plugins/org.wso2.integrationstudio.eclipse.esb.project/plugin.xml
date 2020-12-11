@@ -2,16 +2,16 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension point="org.eclipse.core.resources.natures"
-		id="org.wso2.integrationstudio.eclipse.esb.project.nature" name="ESB Project Nature">
+		id="org.wso2.developerstudio.eclipse.esb.project.nature" name="ESB Project Nature">
 		<runtime>
 			<run
-				class="org.wso2.integrationstudio.eclipse.esb.project.nature.ESBProjectNature">
+				class="org.wso2.developerstudio.eclipse.esb.project.nature.ESBProjectNature">
 			</run>
 		</runtime>
 	</extension>
 	<extension point="org.eclipse.ui.ide.projectNatureImages">
-		<image id="org.wso2.integrationstudio.eclipse.esb.project.natureImage"
-			natureId="org.wso2.integrationstudio.eclipse.esb.project.nature" icon="icons/root-folder.png">
+		<image id="org.wso2.developerstudio.eclipse.esb.project.natureImage"
+			natureId="org.wso2.developerstudio.eclipse.esb.project.nature" icon="icons/root-folder.png">
 		</image>
 	</extension>
 	
@@ -174,11 +174,11 @@
                     <or>
                        <adapt type="org.eclipse.core.resources.IProject">
                             <test property="org.eclipse.core.resources.projectNature"
-                                value="org.wso2.integrationstudio.eclipse.mavenmultimodule.project.nature" />
+                                value="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" />
                        </adapt>
                        <adapt type="org.eclipse.jdt.core.IPackageFragment">
 							<test property="org.wso2.integrationstudio.projectNature"
-								value="org.wso2.integrationstudio.eclipse.mavenmultimodule.project.nature" />
+								value="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" />
 					   </adapt>
                     </or>
                 </enablement>
@@ -192,11 +192,11 @@
                     <or>
                        <adapt type="org.eclipse.core.resources.IProject">
                             <test property="org.eclipse.core.resources.projectNature"
-                                value="org.wso2.integrationstudio.eclipse.mavenmultimodule.project.nature" />
+                                value="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" />
                        </adapt>
                        <adapt type="org.eclipse.jdt.core.IPackageFragment">
                             <test property="org.wso2.integrationstudio.projectNature"
-                                value="org.wso2.integrationstudio.eclipse.mavenmultimodule.project.nature" />
+                                value="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" />
                        </adapt>
                     </or>
                 </enablement>
@@ -210,11 +210,11 @@
                     <or>
                        <adapt type="org.eclipse.core.resources.IProject">
                             <test property="org.eclipse.core.resources.projectNature"
-                                value="org.wso2.integrationstudio.eclipse.mavenmultimodule.project.nature" />
+                                value="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" />
                        </adapt>
                        <adapt type="org.eclipse.jdt.core.IPackageFragment">
                             <test property="org.wso2.integrationstudio.projectNature"
-                                value="org.wso2.integrationstudio.eclipse.mavenmultimodule.project.nature" />
+                                value="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" />
                        </adapt>
                     </or>
                 </enablement>
@@ -234,7 +234,7 @@
 						<adapt type="org.eclipse.core.resources.IResource">
              				<test
                    				property="org.eclipse.core.resources.projectNature"
-                   				value="org.wso2.integrationstudio.eclipse.esb.project.nature">
+                   				value="org.wso2.developerstudio.eclipse.esb.project.nature">
              				</test>
          				</adapt>
 					</and>
@@ -255,7 +255,7 @@
 						<adapt type="org.eclipse.core.resources.IResource">
              				<test
                    				property="org.eclipse.core.resources.projectNature"
-                   				value="org.wso2.integrationstudio.eclipse.esb.project.nature">
+                   				value="org.wso2.developerstudio.eclipse.esb.project.nature">
              				</test>
          				</adapt>
 					</and>
@@ -313,7 +313,7 @@
 						<adapt type="org.eclipse.core.resources.IProject">
 						 <or>
 							<test property="org.eclipse.core.resources.projectNature"
-								value="org.wso2.integrationstudio.eclipse.esb.project.nature" />
+								value="org.wso2.developerstudio.eclipse.esb.project.nature" />
 		 				</or>
 						</adapt>
 				</enablement>
@@ -328,7 +328,7 @@
      				<adapt type="org.eclipse.core.resources.IResource">
              				<test
                    				property="org.eclipse.core.resources.projectNature"
-                   				value="org.wso2.integrationstudio.eclipse.esb.project.nature">
+                   				value="org.wso2.developerstudio.eclipse.esb.project.nature">
              				</test>
          			</adapt>
       			</selectionEnablement>
@@ -336,7 +336,7 @@
         				<adapt type="org.eclipse.core.resources.IResource">
              				<test
                    				property="org.eclipse.core.resources.projectNature"
-                   				value="org.wso2.integrationstudio.eclipse.esb.project.nature">
+                   				value="org.wso2.developerstudio.eclipse.esb.project.nature">
              				</test>
          				</adapt>
       			</editorInputEnablement>
@@ -497,7 +497,7 @@
         point="org.wso2.integrationstudio.eclipse.capp.artifacts.provider">
      <provider
            class="org.wso2.integrationstudio.eclipse.artifact.esb.project.exporter.ESBArtifactsProvider"
-           nature="org.wso2.integrationstudio.eclipse.esb.project.nature">
+           nature="org.wso2.developerstudio.eclipse.esb.project.nature">
      </provider>
   </extension>
   

@@ -124,7 +124,7 @@ public class BPELProjectCreationWizard extends AbstractWSO2ProjectCreationWizard
 		ProjectUtils.addNatureToProject(project, false, "org.eclipse.jem.workbench.JavaEMFNature",
 				"org.eclipse.wst.common.modulecore.ModuleCoreNature",
 				"org.eclipse.wst.common.project.facet.core.nature",
-				"org.wso2.integrationstudio.eclipse.bpel.project.nature");
+				"org.wso2.developerstudio.eclipse.bpel.project.nature");
 
 		// add buildspacifications to .project file
 		ProjectUtils.addBuildSpecificationsToProject(project, "org.eclipse.wst.common.project.facet.core.builder",
@@ -134,7 +134,7 @@ public class BPELProjectCreationWizard extends AbstractWSO2ProjectCreationWizard
 				"org.eclipse.bpel.validator.builder" }, new String[] { "org.eclipse.jem.workbench.JavaEMFNature",
 				"org.eclipse.wst.common.modulecore.ModuleCoreNature",
 				"org.eclipse.wst.common.project.facet.core.nature",
-				"org.wso2.integrationstudio.eclipse.bpel.project.nature" });
+				"org.wso2.developerstudio.eclipse.bpel.project.nature" });
 	}
 
 	public void replaceAndUpdateSettingsFiles() throws IOException {

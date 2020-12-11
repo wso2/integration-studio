@@ -95,7 +95,7 @@ public class DataServiceDeleteParticipant extends DeleteParticipant {
 		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
 		CompositeChange deleteChange = new CompositeChange("Update CApp pom.xml");
 		for (IProject project : projects) {
-			if (project.isOpen() && project.hasNature("org.wso2.integrationstudio.eclipse.distribution.project.nature")) {
+			if (project.isOpen() && project.hasNature("org.wso2.developerstudio.eclipse.distribution.project.nature")) {
 				try {
 					  pomFile = project.getFile("pom.xml");
 					    try {

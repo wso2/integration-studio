@@ -627,7 +627,7 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
         if (!file.exists()) {
             IFile fileTobeOpened = null;
             boolean registryProject = false;
-            if (currentProject.hasNature("org.wso2.integrationstudio.eclipse.general.project.nature")) { //$NON-NLS-1$
+            if (currentProject.hasNature("org.wso2.developerstudio.eclipse.general.project.nature")) { //$NON-NLS-1$
                 fileTobeOpened = currentProject.getFile(name + ".xml"); //$NON-NLS-1$
                 registryProject = true;
             } else {

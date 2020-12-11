@@ -31,20 +31,20 @@
    <!--Register new extention point for docker-->
    <extension point="org.wso2.integrationstudio.eclipse.docker.artifacts.provider">
     	<provider class="org.wso2.integrationstudio.eclipse.distribution.project.export.CappArtifactsListProvider"
-          nature="org.wso2.integrationstudio.eclipse.distribution.project.nature"></provider>
+          nature="org.wso2.developerstudio.eclipse.distribution.project.nature"></provider>
    </extension>
    
    <extension point="org.eclipse.core.resources.natures"
-		id="org.wso2.integrationstudio.eclipse.distribution.project.nature" name="Composite Application Project Nature">
+		id="org.wso2.developerstudio.eclipse.distribution.project.nature" name="Composite Application Project Nature">
 		<runtime>
 			<run
-				class="org.wso2.integrationstudio.eclipse.distribution.project.nature.DistributionProjectNature">
+				class="org.wso2.developerstudio.eclipse.distribution.project.nature.DistributionProjectNature">
 			</run>
 		</runtime>
 	</extension>
 	<extension point="org.eclipse.ui.ide.projectNatureImages">
 		<image id="org.wso2.integrationstudio.eclipse.dist.project.natureImage"
-			natureId="org.wso2.integrationstudio.eclipse.distribution.project.nature" icon="icons/composite-folder.png">
+			natureId="org.wso2.developerstudio.eclipse.distribution.project.nature" icon="icons/composite-folder.png">
 		</image>
 	</extension>
 	   <extension
@@ -145,7 +145,7 @@
                <enablement>
 						<adapt type="org.eclipse.core.resources.IProject">
 							<test property="org.eclipse.core.resources.projectNature"
-								value="org.wso2.integrationstudio.eclipse.distribution.project.nature" />
+								value="org.wso2.developerstudio.eclipse.distribution.project.nature" />
 						</adapt>
 				</enablement>
                </objectContribution>
@@ -201,35 +201,35 @@
 						<adapt type="org.eclipse.core.resources.IProject">
 						 <or>
 							<test property="org.eclipse.core.resources.projectNature"
-								value="org.wso2.integrationstudio.eclipse.axis2.project.nature" />
+								value="org.wso2.developerstudio.eclipse.axis2.project.nature" />
 							<test property="org.eclipse.core.resources.projectNature"
 								value="org.eclipse.php.core.JAGNature" />
 							<test property="org.eclipse.core.resources.projectNature"
-								value="org.wso2.integrationstudio.eclipse.jaxws.project.nature" />
+								value="org.wso2.developerstudio.eclipse.jaxws.project.nature" />
 							<test property="org.eclipse.core.resources.projectNature"
-								value="org.wso2.integrationstudio.eclipse.bpel.project.nature" />
+								value="org.wso2.developerstudio.eclipse.bpel.project.nature" />
 							<test property="org.eclipse.core.resources.projectNature"
-								value="org.wso2.integrationstudio.eclipse.artifact.ds.validator.project.nature" />
+								value="org.wso2.developerstudio.eclipse.artifact.ds.validator.project.nature" />
 							<test property="org.eclipse.core.resources.projectNature"
-								value="org.wso2.integrationstudio.eclipse.webapp.project.nature" />
+								value="org.wso2.developerstudio.eclipse.webapp.project.nature" />
 							<!--test property="org.eclipse.core.resources.projectNature"
-								value="org.wso2.integrationstudio.eclipse.esb.project.nature" /-->
+								value="org.wso2.developerstudio.eclipse.esb.project.nature" /-->
 							<test property="org.eclipse.core.resources.projectNature"
-								value="org.wso2.integrationstudio.eclipse.artifact.gadget.project.nature" />
+								value="org.wso2.developerstudio.eclipse.artifact.gadget.project.nature" />
 							<test property="org.eclipse.core.resources.projectNature"
-								value="org.wso2.integrationstudio.eclipse.library.project.nature" />
+								value="org.wso2.developerstudio.eclipse.library.project.nature" />
 							<test property="org.eclipse.core.resources.projectNature"
-								value="org.wso2.integrationstudio.eclipse.artifact.mediator.project.nature" />
+								value="org.wso2.developerstudio.eclipse.artifact.mediator.project.nature" />
 							<test property="org.eclipse.core.resources.projectNature"
-								value="org.wso2.integrationstudio.eclipse.registry.filter.project.nature" />
+								value="org.wso2.developerstudio.eclipse.registry.filter.project.nature" />
 							<test property="org.eclipse.core.resources.projectNature"
-								value="org.wso2.integrationstudio.eclipse.artifact.carbon.ui.bundle.project.nature" />
+								value="org.wso2.developerstudio.eclipse.artifact.carbon.ui.bundle.project.nature" />
 							<test property="org.eclipse.core.resources.projectNature"
-								value="org.wso2.integrationstudio.eclipse.registry.handler.project.nature" />
+								value="org.wso2.developerstudio.eclipse.registry.handler.project.nature" />
 							<test property="org.eclipse.core.resources.projectNature"
-								value="org.wso2.integrationstudio.eclipse.jaxrs.project.nature" />
+								value="org.wso2.developerstudio.eclipse.jaxrs.project.nature" />
 						    <!-- <test property="org.eclipse.core.resources.projectNature"
-								value="org.wso2.integrationstudio.eclipse.qos.project.nature" /> -->
+								value="org.wso2.developerstudio.eclipse.qos.project.nature" /> -->
 		 				</or>
 						</adapt>
 				</enablement>

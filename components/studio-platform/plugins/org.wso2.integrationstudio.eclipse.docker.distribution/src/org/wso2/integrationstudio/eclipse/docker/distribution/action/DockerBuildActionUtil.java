@@ -88,7 +88,7 @@ public class DockerBuildActionUtil {
     private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     private static final String POM_XML = "pom.xml";
-    private static final String CAPP_NATURE = "org.wso2.integrationstudio.eclipse.distribution.project.nature";
+    private static final String CAPP_NATURE = "org.wso2.developerstudio.eclipse.distribution.project.nature";
     private static final String MAVEN_DOCKER_BUILD = "Run Docker Build Internal Configuration";
     public static final String MAVEN_CONFIGURATION_TYPE = "org.eclipse.m2e.Maven2LaunchConfigurationType";
     public static final String MAVEN_GOAL_KEY = "M2_GOALS";

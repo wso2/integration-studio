@@ -26,7 +26,7 @@
  
     <!-- Docker project nature -->
     <extension point="org.eclipse.core.resources.natures"
-		id="org.wso2.integrationstudio.eclipse.docker.distribution.project.nature" name="Docker Project Nature">
+		id="org.wso2.developerstudio.eclipse.docker.distribution.project.nature" name="Docker Project Nature">
         <runtime>
             <run class="org.wso2.integrationstudio.eclipse.docker.distribution.project.export.DockerProjectNature"/>
         </runtime>
@@ -34,12 +34,12 @@
 	
     <extension point="org.eclipse.ui.ide.projectNatureImages">
         <image id="org.wso2.integrationstudio.eclipse.docker.project.natureImage" 
-		natureId="org.wso2.integrationstudio.eclipse.docker.distribution.project.nature" icon="icons/docker-16.png" />
+		natureId="org.wso2.developerstudio.eclipse.docker.distribution.project.nature" icon="icons/docker-16.png" />
     </extension>
 	
     <!-- Kubernetes project nature -->
     <extension point="org.eclipse.core.resources.natures"
-		id="org.wso2.integrationstudio.eclipse.kubernetes.distribution.project.nature" name="Kubernetes Project Nature">
+		id="org.wso2.developerstudio.eclipse.kubernetes.distribution.project.nature" name="Kubernetes Project Nature">
         <runtime>
             <run class="org.wso2.integrationstudio.eclipse.docker.distribution.project.export.KubernetesProjectNature" />
         </runtime>
@@ -47,7 +47,7 @@
 	
     <extension point="org.eclipse.ui.ide.projectNatureImages">
 		<image id="org.wso2.integrationstudio.eclipse.kubernetes.project.natureImage" 
-		natureId="org.wso2.integrationstudio.eclipse.kubernetes.distribution.project.nature" icon="icons/k8s-16.png" />
+		natureId="org.wso2.developerstudio.eclipse.kubernetes.distribution.project.nature" icon="icons/k8s-16.png" />
     </extension>
 	
 	<!-- Projects file opening editors -->
@@ -161,7 +161,7 @@
             <enablement>
                 <adapt type="org.eclipse.core.resources.IProject">
                     <test property="org.eclipse.core.resources.projectNature" 
-                    value="org.wso2.integrationstudio.eclipse.docker.distribution.project.nature" />
+                    value="org.wso2.developerstudio.eclipse.docker.distribution.project.nature" />
                 </adapt>
             </enablement>
         </objectContribution>
@@ -181,7 +181,7 @@
             <enablement>
                 <adapt type="org.eclipse.core.resources.IProject">
                     <test property="org.eclipse.core.resources.projectNature" 
-                    value="org.wso2.integrationstudio.eclipse.docker.distribution.project.nature" />
+                    value="org.wso2.developerstudio.eclipse.docker.distribution.project.nature" />
                 </adapt>
             </enablement>
         </objectContribution>
@@ -199,7 +199,7 @@
             <enablement>
                 <adapt type="org.eclipse.core.resources.IProject">
                     <test property="org.eclipse.core.resources.projectNature" 
-                    value="org.wso2.integrationstudio.eclipse.kubernetes.distribution.project.nature" />
+                    value="org.wso2.developerstudio.eclipse.kubernetes.distribution.project.nature" />
                 </adapt>
             </enablement>
         </objectContribution>
@@ -231,7 +231,7 @@
             <enablement>
                 <adapt type="org.eclipse.core.resources.IProject">
                     <test property="org.eclipse.core.resources.projectNature" 
-                    value="org.wso2.integrationstudio.eclipse.distribution.project.nature" />
+                    value="org.wso2.developerstudio.eclipse.distribution.project.nature" />
                 </adapt>
             </enablement>
         </objectContribution>
@@ -243,10 +243,10 @@
             <enablement>
                 <or>
                     <adapt type="org.eclipse.core.resources.IProject">
-                        <test property="org.eclipse.core.resources.projectNature" value="org.wso2.integrationstudio.eclipse.mavenmultimodule.project.nature" />
+                        <test property="org.eclipse.core.resources.projectNature" value="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" />
                     </adapt>
                     <adapt type="org.eclipse.jdt.core.IPackageFragment">
-                        <test property="org.wso2.integrationstudio.projectNature" value="org.wso2.integrationstudio.eclipse.mavenmultimodule.project.nature" />
+                        <test property="org.wso2.integrationstudio.projectNature" value="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" />
                     </adapt>
                 </or>
             </enablement>
@@ -258,10 +258,10 @@
             <enablement>
                 <or>
                     <adapt type="org.eclipse.core.resources.IProject">
-                        <test property="org.eclipse.core.resources.projectNature" value="org.wso2.integrationstudio.eclipse.mavenmultimodule.project.nature" />
+                        <test property="org.eclipse.core.resources.projectNature" value="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" />
                     </adapt>
                     <adapt type="org.eclipse.jdt.core.IPackageFragment">
-                        <test property="org.wso2.integrationstudio.projectNature" value="org.wso2.integrationstudio.eclipse.mavenmultimodule.project.nature" />
+                        <test property="org.wso2.integrationstudio.projectNature" value="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" />
                     </adapt>
                 </or>
             </enablement>

@@ -82,7 +82,7 @@ public class MavenConfigurationFileChange extends TextFileChange {
 					identifyIdArtifactReplacement();
 
 					try {
-						if (refactoringProject.hasNature("org.wso2.integrationstudio.eclipse.distribution.project.nature")) {
+						if (refactoringProject.hasNature("org.wso2.developerstudio.eclipse.distribution.project.nature")) {
 							// If the project is a distribution project, then we
 							// need to refactor the dependencies section as
 							// well.

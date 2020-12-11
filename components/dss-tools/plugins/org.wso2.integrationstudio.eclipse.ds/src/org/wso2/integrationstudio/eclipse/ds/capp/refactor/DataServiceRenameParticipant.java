@@ -108,7 +108,7 @@ public class DataServiceRenameParticipant extends RenameParticipant {
 		String changedNameWithoutExtention = FilenameUtils.removeExtension(changedFileFullName);
 		String originalNameWithoutExtension = FilenameUtils.removeExtension(originalFileFullName);
 		for (IProject project : projects) {
-			if (project.isOpen() && project.hasNature("org.wso2.integrationstudio.eclipse.distribution.project.nature")) {
+			if (project.isOpen() && project.hasNature("org.wso2.developerstudio.eclipse.distribution.project.nature")) {
 				try {
 					pomFile = project.getFile("pom.xml");
 					try {

@@ -56,7 +56,7 @@ public class DataServiceProjectCreationWizard extends AbstractWSO2ProjectCreatio
 
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private static final String MAVEN_POM_EDITOR_ID = "org.eclipse.m2e.editor.MavenPomEditor";
-	private static final String DS_PROJECT_NATURE = "org.wso2.integrationstudio.eclipse.ds.project.nature";
+	private static final String DS_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.ds.project.nature";
 	private static final String POM_FILE = "pom.xml";
 	private static final String ARTIFACT_FILE = "artifact.xml";
 	private static final String PACKAGE_NAME = "pom";

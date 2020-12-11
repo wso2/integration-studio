@@ -166,7 +166,7 @@ public class CAppProjectPublisher implements ICarbonServerModulePublisher {
 
     public void publish(final IProject project, IServer server, File serverHome, final File deployLocation)
             throws Exception {
-        if (project.hasNature("org.wso2.integrationstudio.eclipse.distribution.project.nature")) {
+        if (project.hasNature("org.wso2.developerstudio.eclipse.distribution.project.nature")) {
             List<IProject> list = getProjectListForServer(server);
             synchronized (list) {
                 if (list.contains(project)) {
@@ -237,7 +237,7 @@ public class CAppProjectPublisher implements ICarbonServerModulePublisher {
     }
 
     public void unpublish(IProject project, IServer server, File serverHome, File deployLocation)throws Exception {
-	    if (project.hasNature("org.wso2.integrationstudio.eclipse.distribution.project.nature")){
+	    if (project.hasNature("org.wso2.developerstudio.eclipse.distribution.project.nature")){
 //	    	IFile file = project.getFile("pom.xml");
 //	    	
 //	    	MavenProject mavenProject = MavenUtils.getMavenProject(file.getLocation().toFile());

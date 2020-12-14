@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.developerstudio.eclipse.artifact.connector.project.nature;
+package org.wso2.integrationstudio.eclipse.artifact.connector.project.nature;
 
 import java.io.File;
 

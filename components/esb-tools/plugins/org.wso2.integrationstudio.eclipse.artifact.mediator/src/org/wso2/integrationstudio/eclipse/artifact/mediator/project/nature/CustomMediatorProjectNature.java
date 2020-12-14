@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.developerstudio.eclipse.artifact.mediator.project.nature;
+package org.wso2.integrationstudio.eclipse.artifact.mediator.project.nature;
 
 import java.io.File;
 import java.util.ArrayList;

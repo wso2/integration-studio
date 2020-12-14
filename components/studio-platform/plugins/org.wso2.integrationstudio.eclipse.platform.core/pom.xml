@@ -23,22 +23,18 @@
         <dependency>
             <groupId>commons-io.wso2</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.0.0.wso2v1</version>
         </dependency>           
         <dependency>
             <groupId>org.apache.ws.commons.axiom.wso2</groupId>
             <artifactId>axiom</artifactId>
-             <version>1.2.11.wso2v10</version>
         </dependency>
         <dependency>
               <groupId>wsdl4j.wso2</groupId>
     		  <artifactId>wsdl4j</artifactId>
-    		  <version>1.6.2.wso2v4</version>
         </dependency>
         <dependency>
               <groupId>org.apache.axis2.wso2</groupId>
     		   <artifactId>axis2</artifactId>
-    		  <version>1.6.1.wso2v14</version>
         </dependency>
     </dependencies>
     <repositories>
@@ -62,7 +58,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.1</version>
+                <version>${maven.dependency.plugin}</version>
                 <executions>
                     <execution>
                         <id>copy-dependencies</id>

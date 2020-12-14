@@ -32,7 +32,6 @@
         <dependency>
             <groupId>org.activiti.designer</groupId>
             <artifactId>org.activiti.designer.integration</artifactId>
-            <version>${activti.designer.version}</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
@@ -40,10 +39,10 @@
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
+                <version>${maven.compiler.plugin}</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
                     <showDeprecation>true</showDeprecation>
                     <showWarnings>true</showWarnings>
                 </configuration>
@@ -51,7 +50,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>2.3.1</version>
+                <version>${maven.jar.plugin}</version>
                 <configuration>
                     <archive>
                         <index>true</index>
@@ -67,8 +66,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <activti.designer.version>5.18.0</activti.designer.version>
-    </properties>
 </project>

@@ -101,10 +101,10 @@ public class PlatformEarlyStartUpHandler implements IStartup {
                                 submenu.remove(keyBindingItem);
                             }
                             // This removes Update
-                            IContributionItem updateItem = submenu.find("org.eclipse.equinox.p2.ui.sdk.update");
-                            if (updateItem != null) {
-                                submenu.remove(updateItem);
-                            }
+                            // IContributionItem updateItem = submenu.find("org.eclipse.equinox.p2.ui.sdk.update");
+                            // if (updateItem != null) {
+                            //     submenu.remove(updateItem);
+                            // }
                             // This removes Update
                             IContributionItem v8CrhomeRunItem = submenu.find(
                                     "org.eclipse.wst.jsdt.chromium.debug.ui.actions.AddExceptionBreakpointAction");

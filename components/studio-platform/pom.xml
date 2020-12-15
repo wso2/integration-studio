@@ -17,7 +17,7 @@
     </parent>
 	
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>wso2-integrationstudio-kernel-parent</artifactId>
+	<artifactId>wso2-integrationstudio-platform-parent</artifactId>
 	<packaging>pom</packaging>
 	<name>WSO2 Integration Studio Studio Platform Parent</name>
 	<modules>

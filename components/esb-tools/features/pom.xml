@@ -23,7 +23,7 @@
 		<version>7.2.0-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
-	<artifactId>wso2-integrationstudio-esb-feature</artifactId>
+	<artifactId>wso2-integrationstudio-esb-features</artifactId>
 	<packaging>pom</packaging>
 	<name>WSO2 Integration Studio ESB Feature</name>
 	<modules>

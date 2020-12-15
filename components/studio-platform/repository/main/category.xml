@@ -1,98 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature id="org.wso2.integrationstudio.kernel.feature" version="0.0.0">
-      <category name="org.wso2.integrationstudio.kernel" />
-   </feature>
-   <feature id="org.wso2.integrationstudio.kernel.wso2plugins.samples.feature" version="0.0.0">
-      <category name="org.wso2.integrationstudio.kernel.samples" />
-   </feature>
-   <feature id="org.wso2.integrationstudio.capp.feature" version="0.0.0">
+   <feature id="org.wso2.integrationstudio.platform.feature" version="0.0.0">
       <category name="org.wso2.integrationstudio.kernel.platform.bundles" />
    </feature>
-   <feature id="org.wso2.integrationstudio.carbon.server.feature" version="0.0.0">
+   <feature id="org.wso2.integrationstudio.platform.dependencies.feature" version="0.0.0">
       <category name="org.wso2.integrationstudio.kernel.platform.bundles" />
    </feature>
-   <feature id="org.wso2.integrationstudio.carbon.server-40.feature" version="0.0.0">
-      <category name="org.wso2.integrationstudio.kernel.platform.bundles" />
-   </feature>
-   <feature id="org.wso2.integrationstudio.carbon.server-42.feature" version="0.0.0">
-      <category name="org.wso2.integrationstudio.kernel.platform.bundles" />
-   </feature>
-   <feature id="org.wso2.integrationstudio.carbon.server-remote.feature" version="0.0.0">
-      <category name="org.wso2.integrationstudio.kernel.platform.bundles" />
-   </feature>
-   <feature id="org.wso2.integrationstudio.carbon.server-44.feature" version="0.0.0">
-      <category name="org.wso2.integrationstudio.kernel.platform.bundles" />
-   </feature>
-   <feature id="org.wso2.integrationstudio.carbon.server-44ei.feature" version="0.0.0">
-      <category name="org.wso2.integrationstudio.kernel.platform.bundles" />
-   </feature>
-   <feature id="org.wso2.integrationstudio.carbon.server-44microei.feature" version="0.0.0">
-      <category name="org.wso2.integrationstudio.kernel.platform.bundles" />
-   </feature>
-   <feature id="org.wso2.integrationstudio.carbon.server-44microei11.feature" version="0.0.0">
-      <category name="org.wso2.integrationstudio.kernel.platform.bundles" />
-   </feature>
-   <feature id="org.wso2.integrationstudio.carbon.server-44microei12.feature" version="0.0.0">
-      <category name="org.wso2.integrationstudio.kernel.platform.bundles" />
-   </feature>
-   <feature id="org.wso2.integrationstudio.dashboard.feature" version="0.0.0">
-      <category name="org.wso2.integrationstudio.kernel.platform.bundles" />
-   </feature>
-   <feature id="org.wso2.integrationstudio.kernel.registry.core.feature" version="0.0.0">
-      <category name="org.wso2.integrationstudio.kernel.platform.bundles" />
-   </feature>
-   <feature id="org.wso2.integrationstudio.kernel.security.feature" version="0.0.0">
-      <category name="org.wso2.integrationstudio.kernel.platform.bundles" />
-   </feature>
-   <feature id="org.wso2.integrationstudio.kernel.utils.feature" version="0.0.0">
-      <category name="org.wso2.integrationstudio.kernel.platform.bundles" />
-   </feature>
-   <feature id="org.wso2.integrationstudio.kernel.wso2plugins.default.samples.feature" version="0.0.0">
-      <category name="org.wso2.integrationstudio.kernel.platform.bundles" />
-   </feature>
-   <feature id="org.wso2.integrationstudio.library.artifact.feature" version="0.0.0">
-      <category name="org.wso2.integrationstudio.kernel.platform.bundles" />
-   </feature>
-   <feature id="org.wso2.integrationstudio.platform.libraries.feature" version="0.0.0">
-      <category name="org.wso2.integrationstudio.kernel.platform.bundles" />
-   </feature>
-   <feature id="org.wso2.integrationstudio.usr.management.feature" version="0.0.0">
-      <category name="org.wso2.integrationstudio.kernel.platform.bundles" />
-   </feature>
-   <feature id="org.wso2.integrationstudio.mvn.multimodule.feature" version="0.0.0">
-      <category name="org.wso2.integrationstudio.kernel.platform.bundles" />
-   </feature>
-   <feature id="org.wso2.integrationstudio.cloud.utils.feature" version="0.0.0">
-      <category name="org.wso2.integrationstudio.kernel.platform.bundles" />
-   </feature>
-   <feature id="org.wso2.integrationstudio.web.ui.feature" version="0.0.0">
-      <category name="org.wso2.integrationstudio.kernel.platform.bundles" />
-   </feature>
-   <feature id="org.wso2.integrationstudio.eclipse.docker.distribution.feature" version="0.0.0">
-      <category name="org.wso2.integrationstudio.kernel.platform.bundles" />
-   </feature>
-   <feature id="org.wso2.integrationstudio.eclipse.ei.project.feature" version="0.0.0">
-      <category name="org.wso2.integrationstudio.eclipse.ei.project.feature.category" />
-   </feature>
-   <category-def name="org.wso2.integrationstudio.kernel" label="WSO2 Integration Studio Kernel">
+   <category-def name="org.wso2.integrationstudio.kernel.platform.bundles" label="WSO2 Integration Studio Tooling Platform for Enterprise Integrator">
       <description>
-		WSO2 Integration Studio Kernel provides a set of core plugins which can be used to develop Eclipse plugins for the WSO2 products which are based on award wining WSO2 carbon platform. After a major architecture revamping with version 4.0.0, WSO2 Integration Studio is moved in to a kernel based model. All the product specific plugins will use the Integration Studio Kernel as the base for their implementation.
-      </description>
-   </category-def>
-   <category-def name="org.wso2.integrationstudio.kernel.samples" label="WSO2 Integration Studio Kernel SDK">
-      <description>
-		WSO2 Integration Studio lugin Samples provide support for basic plugin development with Integration Studio Kernel. This feature brings the defaut samples provided with Integration Studio release.
-      </description>
-   </category-def>
-   <category-def name="org.wso2.integrationstudio.kernel.platform.bundles" label="WSO2 Integration Studio Tooling for Carbon">
-      <description>
-		WSO2 Integration Studio Kernel provides a set of core plugins which can be used to develop Eclipse plugins for the WSO2 products which are based on award wining WSO2 carbon platform. After a major architecture revamping with version 4.0.0, WSO2 Integration Studio is moved in to a kernel based model. All the product specific plugins will use the Integration Studio Kernel as the base for their implementation.
-      </description>
-   </category-def>
-   <category-def name="org.wso2.integrationstudio.eclipse.ei.project.feature.category" label="WSO2 Enterprise Integrator Tools">
-      <description>
-      This is the Enterprise Integrator Tooling Feature for the Integration Studio. This enables the 'WSO2 Enterprise Integrator' Server under servers section.
+		WSO2 Integration Studio Platform provides a set of core plugins which can be used to develop Eclipse plugins for the WSO2 products which are based on award wining WSO2 carbon platform.
       </description>
    </category-def>
 </site>

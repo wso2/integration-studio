@@ -26,9 +26,7 @@
     <packaging>pom</packaging>
     <name>WSO2 Integration Studio Data Service Tooling Feature Parent</name>
     <modules>
-        <module>org.wso2.integrationstudio.eclipse.data.service.feature</module>
-        <module>org.wso2.integrationstudio.eclipse.data.source.feature</module>
-        <module>org.wso2.integrationstudio.eclipse.dss.dependencies.feature</module>
+        <module>org.wso2.integrationstudio.dss.feature</module>
     </modules>
     <distributionManagement>
         <repository>

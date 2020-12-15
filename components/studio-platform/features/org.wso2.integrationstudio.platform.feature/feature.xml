@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature id="org.wso2.integrationstudio.platform.feature" label="Integration Studio Platform Feature" version="7.2.0.qualifier" provider-name="%providerName">
+
+      <description url="http://wso2.com">
+      Provides support for Composite Application creation. 
+      </description>
+
+      <copyright url="%copyrightURL">
+      %copyright
+      </copyright>
+
+      <license url="%licenseURL">
+      %license
+      </license>
+
+      <plugin id="org.wso2.integrationstudio.eclipse.capp.core" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.capp.maven" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.distribution.project" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.distributionproject.module" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.carbonserver40" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.carbonserver42" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.carbonserver44" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.carbonserver44ei" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.carbonserver44microei" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.carbonserver44microei11" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.carbonserver44microei12" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.carbonserver.remote" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.server.base" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.carbon.server.model" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.carbonfeatures" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.carbonserver.base" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.appcloud.utils" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.dashboard" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.templates.dashboard" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.docker.distribution" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.ei.project" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.kernel.libraries" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.updater" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.welcome.perspective" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.platform.core" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.platform.ui" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.logging" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.maven" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.utils" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.general.project" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.artifact.registry" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.registry.search" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.registry.resource.authorization" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.registry.perspective" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.registry.manager.remote" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.registry.manager.local" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.registry.libraries" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.registry.core" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.registry.connector" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.registry.base" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.artifact.security" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.security.ui" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.ui" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.project.extensions" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.samples" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.wso2plugin.template.manager" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.artifact.library" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.maven.multi.module" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.libraries" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.usermgt.remote" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.eclipse.webui.core" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+
+</feature>

@@ -6,25 +6,7 @@
       </description>
    </category-def>
 
-   <feature id="org.wso2.integrationstudio.eclipse.esb.feature" version="0.0.0">
-      <category name="org.wso2.integrationstudio.eclipse.esb.feature.category"/>
-   </feature>
-   <feature id="org.wso2.integrationstudio.eclipse.esb.editor.feature" version="0.0.0">
-      <category name="org.wso2.integrationstudio.eclipse.esb.feature.category"/>
-   </feature>
-   <feature id="org.wso2.integrationstudio.eclipse.esb.dependencies.feature" version="0.0.0">
-      <category name="org.wso2.integrationstudio.eclipse.esb.feature.category"/>
-   </feature>
-   <feature id="org.wso2.integrationstudio.eclipse.visualdatamapper.editor.feature" version="0.0.0">
-      <category name="org.wso2.integrationstudio.eclipse.esb.feature.category"/>
-   </feature>
-   <!--<feature id="org.wso2.integrationstudio.eclipse.smooks.editor.feature" version="0.0.0">
-      <category name="org.wso2.integrationstudio.eclipse.esb.feature.category"/>
-   </feature>-->
-   <feature id="org.wso2.integrationstudio.eclipse.apim.feature" version="0.0.0">
-      <category name="org.wso2.integrationstudio.eclipse.apim.feature.category"/>
-   </feature>
-   <feature id="org.wso2.integrationstudio.eclipse.apim.endpoint.central.feature" version="0.0.0">
+   <feature id="org.wso2.integrationstudio.esb.feature" version="0.0.0">
       <category name="org.wso2.integrationstudio.eclipse.esb.feature.category"/>
    </feature>
 </site>

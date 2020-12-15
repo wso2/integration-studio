@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
    <feature id="org.wso2.integrationstudio.platform.feature" version="0.0.0">
-      <category name="org.wso2.integrationstudio.kernel.platform.bundles" />
+      <category name="org.wso2.integrationstudio.platform.bundles" />
    </feature>
    <feature id="org.wso2.integrationstudio.platform.dependencies.feature" version="0.0.0">
-      <category name="org.wso2.integrationstudio.kernel.platform.bundles" />
+      <category name="org.wso2.integrationstudio.platform.bundles" />
    </feature>
-   <category-def name="org.wso2.integrationstudio.kernel.platform.bundles" label="WSO2 Integration Studio Tooling Platform for Enterprise Integrator">
+   <category-def name="org.wso2.integrationstudio.platform.bundles" label="WSO2 Integration Studio Tooling Platform for Enterprise Integrator">
       <description>
 		WSO2 Integration Studio Platform provides a set of core plugins which can be used to develop Eclipse plugins for the WSO2 products which are based on award wining WSO2 carbon platform.
       </description>

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.developerstudio.eclipse.esb.project.nature;
+package org.wso2.integrationstudio.eclipse.esb.project.nature;
 
 import java.io.File;
 import java.io.FileNotFoundException;

@@ -14,21 +14,21 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
    <modelVersion>4.0.0</modelVersion>
    <parent>
-      <artifactId>wso2-integrationstudio-kernel-p2-parent</artifactId>
+      <artifactId>wso2-integrationstudio-platform-p2-parent</artifactId>
       <groupId>org.wso2.integrationstudio</groupId>
       <version>7.2.0-SNAPSHOT</version>
       <relativePath>../pom.xml</relativePath>
    </parent>
-   <artifactId>wso2-integrationstudio-kernel-p2</artifactId>
+   <artifactId>wso2-integrationstudio-platform-p2</artifactId>
    <packaging>eclipse-repository</packaging>
-   <name>WSO2 Integration Studio Kernel - P2 Repository</name>
+   <name>WSO2 Integration Studio Platform - P2 Repository</name>
    <url>http://wso2.org</url>
    <build>
       <plugins>
          <plugin>
             <groupId>org.codehaus.mojo</groupId>
             <artifactId>buildnumber-maven-plugin</artifactId>
-            <version>1.2</version>
+            <version>${org.codehaus.mojo.buildnumber.maven.plugin}</version>
             <executions>
                <execution>
                   <phase>validate</phase>

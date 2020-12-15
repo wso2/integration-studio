@@ -350,10 +350,7 @@ Please visit : http://wso2.com/products/integration-studio/
    </configurations>
 
    <repositories>
-      <repository location="http://download.eclipse.org/releases/2020-06/" enabled="true" />
-      <repository location="http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/updates/" enabled="true" />
-      <repository location="http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/releases/" enabled="true" />
-      <repository location="http://download.eclipse.org/releases/2020-06" enabled="true" />
+      <repository location="http://product-dist.wso2.com/p2/integration-studio/2020-06/updates/" enabled="true" />
    </repositories>
 
    <preferencesInfo>

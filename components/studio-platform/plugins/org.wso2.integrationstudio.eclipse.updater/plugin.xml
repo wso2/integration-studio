@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-    <extension
+    <!-- <extension
          point="org.eclipse.ui.commands">
       <command
             defaultHandler="org.wso2.integrationstudio.eclipse.updater.handler.UpdateFeaturesCommandHandler"
             id="org.wso2.integrationstudio.eclipse.updater.CheckUpdatesCmd"
             name="Check for Updates">
       </command>
-   </extension>
+   </extension> -->
 <!--   <extension
          point="org.eclipse.ui.commands">        
       <command
@@ -17,7 +17,7 @@
             name="Install WSO2 Tools">
       </command>
    </extension> -->
-   <extension
+   <!-- <extension
          point="org.eclipse.ui.menus">
       <menuContribution
             locationURI="menu:help?before=org.eclipse.equinox.p2.ui.sdk.install">
@@ -38,7 +38,7 @@
        			visible="true">
 		</separator>
       </menuContribution>
-   </extension>
+   </extension> -->
 <!--      <extension
          point="org.eclipse.ui.menus">
       <menuContribution

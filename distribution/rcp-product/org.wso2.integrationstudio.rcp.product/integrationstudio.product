@@ -331,47 +331,14 @@ Please visit : http://wso2.com/products/integration-studio/
       <feature id="org.roussev.http4e.feature" version="5.0.12"/>
       <feature id="de.jcup.yamleditor"/>
       <!-- Dev studio kernel/platform features -->
-      <feature id="org.wso2.integrationstudio.rcp.feature" installMode="root"/>
-      <feature id="org.wso2.integrationstudio.kernel.feature" installMode="root"/>
-      <feature id="org.wso2.integrationstudio.kernel.wso2plugins.samples.feature" installMode="root"/>
-      <feature id="org.wso2.integrationstudio.capp.feature" installMode="root"/>
-      <feature id="org.wso2.integrationstudio.carbon.server.feature" installMode="root"/>
-      <feature id="org.wso2.integrationstudio.carbon.server-40.feature" installMode="root"/>
-      <feature id="org.wso2.integrationstudio.carbon.server-42.feature" installMode="root"/>
-      <feature id="org.wso2.integrationstudio.carbon.server-remote.feature" installMode="root"/>
-      <feature id="org.wso2.integrationstudio.carbon.server-44.feature" installMode="root"/>
-      <feature id="org.wso2.integrationstudio.carbon.server-44ei.feature" installMode="root"/>
-      <feature id="org.wso2.integrationstudio.dashboard.feature" installMode="root"/>
-      <feature id="org.wso2.integrationstudio.kernel.registry.core.feature" installMode="root"/>
-      <feature id="org.wso2.integrationstudio.kernel.security.feature" installMode="root"/>
-      <feature id="org.wso2.integrationstudio.kernel.utils.feature" installMode="root"/>
-      <feature id="org.wso2.integrationstudio.kernel.wso2plugins.default.samples.feature" installMode="root"/>
-      <feature id="org.wso2.integrationstudio.library.artifact.feature" installMode="root"/>
-      <feature id="org.wso2.integrationstudio.platform.libraries.feature" installMode="root"/>
-      <feature id="org.wso2.integrationstudio.usr.management.feature" installMode="root"/>
-      <feature id="org.wso2.integrationstudio.mvn.multimodule.feature" installMode="root"/>
-      <feature id="org.wso2.integrationstudio.cloud.utils.feature" installMode="root"/>
-      <feature id="org.wso2.integrationstudio.web.ui.feature" installMode="root"/>
-      <feature id="org.wso2.integrationstudio.eclipse.docker.distribution.feature" installMode="root"/>
-      <feature id="org.wso2.integrationstudio.carbon.server-44microei.feature" installMode="root"/>
-      <!-- <feature id="org.wso2.integrationstudio.eclipse.smooks.editor.feature" installMode="root"/> -->
-      <!-- <feature id="org.wso2.integrationstudio.eclipse.apim.endpoint.central.feature" installMode="root"/> -->
+      <feature id="org.wso2.integrationstudio.platform.feature" installMode="root"/>
+      <feature id="org.wso2.integrationstudio.platform.dependencies.feature" installMode="root"/>
       <!-- Dev studio ESB features -->
-      <feature id="org.wso2.integrationstudio.eclipse.esb.feature" installMode="root"/>
-      <feature id="org.wso2.integrationstudio.eclipse.esb.editor.feature" installMode="root"/>
-      <feature id="org.wso2.integrationstudio.eclipse.esb.dependencies.feature" installMode="root"/>
-      <feature id="org.wso2.integrationstudio.eclipse.visualdatamapper.editor.feature" installMode="root"/>
+      <feature id="org.wso2.integrationstudio.esb.feature" installMode="root"/>
       <!-- Dev studio DSS features -->
-      <feature id="org.wso2.integrationstudio.eclipse.data.service.feature" installMode="root"/>
-      <feature id="org.wso2.integrationstudio.eclipse.data.source.feature" installMode="root"/>
-      <feature id="org.wso2.integrationstudio.eclipse.dss.dependencies.feature" installMode="root"/>
-      <!-- Dev studio EI features -->
-      <feature id="org.wso2.integrationstudio.eclipse.ei.project.feature" installMode="root"/>
+      <feature id="org.wso2.integrationstudio.dss.feature" installMode="root"/>
       <!-- Dev studio BPS features -->
-      <feature id="org.wso2.integrationstudio.eclipse.bps.feature" installMode="root"/>
-      <feature id="org.wso2.integrationstudio.eclipse.bps.hteditor.feature" installMode="root"/>
-      <feature id="org.wso2.integrationstudio.eclipse.bps.bpmn.feature" installMode="root"/>
-
+      <feature id="org.wso2.integrationstudio.bps.feature" installMode="root"/>
    </features>
 
    <configurations>

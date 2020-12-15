@@ -23,13 +23,7 @@
       </description>
 </category-def>
 
- <feature id="org.wso2.integrationstudio.eclipse.bps.feature" version="0.0.0">
-      <category name="org.wso2.integrationstudio.eclipse.bps.feature.category"/>
-   </feature>
- <feature id="org.wso2.integrationstudio.eclipse.bps.hteditor.feature" version="0.0.0">
-      <category name="org.wso2.integrationstudio.eclipse.bps.feature.category"/>
-   </feature>
-   <feature id="org.wso2.integrationstudio.eclipse.bps.bpmn.feature" version="0.0.0">
+ <feature id="org.wso2.integrationstudio.bps.feature" version="0.0.0">
       <category name="org.wso2.integrationstudio.eclipse.bps.feature.category"/>
    </feature>
 </site>

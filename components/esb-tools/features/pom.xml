@@ -27,12 +27,7 @@
 	<packaging>pom</packaging>
 	<name>WSO2 Integration Studio ESB Feature</name>
 	<modules>
-		<module>org.wso2.integrationstudio.eclipse.esb.editor.feature</module>
-		<module>org.wso2.integrationstudio.eclipse.esb.feature</module>
-		<module>org.wso2.integrationstudio.eclipse.esb.dependencies.feature</module>
-		<module>org.wso2.integrationstudio.eclipse.visualdatamapper.editor.feature</module>
-		<module>org.wso2.integrationstudio.eclipse.apim.feature</module>
-        <module>org.wso2.integrationstudio.eclipse.apim.endpoint.central.feature</module>
+		<module>org.wso2.integrationstudio.esb.feature</module>
 	</modules>
 	<distributionManagement>
 		<repository>

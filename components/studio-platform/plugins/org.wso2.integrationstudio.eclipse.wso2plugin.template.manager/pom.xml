@@ -19,7 +19,7 @@
 	</parent>
 	<artifactId>org.wso2.integrationstudio.eclipse.wso2plugin.template.manager</artifactId>
 	<packaging>eclipse-plugin</packaging>
-	<name>WSO2 Deloper Studio Plugin Sample</name>
+	<name>WSO2 Integration Studio Plugin Sample</name>
 	<dependencies>
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
@@ -44,7 +44,7 @@
 			</releases>
 			<id>wso2-nexus</id>
 			<name>WSO2 internal Repository</name>
-			<url>https://maven.wso2.org/nexus/content/groups/wso2-public/</url>
+			<url>${wso2.nexus.repository}</url>
 		</repository>
 	</repositories>
 	<build>

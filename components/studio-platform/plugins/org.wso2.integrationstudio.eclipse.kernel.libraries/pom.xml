@@ -28,53 +28,6 @@
     <artifactId>org.wso2.integrationstudio.eclipse.kernel.libraries</artifactId>
     <packaging>eclipse-plugin</packaging>
     <name>Integration Studio kernel.libraries</name>
-    <dependencies>
-        <!-- <dependency>
-            <groupId>commons-io.wso2</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>2.0.0.wso2v1</version>
-        </dependency>        
-        <dependency>
-            <groupId>org.apache.maven.shared</groupId>
-            <artifactId>maven-invoker</artifactId>
-            <version>2.0.11</version>
-        </dependency>     
-        <dependency>
-         <groupId>commons-logging</groupId>
-  		 <artifactId>commons-logging</artifactId>
- 		 <version>1.1.1</version>
-        </dependency> 
-        <dependency>
-            <groupId>org.apache.ws.commons.axiom.wso2</groupId>
-            <artifactId>axiom</artifactId>
-             <version>1.2.11.wso2v10</version>
-        </dependency>
-        <dependency>
-  			<groupId>commons-validator</groupId>
-  			<artifactId>commons-validator</artifactId>
-  			<version>1.4.0</version>
-        </dependency>
-        <dependency>
-           	<groupId>commons-httpclient.wso2</groupId>
-    		<artifactId>commons-httpclient</artifactId>
-    		<version>3.1.0.wso2v2</version>
-        </dependency>
-        <dependency>
-              <groupId>wsdl4j.wso2</groupId>
-    		  <artifactId>wsdl4j</artifactId>
-    		  <version>1.6.2.wso2v4</version>
-        </dependency>
-        <dependency>
-              <groupId>org.apache.axis2.wso2</groupId>
-    		   <artifactId>axis2</artifactId>
-    		  <version>1.6.1.wso2v14</version>
-        </dependency>
-        		<dependency>
-    			<groupId>org.apache.neethi.wso2</groupId>
-    			<artifactId>neethi</artifactId>
-    			<version>2.0.4.wso2v4</version>
-		</dependency> -->
-    </dependencies>
     <repositories>
         <repository>
             <id>maven-central</id>
@@ -89,7 +42,7 @@
             </releases>
             <id>wso2-nexus</id>
             <name>WSO2 internal Repository</name>
-            <url>https://maven.wso2.org/nexus/content/groups/wso2-public/</url>
+            <url>${wso2.nexus.repository}</url>
         </repository>
     </repositories>
     <build>
@@ -115,17 +68,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- <plugin>
-				<artifactId>maven-clean-plugin</artifactId>
-				<version>2.3</version>
-				<configuration>
-					<filesets>
-						<fileset>
-							<directory>lib</directory>
-						</fileset>
-					</filesets>
-				</configuration>
-			</plugin> -->
         </plugins>
     </build>
 </project>

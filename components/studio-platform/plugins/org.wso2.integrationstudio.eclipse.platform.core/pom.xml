@@ -51,7 +51,7 @@
             </releases>
             <id>wso2-nexus</id>
             <name>WSO2 internal Repository</name>
-            <url>https://maven.wso2.org/nexus/content/groups/wso2-public/</url>
+            <url>${wso2.nexus.repository}/</url>
         </repository>
     </repositories>
     <build>

@@ -14,7 +14,7 @@
                 name="Integration Studio Dashboard"></editor>
     </extension>
         <extension point="org.eclipse.ui.menus">
-        <menuContribution locationURI="menu:help?before=org.wso2.integrationstudio.eclipse.updater.updateCommand">
+        <menuContribution locationURI="menu:help">
 
 
 			<separator name="separator-id-dashboard-up"

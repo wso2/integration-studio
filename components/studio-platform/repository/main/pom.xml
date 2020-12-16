@@ -23,25 +23,4 @@
    <packaging>eclipse-repository</packaging>
    <name>WSO2 Integration Studio Platform - P2 Repository</name>
    <url>http://wso2.org</url>
-   <build>
-      <plugins>
-         <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>buildnumber-maven-plugin</artifactId>
-            <version>${org.codehaus.mojo.buildnumber.maven.plugin}</version>
-            <executions>
-               <execution>
-                  <phase>validate</phase>
-                  <goals>
-                     <goal>create-timestamp</goal>
-                  </goals>
-               </execution>
-            </executions>
-            <configuration>
-               <timestampFormat>yyyyMMddHHmm</timestampFormat>
-               <timestampPropertyName>build.date</timestampPropertyName>
-            </configuration>
-         </plugin>
-      </plugins>
-   </build>
 </project>

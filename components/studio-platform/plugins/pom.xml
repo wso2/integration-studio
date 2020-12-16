@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<artifactId>wso2-integrationstudio-platform-parent</artifactId>
@@ -16,7 +15,7 @@
 		<module>org.wso2.integrationstudio.eclipse.logging</module>
 		<module>org.wso2.integrationstudio.eclipse.utils</module>
 		<module>org.wso2.integrationstudio.eclipse.maven</module>
-	 	<module>org.wso2.integrationstudio.eclipse.platform.core</module>
+		<module>org.wso2.integrationstudio.eclipse.platform.core</module>
 		<module>org.wso2.integrationstudio.eclipse.welcome.perspective</module>
 		<module>org.wso2.integrationstudio.eclipse.platform.ui</module>
 		<module>org.wso2.integrationstudio.eclipse.wso2plugin.template.manager</module>
@@ -42,11 +41,11 @@
 		<module>org.wso2.integrationstudio.eclipse.carbonserver40</module>
 		<module>org.wso2.integrationstudio.eclipse.carbonserver42</module>
 		<module>org.wso2.integrationstudio.eclipse.carbonserver44</module>
-        <module>org.wso2.integrationstudio.eclipse.carbonserver44ei</module>
-        <module>org.wso2.integrationstudio.eclipse.carbonserver44microei</module>
-        <module>org.wso2.integrationstudio.eclipse.carbonserver44microei11</module>
-        <module>org.wso2.integrationstudio.eclipse.carbonserver44microei12</module>
-        <module>org.wso2.integrationstudio.eclipse.server.base</module>
+		<module>org.wso2.integrationstudio.eclipse.carbonserver44ei</module>
+		<module>org.wso2.integrationstudio.eclipse.carbonserver44microei</module>
+		<module>org.wso2.integrationstudio.eclipse.carbonserver44microei11</module>
+		<module>org.wso2.integrationstudio.eclipse.carbonserver44microei12</module>
+		<module>org.wso2.integrationstudio.eclipse.server.base</module>
 		<module>org.wso2.integrationstudio.eclipse.general.project</module>
 		<module>org.wso2.integrationstudio.eclipse.registry.perspective</module>
 		<module>org.wso2.integrationstudio.eclipse.registry.search</module>
@@ -71,7 +70,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-eclipse-plugin</artifactId>
-				<version>2.10</version>
+				<version>${maven.eclipse.plugin}</version>
 				<configuration>
 					<projectnatures>
 						<projectnature>org.eclipse.jdt.core.javanature</projectnature>
@@ -84,77 +83,34 @@
 					</buildcommands>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.eclipse.tycho.extras</groupId>
-				<artifactId>tycho-pack200a-plugin</artifactId>
-				<version>${tycho-version}</version>
-				<executions>
-					<execution>
-						<id>pack200-normalize</id>
-						<goals>
-							<goal>normalize</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.eclipse.tycho.extras</groupId>
-				<artifactId>tycho-pack200b-plugin</artifactId>
-				<version>${tycho-version}</version>
-				<executions>
-					<execution>
-						<id>pack200-pack</id>
-						<goals>
-							<goal>pack</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-p2-plugin</artifactId>
-				<version>${tycho-version}</version>
-				<executions>
-					<execution>
-						<id>p2-metadata</id>
-						<goals>
-							<goal>p2-metadata</goal>
-						</goals>
-						<phase>package</phase>
-					</execution>
-				</executions>
-				<configuration>
-					<defaultP2Metadata>false</defaultP2Metadata>
-				</configuration>
-			</plugin>
 		</plugins>
 	</build>
 	<profiles>
-	 <profile>
-		 <id>devsrelease</id>
-				 <build>
-						<plugins>
-							 <plugin>
-								<groupId>org.apache.maven.plugins</groupId>
-								<artifactId>maven-jarsigner-plugin</artifactId>
-								<version>1.2</version>
-								<configuration>
-									<keystore>${keystore.path}</keystore>
-									<storepass>${keystore.store.password}</storepass>
-									<alias>selfsigned</alias>
-									<keypass>${keystore.key.password}</keypass>
-								</configuration>
-									<executions>
-										<execution>
-											<id>sign</id>
-											<goals>
-												<goal>sign</goal>
-											</goals>
-										</execution>
-									</executions>
-							</plugin>
-						</plugins>
-				 </build>
-	 </profile>
- </profiles>
+		<profile>
+			<id>devsrelease</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-jarsigner-plugin</artifactId>
+						<version>${org.apache.maven.jarsigner.plugin}</version>
+						<configuration>
+							<keystore>${keystore.path}</keystore>
+							<storepass>${keystore.store.password}</storepass>
+							<alias>selfsigned</alias>
+							<keypass>${keystore.key.password}</keypass>
+						</configuration>
+						<executions>
+							<execution>
+								<id>sign</id>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>

@@ -29,6 +29,5 @@
         <plugin id="org.wso2.integrationstudio.eclipse.artifact.dataserviceTemplate" download-size="0" install-size="0" version="0.0.0" npack="false"/>
         <plugin id="org.wso2.integrationstudio.eclipse.artifact.datasource" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
         <plugin id="org.wso2.integrationstudio.eclipse.artifact.datasourceProject" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-        <plugin id="org.wso2.integrationstudio.humantaskeditor" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
 
 </feature>

@@ -26,9 +26,9 @@
           <page id="org.wso2.integrationstudio.eclipse.ui.integrationstudio.preferences.capp" name="WSO2 Plugin Preferences"
               class="org.wso2.integrationstudio.eclipse.platform.ui.preferences.DeveloperPreferencePage"
                category="org.wso2.integrationstudio.eclipse.ui.integrationstudio.preferences"/>
-        <page id="org.wso2.integrationstudio.eclipse.ui.integrationstudio.kernel.update.preferences" name="Check for Updates"
+        <!-- <page id="org.wso2.integrationstudio.eclipse.ui.integrationstudio.kernel.update.preferences" name="Check for Updates"
               class="org.wso2.integrationstudio.eclipse.platform.ui.preferences.UpdateCheckerPreferencePage"
-              category="org.wso2.integrationstudio.eclipse.ui.integrationstudio.preferences"/>
+              category="org.wso2.integrationstudio.eclipse.ui.integrationstudio.preferences"/> -->
     </extension>
 
     <extension

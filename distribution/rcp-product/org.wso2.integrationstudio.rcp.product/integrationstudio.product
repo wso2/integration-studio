@@ -4,7 +4,7 @@
 <product name="Integration Studio" uid="WSO2-Integration-Studio" id="org.wso2.integrationstudio.rcp.plugin.devstudio" application="org.eclipse.ui.ide.workbench" version="7.2.0.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
-      <image path="/org.wso2.integrationstudio.rcp.plugin/icons/carbon-studio-logo.gif"/>
+      <image path="/org.wso2.integrationstudio.rcp.plugin/icons/about_banner.png"/>
       <text>
          Licensed under Apache License, version 2.
 Please visit : http://wso2.com/products/integration-studio/
@@ -15,7 +15,7 @@ Please visit : http://wso2.com/products/integration-studio/
    </configIni>
 
    <launcherArgs>
-      <programArgsMac>/org.wso2.integrationstudio.rcp.plugin/icons/IntegrationStudio.icns
+      <programArgsMac>/org.wso2.integrationstudio.rcp.plugin/icons/IntegrationStudioRounded.icns
       </programArgsMac>
       <vmArgs>-Xms512m
 -Xmx2048m
@@ -35,7 +35,7 @@ Please visit : http://wso2.com/products/integration-studio/
       startupForegroundColor="729FCF" />
    <launcher name="integrationstudio">
       <linux icon="./icons/icon-linux.xpm"/>
-      <macosx icon="/icons/IntegrationStudio.icns"/>
+      <macosx icon="/icons/IntegrationStudioRounded.icns"/>
       <win useIco="false">
          <ico path="./icons/256x256.png.ico"/>
          <bmp
@@ -352,7 +352,7 @@ Please visit : http://wso2.com/products/integration-studio/
    </configurations>
 
    <repositories>
-      <repository location="http://product-dist.wso2.com/p2/integration-studio/7.2.0/" enabled="true" />
+      <repository location="http://192.168.1.7:8000/integration-studio/7.2.0/" enabled="true" />
    </repositories>
 
    <preferencesInfo>

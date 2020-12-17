@@ -7,7 +7,7 @@
 <plugin>
    	<extension point="org.eclipse.emf.ecore.generated_package">
      	<package
-            uri="http:///org/wso2/integrationstudio/eclipse/gmf/datamapper"
+            uri="http:///org/wso2/developerstudio/eclipse/gmf/datamapper"
             class="org.wso2.integrationstudio.datamapper.DataMapperPackage"
             genModel="model/dataMapper.genmodel"/>
    	</extension>

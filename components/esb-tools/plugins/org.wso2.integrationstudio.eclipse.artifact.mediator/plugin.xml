@@ -32,7 +32,7 @@
 		id="org.wso2.developerstudio.eclipse.artifact.mediator.project.nature" name="Mediator Project Nature">
 		<runtime>
 			<run
-				class="org.wso2.developerstudio.eclipse.artifact.mediator.project.nature.CustomMediatorProjectNature">
+				class="org.wso2.integrationstudio.eclipse.artifact.mediator.project.nature.CustomMediatorProjectNature">
 			</run>
 		</runtime>
 	</extension>

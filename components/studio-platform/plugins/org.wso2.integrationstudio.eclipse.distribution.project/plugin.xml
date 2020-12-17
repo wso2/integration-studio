@@ -38,7 +38,7 @@
 		id="org.wso2.developerstudio.eclipse.distribution.project.nature" name="Composite Application Project Nature">
 		<runtime>
 			<run
-				class="org.wso2.developerstudio.eclipse.distribution.project.nature.DistributionProjectNature">
+				class="org.wso2.integrationstudio.eclipse.distribution.project.nature.DistributionProjectNature">
 			</run>
 		</runtime>
 	</extension>

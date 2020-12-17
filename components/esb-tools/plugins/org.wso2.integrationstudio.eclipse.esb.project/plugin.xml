@@ -5,7 +5,7 @@
 		id="org.wso2.developerstudio.eclipse.esb.project.nature" name="ESB Project Nature">
 		<runtime>
 			<run
-				class="org.wso2.developerstudio.eclipse.esb.project.nature.ESBProjectNature">
+				class="org.wso2.integrationstudio.eclipse.esb.project.nature.ESBProjectNature">
 			</run>
 		</runtime>
 	</extension>

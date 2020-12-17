@@ -15,7 +15,7 @@
 		id="org.wso2.developerstudio.eclipse.artifact.ds.validator.project.nature" name="validator Project Nature">
 		<runtime>
 			<run
-				class="org.wso2.developerstudio.eclipse.artifact.ds.validator.project.nature.DataServiceValidatorProjectNature">
+				class="org.wso2.integrationstudio.eclipse.artifact.ds.validator.project.nature.DataServiceValidatorProjectNature">
 			</run>
 		</runtime>
 	</extension>

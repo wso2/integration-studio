@@ -38,7 +38,7 @@ public interface DataMapperPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http:///org/wso2/integrationstudio/eclipse/gmf/datamapper";
+	String eNS_URI = "http:///org/wso2/developerstudio/eclipse/gmf/datamapper";
 
 	/**
 	 * The package namespace name.

@@ -5,7 +5,7 @@ org.eclipse.emf.examples.generator.validator plug-in to illustrate how EMF's
 code generator can be extended.
 This can be disabled with -vmargs -Dorg.eclipse.emf.examples.generator.validator=false.
 
-Package datamapper <http:///org/wso2/integrationstudio/eclipse/gmf/datamapper>
+Package datamapper <http:///org/wso2/developerstudio/eclipse/gmf/datamapper>
 
   Class DataMapperNode
 

@@ -27,7 +27,7 @@
 		id="org.wso2.developerstudio.eclipse.general.project.nature" name="General Project Nature">
 		<runtime>
 			<run
-				class="org.wso2.developerstudio.eclipse.general.project.nature.GeneralProjectNature">
+				class="org.wso2.integrationstudio.eclipse.general.project.nature.GeneralProjectNature">
 			</run>
 		</runtime>
 	</extension>

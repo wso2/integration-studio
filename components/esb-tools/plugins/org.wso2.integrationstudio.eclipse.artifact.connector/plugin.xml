@@ -41,7 +41,7 @@
 		id="org.wso2.developerstudio.eclipse.artifact.connector.project.nature" name="Connector Project Nature">
 		<runtime>
 			<run
-				class="org.wso2.developerstudio.eclipse.artifact.connector.project.nature.ConnectorProjectNature">
+				class="org.wso2.integrationstudio.eclipse.artifact.connector.project.nature.ConnectorProjectNature">
 			</run>
 		</runtime>
 	</extension>

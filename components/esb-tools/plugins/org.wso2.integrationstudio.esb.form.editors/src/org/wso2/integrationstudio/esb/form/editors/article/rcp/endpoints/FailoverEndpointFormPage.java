@@ -40,7 +40,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.widgets.Section;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPointProperty;
+import org.wso2.integrationstudio.gmf.esb.EndPointProperty;
 import org.wso2.integrationstudio.esb.forgm.editors.article.FormArticlePlugin;
 import org.wso2.integrationstudio.esb.form.editors.article.providers.ComplexEndpointWizardUtils;
 import org.wso2.integrationstudio.esb.form.editors.article.providers.ConfigureEndPointPropertiesDialog;

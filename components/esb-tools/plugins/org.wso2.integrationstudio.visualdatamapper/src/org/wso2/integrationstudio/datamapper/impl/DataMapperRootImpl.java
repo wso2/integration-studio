@@ -23,8 +23,8 @@ import org.wso2.integrationstudio.datamapper.DataMapperRoot;
 import org.wso2.integrationstudio.datamapper.Input;
 import org.wso2.integrationstudio.datamapper.Operator;
 import org.wso2.integrationstudio.datamapper.Output;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 /**
  * <!-- begin-user-doc -->

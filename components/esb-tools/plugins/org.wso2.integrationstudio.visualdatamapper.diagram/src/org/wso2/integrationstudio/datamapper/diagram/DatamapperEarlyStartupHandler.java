@@ -32,7 +32,7 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.ui.IStartup;
 import org.osgi.framework.Bundle;
 import org.wso2.integrationstudio.datamapper.servlets.RegistryReaderServlet;
-import org.wso2.integrationstudio.eclipse.templates.dashboard.handlers.JettyServerHandler;
+import org.wso2.integrationstudio.templates.dashboard.handlers.JettyServerHandler;
 
 /**
  * This startup handler will add the datamapper context handler to the Jetty

@@ -24,8 +24,8 @@ import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.swt.widgets.Display;
 import org.wso2.integrationstudio.appcloud.utils.Activator;
 import org.wso2.integrationstudio.appcloud.utils.client.HttpsJaggeryClient;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class Authenticator {
 

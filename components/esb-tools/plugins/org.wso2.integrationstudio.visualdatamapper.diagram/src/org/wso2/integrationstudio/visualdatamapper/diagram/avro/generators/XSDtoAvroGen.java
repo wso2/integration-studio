@@ -23,8 +23,8 @@ import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.wso2.integrationstudio.datamapper.diagram.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 import java.security.Permission;
 

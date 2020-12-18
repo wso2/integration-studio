@@ -26,7 +26,7 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 import org.eclipse.swt.graphics.Color;
-//import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+//import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 import org.eclipse.swt.widgets.Display;
 import org.wso2.integrationstudio.datamapper.DataMapperFactory;
 import org.wso2.integrationstudio.datamapper.DataMapperPackage;

@@ -28,39 +28,39 @@
 	<name>WSO2 Integration Studio ESB Plugins</name>
 
 	<modules>
-		<module>org.wso2.integrationstudio.eclipse.esb.libraries</module>
-		<module>org.wso2.integrationstudio.eclipse.esb.core</module>
-		<module>org.wso2.integrationstudio.eclipse.gmf.esb</module>
-		<module>org.wso2.integrationstudio.eclipse.gmf.esb.edit</module>
-		<module>org.wso2.integrationstudio.eclipse.gmf.esb.persistence</module>
-		<module>org.wso2.integrationstudio.eclipse.esb.project</module>
-		<module>org.wso2.integrationstudio.eclipse.artifact.endpoint</module>
-		<module>org.wso2.integrationstudio.eclipse.artifact.proxyservice</module>
-		<module>org.wso2.integrationstudio.eclipse.artifact.sequence</module>
-		<module>org.wso2.integrationstudio.eclipse.artifact.localentry</module>
-		<module>org.wso2.integrationstudio.eclipse.artifact.mediator</module>
-		<module>org.wso2.integrationstudio.eclipse.artifact.synapse</module>
-		<module>org.wso2.integrationstudio.eclipse.artifact.synapse.api</module>
-		<module>org.wso2.integrationstudio.eclipse.artifact.task</module>
-		<module>org.wso2.integrationstudio.eclipse.artifact.template.sequence</module>
-		<module>org.wso2.integrationstudio.eclipse.artifact.messagestore</module>
-		<module>org.wso2.integrationstudio.eclipse.artifact.messageprocessor</module>
-		<module>org.wso2.integrationstudio.eclipse.artifact.inboundendpoint</module>
-		<module>org.wso2.integrationstudio.eclipse.artifact.connector</module>
-		<module>org.wso2.integrationstudio.eclipse.gmf.esb.diagram</module>
+		<module>org.wso2.integrationstudio.esb.libraries</module>
+		<module>org.wso2.integrationstudio.esb.core</module>
+		<module>org.wso2.integrationstudio.gmf.esb</module>
+		<module>org.wso2.integrationstudio.gmf.esb.edit</module>
+		<module>org.wso2.integrationstudio.gmf.esb.persistence</module>
+		<module>org.wso2.integrationstudio.esb.project</module>
+		<module>org.wso2.integrationstudio.artifact.endpoint</module>
+		<module>org.wso2.integrationstudio.artifact.proxyservice</module>
+		<module>org.wso2.integrationstudio.artifact.sequence</module>
+		<module>org.wso2.integrationstudio.artifact.localentry</module>
+		<module>org.wso2.integrationstudio.artifact.mediator</module>
+		<module>org.wso2.integrationstudio.artifact.synapse</module>
+		<module>org.wso2.integrationstudio.artifact.synapse.api</module>
+		<module>org.wso2.integrationstudio.artifact.task</module>
+		<module>org.wso2.integrationstudio.artifact.template.sequence</module>
+		<module>org.wso2.integrationstudio.artifact.messagestore</module>
+		<module>org.wso2.integrationstudio.artifact.messageprocessor</module>
+		<module>org.wso2.integrationstudio.artifact.inboundendpoint</module>
+		<module>org.wso2.integrationstudio.artifact.connector</module>
+		<module>org.wso2.integrationstudio.gmf.esb.diagram</module>
 		<module>org.wso2.integrationstudio.esb.form.editors</module>
 		<module>org.wso2.integrationstudio.visualdatamapper</module>
 		<module>org.wso2.integrationstudio.visualdatamapper.diagram</module>
 		<module>org.wso2.integrationstudio.visualdatamapper.edit</module>
 		<module>org.wso2.integrationstudio.visualdatamapper.editor</module>
 		<module>org.wso2.integrationstudio.visualdatamapper.project</module>
-		<module>org.wso2.integrationstudio.eclipse.esb.dashboard.templates</module>
-		<module>org.wso2.integrationstudio.eclipse.esb.theme</module>
-		<module>org.wso2.integrationstudio.eclipse.esb.docker</module>
-		<module>org.wso2.integrationstudio.eclipse.esb.cloud</module>
-		<module>org.wso2.integrationstudio.eclipse.esb.synapse.unit.test</module>
-		<module>org.wso2.integrationstudio.eclipse.apim.project</module>
-		<module>org.wso2.integrationstudio.eclipse.apim.endpoint.central</module>
+		<module>org.wso2.integrationstudio.esb.dashboard.templates</module>
+		<module>org.wso2.integrationstudio.esb.theme</module>
+		<module>org.wso2.integrationstudio.esb.docker</module>
+		<module>org.wso2.integrationstudio.esb.cloud</module>
+		<module>org.wso2.integrationstudio.esb.synapse.unit.test</module>
+		<module>org.wso2.integrationstudio.apim.project</module>
+		<module>org.wso2.integrationstudio.apim.endpoint.central</module>
 	</modules>
 	<build>
 		<plugins>

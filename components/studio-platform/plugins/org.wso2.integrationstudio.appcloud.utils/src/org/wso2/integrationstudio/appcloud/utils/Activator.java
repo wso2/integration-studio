@@ -86,7 +86,7 @@ public class Activator implements BundleActivator {
 
 		/*
 		 * IPreferenceStore preferenceStore =
-		 * org.wso2.integrationstudio.eclipse.platform.ui.Activator.getDefault()
+		 * org.wso2.integrationstudio.platform.ui.Activator.getDefault()
 		 * .getPreferenceStore();
 		 * 
 		 * if(preferenceStore.getString(ClientTrustStorePreferencePage.
@@ -107,7 +107,7 @@ public class Activator implements BundleActivator {
 		 * TRUST_STORE_TYPE)); return true;
 		 * 
 		 * }catch(Exception e){ IIntegrationStudioLog log =
-		 * Logger.getLog(org.wso2.integrationstudio.eclipse.platform.ui.Activator.
+		 * Logger.getLog(org.wso2.integrationstudio.platform.ui.Activator.
 		 * PLUGIN_ID); log.error(
 		 * "Cannot load values from Eclipse perfernces to read JKS"
 		 * +e.getMessage(), e); }

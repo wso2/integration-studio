@@ -1,0 +1,34 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Library Artifact Wizard
+Bundle-SymbolicName: org.wso2.integrationstudio.artifact.library;singleton:=true
+Bundle-Version: 7.2.0.qualifier
+Bundle-Activator: org.wso2.integrationstudio.artifact.library.Activator
+Bundle-Vendor: WSO2 Inc
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.wso2.integrationstudio.libraries,
+ org.eclipse.m2e.maven.runtime;bundle-version="1.6.2"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Import-Package: org.eclipse.core.resources,
+ org.eclipse.jdt.core,
+ org.eclipse.ui.model,
+ org.wso2.integrationstudio.libraries.utils,
+ org.wso2.integrationstudio.logging.core,
+ org.wso2.integrationstudio.maven.util,
+ org.wso2.integrationstudio.platform.core.bundle,
+ org.wso2.integrationstudio.platform.core.exception,
+ org.wso2.integrationstudio.platform.core.manifest,
+ org.wso2.integrationstudio.platform.core.model,
+ org.wso2.integrationstudio.platform.core.nature,
+ org.wso2.integrationstudio.platform.core.project.export,
+ org.wso2.integrationstudio.platform.core.project.model,
+ org.wso2.integrationstudio.platform.ui.validator,
+ org.wso2.integrationstudio.platform.ui.wizard,
+ org.wso2.integrationstudio.platform.ui.wizard.pages,
+ org.wso2.integrationstudio.utils.archive,
+ org.wso2.integrationstudio.utils.file,
+ org.wso2.integrationstudio.utils.jdt,
+ org.wso2.integrationstudio.utils.project,
+ org.wso2.integrationstudio.utils.ui

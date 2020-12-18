@@ -28,8 +28,8 @@ import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.ui.part.MultiPageEditorPart;
 import org.osgi.framework.Bundle;
-import org.wso2.integrationstudio.eclipse.webui.core.editor.AbstractWebBasedEditor;
-import org.wso2.integrationstudio.eclipse.webui.core.exception.WebUIException;
+import org.wso2.integrationstudio.webui.core.editor.AbstractWebBasedEditor;
+import org.wso2.integrationstudio.webui.core.exception.WebUIException;
 import org.wso2.integrationstudio.humantaskeditor.Activator;
 import org.wso2.integrationstudio.humantaskeditor.HumantaskEditorConstants;
 

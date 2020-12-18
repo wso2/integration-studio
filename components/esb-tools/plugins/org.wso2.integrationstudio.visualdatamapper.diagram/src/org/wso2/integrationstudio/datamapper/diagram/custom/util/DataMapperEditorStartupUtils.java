@@ -12,8 +12,8 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
 import org.wso2.integrationstudio.datamapper.diagram.part.DataMapperDiagramEditor;
-import org.wso2.integrationstudio.eclipse.platform.ui.editor.Openable;
-import org.wso2.integrationstudio.eclipse.platform.ui.utils.UnrecogizedArtifactTypeException;
+import org.wso2.integrationstudio.platform.ui.editor.Openable;
+import org.wso2.integrationstudio.platform.ui.utils.UnrecogizedArtifactTypeException;
 
 
 public class DataMapperEditorStartupUtils implements Openable{

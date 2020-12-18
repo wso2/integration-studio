@@ -5,10 +5,10 @@ Bundle-SymbolicName: org.wso2.integrationstudio.visualdatamapper.project;singlet
 Bundle-Version: 7.2.0.qualifier
 Bundle-Activator: org.wso2.integrationstudio.visualdatamapper.project.Activator
 Require-Bundle: org.eclipse.ui.ide,
- org.wso2.integrationstudio.eclipse.kernel.libraries
+ org.wso2.integrationstudio.kernel.libraries
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Import-Package: org.wso2.integrationstudio.eclipse.maven.util,
- org.wso2.integrationstudio.eclipse.platform.core.nature,
- org.wso2.integrationstudio.eclipse.utils.project
+Import-Package: org.wso2.integrationstudio.maven.util,
+ org.wso2.integrationstudio.platform.core.nature,
+ org.wso2.integrationstudio.utils.project
 Bundle-Vendor: %providerName

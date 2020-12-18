@@ -31,20 +31,20 @@
       <category
             name="Human Task"
             id="org.wso2.integrationstudio.humantaskeditor"
-            parentCategory="org.wso2.integrationstudio.eclipse.capp.project">
+            parentCategory="org.wso2.integrationstudio.capp.project">
       </category>
       <wizard
             name="Human Task Project"
             icon="icons/humanTask.png"
             project="true"
-            category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.humantaskeditor"
+            category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.humantaskeditor"
             class="org.wso2.integrationstudio.humantaskeditor.wizards.HumanTaskProjectWizard"
             id="org.wso2.integrationstudio.humantaskeditor.wizards.HumanTaskProjectWizard">
       </wizard>
       <wizard
             name="Human Task File"
             icon="icons/humanTask.png"
-            category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.humantaskeditor"
+            category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.humantaskeditor"
             class="org.wso2.integrationstudio.humantaskeditor.wizards.HumanTaskWizard"
             id="org.wso2.integrationstudio.humantaskeditor.wizards.HumanTaskWizard">
       </wizard>      
@@ -59,7 +59,7 @@
       </runtime>
    </extension>
    <extension
-point="org.wso2.integrationstudio.eclipse.dashboad.link">
+point="org.wso2.integrationstudio.dashboad.link">
 <wizardCategory category="org.wso2.integrationstudio.humantaskeditor"/>
     <category id="dashboard.category.bps.hteditor" showTitle="true"
                  title="BPS Human Task Tooling"
@@ -75,12 +75,12 @@ point="org.wso2.integrationstudio.eclipse.dashboad.link">
   <extension point="org.eclipse.ui.popupMenus">
                 <objectContribution
               objectClass="org.eclipse.core.resources.IProject"
-                    id="org.wso2.integrationstudio.eclipse.distribution.project.popup.export">
+                    id="org.wso2.integrationstudio.distribution.project.popup.export">
                <action
                         label="Export Project as Deployable Archive"
                         icon="icons/car.png"
                    		class="org.wso2.integrationstudio.humantaskeditor.wizards.ExportProjectAction"
-                        id="org.wso2.integrationstudio.eclipse.distribution.project.ui.action.artifactexport">
+                        id="org.wso2.integrationstudio.distribution.project.ui.action.artifactexport">
                </action>
                <enablement>
 						<adapt type="org.eclipse.core.resources.IProject">

@@ -40,7 +40,7 @@ import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TemplateParameter;
+import org.wso2.integrationstudio.gmf.esb.TemplateParameter;
 import org.wso2.integrationstudio.esb.forgm.editors.article.FormArticlePlugin;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.AbstractEsbFormPage;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.Messages;

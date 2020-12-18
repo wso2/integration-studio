@@ -50,12 +50,12 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.part.FileEditorInput;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.component.CustomUpdateWizardDialog;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.component.CustomWizardDialog;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.component.ReferenceTable;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.model.MockService;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.model.MockServiceResource;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.wizard.mockresource.ResourceCreationWizard;
+import org.wso2.integrationstudio.esb.synapse.unit.test.component.CustomUpdateWizardDialog;
+import org.wso2.integrationstudio.esb.synapse.unit.test.component.CustomWizardDialog;
+import org.wso2.integrationstudio.esb.synapse.unit.test.component.ReferenceTable;
+import org.wso2.integrationstudio.esb.synapse.unit.test.model.MockService;
+import org.wso2.integrationstudio.esb.synapse.unit.test.model.MockServiceResource;
+import org.wso2.integrationstudio.esb.synapse.unit.test.wizard.mockresource.ResourceCreationWizard;
 import org.wso2.integrationstudio.esb.forgm.editors.article.FormArticlePlugin;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.AbstractEsbFormPage;
 

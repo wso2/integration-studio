@@ -14,7 +14,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeCompartmentEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateUnspecifiedTypeRequest;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Control;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.SWTResourceManager;
+import org.wso2.integrationstudio.platform.core.utils.SWTResourceManager;
 
 
 public class DMCustomDragDropEditPolicy extends org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy {

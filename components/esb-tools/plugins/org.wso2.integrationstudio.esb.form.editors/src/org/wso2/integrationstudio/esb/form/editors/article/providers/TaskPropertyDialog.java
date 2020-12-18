@@ -43,9 +43,9 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TaskProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TaskPropertyType;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.TaskProperty;
+import org.wso2.integrationstudio.gmf.esb.TaskPropertyType;
 
 public class TaskPropertyDialog extends Dialog {
 

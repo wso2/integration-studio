@@ -39,9 +39,9 @@ import org.eclipse.ui.intro.IIntroPart;
  */
 public class IntegrationStudioPerspective implements IPerspectiveFactory {
 
-    private static final String ANIMATED_DASHBOARD_ID = "org.wso2.integrationstudio.eclipse.rcp.dashboard";
-    private static final String CLASSIC_DASHBOARD_ID = "org.wso2.integrationstudio.eclipse.dashboard";
-    private static final String DASHBOARD_VIEW_ID = "org.wso2.integrationstudio.eclipse.ui.welcome.WelcomePage";
+    private static final String ANIMATED_DASHBOARD_ID = "org.wso2.integrationstudio.rcp.dashboard";
+    private static final String CLASSIC_DASHBOARD_ID = "org.wso2.integrationstudio.dashboard";
+    private static final String DASHBOARD_VIEW_ID = "org.wso2.integrationstudio.ui.welcome.WelcomePage";
     private static final String J2EE_PERSPECTIVE_ID = "org.eclipse.jst.j2ee.J2EEPerspective";
 
     @Override

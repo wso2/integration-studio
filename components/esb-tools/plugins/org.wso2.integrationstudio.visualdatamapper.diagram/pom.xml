@@ -31,7 +31,7 @@
     <!--dependencies>
         <dependency>
             <groupId>org.wso2.eclipse</groupId>
-            <artifactId>org.wso2.integrationstudio.eclipse.libraries</artifactId>
+            <artifactId>org.wso2.integrationstudio.libraries</artifactId>
 	<version>1.7.0</version>        
 	</dependency>
 

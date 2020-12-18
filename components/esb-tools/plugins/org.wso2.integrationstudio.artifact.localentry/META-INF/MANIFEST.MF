@@ -1,0 +1,25 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Local Entry
+Bundle-SymbolicName: org.wso2.integrationstudio.artifact.localentry;singleton:=true
+Bundle-Version: 7.2.0.qualifier
+Bundle-Activator: org.wso2.integrationstudio.artifact.localentry.Activator
+Require-Bundle: org.wso2.integrationstudio.kernel.libraries,
+ org.wso2.integrationstudio.platform.core,
+ org.wso2.integrationstudio.platform.ui
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: org.wso2.integrationstudio.esb.core,
+ org.wso2.integrationstudio.esb.core.configuration.impl,
+ org.wso2.integrationstudio.esb.core.interfaces,
+ org.wso2.integrationstudio.esb.core.utils,
+ org.wso2.integrationstudio.esb.project.artifact,
+ org.wso2.integrationstudio.esb.project.utils,
+ org.wso2.integrationstudio.gmf.esb,
+ org.wso2.integrationstudio.logging.core,
+ org.wso2.integrationstudio.maven.util,
+ org.wso2.integrationstudio.utils.file,
+ org.wso2.integrationstudio.utils.template,
+ org.wso2.integrationstudio.utils.ui
+Export-Package: org.wso2.integrationstudio.artifact.localentry.model,
+ org.wso2.integrationstudio.artifact.localentry.ui.wizard

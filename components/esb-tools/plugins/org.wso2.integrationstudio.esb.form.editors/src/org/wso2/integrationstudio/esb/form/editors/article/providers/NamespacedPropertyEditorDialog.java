@@ -24,10 +24,10 @@ import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 import org.wso2.integrationstudio.esb.form.editors.Activator;
 
 /**

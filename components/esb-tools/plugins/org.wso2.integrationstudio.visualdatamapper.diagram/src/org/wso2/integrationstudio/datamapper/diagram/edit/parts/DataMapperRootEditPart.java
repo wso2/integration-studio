@@ -96,9 +96,9 @@ import org.wso2.integrationstudio.datamapper.diagram.tree.generator.ISchemaTrans
 import org.wso2.integrationstudio.datamapper.diagram.tree.generator.SchemaTransformerRegistry;
 import org.wso2.integrationstudio.datamapper.impl.DataMapperRootImpl;
 import org.wso2.integrationstudio.datamapper.impl.TreeNodeImpl;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.templates.dashboard.web.function.server.JSEmbeddedFunctions;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.templates.dashboard.web.function.server.JSEmbeddedFunctions;
 
 /**
  * @generated

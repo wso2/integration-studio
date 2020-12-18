@@ -38,8 +38,8 @@ import org.wso2.integrationstudio.datamapper.diagram.custom.model.DMVariableType
 import org.wso2.integrationstudio.datamapper.diagram.custom.model.DataMapperDiagramModel;
 import org.wso2.integrationstudio.datamapper.diagram.custom.model.transformers.TransformerConstants;
 import org.wso2.integrationstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 /**
  * This class extends abstract class {@link AbstractMappingConfigGenerator} and

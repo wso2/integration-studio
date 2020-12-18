@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Integration Studio Theme
+Bundle-SymbolicName: org.wso2.integrationstudio.esb.theme;singleton:=true
+Bundle-Version: 7.2.0.qualifier
+Bundle-Activator: org.wso2.integrationstudio.esb.theme.Activator
+Bundle-Vendor: WSO2 Inc
+Require-Bundle: org.wso2.integrationstudio.kernel.libraries,
+ org.wso2.integrationstudio.esb.libraries;bundle-version="5.0.0",
+ org.wso2.integrationstudio.platform.core,
+ org.wso2.integrationstudio.platform.ui,
+ org.eclipse.e4.ui.css.swt.theme;bundle-version="0.9.300",
+ org.eclipse.e4.ui.workbench.renderers.swt;bundle-version="0.14.100",
+ org.eclipse.e4.ui.css.swt;bundle-version="0.13.0",
+ org.eclipse.ui.workbench,
+ org.eclipse.ui
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Import-Package: org.eclipse.core.resources,
+ org.eclipse.jdt.core,
+ org.eclipse.ui,
+ org.wso2.integrationstudio.esb.core,
+ org.wso2.integrationstudio.esb.core.utils,
+ org.wso2.integrationstudio.esb.project.artifact,
+ org.wso2.integrationstudio.esb.project.utils,
+ org.wso2.integrationstudio.general.project.artifact,
+ org.wso2.integrationstudio.general.project.artifact.bean,
+ org.wso2.integrationstudio.general.project.model,
+ org.wso2.integrationstudio.gmf.esb

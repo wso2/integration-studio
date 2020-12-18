@@ -17,17 +17,17 @@
                 <import feature="org.wso2.integrationstudio.platform.feature" version="0.0.0"/>
         </requires>
 
-        <plugin id="org.wso2.integrationstudio.eclipse.artifact.dataservice" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-        <plugin id="org.wso2.integrationstudio.eclipse.artifact.dataservice.validator" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-        <plugin id="org.wso2.integrationstudio.eclipse.artifact.dataserviceProject" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-        <plugin id="org.wso2.integrationstudio.eclipse.ds" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-        <plugin id="org.wso2.integrationstudio.eclipse.ds.customvalidator" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-        <plugin id="org.wso2.integrationstudio.eclipse.ds.edit" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-        <plugin id="org.wso2.integrationstudio.eclipse.ds.editor" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-        <plugin id="org.wso2.integrationstudio.eclipse.ds.editor.xml" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-        <plugin id="org.wso2.integrationstudio.eclipse.ds.source.editor" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-        <plugin id="org.wso2.integrationstudio.eclipse.artifact.dataserviceTemplate" download-size="0" install-size="0" version="0.0.0" npack="false"/>
-        <plugin id="org.wso2.integrationstudio.eclipse.artifact.datasource" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-        <plugin id="org.wso2.integrationstudio.eclipse.artifact.datasourceProject" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+        <plugin id="org.wso2.integrationstudio.artifact.dataservice" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+        <plugin id="org.wso2.integrationstudio.artifact.dataservice.validator" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+        <plugin id="org.wso2.integrationstudio.artifact.dataserviceProject" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+        <plugin id="org.wso2.integrationstudio.ds" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+        <plugin id="org.wso2.integrationstudio.ds.customvalidator" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+        <plugin id="org.wso2.integrationstudio.ds.edit" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+        <plugin id="org.wso2.integrationstudio.ds.editor" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+        <plugin id="org.wso2.integrationstudio.ds.editor.xml" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+        <plugin id="org.wso2.integrationstudio.ds.source.editor" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+        <plugin id="org.wso2.integrationstudio.artifact.dataserviceTemplate" download-size="0" install-size="0" version="0.0.0" npack="false"/>
+        <plugin id="org.wso2.integrationstudio.artifact.datasource" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+        <plugin id="org.wso2.integrationstudio.artifact.datasourceProject" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
 
 </feature>

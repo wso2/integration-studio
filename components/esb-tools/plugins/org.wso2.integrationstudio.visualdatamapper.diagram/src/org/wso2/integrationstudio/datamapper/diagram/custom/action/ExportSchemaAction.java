@@ -45,8 +45,8 @@ import org.wso2.integrationstudio.datamapper.diagram.edit.parts.TreeNodeEditPart
 import org.wso2.integrationstudio.datamapper.diagram.tree.generator.ISchemaTransformer;
 import org.wso2.integrationstudio.datamapper.diagram.tree.generator.SchemaTransformerRegistry;
 import org.wso2.integrationstudio.datamapper.impl.TreeNodeImpl;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class ExportSchemaAction extends AbstractActionHandler {
 

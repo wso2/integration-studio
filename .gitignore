@@ -30,7 +30,7 @@ test-output/
 *.tar.gz
 
 ## Generated When Building
-components/esb-tools/plugins/org.wso2.integrationstudio.eclipse.gmf.esb.persistence/library.jar
+components/esb-tools/plugins/org.wso2.integrationstudio.gmf.esb.persistence/library.jar
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/

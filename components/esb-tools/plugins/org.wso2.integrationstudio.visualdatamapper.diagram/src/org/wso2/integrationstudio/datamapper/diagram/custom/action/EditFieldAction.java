@@ -50,7 +50,7 @@ import org.wso2.integrationstudio.datamapper.diagram.custom.util.AddNewObjectDia
 import org.wso2.integrationstudio.datamapper.diagram.edit.parts.TreeNode2EditPart;
 import org.wso2.integrationstudio.datamapper.diagram.edit.parts.TreeNode3EditPart;
 import org.wso2.integrationstudio.datamapper.diagram.edit.parts.TreeNodeEditPart;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryFile;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryFile;
 
 public class EditFieldAction extends AbstractActionHandler {
 
